@@ -1,0 +1,42 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "rsButton1",
+        "type": "RsButton",
+        "props": {
+          "children": {
+            "computeType": "localization"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "locButton"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "rsButton1": {
+        "component": {
+          "children": "button"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

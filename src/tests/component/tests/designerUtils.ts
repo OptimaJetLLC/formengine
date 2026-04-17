@@ -21,7 +21,7 @@ export const switchToViewerMode = async (findByText: RenderResult['findByText'])
 
 /**
  * Switches to designer mode by clicking the edit button.
- * @param findByText the function to find elements by text
+ * @param findByText the function to find elements by text.
  */
 export const switchToDesignerMode = async (findByText: RenderResult['findByText']) => {
   // ensure that the form is rendered
@@ -45,4 +45,22 @@ export const switchLanguage = async (code: LanguageFullCode, container: HTMLElem
   const langItem = container.querySelector(langSelector)
   if (!langItem) throw new Error(`Language "${code}" not found`)
   fireEvent.click(langItem)
+}
+
+/**
+ * Switches the form language.
+ * @param code the full language code.
+ * @param findByTestId the function to find elements by test id.
+ */
+export const switchFormLanguage = async (code: LanguageFullCode, findByTestId: RenderResult['findByTestId']) => {
+  const formLangSwitch = await findByTestId('designer-form-language')
+  fireEvent.click(formLangSwitch)
+
+  const pickerPopup = await findByTestId('picker-popup')
+  const langItem = pickerPopup.querySelector(`div[data-key="${code}"]`)
+  if (!langItem) throw new Error(`Form language "${code}" not found`)
+  fireEvent.click(langItem)
+
+  const displayValue = code.split('-')[1]
+  await waitFor(async () => expect(await findByTestId('picker-describe')).toHaveTextContent(displayValue))
 }

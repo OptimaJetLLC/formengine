@@ -3,6 +3,10 @@ import {BiDi, createView, FormViewer, LanguageFullCode} from '@react-form-builde
 import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {render, RenderResult} from '@testing-library/react'
 import {expect} from 'vitest'
+import {renderBuilder} from '../util/renderBuilder'
+import {renderForm} from '../util/renderForm'
+import {switchFormLanguage, switchToViewerMode} from './designerUtils'
+import defaultLocalizationForm from './forms/default-localization-form.json'
 import {default as formJson} from './forms/localization-viewer.json'
 
 const enUS = 'en-US'
@@ -57,5 +61,24 @@ describe('Viewer localization test', function () {
     content = await app.findByTestId('staticContent')
 
     expect(content).toHaveTextContent(expectedDE)
+  })
+
+  it('should apply the default value in FormViewer', async () => {
+    const {findByTestId} = renderForm(defaultLocalizationForm, {language: 'de-DE'})
+
+    const locButton = await findByTestId('locButton')
+    expect(locButton).toHaveTextContent('button')
+  })
+
+  it('should apply the default value in FormBuilder', async () => {
+    const {findByTestId, findByText} = await renderBuilder(defaultLocalizationForm)
+
+    await switchToViewerMode(findByText)
+
+    const locButton = await findByTestId('locButton')
+    expect(locButton).toHaveTextContent('button')
+
+    await switchFormLanguage('de-DE', findByTestId)
+    expect(locButton).toHaveTextContent('button')
   })
 })

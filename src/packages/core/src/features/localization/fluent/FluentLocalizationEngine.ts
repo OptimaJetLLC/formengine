@@ -187,7 +187,7 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
         return
       }
 
-      data[value] = this.#formatMessage(message, formBundle, formData)
+      data[value] = this.#formatMessage(message, formBundle ?? defaultBundle, formData)
     })
 
     return data
@@ -218,7 +218,7 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
     const {defaultBundle, formBundle} = this.#setupBundles(form, language.fullCode, errors)
     const message = this.#getMessageWithFallback(messageId, formBundle, defaultBundle)
 
-    return message ? this.#formatMessage(message, formBundle, formData) : undefined
+    return message ? this.#formatMessage(message, formBundle ?? defaultBundle, formData) : undefined
   }
 
   /**
