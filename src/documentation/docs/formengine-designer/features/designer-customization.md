@@ -55,6 +55,11 @@ const simpleCustomization: CustomizationMap = {
     `
   },
 
+  // Hiding the "Clear" button using the menu item customization
+  MainMenu_Item_Clear: {
+    hidden: true
+  },
+
   // Customizing Header styles
   Header: {
     className: 'MyClassName',
@@ -172,6 +177,52 @@ const FormBuilderApp = () => {
 | 16 | PropertyLabel                                                                              | FE_PropertyLabel                                                                                       |               |
 | 17 | PropertyInput                                                                              | FE_PropertyInput                                                                                       |               |
 
+### Menu items customization
+
+Each item in the main menu can be customized individually. The following keys are available:
+
+| #  | Name                               | className                               | Description                                                                                      |
+|:---|:-----------------------------------|:----------------------------------------|:-------------------------------------------------------------------------------------------------|
+| 1  | MainMenu_Item_AddNewForm           | `FE_MainMenu_Item_AddNewForm`           | "Add new form" button (only visible when [formStorage][formStorage] is enabled)                  |
+| 2  | MainMenu_Item_Download             | `FE_MainMenu_Item_Download`             | "Download" button                                                                                |
+| 3  | MainMenu_Item_Upload               | `FE_MainMenu_Item_Upload`               | "Upload" button                                                                                  |
+| 4  | MainMenu_Item_Save                 | `FE_MainMenu_Item_Save`                 | "Save" button (only visible when [formStorage][formStorage] is enabled)                          |
+| 5  | MainMenu_Item_SaveAs               | `FE_MainMenu_Item_SaveAs`               | "Save as" button (only visible when [formStorage][formStorage] is enabled)                       |
+| 6  | MainMenu_Item_ExportForms          | `FE_MainMenu_Item_ExportForms`          | "Export forms" button (only visible when [formStorage][formStorage] is enabled)                  |
+| 7  | MainMenu_Item_ImportForms          | `FE_MainMenu_Item_ImportForms`          | "Import forms" button (only visible when [formStorage][formStorage] is enabled)                  |
+| 8  | MainMenu_Item_Clear                | `FE_MainMenu_Item_Clear`                | "Clear" button                                                                                   |
+| 9  | MainMenu_Item_ExportJsonFormSchema | `FE_MainMenu_Item_ExportJsonFormSchema` | "Export JSON Form Schema" button (only visible when [generateJsonFormSchema][jsonSchema] is set) |
+| 10 | MainMenu_Item_LanguageSwitch       | `FE_MainMenu_Item_LanguageSwitch`       | Language switch dropdown                                                                         |
+
+**Example usage:**
+
+```tsx
+const menuCustomization: CustomizationMap = {
+  // Hide the "Clear" button
+  MainMenu_Item_Clear: {
+    hidden: true
+  },
+  
+  // Customize the "Download" button style
+  MainMenu_Item_Download: {
+    className: 'custom-download-button',
+    style: {
+      backgroundColor: '#4CAF50',
+      color: 'white'
+    }
+  },
+  
+  // Replace the "Save" button with a custom component
+  MainMenu_Item_Save: {
+    customRenderer: (defaultElement, component, props) => (
+      <button onClick={() => alert('Custom save!')}>
+        Custom Save Button
+      </button>
+    )
+  }
+};
+```
+
 ### Components palette
 
 Each group and component receives a set of classes composed of its name and type.
@@ -273,3 +324,6 @@ const FormBuilderApp = () => {
   />
 }
 ```
+
+[formStorage]: /formengine-designer/features/form-storage/
+[jsonSchema]: /formengine-designer/features/forms-json/#json-schema

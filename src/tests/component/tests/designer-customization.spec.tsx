@@ -49,7 +49,23 @@ const disabledZones = new Set([
   'Components_Tab_Content',
   'Settings_Tab_Content',
   'Rules_Tab_Content',
-  'Forms_Tab_Content'
+  'Forms_Tab_Content',
+
+  // main menu
+  'MainMenu_Button',
+  'MainMenu_Dropdown',
+  'MainMenu_Item_AddNewForm',
+  'MainMenu_Item_Download',
+  'MainMenu_Item_Upload',
+  'MainMenu_Item_Save',
+  'MainMenu_Item_SaveAs',
+  // eslint-disable-next-line no-secrets/no-secrets
+  'MainMenu_Item_ExportForms',
+  'MainMenu_Item_ImportForms',
+  'MainMenu_Item_Clear',
+  // eslint-disable-next-line no-secrets/no-secrets
+  'MainMenu_Item_ExportJsonFormSchema',
+  'MainMenu_Item_LanguageSwitch',
 ])
 
 const targetStyle = {

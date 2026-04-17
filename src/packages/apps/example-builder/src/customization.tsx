@@ -28,6 +28,18 @@ export const customization: CustomizationMap = {
   Header: {
     customRenderer: defaultElement => <div className={styles.header}>{defaultElement}</div>,
   },
+  MainMenu_Item_Save: {
+    className: styles.customMenuSaveItem,
+    customRenderer: defaultElement => (
+      <div className={styles.customMenuSaveWrapper}>
+        {defaultElement}
+        <span className={styles.customMenuItemBadge}>Custom</span>
+      </div>
+    ),
+  },
+  MainMenu_Item_SaveAs: {
+    className: styles.customMenuSaveAsItem,
+  },
   Header_Toolbar: addToDefaultElement(<ViewPicker />),
   Component_Toolbar: componentToolbarCustomization,
   Component_Toolbar_RemoveButton: {

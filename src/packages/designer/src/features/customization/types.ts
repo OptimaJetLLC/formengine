@@ -6,6 +6,18 @@ export const CustomizableZone: Set<string> = new Set([
   'Header',
   'MainMenu_Button',
   'MainMenu_Dropdown',
+  'MainMenu_Item_AddNewForm',
+  'MainMenu_Item_Download',
+  'MainMenu_Item_Upload',
+  'MainMenu_Item_Save',
+  'MainMenu_Item_SaveAs',
+  // eslint-disable-next-line no-secrets/no-secrets
+  'MainMenu_Item_ExportForms',
+  'MainMenu_Item_ImportForms',
+  'MainMenu_Item_Clear',
+  // eslint-disable-next-line no-secrets/no-secrets
+  'MainMenu_Item_ExportJsonFormSchema',
+  'MainMenu_Item_LanguageSwitch',
   'Header_Toolbar',
   'Component_Toolbar',
   'Component_Toolbar_Items',

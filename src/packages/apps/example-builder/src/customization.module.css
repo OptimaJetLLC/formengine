@@ -1,3 +1,26 @@
 div.header > div > div:nth-child(2) {
   flex: 0 1;
 }
+
+.customMenuSaveWrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.customMenuSaveItem {
+  border-left: 2px solid #1e90ff;
+}
+
+.customMenuSaveAsItem {
+  border-left: 2px solid #8a2be2;
+}
+
+.customMenuItemBadge {
+  border-radius: 10px;
+  padding: 1px 6px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #ffffff;
+  background: #1e90ff;
+}

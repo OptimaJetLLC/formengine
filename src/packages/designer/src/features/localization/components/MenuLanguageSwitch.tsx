@@ -1,10 +1,10 @@
 import {faGlobe} from '@fortawesome/free-solid-svg-icons'
-import {namedObserver} from '@react-form-builder/core'
 import {useCallback, useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
+import {customizableObserver} from '../../customization/customizableObserver'
 import {AiIcon} from './AiIcon'
 import {renderLanguageItem} from './LocalizationPicker'
 import styles from './MenuLanguageSwitch.module.css'
@@ -16,9 +16,9 @@ const RawMenuLanguageSwitch = () => {
 
   const handleLanguageSelect = useCallback((language: any) => {
     return () => {
-       builderStore.changeLanguage(language).then(() => {
-         builderStore.props.onBuilderLanguageChange?.(language)
-       })
+      builderStore.changeLanguage(language).then(() => {
+        builderStore.props.onBuilderLanguageChange?.(language)
+      })
     }
   }, [builderStore])
 
@@ -44,4 +44,4 @@ const RawMenuLanguageSwitch = () => {
   </Dropdown.Menu>
 }
 
-export const MenuLanguageSwitch = namedObserver('MenuLanguageSwitch', RawMenuLanguageSwitch)
+export const MenuLanguageSwitch = customizableObserver('MainMenu_Item_LanguageSwitch', RawMenuLanguageSwitch)
