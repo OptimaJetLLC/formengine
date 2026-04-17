@@ -1,5 +1,3 @@
-import './utils/monaco-settings'
-
 import type {ViewType} from '@react-form-builder/apps-common'
 import {getViewStorageKey, usePersistentView, ViewProvider} from '@react-form-builder/apps-common'
 import {namedObserver} from '@react-form-builder/core'

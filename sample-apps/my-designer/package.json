@@ -24,7 +24,7 @@
     "@types/node": "^16.18.54",
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.8",
-    "monaco-editor": "^0.52.2",
+    "monaco-editor": "^0.55.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -32,10 +32,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "dev": "dotenv -v BROWSER=none react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "dev": "dotenv -v BROWSER=none craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "install-deps-and-run": "node ./install-deps-and-run.ts"
   },
@@ -56,5 +56,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "monaco-editor-webpack-plugin": "^7.1.1"
   }
 }

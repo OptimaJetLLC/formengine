@@ -1,3 +1,5 @@
+import './src/utils/monaco-settings'
+
 export {MantineBuilder} from './src/components/MantineBuilder'
 export {MuiBuilder} from './src/components/MuiBuilder'
 export {RSuiteBuilderImportCss} from './src/components/RSuiteBuilderImportCss'

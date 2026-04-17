@@ -58,15 +58,15 @@ if (!import.meta.env.PROD) {
   }
 
   loader.config({monaco})
-  monaco.languages.typescript?.typescriptDefaults.setEagerModelSync(true)
+  monaco.typescript?.typescriptDefaults.setEagerModelSync(true)
 }
 
-loader.init().then(monaco => {
+loader.init().then(() => {
   monacoJavascriptDefaults.forEach(({content, filePath}) => {
-    monaco?.languages.typescript?.javascriptDefaults.addExtraLib(content, filePath)
+    monaco.typescript?.javascriptDefaults.addExtraLib(content, filePath)
   })
-  monaco?.languages.css?.scssDefaults.setOptions({lint: {emptyRules: 'ignore'}})
-  monaco?.languages.css?.cssDefaults.setOptions({lint: {emptyRules: 'ignore'}})
+  monaco.css?.scssDefaults.setOptions({lint: {emptyRules: 'ignore'}})
+  monaco.css?.cssDefaults.setOptions({lint: {emptyRules: 'ignore'}})
   //fluent syntax reference https://projectfluent.org/fluent/guide/
   //init fluent syntax highlight
   const identifier = /[a-zA-Z-][a-zA-Z0-9_-]*/.source

@@ -3,7 +3,7 @@
 /* eslint-disable import/no-nodejs-modules,no-console */
 
 import {execSync} from 'node:child_process'
-import {existsSync, readFileSync, rmSync, writeFileSync} from 'node:fs'
+import {existsSync, readFileSync, renameSync, rmSync, writeFileSync} from 'node:fs'
 import {basename, dirname, join, resolve} from 'node:path'
 
 interface PackageData {
@@ -59,7 +59,7 @@ function installLocalPackage(appDir: string, packagePath: string, scriptRoot: st
       throw new Error(`Package archive not found: ${builtArchive}`)
     }
 
-    execSync(`mv ${JSON.stringify(builtArchive)} ${JSON.stringify(scriptRoot)}`, {stdio: 'inherit'})
+    renameSync(builtArchive, join(scriptRoot, packageArchive))
 
     process.chdir(appDir)
     removeIfExists('./node_modules/.cache')

@@ -132,6 +132,94 @@ export default function App() {
 }
 ```
 
+### Using monaco-editor-webpack-plugin
+
+Starting with version 8.0.0, we recommend using
+the [monaco-editor-webpack-plugin](https://www.npmjs.com/package/monaco-editor-webpack-plugin).
+
+```typescript title='.erb/configs/webpack.config.base.ts' {2,15-17}
+import webpack from 'webpack';
+import path from 'path';
+import TsconfigPathsPlugins from 'tsconfig-paths-webpack-plugin';
+import webpackPaths from './webpack.paths';
+
+const configuration: webpack.Configuration = {
+  //...
+
+  /**
+   * Determine the array of extensions that should be used to resolve modules.
+   */
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
+    modules: [webpackPaths.srcPath, 'node_modules'],
+    alias: {
+      'monaco-editor$': path.resolve(webpackPaths.rootPath, 'node_modules/monaco-editor/esm/vs/editor/editor.api.js'),
+    },
+    // There is no need to add aliases here, the paths in tsconfig get mirrored
+    plugins: [new TsconfigPathsPlugins()],
+  },
+
+  // ...
+};
+```
+
+```typescript title='.erb/configs/webpack.config.renderer.dev.ts' {10,19-21}
+import 'webpack-dev-server';
+import path from 'path';
+import fs from 'fs';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import chalk from 'chalk';
+import { merge } from 'webpack-merge';
+import { execSync, spawn } from 'child_process';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import MonacoEditorWebpackPlugin from 'monaco-editor-webpack-plugin';
+import baseConfig from './webpack.config.base';
+import webpackPaths from './webpack.paths';
+import checkNodeEnv from '../scripts/check-node-env';
+
+const configuration: webpack.Configuration = {
+  // ...
+  plugins: [
+    // ...
+    new MonacoEditorWebpackPlugin({
+      languages: ['json', 'css', 'html', 'typescript', 'javascript'],
+    }),
+  ],
+  // ...
+};
+```
+
+```typescript title='.erb/configs/webpack.config.renderer.prod.ts' {10,19-21}
+import 'webpack-dev-server';
+import path from 'path';
+import fs from 'fs';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import chalk from 'chalk';
+import { merge } from 'webpack-merge';
+import { execSync, spawn } from 'child_process';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import MonacoEditorWebpackPlugin from 'monaco-editor-webpack-plugin';
+import baseConfig from './webpack.config.base';
+import webpackPaths from './webpack.paths';
+import checkNodeEnv from '../scripts/check-node-env';
+
+const configuration: webpack.Configuration = {
+  // ...
+  plugins: [
+    // ...
+    new MonacoEditorWebpackPlugin({
+      languages: ['json', 'css', 'html', 'typescript', 'javascript'],
+    }),
+  ],
+  // ...
+};
+```
+
+### Without monaco-editor-webpack-plugin
+
+
 The last bit is fixing the webpack configuration files to package Monaco workers. You can find many examples of how to do this in
 the official [Monaco repository](https://github.com/microsoft/monaco-editor/tree/main/samples). Take a look at
 this [example](https://github.com/microsoft/monaco-editor/blob/main/samples/electron-esm-webpack/webpack.config.js).

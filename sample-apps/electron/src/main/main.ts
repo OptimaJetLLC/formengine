@@ -135,3 +135,14 @@ app
     });
   })
   .catch(console.log);
+
+/*
+Workaround to run on modern linux, Chromium requires a setuid on sandbox binary, ie
+```
+cd ./sample-apps/electron/node_modules/electron/dist
+sudo chown root:root chrome-sandbox
+sudo chmod 4755 chrome-sandbox
+```
+or disable sandboxing via cli
+*/
+app.commandLine.appendSwitch('no-sandbox');

@@ -6,9 +6,10 @@ import {RsLocalizationWrapper, rSuiteComponents, rSuiteComponentsDescriptions} f
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
 import {BuilderView, loadResource, unloadResource} from '@react-form-builder/core'
-import type {StylesProviderProps} from '@react-form-builder/designer'
+import type {GenerateJsonFormSchemaOptions, StylesProviderProps} from '@react-form-builder/designer'
 import {FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
+import {createSchema} from '@react-form-builder/json-schema-generator'
 import {useEffect} from 'react'
 
 const components = [
@@ -51,9 +52,17 @@ const AppStylesProvider = ({bidi, children}: StylesProviderProps) => {
 
 const formStorage = new IndexedDbFormStorage('csp-db', 'csp-store')
 
+const generateJsonFormSchema = (options: GenerateJsonFormSchemaOptions) => {
+  const {components, descriptions} = options
+  const schema = createSchema(components, descriptions)
+  return JSON.stringify(schema, undefined, 2)
+}
+
 /**
  * @returns the main application component.
  */
 export const CspBuilderApp = () => {
-  return <FormBuilder view={view} stylesProvider={AppStylesProvider} formStorage={formStorage} />
+  return (
+    <FormBuilder view={view} stylesProvider={AppStylesProvider} formStorage={formStorage} generateJsonFormSchema={generateJsonFormSchema} />
+  )
 }

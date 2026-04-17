@@ -1,5 +1,6 @@
 import type {OnMount} from '@monaco-editor/react'
 import {namedObserver} from '@react-form-builder/core'
+import * as monaco from 'monaco-editor'
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {CodeEditor} from '../components/CodeEditor/CodeEditor'
@@ -15,10 +16,10 @@ const RawJsonView = () => {
     if (result) return JSON.parse(result)
   }, [builderStore])
 
-  const handleMount: OnMount = useCallback((editor, monaco) => {
+  const handleMount: OnMount = useCallback((editor, monacoApi) => {
     if (!schema) return
 
-    monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+    monaco.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       schemas: [
         {
@@ -29,7 +30,7 @@ const RawJsonView = () => {
       ],
     })
 
-    const newModel = monaco.editor.createModel(initialValue, 'json', monaco.Uri.parse('file:///form.json'))
+    const newModel = monacoApi.editor.createModel(initialValue, 'json', monacoApi.Uri.parse('file:///form.json'))
     editor.setModel(newModel)
   }, [initialValue, schema])
 
