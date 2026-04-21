@@ -59,13 +59,43 @@ function extractKeyFeatures(body: string): string[] | undefined {
     return undefined
   }
 
-  const lines = section.split('\n').map(line => line.trim())
-  const bullets = lines.filter(line => line.startsWith('* ') || line.startsWith('- '))
-  if (bullets.length === 0) {
+  const lines = section.split('\n')
+  const features: string[] = []
+  let currentFeature: string | undefined
+
+  const pushCurrentFeature = (): void => {
+    if (!currentFeature) {
+      return
+    }
+    const normalized = currentFeature.trim()
+    if (normalized) {
+      features.push(normalized)
+    }
+    currentFeature = undefined
+  }
+
+  for (const line of lines) {
+    const trimmedStart = line.trimStart()
+    if (trimmedStart.startsWith('* ') || trimmedStart.startsWith('- ')) {
+      pushCurrentFeature()
+      currentFeature = trimmedStart.replace(/^[*-]\s+/, '').trim()
+      continue
+    }
+
+    if (!currentFeature || trimmedStart === '' || trimmedStart.startsWith('## ')) {
+      continue
+    }
+
+    currentFeature = `${currentFeature} ${trimmedStart}`.trim()
+  }
+
+  pushCurrentFeature()
+
+  if (features.length === 0) {
     return undefined
   }
 
-  return bullets.map(line => line.replace(/^[*-]\s+/, '').trim())
+  return features
 }
 
 function readReleaseDoc(filePath: string): ReleaseDocMeta {

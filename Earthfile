@@ -296,6 +296,7 @@ PUBLISH_GITHUB_OPTIMAJET_FORMENGINE:
 
 test-github-formengine-archive:
   COPY .archives/formengine.tgz formengine.tgz
+  ENV NODE_OPTIONS="--max-old-space-size=8192"
   RUN tar zxvf formengine.tgz
   RUN cd community/examples/file-upload-server && npm install
   RUN cd community/examples/bundle-size && npm install
@@ -307,6 +308,7 @@ test-github-formengine-archive:
 
 test-github-formenginesupport-archive:
   COPY .archives/formenginesupport.tgz formenginesupport.tgz
+  ENV NODE_OPTIONS="--max-old-space-size=8192"
   RUN tar zxvf formenginesupport.tgz
   RUN npm install
   RUN npm run build

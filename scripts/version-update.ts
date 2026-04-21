@@ -14,6 +14,8 @@ const REPO_ROOT = join(__dirname, '..')
 const SRC_ROOT = join(REPO_ROOT, 'src')
 
 const PACKAGE_PREFIX = '@react-form-builder/'
+const EXCLUDED_INTERNAL_PACKAGES = new Set(['@react-form-builder/bundle-size-shared'])
+const BUNDLE_SIZE_SHARED_PACKAGE_JSON_PATH = join(REPO_ROOT, 'examples', 'community', 'bundle-size', 'shared', 'package.json')
 
 const PACKAGE_LIST: string[] = [
   'src/packages/apps/common',
@@ -57,6 +59,23 @@ const DEPS_SECTIONS = ['dependencies', 'devDependencies', 'peerDependencies', 'b
 
 type VersionsMap = Record<string, string>
 
+function readPackageVersion(packageJsonPath: string): string {
+  const packageJsonContent = readFileSync(packageJsonPath, 'utf8')
+  const packageJson = JSON.parse(packageJsonContent) as {version?: string}
+  if (!packageJson.version) {
+    throw new Error(`Package version is missing in ${packageJsonPath}`)
+  }
+  return packageJson.version
+}
+
+function writePackageVersion(packageJsonPath: string, version: string): void {
+  const packageJsonContent = readFileSync(packageJsonPath, 'utf8')
+  const packageJson = JSON.parse(packageJsonContent) as {version?: string}
+  packageJson.version = version
+  const patchedContent = `${JSON.stringify(packageJson, undefined, 2)}\n`
+  writeFileSync(packageJsonPath, patchedContent)
+}
+
 function readVersions(): VersionsMap {
   const path = join(REPO_ROOT, 'scripts', 'version.txt')
   const content = readFileSync(path, 'utf8')
@@ -96,6 +115,9 @@ function patchPackageVersion(packagePath: string, version: string): void {
 
     for (const key of Object.keys(deps)) {
       if (!key.startsWith(PACKAGE_PREFIX)) {
+        continue
+      }
+      if (EXCLUDED_INTERNAL_PACKAGES.has(key)) {
         continue
       }
 
@@ -157,12 +179,14 @@ async function updateReleaseDate() {
 async function main() {
   try {
     const versions = readVersions()
+    const bundleSizeSharedInitialVersion = readPackageVersion(BUNDLE_SIZE_SHARED_PACKAGE_JSON_PATH)
 
     // 1) Temporarily set all internal deps to "*" to avoid conflicts during lerna version bump.
     updateDependenciesVersion('*')
 
     // 2) Update lerna-managed package versions.
     updateLernaVersion(versions)
+    writePackageVersion(BUNDLE_SIZE_SHARED_PACKAGE_JSON_PATH, bundleSizeSharedInitialVersion)
 
     // 3) Set concrete versions for internal deps based on NpmVersion.
     updateDependenciesVersion(versions.NpmVersion)
