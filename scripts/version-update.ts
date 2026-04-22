@@ -176,6 +176,13 @@ async function updateReleaseDate() {
   await import(scriptUrl)
 }
 
+function updateAssemblyDate(): void {
+  const assemblyDatePath = join(SRC_ROOT, 'packages', 'designer', 'src', 'features', 'license', 'assemblyDate.ts')
+  const assemblyDate = new Date().getTime()
+  const modifiedContent = `// DO NOT CHANGE THIS FILE\nexport const assemblyDate = new Date(${assemblyDate})\n`
+  writeFileSync(assemblyDatePath, modifiedContent)
+}
+
 async function main() {
   try {
     const versions = readVersions()
@@ -193,6 +200,9 @@ async function main() {
 
     // 4) Update common-designer release date to force IndexedDB updates in public demo.
     await updateReleaseDate()
+
+    // 5) Update assembly date in designer package.
+    updateAssemblyDate()
   } catch (error) {
     console.error('❌ version-update script failed.', error)
     process.exitCode = 1

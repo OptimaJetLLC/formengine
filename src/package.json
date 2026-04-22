@@ -43,6 +43,7 @@
     "check:package": "npx lerna exec -- npx @e18e/cli analyze",
     "check:licenses": "node ./scripts/check-licenses.ts",
     "version-update": "node ../scripts/version-update.ts",
+    "examples:install-local-packages": "node ../scripts/examples-install-local-packages.ts",
     "todo": "npx leasot '(packages|tests|sample-apps|tools|types|examples|documentation)/**/*.(ts|tsx|js)' -S --ignore '**/node_modules,**/dist'"
   },
   "workspaces": [
