@@ -11,6 +11,8 @@ import {actions} from '~/common/actions.js'
 import form from '~/common/form.json'
 import {customValidators} from '~/common/validators.js'
 
+import '@react-form-builder/core/assets/styles.css'
+
 const components = [...rSuiteComponents]
   .map(definer => definer.build())
 

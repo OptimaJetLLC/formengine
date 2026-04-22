@@ -12,6 +12,8 @@ import form from './form.json'
 import {useBookingForm} from './useBookingForm'
 import * as validator from './validators'
 
+import '@react-form-builder/core/assets/styles.css'
+
 const componentsMetadata = rSuiteComponents.map(definer => definer.build())
 
 const formName = 'formikForm'

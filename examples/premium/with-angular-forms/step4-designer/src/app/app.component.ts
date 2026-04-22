@@ -14,6 +14,8 @@ import type {FormBuilderProps, IFormStorage} from "@react-form-builder/designer"
 import {customValidators} from "./validators";
 import form from './form.json';
 
+import '@react-form-builder/core/assets/styles.css'
+
 const componentsMetadata = rSuiteComponents.map(definer => definer.build())
 const viewerComponents = componentsMetadata.map((componentMetadata) => componentMetadata.model)
 

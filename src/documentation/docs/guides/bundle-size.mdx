@@ -73,16 +73,16 @@ travels over the network to users' browsers.
 |---------------------|-----------------|------------------|---------------|-----------------------------------------------|
 | **Vueform**         | **141.64 KB**   | **142.02 KB**    | —             | Smallest baseline, minimal MUI impact         |
 | **RJSF**            | 176.39 KB       | 233.38 KB        | 258.70 KB     | Mantine adds more overhead than MUI           |
-| **FormEngine Core** | 245.15 KB       | 189.86 KB        | **172.18 KB** | Lowest Mantine size among tested React stacks |
+| **FormEngine Core** | 237.83 KB       | 188.56 KB        | **159.75 KB** | Lowest Mantine size among tested React stacks |
 | **SurveyJS**        | 426.85 KB       | 395.42 KB        | 361.00 KB     | Large baseline, but lower with Mantine        |
 
 ### Complex booking form results
 
 | Library             | Default UI Size | With Material UI | With Mantine  | Key Insight                                    |
 |---------------------|-----------------|------------------|---------------|------------------------------------------------|
-| **Vueform**         | 199.86 KB       | **200.03 KB**    | —             | Stable size, integrated UI                     |
+| **Vueform**         | 199.86 KB       | 200.03 KB        | —             | Stable size, integrated UI                     |
 | **RJSF**            | **179.22 KB**   | 236.31 KB        | 285.08 KB     | Strong baseline, large growth with UI overlays |
-| **FormEngine Core** | 317.70 KB       | 200.56 KB        | **245.26 KB** | Good MUI result and competitive Mantine result |
+| **FormEngine Core** | 309.99 KB       | **195.71 KB**    | 232.92 KB     | Smallest Material UI booking bundle in this set |
 | **SurveyJS**        | 428.87 KB       | 460.49 KB        | 473.09 KB     | Highest overall sizes in this scenario         |
 
 ## Architectural analysis: Why results vary
@@ -121,17 +121,17 @@ duplicating component libraries.
 
 ### Vueform: Integrated efficiency
 
-Vueform delivers the smallest baseline through tight integration:
+Vueform achieves the **smallest default UI bundle in the simple login scenario** in this benchmark, through tight integration:
 - **Monolithic architecture**: UI, validation, and rendering are coupled
-- **Stable size**: Consistent across UI variations
-- **Suitable for**: Standalone applications with strict size budgets
+- **Stable size**: Little change when adding MUI in these tests
+- **Suitable for**: Standalone applications with strict size budgets, especially for small forms
 
 ### RJSF: Predictable performance
 
 RJSF offers predictable bundle growth:
 - **Small core runtime**: Lightweight foundation
 - **Linear scaling**: Bundle size grows with feature usage
-- **MUI overhead**: Adds 21-32% to bundle size
+- **MUI overhead**: Adds  30–35% to bundle size
 
 ### SurveyJS: Feature-rich foundation
 
@@ -148,8 +148,9 @@ SurveyJS prioritizes features over size:
 > **Choose FormEngine Core for optimal size-to-capability ratio**
 
 FormEngine Core is one of the strongest options when integrating external UI libraries. In our current tests, Material UI reduces
-FormEngine bundle size by roughly 23-37% compared to the default React Suite view, and Mantine keeps it competitive as well. This modular
-approach makes FormEngine a strong fit for teams that standardize on either Material UI or Mantine across their applications.
+FormEngine bundle size by roughly 21–37% compared to the default React Suite view, and Mantine keeps it
+competitive as well. This modular approach makes FormEngine a strong fit for teams that standardize on either Material UI or Mantine across
+their applications.
 
 **Benefits:**
 - Complete UI replacement eliminates default UI overhead
@@ -159,10 +160,9 @@ approach makes FormEngine a strong fit for teams that standardize on either Mate
 
 ### When building from scratch with minimal dependencies
 
-> **Choose Vueform for the smallest baseline**
+> **Choose Vueform or RJSF depending on scenario**
 
-Vueform delivers the most compact bundles when no external UI library is required, making it suitable for standalone applications or
-strict performance budgets.
+For the **simple login** form with default UI only, Vueform is the smallest in this benchmark. For the **complex booking** form with default UI only, RJSF edges out Vueform on gzipped size. Both stay relatively lean compared with heavier runtimes; pick based on features, Vue vs React, and your real form complexity.
 
 ### When needing predictable, controllable growth
 

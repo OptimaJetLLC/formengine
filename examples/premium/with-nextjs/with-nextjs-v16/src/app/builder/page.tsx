@@ -13,6 +13,8 @@ import {BiDi, BuilderView} from '@react-form-builder/core'
 import {IFormStorage} from '@react-form-builder/designer'
 import dynamic from 'next/dynamic'
 
+import '@react-form-builder/core/assets/styles.css'
+
 const FormBuilder = dynamic(() => import('@react-form-builder/designer').then((mod) => mod.FormBuilder), {
   ssr: false
 })

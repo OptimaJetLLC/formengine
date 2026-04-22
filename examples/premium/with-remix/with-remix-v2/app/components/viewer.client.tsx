@@ -1,17 +1,18 @@
 import {ReactNode, useMemo} from 'react'
 import {
-  ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
   rsErrorMessage,
-  rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {ActionDefinition, BiDi, createView, FormViewer} from '@react-form-builder/core'
+import {ActionDefinition, createView, FormViewer} from '@react-form-builder/core'
 import {IFormStorage} from '@react-form-builder/designer'
 
 import {Message, MessageProvider, useMessage} from '~/components/message'
 import form from '~/common/form.json'
 import {customValidators} from '~/common/validators'
+
+import '@react-form-builder/core/assets/styles.css'
+import '@react-form-builder/components-rsuite/assets/styles.ltr.css'
 
 const viewerComponents = rSuiteComponents.map(c => c.build().model)
 viewerComponents.push(rsErrorMessage.build().model)
@@ -29,8 +30,6 @@ const loadForm = () => formStorage.getForm('')
 
 const view = createView(viewerComponents)
   .withViewerWrapper(RsLocalizationWrapper)
-  .withCssLoader(BiDi.LTR, ltrCssLoader)
-  .withCssLoader(BiDi.RTL, rtlCssLoader)
 
 const ViewerWrap = ({children}: { children: ReactNode }) => (
   <MessageProvider>

@@ -3,19 +3,19 @@ import { CommonModule, JsonPipe } from "@angular/common";
 import { AngularReactModule } from "@bubblydoo/angular-react";
 import { createElement, ForwardedRef } from "react";
 import {
-  ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
-  rtlCssLoader,
 } from "@react-form-builder/components-rsuite";
 import {
-  BiDi,
   createView,
   FormViewer,
   FormViewerProps,
   IFormData,
   IFormViewer,
 } from "@react-form-builder/core";
+
+import '@react-form-builder/core/assets/styles.css'
+import '@react-form-builder/components-rsuite/assets/styles.ltr.css'
 
 import form from "./form.json";
 import { customValidators } from "./validators";
@@ -27,8 +27,6 @@ const viewerComponents = rSuiteComponents.map((c) => c.build().model);
 
 const viewerView = createView(viewerComponents)
   .withViewerWrapper(RsLocalizationWrapper)
-  .withCssLoader(BiDi.LTR, ltrCssLoader)
-  .withCssLoader(BiDi.RTL, rtlCssLoader)
 
 interface PersonInfo {
   email: string;
