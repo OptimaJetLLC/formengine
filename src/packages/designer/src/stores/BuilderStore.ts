@@ -65,6 +65,19 @@ function toPrettyJsonString(value: any) {
   return JSON.stringify(value, null, 2)
 }
 
+function removeEmpty<T>(value: T): T {
+  if (!value || typeof value !== 'object') return value
+
+  const result: Record<string, unknown> = {}
+  for (const [key, fieldValue] of Object.entries(value as Record<string, unknown>)) {
+    if (Array.isArray(fieldValue) && fieldValue.length === 0) continue
+    if (fieldValue && typeof fieldValue === 'object' && Object.keys(fieldValue).length === 0) continue
+    result[key] = fieldValue
+  }
+
+  return result as T
+}
+
 /**
  * Parameters of the editable component property.
  */
@@ -870,7 +883,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   get formAsString() {
     const actions = this.viewer.form.actionNames.length ? this.viewer.form.actions : undefined
     const errorProps = Object.keys(this.viewer.form.errorProps).length ? this.viewer.form.errorProps : undefined
-    const serializedObject: PersistedForm = {
+    const serializedObject: PersistedForm = removeEmpty({
       version: PersistedFormVersion.version1,
       actions: actions,
       formValidator: this.viewer.form.formValidator,
@@ -882,7 +895,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       localization: this.viewer.form.localization.value,
       languages: this.formAvailableLanguages,
       defaultLanguage: this.viewer.form.defaultLanguage.fullCode
-    }
+    })
     return toPrettyJsonString(serializedObject)
   }
 

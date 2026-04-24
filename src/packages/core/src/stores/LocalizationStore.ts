@@ -174,7 +174,7 @@ export class LocalizationStore implements ILocalizationStore {
    * @returns true if the specified language exists in the localization.
    */
   hasLanguage(languageFullCode: LanguageFullCode) {
-    return this.findLocalizationKey(languageFullCode) !== null
+    return this.#findConfiguredLanguageKey(languageFullCode) !== null
   }
 
   /**
@@ -200,18 +200,46 @@ export class LocalizationStore implements ILocalizationStore {
    * @returns the best matching language full code or null if no match found.
    */
   findLocalizationKey(languageFullCode: LanguageFullCode): LanguageFullCode | null {
-    if (this.value[languageFullCode]) {
-      return languageFullCode
-    }
+    const exactKey = this.#findExactLanguageKey(languageFullCode)
+    if (exactKey && this.#hasTranslations(exactKey)) return exactKey
 
+    const byCodeWithTranslations = this.#findLanguageByCode(languageFullCode, true)
+    if (byCodeWithTranslations) return byCodeWithTranslations
+
+    if (exactKey) return exactKey
+    const byCode = this.#findLanguageByCode(languageFullCode, false)
+    if (byCode) return byCode
+    return null
+  }
+
+  #findConfiguredLanguageKey(languageFullCode: LanguageFullCode): LanguageFullCode | null {
+    const exactKey = this.#findExactLanguageKey(languageFullCode)
+    if (exactKey) return exactKey
+
+    return this.#findLanguageByCode(languageFullCode, false)
+  }
+
+  #findExactLanguageKey(languageFullCode: LanguageFullCode): LanguageFullCode | null {
+    if (!this.value[languageFullCode]) return null
+    return languageFullCode
+  }
+
+  #findLanguageByCode(languageFullCode: LanguageFullCode, onlyWithTranslations: boolean): LanguageFullCode | null {
     const [code] = languageFullCode.split('-')
     for (const key of Object.keys(this.value)) {
-      if (key.startsWith(`${code}-`)) {
-        return key as LanguageFullCode
+      if (!key.startsWith(`${code}-`)) continue
+      const candidate = key as LanguageFullCode
+      if (!onlyWithTranslations || this.#hasTranslations(candidate)) {
+        return candidate
       }
     }
 
     return null
+  }
+
+  #hasTranslations(languageFullCode: LanguageFullCode): boolean {
+    const localization = this.value[languageFullCode]
+    return !!localization && Object.keys(localization).length > 0
   }
 
   /**

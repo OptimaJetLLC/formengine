@@ -56,7 +56,7 @@ describe('Localization empty value on save', () => {
     })
 
     const parsed = parseForm(getFormBuilder()?.formAsString)
-    expect(parsed?.localization).toStrictEqual({})
+    expect(parsed?.localization).toBeUndefined()
   })
 
   it('persists non-empty strings including leading and trailing spaces', async () => {
@@ -88,7 +88,7 @@ describe('Localization empty value on save', () => {
     await asyncAct(async () => {
       localization.setLocalization('en-US', 'locTextSingle', 'placeholder', 'component', '')
     })
-    expect(parseForm(getFormBuilder()?.formAsString)?.localization).toStrictEqual({})
+    expect(parseForm(getFormBuilder()?.formAsString)?.localization).toBeUndefined()
     expect(localization.hasLocalization('locTextSingle', 'placeholder', 'component')).toBe(false)
   })
 })

@@ -78,4 +78,38 @@ describe('LocalizationStore', () => {
       },
     })
   })
+
+  it('drops the language bucket when the last localization type is removed', () => {
+    const store = new LocalizationStore(
+      {
+        'en-US': {
+          c1: {
+            component: {p1: 'value'},
+          },
+        },
+      },
+      createIdentityEngine(),
+    )
+
+    store.removeLocalizationForType('c1', 'component')
+
+    expect(store.value).toStrictEqual({})
+  })
+
+  it('drops the language bucket when removing a component with the last localization', () => {
+    const store = new LocalizationStore(
+      {
+        'en-US': {
+          c1: {
+            component: {p1: 'value'},
+          },
+        },
+      },
+      createIdentityEngine(),
+    )
+
+    store.removeLocalization('c1')
+
+    expect(store.value).toStrictEqual({})
+  })
 })

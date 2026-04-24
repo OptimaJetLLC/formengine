@@ -22,6 +22,6 @@ describe('Validation rule editor', function () {
     await waitFor(() => expect(getFormJson()?.localization).toStrictEqual(expectedLocalization))
 
     fireEvent.click(await findByTestId('validator-url-remove-button'))
-    expect(getFormJson()?.localization).toStrictEqual({})
+    expect(getFormJson()?.localization).toBeUndefined()
   })
 })

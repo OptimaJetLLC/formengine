@@ -331,7 +331,9 @@ describe('Event args UI should display and pass arguments', () => {
   it('should call actions before first failed actions', async () => {
     const {rerender} = app
 
-    rerender(<App throwAssert={true}/>)
+    await asyncAct(async () => {
+      rerender(<App throwAssert={true}/>)
+    })
 
     await togglePreview(app)
     await clickButton(app)
