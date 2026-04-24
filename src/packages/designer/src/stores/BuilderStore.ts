@@ -21,7 +21,6 @@ import {
   debounce,
   embeddedFormModel,
   getTemplateName,
-  globalDefaultLanguage,
   isContainer,
   isTemplateType,
   isUndefined,
@@ -1236,7 +1235,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     if (!generator) return
 
     const descriptions = this.view.i18nDescriptions?.map(item => {
-      return item[globalDefaultLanguage.fullCode]
+      return item[this.defaultLanguage.fullCode]
     }) ?? []
 
     const components = this.view.builderComponents

@@ -24,3 +24,8 @@ div.header > div > div:nth-child(2) {
   color: #ffffff;
   background: #1e90ff;
 }
+
+.customLanguageSwitch {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}

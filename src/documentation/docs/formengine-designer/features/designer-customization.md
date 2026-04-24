@@ -223,6 +223,51 @@ const menuCustomization: CustomizationMap = {
 };
 ```
 
+#### Language switch customization
+
+The language switch menu (`MainMenu_Item_LanguageSwitch`) and individual language items can be customized using the following pattern:
+
+- `MainMenu_Item_LanguageSwitch` - The entire language switch dropdown menu
+- `MainMenu_Item_LanguageItem_{language-full-code}` - Individual language menu item (e.g., `MainMenu_Item_LanguageItem_en_US`)
+
+**Example usage:**
+
+```tsx
+import {FormBuilder} from '@react-form-builder/designer'
+
+const languageSwitchCustomization = {
+  // Customize the entire language switch dropdown
+  MainMenu_Item_LanguageSwitch: {
+    className: 'custom-language-switch',
+    style: {
+      minWidth: '200px'
+    }
+  },
+
+  // Customize a specific language item (English)
+  MainMenu_Item_LanguageItem_en_US: {
+    customRenderer: (defaultElement, component, props) => (
+      <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+        <span>🇺🇸</span>
+        <span style={{fontWeight: 'bold'}}>English (US)</span>
+      </div>
+    )
+  },
+}
+
+const FormBuilderApp = () => {
+  return <FormBuilder
+    customization={languageSwitchCustomization}
+    // other props
+  />
+}
+```
+
+**Default behavior:**
+
+- Each language menu item uses the default rendering
+- Language items can be styled or entirely replaced using the customization API
+
 ### Components palette
 
 Each group and component receives a set of classes composed of its name and type.

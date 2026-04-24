@@ -1,5 +1,4 @@
 import type {Language, LanguageFullCode} from '@react-form-builder/core'
-import {globalDefaultLanguage} from '@react-form-builder/core'
 import i18next from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import resourcesToBackend from 'i18next-resources-to-backend'
@@ -34,7 +33,7 @@ export class BuilderI18n {
       .use(initReactI18next)
       .init({
           lng: defaultLanguage.fullCode,
-          fallbackLng: [globalDefaultLanguage.fullCode],
+          fallbackLng: [defaultLanguage.fullCode],
           load: 'currentOnly',
           interpolation: {
             escapeValue: false,
