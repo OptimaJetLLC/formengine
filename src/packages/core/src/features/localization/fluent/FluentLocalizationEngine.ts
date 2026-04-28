@@ -274,8 +274,13 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
       : undefined
     const formItems = form.localization.getItems(requestedFullCode)
 
-    const defaultBundle = defaultItems ? this.#createFluentBundle(defaultFullCode, defaultItems, errors) : undefined
-    const formBundle = formItems ? this.#createFluentBundle(requestedFullCode, formItems, errors) : undefined
+    // TODO FE-2002 hotfix
+    const defaultBundle = defaultItems
+      ? this.#createFluentBundle(defaultFullCode, defaultItems, errors, createFluentBundle(defaultFullCode))
+      : undefined
+    const formBundle = formItems
+      ? this.#createFluentBundle(requestedFullCode, formItems, errors, createFluentBundle(requestedFullCode))
+      : undefined
 
     return {defaultBundle, formBundle}
   }

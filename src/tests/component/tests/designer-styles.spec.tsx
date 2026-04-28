@@ -1,4 +1,6 @@
+import {waitFor} from '@testing-library/react'
 import {renderBuilder} from '../util/renderBuilder'
+import {asyncAct} from './asyncAct'
 
 const form = {
   form: {
@@ -24,10 +26,16 @@ describe('Designer styles tests', () => {
       throw new Error('Cannot find root element')
     }
 
-    expect(rootNode.getElementById('designer-ltr-css')).not.toBeNull()
+    await waitFor(() => {
+      expect(rootNode.getElementById('designer-ltr-css')).not.toBeNull()
+    })
 
-    unmount()
+    await asyncAct(async () => {
+      unmount()
+    })
 
-    expect(rootNode.getElementById('designer-ltr-css')).toBeNull()
+    await waitFor(() => {
+      expect(rootNode.getElementById('designer-ltr-css')).toBeNull()
+    })
   })
 })
