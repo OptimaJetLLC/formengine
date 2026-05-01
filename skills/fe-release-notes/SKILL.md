@@ -131,6 +131,7 @@ Identify potential release highlights and ask the user to refine them. Draft rel
 - **Package update bullets** (Security, Dependencies, etc.): State only the package and versions. Do **not** suffix with *in `src`*, full repo paths, or “monorepo root” — updates under `src` are assumed and must not be called out.
 - If an issue has the `breaking` tag, include it in the **Breaking** section.
 - In the **Breaking** section, do not prefix item descriptions with `Breaking`.
+- Do not wrap terms or names in double emphasis. Bad: **`[NOT LOCALIZED]`** Good: `[NOT LOCALIZED]`
 
   Wrong:
 

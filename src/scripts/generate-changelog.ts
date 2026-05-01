@@ -20,6 +20,15 @@ const __dirname = dirname(__filename)
 const REPO_ROOT = join(__dirname, '..', '..')
 const DOCS_ROOT = join(REPO_ROOT, 'src', 'documentation', 'docs', 'release-notes')
 const OUTPUT_CHANGELOG = join(REPO_ROOT, 'CHANGELOG.md')
+const DOCS_ORIGIN = 'https://formengine.io'
+const DOCS_PREFIX = '/documentation'
+
+function normalizeDocumentationLinks(value: string): string {
+  return value.replace(/\]\((\/[^)\s]+)\)/g, (_match, path: string) => {
+    const normalizedPath = path.startsWith(DOCS_PREFIX) ? path : `${DOCS_PREFIX}${path}`
+    return `](${DOCS_ORIGIN}${normalizedPath})`
+  })
+}
 
 function parseFrontmatterAndBody(content: string): {frontmatter?: string; body: string} {
   if (!content.startsWith('---')) {
@@ -153,6 +162,7 @@ function buildChangelog(releases: ReleaseDocMeta[]): string {
     '',
     '- Latest release notes: https://formengine.io/documentation/release-notes',
     '',
+    '',
   ]
 
   const sections: string[] = []
@@ -167,10 +177,10 @@ function buildChangelog(releases: ReleaseDocMeta[]): string {
 
     if (release.description) {
       lines.push('')
-      lines.push(release.description)
+      lines.push(normalizeDocumentationLinks(release.description))
     } else if (release.title) {
       lines.push('')
-      lines.push(release.title)
+      lines.push(normalizeDocumentationLinks(release.title))
     }
 
     if (release.keyFeatures && release.keyFeatures.length > 0) {
@@ -178,7 +188,7 @@ function buildChangelog(releases: ReleaseDocMeta[]): string {
       lines.push('### Highlights')
       lines.push('')
       for (const feature of release.keyFeatures) {
-        lines.push(`- ${feature}`)
+        lines.push(`- ${normalizeDocumentationLinks(feature)}`)
       }
     }
 

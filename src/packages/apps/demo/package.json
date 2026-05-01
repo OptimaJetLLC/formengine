@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/demo",
-  "version": "8.0.0",
+  "version": "8.1.0",
   "private": true,
   "main": "src/index.tsx",
   "type": "module",
@@ -18,7 +18,7 @@
     "serve": "serve dist"
   },
   "dependencies": {
-    "@react-form-builder/apps-common-designer": "^8.0.0",
+    "@react-form-builder/apps-common-designer": "^8.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rsuite": "5.83.4"

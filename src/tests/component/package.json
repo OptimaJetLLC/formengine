@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/tests-component",
-  "version": "8.0.0",
+  "version": "8.1.0",
   "private": true,
   "main": "index.ts",
   "type": "module",

@@ -166,6 +166,17 @@ function updateLernaVersion(versions: VersionsMap): void {
   const command = `npx lerna version ${args.join(' ')} --no-git-tag-version --yes`
   console.log(`▶ ${command} (cwd=src)`)
   execSync(command, {cwd: SRC_ROOT, stdio: 'inherit'})
+
+  // Lerna can rewrite lerna.json without a trailing newline, which fails biome format checks.
+  ensureTrailingNewline(join(SRC_ROOT, 'lerna.json'))
+}
+
+function ensureTrailingNewline(filePath: string): void {
+  const content = readFileSync(filePath, 'utf8')
+  if (content.endsWith('\n')) {
+    return
+  }
+  writeFileSync(filePath, `${content}\n`)
 }
 
 async function updateReleaseDate() {
