@@ -12,7 +12,7 @@ function createIdentityEngine(): ILocalizationEngine {
   }
 }
 
-describe('LocalizationStore', () => {
+describe('localization store behavior', () => {
   it('removes the property when setLocalization is called with an empty string', () => {
     const store = new LocalizationStore(
       {
@@ -28,7 +28,7 @@ describe('LocalizationStore', () => {
     expect(store.value).toStrictEqual({})
   })
 
-  it('removes the property when setLocalization is called with whitespace-only', () => {
+  it('persists whitespace-only values as-is', () => {
     const store = new LocalizationStore(
       {
         'en-US': {
@@ -40,7 +40,7 @@ describe('LocalizationStore', () => {
       createIdentityEngine(),
     )
     store.setLocalization('en-US', 'c1', 'p1', 'component', ' \t\n ')
-    expect(store.value).toStrictEqual({})
+    expect(store.getLocalization('en-US', 'c1', 'p1', 'component')).toBe(' \t\n ')
   })
 
   it('persists values that are not whitespace-only, including leading and trailing spaces', () => {
@@ -56,6 +56,13 @@ describe('LocalizationStore', () => {
     expect(store.hasLocalization('c1', 'p1', 'component')).toBe(true)
     store.setLocalization('en-US', 'c1', 'p1', 'component', '')
     expect(store.hasLocalization('c1', 'p1', 'component')).toBe(false)
+  })
+
+  it('reports hasLocalization true for explicit empty-string values', () => {
+    const store = new LocalizationStore({}, createIdentityEngine())
+    store.setLocalization('en-US', 'c1', 'p1', 'component', 'x')
+    store.setLocalization('de-DE', 'c1', 'p1', 'component', '')
+    expect(store.hasLocalization('c1', 'p1', 'component')).toBe(true)
   })
 
   it('prunes empty type and component buckets after removal', () => {

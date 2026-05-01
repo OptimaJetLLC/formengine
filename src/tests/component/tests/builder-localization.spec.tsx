@@ -4,41 +4,37 @@ import {waitFor} from '@testing-library/react'
 import {describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 import {switchLanguage} from './designerUtils'
+import {createLocalizedScreenForm, getBuilderStore} from './localizationTestUtils'
 
 // Mock form for testing
-const testForm = {
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'children': [
-      {
-        'key': 'testField',
-        'type': 'RsInput',
-        'props': {
-          'label': 'Test Field'
-        }
-      }
-    ]
-  },
-  'localization': {},
-  'languages': [
+const testForm = createLocalizedScreenForm({
+  children: [
     {
-      'code': 'fr',
-      'dialect': 'FR',
-      'name': 'French',
-      'description': 'Français',
-      'bidi': 'ltr'
+      key: 'testField',
+      type: 'RsInput',
+      props: {
+        label: 'Test Field',
+      },
+    },
+  ],
+  languages: [
+    {
+      code: 'fr',
+      dialect: 'FR',
+      name: 'French',
+      description: 'Français',
+      bidi: 'ltr',
     },
     {
-      'code': 'de',
-      'dialect': 'DE',
-      'name': 'German',
-      'description': 'Deutsch',
-      'bidi': 'ltr'
-    }
+      code: 'de',
+      dialect: 'DE',
+      name: 'German',
+      description: 'Deutsch',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'fr-FR'
-}
+  defaultLanguage: 'fr-FR',
+})
 
 // Custom i18n configuration with French as first language
 const customI18nFrFirst: FormBuilderI18n = {
@@ -99,14 +95,16 @@ const customI18nDeFirst: FormBuilderI18n = {
   }
 }
 
-// Helper to get builder store from renderBuilder result
-const getBuilderStore = (getFormBuilder: () => unknown) => {
-  const builder = getFormBuilder() as { builderStore: any }
-  return builder.builderStore
+type BuilderStoreLike = {
+  defaultLanguage: { fullCode: string; bidi?: string }
+  availableLanguages: Array<{ fullCode: string }>
+  formBuilderLanguage: { fullCode: string }
+  formAvailableLanguages: Array<{ fullCode: string }>
+  isRTL: boolean
 }
 
-describe('BuilderI18n fallback language tests', () => {
-  it('should use form default language as fallback instead of global default language (en-US)', async () => {
+describe('builder i18n fallback language behavior', () => {
+  it('uses form default language as fallback instead of global default language (en-US)', async () => {
     const {getFormBuilder, container} = await renderBuilder(testForm, {i18n: customI18nFrFirst})
 
     // Wait for the component to load
@@ -114,7 +112,7 @@ describe('BuilderI18n fallback language tests', () => {
       expect(container.querySelector('button.FE_Components_Tab')).toBeInTheDocument()
     })
 
-    const builderStore = getBuilderStore(getFormBuilder)
+    const builderStore = getBuilderStore<BuilderStoreLike>(getFormBuilder)
 
     // Verify that defaultLanguage is French (not English)
     expect(builderStore.defaultLanguage.fullCode).toBe('fr-FR')
@@ -127,7 +125,7 @@ describe('BuilderI18n fallback language tests', () => {
     await waitFor(() => expect(container.querySelector(frSelector)).toBeInTheDocument())
   })
 
-  it('should use first language from i18n configuration as fallback', async () => {
+  it('uses first language from i18n configuration as fallback', async () => {
     const formNoLanguages = {
       'form': {
         'key': 'Screen',
@@ -138,17 +136,17 @@ describe('BuilderI18n fallback language tests', () => {
 
     const {getFormBuilder} = await renderBuilder(formNoLanguages, {i18n: customI18nDeFirst})
 
-    const builderStore = getBuilderStore(getFormBuilder)
+    const builderStore = getBuilderStore<BuilderStoreLike>(getFormBuilder)
 
     // Should use first language from i18n configuration (German)
     expect(builderStore.defaultLanguage.fullCode).toBe('de-DE')
     expect(builderStore.availableLanguages[0].fullCode).toBe('de-DE')
   })
 
-  it('should maintain correct fallback behavior when switching languages', async () => {
+  it('maintains correct fallback behavior when switching languages', async () => {
     const {getFormBuilder, container} = await renderBuilder(testForm, {i18n: customI18nFrFirst})
 
-    const builderStore = getBuilderStore(getFormBuilder)
+    const builderStore = getBuilderStore<BuilderStoreLike>(getFormBuilder)
 
     // Initial language should be French (form default)
     expect(builderStore.formBuilderLanguage.fullCode).toBe('fr-FR')
@@ -165,7 +163,7 @@ describe('BuilderI18n fallback language tests', () => {
     expect(builderStore.defaultLanguage.fullCode).toBe('fr-FR')
   })
 
-  it('should fall back to default language when translation is missing for current language', async () => {
+  it('falls back to default language when translation is missing for current language', async () => {
     // i18n config with translations only for French (the default language)
     const i18nFrenchOnly: FormBuilderI18n = {
       languages: [
@@ -209,7 +207,7 @@ describe('BuilderI18n fallback language tests', () => {
     })
   })
 
-  it('should handle empty i18n configuration', async () => {
+  it('handles empty i18n configuration', async () => {
     const emptyI18n: FormBuilderI18n = {
       languages: [],
       getData: async () => ({data: {}, componentsLocale: {}})
@@ -217,7 +215,7 @@ describe('BuilderI18n fallback language tests', () => {
 
     const {getFormBuilder} = await renderBuilder(testForm, {i18n: emptyI18n})
 
-    const builderStore = getBuilderStore(getFormBuilder)
+    const builderStore = getBuilderStore<BuilderStoreLike>(getFormBuilder)
 
     // Should fall back to built-in languages
     expect(builderStore.availableLanguages.length).toBeGreaterThan(0)
@@ -226,7 +224,7 @@ describe('BuilderI18n fallback language tests', () => {
     expect(builderStore.defaultLanguage).toBeDefined()
   })
 
-  it('should handle i18n with single language different from form languages', async () => {
+  it('handles i18n with a single language different from form languages', async () => {
     // Form with localization entries for French and German
     const formWithLocalization = {
       ...testForm,
@@ -255,15 +253,15 @@ describe('BuilderI18n fallback language tests', () => {
 
     const {getFormBuilder} = await renderBuilder(formWithLocalization, {i18n: singleLangI18n})
 
-    const builderStore = getBuilderStore(getFormBuilder)
+    const builderStore = getBuilderStore<BuilderStoreLike>(getFormBuilder)
 
     // i18n available languages should only include Italian (from i18n config)
-    const languageCodes = builderStore.availableLanguages.map((lang: Language) => lang.fullCode)
+    const languageCodes = builderStore.availableLanguages.map(lang => lang.fullCode)
     expect(languageCodes).toEqual(['it-IT'])
 
     // formAvailableLanguages filters availableLanguages by form localization
     // Since fr-FR and de-DE are not in i18n languages, they won't appear
-    const formLanguageCodes = builderStore.formAvailableLanguages.map((lang: Language) => lang.fullCode)
+    const formLanguageCodes = builderStore.formAvailableLanguages.map(lang => lang.fullCode)
     expect(formLanguageCodes).toEqual(['it-IT'])
 
     // Default language should be Italian (first language from i18n configuration)
@@ -273,24 +271,19 @@ describe('BuilderI18n fallback language tests', () => {
     expect(builderStore.formAvailableLanguages.length).toBeGreaterThan(0)
   })
 
-  it('should preserve RTL language direction settings', async () => {
-    const rtlForm = {
-      'form': {
-        'key': 'Screen',
-        'type': 'Screen',
-      },
-      'localization': {},
-      'languages': [
+  it('preserves RTL language direction settings', async () => {
+    const rtlForm = createLocalizedScreenForm({
+      languages: [
         {
-          'code': 'ar',
-          'dialect': 'SA',
-          'name': 'Arabic',
-          'description': 'العربية',
-          'bidi': 'rtl'
-        }
+          code: 'ar',
+          dialect: 'SA',
+          name: 'Arabic',
+          description: 'العربية',
+          bidi: 'rtl',
+        },
       ],
-      'defaultLanguage': 'ar-SA'
-    }
+      defaultLanguage: 'ar-SA',
+    })
 
     const rtlI18n: FormBuilderI18n = {
       languages: [new Language('ar', 'SA', 'Arabic', 'العربية', BiDi.RTL)],
@@ -299,7 +292,7 @@ describe('BuilderI18n fallback language tests', () => {
 
     const {getFormBuilder} = await renderBuilder(rtlForm, {i18n: rtlI18n})
 
-    const builderStore = getBuilderStore(getFormBuilder)
+    const builderStore = getBuilderStore<BuilderStoreLike>(getFormBuilder)
 
     // Should detect RTL language
     expect(builderStore.defaultLanguage.bidi).toBe('rtl')

@@ -3,6 +3,7 @@ import type {ILocalizationEngine} from '../features/localization/ILocalizationEn
 import type {LanguageFullCode} from '../features/localization/language'
 import type {ComponentsLocalization, LocalizationType, LocalizationValue} from '../features/localization/types'
 import {nameObservable} from '../utils/observableNaming'
+import {isUndefined} from '../utils/tools'
 import type {ILocalizationStore} from './ILocalizationStore'
 
 const className = 'LocalizationStore'
@@ -41,7 +42,7 @@ class LocalizationObservable {
     Object.entries(componentsLocalization).forEach(([componentKey, allComponentsLocalizationConstants]) => {
       Object.entries(allComponentsLocalizationConstants ?? {}).forEach(([type, componentLocalizationConstants]) => {
         Object.entries(componentLocalizationConstants ?? {}).forEach(([propertyName, localizationConstant]) => {
-          if (localizationConstant) {
+          if (!isUndefined(localizationConstant) && localizationConstant !== null) {
             const normalizedId = `${engine.getCompatibleId(componentKey)}_${type}_${engine.getCompatibleId(propertyName)}`
             localizationItems[normalizedId] = localizationConstant
           }
@@ -97,7 +98,7 @@ export class LocalizationStore implements ILocalizationStore {
     const compatibleId = this.engine.getCompatibleId(componentKey)
     const compatibleName = this.engine.getCompatibleId(propertyName)
 
-    if (value.trim() === '') {
+    if (value === '') {
       this.#removeLocalizationProperty(languageFullCode, compatibleId, type, compatibleName)
       return
     }
@@ -189,7 +190,7 @@ export class LocalizationStore implements ILocalizationStore {
     const property = this.engine.getCompatibleId(propertyName)
 
     return Object.values(this.value).some(localization => {
-      return localization?.[key]?.[type]?.[property]
+      return !isUndefined(localization?.[key]?.[type]?.[property])
     })
   }
 

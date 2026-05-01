@@ -954,7 +954,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     const persistedForm: PersistedForm = {
       form: new ComponentStore(screenModel.name, screenModel.type),
       localization: {},
-      languages: [],
+      languages: [this.defaultLanguage], // TODO should be availableLanguages, check after FE-2003
       defaultLanguage: this.defaultLanguage.fullCode,
       modalType: this.viewer.getFirstComponentTypeWithRole('modal'),
       tooltipType: this.viewer.getFirstComponentTypeWithRole('tooltip'),

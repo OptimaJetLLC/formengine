@@ -30,11 +30,13 @@ interface SimpleFieldAppProps {
   formJson: object
   view?: View
   initialData?: Record<string, unknown>
+  language?: `${string}-${string}`
 }
 
-const SimpleFieldApp = ({formJson, view, initialData}: SimpleFieldAppProps) => {
+const SimpleFieldApp = ({formJson, view, initialData, language}: SimpleFieldAppProps) => {
   return <FormViewer
     initialData={initialData}
+    language={language}
     view={view ?? componentsView}
     getForm={() => JSON.stringify(formJson)}
   />
@@ -203,65 +205,6 @@ describe(`SimpleField test`, function () {
         my_field: {component: {value: localeValue}}
       }
     })
-
-    const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
-    expect(await findByTestId(dataTestId)).toHaveValue(localeValue)
-  })
-
-  it('Input should have a [NOT LOCALIZED] value', async () => {
-    const form = createTestForm((input) => {
-      input.props.value = {value: 'defaultValue', computeType: 'localization'}
-    })
-
-    const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
-    expect(await findByTestId(dataTestId)).toHaveValue('[NOT LOCALIZED]')
-  })
-
-  it('Input should have a [NOT LOCALIZED] value (no default localization)', async () => {
-    const form = createTestForm((input) => {
-        input.props.value = {value: 'defaultValue', computeType: 'localization'}
-      }, (form) => {
-        form.localization ??= {}
-        form.localization['de-DE'] = {
-          name: {component: {value: randomString('de-DE')}}
-        }
-      }
-    )
-
-    const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
-    expect(await findByTestId(dataTestId)).toHaveValue('[NOT LOCALIZED]')
-  })
-
-  it('Input should have a [NOT LOCALIZED] value (de-DE default lang)', async () => {
-    const form = createTestForm((input) => {
-        input.props.value = {value: 'defaultValue', computeType: 'localization'}
-      }, (form) => {
-        form.localization ??= {}
-        form.localization['de-DE'] = {
-          name: {component: {value: randomString('de-DE')}}
-        }
-        form.defaultLanguage = 'de-DE'
-      }
-    )
-
-    const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
-    expect(await findByTestId(dataTestId)).toHaveValue('[NOT LOCALIZED]')
-  })
-
-  it('Input should have a localized value (de-DE default lang)', async () => {
-    const localeValue = randomString('de')
-    const form = createTestForm((input) => {
-        input.props.value = {value: 'defaultValue', computeType: 'localization'}
-      }, (form) => {
-        form.localization ??= {}
-        form.localization['de-DE'] = {
-          name: {component: {value: localeValue}}
-        }
-        form.languages ??= []
-        form.languages.push(new Language('de', 'DE', 'German', 'German', BiDi.LTR))
-        form.defaultLanguage = 'de-DE'
-      }
-    )
 
     const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
     expect(await findByTestId(dataTestId)).toHaveValue(localeValue)

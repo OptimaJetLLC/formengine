@@ -30,8 +30,8 @@ const form = {
   },
 } as const
 
-describe('Form without localization, languages, or defaultLanguage', () => {
-  it('should load and render the form viewer', async () => {
+describe('form without localization, languages, or defaultLanguage', () => {
+  it('loads and renders the form viewer', async () => {
     const getForm = () => JSON.stringify(form)
     const {findByTestId, findByLabelText} = render(<FormViewer view={view} getForm={getForm}/>)
 

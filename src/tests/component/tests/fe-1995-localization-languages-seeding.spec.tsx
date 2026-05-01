@@ -4,16 +4,9 @@ import {FormViewer} from '@react-form-builder/core'
 import {render, waitFor} from '@testing-library/react'
 import {expect} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
+import {createLocalizedScreenForm, getBuilderStore} from './localizationTestUtils'
 
-const providedFormDefinition = {
-  version: '1',
-  form: {
-    key: 'Screen',
-    type: 'Screen',
-    props: {},
-    children: [],
-  },
-  localization: {},
+const providedFormDefinition = createLocalizedScreenForm({
   languages: [
     {
       code: 'en',
@@ -31,9 +24,9 @@ const providedFormDefinition = {
     },
   ],
   defaultLanguage: 'en-US',
-}
+})
 
-describe('Localization languages seeding', () => {
+describe('localization languages seeding', () => {
   it('seeds viewer localization.langCodes from persisted languages when localization is empty', async () => {
     const viewerRef: { current: IFormViewer | null } = {current: null}
     const getForm = () => JSON.stringify(providedFormDefinition)
@@ -49,9 +42,9 @@ describe('Localization languages seeding', () => {
     const {getFormBuilder} = await renderBuilder(providedFormDefinition)
     await waitFor(() => expect(getFormBuilder()).toBeTruthy())
 
-    const builder = getFormBuilder() as unknown as { builderStore: { formAvailableLanguages: Array<{ fullCode: string }> } }
+    const builderStore = getBuilderStore<{ formAvailableLanguages: Array<{ fullCode: string }> }>(getFormBuilder)
     await waitFor(() => {
-      expect(builder.builderStore.formAvailableLanguages.map(language => language.fullCode)).toStrictEqual(['en-US', 'de-DE'])
+      expect(builderStore.formAvailableLanguages.map(language => language.fullCode)).toStrictEqual(['en-US', 'de-DE'])
     })
   })
 })

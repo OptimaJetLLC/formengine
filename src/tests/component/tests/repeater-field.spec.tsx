@@ -141,7 +141,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     await expect(await findAllByTestId('childAge')).toAllSelectsHaveValues(['11', '1'])
   })
 
-  it('Repeater should have a localization value', async () => {
+  it('repeater should render localized values for repeated items', async () => {
     const initialData = {
       rooms: [{roomType: 'standard'}, {}, {roomType: 'luxe'}]
     }
@@ -150,7 +150,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['Room standard', 'Room ', 'Room luxe'])
   })
 
-  it('Repeater should have a [NOT LOCALIZED] value', async () => {
+  it('repeater should fallback to component default property when localization is missing on nested repeated items', async () => {
     const modifyForm = (form: PersistedForm) => {
       delete form.localization!['en-US']['rsStaticContent1']
       delete form.localization!['de-DE']['rsStaticContent1']
@@ -160,36 +160,10 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     }
 
     const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
-    expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['[NOT LOCALIZED]'])
+    expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['Text...'])
   })
 
-  it('Repeater should have a [NOT LOCALIZED] value (no default localization)', async () => {
-    const modifyForm = (form: PersistedForm) => {
-      delete form.localization!['en-US']['rsStaticContent1']
-    }
-    const initialData = {
-      rooms: [{roomType: 'luxe'}, {roomType: 'standard'}]
-    }
-
-    const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
-    expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['[NOT LOCALIZED]', '[NOT LOCALIZED]'])
-  })
-
-  it('Repeater should have a [NOT LOCALIZED] value (de-DE default lang)', async () => {
-    const modifyForm = (form: PersistedForm) => {
-      form.languages = []
-      delete form.localization!['en-US']['rsStaticContent1']
-      form.defaultLanguage = 'de-DE'
-    }
-    const initialData = {
-      rooms: [{roomType: 'standard'}]
-    }
-
-    const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
-    expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['[NOT LOCALIZED]'])
-  })
-
-  it('Repeater should have a localized value (de-DE default lang)', async () => {
+  it('repeater should render localized values when default language is de-DE', async () => {
     const modifyForm = (form: PersistedForm) => {
       form.languages = [new Language('de', 'DE', 'German', 'German', BiDi.LTR)]
       delete form.localization!['en-US']['rsStaticContent1']

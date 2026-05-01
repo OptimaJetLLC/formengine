@@ -15,6 +15,15 @@ interface PropertyEditorWrapperProps {
   displayedSection?: Section
 }
 
+/**
+ * Normalizes localization value before saving it to the store.
+ * @param value localization editor value.
+ * @returns localization value with trimmed leading spaces for non-whitespace strings.
+ */
+export const normalizeLocalizationValueForSave = (value: string) => {
+  return value.trim() === '' ? value : value.trimStart()
+}
+
 const RawPropertyEditorWrapper = ({
                                     annotation,
                                     context,
@@ -61,13 +70,12 @@ const RawPropertyEditorWrapper = ({
 
   const setComputedLocalization = useCallback((value: string, langCode?: LanguageFullCode) => {
     if (!langCode) return
-    const normalized = value.trimStart()
+    const normalizedValue = normalizeLocalizationValueForSave(value)
     const loc = store.viewer.form.localization
-    loc.setLocalization(langCode, componentData.key, annotation.key, propertyBlockType, normalized)
+    loc.setLocalization(langCode, componentData.key, annotation.key, propertyBlockType, normalizedValue)
     if (isValidatorPropertyBlockType(propertyBlockType)) return
 
-    const hasAny = loc.hasLocalization(componentData.key, annotation.key, propertyBlockType)
-    patchProperty(hasAny ? {computeType: 'localization'} : {computeType: undefined})
+    patchProperty({computeType: 'localization'})
   }, [patchProperty, annotation.key, store.viewer.form.localization, componentData.key, propertyBlockType])
 
   const setComputeCode = useCallback<CalculableEditorProps['setComputeCode']>((value, type, params) => {
@@ -119,8 +127,8 @@ const RawPropertyEditorWrapper = ({
 
   const hasComputeCode = useCallback<CalculableEditorProps['hasComputeCode']>(type => {
     if (type === 'function') return !!getComputeCode('function')
-    return hasLocalization()
-  }, [getComputeCode, hasLocalization])
+    return getComputeType() === 'localization' || hasLocalization()
+  }, [getComputeCode, getComputeType, hasLocalization])
 
   const annotationEditorProps: AnnotationEditorProps = {
     value,

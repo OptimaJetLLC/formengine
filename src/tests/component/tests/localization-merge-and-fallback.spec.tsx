@@ -6,7 +6,7 @@ import {frFR, trTR} from 'rsuite/locales'
 import {expect} from 'vitest'
 import {default as builtinFR} from '../../../packages/designer/public/locales/fr-FR.json'
 import {renderForm} from '../util/renderForm'
-import {switchLanguage} from './designerUtils'
+import {switchLanguageAndWaitForText} from './designerUtils'
 import localizationWithoutLanguageFrom from './forms/localization-without-language.json'
 
 const testForm = {
@@ -34,91 +34,92 @@ const customLangs = [
   new Language('tr', 'TR', 'Turkish', 'Türkçe'),
 ]
 
-const i18nFallback: FormBuilderI18n = {
-  languages: customLangs.concat([
-    new Language('em', 'EM', 'Empty', 'Empty')
-  ]),
-  getData: async (languageFullCode) => {
-    if (languageFullCode === 'tr-TR') {
-      return {
-        data: {leftMenu: {menu: 'Menü'}},
-        componentsLocale: trTR
-      }
-    }
 
-    if (languageFullCode === 'fr-FR') {
-      return {
-        data: {leftMenu: {menu: 'Menu'}},
-        componentsLocale: frFR
-      }
-    }
+type I18nLanguageData = {
+  data?: FormBuilderI18nData['data']
+  componentsLocale?: FormBuilderI18nData['componentsLocale']
+}
 
-    return {} as FormBuilderI18nData
+const createDesignerI18n = (
+  params: {
+    languages: Language[]
+    dataByLanguage: Partial<Record<string, I18nLanguageData>>
+    throwOnMissing?: boolean
+  }
+): FormBuilderI18n => {
+  return {
+    languages: params.languages,
+    getData: async (languageFullCode) => {
+      const languageData = params.dataByLanguage[languageFullCode]
+      if (!languageData) {
+        if (params.throwOnMissing) {
+          throw new Error(`Language '${languageFullCode}' not found`)
+        }
+        return {} as FormBuilderI18nData
+      }
+      return languageData as FormBuilderI18nData
+    }
   }
 }
 
 const frTargetValue = 'BBBBBBB'
 const trTargetValue = 'AAAAAAA'
 
-const i18nFrTr: FormBuilderI18n = {
-  languages: customLangs,
-  getData: async languageFullCode => {
-    if (languageFullCode === 'tr-TR') {
-      return {
-        data: {leftMenu: {menu: 'Menü'}, leftPanel: {sectionName: {components: trTargetValue}}},
-        componentsLocale: trTR
-      }
-    }
-
-    if (languageFullCode === 'fr-FR') {
-      return {
-        data: {leftMenu: {menu: 'Menu'}, leftPanel: {sectionName: {components: frTargetValue}}},
-        componentsLocale: frFR
-      }
-    }
-
-    throw new Error(`Language '${languageFullCode}' not found`)
+const i18nFallback = createDesignerI18n({
+  languages: customLangs.concat([new Language('em', 'EM', 'Empty', 'Empty')]),
+  dataByLanguage: {
+    'tr-TR': {
+      data: {leftMenu: {menu: 'Menü'}},
+      componentsLocale: trTR
+    },
+    'fr-FR': {
+      data: {leftMenu: {menu: 'Menu'}},
+      componentsLocale: frFR
+    },
   }
-}
+})
 
-const i18nFrTrNoTrKey: FormBuilderI18n = {
+const i18nFrTr = createDesignerI18n({
   languages: customLangs,
-  getData: async languageFullCode => {
-    if (languageFullCode === 'tr-TR') {
-      return {
-        componentsLocale: trTR
-      } as FormBuilderI18nData
-    }
-
-    if (languageFullCode === 'fr-FR') {
-      return {
-        data: {leftMenu: {menu: 'Menu'}, leftPanel: {sectionName: {components: frTargetValue}}},
-        componentsLocale: frFR
-      }
-    }
-
-    throw new Error(`Language '${languageFullCode}' not found`)
+  throwOnMissing: true,
+  dataByLanguage: {
+    'tr-TR': {
+      data: {leftMenu: {menu: 'Menü'}, leftPanel: {sectionName: {components: trTargetValue}}},
+      componentsLocale: trTR
+    },
+    'fr-FR': {
+      data: {leftMenu: {menu: 'Menu'}, leftPanel: {sectionName: {components: frTargetValue}}},
+      componentsLocale: frFR
+    },
   }
-}
+})
 
-const i18nFrTrNoValue: FormBuilderI18n = {
+const i18nFrTrNoTrKey = createDesignerI18n({
   languages: customLangs,
-  getData: async languageFullCode => {
-    if (languageFullCode === 'tr-TR') {
-      return {
-        componentsLocale: trTR
-      } as FormBuilderI18nData
-    }
-
-    if (languageFullCode === 'fr-FR') {
-      return {
-        componentsLocale: frFR
-      } as FormBuilderI18nData
-    }
-
-    throw new Error(`Language '${languageFullCode}' not found`)
+  throwOnMissing: true,
+  dataByLanguage: {
+    'tr-TR': {
+      componentsLocale: trTR
+    },
+    'fr-FR': {
+      data: {leftMenu: {menu: 'Menu'}, leftPanel: {sectionName: {components: frTargetValue}}},
+      componentsLocale: frFR
+    },
   }
-}
+})
+
+const i18nFrTrNoValue = createDesignerI18n({
+  languages: customLangs,
+  throwOnMissing: true,
+  dataByLanguage: {
+    'tr-TR': {
+      componentsLocale: trTR
+    },
+    'fr-FR': {
+      componentsLocale: frFR
+    },
+  }
+})
 
 const view = new BuilderView([])
 
@@ -132,18 +133,18 @@ const testElementSelector = 'button.FE_Components_Tab'
 
 const builtinElementFrContent = builtinFR.leftPanel.sectionName.components
 
-describe('user defined i18n should be merged with built-in in to Designer, "en-US" must be a fallback', function () {
-  it('partially defined custom localization should be merge with built-in with the same fullCode', async () => {
+describe('designer i18n merge and fallback behavior', function () {
+  it('merges partial custom localization with built-in data for the same fullCode', async () => {
     const {container} = render(<TestApp i18n={i18nFallback}/>)
     await waitFor(() => expect(container.querySelector(testElementSelector)).toHaveTextContent(builtinElementFrContent))
   })
 
-  it('should apply default locale on first load', async () => {
+  it('applies default locale on first load', async () => {
     const {container} = render(<TestApp i18n={i18nFrTr}/>)
     await waitFor(() => expect(container.querySelector(testElementSelector)).toHaveTextContent(frTargetValue))
   })
 
-  it('should apply change locale', async () => {
+  it('applies locale changes', async () => {
     const {container} = render(<TestApp i18n={i18nFrTr}/>)
 
     const selector = 'li[data-event-key="tr-TR"]'
@@ -155,7 +156,7 @@ describe('user defined i18n should be merged with built-in in to Designer, "en-U
     await waitFor(() => expect(container.querySelector(testElementSelector)).toHaveTextContent(trTargetValue))
   })
 
-  it('should apply en-US fallback if key is missing in custom locale', async () => {
+  it('applies en-US fallback when a key is missing in custom locale', async () => {
     const {container} = render(<TestApp i18n={i18nFrTrNoTrKey}/>)
 
     const frSelector = 'li[data-event-key="fr-FR"]'
@@ -174,16 +175,13 @@ describe('user defined i18n should be merged with built-in in to Designer, "en-U
     await waitFor(() => expect(container.querySelector(testElementSelector)).toHaveTextContent('Components'))
   })
 
-  it('should apply change default locale if key not exists in custom', async () => {
+  it('uses built-in locale when custom locale has no translation data', async () => {
     const {container} = render(<TestApp i18n={i18nFrTrNoValue}/>)
 
-    // workaround. broken in tests jsdom + react 18-19, works in browser.
-    await switchLanguage('fr-FR', container)
-
-    await waitFor(() => expect(container.querySelector(testElementSelector)).toHaveTextContent(builtinElementFrContent))
+    await switchLanguageAndWaitForText('fr-FR', container, testElementSelector, builtinElementFrContent)
   })
 
-  it('The fallback option should work even if there is no language in JSON', async () => {
+  it('uses fallback localization even when language metadata is missing in JSON', async () => {
     const {findByTestId} = renderForm(localizationWithoutLanguageFrom, {
       language: 'fr-CA',
       view: muiView

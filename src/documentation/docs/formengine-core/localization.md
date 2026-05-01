@@ -138,6 +138,10 @@ Fluent values and spaces:
 - **Leading spaces** — Use a placeable with a quoted run of spaces, for example `{"       "}`, when you need leading spaces in the rendered
   text (adjust the number of spaces as needed).
 - **Trailing spaces** — Trailing spaces in the value are preserved.
+- **Intentional empty render** — Use `{""}` when you intentionally want an empty rendered value from Fluent while still keeping a concrete
+  message pattern.
+- **Whitespace-only patterns** — A value that contains only whitespace can format to an empty rendered string. For component properties,
+  this then follows the property-level fallback behavior described in [How Fallback Works](#how-fallback-works).
 
 :::
 
@@ -1919,17 +1923,36 @@ FormEngine provides a robust fallback mechanism to ensure users always see meani
 
 ### How Fallback Works
 
-When a user requests a specific language (e.g., `fr-CA` - Canadian French), FormEngine follows this fallback chain:
+Localized **component properties** (`computeType: "localization"`) are resolved in two stages:
 
-1. **Requested language exact match** - Looks for exact translation in the requested language full code (e.g., `fr-CA`)
-2. **Requested language base match** - Falls back to the base language code if the specific dialect is not found (e.g., `fr` for `fr-CA`)
-3. **Form default language** - Uses the form's `defaultLanguage` specified in the JSON
-4. **Global default language** - Falls back to the global default (`en-US`) if form default is not available
-5. **[NOT LOCALIZED] helperText** - Shows `[NOT LOCALIZED]` for missing translations (not component key or property name)
+1. **Message-level lookup** (requested language bundle, then default language bundle).
+2. **Property-level fallback** when no usable localized value remains.
+
+For each message id, Fluent localization lookup works in this order:
+
+1. **Explicit empty string in requested-language items** (`""`) - treated as a real translation value.
+2. **Requested-language Fluent bundle message**.
+3. **Explicit empty string in default-language items** (`""`) - also treated as a real translation value.
+4. **Default-language Fluent bundle message**.
+
+If no message is resolved (or a whitespace-only Fluent message formats to empty; see note below), component-property fallback continues in
+this order:
+
+1. **Component property value** (`props[propertyKey].value`) when defined.
+2. **Component model default property** (`model.defaultProps[propertyKey]`) when defined.
+3. **Component type** as the final fallback string.
+
+For localized validation messages, the engine uses the same **message-level** lookup (requested then default). It does not apply the
+component property/model/type fallback chain for validation errors.
 
 :::info note
 
-This fallback mechanism applies to all localization types: component properties, validation errors, tooltips, and modal content.
+This fallback mechanism applies to component properties, validation errors, tooltips, and modal content that use the Fluent localization
+pipeline.
+
+An explicit empty localized string (`""`) is treated as a real translation value, not as "missing". For Fluent messages that contain only
+whitespace, Fluent formatting can normalize the rendered output to an empty value. For component properties, the property-level fallback
+chain is then applied.
 
 :::
 
@@ -2438,8 +2461,8 @@ translated using an external function.
 4. **Test bidirectional text support** - For RTL languages like Arabic or Hebrew, ensure your form layout handles text direction correctly.
 5. **Consider text expansion** - Some languages require more space for the same meaning. Design your forms with flexible layouts to
    accommodate longer text.
-6. **Fallback strategy** - Implement a fallback strategy for missing translations, either to a default language or to the component key
-   itself.
+6. **Fallback strategy** - Implement a fallback strategy for missing translations, with clear defaults at least to your form default
+   language and predictable final values.
 
 ## Summary
 

@@ -48,6 +48,24 @@ export const switchLanguage = async (code: LanguageFullCode, container: HTMLElem
 }
 
 /**
+ * Switches the designer language and waits for a specific element text.
+ * This helper keeps locale-switch timing workarounds in one place for jsdom.
+ * @param code the full language code.
+ * @param container the root HTML element.
+ * @param elementSelector selector for the element whose text should be updated.
+ * @param expectedText expected text after language switch.
+ */
+export const switchLanguageAndWaitForText = async (
+  code: LanguageFullCode,
+  container: HTMLElement,
+  elementSelector: string,
+  expectedText: string
+) => {
+  await switchLanguage(code, container)
+  await waitFor(() => expect(container.querySelector(elementSelector)).toHaveTextContent(expectedText))
+}
+
+/**
  * Switches the form language.
  * @param code the full language code.
  * @param findByTestId the function to find elements by test id.

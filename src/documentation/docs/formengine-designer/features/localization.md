@@ -227,6 +227,17 @@ Switch the language under the code editor to German and paste the text "Vielen D
 click the "Run" button to get the localization result. Or select the "Autorun" checkbox to have the localization result recalculated
 automatically when the data changes. To save the data - click the "Save" button.
 
+:::info note
+
+Save behavior in the localization editor:
+
+- If you save an **empty string** `''`, the localization entry for that language/property is removed.
+- If you save a **whitespace-only value**, for example, `'   '`, it is preserved as-is and stored in localization.
+- If you save a **non-whitespace value** with leading spaces, for example, `'   hello'`, leading spaces are removed on save.
+- Trailing spaces are preserved for non-whitespace values.
+
+:::
+
 ![Localization 08](/assets/localization/localization-08.png)
 
 Also if you need to access data within nested objects, you can do so using dot notation. This method allows you to retrieve values at deeper

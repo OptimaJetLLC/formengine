@@ -1,6 +1,8 @@
+import type {OnMount} from '@monaco-editor/react'
 import type {IFormData} from '@react-form-builder/core'
 import {CalculableResult, getEditableFormData, namedObserver, useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
+import type {editor} from 'monaco-editor'
 import {useCallback, useMemo, useRef, useState} from 'react'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
@@ -14,6 +16,13 @@ import {fluentLanguageId} from './consts'
 import {useTranslationPart} from './hooks'
 import styles from './LocalizationEditor.module.css'
 
+/**
+ * Returns true when the localization value contains only whitespace characters.
+ * @param value localization value.
+ * @returns true when the value is whitespace-only and not empty.
+ */
+export const isWhitespaceOnlyLocalizationValue = (value: string) => value !== '' && value.trim() === ''
+
 const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const t = useTranslationPart('common')
   const tPanel = useTranslationPart('bottomPanel')
@@ -22,11 +31,15 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
   const localizationStringId = locEngine.getCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const testingEditor = useRef<TestingEditorRef>({})
   const [language, setLanguage] = useState(builderStore.localizationLanguage)
+  const codeEditorRef = useRef<editor.IStandaloneCodeEditor>(null)
   const {formData} = useStore()
   const initialData = useMemo(() => getEditableFormData(formData), [formData])
   const storeValue = editableProperty.getComputeCode('localization', {langCode: language.fullCode})
   const [value, setValue] = useState(storeValue)
   const [prevValue, setPrevValue] = useState(storeValue)
+  const beginContextLine = `${localizationStringId} = `
+  const codeEditorKey = `${editableProperty.annotation.key}_${language.fullCode}_${storeValue}`
+  const endContextLine: string = ''
 
   const applyLocalization = useCallback((next: string) => {
     action(() => editableProperty.setComputeCode(next, 'localization', {langCode: language.fullCode}))()
@@ -37,17 +50,73 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
     setValue(storeValue)
   }
 
+  const normalizeEditorValue = useCallback((source: string) => {
+    let normalized = source
+
+    if (beginContextLine) {
+      const prefixAt = normalized.startsWith(beginContextLine) ? 0 : normalized.indexOf(beginContextLine)
+      if (prefixAt !== -1) {
+        normalized = normalized.slice(prefixAt + beginContextLine.length)
+      }
+    }
+    if (endContextLine && normalized.endsWith(endContextLine)) {
+      normalized = normalized.slice(0, normalized.length - endContextLine.length)
+    }
+    if (beginContextLine && normalized.startsWith('\n')) {
+      normalized = normalized.slice(1)
+    }
+    if (endContextLine && normalized.endsWith('\n')) {
+      normalized = normalized.slice(0, normalized.length - 1)
+    }
+
+    return normalized
+  }, [beginContextLine, endContextLine])
+
+  const getEditorValueForSave = useCallback(() => {
+    const modelValue = codeEditorRef.current?.getModel()?.getValue()
+    if (typeof modelValue !== 'string') return value
+    return normalizeEditorValue(modelValue)
+  }, [normalizeEditorValue, value])
+
+  const writeConstrainedDocument = useCallback(
+    (fluentBody: string) => {
+      const model = codeEditorRef.current?.getModel()
+      if (!model || !beginContextLine) return
+      const contentDelimiter = ''
+      const postfix = endContextLine ? `\n${endContextLine}` : ''
+      model.setValue(beginContextLine + contentDelimiter + fluentBody + postfix)
+    },
+    [beginContextLine, endContextLine],
+  )
+
+  const syncEditorAfterPersist = useCallback(() => {
+    const persistedBody = editableProperty.getComputeCode('localization', {langCode: language.fullCode}) ?? ''
+    writeConstrainedDocument(persistedBody)
+    setValue(persistedBody)
+  }, [editableProperty, language.fullCode, writeConstrainedDocument])
+
+  const handleEditorMount = useCallback<OnMount>((editor) => {
+    codeEditorRef.current = editor
+  }, [])
+
   const handleSave = useCallback(() => {
+    const extractedBody = getEditorValueForSave()
+    if (isWhitespaceOnlyLocalizationValue(extractedBody)) {
+      applyLocalization(extractedBody)
+      syncEditorAfterPersist()
+      return
+    }
+
     const result = testingEditor.current.test?.()
     if (result?.error || result?.exceptions) return
-    applyLocalization(value)
-  }, [applyLocalization, value])
+    applyLocalization(extractedBody)
+    syncEditorAfterPersist()
+  }, [applyLocalization, getEditorValueForSave, syncEditorAfterPersist])
 
-  const handleClear = useCallback(() => applyLocalization(''), [applyLocalization])
-
-  const beginContextLine = `${localizationStringId} = `
-  const codeEditorKey = `${editableProperty.annotation.key}_${language.fullCode}_${storeValue}`
-  const endContextLine = ''
+  const handleClear = useCallback(() => {
+    applyLocalization('')
+    syncEditorAfterPersist()
+  }, [applyLocalization, syncEditorAfterPersist])
 
   const testingFunction = useCallback((formData: IFormData) => {
     if (!locEngine.testLocalization) {
@@ -56,7 +125,7 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
     }
 
     const result = locEngine.testLocalization(
-      value,
+      getEditorValueForSave(),
       localizationStringId,
       language,
       formData,
@@ -67,7 +136,7 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
     }
 
     return CalculableResult.success(result)
-  }, [locEngine, localizationStringId, value, language])
+  }, [getEditorValueForSave, locEngine, localizationStringId, language])
 
   return <Columns className={styles.columns}>
     <Rows className={styles.rows}>
@@ -77,6 +146,7 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
                   beginContextLine={beginContextLine}
                   endContextLine={endContextLine}
                   canEditBeginContextLine={true}
+                  onMount={handleEditorMount}
                   onChange={setValue}/>
       <div className={styles.toolbar}>
         <ButtonGroup size={'sm'}>
@@ -84,7 +154,8 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
           <Button appearance="ghost" onClick={onClose}>{t('close')}</Button>
         </ButtonGroup>
         <LocalizationPicker value={language.fullCode} onSelect={setLanguage}/>
-        <Button appearance="ghost" data-testid="localization-editor-clear" size="sm" onClick={handleClear}>{tPanel('clearLocalization')}</Button>
+        <Button appearance="ghost" data-testid="localization-editor-clear" size="sm"
+                onClick={handleClear}>{tPanel('clearLocalization')}</Button>
       </div>
     </Rows>
     {locEngine.testLocalization &&
