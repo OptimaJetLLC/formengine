@@ -18,7 +18,7 @@ import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import type {FormBuilderProps} from '../../FormBuilderProps'
 import {BuilderStore} from '../../stores/BuilderStore'
-import {LocalStorageSynchronizer} from '../../stores/LocalStorageSynchronizer'
+import {LocalStorageSynchronizer, subscribeViewerLanguageWhenFormReady} from '../../stores/LocalStorageSynchronizer'
 import {BuilderStoreProvider} from '../../utils/BuilderStoreContext'
 import {determineTheme} from '../../utils/determineTheme'
 import {isDesignerLocalStorageEnabled} from '../../utils/isDesignerLocalStorageEnabled'
@@ -28,18 +28,22 @@ import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {getBuilderChildren} from '../dnd/components/Editable/Editable'
 import {LicenseManager} from '../license/LicenseManager'
 import {LocalizationProvider} from '../localization/components/LocalizationProvider'
+import {resolveBuilderUiLanguage} from '../localization/languageUtils'
 import {BuiltinPropertyEditorsProvider} from './BuiltinPropertyEditorsProvider'
 import {FormBuilderContextProvider} from './FormBuilderContextProvider'
 import {StylesProvider} from './StylesProvider'
 
 class BuilderProviderData {
-  constructor(public readonly store: Store,
-              public readonly builderStore: BuilderStore,
-              public readonly localStorageSynchronizer?: LocalStorageSynchronizer
+  constructor(
+    public readonly store: Store,
+    public readonly builderStore: BuilderStore,
+    public readonly localStorageSynchronizer?: LocalStorageSynchronizer,
+    private readonly extraDisposers: Array<() => void> = [],
   ) {
   }
 
   dispose() {
+    this.extraDisposers.forEach(dispose => dispose())
     this.localStorageSynchronizer?.dispose()
     this.builderStore.dispose()
     this.store.dispose()
@@ -98,11 +102,17 @@ const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
     ? new LocalStorageSynchronizer(builderStore, props)
     : undefined
 
+  const extraDisposers: Array<() => void> = []
   if (!localStorageSynchronizer) {
-    void builderStore.changeLanguage(builderStore.defaultLanguage)
+    const lang = resolveBuilderUiLanguage(props.defaultBuilderLanguage, builderStore.availableLanguages)
+      ?? builderStore.defaultLanguage
+    void builderStore.changeLanguage(lang)
+    if (props.defaultViewerLanguage) {
+      extraDisposers.push(subscribeViewerLanguageWhenFormReady(builderStore, undefined, props.defaultViewerLanguage))
+    }
   }
 
-  return new BuilderProviderData(store, builderStore, localStorageSynchronizer)
+  return new BuilderProviderData(store, builderStore, localStorageSynchronizer, extraDisposers)
 }, [props])
 
 /**
@@ -130,7 +140,7 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
     store.formViewerPropsStore.applyProps(viewerProps)
     store.form.componentTree.state = store.formViewerPropsStore.initialState
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.initialData, props.initialState, props.view, props.validators, props.formValidators, props.localize, props.language,
+  }, [props.initialData, props.initialState, props.view, props.validators, props.formValidators, props.localize,
     props.actions, props.errorWrapper, props.readOnly, props.disabled, props.componentWrapper, props.userContext])
 
   useEffect(() => {
@@ -141,6 +151,13 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
     if (!props.theme) return
     builderStore.theme = determineTheme(props.theme)
   }, [builderStore, props.theme])
+
+  useEffect(() => {
+    const lang = resolveBuilderUiLanguage(props.defaultBuilderLanguage, builderStore.availableLanguages)
+    if (!lang) return
+    if (lang.fullCode === builderStore.formBuilderLanguage.fullCode) return
+    void builderStore.changeLanguage(lang)
+  }, [builderStore, props.defaultBuilderLanguage])
 
   return (
     <ViewerPropsProvider value={viewerProps}>

@@ -17,7 +17,7 @@ const form = {
 
 describe('Designer styles tests', () => {
   it('The designer\'s styles should be unloaded when unmounted', async () => {
-    const {container, findByTestId, unmount} = await renderBuilder(form, {language: 'en-US'})
+    const {container, findByTestId, unmount} = await renderBuilder(form, {defaultViewerLanguage: 'en-US'})
 
     expect(await findByTestId('test-screen')).toBeInTheDocument()
 

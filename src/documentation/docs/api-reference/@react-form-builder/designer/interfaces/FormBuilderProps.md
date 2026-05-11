@@ -4,7 +4,7 @@ Properties of the React Form builder component.
 
 ## Extends
 
-- `Omit`\<[`FormViewerProps`](../../core/interfaces/FormViewerProps.md), `"view"`\>
+- `Omit`\<[`FormViewerProps`](../../core/interfaces/FormViewerProps.md), `"language"` \| `"view"`\>
 
 ## Properties
 
@@ -57,6 +57,23 @@ The arbitrary context used internally by the form viewer.
 > `optional` **customization**: `Partial`\<`Record`\<`string`, [`Options`](../type-aliases/Options.md)\>\>
 
 The map of customizations for the FormBuilder components.
+
+***
+
+### defaultBuilderLanguage?
+
+> `optional` **defaultBuilderLanguage**: `` `${string}-${string}` ``
+
+The builder language. When set, it selects the matching entry among [FormBuilderI18n.languages](../type-aliases/FormBuilderI18n.md#languages).
+
+***
+
+### defaultViewerLanguage?
+
+> `optional` **defaultViewerLanguage**: `` `${string}-${string}` ``
+
+The initial language of the form viewer (form localization preview), e.g. 'en-US'.
+Unlike the removed [FormViewerProps.language](../../core/interfaces/FormViewerProps.md#language) prop, this value is only used for the initial selection and does not lock the viewer language.
 
 ***
 
@@ -234,18 +251,6 @@ This object is set into [IFormData.state](../../core/interfaces/IFormData.md#sta
 > `optional` **jsonSchemaFilename**: `string`
 
 The file name for the generated JSON schema.
-
-***
-
-### language?
-
-> `optional` **language**: `` `${string}-${string}` ``
-
-The language of the form, e.g. 'en-US'.
-
-#### Inherited from
-
-`Omit.language`
 
 ***
 

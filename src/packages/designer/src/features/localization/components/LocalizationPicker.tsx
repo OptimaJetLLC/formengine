@@ -30,7 +30,7 @@ interface LocalizationPickerProps {
   /**
    * The full code of the selected language.
    */
-  value: string
+  value?: string
   /**
    * The callback function called when the selected language is changed.
    * @param language the selected language.

@@ -5,7 +5,8 @@ import type {
   ComponentLibraryDescription,
   EditorType,
   FormViewerProps,
-  Language
+  Language,
+  LanguageFullCode
 } from '@react-form-builder/core'
 import type {ComponentType, ForwardedRef} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
@@ -34,7 +35,7 @@ export type GenerateJsonFormSchemaOptions = {
 /**
  * Properties of the React Form builder component.
  */
-export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
+export interface FormBuilderProps extends Omit<FormViewerProps, 'view' | 'language'> {
 
   /**
    * All the metadata of the components of the form builder.
@@ -65,6 +66,17 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
    * The i18n data of the form builder.
    */
   i18n?: FormBuilderI18n
+
+  /**
+   * The builder language. When set, it selects the matching entry among {@link FormBuilderI18n.languages}.
+   */
+  defaultBuilderLanguage?: LanguageFullCode
+
+  /**
+   * The initial language of the form viewer (form localization preview), e.g. 'en-US'.
+   * Unlike the removed {@link FormViewerProps.language} prop, this value is only used for the initial selection and does not lock the viewer language.
+   */
+  defaultViewerLanguage?: LanguageFullCode
 
   /**
    * The reference to {@link IFormBuilder}.

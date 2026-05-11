@@ -31,7 +31,7 @@ import {
   treeForEach
 } from '@react-form-builder/core'
 import type {IReactionDisposer} from 'mobx'
-import {action, makeAutoObservable, observable, reaction} from 'mobx'
+import {action, makeAutoObservable, observable, reaction, runInAction} from 'mobx'
 import type {CalculableEditorProps} from '../features/annotation-editors/AnnotationEditorProps'
 import type {
   CodeActionEditorData,
@@ -40,7 +40,7 @@ import type {
 import type {TranslationResolver} from '../features/localization/BuilderI18n'
 import {BuilderI18n} from '../features/localization/BuilderI18n'
 import type {FormBuilderI18nData} from '../features/localization/FormBuilderLanguage'
-import {builtInLanguages, loadTranslation} from '../features/localization/languageUtils'
+import {builtInLanguages, loadTranslation, resolveBuilderUiLanguage} from '../features/localization/languageUtils'
 import {BuilderPresetComponentOptions} from '../features/preset-component/BuilderPresetComponentOptions'
 import {removePresetLocalization} from '../features/preset-component/removePresetLocalization'
 import type {PanelPlacement} from '../features/ui/PanelPlacement'
@@ -387,8 +387,11 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
 
     this.view = props.view
     this.activeFormName = props.formName
-    this.formBuilderLanguage = this.availableLanguages[0]
-    this.localizationLanguage = this.formBuilderLanguage
+    this.formBuilderLanguage = resolveBuilderUiLanguage(props.defaultBuilderLanguage, this.availableLanguages)
+      ?? this.defaultLanguage
+    const viewerLanguage = this.viewer.form.defaultLanguage
+    this.viewer.selectedLanguage = viewerLanguage
+    this.localizationLanguage = viewerLanguage
 
     this.presetComponentOptions = new BuilderPresetComponentOptions(
       name => this.view.removeComponent(name),
@@ -417,7 +420,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
 
       return this.#loadedLanguages[language].data
     }
-    this.builderI18n = new BuilderI18n(this.defaultLanguage, translationResolver)
+    this.builderI18n = new BuilderI18n(this.formBuilderLanguage, translationResolver)
 
     this.undoer = new BuilderUndoer(this, 100)
   }
@@ -500,9 +503,14 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @returns Promise<Language>
    */
   async changeLanguage(language: Language) {
+    if (language.fullCode === this.formBuilderLanguage.fullCode) {
+      return language
+    }
     return this.builderI18n.changeWebDocumentLanguage(language)
       .then(() => {
-        this.formBuilderLanguage = language
+        runInAction(() => {
+          this.formBuilderLanguage = language
+        })
         return language
       })
       .catch(e => console.error(e))

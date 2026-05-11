@@ -91,6 +91,20 @@ const loadLanguage = async (i18n: FormBuilderI18n, language: LanguageFullCode) =
 }
 
 /**
+ * Resolves the builder UI language from props when the code matches an available language.
+ * @param builderLanguage the language code from the form builder `builderLanguage` prop.
+ * @param availableLanguages the languages exposed by the builder i18n configuration.
+ * @returns the matching language or undefined.
+ */
+export function resolveBuilderUiLanguage(
+  builderLanguage: LanguageFullCode | undefined,
+  availableLanguages: Language[],
+): Language | undefined {
+  if (!builderLanguage) return undefined
+  return availableLanguages.find(l => l.fullCode === builderLanguage)
+}
+
+/**
  * Loads the translation for the specified language.
  * @param i18n the i18n object.
  * @param language the language code.

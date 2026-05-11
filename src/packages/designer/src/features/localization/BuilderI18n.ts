@@ -16,10 +16,10 @@ export class BuilderI18n {
 
   /**
    * Creates i18n for the form builder.
-   * @param defaultLanguage the default language.
+   * @param initialLanguage the initial UI language.
    * @param translationResolver the callback function that returns JSON with a translation by the specified language.
    */
-  constructor(defaultLanguage: Language, translationResolver: TranslationResolver) {
+  constructor(initialLanguage: Language, translationResolver: TranslationResolver) {
     i18next
       .use(resourcesToBackend((language, _ns, callback) => {
         translationResolver(<LanguageFullCode>language)
@@ -32,8 +32,8 @@ export class BuilderI18n {
       .use(LanguageDetector)
       .use(initReactI18next)
       .init({
-          lng: defaultLanguage.fullCode,
-          fallbackLng: [defaultLanguage.fullCode],
+          lng: initialLanguage.fullCode,
+          fallbackLng: [initialLanguage.fullCode],
           load: 'currentOnly',
           interpolation: {
             escapeValue: false,
@@ -44,7 +44,10 @@ export class BuilderI18n {
             if (globalThis.FORM_BUILDER_I18N_DISABLE_LOGGING !== 'true') {
               console.warn(`Missing translation: ${key}`, lng, ns)
             }
-          }
+          },
+          detection: {
+            caches: [],
+          },
         },
         this.onLoadError.bind(this)
       )

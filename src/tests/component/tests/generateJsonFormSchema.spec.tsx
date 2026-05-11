@@ -1,5 +1,6 @@
 import {BuilderView, define, Language} from '@react-form-builder/core'
 import {FormBuilderI18n, FormBuilderI18nData} from '@react-form-builder/designer'
+import {flushPendingLinkLoads} from '../util/flushStylesheetLoadQueue'
 import {renderBuilder} from '../util/renderBuilder'
 
 // Mock form for testing
@@ -173,23 +174,25 @@ describe('generateJsonFormSchema language test', () => {
     const mockSchemaGenerator = vi.fn().mockReturnValue('test schema')
     const viewWithDescriptions = createViewWithDescriptions()
 
-    const {getFormBuilder} = await renderBuilder(testForm, {
+    const {getFormBuilder, unmount} = await renderBuilder(testForm, {
       i18n: customI18nFrFirst,
       generateJsonFormSchema: mockSchemaGenerator,
       view: viewWithDescriptions
     })
 
+    await flushPendingLinkLoads()
+
     const builderStore = getBuilderStore(getFormBuilder)
 
-    // Call generateJsonFormSchema
     const result = builderStore.generateJsonFormSchema()
     expect(result).toEqual('test schema')
 
-    // Verify the generator was called with descriptions in French (default language)
     expect(mockSchemaGenerator).toHaveBeenCalledWith({
       components: expect.any(Array),
-      descriptions: [frDescriptions] // Should use fr-FR, not en-US
+      descriptions: [frDescriptions]
     })
+
+    unmount()
   })
 
   it('should handle missing description for default language gracefully', async () => {
@@ -198,77 +201,87 @@ describe('generateJsonFormSchema language test', () => {
     view.withComponentLibraryDescription({
       'en-US': {},
       'de-DE': {}
-      // No French description even though French is default
     })
 
-    const {getFormBuilder} = await renderBuilder(testForm, {
+    const {getFormBuilder, unmount} = await renderBuilder(testForm, {
       i18n: customI18nFrFirst,
       generateJsonFormSchema: mockSchemaGenerator,
       view
     })
 
+    await flushPendingLinkLoads()
+
     const builderStore = getBuilderStore(getFormBuilder)
     builderStore.generateJsonFormSchema()
 
-    // Should handle missing French description (returns undefined)
     expect(mockSchemaGenerator).toHaveBeenCalled()
 
     const callArgs = mockSchemaGenerator.mock.calls[0][0]
-    expect(callArgs.descriptions).toEqual([undefined]) // No French description
+    expect(callArgs.descriptions).toEqual([undefined])
+
+    unmount()
   })
 
   it('should use English descriptions when English is default language', async () => {
     const mockSchemaGenerator = vi.fn()
     const viewWithDescriptions = createViewWithDescriptions()
 
-    const {getFormBuilder} = await renderBuilder(testFormEnDefault, {
+    const {getFormBuilder, unmount} = await renderBuilder(testFormEnDefault, {
       i18n: customI18nEnFirst,
       generateJsonFormSchema: mockSchemaGenerator,
       view: viewWithDescriptions
     })
 
+    await flushPendingLinkLoads()
+
     const builderStore = getBuilderStore(getFormBuilder)
     builderStore.generateJsonFormSchema()
 
-    // Should use English descriptions when English is default
     expect(mockSchemaGenerator).toHaveBeenCalledWith({
       components: expect.any(Array),
       descriptions: [enDescriptions]
     })
+
+    unmount()
   })
 
   it('should return undefined when generateJsonFormSchema prop is not provided', async () => {
     const viewWithDescriptions = createViewWithDescriptions()
-    const {getFormBuilder} = await renderBuilder(testForm, {
+    const {getFormBuilder, unmount} = await renderBuilder(testForm, {
       i18n: customI18nFrFirst,
       view: viewWithDescriptions
     })
 
+    await flushPendingLinkLoads()
+
     const builderStore = getBuilderStore(getFormBuilder)
 
-    // generateJsonFormSchema should return undefined when no generator is provided
     const result = builderStore.generateJsonFormSchema()
     expect(result).toBeUndefined()
+
+    unmount()
   })
 
   it('should filter out template types and preset components', async () => {
     const mockSchemaGenerator = vi.fn()
     const viewWithDescriptions = createViewWithDescriptions()
 
-    const {getFormBuilder} = await renderBuilder(testForm, {
+    const {getFormBuilder, unmount} = await renderBuilder(testForm, {
       i18n: customI18nFrFirst,
       generateJsonFormSchema: mockSchemaGenerator,
       view: viewWithDescriptions
     })
 
+    await flushPendingLinkLoads()
+
     const builderStore = getBuilderStore(getFormBuilder)
     builderStore.generateJsonFormSchema()
 
-    // Should be called with components array
     expect(mockSchemaGenerator).toHaveBeenCalled()
     const callArgs = mockSchemaGenerator.mock.calls[0][0]
     expect(callArgs.components).toBeInstanceOf(Array)
-    // Should contain our test component
     expect(callArgs.components.length).toBeGreaterThan(0)
+
+    unmount()
   })
 })

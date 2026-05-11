@@ -1,12 +1,55 @@
-import type {BuilderTheme, ViewMode} from '@react-form-builder/core'
-import {isUndefined, nameAutorun} from '@react-form-builder/core'
+import type {BuilderTheme, LanguageFullCode, ViewMode} from '@react-form-builder/core'
+import {findLanguage, isUndefined, nameAutorun} from '@react-form-builder/core'
 import type {IReactionDisposer} from 'mobx'
-import {autorun} from 'mobx'
+import {autorun, reaction} from 'mobx'
+import {resolveBuilderUiLanguage} from '../features/localization/languageUtils'
 import type {FormBuilderProps} from '../FormBuilderProps'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {parseJson} from '../utils/parseJson'
 import type {BuilderStore} from './BuilderStore'
 import {defaultBottomPanelHeight, defaultOpenedPanels, defaultViewMode} from './constants'
+
+const viewerLanguageReactionName = nameAutorun('LocalStorageSynchronizer', 'vwLang')
+
+/**
+ * Applies viewer preview language from localStorage and/or the default viewer language prop
+ * once the form languages list is populated (after the form schema is loaded).
+ * @param builderStore the form builder settings.
+ * @param viewerLanguageCodeFromStorage the language full code read from localStorage, if any.
+ * @param defaultViewerLanguageCode the default viewer language full code from props, if any.
+ * @returns a MobX disposer for the underlying reaction.
+ */
+export function subscribeViewerLanguageWhenFormReady(
+  builderStore: BuilderStore,
+  viewerLanguageCodeFromStorage: string | undefined,
+  defaultViewerLanguageCode: LanguageFullCode | undefined,
+): IReactionDisposer {
+  let appliedOnce = false
+  return reaction(
+    () => builderStore.viewer.form.languages,
+    (formLanguages) => {
+      const languagesLength = formLanguages.length
+
+      if (appliedOnce || languagesLength === 0) return
+
+      appliedOnce = true
+      const languages = builderStore.viewer.form.languages
+
+      const viewerFromStorage = viewerLanguageCodeFromStorage
+        ? findLanguage(languages, viewerLanguageCodeFromStorage as LanguageFullCode)
+        : undefined
+
+      const viewerFromProp = defaultViewerLanguageCode
+        ? findLanguage(languages, defaultViewerLanguageCode)
+        : undefined
+
+      const finalViewerLanguage = viewerFromStorage ?? viewerFromProp ?? builderStore.viewer.form.defaultLanguage
+      builderStore.viewer.selectedLanguage = finalViewerLanguage
+      builderStore.localizationLanguage = finalViewerLanguage
+    },
+    {fireImmediately: true, name: viewerLanguageReactionName},
+  )
+}
 
 /**
  * Synchronizes and saves form builder settings to the browser's localStorage.
@@ -48,15 +91,22 @@ export class LocalStorageSynchronizer {
       if (formName) builderStore.activeFormName = formName
     }
 
-    const i18nextLngKey = withPrefix('i18nextLng')
-    const i18nextLng = this.getItem<string>(i18nextLngKey)
-    const lang = (
-      i18nextLng && builderStore.availableLanguages.find(l => l.fullCode === i18nextLng)
-    ) || builderStore.defaultLanguage
+    const builderLanguageKey = withPrefix('builderLanguage')
+    const builderLanguage = this.getItem<string>(builderLanguageKey)
+    const fromStorage = builderLanguage
+      ? builderStore.availableLanguages.find(l => l.fullCode === builderLanguage)
+      : undefined
+    const fromProp = resolveBuilderUiLanguage(builderProps.defaultBuilderLanguage, builderStore.availableLanguages)
+    const lang = fromStorage ?? fromProp ?? builderStore.defaultLanguage
 
     void builderStore.changeLanguage(lang)
 
+    const viewerLanguageKey = withPrefix('viewerLanguage')
+    const viewerLanguageCode = this.getItem<string>(viewerLanguageKey)
+    const defaultViewerLanguageCode = builderProps.defaultViewerLanguage
+
     this.#disposers = [
+      subscribeViewerLanguageWhenFormReady(builderStore, viewerLanguageCode, defaultViewerLanguageCode),
       autorun(
         () => this.updateItem(resolutionKey, builderStore.viewMode),
         {name: nameAutorun(className, 'saveResolution')}
@@ -76,6 +126,16 @@ export class LocalStorageSynchronizer {
       autorun(
         () => this.updateItem(testingAutorunKey, builderStore.testingAutorun),
         {name: nameAutorun(className, 'saveTestingAutorunSetting')}
+      ),
+      reaction(
+        () => builderStore.formBuilderLanguage.fullCode,
+        code => this.updateItem(builderLanguageKey, code),
+        {name: nameAutorun(className, 'saveI18nextLng')}
+      ),
+      reaction(
+        () => builderStore.localizationLanguage.fullCode,
+        code => this.updateItem(viewerLanguageKey, code),
+        {name: nameAutorun(className, 'saveViewerLng')}
       )
     ]
 
