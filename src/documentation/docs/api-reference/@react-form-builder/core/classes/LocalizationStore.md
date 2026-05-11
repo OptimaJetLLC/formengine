@@ -147,7 +147,7 @@ the best matching language full code or null if no match found.
 
 ### getItems()
 
-> **getItems**(`languageFullCode`): `null` \| `Record`\<`string`, `string`\>
+> **getItems**(`languageFullCode`): `null` \| `Record`\<`string`, `unknown`\>
 
 Returns all localization items provided by engine.
 
@@ -161,7 +161,7 @@ the full code (en-US, en-GB etc.).
 
 #### Returns
 
-`null` \| `Record`\<`string`, `string`\>
+`null` \| `Record`\<`string`, `unknown`\>
 
 all localization items.
 
@@ -173,7 +173,7 @@ all localization items.
 
 ### getLocalization()
 
-> **getLocalization**(`languageFullCode`, `componentKey`, `propertyName`, `type`): `string` \| `undefined`
+> **getLocalization**(`languageFullCode`, `componentKey`, `propertyName`, `type`): `unknown`
 
 Returns value of localization constant.
 
@@ -205,9 +205,13 @@ the type of localization.
 
 #### Returns
 
-`string` \| `undefined`
+`unknown`
 
 the value of localization constant.
+
+#### Implementation of
+
+[`ILocalizationStore`](../interfaces/ILocalizationStore.md).[`getLocalization`](../interfaces/ILocalizationStore.md#getlocalization)
 
 ***
 
@@ -370,10 +374,14 @@ the type of localization.
 
 ##### value
 
-`string`
+`unknown`
 
 the localization value to persist.
 
 #### Returns
 
 `void`
+
+#### Implementation of
+
+[`ILocalizationStore`](../interfaces/ILocalizationStore.md).[`setLocalization`](../interfaces/ILocalizationStore.md#setlocalization)

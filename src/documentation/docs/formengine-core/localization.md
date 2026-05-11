@@ -732,6 +732,141 @@ function App() {
 }
 ```
 
+## Localizing Array Data
+
+In addition to string properties, you can localize **array-type properties** such as dropdown options, radio group items, checkbox lists,
+and other components that display lists of labeled values. This is useful when the labels shown to users need to change based on the
+selected language while the underlying values stay the same.
+
+### How it works
+
+Array data localization stores the entire translated array as a JSON value in the `localization` object. When FormEngine resolves the
+property for the current language, it parses the JSON array and passes it to the component instead of the default value.
+
+The localization entry for an array property is stored under the same path as string properties:
+
+```
+localization[languageCode][componentKey][type][propertyName]
+```
+
+The value is a JSON-encoded array instead of a plain string.
+
+### Defining a localizable array property
+
+To make an array property localizable in a component definition, chain the `localize` getter on the `array` annotation builder:
+
+```typescript title='MyComponent.tsx'
+import {array, define, string, toLabeledValues} from '@react-form-builder/core'
+
+export const mySelect = define(MySelect, 'MySelect')
+  .props({
+    label: string.default('Select'),
+    items: array.localize.default(toLabeledValues(['Option A', 'Option B', 'Option C']))
+  })
+```
+
+The `localize` getter sets `localizable: true` on the annotation, which tells the designer to show the localization editor for this
+property. Without `localize`, the property will not have a localization option in the designer UI.
+
+### Example: Localizing radio group items
+
+In this example, a radio group component has its `items` property localized. The option values (`small`, `medium`, `large`) remain the
+same across languages, but the labels change.
+
+```json {16-18,28-41,49-62}
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "sizeSelect",
+        "type": "RsRadioGroup",
+        "props": {
+          "name": {
+            "value": "Size"
+          },
+          "label": {
+            "computeType": "localization"
+          },
+          "items": {
+            "computeType": "localization"
+          }
+        }
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "sizeSelect": {
+        "component": {
+          "label": "Size",
+          "items": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ]
+        }
+      }
+    },
+    "de-DE": {
+      "sizeSelect": {
+        "component": {
+          "label": "Gr\u00f6\u00dfe",
+          "items": [
+            {
+              "value": "small",
+              "label": "Klein"
+            },
+            {
+              "value": "medium",
+              "label": "Mittel"
+            },
+            {
+              "value": "large",
+              "label": "Gro\u00df"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "de",
+      "dialect": "DE",
+      "name": "Deutsch",
+      "description": "German",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
+```
+
+:::info note
+
+Array localization values are stored as JSON arrays directly in the localization object, not as Fluent message strings. FormEngine
+automatically detects whether a localization value is a JSON array or object and parses it accordingly.
+
+:::
+
 ## Localizing Validation Errors
 
 Validation error messages can also be localized. Each validator can have its error message specified in the localization data.
@@ -2470,6 +2605,7 @@ FormEngine Core provides a robust localization system that supports:
 
 - **Inline JSON localization** for self-contained forms
 - **Component property localization** for labels, placeholders, tooltips, and more
+- **Array data localization** for dropdown options, radio groups, checkbox lists, and other list-based components
 - **Validation error localization** for user-friendly error messages in multiple languages
 - **Language switching** via the `language` property
 - **External localization integration** through the `localize` function

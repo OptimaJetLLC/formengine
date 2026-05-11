@@ -1,5 +1,5 @@
 import type {Annotation, ComponentProperty, LanguageFullCode, PropertyBlockType} from '@react-form-builder/core'
-import {isProperty, isValidatorPropertyBlockType, namedObserver, useComponentData} from '@react-form-builder/core'
+import {isProperty, isUndefined, isValidatorPropertyBlockType, namedObserver, useComponentData} from '@react-form-builder/core'
 import {createElement, useCallback, useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps, CalculableEditorProps} from '../../annotation-editors/AnnotationEditorProps'
@@ -22,6 +22,16 @@ interface PropertyEditorWrapperProps {
  */
 export const normalizeLocalizationValueForSave = (value: string) => {
   return value.trim() === '' ? value : value.trimStart()
+}
+
+const tryParseJson = (value: string): unknown => {
+  const trimmed = value.trim()
+  if (!(trimmed.startsWith('[') || trimmed.startsWith('{'))) return undefined
+  try {
+    return JSON.parse(trimmed)
+  } catch {
+    return undefined
+  }
 }
 
 const RawPropertyEditorWrapper = ({
@@ -72,11 +82,13 @@ const RawPropertyEditorWrapper = ({
     if (!langCode) return
     const normalizedValue = normalizeLocalizationValueForSave(value)
     const loc = store.viewer.form.localization
-    loc.setLocalization(langCode, componentData.key, annotation.key, propertyBlockType, normalizedValue)
+    const parsed = tryParseJson(normalizedValue)
+    const finalValue = !isUndefined(parsed) ? parsed : normalizedValue
+    loc.setLocalization(langCode, componentData.key, annotation.key, propertyBlockType, finalValue)
     if (isValidatorPropertyBlockType(propertyBlockType)) return
 
     patchProperty({computeType: 'localization'})
-  }, [patchProperty, annotation.key, store.viewer.form.localization, componentData.key, propertyBlockType])
+  }, [store.viewer.form.localization, annotation.key, componentData.key, propertyBlockType, patchProperty])
 
   const setComputeCode = useCallback<CalculableEditorProps['setComputeCode']>((value, type, params) => {
     switch (type) {
@@ -94,7 +106,13 @@ const RawPropertyEditorWrapper = ({
   const getComputedLocalization = useCallback((langCode: LanguageFullCode) => {
     const localization = store.viewer.form.localization
       .getLocalization(langCode, componentData.key, annotation.key, propertyBlockType)
-    return localization ?? ''
+    if (isUndefined(localization) || localization === null) return ''
+    if (typeof localization === 'string') return localization
+    try {
+      return JSON.stringify(localization, null, 2)
+    } catch {
+      return JSON.stringify({value: localization})
+    }
   }, [store, componentData, annotation, propertyBlockType])
 
   const getComputeCode = useCallback<CalculableEditorProps['getComputeCode']>((type, params) => {

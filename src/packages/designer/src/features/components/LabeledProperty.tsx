@@ -60,6 +60,10 @@ interface CodeButtonProps extends CalculableEditorProps {
    * The data required to display the component.
    */
   componentData: ComponentData
+  /**
+   * Current property value.
+   */
+  value?: unknown
 }
 
 type ButtonType = 'disabled' | 'calculation' | 'localization' | 'localizable' | 'calculable' | 'calculableAndLocalizable'
@@ -101,7 +105,7 @@ const ButtonAppearance: Record<ButtonType, ButtonAppearance> = {
 }
 
 const RawCodeButton = (props: CodeButtonProps) => {
-  const {annotation, getComputeCode, setComputeCode, disableCompute, getComputeType, hasComputeCode, componentData} = props
+  const {annotation, getComputeCode, setComputeCode, disableCompute, getComputeType, hasComputeCode, componentData, value} = props
   const store = useBuilderStore()
   const disabled = !annotation.calculable && !annotation.localizable
   const getLabel = useTranslationPart('propertiesEditor.codeButton')
@@ -130,8 +134,8 @@ const RawCodeButton = (props: CodeButtonProps) => {
   const handleClick = useCallback(() => {
     // eslint-disable-next-line react-hooks/immutability
     store.currentEditable = new EditableProperty(disableCompute, setComputeCode,
-      getComputeCode, getComputeType, hasComputeCode, annotation, componentData.key)
-  }, [annotation, componentData.key, disableCompute, getComputeCode, getComputeType, hasComputeCode, setComputeCode, store])
+      getComputeCode, getComputeType, hasComputeCode, annotation, componentData.key, value)
+  }, [annotation, componentData.key, disableCompute, getComputeCode, getComputeType, hasComputeCode, setComputeCode, store, value])
 
   const icon = useMemo(() => <FaIcon icon={buttonStyle.icon} color={buttonStyle.color}/>, [buttonStyle.icon, buttonStyle.color])
 
@@ -200,8 +204,8 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
 
   const leftButton = useMemo(() => {
     const needCodeButton = annotation.calculable || annotation.localizable
-    return needCodeButton ? <CodeButton {...codeButtonProps}/> : undefined
-  }, [annotation.calculable, annotation.localizable, codeButtonProps])
+    return needCodeButton ? <CodeButton {...codeButtonProps} value={value}/> : undefined
+  }, [annotation.calculable, annotation.localizable, codeButtonProps, value])
 
   const {hint, label} = useTranslatedComponentProperty(annotation, componentType)
 

@@ -17,6 +17,8 @@ const RawArrayInput = (props: AnnotationEditorProps) => {
   const {onAdd, onRemove, columns, calculateEditorProps} = annotation.editorProps ?? {}
   const viewerStore = useStore()
   const preparedColumns = useMemo(() => makeColumns(columns ?? DEFAULT_COLUMNS), [columns])
+  const computeType = useMemo(() => props.getComputeType(), [props])
+  const showItem = typeof computeType === 'undefined'
 
   const handleAdd = useCallback((index: number) => {
     onAdd?.(index, componentData, viewerStore)
@@ -30,9 +32,9 @@ const RawArrayInput = (props: AnnotationEditorProps) => {
 
   return <>
     <LabeledProperty {...props}/>
-    <EditableTable data={value} onChange={onChange} columns={preparedColumns}
-                   onRemove={handleRemove} onAdd={handleAdd} {...calculatedProps}
-    />
+    {showItem && <EditableTable data={value} onChange={onChange} columns={preparedColumns}
+                                onRemove={handleRemove} onAdd={handleAdd} {...calculatedProps}
+    />}
   </>
 }
 

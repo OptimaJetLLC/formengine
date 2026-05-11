@@ -1,6 +1,6 @@
 import type {OnMount} from '@monaco-editor/react'
 import type {IFormData} from '@react-form-builder/core'
-import {CalculableResult, getEditableFormData, namedObserver, useStore} from '@react-form-builder/core'
+import {CalculableResult, getEditableFormData, isNumber, isString, isUndefined, namedObserver, useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
 import type {editor} from 'monaco-editor'
 import {useCallback, useMemo, useRef, useState} from 'react'
@@ -23,6 +23,17 @@ import styles from './LocalizationEditor.module.css'
  */
 export const isWhitespaceOnlyLocalizationValue = (value: string) => value !== '' && value.trim() === ''
 
+const stringifyLocalizationDefault = (value: unknown): string => {
+  if (value === null || isUndefined(value)) return ''
+  if (isString(value)) return value
+  if (isNumber(value) || typeof value === 'boolean') return String(value)
+  try {
+    return JSON.stringify(value, null, 2)
+  } catch {
+    return ''
+  }
+}
+
 const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const t = useTranslationPart('common')
   const tPanel = useTranslationPart('bottomPanel')
@@ -34,7 +45,8 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
   const codeEditorRef = useRef<editor.IStandaloneCodeEditor>(null)
   const {formData} = useStore()
   const initialData = useMemo(() => getEditableFormData(formData), [formData])
-  const storeValue = editableProperty.getComputeCode('localization', {langCode: language.fullCode})
+  const storedLocalizationValue = editableProperty.getComputeCode('localization', {langCode: language.fullCode})
+  const storeValue = storedLocalizationValue !== '' ? storedLocalizationValue : stringifyLocalizationDefault(editableProperty.currentValue)
   const [value, setValue] = useState(storeValue)
   const [prevValue, setPrevValue] = useState(storeValue)
   const beginContextLine = `${localizationStringId} = `

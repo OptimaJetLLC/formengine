@@ -12,6 +12,9 @@ description: In this guide, we will look at how to localize the string propertie
 Some component properties can be localized. In order for a component property to be localizable, the following conditions must be met - the
 property must be of type [string](/api-reference/@react-form-builder/core/variables/string) and
 the [notLocalize](/api-reference/@react-form-builder/core/classes/BaseBuilder#notlocalize) method has not been called for this property.
+Array-type properties (such as dropdown items, radio group options, and checkbox lists) can also be localized by using
+the [localize](/api-reference/@react-form-builder/core/classes/BaseBuilder#localize) getter on the annotation builder. See
+[Localizing array properties](#localizing-array-properties) for details.
 
 Here is an example of a component where the `name` property is localized, but the `value` property is not:
 
@@ -250,6 +253,120 @@ text will change to the one we just wrote.
 
 ![Localization 09](/assets/localization/localization-10.png)
 
+## Localizing array properties
+
+In addition to string properties, array-type properties such as dropdown options, radio group items, and checkbox lists can also be
+localized. This allows you to translate option labels while keeping the underlying values unchanged.
+
+### Making an array property localizable
+
+When defining a component, chain the `localize` getter on the `array` annotation builder:
+
+```typescript jsx {9} title='MyComponent.tsx'
+import {array, define, string, toLabeledValues} from '@react-form-builder/core'
+
+const MySelect = (props: MySelectProps) => { /* ... */
+}
+
+export const mySelect = define(MySelect, 'MySelect')
+  .props({
+    label: string.default('Select'),
+    items: array.localize.default(toLabeledValues(['Option A', 'Option B']))
+  })
+```
+
+This makes the globe icon appear next to the `items` property in the designer, just like it does for string properties.
+
+### Editing array localization in the designer
+
+1. Select a component that has a localizable array property (for example, a radio group).
+2. Click the globe icon next to the array property (e.g. "Items").
+3. The localization editor opens with the current array value pre-filled as formatted JSON.
+4. Edit the JSON array for the selected language. Each item should have `value` and `label` fields:
+
+```json
+[
+  {
+    "value": "small",
+    "label": "Klein"
+  },
+  {
+    "value": "medium",
+    "label": "Mittel"
+  },
+  {
+    "value": "large",
+    "label": "Groß"
+  }
+]
+```
+
+5. Switch languages using the language picker below the editor to provide translations for each language.
+6. Click **Save** to persist the localization.
+
+:::info note
+
+The localization editor pre-fills the array value as formatted JSON when you first open it for a property that has no stored localization
+yet. This gives you a convenient starting point for translation.
+
+:::
+
+### How it is stored in JSON
+
+Array localization values are stored as JSON arrays directly in the `localization` object, not as Fluent message strings:
+
+```json {8-20}
+{
+  "localization": {
+    "en-US": {
+      "sizeSelect": {
+        "component": {
+          "label": "Size",
+          "items": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ]
+        }
+      }
+    },
+    "de-DE": {
+      "sizeSelect": {
+        "component": {
+          "label": "Größe",
+          "items": [
+            {
+              "value": "small",
+              "label": "Klein"
+            },
+            {
+              "value": "medium",
+              "label": "Mittel"
+            },
+            {
+              "value": "large",
+              "label": "Groß"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+FormEngine automatically detects whether a localization value is a JSON array or object and parses it accordingly, so no extra
+configuration is needed beyond marking the property as localizable.
+
 ## Custom localization
 
 If you want to use your localization system, you can plug it in. To do this, you need to pass the localization function through
@@ -407,5 +524,6 @@ the [language](/api-reference/@react-form-builder/core/interfaces/FormViewerProp
 ## Conclusion
 
 We have shown how localization of component properties works in Form Builder. Localization works the same way
-as [computed properties](/formengine-designer/features/computed-properties) work, except that the Fluent language is used for localization.
-We also showed that localization works reactively when data changes.
+as [computed properties](/formengine-designer/features/computed-properties) work, except that the Fluent language is used for string
+localization. Array-type properties such as dropdown options and radio group items can also be localized by storing translated JSON arrays
+directly in the localization data. We also showed that localization works reactively when data changes.

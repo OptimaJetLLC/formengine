@@ -68,7 +68,7 @@ the locale for the messages.
 
 ##### messages
 
-`Record`\<`string`, `string`\>
+`Record`\<`string`, `unknown`\>
 
 the messages to add.
 

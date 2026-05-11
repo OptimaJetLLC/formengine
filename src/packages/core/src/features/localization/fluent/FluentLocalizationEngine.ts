@@ -17,8 +17,30 @@ import type {LocalizationType} from '../types'
 import {dotInternalValue, replaceDots, restoreDots} from './dots'
 import {isFluentVariable} from './isFluentVariable'
 
-const objetToFluentResource = (messages: Record<string, string>): string =>
-  Object.entries(messages).map(([key, value]) => `${key} = ${value}`).join('\n')
+const escapeCurlyBraces = (value: string): string => {
+  return value.replaceAll('{', '{"{"}').replaceAll('}', '{"}"}')
+}
+
+const fluentEncodeValue = (value: unknown): string => {
+  const raw = typeof value === 'string' ? value : JSON.stringify(value)
+  const escaped = typeof value === 'string' ? raw : escapeCurlyBraces(raw)
+  const lines = escaped.split('\n')
+
+  if (lines.length <= 1) return lines[0] ?? ''
+
+  const [first, ...rest] = lines
+
+  // https://projectfluent.org/fluent/guide/syntax.html#multiline-text
+  return [
+    first ?? '',
+    ...rest.map((line) => `    ${line}`),
+  ].join('\n')
+}
+
+const objetToFluentResource = (messages: Record<string, unknown>): string =>
+  Object.entries(messages)
+    .map(([key, value]) => `${key} = ${fluentEncodeValue(value)}`)
+    .join('\n')
 
 const convertFluentError = (error: Error): LocalizationError =>
   new LocalizationError(error.message, error.name)
@@ -94,7 +116,7 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
    * @param bundle the fluent bundle to use.
    * @returns the created Fluent bundle.
    */
-  #createFluentBundle(languageFullCode: LanguageFullCode, items: Record<string, string>, errors: Array<LocalizationError>, bundle?: FluentBundle): FluentBundle {
+  #createFluentBundle(languageFullCode: LanguageFullCode, items: Record<string, unknown>, errors: Array<LocalizationError>, bundle?: FluentBundle): FluentBundle {
     bundle = bundle ?? this.#getBundle(languageFullCode)
     const source = objetToFluentResource(items)
     const fluentResource = new FluentResource(source)
@@ -149,7 +171,7 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
   /**
    * @inheritDoc
    */
-  addMessages(locale: LanguageFullCode, messages: Record<string, string>): Array<LocalizationError> {
+  addMessages(locale: LanguageFullCode, messages: Record<string, unknown>): Array<LocalizationError> {
     const source = objetToFluentResource(messages)
     const bundle = this.#getBundle(locale)
     const resource = new FluentResource(source)
@@ -181,9 +203,20 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
         return
       }
 
-      const messageId = `${messageIdPrefix}${this.getCompatibleId(value)}`
-      const localizedMessage = this.#getMessageWithFallback(messageId, formBundle, defaultBundle, formItems, defaultItems)
+      const rawConstant = form.localization.getLocalization(requestedFullCode, componentStore.key, value, type)
+      if (!isUndefined(rawConstant) && typeof rawConstant !== 'string') {
+        data[value] = rawConstant
+        return
+      }
 
+      const messageId = `${messageIdPrefix}${this.getCompatibleId(value)}`
+      const jsonFromLocalization = this.#tryParseJsonLocalization(messageId, formItems, defaultItems)
+      if (!isUndefined(jsonFromLocalization)) {
+        data[value] = jsonFromLocalization
+        return
+      }
+
+      const localizedMessage = this.#getMessageWithFallback(messageId, formBundle, defaultBundle, formItems, defaultItems)
       data[value] = this.#resolveLocalizedPropertyValue(localizedMessage, value, form, componentStore, formData)
     })
 
@@ -263,9 +296,9 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
     errors: Array<LocalizationError>
   ): {
     defaultBundle?: FluentBundle;
-    defaultItems?: Record<string, string>;
+    defaultItems?: Record<string, unknown>;
     formBundle?: FluentBundle;
-    formItems?: Record<string, string>
+    formItems?: Record<string, unknown>
   } {
     const defaultFullCode = form.defaultLanguage.fullCode
     const defaultItemsRaw = defaultFullCode !== requestedFullCode
@@ -292,8 +325,11 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
    * @param messageId fluent message id.
    * @returns true when the entry exists and is the empty string.
    */
-  #hasExplicitEmptyLocalization(items: Record<string, string> | undefined, messageId: string): boolean {
-    return !!items && Object.prototype.hasOwnProperty.call(items, messageId) && items[messageId] === ''
+  #hasExplicitEmptyLocalization(items: Record<string, unknown> | undefined, messageId: string): boolean {
+    return !!items
+      && Object.prototype.hasOwnProperty.call(items, messageId)
+      && typeof items[messageId] === 'string'
+      && items[messageId] === ''
   }
 
   /**
@@ -321,8 +357,8 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
     messageId: string,
     formBundle?: FluentBundle,
     defaultBundle?: FluentBundle,
-    formItems?: Record<string, string>,
-    defaultItems?: Record<string, string>
+    formItems?: Record<string, unknown>,
+    defaultItems?: Record<string, unknown>
   ): { message: string; bundle: FluentBundle } | undefined {
     if (this.#hasExplicitEmptyLocalization(formItems, messageId)) {
       return this.#resolvedEmptyMessage(formBundle)
@@ -397,19 +433,40 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
     }
 
     const propValue = componentStore.props[propertyKey]?.value
-    if (!isUndefined(propValue)) {
-      return `${propValue}`
-    }
+    if (!isUndefined(propValue)) return propValue
 
     const defaultPropertyValue = (form as any).componentTree
       ?.findByKey(componentStore.key)
       ?.model
       ?.defaultProps?.[propertyKey]
-    if (!isUndefined(defaultPropertyValue)) {
-      return `${defaultPropertyValue}`
-    }
+    if (!isUndefined(defaultPropertyValue)) return defaultPropertyValue
 
     return componentStore.type
+  }
+
+  #tryParseJsonLocalization(
+    messageId: string,
+    formItems?: Record<string, unknown>,
+    defaultItems?: Record<string, unknown>
+  ): unknown {
+    const fromRequested = formItems?.[messageId]
+    const requestedParsed = this.#tryParseJsonUnknown(fromRequested)
+    if (!isUndefined(requestedParsed)) return requestedParsed
+
+    const fromDefault = defaultItems?.[messageId]
+    return this.#tryParseJsonUnknown(fromDefault)
+  }
+
+  #tryParseJsonUnknown(value: unknown): unknown {
+    if (isUndefined(value)) return undefined
+    if (typeof value !== 'string') return value
+    const trimmed = value.trim()
+    if (!(trimmed.startsWith('{') || trimmed.startsWith('['))) return undefined
+    try {
+      return JSON.parse(trimmed)
+    } catch {
+      return undefined
+    }
   }
 
   /**

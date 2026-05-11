@@ -90,6 +90,7 @@ export class EditableProperty implements CalculableEditorProps {
    * @param hasComputeCode the function for checking the existence of the computed code.
    * @param annotation the annotation object for the property.
    * @param componentKey the key of the component that the property belongs to.
+   * @param currentValue the current property value used as the default when opening the localization editor.
    */
   constructor(
     readonly disableCompute: CalculableEditorProps['disableCompute'],
@@ -98,7 +99,8 @@ export class EditableProperty implements CalculableEditorProps {
     readonly getComputeType: CalculableEditorProps['getComputeType'],
     readonly hasComputeCode: CalculableEditorProps['hasComputeCode'],
     readonly annotation: Annotation,
-    readonly componentKey: string
+    readonly componentKey: string,
+    readonly currentValue?: unknown
   ) {
   }
 }
