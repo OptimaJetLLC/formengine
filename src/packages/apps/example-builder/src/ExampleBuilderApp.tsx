@@ -5,15 +5,16 @@ import {useMemo} from 'react'
 import {customization} from './customization'
 import {RSuiteBuilder} from './RSuiteBuilder'
 import {RSuiteBuilderImportCss} from './RSuiteBuilderImportCss'
+import {generatedLicenseKey} from './utils/license'
 
 const appName = 'example'
 
 const getBuilder = (view: ViewType) => {
   switch (view) {
     case 'mantine':
-      return <MantineBuilder appName={appName} customization={customization} />
+      return <MantineBuilder appName={appName} customization={customization} licenseKey={generatedLicenseKey} />
     case 'mui':
-      return <MuiBuilder appName={appName} customization={customization} />
+      return <MuiBuilder appName={appName} customization={customization} licenseKey={generatedLicenseKey} />
     case 'rsuite-import-css':
       return <RSuiteBuilderImportCss />
     case 'rsuite-inject-css':
