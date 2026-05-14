@@ -14,7 +14,7 @@ import type {ILocalizationEngine} from '../ILocalizationEngine'
 import type {Language, LanguageFullCode} from '../language'
 import {LocalizationError} from '../LocalizationError'
 import type {LocalizationType} from '../types'
-import {dotInternalValue, replaceDots, restoreDots} from './dots'
+import {dotInternalValue, replaceDots, replaceDotsDeep, restoreDots} from './dots'
 import {isFluentVariable} from './isFluentVariable'
 
 const escapeCurlyBraces = (value: string): string => {
@@ -39,7 +39,7 @@ const fluentEncodeValue = (value: unknown): string => {
 
 const objetToFluentResource = (messages: Record<string, unknown>): string =>
   Object.entries(messages)
-    .map(([key, value]) => `${key} = ${fluentEncodeValue(value)}`)
+    .map(([key, value]) => `${key} = ${fluentEncodeValue(replaceDotsDeep(value))}`)
     .join('\n')
 
 const convertFluentError = (error: Error): LocalizationError =>
@@ -198,6 +198,16 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
 
     const {defaultBundle, defaultItems, formBundle, formItems} = this.#setupBundles(form, requestedFullCode, errors)
 
+    let fluentDataCache: Record<string, FluentVariable> | undefined = undefined
+    const getFluentData = () => {
+      if (!fluentDataCache) {
+        const editableData = getEditableFormData(formData)
+        const missingProperties: string[] = []
+        fluentDataCache = createLocalizationDataProxy(this.#getFluentData(editableData), missingProperties)
+      }
+      return fluentDataCache
+    }
+
     Object.entries(componentStore.props).forEach(([value, componentProperty]) => {
       if (!isLocalizedProperty(componentProperty)) {
         return
@@ -205,14 +215,16 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
 
       const rawConstant = form.localization.getLocalization(requestedFullCode, componentStore.key, value, type)
       if (!isUndefined(rawConstant) && typeof rawConstant !== 'string') {
-        data[value] = rawConstant
+        const bundle = formBundle ?? defaultBundle ?? createFluentBundle(requestedFullCode)
+        data[value] = this.#interpolateData(rawConstant, bundle, getFluentData())
         return
       }
 
       const messageId = `${messageIdPrefix}${this.getCompatibleId(value)}`
       const jsonFromLocalization = this.#tryParseJsonLocalization(messageId, formItems, defaultItems)
       if (!isUndefined(jsonFromLocalization)) {
-        data[value] = jsonFromLocalization
+        const bundle = formBundle ?? defaultBundle ?? createFluentBundle(requestedFullCode)
+        data[value] = this.#interpolateData(jsonFromLocalization, bundle, getFluentData())
         return
       }
 
@@ -258,12 +270,11 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
                    localizationStringId: string,
                    language: Language,
                    formData: IFormData) {
-    const dottedLocalization = replaceDots(localization)
     const errors: Array<LocalizationError> = []
     const languageFullCode = language.fullCode
 
     const testBundle = this.#createFluentBundle(languageFullCode, {
-      [`${localizationStringId}`]: dottedLocalization
+      [`${localizationStringId}`]: localization
     }, errors, createFluentBundle(languageFullCode))
 
     const msg = testBundle.getMessage(localizationStringId)
@@ -467,6 +478,58 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
     } catch {
       return undefined
     }
+  }
+
+  /**
+   * Interpolates a single string through a temporary Fluent bundle.
+   * @param value the string potentially containing Fluent placeholders.
+   * @param bundle the Fluent bundle to use for formatting context.
+   * @param fluentData the flattened form data for variable substitution.
+   * @returns the interpolated string, or the original string if it contains no placeholders.
+   */
+  #interpolateString(value: string, bundle: FluentBundle, fluentData: Record<string, FluentVariable>): string {
+    if (!value.includes('{')) return value
+
+    const tempId = 'interpolate-tmp'
+    const dottedValue = replaceDots(value)
+    const tempBundle = createFluentBundle(bundle.locales[0] as LanguageFullCode)
+    const resource = new FluentResource(`${tempId} = ${fluentEncodeValue(dottedValue)}`)
+    tempBundle.addResource(resource)
+
+    const msg = tempBundle.getMessage(tempId)
+    if (!msg?.value) return value
+
+    const errors: Error[] = []
+    const result = tempBundle.formatPattern(msg.value, fluentData, errors)
+    return restoreDots(result)
+  }
+
+  /**
+   * Recursively traverses data of any shape and interpolates Fluent placeholders in string keys and values.
+   * @param data the data to interpolate (can be any shape: primitive, array, or object).
+   * @param bundle the Fluent bundle to use for formatting context.
+   * @param fluentData the flattened form data for variable substitution.
+   * @returns the data with all string keys and values interpolated.
+   */
+  #interpolateData(data: unknown, bundle: FluentBundle, fluentData: Record<string, FluentVariable>): unknown {
+    if (typeof data === 'string') {
+      return this.#interpolateString(data, bundle, fluentData)
+    }
+
+    if (Array.isArray(data)) {
+      return data.map((item) => this.#interpolateData(item, bundle, fluentData))
+    }
+
+    if (typeof data === 'object' && !isNull(data)) {
+      const result: Record<string, unknown> = {}
+      for (const [key, value] of Object.entries(data as Record<string, unknown>)) {
+        const interpolatedKey = this.#interpolateString(key, bundle, fluentData)
+        result[interpolatedKey] = this.#interpolateData(value, bundle, fluentData)
+      }
+      return result
+    }
+
+    return data
   }
 
   /**

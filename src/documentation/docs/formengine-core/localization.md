@@ -145,6 +145,113 @@ Fluent values and spaces:
 
 :::
 
+### Variables in localized arrays and objects
+
+When a localized property resolves to a **JSON array or object** (for example, dropdown items, radio options, or any custom structure stored
+under `localization`), FormEngine still applies the same `{$variableName}` interpolation as for plain strings. The
+[FluentLocalizationEngine](/api-reference/@react-form-builder/core/classes/FluentLocalizationEngine) walks the value **recursively**:
+every **string** in object **values** and in **keys** is formatted with Fluent using the current form data; numbers, booleans, and `null`
+are left unchanged.
+
+Use this when option labels (or values) should reflect data the user entered elsewhere on the form, or when you store nested configuration
+per language.
+
+**Where the data comes from:** Pass field values through
+[initialData](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#initialdata) on
+[FormViewer](/api-reference/@react-form-builder/core/variables/FormViewer) (or the equivalent in your host). Top-level keys in
+`initialData` become Fluent variables with the same name.
+
+**Nested fields in form data:** Use a normal dot path in the placeholder (for example `{$user.name}` or `{$profile.displayName}`).
+FormEngine resolves nested `initialData` against those paths automatically—for example, form data `{ "user": { "name": "Alex" } }` is
+referenced as `{$user.name}` in patterns.
+
+**Missing variables:** If a referenced key is not present in the form data, the placeholder resolves to an empty string (same behavior as
+for localized strings).
+
+**Example — localized `items` with dynamic labels:**
+
+```json
+{
+  "localization": {
+    "en-US": {
+      "sizeSelect": {
+        "component": {
+          "items": [
+            {
+              "value": "custom",
+              "label": "Custom size for {$productName}"
+            },
+            {
+              "value": "standard",
+              "label": "Standard"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+With `initialData` such as `{ "productName": "Acme XL" }`, the first option label renders as `Custom size for Acme XL`; the second option
+has no placeholders and stays `Standard`.
+
+**Example — placeholders in both `label` and `value`:**
+
+```json
+{
+  "localization": {
+    "en-US": {
+      "orderSelect": {
+        "component": {
+          "items": [
+            {
+              "value": "order-{$orderId}",
+              "label": "Order {$orderId}"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+**Example — nested object (metadata per language):**
+
+```json
+{
+  "localization": {
+    "en-US": {
+      "summaryCard": {
+        "component": {
+          "config": {
+            "title": "Hello, {$displayName}",
+            "meta": {
+              "subtitle": "Role: {$role}"
+            },
+            "tags": [
+              "{$region}",
+              "static-tag"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+All string leaves (`title`, `subtitle`, each array element that is a string) are interpolated; a key that were a string with placeholders
+would be interpolated as well.
+
+:::info note
+
+If the same property is stored as a **JSON string** inside the Fluent bundle (for example, a single message whose value is a stringified
+array starting with `[` or `{`), that value is parsed and interpolated the same way after parsing.
+
+:::
+
 ### The languages Property
 
 The [languages](/api-reference/@react-form-builder/core/interfaces/PersistedForm#languages) array defines which languages are available for
@@ -742,6 +849,10 @@ selected language while the underlying values stay the same.
 
 Array data localization stores the entire translated array as a JSON value in the `localization` object. When FormEngine resolves the
 property for the current language, it parses the JSON array and passes it to the component instead of the default value.
+
+After the value is resolved, **Fluent placeholders** in any string inside that array or object (for example `{$userName}` in an option
+`label`) are interpolated using the same rules as for localized strings. See
+[Variables in localized arrays and objects](#variables-in-localized-arrays-and-objects) above.
 
 The localization entry for an array property is stored under the same path as string properties:
 

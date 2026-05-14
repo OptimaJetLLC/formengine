@@ -367,6 +367,30 @@ Array localization values are stored as JSON arrays directly in the `localizatio
 FormEngine automatically detects whether a localization value is a JSON array or object and parses it accordingly, so no extra
 configuration is needed beyond marking the property as localizable.
 
+### Interpolating form data in array JSON
+
+You can use the same `{$variableName}` placeholders in **any string** inside the localized array or object (including `label` and `value`
+fields, nested objects, and string keys). At runtime, the viewer replaces them using the form’s **initial data** (the same source as for
+localized strings).
+
+Example — option label depends on another field:
+
+```json
+[
+  {
+    "value": "a",
+    "label": "Hello, {$userName}"
+  }
+]
+```
+
+Provide `userName` through [initialData](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#initialdata) when rendering the
+form. For nested paths in form data (for example `profile.displayName`), use the same dotted form in the placeholder, such as
+`{$profile.displayName}`.
+
+See [Variables in localized arrays and objects](/formengine-core/localization#variables-in-localized-arrays-and-objects) in the core
+localization guide for full rules, edge cases, and more examples.
+
 ## Custom localization
 
 If you want to use your localization system, you can plug it in. To do this, you need to pass the localization function through

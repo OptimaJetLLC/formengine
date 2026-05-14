@@ -50,7 +50,7 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
   const [value, setValue] = useState(storeValue)
   const [prevValue, setPrevValue] = useState(storeValue)
   const beginContextLine = `${localizationStringId} = `
-  const codeEditorKey = `${editableProperty.annotation.key}_${language.fullCode}_${storeValue}`
+  const codeEditorKey = `${editableProperty.annotation.key}_${language.fullCode}`
   const endContextLine: string = ''
 
   const applyLocalization = useCallback((next: string) => {
