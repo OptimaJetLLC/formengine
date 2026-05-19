@@ -7,14 +7,14 @@
   "components": {
     "GoogleMap": {
       "description": "Komponente, die eine Google-Karte anzeigt",
-      "name": "Google Karte anzeigen",
+      "name": "Google Map",
       "props": {
         "addMarkerOnSearch": {
           "description": "Gibt an, ob bei der Suche eine Markierung hinzugefügt werden soll",
           "name": "Markierung bei der Suche hinzufügen"
         },
         "allowChangingMarkers": {
-          "description": "Wenn aktiviert, kann der Benutzer die Markierungen ändern",
+          "description": "Ob der Benutzer die Markierungen ändern kann",
           "name": "Markerwechsel zulassen"
         },
         "allowMultipleMarkers": {
@@ -43,11 +43,11 @@
         },
         "label": {
           "description": "Kartenbeschriftung",
-          "name": "Etikett"
+          "name": "Beschriftung"
         },
         "language": {
           "description": "Die zu verwendende Sprache",
-          "name": "Sprachlich"
+          "name": "Sprache"
         },
         "latitude": {
           "description": "Breitengrad des Mittelpunkts",
@@ -83,11 +83,11 @@
         },
         "removeMarkerCaption": {
           "description": "Die Beschriftung auf der Schaltfläche zum Entfernen von Markern",
-          "name": "Markierungsbeschriftung entfernen"
+          "name": "Beschriftung zum Entfernen"
         },
         "searchPlaceholder": {
           "description": "Platzhaltertext für die Kartensucheingabe",
-          "name": "Platzhalter suchen"
+          "name": "Suchplatzhalter"
         },
         "showMapControl": {
           "description": "Gibt an, ob das Kartensteuerelement angezeigt werden soll",

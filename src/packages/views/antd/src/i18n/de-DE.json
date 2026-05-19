@@ -7,7 +7,7 @@
   "components": {
     "AntButton": {
       "description": "Eine Schaltfläche bedeutet eine Operation (oder eine Reihe von Operationen). Durch Klicken auf eine Schaltfläche wird die entsprechende Geschäftslogik ausgelöst",
-      "name": "Ameisen-Knopf",
+      "name": "Ant Button",
       "props": {
         "block": {
           "description": "Option zum Anpassen der Schaltflächenbreite an die übergeordnete Breite",
@@ -23,11 +23,11 @@
         },
         "disabled": {
           "description": "Deaktivierter Status der Schaltfläche",
-          "name": "Behinderte"
+          "name": "Deaktiviert"
         },
         "ghost": {
           "description": "Hintergrund transparent machen und Text- und Rahmenfarben invertieren",
-          "name": "Geist"
+          "name": "Ghost"
         },
         "href": {
           "description": "Weiterleitungs-URL der Link-Schaltfläche",
@@ -54,8 +54,8 @@
           "name": "Ziel"
         },
         "type": {
-          "description": "Kann auf primären Geist gestrichelten Linktext Standard gesetzt werden",
-          "name": "Art"
+          "description": "Kann auf primären Ghost gestrichelten Linktext Standard gesetzt werden",
+          "name": "Typ"
         }
       }
     },
@@ -81,7 +81,7 @@
         },
         "order": {
           "description": "Rasterreihenfolge",
-          "name": "Bestellen"
+          "name": "Reihenfolge"
         },
         "pull": {
           "description": "Die Anzahl der Zellen, für die das Raster nach links verschoben wird",
@@ -119,7 +119,7 @@
       "props": {
         "disabled": {
           "description": "Ob die Eingabe deaktiviert ist",
-          "name": "Behinderte"
+          "name": "Deaktiviert"
         },
         "showCount": {
           "description": "Gibt an, ob die Anzahl der Zeichen angezeigt werden soll",
@@ -153,10 +153,10 @@
         },
         "centered": {
           "description": "Zentriertes Modal",
-          "name": "Egozentrisch"
+          "name": "Zentriert"
         },
         "keyboard": {
-          "description": "Ob unterstützung drücken sie ESC zu schließen",
+          "description": "Ob das Schließen mit Esc unterstützt wird",
           "name": "Tastatur"
         },
         "okText": {
@@ -167,7 +167,7 @@
     },
     "AntRow": {
       "description": "Die Zeile des Gitters",
-      "name": "Ameisenreihe",
+      "name": "Ant Row",
       "props": {
         "align": {
           "description": "Vertikale Ausrichtung",
@@ -175,25 +175,25 @@
         },
         "gutter": {
           "description": "Abstand zwischen Gittern",
-          "name": "Rinne"
+          "name": "Abstand"
         },
         "justify": {
           "description": "Horizontale Anordnung",
-          "name": "Rechtfertigen"
+          "name": "Ausrichten"
         },
         "wrap": {
           "description": "Automatische Wickellinie",
-          "name": "Wickeln"
+          "name": "Umbruch"
         }
       }
     },
     "AntTable": {
       "description": "Eine Tabelle zeigt Datenzeilen an",
-      "name": "Ameisentisch",
+      "name": "Ant Table",
       "props": {
         "bordered": {
           "description": "Gibt an, ob alle Tabellenränder angezeigt werden sollen",
-          "name": "Gesäumt"
+          "name": "Umrandet"
         },
         "columns": {
           "description": "Spalten der Tabelle",
@@ -235,7 +235,7 @@
     },
     "AntTooltip": {
       "description": "Einfaches Text-Popup-Feld",
-      "name": "Ameisen-Tooltip",
+      "name": "Ant Tooltip",
       "props": {
         "placement": {
           "description": "Die Position des Tooltips relativ zum Ziel",

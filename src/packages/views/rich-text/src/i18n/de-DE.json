@@ -15,11 +15,11 @@
         },
         "label": {
           "description": "Etikett",
-          "name": "Etikett"
+          "name": "Beschriftung"
         },
         "modules": {
           "description": "Ermöglicht die Anpassung des Verhaltens und der Funktionalität des Editors. Lesen Sie die Dokumente für weitere Informationen",
-          "name": "Funktionsbausteine"
+          "name": "Module"
         },
         "placeholder": {
           "description": "Platzhalter",
@@ -27,7 +27,7 @@
         },
         "readOnly": {
           "description": "Schreibgeschütztes Flag",
-          "name": "Schreibgesch"
+          "name": "Schreibgeschützt"
         },
         "toolbarOptions": {
           "description": "Gruppen von Schaltflächen, die in der Symbolleiste angezeigt werden sollen",

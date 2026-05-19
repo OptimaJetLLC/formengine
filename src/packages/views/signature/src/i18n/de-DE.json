@@ -14,7 +14,7 @@
           "name": "Hintergrundfarbe"
         },
         "clearButtonText": {
-          "description": "Tastenbeschriftung löschen",
+          "description": "Schaltflächenbeschriftung löschen",
           "name": "Schaltflächentext löschen"
         },
         "height": {
@@ -23,7 +23,7 @@
         },
         "label": {
           "description": "Das Etikett für die Komponente",
-          "name": "Etikett"
+          "name": "Beschriftung"
         },
         "lineWidth": {
           "description": "Linienbreite",
@@ -35,7 +35,7 @@
         },
         "readOnly": {
           "description": "Schreibgeschütztes Flag",
-          "name": "Schreibgesch"
+          "name": "Schreibgeschützt"
         },
         "value": {
           "description": "Die anfängliche Daten-URL zum Zeichnen des Signaturbilds",

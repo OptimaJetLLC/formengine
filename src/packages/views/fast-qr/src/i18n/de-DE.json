@@ -7,7 +7,7 @@
   "components": {
     "FastQR": {
       "description": "Komponente, die Text in QR-Codes umwandeln kann und benutzerdefinierte Farben und Logos unterstützt",
-      "name": "QR-Codes",
+      "name": "QR-Code",
       "props": {
         "content": {
           "description": "Der Inhalt des QR-Codes",
