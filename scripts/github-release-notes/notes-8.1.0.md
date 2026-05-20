@@ -35,4 +35,4 @@ Update all packages to version 8.1.0. No stylesheet or API migration beyond 8.0.
 
 ### Chore
 
-* Bumped `uuid` and `@rspack/cli` in the `examples` community **`bundle-size`** template.
+* Bumped `uuid` and `@rspack/cli` in the `examples` community `bundle-size` template.

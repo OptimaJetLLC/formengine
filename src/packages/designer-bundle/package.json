@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/designer-bundle",
-  "version": "8.1.0",
+  "version": "9.0.0",
   "private": false,
   "main": "src/index.ts",
   "type": "module",
@@ -23,13 +23,13 @@
     "create-archive": "node ./config/pack.ts"
   },
   "dependencies": {
-    "@react-form-builder/components-fast-qr": "^8.1.0",
-    "@react-form-builder/components-google-map": "^8.1.0",
-    "@react-form-builder/components-rich-text": "^8.1.0",
-    "@react-form-builder/components-rsuite": "^8.1.0",
-    "@react-form-builder/components-rsuite-table": "^8.1.0",
-    "@react-form-builder/components-signature": "^8.1.0",
-    "@react-form-builder/designer": "^8.1.0",
+    "@react-form-builder/components-fast-qr": "^9.0.0",
+    "@react-form-builder/components-google-map": "^9.0.0",
+    "@react-form-builder/components-rich-text": "^9.0.0",
+    "@react-form-builder/components-rsuite": "^9.0.0",
+    "@react-form-builder/components-rsuite-table": "^9.0.0",
+    "@react-form-builder/components-signature": "^9.0.0",
+    "@react-form-builder/designer": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0"
@@ -38,7 +38,7 @@
     "vite-inline-css-plugin": "^0.0.1"
   },
   "peerDependencies": {
-    "@react-form-builder/core": "8.1.0"
+    "@react-form-builder/core": "9.0.0"
   },
   "peerDependenciesMeta": {
     "@react-form-builder/core": {
