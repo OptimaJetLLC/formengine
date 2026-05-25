@@ -1,1134 +1,1134 @@
 {
   "GoogleMap": {
     "addMarkerOnSearch": {
-      "hint": "Да ли треба додати маркер у претрагу."
+      "hint": "Da li da dodate marker prilikom pretrage."
     },
     "allowChangingMarkers": {
-      "hint": "Ако је ово поље означено, корисник може променити маркере."
+      "hint": "Ako je označeno, korisnik može da promeni markere."
     },
     "allowMultipleMarkers": {
-      "hint": "Више маркера"
+      "hint": "Više markera"
     },
     "apiKey": {
-      "hint": "АПИ кључ Гоогле мапа. Сачувајте образац и освежите страницу да бисте применили промене.",
-      "name": "АПИ кључ"
+      "hint": "API ključ Google Maps. Sačuvajte obrazac i osvežite stranicu da biste primenili promene.",
+      "name": "API ključ"
     },
     "collisionBehavior": {
-      "hint": "Понашање маркера у судару."
+      "hint": "Ponašanje sudara markera."
     },
     "colorScheme": {
-      "hint": "Шема боја коју треба користити."
+      "hint": "Šema boja koja se koristi."
     },
     "gestureHandling": {
-      "hint": "Коришћена обрада покрета."
+      "hint": "Rukovanje gestama koje treba koristiti."
     },
     "language": {
-      "hint": "Језик који треба користити."
+      "hint": "Jezik koji treba koristiti."
     },
     "latitude": {
-      "hint": "Ширина централне тачке"
+      "hint": "Geografska širina središnje tačke"
     },
     "longitude": {
-      "hint": "Дужина централне тачке"
+      "hint": "Dužina središnje tačke"
     },
     "mapControlPosition": {
-      "hint": "Положај контроле на мапи."
+      "hint": "Položaj kontrole mape."
     },
     "mapId": {
-      "hint": "ИД мапе је идентификатор повезан са одређеним стилом мапе или објектом.",
-      "name": "ИД картице"
+      "hint": "ID mape je identifikator koji je povezan sa određenim stilom ili funkcijom mape.",
+      "name": "ID karte"
     },
     "mapTypeId": {
-      "hint": "Подразумевани тип картице који се користи.",
-      "name": "Тип картице"
+      "hint": "Podrazumevani tip mape koji se koristi.",
+      "name": "Tip mape"
     },
     "markerWindowTitle": {
-      "hint": "Наслов прозора са маркером.",
-      "name": "Наслов прозора маркера"
+      "hint": "Naslov prozora markera.",
+      "name": "Naslov prozora markera"
     },
     "markers": {
-      "hint": "Координате маркера"
+      "hint": "Koordinate markera"
     },
     "region": {
-      "hint": "Коришћени код региона."
+      "hint": "Regionalni kod koji se koristi."
     },
     "removeMarkerCaption": {
-      "hint": "Натпис на дугмету за уклањање маркера.",
-      "name": "Избришите потпис маркера"
+      "hint": "Naslov na dugmetu za uklanjanje markera.",
+      "name": "Uklonite naslov markera"
     },
     "searchPlaceholder": {
-      "hint": "Текст резервираног места за унос података претраге на мапи.",
-      "name": "Резервирано место за претрагу"
+      "hint": "Tekst rezerviranog mesta za unos za pretragu mape.",
+      "name": "Traži rezervirano mesto"
     },
     "showMapControl": {
-      "hint": "Прикажи контролу мапе."
+      "hint": "Da li treba prikazati kontrolu mape."
     },
     "zoom": {
-      "hint": "Ниво зумирања"
+      "hint": "Nivo zumiranja"
     }
   },
   "Modal": {
     "modalTemplate": {
-      "hint": "Шаблон за употребу као модално тело",
-      "name": "Модални образац"
+      "hint": "Šablon koji se koristi kao modalno telo",
+      "name": "Modalni šablon"
     }
   },
   "RichTextEditor": {
     "modules": {
-      "hint": "Омогућава вам прилагођавање понашања и функционалности уређивача. За више информација погледајте документе.",
-      "name": "Модули"
+      "hint": "Omogućava prilagođavanje ponašanja i funkcionalnosti uređivača. Pročitajte dokumente za više informacija.",
+      "name": "Moduli"
     },
     "toolbarOptions": {
-      "hint": "Групе дугмади које ће се појавити на траци са алаткама",
-      "name": "Опције траке са алаткама"
+      "hint": "Grupe tastera koje će se prikazati na traci sa alatkama",
+      "name": "Opcije trake sa alatkama"
     }
   },
   "RsAutoComplete": {
     "classPrefix": {
-      "hint": "Префикс ЦСС класе компоненте",
-      "name": "Префикс класе"
+      "hint": "Prefiks komponente CSS klase",
+      "name": "Prefiks klase"
     },
     "data": {
-      "hint": "Подаци о компоненти",
-      "name": "Подаци"
+      "hint": "Podaci komponente",
+      "name": "Podaci"
     },
     "defaultValue": {
-      "hint": "Подразумевана вредност (неконтролисана)",
-      "name": "Подразумевана вредност"
+      "hint": "Podrazumevana vrednost (nekontrolisano)",
+      "name": "Podrazumevana vrednost"
     },
     "disabled": {
-      "hint": "Без обзира да ли је избор онемогућен",
-      "name": "Неспособан за рад"
+      "hint": "Da li je onemogućen izbor",
+      "name": "Onemogućeno"
     },
     "filterBy": {
-      "hint": "Прилагођена правила филтрирања (подразумевано ће приказати само ставке чија је вредност подниз)",
-      "name": "Филтрирајте према"
+      "hint": "Prilagođena pravila filtera (prikazaće samo stavke čija je vrednost podrazumevano podniz)",
+      "name": "Filtriraj po"
     },
     "label": {
-      "hint": "Ознака компоненте",
-      "name": "Ознака"
+      "hint": "Oznaka komponente",
+      "name": "Oznaka"
     },
     "menuClassName": {
-      "hint": "ЦСС класа за примену на дом мени",
-      "name": "Назив класе менија"
+      "hint": "CSS klasa koja se primenjuje na meni DOM",
+      "name": "Naziv klase menija"
     },
     "onChange": {
-      "hint": "Позива се када одаберете опцију или промените улазну вредност или када промените улазну вредност",
-      "name": "На промени"
+      "hint": "Poziva se kada odaberete opciju ili promenite ulaznu vrednost, ili se promeni vrednost unosa",
+      "name": "OnChange"
     },
     "onClose": {
-      "hint": "Повратни позив се активира када је скривен",
-      "name": "На блиској удаљености"
+      "hint": "Povratni poziv otpušten kada je skriven",
+      "name": "OnClose"
     },
     "onEnter": {
-      "hint": "Повратни позив се покреће пре него што прекривач пређе на",
-      "name": "У центру"
+      "hint": "Povratni poziv je pokrenut pre prelaska na prekrivanje",
+      "name": "onEnter"
     },
     "onEntered": {
-      "hint": "Повратни позив се покреће након завршетка преласка преклапања у",
-      "name": "Ушао"
+      "hint": "Povratni poziv otpušten nakon što prekrivanje završi prelazak",
+      "name": "onUšao"
     },
     "onEntering": {
-      "hint": "Повратни позив се покреће када прекривач почне да прелази у",
-      "name": "При уласку"
+      "hint": "Povratni poziv se otvara kada prekrivanje počinje da prelazi",
+      "name": "onUlazak"
     },
     "onExit": {
-      "hint": "Повратни позив се покреће непосредно пре завршетка прелаза преклапања",
-      "name": "Неуспех"
+      "hint": "Povratni poziv je pokrenut neposredno pre prelaska prekrivanja",
+      "name": "OnExit"
     },
     "onExited": {
-      "hint": "Повратни позив се покреће након завршетка преласка прекривача",
-      "name": "Узбуђен"
+      "hint": "Povratni poziv je pokrenut nakon što se prekrivanje završi sa prelaskom",
+      "name": "OneExited"
     },
     "onExiting": {
-      "hint": "Повратни позив се покреће када прекривач почне да пропада",
-      "name": "Узбудљиво"
+      "hint": "Povratni poziv otpušten dok prekrivač počinje da prelazi",
+      "name": "OneKiting"
     },
     "onSelect": {
-      "hint": "Позива се када је изабрана нека опција",
-      "name": "Приликом избора"
+      "hint": "Poziva se kada je izabrana opcija",
+      "name": "OnSelect"
     },
     "placeholder": {
-      "hint": "Резервирано место улаза",
-      "name": "Резервирано место"
+      "hint": "Rezervni prostor za unos",
+      "name": "Rezervoar mesta"
     },
     "renderMenu": {
-      "hint": "Прилагођавање листе менија за приказивање",
-      "name": "Мени за приказивање"
+      "hint": "Prilagođavanje liste menija za prikazivanje",
+      "name": "Render meni"
     },
     "renderMenuItem": {
-      "hint": "Прилагођене ставке менија за приказивање",
-      "name": "Ставка менија за приказивање"
+      "hint": "Prilagođene stavke menija za prikaz",
+      "name": "Stavka menija za prikaz"
     },
     "selectOnEnter": {
-      "hint": "Ако је постављено на фалсе, функција избора тастера Ентер није важећа",
-      "name": "Изаберите док куцате"
+      "hint": "Kada je postavljena na false, funkcija odabira tastera Enter je nevažeća",
+      "name": "Izaberite na Enter"
     },
     "size": {
-      "hint": "Компонента може имати различите величине",
-      "name": "Величина"
+      "hint": "Komponenta može imati različite veličine",
+      "name": "Veličina"
     },
     "value": {
-      "hint": "Тренутна вредност (контролисана)",
-      "name": "Вредност"
+      "hint": "Trenutna vrednost (kontrolisana)",
+      "name": "Vrednost"
     }
   },
   "RsCell": {
     "dataKey": {
-      "hint": "Кључ за везивање података, али и нека врста кључа",
-      "name": "Кључ података"
+      "hint": "Ključ za vezivanje podataka, ali i neka vrsta ključa",
+      "name": "Ključ podataka"
     }
   },
   "RsColumn": {
     "align": {
-      "hint": "Поравнање",
-      "name": "Изравнати"
+      "hint": "Poravnanje",
+      "name": "Poravnati"
     },
     "colSpan": {
-      "hint": "Комбинује ћелије колона за спајање када је вредност \"кључа података\" за колону која се спаја нулл или недефинисана",
-      "name": "Опсег вредности Цол"
+      "hint": "Spaja ćelije kolona za spajanje kada je vrednost „Ključ podataka“ za spojenu kolonu nulta ili nedefinisana",
+      "name": "Obuhvat kolona"
     },
     "fixed": {
-      "hint": "Непокретна колона",
-      "name": "Поправљено"
+      "hint": "Fiksna kolona",
+      "name": "Fiksni"
     },
     "flexGrow": {
-      "hint": "Подесите да се ширина колоне аутоматски подешава ако опција \" Флек Гров \"не може да подеси својства\" Променљива величина \"и\"Ширина\".",
-      "name": "Флексибилан раст"
+      "hint": "Podešavanje širine kolone automatski se prilagođava, kada je podešeno „Flek raste“ ne može da podesi svojstvo „Resizable“ i „Širina“",
+      "name": "Flek raste"
     },
     "fullText": {
-      "hint": "Да ли треба приказати пуни текст садржаја ћелије када задржите показивач миша",
-      "name": "Пуни текст"
+      "hint": "Da li da prikažete ceo tekst sadržaja ćelije kada je miš lebdio",
+      "name": "Kompletan tekst"
     },
     "minWidth": {
-      "hint": "Када користите функцију \"Флек Гров\", можете подесити минималну ширину",
-      "name": "Минимална ширина"
+      "hint": "Kada koristite „Flek grov“, možete podesiti minimalnu širinu",
+      "name": "Minimalna širina"
     },
     "resizable": {
-      "hint": "Прилагођена величина ширине колоне",
-      "name": "Променљива величина"
+      "hint": "Prilagodljiva promena veličine širine kolone",
+      "name": "Promenljiva veličina"
     },
     "rowSpan": {
-      "hint": "Комбинује редове у наведеној колони",
-      "name": "Јаз између редова"
+      "hint": "Spaja redove na navedenoj koloni",
+      "name": "Raspon redova"
     },
     "sortable": {
-      "hint": "Сортирано",
-      "name": "Сортирано"
+      "hint": "Sortibilno",
+      "name": "Sortibilno"
     },
     "verticalAlign": {
-      "hint": "Вертикално поравнање",
-      "name": "Вертикално поравнање"
+      "hint": "Vertikalno poravnanje",
+      "name": "Vertikalno poravnanje"
     },
     "width": {
-      "hint": "Ширина колоне",
-      "name": "Ширина"
+      "hint": "Širina kolone",
+      "name": "Širina"
     }
   },
   "RsColumnGroup": {
     "align": {
-      "hint": "Поравнање",
-      "name": "Изравнати"
+      "hint": "Poravnanje",
+      "name": "Poravnati"
     },
     "fixed": {
-      "hint": "Фиксна група колона",
-      "name": "Поправљено"
+      "hint": "Fiksna grupa kolona",
+      "name": "Fiksni"
     },
     "groupHeaderHeight": {
-      "hint": "Висина заглавља обједињене групе ћелија",
-      "name": "Висина заглавља групе"
+      "hint": "Visina zaglavlja spojene grupe ćelija",
+      "name": "Visina zaglavlja grupe"
     },
     "header": {
-      "hint": "Наслов групе",
-      "name": "Наслов"
+      "hint": "Zaglavlje grupe",
+      "name": "zaglavlje"
     },
     "verticalAlign": {
-      "hint": "Вертикално поравнање",
-      "name": "Вертикално поравнање"
+      "hint": "Vertikalno poravnanje",
+      "name": "Vertikalno poravnanje"
     }
   },
   "RsDatePicker": {
     "format": {
-      "hint": "Формат датума када се приказује у улазима",
-      "name": "Формат"
+      "hint": "Format datuma kada je prikazan u ulazu",
+      "name": "Format"
     }
   },
   "RsDivider": {
     "children": {
-      "hint": "Поставите текст на линију раздвајања",
-      "name": "Садржај"
+      "hint": "Podesite tekst na liniju razdvajanja",
+      "name": "Sadržaj"
     },
     "vertical": {
-      "hint": "Вертикална линија раздвајања",
-      "name": "Вертикални"
+      "hint": "Vertikalna linija razdvajanja",
+      "name": "Vertikalno"
     }
   },
   "RsHeaderCell": {
     "children": {
-      "hint": "Заглавље колоне табеле",
-      "name": "Садржај"
+      "hint": "Zaglavlje kolone tabele",
+      "name": "Sadržaj"
     }
   },
   "RsInput": {
     "showPasswordAriaLabel": {
-      "hint": "Вредност атрибута Ариа-лабел за дугме Прикажи лозинку када се унос врши у режиму маске лозинке.",
-      "name": "Ознака ариа за дугме за приказ лозинке"
+      "hint": "Vrednost atributa aria-label za dugme Prikaži lozinku kada je unos u režimu maske lozinke.",
+      "name": "ARIA oznaka za dugme za prikaz lozinke"
     }
   },
   "RsMenu": {
     "itemsAs": {
-      "hint": "ХТМЛ елемент за приказ ставке менија",
-      "name": "Предмети као"
+      "hint": "HTML element za prikaz stavke menija",
+      "name": "Predmeti kao"
     }
   },
   "RsModal": {
     "autoFocus": {
-      "hint": "Ако је постављено на тачно, режим се отвара и аутоматски фокусира сам, читљив са екрана",
-      "name": "Аутоматско фокусирање"
+      "hint": "Kada je podešen na tačno, Modal se otvara i automatski se fokusira na sebe, dostupan čitačima ekrana",
+      "name": "Automatsko fokusiranje"
     },
     "backdrop": {
-      "hint": "Ако је постављено на тачно, када отворите модал, приказаће се позадинска слика. Клик на позадинску слику затвориће модал.",
-      "name": "Позадина"
+      "hint": "Kada je podešeno na tačno, Modal će prikazati pozadinu kada se otvori. Klikom na pozadinu zatvoriće se Modal",
+      "name": "Pozadina"
     },
     "backdropClassName": {
-      "hint": "Додајте опционално додатно име класе у .modal-background, на крају може изгледати као class=\"modal-background foo-modal-background in\".",
-      "name": "Назив класе позадине"
+      "hint": "Dodajte opcionalno dodatno ime klase u.modal-background Moglo bi na kraju izgledati kao class = „modal-background foo-modal-background u“",
+      "name": "Pozadinsko ime klase"
     },
     "classPrefix": {
-      "hint": "Префикс ЦСС класе компоненте",
-      "name": "Префикс класе ЦСС"
+      "hint": "Prefiks komponente CSS klase",
+      "name": "CSS prefiks klase"
     },
     "dialogClassName": {
-      "hint": "ЦСС класа примењена на дом дијалошке чворове",
-      "name": "ЦСС класа за дијалог"
+      "hint": "CSS klasa primenjena na Dialog DOM čvorove",
+      "name": "CSS klasa za dijalog"
     },
     "enforceFocus": {
-      "hint": "Ако је постављено на тачно, функција модал спречиће померање фокуса када се отвори, што олакшава приступ читачу са секундарног екрана",
-      "name": "Појачајте концентрацију"
+      "hint": "Kada je podešen na tačno, Modal će sprečiti da fokus napusti kada se otvori, olakšavajući sekundarnom čitaču ekrana pristup",
+      "name": "Primenite fokus"
     },
     "keyboard": {
-      "hint": "Режим затварања када притиснете тастер Есц",
-      "name": "Поред Есц-а"
+      "hint": "Zatvori Modal kada se pritisne taster Esc",
+      "name": "Blizu Esc"
     },
     "overflow": {
-      "hint": "Аутоматски поставља висину ако је садржај основног текста предуг",
-      "name": "Преливање"
+      "hint": "Automatski podešava visinu kada je sadržaj tela predugačak",
+      "name": "Preliv"
     },
     "size": {
-      "hint": "Одредите ширину модалног",
-      "name": "Величина"
+      "hint": "Odredite širinu modalnog",
+      "name": "Veličina"
     }
   },
   "RsModalLayout": {
     "closeButton": {
-      "hint": "Дугме за затварање екрана",
-      "name": "Дугме за затварање"
+      "hint": "Prikaz dugmeta za zatvaranje",
+      "name": "Dugme za zatvaranje"
     }
   },
   "RsPlaceholderGraph": {
     "active": {
-      "hint": "Да ли је резервирано место активно",
-      "name": "Активан"
+      "hint": "Da li je rezervirano mesto aktivan",
+      "name": "Aktivan"
     },
     "height": {
-      "hint": "Висина графикона",
-      "name": "Висина"
+      "hint": "Visina grafikona",
+      "name": "Visina"
     },
     "width": {
-      "hint": "Ширина графикона",
-      "name": "Ширина"
+      "hint": "Širina grafikona",
+      "name": "Širina"
     }
   },
   "RsPlaceholderGrid": {
     "active": {
-      "hint": "Да ли је резервирано место активно",
-      "name": "Активан"
+      "hint": "Da li je rezervirano mesto aktivan",
+      "name": "Aktivan"
     },
     "columns": {
-      "hint": "Број колона",
-      "name": "Колоне"
+      "hint": "Broj kolona",
+      "name": "Kolone"
     },
     "rowHeight": {
-      "hint": "Висина линије",
-      "name": "Висина реда"
+      "hint": "Visina reda",
+      "name": "Visina reda"
     },
     "rowSpacing": {
-      "hint": "Удаљеност између редова",
-      "name": "Удаљеност између редова"
+      "hint": "Razmak između redova",
+      "name": "Razmak između redova"
     },
     "rows": {
-      "hint": "Број редова",
-      "name": "Редови"
+      "hint": "Broj redova",
+      "name": "Redovi"
     }
   },
   "RsPlaceholderParagraph": {
     "active": {
-      "hint": "Да ли је резервирано место активно",
-      "name": "Активан"
+      "hint": "Da li je rezervirano mesto aktivan",
+      "name": "Aktivan"
     },
     "graph": {
-      "hint": "Облик графикона",
-      "name": "Дијаграм"
+      "hint": "Oblik grafikona",
+      "name": "Grafikon"
     },
     "rowHeight": {
-      "hint": "Висина линије",
-      "name": "Висина реда"
+      "hint": "Visina reda",
+      "name": "Visina reda"
     },
     "rowSpacing": {
-      "hint": "Удаљеност између редова",
-      "name": "Удаљеност између редова"
+      "hint": "Razmak između redova",
+      "name": "Razmak između redova"
     },
     "rows": {
-      "hint": "Број редова",
-      "name": "Редови"
+      "hint": "Broj redova",
+      "name": "Redovi"
     }
   },
   "RsTable": {
     "affixHeader": {
-      "hint": "Приложите заглавље табеле на одређено место на страници",
-      "name": "Приложите наслов"
+      "hint": "Pričvrstite zaglavlje tabele na određenu lokaciju na stranici",
+      "name": "Priložite zaglavlje"
     },
     "affixHorizontalScrollbar": {
-      "hint": "Закачите хоризонталну траку за померање табеле на одређено место на страници",
-      "name": "Причврстите хоризонталну траку за померање"
+      "hint": "Pričvrstite horizontalnu traku za pomeranje tabele na navedeni položaj na stranici",
+      "name": "Postavite horizontalnu traku za pomeranje"
     },
     "autoHeight": {
-      "hint": "Висина табеле ће се аутоматски повећати на основу броја редова података и вертикална трака за померање се неће појавити",
-      "name": "Аутоматска висина"
+      "hint": "Visina tabele će se automatski proširiti prema broju redova podataka i neće se pojaviti vertikalna traka za pomeranje",
+      "name": "Automatska visina"
     },
     "bordered": {
-      "hint": "Прикажи границу",
-      "name": "Гранични"
+      "hint": "Prikaži granicu",
+      "name": "Ograničen"
     },
     "cellBordered": {
-      "hint": "Прикажи границу ћелије",
-      "name": "Обрубљена ћелија"
+      "hint": "Prikaži granicu ćelije",
+      "name": "Ćelija obrubljena"
     },
     "data": {
-      "hint": "Табеларни подаци",
-      "name": "Подаци"
+      "hint": "Podaci tabele",
+      "name": "Podaci"
     },
     "defaultSortType": {
-      "hint": "Врста сортирања",
-      "name": "Подразумевани тип сортирања"
+      "hint": "Vrsta sortiranja",
+      "name": "Podrazumevani tip sortiranja"
     },
     "fillHeight": {
-      "hint": "Присилно подесите висину табеле на висину надређеног контејнера. Не може се користити заједно са опцијом \"Аутоматска висина\"",
-      "name": "Висина пуњења"
+      "hint": "Prisilite visinu stola da bude jednaka visini matičnog kontejnera. Ne može se koristiti zajedno sa „Automatskom visinom“",
+      "name": "Visina punjenja"
     },
     "headerHeight": {
-      "hint": "Висина заглавља табеле",
-      "name": "Висина жетелице"
+      "hint": "Visina zaglavlja tabele",
+      "name": "Visina zaglavlja"
     },
     "height": {
-      "hint": "Висина стола",
-      "name": "Висина"
+      "hint": "Visina stola",
+      "name": "Visina"
     },
     "hover": {
-      "hint": "Ред табеле има ефекат лебдења миша",
-      "name": "Лебди"
+      "hint": "Red tabele ima efekat prelaska mišem",
+      "name": "Lebdi"
     },
     "loading": {
-      "hint": "Прикажи преузимање",
-      "name": "Утовар"
+      "hint": "Prikaži učitavanje",
+      "name": "Učitavanje"
     },
     "maxHeight": {
-      "hint": "Максимална висина",
-      "name": "Максимална висина"
+      "hint": "Maksimalna visina",
+      "name": "Maksimalna visina"
     },
     "minHeight": {
-      "hint": "Минимална висина",
-      "name": "Минимална висина"
+      "hint": "Minimalna visina",
+      "name": "Minimalna visina"
     },
     "rowClassName": {
-      "hint": "Додајте опционално додатно име класе у низ",
-      "name": "Назив класе низа"
+      "hint": "Dodajte opcionalno ime dodatne klase u red",
+      "name": "Naziv klase reda"
     },
     "rowHeight": {
-      "hint": "Висина реда",
-      "name": "Висина реда"
+      "hint": "Visina reda",
+      "name": "Visina reda"
     },
     "rowKey": {
-      "hint": "Сваки ред одговара јединственом кључу у подацима",
-      "name": "Кључ реда"
+      "hint": "Svaki red odgovara jedinstvenom ključu u podacima",
+      "name": "Taster za red"
     },
     "shouldUpdateScroll": {
-      "hint": "Да ли треба да ажурирам помицање након ажурирања величине табеле",
-      "name": "Треба ажурирати помицање"
+      "hint": "Da li treba ažurirati svitak nakon ažuriranja veličine tabele",
+      "name": "Trebalo bi da ažurira skrolu"
     },
     "showHeader": {
-      "hint": "Приказани наслов",
-      "name": "Прикажи наслов"
+      "hint": "Prikaz zaglavlja",
+      "name": "Prikaži zaglavlje"
     },
     "sortColumn": {
-      "hint": "Назив колоне за сортирање",
-      "name": "Сортирање колоне"
+      "hint": "Sortiraj ime kolone",
+      "name": "Sortiraj kolonu"
     },
     "sortType": {
-      "hint": "Врста сортирања",
-      "name": "Врста сортирања"
+      "hint": "Vrsta sortiranja",
+      "name": "Vrsta sortiranja"
     },
     "virtualized": {
-      "hint": "Ефикасно приказивање великих табеларних података",
-      "name": "Виртуелизовано"
+      "hint": "Efikasno renderujte velike tabelarne podatke",
+      "name": "Virtuelizovani"
     },
     "width": {
-      "hint": "Ширина стола",
-      "name": "Ширина"
+      "hint": "Širina stola",
+      "name": "Širina"
     },
     "wordWrap": {
-      "hint": "Да ли треба да прикажем преломе редова тамо где текст превазилази свој садржај",
-      "name": "Преношење речи"
+      "hint": "Da li će se pojaviti prelomi linija gde tekst prepuni okvir sadržaja",
+      "name": "Omotavanje reči"
     }
   },
   "RsTimePicker": {
     "format": {
-      "hint": "Формат времена када се приказује у улазима",
-      "name": "Формат"
+      "hint": "Format vremena kada je prikazan u ulazu",
+      "name": "Format"
     }
   },
   "RsWizard": {
     "activeIndex": {
-      "hint": "Индекс активног корака",
-      "name": "Активни индекс"
+      "hint": "Indeks aktivnog koraka",
+      "name": "Aktivni indeks"
     },
     "finishButtonLabel": {
-      "hint": "Натпис на дугмету\"Готово\"",
-      "name": "Ознака дугмета за завршетак"
+      "hint": "Oznaka dugmeta za završnu obradu",
+      "name": "Završite nalepnicu dugmeta"
     },
     "nextButtonLabel": {
-      "hint": "Натпис на следећем дугмету",
-      "name": "Натпис на следећем дугмету"
+      "hint": "Sledeća etiketa dugmeta",
+      "name": "Sledeća etiketa dugmeta"
     },
     "prevButtonLabel": {
-      "hint": "Претходна ознака дугмета",
-      "name": "Претходна ознака дугмета"
+      "hint": "Prethodna oznaka dugmeta",
+      "name": "Prethodna etiketa dugmeta"
     },
     "showSteps": {
-      "hint": "Ако је вредност Труе, тада ће се приказати следећи кораци",
-      "name": "Прикажи кораке"
+      "hint": "Ako je tačno, koraci će biti prikazani",
+      "name": "Prikaži korake"
     },
     "showStepsLabels": {
-      "hint": "Ако је вредност Труе, тада ће се приказати ознаке корака",
-      "name": "Прикажи ознаке корака"
+      "hint": "Ako je tačno, prikazaće se oznake koraka",
+      "name": "Prikaži oznake koraka"
     },
     "steps": {
-      "hint": "Кораци чаробњака",
-      "name": "Кораци"
+      "hint": "Čarobnjak koraci",
+      "name": "Koraci"
     },
     "stepsNavigation": {
-      "hint": "Одређује који су кораци доступни за навигацију кликом",
-      "name": "Навигација по корацима"
+      "hint": "Klikom određuje koji su koraci dostupni za navigaciju",
+      "name": "Navigacija koracima"
     },
     "validateOnFinish": {
-      "hint": "Ако је вредност Труе, чаробњак ће бити проверен пре искључивања",
-      "name": "Провера по завршетку"
+      "hint": "Ako je tačno, čarobnjak će biti potvrđen pre nego što završi čarobnjak",
+      "name": "Potvrdite na kraju"
     },
     "validateOnNext": {
-      "hint": "Ако је вредност Труе, корак ће бити потврђен пре него што пређете на следећи корак",
-      "name": "Потврдите на следећем"
+      "hint": "Ako je tačno, korak će biti potvrđen pre nego što pređete na sledeći korak",
+      "name": "Potvrdite na sledećem"
     },
     "verticalSteps": {
-      "hint": "Ако је вредност Труе, кораци ће се приказати вертикално",
-      "name": "Вертикалне степенице"
+      "hint": "Ako je tačno, koraci će biti prikazani vertikalno",
+      "name": "Vertikalni koraci"
     },
-    "wizardHasNoSteps": "Да бисте додали кораке чаробњака, изаберите компоненту и додајте кораке у окну својства."
+    "wizardHasNoSteps": "Da biste dodali korake čarobnjaka, izaberite komponentu i dodajte korake u tabli svojstava."
   },
   "actions": {
-    "add": "Додај",
-    "addAction": "Додај акцију",
-    "addCodeAction": "Додајте кодну радњу",
-    "arguments": "Аргументи",
-    "code": "Код",
-    "common": "Опште",
-    "custom": "Обичај",
-    "delete": "Избриши",
-    "duplicate": "Дупликат",
-    "edit": "Уреди",
-    "name": "Име",
-    "parameters": "Параметри",
-    "type": "Тип"
+    "add": "Dodaj",
+    "addAction": "Dodajte akciju",
+    "addCodeAction": "Dodajte radnju koda",
+    "arguments": "Argumenti",
+    "code": "Kod",
+    "common": "Zajednički",
+    "custom": "Prilagođeno",
+    "delete": "Izbriši",
+    "duplicate": "Duplikat",
+    "edit": "Uredi",
+    "name": "Naziv",
+    "parameters": "Parametri",
+    "type": "Tip"
   },
   "annotation": {
     "accept": {
-      "hint": "Врсте датотека које се могу прихватити. Погледајте стандардни ХТМЛ атрибут: Аццепт",
-      "name": "Прихвати"
+      "hint": "Tipovi datoteka koje se mogu prihvatiti. Pogledajte standardni HTML atribut: prihvati",
+      "name": "Prihvati"
     },
     "action": {
-      "hint": "УРЛ за преузимање",
-      "name": "Акција"
+      "hint": "Otpremanje URL-a",
+      "name": "Akcija"
     },
     "allowEmptyFormatting": {
-      "hint": "Подразумевано, компонента Паттернформат не примењује форматирање ако је вредност празна (нулл, ундефинед или '\").",
-      "name": "Дозволите празно форматирање "
+      "hint": "Podrazumevano PatternFormat komponenta ne primenjuje formatiranje kada je vrednost prazna (nula, nedefinisana ili „'“)",
+      "name": "Dozvolite prazno formatiranje"
     },
     "allowLeadingZeros": {
-      "hint": "Ово вам омогућава да омогућите или онемогућите почетне нуле у пољу за унос. Подразумевано, приликом замућења уноса, почетне нуле се бришу",
-      "name": "Дозволите почетне нуле"
+      "hint": "Ovo omogućava omogućavanje ili onemogućavanje vodećih nula u polju za unos. Podrazumevano, pri zamućenju ulaza, vodeće nule se uklanjaju",
+      "name": "Dozvolite vodeće nule"
     },
     "allowNegative": {
-      "hint": "Ако је постављено на фалсе, негативни бројеви неће бити дозвољени",
-      "name": "Дозволи негативно"
+      "hint": "Ako je postavljen na lažno, negativni brojevi neće biti dozvoljeni",
+      "name": "Dozvolite negativno"
     },
     "allowedDecimalSeparators": {
-      "hint": "Симболи који, када се притисну, чине децимални сепаратор. Ако недостају, користе се децимални сепаратор и\".\"",
-      "name": "Важећи децимални сепаратори"
+      "hint": "Znakovi koji kada se pritisnu rezultiraju decimalnim separatorom. Kada nedostaje, koriste se decimalni separator i „.“",
+      "name": "Dozvoljeni decimalni separatori"
     },
     "appearance": {
-      "hint": "Подесите изглед бирача",
-      "name": "Изглед"
+      "hint": "Podesite izgled birača",
+      "name": "Izgled"
     },
     "autoUpload": {
-      "hint": "Аутоматски учитајте датотеке након што их одаберете",
-      "name": "Аутоматско преузимање"
+      "hint": "Automatski otpremite datoteke nakon što ih odaberete",
+      "name": "Automatsko otpremanje"
     },
     "block": {
-      "hint": "Блокирање целог низа",
-      "name": "Блок"
+      "hint": "Blokiranje čitavog reda",
+      "name": "Blokiraj"
     },
     "bodyFill": {
-      "hint": "Подручје садржаја испуњено контејнерима",
-      "name": "Пуњење тела"
+      "hint": "Oblast sadržaja ispunjena kontejnerima",
+      "name": "Punjenje tela"
     },
     "calendarDefaultDate": {
-      "hint": "Датум и време презентације на подразумеваној траци календара",
-      "name": "Подразумевани датум у календару"
+      "hint": "Podrazumevani datum i vreme prezentacije panela kalendara",
+      "name": "Podrazumevani datum kalendara"
     },
     "checked": {
-      "hint": "Да ли је ова вредност тестирана",
-      "name": "Проверено"
+      "hint": "Da li je vrednost proverena",
+      "name": "Provereno"
     },
     "checkedChildren": {
-      "hint": "Текст који се приказује у провереном стању",
-      "name": "Верификовани текст"
+      "hint": "Tekst koji se prikazuje u proverenom stanju",
+      "name": "Provereni tekst"
     },
     "cleanable": {
-      "hint": "Да ли је могуће уклонити ову опцију",
-      "name": "Чишћење"
+      "hint": "Da li se opcija može isprazniti",
+      "name": "Čisti se"
     },
     "code": {
-      "hint": "Уреди код",
-      "name": "Код"
+      "hint": "Uredi kod",
+      "name": "Kod"
     },
     "color": {
-      "hint": "Основна боја компоненте",
-      "name": "Боја"
+      "hint": "Glavna boja komponente",
+      "name": "Boja"
     },
     "creatable": {
-      "hint": "Подешавања могу да креирају нове опције",
-      "name": "Подложан стварању"
+      "hint": "Podešavanja mogu da kreiraju nove opcije",
+      "name": "Kreativo"
     },
     "data": {
-      "hint": "Изабрани подаци",
-      "name": "Подаци"
+      "hint": "Podaci koji se mogu birati",
+      "name": "Podaci"
     },
     "dataKey": {
-      "hint": "Кључ података компоненте",
-      "name": "Кључ података"
+      "hint": "Ključ podataka komponente",
+      "name": "Ključ podataka"
     },
     "decimalScale": {
-      "hint": "Ако је дефинисан, ограничава број цифара након децималне тачке",
-      "name": "Децимална скала"
+      "hint": "Ako je definisano, ograničava broj cifara nakon decimalne tačke",
+      "name": "Decimalna skala"
     },
     "decimalSeparator": {
-      "hint": "Дефинише децимални знак",
-      "name": "Децимални сепаратор"
+      "hint": "Definiše decimalni znak",
+      "name": "Decimalni separator"
     },
     "defaultOpen": {
-      "hint": "Подразумевана вредност својства опен",
-      "name": "Отвори подразумевано"
+      "hint": "Podrazumevana vrednost otvorenog svojstva",
+      "name": "Podrazumevano otvoreno"
     },
     "defaultValue": {
-      "hint": "Подразумевана вредност",
-      "name": "Подразумевана вредност"
+      "hint": "Podrazumevana vrednost",
+      "name": "Podrazumevana vrednost"
     },
     "disableDataBinding": {
-      "hint": "Онемогућава везивање података за компоненту",
-      "name": "Онемогућите везивање података"
+      "hint": "Onemogućava vezivanje podataka za komponentu",
+      "name": "Onemogućite vezivanje podataka"
     },
     "disableMultipart": {
-      "hint": "Ако је\" тачно\", онемогућите употребу сложеног обрасца за преузимање датотеке и уместо тога стримујте датотеку. Неки АПИ-ји (попут Амазон С3) могу очекивати да се датотека стримује уместо да се пошаље путем обрасца",
-      "name": "Онемогући саставни део"
+      "hint": "Ako je „tačno“, onemogućite korišćenje višedijelnog obrasca za otpremanje datoteka i umesto toga strimujte datoteku. Neki API-ji (npr. Amazon S3) mogu očekivati da će se datoteka strimovati umesto slanja putem obrasca",
+      "name": "Onemogućite višedijelni"
     },
     "disableVirtualized": {
-      "hint": "Ако је вредност Труе, тада ће виртуелизовани режим бити онемогућен",
-      "name": "Онемогући виртуелизовано"
+      "hint": "Ako je tačno, virtuelizovani će biti onemogućen",
+      "name": "Onemogućite virtuelizovani"
     },
     "disabled": {
-      "hint": "Без обзира да ли је компонента искључена или не",
-      "name": "Неспособан за рад"
+      "hint": "Da li je komponenta onemogućena ili ne",
+      "name": "Onemogućeno"
     },
     "download": {
-      "hint": "Доводи до тога да прегледач види повезани УРЛ као преузимање",
-      "name": "Преузимање"
+      "hint": "Uzrokuje pregledač da povezani URL tretira kao preuzimanje",
+      "name": "Preuzmi"
     },
     "downloadFilename": {
-      "hint": "Када дефинишете вредност, она је наведена као име датотеке.  симболи / и \\ претварају се у доње црте (_)",
-      "name": "Име датотеке за преузимање"
+      "hint": "Definisanje vrednosti sugeriše je kao ime datoteke./i\\ znakovi se pretvaraju u podvlačenje (_)",
+      "name": "Preuzmite ime datoteke"
     },
     "draggable": {
-      "hint": "Омогућено превлачење и испуштање за преузимање",
-      "name": "Драг &amp; Дроп"
+      "hint": "Omogućeno prevlačenje i ispuštanje za otpremanje",
+      "name": "Vučljivo"
     },
     "editable": {
-      "hint": "Вредност приказана као улаз може се унети помоћу тастатуре",
-      "name": "Уређивачки"
+      "hint": "Prikazana kao ulaz, vrednost se može uneti preko tastature",
+      "name": "Uređivački"
     },
     "errorConfig": {
-      "show": "Покажи"
+      "show": "Prikaži"
     },
     "eventKey": {
-      "hint": "Кључ догађаја који одговара овом елементу",
-      "name": "Кључ догађаја"
+      "hint": "Ključ događaja koji odgovara ovom elementu",
+      "name": "Ključ događaja"
     },
     "fixedDecimalScale": {
-      "hint": "Ако је постављено на Труе, додаје коначних 0 након Децималсепаратора како би одговарао датој децималној скали",
-      "name": "Фиксна децимална скала"
+      "hint": "Ako je podešeno na tačno, dodaje poslednje 0s nakon DecimalSeparatora da bi se podudaralo sa datom decimalScale",
+      "name": "Fiksna decimalna skala"
     },
     "flexDirection": {
-      "hint": "Правац савијања деце контејнера",
-      "name": "Правац"
+      "hint": "Fleksirajući pravac dece kontejnera",
+      "name": "Pravac"
     },
     "format": {
-      "hint": "Форматирајте образац помоћу симбола # (или симбола шаблона). # је симбол резервираног места за бројеве. Пример: '########'",
-      "name": "Формат"
+      "hint": "Formatirajte obrazac koristeći znak # (ili znak uzorka). # je znak rezerviranog mesta za brojeve. Primer: „### ###'",
+      "name": "Format"
     },
     "groupBy": {
-      "hint": "Поставите критеријуме за груписање \"кључ\" у одељку\"Подаци\"",
-      "name": "Групиши по"
+      "hint": "Podesite kriterijume grupisanja „ključ“ u „podacima“",
+      "name": "Grupirajte po"
     },
     "href": {
-      "hint": "УРЛ на који хипервеза указује",
-      "name": "Линк"
+      "hint": "URL na koji hiperveza ukazuje",
+      "name": "Href"
     },
     "htmlAttributes": {
-      "hint": "ХТМЛ атрибути прослеђени компоненти",
-      "name": "ХТМЛ атрибути"
+      "hint": "HTML atributi preneseni na komponentu",
+      "name": "HTML atributi"
     },
     "isoWeek": {
-      "hint": "Према стандарду ИСО 8601, свака календарска недеља почиње у понедељак и недељу седмог дана",
-      "name": "ИСО Недеља"
+      "hint": "ISO 8601 standard, svaka kalendarska nedelja počinje u ponedeljak i nedelju sedmog dana",
+      "name": "Iso nedelja"
     },
     "justifyContent": {
-      "name": "Оправдати"
+      "name": "Opravdati"
     },
     "label": {
-      "hint": "Инсталациона ознака",
-      "name": "Ознака"
+      "hint": "Podešavanje etikete",
+      "name": "Oznaka"
     },
     "limitEndYear": {
-      "hint": "Поставите горњу границу доступне године у односу на тренутни датум избора",
-      "name": "Ограничење на крају године"
+      "hint": "Podesite gornju granicu raspoložive godine u odnosu na trenutni datum izbora",
+      "name": "Ograničenje na kraju godine"
     },
     "limitStartYear": {
-      "hint": "Поставите доњу границу доступне године у односу на тренутни датум избора",
-      "name": "Гранична почетна година"
+      "hint": "Podesite donju granicu raspoložive godine u odnosu na trenutni datum izbora",
+      "name": "Ograničite početnu godinu"
     },
     "loading": {
-      "hint": "Да ли је компонента у стању покретања",
-      "name": "Утовар"
+      "hint": "Da li je komponenta u stanju učitavanja",
+      "name": "Učitavanje"
     },
     "marginInlineEnd": {
-      "name": "Десно поље"
+      "name": "Desna margina"
     },
     "marginInlineStart": {
-      "name": "Преостало поље"
+      "name": "Margina leva"
     },
     "mask": {
-      "hint": "Користи се као симбол маске за нумеричке положаје док се за ту позицију не наведе било који нумерички знак",
-      "name": "Маска"
+      "hint": "Koristi se kao znak maske za numerička mesta, sve dok se za tu poziciju ne obezbedi bilo koji numerički znak",
+      "name": "Maska"
     },
     "method": {
-      "hint": "Хттп метода захтева за преузимање",
-      "name": "Метода"
+      "hint": "HTTP metoda zahteva za otpremanje",
+      "name": "Metod"
     },
     "modalProps": {
-      "modalComponentProperties": "Својства модалних компоненти",
-      "modalComponentPropertiesHint": "Својства модалних компоненти",
-      "noModalComponent": "Нема модалне компоненте",
-      "noModalComponentHint": "Наведите тип модалне компоненте у подешавањима обрасца"
+      "modalComponentProperties": "Svojstva modalne komponente",
+      "modalComponentPropertiesHint": "Svojstva modalne komponente",
+      "noModalComponent": "Nema modalne komponente",
+      "noModalComponentHint": "Navedite tip modalne komponente u podešavanjima obrasca"
     },
     "name": {
-      "hint": "Учитајте назив параметра одговарајуће датотеке",
-      "name": "Име"
+      "hint": "Otpremite ime parametra odgovarajuće datoteke",
+      "name": "Naziv"
     },
     "objectFit": {
-      "name": "У облику"
+      "name": "Uklapanje"
     },
     "objectPosition": {
-      "name": "Позиција"
+      "name": "Položaj"
     },
     "oneTap": {
-      "hint": "Једним кликом миша довршите избор вредности",
-      "name": "Једним додиром"
+      "hint": "Jednim klikom da biste dovršili vrednost odabira",
+      "name": "Jedan dodir"
     },
     "open": {
-      "hint": "Без обзира да ли је компонента отворена",
-      "name": "Отвори"
+      "hint": "Da li otvorite komponentu",
+      "name": "Otvori"
     },
     "passwordMask": {
-      "hint": "Користите маску лозинке",
-      "name": "Маска лозинке"
+      "hint": "Koristite masku lozinke",
+      "name": "Maska za lozinku"
     },
     "patternChar": {
-      "hint": "Ово помаже у дефинисању симбола шаблона формата",
-      "name": "Симбол узорка"
+      "hint": "Ovo pomaže u definisanju karaktera obrasca formata",
+      "name": "Uzorak char"
     },
     "placeholder": {
-      "hint": "Инсталирање чувара места",
-      "name": "Резервирано место"
+      "hint": "Podešavanje rezerviranih mesta",
+      "name": "Rezervoar mesta"
     },
     "placement": {
-      "hint": "Постављање компоненте",
-      "name": "Смештај"
+      "hint": "Postavljanje komponente",
+      "name": "plasman"
     },
     "prefix": {
-      "hint": "Додаје знак префикса пре улазне вредности",
-      "name": "Префикс"
+      "hint": "Dodaje znak prefiksa pre ulazne vrednosti",
+      "name": "Prefiks"
     },
     "preload": {
-      "hint": "Учитајте податке унапред, пре отварања падајуће листе",
-      "name": "Предваривни натяг"
+      "hint": "Otpremite podatke unapred, pre otvaranja padajućeg menija",
+      "name": "Predučitaj"
     },
     "preventOverflow": {
-      "hint": "Спречавање преливања плутајућег елемента",
-      "name": "Спречавање преливања"
+      "hint": "Sprečite prelivanje plutajućeg elementa",
+      "name": "Sprečite prelivanje"
     },
     "readOnly": {
-      "hint": "Ако је вредност Труе, компонента ће бити само за читање",
-      "name": "Само за читање"
+      "hint": "Ako je tačno, komponenta će biti samo za čitanje",
+      "name": "Samo za čitanje"
     },
     "showMeridiem": {
-      "hint": "Приказ сата у формату 12",
-      "name": "Прикажи меридијан"
+      "hint": "Prikažite sate u 12 formatu",
+      "name": "Prikaži meridijan"
     },
     "showWeekNumbers": {
-      "hint": "Прикажи бројеве недеља",
-      "name": "Прикажи бројеве недеља"
+      "hint": "Da li treba prikazati brojeve nedelja",
+      "name": "Prikaži brojeve nedelja"
     },
     "size": {
-      "hint": "Компонента може имати различите величине",
-      "name": "Величина"
+      "hint": "Komponenta može imati različite veličine",
+      "name": "Veličina"
     },
     "suffix": {
-      "hint": "Додаје суфикс након улазне вредности",
-      "name": "Суфикс "
+      "hint": "Dodaje sufiks nakon ulazne vrednosti",
+      "name": "Sufiks"
     },
     "target": {
-      "hint": "Где приказати повезани УРЛ као назив контекста приказа (картице, прозори или <iframe>)",
-      "name": "Циљ"
+      "hint": "Gde prikazati povezani URL, kao ime konteksta pregledavanja (kartica, prozor ili<iframe>)",
+      "name": "Cilj"
     },
     "textAlign": {
-      "name": "Поравнање"
+      "name": "Poravnanje"
     },
     "thousandsGroupStyle": {
-      "hint": "Хиљадити стил (Тхоусанд): 123,456,789, индијски стил ( Лакх): 12,34,56,789, кинески стил (ван) : 1,2345,6789",
-      "name": "Стил хиљаду група"
+      "hint": "Hiljadu stila (hiljada): 123,456,789, indijski stil (lakh): 12,34,56,789, kineski stil (van): 1,2345,6789",
+      "name": "Hiljade grupnih stilova"
     },
     "tooltipProps": {
-      "hint": "Користите опис алата за ову ставку",
-      "tooltip": "Савет"
+      "hint": "Koristite alatku za ovaj element",
+      "tooltip": "Savet za alat"
     },
     "unCheckedChildren": {
-      "hint": "Текст који се приказује у непровереном стању",
-      "name": "Непроверени текст"
+      "hint": "Tekst koji se prikazuje u neoznačenom stanju",
+      "name": "Neoznačeni tekst"
     },
     "useDropzone": {
-      "hint": "Користите дропзоне за \"{{propertyName}}својства",
-      "name": "Користите дропзоне"
+      "hint": "Koristite dropzone za svojstvo '{{propertyName}}'",
+      "name": "Koristite dropzone"
     },
     "validateWhen": {
-      "hint": "Услов који одређује да ли треба извршити ову проверу",
-      "name": "Потврдите када"
+      "hint": "Uslov koji određuje da li će pokrenuti ovu validaciju",
+      "name": "Potvrdite kada"
     },
     "value": {
-      "hint": "Вредност (контролисана)",
-      "name": "Вредност"
+      "hint": "Vrednost (kontrolisana)",
+      "name": "Vrednost"
     },
     "withCredentials": {
-      "hint": "Да ли треба да чувам колачиће приликом учитавања захтева",
-      "name": "Са акредитивима"
+      "hint": "Da li da nosite kolačiće prilikom otpremanja zahteva",
+      "name": "Sa akreditivima"
     }
   },
   "bottomPanel": {
-    "editCodeAction": "Акција уређивања кода",
-    "editProperty": "Уреди својство",
-    "function": "Израчуната вредност",
-    "localization": "Локализација",
-    "localizationNotSet": "Механизам локализације није инсталиран",
-    "simpleValue": "Једноставно значење",
-    "simpleValueHint": "Уредите својство у десном окну",
-    "use": "Користите",
-    "clearLocalization": "Обриши"
+    "clearLocalization": "Očisti",
+    "editCodeAction": "Uređivanje radnje koda",
+    "editProperty": "Uredi svojstvo",
+    "function": "Izračunljiva vrednost",
+    "localization": "Lokalizacija",
+    "localizationNotSet": "Lokalizacioni motor nije podešen",
+    "simpleValue": "Jednostavna vrednost",
+    "simpleValueHint": "Uredite svojstvo na desnom panelu",
+    "use": "Upotreba"
   },
   "codeActionEditor": {
-    "actionNameExists": "Акција са овим именом већ постоји",
-    "nameIsRequired": "Потребно је навести назив радње",
-    "parameterNameExists": "Параметар са овим именом већ постоји",
-    "parameterNameIsNotValid": "Неважеће име параметра",
-    "parameterNameIsRequired": "Потребно је навести име параметра"
+    "actionNameExists": "Akcija sa ovim imenom već postoji",
+    "nameIsRequired": "Naziv akcije je obavezan",
+    "parameterNameExists": "Parametar sa ovim imenom već postoji",
+    "parameterNameIsNotValid": "Ime parametra nije važeće",
+    "parameterNameIsRequired": "Naziv parametra je obavezan"
   },
   "codeEditor": {
-    "codeActionHeader": "Уређивач акција са кодом",
-    "codePlaceholder": "// унесите свој код овде",
-    "compilationResult": "Резултат компилације:",
-    "compile": "Компилација",
+    "codeActionHeader": "Uređivač radnji koda",
+    "codePlaceholder": "//unesite svoj kod ovde",
+    "compilationResult": "Rezultat kompilacije:",
+    "compile": "Kompajlirati",
     "generic": {
       "json": {
-        "title": "Уређивање ЈСОН података за"
+        "title": "Izmenite JSON podatke za"
       }
     },
-    "ok": "ОК"
+    "ok": "OK"
   },
   "common": {
-    "apply": "Применити",
-    "cancel": "Откажи",
-    "clone": "Клон",
-    "close": "Затвори",
-    "edit": "Уреди",
-    "name": "Име",
-    "remove": "Избриши",
-    "save": "Сачувај",
-    "test": "Тест"
+    "apply": "Prijavite se",
+    "cancel": "Otkaži",
+    "clone": "Klon",
+    "close": "Zatvori",
+    "edit": "Uredi",
+    "name": "Naziv",
+    "remove": "Ukloni",
+    "save": "Sačuvaj",
+    "test": "Test"
   },
   "componentToolbar": {
-    "add": "Додајте нову ставку",
-    "after": "После",
-    "before": "До",
-    "inside": "Унутра"
+    "add": "Dodajte novi element",
+    "after": "Posle",
+    "before": "Pre",
+    "inside": "Unutra"
   },
   "componentsList": {
     "categories": {
-      "fields": "Поља",
-      "modal": "Модални",
-      "static": "Статички",
-      "structure": "Структура",
-      "templates": "Шаблони"
+      "fields": "Polja",
+      "modal": "Modalni",
+      "static": "Statički",
+      "structure": "Struktura",
+      "templates": "Šabloni"
     }
   },
   "componentsModal": {
-    "clickToAdd": "Кликните да бисте додали контролу"
+    "clickToAdd": "Kliknite da biste dodali kontrolu"
   },
-  "editJson": "Уреди ЈСОН",
+  "editJson": "Uredi JSON",
   "errorsPanel": {
-    "clear": "Јасно",
-    "data": "Подаци",
-    "errors": "Грешке",
-    "reset": "Ресетуј",
-    "validate": "Тврдити"
+    "clear": "Očisti",
+    "data": "Podaci",
+    "errors": "Greške",
+    "reset": "Vratite se na podrazumevano",
+    "validate": "Potvrdite"
   },
   "formsList": {
-    "addNewForm": "Додајте нови облик",
-    "formWithNameExists": "Образац са овим именом већ постоји.",
-    "noFormsInFormStorage": "Сачувајте образац тако да се појави на листи образаца."
+    "addNewForm": "Dodajte novi obrazac",
+    "formWithNameExists": "Obrazac sa ovim imenom već postoji.",
+    "noFormsInFormStorage": "Sačuvajte obrazac tako da se pojavi na listi obrazaca."
   },
   "leftMenu": {
-    "addNewForm": "Додајте нови облик",
-    "clear": "Јасно",
-    "currentFormName": "Назив тренутног обрасца",
-    "download": "Преузимање",
-    "enterFormName": "Унесите назив обрасца",
-    "exportForms": "Извозни облици",
-    "exportFormsError": "Извоз образаца није успео! Погледајте евиденције у конзоли прегледача",
-    "exportFormsSuccess": "Извезени обрасци",
-    "exportJsonFormSchema": "Извоз шеме ЈСОН обрасца",
-    "formNamePlaceholder": "Моја лепа фигура",
-    "formSaveError": "Није успело да задржи облик! Погледајте евиденције у конзоли прегледача",
-    "formSaved": "Образац ће бити сачуван",
-    "importForms": "Увоз формулара",
-    "importFormsError": "Увоз образаца није успео! Погледајте евиденције у конзоли прегледача",
-    "importFormsSuccess": "Увезени обрасци",
-    "menu": "Мени",
-    "print": "Штампање",
-    "save": "Сачувај",
-    "saveAs": "Сачувај као...",
-    "settings": "Подешавања",
-    "translation": "Превод",
-    "undo": "Откажи",
-    "upload": "Преузимање",
-    "validateForm": "Провера обрасца"
+    "addNewForm": "Dodajte novi obrazac",
+    "clear": "Očisti",
+    "currentFormName": "Naziv trenutnog obrasca",
+    "download": "Preuzmi",
+    "enterFormName": "Molimo unesite ime obrasca",
+    "exportForms": "Izvozni obrasci",
+    "exportFormsError": "Izvoz obrazaca nije uspeo! Pogledajte dnevnike u konzoli pregledača",
+    "exportFormsSuccess": "Izvezeni obrasci",
+    "exportJsonFormSchema": "Izvoz JSON šeme obrasca",
+    "formNamePlaceholder": "Moja lepa forma",
+    "formSaveError": "Nije uspelo da sačuvam obrazac! Pogledajte dnevnike u konzoli pregledača",
+    "formSaved": "Obrazac je sačuvan",
+    "importForms": "Obrazci za uvoz",
+    "importFormsError": "Uvoz obrazaca nije uspeo! Pogledajte dnevnike u konzoli pregledača",
+    "importFormsSuccess": "Uvezeni obrasci",
+    "menu": "Meni",
+    "print": "Štampanje",
+    "save": "Sačuvaj",
+    "saveAs": "Sačuvaj kao...",
+    "settings": "Podešavanja",
+    "translation": "Prevod",
+    "undo": "Poništi",
+    "upload": "Otpremite",
+    "validateForm": "Potvrdite obrazac"
   },
   "leftPanel": {
     "formSettings": {
-      "actions": "Акције",
-      "error": "Подешавања грешака",
-      "formValidator": "Провера обрасца",
-      "language": "Језичка подешавања",
-      "modal": "Модални",
-      "tooltip": "Савет"
+      "actions": "Akcije",
+      "error": "Podešavanja greške",
+      "formValidator": "Validator obrasca",
+      "language": "Podešavanja jezika",
+      "modal": "Modalni",
+      "tooltip": "Savet za alat"
     },
     "sectionName": {
-      "components": "Компоненте",
-      "forms": "Облици",
-      "settings": "Подешавања",
-      "tree": "Дрво"
+      "components": "Komponente",
+      "forms": "Obrasci",
+      "settings": "Podešavanja",
+      "tree": "Drvo"
     }
   },
   "license": {
-    "errDomain": "Ваша лиценца дозвољава употребу само следећих домена:{{Domain}}",
-    "errElectron": "Ваша лиценца не дозвољава рад у Елецтрону",
-    "errEndDate": "Лиценца је истекла{{licenseEndDate}}",
-    "errEndDateStrict": "Лиценца је истекла{{licenseEndDate}}",
-    "errLicenseInvalid": "Наведени лиценцни кључ је неважећи.",
-    "errNoKey": "Није обезбеђен лиценцни кључ.",
-    "ftComponentPreset": "Ваша лиценца не дозвољава претходно подешавање компонената",
-    "ftComponentQrCode": "Ваша лиценца не дозвољава употребу компоненте КР кода",
-    "ftComponentRepeater": "Ваша лиценца не дозвољава употребу репетитора",
-    "ftComponentSignature": "Ваша лиценца не дозвољава компоненту потписа",
-    "ftComponentTable": "Ваша лиценца не дозвољава употребу компоненте табеле",
-    "ftComponentTemplates": "Ваша лиценца не дозвољава употребу шаблона",
-    "ftDesignerCustomization": "Ваша лиценца не дозвољава подешавање дизајна",
-    "ftLocaleCount": "Ваша лиценца дозвољава пренос само на {{ftLocaleCount}}остали језици",
-    "mismatchMessage": "Користите функције које нису укључене у вашу лиценцу. Производ ради у режиму \"некомерцијалне употребе\". Промените лиценцу да бисте користили опције у наставку:"
+    "errDomain": "Vaša licenca dozvoljava samo sledeće domene: {{Domain}}",
+    "errElectron": "Vaša licenca ne dozvoljava pokretanje u Electronu",
+    "errEndDate": "Licenca je istekla {{licenseEndDate}}",
+    "errEndDateStrict": "Licenca je istekla {{licenseEndDate}}",
+    "errLicenseInvalid": "Navedeni licenčni ključ je nevažeći.",
+    "errNoKey": "Nije obezbeđen ključ licence.",
+    "ftComponentPreset": "Vaša licenca ne dozvoljava unapred podešene komponente",
+    "ftComponentQrCode": "Vaša licenca ne dozvoljava korišćenje komponente KR koda",
+    "ftComponentRepeater": "Vaša licenca ne dozvoljava upotrebu repetitora",
+    "ftComponentSignature": "Vaša licenca ne dozvoljava upotrebu komponente Potpis",
+    "ftComponentTable": "Vaša licenca ne dozvoljava korišćenje komponente Tabela",
+    "ftComponentTemplates": "Vaša licenca ne dozvoljava korišćenje šablona",
+    "ftDesignerCustomization": "Vaša licenca ne dozvoljava prilagođavanje dizajnera",
+    "ftLocaleCount": "Vaša licenca dozvoljava prevod samo za {{ftLocaleCount}} jezike",
+    "mismatchMessage": "Koristite funkcije koje nisu uključene u vašu licencu. Proizvod radi u režimu „nekomercijalne upotrebe“. Promenite licencu da biste koristili opcije ispod:"
   },
   "localization": {
-    "messageIsNull": "Вредност поруке локализације је нула",
-    "messageNotFound": "Порука о локализацији није пронађена"
+    "messageIsNull": "Poruka o lokalizaciji je nulta",
+    "messageNotFound": "Poruka o lokalizaciji nije pronađena"
   },
   "presetComponent": {
-    "category": "Категорија",
-    "createPreset": "Направите унапред инсталирану компоненту",
-    "enterPresetName": "Унесите име унапред подешене поставке",
-    "name": "Име",
-    "nameExists": "Унапред подешена поставка или компонента са тим именом већ постоји.",
-    "namePlaceholder": "Унесите име унапред подешене поставке"
+    "category": "Kategorija",
+    "createPreset": "Kreirajte unapred podešenu komponentu",
+    "enterPresetName": "Unesite unapred podešeno ime",
+    "name": "Naziv",
+    "nameExists": "Unapred podešena ili komponenta sa ovim imenom već postoji.",
+    "namePlaceholder": "Unesite unapred podešeno ime"
   },
   "promptDialog": {
-    "cancel": "Откажи",
-    "ok": "ОК"
+    "cancel": "Otkaži",
+    "ok": "OK"
   },
   "propertiesEditor": {
-    "applyKey": "Примените кључне промене",
-    "clean": "Ресетовање на подразумевану вредност",
+    "applyKey": "Primenite ključne promene",
+    "clean": "Vratite se na podrazumevano",
     "codeButton": {
-      "editCalculable": "Уређивање се може израчунати",
-      "editLocalizable": "Уреди локализацију",
-      "hintCalculable": "Нека ово својство буде израчунато",
-      "hintCalculableAndLocalizable": "Нека ово својство буде израчунато или локализовано",
-      "hintLocalizable": "Локализујте ово својство",
-      "neitherCalculableNorLocalizable": "Не може се израчунати, нити локализовати"
+      "editCalculable": "Izmenite izračunato",
+      "editLocalizable": "Uredi lokalizaciju",
+      "hintCalculable": "Učinite ovo svojstvo izračunljivim",
+      "hintCalculableAndLocalizable": "Učinite ovo svojstvo izračunljivim ili lokalizovanim",
+      "hintLocalizable": "Lokalizujte ovu imovinu",
+      "neitherCalculableNorLocalizable": "Ni izračunljivo ni lokalizovano"
     },
-    "keyMustBeUnique": "Кључ мора бити јединствен",
-    "keyMustNotBeEmpty": "Кључ не сме бити празан",
-    "removeRow": "Избришите ред",
+    "keyMustBeUnique": "Ključ mora biti jedinstven",
+    "keyMustNotBeEmpty": "Ključ ne sme biti prazan",
+    "removeRow": "Uklonite red",
     "sectionName": {
-      "actions": "Акције",
-      "expression": "Израз",
-      "linkedProperty": "Повезано својство",
-      "main": "Главни",
-      "rules": "Правила",
-      "style": "Стил",
-      "withTarget": "Са циљем",
-      "withoutTarget": "Без сврхе"
+      "actions": "Akcije",
+      "expression": "Izraz",
+      "linkedProperty": "Povezana imovina",
+      "main": "Glavni",
+      "rules": "Pravila",
+      "style": "Stil",
+      "withTarget": "Sa ciljem",
+      "withoutTarget": "Bez cilja"
     },
-    "selectElementForEdit": "Изаберите ставку у обрасцу за уређивање својстава",
-    "setInputHint": "Притисните Ентер да бисте додали вредност",
+    "selectElementForEdit": "Izaberite element na obrascu za uređivanje svojstava",
+    "setInputHint": "Pritisnite Enter da biste dodali vrednost",
     "subSection": {
-      "additionalProperties": "Додатна својства"
+      "additionalProperties": "Dodatna svojstva"
     }
   },
   "rightMenu": {
     "modes": {
-      "builder": "Преглед",
-      "desktop": "Десктоп",
-      "mobile": "Мобилни",
-      "orientation": "Оријентација",
-      "tablet": "Пилула",
-      "viewer": "Уреди"
+      "builder": "Pregled",
+      "desktop": "Desktop",
+      "mobile": "Mobilni",
+      "orientation": "Orijentacija",
+      "tablet": "Tableta",
+      "viewer": "Uredi"
     },
-    "toggleTheme": "Пребацивање теме"
+    "toggleTheme": "Prebaci temu"
   },
   "searchForm": {
-    "search": "Претрага..."
+    "search": "Traži..."
   },
   "style": {
-    "any": "Неки",
-    "component": "Компонента",
-    "componentHint": "Стилови примењени на компоненту",
+    "any": "Bilo koji",
+    "component": "Komponenta",
+    "componentHint": "Stilovi koji se odnose na komponentu",
     "componentTab": {
-      "hint": "ЦСС стилови који се примењују на компоненту помоћу 'цласснаме'",
-      "name": "Компонента"
+      "hint": "CSS stilovi koji se primenjuju na komponentu preko 'ClassName'",
+      "name": "Komponenta"
     },
-    "desktop": "Десктоп",
-    "forDevice": "За уређај",
+    "desktop": "Desktop",
+    "forDevice": "Za uređaj",
     "header": {
-      "hint": "ЦСС стилови који се примењују помоћу својства 'цласснаме'",
-      "name": "Стилови за назив класе"
+      "hint": "CSS stilovi koji se primenjuju preko svojstva 'ClassName'",
+      "name": "Stilovi za ime klase"
     },
-    "mobile": "Мобилни",
-    "other": "Други",
-    "tablet": "Пилула",
-    "wrapper": "Омотач",
-    "wrapperHint": "Стилови који се примењују на љуску компоненте",
+    "mobile": "Mobilni",
+    "other": "Ostalo",
+    "tablet": "Tableta",
+    "wrapper": "Omotač",
+    "wrapperHint": "Stilovi koji se primenjuju na omotač komponenti",
     "wrapperTab": {
-      "hint": "ЦСС стилови који се примењују на љуску компоненте помоћу 'цласснаме'",
-      "name": "Омотач"
+      "hint": "CSS stilovi koji se primenjuju na omot komponenti preko 'ClassName'",
+      "name": "Omotač"
     }
   },
   "styleEditor": {
     "componentTab": {
-      "hint": "ЦСС стилови који се примењују на компоненту помоћу својства 'Стиле'",
-      "name": "Компонента"
+      "hint": "CSS stilovi koji se primenjuju na komponentu preko svojstva 'stil'",
+      "name": "Komponenta"
     },
     "header": {
-      "hint": "ЦСС стилови који се примењују помоћу својства 'Стиле'",
-      "name": "Уграђени стилови"
+      "hint": "CSS stilovi koji se primenjuju preko svojstva 'stil'",
+      "name": "Ugrađeni stilovi"
     },
     "wrapperTab": {
-      "hint": "ЦСС стилови који се примењују на љуску компоненте помоћу својства 'цласснаме'",
-      "name": "Омотач"
+      "hint": "CSS stilovi koji se primenjuju na omotač komponenti preko svojstva 'ClassName'",
+      "name": "Omotač"
     }
   },
   "testingEditor": {
-    "autorun": "Ауторун",
-    "compilationOk": "Резултат компилације: ОК",
-    "hasNotReturnedValue": "Није вратио вредност",
-    "run": "Трчи",
-    "testFormData": "Подаци тест обрасца"
+    "autorun": "Autorun",
+    "compilationOk": "Rezultat kompilacije: OK",
+    "hasNotReturnedValue": "Nije vratio vrednost",
+    "run": "Trči",
+    "testFormData": "Podaci obrasca za testiranje"
   },
   "toolbar": {
-    "cloneComponent": "Компонента клонирања",
-    "elements": "Елементи",
-    "notFound": "Није пронађено",
-    "removeComponent": "Уклоните компоненту",
-    "reset": "Ресетовање"
+    "cloneComponent": "Klonska komponenta",
+    "elements": "Elementi",
+    "notFound": "Nije pronađeno",
+    "removeComponent": "Uklonite komponentu",
+    "reset": "Resetovanje"
   },
   "tree": {
-    "collapse": "Ролл све",
-    "expand": "Проширите све"
+    "collapse": "Srušite sve",
+    "expand": "Proširi sve"
   },
   "validation": {
-    "addRule": "Додајте правило за проверу",
-    "chooseValidation": "Изаберите свој тип",
-    "editCustomValidationCode": "Уређивање прилагођеног кода за проверу компоненте",
-    "editFormValidatorCode": "Уредите код за проверу обрасца",
-    "formErrors": "Грешке у облику",
+    "addRule": "Dodajte pravilo validacije",
+    "chooseValidation": "Izaberite svoj tip",
+    "editCustomValidationCode": "Izmenite prilagođeni kod za validaciju komponente",
+    "editFormValidatorCode": "Uredite kod za validaciju obrasca",
+    "formErrors": "Greške u obrascu",
     "rule": {
-      "code": "Код",
-      "custom": "Обичај",
-      "datetime": "Датум и време",
-      "email": "Е-пошта",
-      "endsWith": "Завршава се речима",
-      "falsy": "Лажни",
-      "finite": "Крајњи",
-      "includes": "Укључује",
-      "integer": "Цео број",
-      "ip": "Ip",
-      "length": "Дужина",
-      "lessThan": "Мање од",
-      "max": "Макс",
-      "min": "Минут",
-      "moreThan": "Више од",
-      "multipleOf": "Кратно",
-      "nonEmpty": "Непразан",
-      "regex": "Регуларни израз",
-      "required": "Потребан",
-      "startsWith": "Почиње са",
-      "truthy": "Истинито",
-      "url": "УРЛ адреса",
-      "uuid": "УУИД (кориснички ИД)"
+      "code": "Kod",
+      "custom": "Prilagođeno",
+      "datetime": "Datum",
+      "email": "E-pošta",
+      "endsWith": "Završava sa",
+      "falsy": "Falsi",
+      "finite": "Konačan",
+      "includes": "Uključuje",
+      "integer": "Celobrojni",
+      "ip": "IP",
+      "length": "Dužina",
+      "lessThan": "Manje od",
+      "max": "Maks",
+      "min": "Min",
+      "moreThan": "Više od",
+      "multipleOf": "Višestruko od",
+      "nonEmpty": "Nije prazan",
+      "regex": "Regek",
+      "required": "Obavezno",
+      "startsWith": "Počinje sa",
+      "truthy": "Istinito",
+      "url": "Url",
+      "uuid": "Uuid"
     },
-    "ruleNotFound": "Правило није пронађено или повезано",
-    "showFormErrors": "Прикажи грешке обрасца"
+    "ruleNotFound": "Pravilo nije pronađeno ili nije povezano",
+    "showFormErrors": "Prikaži greške u obrascu"
   }
 }

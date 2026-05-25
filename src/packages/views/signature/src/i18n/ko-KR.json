@@ -6,15 +6,15 @@
   },
   "components": {
     "RsSignature": {
-      "description": "캔버스 기반의 부드러운 서명 그리기",
-      "name": "서명",
+      "description": "HTML5 캔버스 기반의 부드러운 시그니처 드로잉",
+      "name": "시그니처",
       "props": {
         "backgroundColor": {
-          "description": "배경 색상",
+          "description": "배경 색상입니다.",
           "name": "배경 색상"
         },
         "clearButtonText": {
-          "description": "버튼 레이블 지우기",
+          "description": "클리어 버튼 라벨",
           "name": "버튼 텍스트 지우기"
         },
         "height": {
@@ -23,27 +23,27 @@
         },
         "label": {
           "description": "구성 요소의 레이블",
-          "name": "라벨"
+          "name": "레이블"
         },
         "lineWidth": {
-          "description": "선 폭",
-          "name": "선 폭"
+          "description": "선 너비",
+          "name": "선 너비"
         },
         "penColor": {
           "description": "펜 색상",
-          "name": "펜 색깔"
+          "name": "펜 색상"
         },
         "readOnly": {
           "description": "읽기 전용 플래그",
           "name": "읽기 전용"
         },
         "value": {
-          "description": "서명 이미지를 그리기 위한 초기 데이터",
-          "name": "값"
+          "description": "서명 이미지를 그리기 위한 초기 데이터 URL",
+          "name": "가치"
         },
         "width": {
           "description": "캔버스 너비",
-          "name": "폭"
+          "name": "너비"
         }
       }
     }

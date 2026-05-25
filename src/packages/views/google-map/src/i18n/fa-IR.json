@@ -1,7 +1,7 @@
 {
   "categories": {
     "fields": {
-      "name": "رشته ها"
+      "name": "میدان"
     }
   },
   "components": {
@@ -10,11 +10,11 @@
       "name": "نقشه گوگل",
       "props": {
         "addMarkerOnSearch": {
-          "description": "آیا برای اضافه کردن یک نشانگر در جستجو",
-          "name": "اضافه کردن نشانگر در جستجو"
+          "description": "آیا اضافه کردن نشانگر در جستجو",
+          "name": "افزودن نشانگر در جستجو"
         },
         "allowChangingMarkers": {
-          "description": "اگر بررسی شود ، کاربر می تواند نشانگرها را تغییر دهد",
+          "description": "در صورت بررسی، کاربر می تواند نشانگرها را تغییر دهد",
           "name": "اجازه تغییر نشانگرها"
         },
         "allowMultipleMarkers": {
@@ -30,12 +30,12 @@
           "name": "رفتار برخورد"
         },
         "colorScheme": {
-          "description": "طرح رنگی برای استفاده",
+          "description": "طرح رنگ برای استفاده",
           "name": "طرح رنگ"
         },
         "gestureHandling": {
-          "description": "دست زدن به ژست برای استفاده",
-          "name": "دست زدن به حرکات"
+          "description": "مدیریت ژست برای استفاده",
+          "name": "مدیریت حرکات"
         },
         "height": {
           "description": "ارتفاع نقشه",
@@ -46,16 +46,16 @@
           "name": "برچسب"
         },
         "language": {
-          "description": "زبان مورد استفاده",
+          "description": "زبانی که باید استفاده شود",
           "name": "زبان"
         },
         "latitude": {
           "description": "عرض جغرافیایی نقطه مرکزی",
-          "name": "عرض جغرافیایی"
+          "name": "جغرافیایی"
         },
         "longitude": {
-          "description": "طول جغرافیایی نقطه مرکزی",
-          "name": "طول جغرافیایی"
+          "description": "طول جغرافیایی نقطه مرکز",
+          "name": "نصف‌النهار"
         },
         "mapControlPosition": {
           "description": "موقعیت کنترل نقشه",
@@ -78,7 +78,7 @@
           "name": "نشانگرها"
         },
         "region": {
-          "description": "کد منطقه برای استفاده",
+          "description": "کد منطقه مورد استفاده",
           "name": "منطقه"
         },
         "removeMarkerCaption": {
@@ -86,20 +86,20 @@
           "name": "حذف عنوان نشانگر"
         },
         "searchPlaceholder": {
-          "description": "متن جای نگهدارنده برای ورودی جستجوی نقشه",
-          "name": "جای نگهدارنده جستجو"
+          "description": "متن جایگزین برای ورودی جستجوی نقشه",
+          "name": "جستجوی جایگزین"
         },
         "showMapControl": {
-          "description": "آیا کنترل نقشه را نشان دهد",
-          "name": "کنترل نقشه را نشان دهید"
+          "description": "آیا کنترل نقشه را نشان دهید",
+          "name": "نمایش کنترل نقشه"
         },
         "width": {
           "description": "عرض نقشه",
-          "name": "عرض"
+          "name": "پهنا"
         },
         "zoom": {
-          "description": "سطح زوم",
-          "name": "زوم"
+          "description": "سطح بزرگنمایی",
+          "name": "بزرگنمایی"
         }
       }
     }

@@ -6,7 +6,7 @@
   },
   "components": {
     "RsSignature": {
-      "description": "HTML5キャンバスベースの滑らかな署名描画",
+      "description": "HTML5キャンバスベースのスムーズな署名描画",
       "name": "署名",
       "props": {
         "backgroundColor": {
@@ -15,7 +15,7 @@
         },
         "clearButtonText": {
           "description": "クリアボタンラベル",
-          "name": "ボタンのテキストを消去する"
+          "name": "[クリア] ボタンのテキスト"
         },
         "height": {
           "description": "キャンバスの高さ",
@@ -23,11 +23,11 @@
         },
         "label": {
           "description": "コンポーネントのラベル",
-          "name": "ラベル"
+          "name": "[ラベル]"
         },
         "lineWidth": {
-          "description": "線の幅",
-          "name": "線幅"
+          "description": "ライン幅",
+          "name": "ライン幅"
         },
         "penColor": {
           "description": "ペンの色",
@@ -39,7 +39,7 @@
         },
         "value": {
           "description": "署名画像を描画するための初期データURL",
-          "name": "値"
+          "name": "価値"
         },
         "width": {
           "description": "キャンバスの幅",

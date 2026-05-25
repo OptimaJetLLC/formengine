@@ -1,205 +1,205 @@
 {
   "categories": {
     "structure": {
-      "name": "Структура"
+      "name": "Struktura"
     }
   },
   "components": {
     "RsCell": {
-      "description": "Ћелија табеле",
-      "name": "Ћелија",
+      "description": "Ćelija stola",
+      "name": "Ćelija",
       "props": {
         "dataKey": {
-          "description": "Кључ за везивање података, али и нека врста кључа",
-          "name": "Кључ података"
+          "description": "Ključ za vezivanje podataka, ali i neka vrsta ključa",
+          "name": "Ključ podataka"
         }
       }
     },
     "RsColumn": {
-      "description": "Колона табеле",
-      "name": "Колона",
+      "description": "Kolona tabele",
+      "name": "Kolona",
       "props": {
         "align": {
-          "description": "Поравнање",
-          "name": "Изравнати"
+          "description": "Poravnanje",
+          "name": "Poravnati"
         },
         "colSpan": {
-          "description": "Комбинује ћелије колоне за спајање ако је вредност \"кључа података\" за колону која се спаја нулл или недефинисана",
-          "name": "Опсег вредности Цол"
+          "description": "Spaja ćelije kolona za spajanje kada je vrednost „Ključ podataka“ za spojenu kolonu nulta ili nedefinisana",
+          "name": "Obuhvat kolona"
         },
         "fixed": {
-          "description": "Непокретна колона",
-          "name": "Поправљено"
+          "description": "Fiksna kolona",
+          "name": "Fiksni"
         },
         "flexGrow": {
-          "description": "Подесите да се ширина колоне аутоматски подешава ако опција \" Флек Гров \"не може да подеси својства\" Променљива величина \"и\"Ширина\".",
-          "name": "Флексибилан раст"
+          "description": "Podešavanje širine kolone automatski se prilagođava, kada je podešeno „Flek raste“ ne može da podesi svojstvo „Resizable“ i „Širina“",
+          "name": "Flek raste"
         },
         "fullText": {
-          "description": "Да ли треба приказати пуни текст садржаја ћелије када задржите показивач миша",
-          "name": "Пуни текст"
+          "description": "Da li da prikažete ceo tekst sadržaja ćelije kada je miš lebdio",
+          "name": "Kompletan tekst"
         },
         "minWidth": {
-          "description": "Када користите функцију \"Флек Гров\", можете подесити минималну ширину",
-          "name": "Минимална ширина"
+          "description": "Kada koristite „Flek grov“, možete podesiti minimalnu širinu",
+          "name": "Minimalna širina"
         },
         "resizable": {
-          "description": "Прилагођена величина ширине колоне",
-          "name": "Променљива величина"
+          "description": "Prilagodljiva promena veličine širine kolone",
+          "name": "Promenljiva veličina"
         },
         "rowSpan": {
-          "description": "Комбинује редове у наведеној колони",
-          "name": "Јаз између редова"
+          "description": "Spaja redove na navedenoj koloni",
+          "name": "Raspon redova"
         },
         "sortable": {
-          "description": "Сортирано",
-          "name": "Сортирано"
+          "description": "Sortibilno",
+          "name": "Sortibilno"
         },
         "verticalAlign": {
-          "description": "Вертикално поравнање",
-          "name": "Вертикално поравнање"
+          "description": "Vertikalno poravnanje",
+          "name": "Vertikalno poravnanje"
         },
         "width": {
-          "description": "Ширина колоне",
-          "name": "Ширина"
+          "description": "Širina kolone",
+          "name": "Širina"
         }
       }
     },
     "RsColumnGroup": {
-      "description": "Група колона табеле",
-      "name": "Група колона",
+      "description": "Grupa kolona tabele",
+      "name": "Grupa kolona",
       "props": {
         "align": {
-          "description": "Поравнање",
-          "name": "Изравнати"
+          "description": "Poravnanje",
+          "name": "Poravnati"
         },
         "fixed": {
-          "description": "Фиксна група колона",
-          "name": "Поправљено"
+          "description": "Fiksna grupa kolona",
+          "name": "Fiksni"
         },
         "groupHeaderHeight": {
-          "description": "Висина заглавља обједињене групе ћелија",
-          "name": "Висина заглавља групе"
+          "description": "Visina zaglavlja spojene grupe ćelija",
+          "name": "Visina zaglavlja grupe"
         },
         "header": {
-          "description": "Наслов групе",
-          "name": "Наслов"
+          "description": "Zaglavlje grupe",
+          "name": "zaglavlje"
         },
         "verticalAlign": {
-          "description": "Вертикално поравнање",
-          "name": "Вертикално поравнање"
+          "description": "Vertikalno poravnanje",
+          "name": "Vertikalno poravnanje"
         }
       }
     },
     "RsHeaderCell": {
-      "description": "Ћелија заглавља табеле",
-      "name": "Ћелија заглавља",
+      "description": "Ćelija zaglavlja tabele",
+      "name": "Ćelija zaglavlja",
       "props": {
         "children": {
-          "description": "Заглавље колоне табеле",
-          "name": "Садржај"
+          "description": "Zaglavlje kolone tabele",
+          "name": "Sadržaj"
         }
       }
     },
     "RsTable": {
-      "description": "Сто",
-      "name": "Сто",
+      "description": "Tabela",
+      "name": "Tabela",
       "props": {
         "affixHeader": {
-          "description": "Приложите заглавље табеле на одређено место на страници",
-          "name": "Приложите наслов"
+          "description": "Pričvrstite zaglavlje tabele na određenu lokaciju na stranici",
+          "name": "Priložite zaglavlje"
         },
         "affixHorizontalScrollbar": {
-          "description": "Закачите хоризонталну траку за померање табеле на одређено место на страници",
-          "name": "Причврстите хоризонталну траку за померање"
+          "description": "Pričvrstite horizontalnu traku za pomeranje tabele na navedeni položaj na stranici",
+          "name": "Postavite horizontalnu traku za pomeranje"
         },
         "autoHeight": {
-          "description": "Висина табеле ће се аутоматски повећати на основу броја редова података и вертикална трака за померање се неће појавити",
-          "name": "Аутоматска висина"
+          "description": "Visina tabele će se automatski proširiti prema broju redova podataka i neće se pojaviti vertikalna traka za pomeranje",
+          "name": "Automatska visina"
         },
         "bordered": {
-          "description": "Прикажи границу",
-          "name": "Гранични"
+          "description": "Prikaži granicu",
+          "name": "Ograničen"
         },
         "cellBordered": {
-          "description": "Прикажи границу ћелије",
-          "name": "Обрубљена ћелија"
+          "description": "Prikaži granicu ćelije",
+          "name": "Ćelija obrubljena"
         },
         "data": {
-          "description": "Табеларни подаци",
-          "name": "Подаци"
+          "description": "Podaci tabele",
+          "name": "Podaci"
         },
         "defaultSortType": {
-          "description": "Врста сортирања",
-          "name": "Подразумевани тип сортирања"
+          "description": "Vrsta sortiranja",
+          "name": "Podrazumevani tip sortiranja"
         },
         "fillHeight": {
-          "description": "Присилно подесите висину табеле на висину надређеног контејнера. Не може се користити заједно са опцијом \"Аутоматска висина\"",
-          "name": "Висина пуњења"
+          "description": "Prisilite visinu stola da bude jednaka visini matičnog kontejnera. Ne može se koristiti zajedno sa „Automatskom visinom“",
+          "name": "Visina punjenja"
         },
         "headerHeight": {
-          "description": "Висина заглавља табеле",
-          "name": "Висина жетелице"
+          "description": "Visina zaglavlja tabele",
+          "name": "Visina zaglavlja"
         },
         "height": {
-          "description": "Висина стола",
-          "name": "Висина"
+          "description": "Visina stola",
+          "name": "Visina"
         },
         "hover": {
-          "description": "Ред табеле има ефекат лебдења миша",
-          "name": "Лебди"
+          "description": "Red tabele ima efekat prelaska mišem",
+          "name": "Lebdi"
         },
         "loading": {
-          "description": "Прикажи преузимање",
-          "name": "Утовар"
+          "description": "Prikaži učitavanje",
+          "name": "Učitavanje"
         },
         "maxHeight": {
-          "description": "Максимална висина",
-          "name": "Максимална висина"
+          "description": "Maksimalna visina",
+          "name": "Maksimalna visina"
         },
         "minHeight": {
-          "description": "Минимална висина",
-          "name": "Минимална висина"
+          "description": "Minimalna visina",
+          "name": "Minimalna visina"
         },
         "rowClassName": {
-          "description": "Додајте опционално додатно име класе у низ",
-          "name": "Назив класе низа"
+          "description": "Dodajte opcionalno ime dodatne klase u red",
+          "name": "Naziv klase reda"
         },
         "rowHeight": {
-          "description": "Висина реда",
-          "name": "Висина реда"
+          "description": "Visina reda",
+          "name": "Visina reda"
         },
         "rowKey": {
-          "description": "Сваки ред одговара јединственом кључу у подацима",
-          "name": "Кључ реда"
+          "description": "Svaki red odgovara jedinstvenom ključu u podacima",
+          "name": "Taster za red"
         },
         "shouldUpdateScroll": {
-          "description": "Да ли треба да ажурирам помицање након ажурирања величине табеле",
-          "name": "Треба ажурирати помицање"
+          "description": "Da li treba ažurirati svitak nakon ažuriranja veličine tabele",
+          "name": "Trebalo bi da ažurira skrolu"
         },
         "showHeader": {
-          "description": "Приказани наслов",
-          "name": "Прикажи наслов"
+          "description": "Prikaz zaglavlja",
+          "name": "Prikaži zaglavlje"
         },
         "sortColumn": {
-          "description": "Назив колоне за сортирање",
-          "name": "Сортирање колоне"
+          "description": "Sortiraj ime kolone",
+          "name": "Sortiraj kolonu"
         },
         "sortType": {
-          "description": "Врста сортирања",
-          "name": "Врста сортирања"
+          "description": "Vrsta sortiranja",
+          "name": "Vrsta sortiranja"
         },
         "virtualized": {
-          "description": "Ефикасно приказивање великих табеларних података",
-          "name": "Виртуелизовано"
+          "description": "Efikasno renderujte velike tabelarne podatke",
+          "name": "Virtuelizovani"
         },
         "width": {
-          "description": "Ширина табеле",
-          "name": "Ширина"
+          "description": "Širina stola",
+          "name": "Širina"
         },
         "wordWrap": {
-          "description": "Да ли треба да прикажем преломе редова тамо где текст превазилази свој садржај",
-          "name": "Преношење речи"
+          "description": "Da li će se pojaviti prelomi linija gde tekst prepuni okvir sadržaja",
+          "name": "Omotavanje reči"
         }
       }
     }

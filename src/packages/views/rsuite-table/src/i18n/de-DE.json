@@ -16,7 +16,7 @@
       }
     },
     "RsColumn": {
-      "description": "Tabellenspalte",
+      "description": "Spalte „Tabelle“",
       "name": "Spalte",
       "props": {
         "align": {
@@ -24,28 +24,28 @@
           "name": "Ausrichten"
         },
         "colSpan": {
-          "description": "Führt Spaltenzellen zusammen, um sie zusammenzuführen, wenn der 'Datenschlüssel'-Wert für die zusammengeführte Spalte null oder undefiniert ist",
+          "description": "Führt Spaltenzellen zusammen, um sie zusammenzuführen, wenn der Wert „Datenschlüssel“ für die zusammengeführte Spalte Null oder undefiniert ist",
           "name": "Spaltenübergreifend"
         },
         "fixed": {
-          "description": "Fixierte Spalte",
-          "name": "Fest"
+          "description": "Feste Spalte",
+          "name": "Behoben"
         },
         "flexGrow": {
-          "description": "Stellen Sie die Spaltenbreite automatisch ein, wenn set 'Flex grow' die Eigenschaften 'Resizable' und 'Width' nicht festlegen kann",
-          "name": "Flex Grow"
+          "description": "Stellen Sie die Spaltenbreite automatisch ein. Wenn „Flex Grow“ eingestellt ist, können die Eigenschaften „Resizable“ und „Width“ nicht festgelegt werden",
+          "name": "Flex wachsen"
         },
         "fullText": {
-          "description": "Gibt an, ob der vollständige Text des Zellinhalts angezeigt werden soll, wenn die Maus bewegt wird",
+          "description": "Ob der vollständige Text des Zellinhalts angezeigt werden soll, wenn die Maus bewegt wird",
           "name": "Volltext"
         },
         "minWidth": {
-          "description": "Wenn Sie 'Flex grow' verwenden, können Sie eine Mindestbreite festlegen",
+          "description": "Wenn Sie 'Flex Grow' verwenden, können Sie eine Mindestbreite festlegen",
           "name": "Minimale Breite"
         },
         "resizable": {
           "description": "Anpassbare Größenänderung der Spaltenbreite",
-          "name": "Größenveränderbar"
+          "name": "In der Größe veränderbar"
         },
         "rowSpan": {
           "description": "Führt Zeilen in der angegebenen Spalte zusammen",
@@ -57,10 +57,10 @@
         },
         "verticalAlign": {
           "description": "Vertikale Ausrichtung",
-          "name": "Vertikale Ausrichtung"
+          "name": "Vertikal ausrichten"
         },
         "width": {
-          "description": "Spaltenbreite",
+          "description": "Breite der Spalte",
           "name": "Breite"
         }
       }
@@ -75,25 +75,25 @@
         },
         "fixed": {
           "description": "Feste Spaltengruppe",
-          "name": "Fest"
+          "name": "Behoben"
         },
         "groupHeaderHeight": {
-          "description": "Die Höhe der Kopfzeile der verbundenen Zellengruppe",
-          "name": "Höhe des Gruppenkopfs"
+          "description": "Die Höhe der Kopfzeile der zusammengeführten Zellengruppe",
+          "name": "Höhe der Gruppenkopfzeile"
         },
         "header": {
           "description": "Gruppenkopf",
-          "name": "Header"
+          "name": "Kopfzeile"
         },
         "verticalAlign": {
           "description": "Vertikale Ausrichtung",
-          "name": "Vertikale Ausrichtung"
+          "name": "Vertikal ausrichten"
         }
       }
     },
     "RsHeaderCell": {
       "description": "Tabellenkopfzelle",
-      "name": "Kopfzeile Zelle",
+      "name": "Header-Zelle",
       "props": {
         "children": {
           "description": "Spaltenüberschrift der Tabelle",
@@ -106,11 +106,11 @@
       "name": "Tabelle",
       "props": {
         "affixHeader": {
-          "description": "Befestigen Sie den Tabellenkopf an der angegebenen Stelle auf der Seite",
+          "description": "Bringen Sie die Tabellenkopfzeile an die angegebene Stelle auf der Seite an",
           "name": "Kopfzeile anbringen"
         },
         "affixHorizontalScrollbar": {
-          "description": "Befestigen Sie die horizontale Bildlaufleiste der Tabelle an der angegebenen Position auf der Seite",
+          "description": "Bringen Sie die horizontale Bildlaufleiste der Tabelle an die angegebene Position auf der Seite an",
           "name": "Horizontale Bildlaufleiste anbringen"
         },
         "autoHeight": {
@@ -118,11 +118,11 @@
           "name": "Automatische Höhe"
         },
         "bordered": {
-          "description": "Rahmen anzeigen",
+          "description": "Rand einblenden",
           "name": "Umrandet"
         },
         "cellBordered": {
-          "description": "Zellrahmen anzeigen",
+          "description": "Zellenrand anzeigen",
           "name": "Zelle umrandet"
         },
         "data": {
@@ -130,75 +130,75 @@
           "name": "Daten"
         },
         "defaultSortType": {
-          "description": "Sortiertyp",
+          "description": "Art der Sortierung",
           "name": "Standardsortiertyp"
         },
         "fillHeight": {
-          "description": "Erzwingen Sie, dass die Höhe der Tabelle der Höhe des übergeordneten Containers entspricht. Kann nicht zusammen mit 'Auto height' verwendet werden",
+          "description": "Erzwingen Sie, dass die Höhe der Tabelle der Höhe des übergeordneten Containers entspricht. Kann nicht zusammen mit „Automatische Höhe“ verwendet werden",
           "name": "Füllhöhe"
         },
         "headerHeight": {
-          "description": "Höhe des Tabellenkopfs",
-          "name": "Kopfhöhe"
+          "description": "Höhe des Tabellenkopfes",
+          "name": "Höhe der Kopfzeile"
         },
         "height": {
-          "description": "Tabellenhöhe",
+          "description": "Höhe des Tisches",
           "name": "Höhe"
         },
         "hover": {
           "description": "Die Zeile der Tabelle hat einen Mouseover-Effekt",
-          "name": "Hover"
+          "name": "Schweben"
         },
         "loading": {
-          "description": "Laden anzeigen",
-          "name": "Laden"
+          "description": "Ladevorgang anzeigen",
+          "name": "Wird geladen"
         },
         "maxHeight": {
           "description": "Maximale Höhe",
-          "name": "Maximale Höhe"
+          "name": "Max. Höhe"
         },
         "minHeight": {
           "description": "Mindesthöhe",
-          "name": "Minimale Höhe"
+          "name": "Mindesthöhe"
         },
         "rowClassName": {
           "description": "Fügen Sie der Zeile einen optionalen zusätzlichen Klassennamen hinzu",
           "name": "Name der Zeilenklasse"
         },
         "rowHeight": {
-          "description": "Zeilenhöhe",
-          "name": "Zeilenhöhe"
+          "description": "Höhe der Reihe",
+          "name": "Höhe der Reihe"
         },
         "rowKey": {
-          "description": "Jede Zeile entspricht dem eindeutigen Schlüssel in den Daten",
-          "name": "Zeilenschlüssel"
+          "description": "Jede Zeile entspricht dem eindeutigen Schlüssel in Daten",
+          "name": "Zeilentaste"
         },
         "shouldUpdateScroll": {
-          "description": "Gibt an, ob der Bildlauf nach der Aktualisierung der Tabellengröße aktualisiert werden soll",
-          "name": "Sollte Scroll aktualisieren"
+          "description": "Ob der Scroll aktualisiert werden soll, nachdem die Tabellengröße aktualisiert wurde",
+          "name": "Sollte den Scroll aktualisieren"
         },
         "showHeader": {
           "description": "Kopfzeile anzeigen",
-          "name": "Kopfzeile anzeigen"
+          "name": "Header anzeigen"
         },
         "sortColumn": {
           "description": "Spaltenname sortieren",
-          "name": "Sortierspalte"
+          "name": "Spalte sortieren"
         },
         "sortType": {
-          "description": "Sortiertyp",
-          "name": "Sortiertyp"
+          "description": "Art der Sortierung",
+          "name": "Art der Sortierung"
         },
         "virtualized": {
-          "description": "Effektives Rendern großer Tabellendaten",
+          "description": "Effektives Rendern großer tabellarischer Daten",
           "name": "Virtualisiert"
         },
         "width": {
-          "description": "Tabellenbreite",
+          "description": "Breite des Tisches",
           "name": "Breite"
         },
         "wordWrap": {
-          "description": "Gibt an, ob Zeilenumbrüche angezeigt werden sollen, bei denen Text das Inhaltsfeld überläuft",
+          "description": "Ob Zeilenumbrüche angezeigt werden sollen, wenn Text das Inhaltsfeld überläuft",
           "name": "Zeilenumbruch"
         }
       }

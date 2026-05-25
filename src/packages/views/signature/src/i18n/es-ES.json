@@ -6,7 +6,7 @@
   },
   "components": {
     "RsSignature": {
-      "description": "Dibujo de firma suave basado en lienzo HTML5",
+      "description": "Dibujo de firma fluido basado en lienzo HTML5",
       "name": "Firma",
       "props": {
         "backgroundColor": {
@@ -14,8 +14,8 @@
           "name": "Color de fondo"
         },
         "clearButtonText": {
-          "description": "Etiqueta de botón transparente",
-          "name": "Texto claro del botón"
+          "description": "Borrar etiqueta de botón",
+          "name": "Borrar texto del botón"
         },
         "height": {
           "description": "La altura del lienzo",
@@ -30,8 +30,8 @@
           "name": "Ancho de línea"
         },
         "penColor": {
-          "description": "El color de la pluma",
-          "name": "Color de la pluma"
+          "description": "El color del bolígrafo",
+          "name": "Color de bolígrafo"
         },
         "readOnly": {
           "description": "Indicador de solo lectura",
@@ -43,7 +43,7 @@
         },
         "width": {
           "description": "El ancho del lienzo",
-          "name": "Ancho"
+          "name": "Anchura"
         }
       }
     }

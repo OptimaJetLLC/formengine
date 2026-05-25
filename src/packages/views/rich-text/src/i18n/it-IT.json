@@ -1,28 +1,28 @@
 {
   "categories": {
     "fields": {
-      "name": "Campo"
+      "name": "Campi"
     }
   },
   "components": {
     "RichTextEditor": {
-      "description": "Il tuo potente editor di testo ricco",
-      "name": "Editor di testo ricco",
+      "description": "Il tuo potente editor di testo RTF",
+      "name": "Editor di testo RTF",
       "props": {
         "initialValue": {
           "description": "Il valore iniziale",
           "name": "Valore iniziale"
         },
         "label": {
-          "description": "Etichetta",
+          "description": "L'etichetta",
           "name": "Etichetta"
         },
         "modules": {
           "description": "Permette di personalizzare il comportamento e la funzionalità dell'editor. Leggi i documenti per maggiori informazioni",
-          "name": "Modulo"
+          "name": "Moduli"
         },
         "placeholder": {
-          "description": "Segnaposto",
+          "description": "Il segnaposto",
           "name": "Segnaposto"
         },
         "readOnly": {
@@ -31,7 +31,7 @@
         },
         "toolbarOptions": {
           "description": "Gruppi di pulsanti da visualizzare sulla barra degli strumenti",
-          "name": "Opzioni barra degli strumenti"
+          "name": "Opzioni della barra degli strumenti"
         }
       }
     }

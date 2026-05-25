@@ -1,12 +1,12 @@
 {
   "categories": {
     "fields": {
-      "name": "رشته ها"
+      "name": "میدان"
     }
   },
   "components": {
     "RsSignature": {
-      "description": "نقاشی امضای صاف مبتنی بر بوم HTML5",
+      "description": "طراحی امضای صاف مبتنی بر بوم HTML5",
       "name": "امضا",
       "props": {
         "backgroundColor": {
@@ -14,15 +14,15 @@
           "name": "رنگ پس زمینه"
         },
         "clearButtonText": {
-          "description": "برچسب دکمه پاک",
-          "name": "پاک کردن متن دکمه"
+          "description": "برچسب دکمه پاک کنید",
+          "name": "متن دکمه پاک کردن"
         },
         "height": {
           "description": "ارتفاع بوم",
           "name": "ارتفاع"
         },
         "label": {
-          "description": "برچسب برای قطعه",
+          "description": "برچسب برای جزء",
           "name": "برچسب"
         },
         "lineWidth": {
@@ -34,8 +34,8 @@
           "name": "رنگ قلم"
         },
         "readOnly": {
-          "description": "پرچم فقط برای خواندن",
-          "name": "فقط بخوانید"
+          "description": "پرچم فقط خواندنی",
+          "name": "فقط خواندن"
         },
         "value": {
           "description": "URL داده اولیه برای ترسیم تصویر امضا",
@@ -43,7 +43,7 @@
         },
         "width": {
           "description": "عرض بوم",
-          "name": "عرض"
+          "name": "پهنا"
         }
       }
     }

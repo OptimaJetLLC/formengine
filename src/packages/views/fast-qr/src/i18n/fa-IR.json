@@ -6,7 +6,7 @@
   },
   "components": {
     "FastQR": {
-      "description": "جزء که می تواند متن را به کد QR تبدیل کند و از رنگ و لوگو سفارشی پشتیبانی کند",
+      "description": "مولفه ای که می تواند متن را به کدهای QR تبدیل کند و از رنگ و آرم سفارشی پشتیبانی کند",
       "name": "کد QR",
       "props": {
         "content": {
@@ -15,10 +15,10 @@
         },
         "errorCorrectionLevel": {
           "description": "سطح کدگذاری اصلاح خطا",
-          "name": "سطح اصلاح خطا"
+          "name": "سطح تصحیح خطا"
         },
         "image": {
-          "description": "تصویر ، base64 یا URL",
+          "description": "تصویر، base64 یا URL",
           "name": "تصویر"
         },
         "imageBackgroundColor": {
@@ -43,7 +43,7 @@
         },
         "width": {
           "description": "عرض کد QR",
-          "name": "عرض"
+          "name": "پهنا"
         }
       }
     }

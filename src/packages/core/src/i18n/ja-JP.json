@@ -5,7 +5,7 @@
       "name": "埋め込みフォーム",
       "props": {
         "disabled": {
-          "description": "Trueの場合、埋め込みフォームは無効になります",
+          "description": "true の場合、埋め込みフォームは無効になります",
           "name": "無効"
         },
         "formName": {
@@ -14,25 +14,25 @@
         },
         "options": {
           "description": "埋め込みフォームを読み込むための追加オプション",
-          "name": "オプション"
+          "name": "[オプション]"
         },
         "readOnly": {
-          "description": "Trueの場合、埋め込みフォームは読み取り専用です",
+          "description": "true の場合、埋め込まれたフォームは読み取り専用です",
           "name": "読み取り専用"
         },
         "storeDataInParentForm": {
-          "description": "Falseの場合はネストされたフォームデータがネストされたオブジェクトとして表示され、そうでない場合はtrue",
-          "name": "親フォームにデータを保存する"
+          "description": "false の場合、ネストされたフォームデータはネストされたオブジェクトとして表示され、それ以外の場合は true",
+          "name": "親フォームにデータを格納"
         }
       }
     },
     "Repeater": {
-      "description": "Repeaterコンポーネントは、繰り返しコンポーネントの配列を表示するための特別なコンポーネントです",
-      "name": "リピータ",
+      "description": "Repeater コンポーネントは、繰り返されるコンポーネントの配列を表示する特別なコンポーネントです。",
+      "name": "リピーター",
       "props": {
         "itemRenderWhen": {
-          "description": "リピータアイテムを条件付きでレンダリングする式または関数",
-          "name": "アイテムレンダリング時"
+          "description": "リピーター項目を条件付きでレンダリングする式または関数",
+          "name": "アイテムがレンダリングされるタイミング"
         }
       }
     }

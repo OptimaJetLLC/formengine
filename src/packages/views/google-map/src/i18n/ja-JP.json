@@ -6,35 +6,35 @@
   },
   "components": {
     "GoogleMap": {
-      "description": "Googleマップを表示するコンポーネント",
+      "description": "Google マップを表示するコンポーネント",
       "name": "グーグルマップ",
       "props": {
         "addMarkerOnSearch": {
-          "description": "検索時にマーカーを追加するかどうか",
+          "description": "検索にマーカーを追加するかどうか",
           "name": "検索にマーカーを追加"
         },
         "allowChangingMarkers": {
-          "description": "チェックされている場合、ユーザーはマーカーを変更できます",
-          "name": "マーカーの変更を許可する"
+          "description": "オンにすると、ユーザーはマーカーを変更できます",
+          "name": "マーカーの変更を許可"
         },
         "allowMultipleMarkers": {
           "description": "複数のマーカー",
-          "name": "複数のマーカーを許可する"
+          "name": "複数のマーカーを許可"
         },
         "apiKey": {
-          "description": "GoogleマップAPIキー",
-          "name": "APIキー"
+          "description": "グーグルマップ API キー",
+          "name": "API キー"
         },
         "collisionBehavior": {
-          "description": "マーカーの衝突の動作",
-          "name": "衝突の挙動"
+          "description": "マーカーの衝突動作",
+          "name": "衝突挙動"
         },
         "colorScheme": {
-          "description": "使用する配色",
-          "name": "配色"
+          "description": "使用するカラースキーム",
+          "name": "カラースキーム"
         },
         "gestureHandling": {
-          "description": "使用するジェスチャ処理",
+          "description": "使用するジェスチャーハンドリング",
           "name": "ジェスチャー処理"
         },
         "height": {
@@ -42,8 +42,8 @@
           "name": "高さ"
         },
         "label": {
-          "description": "地図ラベル",
-          "name": "ラベル"
+          "description": "マップラベル",
+          "name": "[ラベル]"
         },
         "language": {
           "description": "使用する言語",
@@ -59,11 +59,11 @@
         },
         "mapControlPosition": {
           "description": "マップコントロールの位置",
-          "name": "マップ制御位置"
+          "name": "マップコントロール位置"
         },
         "mapId": {
-          "description": "マップIDは、特定のマップスタイルまたはフィーチャに関連付けられた識別子です",
-          "name": "マップID"
+          "description": "マップ ID は、特定のマップスタイルまたはフィーチャに関連付けられている識別子です。",
+          "name": "マップ ID"
         },
         "mapTypeId": {
           "description": "使用するデフォルトのマップタイプ",
@@ -78,16 +78,16 @@
           "name": "マーカー"
         },
         "region": {
-          "description": "使用するリージョンコード",
-          "name": "地域"
+          "description": "使用する地域コード",
+          "name": "リージョン"
         },
         "removeMarkerCaption": {
-          "description": "マーカー除去ボタンのキャプション",
-          "name": "マーカーキャプションを削除する"
+          "description": "マーカー削除ボタンのキャプション",
+          "name": "マーカーのキャプションを削除"
         },
         "searchPlaceholder": {
-          "description": "マップ検索入力のプレースホルダテキスト",
-          "name": "検索プレースホルダ"
+          "description": "マップ検索入力のプレースホルダーテキスト",
+          "name": "検索プレースホルダー"
         },
         "showMapControl": {
           "description": "マップコントロールを表示するかどうか",

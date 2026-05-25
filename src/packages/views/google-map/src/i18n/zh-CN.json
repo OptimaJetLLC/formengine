@@ -6,12 +6,12 @@
   },
   "components": {
     "GoogleMap": {
-      "description": "显示Google地图的组件",
+      "description": "显示谷歌地图的组件",
       "name": "谷歌地图",
       "props": {
         "addMarkerOnSearch": {
-          "description": "是否在搜索中添加标记",
-          "name": "在搜索中添加标记"
+          "description": "是否在搜索时添加标记",
+          "name": "在搜索时添加标记"
         },
         "allowChangingMarkers": {
           "description": "如果选中，用户可以更改标记",
@@ -22,11 +22,11 @@
           "name": "允许多个标记"
         },
         "apiKey": {
-          "description": "谷歌地图API密钥",
-          "name": "API密钥"
+          "description": "谷歌地图 API 密钥",
+          "name": "API 密钥"
         },
         "collisionBehavior": {
-          "description": "标记碰撞行为",
+          "description": "标记的碰撞行为",
           "name": "碰撞行为"
         },
         "colorScheme": {
@@ -62,8 +62,8 @@
           "name": "地图控制位置"
         },
         "mapId": {
-          "description": "地图ID是与特定地图样式或要素关联的标识符",
-          "name": "地图ID"
+          "description": "地图 ID 是与特定地图样式或功能相关的标识符",
+          "name": "地图 ID"
         },
         "mapTypeId": {
           "description": "要使用的默认地图类型",
@@ -75,15 +75,15 @@
         },
         "markers": {
           "description": "标记的坐标",
-          "name": "标记物"
+          "name": "标记"
         },
         "region": {
           "description": "要使用的区域代码",
           "name": "区域"
         },
         "removeMarkerCaption": {
-          "description": "标记移除按钮上的标题",
-          "name": "删除标记标题"
+          "description": "移除标记按钮上的标题",
+          "name": "移除标记标题"
         },
         "searchPlaceholder": {
           "description": "地图搜索输入的占位符文本",
@@ -91,15 +91,15 @@
         },
         "showMapControl": {
           "description": "是否显示地图控件",
-          "name": "显示地图控制"
+          "name": "显示地图控件"
         },
         "width": {
           "description": "地图的宽度",
-          "name": "阔度"
+          "name": "宽度"
         },
         "zoom": {
           "description": "缩放级别",
-          "name": "变焦/变焦"
+          "name": "缩放"
         }
       }
     }

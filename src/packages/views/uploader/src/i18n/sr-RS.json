@@ -1,49 +1,49 @@
 {
   "categories": {
     "fields": {
-      "name": "Поља"
+      "name": "Polja"
     }
   },
   "components": {
     "Uploader": {
-      "description": "Компонента за отпремање датотека са подршком за превлачење и испуштање",
-      "name": "Програм за преузимање датотека",
+      "description": "Komponenta za otpremanje datoteka sa podrškom za prevlačenje i ispuštanje",
+      "name": "Otpremnik datoteka",
       "props": {
         "accept": {
-          "description": "Важећи типови датотека (нпр.pdf, .docx)",
-          "name": "Прихвати"
+          "description": "Prihvaćeni tipovi datoteka (npr. Image/*, .pdf, .dock)",
+          "name": "Prihvati"
         },
         "action": {
-          "description": "УРЛ за преузимање датотека на",
-          "name": "УРЛ акције"
+          "description": "URL za otpremanje datoteka",
+          "name": "URL akcije"
         },
         "children": {
-          "description": "Садржај приказан унутар покретачког програма",
-          "name": "Деца"
+          "description": "Sadržaj za prikaz unutar učitača",
+          "name": "Deca"
         },
         "disabled": {
-          "description": "Ако је то случај, деца су у стању инвалидитета",
-          "name": "Неспособан за рад"
+          "description": "Ako je tačno, učitavač je onemogućen",
+          "name": "Onemogućeno"
         },
         "dropzone": {
-          "description": "Ако је вредност Труе, тада ће се у падајућој зони приказати",
-          "name": "Зона слетања"
+          "description": "Ako je tačno, prikazaće se dropzone",
+          "name": "Dropzone"
         },
         "multiple": {
-          "description": "Дозволите вишеструки избор датотека",
-          "name": "Више датотека"
+          "description": "Dozvolite višestruki izbor datoteka",
+          "name": "Više datoteka"
         },
         "onChange": {
-          "description": "Повратни позив при успешном преузимању датотека",
-          "name": "О променама"
+          "description": "Povratni poziv kada su datoteke uspešno otpremljene",
+          "name": "O promeni"
         },
         "onError": {
-          "description": "Повратни позив када дође до грешке током покретања",
-          "name": "О грешци"
+          "description": "Povratni poziv kada dođe do greške tokom otpremanja",
+          "name": "O grešci"
         },
         "readOnly": {
-          "description": "Ако је вредност Труе, деца су у стању само за читање",
-          "name": "Само за читање"
+          "description": "Ako je tačno, učitač je samo za čitanje",
+          "name": "Samo za čitanje"
         }
       }
     }

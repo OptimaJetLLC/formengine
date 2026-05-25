@@ -10,11 +10,11 @@
       "hint": "多个标记"
     },
     "apiKey": {
-      "hint": "谷歌地图API密钥。 保存表单并刷新页面以应用更改。",
-      "name": "API密钥"
+      "hint": "谷歌地图 API 密钥。保存表单并刷新页面以应用更改。",
+      "name": "API 密钥"
     },
     "collisionBehavior": {
-      "hint": "的标记碰撞行为。"
+      "hint": "标记的碰撞行为。"
     },
     "colorScheme": {
       "hint": "要使用的配色方案。"
@@ -35,11 +35,11 @@
       "hint": "地图控件的位置。"
     },
     "mapId": {
-      "hint": "地图ID是与特定地图样式或要素关联的标识符。",
-      "name": "地图ID"
+      "hint": "地图 ID 是与特定地图样式或功能相关的标识符。",
+      "name": "地图 ID"
     },
     "mapTypeId": {
-      "hint": "要使用的默认映射类型。",
+      "hint": "要使用的默认地图类型。",
       "name": "地图类型"
     },
     "markerWindowTitle": {
@@ -54,7 +54,7 @@
     },
     "removeMarkerCaption": {
       "hint": "标记移除按钮上的标题。",
-      "name": "删除标记标题"
+      "name": "移除标记标题"
     },
     "searchPlaceholder": {
       "hint": "地图搜索输入的占位符文本。",
@@ -69,28 +69,28 @@
   },
   "Modal": {
     "modalTemplate": {
-      "hint": "用作模态体的模板",
+      "hint": "用作模态主体的模板",
       "name": "模态模板"
     }
   },
   "RichTextEditor": {
     "modules": {
-      "hint": "允许自定义编辑器的行为和功能。 阅读文档以获取更多信息。",
+      "hint": "允许自定义编辑器的行为和功能。阅读文档以获取更多信息。",
       "name": "模块"
     },
     "toolbarOptions": {
-      "hint": "要显示在工具栏上的按钮组",
+      "hint": "要在工具栏上显示的按钮组",
       "name": "工具栏选项"
     }
   },
   "RsAutoComplete": {
     "classPrefix": {
-      "hint": "组件CSS类的前缀",
+      "hint": "组件 CSS 类的前缀",
       "name": "类前缀"
     },
     "data": {
       "hint": "组件的数据",
-      "name": "数据资料"
+      "name": "数据"
     },
     "defaultValue": {
       "hint": "默认值（不受控制）",
@@ -98,78 +98,78 @@
     },
     "disabled": {
       "hint": "是否禁用选择",
-      "name": "残疾人士"
+      "name": "已禁用"
     },
     "filterBy": {
-      "hint": "自定义过滤规则（默认情况下只显示值为其子字符串的项目）",
-      "name": "过滤方式"
+      "hint": "自定义筛选规则（仅显示值为其子字符串的项目，默认情况下）",
+      "name": "筛选依据"
     },
     "label": {
       "hint": "组件标签",
       "name": "标签"
     },
     "menuClassName": {
-      "hint": "要应用于菜单DOM的CSS类",
+      "hint": "应用于 Menu DOM 的 CSS 类",
       "name": "菜单类名"
     },
     "onChange": {
-      "hint": "当选择选项或输入值更改或输入值更改时调用",
-      "name": "交换/交换"
+      "hint": "当选择一个选项或输入值发生变化或输入值发生变化时调用",
+      "name": "onChange"
     },
     "onClose": {
       "hint": "隐藏时触发回调",
-      "name": "n.锁,锁"
+      "name": "onClose"
     },
     "onEnter": {
-      "hint": "在复盖转换之前触发的回调",
-      "name": "中心,中心"
+      "hint": "在叠加层过渡之前触发回调",
+      "name": "onEnter"
     },
     "onEntered": {
-      "hint": "复盖完成转换后触发的回调",
-      "name": "一个,一个"
+      "hint": "叠加层完成过渡后触发回调",
+      "name": "onEnter"
     },
     "onEntering": {
-      "hint": "当复盖开始转换时触发回调",
-      "name": "onEntering"
+      "hint": "当叠加层开始过渡时触发回调",
+      "name": "进入时"
     },
     "onExit": {
-      "hint": "在复盖过渡之前触发回调",
-      "name": "onExit,onExit"
+      "hint": "在叠加层过渡之前触发回调",
+      "name": "onExit"
     },
     "onExited": {
-      "hint": "复盖完成过渡后触发回调",
-      "name": "已登记"
+      "hint": "叠加层完成过渡后触发回调",
+      "name": "oneExited"
     },
     "onExiting": {
-      "hint": "当复盖开始过渡时触发回调",
-      "name": "onExiting,onExiting"
+      "hint": "当叠加层开始向外过渡时触发回调",
+      "name": "OneExiting"
     },
     "onSelect": {
-      "hint": "当选择选项时调用",
-      "name": "选择,选择"
+      "hint": "选择选项时调用",
+      "name": "onSelect"
     },
     "placeholder": {
       "hint": "输入的占位符",
       "name": "占位符"
     },
     "renderMenu": {
-      "hint": "自定义渲染菜单列表",
-      "name": "渲染菜单"
+      "hint": "自定义 “渲染” 菜单列表",
+      "name": "“渲染” 菜单"
     },
     "renderMenuItem": {
       "hint": "自定义渲染菜单项",
       "name": "渲染菜单项"
     },
     "selectOnEnter": {
-      "hint": "设置为false时，Enter键选择功能无效",
-      "name": "选择进入"
+      "hint": "当设置为 false 时，Enter 键选择功能无效",
+      "name": "在 Enter 上选择"
     },
     "size": {
-      "hint": "一个组件可以有不同的大小",
+      "hint": "一个组件可以有不同的尺寸",
       "name": "大小"
     },
     "value": {
-      "hint": "电流值（受控）",
+      "hint": "当前值（受控）",
       "name": "价值"
     }
   },
@@ -181,27 +181,27 @@
   },
   "RsColumn": {
     "align": {
-      "hint": "对齐方式",
-      "name": "对齐;对齐"
+      "hint": "对齐",
+      "name": "对齐"
     },
     "colSpan": {
-      "hint": "当合并列的\"数据键\"值为null或未定义时，合并要合并的列单元格",
-      "name": "Col跨度"
+      "hint": "合并列的 “数据键” 值为空或未定义时，合并列单元格以进行合并",
+      "name": "列跨度"
     },
     "fixed": {
-      "hint": "固定柱",
-      "name": "固定"
+      "hint": "固定列",
+      "name": "已修复"
     },
     "flexGrow": {
-      "hint": "当set'Flex grow'不能设置'Resizable'和'Width'属性时，设置列宽会自动调整",
-      "name": "弹性增长"
+      "hint": "设置列宽自动调整，当设置 “Flex grow” 时，无法设置 “可调整大小” 和 “宽度” 属性",
+      "name": "Flex 成长"
     },
     "fullText": {
-      "hint": "鼠标悬停时是否显示单元格内容全文",
+      "hint": "鼠标悬停时是否显示单元格内容的全文",
       "name": "全文"
     },
     "minWidth": {
-      "hint": "当您使用'Flex grow'时，您可以设置最小宽度",
+      "hint": "当你使用 “Flex grow” 时，你可以设置最小宽度",
       "name": "最小宽度"
     },
     "resizable": {
@@ -213,8 +213,8 @@
       "name": "行跨度"
     },
     "sortable": {
-      "hint": "可分类",
-      "name": "可分类"
+      "hint": "可排序",
+      "name": "可排序"
     },
     "verticalAlign": {
       "hint": "垂直对齐",
@@ -222,24 +222,24 @@
     },
     "width": {
       "hint": "列宽",
-      "name": "阔度"
+      "name": "宽度"
     }
   },
   "RsColumnGroup": {
     "align": {
-      "hint": "对齐方式",
-      "name": "对齐;对齐"
+      "hint": "对齐",
+      "name": "对齐"
     },
     "fixed": {
-      "hint": "固定柱组",
-      "name": "固定"
+      "hint": "固定列组",
+      "name": "已修复"
     },
     "groupHeaderHeight": {
-      "hint": "合并单元格组的标题的高度",
-      "name": "组头高度"
+      "hint": "合并后的单元格组标题的高度",
+      "name": "群组标题高度"
     },
     "header": {
-      "hint": "组头",
+      "hint": "群组标题",
       "name": "标题"
     },
     "verticalAlign": {
@@ -249,69 +249,69 @@
   },
   "RsDatePicker": {
     "format": {
-      "hint": "在输入中呈现日期的格式",
+      "hint": "在输入中呈现时的日期格式",
       "name": "格式"
     }
   },
   "RsDivider": {
     "children": {
-      "hint": "将文本设置在分界线上",
+      "hint": "在分界线上设置文本",
       "name": "内容"
     },
     "vertical": {
       "hint": "垂直分界线",
-      "name": "垂直方向"
+      "name": "垂直"
     }
   },
   "RsHeaderCell": {
     "children": {
-      "hint": "表列标题",
+      "hint": "表格列标题",
       "name": "内容"
     }
   },
   "RsInput": {
     "showPasswordAriaLabel": {
-      "hint": "输入处于密码掩码模式时显示密码按钮的aria-label属性的值。",
-      "name": "显示密码按钮的咏叹调标签"
+      "hint": "当输入处于密码掩码模式时，显示密码按钮的 aria-label 属性的值。",
+      "name": "显示密码按钮的 ARIA 标签"
     }
   },
   "RsMenu": {
     "itemsAs": {
-      "hint": "Html元素呈现菜单项",
-      "name": "项目作为"
+      "hint": "用于呈现菜单项的 HTML 元素",
+      "name": "物品为"
     }
   },
   "RsModal": {
     "autoFocus": {
-      "hint": "当设置为true时，模式将打开并自动聚焦于它自己，屏幕阅读器可以访问",
+      "hint": "当设置为 true 时，模态将打开并自动对焦，屏幕阅读器可以访问",
       "name": "自动对焦"
     },
     "backdrop": {
-      "hint": "当设置为true时，模式将在打开时显示背景。 点击背景将关闭模态",
+      "hint": "当设置为 true 时，模态将在打开时显示背景。点击背景将关闭模态",
       "name": "背景"
     },
     "backdropClassName": {
-      "hint": "添加一个可选的额外类名。模态背景它可能最终看起来像class=\"模态背景foo-模态背景in\"",
+      "hint": "在 .modal-backdrop 中添加一个可选的额外类名它最终可能看起来像 class= “模态背景 foo-modal-backdrop foo-modal-backdro",
       "name": "背景类名"
     },
     "classPrefix": {
-      "hint": "组件CSS类的前缀",
-      "name": "CSS类前缀"
+      "hint": "组件 CSS 类的前缀",
+      "name": "CSS 类前缀"
     },
     "dialogClassName": {
-      "hint": "应用于对话框DOM节点的CSS类",
-      "name": "对话框的CSS类"
+      "hint": "应用于 Dialog DOM 节点的 CSS 类",
+      "name": "对话框的 CSS 类"
     },
     "enforceFocus": {
-      "hint": "当设置为true时，Modal将防止焦点在打开时离开，使辅助屏幕阅读器更容易访问",
-      "name": "强制执行焦点"
+      "hint": "当设置为 true 时，Modal 将在打开时防止焦点离开，从而使辅助屏幕阅读器更容易访问",
+      "name": "强制对焦"
     },
     "keyboard": {
-      "hint": "按下Esc键时关闭模态",
-      "name": "靠近Esc"
+      "hint": "按下 Esc 键时关闭模态",
+      "name": "靠近 Esc"
     },
     "overflow": {
-      "hint": "正文内容过长时自动设置高度",
+      "hint": "当正文内容过长时自动设置高度",
       "name": "溢出"
     },
     "size": {
@@ -322,34 +322,34 @@
   "RsModalLayout": {
     "closeButton": {
       "hint": "显示关闭按钮",
-      "name": "关闭按钮"
+      "name": "“关闭” 按钮"
     }
   },
   "RsPlaceholderGraph": {
     "active": {
       "hint": "占位符是否处于活动状态",
-      "name": "活动中"
+      "name": "活跃"
     },
     "height": {
-      "hint": "图形高度",
+      "hint": "图表高度",
       "name": "身高"
     },
     "width": {
       "hint": "图形宽度",
-      "name": "阔度"
+      "name": "宽度"
     }
   },
   "RsPlaceholderGrid": {
     "active": {
       "hint": "占位符是否处于活动状态",
-      "name": "活动中"
+      "name": "活跃"
     },
     "columns": {
       "hint": "列数",
-      "name": "列"
+      "name": "专栏"
     },
     "rowHeight": {
-      "hint": "行的高度",
+      "hint": "该行的高度",
       "name": "行高"
     },
     "rowSpacing": {
@@ -364,14 +364,14 @@
   "RsPlaceholderParagraph": {
     "active": {
       "hint": "占位符是否处于活动状态",
-      "name": "活动中"
+      "name": "活跃"
     },
     "graph": {
-      "hint": "图形的形状",
+      "hint": "图表的形状",
       "name": "图表"
     },
     "rowHeight": {
-      "hint": "行的高度",
+      "hint": "该行的高度",
       "name": "行高"
     },
     "rowSpacing": {
@@ -385,52 +385,52 @@
   },
   "RsTable": {
     "affixHeader": {
-      "hint": "将表头粘贴到页面上的指定位置",
-      "name": "词缀头"
+      "hint": "将表格标题粘贴到页面上的指定位置",
+      "name": "附上标题"
     },
     "affixHorizontalScrollbar": {
       "hint": "将表格水平滚动条粘贴到页面上的指定位置",
-      "name": "附加水平滚动条"
+      "name": "粘贴水平滚动条"
     },
     "autoHeight": {
-      "hint": "表的高度会根据数据行数自动展开，不会出现垂直滚动条",
+      "hint": "表格的高度将根据数据行数自动扩展，不会出现垂直滚动条",
       "name": "自动高度"
     },
     "bordered": {
       "hint": "显示边框",
-      "name": "边界,边界"
+      "name": "有边界"
     },
     "cellBordered": {
       "hint": "显示单元格边框",
-      "name": "细胞边缘"
+      "name": "细胞与边界接壤"
     },
     "data": {
-      "hint": "表数据",
-      "name": "数据资料"
+      "hint": "表格数据",
+      "name": "数据"
     },
     "defaultSortType": {
       "hint": "排序类型",
       "name": "默认排序类型"
     },
     "fillHeight": {
-      "hint": "强制表的高度等于其父容器的高度。 不能与\"自动高度\"一起使用",
+      "hint": "强制表格的高度等于其父容器的高度。不能与 “自动高度” 一起使用",
       "name": "填充高度"
     },
     "headerHeight": {
-      "hint": "表头高度",
-      "name": "头高度"
+      "hint": "表格标题高度",
+      "name": "标题高度"
     },
     "height": {
       "hint": "桌子高度",
       "name": "身高"
     },
     "hover": {
-      "hint": "表的行具有mouseover效果",
-      "name": "悬停,悬停"
+      "hint": "表格中的该行具有鼠标悬停效果",
+      "name": "徘徊"
     },
     "loading": {
-      "hint": "显示加载",
-      "name": "装载量"
+      "hint": "显示加载中",
+      "name": "加载中"
     },
     "maxHeight": {
       "hint": "最大高度",
@@ -438,10 +438,10 @@
     },
     "minHeight": {
       "hint": "最低高度",
-      "name": "最小高度"
+      "name": "最小身高"
     },
     "rowClassName": {
-      "hint": "向行添加可选的额外类名",
+      "hint": "向行添加一个可选的额外类名",
       "name": "行类名"
     },
     "rowHeight": {
@@ -449,11 +449,11 @@
       "name": "行高"
     },
     "rowKey": {
-      "hint": "每一行对应于数据中的唯一键",
+      "hint": "每行对应数据中的唯一密钥",
       "name": "行键"
     },
     "shouldUpdateScroll": {
-      "hint": "表大小更新后是否更新滚动",
+      "hint": "表格大小更新后是否更新滚动",
       "name": "应该更新滚动"
     },
     "showHeader": {
@@ -461,23 +461,23 @@
       "name": "显示标题"
     },
     "sortColumn": {
-      "hint": "排序列名",
-      "name": "排序列"
+      "hint": "对列名进行排序",
+      "name": "对列进行排序"
     },
     "sortType": {
       "hint": "排序类型",
       "name": "排序类型"
     },
     "virtualized": {
-      "hint": "有效呈现大型表格数据",
+      "hint": "有效渲染大型表格数据",
       "name": "虚拟化"
     },
     "width": {
       "hint": "表格宽度",
-      "name": "阔度"
+      "name": "宽度"
     },
     "wordWrap": {
-      "hint": "是否在文本溢出其内容框的位置显示换行符",
+      "hint": "是否在文本溢出其内容框时显示换行符",
       "name": "自动换行"
     }
   },
@@ -489,8 +489,8 @@
   },
   "RsWizard": {
     "activeIndex": {
-      "hint": "活动步骤索引",
-      "name": "活动索引"
+      "hint": "活跃步数索引",
+      "name": "活跃指数"
     },
     "finishButtonLabel": {
       "hint": "完成按钮标签",
@@ -498,18 +498,18 @@
     },
     "nextButtonLabel": {
       "hint": "下一个按钮标签",
-      "name": "下一个按钮标签"
+      "name": "下一步按钮标签"
     },
     "prevButtonLabel": {
-      "hint": "上一个按钮标签",
+      "hint": "之前的按钮标签",
       "name": "上一个按钮标签"
     },
     "showSteps": {
-      "hint": "如果为true，将显示步骤",
+      "hint": "如果为 true，则将显示步骤",
       "name": "显示步骤"
     },
     "showStepsLabels": {
-      "hint": "如果为true，将显示步骤标签",
+      "hint": "如果为 true，将显示步骤标签",
       "name": "显示步骤标签"
     },
     "steps": {
@@ -517,33 +517,33 @@
       "name": "步骤"
     },
     "stepsNavigation": {
-      "hint": "通过单击确定可用于导航的步骤",
+      "hint": "通过单击，确定哪些步骤可供导航",
       "name": "步骤导航"
     },
     "validateOnFinish": {
-      "hint": "如果为true，则在完成向导之前将验证向导",
+      "hint": "如果为 true，则在完成向导之前将对向导进行验证",
       "name": "完成后验证"
     },
     "validateOnNext": {
-      "hint": "如果为true，则在转到下一步之前将验证该步骤",
+      "hint": "如果为 true，则在进入下一步之前将对该步骤进行验证",
       "name": "下次验证"
     },
     "verticalSteps": {
-      "hint": "如果为true，步骤将垂直显示",
+      "hint": "如果为 true，则步骤将垂直显示",
       "name": "垂直台阶"
     },
-    "wizardHasNoSteps": "要添加向导步骤，请选择组件并在\"属性\"面板中添加步骤。"
+    "wizardHasNoSteps": "要添加向导步骤，请选择该组件并在属性面板中添加步骤。"
   },
   "actions": {
     "add": "添加",
-    "addAction": "添加操作",
-    "addCodeAction": "添加代码操作",
-    "arguments": "争论",
+    "addAction": "添加动作",
+    "addCodeAction": "添加代码动作",
+    "arguments": "论点",
     "code": "代码",
-    "common": "普通",
-    "custom": "海关规定",
+    "common": "常见",
+    "custom": "自定义",
     "delete": "删除",
-    "duplicate": "复制",
+    "duplicate": "重复",
     "edit": "编辑",
     "name": "姓名",
     "parameters": "参数",
@@ -551,64 +551,64 @@
   },
   "annotation": {
     "accept": {
-      "hint": "可以接受的文件类型。 请参阅标准HTML属性：接受",
+      "hint": "可以接受的文件类型。参见标准 HTML 属性：接受",
       "name": "接受"
     },
     "action": {
-      "hint": "上传URL",
-      "name": "开始！"
+      "hint": "上传网址",
+      "name": "行动"
     },
     "allowEmptyFormatting": {
-      "hint": "默认情况下，当值为空（null、未定义或\"）时，PatternFormat组件不应用格式",
-      "name": "允许空格式 "
+      "hint": "默认情况下，当值为空（空值、未定义或 “”）时 PatternFormat 组件不应用格式",
+      "name": "允许空格式化"
     },
     "allowLeadingZeros": {
-      "hint": "这允许启用或禁用输入字段中的前导零。 默认情况下，在输入模糊时，前导零将被删除",
+      "hint": "这允许在输入字段中启用或禁用前导零。默认情况下，在对输入进行模糊处理时，会移除前导零",
       "name": "允许前导零"
     },
     "allowNegative": {
-      "hint": "如果设置为false，则不允许使用负数",
-      "name": "允许否定"
+      "hint": "如果设置为 false，则不允许使用负数",
+      "name": "允许负值"
     },
     "allowedDecimalSeparators": {
-      "hint": "按下时产生小数点分隔符的字符。 缺失时，小数点分隔符和'。'被使用",
-      "name": "允许的小数分隔符"
+      "hint": "按下时会产生十进制分隔符的字符。缺失时，使用十进制分隔符和 '.'",
+      "name": "允许的十进制分隔符"
     },
     "appearance": {
       "hint": "设置选择器外观",
       "name": "外观"
     },
     "autoUpload": {
-      "hint": "选择文件后自动上传",
+      "hint": "选择文件后自动上传文件",
       "name": "自动上传"
     },
     "block": {
-      "hint": "阻塞整行",
-      "name": "座"
+      "hint": "屏蔽整行",
+      "name": "阻止"
     },
     "bodyFill": {
-      "hint": "填充容器的内容区域",
-      "name": "身体填充"
+      "hint": "内容区域装满了容器",
+      "name": "车身填充"
     },
     "calendarDefaultDate": {
       "hint": "日历面板默认演示日期和时间",
       "name": "日历默认日期"
     },
     "checked": {
-      "hint": "是否检查值",
-      "name": "检查过"
+      "hint": "该值是否被选中",
+      "name": "已勾选"
     },
     "checkedChildren": {
       "hint": "在选中状态下显示的文本",
-      "name": "检查文本"
+      "name": "已勾选文本"
     },
     "cleanable": {
-      "hint": "选项是否可以清空",
+      "hint": "是否可以清空该选项",
       "name": "可清洁"
     },
     "code": {
       "hint": "编辑代码",
-      "name": "密码"
+      "name": "代码"
     },
     "color": {
       "hint": "组件的主色",
@@ -616,18 +616,18 @@
     },
     "creatable": {
       "hint": "设置可以创建新选项",
-      "name": "可创造的"
+      "name": "可创建"
     },
     "data": {
-      "hint": "可选择的数据",
-      "name": "数据资料"
+      "hint": "可选数据",
+      "name": "数据"
     },
     "dataKey": {
       "hint": "组件数据密钥",
       "name": "数据密钥"
     },
     "decimalScale": {
-      "hint": "如果定义，它会限制小数点后的位数",
+      "hint": "如果已定义，它将限制小数点后的位数",
       "name": "十进制刻度"
     },
     "decimalSeparator": {
@@ -635,7 +635,7 @@
       "name": "小数分隔符"
     },
     "defaultOpen": {
-      "hint": "Open属性的默认值",
+      "hint": "打开属性的默认值",
       "name": "默认打开"
     },
     "defaultValue": {
@@ -647,120 +647,120 @@
       "name": "禁用数据绑定"
     },
     "disableMultipart": {
-      "hint": "如果'true'，则禁用使用多部分表单进行文件上传，而是流式传输文件。 某些Api（例如Amazon S3）可能期望将文件流式传输，而不是通过表单发送",
+      "hint": "如果为 “true”，则禁用使用分段表单进行文件上传，改为流式传输文件。某些 API（例如 Amazon S3）可能期望文件通过流式传输而不是通过表单发送",
       "name": "禁用多部分"
     },
     "disableVirtualized": {
-      "hint": "如果为true，虚拟化将被禁用",
+      "hint": "如果为 true，则虚拟化将被禁用",
       "name": "禁用虚拟化"
     },
     "disabled": {
       "hint": "组件是否被禁用",
-      "name": "残疾人士"
+      "name": "已禁用"
     },
     "download": {
-      "hint": "导致浏览器将链接的URL视为下载",
+      "hint": "使浏览器将链接的 URL 视为下载",
       "name": "下载"
     },
     "downloadFilename": {
-      "hint": "定义一个值建议它作为文件名。 /和\\字符转换为下划线(_)",
+      "hint": "定义值表示将其作为文件名。/和\\ 字符转换为下划线 (_)",
       "name": "下载文件名"
     },
     "draggable": {
-      "hint": "启用拖放以上载",
+      "hint": "启用拖放功能上传",
       "name": "可拖动"
     },
     "editable": {
-      "hint": "呈现为输入，该值可以通过键盘输入",
+      "hint": "该值呈现为输入，可以通过键盘输入",
       "name": "可编辑"
     },
     "errorConfig": {
-      "show": "展览"
+      "show": "显示"
     },
     "eventKey": {
-      "hint": "此元素对应的事件键",
-      "name": "活动键"
+      "hint": "与该元素对应的事件密钥",
+      "name": "事件密钥"
     },
     "fixedDecimalScale": {
-      "hint": "如果设置为true，它会在decimalSeparator之后添加尾随0以匹配给定的decimalScale",
-      "name": "固定小数位数"
+      "hint": "如果设置为 true，它将在 decimalSeparator 之后添加末尾 0 以匹配给定的 decimalScale",
+      "name": "固定十进制刻度"
     },
     "flexDirection": {
       "hint": "容器子项的弯曲方向",
-      "name": "方向感"
+      "name": "方向"
     },
     "format": {
-      "hint": "使用#（或模式char）字符格式化模式。 #是数字的占位符字符。 例如：'######'",
+      "hint": "使用 #（或模式字符）格式化模式。# 是数字的占位符。示例：'### ##'",
       "name": "格式"
     },
     "groupBy": {
-      "hint": "在\"数据\"中设置分组条件\"键\"",
-      "name": "组别"
+      "hint": "在 “数据” 中设置分组标准 “键”",
+      "name": "分组依据"
     },
     "href": {
-      "hint": "超链接指向的URL",
+      "hint": "超链接指向的 URL",
       "name": "Href"
     },
     "htmlAttributes": {
-      "hint": "传递给组件的HTML属性",
-      "name": "HTML属性"
+      "hint": "传递给组件的 HTML 属性",
+      "name": "HTML 属性"
     },
     "isoWeek": {
-      "hint": "ISO8601标准，每个日历周从第七天的周一和周日开始",
-      "name": "Iso周"
+      "hint": "ISO 8601 标准，每个日历周从星期一开始，星期日从第七天开始",
+      "name": "Iso 周"
     },
     "justifyContent": {
-      "name": "对齐方式"
+      "name": "证明理由"
     },
     "label": {
       "hint": "设置标签",
       "name": "标签"
     },
     "limitEndYear": {
-      "hint": "设置可用年份相对于当前选择日期的上限",
-      "name": "年底限额"
+      "hint": "设置相对于当前选择日期的可用年份的上限",
+      "name": "限制结束年份"
     },
     "limitStartYear": {
       "hint": "设置可用年份相对于当前选择日期的下限",
-      "name": "限制开始年份"
+      "name": "限制起始年份"
     },
     "loading": {
       "hint": "组件是否处于加载状态",
-      "name": "装载量"
+      "name": "加载中"
     },
     "marginInlineEnd": {
-      "name": "保证金权利"
+      "name": "右边距"
     },
     "marginInlineStart": {
-      "name": "左边空白"
+      "name": "左边距"
     },
     "mask": {
       "hint": "用作数字位置的掩码字符，直到为该位置提供任何数字字符为止",
       "name": "面具"
     },
     "method": {
-      "hint": "上传请求的HTTP方法",
+      "hint": "上传请求的 HTTP 方法",
       "name": "方法"
     },
     "modalProps": {
       "modalComponentProperties": "模态组件属性",
       "modalComponentPropertiesHint": "模态组件属性",
-      "noModalComponent": "无模态组件",
-      "noModalComponentHint": "在窗体设置中指定模态组件类型"
+      "noModalComponent": "没有模态组件",
+      "noModalComponentHint": "在表单设置中指定模态组件类型"
     },
     "name": {
-      "hint": "上传对应文件的参数名",
+      "hint": "上传相应文件的参数名称",
       "name": "姓名"
     },
     "objectFit": {
       "name": "适合"
     },
     "objectPosition": {
-      "name": "职位"
+      "name": "位置"
     },
     "oneTap": {
       "hint": "一键完成选择值",
-      "name": "一个水龙头"
+      "name": "一键点击"
     },
     "open": {
       "hint": "是否打开组件",
@@ -772,34 +772,34 @@
     },
     "patternChar": {
       "hint": "这有助于定义格式模式字符",
-      "name": "模式char"
+      "name": "图案图表"
     },
     "placeholder": {
       "hint": "设置占位符",
       "name": "占位符"
     },
     "placement": {
-      "hint": "组件的放置",
-      "name": "就业情况"
+      "hint": "组件的位置",
+      "name": "放置"
     },
     "prefix": {
       "hint": "在输入值之前添加前缀字符",
       "name": "前缀"
     },
     "preload": {
-      "hint": "在打开下拉列表之前，提前上传数据",
-      "name": "预紧力"
+      "hint": "在打开下拉列表之前提前上传数据",
+      "name": "预载"
     },
     "preventOverflow": {
       "hint": "防止浮动元素溢出",
       "name": "防止溢出"
     },
     "readOnly": {
-      "hint": "如果为true，则该组件将为只读",
+      "hint": "如果为 true，则该组件将是只读的",
       "name": "只读"
     },
     "showMeridiem": {
-      "hint": "以12格式显示小时数",
+      "hint": "以 12 格式显示时间",
       "name": "显示子午线"
     },
     "showWeekNumbers": {
@@ -812,21 +812,21 @@
     },
     "suffix": {
       "hint": "在输入值后添加后缀",
-      "name": "后缀 "
+      "name": "后缀"
     },
     "target": {
-      "hint": "在哪里显示链接的URL，作为浏览上下文（选项卡、窗口或<iframe>）的名称",
+      "hint": "在何处显示链接 URL，作为浏览上下文（选项卡、窗口或<iframe>）的名称",
       "name": "目标"
     },
     "textAlign": {
-      "name": "对齐方式"
+      "name": "对齐"
     },
     "thousandsGroupStyle": {
-      "hint": "千式(千):123,456,789,印度式(万):12,34,56,789,中国式(万):1,2345,6789",
-      "name": "千人团体风格"
+      "hint": "千种风格（千）：123,456,789，印度风格（十万）：12,34,56,789，中式风格（wan）：1,2345,6789",
+      "name": "千人组风格"
     },
     "tooltipProps": {
-      "hint": "为此元素使用工具提示",
+      "hint": "使用工具提示访问此元素",
       "tooltip": "工具提示"
     },
     "unCheckedChildren": {
@@ -834,73 +834,73 @@
       "name": "未选中的文本"
     },
     "useDropzone": {
-      "hint": "使用dropzone为'{{propertyName}}'财产",
-      "name": "使用dropzone"
+      "hint": "使用 dropzone 作为 '{{propertyName}}' 属性",
+      "name": "使用 dropzone"
     },
     "validateWhen": {
-      "hint": "确定是否运行此验证的条件",
-      "name": "验证时"
+      "hint": "决定是否运行此验证的条件",
+      "name": "验证时间"
     },
     "value": {
       "hint": "值（受控）",
       "name": "价值"
     },
     "withCredentials": {
-      "hint": "上传请求时是否携带cookie",
-      "name": "有证件"
+      "hint": "上传请求时是否携带 Cookie",
+      "name": "有凭证"
     }
   },
   "bottomPanel": {
+    "clearLocalization": "清除",
     "editCodeAction": "编辑代码操作",
     "editProperty": "编辑属性",
-    "function": "可计算价值",
+    "function": "可计算的价值",
     "localization": "本地化",
-    "localizationNotSet": "本地化引擎未设置",
-    "simpleValue": "简单值",
-    "simpleValueHint": "在右侧面板中编辑属性",
-    "use": "使用方法",
-    "clearLocalization": "清除"
+    "localizationNotSet": "未设置本地化引擎",
+    "simpleValue": "简单价值",
+    "simpleValueHint": "在右侧面板中编辑该属性",
+    "use": "使用"
   },
   "codeActionEditor": {
-    "actionNameExists": "具有此名称的操作已存在",
-    "nameIsRequired": "需要操作名称",
-    "parameterNameExists": "具有此名称的参数已存在",
-    "parameterNameIsNotValid": "参数名称无效",
+    "actionNameExists": "使用此名称的操作已经存在",
+    "nameIsRequired": "操作名称为必填项",
+    "parameterNameExists": "使用此名称的参数已经存在",
+    "parameterNameIsNotValid": "参数名无效",
     "parameterNameIsRequired": "参数名称为必填项"
   },
   "codeEditor": {
-    "codeActionHeader": "代码动作编辑器",
+    "codeActionHeader": "代码操作编辑器",
     "codePlaceholder": "//在这里输入你的代码",
-    "compilationResult": "编译结果:",
+    "compilationResult": "编译结果：",
     "compile": "编译",
     "generic": {
       "json": {
-        "title": "编辑JSON数据"
+        "title": "编辑的 JSON 数据"
       }
     },
-    "ok": "好的"
+    "ok": "行"
   },
   "common": {
     "apply": "申请",
     "cancel": "取消",
     "clone": "克隆",
-    "close": "接近/接近",
+    "close": "关闭",
     "edit": "编辑",
     "name": "姓名",
-    "remove": "移走",
-    "save": "储蓄",
+    "remove": "移除",
+    "save": "保存",
     "test": "测试"
   },
   "componentToolbar": {
     "add": "添加新元素",
     "after": "之后",
-    "before": "以前",
+    "before": "之前",
     "inside": "里面"
   },
   "componentsList": {
     "categories": {
       "fields": "字段",
-      "modal": "模态分析",
+      "modal": "模态",
       "static": "静态",
       "structure": "结构",
       "templates": "模板"
@@ -909,52 +909,52 @@
   "componentsModal": {
     "clickToAdd": "点击添加控件"
   },
-  "editJson": "编辑JSON",
+  "editJson": "编辑 JSON",
   "errorsPanel": {
-    "clear": "清楚",
-    "data": "数据资料",
+    "clear": "清除",
+    "data": "数据",
     "errors": "错误",
     "reset": "重置为默认值",
     "validate": "验证"
   },
   "formsList": {
     "addNewForm": "添加新表单",
-    "formWithNameExists": "具有此名称的表单已经存在。",
-    "noFormsInFormStorage": "保存表单，使其显示在表单列表中。"
+    "formWithNameExists": "使用此名称的表单已经存在。",
+    "noFormsInFormStorage": "保存表单，使其出现在表单列表中。"
   },
   "leftMenu": {
     "addNewForm": "添加新表单",
-    "clear": "清楚",
+    "clear": "清除",
     "currentFormName": "当前表单的名称",
     "download": "下载",
-    "enterFormName": "请输入表格名称",
-    "exportForms": "出口表格",
-    "exportFormsError": "导出表单失败！ 查看浏览器控制台中的日志",
+    "enterFormName": "请输入表单名称",
+    "exportForms": "导出表格",
+    "exportFormsError": "无法导出表单！在浏览器控制台中查看日志",
     "exportFormsSuccess": "导出的表单",
-    "exportJsonFormSchema": "导出JSON表单架构",
-    "formNamePlaceholder": "我美丽的形式",
-    "formSaveError": "未能保存表格！ 查看浏览器控制台中的日志",
-    "formSaved": "表格已保存",
-    "importForms": "进口表格",
-    "importFormsError": "导入表单失败! 查看浏览器控制台中的日志",
-    "importFormsSuccess": "输入的表格",
-    "menu": "菜单",
-    "print": "印刷业",
-    "save": "储蓄",
-    "saveAs": "省省吧。..",
+    "exportJsonFormSchema": "导出 JSON 表单架构",
+    "formNamePlaceholder": "我漂亮的表情",
+    "formSaveError": "保存表单失败！在浏览器控制台中查看日志",
+    "formSaved": "表单已保存",
+    "importForms": "导入表单",
+    "importFormsError": "无法导入表单！在浏览器控制台中查看日志",
+    "importFormsSuccess": "导入的表单",
+    "menu": "“菜单”",
+    "print": "打印",
+    "save": "保存",
+    "saveAs": "另存为...",
     "settings": "设置",
     "translation": "翻译",
     "undo": "撤消",
-    "upload": "上载",
-    "validateForm": "验证表格"
+    "upload": "上传",
+    "validateForm": "验证表单"
   },
   "leftPanel": {
     "formSettings": {
       "actions": "行动",
       "error": "错误设置",
-      "formValidator": "表格验证人",
-      "language": "语言设定",
-      "modal": "模态分析",
+      "formValidator": "表单验证器",
+      "language": "语言设置",
+      "modal": "模态",
       "tooltip": "工具提示"
     },
     "sectionName": {
@@ -965,64 +965,64 @@
     }
   },
   "license": {
-    "errDomain": "您的许可证只允许以下域: {{Domain}}",
-    "errElectron": "您的许可证不允许在Electron中运行",
-    "errEndDate": "许可证过期 {{licenseEndDate}}",
-    "errEndDateStrict": "许可证过期 {{licenseEndDate}}",
+    "errDomain": "您的许可证仅允许以下域名：{{Domain}}",
+    "errElectron": "你的许可证不允许在 Electron 中运行",
+    "errEndDate": "许可证已过期 {{licenseEndDate}}",
+    "errEndDateStrict": "许可证已过期 {{licenseEndDate}}",
     "errLicenseInvalid": "提供的许可证密钥无效。",
-    "errNoKey": "没有提供许可证密钥。",
+    "errNoKey": "未提供许可密钥。",
     "ftComponentPreset": "您的许可证不允许组件预设",
-    "ftComponentQrCode": "您的许可证不允许使用QR码组件",
+    "ftComponentQrCode": "您的许可证不允许使用二维码组件",
     "ftComponentRepeater": "您的许可证不允许使用中继器",
     "ftComponentSignature": "您的许可证不允许使用签名组件",
-    "ftComponentTable": "您的许可证不允许使用表组件",
+    "ftComponentTable": "您的许可证不允许使用 Table 组件",
     "ftComponentTemplates": "您的许可证不允许使用模板",
-    "ftDesignerCustomization": "您的许可证不允许设计器自定义",
-    "ftLocaleCount": "您的许可证只允许翻译 {{ftLocaleCount}} 语言",
-    "mismatchMessage": "您正在使用许可证中未包含的功能。 该产品以\"非商业用途\"模式运行。 更改许可证以使用以下选项:"
+    "ftDesignerCustomization": "您的许可证不允许设计师自定义",
+    "ftLocaleCount": "您的许可证仅允许翻译 {{ftLocaleCount}} 语言",
+    "mismatchMessage": "您正在使用许可证中未包含的功能。该产品在 “非商业用途” 模式下运行。更改您的许可证以使用以下选项："
   },
   "localization": {
-    "messageIsNull": "本地化消息为null",
-    "messageNotFound": "找不到本地化消息"
+    "messageIsNull": "本地化消息为空",
+    "messageNotFound": "未找到本地化消息"
   },
   "presetComponent": {
-    "category": "类别：",
+    "category": "类别",
     "createPreset": "创建预设组件",
     "enterPresetName": "请输入预设名称",
     "name": "姓名",
-    "nameExists": "已存在具有此名称的预设或组件。",
+    "nameExists": "具有此名称的预设或组件已经存在。",
     "namePlaceholder": "输入预设名称"
   },
   "promptDialog": {
     "cancel": "取消",
-    "ok": "好的"
+    "ok": "行"
   },
   "propertiesEditor": {
-    "applyKey": "应用关键更改",
+    "applyKey": "应用密钥更改",
     "clean": "重置为默认值",
     "codeButton": {
       "editCalculable": "编辑可计算",
       "editLocalizable": "编辑本地化",
-      "hintCalculable": "使此属性可计算",
-      "hintCalculableAndLocalizable": "使此属性可计算或本地化",
+      "hintCalculable": "将此属性设为可计算",
+      "hintCalculableAndLocalizable": "将此属性设为可计算或本地化",
       "hintLocalizable": "本地化此属性",
       "neitherCalculableNorLocalizable": "既不可计算也不可本地化"
     },
     "keyMustBeUnique": "密钥必须是唯一的",
     "keyMustNotBeEmpty": "密钥不能为空",
-    "removeRow": "删除一行",
+    "removeRow": "移除一行",
     "sectionName": {
       "actions": "行动",
-      "expression": "表达方式",
-      "linkedProperty": "链接属性",
+      "expression": "表情",
+      "linkedProperty": "关联财产",
       "main": "主要",
       "rules": "规则",
       "style": "风格",
-      "withTarget": "带目标",
+      "withTarget": "使用 Target",
       "withoutTarget": "没有目标"
     },
-    "selectElementForEdit": "为编辑属性选择表单上的元素",
-    "setInputHint": "按Enter键添加值",
+    "selectElementForEdit": "在表单上选择元素来编辑属性",
+    "setInputHint": "按 Enter 键添加一个值",
     "subSection": {
       "additionalProperties": "其他属性"
     }
@@ -1030,61 +1030,61 @@
   "rightMenu": {
     "modes": {
       "builder": "预览",
-      "desktop": "桌面版",
-      "mobile": "流动电话",
-      "orientation": "方向感",
+      "desktop": "桌面",
+      "mobile": "手机",
+      "orientation": "方向",
       "tablet": "平板电脑",
       "viewer": "编辑"
     },
     "toggleTheme": "切换主题"
   },
   "searchForm": {
-    "search": "搜索。.."
+    "search": "搜索..."
   },
   "style": {
     "any": "任何",
     "component": "组件",
     "componentHint": "适用于组件的样式",
     "componentTab": {
-      "hint": "通过'className'应用于组件的CSS样式",
+      "hint": "通过 “className” 应用于组件的 CSS 样式",
       "name": "组件"
     },
-    "desktop": "桌面版",
-    "forDevice": "用于设备:",
+    "desktop": "桌面",
+    "forDevice": "用于设备",
     "header": {
-      "hint": "通过'className'属性应用的CSS样式",
+      "hint": "通过 'className' 属性应用的 CSS 样式",
       "name": "类名的样式"
     },
-    "mobile": "流动电话",
+    "mobile": "手机",
     "other": "其他",
     "tablet": "平板电脑",
-    "wrapper": "包装器,包装器",
+    "wrapper": "包装纸",
     "wrapperHint": "适用于组件包装器的样式",
     "wrapperTab": {
-      "hint": "通过'className'应用于组件包装器的CSS样式",
-      "name": "包装器,包装器"
+      "hint": "通过 “className” 应用于组件包装器的 CSS 样式",
+      "name": "包装纸"
     }
   },
   "styleEditor": {
     "componentTab": {
-      "hint": "通过'style'属性应用于组件的CSS样式",
+      "hint": "通过 “样式” 属性应用于组件的 CSS 样式",
       "name": "组件"
     },
     "header": {
-      "hint": "通过'style'属性应用的CSS样式",
-      "name": "内联样式"
+      "hint": "通过 “样式” 属性应用的 CSS 样式",
+      "name": "行内样式"
     },
     "wrapperTab": {
-      "hint": "通过'className'属性应用于组件包装器的CSS样式",
-      "name": "包装器,包装器"
+      "hint": "通过 “className” 属性应用于组件包装器的 CSS 样式",
+      "name": "包装纸"
     }
   },
   "testingEditor": {
     "autorun": "自动运行",
     "compilationOk": "编译结果：OK",
-    "hasNotReturnedValue": "没有返回值",
+    "hasNotReturnedValue": "尚未返回值",
     "run": "跑",
-    "testFormData": "测试表格数据"
+    "testFormData": "测试表单数据"
   },
   "toolbar": {
     "cloneComponent": "克隆组件",
@@ -1094,41 +1094,41 @@
     "reset": "重置"
   },
   "tree": {
-    "collapse": "全部崩溃",
+    "collapse": "全部折叠",
     "expand": "全部展开"
   },
   "validation": {
-    "addRule": "添加规则",
+    "addRule": "添加验证规则",
     "chooseValidation": "选择你的类型",
-    "editCustomValidationCode": "编辑组件的自定义验证代码",
-    "editFormValidatorCode": "编辑表单验证代码",
+    "editCustomValidationCode": "编辑组件的自定义验证码",
+    "editFormValidatorCode": "编辑表单验证码",
     "formErrors": "表单错误",
     "rule": {
       "code": "代码",
-      "custom": "海关规定",
+      "custom": "自定义",
       "datetime": "日期时间",
-      "email": "电邮",
-      "endsWith": "以",
-      "falsy": "法尔西",
-      "finite": "有限的",
+      "email": "电子邮件",
+      "endsWith": "结尾为",
+      "falsy": "假的",
+      "finite": "有限",
       "includes": "包括",
       "integer": "整数",
-      "ip": "知识产权",
+      "ip": "Ip",
       "length": "长度",
       "lessThan": "小于",
-      "max": "麦克斯",
-      "min": "敏",
+      "max": "马克斯",
+      "min": "最小",
       "moreThan": "超过",
       "multipleOf": "的倍数",
       "nonEmpty": "非空",
       "regex": "正则表达式",
-      "required": "需要",
-      "startsWith": "开始于",
-      "truthy": "真实的，真实的",
+      "required": "必填项",
+      "startsWith": "开头是",
+      "truthy": "真实",
       "url": "网址",
       "uuid": "Uuid"
     },
-    "ruleNotFound": "未找到或未连接规则",
+    "ruleNotFound": "未找到规则或未连接规则",
     "showFormErrors": "显示表单错误"
   }
 }

@@ -1,29 +1,29 @@
 {
   "GoogleMap": {
     "addMarkerOnSearch": {
-      "hint": "Indica se aggiungere un marcatore alla ricerca."
+      "hint": "Se aggiungere un marcatore alla ricerca."
     },
     "allowChangingMarkers": {
-      "hint": "Se selezionato, l'utente può modificare i marcatori."
+      "hint": "Se selezionata, l'utente può modificare i marker."
     },
     "allowMultipleMarkers": {
       "hint": "Marcatori multipli"
     },
     "apiKey": {
-      "hint": "Chiave API di Google Maps. Salvare il modulo e aggiornare la pagina per applicare le modifiche.",
+      "hint": "Chiave API di Google Maps. Salva il modulo e aggiorna la pagina per applicare le modifiche.",
       "name": "Chiave API"
     },
     "collisionBehavior": {
-      "hint": "Il comportamento di collisione marcatori."
+      "hint": "Il comportamento di collisione dei marker."
     },
     "colorScheme": {
-      "hint": "La combinazione di colori da utilizzare."
+      "hint": "La combinazione di colori da usare."
     },
     "gestureHandling": {
-      "hint": "La gestione gesto da utilizzare."
+      "hint": "La gestione dei gesti da usare."
     },
     "language": {
-      "hint": "Il linguaggio da usare."
+      "hint": "La lingua da usare."
     },
     "latitude": {
       "hint": "Latitudine del punto centrale"
@@ -35,7 +35,7 @@
       "hint": "La posizione del controllo della mappa."
     },
     "mapId": {
-      "hint": "L'ID mappa è un identificatore associato a uno stile o a una caratteristica specifica della mappa.",
+      "hint": "L'ID della mappa è un identificatore associato a uno stile o una caratteristica specifica della mappa.",
       "name": "ID mappa"
     },
     "mapTypeId": {
@@ -43,25 +43,25 @@
       "name": "Tipo di mappa"
     },
     "markerWindowTitle": {
-      "hint": "Il titolo della finestra marker.",
-      "name": "Titolo finestra Marker"
+      "hint": "Il titolo della finestra dei marker.",
+      "name": "Titolo della finestra Marker"
     },
     "markers": {
-      "hint": "Coordinate dei marcatori"
+      "hint": "Coordinate dei marker"
     },
     "region": {
-      "hint": "Il codice regione da utilizzare."
+      "hint": "Il codice regionale da utilizzare."
     },
     "removeMarkerCaption": {
-      "hint": "La didascalia sul pulsante di rimozione del marcatore.",
-      "name": "Rimuovi la didascalia del marcatore"
+      "hint": "La didascalia sul pulsante di rimozione del pennarello.",
+      "name": "Rimuovi la didascalia dell'indicatore"
     },
     "searchPlaceholder": {
-      "hint": "Testo segnaposto per l'input di ricerca della mappa.",
-      "name": "Cerca segnaposto"
+      "hint": "Testo segnaposto per l'input di ricerca sulla mappa.",
+      "name": "Segnaposto di ricerca"
     },
     "showMapControl": {
-      "hint": "Indica se mostrare il controllo della mappa."
+      "hint": "Se mostrare il controllo della mappa."
     },
     "zoom": {
       "hint": "Livello di zoom"
@@ -76,17 +76,17 @@
   "RichTextEditor": {
     "modules": {
       "hint": "Permette di personalizzare il comportamento e la funzionalità dell'editor. Leggi i documenti per maggiori informazioni.",
-      "name": "Modulo"
+      "name": "Moduli"
     },
     "toolbarOptions": {
       "hint": "Gruppi di pulsanti da visualizzare sulla barra degli strumenti",
-      "name": "Opzioni barra degli strumenti"
+      "name": "Opzioni della barra degli strumenti"
     }
   },
   "RsAutoComplete": {
     "classPrefix": {
-      "hint": "Il prefisso della classe CSS componente",
-      "name": "Prefisso classe"
+      "hint": "Il prefisso della classe CSS del componente",
+      "name": "Prefisso della classe"
     },
     "data": {
       "hint": "I dati del componente",
@@ -97,11 +97,11 @@
       "name": "Valore predefinito"
     },
     "disabled": {
-      "hint": "Se disabilitato selezionare",
-      "name": "Disabilita"
+      "hint": "Se disabilitato, seleziona",
+      "name": "Disabili"
     },
     "filterBy": {
-      "hint": "Regole di filtro personalizzate (visualizzeranno solo elementi il cui valore è una sottostringa di default)",
+      "hint": "Regole di filtro personalizzate (verranno visualizzati solo gli elementi il cui valore è una sottostringa di cui per impostazione predefinita)",
       "name": "Filtra per"
     },
     "label": {
@@ -110,46 +110,46 @@
     },
     "menuClassName": {
       "hint": "Una classe CSS da applicare al Menu DOM",
-      "name": "Nome classe menu"
+      "name": "Nome della classe di menu"
     },
     "onChange": {
-      "hint": "Chiamato quando si seleziona un'opzione o una modifica del valore di input o il valore di input viene modificato",
-      "name": "onChange"
+      "hint": "Chiamato quando si seleziona un'opzione o si modifica il valore di input o il valore di input viene modificato",
+      "name": "Su Change"
     },
     "onClose": {
-      "hint": "Callback attivato quando nascosto",
-      "name": "onClose"
+      "hint": "Richiamata attivata quando nascosta",
+      "name": "In Chiusura"
     },
     "onEnter": {
-      "hint": "Callback attivato prima che le transizioni di sovrapposizione in",
-      "name": "onEnter"
+      "hint": "Richiamata attivata prima della transizione dell'overlay",
+      "name": "su Invio"
     },
     "onEntered": {
-      "hint": "Callback attivato dopo che la sovrapposizione termina la transizione in",
-      "name": "onEntered"
+      "hint": "Richiamata attivata al termine della transizione dell'overlay",
+      "name": "Su Inserito"
     },
     "onEntering": {
-      "hint": "Callback attivato quando l'overlay inizia a passare",
-      "name": "onEntering"
+      "hint": "Richiamata attivata quando l'overlay inizia la transizione",
+      "name": "All'ingresso"
     },
     "onExit": {
-      "hint": "Callback sparato a destra prima che la sovrapposizione transizioni fuori",
-      "name": "onExit"
+      "hint": "Richiamata attivata subito prima della fine dell'overlay",
+      "name": "All'uscita"
     },
     "onExited": {
-      "hint": "Callback attivato dopo che la sovrapposizione termina la transizione",
-      "name": "onExited"
+      "hint": "Richiamata attivata al termine della transizione dell'overlay",
+      "name": "In uscita"
     },
     "onExiting": {
-      "hint": "Callback sparato come l'overlay inizia a transizione fuori",
+      "hint": "Il callback viene attivato quando l'overlay inizia a disattivarsi",
       "name": "In uscita"
     },
     "onSelect": {
-      "hint": "Chiamata quando viene selezionata un'opzione",
-      "name": "onSelect"
+      "hint": "Chiamato quando viene selezionata un'opzione",
+      "name": "su Seleziona"
     },
     "placeholder": {
-      "hint": "Il segnaposto di input",
+      "hint": "Il segnaposto dell'input",
       "name": "Segnaposto"
     },
     "renderMenu": {
@@ -157,16 +157,16 @@
       "name": "Menu Rendering"
     },
     "renderMenuItem": {
-      "hint": "Voci di menu di rendering personalizzate",
-      "name": "Voce di menu Render"
+      "hint": "Elementi del menu di rendering personalizzati",
+      "name": "Voce del menu Rendering"
     },
     "selectOnEnter": {
-      "hint": "Se impostato su false, la funzione di selezione del tasto Invio non è valida",
+      "hint": "Se impostata su false, la funzione di selezione del tasto Invio non è valida",
       "name": "Seleziona su Invio"
     },
     "size": {
       "hint": "Un componente può avere dimensioni diverse",
-      "name": "Dimensione"
+      "name": "Taglia"
     },
     "value": {
       "hint": "Il valore corrente (controllato)",
@@ -175,42 +175,42 @@
   },
   "RsCell": {
     "dataKey": {
-      "hint": "Data binding key, ma anche una sorta di chiave",
+      "hint": "Chiave di associazione dati, ma anche una sorta di chiave",
       "name": "Chiave dati"
     }
   },
   "RsColumn": {
     "align": {
       "hint": "Allineamento",
-      "name": "Allineare"
+      "name": "Allinea"
     },
     "colSpan": {
-      "hint": "Unisce le celle della colonna da unire quando il valore 'Data key' per la colonna unita è null o undefined",
-      "name": "Col span"
+      "hint": "Unisce le celle della colonna per unirle quando il valore «Chiave dati» per la colonna unita è nullo o non definito",
+      "name": "Estensione colonna"
     },
     "fixed": {
       "hint": "Colonna fissa",
       "name": "Fisso"
     },
     "flexGrow": {
-      "hint": "Imposta la larghezza della colonna si regola automaticamente, quando impostato 'Flex grow' non può impostare la proprietà' Ridimensionabile 'e' Width'",
-      "name": "Flex grow"
+      "hint": "L'impostazione della larghezza della colonna si regola automaticamente, quando è impostato «Flex grow» non è possibile impostare le proprietà «Resizable» e «Width»",
+      "name": "Crescita flessibile"
     },
     "fullText": {
-      "hint": "Indica se visualizzare il testo completo del contenuto della cella quando il mouse è sospeso",
-      "name": "Testo integrale"
+      "hint": "Indica se visualizzare il testo completo del contenuto della cella quando si passa il mouse",
+      "name": "Testo completo"
     },
     "minWidth": {
-      "hint": "Quando si utilizza 'Flex grow', è possibile impostare una larghezza minima",
+      "hint": "Quando si utilizza «Flex grow», è possibile impostare una larghezza minima",
       "name": "Larghezza minima"
     },
     "resizable": {
-      "hint": "Personalizzabile ridimensionare la larghezza della colonna",
-      "name": "Ridimensionabili"
+      "hint": "Ridimensiona la larghezza della colonna personalizzabile",
+      "name": "Ridimensionabile"
     },
     "rowSpan": {
       "hint": "Unisce le righe nella colonna specificata",
-      "name": "Span riga"
+      "name": "Apertura delle file"
     },
     "sortable": {
       "hint": "Ordinabile",
@@ -221,25 +221,25 @@
       "name": "Allineamento verticale"
     },
     "width": {
-      "hint": "Larghezza colonna",
+      "hint": "Larghezza della colonna",
       "name": "Larghezza"
     }
   },
   "RsColumnGroup": {
     "align": {
       "hint": "Allineamento",
-      "name": "Allineare"
+      "name": "Allinea"
     },
     "fixed": {
-      "hint": "Gruppo di colonne fisso",
+      "hint": "Gruppo di colonne fisse",
       "name": "Fisso"
     },
     "groupHeaderHeight": {
-      "hint": "L'altezza dell'intestazione del gruppo di celle unite",
-      "name": "Altezza intestazione gruppo"
+      "hint": "L'altezza dell'intestazione del gruppo di celle unito",
+      "name": "Altezza dell'intestazione del gruppo"
     },
     "header": {
-      "hint": "Intestazione gruppo",
+      "hint": "Intestazione del gruppo",
       "name": "Intestazione"
     },
     "verticalAlign": {
@@ -249,85 +249,85 @@
   },
   "RsDatePicker": {
     "format": {
-      "hint": "Formato della data quando reso nell'input",
+      "hint": "Formato della data quando viene renderizzata nell'input",
       "name": "Formato"
     }
   },
   "RsDivider": {
     "children": {
-      "hint": "Imposta il testo sulla linea di demarcazione",
+      "hint": "Imposta il testo sulla linea di divisione",
       "name": "Contenuto"
     },
     "vertical": {
-      "hint": "Linea di divisione verticale",
+      "hint": "Linea divisoria verticale",
       "name": "Verticale"
     }
   },
   "RsHeaderCell": {
     "children": {
-      "hint": "Intestazione colonna tabella",
+      "hint": "Intestazione della colonna della tabella",
       "name": "Contenuto"
     }
   },
   "RsInput": {
     "showPasswordAriaLabel": {
-      "hint": "Valore dell'attributo aria-label per il pulsante Mostra password quando l'input è in modalità maschera password.",
-      "name": "Etichetta ARIA per il pulsante mostra password"
+      "hint": "Valore dell'attributo aria-label per il pulsante show password quando l'input è in modalità password mask.",
+      "name": "Etichetta ARIA per il pulsante mostra la password"
     }
   },
   "RsMenu": {
     "itemsAs": {
-      "hint": "Elemento HTML per rendere la voce di menu",
-      "name": "Articoli come"
+      "hint": "Elemento HTML per renderizzare la voce di menu",
+      "name": "Oggetti come"
     }
   },
   "RsModal": {
     "autoFocus": {
-      "hint": "Quando è impostato su true, il Modale viene aperto e viene automaticamente focalizzato sul proprio, accessibile agli screen reader",
-      "name": "Autofocus"
+      "hint": "Se impostato su true, il Modal viene aperto e viene automaticamente focalizzato su se stesso, accessibile agli screen reader",
+      "name": "Messa a fuoco automatica"
     },
     "backdrop": {
-      "hint": "Quando è impostato su true, il Modale visualizzerà lo sfondo quando viene aperto. Cliccando sullo sfondo si chiuderà il Modale",
+      "hint": "Se impostato su true, il Modal visualizzerà lo sfondo quando viene aperto. Facendo clic sullo sfondo si chiuderà il Modal",
       "name": "Sfondo"
     },
     "backdropClassName": {
-      "hint": "Aggiungere un nome di classe extra opzionale a .modal-backdrop Potrebbe finire per assomigliare a class=\"modal-backdrop foo-modal-backdrop in\"",
-      "name": "Nome classe sfondo"
+      "hint": "Aggiungi un nome di classe extra opzionale a .modal-backdrop Potrebbe finire per assomigliare a class=\"modal-backdrop foo-modal-backdrop in\"",
+      "name": "Nome classe di sfondo"
     },
     "classPrefix": {
-      "hint": "Il prefisso della classe CSS componente",
-      "name": "Prefisso classe CSS"
+      "hint": "Il prefisso della classe CSS del componente",
+      "name": "prefisso della classe CSS"
     },
     "dialogClassName": {
-      "hint": "Classe CSS applicata ai nodi DOM di dialogo",
-      "name": "Classe CSS per la finestra di dialogo"
+      "hint": "Classe CSS applicata ai nodi Dialog DOM",
+      "name": "Classe CSS per dialoghi"
     },
     "enforceFocus": {
-      "hint": "Quando è impostato su true, Modal impedirà la messa a fuoco di lasciare una volta aperto, rendendo più facile per lo screen reader secondario per accedere",
-      "name": "Applicare il focus"
+      "hint": "Se impostato su true, Modal impedirà la disattivazione dello schermo quando viene aperto, facilitando l'accesso allo screen reader secondario",
+      "name": "Rafforzare la concentrazione"
     },
     "keyboard": {
-      "hint": "Chiudi modale quando viene premuto il tasto Esc",
-      "name": "Vicino Esc"
+      "hint": "Chiudi Modal quando si preme il tasto Esc",
+      "name": "Vicino a Esc"
     },
     "overflow": {
-      "hint": "Imposta automaticamente l'altezza quando il contenuto del corpo è troppo lungo",
-      "name": "Overflow"
+      "hint": "Imposta automaticamente l'altezza quando il contenuto corporeo è troppo lungo",
+      "name": "Traboccare"
     },
     "size": {
       "hint": "Determina la larghezza del modale",
-      "name": "Dimensione"
+      "name": "Taglia"
     }
   },
   "RsModalLayout": {
     "closeButton": {
-      "hint": "Pulsante di chiusura del display",
-      "name": "Pulsante Chiudi"
+      "hint": "Mostra il pulsante di chiusura",
+      "name": "Tasto Chiudi"
     }
   },
   "RsPlaceholderGraph": {
     "active": {
-      "hint": "Indica se il segnaposto è attivo",
+      "hint": "Se il segnaposto è attivo",
       "name": "Attivo"
     },
     "height": {
@@ -341,29 +341,29 @@
   },
   "RsPlaceholderGrid": {
     "active": {
-      "hint": "Indica se il segnaposto è attivo",
+      "hint": "Se il segnaposto è attivo",
       "name": "Attivo"
     },
     "columns": {
       "hint": "Il numero di colonne",
-      "name": "Colonna"
+      "name": "Colonne"
     },
     "rowHeight": {
       "hint": "L'altezza della riga",
-      "name": "Altezza riga"
+      "name": "Altezza della fila"
     },
     "rowSpacing": {
       "hint": "La spaziatura tra le righe",
-      "name": "Spaziatura riga"
+      "name": "Spaziatura tra le righe"
     },
     "rows": {
       "hint": "Il numero di righe",
-      "name": "Fila"
+      "name": "Righe"
     }
   },
   "RsPlaceholderParagraph": {
     "active": {
-      "hint": "Indica se il segnaposto è attivo",
+      "hint": "Se il segnaposto è attivo",
       "name": "Attivo"
     },
     "graph": {
@@ -372,25 +372,25 @@
     },
     "rowHeight": {
       "hint": "L'altezza della riga",
-      "name": "Altezza riga"
+      "name": "Altezza della fila"
     },
     "rowSpacing": {
       "hint": "La spaziatura tra le righe",
-      "name": "Spaziatura riga"
+      "name": "Spaziatura tra le righe"
     },
     "rows": {
       "hint": "Il numero di righe",
-      "name": "Fila"
+      "name": "Righe"
     }
   },
   "RsTable": {
     "affixHeader": {
-      "hint": "Apporre l'intestazione della tabella nella posizione specificata nella pagina",
-      "name": "Apporre intestazione"
+      "hint": "Applica l'intestazione della tabella nella posizione specificata nella pagina",
+      "name": "Intestazione Apponi"
     },
     "affixHorizontalScrollbar": {
-      "hint": "Apporre la barra di scorrimento orizzontale della tabella nella posizione specificata nella pagina",
-      "name": "Apporre barra di scorrimento orizzontale"
+      "hint": "Applica la barra di scorrimento orizzontale della tabella alla posizione specificata nella pagina",
+      "name": "Apporre la barra di scorrimento orizzontale"
     },
     "autoHeight": {
       "hint": "L'altezza della tabella verrà automaticamente espansa in base al numero di righe di dati e non verrà visualizzata alcuna barra di scorrimento verticale",
@@ -398,10 +398,10 @@
     },
     "bordered": {
       "hint": "Mostra bordo",
-      "name": "Border"
+      "name": "Bordato"
     },
     "cellBordered": {
-      "hint": "Mostra bordo cella",
+      "hint": "Mostra il bordo della cella",
       "name": "Cella delimitata"
     },
     "data": {
@@ -413,20 +413,20 @@
       "name": "Tipo di ordinamento predefinito"
     },
     "fillHeight": {
-      "hint": "Forza l'altezza della tabella per essere uguale all'altezza del suo contenitore padre. Non può essere utilizzato insieme a'Auto height'",
-      "name": "Altezza riempimento"
+      "hint": "Forza l'altezza del tavolo in modo che sia uguale all'altezza del contenitore principale. Non può essere utilizzato insieme a «Altezza automatica»",
+      "name": "Altezza di riempimento"
     },
     "headerHeight": {
-      "hint": "Altezza intestazione tabella",
-      "name": "Altezza intestazione"
+      "hint": "Altezza dell'intestazione della tabella",
+      "name": "Altezza dell'intestazione"
     },
     "height": {
-      "hint": "Altezza tavola",
+      "hint": "Altezza del tavolo",
       "name": "Altezza"
     },
     "hover": {
       "hint": "La riga della tabella ha un effetto mouseover",
-      "name": "Aleggiare"
+      "name": "librarsi"
     },
     "loading": {
       "hint": "Mostra caricamento",
@@ -441,27 +441,27 @@
       "name": "Altezza minima"
     },
     "rowClassName": {
-      "hint": "Aggiungere un nome di classe extra opzionale alla riga",
-      "name": "Nome classe riga"
+      "hint": "Aggiungi un nome di classe aggiuntivo opzionale alla riga",
+      "name": "Nome della classe di riga"
     },
     "rowHeight": {
-      "hint": "Altezza riga",
-      "name": "Altezza riga"
+      "hint": "Altezza della fila",
+      "name": "Altezza della fila"
     },
     "rowKey": {
       "hint": "Ogni riga corrisponde alla chiave univoca nei dati",
-      "name": "Chiave riga"
+      "name": "Tasto Row"
     },
     "shouldUpdateScroll": {
-      "hint": "Indica se aggiornare lo scorrimento dopo l'aggiornamento delle dimensioni della tabella",
-      "name": "Dovrebbe aggiornare scroll"
+      "hint": "Se aggiornare lo scroll dopo l'aggiornamento delle dimensioni della tabella",
+      "name": "Dovrebbe aggiornare lo scroll"
     },
     "showHeader": {
-      "hint": "Intestazione del display",
+      "hint": "Intestazione dello schermo",
       "name": "Mostra intestazione"
     },
     "sortColumn": {
-      "hint": "Ordina nome colonna",
+      "hint": "Ordina il nome della colonna",
       "name": "Ordina colonna"
     },
     "sortType": {
@@ -469,101 +469,101 @@
       "name": "Tipo di ordinamento"
     },
     "virtualized": {
-      "hint": "Renderizzare efficacemente grandi dati tabulari",
-      "name": "Virtualizzare"
+      "hint": "Rendering efficace di dati tabulari di grandi dimensioni",
+      "name": "Virtualizzato"
     },
     "width": {
-      "hint": "Larghezza tabella",
+      "hint": "Larghezza del tavolo",
       "name": "Larghezza"
     },
     "wordWrap": {
-      "hint": "Indica se visualizzare interruzioni di riga in cui il testo trabocca la casella del contenuto",
-      "name": "A capo campo"
+      "hint": "Indica se visualizzare le interruzioni di riga nel punto in cui il testo supera il riquadro del contenuto",
+      "name": "Involucro"
     }
   },
   "RsTimePicker": {
     "format": {
-      "hint": "Formato del tempo quando reso nell'input",
+      "hint": "Formato dell'ora in cui viene renderizzato nell'input",
       "name": "Formato"
     }
   },
   "RsWizard": {
     "activeIndex": {
-      "hint": "L ' active step index",
+      "hint": "L'indice dei passi attivi",
       "name": "Indice attivo"
     },
     "finishButtonLabel": {
-      "hint": "L ' etichetta pulsante fine",
-      "name": "Etichetta pulsante Fine"
+      "hint": "L'etichetta del pulsante di finitura",
+      "name": "Etichetta del pulsante Finish"
     },
     "nextButtonLabel": {
       "hint": "L'etichetta del pulsante successivo",
-      "name": "Etichetta pulsante Successivo"
+      "name": "Etichetta del pulsante successivo"
     },
     "prevButtonLabel": {
       "hint": "L'etichetta del pulsante precedente",
-      "name": "Etichetta pulsante precedente"
+      "name": "Etichetta del pulsante precedente"
     },
     "showSteps": {
       "hint": "Se vero, verranno mostrati i passaggi",
-      "name": "Mostra passi"
+      "name": "Mostra passaggi"
     },
     "showStepsLabels": {
-      "hint": "Se true, verranno visualizzate le etichette dei passaggi",
-      "name": "Mostra passi etichette"
+      "hint": "Se vero, verranno visualizzate le etichette dei passaggi",
+      "name": "Mostra le etichette dei passaggi"
     },
     "steps": {
-      "hint": "La procedura guidata",
-      "name": "Scalinata"
+      "hint": "I passaggi del mago",
+      "name": "Gradini"
     },
     "stepsNavigation": {
-      "hint": "Determina quali passaggi sono disponibili per la navigazione facendo clic su",
-      "name": "Passi di navigazione"
+      "hint": "Determina quali passaggi sono disponibili per la navigazione facendo clic",
+      "name": "Navigazione per fasi"
     },
     "validateOnFinish": {
-      "hint": "Se true, la procedura guidata verrà convalidata prima di terminare la procedura guidata",
+      "hint": "Se vero, la procedura guidata verrà convalidata prima di terminare la procedura guidata",
       "name": "Convalida al termine"
     },
     "validateOnNext": {
-      "hint": "Se è vero, il passaggio verrà convalidato prima di passare al passaggio successivo",
-      "name": "Convalidare il prossimo"
+      "hint": "Se vero, il passaggio verrà convalidato prima di passare al passaggio successivo",
+      "name": "Convalida al successivo"
     },
     "verticalSteps": {
       "hint": "Se vero, i passaggi verranno visualizzati verticalmente",
       "name": "Gradini verticali"
     },
-    "wizardHasNoSteps": "Per aggiungere i passaggi della procedura guidata, selezionate il componente e aggiungete i passaggi nel pannello Proprietà."
+    "wizardHasNoSteps": "Per aggiungere i passaggi della procedura guidata, seleziona il componente e aggiungi i passaggi nel pannello delle proprietà."
   },
   "actions": {
-    "add": "Aggiungere",
-    "addAction": "Aggiungi azione",
-    "addCodeAction": "Aggiungi un'azione del codice",
-    "arguments": "Argomento",
+    "add": "Inserisci",
+    "addAction": "Aggiungere un'azione",
+    "addCodeAction": "Aggiungere un'azione in codice",
+    "arguments": "Argomenti",
     "code": "Codice",
     "common": "Comune",
     "custom": "Personalizzato",
-    "delete": "Eliminare",
+    "delete": "Elimina",
     "duplicate": "Duplicato",
-    "edit": "Modificare",
+    "edit": "Modifica",
     "name": "Nome",
-    "parameters": "Parametro",
+    "parameters": "Parametri",
     "type": "Tipo"
   },
   "annotation": {
     "accept": {
-      "hint": "Tipi di file che possono essere accettati. Vedi attributo HTML standard: accept",
-      "name": "Accettare"
+      "hint": "Tipi di file che possono essere accettati. Vedi l'attributo HTML standard: accept",
+      "name": "Accetta"
     },
     "action": {
-      "hint": "Caricamento URL",
+      "hint": "URL di caricamento",
       "name": "Azione"
     },
     "allowEmptyFormatting": {
-      "hint": "Per impostazione predefinita, il componente PatternFormat non applica la formattazione quando il valore è vuoto (null, undefined o ‘)",
-      "name": "Consenti formattazione vuota "
+      "hint": "Per impostazione predefinita, il componente PatternFormat non applica la formattazione quando il valore è vuoto (null, undefined o «»)",
+      "name": "Consenti la formattazione vuota"
     },
     "allowLeadingZeros": {
-      "hint": "Ciò consente di abilitare o disabilitare gli zeri iniziali nel campo di input. Per impostazione predefinita, sulla sfocatura di un input, gli zeri iniziali vengono rimossi",
+      "hint": "Ciò consente di abilitare o disabilitare gli zeri iniziali nel campo di immissione. Per impostazione predefinita, in caso di sfocatura di un input, gli zeri iniziali vengono rimossi",
       "name": "Consenti zeri iniziali"
     },
     "allowNegative": {
@@ -571,11 +571,11 @@
       "name": "Consenti negativo"
     },
     "allowedDecimalSeparators": {
-      "hint": "Caratteri che quando vengono premuti generano un separatore decimale. Quando manca, separatore decimale e'.\"sono utilizzati",
+      "hint": "Caratteri che premuti danno come risultato un separatore decimale. Se manca, vengono utilizzati il separatore decimale e '.'",
       "name": "Separatori decimali consentiti"
     },
     "appearance": {
-      "hint": "Set picker aspetto",
+      "hint": "Imposta l'aspetto del selettore",
       "name": "Aspetto"
     },
     "autoUpload": {
@@ -584,26 +584,26 @@
     },
     "block": {
       "hint": "Bloccare un'intera riga",
-      "name": "Blocco"
+      "name": "Blocca"
     },
     "bodyFill": {
       "hint": "Area del contenuto piena di contenitori",
-      "name": "Riempimento del corpo"
+      "name": "Imbottitura del corpo"
     },
     "calendarDefaultDate": {
       "hint": "Data e ora di presentazione predefinite del pannello Calendario",
       "name": "Data predefinita del calendario"
     },
     "checked": {
-      "hint": "Indica se il valore è controllato",
-      "name": "Verificare"
+      "hint": "Se il valore è controllato",
+      "name": "Controllato"
     },
     "checkedChildren": {
-      "hint": "Il testo visualizzato nello stato controllato",
+      "hint": "Il testo visualizzato nello stato selezionato",
       "name": "Testo controllato"
     },
     "cleanable": {
-      "hint": "Indica se l'opzione può essere svuotata",
+      "hint": "Se l'opzione può essere svuotata",
       "name": "Pulibile"
     },
     "code": {
@@ -616,18 +616,18 @@
     },
     "creatable": {
       "hint": "Le impostazioni possono creare nuove opzioni",
-      "name": "Creatable"
+      "name": "Creabile"
     },
     "data": {
       "hint": "Dati selezionabili",
       "name": "Dati"
     },
     "dataKey": {
-      "hint": "Chiave dati componente",
+      "hint": "Chiave dati del componente",
       "name": "Chiave dati"
     },
     "decimalScale": {
-      "hint": "Se definito, limita il numero di cifre dopo il punto decimale",
+      "hint": "Se definito, limita il numero di cifre dopo la virgola decimale",
       "name": "Scala decimale"
     },
     "decimalSeparator": {
@@ -635,7 +635,7 @@
       "name": "Separatore decimale"
     },
     "defaultOpen": {
-      "hint": "Valore predefinito della proprietà open",
+      "hint": "Valore predefinito della proprietà aperta",
       "name": "Apertura predefinita"
     },
     "defaultValue": {
@@ -643,139 +643,139 @@
       "name": "Valore predefinito"
     },
     "disableDataBinding": {
-      "hint": "Disabilita l'associazione dati per il componente",
-      "name": "Disabilita associazione dati"
+      "hint": "Disattiva l'associazione dei dati per il componente",
+      "name": "Disattiva l'associazione dei dati"
     },
     "disableMultipart": {
-      "hint": "Se' true', disabilitare l'utilizzo di un modulo multipart per il caricamento del file e invece lo streaming del file. Alcune API (ad esempio Amazon S3) potrebbero aspettarsi che il file venga trasmesso in streaming anziché inviato tramite un modulo",
+      "hint": "Se «true», disabilita l'utilizzo di un modulo in più parti per il caricamento del file e trasmetti invece il file in streaming. Alcune API (ad esempio Amazon S3) possono prevedere che il file venga trasmesso in streaming anziché inviato tramite un modulo",
       "name": "Disabilita multipart"
     },
     "disableVirtualized": {
       "hint": "Se vero, il virtualizzato verrà disabilitato",
-      "name": "Disabilita virtualizzato"
+      "name": "Disabilita la virtualizzazione"
     },
     "disabled": {
-      "hint": "Indica se il componente è disabilitato o meno",
-      "name": "Disabilita"
+      "hint": "Indipendentemente dal fatto che il componente sia disattivato o meno",
+      "name": "Disabili"
     },
     "download": {
-      "hint": "Fa sì che il browser tratti l'URL collegato come un download",
-      "name": "Scaricare"
+      "hint": "Fa sì che il browser consideri l'URL collegato come un download",
+      "name": "Scarica"
     },
     "downloadFilename": {
-      "hint": "La definizione di un valore lo suggerisce come nome del file. / e \\ i caratteri vengono convertiti in caratteri di sottolineatura (_)",
-      "name": "Scarica nome file"
+      "hint": "La definizione di un valore lo suggerisce come nome del file. I caratteri/e\\ vengono convertiti in caratteri di sottolineatura (_)",
+      "name": "Scarica il nome del file"
     },
     "draggable": {
-      "hint": "Abilitato drag and drop per caricare",
+      "hint": "Attivato il drag and drop per il caricamento",
       "name": "Trascinabile"
     },
     "editable": {
-      "hint": "Reso come input, il valore può essere inserito tramite la tastiera",
+      "hint": "Renderizzato come input, il valore può essere inserito tramite la tastiera",
       "name": "Modificabile"
     },
     "errorConfig": {
-      "show": "Mostrare"
+      "show": "Mostra"
     },
     "eventKey": {
-      "hint": "La chiave evento corrispondente a questo elemento",
+      "hint": "La chiave dell'evento corrispondente a questo elemento",
       "name": "Chiave evento"
     },
     "fixedDecimalScale": {
-      "hint": "Se impostato su true, aggiunge gli 0 finali dopo decimalSeparator per corrispondere a decimalScale specificato",
+      "hint": "Se impostato su true, aggiunge 0 finali dopo DecimalSeparator per corrispondere a DecimalScale specificato",
       "name": "Scala decimale fissa"
     },
     "flexDirection": {
-      "hint": "Direzione della flessione dei bambini del contenitore",
+      "hint": "Direzione di flessione dei bambini del contenitore",
       "name": "Direzione"
     },
     "format": {
-      "hint": "Formattare il modello utilizzando il carattere # (o un carattere Pattern). # è il carattere segnaposto per i numeri. Esempio: '### ###'",
+      "hint": "Formatta il modello usando il carattere # (o un carattere Pattern). # è il carattere segnaposto per i numeri. Esempio: '### ###'",
       "name": "Formato"
     },
     "groupBy": {
-      "hint": "Imposta criteri di raggruppamento 'chiave ' in'dati'",
-      "name": "Gruppo per"
+      "hint": "Imposta i criteri di raggruppamento «chiave» in «dati»",
+      "name": "Raggruppa per"
     },
     "href": {
       "hint": "L'URL a cui punta il collegamento ipertestuale",
       "name": "Href"
     },
     "htmlAttributes": {
-      "hint": "Attributi HTML passati al componente",
-      "name": "Attributi HTML"
+      "hint": "attributi HTML passati al componente",
+      "name": "attributi HTML"
     },
     "isoWeek": {
-      "hint": "Norma ISO 8601, ogni settimana di calendario inizia il lunedì e la domenica del settimo giorno",
+      "hint": "Standard ISO 8601, ogni settimana di calendario inizia il lunedì e la domenica il settimo giorno",
       "name": "Settimana Iso"
     },
     "justifyContent": {
-      "name": "Allineamento"
+      "name": "Giustifica"
     },
     "label": {
-      "hint": "Impostazione etichetta",
+      "hint": "Etichetta di impostazione",
       "name": "Etichetta"
     },
     "limitEndYear": {
-      "hint": "Imposta il limite superiore dell'anno disponibile rispetto alla data di selezione corrente",
-      "name": "Limite fine anno"
+      "hint": "Imposta il limite massimo dell'anno disponibile rispetto alla data di selezione corrente",
+      "name": "Limite di fine anno"
     },
     "limitStartYear": {
       "hint": "Imposta il limite inferiore dell'anno disponibile rispetto alla data di selezione corrente",
-      "name": "Limite anno di inizio"
+      "name": "Anno di inizio limite"
     },
     "loading": {
       "hint": "Se il componente è in stato di caricamento",
       "name": "Caricamento"
     },
     "marginInlineEnd": {
-      "name": "Margine Destro"
+      "name": "Margine destro"
     },
     "marginInlineStart": {
       "name": "Margine sinistro"
     },
     "mask": {
-      "hint": "Utilizzato come carattere maschera per le posizioni numeriche, fino a quando non viene fornito alcun carattere numerico per quella posizione",
+      "hint": "Usato come carattere maschera per le posizioni numeriche, finché non viene fornito un carattere numerico per quella posizione",
       "name": "Maschera"
     },
     "method": {
-      "hint": "Il metodo HTTP della richiesta di upload",
+      "hint": "Il metodo HTTP di richiesta di caricamento",
       "name": "Metodo"
     },
     "modalProps": {
       "modalComponentProperties": "Proprietà dei componenti modali",
       "modalComponentPropertiesHint": "Proprietà dei componenti modali",
-      "noModalComponent": "Nessuna componente modale",
-      "noModalComponentHint": "Specificare il tipo di componente modale nelle impostazioni del modulo"
+      "noModalComponent": "Nessun componente modale",
+      "noModalComponentHint": "Specifica il tipo di componente modale nelle impostazioni del modulo"
     },
     "name": {
       "hint": "Carica il nome del parametro del file corrispondente",
       "name": "Nome"
     },
     "objectFit": {
-      "name": "Adattare"
+      "name": "In forma"
     },
     "objectPosition": {
       "name": "Posizione"
     },
     "oneTap": {
-      "hint": "Un clic per completare il valore di selezione",
+      "hint": "Un clic per completare il valore della selezione",
       "name": "Un tocco"
     },
     "open": {
-      "hint": "Indica se aprire il componente",
-      "name": "Aprire"
+      "hint": "Se aprire il componente",
+      "name": "Aperta"
     },
     "passwordMask": {
-      "hint": "Usa maschera password",
+      "hint": "Usa la maschera della password",
       "name": "Maschera password"
     },
     "patternChar": {
       "hint": "Questo aiuta a definire il carattere del modello di formato",
-      "name": "Modello char"
+      "name": "Carriera del modello"
     },
     "placeholder": {
-      "hint": "Impostazione segnaposto",
+      "hint": "Impostazione dei segnaposto",
       "name": "Segnaposto"
     },
     "placement": {
@@ -783,58 +783,58 @@
       "name": "Posizionamento"
     },
     "prefix": {
-      "hint": "Aggiunge il carattere prefix prima del valore di input",
+      "hint": "Aggiunge il carattere di prefisso prima del valore di input",
       "name": "Prefisso"
     },
     "preload": {
       "hint": "Carica i dati in anticipo, prima di aprire il menu a discesa",
-      "name": "Preload"
+      "name": "Precarico"
     },
     "preventOverflow": {
-      "hint": "Prevenire il trabocco dell'elemento flottante",
-      "name": "Prevenire l'overflow"
+      "hint": "Evitare il trabocco degli elementi flottanti",
+      "name": "Prevenire il trabocco"
     },
     "readOnly": {
-      "hint": "Se true, il componente sarà di sola lettura",
+      "hint": "Se vero, il componente sarà di sola lettura",
       "name": "Sola lettura"
     },
     "showMeridiem": {
-      "hint": "Visualizzare le ore in formato 12",
+      "hint": "Visualizza le ore in formato 12",
       "name": "Mostra meridiano"
     },
     "showWeekNumbers": {
-      "hint": "Indica se mostrare i numeri della settimana",
-      "name": "Mostra i numeri della settimana"
+      "hint": "Se mostrare i numeri delle settimane",
+      "name": "Mostra i numeri delle settimane"
     },
     "size": {
       "hint": "Il componente può avere dimensioni diverse",
-      "name": "Dimensione"
+      "name": "Taglia"
     },
     "suffix": {
       "hint": "Aggiunge il suffisso dopo il valore di input",
-      "name": "Suffisso "
+      "name": "Suffisso"
     },
     "target": {
-      "hint": "Dove visualizzare l'URL collegato, come nome per un contesto di navigazione (una scheda, una finestra o <iframe>)",
+      "hint": "Dove visualizzare l'URL collegato, come nome per un contesto di navigazione (una scheda, una finestra o<iframe>)",
       "name": "Obiettivo"
     },
     "textAlign": {
       "name": "Allineamento"
     },
     "thousandsGroupStyle": {
-      "hint": "Mille stile (mille): 123,456,789, stile indiano (lakh): 12,34,56,789, stile cinese (wan): 1,2345,6789",
-      "name": "Stile gruppo migliaia"
+      "hint": "Mille stili (migliaia): 123,456,789, stile indiano (lakh): 12,34,56,789, stile cinese (wan): 1,2345,6789",
+      "name": "Migliaia di stile di gruppo"
     },
     "tooltipProps": {
-      "hint": "Usa tooltip per questo elemento",
+      "hint": "Usa il tooltip per questo elemento",
       "tooltip": "Tooltip"
     },
     "unCheckedChildren": {
-      "hint": "Il testo che viene visualizzato nello stato deselezionato",
-      "name": "Testo non controllato"
+      "hint": "Il testo visualizzato nello stato deselezionato",
+      "name": "Testo deselezionato"
     },
     "useDropzone": {
-      "hint": "Utilizzare dropzone per il '{{propertyName}}' proprieta",
+      "hint": "Usa dropzone per la proprietà '{{propertyName}}'",
       "name": "Usa dropzone"
     },
     "validateWhen": {
@@ -846,60 +846,60 @@
       "name": "Valore"
     },
     "withCredentials": {
-      "hint": "Indica se trasportare i cookie durante il caricamento delle richieste",
+      "hint": "Se trasportare i cookie durante il caricamento delle richieste",
       "name": "Con credenziali"
     }
   },
   "bottomPanel": {
-    "editCodeAction": "Modifica l'azione del codice",
+    "clearLocalization": "Trasparente",
+    "editCodeAction": "Azione di modifica del codice",
     "editProperty": "Modifica proprietà",
     "function": "Valore calcolabile",
     "localization": "Localizzazione",
     "localizationNotSet": "Il motore di localizzazione non è impostato",
     "simpleValue": "Valore semplice",
     "simpleValueHint": "Modifica la proprietà nel pannello di destra",
-    "use": "Utilizzare",
-    "clearLocalization": "Cancella"
+    "use": "Usare"
   },
   "codeActionEditor": {
-    "actionNameExists": "L'azione con questo nome esiste già",
-    "nameIsRequired": "Il nome dell'azione è richiesto",
+    "actionNameExists": "Esiste già un'azione con questo nome",
+    "nameIsRequired": "Il nome dell'azione è obbligatorio",
     "parameterNameExists": "Il parametro con questo nome esiste già",
     "parameterNameIsNotValid": "Il nome del parametro non è valido",
-    "parameterNameIsRequired": "Il nome del parametro è richiesto"
+    "parameterNameIsRequired": "Il nome del parametro è obbligatorio"
   },
   "codeEditor": {
-    "codeActionHeader": "Editor di azioni codice",
-    "codePlaceholder": "// inserisci il tuo codice qui",
-    "compilationResult": "Risultato compilazione:",
+    "codeActionHeader": "Editor di azioni in codice",
+    "codePlaceholder": "//inserisci qui il tuo codice",
+    "compilationResult": "Risultato della compilazione:",
     "compile": "Compilare",
     "generic": {
       "json": {
-        "title": "Modifica dati JSON per"
+        "title": "Modifica i dati JSON per"
       }
     },
     "ok": "OK"
   },
   "common": {
-    "apply": "Applicare",
-    "cancel": "Annullare",
-    "clone": "Clone",
-    "close": "Vicino",
-    "edit": "Modificare",
+    "apply": "Applica",
+    "cancel": "Annulla",
+    "clone": "Clona",
+    "close": "Chiudi",
+    "edit": "Modifica",
     "name": "Nome",
-    "remove": "Rimuovere",
-    "save": "Salvare",
+    "remove": "Rimuovi",
+    "save": "Salva",
     "test": "Test"
   },
   "componentToolbar": {
-    "add": "Aggiungi nuovo elemento",
+    "add": "Aggiungi un nuovo elemento",
     "after": "Dopo",
     "before": "Prima",
-    "inside": "Dentro"
+    "inside": "Interno"
   },
   "componentsList": {
     "categories": {
-      "fields": "Campo",
+      "fields": "Campi",
       "modal": "Modale",
       "static": "Statico",
       "structure": "Struttura",
@@ -907,59 +907,59 @@
     }
   },
   "componentsModal": {
-    "clickToAdd": "Fare clic per aggiungere il controllo"
+    "clickToAdd": "Fai clic per aggiungere il controllo"
   },
   "editJson": "Modifica JSON",
   "errorsPanel": {
-    "clear": "Chiaro",
+    "clear": "Trasparente",
     "data": "Dati",
-    "errors": "Errore",
-    "reset": "Reset",
-    "validate": "Convalidare"
+    "errors": "Errori",
+    "reset": "Ripristina i valori predefiniti",
+    "validate": "Convalida"
   },
   "formsList": {
-    "addNewForm": "Aggiungi nuovo modulo",
-    "formWithNameExists": "La forma con questo nome esiste già.",
+    "addNewForm": "Aggiungi un nuovo modulo",
+    "formWithNameExists": "Il modulo con questo nome esiste già.",
     "noFormsInFormStorage": "Salvare il modulo in modo che venga visualizzato nell'elenco dei moduli."
   },
   "leftMenu": {
     "addNewForm": "Aggiungi un nuovo modulo",
-    "clear": "Chiaro",
+    "clear": "Trasparente",
     "currentFormName": "Il nome del modulo corrente",
-    "download": "Scaricare",
+    "download": "Scarica",
     "enterFormName": "Inserisci il nome del modulo",
-    "exportForms": "Esporta moduli",
-    "exportFormsError": "Esportazione dei moduli non riuscita! Vedere i log nella console del browser",
+    "exportForms": "Moduli di esportazione",
+    "exportFormsError": "Esportazione dei moduli non riuscita! Visualizza i log nella console del browser",
     "exportFormsSuccess": "Moduli esportati",
-    "exportJsonFormSchema": "Esporta schema modulo JSON",
+    "exportJsonFormSchema": "Esporta lo schema del modulo JSON",
     "formNamePlaceholder": "La mia bella forma",
-    "formSaveError": "Salvataggio del modulo non riuscito! Vedere i log nella console del browser",
+    "formSaveError": "Impossibile salvare il modulo! Visualizza i log nella console del browser",
     "formSaved": "Il modulo viene salvato",
-    "importForms": "Importa moduli",
-    "importFormsError": "Importazione dei moduli non riuscita! Vedere i log nella console del browser",
+    "importForms": "Moduli di importazione",
+    "importFormsError": "Impossibile importare i moduli! Visualizza i log nella console del browser",
     "importFormsSuccess": "Moduli importati",
-    "menu": "Menu",
+    "menu": "Menù",
     "print": "Stampa",
-    "save": "Salvare",
+    "save": "Salva",
     "saveAs": "Salva con nome...",
     "settings": "Impostazioni",
     "translation": "Traduzione",
-    "undo": "Annullare",
-    "upload": "Caricare",
+    "undo": "Annulla",
+    "upload": "Carica",
     "validateForm": "Convalida modulo"
   },
   "leftPanel": {
     "formSettings": {
-      "actions": "Azione",
+      "actions": "Azioni",
       "error": "Impostazioni di errore",
-      "formValidator": "Validatore modulo",
+      "formValidator": "Validatore di moduli",
       "language": "Impostazioni della lingua",
       "modal": "Modale",
       "tooltip": "Tooltip"
     },
     "sectionName": {
-      "components": "Componente",
-      "forms": "Forma",
+      "components": "Componenti",
+      "forms": "Moduli",
       "settings": "Impostazioni",
       "tree": "Albero"
     }
@@ -971,58 +971,58 @@
     "errEndDateStrict": "Licenza scaduta {{licenseEndDate}}",
     "errLicenseInvalid": "La chiave di licenza fornita non è valida.",
     "errNoKey": "Nessuna chiave di licenza fornita.",
-    "ftComponentPreset": "La licenza non consente i preset dei componenti",
-    "ftComponentQrCode": "La licenza non consente l'utilizzo del componente Codice QR",
-    "ftComponentRepeater": "La licenza non consente l'utilizzo del Ripetitore",
-    "ftComponentSignature": "La licenza non consente l'utilizzo del componente Firma",
-    "ftComponentTable": "La licenza non consente l'utilizzo del componente Tabella",
-    "ftComponentTemplates": "La licenza non consente l'utilizzo di modelli",
-    "ftDesignerCustomization": "La licenza non consente la personalizzazione del designer",
-    "ftLocaleCount": "La tua licenza consente la traduzione solo per {{ftLocaleCount}} lingua",
-    "mismatchMessage": "Stai utilizzando funzionalità che non sono incluse nella tua licenza. Il prodotto opera in modalità \"uso non commerciale\". Modificare la licenza per utilizzare le opzioni riportate di seguito:"
+    "ftComponentPreset": "La tua licenza non consente i preset dei componenti",
+    "ftComponentQrCode": "La tua licenza non consente l'utilizzo del componente QR Code",
+    "ftComponentRepeater": "La tua licenza non consente l'uso del ripetitore",
+    "ftComponentSignature": "La tua licenza non consente l'utilizzo del componente Signature",
+    "ftComponentTable": "La tua licenza non consente l'utilizzo del componente Tabella",
+    "ftComponentTemplates": "La tua licenza non consente l'utilizzo dei modelli",
+    "ftDesignerCustomization": "La tua licenza non consente la personalizzazione del designer",
+    "ftLocaleCount": "La tua licenza consente la traduzione solo per le lingue {{ftLocaleCount}}",
+    "mismatchMessage": "Stai utilizzando funzionalità che non sono incluse nella tua licenza. Il prodotto funziona in modalità «uso non commerciale». Cambia la tua licenza per utilizzare le opzioni seguenti:"
   },
   "localization": {
     "messageIsNull": "Il messaggio di localizzazione è nullo",
-    "messageNotFound": "Localizzazione messaggio non trovato"
+    "messageNotFound": "Messaggio di localizzazione non trovato"
   },
   "presetComponent": {
     "category": "Categoria",
-    "createPreset": "Creare un componente predefinito",
+    "createPreset": "Creare un componente preimpostato",
     "enterPresetName": "Inserisci un nome predefinito",
     "name": "Nome",
     "nameExists": "Esiste già un preset o un componente con questo nome.",
-    "namePlaceholder": "Immettere un nome predefinito"
+    "namePlaceholder": "Inserisci un nome preimpostato"
   },
   "promptDialog": {
-    "cancel": "Annullare",
+    "cancel": "Annulla",
     "ok": "OK"
   },
   "propertiesEditor": {
-    "applyKey": "Applicare le modifiche chiave",
-    "clean": "Reimposta a default",
+    "applyKey": "Applica modifiche chiave",
+    "clean": "Ripristina i valori predefiniti",
     "codeButton": {
       "editCalculable": "Modifica calcolabile",
-      "editLocalizable": "Modifica localizzazione",
+      "editLocalizable": "Modifica la localizzazione",
       "hintCalculable": "Rendi calcolabile questa proprietà",
-      "hintCalculableAndLocalizable": "Rendere questa proprietà calcolabile o localizzare",
+      "hintCalculableAndLocalizable": "Rendi calcolabile o localizza questa proprietà",
       "hintLocalizable": "Localizza questa proprietà",
       "neitherCalculableNorLocalizable": "Né calcolabile né localizzabile"
     },
-    "keyMustBeUnique": "La chiave deve essere unica",
+    "keyMustBeUnique": "La chiave deve essere univoca",
     "keyMustNotBeEmpty": "La chiave non deve essere vuota",
     "removeRow": "Rimuovere una riga",
     "sectionName": {
-      "actions": "Azione",
+      "actions": "Azioni",
       "expression": "Espressione",
       "linkedProperty": "Proprietà collegata",
       "main": "Principale",
-      "rules": "Regola",
+      "rules": "Regole",
       "style": "Stile",
       "withTarget": "Con Target",
       "withoutTarget": "Senza bersaglio"
     },
-    "selectElementForEdit": "Selezionare l'elemento nel modulo per modificare le proprietà",
-    "setInputHint": "Premere Invio per aggiungere un valore",
+    "selectElementForEdit": "Seleziona l'elemento nel modulo per modificare le proprietà",
+    "setInputHint": "Premi Invio per aggiungere un valore",
     "subSection": {
       "additionalProperties": "Proprietà aggiuntive"
     }
@@ -1031,104 +1031,104 @@
     "modes": {
       "builder": "Anteprima",
       "desktop": "Desktop",
-      "mobile": "Mobile",
+      "mobile": "Cellulare",
       "orientation": "Orientamento",
       "tablet": "Tablet",
-      "viewer": "Modificare"
+      "viewer": "Modifica"
     },
-    "toggleTheme": "Toggle theme"
+    "toggleTheme": "Attiva/disattiva tema"
   },
   "searchForm": {
-    "search": "Ricerca..."
+    "search": "Cerca..."
   },
   "style": {
     "any": "Qualsiasi",
     "component": "Componente",
     "componentHint": "Stili che si applicano al componente",
     "componentTab": {
-      "hint": "Stili CSS che vengono applicati al componente tramite il'className'",
+      "hint": "stili CSS applicati al componente tramite 'className'",
       "name": "Componente"
     },
     "desktop": "Desktop",
-    "forDevice": "Per dispositivo:",
+    "forDevice": "Per dispositivo",
     "header": {
       "hint": "Stili CSS applicati tramite la proprietà 'className'",
-      "name": "Stili per className"
+      "name": "Stili per ClassName"
     },
-    "mobile": "Mobile",
-    "other": "Altri",
+    "mobile": "Cellulare",
+    "other": "Altro",
     "tablet": "Tablet",
     "wrapper": "Involucro",
-    "wrapperHint": "Stili che si applicano al componente wrapper",
+    "wrapperHint": "Stili che si applicano al wrapper del componente",
     "wrapperTab": {
-      "hint": "Stili CSS che vengono applicati al componente wrapper tramite il'className'",
+      "hint": "stili CSS applicati al wrapper del componente tramite 'className'",
       "name": "Involucro"
     }
   },
   "styleEditor": {
     "componentTab": {
-      "hint": "Stili CSS applicati al componente tramite la proprietà 'style'",
+      "hint": "stili CSS applicati al componente tramite la proprietà 'style'",
       "name": "Componente"
     },
     "header": {
-      "hint": "Stili CSS applicati tramite la proprietà 'style'",
+      "hint": "stili CSS applicati tramite la proprietà 'style'",
       "name": "Stili in linea"
     },
     "wrapperTab": {
-      "hint": "Stili CSS applicati al componente wrapper tramite la proprietà 'className'",
+      "hint": "Stili CSS applicati al wrapper del componente tramite la proprietà 'className'",
       "name": "Involucro"
     }
   },
   "testingEditor": {
     "autorun": "Autorun",
     "compilationOk": "Risultato della compilazione: OK",
-    "hasNotReturnedValue": "Non ha restituito valore",
-    "run": "Eseguire",
-    "testFormData": "Dati del modulo di prova"
+    "hasNotReturnedValue": "Non ha restituito un valore",
+    "run": "Esegui",
+    "testFormData": "Dati del modulo di test"
   },
   "toolbar": {
     "cloneComponent": "Componente clone",
-    "elements": "Elemento",
+    "elements": "Elementi",
     "notFound": "Non trovato",
     "removeComponent": "Rimuovi componente",
-    "reset": "Reset"
+    "reset": "Reimposta"
   },
   "tree": {
     "collapse": "Comprimi tutto",
     "expand": "Espandi tutto"
   },
   "validation": {
-    "addRule": "Aggiungi regola",
-    "chooseValidation": "Scegli il tuo tipo",
-    "editCustomValidationCode": "Modifica del codice di convalida personalizzato per il componente",
+    "addRule": "Aggiungere una regola di convalida",
+    "chooseValidation": "Scegli la tua tipologia",
+    "editCustomValidationCode": "Modifica il codice di convalida personalizzato per il componente",
     "editFormValidatorCode": "Modifica il codice di convalida del modulo",
     "formErrors": "Errori di modulo",
     "rule": {
       "code": "Codice",
       "custom": "Personalizzato",
-      "datetime": "Data e ora",
-      "email": "Email",
+      "datetime": "Data/ora",
+      "email": "E-mail",
       "endsWith": "Termina con",
-      "falsy": "Falso",
+      "falsy": "Falsa",
       "finite": "Finito",
-      "includes": "Includere",
-      "integer": "Intero",
-      "ip": "IP",
+      "includes": "Include",
+      "integer": "Numero intero",
+      "ip": "Ip",
       "length": "Lunghezza",
-      "lessThan": "Meno",
+      "lessThan": "Meno di",
       "max": "Max",
       "min": "Min",
-      "moreThan": "Oltre",
+      "moreThan": "Più di",
       "multipleOf": "Multiplo di",
       "nonEmpty": "Non vuoto",
       "regex": "Regex",
-      "required": "Necessario",
+      "required": "Richiesto",
       "startsWith": "Inizia con",
-      "truthy": "Truthy",
-      "url": "URL",
+      "truthy": "Veritiero",
+      "url": "Url",
       "uuid": "Uuid"
     },
     "ruleNotFound": "Regola non trovata o non connessa",
-    "showFormErrors": "Mostra errori di modulo"
+    "showFormErrors": "Mostra errori nei moduli"
   }
 }

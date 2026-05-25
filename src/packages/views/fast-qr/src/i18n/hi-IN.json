@@ -6,43 +6,43 @@
   },
   "components": {
     "FastQR": {
-      "description": "घटक जो पाठ को क्यूआर कोड में परिवर्तित कर सकता है, और कस्टम रंग और लोगो का समर्थन कर सकता है",
-      "name": "क्यूआर कोड",
+      "description": "घटक जो पाठ को QR कोड में परिवर्तित कर सकता है, और कस्टम रंग और लोगो का समर्थन कर सकता है",
+      "name": "QR कोड",
       "props": {
         "content": {
-          "description": "क्यूआर कोड सामग्री",
-          "name": "सामग्री"
+          "description": "QR कोड सामग्री",
+          "name": "कॉन्टेंट"
         },
         "errorCorrectionLevel": {
           "description": "त्रुटि सुधार कोडिंग स्तर",
           "name": "त्रुटि सुधार स्तर"
         },
         "image": {
-          "description": "छवि, बेस 64 या यूआरएल",
-          "name": "छवि"
+          "description": "इमेज, base64 या URL",
+          "name": "इमेज"
         },
         "imageBackgroundColor": {
-          "description": "छवि पृष्ठभूमि रंग",
-          "name": "छवि पृष्ठभूमि रंग"
+          "description": "छवि पृष्ठभूमि का रंग",
+          "name": "छवि पृष्ठभूमि का रंग"
         },
         "imageBackgroundShape": {
-          "description": "छवि पृष्ठभूमि आकार",
-          "name": "छवि पृष्ठभूमि आकार"
+          "description": "छवि की पृष्ठभूमि का आकार",
+          "name": "छवि की पृष्ठभूमि का आकार"
         },
         "moduleColor": {
-          "description": "मॉड्यूल रंग",
-          "name": "मॉड्यूल रंग"
+          "description": "मॉड्यूल का रंग",
+          "name": "मॉड्यूल का रंग"
         },
         "shape": {
           "description": "मॉड्यूल का प्रतिनिधित्व करने के लिए विभिन्न संभावित आकार",
-          "name": "आकार"
+          "name": "शेप"
         },
         "version": {
-          "description": "क्यूआर कोड संस्करण",
-          "name": "क्यूआर संस्करण"
+          "description": "QR कोड संस्करण",
+          "name": "QR वर्जन"
         },
         "width": {
-          "description": "क्यूआर कोड चौड़ाई",
+          "description": "QR कोड की चौड़ाई",
           "name": "चौड़ाई"
         }
       }

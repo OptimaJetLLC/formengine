@@ -6,7 +6,7 @@
   },
   "components": {
     "RsSignature": {
-      "description": "基于HTML5画布的平滑签名绘图",
+      "description": "HTML5 基于画布的流畅签名绘制",
       "name": "签名",
       "props": {
         "backgroundColor": {
@@ -31,19 +31,19 @@
         },
         "penColor": {
           "description": "笔的颜色",
-          "name": "钢笔颜色"
+          "name": "笔的颜色"
         },
         "readOnly": {
           "description": "只读标志",
           "name": "只读"
         },
         "value": {
-          "description": "用于绘制签名图像的初始数据URL",
+          "description": "用于绘制签名图像的初始数据 URL",
           "name": "价值"
         },
         "width": {
           "description": "画布宽度",
-          "name": "阔度"
+          "name": "宽度"
         }
       }
     }

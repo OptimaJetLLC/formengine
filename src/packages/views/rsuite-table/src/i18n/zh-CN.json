@@ -16,31 +16,31 @@
       }
     },
     "RsColumn": {
-      "description": "表列",
+      "description": "表格列",
       "name": "专栏",
       "props": {
         "align": {
-          "description": "对齐方式",
-          "name": "对齐;对齐"
+          "description": "对齐",
+          "name": "对齐"
         },
         "colSpan": {
-          "description": "当合并列的\"数据键\"值为null或未定义时，合并要合并的列单元格",
-          "name": "Col跨度"
+          "description": "合并列的 “数据键” 值为空或未定义时，合并列单元格以进行合并",
+          "name": "列跨度"
         },
         "fixed": {
-          "description": "固定柱",
-          "name": "固定"
+          "description": "固定列",
+          "name": "已修复"
         },
         "flexGrow": {
-          "description": "当set'Flex grow'不能设置'Resizable'和'Width'属性时，设置列宽会自动调整",
-          "name": "弹性增长"
+          "description": "设置列宽自动调整，当设置 “Flex grow” 时，无法设置 “可调整大小” 和 “宽度” 属性",
+          "name": "Flex 成长"
         },
         "fullText": {
-          "description": "鼠标悬停时是否显示单元格内容全文",
+          "description": "鼠标悬停时是否显示单元格内容的全文",
           "name": "全文"
         },
         "minWidth": {
-          "description": "当您使用'Flex grow'时，您可以设置最小宽度",
+          "description": "当你使用 “Flex grow” 时，你可以设置最小宽度",
           "name": "最小宽度"
         },
         "resizable": {
@@ -52,8 +52,8 @@
           "name": "行跨度"
         },
         "sortable": {
-          "description": "可分类",
-          "name": "可分类"
+          "description": "可排序",
+          "name": "可排序"
         },
         "verticalAlign": {
           "description": "垂直对齐",
@@ -61,28 +61,28 @@
         },
         "width": {
           "description": "列宽",
-          "name": "阔度"
+          "name": "宽度"
         }
       }
     },
     "RsColumnGroup": {
-      "description": "表列组",
+      "description": "表格列组",
       "name": "栏目组",
       "props": {
         "align": {
-          "description": "对齐方式",
-          "name": "对齐;对齐"
+          "description": "对齐",
+          "name": "对齐"
         },
         "fixed": {
-          "description": "固定柱组",
-          "name": "固定"
+          "description": "固定列组",
+          "name": "已修复"
         },
         "groupHeaderHeight": {
-          "description": "合并单元格组的标题的高度",
-          "name": "组头高度"
+          "description": "合并后的单元格组标题的高度",
+          "name": "群组标题高度"
         },
         "header": {
-          "description": "组头",
+          "description": "群组标题",
           "name": "标题"
         },
         "verticalAlign": {
@@ -92,66 +92,66 @@
       }
     },
     "RsHeaderCell": {
-      "description": "表头单元格",
-      "name": "标题单元格",
+      "description": "表格标题单元格",
+      "name": "标题单元",
       "props": {
         "children": {
-          "description": "表列标题",
+          "description": "表格列标题",
           "name": "内容"
         }
       }
     },
     "RsTable": {
-      "description": "表",
-      "name": "表",
+      "description": "桌子",
+      "name": "桌子",
       "props": {
         "affixHeader": {
-          "description": "将表头粘贴到页面上的指定位置",
-          "name": "词缀头"
+          "description": "将表格标题粘贴到页面上的指定位置",
+          "name": "附上标题"
         },
         "affixHorizontalScrollbar": {
           "description": "将表格水平滚动条粘贴到页面上的指定位置",
-          "name": "附加水平滚动条"
+          "name": "粘贴水平滚动条"
         },
         "autoHeight": {
-          "description": "表的高度会根据数据行数自动展开，不会出现垂直滚动条",
+          "description": "表格的高度将根据数据行数自动扩展，不会出现垂直滚动条",
           "name": "自动高度"
         },
         "bordered": {
           "description": "显示边框",
-          "name": "边界,边界"
+          "name": "有边界"
         },
         "cellBordered": {
           "description": "显示单元格边框",
-          "name": "细胞边缘"
+          "name": "细胞与边界接壤"
         },
         "data": {
-          "description": "表数据",
-          "name": "数据资料"
+          "description": "表格数据",
+          "name": "数据"
         },
         "defaultSortType": {
           "description": "排序类型",
           "name": "默认排序类型"
         },
         "fillHeight": {
-          "description": "强制表的高度等于其父容器的高度。 不能与\"自动高度\"一起使用",
+          "description": "强制表格的高度等于其父容器的高度。不能与 “自动高度” 一起使用",
           "name": "填充高度"
         },
         "headerHeight": {
-          "description": "表头高度",
-          "name": "头高度"
+          "description": "表格标题高度",
+          "name": "标题高度"
         },
         "height": {
           "description": "桌子高度",
           "name": "身高"
         },
         "hover": {
-          "description": "表的行具有mouseover效果",
-          "name": "悬停,悬停"
+          "description": "表格中的该行具有鼠标悬停效果",
+          "name": "徘徊"
         },
         "loading": {
-          "description": "显示加载",
-          "name": "装载量"
+          "description": "显示加载中",
+          "name": "加载中"
         },
         "maxHeight": {
           "description": "最大高度",
@@ -159,10 +159,10 @@
         },
         "minHeight": {
           "description": "最低高度",
-          "name": "最小高度"
+          "name": "最小身高"
         },
         "rowClassName": {
-          "description": "向行添加可选的额外类名",
+          "description": "向行添加一个可选的额外类名",
           "name": "行类名"
         },
         "rowHeight": {
@@ -170,11 +170,11 @@
           "name": "行高"
         },
         "rowKey": {
-          "description": "每一行对应于数据中的唯一键",
+          "description": "每行对应数据中的唯一密钥",
           "name": "行键"
         },
         "shouldUpdateScroll": {
-          "description": "表大小更新后是否更新滚动",
+          "description": "表格大小更新后是否更新滚动",
           "name": "应该更新滚动"
         },
         "showHeader": {
@@ -182,23 +182,23 @@
           "name": "显示标题"
         },
         "sortColumn": {
-          "description": "排序列名",
-          "name": "排序列"
+          "description": "对列名进行排序",
+          "name": "对列进行排序"
         },
         "sortType": {
           "description": "排序类型",
           "name": "排序类型"
         },
         "virtualized": {
-          "description": "有效呈现大型表格数据",
+          "description": "有效渲染大型表格数据",
           "name": "虚拟化"
         },
         "width": {
           "description": "表格宽度",
-          "name": "阔度"
+          "name": "宽度"
         },
         "wordWrap": {
-          "description": "是否在文本溢出其内容框的位置显示换行符",
+          "description": "是否在文本溢出其内容框时显示换行符",
           "name": "自动换行"
         }
       }

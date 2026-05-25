@@ -7,7 +7,7 @@
   "components": {
     "RsCell": {
       "description": "Celda de tabla",
-      "name": "Célula",
+      "name": "Celda",
       "props": {
         "dataKey": {
           "description": "Clave de enlace de datos, pero también una especie de clave",
@@ -16,7 +16,7 @@
       }
     },
     "RsColumn": {
-      "description": "Columna de la tabla",
+      "description": "Columna de tabla",
       "name": "Columna",
       "props": {
         "align": {
@@ -24,36 +24,36 @@
           "name": "Alinear"
         },
         "colSpan": {
-          "description": "Combina celdas de columna para fusionarlas cuando el valor de 'Clave de datos' de la columna combinada es nulo o indefinido",
-          "name": "Tramo de col"
+          "description": "Combina las celdas de las columnas para combinarlas cuando el valor de la «clave de datos» de la columna combinada es nulo o indefinido",
+          "name": "Extensión de columna"
         },
         "fixed": {
           "description": "Columna fija",
           "name": "Fijo"
         },
         "flexGrow": {
-          "description": "Establecer el ancho de la columna se ajusta automáticamente, cuando se establece 'Flex grow' no se pueden establecer las propiedades 'Redimensionable' y 'Ancho'",
+          "description": "Establecer el ancho de la columna se ajusta automáticamente, cuando se establece «Flex grow» no se pueden establecer las propiedades «Redimensionable» y «Ancho»",
           "name": "Crecimiento flexible"
         },
         "fullText": {
-          "description": "Si mostrar el texto completo del contenido de la celda cuando el mouse está suspendido",
+          "description": "Si se debe mostrar el texto completo del contenido de la celda cuando se pasa el ratón",
           "name": "Texto completo"
         },
         "minWidth": {
-          "description": "Cuando usa 'Flex grow', puede establecer un ancho mínimo",
+          "description": "Cuando usas «Flex grow», puedes establecer un ancho mínimo",
           "name": "Anchura mínima"
         },
         "resizable": {
-          "description": "Ancho de columna de cambio de tamaño personalizable",
+          "description": "Ajustar el ancho de la columna de forma personalizable",
           "name": "Redimensionable"
         },
         "rowSpan": {
-          "description": "Combina filas en la columna especificada",
-          "name": "Tramo de fila"
+          "description": "Combina las filas de la columna especificada",
+          "name": "Envergadura de fila"
         },
         "sortable": {
-          "description": "Ordenable",
-          "name": "Ordenable"
+          "description": "Clasificable",
+          "name": "Clasificable"
         },
         "verticalAlign": {
           "description": "Alineación vertical",
@@ -61,12 +61,12 @@
         },
         "width": {
           "description": "Ancho de columna",
-          "name": "Ancho"
+          "name": "Anchura"
         }
       }
     },
     "RsColumnGroup": {
-      "description": "Grupo de columnas de tabla",
+      "description": "Grupo de columnas de tablas",
       "name": "Grupo de columnas",
       "props": {
         "align": {
@@ -74,11 +74,11 @@
           "name": "Alinear"
         },
         "fixed": {
-          "description": "Grupo de columnas fijas",
+          "description": "Grupo de columnas fijo",
           "name": "Fijo"
         },
         "groupHeaderHeight": {
-          "description": "La altura del encabezado del grupo de celdas combinado",
+          "description": "La altura del encabezado del grupo de celdas fusionado",
           "name": "Altura del encabezado del grupo"
         },
         "header": {
@@ -93,7 +93,7 @@
     },
     "RsHeaderCell": {
       "description": "Celda de encabezado de tabla",
-      "name": "Celda de encabezado",
+      "name": "Celda de cabecera",
       "props": {
         "children": {
           "description": "Encabezado de columna de tabla",
@@ -102,19 +102,19 @@
       }
     },
     "RsTable": {
-      "description": "Cuadro",
-      "name": "Cuadro",
+      "description": "Tabla",
+      "name": "Tabla",
       "props": {
         "affixHeader": {
-          "description": "Coloque el encabezado de la tabla en la ubicación especificada en la página",
+          "description": "Coloque el encabezado de la tabla en la ubicación especificada de la página",
           "name": "Encabezado de afijo"
         },
         "affixHorizontalScrollbar": {
-          "description": "Coloque la barra de desplazamiento horizontal de la tabla en la posición especificada en la página",
+          "description": "Coloque la barra de desplazamiento horizontal de la tabla en la posición especificada de la página",
           "name": "Fijar barra de desplazamiento horizontal"
         },
         "autoHeight": {
-          "description": "La altura de la tabla se expandirá automáticamente de acuerdo con el número de filas de datos, y no aparecerá una barra de desplazamiento vertical",
+          "description": "La altura de la tabla se ampliará automáticamente según el número de filas de datos y no aparecerá ninguna barra de desplazamiento vertical",
           "name": "Altura automática"
         },
         "bordered": {
@@ -123,7 +123,7 @@
         },
         "cellBordered": {
           "description": "Mostrar borde de celda",
-          "name": "Borde de celda"
+          "name": "Celda bordeada"
         },
         "data": {
           "description": "Datos de la tabla",
@@ -131,14 +131,14 @@
         },
         "defaultSortType": {
           "description": "Tipo de clasificación",
-          "name": "Tipo de ordenación predeterminado"
+          "name": "Tipo de clasificación predeterminado"
         },
         "fillHeight": {
-          "description": "Fuerce la altura de la mesa a ser igual a la altura de su contenedor principal. No se puede usar junto con'Altura automática'",
+          "description": "Fuerza la altura de la mesa para que sea igual a la altura de su contenedor principal. No se puede usar junto con la opción «Altura automática»",
           "name": "Altura de llenado"
         },
         "headerHeight": {
-          "description": "Altura del encabezado de la tabla",
+          "description": "Altura del encabezado de la mesa",
           "name": "Altura del encabezado"
         },
         "height": {
@@ -146,11 +146,11 @@
           "name": "Altura"
         },
         "hover": {
-          "description": "La fila de la tabla tiene un efecto de mouseover",
-          "name": "Pase el ratón"
+          "description": "La fila de la tabla tiene un efecto de pasar el ratón por encima",
+          "name": "Flotar"
         },
         "loading": {
-          "description": "Mostrar cargando",
+          "description": "Mostrar carga",
           "name": "Cargando"
         },
         "maxHeight": {
@@ -162,7 +162,7 @@
           "name": "Altura mínima"
         },
         "rowClassName": {
-          "description": "Agregue un nombre de clase adicional opcional a row",
+          "description": "Agregue un nombre de clase adicional opcional a la fila",
           "name": "Nombre de clase de fila"
         },
         "rowHeight": {
@@ -170,19 +170,19 @@
           "name": "Altura de fila"
         },
         "rowKey": {
-          "description": "Cada fila corresponde a la clave única en los datos",
-          "name": "Clave de fila"
+          "description": "Cada fila corresponde a la clave única de los datos",
+          "name": "Tecla de fila"
         },
         "shouldUpdateScroll": {
-          "description": "Si actualizar el desplazamiento después de actualizar el tamaño de la tabla",
-          "name": "Debería actualizar el desplazamiento"
+          "description": "Si se debe actualizar el pergamino después de actualizar el tamaño de la tabla",
+          "name": "Debería actualizar el pergamino"
         },
         "showHeader": {
-          "description": "Encabezado de pantalla",
+          "description": "Mostrar encabezado",
           "name": "Mostrar encabezado"
         },
         "sortColumn": {
-          "description": "Ordenar nombre de columna",
+          "description": "Ordenar el nombre de la columna",
           "name": "Ordenar columna"
         },
         "sortType": {
@@ -190,16 +190,16 @@
           "name": "Tipo de clasificación"
         },
         "virtualized": {
-          "description": "Renderice de manera efectiva datos tabulares grandes",
+          "description": "Renderice datos tabulares de gran tamaño de forma eficaz",
           "name": "Virtualizado"
         },
         "width": {
-          "description": "Ancho de la mesa",
-          "name": "Ancho"
+          "description": "Ancho de mesa",
+          "name": "Anchura"
         },
         "wordWrap": {
-          "description": "Si aparecen saltos de línea donde el texto desborda su cuadro de contenido",
-          "name": "Ajuste de palabras"
+          "description": "Si deben aparecer saltos de línea cuando el texto desborda su cuadro de contenido",
+          "name": "Envoltura de palabras"
         }
       }
     }

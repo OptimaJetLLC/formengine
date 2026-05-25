@@ -1,49 +1,49 @@
 {
   "categories": {
     "fields": {
-      "name": "Datenfelder"
+      "name": "Felder"
     }
   },
   "components": {
     "GoogleMap": {
       "description": "Komponente, die eine Google-Karte anzeigt",
-      "name": "Google Map",
+      "name": "Google-Karte",
       "props": {
         "addMarkerOnSearch": {
-          "description": "Gibt an, ob bei der Suche eine Markierung hinzugefügt werden soll",
+          "description": "Ob bei der Suche eine Markierung hinzugefügt werden soll",
           "name": "Markierung bei der Suche hinzufügen"
         },
         "allowChangingMarkers": {
-          "description": "Ob der Benutzer die Markierungen ändern kann",
+          "description": "Wenn diese Option aktiviert ist, kann der Benutzer die Markierungen ändern",
           "name": "Markerwechsel zulassen"
         },
         "allowMultipleMarkers": {
-          "description": "Mehrere Marker",
-          "name": "Mehrere Marker zulassen"
+          "description": "Mehrere Markierungen",
+          "name": "Erlaube mehrere Marker"
         },
         "apiKey": {
           "description": "Google Maps API-Schlüssel",
           "name": "API-Schlüssel"
         },
         "collisionBehavior": {
-          "description": "Das Kollisionsverhalten der Marker",
+          "description": "Das Kollisionsverhalten der Markierung",
           "name": "Kollisionsverhalten"
         },
         "colorScheme": {
           "description": "Das zu verwendende Farbschema",
-          "name": "Farbschema"
+          "name": "Farbgebung"
         },
         "gestureHandling": {
           "description": "Die zu verwendende Gestenbehandlung",
-          "name": "Gesten-Handhabung"
+          "name": "Handhabung von Gesten"
         },
         "height": {
           "description": "Höhe der Karte",
           "name": "Höhe"
         },
         "label": {
-          "description": "Kartenbeschriftung",
-          "name": "Beschriftung"
+          "description": "Beschriftung der Karte",
+          "name": "Etikett"
         },
         "language": {
           "description": "Die zu verwendende Sprache",
@@ -59,10 +59,10 @@
         },
         "mapControlPosition": {
           "description": "Die Position des Kartensteuerelements",
-          "name": "Kartenkontrollposition"
+          "name": "Position der Kartenkontrolle"
         },
         "mapId": {
-          "description": "Die Karten-ID ist eine Kennung, die einem bestimmten Kartenstil oder Feature zugeordnet ist",
+          "description": "Die Karten-ID ist eine Kennung, die mit einem bestimmten Kartenstil oder Feature verknüpft ist.",
           "name": "Karten-ID"
         },
         "mapTypeId": {
@@ -70,27 +70,27 @@
           "name": "Kartentyp"
         },
         "markerWindowTitle": {
-          "description": "Der Titel des Markierungsfensters",
+          "description": "Der Titel des Marker-Fensters",
           "name": "Titel des Markierungsfensters"
         },
         "markers": {
-          "description": "Koordinaten der Marker",
-          "name": "Kartenmarkierungen"
+          "description": "Koordinaten der Markierungen",
+          "name": "Markierungen"
         },
         "region": {
           "description": "Der zu verwendende Regionalcode",
           "name": "Region"
         },
         "removeMarkerCaption": {
-          "description": "Die Beschriftung auf der Schaltfläche zum Entfernen von Markern",
-          "name": "Beschriftung zum Entfernen"
+          "description": "Die Überschrift auf der Schaltfläche zum Entfernen von Markierungen",
+          "name": "Markierungsbeschriftung entfernen"
         },
         "searchPlaceholder": {
           "description": "Platzhaltertext für die Kartensucheingabe",
-          "name": "Suchplatzhalter"
+          "name": "Platzhalter für die Suche"
         },
         "showMapControl": {
-          "description": "Gibt an, ob das Kartensteuerelement angezeigt werden soll",
+          "description": "Ob das Kartensteuerelement angezeigt werden soll",
           "name": "Kartensteuerung anzeigen"
         },
         "width": {
@@ -99,7 +99,7 @@
         },
         "zoom": {
           "description": "Zoomstufe",
-          "name": "Zoom"
+          "name": "Zoomen"
         }
       }
     }

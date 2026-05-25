@@ -1,33 +1,33 @@
 {
   "categories": {
     "fields": {
-      "name": "Campo"
+      "name": "Campi"
     }
   },
   "components": {
     "RsSignature": {
-      "description": "HTML5 tela basato liscio firma disegno",
+      "description": "Disegno di firma fluido basato su tela HTML5",
       "name": "Firma",
       "props": {
         "backgroundColor": {
-          "description": "Il colore di sfondo",
-          "name": "Colore di sfondo"
+          "description": "Il colore dello sfondo",
+          "name": "Colore dello sfondo"
         },
         "clearButtonText": {
-          "description": "Cancella etichetta pulsante",
-          "name": "Cancella testo pulsante"
+          "description": "Etichetta trasparente del pulsante",
+          "name": "Cancella il testo del pulsante"
         },
         "height": {
           "description": "L'altezza della tela",
           "name": "Altezza"
         },
         "label": {
-          "description": "L'etichetta per il componente",
+          "description": "L'etichetta del componente",
           "name": "Etichetta"
         },
         "lineWidth": {
           "description": "La larghezza della linea",
-          "name": "Larghezza linea"
+          "name": "Larghezza della linea"
         },
         "penColor": {
           "description": "Il colore della penna",
@@ -38,7 +38,7 @@
           "name": "Sola lettura"
         },
         "value": {
-          "description": "L'URL iniziale dei dati per disegnare l'immagine della firma",
+          "description": "L'URL dei dati iniziali per disegnare l'immagine della firma",
           "name": "Valore"
         },
         "width": {

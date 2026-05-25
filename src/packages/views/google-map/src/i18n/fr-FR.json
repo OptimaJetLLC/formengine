@@ -10,23 +10,23 @@
       "name": "Carte Google",
       "props": {
         "addMarkerOnSearch": {
-          "description": "Indique s'il faut ajouter un marqueur sur la recherche",
-          "name": "Ajouter un marqueur sur la recherche"
+          "description": "S'il faut ajouter un marqueur lors de la recherche",
+          "name": "Ajouter un marqueur à la recherche"
         },
         "allowChangingMarkers": {
-          "description": "Si coché, l'utilisateur peut modifier les marqueurs",
-          "name": "Autoriser le changement de marqueurs"
+          "description": "Si cette case est cochée, l'utilisateur peut modifier les marqueurs",
+          "name": "Autoriser la modification des marqueurs"
         },
         "allowMultipleMarkers": {
           "description": "Marqueurs multiples",
           "name": "Autoriser plusieurs marqueurs"
         },
         "apiKey": {
-          "description": "Clé d'API Google Maps",
+          "description": "Clé API Google Maps",
           "name": "Clé API"
         },
         "collisionBehavior": {
-          "description": "Le comportement de collision des marqueurs",
+          "description": "Comportement de collision des marqueurs",
           "name": "Comportement de collision"
         },
         "colorScheme": {
@@ -34,7 +34,7 @@
           "name": "Schéma de couleurs"
         },
         "gestureHandling": {
-          "description": "La manipulation gestuelle à utiliser",
+          "description": "La gestion des gestes à utiliser",
           "name": "Gestion des gestes"
         },
         "height": {
@@ -42,8 +42,8 @@
           "name": "Hauteur"
         },
         "label": {
-          "description": "Étiquette de la carte",
-          "name": "Étiquette"
+          "description": "Libellé cartographique",
+          "name": "étiquette"
         },
         "language": {
           "description": "La langue à utiliser",
@@ -55,23 +55,23 @@
         },
         "longitude": {
           "description": "Longitude du point central",
-          "name": "Longueur"
+          "name": "Longitude"
         },
         "mapControlPosition": {
-          "description": "La position du contrôle de la carte",
+          "description": "La position du contrôle cartographique",
           "name": "Position de contrôle de la carte"
         },
         "mapId": {
-          "description": "L'ID de carte est un identifiant associé à un style de carte ou à une entité spécifique",
-          "name": "Identifiant de la CARTE"
+          "description": "L'ID de carte est un identifiant associé à un style de carte ou à une caractéristique spécifique.",
+          "name": "Identifiant de la carte"
         },
         "mapTypeId": {
-          "description": "Le type de carte par défaut à utiliser",
+          "description": "Type de carte par défaut à utiliser",
           "name": "Type de carte"
         },
         "markerWindowTitle": {
-          "description": "Le titre de la fenêtre de marqueur",
-          "name": "Titre de la fenêtre de marqueur"
+          "description": "Le titre de la fenêtre du marqueur",
+          "name": "Titre de la fenêtre Marker"
         },
         "markers": {
           "description": "Coordonnées des marqueurs",
@@ -82,15 +82,15 @@
           "name": "Région"
         },
         "removeMarkerCaption": {
-          "description": "La légende sur le bouton de suppression du marqueur",
+          "description": "La légende du bouton de suppression du marqueur",
           "name": "Supprimer la légende du marqueur"
         },
         "searchPlaceholder": {
-          "description": "Texte d'espace réservé pour l'entrée de recherche de carte",
-          "name": "Espace réservé de recherche"
+          "description": "Texte d'espace réservé pour la saisie de la recherche cartographique",
+          "name": "Espace réservé à la recherche"
         },
         "showMapControl": {
-          "description": "Indique s'il faut afficher le contrôle de la carte",
+          "description": "Afficher ou non le contrôle de la carte",
           "name": "Afficher le contrôle de la carte"
         },
         "width": {
@@ -99,7 +99,7 @@
         },
         "zoom": {
           "description": "Niveau de zoom",
-          "name": "Zoom Avant"
+          "name": "Zoom"
         }
       }
     }

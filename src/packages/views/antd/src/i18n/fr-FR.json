@@ -1,16 +1,16 @@
 {
   "categories": {
     "antd": {
-      "name": "Composants de conception Ant"
+      "name": "Composants Ant Design"
     }
   },
   "components": {
     "AntButton": {
-      "description": "Un bouton signifie une opération (ou une série d'opérations). Cliquer sur un bouton déclenchera sa logique métier correspondante",
-      "name": "Bouton Fourmi",
+      "description": "Un bouton signifie une opération (ou une série d'opérations). Cliquez sur un bouton pour déclencher la logique métier correspondante",
+      "name": "Bouton Ant",
       "props": {
         "block": {
-          "description": "Option pour ajuster la largeur du bouton à sa largeur parent",
+          "description": "Option permettant d'adapter la largeur du bouton à la largeur de son parent",
           "name": "Bloquer"
         },
         "children": {
@@ -18,7 +18,7 @@
           "name": "Contenu"
         },
         "danger": {
-          "description": "Définir l'état de danger du bouton",
+          "description": "Réglez l'état de danger du bouton",
           "name": "Danger"
         },
         "disabled": {
@@ -30,23 +30,23 @@
           "name": "Fantôme"
         },
         "href": {
-          "description": "Rediriger l'URL du bouton de lien",
-          "name": "FRH"
+          "description": "URL de redirection du bouton de lien",
+          "name": "Brouf"
         },
         "htmlType": {
-          "description": "Définir le type de bouton HTML d'origine",
-          "name": "Type de code HTML"
+          "description": "Définissez le type HTML d'origine du bouton",
+          "name": "Type HTML"
         },
         "loading": {
-          "description": "Définir l'état de chargement du bouton",
+          "description": "Régler l'état de chargement du bouton",
           "name": "Chargement"
         },
         "shape": {
-          "description": "Peut être réglé en forme de bouton",
+          "description": "Peut être réglé sur la forme du bouton",
           "name": "Forme"
         },
         "size": {
-          "description": "Définir la taille du bouton",
+          "description": "Régler la taille du bouton",
           "name": "Taille"
         },
         "target": {
@@ -54,84 +54,84 @@
           "name": "Cible"
         },
         "type": {
-          "description": "Peut être défini sur le texte de lien pointillé fantôme principal par défaut",
-          "name": "Type"
+          "description": "Peut être réglé sur le texte du lien principal en pointillé fantôme par défaut",
+          "name": "Tapez"
         }
       }
     },
     "AntCol": {
       "description": "La colonne de la grille",
-      "name": "Chou Fourmi",
+      "name": "Ant Cool",
       "props": {
         "flex": {
           "description": "Style de mise en page flexible",
-          "name": "Souple"
+          "name": "Flexible"
         },
         "lg": {
-          "description": "Écran ≥ 992 pixels",
-          "name": "L"
+          "description": "Écran ≥ 992 px",
+          "name": "LG"
         },
         "md": {
-          "description": "Écran ≥ 768 pixels",
-          "name": "Dm"
+          "description": "Écran ≥ 768 px",
+          "name": "Maryland"
         },
         "offset": {
-          "description": "Le nombre de cellules à décaler Col à partir de la gauche",
-          "name": "Décalage"
+          "description": "Le nombre de cellules à décaler Col depuis la gauche",
+          "name": "Offset"
         },
         "order": {
-          "description": "Ordre raster",
-          "name": "Commande"
+          "description": "Ordre des raster",
+          "name": "Ordre"
         },
         "pull": {
-          "description": "Le nombre de cellules que le raster est déplacé vers la gauche",
+          "description": "Le nombre de cellules dans lesquelles le raster est déplacé vers la gauche",
           "name": "Tirer"
         },
         "push": {
           "description": "Le nombre de cellules que le raster est déplacé vers la droite",
-          "name": "Pousser"
+          "name": "Poussez"
         },
         "sm": {
-          "description": "Écran ≥ 576 pixels",
-          "name": "SM"
+          "description": "Écran ≥ 576px",
+          "name": "Sam"
         },
         "span": {
-          "description": "Nombre raster de cellules à occuper",
-          "name": "Envergure"
+          "description": "Nombre matriciel de cellules à occuper",
+          "name": "Espagne"
         },
         "xl": {
-          "description": "Écran ≥ 1200 pixels",
-          "name": "L"
+          "description": "Écran ≥ 1200px",
+          "name": "XL"
         },
         "xs": {
-          "description": "Écran &lt; 576px et également réglage par défaut",
-          "name": "L"
+          "description": "Écran < 576px et réglage par défaut",
+          "name": "Xs"
         },
         "xxl": {
-          "description": "Écran ≥ 1600 pixels",
-          "name": "L"
+          "description": "Écran ≥ 1600 px",
+          "name": "XXL"
         }
       }
     },
     "AntInput": {
-      "description": "Grâce au contenu d'entrée de la souris ou du clavier, il s'agit de l'encapsuleur de champ de formulaire le plus basique",
-      "name": "Entrée de Fourmi",
+      "description": "Grâce à la saisie de contenu à la souris ou au clavier, il s'agit de l'enveloppe de champ de formulaire la plus élémentaire",
+      "name": "Entrée Ant",
       "props": {
         "disabled": {
-          "description": "Indique si l'entrée est désactivée",
+          "description": "Si la saisie est désactivée",
           "name": "Désactivé"
         },
         "showCount": {
-          "description": "Indique s'il faut afficher le nombre de caractères",
+          "description": "Afficher ou non le nombre de caractères",
           "name": "Afficher le nombre"
         },
         "size": {
-          "description": "La taille de la zone de saisie",
+          "description": "Taille de la zone de saisie",
           "name": "Taille"
         },
         "status": {
-          "description": "Définir le statut de validation",
-          "name": "Statut"
+          "description": "Définir l'état de validation",
+          "name": "État"
         },
         "value": {
           "description": "La valeur du contenu d'entrée",
@@ -144,30 +144,30 @@
       }
     },
     "AntModal": {
-      "description": "Afficher une boîte de dialogue modale, fournissant un titre, une zone de contenu et des boutons d'action",
-      "name": "Fourmi Modale",
+      "description": "Afficher une boîte de dialogue modale contenant un titre, une zone de contenu et des boutons d'action",
+      "name": "Ant Modal",
       "props": {
         "cancelText": {
-          "description": "Texte du bouton d'annulation",
+          "description": "Texte du bouton Annuler",
           "name": "Annuler le texte"
         },
         "centered": {
-          "description": "Modale Centrée",
+          "description": "Modal centré",
           "name": "Centré"
         },
         "keyboard": {
-          "description": "Si le support appuie sur ECHAP pour fermer",
+          "description": "Si le support appuie sur ESC pour fermer",
           "name": "Clavier"
         },
         "okText": {
           "description": "Texte du bouton OK",
-          "name": "Texte d'ACCORD"
+          "name": "Texte OK"
         }
       }
     },
     "AntRow": {
       "description": "La ligne de la grille",
-      "name": "Rangée de Fourmis",
+      "name": "Fourmi Row",
       "props": {
         "align": {
           "description": "Alignement vertical",
@@ -189,38 +189,38 @@
     },
     "AntTable": {
       "description": "Un tableau affiche des lignes de données",
-      "name": "Table de Fourmis",
+      "name": "Table Ant",
       "props": {
         "bordered": {
-          "description": "Indique s'il faut afficher toutes les bordures de table",
+          "description": "Afficher ou non toutes les bordures du tableau",
           "name": "Bordé"
         },
         "columns": {
-          "description": "Colonnes de tableau",
+          "description": "Colonnes du tableau",
           "name": "Colonnes"
         },
         "dataSource": {
           "description": "Tableau d'enregistrements de données à afficher",
-          "name": "Source des données"
+          "name": "Source de données"
         },
         "loading": {
           "description": "État de chargement de la table",
           "name": "Chargement"
         },
         "rowHoverable": {
-          "description": "Survol de ligne",
-          "name": "Rangée hoverable"
+          "description": "Survol d'une ligne",
+          "name": "Ligne pouvant être survolée"
         },
         "rowKey": {
           "description": "Clé unique de Row",
-          "name": "Clé de ligne"
+          "name": "Touche de ligne"
         },
         "showHeader": {
-          "description": "Indique s'il faut afficher l'en-tête du tableau",
+          "description": "Afficher ou non l'en-tête du tableau",
           "name": "Afficher l'en-tête"
         },
         "showSorterTooltip": {
-          "description": "L'en-tête affiche l'info-bulle de la direction du trieur suivant",
+          "description": "L'en-tête affiche l'info-bulle de direction suivante du trieur",
           "name": "Afficher l'info-bulle du trieur"
         },
         "size": {
@@ -229,16 +229,16 @@
         },
         "sticky": {
           "description": "Définir un en-tête collant et une barre de défilement",
-          "name": "Collant"
+          "name": "Adhésif"
         }
       }
     },
     "AntTooltip": {
       "description": "Boîte contextuelle de texte simple",
-      "name": "Infobulle de Fourmi",
+      "name": "Info-bulle Ant",
       "props": {
         "placement": {
-          "description": "La position de l'info-bulle par rapport à la cible",
+          "description": "Position de l'info-bulle par rapport à la cible",
           "name": "Placement"
         },
         "text": {
@@ -246,8 +246,8 @@
           "name": "Texte"
         },
         "trigger": {
-          "description": "Mode de déclenchement de l'info-bulle",
-          "name": "Déclencheur"
+          "description": "Mode de déclenchement par info-bulle",
+          "name": "Gâchette"
         }
       }
     }

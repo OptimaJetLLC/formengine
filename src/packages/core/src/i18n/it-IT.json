@@ -1,38 +1,38 @@
 {
   "components": {
     "EmbeddedForm": {
-      "description": "Una forma incorporata in un'altra forma",
+      "description": "Un modulo incorporato in un altro modulo",
       "name": "Modulo incorporato",
       "props": {
         "disabled": {
-          "description": "Se true, il modulo incorporato è disabilitato",
-          "name": "Disabilita"
+          "description": "Se vero, il modulo incorporato è disabilitato",
+          "name": "Disabili"
         },
         "formName": {
           "description": "Il nome del modulo",
-          "name": "Nome modulo"
+          "name": "Nome del modulo"
         },
         "options": {
-          "description": "Le opzioni aggiuntive per il caricamento del modulo incorporato",
+          "description": "Le opzioni aggiuntive per caricare il modulo incorporato",
           "name": "Opzioni"
         },
         "readOnly": {
-          "description": "Se true, il modulo incorporato è di sola lettura",
+          "description": "Se impostato su true, il modulo incorporato è di sola lettura",
           "name": "Sola lettura"
         },
         "storeDataInParentForm": {
-          "description": "Se false, i dati del modulo nidificati vengono visualizzati come oggetto nidificato, true altrimenti",
-          "name": "Memorizzare i dati in forma padre"
+          "description": "Se false, i dati del modulo nidificato vengono visualizzati come oggetto nidificato, true altrimenti",
+          "name": "Memorizza i dati nel modulo principale"
         }
       }
     },
     "Repeater": {
-      "description": "Il componente Repeater è un componente speciale che è responsabile della visualizzazione di una serie di componenti ripetuti",
+      "description": "Il componente Repeater è un componente speciale responsabile della visualizzazione di una serie di componenti ripetuti.",
       "name": "Ripetitore",
       "props": {
         "itemRenderWhen": {
           "description": "L'espressione o la funzione per il rendering condizionale di un elemento ripetitore",
-          "name": "Elemento render quando"
+          "name": "Rendering dell'articolo quando"
         }
       }
     }

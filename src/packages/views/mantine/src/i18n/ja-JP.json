@@ -7,16 +7,16 @@
       "name": "コンボボックス"
     },
     "dates": {
-      "name": "日付"
+      "name": "日程"
     },
     "inputs": {
-      "name": "入力"
+      "name": "インプット"
     },
     "layout": {
-      "name": "レイアウト"
+      "name": "[レイアウト]"
     },
     "miscellaneous": {
-      "name": "雑感"
+      "name": "雑多"
     },
     "otherExtensions": {
       "name": "その他の拡張機能"
@@ -35,51 +35,51 @@
     },
     "c": {
       "description": "テキストの色。",
-      "name": "色"
+      "name": "[カラー]"
     },
     "clearable": {
-      "description": "設定した場合は、クリアボタンが表示されるコンポーネント値",
-      "name": "Clearable"
+      "description": "クリアボタンを表示するかどうか。",
+      "name": "クリア可能"
     },
     "color": {
-      "description": "色",
-      "name": "色"
+      "description": "マンティンテーマカラー名。",
+      "name": "[カラー]"
     },
     "columnsToScroll": {
-      "description": "数列のスクロール時の航行",
-      "name": "ムスクロール"
+      "description": "スクロールする列の数。",
+      "name": "スクロールする列"
     },
     "data": {
       "description": "オプションデータ。",
-      "name": "データ"
+      "name": "[データ]"
     },
     "defaultVisible": {
-      "description": "初期視認性の状態です。",
+      "description": "コンテンツの初期可視状態。",
       "name": "デフォルト表示"
     },
     "description": {
-      "description": "の部品説明",
-      "name": "説明"
+      "description": "ラベルの下に表示されるヘルパーテキスト。",
+      "name": "[説明]"
     },
     "disabled": {
-      "description": "無効状態に",
+      "description": "入力が無効になっているかどうか。",
       "name": "無効"
     },
     "dropdownOpened": {
       "description": "ドロップダウンを開いた状態を制御します。",
-      "name": "ドロップダウンが開かれました"
+      "name": "ドロップダウンが開きました"
     },
     "dropdownType": {
-      "description": "種類のドロップダウン",
-      "name": "ドロップダウン型"
+      "description": "ピッカープレゼンテーションモード。",
+      "name": "ドロップダウンタイプ"
     },
     "error": {
       "description": "エラーメッセージまたはエラー状態。",
-      "name": "エラー"
+      "name": "[エラー]"
     },
     "filledVariant": {
       "description": "外観バリアントを制御します。",
-      "name": "変型"
+      "name": "バリアント"
     },
     "fs": {
       "description": "フォントスタイル。",
@@ -94,83 +94,83 @@
       "name": "フォントサイズ"
     },
     "grow": {
-      "description": "アイテムが利用可能なスペースを埋めるために成長するかどうか。",
+      "description": "アイテムを増やして空き容量を増やすかどうか。",
       "name": "成長"
     },
     "hideOutsideDates": {
-      "description": "隠日外の現在の月",
-      "name": "Hide外日"
+      "description": "日付以外の日付を非表示にするかどうか。",
+      "name": "外の日付を非表示にする"
     },
     "hideWeekdays": {
-      "description": "非平日のみ行",
-      "name": "Hide平日"
+      "description": "平日のラベルを非表示にするかどうか。",
+      "name": "平日を非表示にする"
     },
     "highlightToday": {
-      "description": "ハイライト今日の日",
-      "name": "表現"
+      "description": "今日ハイライトするかどうか。",
+      "name": "今日のハイライト"
     },
     "justify": {
       "description": "グループ内のコンテンツを正当化します。",
       "name": "正当化する"
     },
     "label": {
-      "description": "の成分をラベル",
-      "name": "ラベル"
+      "description": "入力ラベル。",
+      "name": "[ラベル]"
     },
     "labelPosition": {
-      "description": "ラベルの位置",
-      "name": "ラベルの位置"
+      "description": "コントロールを基準としたラベルの位置。",
+      "name": "ラベル位置"
     },
     "lh": {
-      "description": "ラインの高さ。",
+      "description": "行の高さ。",
       "name": "ラインの高さ"
     },
     "maxDropdownHeight": {
-      "description": "ドロップダウンの最大の高さ(ピクセル単位)。",
-      "name": "最高の低下の高さ"
+      "description": "ドロップダウンの最大高さ (ピクセル単位)。",
+      "name": "ドロップダウンの最大高さ"
     },
     "minRows": {
-      "description": "最小の表示行。",
-      "name": "最小行"
+      "description": "最小表示行数。",
+      "name": "最小行数"
     },
     "nothingFoundMessage": {
       "description": "一致するオプションがない場合に表示されるメッセージ。",
-      "name": "何も見つかりませんでしたメッセージ"
+      "name": "「見つかりませんでした」メッセージ"
     },
     "numberOfColumns": {
-      "description": "月数を表示",
-      "name": "列数"
+      "description": "カレンダー列の数。",
+      "name": "カラムの数"
     },
     "onBlur": {
       "description": "入力がフォーカスを失ったときに呼び出されます。",
-      "name": "オンブルール"
+      "name": "ぼかし無し"
     },
     "onChange": {
-      "description": "呼び出されるのはコンポーネントの値を変更",
-      "name": "onChange"
+      "description": "値が変更されたときに呼び出されます。",
+      "name": "変更時"
     },
     "onDropdownClose": {
-      "description": "ドロップダウンが閉じたときに呼び出されます。",
-      "name": "onDropdownClose"
+      "description": "ドロップダウンが閉じるときに呼び出されます。",
+      "name": "ドロップダウンで閉じる"
     },
     "onDropdownOpen": {
-      "description": "ドロップダウンが開いたときに呼び出されます。",
-      "name": "onDropdownOpen"
+      "description": "ドロップダウンが開くときに呼び出されます。",
+      "name": "ドロップダウンで開く"
     },
     "onFocus": {
-      "description": "入力がフォーカスを受信したときに呼び出されます。",
+      "description": "入力がフォーカスを受け取ったときに呼び出されます。",
       "name": "オンフォーカス"
     },
     "onSearchChange": {
       "description": "検索値が変更されたときに呼び出されます。",
-      "name": "onSearchChange"
+      "name": "検索変更時"
     },
     "placeholder": {
-      "description": "のプレースホルダー",
+      "description": "プレースホルダー",
       "name": "プレースホルダー"
     },
     "radius": {
-      "description": "境界線の半径。",
+      "description": "境界の半径。",
       "name": "半径"
     },
     "readOnly": {
@@ -182,48 +182,48 @@
       "name": "検索値"
     },
     "size": {
-      "description": "-管理に関するプロパティをコンポーネントのサイズ",
+      "description": "コンポーネントサイズ。",
       "name": "サイズ"
     },
     "spacing": {
-      "description": "項目間の間隔。",
+      "description": "アイテム間の間隔。",
       "name": "間隔"
     },
     "ta": {
-      "description": "テキストの配置。",
-      "name": "テキストの配置"
+      "description": "テキスト配置。",
+      "name": "テキスト配置"
     },
     "td": {
-      "description": "テキストの装飾。",
-      "name": "テキスト装飾"
+      "description": "テキスト装飾。",
+      "name": "テキストデコレーション"
     },
     "tt": {
       "description": "テキスト変換。",
       "name": "テキスト変換"
     },
     "value": {
-      "description": "のコンポーネント値",
-      "name": "値"
+      "description": "現在の値。",
+      "name": "価値"
     },
     "variant": {
-      "description": "制御のコンポーネントの",
-      "name": "変異体"
+      "description": "入力アピアランスのバリエーション。",
+      "name": "バリアント"
     },
     "withAsterisk": {
-      "description": "設定した場合、スタリスク表示のラベル",
-      "name": "とスタリスク"
+      "description": "必要なインジケーターを表示するかどうか。",
+      "name": "アスタリスク付き"
     },
     "withScrollArea": {
-      "description": "Dropdownがスクロール領域を使用するかどうか。",
-      "name": "スクロール区域を使って"
+      "description": "ドロップダウンがスクロール領域を使用するかどうか。",
+      "name": "スクロールエリア付き"
     },
     "withSeconds": {
-      "description": "かどうかを判定し秒間に含まれなければならない時刻ピッカー",
-      "name": "秒を使って"
+      "description": "タイムピッカーに秒を含めるかどうかを決定します。",
+      "name": "秒付き"
     },
     "withWeekNumbers": {
-      "description": "を示して週に数カラム",
-      "name": "週数"
+      "description": "週番号を表示するかどうか。",
+      "name": "週番号付き"
     },
     "wrap": {
       "description": "アイテムのラップ動作。",
@@ -232,35 +232,35 @@
   },
   "components": {
     "MtAutocomplete": {
-      "description": "オプションの任意のリストを使用してユーザー入力をオートコンプリート",
+      "description": "任意のオプションリストによるユーザー入力のオートコンプリート",
       "name": "オートコンプリート",
       "props": {
         "data": {
-          "description": "データの表示に使用するオプション",
-          "name": "データ"
+          "description": "オプションの表示に使用されるデータ",
+          "name": "[データ]"
         }
       }
     },
     "MtButton": {
-      "description": "Buttonコンポーネントを描画するのにボタンやリンク",
+      "description": "ボタンまたはリンクをレンダリングするボタンコンポーネント",
       "name": "ボタン",
       "props": {
         "children": {
           "description": "ボタンの内容",
-          "name": "コンテンツ"
+          "name": "[コンテンツ]"
         },
         "fullWidth": {
-          "description": "設定されている場合、ボタンは親コンテナの全幅を取ります",
+          "description": "設定すると、ボタンは親コンテナの全幅を占めます",
           "name": "全幅"
         },
         "onClick": {
           "description": "ボタンがクリックされたときに呼び出されます",
-          "name": "onClick"
+          "name": "オンクリック"
         }
       }
     },
     "MtCheckbox": {
-      "description": "ユーザーからのブール入力のキャプチャ",
+      "description": "ユーザーからのブーリアン入力をキャプチャ",
       "name": "チェックボックス",
       "props": {
         "checked": {
@@ -274,65 +274,65 @@
       "name": "チェックボックスグループ",
       "props": {
         "items": {
-          "description": "項目のチェックボックスグループ",
-          "name": "項目"
+          "description": "チェックボックスグループのアイテム",
+          "name": "アイテム"
         }
       }
     },
     "MtChip": {
-      "description": "インラインコントロールを使用した値の選択",
+      "description": "インラインコントロールで値を選択",
       "name": "チップ",
       "props": {
         "checked": {
-          "description": "かどうかを指定し、チップの選択",
+          "description": "チップが選択されているかどうかを指定します",
           "name": "チェック済み"
         },
         "children": {
-          "description": "の成分をラベル",
-          "name": "ラベル"
+          "description": "コンポーネントラベル",
+          "name": "[ラベル]"
         }
       }
     },
     "MtChipCheckboxGroup": {
-      "description": "つまたは複数の値をインライン制御",
+      "description": "インラインコントロールで 1 つまたは複数の値を選択してください",
       "name": "チップチェックボックスグループ",
       "props": {
         "items": {
           "description": "チップオプション",
-          "name": "項目"
+          "name": "アイテム"
         }
       }
     },
     "MtChipRadioGroup": {
-      "description": "お値としてインライン制御",
-      "name": "チップ無線グループ",
+      "description": "インラインコントロールで値を1つ選択",
+      "name": "チップ・ラジオ・グループ",
       "props": {
         "items": {
           "description": "チップオプション",
-          "name": "項目"
+          "name": "アイテム"
         }
       }
     },
     "MtColorInput": {
-      "description": "捕獲からユーザー",
-      "name": "色入力",
+      "description": "ユーザーから色をキャプチャ",
+      "name": "カラー入力",
       "props": {
         "format": {
           "description": "カラーフォーマット",
           "name": "フォーマット"
         },
         "swatches": {
-          "description": "リストの色表示に使用見本帳一覧以下のカラーピッカー",
-          "name": "見本帳"
+          "description": "カラーピッカーの下にスウォッチリストを表示するために使用される色のリスト",
+          "name": "スウォッチ"
         }
       }
     },
     "MtColorPicker": {
-      "description": "ピ色の六角レンチ(a)、rgb(a)、hslの(a)及びhsv(a)形式",
+      "description": "16進数 (a)、rgb (a)、hsl (a)、HSV (a) 形式のカラーを選択してください",
       "name": "カラーピッカー",
       "props": {
         "format": {
-          "description": "カラーフォーマット",
+          "description": "カラーフォーマット。",
           "name": "フォーマット"
         },
         "fullWidth": {
@@ -344,8 +344,8 @@
           "name": "スウォッチ"
         },
         "swatchesPerRow": {
-          "description": "行ごとのスウォッチの数。",
-          "name": "行ごとのスウォッチ"
+          "description": "1 行あたりのスウォッチの数。",
+          "name": "1 行あたりのスウォッチ"
         },
         "withPicker": {
           "description": "ピッカー入力を表示するかどうか。",
@@ -354,94 +354,94 @@
       }
     },
     "MtContainer": {
-      "description": "センターコンテンツパディングおよびmax-width",
+      "description": "パディングと最大幅でコンテンツを中央に配置",
       "name": "コンテナ",
       "props": {
         "children": {
-          "description": "成子",
-          "name": "子供たち"
+          "description": "コンポーネントの子要素",
+          "name": "子ども"
         }
       }
     },
     "MtDateMultiplePicker": {
-      "description": "では複数選択日",
-      "name": "日複数のピッカー",
+      "description": "複数の日付を選択できます",
+      "name": "日付マルチピッカー",
       "props": {
         "maxDate": {
-          "description": "最大選択可能日YYYY-MM-DD形式",
-          "name": "最大の日付"
+          "description": "選択可能な最大日付、YYYY-MM-DDフォーマット",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最小限の選択可能日YYYY-MM-DD形式",
-          "name": "Min日"
+          "description": "選択可能な最小日付、YYYY-MM-DD フォーマット",
+          "name": "最小日付"
         }
       }
     },
     "MtDateMultiplePickerInput": {
-      "description": "では複数選択日",
-      "name": "日複数のピッカーの入力",
+      "description": "複数の日付を選択できます",
+      "name": "日付複数ピッカー入力",
       "props": {
         "maxDate": {
-          "description": "最大選択可能日YYYY-MM-DD形式",
-          "name": "最大の日付"
+          "description": "選択可能な最大日付、YYYY-MM-DDフォーマット",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最小限の選択可能日YYYY-MM-DD形式",
-          "name": "Min日"
+          "description": "選択可能な最小日付、YYYY-MM-DD フォーマット",
+          "name": "最小日付"
         }
       }
     },
     "MtDatePicker": {
-      "description": "で日付を選択",
+      "description": "日付を選択できます",
       "name": "日付ピッカー",
       "props": {
         "allowDeselect": {
-          "description": "かどうかを判定しユーザが選択を解除の日付をクリックすると、選択した日付",
-          "name": "きの選択を解除"
+          "description": "選択した日付をクリックしてユーザーが日付を選択解除できるかどうかを決定します",
+          "name": "選択解除を許可"
         },
         "maxDate": {
-          "description": "最大選択可能日YYYY-MM-DD形式",
-          "name": "最大の日付"
+          "description": "選択可能な最大日付、YYYY-MM-DDフォーマット",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最小限の選択可能日YYYY-MM-DD形式",
-          "name": "Min日"
+          "description": "選択可能な最小日付、YYYY-MM-DD フォーマット",
+          "name": "最小日付"
         }
       }
     },
     "MtDatePickerInput": {
-      "description": "日付指定入力",
-      "name": "日付指定入力",
+      "description": "日付ピッカー入力",
+      "name": "日付ピッカー入力",
       "props": {
         "allowDeselect": {
-          "description": "かどうかを判定しユーザが選択を解除の日付をクリックすると、選択した日付",
-          "name": "きの選択を解除"
+          "description": "選択した日付をクリックしてユーザーが日付を選択解除できるかどうかを決定します",
+          "name": "選択解除を許可"
         },
         "maxDate": {
-          "description": "最大選択可能日YYYY-MM-DD形式",
-          "name": "最大の日付"
+          "description": "選択可能な最大日付、YYYY-MM-DDフォーマット",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最小限の選択可能日YYYY-MM-DD形式",
-          "name": "Min日"
+          "description": "選択可能な最小日付、YYYY-MM-DD フォーマット",
+          "name": "最小日付"
         }
       }
     },
     "MtDateRangePicker": {
-      "description": "できる\"日付範囲を選択し",
-      "name": "日付ピッカー",
+      "description": "日付範囲を選択できます",
+      "name": "日付範囲ピッカー",
       "props": {
         "allowSingleDateInRange": {
-          "description": "できる選択を単一の日付範囲",
-          "name": "を単一の日付範囲"
+          "description": "1 つの日付を範囲として選択できます",
+          "name": "範囲内の 1 つの日付を許可"
         },
         "maxDate": {
-          "description": "最大選択可能日YYYY-MM-DD形式",
-          "name": "最大の日付"
+          "description": "選択可能な最大日付、YYYY-MM-DDフォーマット",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最小限の選択可能日YYYY-MM-DD形式",
-          "name": "Min日"
+          "description": "選択可能な最小日付、YYYY-MM-DD フォーマット",
+          "name": "最小日付"
         }
       }
     },
@@ -450,75 +450,75 @@
       "name": "日付範囲ピッカー入力",
       "props": {
         "allowSingleDateInRange": {
-          "description": "できる選択を単一の日付範囲",
-          "name": "を単一の日付範囲"
+          "description": "1 つの日付を範囲として選択できます",
+          "name": "範囲内の 1 つの日付を許可"
         },
         "maxDate": {
-          "description": "最大選択可能日YYYY-MM-DD形式",
-          "name": "最大の日付"
+          "description": "選択可能な最大日付、YYYY-MM-DDフォーマット",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最小限の選択可能日YYYY-MM-DD形式",
-          "name": "Min日"
+          "description": "選択可能な最小日付、YYYY-MM-DD フォーマット",
+          "name": "最小日付"
         }
       }
     },
     "MtDateTimePicker": {
-      "description": "ユーザーからの日時のキャプチャ",
-      "name": "DateTimeピッカー",
+      "description": "ユーザーから日時を取得",
+      "name": "日時ピッカー",
       "props": {
         "valueFormat": {
-          "description": "値を表示するカスタムdayjs形式",
-          "name": "価値形式"
+          "description": "値を表示するカスタム dayjs 形式",
+          "name": "値フォーマット"
         }
       }
     },
     "MtDialog": {
-      "description": "表示固定ダイアログのオーバーレイで画面",
+      "description": "画面の任意の側に固定オーバーレイダイアログを表示する",
       "name": "ダイアログ",
       "props": {
         "children": {
           "description": "ダイアログコンテンツ",
-          "name": "子供たち"
+          "name": "子ども"
         },
         "onOpen": {
-          "description": "Openプロパティがtrueに設定されたときに呼び出されます",
-          "name": "onOpen（オンオープン）"
+          "description": "open プロパティが true に設定されたときに呼び出されます",
+          "name": "[オープン中]"
         },
         "opened": {
-          "description": "るかどうかのダイアログが開",
-          "name": "オープンしました"
+          "description": "ダイアログが開いているかどうか",
+          "name": "開きました"
         },
         "showCloseButton": {
           "description": "閉じるボタンを表示するかどうか",
-          "name": "ショーボタン"
+          "name": "[閉じる] ボタンを表示"
         },
         "title": {
-          "description": "ダイアログのタイトル",
+          "description": "ダイアログタイトル",
           "name": "タイトル"
         }
       }
     },
     "MtDivider": {
-      "description": "水平ラインオプションのラベルまたはディバイダの垂直",
-      "name": "ディバイダの",
+      "description": "オプションのラベル付き水平線または垂直仕切り",
+      "name": "ディバイダー",
       "props": {
         "orientation": {
-          "description": "ディバイダの配向",
+          "description": "仕切りの向き",
           "name": "オリエンテーション"
         }
       }
     },
     "MtDropzone": {
       "description": "ドラッグアンドドロップでユーザーからファイルをキャプチャ",
-      "name": "Dropzone",
+      "name": "ドロップゾーン",
       "props": {
         "accept": {
-          "description": "受付のmimeタイプ",
-          "name": "受け入れ"
+          "description": "受け入れられる MIME タイプ",
+          "name": "承諾する"
         },
         "multiple": {
-          "description": "複数のファイル",
+          "description": "複数のファイルを許可",
           "name": "複数"
         }
       }
@@ -528,213 +528,213 @@
       "name": "エラーメッセージ"
     },
     "MtFileInput": {
-      "description": "捕獲からファイルをユーザー",
+      "description": "ユーザーからファイルをキャプチャ",
       "name": "ファイル入力",
       "props": {
         "accept": {
-          "description": "受付ファイルの種類",
-          "name": "受け入れ"
+          "description": "受け入れられるファイルタイプ",
+          "name": "承諾する"
         },
         "multiple": {
-          "description": "複数のファイル",
+          "description": "複数のファイルを許可",
           "name": "複数"
         }
       }
     },
     "MtJsonInput": {
-      "description": "ャjsonデータからユーザー",
-      "name": "JSON入力",
+      "description": "ユーザーから JSON データをキャプチャ",
+      "name": "JSON 入力",
       "props": {
         "minRows": {
           "description": "最小行数",
-          "name": "Min行"
+          "name": "最小行数"
         }
       }
     },
     "MtLabel": {
       "description": "ラベルを表示します",
-      "name": "ラベル",
+      "name": "[ラベル]",
       "props": {
         "children": {
-          "description": "テキストのラベル",
-          "name": "ラベル"
+          "description": "ラベルのテキスト",
+          "name": "[ラベル]"
         }
       }
     },
     "MtMonthMultiplePicker": {
-      "description": "月の複数のピッカー",
-      "name": "月の複数のピッカー",
+      "description": "月間マルチピッカー",
+      "name": "月間マルチピッカー",
       "props": {
         "maxDate": {
-          "description": "最大選択月",
-          "name": "最大の日付"
+          "description": "選択可能な最大月",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "選択可能な最低月",
-          "name": "Min日"
+          "description": "選択可能な最小月",
+          "name": "最小日付"
         }
       }
     },
     "MtMonthMultiplePickerInput": {
-      "description": "月に複数のピッカーの入力",
-      "name": "月に複数のピッカーの入力",
+      "description": "月の複数ピッカー入力",
+      "name": "月の複数ピッカー入力",
       "props": {
         "maxDate": {
-          "description": "最大選択月",
-          "name": "最大の日付"
+          "description": "選択可能な最大月",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "選択可能な最低月",
-          "name": "Min日"
+          "description": "選択可能な最小月",
+          "name": "最小日付"
         }
       }
     },
     "MtMonthPicker": {
-      "description": "インラインの月のピッカー",
-      "name": "月のピッカー",
+      "description": "インライン月ピッカー",
+      "name": "月ピッカー",
       "props": {
         "allowDeselect": {
-          "description": "かどうかを判定しユーザが選択を解除し月をクリックすると、選択した月",
-          "name": "きの選択を解除"
+          "description": "ユーザーが選択した月をクリックして月を選択解除できるかどうかを決定します",
+          "name": "選択解除を許可"
         },
         "maxDate": {
-          "description": "最大選択月",
-          "name": "最大の日付"
+          "description": "選択可能な最大月",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "選択可能な最低月",
-          "name": "Min日"
+          "description": "選択可能な最小月",
+          "name": "最小日付"
         }
       }
     },
     "MtMonthPickerInput": {
-      "description": "月のピッカーの入力",
-      "name": "月のピッカーの入力",
+      "description": "月ピッカー入力",
+      "name": "月ピッカー入力",
       "props": {
         "allowDeselect": {
-          "description": "かどうかを判定しユーザが選択を解除し月をクリックすると、選択した月",
-          "name": "きの選択を解除"
+          "description": "ユーザーが選択した月をクリックして月を選択解除できるかどうかを決定します",
+          "name": "選択解除を許可"
         },
         "maxDate": {
-          "description": "最大選択月",
-          "name": "最大の日付"
+          "description": "選択可能な最大月",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "選択可能な最低月",
-          "name": "Min日"
+          "description": "選択可能な最小月",
+          "name": "最小日付"
         }
       }
     },
     "MtMonthRangePicker": {
-      "description": "インライン月の範囲ピッカー",
-      "name": "ジーピッカー",
+      "description": "インライン月レンジピッカー",
+      "name": "月範囲ピッカー",
       "props": {
         "allowSingleDateInRange": {
-          "description": "きの選択単月として",
-          "name": "を単一の日付範囲"
+          "description": "1 つの月を範囲として選択できます",
+          "name": "範囲内の 1 つの日付を許可"
         },
         "maxDate": {
-          "description": "最大選択月",
-          "name": "最大の日付"
+          "description": "選択可能な最大月",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "選択可能な最低月",
-          "name": "Min日"
+          "description": "選択可能な最小月",
+          "name": "最小日付"
         }
       }
     },
     "MtMonthRangePickerInput": {
-      "description": "月の範囲ピッカー入力",
-      "name": "月の範囲ピッカー入力",
+      "description": "月範囲ピッカー入力",
+      "name": "月範囲ピッカー入力",
       "props": {
         "allowSingleDateInRange": {
-          "description": "きの選択単月として",
-          "name": "を単一の日付範囲"
+          "description": "1 つの月を範囲として選択できます",
+          "name": "範囲内の 1 つの日付を許可"
         },
         "maxDate": {
-          "description": "最大選択月",
-          "name": "最大の日付"
+          "description": "選択可能な最大月",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "選択可能な最低月",
-          "name": "Min日"
+          "description": "選択可能な最小月",
+          "name": "最小日付"
         }
       }
     },
     "MtMultiSelect": {
-      "description": "カスタム検索できるマルチの選択",
-      "name": "多選択",
+      "description": "カスタム検索可能な複数選択",
+      "name": "複数選択",
       "props": {
         "data": {
-          "description": "データの表示に使用するオプション",
-          "name": "データ"
+          "description": "オプションの表示に使用されるデータ",
+          "name": "[データ]"
         },
         "searchable": {
-          "description": "を検索",
-          "name": "検索"
+          "description": "検索を有効にする",
+          "name": "検索可能"
         }
       }
     },
     "MtNativeSelect": {
-      "description": "ネイティブの選択の要素に基づく入力",
-      "name": "ネイティブを選択",
+      "description": "入力に基づくネイティブ選択要素",
+      "name": "ネイティブセレクト",
       "props": {
         "data": {
-          "description": "データの表示に使用するオプション",
-          "name": "データ"
+          "description": "オプションの表示に使用されるデータ",
+          "name": "[データ]"
         }
       }
     },
     "MtNumberInput": {
-      "description": "捕獲からユーザー",
-      "name": "番号入力",
+      "description": "ユーザーから番号を取得",
+      "name": "数値入力",
       "props": {
         "allowDecimal": {
-          "description": "を小数点値",
-          "name": "を小数点"
+          "description": "10 進値を許可",
+          "name": "10 進数を許可"
         },
         "allowLeadingZeros": {
-          "description": "せ先頭に",
-          "name": "せ先頭に"
+          "description": "先頭のゼロを許可",
+          "name": "先頭のゼロを許可"
         },
         "allowNegative": {
-          "description": "をマイナスの値",
-          "name": "を負"
+          "description": "負の値を許可",
+          "name": "ネガティブを許可"
         },
         "clampBehavior": {
           "description": "クランプ動作",
           "name": "クランプ動作"
         },
         "decimalScale": {
-          "description": "を制限する桁数を入力でき後の小数点",
-          "name": "小規模"
+          "description": "小数点以下に入力できる桁数を制限します",
+          "name": "十進法スケール"
         },
         "decimalSeparator": {
           "description": "小数点区切り文字として使用される文字",
-          "name": "桁区切り子"
+          "name": "小数点区切り記号"
         },
         "fixedDecimalScale": {
-          "description": "設定されている場合、0を追加後の小数区切りに合わせた規模は小数点",
-          "name": "固定小数規模"
+          "description": "設定すると、指定された小数点スケールに一致するように小数点区切り文字の後に0が追加されます",
+          "name": "固定小数スケール"
         },
         "hideControls": {
-          "description": "Hideの増減制御",
-          "name": "コントロールを隠す"
+          "description": "インクリメントコントロールとデクリメントコントロールを非表示にする",
+          "name": "コントロールを非表示にする"
         },
         "max": {
-          "description": "最大値",
+          "description": "[最大値]",
           "name": "マックス"
         },
         "min": {
-          "description": "最小値",
-          "name": "分"
+          "description": "[最小値]",
+          "name": "最小"
         },
         "prefix": {
-          "description": "文字列の追加追加する番号の前に",
-          "name": "接頭辞"
+          "description": "数字の前に追加する文字列",
+          "name": "プレフィックス"
         },
         "startValue": {
-          "description": "設定値の入力時に増分/減分ボタンをクリックまたは上下の矢印を押した場合、入力が空である",
+          "description": "インクリメント/デクリメントボタンがクリックされたとき、または入力が空の場合は上/下矢印が押されたときに入力に設定される値",
           "name": "開始値"
         },
         "step": {
@@ -742,33 +742,33 @@
           "name": "ステップ"
         },
         "suffix": {
-          "description": "番号の後に追加する文字列",
-          "name": "接尾辞"
+          "description": "数字の後に追加する文字列",
+          "name": "サフィックス"
         },
         "thousandSeparator": {
-          "description": "文字として使用千切",
-          "name": "桁区切り"
+          "description": "桁区切り文字として使用される文字",
+          "name": "サウザンドセパレーター"
         },
         "thousandsGroupStyle": {
-          "description": "千ングスタイル",
-          "name": "数千人グループのスタイル"
+          "description": "サウザンドグルーピングスタイル",
+          "name": "数千人のグループスタイル"
         },
         "trimLeadingZeroesOnBlur": {
-          "description": "設定されている場合、先頭は削除されるようにぼやけます。 例えば、00100につき）-&gt;100",
-          "name": "Trim先頭にゼロにぼかし"
+          "description": "設定すると、ぼかし時に先頭のゼロが削除されます。たとえば、00100-> 100 と入力します。",
+          "name": "ぼかし部分の先頭のゼロを削除"
         }
       }
     },
     "MtPasswordInput": {
-      "description": "ユーザーからパスワードデータを取得する",
-      "name": "パスワードを入力"
+      "description": "ユーザーからパスワードデータを取得",
+      "name": "パスワード入力"
     },
     "MtRadio": {
-      "description": "ラッパーのための入力タイプのラジオ",
+      "description": "入力タイプラジオ用ラッパー",
       "name": "ラジオ",
       "props": {
         "checked": {
-          "description": "るかどうかを指定するラジオで確認",
+          "description": "無線をチェックするかどうかを指定します",
           "name": "チェック済み"
         }
       }
@@ -778,25 +778,25 @@
       "name": "ラジオグループ",
       "props": {
         "items": {
-          "description": "ラジオのオプション",
-          "name": "項目"
+          "description": "ラジオオプション",
+          "name": "アイテム"
         }
       }
     },
     "MtRangeSlider": {
-      "description": "RangeSlider成",
-      "name": "範囲のスライダー",
+      "description": "レンジスライダーコンポーネント",
+      "name": "レンジスライダー",
       "props": {
         "inverted": {
-          "description": "かどうかを判定し追従値を表現すべき反転",
+          "description": "トラック値の表示を反転させるかどうかを決定します",
           "name": "反転"
         },
         "labelAlwaysOn": {
-          "description": "かどうかを判定しますラベルが可視の場合、スライダーはドラッグされているまたは推移",
-          "name": "ラベルも"
+          "description": "スライダーをドラッグまたはホバーしていないときにラベルを表示するかどうかを決定します",
+          "name": "ラベルは常にオン"
         },
         "max": {
-          "description": "最大値",
+          "description": "[最大値]",
           "name": "マックス"
         },
         "maxRange": {
@@ -804,20 +804,20 @@
           "name": "最大範囲"
         },
         "min": {
-          "description": "最小値",
-          "name": "分"
+          "description": "[最小値]",
+          "name": "最小"
         },
         "precision": {
           "description": "使用する小数点以下の桁数",
-          "name": "精密"
+          "name": "精度"
         },
         "pushOnOverlap": {
-          "description": "かどうかを判定し、その他の親指が現在の親指をドラッグがminRange/maxRangeに達した",
-          "name": "押上に重なり"
+          "description": "最小範囲/最大範囲に達したときに、現在の親指をドラッグしてもう一方の親指を押すかどうかを決定します",
+          "name": "プッシュオンオーバーラップ"
         },
         "showLabelOnHover": {
-          "description": "かどうかを判定しますラベルに表示される必要がある場合、スライダー推移",
-          "name": "ショーラベル推移"
+          "description": "スライダーにカーソルを合わせたときにラベルを表示するかどうかを決定します",
+          "name": "カーソルを合わせたときにラベルを表示"
         },
         "step": {
           "description": "ステップ値",
@@ -826,54 +826,54 @@
       }
     },
     "MtRating": {
-      "description": "および表示格付け",
-      "name": "評価",
+      "description": "評価を選択して表示する",
+      "name": "格付け",
       "props": {
         "count": {
-          "description": "星",
+          "description": "星の数",
           "name": "カウント"
         },
         "fractions": {
-          "description": "分数の数",
+          "description": "フラクション数",
           "name": "分数"
         }
       }
     },
     "MtSegmentedControl": {
-      "description": "2つ以上のセグメントの線形セット",
-      "name": "細分化制御",
+      "description": "2 つ以上のセグメントの線形セット",
+      "name": "セグメント制御",
       "props": {
         "data": {
-          "description": "オプション",
-          "name": "データ"
+          "description": "[オプション]",
+          "name": "[データ]"
         }
       }
     },
     "MtSelect": {
-      "description": "カスタム検索を選択",
-      "name": "選択",
+      "description": "カスタム検索可能な選択",
+      "name": "[選択]",
       "props": {
         "data": {
-          "description": "オプション",
-          "name": "データ"
+          "description": "[オプション]",
+          "name": "[データ]"
         },
         "searchable": {
-          "description": "を検索",
-          "name": "検索"
+          "description": "検索を有効にする",
+          "name": "検索可能"
         }
       }
     },
     "MtSlider": {
-      "description": "スライダー部品",
+      "description": "スライダーコンポーネント",
       "name": "スライダー",
       "props": {
         "max": {
-          "description": "最大値",
+          "description": "[最大値]",
           "name": "マックス"
         },
         "min": {
-          "description": "最小値",
-          "name": "分"
+          "description": "[最小値]",
+          "name": "最小"
         },
         "step": {
           "description": "ステップ値",
@@ -882,68 +882,68 @@
       }
     },
     "MtSwitch": {
-      "description": "ユーザーからのブール入力のキャプチャ",
+      "description": "ユーザーからのブーリアン入力をキャプチャ",
       "name": "スイッチ",
       "props": {
         "checked": {
-          "description": "るかどうかを指定するスイッチがオンになって",
+          "description": "スイッチがオンかどうかを指定します",
           "name": "チェック済み"
         }
       }
     },
     "MtSwitchGroup": {
-      "description": "ユーザーからのブール入力のキャプチャ",
+      "description": "ユーザーからのブーリアン入力をキャプチャ",
       "name": "スイッチグループ",
       "props": {
         "items": {
           "description": "スイッチオプション",
-          "name": "項目"
+          "name": "アイテム"
         }
       }
     },
     "MtTagsInput": {
-      "description": "捉え、値のリストからユーザーと無料で入力-提案",
-      "name": "タグの入力",
+      "description": "自由に入力したり提案したりして、ユーザーから値のリストを取得する",
+      "name": "タグ入力",
       "props": {
         "data": {
-          "description": "オプション",
-          "name": "データ"
+          "description": "[オプション]",
+          "name": "[データ]"
         }
       }
     },
     "MtText": {
-      "description": "テキストで表示",
-      "name": "テキスト",
+      "description": "テキストを表示",
+      "name": "[テキスト]",
       "props": {
         "children": {
           "description": "テキストコンテンツ",
-          "name": "コンテンツ"
+          "name": "[コンテンツ]"
         },
         "inherit": {
-          "description": "かどうかを判定しfont件の親から継承され",
+          "description": "フォントのプロパティを親から継承するかどうかを決定します",
           "name": "継承"
         },
         "inline": {
-          "description": "セットライン高さが1を中心に",
+          "description": "センタリング用に線の高さを 1 に設定します",
           "name": "インライン"
         },
         "lineClamp": {
-          "description": "テキストが切り捨てられるまでの行数",
+          "description": "これを超えるとテキストが切り捨てられる行数",
           "name": "ラインクランプ"
         },
         "span": {
-          "description": "表示として、span要素",
+          "description": "スパン要素として表示",
           "name": "スパン"
         },
         "truncate": {
-          "description": "側面の文字を必ず切り捨て",
-          "name": "切り詰め"
+          "description": "テキストを切り捨てる必要がある側",
+          "name": "切り捨て"
         }
       }
     },
     "MtTextInput": {
-      "description": "撮文字列から入力したユーザー",
-      "name": "テキスト入力入力",
+      "description": "ユーザーからの文字列入力をキャプチャ",
+      "name": "テキスト入力",
       "props": {
         "type": {
           "description": "入力タイプ",
@@ -952,106 +952,106 @@
       }
     },
     "MtTextarea": {
-      "description": "Autosizeは通常のtextarea",
-      "name": "Textarea",
+      "description": "オートサイズまたは通常のテキストエリア",
+      "name": "テキストエリア",
       "props": {
         "autosize": {
-          "description": "をautosize",
+          "description": "自動サイズ設定を有効にする",
           "name": "オートサイズ"
         },
         "maxRows": {
           "description": "最大行数",
-          "name": "Max行"
+          "name": "最大行数"
         },
         "minRows": {
           "description": "最小行数",
-          "name": "Min行"
+          "name": "最小行数"
         }
       }
     },
     "MtTimeGrid": {
-      "description": "を捉えた時の値からユーザーに予め定義されているオプション",
-      "name": "時間グリッド",
+      "description": "事前定義されたオプションセットを使用して、ユーザーから時間的価値をキャプチャします",
+      "name": "タイムグリッド",
       "props": {
         "endTime": {
-          "description": "終了時間\"HH:mm\"の形式",
-          "name": "終了時間"
+          "description": "「HH: mm」形式の終了時刻",
+          "name": "終了時刻"
         },
         "format": {
-          "description": "時刻のフォーマット",
+          "description": "時間形式",
           "name": "フォーマット"
         },
         "startTime": {
-          "description": "開始時間\"HH:mm\"の形式",
+          "description": "「HH: mm」形式の開始時間",
           "name": "開始時間"
         }
       }
     },
     "MtTimeInput": {
-      "description": "ユーザーからの時間をキャプチャします。",
+      "description": "ユーザーから時間をキャプチャ",
       "name": "時間入力"
     },
     "MtTimePicker": {
-      "description": "ユーザーからの時間値を取得します",
+      "description": "ユーザーから時間値を取得",
       "name": "タイムピッカー",
       "props": {
         "format": {
-          "description": "時刻のフォーマット",
+          "description": "時間形式",
           "name": "フォーマット"
         },
         "max": {
-          "description": "選択可能な最大時間、HH:mm:ss形式",
+          "description": "選択可能な最大時間、HH: mm: SS 形式",
           "name": "マックス"
         },
         "min": {
-          "description": "最小選択可能な時間、HH:mm:ss形式",
-          "name": "分"
+          "description": "選択可能な最小時間、HH: mm: ss 形式",
+          "name": "最小"
         },
         "reverseTimeControlsList": {
-          "description": "順番を逆に時間制御（時、分、秒に一致するキーボードナビ",
-          "name": "逆ムコントロールのリスト"
+          "description": "キーボード操作に合わせて時間コントロールの順序 (時、分、秒) を逆にします",
+          "name": "リバースタイムコントロールリスト"
         }
       }
     },
     "MtTiptap": {
-      "description": "Tiptapに基づく豊富なテキストエディタ",
-      "name": "リッチテキストエディタ",
+      "description": "Tiptap ベースのリッチテキストエディター",
+      "name": "リッチテキストエディター",
       "props": {
         "error": {
           "description": "入力エラーメッセージ",
-          "name": "エラー"
+          "name": "[エラー]"
         },
         "value": {
-          "description": "HTML形式のエディタの初期コンテンツ",
-          "name": "値"
+          "description": "HTML 形式のエディターの初期コンテンツ",
+          "name": "価値"
         }
       }
     },
     "MtTitle": {
-      "description": "h1-h6見出し",
+      "description": "H1-H6 ヘディング",
       "name": "タイトル",
       "props": {
         "children": {
           "description": "タイトルコンテンツ",
-          "name": "コンテンツ"
+          "name": "[コンテンツ]"
         },
         "order": {
           "description": "ヘッダーレベル",
-          "name": "ご注文"
+          "name": "注文"
         }
       }
     },
     "MtTooltip": {
-      "description": "描画ツールチップで指定された要素にマウスまたはその他のイベント",
+      "description": "マウスオーバーやその他のイベントで、指定された要素にツールチップをレンダリングします",
       "name": "ツールチップ",
       "props": {
         "children": {
-          "description": "トリガーに要素",
-          "name": "子供たち"
+          "description": "トリガーエレメント",
+          "name": "子ども"
         },
         "content": {
-          "description": "ツールヒントテキストコンテンツ",
-          "name": "コンテンツ"
+          "description": "ツールチップコンテンツテキスト",
+          "name": "[コンテンツ]"
         },
         "offset": {
           "description": "トリガーからの距離",
@@ -1060,140 +1060,140 @@
       }
     },
     "MtTypography": {
-      "description": "スタイルのプロバイダのためのHTMLコンテンツ",
+      "description": "HTML コンテンツのスタイルプロバイダー",
       "name": "タイポグラフィ",
       "props": {
         "allowHtml": {
-          "description": "HTMLを許可する",
-          "name": "HTMLを許可する"
+          "description": "HTML を許可",
+          "name": "HTML を許可"
         },
         "content": {
           "description": "テキストコンテンツ",
-          "name": "コンテンツ"
+          "name": "[コンテンツ]"
         }
       }
     },
     "MtYearMultiplePicker": {
       "description": "インライン複数年ピッカー",
-      "name": "年複数のピッカー",
+      "name": "イヤー・マルチ・ピッカー",
       "props": {
         "maxDate": {
-          "description": "最大選択可能な年",
-          "name": "最大の日付"
+          "description": "選択可能な最大年数",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最低選択可能な年",
-          "name": "Min日"
+          "description": "選択可能な最低年度",
+          "name": "最小日付"
         },
         "numberOfColumns": {
           "description": "表示する列の数",
-          "name": "列数"
+          "name": "カラムの数"
         }
       }
     },
     "MtYearMultiplePickerInput": {
-      "description": "年マルチピッカー入力",
-      "name": "年マルチピッカー入力",
+      "description": "複数年のピッカー入力",
+      "name": "複数年のピッカー入力",
       "props": {
         "maxDate": {
-          "description": "最大選択可能な年",
-          "name": "最大の日付"
+          "description": "選択可能な最大年数",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最低選択可能な年",
-          "name": "Min日"
+          "description": "選択可能な最低年度",
+          "name": "最小日付"
         },
         "numberOfColumns": {
           "description": "表示する列の数",
-          "name": "列数"
+          "name": "カラムの数"
         }
       }
     },
     "MtYearPicker": {
-      "description": "インライン年度ピッカー",
-      "name": "年ピッカー",
+      "description": "インライン・イヤー・ピッカー",
+      "name": "イヤーピッカー",
       "props": {
         "allowDeselect": {
-          "description": "かどうかを判定しユーザが選択を解除し年をクリックすると、選択した年",
-          "name": "きの選択を解除"
+          "description": "選択した年をクリックしてユーザーが年を選択解除できるかどうかを決定します",
+          "name": "選択解除を許可"
         },
         "maxDate": {
-          "description": "最大選択可能な年",
-          "name": "最大の日付"
+          "description": "選択可能な最大年数",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最低選択可能な年",
-          "name": "Min日"
+          "description": "選択可能な最低年度",
+          "name": "最小日付"
         },
         "numberOfColumns": {
           "description": "表示する列の数",
-          "name": "列数"
+          "name": "カラムの数"
         }
       }
     },
     "MtYearPickerInput": {
-      "description": "年ピッカーの入力",
-      "name": "年ピッカーの入力",
+      "description": "イヤーピッカー入力",
+      "name": "イヤーピッカー入力",
       "props": {
         "allowDeselect": {
-          "description": "かどうかを判定しユーザが選択を解除し年をクリックすると、選択した年",
-          "name": "きの選択を解除"
+          "description": "選択した年をクリックしてユーザーが年を選択解除できるかどうかを決定します",
+          "name": "選択解除を許可"
         },
         "maxDate": {
-          "description": "最大選択可能な年",
-          "name": "最大の日付"
+          "description": "選択可能な最大年数",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最低選択可能な年",
-          "name": "Min日"
+          "description": "選択可能な最低年度",
+          "name": "最小日付"
         },
         "numberOfColumns": {
           "description": "表示する列の数",
-          "name": "列数"
+          "name": "カラムの数"
         }
       }
     },
     "MtYearRangePicker": {
-      "description": "年度の範囲でピッカー",
-      "name": "年度の範囲でピッカー",
+      "description": "年範囲ピッカー",
+      "name": "年範囲ピッカー",
       "props": {
         "allowSingleDateInRange": {
-          "description": "範囲として単一の年を選択できます",
-          "name": "を単一の日付範囲"
+          "description": "1 年を範囲として選択できます",
+          "name": "範囲内の 1 つの日付を許可"
         },
         "maxDate": {
-          "description": "最大選択可能な年",
-          "name": "最大の日付"
+          "description": "選択可能な最大年数",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最低選択可能な年",
-          "name": "Min日"
+          "description": "選択可能な最低年度",
+          "name": "最小日付"
         },
         "numberOfColumns": {
           "description": "表示する列の数",
-          "name": "列数"
+          "name": "カラムの数"
         }
       }
     },
     "MtYearRangePickerInput": {
-      "description": "年度の範囲でピッカーの入力",
-      "name": "年度の範囲でピッカーの入力",
+      "description": "年範囲ピッカー入力",
+      "name": "年範囲ピッカー入力",
       "props": {
         "allowSingleDateInRange": {
-          "description": "範囲として単一の年を選択できます",
-          "name": "を単一の日付範囲"
+          "description": "1 年を範囲として選択できます",
+          "name": "範囲内の 1 つの日付を許可"
         },
         "maxDate": {
-          "description": "最大選択可能な年",
-          "name": "最大の日付"
+          "description": "選択可能な最大年数",
+          "name": "最大日付"
         },
         "minDate": {
-          "description": "最低選択可能な年",
-          "name": "Min日"
+          "description": "選択可能な最低年度",
+          "name": "最小日付"
         },
         "numberOfColumns": {
           "description": "表示する列の数",
-          "name": "列数"
+          "name": "カラムの数"
         }
       }
     }

@@ -1,20 +1,20 @@
 {
   "categories": {
     "antd": {
-      "name": "Ant设计组件"
+      "name": "Ant 设计组件"
     }
   },
   "components": {
     "AntButton": {
-      "description": "按钮意味着一个操作（或一系列操作）。 点击一个按钮会触发其对应的业务逻辑",
+      "description": "按钮表示一项操作（或一系列操作）。点击按钮将触发其相应的业务逻辑",
       "name": "蚂蚁按钮",
       "props": {
         "block": {
-          "description": "按钮宽度适合其父宽度的选项",
-          "name": "座"
+          "description": "可选择使按钮宽度与其父宽度相匹配",
+          "name": "阻止"
         },
         "children": {
-          "description": "标题",
+          "description": "字幕",
           "name": "内容"
         },
         "danger": {
@@ -23,26 +23,26 @@
         },
         "disabled": {
           "description": "按钮的禁用状态",
-          "name": "残疾人士"
+          "name": "已禁用"
         },
         "ghost": {
-          "description": "使背景透明并反转文本和边框颜色",
-          "name": "幽灵"
+          "description": "将背景设为透明并反转文本和边框颜色",
+          "name": "鬼魂"
         },
         "href": {
-          "description": "链接按钮的重定向URL",
+          "description": "重定向链接按钮的 URL",
           "name": "Href"
         },
         "htmlType": {
-          "description": "设置按钮的原始HTML类型",
-          "name": "HTML类型"
+          "description": "设置按钮的原始 HTML 类型",
+          "name": "HTML 类型"
         },
         "loading": {
           "description": "设置按钮的加载状态",
-          "name": "装载量"
+          "name": "加载中"
         },
         "shape": {
-          "description": "可设置按钮形状",
+          "description": "可以设置按钮形状",
           "name": "形状"
         },
         "size": {
@@ -50,80 +50,80 @@
           "name": "大小"
         },
         "target": {
-          "description": "与a的目标属性相同，在指定href时工作",
+          "description": "与 a 的目标属性相同，在指定 href 时起作用",
           "name": "目标"
         },
         "type": {
-          "description": "可以设置为主鬼虚线链接文本默认值",
+          "description": "可以设置为主虚线链接文本（默认）",
           "name": "类型"
         }
       }
     },
     "AntCol": {
       "description": "网格的列",
-      "name": "蚂蚁Col",
+      "name": "Ant Col",
       "props": {
         "flex": {
-          "description": "Flex布局样式",
-          "name": "屈曲,屈曲"
+          "description": "Flex 布局风格",
+          "name": "屈伸"
         },
         "lg": {
-          "description": "屏幕≥992px",
-          "name": "Lg公司"
+          "description": "屏幕 ≥ 992px",
+          "name": "Lg"
         },
         "md": {
-          "description": "屏幕≥768px",
-          "name": "医学博士"
+          "description": "屏幕 ≥ 768 像素",
+          "name": "Md"
         },
         "offset": {
-          "description": "从左侧偏移Col的单元格数",
-          "name": "偏移量"
+          "description": "要从左侧偏移 Col 的单元格数",
+          "name": "抵消"
         },
         "order": {
-          "description": "光栅顺序",
-          "name": "秩序"
+          "description": "栅格顺序",
+          "name": "订购"
         },
         "pull": {
-          "description": "栅格向左移动的像元数",
+          "description": "向左移动栅格的像元数",
           "name": "拉"
         },
         "push": {
-          "description": "栅格向右移动的像元数",
-          "name": "推,推"
+          "description": "向右移动栅格的像元数",
+          "name": "推"
         },
         "sm": {
-          "description": "屏幕≥576px",
-          "name": "Ｓｍ"
+          "description": "屏幕 ≥ 576px",
+          "name": "Sm"
         },
         "span": {
-          "description": "要占用的栅格单元数",
+          "description": "要占用的像元的栅格数",
           "name": "跨度"
         },
         "xl": {
-          "description": "屏幕≥1200px",
-          "name": "Xl号"
+          "description": "屏幕 ≥ 1200 像素",
+          "name": "Xl"
         },
         "xs": {
-          "description": "屏幕 &lt; 576px和默认设置",
-          "name": "X"
+          "description": "屏幕 < 576px 以及默认设置",
+          "name": "Xs"
         },
         "xxl": {
-          "description": "屏幕≥1600px",
+          "description": "屏幕 ≥ 1600 像素",
           "name": "Xxl"
         }
       }
     },
     "AntInput": {
       "description": "通过鼠标或键盘输入内容，它是最基本的表单字段包装器",
-      "name": "Ant输入",
+      "name": "蚂蚁输入",
       "props": {
         "disabled": {
           "description": "输入是否被禁用",
-          "name": "残疾人士"
+          "name": "已禁用"
         },
         "showCount": {
-          "description": "是否显示字符计数",
-          "name": "显示计数"
+          "description": "是否显示字符数",
+          "name": "显示次数"
         },
         "size": {
           "description": "输入框的大小",
@@ -131,7 +131,7 @@
         },
         "status": {
           "description": "设置验证状态",
-          "name": "状况"
+          "name": "状态"
         },
         "value": {
           "description": "输入内容值",
@@ -139,39 +139,39 @@
         },
         "variant": {
           "description": "输入的变体",
-          "name": "变式"
+          "name": "变体"
         }
       }
     },
     "AntModal": {
-      "description": "显示模式对话框，提供标题、内容区域和操作按钮",
-      "name": "蚂蚁模态",
+      "description": "显示模态对话框，提供标题、内容区域和操作按钮",
+      "name": "Ant Modal",
       "props": {
         "cancelText": {
-          "description": "取消按钮的文本",
-          "name": "取消文本"
+          "description": "“取消” 按钮的文本",
+          "name": "取消短信"
         },
         "centered": {
-          "description": "居中模态",
+          "description": "中心模态",
           "name": "居中"
         },
         "keyboard": {
-          "description": "是否支持按ESC关闭",
+          "description": "是否支持按 ESC 关闭",
           "name": "键盘"
         },
         "okText": {
           "description": "确定按钮的文本",
-          "name": "OK文本"
+          "name": "OK 文本"
         }
       }
     },
     "AntRow": {
-      "description": "网格的行",
-      "name": "蚂蚁排",
+      "description": "网格中的那一行",
+      "name": "Ant Row",
       "props": {
         "align": {
           "description": "垂直对齐",
-          "name": "对齐;对齐"
+          "name": "对齐"
         },
         "gutter": {
           "description": "网格之间的间距",
@@ -179,49 +179,49 @@
         },
         "justify": {
           "description": "水平排列",
-          "name": "辩解"
+          "name": "证明理由"
         },
         "wrap": {
-          "description": "自动包装线",
-          "name": "包装,包装"
+          "description": "自动换行线",
+          "name": "包装"
         }
       }
     },
     "AntTable": {
-      "description": "表显示数据行",
-      "name": "蚂蚁表",
+      "description": "表格显示数据行",
+      "name": "蚂蚁桌",
       "props": {
         "bordered": {
           "description": "是否显示所有表格边框",
-          "name": "边界,边界"
+          "name": "有边界"
         },
         "columns": {
-          "description": "表列",
-          "name": "列"
+          "description": "表格的列数",
+          "name": "专栏"
         },
         "dataSource": {
           "description": "要显示的数据记录数组",
-          "name": "数据来源"
+          "name": "数据源"
         },
         "loading": {
           "description": "表的加载状态",
-          "name": "装载量"
+          "name": "加载中"
         },
         "rowHoverable": {
           "description": "行悬停",
-          "name": "行hoverable"
+          "name": "行可悬停"
         },
         "rowKey": {
-          "description": "行的唯一键",
+          "description": "Row 的唯一密钥",
           "name": "行键"
         },
         "showHeader": {
-          "description": "是否显示表头",
+          "description": "是否显示表格标题",
           "name": "显示标题"
         },
         "showSorterTooltip": {
           "description": "标题显示下一个分拣器方向工具提示",
-          "name": "显示分类器工具提示"
+          "name": "显示排序器工具提示"
         },
         "size": {
           "description": "桌子的大小",
@@ -229,24 +229,24 @@
         },
         "sticky": {
           "description": "设置粘性标题和滚动条",
-          "name": "粘粘的"
+          "name": "粘性的"
         }
       }
     },
     "AntTooltip": {
-      "description": "简单文本弹出框",
+      "description": "简单的文本弹出框",
       "name": "蚂蚁工具提示",
       "props": {
         "placement": {
           "description": "工具提示相对于目标的位置",
-          "name": "就业情况"
+          "name": "放置"
         },
         "text": {
           "description": "工具提示中显示的文本",
           "name": "文本"
         },
         "trigger": {
-          "description": "工具提示触发模式",
+          "description": "工具提示触发器模式",
           "name": "触发器"
         }
       }

@@ -6,7 +6,7 @@
       "props": {
         "disabled": {
           "description": "Si es verdadero, el formulario incrustado está deshabilitado",
-          "name": "Discapacitados"
+          "name": "Discapacitado"
         },
         "formName": {
           "description": "El nombre del formulario",
@@ -17,22 +17,22 @@
           "name": "Opciones"
         },
         "readOnly": {
-          "description": "Si es true, el formulario incrustado es de solo lectura",
+          "description": "Si es verdadero, el formulario incrustado es de solo lectura",
           "name": "Solo lectura"
         },
         "storeDataInParentForm": {
-          "description": "Si es falso, los datos del formulario anidado se muestran como objeto anidado, verdadero de lo contrario",
-          "name": "Almacenar datos en forma principal"
+          "description": "Si es falso, los datos del formulario anidado se muestran como objetos anidados; en caso contrario, son verdaderos",
+          "name": "Almacenar datos en el formulario principal"
         }
       }
     },
     "Repeater": {
-      "description": "El componente Repetidor es un componente especial que se encarga de mostrar una matriz de componentes repetidos",
+      "description": "El componente Repeater es un componente especial que se encarga de mostrar una matriz de componentes repetidos.",
       "name": "Repetidor",
       "props": {
         "itemRenderWhen": {
           "description": "La expresión o función para representar condicionalmente un elemento repetidor",
-          "name": "Elemento renderizado cuando"
+          "name": "El elemento se renderiza cuando"
         }
       }
     }

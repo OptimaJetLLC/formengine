@@ -1,7 +1,7 @@
 {
   "GoogleMap": {
     "addMarkerOnSearch": {
-      "hint": "Si agregar un marcador en la búsqueda."
+      "hint": "Si se debe agregar un marcador en la búsqueda."
     },
     "allowChangingMarkers": {
       "hint": "Si está marcada, el usuario puede cambiar los marcadores."
@@ -10,20 +10,20 @@
       "hint": "Marcadores múltiples"
     },
     "apiKey": {
-      "hint": "Clave API de Google Maps. Guarde el formulario y actualice la página para aplicar los cambios.",
-      "name": "Clave API"
+      "hint": "Clave de API de Google Maps. Guarda el formulario y actualiza la página para aplicar los cambios.",
+      "name": "Clave de API"
     },
     "collisionBehavior": {
       "hint": "El comportamiento de colisión de los marcadores."
     },
     "colorScheme": {
-      "hint": "El esquema de color a utilizar."
+      "hint": "La combinación de colores que se va a utilizar."
     },
     "gestureHandling": {
-      "hint": "El manejo de gestos a utilizar."
+      "hint": "El manejo de gestos que se va a utilizar."
     },
     "language": {
-      "hint": "El idioma a utilizar."
+      "hint": "El idioma que se va a utilizar."
     },
     "latitude": {
       "hint": "Latitud del punto central"
@@ -35,33 +35,33 @@
       "hint": "La posición del control del mapa."
     },
     "mapId": {
-      "hint": "El ID de mapa es un identificador asociado a un estilo o entidad de mapa específico.",
-      "name": "ID del MAPA"
+      "hint": "El ID del mapa es un identificador que está asociado a una característica o estilo de mapa específicos.",
+      "name": "ID de mapa"
     },
     "mapTypeId": {
-      "hint": "El tipo de mapa predeterminado a utilizar.",
+      "hint": "El tipo de mapa predeterminado que se va a utilizar.",
       "name": "Tipo de mapa"
     },
     "markerWindowTitle": {
-      "hint": "El título de la ventana del marcador.",
-      "name": "Título de la ventana del marcador"
+      "hint": "El título de la ventana de marcadores.",
+      "name": "Título de la ventana de marcadores"
     },
     "markers": {
       "hint": "Coordenadas de los marcadores"
     },
     "region": {
-      "hint": "El código de región a utilizar."
+      "hint": "El código de región que se va a utilizar."
     },
     "removeMarkerCaption": {
-      "hint": "El título en el botón de eliminación del marcador.",
-      "name": "Eliminar leyenda de marcador"
+      "hint": "La leyenda del botón de eliminación del marcador.",
+      "name": "Eliminar el título del marcador"
     },
     "searchPlaceholder": {
       "hint": "Texto de marcador de posición para la entrada de búsqueda en el mapa.",
       "name": "Marcador de posición de búsqueda"
     },
     "showMapControl": {
-      "hint": "Si mostrar el control de mapa."
+      "hint": "Si se debe mostrar el control del mapa."
     },
     "zoom": {
       "hint": "Nivel de zoom"
@@ -75,12 +75,12 @@
   },
   "RichTextEditor": {
     "modules": {
-      "hint": "Permite personalizar el comportamiento y funcionalidad del editor. Lea los documentos para obtener más información.",
+      "hint": "Permite personalizar el comportamiento y la funcionalidad del editor. Lea los documentos para obtener más información.",
       "name": "Módulos"
     },
     "toolbarOptions": {
       "hint": "Grupos de botones que se mostrarán en la barra de herramientas",
-      "name": "Opciones de la barra de herramientas"
+      "name": "Opciones de barra de herramientas"
     }
   },
   "RsAutoComplete": {
@@ -97,11 +97,11 @@
       "name": "Valor predeterminado"
     },
     "disabled": {
-      "hint": "Si está deshabilitado, seleccione",
-      "name": "Discapacitados"
+      "hint": "Si está desactivado, seleccione",
+      "name": "Discapacitado"
     },
     "filterBy": {
-      "hint": "Reglas de filtro personalizadas (solo mostrarán elementos cuyo valor sea una subcadena de forma predeterminada)",
+      "hint": "Reglas de filtrado personalizadas (solo mostrarán los elementos cuyo valor sea una subcadena de los cuales de forma predeterminada)",
       "name": "Filtrar por"
     },
     "label": {
@@ -109,60 +109,60 @@
       "name": "Etiqueta"
     },
     "menuClassName": {
-      "hint": "Una clase CSS para aplicar al DOM del Menú",
+      "hint": "Una clase CSS para aplicar al menú DOM",
       "name": "Nombre de la clase de menú"
     },
     "onChange": {
-      "hint": "Se llama cuando se selecciona una opción o cambia el valor de entrada, o se cambia el valor de entrada",
-      "name": "Cambio"
+      "hint": "Se invoca cuando se selecciona una opción o se cambia el valor de la entrada, o se cambia el valor de la entrada",
+      "name": "Sobre el cambio"
     },
     "onClose": {
-      "hint": "Devolución de llamada activada cuando está oculta",
+      "hint": "La llamada se activa cuando está oculta",
       "name": "Al cerrar"
     },
     "onEnter": {
-      "hint": "La devolución de llamada se activa antes de que la superposición haga la transición",
-      "name": "onEnter"
+      "hint": "La llamada se activa antes de que la superposición entre",
+      "name": "Al entrar"
     },
     "onEntered": {
-      "hint": "Devolución de llamada activada después de que la superposición termine de hacer la transición",
-      "name": "onEntrado"
+      "hint": "La llamada se activa cuando la superposición termina de hacer la transición en",
+      "name": "Al entrar"
     },
     "onEntering": {
-      "hint": "Devolución de llamada activada cuando la superposición comienza a hacer la transición en",
-      "name": "onEntrando"
+      "hint": "La llamada se activa cuando la superposición comienza a hacer la transición a",
+      "name": "Al entrar"
     },
     "onExit": {
-      "hint": "Devolución de llamada activada justo antes de que salga la superposición",
-      "name": "OnExit"
+      "hint": "La devolución de llamada se disparó justo antes de que la superposición saliera",
+      "name": "Al salir"
     },
     "onExited": {
-      "hint": "Devolución de llamada activada después de que la superposición termine de hacer la transición",
-      "name": "onExited"
+      "hint": "La llamada se activa cuando la superposición termina de desaparecer",
+      "name": "Uno salió"
     },
     "onExiting": {
-      "hint": "Devolución de llamada activada a medida que la superposición comienza a salir",
-      "name": "onExiting"
+      "hint": "La llamada se activa cuando la superposición comienza a desaparecer",
+      "name": "Una salida"
     },
     "onSelect": {
       "hint": "Se llama cuando se selecciona una opción",
-      "name": "oneleccionar"
+      "name": "OnSelect"
     },
     "placeholder": {
       "hint": "El marcador de posición de la entrada",
       "name": "Marcador de posición"
     },
     "renderMenu": {
-      "hint": "Personalización de la lista del Menú de Renderizado",
-      "name": "Menú de renderizado"
+      "hint": "Personalización de la lista del menú de modelizado",
+      "name": "Menú Render"
     },
     "renderMenuItem": {
-      "hint": "Elementos de menú de renderizado personalizados",
-      "name": "Elemento del menú Renderizar"
+      "hint": "Elementos del menú de renderizado personalizados",
+      "name": "Elemento del menú Render"
     },
     "selectOnEnter": {
-      "hint": "Cuando se establece en false, la función de selección de la tecla Intro no es válida",
-      "name": "Seleccione al Ingresar"
+      "hint": "Cuando se establece en falso, la función de selección de la tecla Entrar no es válida",
+      "name": "Seleccione en Entrar"
     },
     "size": {
       "hint": "Un componente puede tener diferentes tamaños",
@@ -185,36 +185,36 @@
       "name": "Alinear"
     },
     "colSpan": {
-      "hint": "Combina celdas de columna para fusionarlas cuando el valor de 'Clave de datos' de la columna combinada es nulo o indefinido",
-      "name": "Tramo de col"
+      "hint": "Combina las celdas de las columnas para combinarlas cuando el valor de la «clave de datos» de la columna combinada es nulo o indefinido",
+      "name": "Extensión de columna"
     },
     "fixed": {
       "hint": "Columna fija",
       "name": "Fijo"
     },
     "flexGrow": {
-      "hint": "Establecer el ancho de la columna se ajusta automáticamente, cuando se establece 'Flex grow' no se pueden establecer las propiedades 'Redimensionable' y 'Ancho'",
+      "hint": "Establecer el ancho de la columna se ajusta automáticamente, cuando se establece «Flex grow» no se pueden establecer las propiedades «Redimensionable» y «Ancho»",
       "name": "Crecimiento flexible"
     },
     "fullText": {
-      "hint": "Si mostrar el texto completo del contenido de la celda cuando el mouse está suspendido",
+      "hint": "Si se debe mostrar el texto completo del contenido de la celda cuando se pasa el ratón",
       "name": "Texto completo"
     },
     "minWidth": {
-      "hint": "Cuando usa 'Flex grow', puede establecer un ancho mínimo",
+      "hint": "Cuando usas «Flex grow», puedes establecer un ancho mínimo",
       "name": "Anchura mínima"
     },
     "resizable": {
-      "hint": "Ancho de columna de cambio de tamaño personalizable",
+      "hint": "Ajustar el ancho de la columna de forma personalizable",
       "name": "Redimensionable"
     },
     "rowSpan": {
-      "hint": "Combina filas en la columna especificada",
-      "name": "Tramo de fila"
+      "hint": "Combina las filas de la columna especificada",
+      "name": "Envergadura de fila"
     },
     "sortable": {
-      "hint": "Ordenable",
-      "name": "Ordenable"
+      "hint": "Clasificable",
+      "name": "Clasificable"
     },
     "verticalAlign": {
       "hint": "Alineación vertical",
@@ -222,7 +222,7 @@
     },
     "width": {
       "hint": "Ancho de columna",
-      "name": "Ancho"
+      "name": "Anchura"
     }
   },
   "RsColumnGroup": {
@@ -231,11 +231,11 @@
       "name": "Alinear"
     },
     "fixed": {
-      "hint": "Grupo de columnas fijas",
+      "hint": "Grupo de columnas fijo",
       "name": "Fijo"
     },
     "groupHeaderHeight": {
-      "hint": "La altura del encabezado del grupo de celdas combinado",
+      "hint": "La altura del encabezado del grupo de celdas fusionado",
       "name": "Altura del encabezado del grupo"
     },
     "header": {
@@ -255,7 +255,7 @@
   },
   "RsDivider": {
     "children": {
-      "hint": "Coloque el texto en la línea divisoria",
+      "hint": "Coloca el texto en la línea divisoria",
       "name": "Contenido"
     },
     "vertical": {
@@ -272,26 +272,26 @@
   "RsInput": {
     "showPasswordAriaLabel": {
       "hint": "Valor del atributo aria-label para el botón mostrar contraseña cuando la entrada está en modo máscara de contraseña.",
-      "name": "Etiqueta ARIA para mostrar el botón de contraseña"
+      "name": "Etiqueta ARIA para el botón de mostrar contraseña"
     }
   },
   "RsMenu": {
     "itemsAs": {
-      "hint": "Elemento HTML para renderizar elemento de menú",
-      "name": "Artículos Como"
+      "hint": "Elemento HTML para representar el elemento del menú",
+      "name": "Artículos como"
     }
   },
   "RsModal": {
     "autoFocus": {
-      "hint": "Cuando se establece en verdadero, el Modal se abre y se enfoca automáticamente por sí solo, accesible para los lectores de pantalla.",
+      "hint": "Cuando se establece en verdadero, el Modal se abre y se enfoca automáticamente en sí mismo, accesible para los lectores de pantalla",
       "name": "Enfoque automático"
     },
     "backdrop": {
-      "hint": "Cuando se establece en verdadero, el Modal mostrará el fondo cuando se abra. Al hacer clic en el fondo se cerrará el Modal",
-      "name": "Telón de fondo"
+      "hint": "Cuando se establece en verdadero, el Modal mostrará el fondo cuando se abra. Al hacer clic en el fondo, se cerrará el modal",
+      "name": "Fondo"
     },
     "backdropClassName": {
-      "hint": "Agregue un nombre de clase adicional opcional a .modal-backdrop Podría terminar pareciéndose a class=\"modal-backdrop foo-modal-backdrop in\"",
+      "hint": "Agregue un nombre de clase adicional opcional a.modal-backdrop Podría terminar pareciéndose a class=\"modal-backdrop foo-modal-backdrop in\"",
       "name": "Nombre de clase de fondo"
     },
     "classPrefix": {
@@ -299,29 +299,29 @@
       "name": "Prefijo de clase CSS"
     },
     "dialogClassName": {
-      "hint": "Clase CSS aplicada a nodos DOM de diálogo",
+      "hint": "Clase CSS aplicada a los nodos de Dialog DOM",
       "name": "Clase CSS para diálogo"
     },
     "enforceFocus": {
-      "hint": "Cuando se establece en verdadero, Modal evitará que el foco se vaya cuando se abra, lo que facilitará el acceso del lector de pantalla secundario",
-      "name": "Hacer cumplir el enfoque"
+      "hint": "Cuando se establece en verdadero, Modal evitará que el enfoque se salga al abrirlo, lo que facilitará el acceso al lector de pantalla secundario",
+      "name": "Reforzar el enfoque"
     },
     "keyboard": {
-      "hint": "Cerrar Modal cuando se presiona la tecla Esc",
-      "name": "Cerrar por Esc"
+      "hint": "Cierra Modal cuando se presiona la tecla Esc",
+      "name": "Cerca de Esc"
     },
     "overflow": {
       "hint": "Establece automáticamente la altura cuando el contenido del cuerpo es demasiado largo",
       "name": "Desbordamiento"
     },
     "size": {
-      "hint": "Determina el ancho del modal",
+      "hint": "Determine el ancho del modal",
       "name": "Tamaño"
     }
   },
   "RsModalLayout": {
     "closeButton": {
-      "hint": "Botón de cierre de pantalla",
+      "hint": "Mostrar botón de cierre",
       "name": "Botón Cerrar"
     }
   },
@@ -336,7 +336,7 @@
     },
     "width": {
       "hint": "El ancho del gráfico",
-      "name": "Ancho"
+      "name": "Anchura"
     }
   },
   "RsPlaceholderGrid": {
@@ -354,7 +354,7 @@
     },
     "rowSpacing": {
       "hint": "El espaciado entre filas",
-      "name": "Espaciado de filas"
+      "name": "Espacio entre hileras"
     },
     "rows": {
       "hint": "El número de filas",
@@ -376,7 +376,7 @@
     },
     "rowSpacing": {
       "hint": "El espaciado entre filas",
-      "name": "Espaciado de filas"
+      "name": "Espacio entre hileras"
     },
     "rows": {
       "hint": "El número de filas",
@@ -385,15 +385,15 @@
   },
   "RsTable": {
     "affixHeader": {
-      "hint": "Coloque el encabezado de la tabla en la ubicación especificada en la página",
+      "hint": "Coloque el encabezado de la tabla en la ubicación especificada de la página",
       "name": "Encabezado de afijo"
     },
     "affixHorizontalScrollbar": {
-      "hint": "Coloque la barra de desplazamiento horizontal de la tabla en la posición especificada en la página",
+      "hint": "Coloque la barra de desplazamiento horizontal de la tabla en la posición especificada de la página",
       "name": "Fijar barra de desplazamiento horizontal"
     },
     "autoHeight": {
-      "hint": "La altura de la tabla se expandirá automáticamente de acuerdo con el número de filas de datos, y no aparecerá una barra de desplazamiento vertical",
+      "hint": "La altura de la tabla se ampliará automáticamente según el número de filas de datos y no aparecerá ninguna barra de desplazamiento vertical",
       "name": "Altura automática"
     },
     "bordered": {
@@ -402,7 +402,7 @@
     },
     "cellBordered": {
       "hint": "Mostrar borde de celda",
-      "name": "Borde de celda"
+      "name": "Celda bordeada"
     },
     "data": {
       "hint": "Datos de la tabla",
@@ -410,14 +410,14 @@
     },
     "defaultSortType": {
       "hint": "Tipo de clasificación",
-      "name": "Tipo de ordenación predeterminado"
+      "name": "Tipo de clasificación predeterminado"
     },
     "fillHeight": {
-      "hint": "Fuerce la altura de la mesa a ser igual a la altura de su contenedor principal. No se puede usar junto con'Altura automática'",
+      "hint": "Fuerza la altura de la mesa para que sea igual a la altura de su contenedor principal. No se puede usar junto con la opción «Altura automática»",
       "name": "Altura de llenado"
     },
     "headerHeight": {
-      "hint": "Altura del encabezado de la tabla",
+      "hint": "Altura del encabezado de la mesa",
       "name": "Altura del encabezado"
     },
     "height": {
@@ -425,11 +425,11 @@
       "name": "Altura"
     },
     "hover": {
-      "hint": "La fila de la tabla tiene un efecto de mouseover",
-      "name": "Pase el ratón"
+      "hint": "La fila de la tabla tiene un efecto de pasar el ratón por encima",
+      "name": "Flotar"
     },
     "loading": {
-      "hint": "Mostrar cargando",
+      "hint": "Mostrar carga",
       "name": "Cargando"
     },
     "maxHeight": {
@@ -441,7 +441,7 @@
       "name": "Altura mínima"
     },
     "rowClassName": {
-      "hint": "Agregue un nombre de clase adicional opcional a row",
+      "hint": "Agregue un nombre de clase adicional opcional a la fila",
       "name": "Nombre de clase de fila"
     },
     "rowHeight": {
@@ -449,19 +449,19 @@
       "name": "Altura de fila"
     },
     "rowKey": {
-      "hint": "Cada fila corresponde a la clave única en los datos",
-      "name": "Clave de fila"
+      "hint": "Cada fila corresponde a la clave única de los datos",
+      "name": "Tecla de fila"
     },
     "shouldUpdateScroll": {
-      "hint": "Si actualizar el desplazamiento después de actualizar el tamaño de la tabla",
-      "name": "Debería actualizar el desplazamiento"
+      "hint": "Si se debe actualizar el pergamino después de actualizar el tamaño de la tabla",
+      "name": "Debería actualizar el pergamino"
     },
     "showHeader": {
-      "hint": "Encabezado de pantalla",
+      "hint": "Mostrar encabezado",
       "name": "Mostrar encabezado"
     },
     "sortColumn": {
-      "hint": "Ordenar nombre de columna",
+      "hint": "Ordenar el nombre de la columna",
       "name": "Ordenar columna"
     },
     "sortType": {
@@ -469,21 +469,21 @@
       "name": "Tipo de clasificación"
     },
     "virtualized": {
-      "hint": "Renderice de manera efectiva datos tabulares grandes",
+      "hint": "Renderice datos tabulares de gran tamaño de forma eficaz",
       "name": "Virtualizado"
     },
     "width": {
-      "hint": "Ancho de la mesa",
-      "name": "Ancho"
+      "hint": "Ancho de mesa",
+      "name": "Anchura"
     },
     "wordWrap": {
-      "hint": "Si aparecen saltos de línea donde el texto desborda su cuadro de contenido",
-      "name": "Ajuste de palabras"
+      "hint": "Si deben aparecer saltos de línea cuando el texto desborda su cuadro de contenido",
+      "name": "Envoltura de palabras"
     }
   },
   "RsTimePicker": {
     "format": {
-      "hint": "Formato de la hora cuando se procesa en la entrada",
+      "hint": "Formato de la hora cuando se representa en la entrada",
       "name": "Formato"
     }
   },
@@ -493,19 +493,19 @@
       "name": "Índice activo"
     },
     "finishButtonLabel": {
-      "hint": "La etiqueta del botón finalizar",
-      "name": "Etiqueta del botón de acabado"
+      "hint": "La etiqueta del botón de finalización",
+      "name": "Etiqueta del botón Finalizar"
     },
     "nextButtonLabel": {
-      "hint": "La etiqueta del botón siguiente",
+      "hint": "La siguiente etiqueta del botón",
       "name": "Etiqueta del botón Siguiente"
     },
     "prevButtonLabel": {
       "hint": "La etiqueta del botón anterior",
-      "name": "Etiqueta del botón anterior"
+      "name": "Etiqueta de botón anterior"
     },
     "showSteps": {
-      "hint": "Si es verdadero, se mostrarán los pasos",
+      "hint": "Si es cierto, se mostrarán los pasos",
       "name": "Mostrar pasos"
     },
     "showStepsLabels": {
@@ -513,36 +513,36 @@
       "name": "Mostrar etiquetas de pasos"
     },
     "steps": {
-      "hint": "Los pasos del asistente",
+      "hint": "Los pasos del mago",
       "name": "Pasos"
     },
     "stepsNavigation": {
-      "hint": "Determina qué pasos están disponibles para la navegación haciendo clic en",
-      "name": "Navegación de pasos"
+      "hint": "Determina qué pasos están disponibles para la navegación haciendo clic",
+      "name": "Navegación por pasos"
     },
     "validateOnFinish": {
-      "hint": "Si es true, el asistente se validará antes de finalizar el asistente",
+      "hint": "Si es verdadero, el asistente se validará antes de finalizarlo.",
       "name": "Validar al finalizar"
     },
     "validateOnNext": {
       "hint": "Si es verdadero, el paso se validará antes de pasar al siguiente paso",
-      "name": "Validar en siguiente"
+      "name": "Validar en la próxima"
     },
     "verticalSteps": {
       "hint": "Si es verdadero, los pasos se mostrarán verticalmente",
       "name": "Escalones verticales"
     },
-    "wizardHasNoSteps": "Para agregar los pasos del asistente, seleccione el componente y agregue los pasos en el panel propiedades."
+    "wizardHasNoSteps": "Para añadir los pasos del asistente, seleccione el componente y añada los pasos en el panel de propiedades."
   },
   "actions": {
     "add": "Añadir",
-    "addAction": "Añadir acción",
-    "addCodeAction": "Agregar una acción de código",
+    "addAction": "Añadir una acción",
+    "addCodeAction": "Añadir una acción de código",
     "arguments": "Argumentos",
     "code": "Código",
     "common": "Común",
     "custom": "Personalizado",
-    "delete": "Suprimir",
+    "delete": "Borrar",
     "duplicate": "Duplicado",
     "edit": "Editar",
     "name": "Nombre",
@@ -551,19 +551,19 @@
   },
   "annotation": {
     "accept": {
-      "hint": "Tipos de archivos que se pueden aceptar. Consulte atributo HTML estándar: aceptar",
+      "hint": "Tipos de archivos que se pueden aceptar. Consulte el atributo HTML estándar: aceptar",
       "name": "Aceptar"
     },
     "action": {
-      "hint": "URL de carga",
+      "hint": "Subiendo URL",
       "name": "Acción"
     },
     "allowEmptyFormatting": {
-      "hint": "De forma predeterminada, el componente PatternFormat no aplica formato cuando el valor está vacío (nulo, indefinido o \")",
-      "name": "Permitir formato vacío "
+      "hint": "De forma predeterminada, el componente PatternFormat no aplica formato cuando el valor está vacío (nulo, indefinido o '')",
+      "name": "Permitir formato vacío"
     },
     "allowLeadingZeros": {
-      "hint": "Esto permite habilitar o deshabilitar los ceros iniciales en el campo de entrada. De forma predeterminada, al desenfocar una entrada, se eliminan los ceros iniciales",
+      "hint": "Esto permite activar o desactivar los ceros iniciales en el campo de entrada. De forma predeterminada, al desenfocar una entrada, se eliminan los ceros iniciales",
       "name": "Permitir ceros iniciales"
     },
     "allowNegative": {
@@ -571,20 +571,20 @@
       "name": "Permitir negativo"
     },
     "allowedDecimalSeparators": {
-      "hint": "Caracteres que cuando se presionan dan como resultado un separador decimal. Cuando falte, separador decimal y '.\"se utilizan",
+      "hint": "Caracteres que cuando se presionan dan como resultado un separador decimal. Si faltan, se utilizan el separador decimal y «.»",
       "name": "Separadores decimales permitidos"
     },
     "appearance": {
-      "hint": "Apariencia del selector de conjuntos",
+      "hint": "Establecer la apariencia del selector",
       "name": "Apariencia"
     },
     "autoUpload": {
-      "hint": "Carga automática de archivos después de seleccionarlos",
+      "hint": "Sube archivos automáticamente después de seleccionarlos",
       "name": "Carga automática"
     },
     "block": {
-      "hint": "Bloquear una fila entera",
-      "name": "Bloque"
+      "hint": "Bloquear una fila completa",
+      "name": "Bloquear"
     },
     "bodyFill": {
       "hint": "Área de contenido llena de contenedores",
@@ -595,23 +595,23 @@
       "name": "Fecha predeterminada del calendario"
     },
     "checked": {
-      "hint": "Si el valor está marcado",
+      "hint": "Si el valor está comprobado",
       "name": "Comprobado"
     },
     "checkedChildren": {
       "hint": "El texto que se muestra en el estado marcado",
-      "name": "Texto marcado"
+      "name": "Texto comprobado"
     },
     "cleanable": {
       "hint": "Si la opción se puede vaciar",
-      "name": "Lavable"
+      "name": "Se puede limpiar"
     },
     "code": {
       "hint": "Editar código",
       "name": "Código"
     },
     "color": {
-      "hint": "El color principal del componente.",
+      "hint": "El color principal del componente",
       "name": "Color"
     },
     "creatable": {
@@ -623,11 +623,11 @@
       "name": "Datos"
     },
     "dataKey": {
-      "hint": "Clave de datos de componentes",
+      "hint": "Clave de datos del componente",
       "name": "Clave de datos"
     },
     "decimalScale": {
-      "hint": "Si se define, limita el número de dígitos después del punto decimal",
+      "hint": "Si se define, limita el número de dígitos después de la coma decimal",
       "name": "Escala decimal"
     },
     "decimalSeparator": {
@@ -635,7 +635,7 @@
       "name": "Separador decimal"
     },
     "defaultOpen": {
-      "hint": "Valor predeterminado de la propiedad open",
+      "hint": "Valor predeterminado de la propiedad abierta",
       "name": "Abierto por defecto"
     },
     "defaultValue": {
@@ -647,23 +647,23 @@
       "name": "Deshabilitar el enlace de datos"
     },
     "disableMultipart": {
-      "hint": "Si es 'verdadero', deshabilite el uso de un formulario de varias partes para cargar archivos y, en su lugar, transmita el archivo. Algunas API (por ejemplo, Amazon S3) pueden esperar que el archivo se transmita en lugar de enviarse a través de un formulario",
-      "name": "Deshabilitar multiparte"
+      "hint": "Si es «verdadero», desactive el uso de un formulario de varias partes para cargar archivos y, en su lugar, transmita el archivo por streaming. Algunas API (por ejemplo, Amazon S3) pueden esperar que el archivo se transmita por streaming en lugar de enviarse mediante un formulario",
+      "name": "Desactivar multiparte"
     },
     "disableVirtualized": {
       "hint": "Si es verdadero, el virtualizado se deshabilitará",
       "name": "Deshabilitar virtualizado"
     },
     "disabled": {
-      "hint": "Si el componente está deshabilitado o no",
-      "name": "Discapacitados"
+      "hint": "Si el componente está desactivado o no",
+      "name": "Discapacitado"
     },
     "download": {
-      "hint": "Hace que el navegador trate la URL vinculada como una descarga",
+      "hint": "Hace que el navegador trate la URL enlazada como una descarga",
       "name": "Descargar"
     },
     "downloadFilename": {
-      "hint": "Definir un valor lo sugiere como el nombre del archivo.  los caracteres / y \\ se convierten en guiones bajos (_)",
+      "hint": "Al definir un valor, se sugiere que sea el nombre del archivo. Los caracteres/y\\ se convierten en guiones bajos (_)",
       "name": "Descargar nombre de archivo"
     },
     "draggable": {
@@ -671,31 +671,31 @@
       "name": "Arrastrable"
     },
     "editable": {
-      "hint": "Representado como entrada, el valor se puede ingresar a través del teclado",
+      "hint": "Representado como una entrada, el valor se puede introducir mediante el teclado",
       "name": "Editable"
     },
     "errorConfig": {
-      "show": "Espectáculo"
+      "show": "Mostrar"
     },
     "eventKey": {
       "hint": "La clave de evento correspondiente a este elemento",
       "name": "Clave de evento"
     },
     "fixedDecimalScale": {
-      "hint": "Si se establece en true, agrega 0 finales después de decimalSeparator para que coincida con la escala decimal dada",
+      "hint": "Si se establece en verdadero, agrega los ceros finales después de DecimalSeparator para que coincida con la DecimalScale dada",
       "name": "Escala decimal fija"
     },
     "flexDirection": {
-      "hint": "Dirección flexible de los niños contenedores",
+      "hint": "Dirección de flexión del contenedor (niños)",
       "name": "Dirección"
     },
     "format": {
-      "hint": "Formatee el patrón usando el carácter # (o un carácter de patrón). # es el carácter de marcador de posición para los números. Ejemplo:'######'",
+      "hint": "Formatee el patrón con el carácter # (o un carácter de patrón). # es el carácter marcador de posición de los números. Ejemplo: '### ###'",
       "name": "Formato"
     },
     "groupBy": {
-      "hint": "Establecer criterios de agrupación 'clave' en 'datos'",
-      "name": "Grupo por"
+      "hint": "Establezca los criterios de agrupamiento como «clave» en «datos»",
+      "name": "Agrupar por"
     },
     "href": {
       "hint": "La URL a la que apunta el hipervínculo",
@@ -706,19 +706,19 @@
       "name": "Atributos HTML"
     },
     "isoWeek": {
-      "hint": "Norma ISO 8601, cada semana calendario comienza el lunes y el domingo del séptimo día",
-      "name": "Semana Iso"
+      "hint": "Norma ISO 8601, cada semana calendario comienza el lunes y el domingo el séptimo día",
+      "name": "Semana ISO"
     },
     "justifyContent": {
-      "name": "Alineación"
+      "name": "Justificar"
     },
     "label": {
-      "hint": "Configuración de la etiqueta",
+      "hint": "Etiqueta de configuración",
       "name": "Etiqueta"
     },
     "limitEndYear": {
       "hint": "Establezca el límite superior del año disponible en relación con la fecha de selección actual",
-      "name": "Año límite de finalización"
+      "name": "Límite de fin de año"
     },
     "limitStartYear": {
       "hint": "Establezca el límite inferior del año disponible en relación con la fecha de selección actual",
@@ -729,14 +729,14 @@
       "name": "Cargando"
     },
     "marginInlineEnd": {
-      "name": "Margen Derecho"
+      "name": "Margen derecho"
     },
     "marginInlineStart": {
-      "name": "Margen Izquierdo"
+      "name": "Margen izquierdo"
     },
     "mask": {
-      "hint": "Se utiliza como carácter de máscara para lugares numéricos, hasta que se proporcione cualquier carácter numérico para esa posición",
-      "name": "Máscara"
+      "hint": "Se usa como carácter de máscara para lugares numéricos, hasta que se proporcione algún carácter numérico para esa posición",
+      "name": "máscara"
     },
     "method": {
       "hint": "El método HTTP de solicitud de carga",
@@ -753,7 +753,7 @@
       "name": "Nombre"
     },
     "objectFit": {
-      "name": "Ajuste"
+      "name": "Encaja"
     },
     "objectPosition": {
       "name": "Posición"
@@ -763,8 +763,8 @@
       "name": "Un toque"
     },
     "open": {
-      "hint": "Si abre el componente",
-      "name": "Abierto"
+      "hint": "Si abrir el componente",
+      "name": "Abrir"
     },
     "passwordMask": {
       "hint": "Usar máscara de contraseña",
@@ -772,7 +772,7 @@
     },
     "patternChar": {
       "hint": "Esto ayuda a definir el carácter del patrón de formato",
-      "name": "Carácter de patrón"
+      "name": "Gráfico de patrones"
     },
     "placeholder": {
       "hint": "Configuración de marcadores de posición",
@@ -783,19 +783,19 @@
       "name": "Colocación"
     },
     "prefix": {
-      "hint": "Agrega el carácter de prefijo antes del valor de entrada",
+      "hint": "Añade el carácter de prefijo antes del valor de entrada",
       "name": "Prefijo"
     },
     "preload": {
-      "hint": "Cargue los datos por adelantado, antes de abrir el menú desplegable",
+      "hint": "Sube los datos por adelantado, antes de abrir el menú desplegable",
       "name": "Precarga"
     },
     "preventOverflow": {
-      "hint": "Evite el desbordamiento de elementos flotantes",
-      "name": "Evite el desbordamiento"
+      "hint": "Evitar el desbordamiento de los elementos flotantes",
+      "name": "Prevenir el desbordamiento"
     },
     "readOnly": {
-      "hint": "Si es true, el componente será de solo lectura",
+      "hint": "Si es verdadero, el componente será de solo lectura",
       "name": "Solo lectura"
     },
     "showMeridiem": {
@@ -803,7 +803,7 @@
       "name": "Mostrar meridiano"
     },
     "showWeekNumbers": {
-      "hint": "Si mostrar los números de la semana",
+      "hint": "Si se deben mostrar los números de la semana",
       "name": "Mostrar números de la semana"
     },
     "size": {
@@ -811,46 +811,47 @@
       "name": "Tamaño"
     },
     "suffix": {
-      "hint": "Agrega el sufijo después del valor de entrada",
-      "name": "Sufijo "
+      "hint": "Añade el sufijo después del valor de entrada",
+      "name": "Sufijo"
     },
     "target": {
-      "hint": "Dónde mostrar la URL vinculada, como nombre de un contexto de navegación (una pestaña, ventana o <iframe>)",
+      "hint": "Dónde mostrar la URL enlazada, como nombre de un contexto de navegación (una pestaña, ventana o<iframe>)",
       "name": "Objetivo"
     },
     "textAlign": {
       "name": "Alineación"
     },
     "thousandsGroupStyle": {
-      "hint": "Estilo mil (miles): 123,456,789, estilo indio (lakh): 12,34,56,789, estilo chino (wan): 1,2345,6789",
-      "name": "Estilo de grupo de miles"
+      "hint": "Mil estilos (mil): 123.456.789, estilo indio (lakh): 12.3456,789, estilo chino (wan): 1.234.6789",
+      "name": "Estilo grupal de miles"
     },
     "tooltipProps": {
-      "hint": "Utilice información sobre herramientas para este elemento",
-      "tooltip": "Información sobre Herramientas"
+      "hint": "Usa la información sobre herramientas para este elemento",
+      "tooltip": "Información sobre herramientas"
     },
     "unCheckedChildren": {
       "hint": "El texto que se muestra en el estado desmarcado",
       "name": "Texto sin marcar"
     },
     "useDropzone": {
-      "hint": "Use dropzone para el '{{propertyName}}\"propiedad",
-      "name": "Usar dropzone"
+      "hint": "Usa dropzone para la propiedad '{{propertyName}}'",
+      "name": "Usa dropzone"
     },
     "validateWhen": {
-      "hint": "La condición que determina si se ejecuta esta validación",
-      "name": "Validar cuando"
+      "hint": "La condición que determina si se debe ejecutar esta validación",
+      "name": "Validar cuándo"
     },
     "value": {
       "hint": "Valor (controlado)",
       "name": "Valor"
     },
     "withCredentials": {
-      "hint": "Si llevar cookies al cargar solicitudes",
+      "hint": "Si se deben llevar cookies al cargar las solicitudes",
       "name": "Con credenciales"
     }
   },
   "bottomPanel": {
+    "clearLocalization": "Borrar",
     "editCodeAction": "Editar acción de código",
     "editProperty": "Editar propiedad",
     "function": "Valor calculable",
@@ -858,8 +859,7 @@
     "localizationNotSet": "El motor de localización no está configurado",
     "simpleValue": "Valor simple",
     "simpleValueHint": "Edite la propiedad en el panel derecho",
-    "use": "Uso",
-    "clearLocalization": "Borrar"
+    "use": "Utilice"
   },
   "codeActionEditor": {
     "actionNameExists": "La acción con este nombre ya existe",
@@ -870,18 +870,18 @@
   },
   "codeEditor": {
     "codeActionHeader": "Editor de acciones de código",
-    "codePlaceholder": "// ingrese su código aquí",
+    "codePlaceholder": "//introduce tu código aquí",
     "compilationResult": "Resultado de la compilación:",
     "compile": "Compilar",
     "generic": {
       "json": {
-        "title": "Editar datos JSON para"
+        "title": "Editar datos de JSON para"
       }
     },
-    "ok": "OK"
+    "ok": "BIEN"
   },
   "common": {
-    "apply": "Aplicar",
+    "apply": "Aplica",
     "cancel": "Cancelar",
     "clone": "Clon",
     "close": "Cerrar",
@@ -892,10 +892,10 @@
     "test": "Prueba"
   },
   "componentToolbar": {
-    "add": "Añadir nuevo elemento",
+    "add": "Añadir elemento nuevo",
     "after": "Después",
     "before": "Antes",
-    "inside": "En el Interior"
+    "inside": "Interior"
   },
   "componentsList": {
     "categories": {
@@ -907,36 +907,36 @@
     }
   },
   "componentsModal": {
-    "clickToAdd": "Haga clic para agregar control"
+    "clickToAdd": "Haga clic para agregar un control"
   },
   "editJson": "Editar JSON",
   "errorsPanel": {
-    "clear": "Claro",
+    "clear": "Borrar",
     "data": "Datos",
     "errors": "Errores",
-    "reset": "Restablecer",
+    "reset": "Restablecer a los valores predeterminados",
     "validate": "Validar"
   },
   "formsList": {
-    "addNewForm": "Añadir nuevo formulario",
-    "formWithNameExists": "El formulario con este nombre ya existe.",
+    "addNewForm": "Agregar un formulario nuevo",
+    "formWithNameExists": "Ya existe un formulario con este nombre.",
     "noFormsInFormStorage": "Guarde el formulario para que aparezca en la lista de formularios."
   },
   "leftMenu": {
-    "addNewForm": "Agregar un nuevo formulario",
-    "clear": "Claro",
+    "addNewForm": "Agregar un formulario nuevo",
+    "clear": "Borrar",
     "currentFormName": "El nombre del formulario actual",
     "download": "Descargar",
-    "enterFormName": "Por favor, introduzca el nombre del formulario",
+    "enterFormName": "Introduzca el nombre del formulario",
     "exportForms": "Formularios de exportación",
-    "exportFormsError": "Error al exportar formularios! Ver los registros en la consola del navegador",
+    "exportFormsError": "¡No se pudieron exportar los formularios! Consulte los registros en la consola del navegador",
     "exportFormsSuccess": "Formularios exportados",
     "exportJsonFormSchema": "Exportar esquema de formulario JSON",
     "formNamePlaceholder": "Mi hermosa forma",
-    "formSaveError": "Error al guardar el formulario! Ver los registros en la consola del navegador",
-    "formSaved": "El formulario se guarda",
+    "formSaveError": "¡No se pudo guardar el formulario! Consulte los registros en la consola del navegador",
+    "formSaved": "El formulario está guardado",
     "importForms": "Formularios de importación",
-    "importFormsError": "Error al importar formularios! Ver los registros en la consola del navegador",
+    "importFormsError": "¡No se pudieron importar los formularios! Consulte los registros en la consola del navegador",
     "importFormsSuccess": "Formularios importados",
     "menu": "Menú",
     "print": "Imprimir",
@@ -945,7 +945,7 @@
     "settings": "Ajustes",
     "translation": "Traducción",
     "undo": "Deshacer",
-    "upload": "Subir",
+    "upload": "Cargar",
     "validateForm": "Validar formulario"
   },
   "leftPanel": {
@@ -955,7 +955,7 @@
       "formValidator": "Validador de formularios",
       "language": "Ajustes de idioma",
       "modal": "Modal",
-      "tooltip": "Información sobre Herramientas"
+      "tooltip": "Información sobre herramientas"
     },
     "sectionName": {
       "components": "Componentes",
@@ -965,51 +965,51 @@
     }
   },
   "license": {
-    "errDomain": "Su licencia permite solo los siguientes dominios: {{Domain}}",
-    "errElectron": "Su licencia no permite la ejecución en Electrónica",
-    "errEndDate": "Licencia caducada {{licenseEndDate}}",
-    "errEndDateStrict": "Licencia caducada {{licenseEndDate}}",
+    "errDomain": "Su licencia solo permite los siguientes dominios: {{Domain}}",
+    "errElectron": "Su licencia no permite ejecutar en Electron",
+    "errEndDate": "La licencia ha caducado {{licenseEndDate}}",
+    "errEndDateStrict": "La licencia ha caducado {{licenseEndDate}}",
     "errLicenseInvalid": "La clave de licencia proporcionada no es válida.",
-    "errNoKey": "No se proporciona clave de licencia.",
-    "ftComponentPreset": "Su licencia no permite Ajustes preestablecidos de componentes",
+    "errNoKey": "No se proporciona ninguna clave de licencia.",
+    "ftComponentPreset": "Su licencia no permite ajustes preestablecidos de componentes",
     "ftComponentQrCode": "Su licencia no permite el uso del componente de código QR",
     "ftComponentRepeater": "Su licencia no permite el uso del repetidor",
-    "ftComponentSignature": "Su licencia no permite el uso del componente de firma",
-    "ftComponentTable": "Su licencia no permite el uso del componente Tabla",
+    "ftComponentSignature": "Su licencia no permite el uso del componente Signature",
+    "ftComponentTable": "Su licencia no permite el uso del componente Table",
     "ftComponentTemplates": "Su licencia no permite el uso de plantillas",
-    "ftDesignerCustomization": "Su licencia no permite la personalización del Diseñador",
-    "ftLocaleCount": "Su licencia permite la traducción solo para {{ftLocaleCount}} idiomas",
-    "mismatchMessage": "Está utilizando funciones que no están incluidas en su licencia. El producto funciona en modo de \"uso no comercial\". Cambie su licencia para usar las siguientes opciones:"
+    "ftDesignerCustomization": "Su licencia no permite la personalización del diseñador",
+    "ftLocaleCount": "Su licencia permite la traducción solo para los idiomas {{ftLocaleCount}}",
+    "mismatchMessage": "Está utilizando funciones que no están incluidas en su licencia. El producto funciona en modo de «uso no comercial». Cambie la licencia para usar las siguientes opciones:"
   },
   "localization": {
     "messageIsNull": "El mensaje de localización es nulo",
-    "messageNotFound": "Mensaje de localización no encontrado"
+    "messageNotFound": "No se encontró el mensaje de localización"
   },
   "presetComponent": {
     "category": "Categoría",
-    "createPreset": "Crear un componente preestablecido",
-    "enterPresetName": "Por favor, introduzca un nombre preestablecido",
+    "createPreset": "Creación de un componente preestablecido",
+    "enterPresetName": "Introduzca un nombre preestablecido",
     "name": "Nombre",
-    "nameExists": "Ya existe un ajuste preestablecido o componente con este nombre.",
-    "namePlaceholder": "Introduzca un nombre preestablecido"
+    "nameExists": "Ya existe un ajuste preestablecido o un componente con este nombre.",
+    "namePlaceholder": "Introducir un nombre preestablecido"
   },
   "promptDialog": {
     "cancel": "Cancelar",
-    "ok": "OK"
+    "ok": "BIEN"
   },
   "propertiesEditor": {
-    "applyKey": "Aplicar cambios de clave",
+    "applyKey": "Aplicar cambios clave",
     "clean": "Restablecer a los valores predeterminados",
     "codeButton": {
       "editCalculable": "Editar calculable",
       "editLocalizable": "Editar localización",
-      "hintCalculable": "Hacer calculable esta propiedad",
-      "hintCalculableAndLocalizable": "Haga que esta propiedad sea calculable o localice",
+      "hintCalculable": "Hacer que esta propiedad sea calculable",
+      "hintCalculableAndLocalizable": "Hacer que esta propiedad sea calculable o localizable",
       "hintLocalizable": "Localizar esta propiedad",
       "neitherCalculableNorLocalizable": "Ni calculable ni localizable"
     },
     "keyMustBeUnique": "La clave debe ser única",
-    "keyMustNotBeEmpty": "La clave no debe estar vacía",
+    "keyMustNotBeEmpty": "La llave no debe estar vacía",
     "removeRow": "Eliminar una fila",
     "sectionName": {
       "actions": "Acciones",
@@ -1018,11 +1018,11 @@
       "main": "Principal",
       "rules": "Reglas",
       "style": "Estilo",
-      "withTarget": "Con Objetivo",
-      "withoutTarget": "Sin Objetivo"
+      "withTarget": "Con Target",
+      "withoutTarget": "Sin objetivo"
     },
-    "selectElementForEdit": "Seleccionar elemento en el formulario para editar propiedades",
-    "setInputHint": "Presione Entrar para agregar un valor",
+    "selectElementForEdit": "Seleccione un elemento en el formulario para editar las propiedades",
+    "setInputHint": "Pulse Entrar para añadir un valor",
     "subSection": {
       "additionalProperties": "Propiedades adicionales"
     }
@@ -1033,102 +1033,102 @@
       "desktop": "Escritorio",
       "mobile": "Móvil",
       "orientation": "Orientación",
-      "tablet": "Comprimido",
+      "tablet": "Tableta",
       "viewer": "Editar"
     },
     "toggleTheme": "Alternar tema"
   },
   "searchForm": {
-    "search": "Búsqueda..."
+    "search": "Buscar..."
   },
   "style": {
-    "any": "Cualquiera",
+    "any": "Cualquier",
     "component": "Componente",
     "componentHint": "Estilos que se aplican al componente",
     "componentTab": {
-      "hint": "Estilos CSS que se aplican al componente a través del'Nombre de clase'",
+      "hint": "Estilos CSS que se aplican al componente mediante el 'className'",
       "name": "Componente"
     },
     "desktop": "Escritorio",
-    "forDevice": "Para el dispositivo:",
+    "forDevice": "Para dispositivo",
     "header": {
-      "hint": "Estilos CSS que se aplican a través de la propiedad 'className' ",
-      "name": "Estilos para className"
+      "hint": "Estilos CSS que se aplican mediante la propiedad 'className'",
+      "name": "Estilos para ClassName"
     },
     "mobile": "Móvil",
-    "other": "Los demás",
-    "tablet": "Comprimido",
-    "wrapper": "Envoltura",
+    "other": "Otros",
+    "tablet": "Tableta",
+    "wrapper": "Envoltorio",
     "wrapperHint": "Estilos que se aplican al contenedor de componentes",
     "wrapperTab": {
-      "hint": "Estilos CSS que se aplican al contenedor del componente a través del 'Nombre de clase'",
-      "name": "Envoltura"
+      "hint": "Estilos CSS que se aplican al contenedor de componentes a través del 'className'",
+      "name": "Envoltorio"
     }
   },
   "styleEditor": {
     "componentTab": {
-      "hint": "Estilos CSS que se aplican al componente a través de la propiedad 'style'",
+      "hint": "Estilos CSS que se aplican al componente mediante la propiedad 'style'",
       "name": "Componente"
     },
     "header": {
-      "hint": "Estilos CSS que se aplican a través de la propiedad 'style'",
+      "hint": "Estilos CSS que se aplican mediante la propiedad 'style'",
       "name": "Estilos en línea"
     },
     "wrapperTab": {
-      "hint": "Estilos CSS que se aplican al contenedor del componente a través de la propiedad 'className' ",
-      "name": "Envoltura"
+      "hint": "Estilos CSS que se aplican al contenedor de componentes mediante la propiedad 'className'",
+      "name": "Envoltorio"
     }
   },
   "testingEditor": {
     "autorun": "Ejecución automática",
     "compilationOk": "Resultado de la compilación: OK",
-    "hasNotReturnedValue": "No ha devuelto valor",
+    "hasNotReturnedValue": "No ha devuelto el valor",
     "run": "Corre",
     "testFormData": "Datos del formulario de prueba"
   },
   "toolbar": {
     "cloneComponent": "Componente de clonación",
     "elements": "Elementos",
-    "notFound": "No encontrado",
+    "notFound": "No se ha encontrado",
     "removeComponent": "Eliminar componente",
-    "reset": "Restablecer"
+    "reset": "Reiniciar"
   },
   "tree": {
-    "collapse": "Contraer todo",
+    "collapse": "Colapsar todo",
     "expand": "Expandir todo"
   },
   "validation": {
-    "addRule": "Añadir regla",
+    "addRule": "Agregar una regla de validación",
     "chooseValidation": "Elige tu tipo",
-    "editCustomValidationCode": "Editar código de validación personalizado para el componente",
-    "editFormValidatorCode": "Editar código de validación del formulario",
+    "editCustomValidationCode": "Editar el código de validación personalizado para el componente",
+    "editFormValidatorCode": "Editar el código de validación del formulario",
     "formErrors": "Errores de formulario",
     "rule": {
       "code": "Código",
       "custom": "Personalizado",
-      "datetime": "Fecha y Hora",
-      "email": "Correo Electrónico",
+      "datetime": "Fecha/hora",
+      "email": "Correo electrónico",
       "endsWith": "Termina con",
-      "falsy": "Falso",
-      "finite": "Finito",
+      "falsy": "Falsa",
+      "finite": "Finita",
       "includes": "Incluye",
       "integer": "Entero",
-      "ip": "Pi",
+      "ip": "IP",
       "length": "Longitud",
       "lessThan": "Menos de",
-      "max": "Máx.",
-      "min": "Mín.",
+      "max": "Máx",
+      "min": "Mín",
       "moreThan": "Más de",
       "multipleOf": "Múltiplo de",
       "nonEmpty": "No vacío",
-      "regex": "Expresiones regulares",
-      "required": "Requerido",
-      "startsWith": "Comienza con",
-      "truthy": "Verdad",
-      "url": "Url",
+      "regex": "Regex",
+      "required": "Necesario",
+      "startsWith": "Empieza con",
+      "truthy": "Verdadero",
+      "url": "URL",
       "uuid": "Uuid"
     },
-    "ruleNotFound": "Regla no encontrada o no conectada",
+    "ruleNotFound": "No se ha encontrado la regla o no está conectada",
     "showFormErrors": "Mostrar errores de formulario"
   }
 }

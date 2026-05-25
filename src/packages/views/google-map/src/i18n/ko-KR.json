@@ -6,68 +6,68 @@
   },
   "components": {
     "GoogleMap": {
-      "description": "구글지도를 표시하는 구성 요소",
-      "name": "구글 지도",
+      "description": "구글 맵을 표시하는 컴포넌트",
+      "name": "구글 맵",
       "props": {
         "addMarkerOnSearch": {
-          "description": "검색에 마커를 추가할지 여부",
+          "description": "검색에 마커 추가 여부",
           "name": "검색에 마커 추가"
         },
         "allowChangingMarkers": {
-          "description": "이 옵션을 선택하면 사용자가 마커를 변경할 수 있습니다",
+          "description": "체크하면 사용자가 마커를 변경할 수 있습니다.",
           "name": "마커 변경 허용"
         },
         "allowMultipleMarkers": {
-          "description": "여러 마커",
-          "name": "여러 마커 허용"
+          "description": "다중 마커",
+          "name": "다중 마커 허용"
         },
         "apiKey": {
-          "description": "구글 맵 키",
-          "name": "키"
+          "description": "구글 맵 API 키",
+          "name": "API 키"
         },
         "collisionBehavior": {
-          "description": "마커 충돌 동작",
-          "name": "충돌 동작"
+          "description": "마커의 충돌 동작",
+          "name": "충돌 거동"
         },
         "colorScheme": {
           "description": "사용할 색 구성표",
-          "name": "색 구성표"
+          "name": "색상 구성표"
         },
         "gestureHandling": {
-          "description": "사용할 제스처 처리",
-          "name": "제스처 처리"
+          "description": "사용할 제스처 핸들링",
+          "name": "제스처 핸들링"
         },
         "height": {
-          "description": "지도의 높이",
+          "description": "맵의 높이",
           "name": "높이"
         },
         "label": {
-          "description": "지도 레이블",
-          "name": "라벨"
+          "description": "맵 라벨",
+          "name": "레이블"
         },
         "language": {
           "description": "사용할 언어",
           "name": "언어"
         },
         "latitude": {
-          "description": "중심점의 위도",
+          "description": "중심점의 위도입니다.",
           "name": "위도"
         },
         "longitude": {
-          "description": "중심점의 경도",
+          "description": "중심점의 경도입니다.",
           "name": "경도"
         },
         "mapControlPosition": {
-          "description": "지도 컨트롤의 위치",
-          "name": "지도 제어 위치"
+          "description": "맵 컨트롤의 위치",
+          "name": "맵 제어 위치"
         },
         "mapId": {
-          "description": "맵 아이디는 특정 맵 스타일 또는 피처와 연관된 식별자입니다",
-          "name": "지도 아이디"
+          "description": "맵 ID는 특정 맵 스타일 또는 기능과 관련된 식별자입니다.",
+          "name": "맵 ID"
         },
         "mapTypeId": {
           "description": "사용할 기본 맵 유형",
-          "name": "지도 유형"
+          "name": "맵 유형"
         },
         "markerWindowTitle": {
           "description": "마커 창의 제목",
@@ -86,20 +86,20 @@
           "name": "마커 캡션 제거"
         },
         "searchPlaceholder": {
-          "description": "맵 검색 입력에 대한 자리 표시자 텍스트",
-          "name": "검색 자리 표시 자"
+          "description": "지도 검색 입력의 자리 표시자 텍스트",
+          "name": "플레이스홀더 검색"
         },
         "showMapControl": {
           "description": "맵 컨트롤 표시 여부",
-          "name": "지도 제어 표시"
+          "name": "맵 컨트롤 보기"
         },
         "width": {
-          "description": "지도의 폭",
-          "name": "폭"
+          "description": "맵의 너비",
+          "name": "너비"
         },
         "zoom": {
           "description": "줌 레벨",
-          "name": "확대/축소"
+          "name": "줌"
         }
       }
     }

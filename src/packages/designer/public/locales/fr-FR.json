@@ -1,16 +1,16 @@
 {
   "GoogleMap": {
     "addMarkerOnSearch": {
-      "hint": "Indique s'il faut ajouter un marqueur sur la recherche."
+      "hint": "S'il faut ajouter un marqueur lors de la recherche."
     },
     "allowChangingMarkers": {
-      "hint": "Si coché, l'utilisateur peut modifier les marqueurs."
+      "hint": "Si cette case est cochée, l'utilisateur peut modifier les marqueurs."
     },
     "allowMultipleMarkers": {
       "hint": "Marqueurs multiples"
     },
     "apiKey": {
-      "hint": "Clé API Google Maps. Enregistrez le formulaire et actualisez la page pour appliquer les modifications.",
+      "hint": "Clé d'API Google Maps. Enregistrez le formulaire et actualisez la page pour appliquer les modifications.",
       "name": "Clé API"
     },
     "collisionBehavior": {
@@ -20,7 +20,7 @@
       "hint": "La palette de couleurs à utiliser."
     },
     "gestureHandling": {
-      "hint": "La manipulation gestuelle à utiliser."
+      "hint": "La gestion des gestes à utiliser."
     },
     "language": {
       "hint": "La langue à utiliser."
@@ -32,19 +32,19 @@
       "hint": "Longitude du point central"
     },
     "mapControlPosition": {
-      "hint": "La position du contrôle de la carte."
+      "hint": "Position du contrôle cartographique."
     },
     "mapId": {
-      "hint": "L'ID de carte est un identifiant associé à un style de carte ou à une entité spécifique.",
-      "name": "Identifiant de la CARTE"
+      "hint": "L'ID de carte est un identifiant associé à un style de carte ou à une caractéristique spécifique.",
+      "name": "Identifiant de la carte"
     },
     "mapTypeId": {
-      "hint": "Le type de carte par défaut à utiliser.",
+      "hint": "Type de carte par défaut à utiliser.",
       "name": "Type de carte"
     },
     "markerWindowTitle": {
-      "hint": "Le titre de la fenêtre de marqueur.",
-      "name": "Titre de la fenêtre de marqueur"
+      "hint": "Titre de la fenêtre du marqueur.",
+      "name": "Titre de la fenêtre Marker"
     },
     "markers": {
       "hint": "Coordonnées des marqueurs"
@@ -53,12 +53,12 @@
       "hint": "Le code de région à utiliser."
     },
     "removeMarkerCaption": {
-      "hint": "La légende sur le bouton de suppression du marqueur.",
+      "hint": "La légende du bouton de suppression du marqueur.",
       "name": "Supprimer la légende du marqueur"
     },
     "searchPlaceholder": {
-      "hint": "Texte d'espace réservé pour l'entrée de recherche de carte.",
-      "name": "Espace réservé de recherche"
+      "hint": "Texte d'espace réservé pour la saisie de la recherche cartographique.",
+      "name": "Espace réservé à la recherche"
     },
     "showMapControl": {
       "hint": "Indique s'il faut afficher le contrôle de la carte."
@@ -76,11 +76,11 @@
   "RichTextEditor": {
     "modules": {
       "hint": "Permet de personnaliser le comportement et les fonctionnalités de l'éditeur. Lisez la documentation pour plus d'informations.",
-      "name": "Les Modules"
+      "name": "Modules"
     },
     "toolbarOptions": {
-      "hint": "Groupes de boutons à afficher sur la barre d'outils",
-      "name": "Options de la barre d'outils"
+      "hint": "Groupes de boutons à afficher dans la barre d'outils",
+      "name": "Options de barre d'outils"
     }
   },
   "RsAutoComplete": {
@@ -97,68 +97,68 @@
       "name": "Valeur par défaut"
     },
     "disabled": {
-      "hint": "Si désactivé sélectionnez",
+      "hint": "Si c'est désactivé, sélectionnez",
       "name": "Désactivé"
     },
     "filterBy": {
-      "hint": "Règles de filtrage personnalisées (n'affichera que les éléments dont la valeur est une sous-chaîne par défaut)",
+      "hint": "Règles de filtrage personnalisées (affiche uniquement les éléments dont la valeur est une sous-chaîne par défaut)",
       "name": "Filtrer par"
     },
     "label": {
       "hint": "L'étiquette du composant",
-      "name": "Étiquette"
+      "name": "étiquette"
     },
     "menuClassName": {
-      "hint": "Une classe CSS à appliquer au Menu DOM",
+      "hint": "Une classe CSS à appliquer au menu DOM",
       "name": "Nom de la classe de menu"
     },
     "onChange": {
       "hint": "Appelé lors de la sélection d'une option ou d'un changement de valeur d'entrée, ou lorsque la valeur d'entrée est modifiée",
-      "name": "Changement"
+      "name": "Sur le changement"
     },
     "onClose": {
       "hint": "Rappel déclenché lorsqu'il est masqué",
-      "name": "Fermer"
+      "name": "À la fermeture"
     },
     "onEnter": {
-      "hint": "Rappel déclenché avant les transitions de superposition dans",
-      "name": "Entrer"
+      "hint": "Rappel déclenché avant la transition de la superposition dans",
+      "name": "sur Enter"
     },
     "onEntered": {
-      "hint": "Rappel déclenché après la fin de la transition de la superposition",
-      "name": "Onentré"
+      "hint": "Rappel déclenché une fois la transition de la superposition terminée dans",
+      "name": "sur Entré"
     },
     "onEntering": {
-      "hint": "Rappel déclenché lorsque la superposition commence à effectuer une transition",
-      "name": "Une entrée"
+      "hint": "Rappel déclenché lorsque la superposition commence à faire la transition dans",
+      "name": "À l'entrée"
     },
     "onExit": {
-      "hint": "Rappel déclenché juste avant la sortie de la superposition",
-      "name": "OnExit"
+      "hint": "Le rappel a été déclenché juste avant la fin de la superposition",
+      "name": "À la sortie"
     },
     "onExited": {
-      "hint": "Rappel déclenché après la fin de la transition de la superposition",
-      "name": "Surexcité"
+      "hint": "Rappel déclenché une fois la transition de la superposition terminée",
+      "name": "L'un est sorti"
     },
     "onExiting": {
       "hint": "Rappel déclenché lorsque la superposition commence à sortir",
-      "name": "Sortie"
+      "name": "Une sortie"
     },
     "onSelect": {
       "hint": "Appelé lorsqu'une option est sélectionnée",
-      "name": "Sélectionner"
+      "name": "Sur Select"
     },
     "placeholder": {
-      "hint": "L'espace réservé de l'entrée",
-      "name": "Espace Réservé"
+      "hint": "L'espace réservé à la saisie",
+      "name": "Espace réservé"
     },
     "renderMenu": {
-      "hint": "Personnalisation de la liste des menus de rendu",
-      "name": "Menu Rendu"
+      "hint": "Personnalisation de la liste du menu de rendu",
+      "name": "Menu de rendu"
     },
     "renderMenuItem": {
-      "hint": "Éléments de menu de rendu personnalisés",
-      "name": "Élément de menu Rendu"
+      "hint": "Éléments du menu de rendu personnalisé",
+      "name": "Élément de menu Render"
     },
     "selectOnEnter": {
       "hint": "Lorsqu'elle est définie sur false, la fonction de sélection de la touche Entrée n'est pas valide",
@@ -185,36 +185,36 @@
       "name": "Aligner"
     },
     "colSpan": {
-      "hint": "Fusionne les cellules de colonne à fusionner lorsque la valeur de la \"clé de données\" de la colonne fusionnée est nulle ou indéfinie",
-      "name": "Portée du col"
+      "hint": "Fusionne les cellules de colonne à fusionner lorsque la valeur « Clé de données » de la colonne fusionnée est nulle ou non définie",
+      "name": "Fusion de colonnes"
     },
     "fixed": {
       "hint": "Colonne fixe",
-      "name": "Fixe"
+      "name": "Fixé"
     },
     "flexGrow": {
-      "hint": "Définir la largeur de la colonne s'ajuste automatiquement, lorsque la valeur 'Flex grow' ne peut pas définir les propriétés 'Redimensionnable' et 'Largeur' ",
-      "name": "Croissance flexible"
+      "hint": "Régler la largeur de la colonne s'ajuste automatiquement, lorsque cette option est définie, « Flex grow » ne peut pas définir les propriétés « Resizable » et « Width »",
+      "name": "Flex Grow"
     },
     "fullText": {
-      "hint": "Indique s'il faut afficher le texte intégral du contenu de la cellule lorsque la souris est survolée",
+      "hint": "Afficher ou non le texte intégral du contenu de la cellule lorsque le pointeur de la souris est placé",
       "name": "Texte intégral"
     },
     "minWidth": {
-      "hint": "Lorsque vous utilisez 'Flex grow' , vous pouvez définir une largeur minimale",
-      "name": "Largeur minimum"
+      "hint": "Lorsque vous utilisez « Flex grow », vous pouvez définir une largeur minimale",
+      "name": "Largeur minimale"
     },
     "resizable": {
-      "hint": "Largeur de colonne redimensionnable personnalisable",
+      "hint": "Largeur de colonne de redimensionnement personnalisable",
       "name": "Redimensionnable"
     },
     "rowSpan": {
-      "hint": "Fusionne les lignes sur la colonne spécifiée",
-      "name": "Envergure de rangée"
+      "hint": "Fusionne les lignes de la colonne spécifiée",
+      "name": "Portée de lignes"
     },
     "sortable": {
-      "hint": "Triables",
-      "name": "Triables"
+      "hint": "Triable",
+      "name": "Triable"
     },
     "verticalAlign": {
       "hint": "Alignement vertical",
@@ -231,11 +231,11 @@
       "name": "Aligner"
     },
     "fixed": {
-      "hint": "Groupe de colonnes fixe",
-      "name": "Fixe"
+      "hint": "Groupe de colonnes fixes",
+      "name": "Fixé"
     },
     "groupHeaderHeight": {
-      "hint": "La hauteur de l'en-tête du groupe de cellules fusionné",
+      "hint": "Hauteur de l'en-tête du groupe de cellules fusionné",
       "name": "Hauteur de l'en-tête du groupe"
     },
     "header": {
@@ -250,88 +250,88 @@
   "RsDatePicker": {
     "format": {
       "hint": "Format de la date lors du rendu dans l'entrée",
-      "name": "Format"
+      "name": "Formater"
     }
   },
   "RsDivider": {
     "children": {
-      "hint": "Placez le texte sur la ligne de séparation",
+      "hint": "Placer le texte sur la ligne de démarcation",
       "name": "Contenu"
     },
     "vertical": {
-      "hint": "Ligne de séparation verticale",
+      "hint": "Ligne de démarcation verticale",
       "name": "Verticale"
     }
   },
   "RsHeaderCell": {
     "children": {
-      "hint": "En-tête de colonne de tableau",
+      "hint": "En-tête de colonne du tableau",
       "name": "Contenu"
     }
   },
   "RsInput": {
     "showPasswordAriaLabel": {
-      "hint": "Valeur de l'attribut aria-label pour le bouton afficher le mot de passe lorsque l'entrée est en mode masque de mot de passe.",
-      "name": "Étiquette ARIA pour afficher le bouton de mot de passe"
+      "hint": "Valeur de l'attribut aria-label pour le bouton Afficher le mot de passe lorsque la saisie est en mode masque de mot de passe.",
+      "name": "Étiquette ARIA pour le bouton Afficher le mot de passe"
     }
   },
   "RsMenu": {
     "itemsAs": {
-      "hint": "Élément HTML à afficher élément de menu",
-      "name": "Articles Comme"
+      "hint": "Elément HTML pour afficher l'élément de menu",
+      "name": "Articles tels que"
     }
   },
   "RsModal": {
     "autoFocus": {
-      "hint": "Lorsqu'il est défini sur true, le modal est ouvert et se concentre automatiquement sur lui - même, accessible aux lecteurs d'écran",
+      "hint": "Lorsqu'il est réglé sur true, le Modal s'ouvre et se concentre automatiquement sur lui-même, accessible aux lecteurs d'écran",
       "name": "Mise au point automatique"
     },
     "backdrop": {
-      "hint": "Lorsqu'il est défini sur true, le modal affichera l'arrière-plan lors de son ouverture. Cliquer sur l'arrière-plan fermera le Modal",
+      "hint": "Lorsqu'il est défini sur true, le Modal affiche l'arrière-plan lorsqu'il est ouvert. Cliquez sur l'arrière-plan pour fermer le modal",
       "name": "Toile de fond"
     },
     "backdropClassName": {
-      "hint": "Ajoutez un nom de classe supplémentaire facultatif à .modal-backdrop Cela pourrait finir par ressembler à class= \"modal-backdrop foo-modal-backdrop in\"",
-      "name": "Nom de classe de toile de fond"
+      "hint": "Ajoutez un nom de classe supplémentaire facultatif à .modal-backdrop Il pourrait finir par ressembler à class=\"modal-backdrop foo-modal-backdrop in \"",
+      "name": "Nom de classe en toile de fond"
     },
     "classPrefix": {
       "hint": "Le préfixe de la classe CSS du composant",
       "name": "Préfixe de classe CSS"
     },
     "dialogClassName": {
-      "hint": "Classe CSS appliquée aux nœuds DOM de dialogue",
+      "hint": "Classe CSS appliquée aux nœuds Dialog DOM",
       "name": "Classe CSS pour la boîte de dialogue"
     },
     "enforceFocus": {
-      "hint": "Lorsqu'il est défini sur true, Modal empêchera le focus de quitter lorsqu'il est ouvert, ce qui facilitera l'accès du lecteur d'écran secondaire",
-      "name": "Renforcer la concentration"
+      "hint": "Lorsqu'il est réglé sur true, Modal empêche le focus de sortir une fois ouvert, ce qui facilite l'accès au lecteur d'écran secondaire",
+      "name": "Renforcez la concentration"
     },
     "keyboard": {
-      "hint": "Fermer le modal lorsque la touche Échap est enfoncée",
-      "name": "Proche de Esc"
+      "hint": "Fermer Modal lorsque la touche Esc est enfoncée",
+      "name": "À proximité de Esc"
     },
     "overflow": {
-      "hint": "Règle automatiquement la hauteur lorsque le contenu du corps est trop long",
+      "hint": "Définit automatiquement la hauteur lorsque le contenu du corps est trop long",
       "name": "Débordement"
     },
     "size": {
-      "hint": "Déterminer la largeur du modal",
+      "hint": "Déterminez la largeur du modal",
       "name": "Taille"
     }
   },
   "RsModalLayout": {
     "closeButton": {
-      "hint": "Bouton de fermeture de l'affichage",
+      "hint": "Bouton de fermeture de l'écran",
       "name": "Bouton de fermeture"
     }
   },
   "RsPlaceholderGraph": {
     "active": {
-      "hint": "Indique si l'espace réservé est actif",
+      "hint": "Si l'espace réservé est actif",
       "name": "Actif"
     },
     "height": {
-      "hint": "La hauteur du graphique",
+      "hint": "Hauteur du graphique",
       "name": "Hauteur"
     },
     "width": {
@@ -341,7 +341,7 @@
   },
   "RsPlaceholderGrid": {
     "active": {
-      "hint": "Indique si l'espace réservé est actif",
+      "hint": "Si l'espace réservé est actif",
       "name": "Actif"
     },
     "columns": {
@@ -349,21 +349,21 @@
       "name": "Colonnes"
     },
     "rowHeight": {
-      "hint": "La hauteur de la rangée",
-      "name": "Hauteur de rangée"
+      "hint": "Hauteur de la ligne",
+      "name": "Hauteur de ligne"
     },
     "rowSpacing": {
-      "hint": "L'espacement entre les lignes",
-      "name": "Espacement des lignes"
+      "hint": "L'espacement entre les rangées",
+      "name": "Espacement des rangs"
     },
     "rows": {
       "hint": "Le nombre de lignes",
-      "name": "Rangées"
+      "name": "Lignes"
     }
   },
   "RsPlaceholderParagraph": {
     "active": {
-      "hint": "Indique si l'espace réservé est actif",
+      "hint": "Si l'espace réservé est actif",
       "name": "Actif"
     },
     "graph": {
@@ -371,26 +371,26 @@
       "name": "Graphique"
     },
     "rowHeight": {
-      "hint": "La hauteur de la rangée",
-      "name": "Hauteur de rangée"
+      "hint": "Hauteur de la ligne",
+      "name": "Hauteur de ligne"
     },
     "rowSpacing": {
-      "hint": "L'espacement entre les lignes",
-      "name": "Espacement des lignes"
+      "hint": "L'espacement entre les rangées",
+      "name": "Espacement des rangs"
     },
     "rows": {
       "hint": "Le nombre de lignes",
-      "name": "Rangées"
+      "name": "Lignes"
     }
   },
   "RsTable": {
     "affixHeader": {
       "hint": "Apposez l'en-tête du tableau à l'emplacement spécifié sur la page",
-      "name": "Apposer l'en-tête"
+      "name": "En-tête d'affixe"
     },
     "affixHorizontalScrollbar": {
-      "hint": "Apposez la barre de défilement horizontale du tableau à la position spécifiée sur la page",
-      "name": "Apposer une barre de défilement horizontale"
+      "hint": "Fixez la barre de défilement horizontale du tableau à la position spécifiée sur la page",
+      "name": "Ajout d'une barre de défilement horizontale"
     },
     "autoHeight": {
       "hint": "La hauteur du tableau sera automatiquement étendue en fonction du nombre de lignes de données et aucune barre de défilement verticale n'apparaîtra",
@@ -405,7 +405,7 @@
       "name": "Cellule bordée"
     },
     "data": {
-      "hint": "Données de tableau",
+      "hint": "Données du tableau",
       "name": "Données"
     },
     "defaultSortType": {
@@ -413,7 +413,7 @@
       "name": "Type de tri par défaut"
     },
     "fillHeight": {
-      "hint": "Forcer la hauteur de la table à être égale à la hauteur de son conteneur parent. Ne peut pas être utilisé avec \"Hauteur automatique\"",
+      "hint": "Forcez la hauteur de la table à être égale à la hauteur de son conteneur parent. Ne peut pas être utilisé avec « Hauteur automatique »",
       "name": "Hauteur de remplissage"
     },
     "headerHeight": {
@@ -426,7 +426,7 @@
     },
     "hover": {
       "hint": "La ligne du tableau a un effet de survol de la souris",
-      "name": "Survoler"
+      "name": "Survolez"
     },
     "loading": {
       "hint": "Afficher le chargement",
@@ -438,30 +438,30 @@
     },
     "minHeight": {
       "hint": "Hauteur minimale",
-      "name": "Taille minimum"
+      "name": "Hauteur minimale"
     },
     "rowClassName": {
-      "hint": "Ajouter un nom de classe supplémentaire facultatif à la ligne",
-      "name": "Nom de la classe de ligne"
+      "hint": "Ajoutez un nom de classe supplémentaire facultatif à la ligne",
+      "name": "Nom de la classe de lignes"
     },
     "rowHeight": {
-      "hint": "Hauteur de rangée",
-      "name": "Hauteur de rangée"
+      "hint": "Hauteur de ligne",
+      "name": "Hauteur de ligne"
     },
     "rowKey": {
-      "hint": "Chaque ligne correspond à la clé unique dans les données",
-      "name": "Clé de ligne"
+      "hint": "Chaque ligne correspond à la clé unique des données",
+      "name": "Touche de ligne"
     },
     "shouldUpdateScroll": {
-      "hint": "Indique s'il faut mettre à jour le défilement après la mise à jour de la taille de la table",
-      "name": "Devrait mettre à jour le défilement"
+      "hint": "S'il faut mettre à jour le défilement après la mise à jour de la taille du tableau",
+      "name": "Devrait mettre à jour le scroll"
     },
     "showHeader": {
-      "hint": "En-tête d'affichage",
+      "hint": "Afficher l'en-tête",
       "name": "Afficher l'en-tête"
     },
     "sortColumn": {
-      "hint": "Trier le nom de la colonne",
+      "hint": "Nom de colonne de tri",
       "name": "Colonne de tri"
     },
     "sortType": {
@@ -477,62 +477,62 @@
       "name": "Largeur"
     },
     "wordWrap": {
-      "hint": "Indique s'il faut afficher des sauts de ligne là où le texte déborde de sa zone de contenu",
-      "name": "Retour à la ligne"
+      "hint": "S'il faut afficher des sauts de ligne lorsque le texte dépasse sa zone de contenu",
+      "name": "Enveloppe de mots"
     }
   },
   "RsTimePicker": {
     "format": {
       "hint": "Format de l'heure lors du rendu dans l'entrée",
-      "name": "Format"
+      "name": "Formater"
     }
   },
   "RsWizard": {
     "activeIndex": {
-      "hint": "L'indice de pas actif",
+      "hint": "L'indice des étapes actives",
       "name": "Indice actif"
     },
     "finishButtonLabel": {
-      "hint": "L'étiquette du bouton de finition",
-      "name": "Étiquette du bouton de finition"
+      "hint": "L'étiquette du bouton d'arrivée",
+      "name": "Libellé du bouton Terminer"
     },
     "nextButtonLabel": {
       "hint": "L'étiquette du bouton suivant",
-      "name": "Étiquette du bouton suivant"
+      "name": "Libellé du bouton suivant"
     },
     "prevButtonLabel": {
-      "hint": "L'étiquette du bouton précédent",
-      "name": "Étiquette du bouton précédent"
+      "hint": "Le libellé du bouton précédent",
+      "name": "Libellé du bouton précédent"
     },
     "showSteps": {
-      "hint": "Si vrai, les étapes seront affichées",
+      "hint": "Si c'est vrai, les étapes seront affichées",
       "name": "Afficher les étapes"
     },
     "showStepsLabels": {
-      "hint": "Si vrai, les étiquettes des étapes seront affichées",
-      "name": "Afficher les étiquettes des étapes"
+      "hint": "Si c'est vrai, les étiquettes des étapes seront affichées",
+      "name": "Afficher les libellés des étapes"
     },
     "steps": {
       "hint": "Les étapes de l'assistant",
       "name": "Étapes"
     },
     "stepsNavigation": {
-      "hint": "Détermine les étapes disponibles pour la navigation en cliquant sur",
+      "hint": "Détermine les étapes disponibles pour la navigation en cliquant",
       "name": "Navigation par étapes"
     },
     "validateOnFinish": {
-      "hint": "Si vrai, l'assistant sera validé avant de terminer l'assistant",
-      "name": "Valider à l'arrivée"
+      "hint": "Si c'est vrai, l'assistant sera validé avant de terminer l'assistant",
+      "name": "Valider à la fin"
     },
     "validateOnNext": {
-      "hint": "Si vrai, l'étape sera validée avant de passer à l'étape suivante",
-      "name": "Valider au suivant"
+      "hint": "Si c'est vrai, l'étape sera validée avant de passer à l'étape suivante",
+      "name": "Validez la prochaine fois"
     },
     "verticalSteps": {
-      "hint": "Si vrai, les étapes seront affichées verticalement",
+      "hint": "Si c'est vrai, les étapes seront affichées verticalement",
       "name": "Marches verticales"
     },
-    "wizardHasNoSteps": "Pour ajouter les étapes de l'assistant, sélectionnez le composant et ajoutez les étapes dans le panneau Propriétés."
+    "wizardHasNoSteps": "Pour ajouter les étapes de l'assistant, sélectionnez le composant et ajoutez les étapes dans le panneau des propriétés."
   },
   "actions": {
     "add": "Ajouter",
@@ -547,31 +547,31 @@
     "edit": "Modifier",
     "name": "Nom",
     "parameters": "Paramètres",
-    "type": "Type"
+    "type": "Tapez"
   },
   "annotation": {
     "accept": {
-      "hint": "Types de fichiers pouvant être acceptés. Voir attribut HTML standard: accepter",
+      "hint": "Types de fichiers pouvant être acceptés. Voir l'attribut HTML standard : accept",
       "name": "Accepter"
     },
     "action": {
-      "hint": "URL de TÉLÉCHARGEMENT",
-      "name": "Actions"
+      "hint": "URL de téléchargement",
+      "name": "Action"
     },
     "allowEmptyFormatting": {
-      "hint": "Par défaut, le composant PatternFormat n'applique pas la mise en forme lorsque la valeur est vide (null, undefined ou‘)",
-      "name": "Autoriser le formatage vide "
+      "hint": "Par défaut, le composant PatternFormat n'applique pas de mise en forme lorsque la valeur est vide (nulle, non définie ou « »)",
+      "name": "Autoriser le formatage vide"
     },
     "allowLeadingZeros": {
-      "hint": "Cela permet d'activer ou de désactiver les zéros non significatifs dans le champ de saisie. Par défaut, en cas de flou d'une entrée, les zéros en tête sont supprimés",
+      "hint": "Cela permet d'activer ou de désactiver les zéros non significatifs dans le champ de saisie. Par défaut, lorsqu'une entrée est floue, les zéros non significatifs sont supprimés",
       "name": "Autoriser les zéros non significatifs"
     },
     "allowNegative": {
-      "hint": "S'il est défini sur false, les nombres négatifs ne seront pas autorisés",
+      "hint": "S'il est défini sur faux, les nombres négatifs ne seront pas autorisés",
       "name": "Autoriser le négatif"
     },
     "allowedDecimalSeparators": {
-      "hint": "Caractères qui, lorsqu'ils sont pressés, donnent un séparateur décimal. En cas d'absence, séparateur décimal et '.\"sont utilisés",
+      "hint": "Caractères qui, lorsqu'ils sont pressés, donnent lieu à un séparateur décimal. En cas d'absence, le séparateur décimal et «. » sont utilisés",
       "name": "Séparateurs décimaux autorisés"
     },
     "appearance": {
@@ -579,7 +579,7 @@
       "name": "Apparence"
     },
     "autoUpload": {
-      "hint": "Télécharger automatiquement les fichiers après les avoir sélectionnés",
+      "hint": "Téléchargez automatiquement les fichiers après les avoir sélectionnés",
       "name": "Téléchargement automatique"
     },
     "block": {
@@ -595,7 +595,7 @@
       "name": "Date par défaut du calendrier"
     },
     "checked": {
-      "hint": "Indique si la valeur est vérifiée",
+      "hint": "Si la valeur est vérifiée",
       "name": "Vérifié"
     },
     "checkedChildren": {
@@ -603,7 +603,7 @@
       "name": "Texte vérifié"
     },
     "cleanable": {
-      "hint": "Indique si l'option peut être vidée",
+      "hint": "Si l'option peut être vidée",
       "name": "Nettoyable"
     },
     "code": {
@@ -612,7 +612,7 @@
     },
     "color": {
       "hint": "La couleur principale du composant",
-      "name": "Couleur"
+      "name": "couleur"
     },
     "creatable": {
       "hint": "Les paramètres peuvent créer de nouvelles options",
@@ -627,7 +627,7 @@
       "name": "Clé de données"
     },
     "decimalScale": {
-      "hint": "S'il est défini, il limite le nombre de chiffres après la virgule décimale",
+      "hint": "S'il est défini, il limite le nombre de chiffres après la virgule",
       "name": "Échelle décimale"
     },
     "decimalSeparator": {
@@ -636,7 +636,7 @@
     },
     "defaultOpen": {
       "hint": "Valeur par défaut de la propriété ouverte",
-      "name": "Ouverture par défaut"
+      "name": "Ouvert par défaut"
     },
     "defaultValue": {
       "hint": "Valeur par défaut",
@@ -647,96 +647,96 @@
       "name": "Désactiver la liaison de données"
     },
     "disableMultipart": {
-      "hint": "Si 'true', désactivez l'utilisation d'un formulaire en plusieurs parties pour le téléchargement de fichiers et diffusez le fichier à la place. Certaines API (par exemple Amazon S3) peuvent s'attendre à ce que le fichier soit diffusé en continu plutôt qu'envoyé via un formulaire",
-      "name": "Désactiver les parties multiples"
+      "hint": "Si « true », désactivez l'utilisation d'un formulaire en plusieurs parties pour le téléchargement de fichiers et diffusez plutôt le fichier en streaming. Certaines API (par exemple Amazon S3) peuvent s'attendre à ce que le fichier soit diffusé en continu plutôt qu'envoyé via un formulaire",
+      "name": "Désactiver le multipart"
     },
     "disableVirtualized": {
-      "hint": "Si vrai, le virtualisé sera désactivé",
+      "hint": "Si c'est vrai, la virtualisation sera désactivée",
       "name": "Désactiver la virtualisation"
     },
     "disabled": {
-      "hint": "Indique si le composant est désactivé ou non",
+      "hint": "Si le composant est désactivé ou non",
       "name": "Désactivé"
     },
     "download": {
-      "hint": "Fait que le navigateur traite l'URL liée comme un téléchargement",
+      "hint": "Fait en sorte que le navigateur traite l'URL liée comme un téléchargement",
       "name": "Télécharger"
     },
     "downloadFilename": {
-      "hint": "Définir une valeur la suggère comme nom de fichier. / et \\ les caractères sont convertis en traits de soulignement (_)",
-      "name": "Télécharger le nom de fichier"
+      "hint": "La définition d'une valeur suggère qu'il s'agit du nom de fichier. Les caractères/et \\ sont convertis en traits de soulignement (_)",
+      "name": "Télécharger le nom du fichier"
     },
     "draggable": {
-      "hint": "Activé glisser-déposer pour télécharger",
+      "hint": "Activation du glisser-déposer pour télécharger",
       "name": "Déplaçable"
     },
     "editable": {
-      "hint": "Rendu en entrée, la valeur peut être saisie via le clavier",
+      "hint": "Rendu sous forme d'entrée, la valeur peut être saisie via le clavier",
       "name": "Modifiable"
     },
     "errorConfig": {
-      "show": "Spectacle"
+      "show": "Afficher"
     },
     "eventKey": {
       "hint": "La clé d'événement correspondant à cet élément",
-      "name": "Clé d'événement"
+      "name": "Clé de l'événement"
     },
     "fixedDecimalScale": {
-      "hint": "S'il est défini sur true, il ajoute des 0 de fin après DecimalSeparator pour correspondre à l'échelle décimale donnée",
+      "hint": "S'il est défini sur true, il ajoute des 0 à la fin après DecimalSeparator pour correspondre à DecimalScale donné",
       "name": "Échelle décimale fixe"
     },
     "flexDirection": {
-      "hint": "Flex direction des enfants du conteneur",
-      "name": "Direction Générale"
+      "hint": "Direction de la flexion des enfants du conteneur",
+      "name": "Direction"
     },
     "format": {
-      "hint": "Formatez le motif en utilisant le caractère # (ou un caractère de motif). # est le caractère d'espace réservé pour les nombres. Exemple:'######'",
-      "name": "Format"
+      "hint": "Formatez le modèle en utilisant le caractère # (ou un caractère Pattern). # est le caractère d'espace réservé pour les nombres. Exemple : « ### ####'",
+      "name": "Formater"
     },
     "groupBy": {
-      "hint": "Définir les critères de regroupement \" clé \"dans \" données\"",
-      "name": "Groupe par"
+      "hint": "Définissez les critères de regroupement comme « clé » dans « données »",
+      "name": "Regrouper par"
     },
     "href": {
-      "hint": "L'URL vers laquelle pointe le lien hypertexte",
-      "name": "FRH"
+      "hint": "URL vers laquelle pointe le lien hypertexte",
+      "name": "Brouf"
     },
     "htmlAttributes": {
       "hint": "Attributs HTML transmis au composant",
       "name": "Attributs HTML"
     },
     "isoWeek": {
-      "hint": "Norme ISO 8601, chaque semaine calendaire commence le lundi et le dimanche le septième jour",
+      "hint": "Norme ISO 8601, chaque semaine civile commence le lundi et le dimanche le septième jour",
       "name": "Semaine Iso"
     },
     "justifyContent": {
-      "name": "Alignement"
+      "name": "Justifier"
     },
     "label": {
       "hint": "Étiquette de réglage",
-      "name": "Étiquette"
+      "name": "étiquette"
     },
     "limitEndYear": {
-      "hint": "Définir la limite supérieure de l'année disponible par rapport à la date de sélection actuelle",
+      "hint": "Définissez la limite supérieure de l'année disponible par rapport à la date de sélection actuelle",
       "name": "Limite de fin d'année"
     },
     "limitStartYear": {
-      "hint": "Définir la limite inférieure de l'année disponible par rapport à la date de sélection actuelle",
+      "hint": "Définissez la limite inférieure de l'année disponible par rapport à la date de sélection actuelle",
       "name": "Année de début limite"
     },
     "loading": {
-      "hint": "Indique si le composant est en état de chargement",
+      "hint": "Si le composant est en état de chargement",
       "name": "Chargement"
     },
     "marginInlineEnd": {
-      "name": "Marge Droite"
+      "name": "Marge droite"
     },
     "marginInlineStart": {
-      "name": "Marge Gauche"
+      "name": "Marge gauche"
     },
     "mask": {
       "hint": "Utilisé comme caractère de masque pour les emplacements numériques, jusqu'à ce qu'un caractère numérique soit fourni pour cette position",
-      "name": "Masque"
+      "name": "masque"
     },
     "method": {
       "hint": "La méthode HTTP de demande de téléchargement",
@@ -749,22 +749,22 @@
       "noModalComponentHint": "Spécifiez le type de composant modal dans les paramètres du formulaire"
     },
     "name": {
-      "hint": "Télécharger le nom du paramètre du fichier correspondant",
+      "hint": "Téléchargez le nom du paramètre du fichier correspondant",
       "name": "Nom"
     },
     "objectFit": {
-      "name": "Coupe"
+      "name": "Ajuster"
     },
     "objectPosition": {
       "name": "Poste"
     },
     "oneTap": {
       "hint": "Un clic pour compléter la valeur de sélection",
-      "name": "Un robinet"
+      "name": "Un seul clic"
     },
     "open": {
-      "hint": "Indique si le composant est ouvert",
-      "name": "Ouvert"
+      "hint": "Si vous ouvrez le composant",
+      "name": "Ouvrir"
     },
     "passwordMask": {
       "hint": "Utiliser un masque de mot de passe",
@@ -772,11 +772,11 @@
     },
     "patternChar": {
       "hint": "Cela permet de définir le caractère du modèle de format",
-      "name": "Caractère de motif"
+      "name": "Tableau des motifs"
     },
     "placeholder": {
       "hint": "Définition d'espaces réservés",
-      "name": "Espace Réservé"
+      "name": "Espace réservé"
     },
     "placement": {
       "hint": "Le placement du composant",
@@ -788,22 +788,22 @@
     },
     "preload": {
       "hint": "Téléchargez les données à l'avance, avant d'ouvrir la liste déroulante",
-      "name": "Précharge"
+      "name": "Précharger"
     },
     "preventOverflow": {
       "hint": "Empêcher le débordement des éléments flottants",
-      "name": "Éviter les débordements"
+      "name": "Empêcher les débordements"
     },
     "readOnly": {
-      "hint": "Si vrai, le composant sera en lecture seule",
+      "hint": "Si c'est vrai, le composant sera en lecture seule",
       "name": "Lecture seule"
     },
     "showMeridiem": {
-      "hint": "Affichage des heures au format 12",
+      "hint": "Afficher les heures au format 12",
       "name": "Afficher le méridien"
     },
     "showWeekNumbers": {
-      "hint": "Indique s'il faut afficher les numéros de semaine",
+      "hint": "Afficher ou non les numéros de semaine",
       "name": "Afficher les numéros de semaine"
     },
     "size": {
@@ -812,95 +812,95 @@
     },
     "suffix": {
       "hint": "Ajoute le suffixe après la valeur d'entrée",
-      "name": "Suffixe "
+      "name": "Suffixe"
     },
     "target": {
-      "hint": "Où afficher l'URL liée, en tant que nom d'un contexte de navigation (un onglet, une fenêtre ou <iframe>)",
+      "hint": "Où afficher l'URL liée, en tant que nom d'un contexte de navigation (un onglet, une fenêtre ou<iframe>)",
       "name": "Cible"
     },
     "textAlign": {
       "name": "Alignement"
     },
     "thousandsGroupStyle": {
-      "hint": "Mille style (mille): 123 456 789, style indien (lakh): 12,34,56,789, style chinois (wan): 1 2345 6789",
-      "name": "Style de groupe de milliers"
+      "hint": "Mille styles (mille) : 123 456 789, style indien (lakh) : 12 34 56 789, style chinois (wan) : 1 2345 6789",
+      "name": "Des milliers de styles de groupe"
     },
     "tooltipProps": {
-      "hint": "Utilisez l'info-bulle pour cet élément",
-      "tooltip": "Infobulle"
+      "hint": "Utiliser une info-bulle pour cet élément",
+      "tooltip": "Info-bulle"
     },
     "unCheckedChildren": {
-      "hint": "Le texte affiché à l'état non coché",
-      "name": "Texte décoché"
+      "hint": "Le texte qui s'affiche à l'état non coché",
+      "name": "Texte non coché"
     },
     "useDropzone": {
-      "hint": "Utilisez dropzone pour le '{{propertyName}}\"propriété",
-      "name": "Utiliser la zone de dépôt"
+      "hint": "Utilisez dropzone pour la propriété '{{propertyName}}'",
+      "name": "Utiliser Dropzone"
     },
     "validateWhen": {
-      "hint": "La condition qui détermine s'il faut exécuter cette validation",
-      "name": "Valider quand"
+      "hint": "La condition qui détermine si cette validation doit être exécutée",
+      "name": "Validez quand"
     },
     "value": {
       "hint": "Valeur (contrôlée)",
       "name": "Valeur"
     },
     "withCredentials": {
-      "hint": "Indique s'il faut transporter des cookies lors du téléchargement des demandes",
-      "name": "Avec informations d'identification"
+      "hint": "S'il faut conserver des cookies lors du téléchargement des demandes",
+      "name": "Avec des informations d'identification"
     }
   },
   "bottomPanel": {
-    "editCodeAction": "Action de modification du code",
+    "clearLocalization": "Transparent",
+    "editCodeAction": "Modifier l'action du code",
     "editProperty": "Modifier la propriété",
     "function": "Valeur calculable",
     "localization": "Localisation",
-    "localizationNotSet": "Le moteur de localisation n'est pas défini",
+    "localizationNotSet": "Le moteur de localisation n'est pas configuré",
     "simpleValue": "Valeur simple",
     "simpleValueHint": "Modifiez la propriété dans le panneau de droite",
-    "use": "Utilisation",
-    "clearLocalization": "Effacer"
+    "use": "Utiliser"
   },
   "codeActionEditor": {
-    "actionNameExists": "L'action avec ce nom existe déjà",
-    "nameIsRequired": "Le nom de l'action est requis",
-    "parameterNameExists": "Le paramètre avec ce nom existe déjà",
+    "actionNameExists": "L'action portant ce nom existe déjà",
+    "nameIsRequired": "Le nom de l'action est obligatoire",
+    "parameterNameExists": "Le paramètre portant ce nom existe déjà",
     "parameterNameIsNotValid": "Le nom du paramètre n'est pas valide",
-    "parameterNameIsRequired": "Le nom du paramètre est requis"
+    "parameterNameIsRequired": "Le nom du paramètre est obligatoire"
   },
   "codeEditor": {
-    "codeActionHeader": "Éditeur d'actions de code",
-    "codePlaceholder": "// entrez votre code ici",
-    "compilationResult": "Résultat de la compilation:",
+    "codeActionHeader": "Éditeur de code action",
+    "codePlaceholder": "//entrez votre code ici",
+    "compilationResult": "Résultat de la compilation :",
     "compile": "Compiler",
     "generic": {
       "json": {
         "title": "Modifier les données JSON pour"
       }
     },
-    "ok": "D'ACCORD"
+    "ok": "OK."
   },
   "common": {
-    "apply": "Appliquer",
+    "apply": "Postulez",
     "cancel": "Annuler",
-    "clone": "Clonage",
+    "clone": "Cloner",
     "close": "Fermer",
     "edit": "Modifier",
     "name": "Nom",
     "remove": "Supprimer",
-    "save": "Sauvegarder",
-    "test": "Essai"
+    "save": "Enregistrer",
+    "test": "Testez"
   },
   "componentToolbar": {
     "add": "Ajouter un nouvel élément",
     "after": "Après",
     "before": "Avant",
-    "inside": "À l'Intérieur"
+    "inside": "À l'intérieur"
   },
   "componentsList": {
     "categories": {
       "fields": "Champs",
-      "modal": "Modale",
+      "modal": "Modal",
       "static": "Statique",
       "structure": "Structure",
       "templates": "Modèles"
@@ -909,103 +909,103 @@
   "componentsModal": {
     "clickToAdd": "Cliquez pour ajouter un contrôle"
   },
-  "editJson": "Modifier JSON",
+  "editJson": "Modifier le JSON",
   "errorsPanel": {
-    "clear": "Clair",
+    "clear": "Transparent",
     "data": "Données",
     "errors": "Erreurs",
-    "reset": "Réinitialiser",
+    "reset": "Rétablir les paramètres par défaut",
     "validate": "Valider"
   },
   "formsList": {
     "addNewForm": "Ajouter un nouveau formulaire",
-    "formWithNameExists": "Le formulaire avec ce nom existe déjà.",
-    "noFormsInFormStorage": "Enregistrez le formulaire pour qu'il apparaisse dans la liste des formulaires."
+    "formWithNameExists": "Le formulaire portant ce nom existe déjà.",
+    "noFormsInFormStorage": "Enregistrez le formulaire afin qu'il apparaisse dans la liste des formulaires."
   },
   "leftMenu": {
     "addNewForm": "Ajouter un nouveau formulaire",
-    "clear": "Clair",
+    "clear": "Transparent",
     "currentFormName": "Le nom du formulaire actuel",
     "download": "Télécharger",
-    "enterFormName": "Veuillez entrer le nom du formulaire",
+    "enterFormName": "Veuillez saisir le nom du formulaire",
     "exportForms": "Formulaires d'exportation",
-    "exportFormsError": "Impossible d'exporter les formulaires! Voir les journaux dans la console du navigateur",
+    "exportFormsError": "Impossible d'exporter les formulaires ! Afficher les journaux dans la console du navigateur",
     "exportFormsSuccess": "Formulaires exportés",
-    "exportJsonFormSchema": "Exporter le schéma de formulaire JSON",
+    "exportJsonFormSchema": "Exporter un schéma de formulaire JSON",
     "formNamePlaceholder": "Ma belle forme",
-    "formSaveError": "Impossible d'enregistrer le formulaire! Voir les journaux dans la console du navigateur",
-    "formSaved": "Le formulaire est sauvegardé",
-    "importForms": "Importer des formulaires",
-    "importFormsError": "Impossible d'importer des formulaires! Voir les journaux dans la console du navigateur",
+    "formSaveError": "Impossible d'enregistrer le formulaire ! Afficher les journaux dans la console du navigateur",
+    "formSaved": "Le formulaire est enregistré",
+    "importForms": "Formulaires d'importation",
+    "importFormsError": "Impossible d'importer les formulaires ! Afficher les journaux dans la console du navigateur",
     "importFormsSuccess": "Formulaires importés",
-    "menu": "Le Menu",
+    "menu": "Menu",
     "print": "Imprimer",
-    "save": "Sauvegarder",
+    "save": "Enregistrer",
     "saveAs": "Enregistrer sous...",
-    "settings": "Paramètres",
+    "settings": "Réglages",
     "translation": "Traduction",
     "undo": "Annuler",
-    "upload": "Télécharger",
+    "upload": "Téléverser",
     "validateForm": "Valider le formulaire"
   },
   "leftPanel": {
     "formSettings": {
       "actions": "Actions",
       "error": "Paramètres d'erreur",
-      "formValidator": "Validateur de formulaire",
+      "formValidator": "Validateur de formulaires",
       "language": "Paramètres de langue",
-      "modal": "Modale",
-      "tooltip": "Infobulle"
+      "modal": "Modal",
+      "tooltip": "Info-bulle"
     },
     "sectionName": {
-      "components": "Composants",
+      "components": "Composantes",
       "forms": "Formulaires",
-      "settings": "Paramètres",
+      "settings": "Réglages",
       "tree": "Arbre"
     }
   },
   "license": {
-    "errDomain": "Votre licence n'autorise que les domaines suivants: {{Domain}}",
-    "errElectron": "Votre licence n'autorise pas l'exécution dans Electron",
+    "errDomain": "Votre licence n'autorise que les domaines suivants : {{Domain}}",
+    "errElectron": "Votre licence ne permet pas de fonctionner dans Electron",
     "errEndDate": "Licence expirée {{licenseEndDate}}",
     "errEndDateStrict": "Licence expirée {{licenseEndDate}}",
     "errLicenseInvalid": "La clé de licence fournie n'est pas valide.",
-    "errNoKey": "Aucune clé de licence fournie.",
+    "errNoKey": "Aucune clé de licence n'a été fournie.",
     "ftComponentPreset": "Votre licence n'autorise pas les préréglages de composants",
-    "ftComponentQrCode": "Votre licence n'autorise pas l'utilisation du composant de code QR",
-    "ftComponentRepeater": "Votre licence ne permet pas l'utilisation du répéteur",
-    "ftComponentSignature": "Votre licence n'autorise pas l'utilisation du composant de signature",
+    "ftComponentQrCode": "Votre licence n'autorise pas l'utilisation du composant QR Code",
+    "ftComponentRepeater": "Votre licence n'autorise pas l'utilisation du répéteur",
+    "ftComponentSignature": "Votre licence n'autorise pas l'utilisation du composant Signature",
     "ftComponentTable": "Votre licence n'autorise pas l'utilisation du composant Table",
     "ftComponentTemplates": "Votre licence n'autorise pas l'utilisation de modèles",
-    "ftDesignerCustomization": "Votre licence n'autorise pas la personnalisation du concepteur",
-    "ftLocaleCount": "Votre licence autorise la traduction uniquement pour {{ftLocaleCount}} langues",
-    "mismatchMessage": "Vous utilisez des fonctionnalités qui ne sont pas incluses dans votre licence. Le produit fonctionne en mode “utilisation non commerciale\". Modifiez votre licence pour utiliser les options ci-dessous:"
+    "ftDesignerCustomization": "Votre licence ne permet pas la personnalisation de Designer",
+    "ftLocaleCount": "Votre licence autorise la traduction uniquement pour les langues {{ftLocaleCount}}",
+    "mismatchMessage": "Vous utilisez des fonctionnalités qui ne sont pas incluses dans votre licence. Le produit fonctionne en mode « utilisation non commerciale ». Modifiez votre licence pour utiliser les options ci-dessous :"
   },
   "localization": {
     "messageIsNull": "Le message de localisation est nul",
-    "messageNotFound": "Message de localisation non trouvé"
+    "messageNotFound": "Message de localisation introuvable"
   },
   "presetComponent": {
     "category": "Catégorie",
-    "createPreset": "Créer un composant prédéfini",
-    "enterPresetName": "Veuillez entrer un nom prédéfini",
+    "createPreset": "Création d'un composant prédéfini",
+    "enterPresetName": "Entrez un nom prédéfini",
     "name": "Nom",
     "nameExists": "Un préréglage ou un composant portant ce nom existe déjà.",
     "namePlaceholder": "Entrez un nom prédéfini"
   },
   "promptDialog": {
     "cancel": "Annuler",
-    "ok": "D'ACCORD"
+    "ok": "OK."
   },
   "propertiesEditor": {
     "applyKey": "Appliquer les modifications clés",
-    "clean": "Réinitialiser par défaut",
+    "clean": "Rétablir les paramètres par défaut",
     "codeButton": {
       "editCalculable": "Modifier calculable",
       "editLocalizable": "Modifier la localisation",
       "hintCalculable": "Rendre cette propriété calculable",
-      "hintCalculableAndLocalizable": "Rendre cette propriété calculable ou localiser",
-      "hintLocalizable": "Localiser cette propriété",
+      "hintCalculableAndLocalizable": "Rendez cette propriété calculable ou localisez-la",
+      "hintLocalizable": "Localisez cette propriété",
       "neitherCalculableNorLocalizable": "Ni calculable ni localisable"
     },
     "keyMustBeUnique": "La clé doit être unique",
@@ -1018,10 +1018,10 @@
       "main": "Principale",
       "rules": "Règles",
       "style": "Style",
-      "withTarget": "Avec Cible",
-      "withoutTarget": "Sans Cible"
+      "withTarget": "Avec Target",
+      "withoutTarget": "Sans cible"
     },
-    "selectElementForEdit": "Sélectionnez l'élément sur le formulaire pour modifier les propriétés",
+    "selectElementForEdit": "Sélectionnez un élément sur le formulaire pour modifier les propriétés",
     "setInputHint": "Appuyez sur Entrée pour ajouter une valeur",
     "subSection": {
       "additionalProperties": "Propriétés supplémentaires"
@@ -1030,8 +1030,8 @@
   "rightMenu": {
     "modes": {
       "builder": "Aperçu",
-      "desktop": "Bureau",
-      "mobile": "Mobiles",
+      "desktop": "PC de bureau",
+      "mobile": "Portable",
       "orientation": "Orientation",
       "tablet": "Tablette",
       "viewer": "Modifier"
@@ -1039,58 +1039,58 @@
     "toggleTheme": "Basculer le thème"
   },
   "searchForm": {
-    "search": "Chercher..."
+    "search": "Rechercher..."
   },
   "style": {
-    "any": "Tout",
+    "any": "N'importe lequel",
     "component": "Composant",
-    "componentHint": "Styles qui s'appliquent au composant",
+    "componentHint": "Styles applicables au composant",
     "componentTab": {
-      "hint": "Styles CSS appliqués au composant via le 'Nom de classe'",
+      "hint": "Styles CSS appliqués au composant via le « ClassName »",
       "name": "Composant"
     },
-    "desktop": "Bureau",
-    "forDevice": "Pour l'appareil:",
+    "desktop": "PC de bureau",
+    "forDevice": "Pour appareil",
     "header": {
-      "hint": "Styles CSS appliqués via la propriété 'className' ",
-      "name": "Styles pour le nom de classe"
+      "hint": "Styles CSS appliqués via la propriété 'className'",
+      "name": "Styles pour ClassName"
     },
-    "mobile": "Mobiles",
+    "mobile": "Portable",
     "other": "Autres",
     "tablet": "Tablette",
-    "wrapper": "Emballage",
-    "wrapperHint": "Styles qui s'appliquent à l'encapsuleur de composant",
+    "wrapper": "Enveloppe",
+    "wrapperHint": "Styles qui s'appliquent à l'enveloppe du composant",
     "wrapperTab": {
-      "hint": "Styles CSS appliqués au wrapper du composant via le 'Nom de classe'",
-      "name": "Emballage"
+      "hint": "Styles CSS appliqués au wrapper du composant via le « ClassName »",
+      "name": "Enveloppe"
     }
   },
   "styleEditor": {
     "componentTab": {
-      "hint": "Styles CSS appliqués au composant via la propriété 'style' ",
+      "hint": "Styles CSS appliqués au composant via la propriété « style »",
       "name": "Composant"
     },
     "header": {
-      "hint": "Styles CSS appliqués via la propriété 'style' ",
-      "name": "Styles en ligne"
+      "hint": "Styles CSS appliqués via la propriété « style »",
+      "name": "Styles intégrés"
     },
     "wrapperTab": {
-      "hint": "Styles CSS appliqués au wrapper du composant via la propriété 'className' ",
-      "name": "Emballage"
+      "hint": "Styles CSS appliqués au wrapper du composant via la propriété 'className'",
+      "name": "Enveloppe"
     }
   },
   "testingEditor": {
-    "autorun": "Exécution Automatique",
-    "compilationOk": "Résultat de la compilation: OK",
+    "autorun": "Exécution automatique",
+    "compilationOk": "Résultat de la compilation : OK",
     "hasNotReturnedValue": "N'a pas renvoyé de valeur",
-    "run": "Courir",
+    "run": "Courez",
     "testFormData": "Données du formulaire de test"
   },
   "toolbar": {
-    "cloneComponent": "Composant Clone",
+    "cloneComponent": "Composant clone",
     "elements": "Éléments",
     "notFound": "Non trouvé",
-    "removeComponent": "Supprimer un composant",
+    "removeComponent": "Supprimer le composant",
     "reset": "Réinitialiser"
   },
   "tree": {
@@ -1098,7 +1098,7 @@
     "expand": "Tout développer"
   },
   "validation": {
-    "addRule": "Ajouter une règle",
+    "addRule": "Ajouter une règle de validation",
     "chooseValidation": "Choisissez votre type",
     "editCustomValidationCode": "Modifier le code de validation personnalisé pour le composant",
     "editFormValidatorCode": "Modifier le code de validation du formulaire",
@@ -1106,27 +1106,27 @@
     "rule": {
       "code": "Code",
       "custom": "Personnalisé",
-      "datetime": "Dateheure",
-      "email": "Courriel",
+      "datetime": "Date/heure",
+      "email": "Courrier électronique",
       "endsWith": "Se termine par",
-      "falsy": "Faux",
+      "falsy": "Fausse",
       "finite": "Fini",
-      "includes": "Comprend",
-      "integer": "Entier",
-      "ip": "Adresse IP",
+      "includes": "Inclut",
+      "integer": "Nombre entier",
+      "ip": "IP",
       "length": "Longueur",
       "lessThan": "Moins de",
       "max": "Max",
-      "min": "Minute",
-      "moreThan": "Plus de",
+      "min": "Minimum",
+      "moreThan": "Plus que",
       "multipleOf": "Multiple de",
       "nonEmpty": "Non vide",
-      "regex": "Expression régulière",
-      "required": "Requis",
+      "regex": "Regex",
+      "required": "Nécessaire",
       "startsWith": "Commence par",
-      "truthy": "Vérité",
-      "url": "Adresse URL",
-      "uuid": "UID"
+      "truthy": "Véritable",
+      "url": "URL",
+      "uuid": "UUID"
     },
     "ruleNotFound": "Règle introuvable ou non connectée",
     "showFormErrors": "Afficher les erreurs de formulaire"

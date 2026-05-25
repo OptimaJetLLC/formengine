@@ -1,105 +1,105 @@
 {
   "categories": {
     "fields": {
-      "name": "Поља"
+      "name": "Polja"
     }
   },
   "components": {
     "GoogleMap": {
-      "description": "Компонента која приказује Гоогле мапу",
-      "name": "Google Мапа",
+      "description": "Komponenta koja prikazuje Google mapu",
+      "name": "Google mapa",
       "props": {
         "addMarkerOnSearch": {
-          "description": "Да ли треба додати маркер у претрагу",
-          "name": "Додајте маркер за претрагу"
+          "description": "Da li da dodate marker prilikom pretrage",
+          "name": "Dodajte marker prilikom pretrage"
         },
         "allowChangingMarkers": {
-          "description": "Ако је ово поље означено, корисник може променити маркере",
-          "name": "Дозволите промену маркера"
+          "description": "Ako je označeno, korisnik može da promeni markere",
+          "name": "Dozvolite promenu markera"
         },
         "allowMultipleMarkers": {
-          "description": "Више маркера",
-          "name": "Дозволите употребу више маркера"
+          "description": "Više markera",
+          "name": "Dozvolite više markera"
         },
         "apiKey": {
-          "description": "АПИ кључ Гоогле мапа",
-          "name": "АПИ кључ"
+          "description": "API ključ Google Maps",
+          "name": "API ključ"
         },
         "collisionBehavior": {
-          "description": "Понашање судара маркера",
-          "name": "Понашање судара"
+          "description": "Ponašanje sudara markera",
+          "name": "Ponašanje sudara"
         },
         "colorScheme": {
-          "description": "Шема боја коју треба користити",
-          "name": "Шема боја"
+          "description": "Šema boja koju treba koristiti",
+          "name": "Šema boja"
         },
         "gestureHandling": {
-          "description": "Коришћена обрада покрета",
-          "name": "Контрола покрета"
+          "description": "Rukovanje gestama koje treba koristiti",
+          "name": "Rukovanje gestama"
         },
         "height": {
-          "description": "Висина карте",
-          "name": "Висина"
+          "description": "Visina mape",
+          "name": "Visina"
         },
         "label": {
-          "description": "Ознака мапе",
-          "name": "Ознака"
+          "description": "Oznaka mape",
+          "name": "Oznaka"
         },
         "language": {
-          "description": "Језик који треба користити",
-          "name": "Језик"
+          "description": "Jezik koji treba koristiti",
+          "name": "Jezik"
         },
         "latitude": {
-          "description": "Ширина централне тачке",
-          "name": "Ширина"
+          "description": "Geografska širina središnje tačke",
+          "name": "geografska širina"
         },
         "longitude": {
-          "description": "Дужина централне тачке",
-          "name": "Дужина"
+          "description": "Dužina središnje tačke",
+          "name": "Dužina"
         },
         "mapControlPosition": {
-          "description": "Положај контроле на мапи",
-          "name": "Контролна позиција на мапи"
+          "description": "Položaj kontrole mape",
+          "name": "Kontrolni položaj mape"
         },
         "mapId": {
-          "description": "ИД мапе је идентификатор повезан са одређеним стилом мапе или објектом",
-          "name": "ИД картице"
+          "description": "ID mape je identifikator koji je povezan sa određenim stilom ili funkcijom mape",
+          "name": "ID karte"
         },
         "mapTypeId": {
-          "description": "Подразумевани тип картице који се користи",
-          "name": "Тип картице"
+          "description": "Podrazumevani tip mape koji se koristi",
+          "name": "Tip mape"
         },
         "markerWindowTitle": {
-          "description": "Наслов прозора са маркером",
-          "name": "Наслов прозора маркера"
+          "description": "Naslov prozora markera",
+          "name": "Naslov prozora markera"
         },
         "markers": {
-          "description": "Координате маркера",
-          "name": "Маркери"
+          "description": "Koordinate markera",
+          "name": "Markeri"
         },
         "region": {
-          "description": "Коришћени регионални код",
-          "name": "Регион"
+          "description": "Regionalni kod koji se koristi",
+          "name": "Regija"
         },
         "removeMarkerCaption": {
-          "description": "Натпис на дугмету за уклањање маркера",
-          "name": "Избришите потпис маркера"
+          "description": "Naslov na dugmetu za uklanjanje markera",
+          "name": "Uklonite naslov markera"
         },
         "searchPlaceholder": {
-          "description": "Текст резервираног места за унос података претраге мапе",
-          "name": "Резервирано место за претрагу"
+          "description": "Tekst rezerviranog mesta za unos za pretragu mape",
+          "name": "Traži rezervirano mesto"
         },
         "showMapControl": {
-          "description": "Да ли треба приказати контролу мапе",
-          "name": "Прикажи контролу мапе"
+          "description": "Da li treba prikazati kontrolu mape",
+          "name": "Prikaži kontrolu mape"
         },
         "width": {
-          "description": "Ширина карте",
-          "name": "Ширина"
+          "description": "Širina mape",
+          "name": "Širina"
         },
         "zoom": {
-          "description": "Ниво зумирања",
-          "name": "Повећање"
+          "description": "Nivo zumiranja",
+          "name": "Zoom"
         }
       }
     }

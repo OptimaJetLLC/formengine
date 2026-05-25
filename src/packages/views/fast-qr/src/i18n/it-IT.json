@@ -14,7 +14,7 @@
           "name": "Contenuto"
         },
         "errorCorrectionLevel": {
-          "description": "Il livello di codifica correzione errori",
+          "description": "Il livello di codifica per la correzione degli errori",
           "name": "Livello di correzione degli errori"
         },
         "image": {
@@ -26,8 +26,8 @@
           "name": "Colore di sfondo dell'immagine"
         },
         "imageBackgroundShape": {
-          "description": "La forma di sfondo dell'immagine",
-          "name": "Immagine sfondo forma"
+          "description": "La forma dello sfondo dell'immagine",
+          "name": "Forma dello sfondo dell'immagine"
         },
         "moduleColor": {
           "description": "Il colore del modulo",
@@ -38,7 +38,7 @@
           "name": "Forma"
         },
         "version": {
-          "description": "La versione QR code",
+          "description": "La versione con codice QR",
           "name": "Versione QR"
         },
         "width": {

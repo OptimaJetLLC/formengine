@@ -1,38 +1,38 @@
 {
   "components": {
     "EmbeddedForm": {
-      "description": "嵌入另一种形式的形式",
-      "name": "嵌入式表格",
+      "description": "嵌入到另一种表单中的表单",
+      "name": "嵌入式表单",
       "props": {
         "disabled": {
-          "description": "如果为true，则禁用嵌入表单",
-          "name": "残疾人士"
+          "description": "如果为 true，则禁用嵌入式表单",
+          "name": "已禁用"
         },
         "formName": {
-          "description": "表格名称",
-          "name": "表格名称"
+          "description": "表单名称",
+          "name": "表单名称"
         },
         "options": {
-          "description": "加载嵌入表单的其他选项",
+          "description": "加载嵌入式表单的其他选项",
           "name": "选项"
         },
         "readOnly": {
-          "description": "如果为true，则嵌入表单为只读",
+          "description": "如果为 true，则嵌入式表单为只读",
           "name": "只读"
         },
         "storeDataInParentForm": {
-          "description": "如果为false，则嵌套表单数据显示为嵌套对象，否则为true",
-          "name": "以父窗体存储数据"
+          "description": "如果为 false，则嵌套表单数据显示为嵌套对象，否则为 true",
+          "name": "将数据存储在父表单中"
         }
       }
     },
     "Repeater": {
-      "description": "Repeater组件是一个特殊的组件，负责显示重复组件的数组",
+      "description": "Repeater 组件是一个特殊组件，负责显示重复组件数组",
       "name": "中继器",
       "props": {
         "itemRenderWhen": {
-          "description": "有条件地呈现repeater项的表达式或函数",
-          "name": "项目呈现时"
+          "description": "有条件地呈现中继器项目的表达式或函数",
+          "name": "物品何时呈现"
         }
       }
     }

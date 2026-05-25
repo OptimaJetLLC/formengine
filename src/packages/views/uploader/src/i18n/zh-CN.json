@@ -10,39 +10,39 @@
       "name": "文件上传器",
       "props": {
         "accept": {
-          "description": "接受的文件类型（例如，image/*，.pdf，。docx）",
+          "description": "可接受的文件类型（例如 image/*、.pdf、.docx）",
           "name": "接受"
         },
         "action": {
-          "description": "将文件上载至",
-          "name": "动作URL"
+          "description": "用于上传文件的 URL",
+          "name": "操作网址"
         },
         "children": {
-          "description": "要在上传器内显示的内容",
-          "name": "儿童"
+          "description": "要在上传器中显示的内容",
+          "name": "孩子们"
         },
         "disabled": {
-          "description": "如果为true，则儿童处于残疾状态",
-          "name": "残疾人士"
+          "description": "如果为 true，则禁用上传器",
+          "name": "已禁用"
         },
         "dropzone": {
-          "description": "如果为true，则dropzone将显示",
-          "name": "下拉区"
+          "description": "如果为 true，则会显示 dropzone",
+          "name": "Dropzone"
         },
         "multiple": {
-          "description": "允许多个文件选择",
+          "description": "允许选择多个文件",
           "name": "多个文件"
         },
         "onChange": {
-          "description": "文件上传成功时回调",
-          "name": "关于变化"
+          "description": "成功上传文件时回调",
+          "name": "变更时"
         },
         "onError": {
-          "description": "上传过程中发生错误时的回调",
-          "name": "关于错误"
+          "description": "上传过程中发生错误时回调",
+          "name": "出错时"
         },
         "readOnly": {
-          "description": "如果为true，则子项处于只读状态",
+          "description": "如果为 true，则上传器是只读的",
           "name": "只读"
         }
       }

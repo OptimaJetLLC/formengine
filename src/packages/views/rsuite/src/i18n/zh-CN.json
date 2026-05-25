@@ -4,7 +4,7 @@
       "name": "字段"
     },
     "modal": {
-      "name": "模态分析"
+      "name": "模态"
     },
     "static": {
       "name": "静态"
@@ -16,27 +16,27 @@
   "commonProperties": {
     "backgroundColor": {
       "description": "背景颜色",
-      "name": "背景资料"
+      "name": "背景"
     },
     "children": {
-      "description": "组件子级",
-      "name": "儿童"
+      "description": "组件的子元素",
+      "name": "孩子们"
     },
     "className": {
-      "description": "CSS类名",
-      "name": "CSS类"
+      "description": "CSS 类名",
+      "name": "CSS 类"
     },
     "disabled": {
       "description": "组件是否被禁用",
-      "name": "残疾人士"
+      "name": "已禁用"
     },
     "fontSize": {
       "description": "字体大小",
       "name": "字体大小"
     },
     "fontWeight": {
-      "description": "字体重量",
-      "name": "字体重量"
+      "description": "字体权重",
+      "name": "字体权重"
     },
     "label": {
       "description": "组件标签",
@@ -47,23 +47,23 @@
       "name": "占位符"
     },
     "placement": {
-      "description": "组件的放置",
-      "name": "就业情况"
+      "description": "组件的位置",
+      "name": "放置"
     },
     "readOnly": {
       "description": "只读标志",
       "name": "只读"
     },
     "size": {
-      "description": "组件尺寸",
+      "description": "A 组件大小",
       "name": "大小"
     },
     "textAlign": {
-      "description": "文本对齐方式",
-      "name": "文本对齐"
+      "description": "文字对齐",
+      "name": "文字对齐"
     },
     "value": {
-      "description": "电流值（受控）",
+      "description": "当前值（受控）",
       "name": "价值"
     }
   },
@@ -73,111 +73,111 @@
       "name": "自动完成",
       "props": {
         "classPrefix": {
-          "description": "组件CSS类的前缀",
+          "description": "组件 CSS 类的前缀",
           "name": "类前缀"
         },
         "data": {
           "description": "组件的数据",
-          "name": "数据资料"
+          "name": "数据"
         },
         "defaultValue": {
           "description": "默认值（不受控制）",
           "name": "默认值"
         },
         "filterBy": {
-          "description": "自定义过滤规则（默认情况下只显示值为其子字符串的项目）",
-          "name": "过滤方式"
+          "description": "自定义筛选规则（仅显示值为其子字符串的项目，默认情况下）",
+          "name": "筛选依据"
         },
         "menuClassName": {
-          "description": "要应用于菜单DOM的CSS类",
+          "description": "应用于 Menu DOM 的 CSS 类",
           "name": "菜单类名"
         },
         "onChange": {
-          "description": "当选择选项或输入值更改或输入值更改时调用",
-          "name": "交换/交换"
+          "description": "当选择一个选项或输入值发生变化或输入值发生变化时调用",
+          "name": "onChange"
         },
         "onClose": {
           "description": "隐藏时触发回调",
-          "name": "n.锁,锁"
+          "name": "onClose"
         },
         "onEnter": {
-          "description": "在复盖转换之前触发的回调",
-          "name": "中心,中心"
+          "description": "在叠加层过渡之前触发回调",
+          "name": "onEnter"
         },
         "onEntered": {
-          "description": "复盖完成转换后触发的回调",
-          "name": "一个,一个"
+          "description": "叠加层完成过渡后触发回调",
+          "name": "onEnter"
         },
         "onEntering": {
-          "description": "当复盖开始转换时触发回调",
-          "name": "onEntering"
+          "description": "当叠加层开始过渡时触发回调",
+          "name": "进入时"
         },
         "onExit": {
-          "description": "在复盖过渡之前触发回调",
-          "name": "onExit,onExit"
+          "description": "在叠加层过渡之前触发回调",
+          "name": "onExit"
         },
         "onExited": {
-          "description": "复盖完成过渡后触发回调",
-          "name": "已登记"
+          "description": "叠加层完成过渡后触发回调",
+          "name": "oneExited"
         },
         "onExiting": {
-          "description": "当复盖开始过渡时触发回调",
-          "name": "onExiting,onExiting"
+          "description": "当叠加层开始向外过渡时触发回调",
+          "name": "OneExiting"
         },
         "onSelect": {
-          "description": "当选择选项时调用",
-          "name": "选择,选择"
+          "description": "选择选项时调用",
+          "name": "onSelect"
         },
         "renderMenu": {
-          "description": "自定义渲染菜单列表",
-          "name": "渲染菜单"
+          "description": "自定义 “渲染” 菜单列表",
+          "name": "“渲染” 菜单"
         },
         "renderMenuItem": {
           "description": "自定义渲染菜单项",
           "name": "渲染菜单项"
         },
         "selectOnEnter": {
-          "description": "设置为false时，Enter键选择功能无效",
-          "name": "选择进入"
+          "description": "当设置为 false 时，Enter 键选择功能无效",
+          "name": "在 Enter 上选择"
         }
       }
     },
     "RsBreadcrumb": {
-      "description": "用于显示当前页面路径，快速返回历史页面",
-      "name": "[医]面包屑",
+      "description": "用于显示当前页面路径并快速返回历史页面",
+      "name": "面包屑",
       "props": {
         "items": {
           "description": "要显示的面包屑项目数组",
-          "name": "项目"
+          "name": "物品"
         },
         "maxItems": {
-          "description": "设置要显示的面包屑的最大数量",
-          "name": "最大项目"
+          "description": "设置要显示的最大痕迹数",
+          "name": "最大物品数"
         },
         "onExpand": {
-          "description": "单击省略号的回调函数",
-          "name": "扩展,扩展"
+          "description": "点击省略号的回调函数",
+          "name": "onExpand"
         },
         "onItemClick": {
-          "description": "单击面包屑项时的回调函数",
-          "name": "onItemClick,onItemClick"
+          "description": "点击面包屑项目时的回调函数",
+          "name": "onItemClick"
         },
         "separator": {
           "description": "每个面包屑项目之间的分隔符",
-          "name": "分离器"
+          "name": "分隔符"
         }
       }
     },
     "RsButton": {
-      "description": "按钮",
+      "description": "这个按钮",
       "name": "按钮",
       "props": {
         "active": {
-          "description": "一个按钮可以显示它当前是活动的用户选择",
-          "name": "活动中"
+          "description": "一个按钮可以显示它当前是活跃的用户选择",
+          "name": "活跃"
         },
         "appearance": {
-          "description": "一个按钮可以有不同的外观",
+          "description": "按钮可以有不同的外观",
           "name": "外观"
         },
         "children": {
@@ -185,20 +185,20 @@
           "name": "内容"
         },
         "disabled": {
-          "description": "一个按钮可以显示它目前无法与之交互",
-          "name": "残疾人士"
+          "description": "按钮可以显示当前无法与之交互",
+          "name": "已禁用"
         },
         "href": {
-          "description": "提供href将呈现 <a> 元素",
+          "description": "<a>提供 href 将渲染一个元素",
           "name": "Href"
         },
         "loading": {
-          "description": "一个按钮可以显示一个加载指示器",
-          "name": "装载量"
+          "description": "按钮可以显示加载指示器",
+          "name": "加载中"
         },
         "onClick": {
           "description": "点击按钮时的回调函数",
-          "name": "昂克里克"
+          "name": "onClick"
         }
       }
     },
@@ -208,60 +208,60 @@
       "props": {
         "bordered": {
           "description": "显示边框",
-          "name": "边界,边界"
+          "name": "有边界"
         },
         "compact": {
           "description": "显示紧凑的日历",
-          "name": "紧凑型"
+          "name": "紧凑"
         },
         "defaultValue": {
           "description": "默认值",
           "name": "默认值"
         },
         "isoWeek": {
-          "description": "ISO8601标准，每个日历周从第七天的周一和周日开始",
-          "name": "ISO周"
+          "description": "ISO 8601 标准，每个日历周从星期一开始，星期日从第七天开始",
+          "name": "国际标准化组织周"
         },
         "onChange": {
-          "description": "值更改之前触发的回调",
-          "name": "交换/交换"
+          "description": "在值更改之前触发回调",
+          "name": "onChange"
         },
         "onSelect": {
-          "description": "在所选日期之前触发的回调",
-          "name": "选择,选择"
+          "description": "在所选日期之前触发回调",
+          "name": "onSelect"
         }
       }
     },
     "RsCard": {
-      "description": "卡是用于显示数据的容器组件,",
+      "description": "卡片是用于显示数据的容器组件，",
       "name": "卡片",
       "props": {
         "bodyFill": {
-          "description": "填充容器的内容区域",
-          "name": "身体填充"
+          "description": "内容区域装满了容器",
+          "name": "车身填充"
         },
         "bordered": {
           "description": "显示边框",
-          "name": "边界,边界"
+          "name": "有边界"
         },
         "children": {
           "description": "主要内容",
           "name": "内容"
         },
         "collapsible": {
-          "description": "是否为可折叠面板",
+          "description": "是否是可折叠面板",
           "name": "可折叠"
         },
         "defaultExpanded": {
           "description": "默认情况下展开然后面板",
-          "name": "默认展开"
+          "name": "默认已展开"
         },
         "eventKey": {
-          "description": "面板对应的事件键",
-          "name": "活动键"
+          "description": "与面板对应的事件键",
+          "name": "事件密钥"
         },
         "header": {
-          "description": "头显示信息",
+          "description": "头部显示信息",
           "name": "标题"
         },
         "headerSize": {
@@ -269,12 +269,12 @@
           "name": "标题大小"
         },
         "onSelect": {
-          "description": "当选择面板时调用",
-          "name": "选择,选择"
+          "description": "选择面板时调用",
+          "name": "onSelect"
         },
         "shaded": {
           "description": "是否有影子",
-          "name": "阴影"
+          "name": "有阴影的"
         },
         "title": {
           "description": "面板标题的标题",
@@ -283,12 +283,12 @@
       }
     },
     "RsCheckbox": {
-      "description": "复选框通常在组中使用。 允许用户从一个集合中选择一个或多个值",
+      "description": "复选框通常成组使用。允许用户从集合中选择一个或多个值",
       "name": "复选框",
       "props": {
         "checked": {
           "description": "指定是否选中该复选框",
-          "name": "检查过"
+          "name": "已勾选"
         },
         "children": {
           "description": "组件标签",
@@ -299,31 +299,31 @@
           "name": "不确定"
         },
         "inline": {
-          "description": "内联布局",
-          "name": "内联/内联"
+          "description": "行内布局",
+          "name": "内联"
         },
         "onChange": {
-          "description": "当用户尝试更改检查状态时调用",
-          "name": "交换/交换"
+          "description": "当用户尝试更改选中状态时调用",
+          "name": "onChange"
         },
         "title": {
-          "description": "HTML标题",
+          "description": "HTML 标题",
           "name": "标题"
         }
       }
     },
     "RsContainer": {
-      "description": "Container是一个布局组件，可用于包装其他组件",
-      "name": "货柜",
+      "description": "容器是一个布局组件，可用于包装其他组件",
+      "name": "容器",
       "props": {
         "children": {
-          "description": "组件子级",
-          "name": "儿童"
+          "description": "组件的子元素",
+          "name": "孩子们"
         }
       }
     },
     "RsDatePicker": {
-      "description": "DatePicker是一个高度可定制的组件，允许用户以不同的格式输入和选择日期和时间",
+      "description": "DatePicker 是一个高度可定制的组件，允许用户输入和选择不同格式的日期和时间",
       "name": "日期选择器",
       "props": {
         "appearance": {
@@ -339,7 +339,7 @@
           "name": "可清洁"
         },
         "defaultOpen": {
-          "description": "Open属性的默认值",
+          "description": "打开属性的默认值",
           "name": "默认打开"
         },
         "defaultValue": {
@@ -347,96 +347,96 @@
           "name": "默认值"
         },
         "editable": {
-          "description": "呈现为输入，日期可以通过键盘输入",
+          "description": "日期呈现为输入，可通过键盘输入",
           "name": "可编辑"
         },
         "format": {
-          "description": "在输入中呈现日期的格式",
+          "description": "在输入中呈现时的日期格式",
           "name": "格式"
         },
         "isoWeek": {
-          "description": "ISO8601标准，每个日历周从第七天的周一和周日开始",
-          "name": "ISO周"
+          "description": "ISO 8601 标准，每个日历周从星期一开始，星期日从第七天开始",
+          "name": "国际标准化组织周"
         },
         "limitEndYear": {
-          "description": "设置可用年份相对于当前选择日期的上限",
-          "name": "年底限额"
+          "description": "设置相对于当前选择日期的可用年份的上限",
+          "name": "限制结束年份"
         },
         "limitStartYear": {
           "description": "设置可用年份相对于当前选择日期的下限",
-          "name": "限制开始年份"
+          "name": "限制起始年份"
         },
         "onChange": {
           "description": "值更改时触发回调",
-          "name": "交换/交换"
+          "name": "onChange"
         },
         "onChangeCalendarDate": {
           "description": "更改日历日期的回调函数",
-          "name": "n.改变,改变"
+          "name": "onChangeCalendarDarDate"
         },
         "onClean": {
-          "description": "值clean时触发回调",
-          "name": "n.清洁,清洁"
+          "description": "值清理时触发回调",
+          "name": "OnClean"
         },
         "onClose": {
           "description": "关闭组件时触发回调",
-          "name": "n.锁,锁"
+          "name": "onClose"
         },
         "onEnter": {
-          "description": "在复盖转换之前触发的回调",
-          "name": "中心,中心"
+          "description": "在叠加层过渡之前触发回调",
+          "name": "onEnter"
         },
         "onEntered": {
-          "description": "复盖完成转换后触发的回调",
-          "name": "一个,一个"
+          "description": "叠加层完成过渡后触发回调",
+          "name": "onEnter"
         },
         "onEntering": {
-          "description": "当复盖开始转换时触发回调",
-          "name": "onEntering"
+          "description": "当叠加层开始过渡时触发回调",
+          "name": "进入时"
         },
         "onExit": {
-          "description": "在复盖过渡之前触发回调",
-          "name": "onExit,onExit"
+          "description": "在叠加层过渡之前触发回调",
+          "name": "onExit"
         },
         "onExited": {
-          "description": "复盖完成过渡后触发回调",
-          "name": "已登记"
+          "description": "叠加层完成过渡后触发回调",
+          "name": "oneExited"
         },
         "onExiting": {
-          "description": "当复盖开始过渡时触发回调",
-          "name": "onExiting,onExiting"
+          "description": "当叠加层开始向外过渡时触发回调",
+          "name": "OneExiting"
         },
         "onNextMonth": {
           "description": "切换到下个月的回调函数",
-          "name": "一个月"
+          "name": "下个月"
         },
         "onOk": {
-          "description": "点击OK回调函数",
-          "name": "小野"
+          "description": "单击 “确定” 回调函数",
+          "name": "Onok"
         },
         "onOpen": {
-          "description": "打开组件时触发的回调",
-          "name": "奥诺彭"
+          "description": "打开组件时触发回调",
+          "name": "onOpen"
         },
         "onPrevMonth": {
           "description": "切换到上个月的回调函数",
-          "name": "每月,每月"
+          "name": "上一个月"
         },
         "onSelect": {
           "description": "选择日期或时间时触发回调",
-          "name": "选择,选择"
+          "name": "onSelect"
         },
         "onToggleMonthDropdown": {
-          "description": "切换到月份视图的回调函数",
-          "name": "[医]本体"
+          "description": "切换到月视图的回调函数",
+          "name": "ontoggleMonth下拉列表"
         },
         "onToggleTimeDropdown": {
           "description": "切换到时间视图的回调函数",
-          "name": "onToggleTimeDropdown"
+          "name": "ontoggleTime下拉列表"
         },
         "oneTap": {
           "description": "一键选择日期",
-          "name": "一个水龙头"
+          "name": "一键点击"
         },
         "open": {
           "description": "是否打开组件",
@@ -447,8 +447,8 @@
           "name": "防止溢出"
         },
         "showMeridiem": {
-          "description": "以12格式显示小时数",
-          "name": "显示meridiem"
+          "description": "以 12 格式显示时间",
+          "name": "显示子午线"
         },
         "showWeekNumbers": {
           "description": "是否显示周数",
@@ -458,73 +458,73 @@
     },
     "RsDivider": {
       "description": "分隔符用于水平或垂直分组内容",
-      "name": "分频器",
+      "name": "分隔器",
       "props": {
         "children": {
-          "description": "将文本设置在分界线上",
+          "description": "在分界线上设置文本",
           "name": "内容"
         },
         "vertical": {
           "description": "垂直分界线",
-          "name": "垂直方向"
+          "name": "垂直"
         }
       }
     },
     "RsDropdown": {
-      "description": "下拉菜单是一个导航，如果要选择值，则使用selectpicker",
+      "description": "下拉菜单是一种导航，如果你想选择一个值，它使用选择器",
       "name": "下拉列表",
       "props": {
         "cleanable": {
-          "description": "选项是否可以清空",
+          "description": "是否可以清空该选项",
           "name": "可清洁"
         },
         "creatable": {
           "description": "设置可以创建新选项",
-          "name": "可创造的"
+          "name": "可创建"
         },
         "data": {
-          "description": "可选择的数据",
-          "name": "数据资料"
+          "description": "可选数据",
+          "name": "数据"
         },
         "disableVirtualized": {
           "description": "是否禁用虚拟化",
           "name": "禁用虚拟化"
         },
         "groupBy": {
-          "description": "在\"数据\"中设置分组条件\"键\"",
-          "name": "组别"
+          "description": "在 “数据” 中设置分组标准 “键”",
+          "name": "分组依据"
         },
         "onChange": {
-          "description": "值更改时的回调函数",
-          "name": "交换/交换"
+          "description": "值发生变化时的回调函数",
+          "name": "onChange"
         },
         "onClean": {
-          "description": "Clean的回调",
-          "name": "n.清洁,清洁"
+          "description": "清理回调",
+          "name": "OnClean"
         },
         "onClose": {
           "description": "关闭的回调",
-          "name": "n.锁,锁"
+          "name": "onClose"
         },
         "onCreate": {
-          "description": "Create的回调",
-          "name": "再创,再创"
+          "description": "创建的回调",
+          "name": "onCreate"
         },
         "onLoadData": {
           "description": "加载数据的回调",
-          "name": "[医]onloadata"
+          "name": "加载数据"
         },
         "onSearch": {
-          "description": "搜索的回调",
-          "name": "搜索"
+          "description": "搜索回调",
+          "name": "onSearch"
         },
         "onSelect": {
-          "description": "Select的回调",
-          "name": "选择,选择"
+          "description": "选择的回调",
+          "name": "onSelect"
         },
         "preload": {
           "description": "是否预加载数据",
-          "name": "预紧力"
+          "name": "预载"
         }
       }
     },
@@ -533,7 +533,7 @@
       "name": "错误消息"
     },
     "RsHeader": {
-      "description": "简单的HTML标题",
+      "description": "简单的 HTML 标题",
       "name": "标题",
       "props": {
         "content": {
@@ -547,16 +547,16 @@
       }
     },
     "RsImage": {
-      "description": "简单的HTML图像",
-      "name": "图像",
+      "description": "简单的 HTML 图片",
+      "name": "图片",
       "props": {
         "alt": {
-          "description": "图像描述",
-          "name": "资料描述"
+          "description": "图片描述",
+          "name": "描述"
         },
         "src": {
-          "description": "图像源",
-          "name": "Src公司"
+          "description": "图片来源",
+          "name": "Src"
         }
       }
     },
@@ -569,55 +569,55 @@
           "name": "密码掩码"
         },
         "showPasswordAriaLabel": {
-          "description": "输入处于密码掩码模式时，显示密码按钮的aria-label属性的值",
-          "name": "显示密码按钮的咏叹调标签"
+          "description": "当输入处于密码掩码模式时，显示密码按钮的 aria-label 属性的值",
+          "name": "显示密码按钮的 ARIA 标签"
         },
         "type": {
-          "description": "HTML输入类型",
+          "description": "HTML 输入类型",
           "name": "类型"
         }
       }
     },
     "RsLabel": {
-      "description": "简单的HTML标签",
+      "description": "简单的 HTML 标签",
       "name": "标签",
       "props": {
         "text": {
-          "description": "标签文本内容",
+          "description": "标签文字内容",
           "name": "文本"
         }
       }
     },
     "RsLink": {
-      "description": "简单的HTML锚",
-      "name": "连结",
+      "description": "简单的 HTML 锚点",
+      "name": "链接",
       "props": {
         "children": {
-          "description": "组件子级",
-          "name": "儿童"
+          "description": "组件的子元素",
+          "name": "孩子们"
         },
         "content": {
           "description": "内容类型（文本或自定义）",
           "name": "内容"
         },
         "download": {
-          "description": "导致浏览器将链接的URL视为下载",
+          "description": "使浏览器将链接的 URL 视为下载",
           "name": "下载"
         },
         "downloadFilename": {
-          "description": "定义一个值建议它作为文件名。 /和\\字符转换为下划线(_)",
+          "description": "定义值表示将其作为文件名。/和\\ 字符转换为下划线 (_)",
           "name": "下载文件名"
         },
         "href": {
-          "description": "超链接指向的URL",
+          "description": "超链接指向的 URL",
           "name": "Href"
         },
         "onClick": {
           "description": "点击链接时的回调函数",
-          "name": "昂克里克"
+          "name": "onClick"
         },
         "target": {
-          "description": "在哪里显示链接的URL，作为浏览上下文（选项卡、窗口或 <iframe>)",
+          "description": "在何处显示链接 URL，作为浏览上下文（选项卡、窗口或<iframe>）的名称",
           "name": "目标"
         },
         "text": {
@@ -628,45 +628,45 @@
     },
     "RsMenu": {
       "description": "提供各种形式的导航菜单列表，可以是横向和纵向布局",
-      "name": "菜单",
+      "name": "“菜单”",
       "props": {
         "activeKey": {
-          "description": "活动键，对应于其中一个值",
-          "name": "活动键"
+          "description": "活动密钥，对应于其中一个物品的值",
+          "name": "活动密钥"
         },
         "appearance": {
-          "description": "导航可以有不同的外观",
+          "description": "导航可能有不同的外观",
           "name": "外观"
         },
         "items": {
-          "description": "菜单的项目",
-          "name": "项目"
+          "description": "菜单上的项目",
+          "name": "物品"
         },
         "itemsAs": {
-          "description": "Html元素呈现菜单项",
-          "name": "项目作为"
+          "description": "用于呈现菜单项的 HTML 元素",
+          "name": "物品为"
         },
         "justified": {
-          "description": "合理导航",
-          "name": "正当理由"
+          "description": "合理的导航",
+          "name": "有道理"
         },
         "onSelect": {
-          "description": "选择后触发的回调函数",
-          "name": "选择,选择"
+          "description": "选择后触发回调函数",
+          "name": "onSelect"
         },
         "reversed": {
-          "description": "标签/微妙的反向方向",
-          "name": "逆转"
+          "description": "选项卡/微妙方向相反",
+          "name": "反向的"
         },
         "vertical": {
           "description": "堆叠导航",
-          "name": "垂直方向"
+          "name": "垂直"
         }
       }
     },
     "RsMessage": {
       "description": "用于在页面上显示重要提示",
-      "name": "信息",
+      "name": "留言",
       "props": {
         "closable": {
           "description": "是否可以关闭消息框",
@@ -683,47 +683,47 @@
       }
     },
     "RsModal": {
-      "description": "消息提示、确认消息和提交的模式对话框组件",
-      "name": "模态分析",
+      "description": "用于消息提示、确认消息和提交的模态对话框组件",
+      "name": "模态",
       "props": {
         "autoFocus": {
-          "description": "当设置为true时，模式将打开并自动聚焦于它自己，屏幕阅读器可以访问",
+          "description": "当设置为 true 时，模态将打开并自动对焦，屏幕阅读器可以访问",
           "name": "自动对焦"
         },
         "backdrop": {
-          "description": "当设置为true时，模式将在打开时显示背景。 点击背景将关闭模态",
+          "description": "当设置为 true 时，模态将在打开时显示背景。点击背景将关闭模态",
           "name": "背景"
         },
         "backdropClassName": {
-          "description": "添加一个可选的额外类名。模态背景它可能最终看起来像class=\"模态背景foo-模态背景in\"",
+          "description": "在 .modal-backdrop 中添加一个可选的额外类名它最终可能看起来像 class= “模态背景 foo-modal-backdrop foo-modal-backdro",
           "name": "背景类名"
         },
         "classPrefix": {
-          "description": "组件CSS类的前缀",
-          "name": "CSS类前缀"
+          "description": "组件 CSS 类的前缀",
+          "name": "CSS 类前缀"
         },
         "dialogClassName": {
-          "description": "应用于对话框DOM节点的CSS类",
-          "name": "对话框的CSS类"
+          "description": "应用于 Dialog DOM 节点的 CSS 类",
+          "name": "对话框的 CSS 类"
         },
         "enforceFocus": {
-          "description": "当设置为true时，Modal将防止焦点在打开时离开，使辅助屏幕阅读器更容易访问",
-          "name": "强制执行焦点"
+          "description": "当设置为 true 时，Modal 将在打开时防止焦点离开，从而使辅助屏幕阅读器更容易访问",
+          "name": "强制对焦"
         },
         "keyboard": {
-          "description": "按下Esc键时关闭模态",
-          "name": "靠近Esc"
+          "description": "按下 Esc 键时关闭模态",
+          "name": "靠近 Esc"
         },
         "onClose": {
-          "description": "Modal关闭时调用",
-          "name": "n.锁,锁"
+          "description": "关闭 Modal 时调用",
+          "name": "onClose"
         },
         "onOpen": {
           "description": "显示模态时调用",
-          "name": "奥诺彭"
+          "name": "onOpen"
         },
         "overflow": {
-          "description": "正文内容过长时自动设置高度",
+          "description": "当正文内容过长时自动设置高度",
           "name": "溢出"
         },
         "size": {
@@ -733,19 +733,19 @@
       }
     },
     "RsModalLayout": {
-      "description": "具有页眉、正文和页脚部分的模态布局组件",
-      "name": "模态设计",
+      "description": "带有页眉、正文和页脚部分的模态布局组件",
+      "name": "模态布局",
       "props": {
         "body": {
-          "description": "模态体的内容",
+          "description": "模态正文的内容",
           "name": "身体"
         },
         "closeButton": {
           "description": "显示关闭按钮",
-          "name": "关闭按钮"
+          "name": "“关闭” 按钮"
         },
         "footer": {
-          "description": "模式页脚的内容",
+          "description": "模态页脚的内容",
           "name": "页脚"
         },
         "headerTitle": {
@@ -759,19 +759,19 @@
       "name": "数字格式",
       "props": {
         "allowLeadingZeros": {
-          "description": "这允许启用或禁用输入字段中的前导零。 默认情况下，在输入模糊时，前导零将被删除",
+          "description": "这允许在输入字段中启用或禁用前导零。默认情况下，在对输入进行模糊处理时，会移除前导零",
           "name": "允许前导零"
         },
         "allowNegative": {
-          "description": "如果设置为false，则不允许使用负数",
-          "name": "允许否定"
+          "description": "如果设置为 false，则不允许使用负数",
+          "name": "允许负值"
         },
         "allowedDecimalSeparators": {
-          "description": "按下时产生小数点分隔符的字符。 缺失时，小数点分隔符和'。'被使用",
-          "name": "允许的小数分隔符"
+          "description": "按下时会产生十进制分隔符的字符。缺失时，使用十进制分隔符和 '.'",
+          "name": "允许的十进制分隔符"
         },
         "decimalScale": {
-          "description": "如果定义，它会限制小数点后的位数",
+          "description": "如果已定义，它将限制小数点后的位数",
           "name": "十进制刻度"
         },
         "decimalSeparator": {
@@ -779,8 +779,8 @@
           "name": "小数分隔符"
         },
         "fixedDecimalScale": {
-          "description": "如果设置为true，它会在decimalSeparator之后添加尾随0以匹配给定的decimalScale",
-          "name": "固定小数位数"
+          "description": "如果设置为 true，它将在 decimalSeparator 之后添加末尾 0 以匹配给定的 decimalScale",
+          "name": "固定十进制刻度"
         },
         "prefix": {
           "description": "在输入值之前添加前缀字符",
@@ -791,25 +791,25 @@
           "name": "后缀"
         },
         "thousandSeparator": {
-          "description": "千分离器",
-          "name": "千分离器"
+          "description": "千位分隔符",
+          "name": "千位分隔符"
         },
         "thousandsGroupStyle": {
-          "description": "千式(千):123,456,789,印度式(万):12,34,56,789,中国式(万):1,2345,6789",
-          "name": "千人团体风格"
+          "description": "千种风格（千）：123,456,789，印度风格（十万）：12,34,56,789，中式风格（wan）：1,2345,6789",
+          "name": "千人组风格"
         }
       }
     },
     "RsPatternFormat": {
-      "description": "具有标签支持的模式格式输入组件",
-      "name": "模式格式",
+      "description": "支持标签的模式格式输入组件",
+      "name": "图案格式",
       "props": {
         "allowEmptyFormatting": {
-          "description": "默认情况下，当值为空（null、未定义或\"）时，PatternFormat组件不应用格式",
-          "name": "允许空格式"
+          "description": "默认情况下，当值为空（空值、未定义或 “”）时 PatternFormat 组件不应用格式",
+          "name": "允许空格式化"
         },
         "format": {
-          "description": "使用#（或模式char）字符格式化模式。 #是数字的占位符字符。 例如：'######'",
+          "description": "使用 #（或模式字符）格式化模式。# 是数字的占位符。示例：'### ##'",
           "name": "格式"
         },
         "mask": {
@@ -818,25 +818,25 @@
         },
         "patternChar": {
           "description": "这有助于定义格式模式字符",
-          "name": "模式char"
+          "name": "图案图表"
         }
       }
     },
     "RsPlaceholderGraph": {
-      "description": "以矩形形式加载组件之前的占位符",
+      "description": "以矩形的形式加载组件之前的占位符",
       "name": "占位符图",
       "props": {
         "active": {
           "description": "占位符是否处于活动状态",
-          "name": "活动中"
+          "name": "活跃"
         },
         "height": {
-          "description": "图形高度",
+          "description": "图表高度",
           "name": "身高"
         },
         "width": {
           "description": "图形宽度",
-          "name": "阔度"
+          "name": "宽度"
         }
       }
     },
@@ -846,14 +846,14 @@
       "props": {
         "active": {
           "description": "占位符是否处于活动状态",
-          "name": "活动中"
+          "name": "活跃"
         },
         "columns": {
           "description": "列数",
-          "name": "列"
+          "name": "专栏"
         },
         "rowHeight": {
-          "description": "行的高度",
+          "description": "该行的高度",
           "name": "行高"
         },
         "rowSpacing": {
@@ -867,19 +867,19 @@
       }
     },
     "RsPlaceholderParagraph": {
-      "description": "以段落形式加载组件之前的占位符",
+      "description": "以段落的形式加载组件之前的占位符",
       "name": "占位符段落",
       "props": {
         "active": {
           "description": "占位符是否处于活动状态",
-          "name": "活动中"
+          "name": "活跃"
         },
         "graph": {
-          "description": "图形的形状",
+          "description": "图表的形状",
           "name": "图表"
         },
         "rowHeight": {
-          "description": "行的高度",
+          "description": "该行的高度",
           "name": "行高"
         },
         "rowSpacing": {
@@ -893,61 +893,61 @@
       }
     },
     "RsProgressCircle": {
-      "description": "将操作的当前进度显示为圆形",
-      "name": "进步圈",
+      "description": "以圆圈形式显示操作的当前进度",
+      "name": "进度圈",
       "props": {
         "classPrefix": {
-          "description": "组件CSS类的前缀",
+          "description": "组件 CSS 类的前缀",
           "name": "类前缀"
         },
         "gapDegree": {
-          "description": "半圆的间隙度，0~360",
-          "name": "间隙度"
+          "description": "半圆的间隙度，0 ~ 360",
+          "name": "差距度"
         },
         "gapPosition": {
           "description": "圆形进度条缺口位置",
-          "name": "缺口位置"
+          "name": "间隙位置"
         },
         "percent": {
           "description": "进度百分比",
           "name": "百分比"
         },
         "showInfo": {
-          "description": "显示文本",
-          "name": "展示信息"
+          "description": "显示文字",
+          "name": "显示信息"
         },
         "status": {
-          "description": "进度状况",
-          "name": "状况"
+          "description": "进度状态",
+          "name": "状态"
         },
         "strokeColor": {
           "description": "线条颜色",
-          "name": "笔画颜色"
+          "name": "笔触颜色"
         },
         "strokeLinecap": {
-          "description": "不同类型的开放路径的结束",
-          "name": "中风线形"
+          "description": "不同类型的开放路径的终结",
+          "name": "笔画线帽"
         },
         "strokeWidth": {
           "description": "线宽",
-          "name": "笔划宽度"
+          "name": "笔画宽度"
         },
         "trailColor": {
-          "description": "轨迹颜色",
-          "name": "轨迹颜色"
+          "description": "步道颜色",
+          "name": "步道颜色"
         },
         "trailWidth": {
-          "description": "小径宽度",
-          "name": "小径宽度"
+          "description": "步道宽度",
+          "name": "步道宽度"
         }
       }
     },
     "RsProgressLine": {
-      "description": "将操作的当前进度显示为行",
+      "description": "将操作的当前进度显示为一条线",
       "name": "进度线",
       "props": {
         "classPrefix": {
-          "description": "组件CSS类的前缀",
+          "description": "组件 CSS 类的前缀",
           "name": "类前缀"
         },
         "percent": {
@@ -955,118 +955,118 @@
           "name": "百分比"
         },
         "showInfo": {
-          "description": "显示文本",
-          "name": "展示信息"
+          "description": "显示文字",
+          "name": "显示信息"
         },
         "status": {
-          "description": "进度状况",
-          "name": "状况"
+          "description": "进度状态",
+          "name": "状态"
         },
         "strokeColor": {
           "description": "线条颜色",
-          "name": "笔画颜色"
+          "name": "笔触颜色"
         },
         "strokeWidth": {
           "description": "线宽",
-          "name": "笔划宽度"
+          "name": "笔画宽度"
         },
         "vertical": {
           "description": "进度条垂直显示",
-          "name": "垂直方向"
+          "name": "垂直"
         }
       }
     },
     "RsRadioGroup": {
-      "description": "当在一系列选项中只能选择一个选项时，使用无线电",
-      "name": "无线电组",
+      "description": "当在一系列选项中只能选择一个选项时，将使用收音机",
+      "name": "电台组",
       "props": {
         "appearance": {
-          "description": "无线电组可以有不同的外观",
+          "description": "一个广播组可以有不同的出场次数",
           "name": "外观"
         },
         "inline": {
-          "description": "内联布局",
-          "name": "内联/内联"
+          "description": "行内布局",
+          "name": "内联"
         },
         "items": {
-          "description": "无线电组的项目",
-          "name": "项目"
+          "description": "电台组的物品",
+          "name": "物品"
         },
         "name": {
-          "description": "无线电组名称",
+          "description": "电台组名称",
           "name": "姓名"
         },
         "onChange": {
           "description": "值更改后调用",
-          "name": "交换/交换"
+          "name": "onChange"
         }
       }
     },
     "RsSearch": {
-      "description": "具有标签和数据加载支持的搜索组件",
-      "name": "搜索",
+      "description": "支持标签和数据加载的搜索组件",
+      "name": "搜寻",
       "props": {
         "cleanable": {
-          "description": "选项是否可以清空",
+          "description": "是否可以清空该选项",
           "name": "可清洁"
         },
         "creatable": {
           "description": "设置可以创建新选项",
-          "name": "可创造的"
+          "name": "可创建"
         },
         "data": {
-          "description": "可选择的数据",
-          "name": "数据资料"
+          "description": "可选数据",
+          "name": "数据"
         },
         "disableVirtualized": {
           "description": "是否禁用虚拟化",
           "name": "禁用虚拟化"
         },
         "groupBy": {
-          "description": "在\"数据\"中设置分组条件\"键\"",
-          "name": "组别"
+          "description": "在 “数据” 中设置分组标准 “键”",
+          "name": "分组依据"
         },
         "onChange": {
-          "description": "值更改时的回调函数",
-          "name": "交换/交换"
+          "description": "值发生变化时的回调函数",
+          "name": "onChange"
         },
         "onClean": {
-          "description": "Clean的回调",
-          "name": "n.清洁,清洁"
+          "description": "清理回调",
+          "name": "OnClean"
         },
         "onClose": {
           "description": "关闭的回调",
-          "name": "n.锁,锁"
+          "name": "onClose"
         },
         "onCreate": {
-          "description": "Create的回调",
-          "name": "再创,再创"
+          "description": "创建的回调",
+          "name": "onCreate"
         },
         "onLoadData": {
           "description": "加载数据的回调",
-          "name": "[医]onloadata"
+          "name": "加载数据"
         },
         "onSearch": {
-          "description": "搜索的回调",
-          "name": "搜索"
+          "description": "搜索回调",
+          "name": "onSearch"
         },
         "onSelect": {
-          "description": "Select的回调",
-          "name": "选择,选择"
+          "description": "选择的回调",
+          "name": "onSelect"
         },
         "preload": {
           "description": "是否预加载数据",
-          "name": "预紧力"
+          "name": "预载"
         }
       }
     },
     "RsStaticContent": {
-      "description": "显示文本或HTML内容的静态内容组件",
+      "description": "显示文本或 HTML 内容的静态内容组件",
       "name": "静态内容",
       "props": {
         "allowHtml": {
-          "description": "是否允许HTML内容",
-          "name": "允许HTML"
+          "description": "是否允许 HTML 内容",
+          "name": "允许 HTML"
         },
         "content": {
           "description": "要显示的内容",
@@ -1075,36 +1075,36 @@
       }
     },
     "RsTab": {
-      "description": "选项卡是一组分层的内容部分，称为选项卡面板，一次显示一个内容面板",
-      "name": "标签",
+      "description": "选项卡是一组内容的分层部分，称为选项卡面板，一次显示一个内容面板",
+      "name": "选项卡",
       "props": {
         "activeKey": {
-          "description": "活动键，对应于其中一个值",
-          "name": "活动键"
+          "description": "活动密钥，对应于其中一个物品的值",
+          "name": "活动密钥"
         },
         "appearance": {
-          "description": "标签可以有不同的外观",
+          "description": "一个选项卡可以有不同的外观",
           "name": "外观"
         },
         "items": {
-          "description": "选项卡的项目",
-          "name": "项目"
+          "description": "选项卡上的项目",
+          "name": "物品"
         },
         "justified": {
-          "description": "合理导航",
-          "name": "正当理由"
+          "description": "合理的导航",
+          "name": "有道理"
         },
         "onSelect": {
-          "description": "选择后触发的回调函数",
-          "name": "选择,选择"
+          "description": "选择后触发回调函数",
+          "name": "onSelect"
         },
         "pane": {
           "description": "选项卡的子组件",
           "name": "窗格"
         },
         "reversed": {
-          "description": "标签/微妙的反向方向",
-          "name": "逆转"
+          "description": "选项卡/微妙方向相反",
+          "name": "反向的"
         },
         "showNavigation": {
           "description": "显示或隐藏导航",
@@ -1112,76 +1112,76 @@
         },
         "vertical": {
           "description": "堆叠导航",
-          "name": "垂直方向"
+          "name": "垂直"
         }
       }
     },
     "RsTagPicker": {
-      "description": "带有标签支持的标签选择器组件",
+      "description": "支持标签的标签选择器组件",
       "name": "标签选择器",
       "props": {
         "cleanable": {
-          "description": "选项是否可以清空",
+          "description": "是否可以清空该选项",
           "name": "可清洁"
         },
         "creatable": {
           "description": "设置可以创建新选项",
-          "name": "可创造的"
+          "name": "可创建"
         },
         "data": {
-          "description": "可选择的数据",
-          "name": "数据资料"
+          "description": "可选数据",
+          "name": "数据"
         },
         "groupBy": {
-          "description": "在\"数据\"中设置分组条件\"键\"",
-          "name": "组别"
+          "description": "在 “数据” 中设置分组标准 “键”",
+          "name": "分组依据"
         },
         "onChange": {
-          "description": "值更改时的回调函数",
-          "name": "交换/交换"
+          "description": "值发生变化时的回调函数",
+          "name": "onChange"
         },
         "onClean": {
-          "description": "Clean的回调",
-          "name": "n.清洁,清洁"
+          "description": "清理回调",
+          "name": "OnClean"
         },
         "onClose": {
           "description": "关闭的回调",
-          "name": "n.锁,锁"
+          "name": "onClose"
         },
         "onCreate": {
-          "description": "Create的回调",
-          "name": "再创,再创"
+          "description": "创建的回调",
+          "name": "onCreate"
         },
         "onSearch": {
-          "description": "搜索的回调",
-          "name": "搜索"
+          "description": "搜索回调",
+          "name": "onSearch"
         },
         "onSelect": {
-          "description": "Select的回调",
-          "name": "选择,选择"
+          "description": "选择的回调",
+          "name": "onSelect"
         }
       }
     },
     "RsTextArea": {
-      "description": "一种用于多行文本输入的文本区域组件",
-      "name": "文本区域",
+      "description": "用于多行文本输入的文本区域组件",
+      "name": "文字区域",
       "props": {
         "onChange": {
           "description": "更改值的回调函数",
-          "name": "交换/交换"
+          "name": "onChange"
         },
         "onPressEnter": {
-          "description": "要求按enter键",
-          "name": "压力中心"
+          "description": "已调用，按回车键",
+          "name": "onPressEnter"
         },
         "rows": {
-          "description": "可见文本行数",
+          "description": "可见的文本行数",
           "name": "行"
         }
       }
     },
     "RsTimePicker": {
-      "description": "带有标签支持的时间选择器组件",
+      "description": "支持标签的时间选择器组件",
       "name": "时间选择器",
       "props": {
         "cleanable": {
@@ -1193,7 +1193,7 @@
           "name": "默认值"
         },
         "editable": {
-          "description": "呈现为输入，时间可以通过键盘输入",
+          "description": "呈现为输入，可以通过键盘输入时间",
           "name": "可编辑"
         },
         "format": {
@@ -1202,51 +1202,51 @@
         },
         "onChange": {
           "description": "值更改时触发回调",
-          "name": "交换/交换"
+          "name": "onChange"
         },
         "onClean": {
-          "description": "值clean时触发回调",
-          "name": "n.清洁,清洁"
+          "description": "值清理时触发回调",
+          "name": "OnClean"
         },
         "onClose": {
-          "description": "关闭组件时触发的回调",
-          "name": "n.锁,锁"
+          "description": "关闭组件时触发回调",
+          "name": "onClose"
         },
         "onEnter": {
-          "description": "在复盖转换之前触发的回调",
-          "name": "中心,中心"
+          "description": "在叠加层过渡之前触发回调",
+          "name": "onEnter"
         },
         "onEntered": {
-          "description": "复盖完成转换后触发的回调",
-          "name": "一个,一个"
+          "description": "叠加层完成过渡后触发回调",
+          "name": "onEnter"
         },
         "onEntering": {
-          "description": "当复盖开始转换时触发回调",
-          "name": "onEntering"
+          "description": "当叠加层开始过渡时触发回调",
+          "name": "进入时"
         },
         "onExit": {
-          "description": "在复盖过渡之前触发回调",
-          "name": "onExit,onExit"
+          "description": "在叠加层过渡之前触发回调",
+          "name": "onExit"
         },
         "onExited": {
-          "description": "复盖完成过渡后触发回调",
-          "name": "已登记"
+          "description": "叠加层完成过渡后触发回调",
+          "name": "oneExited"
         },
         "onExiting": {
-          "description": "当复盖开始过渡时触发回调",
-          "name": "onExiting,onExiting"
+          "description": "当叠加层开始向外过渡时触发回调",
+          "name": "OneExiting"
         },
         "onOk": {
-          "description": "单击确定回调函数",
-          "name": "小野"
+          "description": "单击 “确定” 回调函数",
+          "name": "Onok"
         },
         "onOpen": {
-          "description": "打开组件时触发的回调",
-          "name": "奥诺彭"
+          "description": "打开组件时触发回调",
+          "name": "onOpen"
         },
         "onSelect": {
           "description": "选择日期或时间时触发回调",
-          "name": "选择,选择"
+          "name": "onSelect"
         },
         "open": {
           "description": "是否打开组件",
@@ -1255,32 +1255,32 @@
       }
     },
     "RsToggle": {
-      "description": "切换开关，用于在两个值之间进行选择",
-      "name": "切换开关",
+      "description": "拨动开关，用于在两个值之间进行选择",
+      "name": "切换",
       "props": {
         "checked": {
-          "description": "是否勾选切换",
-          "name": "检查过"
+          "description": "是否选中了切换",
+          "name": "已勾选"
         },
         "checkedChildren": {
           "description": "在选中状态下显示的文本",
-          "name": "检查文本"
+          "name": "已勾选文本"
         },
         "children": {
           "description": "组件标签",
           "name": "标签"
         },
         "color": {
-          "description": "切换的颜色",
+          "description": "开关的颜色",
           "name": "颜色"
         },
         "loading": {
           "description": "组件是否处于加载状态",
-          "name": "装载量"
+          "name": "加载中"
         },
         "onChange": {
-          "description": "切换状态更改时调用",
-          "name": "交换/交换"
+          "description": "切换状态发生变化时调用",
+          "name": "onChange"
         },
         "unCheckedChildren": {
           "description": "在未选中状态下显示的文本",
@@ -1289,12 +1289,12 @@
       }
     },
     "RsTooltip": {
-      "description": "Secondary的文本提示，它替换HTML元素的默认title属性",
+      "description": "次要文本提示，它取代了 HTML 元素的默认标题属性",
       "name": "工具提示",
       "props": {
         "children": {
           "description": "工具提示的子元素",
-          "name": "儿童"
+          "name": "孩子们"
         },
         "text": {
           "description": "工具提示文本",
@@ -1307,122 +1307,122 @@
       }
     },
     "RsUploader": {
-      "description": "通过单击或拖放上传文件，它支持预览上传的图像",
+      "description": "通过点击或拖放上传文件，它支持预览上传的图片",
       "name": "上传者",
       "props": {
         "accept": {
-          "description": "可以接受的文件类型。 请参阅标准HTML属性：接受",
+          "description": "可以接受的文件类型。参见标准 HTML 属性：接受",
           "name": "接受"
         },
         "action": {
-          "description": "上传URL",
-          "name": "开始！"
+          "description": "上传网址",
+          "name": "行动"
         },
         "autoUpload": {
-          "description": "选择文件后自动上传",
+          "description": "选择文件后自动上传文件",
           "name": "自动上传"
         },
         "children": {
           "description": "主要内容",
-          "name": "儿童"
+          "name": "孩子们"
         },
         "customElement": {
-          "description": "是否为上传器使用自定义元素",
+          "description": "是否为上传者使用自定义元素",
           "name": "自定义元素"
         },
         "disableMultipart": {
-          "description": "如果'true'，则禁用使用多部分表单进行文件上传，而是流式传输文件。 某些Api（例如Amazon S3）可能期望将文件流式传输，而不是通过表单发送",
+          "description": "如果为 “true”，则禁用使用分段表单进行文件上传，改为流式传输文件。某些 API（例如 Amazon S3）可能期望文件通过流式传输而不是通过表单发送",
           "name": "禁用多部分"
         },
         "disabledFileItem": {
-          "description": "禁用的文件项",
-          "name": "禁用的文件项"
+          "description": "已禁用文件项目",
+          "name": "已禁用文件项目"
         },
         "draggable": {
-          "description": "启用拖放以上载",
+          "description": "启用拖放功能上传",
           "name": "可拖动"
         },
         "fileList": {
-          "description": "上传文件列表",
-          "name": "文件列表"
+          "description": "上传的文件清单",
+          "name": "文件清单"
         },
         "fileListVisible": {
-          "description": "文件列表可以呈现",
+          "description": "可以呈现文件列表",
           "name": "文件列表可见"
         },
         "listType": {
-          "description": "上传列表样式",
-          "name": "列表类型"
+          "description": "上传清单样式",
+          "name": "清单类型"
         },
         "method": {
-          "description": "上传请求的HTTP方法",
+          "description": "上传请求的 HTTP 方法",
           "name": "方法"
         },
         "multiple": {
-          "description": "允许多个文件上传",
+          "description": "允许上传多个文件",
           "name": "多个"
         },
         "name": {
-          "description": "上传对应文件的参数名",
+          "description": "上传相应文件的参数名称",
           "name": "姓名"
         },
         "onChange": {
           "description": "上传队列已更改的回调函数",
-          "name": "交换/交换"
+          "name": "onChange"
         },
         "onError": {
-          "description": "上传带有错误的回调函数",
-          "name": "n.错误,错误"
+          "description": "上传有错误的回调函数",
+          "name": "onError"
         },
         "onPreview": {
           "description": "在文件列表中，单击上传文件的回调函数",
-          "name": "[医]观点"
+          "name": "开启预览"
         },
         "onProgress": {
-          "description": "上传进度更改的回调函数",
-          "name": "n.压力,压力"
+          "description": "上传进度变化的回调函数",
+          "name": "onProgress"
         },
         "onRemove": {
-          "description": "在文件列表中，单击回调函数以删除文件",
-          "name": "n.爱情"
+          "description": "在文件列表中，点击回调函数删除文件",
+          "name": "onRemove"
         },
         "onReupload": {
-          "description": "在文件列表中，上传失败的文件，点击回调函数上传",
-          "name": "[医]负荷"
+          "description": "在文件列表中，要上传失败的文件，请点击回调函数进行上传",
+          "name": "一次重新上传"
         },
         "onSuccess": {
-          "description": "上传成功后回调函数",
-          "name": "成功,成功"
+          "description": "成功上传后的回调函数",
+          "name": "成功之时"
         },
         "onUpload": {
           "description": "启动上传文件的回调函数",
-          "name": "负荷,负荷"
+          "name": "上传时"
         },
         "removable": {
-          "description": "可移动列表文件",
+          "description": "可移除的列表文件",
           "name": "可拆卸"
         },
         "timeout": {
           "description": "设置上传超时",
-          "name": "超时时间"
+          "name": "超时"
         },
         "withCredentials": {
-          "description": "上传请求时是否携带cookie",
-          "name": "有证件"
+          "description": "上传请求时是否携带 Cookie",
+          "name": "有凭证"
         }
       }
     },
     "RsWizard": {
       "description": "具有步骤导航和验证的向导组件",
-      "name": "向导",
+      "name": "巫师",
       "props": {
         "activeIndex": {
-          "description": "活动步骤索引",
-          "name": "活动索引"
+          "description": "活跃步数索引",
+          "name": "活跃指数"
         },
         "children": {
-          "description": "巫师儿童",
-          "name": "儿童"
+          "description": "向导步骤内容",
+          "name": "孩子们"
         },
         "finishButtonLabel": {
           "description": "完成按钮标签",
@@ -1430,30 +1430,30 @@
         },
         "nextButtonLabel": {
           "description": "下一个按钮标签",
-          "name": "下一个按钮标签"
+          "name": "下一步按钮标签"
         },
         "onFinish": {
-          "description": "点击完成按钮时回调",
-          "name": "onFinish碌录潞陆"
+          "description": "单击 “完成” 按钮时回调",
+          "name": "onFinish"
         },
         "onNext": {
-          "description": "单击next按钮时回调",
-          "name": "下一个"
+          "description": "点击下一个按钮时回调",
+          "name": "onNext"
         },
         "onPrev": {
-          "description": "单击上一个按钮时的回调",
-          "name": "[医]预"
+          "description": "点击上一个按钮时回调",
+          "name": "onPrev"
         },
         "prevButtonLabel": {
-          "description": "上一个按钮标签",
+          "description": "之前的按钮标签",
           "name": "上一个按钮标签"
         },
         "showSteps": {
-          "description": "如果为true，将显示步骤",
+          "description": "如果为 true，则将显示步骤",
           "name": "显示步骤"
         },
         "showStepsLabels": {
-          "description": "如果为true，将显示步骤标签",
+          "description": "如果为 true，将显示步骤标签",
           "name": "显示步骤标签"
         },
         "steps": {
@@ -1461,30 +1461,30 @@
           "name": "步骤"
         },
         "stepsNavigation": {
-          "description": "通过单击确定可用于导航的步骤",
+          "description": "通过单击，确定哪些步骤可供导航",
           "name": "步骤导航"
         },
         "validateOnFinish": {
-          "description": "如果为true，则在完成向导之前将验证向导",
+          "description": "如果为 true，则在完成向导之前将对向导进行验证",
           "name": "完成后验证"
         },
         "validateOnNext": {
-          "description": "如果为true，则在转到下一步之前将验证该步骤",
+          "description": "如果为 true，则在进入下一步之前将对该步骤进行验证",
           "name": "下次验证"
         },
         "verticalSteps": {
-          "description": "如果为true，步骤将垂直显示",
+          "description": "如果为 true，则步骤将垂直显示",
           "name": "垂直台阶"
         }
       }
     },
     "RsWizardStep": {
-      "description": "具有flex布局的向导步骤组件",
+      "description": "具有弹性布局的向导步骤组件",
       "name": "向导步骤",
       "props": {
         "children": {
-          "description": "组件子级",
-          "name": "儿童"
+          "description": "组件的子元素",
+          "name": "孩子们"
         }
       }
     }

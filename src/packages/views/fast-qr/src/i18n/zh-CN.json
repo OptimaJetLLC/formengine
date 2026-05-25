@@ -6,20 +6,20 @@
   },
   "components": {
     "FastQR": {
-      "description": "可以将文本转换为QR码的组件，并支持自定义颜色和标识",
-      "name": "QR码",
+      "description": "可以将文本转换为二维码并支持自定义颜色和徽标的组件",
+      "name": "二维码",
       "props": {
         "content": {
-          "description": "QR码内容",
+          "description": "二维码内容",
           "name": "内容"
         },
         "errorCorrectionLevel": {
-          "description": "的纠错编码级",
-          "name": "纠错级别"
+          "description": "错误校正编码级别",
+          "name": "错误校正级别"
         },
         "image": {
-          "description": "图像、base64或URL",
-          "name": "图像"
+          "description": "图片、base64 或 URL",
+          "name": "图片"
         },
         "imageBackgroundColor": {
           "description": "图像背景颜色",
@@ -34,16 +34,16 @@
           "name": "模块颜色"
         },
         "shape": {
-          "description": "表示模块的不同可能形状",
+          "description": "代表模块的不同可能形状",
           "name": "形状"
         },
         "version": {
-          "description": "QR码版本",
-          "name": "QR版本"
+          "description": "二维码版本",
+          "name": "二维码版"
         },
         "width": {
-          "description": "QR码宽度",
-          "name": "阔度"
+          "description": "二维码宽度",
+          "name": "宽度"
         }
       }
     }

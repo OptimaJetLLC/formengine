@@ -1,12 +1,12 @@
 {
   "categories": {
     "fields": {
-      "name": "الحقول"
+      "name": "حقول"
     }
   },
   "components": {
     "GoogleMap": {
-      "description": "مكون عرض خريطة جوجل",
+      "description": "مكون يعرض خريطة Google",
       "name": "خريطة جوجل",
       "props": {
         "addMarkerOnSearch": {
@@ -14,7 +14,7 @@
           "name": "إضافة علامة على البحث"
         },
         "allowChangingMarkers": {
-          "description": "إذا تم تحديده ، يمكن للمستخدم تغيير العلامات",
+          "description": "في حالة التحقق، يمكن للمستخدم تغيير العلامات",
           "name": "السماح بتغيير العلامات"
         },
         "allowMultipleMarkers": {
@@ -22,19 +22,19 @@
           "name": "السماح بعلامات متعددة"
         },
         "apiKey": {
-          "description": "مفتاح واجهة برمجة تطبيقات خرائط جوجل",
-          "name": "مفتاح واجهة برمجة التطبيقات"
+          "description": "مفتاح API لخرائط Google",
+          "name": "مفتاح API"
         },
         "collisionBehavior": {
           "description": "سلوك تصادم العلامات",
-          "name": "سلوك الاصطدام"
+          "name": "سلوك التصادم"
         },
         "colorScheme": {
-          "description": "نظام الألوان لاستخدام",
+          "description": "نظام الألوان المراد استخدامه",
           "name": "نظام الألوان"
         },
         "gestureHandling": {
-          "description": "التعامل مع الإيماءات للاستخدام",
+          "description": "معالجة الإيماءات التي يجب استخدامها",
           "name": "التعامل مع الإيماءات"
         },
         "height": {
@@ -42,39 +42,39 @@
           "name": "الارتفاع"
         },
         "label": {
-          "description": "تسمية الخريطة",
-          "name": "التسمية"
+          "description": "ملصق الخريطة",
+          "name": "ملصق"
         },
         "language": {
           "description": "اللغة التي يجب استخدامها",
           "name": "اللغة"
         },
         "latitude": {
-          "description": "خط العرض من نقطة المركز",
+          "description": "خط عرض النقطة المركزية",
           "name": "خط العرض"
         },
         "longitude": {
-          "description": "خط الطول من نقطة المركز",
+          "description": "خط طول نقطة المركز",
           "name": "خط الطول"
         },
         "mapControlPosition": {
-          "description": "موقف التحكم في الخريطة",
-          "name": "موقع التحكم في الخريطة"
+          "description": "موضع عنصر التحكم في الخريطة",
+          "name": "موضع التحكم في الخريطة"
         },
         "mapId": {
-          "description": "معرف الخريطة هو معرف مرتبط بنمط أو ميزة خريطة معينة",
+          "description": "معرف الخريطة هو معرف مرتبط بنمط خريطة أو معلم معين.",
           "name": "معرف الخريطة"
         },
         "mapTypeId": {
-          "description": "نوع الخريطة الافتراضي للاستخدام",
+          "description": "نوع الخريطة الافتراضي الذي سيتم استخدامه",
           "name": "نوع الخريطة"
         },
         "markerWindowTitle": {
-          "description": "عنوان نافذة علامة",
-          "name": "علامة نافذة العنوان"
+          "description": "عنوان نافذة العلامة",
+          "name": "عنوان نافذة العلامة"
         },
         "markers": {
-          "description": "إحداثيات علامات",
+          "description": "إحداثيات العلامات",
           "name": "علامات"
         },
         "region": {
@@ -87,19 +87,19 @@
         },
         "searchPlaceholder": {
           "description": "نص العنصر النائب لإدخال بحث الخريطة",
-          "name": "البحث عن العنصر النائب"
+          "name": "عنصر نائب للبحث"
         },
         "showMapControl": {
-          "description": "سواء لإظهار التحكم في الخريطة",
-          "name": "إظهار التحكم في الخريطة"
+          "description": "ما إذا كنت تريد إظهار عنصر تحكم الخريطة",
+          "name": "عرض عنصر التحكم بالخريطة"
         },
         "width": {
           "description": "عرض الخريطة",
-          "name": "العرض"
+          "name": "عرض"
         },
         "zoom": {
-          "description": "مستوى التكبير",
-          "name": "زووم"
+          "description": "مستوى الزوم",
+          "name": "تكبير"
         }
       }
     }

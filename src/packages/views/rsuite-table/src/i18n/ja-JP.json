@@ -10,37 +10,37 @@
       "name": "セル",
       "props": {
         "dataKey": {
-          "description": "データバインディングキーだけでなく、一種のキー",
+          "description": "データバインディングキーだけでなく、一種のキーでもあります",
           "name": "データキー"
         }
       }
     },
     "RsColumn": {
-      "description": "テーブル列",
+      "description": "テーブルカラム",
       "name": "コラム",
       "props": {
         "align": {
-          "description": "アライメント",
+          "description": "アラインメント",
           "name": "整列"
         },
         "colSpan": {
-          "description": "マージされた列の'Data key'値がnullまたは未定義の場合に、列セルをマージしてマージします",
-          "name": "コルスパン"
+          "description": "結合された列の「データキー」の値が NULL または未定義の場合に、列セルを結合して結合します",
+          "name": "列スパン"
         },
         "fixed": {
-          "description": "固定列",
-          "name": "固定"
+          "description": "固定カラム",
+          "name": "修正済み"
         },
         "flexGrow": {
-          "description": "Set'Flex grow'が'Resizable'と'Width'プロパティを設定できない場合、列の幅を自動的に調整します",
-          "name": "フレックスグロウ"
+          "description": "列幅を設定すると自動的に調整されます。「Flex grow」を設定すると、「サイズ変更可能」および「幅」プロパティを設定できません",
+          "name": "フレックスグロー"
         },
         "fullText": {
-          "description": "マウスをホバーしたときにセルコンテンツの全文を表示するかどうか",
-          "name": "全文"
+          "description": "マウスカーソルを合わせたときにセルの内容の全文を表示するかどうか",
+          "name": "フルテキスト"
         },
         "minWidth": {
-          "description": "'Flex grow'を使用すると、最小幅を設定できます",
+          "description": "「Flex grow」を使用する場合、最小幅を設定できます",
           "name": "最小幅"
         },
         "resizable": {
@@ -48,7 +48,7 @@
           "name": "サイズ変更可能"
         },
         "rowSpan": {
-          "description": "指定された列の行をマージします",
+          "description": "指定された列の行を結合します",
           "name": "行スパン"
         },
         "sortable": {
@@ -56,26 +56,26 @@
           "name": "ソート可能"
         },
         "verticalAlign": {
-          "description": "縦の直線",
-          "name": "垂直整列"
+          "description": "垂直配置",
+          "name": "垂直位置合わせ"
         },
         "width": {
-          "description": "列の幅",
+          "description": "列幅",
           "name": "幅"
         }
       }
     },
     "RsColumnGroup": {
       "description": "テーブル列グループ",
-      "name": "列グループ",
+      "name": "コラムグループ",
       "props": {
         "align": {
-          "description": "アライメント",
+          "description": "アラインメント",
           "name": "整列"
         },
         "fixed": {
           "description": "固定列グループ",
-          "name": "固定"
+          "name": "修正済み"
         },
         "groupHeaderHeight": {
           "description": "結合されたセルグループのヘッダーの高さ",
@@ -86,8 +86,8 @@
           "name": "ヘッダー"
         },
         "verticalAlign": {
-          "description": "縦の直線",
-          "name": "垂直整列"
+          "description": "垂直配置",
+          "name": "垂直位置合わせ"
         }
       }
     },
@@ -97,7 +97,7 @@
       "props": {
         "children": {
           "description": "テーブル列ヘッダー",
-          "name": "コンテンツ"
+          "name": "[コンテンツ]"
         }
       }
     },
@@ -106,36 +106,36 @@
       "name": "テーブル",
       "props": {
         "affixHeader": {
-          "description": "ページ上の指定された場所にテーブルヘッダーを貼り付けます",
-          "name": "ヘッダーを添付して下さい"
+          "description": "テーブルヘッダーをページ上の指定された場所に貼り付けます",
+          "name": "アフィックスヘッダー"
         },
         "affixHorizontalScrollbar": {
-          "description": "テーブルの水平スクロールバーをページ上の指定された位置に固定します",
-          "name": "水平スクロールバーを貼り付ける"
+          "description": "表の水平スクロールバーをページ上の指定の位置に貼り付けます",
+          "name": "水平スクロールバーを貼り付けます"
         },
         "autoHeight": {
-          "description": "テーブルの高さは、データ行の数に応じて自動的に拡張され、垂直スクロールバーは表示されません",
+          "description": "テーブルの高さはデータ行の数に応じて自動的に拡大され、垂直スクロールバーは表示されません",
           "name": "自動高さ"
         },
         "bordered": {
           "description": "境界線を表示",
-          "name": "縁取り"
+          "name": "境界付き"
         },
         "cellBordered": {
           "description": "セルの境界線を表示",
-          "name": "セルの境界"
+          "name": "セルに境界があります"
         },
         "data": {
           "description": "テーブルデータ",
-          "name": "データ"
+          "name": "[データ]"
         },
         "defaultSortType": {
           "description": "ソートタイプ",
-          "name": "デフォルトのソートタイプ"
+          "name": "既定のソートタイプ"
         },
         "fillHeight": {
-          "description": "テーブルの高さを親コンテナの高さと等しくするようにします。 \"自動高さ\"と一緒に使用することはできません",
-          "name": "塗りつぶしの高さ"
+          "description": "テーブルの高さを強制的に親コンテナの高さと等しくします。「高さの自動設定」とは併用できません",
+          "name": "フィルの高さ"
         },
         "headerHeight": {
           "description": "テーブルヘッダーの高さ",
@@ -150,19 +150,19 @@
           "name": "ホバー"
         },
         "loading": {
-          "description": "ロードを表示",
-          "name": "積み込み"
+          "description": "読み込み中を表示",
+          "name": "読み込み中"
         },
         "maxHeight": {
-          "description": "最高の高さ",
-          "name": "最高の高さ"
+          "description": "最大高さ",
+          "name": "最大高さ"
         },
         "minHeight": {
-          "description": "最低の高さ",
-          "name": "最低の高さ"
+          "description": "最低高さ",
+          "name": "最小高さ"
         },
         "rowClassName": {
-          "description": "オプションの追加クラス名をrowに追加します",
+          "description": "行にオプションの追加クラス名を追加",
           "name": "行クラス名"
         },
         "rowHeight": {
@@ -170,7 +170,7 @@
           "name": "行の高さ"
         },
         "rowKey": {
-          "description": "各行は、データ内の一意のキーに対応します",
+          "description": "各行はデータ内のユニークなキーに対応します。",
           "name": "行キー"
         },
         "shouldUpdateScroll": {
@@ -178,27 +178,27 @@
           "name": "スクロールを更新する必要があります"
         },
         "showHeader": {
-          "description": "表示ヘッダー",
+          "description": "ヘッダーを表示",
           "name": "ヘッダーを表示"
         },
         "sortColumn": {
-          "description": "ソート列名",
-          "name": "列の並べ替え"
+          "description": "列名をソートする",
+          "name": "列をソート"
         },
         "sortType": {
           "description": "ソートタイプ",
           "name": "ソートタイプ"
         },
         "virtualized": {
-          "description": "大きな表形式データを効果的にレンダリングする",
-          "name": "仮想化された"
+          "description": "大きな表形式のデータを効果的にレンダリングする",
+          "name": "仮想化"
         },
         "width": {
           "description": "テーブル幅",
           "name": "幅"
         },
         "wordWrap": {
-          "description": "テキストがコンテンツボックスをオーバーフローする改行を表示するかどうか",
+          "description": "テキストがコンテンツボックスからはみ出している箇所に改行を表示するかどうか",
           "name": "ワードラップ"
         }
       }

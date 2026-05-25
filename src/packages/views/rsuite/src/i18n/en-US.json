@@ -20,7 +20,7 @@
     },
     "children": {
       "name": "Children",
-      "description": "Component children"
+      "description": "Child elements of the component"
     },
     "className": {
       "name": "CSS class",
@@ -318,7 +318,7 @@
       "props": {
         "children": {
           "name": "Children",
-          "description": "Component children"
+          "description": "Child elements of the component"
         }
       }
     },
@@ -606,7 +606,7 @@
         },
         "children": {
           "name": "Children",
-          "description": "Component children"
+          "description": "Child elements of the component"
         },
         "target": {
           "name": "Target",
@@ -1438,7 +1438,7 @@
         },
         "children": {
           "name": "Children",
-          "description": "The wizard children"
+          "description": "Wizard step content"
         },
         "showSteps": {
           "name": "Show steps",
@@ -1484,7 +1484,7 @@
       "props": {
         "children": {
           "name": "Children",
-          "description": "Component children"
+          "description": "Child elements of the component"
         }
       }
     }

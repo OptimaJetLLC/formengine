@@ -1,0 +1,237 @@
+{
+  "name": "formengine",
+  "sourceLanguage": "en",
+  "excludePaths": ["src/tests"],
+  "forms": {
+    "sourceLocale": "en-US",
+    "globs": ["examples/**/*.json"]
+  },
+  "bundles": [
+    {
+      "id": "designer-public",
+      "dir": "src/packages/designer/public/locales",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "rsuite-designer",
+      "dir": "src/packages/designer/src/features/localization/rsuite/locales",
+      "source": "en-US",
+      "locales": {
+        "hi": "hi-IN",
+        "sr": "sr-RS"
+      },
+      "mirrorDirs": ["src/packages/views/rsuite/src/components/i18n/locales"]
+    },
+    {
+      "id": "views-antd",
+      "dir": "src/packages/views/antd/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "views-fast-qr",
+      "dir": "src/packages/views/fast-qr/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "views-google-map",
+      "dir": "src/packages/views/google-map/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "views-rich-text",
+      "dir": "src/packages/views/rich-text/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "views-rsuite",
+      "dir": "src/packages/views/rsuite/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "views-mantine",
+      "dir": "src/packages/views/mantine/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "views-material-ui",
+      "dir": "src/packages/views/material-ui/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "views-rsuite-table",
+      "dir": "src/packages/views/rsuite-table/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "views-signature",
+      "dir": "src/packages/views/signature/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "views-uploader",
+      "dir": "src/packages/views/uploader/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
+      "id": "core",
+      "dir": "src/packages/core/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    }
+  ]
+}

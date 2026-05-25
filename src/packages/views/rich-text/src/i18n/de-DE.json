@@ -1,7 +1,7 @@
 {
   "categories": {
     "fields": {
-      "name": "Datenfelder"
+      "name": "Felder"
     }
   },
   "components": {
@@ -10,28 +10,28 @@
       "name": "Rich-Text-Editor",
       "props": {
         "initialValue": {
-          "description": "Anfangswert",
+          "description": "Der Anfangswert",
           "name": "Anfangswert"
         },
         "label": {
-          "description": "Etikett",
-          "name": "Beschriftung"
+          "description": "Das Etikett",
+          "name": "Etikett"
         },
         "modules": {
-          "description": "Ermöglicht die Anpassung des Verhaltens und der Funktionalität des Editors. Lesen Sie die Dokumente für weitere Informationen",
+          "description": "Ermöglicht die Anpassung des Verhaltens und der Funktionen des Editors. Lesen Sie die Dokumentation für weitere Informationen",
           "name": "Module"
         },
         "placeholder": {
-          "description": "Platzhalter",
+          "description": "Der Platzhalter",
           "name": "Platzhalter"
         },
         "readOnly": {
-          "description": "Schreibgeschütztes Flag",
-          "name": "Schreibgeschützt"
+          "description": "Flagge „Nur lesen“",
+          "name": "Nur lesen"
         },
         "toolbarOptions": {
-          "description": "Gruppen von Schaltflächen, die in der Symbolleiste angezeigt werden sollen",
-          "name": "Symbolleistenoptionen"
+          "description": "Gruppen von Schaltflächen, die auf der Werkzeugleiste angezeigt werden sollen",
+          "name": "Optionen der Werkzeugleiste"
         }
       }
     }

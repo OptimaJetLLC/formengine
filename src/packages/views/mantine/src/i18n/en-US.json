@@ -359,7 +359,7 @@
       "props": {
         "children": {
           "name": "Children",
-          "description": "Component children"
+          "description": "Child elements of the component"
         }
       }
     },

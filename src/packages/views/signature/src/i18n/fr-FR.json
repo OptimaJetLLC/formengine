@@ -6,7 +6,7 @@
   },
   "components": {
     "RsSignature": {
-      "description": "Dessin de signature lisse basé sur une toile HTML5",
+      "description": "Dessin de signature fluide basé sur un canevas HTML5",
       "name": "Signature",
       "props": {
         "backgroundColor": {
@@ -14,7 +14,7 @@
           "name": "Couleur de fond"
         },
         "clearButtonText": {
-          "description": "Étiquette de bouton claire",
+          "description": "Libellé du bouton transparent",
           "name": "Effacer le texte du bouton"
         },
         "height": {
@@ -23,7 +23,7 @@
         },
         "label": {
           "description": "L'étiquette du composant",
-          "name": "Étiquette"
+          "name": "étiquette"
         },
         "lineWidth": {
           "description": "La largeur de la ligne",
@@ -34,11 +34,11 @@
           "name": "Couleur du stylo"
         },
         "readOnly": {
-          "description": "Indicateur en lecture seule",
+          "description": "Drapeau en lecture seule",
           "name": "Lecture seule"
         },
         "value": {
-          "description": "L'URL de données initiale pour dessiner l'image de signature",
+          "description": "URL de données initiale pour dessiner l'image de signature",
           "name": "Valeur"
         },
         "width": {

@@ -10,40 +10,40 @@
       "name": "Téléchargeur de fichiers",
       "props": {
         "accept": {
-          "description": "Types de fichiers acceptés (par exemple, image/*,.pdf,.docx)",
+          "description": "Types de fichiers acceptés (par exemple, image/*, .pdf, .docx)",
           "name": "Accepter"
         },
         "action": {
-          "description": "URL vers laquelle télécharger des fichiers",
-          "name": "URL de l'ACTION"
+          "description": "URL vers laquelle télécharger les fichiers",
+          "name": "URL de l'action"
         },
         "children": {
-          "description": "Contenu à afficher à l'intérieur de l'uploader",
+          "description": "Contenu à afficher dans le téléchargeur",
           "name": "Enfants"
         },
         "disabled": {
-          "description": "Si c'est vrai, les enfants sont dans un état handicapé",
+          "description": "Si c'est vrai, le téléchargeur est désactivé",
           "name": "Désactivé"
         },
         "dropzone": {
-          "description": "Si vrai, la zone de dépôt affichera",
-          "name": "Zone de Dépôt"
+          "description": "Si c'est vrai, la zone de dépôt s'affichera",
+          "name": "Zone de dépôt"
         },
         "multiple": {
-          "description": "Autoriser la sélection de fichiers multiples",
+          "description": "Autoriser la sélection de plusieurs fichiers",
           "name": "Fichiers multiples"
         },
         "onChange": {
-          "description": "Rappel lorsque les fichiers sont téléchargés avec succès",
-          "name": "Sur Le Changement"
+          "description": "Rappel lorsque les fichiers sont correctement chargés",
+          "name": "À propos du changement"
         },
         "onError": {
-          "description": "Rappel lorsqu'une erreur se produit lors du téléchargement",
-          "name": "En Cas D'Erreur"
+          "description": "Rappel en cas d'erreur lors du téléchargement",
+          "name": "En cas d'erreur"
         },
         "readOnly": {
-          "description": "Si vrai, les enfants sont en lecture seule",
-          "name": "Lecture Seule"
+          "description": "Si cela est vrai, l'outil de téléchargement est en lecture seule",
+          "name": "Lecture seule"
         }
       }
     }

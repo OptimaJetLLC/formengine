@@ -10,8 +10,8 @@
       "name": "Mapa de Google",
       "props": {
         "addMarkerOnSearch": {
-          "description": "Si agregar un marcador en la búsqueda",
-          "name": "Agregar marcador en la búsqueda"
+          "description": "Si se debe agregar un marcador en la búsqueda",
+          "name": "Añadir marcador en la búsqueda"
         },
         "allowChangingMarkers": {
           "description": "Si está marcada, el usuario puede cambiar los marcadores",
@@ -22,19 +22,19 @@
           "name": "Permitir múltiples marcadores"
         },
         "apiKey": {
-          "description": "Clave API de Google Maps",
-          "name": "Clave API"
+          "description": "Clave de API de Google Maps",
+          "name": "Clave de API"
         },
         "collisionBehavior": {
           "description": "El comportamiento de colisión de los marcadores",
           "name": "Comportamiento de colisión"
         },
         "colorScheme": {
-          "description": "El esquema de color a utilizar",
-          "name": "Combinación de colores"
+          "description": "La combinación de colores a utilizar",
+          "name": "Esquema de colores"
         },
         "gestureHandling": {
-          "description": "El manejo de gestos a utilizar",
+          "description": "El manejo de gestos que se debe usar",
           "name": "Manejo de gestos"
         },
         "height": {
@@ -42,11 +42,11 @@
           "name": "Altura"
         },
         "label": {
-          "description": "Etiqueta del mapa",
+          "description": "Etiqueta de mapa",
           "name": "Etiqueta"
         },
         "language": {
-          "description": "El lenguaje a utilizar",
+          "description": "El idioma a utilizar",
           "name": "Idioma"
         },
         "latitude": {
@@ -62,44 +62,44 @@
           "name": "Posición de control del mapa"
         },
         "mapId": {
-          "description": "El ID del mapa es un identificador asociado a un estilo o entidad de mapa específico.",
-          "name": "ID del MAPA"
+          "description": "El ID del mapa es un identificador que está asociado a una característica o estilo de mapa específico.",
+          "name": "ID de mapa"
         },
         "mapTypeId": {
-          "description": "El tipo de mapa predeterminado a utilizar",
+          "description": "El tipo de mapa predeterminado que se va a utilizar",
           "name": "Tipo de mapa"
         },
         "markerWindowTitle": {
-          "description": "El título de la ventana del marcador",
-          "name": "Título de la ventana del marcador"
+          "description": "El título de la ventana de marcadores",
+          "name": "Título de la ventana de marcadores"
         },
         "markers": {
           "description": "Coordenadas de los marcadores",
           "name": "Marcadores"
         },
         "region": {
-          "description": "El código de región a utilizar",
+          "description": "El código de región que se va a utilizar",
           "name": "Región"
         },
         "removeMarkerCaption": {
-          "description": "El título en el botón de eliminación del marcador",
-          "name": "Eliminar leyenda de marcador"
+          "description": "El título del botón de eliminación del marcador",
+          "name": "Eliminar el título del marcador"
         },
         "searchPlaceholder": {
           "description": "Texto de marcador de posición para la entrada de búsqueda en el mapa",
           "name": "Marcador de posición de búsqueda"
         },
         "showMapControl": {
-          "description": "Si mostrar el control de mapa",
+          "description": "Si se debe mostrar el control del mapa",
           "name": "Mostrar control de mapa"
         },
         "width": {
-          "description": "Ancho del mapa",
-          "name": "Ancho"
+          "description": "Anchura del mapa",
+          "name": "Anchura"
         },
         "zoom": {
           "description": "Nivel de zoom",
-          "name": "Hacer Zoom"
+          "name": "Zoom"
         }
       }
     }

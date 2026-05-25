@@ -1,29 +1,29 @@
 {
   "categories": {
     "static": {
-      "name": "정적"
+      "name": "스태틱"
     }
   },
   "components": {
     "FastQR": {
-      "description": "텍스트 변환 및 사용자 정의 색상 및 로고 지원",
-      "name": "코드",
+      "description": "텍스트를 QR 코드로 변환하고 사용자 지정 색상 및 로고를 지원하는 구성 요소",
+      "name": "QR 코드",
       "props": {
         "content": {
-          "description": "코드 내용",
-          "name": "내용"
+          "description": "QR 코드 콘텐츠",
+          "name": "콘텐츠"
         },
         "errorCorrectionLevel": {
-          "description": "오류 수정 코딩 수준",
+          "description": "오류 수정 코딩 레벨",
           "name": "오류 수정 수준"
         },
         "image": {
-          "description": "이미지,베이스 64 또는",
+          "description": "이미지, 베이스64 또는 URL",
           "name": "이미지"
         },
         "imageBackgroundColor": {
-          "description": "이미지 배경 색상",
-          "name": "이미지 배경 색상"
+          "description": "이미지 배경색",
+          "name": "이미지 배경색"
         },
         "imageBackgroundShape": {
           "description": "이미지 배경 모양",
@@ -31,19 +31,19 @@
         },
         "moduleColor": {
           "description": "모듈 색상",
-          "name": "단위 색깔"
+          "name": "모듈 색상"
         },
         "shape": {
-          "description": "모듈을 나타내는 다른 가능한 모양",
-          "name": "모양"
+          "description": "모듈을 표현할 수 있는 다양한 모양",
+          "name": "형태"
         },
         "version": {
-          "description": "코드 버전",
-          "name": "버전"
+          "description": "QR 코드 버전",
+          "name": "QR 버전"
         },
         "width": {
-          "description": "코드 폭",
-          "name": "폭"
+          "description": "QR 코드 너비",
+          "name": "너비"
         }
       }
     }

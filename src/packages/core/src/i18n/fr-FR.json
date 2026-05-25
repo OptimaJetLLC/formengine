@@ -1,11 +1,11 @@
 {
   "components": {
     "EmbeddedForm": {
-      "description": "Un formulaire incorporé dans un autre formulaire",
+      "description": "Un formulaire intégré dans un autre formulaire",
       "name": "Formulaire intégré",
       "props": {
         "disabled": {
-          "description": "Si vrai, le formulaire incorporé est désactivé",
+          "description": "Si c'est vrai, le formulaire intégré est désactivé",
           "name": "Désactivé"
         },
         "formName": {
@@ -14,25 +14,25 @@
         },
         "options": {
           "description": "Les options supplémentaires pour charger le formulaire intégré",
-          "name": "Options Disponibles"
+          "name": "Options"
         },
         "readOnly": {
-          "description": "Si vrai, le formulaire incorporé est en lecture seule",
+          "description": "Si cela est vrai, le formulaire intégré est en lecture seule",
           "name": "Lecture seule"
         },
         "storeDataInParentForm": {
-          "description": "Si false, les données de formulaire imbriquées s'affichent en tant qu'objet imbriqué, true sinon",
+          "description": "Si la valeur est fausse, les données du formulaire imbriqué s'affichent sous forme d'objet imbriqué, sinon c'est vrai",
           "name": "Stocker les données dans le formulaire parent"
         }
       }
     },
     "Repeater": {
-      "description": "Le composant Répéteur est un composant spécial chargé d'afficher un tableau de composants répétitifs",
+      "description": "Le composant Repeater est un composant spécial chargé d'afficher un tableau de composants répétitifs.",
       "name": "Répéteur",
       "props": {
         "itemRenderWhen": {
-          "description": "L'expression ou la fonction pour rendre conditionnellement un élément répétiteur",
-          "name": "Rendu de l'élément quand"
+          "description": "Expression ou fonction permettant de rendre conditionnellement un élément répéteur",
+          "name": "L'objet est rendu quand"
         }
       }
     }

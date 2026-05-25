@@ -16,15 +16,15 @@
   "commonProperties": {
     "backgroundColor": {
       "description": "背景色",
-      "name": "背景"
+      "name": "バックグラウンド"
     },
     "children": {
-      "description": "コンポーネントの子",
-      "name": "子供たち"
+      "description": "コンポーネントの子要素",
+      "name": "子ども"
     },
     "className": {
-      "description": "CSSクラス名",
-      "name": "CSSクラス"
+      "description": "CSS クラス名",
+      "name": "CSS クラス"
     },
     "disabled": {
       "description": "コンポーネントが無効になっているかどうか",
@@ -40,11 +40,11 @@
     },
     "label": {
       "description": "コンポーネントラベル",
-      "name": "ラベル"
+      "name": "[ラベル]"
     },
     "placeholder": {
-      "description": "プレースホルダ",
-      "name": "プレースホルダ"
+      "description": "プレースホルダー",
+      "name": "プレースホルダー"
     },
     "placement": {
       "description": "コンポーネントの配置",
@@ -55,89 +55,89 @@
       "name": "読み取り専用"
     },
     "size": {
-      "description": "部品のサイズ",
+      "description": "コンポーネントサイズ",
       "name": "サイズ"
     },
     "textAlign": {
-      "description": "テキストの配置",
-      "name": "テキストの整列"
+      "description": "テキスト配置",
+      "name": "テキスト配置"
     },
     "value": {
-      "description": "現在の値（制御される）",
-      "name": "値"
+      "description": "現在の値 (制御対象)",
+      "name": "価値"
     }
   },
   "components": {
     "RsAutoComplete": {
-      "description": "入力ボックスのオートコンプリート機能を提供",
+      "description": "入力ボックスにオートコンプリート機能を提供",
       "name": "オートコンプリート",
       "props": {
         "classPrefix": {
-          "description": "コンポーネントCSSクラスの接頭辞",
-          "name": "クラス接頭辞"
+          "description": "コンポーネント CSS クラスのプレフィックス",
+          "name": "クラスプレフィックス"
         },
         "data": {
           "description": "コンポーネントのデータ",
-          "name": "データ"
+          "name": "[データ]"
         },
         "defaultValue": {
-          "description": "デフォルト値(制御されていない)",
+          "description": "デフォルト値 (制御なし)",
           "name": "デフォルト値"
         },
         "filterBy": {
-          "description": "カスタムフィルタールール（値がデフォルトで部分文字列である項目のみを表示します）",
-          "name": "によるフィルタ"
+          "description": "カスタムフィルタールール (デフォルトでは値がサブストリングである項目のみが表示されます)",
+          "name": "フィルタ基準"
         },
         "menuClassName": {
-          "description": "メニュー DOMに適用するCSSクラス",
+          "description": "メニュー DOM に適用する CSS クラス",
           "name": "メニュークラス名"
         },
         "onChange": {
-          "description": "オプションまたは入力値の変更を選択したとき、または入力の値が変更されたときに呼び出されます",
-          "name": "オンチェンジ"
+          "description": "オプションを選択するか、入力値が変更されたとき、または入力値が変更されたときに呼び出されます。",
+          "name": "変更時"
         },
         "onClose": {
-          "description": "非表示のときに発生するコールバック",
-          "name": "onClose"
+          "description": "非表示時にコールバックが発生",
+          "name": "[閉じる]"
         },
         "onEnter": {
-          "description": "オーバーレイトランジションの前に起動されたコールバック",
-          "name": "onEnter（オンエンター）"
+          "description": "オーバーレイが遷移する前にコールバックが発生しました",
+          "name": "OnEnter"
         },
         "onEntered": {
-          "description": "オーバーレイの移行が完了した後に発生するコールバック",
-          "name": "オンエンタード"
+          "description": "オーバーレイの遷移が完了した後にコールバックが発生します",
+          "name": "入力時"
         },
         "onEntering": {
-          "description": "オーバーレイが遷移し始めるとコールバックが起動されます",
-          "name": "ワン-エンタリング"
+          "description": "オーバーレイが遷移し始めるとコールバックが発生します",
+          "name": "入力時"
         },
         "onExit": {
-          "description": "オーバーレイトランジションの直前にコールバックが発生しました",
-          "name": "onExit"
+          "description": "オーバーレイが遷移する直前にコールバックが発生しました",
+          "name": "出口で"
         },
         "onExited": {
-          "description": "オーバーレイの遷移が終了した後に発生するコールバック",
-          "name": "onExited"
+          "description": "オーバーレイのトランジションが終了した後にコールバックが発生します",
+          "name": "終了なし"
         },
         "onExiting": {
-          "description": "オーバーレイが遷移し始めるとコールバックが発生します",
-          "name": "onExiting"
+          "description": "オーバーレイがトランジションアウトし始めるとコールバックが発生します",
+          "name": "[終了中]"
         },
         "onSelect": {
           "description": "オプションが選択されたときに呼び出されます",
-          "name": "onSelect"
+          "name": "オンセレクト"
         },
         "renderMenu": {
-          "description": "レンダリングメニューリストのカスタマイズ",
-          "name": "レンダリングメニュー"
+          "description": "「レンダリング」メニューリストのカスタマイズ",
+          "name": "「レンダリング」メニュー"
         },
         "renderMenuItem": {
-          "description": "カスタムレンダリングメニュー項目",
-          "name": "レンダリングメニュー項目"
+          "description": "カスタムレンダーメニュー項目",
+          "name": "[レンダリング] メニュー項目"
         },
         "selectOnEnter": {
-          "description": "Falseに設定すると、Enterキー選択機能が無効になります",
+          "description": "false に設定すると、Enter キー選択機能は無効になります",
           "name": "入力時に選択"
         }
       }
@@ -156,49 +156,49 @@
         },
         "onExpand": {
           "description": "省略記号をクリックするためのコールバック関数",
-          "name": "onExpand"
+          "name": "OnExpand"
         },
         "onItemClick": {
-          "description": "ブレッドクラム項目がクリックされたときのコールバック関数",
-          "name": "onItemClick"
+          "description": "ブレッドクラムアイテムがクリックされたときのコールバック関数",
+          "name": "アイテムクリック時点"
         },
         "separator": {
-          "description": "各ブレッドクラム項目間の区切り文字",
-          "name": "セパレータ"
+          "description": "各ブレッドクラムアイテム間のセパレーター",
+          "name": "セパレーター"
         }
       }
     },
     "RsButton": {
-      "description": "ボタン",
+      "description": "「ボタン」",
       "name": "ボタン",
       "props": {
         "active": {
-          "description": "ボタンは、現在アクティブなユーザー選択であることを示すことができます",
+          "description": "ボタンは、それが現在アクティブなユーザー選択であることを示すことができます",
           "name": "アクティブ"
         },
         "appearance": {
-          "description": "ボタンは異なる外観を持つことができます",
+          "description": "ボタンの外観はさまざまです",
           "name": "外観"
         },
         "children": {
-          "description": "主なコンテンツ",
-          "name": "コンテンツ"
+          "description": "主要コンテンツ",
+          "name": "[コンテンツ]"
         },
         "disabled": {
-          "description": "ボタンは、現在操作できないことを示すことができます",
+          "description": "ボタンには、現在操作できないことが表示される",
           "name": "無効"
         },
         "href": {
-          "description": "Hrefを提供すると、 <a> 要素",
+          "description": "<a>href を指定すると要素がレンダリングされます",
           "name": "Href"
         },
         "loading": {
-          "description": "ボタンはローディングの表示器を示すことができます",
-          "name": "積み込み"
+          "description": "ボタンにはローディングインジケータを表示できます",
+          "name": "読み込み中"
         },
         "onClick": {
           "description": "ボタンがクリックされたときのコールバック関数",
-          "name": "onClick"
+          "name": "オンクリック"
         }
       }
     },
@@ -208,10 +208,10 @@
       "props": {
         "bordered": {
           "description": "境界線を表示",
-          "name": "縁取り"
+          "name": "境界付き"
         },
         "compact": {
-          "description": "コンパクトなカレンダーを表示する",
+          "description": "コンパクトカレンダーを表示する",
           "name": "コンパクト"
         },
         "defaultValue": {
@@ -219,21 +219,21 @@
           "name": "デフォルト値"
         },
         "isoWeek": {
-          "description": "ISO8601規格は、各カレンダーの週は七日目に月曜日と日曜日に始まります",
-          "name": "ISO週間"
+          "description": "ISO 8601規格、各暦週は7日目の月曜日と日曜日に始まります",
+          "name": "ISOウィーク"
         },
         "onChange": {
-          "description": "値が変更される前に起動されたコールバック",
-          "name": "オンチェンジ"
+          "description": "値が変更される前にコールバックが発生しました",
+          "name": "変更時"
         },
         "onSelect": {
-          "description": "選択された日付の前に起動されたコールバック",
-          "name": "onSelect"
+          "description": "選択した日付より前にコールバックが発生しました",
+          "name": "オンセレクト"
         }
       }
     },
     "RsCard": {
-      "description": "カードは、データを表示するためのコンテナコンポーネントです,",
+      "description": "カードはデータを表示するためのコンテナコンポーネントであり、",
       "name": "カード",
       "props": {
         "bodyFill": {
@@ -242,39 +242,39 @@
         },
         "bordered": {
           "description": "境界線を表示",
-          "name": "縁取り"
+          "name": "境界付き"
         },
         "children": {
-          "description": "主なコンテンツ",
-          "name": "コンテンツ"
+          "description": "主要コンテンツ",
+          "name": "[コンテンツ]"
         },
         "collapsible": {
-          "description": "折りたたみ可能なパネルであるかどうか",
-          "name": "折りたたみ式"
+          "description": "折りたたみ可能なパネルかどうか",
+          "name": "折りたたみ可能"
         },
         "defaultExpanded": {
-          "description": "デフォルトでパネルを展開します",
-          "name": "デフォルト展開"
+          "description": "デフォルトでパネルを展開",
+          "name": "デフォルト拡張"
         },
         "eventKey": {
           "description": "パネルに対応するイベントキー",
           "name": "イベントキー"
         },
         "header": {
-          "description": "ヘッドには情報が表示されます",
+          "description": "頭には情報が表示されます",
           "name": "ヘッダー"
         },
         "headerSize": {
           "description": "パネルヘッダーのヘッダーサイズ",
-          "name": "ヘッダーのサイズ"
+          "name": "ヘッダーサイズ"
         },
         "onSelect": {
           "description": "パネルが選択されたときに呼び出されます",
-          "name": "onSelect"
+          "name": "オンセレクト"
         },
         "shaded": {
           "description": "影があるかどうか",
-          "name": "影付き"
+          "name": "シェーディング"
         },
         "title": {
           "description": "パネルヘッダーのタイトル",
@@ -283,7 +283,7 @@
       }
     },
     "RsCheckbox": {
-      "description": "チェックボックスは通常、グループで使用されます。 ユーザーがセットから1つ以上の値を選択できるようにする",
+      "description": "チェックボックスは通常、グループで使用されます。ユーザーがセットから 1 つまたは複数の値を選択できるようにします。",
       "name": "チェックボックス",
       "props": {
         "checked": {
@@ -292,54 +292,54 @@
         },
         "children": {
           "description": "コンポーネントラベル",
-          "name": "ラベル"
+          "name": "[ラベル]"
         },
         "indeterminate": {
-          "description": "チェックボックスの場合、子パーツが選択された後にスタイルを設定します",
-          "name": "不確定"
+          "description": "チェックボックスの場合、子パーツを選択したあとにスタイルを設定する",
+          "name": "不定"
         },
         "inline": {
           "description": "インラインレイアウト",
           "name": "インライン"
         },
         "onChange": {
-          "description": "ユーザーがchecked状態を変更しようとしたときに呼び出されます",
-          "name": "オンチェンジ"
+          "description": "ユーザーがチェック状態を変更しようとしたときに呼び出されます。",
+          "name": "変更時"
         },
         "title": {
-          "description": "HTMLタイトル",
+          "description": "HTML タイトル",
           "name": "タイトル"
         }
       }
     },
     "RsContainer": {
-      "description": "Containerは、他のコンポーネントをラップするために使用できるレイアウトコンポーネントです",
+      "description": "コンテナは、他のコンポーネントをラップするために使用できるレイアウトコンポーネントです",
       "name": "コンテナ",
       "props": {
         "children": {
-          "description": "コンポーネントの子",
-          "name": "子供たち"
+          "description": "コンポーネントの子要素",
+          "name": "子ども"
         }
       }
     },
     "RsDatePicker": {
-      "description": "DatePickerは、ユーザーが異なる形式で日付と時刻を入力して選択することを可能にする高度にカスタマイズ可能なコンポーネ",
+      "description": "DatePickerは高度にカスタマイズ可能なコンポーネントで、ユーザーはさまざまな形式で日付と時刻を入力および選択できます",
       "name": "日付ピッカー",
       "props": {
         "appearance": {
-          "description": "ピッカーの外観を設定する",
+          "description": "ピッカーの外観を設定",
           "name": "外観"
         },
         "calendarDefaultDate": {
-          "description": "カレンダーパネルのデフォルトの表示日時",
-          "name": "カレンダーのデフォルトの日付"
+          "description": "カレンダーパネルのデフォルト表示日時",
+          "name": "カレンダーのデフォルト日付"
         },
         "cleanable": {
           "description": "選択した値をクリアできるかどうか",
           "name": "クリーニング可能"
         },
         "defaultOpen": {
-          "description": "Openプロパティのデフォルト値",
+          "description": "オープンプロパティのデフォルト値",
           "name": "デフォルトオープン"
         },
         "defaultValue": {
@@ -347,107 +347,107 @@
           "name": "デフォルト値"
         },
         "editable": {
-          "description": "入力としてレンダリングされ、日付はキーボードを介して入力することができます",
+          "description": "入力としてレンダリングされ、日付はキーボードで入力できます",
           "name": "編集可能"
         },
         "format": {
-          "description": "入力でレンダリングされたときの日付の形式",
+          "description": "入力にレンダリングされたときの日付の形式",
           "name": "フォーマット"
         },
         "isoWeek": {
-          "description": "ISO8601規格は、各カレンダーの週は七日目に月曜日と日曜日に始まります",
-          "name": "ISO週間"
+          "description": "ISO 8601規格、各暦週は7日目の月曜日と日曜日に始まります",
+          "name": "ISOウィーク"
         },
         "limitEndYear": {
-          "description": "現在の選択日を基準にして、使用可能な年の上限を設定します",
-          "name": "年末限定"
+          "description": "現在の選択日を基準にして利用可能な年の上限を設定します",
+          "name": "リミット終了年"
         },
         "limitStartYear": {
-          "description": "現在の選択日を基準にして、利用可能な年の下限を設定します",
+          "description": "現在の選択日を基準にして利用可能な年の下限を設定します",
           "name": "制限開始年"
         },
         "onChange": {
-          "description": "値が変更されたときに発生するコールバック",
-          "name": "オンチェンジ"
+          "description": "値が変更されたときにコールバックが発生しました",
+          "name": "変更時"
         },
         "onChangeCalendarDate": {
           "description": "カレンダーの日付を変更するコールバック関数",
-          "name": "onChangeCalendarDate"
+          "name": "カレンダーの日付が変更時"
         },
         "onClean": {
-          "description": "値がクリーンになったときにコールバックが発生",
+          "description": "値がクリーンになったときにコールバックが発生します",
           "name": "オンクリーン"
         },
         "onClose": {
-          "description": "コンポーネントを閉じるとコールバックが発生します",
-          "name": "onClose"
+          "description": "コンポーネントを閉じるときにコールバックが発生する",
+          "name": "[閉じる]"
         },
         "onEnter": {
-          "description": "オーバーレイトランジションの前に起動されたコールバック",
-          "name": "onEnter（オンエンター）"
+          "description": "オーバーレイが遷移する前にコールバックが発生しました",
+          "name": "OnEnter"
         },
         "onEntered": {
-          "description": "オーバーレイの移行が完了した後に発生するコールバック",
-          "name": "オンエンタード"
+          "description": "オーバーレイの遷移が完了した後にコールバックが発生します",
+          "name": "入力時"
         },
         "onEntering": {
-          "description": "オーバーレイが遷移し始めるとコールバックが起動されます",
-          "name": "ワン-エンタリング"
+          "description": "オーバーレイが遷移し始めるとコールバックが発生します",
+          "name": "入力時"
         },
         "onExit": {
-          "description": "オーバーレイトランジションの直前にコールバックが発生しました",
-          "name": "onExit"
+          "description": "オーバーレイが遷移する直前にコールバックが発生しました",
+          "name": "出口で"
         },
         "onExited": {
-          "description": "オーバーレイの遷移が終了した後に発生するコールバック",
-          "name": "onExited"
+          "description": "オーバーレイのトランジションが終了した後にコールバックが発生します",
+          "name": "終了なし"
         },
         "onExiting": {
-          "description": "オーバーレイが遷移し始めるとコールバックが発生します",
-          "name": "onExiting"
+          "description": "オーバーレイがトランジションアウトし始めるとコールバックが発生します",
+          "name": "[終了中]"
         },
         "onNextMonth": {
-          "description": "次の月のコールバック関数に切り替えます",
-          "name": "onNextMonth"
+          "description": "翌月のコールバック機能に切り替える",
+          "name": "次の月に"
         },
         "onOk": {
-          "description": "[OK]コールバック関数をクリックします",
-          "name": "オノク"
+          "description": "OK コールバック関数をクリックします。",
+          "name": "ヌオーク"
         },
         "onOpen": {
-          "description": "コンポーネントを開いたときに発生するコールバック",
-          "name": "onOpen（オンオープン）"
+          "description": "コンポーネントを開くとコールバックが発生する",
+          "name": "[オープン中]"
         },
         "onPrevMonth": {
-          "description": "前月のコールバック関数に切り替える",
-          "name": "onPrevMonth"
+          "description": "前月のコールバック機能に切り替える",
+          "name": "前の月に"
         },
         "onSelect": {
-          "description": "日付または時刻が選択されたときに発生するコールバック",
-          "name": "onSelect"
+          "description": "日付または時刻が選択されたときにコールバックが発生します",
+          "name": "オンセレクト"
         },
         "onToggleMonthDropdown": {
-          "description": "月ビューに切り替えるコールバック関数",
-          "name": "onToggleMonthDropdown"
+          "description": "月表示に切り替えるコールバック関数",
+          "name": "「月」ドロップダウンに切り替え"
         },
         "onToggleTimeDropdown": {
           "description": "タイムビューに切り替えるコールバック関数",
-          "name": "onToggleTimeDropdown"
+          "name": "オントグルタイムドロップダウン"
         },
         "oneTap": {
           "description": "ワンクリック選択日",
-          "name": "ワンタップ"
+          "name": "1 回タップ"
         },
         "open": {
           "description": "コンポーネントを開くかどうか",
-          "name": "オープン"
+          "name": "[開く]"
         },
         "preventOverflow": {
-          "description": "フローティング要素のオーバーフローを防ぐ",
+          "description": "フローティングエレメントのオーバーフローを防ぐ",
           "name": "オーバーフローを防ぐ"
         },
         "showMeridiem": {
-          "description": "時間を12形式で表示する",
+          "description": "時間を 12 形式で表示",
           "name": "メリディエムを表示"
         },
         "showWeekNumbers": {
@@ -457,21 +457,21 @@
       }
     },
     "RsDivider": {
-      "description": "分周器は、コンテンツを水平または垂直にグループ化するために使用されます",
+      "description": "ディバイダーは、コンテンツを水平または垂直にグループ化するために使用されます",
       "name": "ディバイダー",
       "props": {
         "children": {
-          "description": "分割線にテキストを設定します",
-          "name": "コンテンツ"
+          "description": "テキストを分割線に設定",
+          "name": "[コンテンツ]"
         },
         "vertical": {
-          "description": "縦の分割線",
-          "name": "縦型"
+          "description": "垂直分割線",
+          "name": "垂直"
         }
       }
     },
     "RsDropdown": {
-      "description": "ドロップダウンメニューは、値を選択する場合にselectpickerを使用するナビゲーションです",
+      "description": "ドロップダウンメニューは、値を選択する場合にselectpickerを使用するナビゲーションです。",
       "name": "ドロップダウン",
       "props": {
         "cleanable": {
@@ -479,48 +479,48 @@
           "name": "クリーニング可能"
         },
         "creatable": {
-          "description": "設定で新しいオプションを作成できます",
+          "description": "設定により新しいオプションを作成できます",
           "name": "作成可能"
         },
         "data": {
           "description": "選択可能なデータ",
-          "name": "データ"
+          "name": "[データ]"
         },
         "disableVirtualized": {
           "description": "仮想化を無効にするかどうか",
           "name": "仮想化を無効にする"
         },
         "groupBy": {
-          "description": "'Data'にグループ化基準'key'を設定する",
+          "description": "「データ」にグループ化基準「キー」を設定",
           "name": "グループ化"
         },
         "onChange": {
-          "description": "値が変更されたときのコールバック関数",
-          "name": "オンチェンジ"
+          "description": "値が変化したときのコールバック関数",
+          "name": "変更時"
         },
         "onClean": {
-          "description": "クリーンのためのコールバック",
+          "description": "クリーンのコールバック",
           "name": "オンクリーン"
         },
         "onClose": {
-          "description": "閉じるためのコールバック",
-          "name": "onClose"
+          "description": "クローズのコールバック",
+          "name": "[閉じる]"
         },
         "onCreate": {
-          "description": "作成のためのコールバック",
-          "name": "onCreate"
+          "description": "作成のコールバック",
+          "name": "作成時に"
         },
         "onLoadData": {
           "description": "データをロードするためのコールバック",
           "name": "オンロードデータ"
         },
         "onSearch": {
-          "description": "検索のためのコールバック",
-          "name": "オンサーチ"
+          "description": "検索のコールバック",
+          "name": "検索中"
         },
         "onSelect": {
-          "description": "Selectのコールバック",
-          "name": "onSelect"
+          "description": "選択のコールバック",
+          "name": "オンセレクト"
         },
         "preload": {
           "description": "データをプリロードするかどうか",
@@ -533,35 +533,35 @@
       "name": "エラーメッセージ"
     },
     "RsHeader": {
-      "description": "単純なHTMLヘッダー",
+      "description": "シンプルな HTML ヘッダー",
       "name": "ヘッダー",
       "props": {
         "content": {
           "description": "ヘッダーテキスト",
-          "name": "コンテンツ"
+          "name": "[コンテンツ]"
         },
         "headerSize": {
           "description": "ヘッダーレベル",
-          "name": "ヘッダーのサイズ"
+          "name": "ヘッダーサイズ"
         }
       }
     },
     "RsImage": {
-      "description": "シンプルなHTMLイメージ",
-      "name": "イメージ",
+      "description": "シンプルな HTML イメージ",
+      "name": "[イメージ]",
       "props": {
         "alt": {
-          "description": "画像の説明",
-          "name": "説明"
+          "description": "画像説明",
+          "name": "[説明]"
         },
         "src": {
-          "description": "画像ソース",
+          "description": "イメージソース",
           "name": "Src"
         }
       }
     },
     "RsInput": {
-      "description": "入力ユーザーがテキストを入力および編集できるようにします",
+      "description": "入力:ユーザーはテキストを入力および編集できます",
       "name": "入力",
       "props": {
         "passwordMask": {
@@ -569,82 +569,82 @@
           "name": "パスワードマスク"
         },
         "showPasswordAriaLabel": {
-          "description": "入力がパスワードマスクモードのときにパスワードを表示ボタンのaria-label属性の値",
-          "name": "パスワードを表示するボタンのARIAラベル"
+          "description": "入力がパスワードマスクモードのときの「パスワードを表示」ボタンの aria-label 属性の値",
+          "name": "「パスワードを表示」ボタンの ARIA ラベル"
         },
         "type": {
-          "description": "HTML入力タイプ",
+          "description": "HTML 入力タイプ",
           "name": "タイプ"
         }
       }
     },
     "RsLabel": {
-      "description": "単純なHTMLラベル",
-      "name": "ラベル",
+      "description": "シンプルな HTML ラベル",
+      "name": "[ラベル]",
       "props": {
         "text": {
           "description": "ラベルテキストの内容",
-          "name": "テキスト"
+          "name": "[テキスト]"
         }
       }
     },
     "RsLink": {
-      "description": "シンプルなHTMLアンカー",
+      "description": "シンプルな HTML アンカー",
       "name": "リンク",
       "props": {
         "children": {
-          "description": "コンポーネントの子",
-          "name": "子供たち"
+          "description": "コンポーネントの子要素",
+          "name": "子ども"
         },
         "content": {
-          "description": "コンテンツタイプ(テキストまたはカスタム)",
-          "name": "コンテンツ"
+          "description": "コンテンツタイプ (テキストまたはカスタム)",
+          "name": "[コンテンツ]"
         },
         "download": {
-          "description": "ブラウザがリンクされたURLをダウンロードとして扱うようにします",
-          "name": "ダウンロード"
+          "description": "リンクされた URL をダウンロードとしてブラウザに処理させます",
+          "name": "[ダウンロード]"
         },
         "downloadFilename": {
-          "description": "値を定義すると、ファイル名として示唆されます。 /および\\文字はアンダースコア(_)に変換されます",
+          "description": "値を定義すると、それがファイル名として表示されます。/と\\ 文字はアンダースコア (_) に変換されます",
           "name": "ダウンロードファイル名"
         },
         "href": {
-          "description": "ハイパーリンクが指すURL",
+          "description": "ハイパーリンクが指す URL",
           "name": "Href"
         },
         "onClick": {
           "description": "リンクがクリックされたときのコールバック関数",
-          "name": "onClick"
+          "name": "オンクリック"
         },
         "target": {
-          "description": "リンクされたURLを参照コンテキストの名前として表示する場所(タブ、ウィンドウ、または <iframe>)",
+          "description": "リンクされた URL をブラウジングコンテキスト (タブ、ウィンドウ、または<iframe>) の名前として表示する場所",
           "name": "ターゲット"
         },
         "text": {
           "description": "リンクテキストの内容",
-          "name": "テキスト"
+          "name": "[テキスト]"
         }
       }
     },
     "RsMenu": {
-      "description": "横向きと縦向きのレイアウトにすることができ、ナビゲーションメニューの様々な形態のリストを提供します",
+      "description": "横向きや縦向きのレイアウトなど、さまざまな形式のナビゲーションメニューのリストが表示されます",
       "name": "メニュー",
       "props": {
         "activeKey": {
-          "description": "アイテムの値のいずれかに対応するアクティブキー",
+          "description": "項目の値の 1 つに対応するアクティブキー",
           "name": "アクティブキー"
         },
         "appearance": {
-          "description": "ナビゲーションは異なる外観を持つことができます",
+          "description": "ナビゲーションの外観はさまざまです。",
           "name": "外観"
         },
         "items": {
-          "description": "メニューの項目",
+          "description": "メニューのアイテム",
           "name": "アイテム"
         },
         "itemsAs": {
-          "description": "メニュー項目をレンダリングするHTML要素",
-          "name": "としての項目"
+          "description": "メニュー項目をレンダリングする HTML 要素",
+          "name": "アイテムとして"
         },
         "justified": {
           "description": "正当化されたナビゲーション",
@@ -652,25 +652,25 @@
         },
         "onSelect": {
           "description": "選択後にトリガーされるコールバック関数",
-          "name": "onSelect"
+          "name": "オンセレクト"
         },
         "reversed": {
-          "description": "タブの逆方向/微妙",
-          "name": "逆さにして"
+          "description": "タブの方向を逆にする/微妙な",
+          "name": "逆転しました"
         },
         "vertical": {
-          "description": "スタッキングナビゲーション",
-          "name": "縦型"
+          "description": "スタックナビゲーション",
+          "name": "垂直"
         }
       }
     },
     "RsMessage": {
-      "description": "ページに重要なヒントを表示するために使用されます",
+      "description": "重要なヒントをページに表示するために使用します",
       "name": "メッセージ",
       "props": {
         "closable": {
           "description": "メッセージボックスを閉じることができるかどうか",
-          "name": "閉鎖可能"
+          "name": "開閉可能"
         },
         "header": {
           "description": "メッセージのタイトル",
@@ -687,144 +687,144 @@
       "name": "モーダル",
       "props": {
         "autoFocus": {
-          "description": "Trueに設定すると、モーダルが開かれ、自動的にスクリーンリーダーがアクセスできる独自のモーダルに焦点が当てられます",
+          "description": "true に設定すると、モーダルが開いて自動的にフォーカスされ、スクリーンリーダーがアクセスできるようになります。",
           "name": "オートフォーカス"
         },
         "backdrop": {
-          "description": "Trueに設定すると、モーダルは開いたときに背景を表示します。 背景をクリックするとモーダルが閉じます",
-          "name": "背景"
+          "description": "true に設定すると、モーダルを開くと背景が表示されます。背景をクリックするとモーダルが閉じます。",
+          "name": "バックドロップ"
         },
         "backdropClassName": {
-          "description": "オプションの追加クラス名を追加します。modal-backdropそれはclass=\"modal-backdrop foo-modal-backdrop in\"のように見えることになるかもしれません",
+          "description": ".modal-backdrop にオプションの追加クラス名を追加すると、class= \"modal-backdrop foo-modal-backdrop in\"」のようになってしまう可能性があります",
           "name": "背景クラス名"
         },
         "classPrefix": {
-          "description": "コンポーネントCSSクラスの接頭辞",
-          "name": "CSSクラスの接頭辞"
+          "description": "コンポーネント CSS クラスのプレフィックス",
+          "name": "CSS クラスプレフィックス"
         },
         "dialogClassName": {
-          "description": "Dialog DOMノードに適用されるCSSクラス",
-          "name": "Dialog用のCSSクラス"
+          "description": "ダイアログ DOM ノードに適用される CSS クラス",
+          "name": "ダイアログ用の CSS クラス"
         },
         "enforceFocus": {
-          "description": "Trueに設定すると、Modalは開いたときにフォーカスが離れるのを防ぎ、セカンダリスクリーンリーダーがアクセスしやすくなります",
-          "name": "フォーカスを強制する"
+          "description": "true に設定すると、Modal は開いたときにフォーカスが離れるのを防ぎ、セカンダリスクリーンリーダーがアクセスしやすくなります。",
+          "name": "フォーカスを強制"
         },
         "keyboard": {
-          "description": "Escキーが押されたときにモーダルを閉じる",
-          "name": "Escで閉じる"
+          "description": "Esc キーが押されたらモーダルを閉じる",
+          "name": "Esc キーで閉じる"
         },
         "onClose": {
-          "description": "モーダルが閉じられたときに呼び出されます",
-          "name": "onClose"
+          "description": "Modal が閉じられたときに呼び出されます",
+          "name": "[閉じる]"
         },
         "onOpen": {
-          "description": "モーダルが表示されたときに呼び出されます",
-          "name": "onOpen（オンオープン）"
+          "description": "モーダルが表示されるときに呼び出されます",
+          "name": "[オープン中]"
         },
         "overflow": {
-          "description": "本文の内容が長すぎる場合は、自動的に高さを設定します",
+          "description": "本文の内容が長すぎる場合、高さを自動的に設定します",
           "name": "オーバーフロー"
         },
         "size": {
-          "description": "モーダルの幅を決定する",
+          "description": "モーダルの幅を決める",
           "name": "サイズ"
         }
       }
     },
     "RsModalLayout": {
-      "description": "ヘッダー、ボディ、フッターセクションを持つモーダルレイアウトコンポーネント",
+      "description": "ヘッダー、ボディ、フッターセクションを含むモーダルレイアウトコンポーネント",
       "name": "モーダルレイアウト",
       "props": {
         "body": {
-          "description": "モーダル本体のコンテンツ",
+          "description": "モーダルボディのコンテンツ",
           "name": "ボディ"
         },
         "closeButton": {
           "description": "閉じるボタンを表示する",
-          "name": "閉じるボタン"
+          "name": "「閉じる」ボタン"
         },
         "footer": {
           "description": "モーダルフッターのコンテンツ",
-          "name": "フッタ"
+          "name": "フッター"
         },
         "headerTitle": {
           "description": "モーダルヘッダーのタイトル",
-          "name": "ヘッダーのタイトル"
+          "name": "ヘッダータイトル"
         }
       }
     },
     "RsNumberFormat": {
-      "description": "検証と書式設定を備えた数値書式入力コンポーネント",
+      "description": "検証と書式設定を備えた数値形式入力コンポーネント",
       "name": "数値形式",
       "props": {
         "allowLeadingZeros": {
-          "description": "これにより、入力フィールドの先行ゼロを有効または無効にできます。 デフォルトでは、入力のぼかし時に、先行ゼロが削除されます",
-          "name": "先行ゼロを許可する"
+          "description": "これにより、入力フィールドの先頭のゼロを有効または無効にできます。デフォルトでは、入力がぼやけると、先頭のゼロは削除されます。",
+          "name": "先頭のゼロを許可"
         },
         "allowNegative": {
-          "description": "Falseに設定すると、負の数は許可されません",
-          "name": "負の値を許可する"
+          "description": "false に設定すると、負の数は許可されません",
+          "name": "ネガティブを許可"
         },
         "allowedDecimalSeparators": {
-          "description": "押されたときに小数点区切り文字になる文字。 欠落している場合は、小数点記号と'。'が使用されています",
-          "name": "許可される小数点区切り文字"
+          "description": "押すと小数点区切り文字になる文字。見つからない場合は、小数点区切り文字と '.' が使われます。",
+          "name": "使用できる小数点区切り記号"
         },
         "decimalScale": {
           "description": "定義されている場合、小数点以下の桁数を制限します",
-          "name": "10進スケール"
+          "name": "十進法スケール"
         },
         "decimalSeparator": {
-          "description": "小数点以下の文字を定義します",
+          "description": "小数点を定義します",
           "name": "小数点区切り記号"
         },
         "fixedDecimalScale": {
-          "description": "Trueに設定すると、decimalSeparatorの後に後続の0が追加され、指定されたdecimalScaleに一致します",
-          "name": "固定小数点スケール"
+          "description": "true に設定すると、指定された DecimalScale と一致するように DecimalSeparator の後に末尾の 0 が追加されます。",
+          "name": "固定小数スケール"
         },
         "prefix": {
-          "description": "入力値の前に接頭辞文字を追加します",
-          "name": "プレフィクス"
+          "description": "入力値の前にプレフィックス文字を追加します",
+          "name": "プレフィックス"
         },
         "suffix": {
-          "description": "入力値の後に接尾辞を追加します",
+          "description": "入力値の後にサフィックスを追加します",
           "name": "サフィックス"
         },
         "thousandSeparator": {
-          "description": "サウザンドセパレータ",
-          "name": "サウザンドセパレータ"
+          "description": "サウザンドセパレーター",
+          "name": "サウザンドセパレーター"
         },
         "thousandsGroupStyle": {
-          "description": "千スタイル（千）：123,456,789、インドスタイル（lakh）：12,34,56,789、中国スタイル（wan）：1,2345,6789",
-          "name": "千グループスタイル"
+          "description": "サウザンドスタイル（サウザンドスタイル）：123,456,789、インディアンスタイル（ラーク）：12,34,56,789、チャイニーズスタイル（ワン）：1,2345,6789",
+          "name": "数千人のグループスタイル"
         }
       }
     },
     "RsPatternFormat": {
-      "description": "ラベルをサポートするパターン形式入力コンポーネント",
-      "name": "パターン形式",
+      "description": "ラベルをサポートするパターンフォーマット入力コンポーネント",
+      "name": "パターンフォーマット",
       "props": {
         "allowEmptyFormatting": {
-          "description": "デフォルトでは、値が空（null、undefined、または\"）の場合、PatternFormatコンポーネントは書式設定を適用しません。",
-          "name": "空の書式設定を許可する"
+          "description": "デフォルトでは、値が空 (null、未定義、または '') の場合、PatternFormat コンポーネントはフォーマットを適用しません",
+          "name": "空のフォーマットを許可"
         },
         "format": {
-          "description": "#(またはPattern char)文字を使用してパターンを書式設定します。 #は数字のプレースホルダー文字です。 例:'######'",
+          "description": "# (またはパターン文字) 文字を使用してパターンをフォーマットします。# は数字のプレースホルダー文字です。例:'### ### '",
           "name": "フォーマット"
         },
         "mask": {
-          "description": "その位置に任意の数値文字が提供されるまで、数値の場所のマスク文字として使用されます",
+          "description": "その位置に数字文字が入力されるまで、数字の位置のマスク文字として使用されます",
           "name": "マスク"
         },
         "patternChar": {
-          "description": "これは、書式パターン文字を定義するのに役立ちます",
-          "name": "パターン文字"
+          "description": "これはフォーマットパターン文字の定義に役立ちます。",
+          "name": "パターンチャート"
         }
       }
     },
     "RsPlaceholderGraph": {
-      "description": "長方形の形でコンポーネントをロードする前のプレースホルダ",
-      "name": "プレースホルダグラフ",
+      "description": "コンポーネントを長方形の形でロードする前のプレースホルダー",
+      "name": "プレースホルダーグラフ",
       "props": {
         "active": {
           "description": "プレースホルダーがアクティブかどうか",
@@ -841,15 +841,15 @@
       }
     },
     "RsPlaceholderGrid": {
-      "description": "グリッドの形でコンポーネントをロードする前のプレースホルダ",
-      "name": "プレースホルダグリッド",
+      "description": "コンポーネントをグリッド形式で読み込む前のプレースホルダー",
+      "name": "プレースホルダーグリッド",
       "props": {
         "active": {
           "description": "プレースホルダーがアクティブかどうか",
           "name": "アクティブ"
         },
         "columns": {
-          "description": "列の数",
+          "description": "カラムの数",
           "name": "コラム"
         },
         "rowHeight": {
@@ -858,16 +858,16 @@
         },
         "rowSpacing": {
           "description": "行間の間隔",
-          "name": "行の間隔"
+          "name": "行間隔"
         },
         "rows": {
-          "description": "行の数",
+          "description": "行数",
           "name": "行"
         }
       }
     },
     "RsPlaceholderParagraph": {
-      "description": "段落の形式でコンポーネントをロードする前のプレースホルダ",
+      "description": "コンポーネントを段落形式で読み込む前のプレースホルダー",
       "name": "プレースホルダー段落",
       "props": {
         "active": {
@@ -884,32 +884,32 @@
         },
         "rowSpacing": {
           "description": "行間の間隔",
-          "name": "行の間隔"
+          "name": "行間隔"
         },
         "rows": {
-          "description": "行の数",
+          "description": "行数",
           "name": "行"
         }
       }
     },
     "RsProgressCircle": {
-      "description": "操作の現在の進行状況を円として表示する",
-      "name": "プログレスサークル",
+      "description": "操作の現在の進行状況を円で表示",
+      "name": "進捗サークル",
       "props": {
         "classPrefix": {
-          "description": "コンポーネントCSSクラスの接頭辞",
-          "name": "クラス接頭辞"
+          "description": "コンポーネント CSS クラスのプレフィックス",
+          "name": "クラスプレフィックス"
         },
         "gapDegree": {
-          "description": "半円のギャップの程度、0~360",
+          "description": "半円のギャップ度、0〜360",
           "name": "ギャップ度"
         },
         "gapPosition": {
-          "description": "円形プログレスバーノッチ位置",
-          "name": "ギャップ位置"
+          "description": "円形プログレスバーのノッチ位置",
+          "name": "ギャップポジション"
         },
         "percent": {
-          "description": "進捗率",
+          "description": "進捗のパーセント",
           "name": "パーセント"
         },
         "showInfo": {
@@ -921,15 +921,15 @@
           "name": "ステータス"
         },
         "strokeColor": {
-          "description": "線の色",
-          "name": "ストロークの色"
+          "description": "ラインカラー",
+          "name": "ストロークカラー"
         },
         "strokeLinecap": {
           "description": "さまざまなタイプのオープンパスの終わり",
           "name": "ストロークラインキャップ"
         },
         "strokeWidth": {
-          "description": "線幅",
+          "description": "ライン幅",
           "name": "ストローク幅"
         },
         "trailColor": {
@@ -943,15 +943,15 @@
       }
     },
     "RsProgressLine": {
-      "description": "操作の現在の進行状況を行として表示する",
+      "description": "操作の現在の進行状況を線で表示",
       "name": "プログレスライン",
       "props": {
         "classPrefix": {
-          "description": "コンポーネントCSSクラスの接頭辞",
-          "name": "クラス接頭辞"
+          "description": "コンポーネント CSS クラスのプレフィックス",
+          "name": "クラスプレフィックス"
         },
         "percent": {
-          "description": "進捗率",
+          "description": "進捗のパーセント",
           "name": "パーセント"
         },
         "showInfo": {
@@ -963,25 +963,25 @@
           "name": "ステータス"
         },
         "strokeColor": {
-          "description": "線の色",
-          "name": "ストロークの色"
+          "description": "ラインカラー",
+          "name": "ストロークカラー"
         },
         "strokeWidth": {
-          "description": "線幅",
+          "description": "ライン幅",
           "name": "ストローク幅"
         },
         "vertical": {
-          "description": "進行状況バーが垂直に表示されます",
-          "name": "縦型"
+          "description": "プログレスバーが縦に表示されます。",
+          "name": "垂直"
         }
       }
     },
     "RsRadioGroup": {
-      "description": "ラジオは、一連のオプションで1つの選択肢のみを選択できる場合に使用されます",
+      "description": "ラジオは、一連のオプションの中で選択肢が 1 つしか選択できない場合に使用されます。",
       "name": "ラジオグループ",
       "props": {
         "appearance": {
-          "description": "ラジオグループは異なる外観を持つことができます",
+          "description": "ラジオグループの外見はさまざまです",
           "name": "外観"
         },
         "inline": {
@@ -989,16 +989,16 @@
           "name": "インライン"
         },
         "items": {
-          "description": "Radioグループの項目は以下の通りです。",
+          "description": "ラジオグループのアイテム",
           "name": "アイテム"
         },
         "name": {
           "description": "ラジオグループ名",
-          "name": "名前"
+          "name": "[名前]"
         },
         "onChange": {
           "description": "値が変更された後に呼び出されます",
-          "name": "オンチェンジ"
+          "name": "変更時"
         }
       }
     },
@@ -1011,48 +1011,48 @@
           "name": "クリーニング可能"
         },
         "creatable": {
-          "description": "設定で新しいオプションを作成できます",
+          "description": "設定により新しいオプションを作成できます",
           "name": "作成可能"
         },
         "data": {
           "description": "選択可能なデータ",
-          "name": "データ"
+          "name": "[データ]"
         },
         "disableVirtualized": {
           "description": "仮想化を無効にするかどうか",
           "name": "仮想化を無効にする"
         },
         "groupBy": {
-          "description": "'Data'にグループ化基準'key'を設定する",
+          "description": "「データ」にグループ化基準「キー」を設定",
           "name": "グループ化"
         },
         "onChange": {
-          "description": "値が変更されたときのコールバック関数",
-          "name": "オンチェンジ"
+          "description": "値が変化したときのコールバック関数",
+          "name": "変更時"
         },
         "onClean": {
-          "description": "クリーンのためのコールバック",
+          "description": "クリーンのコールバック",
           "name": "オンクリーン"
         },
         "onClose": {
-          "description": "閉じるためのコールバック",
-          "name": "onClose"
+          "description": "クローズのコールバック",
+          "name": "[閉じる]"
         },
         "onCreate": {
-          "description": "作成のためのコールバック",
-          "name": "onCreate"
+          "description": "作成のコールバック",
+          "name": "作成時に"
         },
         "onLoadData": {
           "description": "データをロードするためのコールバック",
           "name": "オンロードデータ"
         },
         "onSearch": {
-          "description": "検索のためのコールバック",
-          "name": "オンサーチ"
+          "description": "検索のコールバック",
+          "name": "検索中"
         },
         "onSelect": {
-          "description": "Selectのコールバック",
-          "name": "onSelect"
+          "description": "選択のコールバック",
+          "name": "オンセレクト"
         },
         "preload": {
           "description": "データをプリロードするかどうか",
@@ -1061,33 +1061,33 @@
       }
     },
     "RsStaticContent": {
-      "description": "テキストまたはHTMLコンテンツを表示する静的コンテンツコンポーネント",
+      "description": "テキストまたは HTML コンテンツを表示する静的コンテンツコンポーネント",
       "name": "静的コンテンツ",
       "props": {
         "allowHtml": {
-          "description": "HTMLコンテンツを許可するかどうか",
-          "name": "HTMLを許可する"
+          "description": "HTML コンテンツを許可するかどうか",
+          "name": "HTML を許可"
         },
         "content": {
           "description": "表示するコンテンツ",
-          "name": "コンテンツ"
+          "name": "[コンテンツ]"
         }
       }
     },
     "RsTab": {
-      "description": "タブは、タブパネルと呼ばれるコンテンツの階層化されたセクションのセットで、一度に1つのコンテンツパネルを表示します",
+      "description": "タブは、タブパネルと呼ばれるコンテンツの階層化されたセクションのセットで、一度に 1 パネルのコンテンツが表示されます。",
       "name": "タブ",
       "props": {
         "activeKey": {
-          "description": "アイテムの値のいずれかに対応するアクティブキー",
+          "description": "項目の値の 1 つに対応するアクティブキー",
           "name": "アクティブキー"
         },
         "appearance": {
-          "description": "タブは異なる外観を持つことができます",
+          "description": "タブの外観はさまざまです。",
           "name": "外観"
         },
         "items": {
-          "description": "タブの項目",
+          "description": "タブのアイテム",
           "name": "アイテム"
         },
         "justified": {
@@ -1096,23 +1096,23 @@
         },
         "onSelect": {
           "description": "選択後にトリガーされるコールバック関数",
-          "name": "onSelect"
+          "name": "オンセレクト"
         },
         "pane": {
           "description": "タブの子コンポーネント",
           "name": "ペイン"
         },
         "reversed": {
-          "description": "タブの逆方向/微妙",
-          "name": "逆さにして"
+          "description": "タブの方向を逆にする/微妙な",
+          "name": "逆転しました"
         },
         "showNavigation": {
           "description": "ナビゲーションを表示または非表示にする",
           "name": "ナビゲーションを表示"
         },
         "vertical": {
-          "description": "スタッキングナビゲーション",
-          "name": "縦型"
+          "description": "スタックナビゲーション",
+          "name": "垂直"
         }
       }
     },
@@ -1125,57 +1125,57 @@
           "name": "クリーニング可能"
         },
         "creatable": {
-          "description": "設定で新しいオプションを作成できます",
+          "description": "設定により新しいオプションを作成できます",
           "name": "作成可能"
         },
         "data": {
           "description": "選択可能なデータ",
-          "name": "データ"
+          "name": "[データ]"
         },
         "groupBy": {
-          "description": "'Data'にグループ化基準'key'を設定する",
+          "description": "「データ」にグループ化基準「キー」を設定",
           "name": "グループ化"
         },
         "onChange": {
-          "description": "値が変更されたときのコールバック関数",
-          "name": "オンチェンジ"
+          "description": "値が変化したときのコールバック関数",
+          "name": "変更時"
         },
         "onClean": {
-          "description": "クリーンのためのコールバック",
+          "description": "クリーンのコールバック",
           "name": "オンクリーン"
         },
         "onClose": {
-          "description": "閉じるためのコールバック",
-          "name": "onClose"
+          "description": "クローズのコールバック",
+          "name": "[閉じる]"
         },
         "onCreate": {
-          "description": "作成のためのコールバック",
-          "name": "onCreate"
+          "description": "作成のコールバック",
+          "name": "作成時に"
         },
         "onSearch": {
-          "description": "検索のためのコールバック",
-          "name": "オンサーチ"
+          "description": "検索のコールバック",
+          "name": "検索中"
         },
         "onSelect": {
-          "description": "Selectのコールバック",
-          "name": "onSelect"
+          "description": "選択のコールバック",
+          "name": "オンセレクト"
         }
       }
     },
     "RsTextArea": {
       "description": "複数行のテキスト入力用のテキスト領域コンポーネント",
-      "name": "テキスト領域",
+      "name": "テキストエリア",
       "props": {
         "onChange": {
           "description": "値が変更されるコールバック関数",
-          "name": "オンチェンジ"
+          "name": "変更時"
         },
         "onPressEnter": {
-          "description": "Enterキーを押して呼び出されます",
-          "name": "onPressEnter"
+          "description": "[Enter] を押すと呼び出されます",
+          "name": "[Enter] を押すと"
         },
         "rows": {
-          "description": "表示されるテキスト行の数",
+          "description": "表示されているテキスト行の数",
           "name": "行"
         }
       }
@@ -1193,7 +1193,7 @@
           "name": "デフォルト値"
         },
         "editable": {
-          "description": "入力としてレンダリングされ、時間はキーボードを介して入力することができます",
+          "description": "入力としてレンダリングされ、時間はキーボードで入力できます",
           "name": "編集可能"
         },
         "format": {
@@ -1201,61 +1201,61 @@
           "name": "フォーマット"
         },
         "onChange": {
-          "description": "値が変更されたときに発生するコールバック",
-          "name": "オンチェンジ"
+          "description": "値が変更されたときにコールバックが発生しました",
+          "name": "変更時"
         },
         "onClean": {
-          "description": "値がクリーンになったときにコールバックが発生",
+          "description": "値がクリーンになったときにコールバックが発生します",
           "name": "オンクリーン"
         },
         "onClose": {
-          "description": "コンポーネントを閉じるとコールバックが発生します",
-          "name": "onClose"
+          "description": "コンポーネントを閉じるときにコールバックが発生する",
+          "name": "[閉じる]"
         },
         "onEnter": {
-          "description": "オーバーレイトランジションの前に起動されたコールバック",
-          "name": "onEnter（オンエンター）"
+          "description": "オーバーレイが遷移する前にコールバックが発生しました",
+          "name": "OnEnter"
         },
         "onEntered": {
-          "description": "オーバーレイの移行が完了した後に発生するコールバック",
-          "name": "オンエンタード"
+          "description": "オーバーレイの遷移が完了した後にコールバックが発生します",
+          "name": "入力時"
         },
         "onEntering": {
-          "description": "オーバーレイが遷移し始めるとコールバックが起動されます",
-          "name": "ワン-エンタリング"
+          "description": "オーバーレイが遷移し始めるとコールバックが発生します",
+          "name": "入力時"
         },
         "onExit": {
-          "description": "オーバーレイトランジションの直前にコールバックが発生しました",
-          "name": "onExit"
+          "description": "オーバーレイが遷移する直前にコールバックが発生しました",
+          "name": "出口で"
         },
         "onExited": {
-          "description": "オーバーレイの遷移が終了した後に発生するコールバック",
-          "name": "onExited"
+          "description": "オーバーレイのトランジションが終了した後にコールバックが発生します",
+          "name": "終了なし"
         },
         "onExiting": {
-          "description": "オーバーレイが遷移し始めるとコールバックが発生します",
-          "name": "onExiting"
+          "description": "オーバーレイがトランジションアウトし始めるとコールバックが発生します",
+          "name": "[終了中]"
         },
         "onOk": {
-          "description": "[OK]コールバック関数をクリックします",
-          "name": "オノク"
+          "description": "OK コールバック関数をクリックします。",
+          "name": "ヌオーク"
         },
         "onOpen": {
-          "description": "コンポーネントを開いたときに発生するコールバック",
-          "name": "onOpen（オンオープン）"
+          "description": "コンポーネントを開くとコールバックが発生する",
+          "name": "[オープン中]"
         },
         "onSelect": {
-          "description": "日付または時刻が選択されたときに発生するコールバック",
-          "name": "onSelect"
+          "description": "日付または時刻が選択されたときにコールバックが発生します",
+          "name": "オンセレクト"
         },
         "open": {
           "description": "コンポーネントを開くかどうか",
-          "name": "オープン"
+          "name": "[開く]"
         }
       }
     },
     "RsToggle": {
-      "description": "トグルスイッチ、2つの値の間の選択に使用されます",
+      "description": "2 つの値の選択に使用されるトグルスイッチ",
       "name": "トグル",
       "props": {
         "checked": {
@@ -1263,42 +1263,42 @@
           "name": "チェック済み"
         },
         "checkedChildren": {
-          "description": "チェックされた状態で表示されるテキスト",
-          "name": "チェックされたテキスト"
+          "description": "チェックした状態で表示されるテキスト",
+          "name": "チェック済みテキスト"
         },
         "children": {
           "description": "コンポーネントラベル",
-          "name": "ラベル"
+          "name": "[ラベル]"
         },
         "color": {
           "description": "トグルの色",
-          "name": "色"
+          "name": "[カラー]"
         },
         "loading": {
           "description": "コンポーネントがロード状態にあるかどうか",
-          "name": "積み込み"
+          "name": "読み込み中"
         },
         "onChange": {
-          "description": "トグルの状態が変更されたときに呼び出されます",
-          "name": "オンチェンジ"
+          "description": "トグルの状態が変化したときに呼び出されます",
+          "name": "変更時"
         },
         "unCheckedChildren": {
           "description": "チェックされていない状態で表示されるテキスト",
-          "name": "チェックされていないテキスト"
+          "name": "未チェックのテキスト"
         }
       }
     },
     "RsTooltip": {
-      "description": "Html要素の既定のtitleプロパティを置き換える、セカンダリ用のテキストヒント",
+      "description": "HTML エレメントのデフォルトのタイトルプロパティを置き換える、セカンダリ用のテキストチップ",
       "name": "ツールチップ",
       "props": {
         "children": {
           "description": "ツールチップの子要素",
-          "name": "子供たち"
+          "name": "子ども"
         },
         "text": {
           "description": "ツールチップテキスト",
-          "name": "テキスト"
+          "name": "[テキスト]"
         },
         "trigger": {
           "description": "ツールチップトリガー",
@@ -1307,39 +1307,39 @@
       }
     },
     "RsUploader": {
-      "description": "クリックまたはドラッグアンドドロップでファイルをアップロードすると、アップロードされた画像のプレビューがサポートされます",
+      "description": "クリックまたはドラッグアンドドロップでファイルをアップロードします。アップロードされた画像のプレビューをサポートします",
       "name": "アップローダー",
       "props": {
         "accept": {
-          "description": "受け入れることができるファイルの種類。 標準のHTML属性:acceptを見る",
-          "name": "受け入れる"
+          "description": "受け付けることができるファイルタイプ。HTML の標準属性:accept を参照してください。",
+          "name": "承諾する"
         },
         "action": {
-          "description": "URLのアップロード",
-          "name": "演技はじめ！"
+          "description": "URL をアップロード中",
+          "name": "アクション"
         },
         "autoUpload": {
-          "description": "ファイルを選択した後に自動的にアップロードする",
+          "description": "ファイルを選択した後、自動的にアップロードする",
           "name": "自動アップロード"
         },
         "children": {
-          "description": "主なコンテンツ",
-          "name": "子供たち"
+          "description": "主要コンテンツ",
+          "name": "子ども"
         },
         "customElement": {
           "description": "アップローダーにカスタム要素を使用するかどうか",
-          "name": "カスタム要素"
+          "name": "カスタムエレメント"
         },
         "disableMultipart": {
-          "description": "'True'の場合、ファイルのアップロードにマルチパートフォームを使用することを無効にし、代わりにファイルをストリーミングします。 一部のApi（Amazon S3など）では、フォームを介して送信するのではなく、ファイルがストリーミングされることを期待している場合があります",
+          "description": "'true' の場合、ファイルのアップロードにマルチパートフォームを使用することを無効にし、代わりにファイルをストリーミングします。API (Amazon S3 など) によっては、ファイルがフォーム経由で送信されるのではなく、ストリーミングされることを想定している場合があります。",
           "name": "マルチパートを無効にする"
         },
         "disabledFileItem": {
-          "description": "無効なファイル項目",
-          "name": "無効なファイル項目"
+          "description": "無効化されたファイルアイテム",
+          "name": "無効化されたファイルアイテム"
         },
         "draggable": {
-          "description": "アップロードするためのドラッグアンドドロップを有効にしました",
+          "description": "ドラッグアンドドロップによるアップロードを有効にしました",
           "name": "ドラッグ可能"
         },
         "fileList": {
@@ -1347,67 +1347,67 @@
           "name": "ファイルリスト"
         },
         "fileListVisible": {
-          "description": "ファイルリストをレンダリングすることができます",
-          "name": "ファイルリストが表示されます"
+          "description": "ファイルリストをレンダリングできます",
+          "name": "ファイルリストを表示"
         },
         "listType": {
-          "description": "アップロードリストスタイル",
+          "description": "リストスタイルをアップロード",
           "name": "リストタイプ"
         },
         "method": {
-          "description": "アップロード要求のHTTPメソッド",
+          "description": "アップロードリクエストの HTTP メソッド",
           "name": "メソッド"
         },
         "multiple": {
-          "description": "複数のファイルのアップロードを許可する",
+          "description": "複数のファイルのアップロードを許可",
           "name": "複数"
         },
         "name": {
           "description": "対応するファイルのパラメータ名をアップロードします",
-          "name": "名前"
+          "name": "[名前]"
         },
         "onChange": {
           "description": "アップロードキューが変更されたコールバック関数",
-          "name": "オンチェンジ"
+          "name": "変更時"
         },
         "onError": {
-          "description": "エラーのあるコールバック関数のアップロード",
-          "name": "onError"
+          "description": "エラーのあるコールバック関数をアップロード",
+          "name": "OnError"
         },
         "onPreview": {
           "description": "ファイルリストで、アップロードされたファイルのコールバック関数をクリックします",
-          "name": "onPreview"
+          "name": "[プレビュー中]"
         },
         "onProgress": {
           "description": "進行状況の変更をアップロードするコールバック関数",
-          "name": "onProgress"
+          "name": "進行中"
         },
         "onRemove": {
           "description": "ファイルリストで、コールバック関数をクリックしてファイルを削除します",
-          "name": "onRemove"
+          "name": "[削除中]"
         },
         "onReupload": {
-          "description": "ファイルリストで、失敗したファイルをアップロードするには、アップロードするコールバック関数をクリックします",
-          "name": "onReupload"
+          "description": "ファイルリストで、アップロードに失敗したファイルをアップロードするには、コールバック関数をクリックしてアップロードします",
+          "name": "1 回の再アップロード"
         },
         "onSuccess": {
-          "description": "アップロードが成功した後のコールバック関数",
-          "name": "onSuccess"
+          "description": "アップロード成功後のコールバック機能",
+          "name": "成功時に"
         },
         "onUpload": {
-          "description": "アップロードファイルを開始するコールバック関数",
-          "name": "onUpload"
+          "description": "ファイルのアップロードを開始するコールバック関数",
+          "name": "[アップロード時]"
         },
         "removable": {
           "description": "リムーバブルリストファイル",
           "name": "取り外し可能"
         },
         "timeout": {
-          "description": "アップロードタイムアウトの設定",
+          "description": "アップロードのタイムアウトを設定",
           "name": "タイムアウト"
         },
         "withCredentials": {
-          "description": "リクエストをアップロードするときにcookieを運ぶかどうか",
+          "description": "リクエストをアップロードするときにクッキーを携帯するかどうか",
           "name": "資格情報付き"
         }
       }
@@ -1421,39 +1421,39 @@
           "name": "アクティブインデックス"
         },
         "children": {
-          "description": "ウィザードチルドレン",
-          "name": "子供たち"
+          "description": "ウィザードステップの内容",
+          "name": "子ども"
         },
         "finishButtonLabel": {
           "description": "終了ボタンのラベル",
-          "name": "終了ボタンラベル"
+          "name": "「完了」ボタンのラベル"
         },
         "nextButtonLabel": {
-          "description": "次のボタンのラベル",
-          "name": "[次へ]ボタンのラベル"
+          "description": "次のボタンラベル",
+          "name": "[次へ] ボタンのラベル"
         },
         "onFinish": {
-          "description": "完了ボタンがクリックされたときのコールバック",
-          "name": "オンフィニッシュ"
+          "description": "終了ボタンがクリックされたときのコールバック",
+          "name": "終了後"
         },
         "onNext": {
           "description": "次のボタンがクリックされたときのコールバック",
-          "name": "オンネクスト"
+          "name": "次へ進む"
         },
         "onPrev": {
           "description": "前のボタンがクリックされたときのコールバック",
-          "name": "onPrev"
+          "name": "前のページへ"
         },
         "prevButtonLabel": {
-          "description": "前のボタンのラベル",
-          "name": "前のボタンのラベル"
+          "description": "前のボタンラベル",
+          "name": "前のボタンラベル"
         },
         "showSteps": {
-          "description": "Trueの場合、手順が表示されます",
+          "description": "true に設定すると、手順が表示されます。",
           "name": "ステップを表示"
         },
         "showStepsLabels": {
-          "description": "Trueの場合、ステップラベルが表示されます",
+          "description": "true に設定すると、ステップラベルが表示されます",
           "name": "ステップラベルを表示"
         },
         "steps": {
@@ -1461,30 +1461,30 @@
           "name": "ステップ"
         },
         "stepsNavigation": {
-          "description": "ナビゲーションに使用できる手順をクリックして決定します",
+          "description": "クリックしてナビゲーションできるステップを決定します",
           "name": "ステップナビゲーション"
         },
         "validateOnFinish": {
-          "description": "Trueの場合、ウィザードはウィザードを終了する前に検証されます",
+          "description": "true に設定すると、ウィザードを終了する前にウィザードが検証されます。",
           "name": "終了時に検証"
         },
         "validateOnNext": {
-          "description": "Trueの場合、ステップは次のステップに移動する前に検証されます",
-          "name": "次への検証"
+          "description": "true の場合、次のステップに進む前にステップが検証されます",
+          "name": "次回に検証"
         },
         "verticalSteps": {
-          "description": "Trueの場合、ステップは垂直方向に表示されます",
-          "name": "縦のステップ"
+          "description": "true に設定すると、ステップが縦に表示されます",
+          "name": "垂直ステップ"
         }
       }
     },
     "RsWizardStep": {
-      "description": "Flexレイアウトを使用したウィザードステップコンポーネント",
-      "name": "ウィザードのステップ",
+      "description": "フレックスレイアウトのウィザードステップコンポーネント",
+      "name": "ウィザードステップ",
       "props": {
         "children": {
-          "description": "コンポーネントの子",
-          "name": "子供たち"
+          "description": "コンポーネントの子要素",
+          "name": "子ども"
         }
       }
     }

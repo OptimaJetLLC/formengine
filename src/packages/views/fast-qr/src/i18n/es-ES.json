@@ -1,7 +1,7 @@
 {
   "categories": {
     "static": {
-      "name": "Estático"
+      "name": "Estática"
     }
   },
   "components": {
@@ -26,24 +26,24 @@
           "name": "Color de fondo de la imagen"
         },
         "imageBackgroundShape": {
-          "description": "La forma de fondo de la imagen",
-          "name": "Forma de fondo de imagen"
+          "description": "La forma del fondo de la imagen",
+          "name": "Forma del fondo de la imagen"
         },
         "moduleColor": {
           "description": "El color del módulo",
           "name": "Color del módulo"
         },
         "shape": {
-          "description": "Las diferentes formas posibles para representar módulos",
+          "description": "Las diferentes formas posibles para representar los módulos",
           "name": "Forma"
         },
         "version": {
-          "description": "La versión de código QR",
+          "description": "La versión del código QR",
           "name": "Versión QR"
         },
         "width": {
           "description": "El ancho del código QR",
-          "name": "Ancho"
+          "name": "Anchura"
         }
       }
     }

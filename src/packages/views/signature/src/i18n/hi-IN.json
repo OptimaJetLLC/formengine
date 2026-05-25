@@ -6,19 +6,19 @@
   },
   "components": {
     "RsSignature": {
-      "description": "एचटीएमएल 5 कैनवास आधारित चिकना हस्ताक्षर ड्राइंग",
-      "name": "हस्ताक्षर",
+      "description": "HTML5 कैनवास आधारित चिकनी हस्ताक्षर ड्राइंग",
+      "name": "सिग्नेचर",
       "props": {
         "backgroundColor": {
-          "description": "पृष्ठभूमि रंग",
-          "name": "पृष्ठभूमि रंग"
+          "description": "बैकग्राउंड का रंग",
+          "name": "बैकग्राउंड का रंग"
         },
         "clearButtonText": {
-          "description": "बटन लेबल साफ़ करें",
-          "name": "स्पष्ट बटन पाठ"
+          "description": "क्लियर बटन लेबल",
+          "name": "क्लियर बटन टेक्स्ट"
         },
         "height": {
-          "description": "कैनवास ऊंचाई",
+          "description": "कैनवास की ऊंचाई",
           "name": "ऊंचाई"
         },
         "label": {
@@ -26,23 +26,23 @@
           "name": "लेबल"
         },
         "lineWidth": {
-          "description": "लाइन चौड़ाई",
-          "name": "लाइन चौड़ाई"
+          "description": "लाइन की चौड़ाई",
+          "name": "लाइन की चौड़ाई"
         },
         "penColor": {
           "description": "कलम का रंग",
-          "name": "कलम का रंग"
+          "name": "पेन का रंग"
         },
         "readOnly": {
-          "description": "केवल पढ़ने के लिए झंडा",
-          "name": "केवल पढ़ें"
+          "description": "केवल-पढ़ने के लिए ध्वज",
+          "name": "सिर्फ पढ़ने के लिए"
         },
         "value": {
-          "description": "हस्ताक्षर छवि खींचने के लिए प्रारंभिक डेटा यूआरएल",
-          "name": "मूल्य"
+          "description": "हस्ताक्षर छवि बनाने के लिए प्रारंभिक डेटा URL",
+          "name": "वैल्यू"
         },
         "width": {
-          "description": "कैनवास चौड़ाई",
+          "description": "कैनवास की चौड़ाई",
           "name": "चौड़ाई"
         }
       }

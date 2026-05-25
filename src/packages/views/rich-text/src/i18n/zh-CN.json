@@ -6,7 +6,7 @@
   },
   "components": {
     "RichTextEditor": {
-      "description": "您强大的富文本编辑器",
+      "description": "你强大的富文本编辑器",
       "name": "富文本编辑器",
       "props": {
         "initialValue": {
@@ -14,11 +14,11 @@
           "name": "初始值"
         },
         "label": {
-          "description": "标签",
+          "description": "这个标签",
           "name": "标签"
         },
         "modules": {
-          "description": "允许自定义编辑器的行为和功能。 阅读文档以获取更多信息",
+          "description": "允许自定义编辑器的行为和功能。阅读文档以获取更多信息",
           "name": "模块"
         },
         "placeholder": {
@@ -30,7 +30,7 @@
           "name": "只读"
         },
         "toolbarOptions": {
-          "description": "要显示在工具栏上的按钮组",
+          "description": "要在工具栏上显示的按钮组",
           "name": "工具栏选项"
         }
       }

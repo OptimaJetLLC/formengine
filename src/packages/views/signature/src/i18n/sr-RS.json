@@ -1,49 +1,49 @@
 {
   "categories": {
     "fields": {
-      "name": "Поља"
+      "name": "Polja"
     }
   },
   "components": {
     "RsSignature": {
-      "description": "Глатка слика потписа заснована на ХТМЛ5 платну",
-      "name": "Потпис",
+      "description": "Crtež glatkog potpisa zasnovan na HTML5 platnu",
+      "name": "Potpis",
       "props": {
         "backgroundColor": {
-          "description": "Боја позадине",
-          "name": "Боја позадине"
+          "description": "Boja pozadine",
+          "name": "Boja pozadine"
         },
         "clearButtonText": {
-          "description": "Обришите пречицу дугмета",
-          "name": "Обриши Текст дугмета"
+          "description": "Obriši etiketu dugmeta",
+          "name": "Obriši tekst dugmeta"
         },
         "height": {
-          "description": "Висина платна",
-          "name": "Висина"
+          "description": "Visina platna",
+          "name": "Visina"
         },
         "label": {
-          "description": "Ознака за компоненту",
-          "name": "Ознака"
+          "description": "Oznaka za komponentu",
+          "name": "Oznaka"
         },
         "lineWidth": {
-          "description": "Ширина линије",
-          "name": "Ширина линије"
+          "description": "Širina linije",
+          "name": "Širina linije"
         },
         "penColor": {
-          "description": "Боја оловке",
-          "name": "Боја оловке"
+          "description": "Boja olovke",
+          "name": "Boja olovke"
         },
         "readOnly": {
-          "description": "Застава само за читање",
-          "name": "Само за читање"
+          "description": "Zastava samo za čitanje",
+          "name": "Samo za čitanje"
         },
         "value": {
-          "description": "УРЛ изворних података за креирање слике потписа",
-          "name": "Вредност"
+          "description": "URL početnih podataka za crtanje slike potpisa",
+          "name": "Vrednost"
         },
         "width": {
-          "description": "Ширина платна",
-          "name": "Ширина"
+          "description": "Širina platna",
+          "name": "Širina"
         }
       }
     }

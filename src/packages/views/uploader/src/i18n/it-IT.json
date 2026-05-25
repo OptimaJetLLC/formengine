@@ -1,48 +1,48 @@
 {
   "categories": {
     "fields": {
-      "name": "Campo"
+      "name": "Campi"
     }
   },
   "components": {
     "Uploader": {
-      "description": "Componente di caricamento file con supporto drag and drop",
-      "name": "Uploader file",
+      "description": "Componente per il caricamento di file con supporto per il drag and drop",
+      "name": "Caricatore di file",
       "props": {
         "accept": {
-          "description": "Tipi di file accettati (ad esempio, immagine/*,.PDF, .docx)",
-          "name": "Accettare"
+          "description": "Tipi di file accettati (ad es. image/*, .pdf, .docx)",
+          "name": "Accetta"
         },
         "action": {
           "description": "URL su cui caricare i file",
-          "name": "URL azione"
+          "name": "URL dell'azione"
         },
         "children": {
-          "description": "Contenuto da visualizzare all'interno dell'uploader",
-          "name": "Bambino"
+          "description": "Contenuti da visualizzare all'interno dell'uploader",
+          "name": "Bambini"
         },
         "disabled": {
-          "description": "Se è vero, i bambini sono in stato disabilitato",
-          "name": "Disabilita"
+          "description": "Se vero, l'uploader è disabilitato",
+          "name": "Disabili"
         },
         "dropzone": {
-          "description": "Se è vero, la dropzone mostrerà",
+          "description": "Se vero, la dropzone mostrerà",
           "name": "Dropzone"
         },
         "multiple": {
           "description": "Consenti la selezione di più file",
-          "name": "Più file"
+          "name": "File multipli"
         },
         "onChange": {
-          "description": "Callback quando i file vengono caricati correttamente",
-          "name": "Sul cambiamento"
+          "description": "Richiamata quando i file vengono caricati correttamente",
+          "name": "In fase di cambiamento"
         },
         "onError": {
-          "description": "Callback quando si verifica un errore durante il caricamento",
-          "name": "Su errore"
+          "description": "Richiamata quando si verifica un errore durante il caricamento",
+          "name": "In caso di errore"
         },
         "readOnly": {
-          "description": "Se è vero, i bambini sono in stato di sola lettura",
+          "description": "Se vero, l'uploader è di sola lettura",
           "name": "Sola lettura"
         }
       }

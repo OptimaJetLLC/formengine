@@ -1,36 +1,36 @@
 {
   "categories": {
     "fields": {
-      "name": "الحقول"
+      "name": "حقول"
     }
   },
   "components": {
     "RichTextEditor": {
-      "description": "محرر نص غني قوي",
-      "name": "محرر نص منسق",
+      "description": "محرر النصوص الغني القوي الخاص بك",
+      "name": "محرر نصوص غنية",
       "props": {
         "initialValue": {
           "description": "القيمة الأولية",
           "name": "القيمة الأولية"
         },
         "label": {
-          "description": "التسمية",
-          "name": "التسمية"
+          "description": "ذا ليبل",
+          "name": "ملصق"
         },
         "modules": {
-          "description": "يسمح لتخصيص السلوك والأداء الوظيفي للمحرر. اقرأ المستندات لمزيد من المعلومات",
-          "name": "وحدات"
+          "description": "يسمح بتخصيص سلوك المحرر ووظائفه. اقرأ المستندات لمزيد من المعلومات",
+          "name": "الوحدات"
         },
         "placeholder": {
           "description": "العنصر النائب",
-          "name": "نائب"
+          "name": "عنصر نائب"
         },
         "readOnly": {
-          "description": "علم للقراءة فقط",
+          "description": "علامة للقراءة فقط",
           "name": "للقراءة فقط"
         },
         "toolbarOptions": {
-          "description": "مجموعات من الأزرار ليتم عرضها على شريط الأدوات",
+          "description": "مجموعات الأزرار التي سيتم عرضها على شريط الأدوات",
           "name": "خيارات شريط الأدوات"
         }
       }

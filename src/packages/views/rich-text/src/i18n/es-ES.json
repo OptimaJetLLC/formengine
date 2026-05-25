@@ -6,7 +6,7 @@
   },
   "components": {
     "RichTextEditor": {
-      "description": "Su potente editor de texto enriquecido",
+      "description": "Tu potente editor de texto enriquecido",
       "name": "Editor de texto enriquecido",
       "props": {
         "initialValue": {
@@ -18,7 +18,7 @@
           "name": "Etiqueta"
         },
         "modules": {
-          "description": "Permite personalizar el comportamiento y funcionalidad del editor. Lea los documentos para obtener más información",
+          "description": "Permite personalizar el comportamiento y la funcionalidad del editor. Lea los documentos para obtener más información",
           "name": "Módulos"
         },
         "placeholder": {
@@ -31,7 +31,7 @@
         },
         "toolbarOptions": {
           "description": "Grupos de botones que se mostrarán en la barra de herramientas",
-          "name": "Opciones de la barra de herramientas"
+          "name": "Opciones de barra de herramientas"
         }
       }
     }

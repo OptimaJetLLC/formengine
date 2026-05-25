@@ -1,1490 +1,1490 @@
 {
   "categories": {
     "fields": {
-      "name": "Поља"
+      "name": "Polja"
     },
     "modal": {
-      "name": "Модални"
+      "name": "Modalni"
     },
     "static": {
-      "name": "Статички"
+      "name": "Statički"
     },
     "structure": {
-      "name": "Структура"
+      "name": "Struktura"
     }
   },
   "commonProperties": {
     "backgroundColor": {
-      "description": "Боја позадине",
-      "name": "Позадина"
+      "description": "Boja pozadine",
+      "name": "Pozadina"
     },
     "children": {
-      "description": "Дечје компоненте",
-      "name": "Деца"
+      "description": "Dečiji elementi komponente",
+      "name": "Deca"
     },
     "className": {
-      "description": "Назив класе ЦСС",
-      "name": "ЦСС класа"
+      "description": "Naziv CSS klase",
+      "name": "CSS klasa"
     },
     "disabled": {
-      "description": "Да ли је нека компонента онемогућена",
-      "name": "Неспособан за рад"
+      "description": "Da li je komponenta onemogućena",
+      "name": "Onemogućeno"
     },
     "fontSize": {
-      "description": "Величина фонта",
-      "name": "Величина фонта"
+      "description": "Veličina fonta",
+      "name": "Veličina fonta"
     },
     "fontWeight": {
-      "description": "Тежина фонта",
-      "name": "Тежина фонта"
+      "description": "Težina fonta",
+      "name": "Težina fonta"
     },
     "label": {
-      "description": "Ознака компоненте",
-      "name": "Ознака"
+      "description": "Oznaka komponente",
+      "name": "Oznaka"
     },
     "placeholder": {
-      "description": "Резервирано место",
-      "name": "Резервирано место"
+      "description": "Rezervirano mesto",
+      "name": "Rezervoar mesta"
     },
     "placement": {
-      "description": "Постављање компоненте",
-      "name": "Смештај"
+      "description": "Postavljanje komponente",
+      "name": "plasman"
     },
     "readOnly": {
-      "description": "Застава само за читање",
-      "name": "Само за читање"
+      "description": "Zastava samo za čitanje",
+      "name": "Samo za čitanje"
     },
     "size": {
-      "description": "Величина компоненте",
-      "name": "Величина"
+      "description": "Veličina komponente",
+      "name": "Veličina"
     },
     "textAlign": {
-      "description": "Поравнање текста",
-      "name": "Поравнање текста"
+      "description": "Poravnanje teksta",
+      "name": "Poravnavanje teksta"
     },
     "value": {
-      "description": "Тренутна вредност (контролисана)",
-      "name": "Вредност"
+      "description": "Trenutna vrednost (kontrolisana)",
+      "name": "Vrednost"
     }
   },
   "components": {
     "RsAutoComplete": {
-      "description": "Обезбедите функцију аутоматског попуњавања поља за унос",
-      "name": "Аутоматско довршавање",
+      "description": "Obezbedite funkciju automatskog dovršavanja kutije za unos",
+      "name": "Automatsko dovršavanje",
       "props": {
         "classPrefix": {
-          "description": "Префикс ЦСС класе компоненте",
-          "name": "Префикс класе"
+          "description": "Prefiks komponente CSS klase",
+          "name": "Prefiks klase"
         },
         "data": {
-          "description": "Подаци о компоненти",
-          "name": "Подаци"
+          "description": "Podaci komponente",
+          "name": "Podaci"
         },
         "defaultValue": {
-          "description": "Подразумевана вредност (неконтролисана)",
-          "name": "Подразумевана вредност"
+          "description": "Podrazumevana vrednost (nekontrolisano)",
+          "name": "Podrazumevana vrednost"
         },
         "filterBy": {
-          "description": "Прилагођена правила филтрирања (подразумевано приказују само ставке чија је вредност подниз)",
-          "name": "Филтрирајте према"
+          "description": "Prilagođena pravila filtera (prikazaće samo stavke čija je vrednost podrazumevano podniz)",
+          "name": "Filtriraj po"
         },
         "menuClassName": {
-          "description": "ЦСС класа за примену на дом мени",
-          "name": "Назив класе менија"
+          "description": "CSS klasa koja se primenjuje na meni DOM",
+          "name": "Naziv klase menija"
         },
         "onChange": {
-          "description": "Позива се када одаберете опцију или промените улазну вредност или када промените улазну вредност",
-          "name": "На промени"
+          "description": "Poziva se kada odaberete opciju ili promenite ulaznu vrednost, ili se promeni vrednost unosa",
+          "name": "OnChange"
         },
         "onClose": {
-          "description": "Повратни позив се активира када је скривен",
-          "name": "На блиској удаљености"
+          "description": "Povratni poziv otpušten kada je skriven",
+          "name": "OnClose"
         },
         "onEnter": {
-          "description": "Повратни позив се покреће пре него што прекривач пређе на",
-          "name": "У центру"
+          "description": "Povratni poziv je pokrenut pre prelaska na prekrivanje",
+          "name": "onEnter"
         },
         "onEntered": {
-          "description": "Повратни позив се покреће након завршетка преласка преклапања у",
-          "name": "Ушао"
+          "description": "Povratni poziv otpušten nakon što prekrivanje završi prelazak",
+          "name": "onUšao"
         },
         "onEntering": {
-          "description": "Повратни позив се покреће када прекривач почне да прелази у",
-          "name": "При уласку"
+          "description": "Povratni poziv se otvara kada prekrivanje počinje da prelazi",
+          "name": "onUlazak"
         },
         "onExit": {
-          "description": "Повратни позив се покреће непосредно пре завршетка прелаза преклапања",
-          "name": "Неуспех"
+          "description": "Povratni poziv je pokrenut neposredno pre prelaska prekrivanja",
+          "name": "OnExit"
         },
         "onExited": {
-          "description": "Повратни позив се покреће након завршетка преласка прекривача",
-          "name": "Узбуђен"
+          "description": "Povratni poziv je pokrenut nakon što se prekrivanje završi sa prelaskom",
+          "name": "OneExited"
         },
         "onExiting": {
-          "description": "Повратни позив се покреће када прекривач почне да пропада",
-          "name": "Узбудљиво"
+          "description": "Povratni poziv otpušten dok prekrivač počinje da prelazi",
+          "name": "OneKiting"
         },
         "onSelect": {
-          "description": "Позива се када је изабрана нека опција",
-          "name": "Приликом избора"
+          "description": "Poziva se kada je izabrana opcija",
+          "name": "OnSelect"
         },
         "renderMenu": {
-          "description": "Прилагођавање листе менија за приказивање",
-          "name": "Мени за приказивање"
+          "description": "Prilagođavanje liste menija za prikazivanje",
+          "name": "Render meni"
         },
         "renderMenuItem": {
-          "description": "Прилагођене ставке менија за приказивање",
-          "name": "Ставка менија за приказивање"
+          "description": "Prilagođene stavke menija za prikaz",
+          "name": "Stavka menija za prikaz"
         },
         "selectOnEnter": {
-          "description": "Ако је постављено на фалсе, функција избора тастера Ентер није важећа",
-          "name": "Изаберите док куцате"
+          "description": "Kada je postavljena na false, funkcija odabira tastera Enter je nevažeća",
+          "name": "Izaberite na Enter"
         }
       }
     },
     "RsBreadcrumb": {
-      "description": "Користи се за приказ тренутне путање странице и брзо враћање на страницу историје",
-      "name": "Хлебна мрвица",
+      "description": "Koristi se za prikaz trenutne putanje stranice i brzi povratak na stranicu istorije",
+      "name": "Hlebna mrvica",
       "props": {
         "items": {
-          "description": "Скуп елемената у облику крушних мрвица за приказ",
-          "name": "Предмети"
+          "description": "Niz stavki hlebnih mrvica za prikaz",
+          "name": "Predmeti"
         },
         "maxItems": {
-          "description": "Подесите максималан број презле за приказ",
-          "name": "Максималан број елемената"
+          "description": "Podesite maksimalni broj prezle za prikaz",
+          "name": "Maksimalni predmeti"
         },
         "onExpand": {
-          "description": "Функција повратног позива за кликање на елипсу",
-          "name": "Једном проширити"
+          "description": "Funkcija povratnog poziva za klik na elipsu",
+          "name": "OnExpand"
         },
         "onItemClick": {
-          "description": "Функција повратног позива када кликнете на ставку \"хлебна мрвица\"",
-          "name": "Кликните на ставку"
+          "description": "Funkcija povratnog poziva kada se klikne na stavku krušne mrvice",
+          "name": "onItemClick"
         },
         "separator": {
-          "description": "Разделник између сваког комада презле",
-          "name": "Разделник"
+          "description": "Separator između svake stavke hlebne mrvice",
+          "name": "Separator"
         }
       }
     },
     "RsButton": {
-      "description": "Дугме",
-      "name": "Дугме",
+      "description": "Dugme",
+      "name": "Dugme",
       "props": {
         "active": {
-          "description": "Дугме може показати да је тренутно активни избор корисника",
-          "name": "Активан"
+          "description": "Dugme može pokazati da je trenutno aktivni izbor korisnika",
+          "name": "Aktivan"
         },
         "appearance": {
-          "description": "Дугме може имати другачији изглед",
-          "name": "Изглед"
+          "description": "Dugme može imati različit izgled",
+          "name": "Izgled"
         },
         "children": {
-          "description": "Основни садржај",
-          "name": "Садржај"
+          "description": "Primarni sadržaj",
+          "name": "Sadržaj"
         },
         "disabled": {
-          "description": "Дугме може показати да тренутно није могуће комуницирати с њим",
-          "name": "Неспособан за рад"
+          "description": "Dugme može pokazati da trenutno ne može da se komunicira",
+          "name": "Onemogućeno"
         },
         "href": {
-          "description": "Пружање спољне везе резултираће приказом <a>елемент",
-          "name": "Линк"
+          "description": "<a>Pružanje href-a prikazaće element",
+          "name": "Href"
         },
         "loading": {
-          "description": "Дугме може приказати индикатор преузимања",
-          "name": "Утовар"
+          "description": "Dugme može prikazati indikator učitavanja",
+          "name": "Učitavanje"
         },
         "onClick": {
-          "description": "Функција повратног позива притиском на дугме",
-          "name": "Кликом миша"
+          "description": "Funkcija povratnog poziva kada se klikne dugme",
+          "name": "OnClick"
         }
       }
     },
     "RsCalendar": {
-      "description": "Компонента која приказује податке по календару",
-      "name": "Календар",
+      "description": "Komponenta koja prikazuje podatke po kalendaru",
+      "name": "Kalendar",
       "props": {
         "bordered": {
-          "description": "Прикажи границу",
-          "name": "Гранични"
+          "description": "Prikaži granicu",
+          "name": "Ograničen"
         },
         "compact": {
-          "description": "Приказ компактног календара",
-          "name": "Компактан"
+          "description": "Prikažite kompaktni kalendar",
+          "name": "Kompaktan"
         },
         "defaultValue": {
-          "description": "Подразумевана вредност",
-          "name": "Подразумевана вредност"
+          "description": "Podrazumevana vrednost",
+          "name": "Podrazumevana vrednost"
         },
         "isoWeek": {
-          "description": "Према стандарду ИСО 8601, свака календарска недеља почиње у понедељак и недељу седмог дана",
-          "name": "Недеља ИСО"
+          "description": "ISO 8601 standard, svaka kalendarska nedelja počinje u ponedeljak i nedelju sedmog dana",
+          "name": "ISO nedelja"
         },
         "onChange": {
-          "description": "Повратни позив је покренут пре промене вредности",
-          "name": "На промени"
+          "description": "Povratni poziv otpušten pre nego što se vrednost promenila",
+          "name": "OnChange"
         },
         "onSelect": {
-          "description": "Повратни позив је извршен пре изабраног датума",
-          "name": "Приликом избора"
+          "description": "Povratni poziv otpušten pre izabranog datuma",
+          "name": "OnSelect"
         }
       }
     },
     "RsCard": {
-      "description": "Картица је компонента контејнера за приказ података,",
-      "name": "Мапа",
+      "description": "Kartica je komponenta kontejnera za prikazivanje podataka,",
+      "name": "Kartica",
       "props": {
         "bodyFill": {
-          "description": "Подручје садржаја испуњено контејнерима",
-          "name": "Пуњење тела"
+          "description": "Oblast sadržaja ispunjena kontejnerima",
+          "name": "Punjenje tela"
         },
         "bordered": {
-          "description": "Прикажи границу",
-          "name": "Гранични"
+          "description": "Prikaži granicu",
+          "name": "Ograničen"
         },
         "children": {
-          "description": "Основни садржај",
-          "name": "Садржај"
+          "description": "Primarni sadržaj",
+          "name": "Sadržaj"
         },
         "collapsible": {
-          "description": "Било да је то склопива плоча",
-          "name": "Склапање"
+          "description": "Bilo da se radi o sklopivom panelu",
+          "name": "Sklopivi"
         },
         "defaultExpanded": {
-          "description": "Проширите затим подразумевани панел",
-          "name": "Проширено подразумевано"
+          "description": "Proširite zatim panel podrazumevano",
+          "name": "Podrazumevano prošireno"
         },
         "eventKey": {
-          "description": "Тастер догађаја који одговара панелу",
-          "name": "Кључ догађаја"
+          "description": "Taster događaja koji odgovara panelu",
+          "name": "Ključ događaja"
         },
         "header": {
-          "description": "Глава приказује информације",
-          "name": "Наслов"
+          "description": "Glava prikazuje informacije",
+          "name": "zaglavlje"
         },
         "headerSize": {
-          "description": "Величина заглавља за заглавље панела",
-          "name": "Величина заглавља"
+          "description": "Veličina zaglavlja zaglavlja panela",
+          "name": "Veličina zaglavlja"
         },
         "onSelect": {
-          "description": "Позива се приликом избора панела",
-          "name": "Приликом избора"
+          "description": "Poziva se kada je izabran panel",
+          "name": "OnSelect"
         },
         "shaded": {
-          "description": "Постоји ли сенка",
-          "name": "Осенчен"
+          "description": "Da li postoji senka",
+          "name": "Osenčena"
         },
         "title": {
-          "description": "Наслов за наслов панела",
-          "name": "Наслов"
+          "description": "Naslov zaglavlja panela",
+          "name": "Naslov"
         }
       }
     },
     "RsCheckbox": {
-      "description": "Поља за потврду се обично користе у групама. Омогућавају корисницима да одаберу једну или више вредности из скупа",
-      "name": "Поље за потврду",
+      "description": "Polja za potvrdu se obično koriste u grupama. Dozvolite korisnicima da izaberu jednu ili više vrednosti iz skupa",
+      "name": "Polje za potvrdu",
       "props": {
         "checked": {
-          "description": "Одређује да ли је ово поље означено",
-          "name": "Проверено"
+          "description": "Određuje da li je potvrdni okvir izabran",
+          "name": "Provereno"
         },
         "children": {
-          "description": "Ознака компоненте",
-          "name": "Ознака"
+          "description": "Oznaka komponente",
+          "name": "Oznaka"
         },
         "indeterminate": {
-          "description": "Када потврдите избор у пољу за потврду, стилови се постављају након одабира подређеног детаља",
-          "name": "Неодређено"
+          "description": "Kada je polje za potvrdu, podešavanje stilova nakon što je izabran dečiji deo",
+          "name": "Neodređeno"
         },
         "inline": {
-          "description": "Уграђени распоред",
-          "name": "Уграђени"
+          "description": "Ugrađeni raspored",
+          "name": "Inline"
         },
         "onChange": {
-          "description": "Позива се када корисник покуша да промени верификовано стање",
-          "name": "На промени"
+          "description": "Poziva se kada korisnik pokuša da promeni provereno stanje",
+          "name": "OnChange"
         },
         "title": {
-          "description": "ХТМЛ заглавље",
-          "name": "Наслов"
+          "description": "HTML naslov",
+          "name": "Naslov"
         }
       }
     },
     "RsContainer": {
-      "description": "Контејнер је компонента распореда која се може користити за омотавање других компоненти",
-      "name": "Контејнер",
+      "description": "Kontejner je komponenta rasporeda koja se može koristiti za omotavanje drugih komponenti",
+      "name": "kontejner",
       "props": {
         "children": {
-          "description": "Дечје компоненте",
-          "name": "Деца"
+          "description": "Dečiji elementi komponente",
+          "name": "Deca"
         }
       }
     },
     "RsDatePicker": {
-      "description": "Датепицкер је лако прилагодљива компонента која омогућава корисницима да уносе и бирају датуме и времена у различитим форматима",
-      "name": "Избор датума",
+      "description": "DatePicker je visoko prilagodljiva komponenta koja omogućava korisnicima da unose i biraju datume i vreme u različitim formatima",
+      "name": "DatePicker",
       "props": {
         "appearance": {
-          "description": "Подесите изглед бирача",
-          "name": "Изглед"
+          "description": "Podesite izgled birača",
+          "name": "Izgled"
         },
         "calendarDefaultDate": {
-          "description": "Датум и време презентације на подразумеваној траци календара",
-          "name": "Подразумевани датум у календару"
+          "description": "Podrazumevani datum i vreme prezentacije panela kalendara",
+          "name": "Podrazumevani datum kalendara"
         },
         "cleanable": {
-          "description": "Да ли је могуће обрисати изабрану вредност",
-          "name": "Чишћење"
+          "description": "Da li se izabrana vrednost može izbrisati",
+          "name": "Čisti se"
         },
         "defaultOpen": {
-          "description": "Подразумевана вредност својства опен",
-          "name": "Отвори подразумевано"
+          "description": "Podrazumevana vrednost otvorenog svojstva",
+          "name": "Podrazumevano otvoreno"
         },
         "defaultValue": {
-          "description": "Подразумевана вредност",
-          "name": "Подразумевана вредност"
+          "description": "Podrazumevana vrednost",
+          "name": "Podrazumevana vrednost"
         },
         "editable": {
-          "description": "Приказан као улаз, датум се може унети помоћу тастатуре",
-          "name": "Уређивачки"
+          "description": "Prikazano kao ulaz, datum se može uneti preko tastature",
+          "name": "Uređivački"
         },
         "format": {
-          "description": "Формат датума када се приказује у улазима",
-          "name": "Формат"
+          "description": "Format datuma kada je prikazan u ulazu",
+          "name": "Format"
         },
         "isoWeek": {
-          "description": "Према стандарду ИСО 8601, свака календарска недеља почиње у понедељак и недељу седмог дана",
-          "name": "Недеља ИСО"
+          "description": "ISO 8601 standard, svaka kalendarska nedelja počinje u ponedeljak i nedelju sedmog dana",
+          "name": "ISO nedelja"
         },
         "limitEndYear": {
-          "description": "Поставите горњу границу доступне године у односу на тренутни датум избора",
-          "name": "Ограничење на крају године"
+          "description": "Podesite gornju granicu raspoložive godine u odnosu na trenutni datum izbora",
+          "name": "Ograničenje na kraju godine"
         },
         "limitStartYear": {
-          "description": "Поставите доњу границу доступне године у односу на тренутни датум избора",
-          "name": "Гранична почетна година"
+          "description": "Podesite donju granicu raspoložive godine u odnosu na trenutni datum izbora",
+          "name": "Ograničite početnu godinu"
         },
         "onChange": {
-          "description": "Повратни позив се активира када се вредност промени",
-          "name": "На промени"
+          "description": "Povratni poziv otpušten kada se vrednost promeni",
+          "name": "OnChange"
         },
         "onChangeCalendarDate": {
-          "description": "Функција повратног позива која мења датум календара",
-          "name": "Датум промене календара"
+          "description": "Funkcija povratnog poziva koja menja datum kalendara",
+          "name": "OnChangeCalendardate"
         },
         "onClean": {
-          "description": "Повратни позив се покреће приликом брисања вредности",
-          "name": "Једини чист"
+          "description": "Povratni poziv je pokrenut kada je vrednost čista",
+          "name": "OnClean"
         },
         "onClose": {
-          "description": "Повратни позив се активира када се компонента затвори",
-          "name": "На блиској удаљености"
+          "description": "Povratni poziv se otvara kada je komponenta zatvorena",
+          "name": "OnClose"
         },
         "onEnter": {
-          "description": "Повратни позив се покреће пре него што прекривач пређе на",
-          "name": "У центру"
+          "description": "Povratni poziv je pokrenut pre prelaska na prekrivanje",
+          "name": "onEnter"
         },
         "onEntered": {
-          "description": "Повратни позив се покреће након завршетка преласка преклапања у",
-          "name": "Ушао"
+          "description": "Povratni poziv otpušten nakon što prekrivanje završi prelazak",
+          "name": "onUšao"
         },
         "onEntering": {
-          "description": "Повратни позив се покреће када прекривач почне да прелази у",
-          "name": "При уласку"
+          "description": "Povratni poziv se otvara kada prekrivanje počinje da prelazi",
+          "name": "onUlazak"
         },
         "onExit": {
-          "description": "Повратни позив се покреће непосредно пре завршетка прелаза преклапања",
-          "name": "Неуспех"
+          "description": "Povratni poziv je pokrenut neposredno pre prelaska prekrivanja",
+          "name": "OnExit"
         },
         "onExited": {
-          "description": "Повратни позив се покреће након завршетка преласка прекривача",
-          "name": "Узбуђен"
+          "description": "Povratni poziv je pokrenut nakon što se prekrivanje završi sa prelaskom",
+          "name": "OneExited"
         },
         "onExiting": {
-          "description": "Повратни позив се покреће када прекривач почне да пропада",
-          "name": "Узбудљиво"
+          "description": "Povratni poziv otpušten dok prekrivač počinje da prelazi",
+          "name": "OneKiting"
         },
         "onNextMonth": {
-          "description": "Пребаците се на функцију повратног позива током следећег месеца",
-          "name": "Током следећег месеца"
+          "description": "Prebacite se na funkciju povratnog poziva za sledeći mesec",
+          "name": "Sledećeg meseca"
         },
         "onOk": {
-          "description": "Кликните на дугме у реду за функцију повратног позива",
-          "name": "онОк"
+          "description": "Kliknite na OK funkciju povratnog poziva",
+          "name": "OnoK"
         },
         "onOpen": {
-          "description": "Повратни позив се активира када се компонента отвори",
-          "name": "Приликом отварања"
+          "description": "Povratni poziv je pokrenut kada je otvorena komponenta",
+          "name": "OnOpen"
         },
         "onPrevMonth": {
-          "description": "Пребаците се на функцију повратног позива претходног месеца",
-          "name": "У претходном месецу"
+          "description": "Prebacite se na funkciju povratnog poziva za prethodni mesec",
+          "name": "PrethodnaMesec"
         },
         "onSelect": {
-          "description": "Повратни позив започиње одабиром датума или времена",
-          "name": "Приликом избора"
+          "description": "Povratni poziv otpušten kada je izabran datum ili vreme",
+          "name": "OnSelect"
         },
         "onToggleMonthDropdown": {
-          "description": "Функција повратног позива која се пребацује на приказ по месецу",
-          "name": "onToggleMonthДропдаун"
+          "description": "Funkcija povratnog poziva koja se prebacuje na prikaz meseca",
+          "name": "OnToggleMonthDropdovn"
         },
         "onToggleTimeDropdown": {
-          "description": "Функција повратног позива која пребацује на приказ времена",
-          "name": "онтогглетимедропдовн-падајућа листа"
+          "description": "Funkcija povratnog poziva koja se prebacuje na vremenski prikaz",
+          "name": "OnToggleTimeDropdovn"
         },
         "oneTap": {
-          "description": "Датум избора једним кликом",
-          "name": "Једним додиром"
+          "description": "Datum izbora jednim klikom",
+          "name": "Jedan dodir"
         },
         "open": {
-          "description": "Без обзира да ли је компонента отворена",
-          "name": "Отвори"
+          "description": "Da li otvorite komponentu",
+          "name": "Otvori"
         },
         "preventOverflow": {
-          "description": "Спречавање преливања плутајућег елемента",
-          "name": "Спречавање преливања"
+          "description": "Sprečite prelivanje plutajućeg elementa",
+          "name": "Sprečite prelivanje"
         },
         "showMeridiem": {
-          "description": "Приказ сата у формату 12",
-          "name": "Покажи меридијему"
+          "description": "Prikažite sate u 12 formatu",
+          "name": "Pokaži jug"
         },
         "showWeekNumbers": {
-          "description": "Прикажи бројеве недеља",
-          "name": "Прикажи бројеве недеља"
+          "description": "Da li treba prikazati brojeve nedelja",
+          "name": "Prikaži brojeve nedelja"
         }
       }
     },
     "RsDivider": {
-      "description": "Сепаратори се користе за груписање садржаја хоризонтално или вертикално",
-      "name": "Делилац",
+      "description": "Razdjelnici se koriste za grupisanje sadržaja horizontalno ili vertikalno",
+      "name": "Razdjelnik",
       "props": {
         "children": {
-          "description": "Поставите текст на линију раздвајања",
-          "name": "Садржај"
+          "description": "Podesite tekst na liniju razdvajanja",
+          "name": "Sadržaj"
         },
         "vertical": {
-          "description": "Вертикална линија раздвајања",
-          "name": "Вертикални"
+          "description": "Vertikalna linija razdvajanja",
+          "name": "Vertikalno"
         }
       }
     },
     "RsDropdown": {
-      "description": "Падајући мени је навигациони алат који користи селецтпицкер ако желите да изаберете вредност",
-      "name": "Падајући",
+      "description": "Padajući meni je navigacija koja koristi selektor ako želite da izaberete vrednost",
+      "name": "Padajući meni",
       "props": {
         "cleanable": {
-          "description": "Да ли је могуће уклонити ову опцију",
-          "name": "Чишћење"
+          "description": "Da li se opcija može isprazniti",
+          "name": "Čisti se"
         },
         "creatable": {
-          "description": "Подешавања могу да креирају нове опције",
-          "name": "Подложан стварању"
+          "description": "Podešavanja mogu da kreiraju nove opcije",
+          "name": "Kreativo"
         },
         "data": {
-          "description": "Изабрани подаци",
-          "name": "Подаци"
+          "description": "Podaci koji se mogu birati",
+          "name": "Podaci"
         },
         "disableVirtualized": {
-          "description": "Да ли треба онемогућити виртуелизацију",
-          "name": "Онемогући виртуелизовано"
+          "description": "Da li treba onemogućiti virtuelizaciju",
+          "name": "Onemogućite virtuelizovani"
         },
         "groupBy": {
-          "description": "Поставите критеријуме за груписање \"кључ\" у одељку\"Подаци\"",
-          "name": "Групиши по"
+          "description": "Podesite kriterijume grupisanja „ključ“ u „podacima“",
+          "name": "Grupirajte po"
         },
         "onChange": {
-          "description": "Функција повратног позива када се вредност промени",
-          "name": "На промени"
+          "description": "Funkcija povratnog poziva kada se vrednost promeni",
+          "name": "OnChange"
         },
         "onClean": {
-          "description": "Повратни позив за чишћење",
-          "name": "Једини чист"
+          "description": "Povratni poziv za čišćenje",
+          "name": "OnClean"
         },
         "onClose": {
-          "description": "Повратни позив за затварање",
-          "name": "На блиској удаљености"
+          "description": "Povratni poziv za zatvaranje",
+          "name": "OnClose"
         },
         "onCreate": {
-          "description": "Повратни позив за стварање",
-          "name": "Поново креирајте"
+          "description": "Povratni poziv za kreiranje",
+          "name": "OnCreate"
         },
         "onLoadData": {
-          "description": "Повратни позив за учитавање података",
-          "name": "Подаци за преузимање"
+          "description": "Povratni poziv za učitavanje podataka",
+          "name": "OnLoadData"
         },
         "onSearch": {
-          "description": "Повратни позив за претрагу",
-          "name": "онсеарцх-претрага"
+          "description": "Povratni poziv za pretragu",
+          "name": "OnSearch"
         },
         "onSelect": {
-          "description": "Повратни позив за избор",
-          "name": "Приликом избора"
+          "description": "Povratni poziv za odabir",
+          "name": "OnSelect"
         },
         "preload": {
-          "description": "Да ли треба унапред учитати податке",
-          "name": "Предваривни натяг"
+          "description": "Da li treba unapred učitati podatke",
+          "name": "Predučitaj"
         }
       }
     },
     "RsErrorMessage": {
-      "description": "Компонента која приказује поруку о провери",
-      "name": "Порука о грешци"
+      "description": "Komponenta koja prikazuje poruku o validaciji",
+      "name": "Poruka o grešci"
     },
     "RsHeader": {
-      "description": "Једноставно ХТМЛ заглавље",
-      "name": "Наслов",
+      "description": "Jednostavno HTML zaglavlje",
+      "name": "zaglavlje",
       "props": {
         "content": {
-          "description": "Текст наслова",
-          "name": "Садржај"
+          "description": "Tekst zaglavlja",
+          "name": "Sadržaj"
         },
         "headerSize": {
-          "description": "Ниво наслова",
-          "name": "Величина заглавља"
+          "description": "Nivo zaglavlja",
+          "name": "Veličina zaglavlja"
         }
       }
     },
     "RsImage": {
-      "description": "Једноставна ХТМЛ слика",
-      "name": "Слика",
+      "description": "Jednostavna HTML slika",
+      "name": "Slika",
       "props": {
         "alt": {
-          "description": "Опис слике",
-          "name": "Опис"
+          "description": "Opis slike",
+          "name": "Opis"
         },
         "src": {
-          "description": "Извор слике",
-          "name": "Срц (Извор)"
+          "description": "Izvor slike",
+          "name": "Src"
         }
       }
     },
     "RsInput": {
-      "description": "Унос омогућава корисницима да уносе и уређују текст",
-      "name": "Унос",
+      "description": "Unos omogućava korisnicima da unose i uređuju tekst",
+      "name": "Ulaz",
       "props": {
         "passwordMask": {
-          "description": "Користите маску лозинке",
-          "name": "Маска лозинке"
+          "description": "Koristite masku lozinke",
+          "name": "Maska za lozinku"
         },
         "showPasswordAriaLabel": {
-          "description": "Вредност атрибута Ариа-лабел за дугме Прикажи лозинку када се унос врши у режиму маске лозинке",
-          "name": "Ознака ариа за дугме за приказ лозинке"
+          "description": "Vrednost atributa aria-label za dugme Prikaži lozinku kada je unos u režimu maske lozinke",
+          "name": "ARIA oznaka za dugme za prikaz lozinke"
         },
         "type": {
-          "description": "Тип ХТМЛ уноса",
-          "name": "Тип"
+          "description": "Tip HTML unosa",
+          "name": "Tip"
         }
       }
     },
     "RsLabel": {
-      "description": "Једноставна ХТМЛ ознака",
-      "name": "Ознака",
+      "description": "Jednostavna HTML oznaka",
+      "name": "Oznaka",
       "props": {
         "text": {
-          "description": "Текстуални садржај налепнице",
-          "name": "Текст"
+          "description": "Sadržaj teksta etikete",
+          "name": "Tekst"
         }
       }
     },
     "RsLink": {
-      "description": "Једноставно ХТМЛ сидро",
-      "name": "Линк",
+      "description": "Jednostavno HTML sidro",
+      "name": "Link",
       "props": {
         "children": {
-          "description": "Дечје компоненте",
-          "name": "Деца"
+          "description": "Dečiji elementi komponente",
+          "name": "Deca"
         },
         "content": {
-          "description": "Тип садржаја (текстуални или прилагођени)",
-          "name": "Садржај"
+          "description": "Tip sadržaja (tekst ili prilagođeni)",
+          "name": "Sadržaj"
         },
         "download": {
-          "description": "Доводи до тога да прегледач види повезани УРЛ као преузимање",
-          "name": "Преузимање"
+          "description": "Uzrokuje pregledač da povezani URL tretira kao preuzimanje",
+          "name": "Preuzmi"
         },
         "downloadFilename": {
-          "description": "Када дефинишете вредност, она је наведена као име датотеке.  симболи / и \\ претварају се у доње црте (_)",
-          "name": "Име датотеке за преузимање"
+          "description": "Definisanje vrednosti sugeriše je kao ime datoteke./i\\ znakovi se pretvaraju u podvlačenje (_)",
+          "name": "Preuzmite ime datoteke"
         },
         "href": {
-          "description": "УРЛ на који хипервеза указује",
-          "name": "Линк"
+          "description": "URL na koji hiperveza ukazuje",
+          "name": "Href"
         },
         "onClick": {
-          "description": "Функција повратног позива када кликнете на везу",
-          "name": "Кликом миша"
+          "description": "Funkcija povratnog poziva kada se klikne na vezu",
+          "name": "OnClick"
         },
         "target": {
-          "description": "Где приказати повезани УРЛ као назив контекста приказа (картице, прозори или <iframe>)",
-          "name": "Циљ"
+          "description": "Gde prikazati povezani URL, kao ime konteksta pregledavanja (kartica, prozor ili<iframe>)",
+          "name": "Cilj"
         },
         "text": {
-          "description": "Текстуални садржај везе",
-          "name": "Текст"
+          "description": "Sadržaj teksta veze",
+          "name": "Tekst"
         }
       }
     },
     "RsMenu": {
-      "description": "Садржи листу различитих облика навигационих менија који могу бити и пејзажни и портретни распоред",
-      "name": "Мени",
+      "description": "Pruža listu različitih oblika navigacionih menija, koji mogu biti pejzažni i portretni raspored",
+      "name": "Meni",
       "props": {
         "activeKey": {
-          "description": "Активни кључ који одговара вредности једног од елемената",
-          "name": "Активни тастер"
+          "description": "Aktivni ključ, koji odgovara vrednosti jedne od stavki",
+          "name": "Aktivni ključ"
         },
         "appearance": {
-          "description": "Навигација може имати другачији изглед",
-          "name": "Изглед"
+          "description": "Navigacija može imati različit izgled",
+          "name": "Izgled"
         },
         "items": {
-          "description": "Ставке менија",
-          "name": "Предмети"
+          "description": "Stavke za meni",
+          "name": "Predmeti"
         },
         "itemsAs": {
-          "description": "ХТМЛ елемент за приказ ставке менија",
-          "name": "Предмети као"
+          "description": "HTML element za prikaz stavke menija",
+          "name": "Predmeti kao"
         },
         "justified": {
-          "description": "Утемељена навигација",
-          "name": "Оправдано"
+          "description": "Opravdana navigacija",
+          "name": "Opravdano"
         },
         "onSelect": {
-          "description": "Функција повратног позива покренута након избора",
-          "name": "Приликом избора"
+          "description": "Funkcija povratnog poziva aktivirana nakon izbora",
+          "name": "OnSelect"
         },
         "reversed": {
-          "description": "Обрнути смер језичака / танак",
-          "name": "Обрнуто"
+          "description": "Obrnuti smer kartica/suptilno",
+          "name": "Obrnuto"
         },
         "vertical": {
-          "description": "Вишеслојна навигација",
-          "name": "Вертикални"
+          "description": "Složena navigacija",
+          "name": "Vertikalno"
         }
       }
     },
     "RsMessage": {
-      "description": "Користи се за приказивање важних упита на страници",
-      "name": "Порука",
+      "description": "Koristi se za prikazivanje važnih saveta na stranici",
+      "name": "Poruka",
       "props": {
         "closable": {
-          "description": "Да ли је могуће затворити оквир за поруке",
-          "name": "Затварање"
+          "description": "Da li je moguće zatvoriti okvir za poruke",
+          "name": "Zatvaranje"
         },
         "header": {
-          "description": "Наслов поста",
-          "name": "Наслов"
+          "description": "Naslov poruke",
+          "name": "zaglavlje"
         },
         "type": {
-          "description": "Тип оквира за поруке",
-          "name": "Тип"
+          "description": "Tip okvira za poruku",
+          "name": "Tip"
         }
       }
     },
     "RsModal": {
-      "description": "Компонента модалног дијалошког оквира за захтеве за поруке, поруке за потврду и слање",
-      "name": "Модални",
+      "description": "Komponenta modalnog dijaloškog okvira za upute za poruke, poruke potvrde i prijave",
+      "name": "Modalni",
       "props": {
         "autoFocus": {
-          "description": "Ако је постављено на тачно, режим се отвара и аутоматски фокусира сам, читљив са екрана",
-          "name": "Аутоматско фокусирање"
+          "description": "Kada je podešen na tačno, Modal se otvara i automatski se fokusira na sebe, dostupan čitačima ekrana",
+          "name": "Automatsko fokusiranje"
         },
         "backdrop": {
-          "description": "Ако је постављено на тачно, када отворите модал, приказаће се позадинска слика. Клик на позадинску слику затвориће модал.",
-          "name": "Позадина"
+          "description": "Kada je podešeno na tačno, Modal će prikazati pozadinu kada se otvori. Klikom na pozadinu zatvoriće se Modal",
+          "name": "Pozadina"
         },
         "backdropClassName": {
-          "description": "Додајте опционално додатно име класе у .modal-background, на крају може изгледати као class=\"modal-background foo-modal-background in\".",
-          "name": "Назив класе позадине"
+          "description": "Dodajte opcionalno dodatno ime klase u.modal-background Moglo bi na kraju izgledati kao class = „modal-background foo-modal-background u“",
+          "name": "Pozadinsko ime klase"
         },
         "classPrefix": {
-          "description": "Префикс ЦСС класе компоненте",
-          "name": "Префикс класе ЦСС"
+          "description": "Prefiks komponente CSS klase",
+          "name": "CSS prefiks klase"
         },
         "dialogClassName": {
-          "description": "ЦСС класа примењена на дом дијалошке чворове",
-          "name": "ЦСС класа за дијалог"
+          "description": "CSS klasa primenjena na Dialog DOM čvorove",
+          "name": "CSS klasa za dijalog"
         },
         "enforceFocus": {
-          "description": "Ако је постављено на тачно, функција модал спречиће померање фокуса када се отвори, што олакшава приступ читачу са секундарног екрана",
-          "name": "Појачајте концентрацију"
+          "description": "Kada je podešen na tačno, Modal će sprečiti da fokus napusti kada se otvori, olakšavajući sekundarnom čitaču ekrana pristup",
+          "name": "Primenite fokus"
         },
         "keyboard": {
-          "description": "Режим затварања када притиснете тастер Есц",
-          "name": "Поред Есц-а"
+          "description": "Zatvori Modal kada se pritisne taster Esc",
+          "name": "Blizu Esc"
         },
         "onClose": {
-          "description": "Позива се када је модални режим затворен",
-          "name": "На блиској удаљености"
+          "description": "Poziva se kada je Modal zatvoren",
+          "name": "OnClose"
         },
         "onOpen": {
-          "description": "Позива се када се прикаже модал",
-          "name": "Приликом отварања"
+          "description": "Poziva se kada se prikaže Modal",
+          "name": "OnOpen"
         },
         "overflow": {
-          "description": "Аутоматски поставља висину ако је садржај основног текста предуг",
-          "name": "Преливање"
+          "description": "Automatski podešava visinu kada je sadržaj tela predugačak",
+          "name": "Preliv"
         },
         "size": {
-          "description": "Одредите ширину модалног",
-          "name": "Величина"
+          "description": "Odredite širinu modalnog",
+          "name": "Veličina"
         }
       }
     },
     "RsModalLayout": {
-      "description": "Компонента модалног распореда са горњим, главним и подножјем",
-      "name": "Модални распоред",
+      "description": "Komponenta modalnog izgleda sa odeljcima zaglavlja, tela i podnožja",
+      "name": "Modalni raspored",
       "props": {
         "body": {
-          "description": "Садржај за модално тело",
-          "name": "Тело"
+          "description": "Sadržaj modalnog tela",
+          "name": "Telo"
         },
         "closeButton": {
-          "description": "Дугме за затварање екрана",
-          "name": "Дугме за затварање"
+          "description": "Prikaz dugmeta za zatvaranje",
+          "name": "Dugme za zatvaranje"
         },
         "footer": {
-          "description": "Садржај за модално подножје",
-          "name": "Подножје"
+          "description": "Sadržaj modalnog podnožja",
+          "name": "Podnožje"
         },
         "headerTitle": {
-          "description": "Наслов за модални наслов",
-          "name": "Наслов наслова"
+          "description": "Naslov modalnog zaglavlja",
+          "name": "Naslov zaglavlja"
         }
       }
     },
     "RsNumberFormat": {
-      "description": "Компонента уноса нумеричког формата са провером и форматирањем",
-      "name": "Нумерички формат",
+      "description": "Komponenta unosa formata broja sa validacijom i formatiranjem",
+      "name": "Format broja",
       "props": {
         "allowLeadingZeros": {
-          "description": "Ово вам омогућава да омогућите или онемогућите почетне нуле у пољу за унос. Подразумевано, приликом замућења уноса, почетне нуле се бришу",
-          "name": "Дозволите почетне нуле"
+          "description": "Ovo omogućava omogućavanje ili onemogućavanje vodećih nula u polju za unos. Podrazumevano, pri zamućenju ulaza, vodeće nule se uklanjaju",
+          "name": "Dozvolite vodeće nule"
         },
         "allowNegative": {
-          "description": "Ако је постављено на фалсе, негативни бројеви неће бити дозвољени",
-          "name": "Дозволи негативно"
+          "description": "Ako je postavljen na lažno, negativni brojevi neće biti dozvoljeni",
+          "name": "Dozvolite negativno"
         },
         "allowedDecimalSeparators": {
-          "description": "Симболи који када се притисну резултирају децималним сепаратором. Ако недостају, користе се децимални сепаратор и\".\"",
-          "name": "Важећи децимални сепаратори"
+          "description": "Znakovi koji kada se pritisnu rezultiraju decimalnim separatorom. Kada nedostaje, koriste se decimalni separator i „.“",
+          "name": "Dozvoljeni decimalni separatori"
         },
         "decimalScale": {
-          "description": "Ако је дефинисан, ограничава број цифара након децималне тачке",
-          "name": "Децимална скала"
+          "description": "Ako je definisano, ograničava broj cifara nakon decimalne tačke",
+          "name": "Decimalna skala"
         },
         "decimalSeparator": {
-          "description": "Дефинише децимални знак",
-          "name": "Децимални сепаратор"
+          "description": "Definiše decimalni znak",
+          "name": "Decimalni separator"
         },
         "fixedDecimalScale": {
-          "description": "Ако је постављено на Труе, додаје коначних 0 након Децималсепаратора како би одговарао датој децималној скали",
-          "name": "Фиксна децимална скала"
+          "description": "Ako je podešeno na tačno, dodaje poslednje 0s nakon DecimalSeparatora da bi se podudaralo sa datom decimalScale",
+          "name": "Fiksna decimalna skala"
         },
         "prefix": {
-          "description": "Додаје знак префикса пре улазне вредности",
-          "name": "Префикс"
+          "description": "Dodaje znak prefiksa pre ulazne vrednosti",
+          "name": "Prefiks"
         },
         "suffix": {
-          "description": "Додаје суфикс након улазне вредности",
-          "name": "Суфикс"
+          "description": "Dodaje sufiks nakon ulazne vrednosti",
+          "name": "Sufiks"
         },
         "thousandSeparator": {
-          "description": "Сепаратор хиљада",
-          "name": "Сепаратор хиљада"
+          "description": "Hiljadu separatora",
+          "name": "Hiljadu separatora"
         },
         "thousandsGroupStyle": {
-          "description": "Хиљадити стил (Тхоусанд): 123,456,789, индијски стил ( Лакх): 12,34,56,789, кинески стил (ван) : 1,2345,6789",
-          "name": "Стил хиљаду група"
+          "description": "Hiljadu stila (hiljada): 123,456,789, indijski stil (lakh): 12,34,56,789, kineski stil (van): 1,2345,6789",
+          "name": "Hiljade grupnih stilova"
         }
       }
     },
     "RsPatternFormat": {
-      "description": "Компонента за унос формата шаблона са подршком за ознаке",
-      "name": "Формат шаблона",
+      "description": "Komponenta unosa formata uzorka sa podrškom za nalepnice",
+      "name": "Format uzorka",
       "props": {
         "allowEmptyFormatting": {
-          "description": "Подразумевано, компонента Паттернформат не примењује форматирање ако је вредност празна (нулл, ундефинед или '\").",
-          "name": "Дозволите празно форматирање"
+          "description": "Podrazumevano PatternFormat komponenta ne primenjuje formatiranje kada je vrednost prazna (nula, nedefinisana ili „'“)",
+          "name": "Dozvolite prazno formatiranje"
         },
         "format": {
-          "description": "Форматирајте образац помоћу симбола # (или симбола шаблона). # је симбол резервираног места за бројеве. Пример: '########'",
-          "name": "Формат"
+          "description": "Formatirajte obrazac koristeći znak # (ili znak uzorka). # je znak rezerviranog mesta za brojeve. Primer: „### ###'",
+          "name": "Format"
         },
         "mask": {
-          "description": "Користи се као симбол маске за нумеричке положаје док се за ту позицију не наведе било који нумерички знак",
-          "name": "Маска"
+          "description": "Koristi se kao znak maske za numerička mesta, sve dok se za tu poziciju ne obezbedi bilo koji numerički znak",
+          "name": "Maska"
         },
         "patternChar": {
-          "description": "Ово помаже у дефинисању симбола шаблона формата",
-          "name": "Симбол узорка"
+          "description": "Ovo pomaže u definisanju karaktera obrasca formata",
+          "name": "Uzorak char"
         }
       }
     },
     "RsPlaceholderGraph": {
-      "description": "Резервирано место пре учитавања компоненте као правоугаоника",
-      "name": "Распоред чувара места",
+      "description": "Rezervni prostor pre učitavanja komponente u obliku pravougaonika",
+      "name": "Grafikon mesta",
       "props": {
         "active": {
-          "description": "Да ли је резервирано место активно",
-          "name": "Активан"
+          "description": "Da li je rezervirano mesto aktivan",
+          "name": "Aktivan"
         },
         "height": {
-          "description": "Висина графикона",
-          "name": "Висина"
+          "description": "Visina grafikona",
+          "name": "Visina"
         },
         "width": {
-          "description": "Ширина графикона",
-          "name": "Ширина"
+          "description": "Širina grafikona",
+          "name": "Širina"
         }
       }
     },
     "RsPlaceholderGrid": {
-      "description": "Резервирано место пре учитавања компоненте у мрежу",
-      "name": "Мрежа чувара места",
+      "description": "Rezervni prostor pre učitavanja komponente u obliku rešetke",
+      "name": "Mreža rezervisanih mesta",
       "props": {
         "active": {
-          "description": "Да ли је резервирано место активно",
-          "name": "Активан"
+          "description": "Da li je rezervirano mesto aktivan",
+          "name": "Aktivan"
         },
         "columns": {
-          "description": "Број колона",
-          "name": "Колоне"
+          "description": "Broj kolona",
+          "name": "Kolone"
         },
         "rowHeight": {
-          "description": "Висина линије",
-          "name": "Висина реда"
+          "description": "Visina reda",
+          "name": "Visina reda"
         },
         "rowSpacing": {
-          "description": "Удаљеност између редова",
-          "name": "Удаљеност између редова"
+          "description": "Razmak između redova",
+          "name": "Razmak između redova"
         },
         "rows": {
-          "description": "Број редова",
-          "name": "Редови"
+          "description": "Broj redova",
+          "name": "Redovi"
         }
       }
     },
     "RsPlaceholderParagraph": {
-      "description": "Резервирано место пре учитавања компоненте као пасуса",
-      "name": "Пасус чувара места",
+      "description": "Rezervni prostor pre učitavanja komponente u obliku pasusa",
+      "name": "Paragraf sa rezerviranim mestima",
       "props": {
         "active": {
-          "description": "Да ли је резервирано место активно",
-          "name": "Активан"
+          "description": "Da li je rezervirano mesto aktivan",
+          "name": "Aktivan"
         },
         "graph": {
-          "description": "Облик графикона",
-          "name": "Дијаграм"
+          "description": "Oblik grafikona",
+          "name": "Grafikon"
         },
         "rowHeight": {
-          "description": "Висина линије",
-          "name": "Висина реда"
+          "description": "Visina reda",
+          "name": "Visina reda"
         },
         "rowSpacing": {
-          "description": "Удаљеност између редова",
-          "name": "Удаљеност између редова"
+          "description": "Razmak između redova",
+          "name": "Razmak između redova"
         },
         "rows": {
-          "description": "Број редова",
-          "name": "Редови"
+          "description": "Broj redova",
+          "name": "Redovi"
         }
       }
     },
     "RsProgressCircle": {
-      "description": "Приказивање тренутног напретка операције као круга",
-      "name": "Круг напретка",
+      "description": "Prikazivanje trenutnog napretka operacije kao krug",
+      "name": "Krug napretka",
       "props": {
         "classPrefix": {
-          "description": "Префикс ЦСС класе компоненте",
-          "name": "Префикс класе"
+          "description": "Prefiks komponente CSS klase",
+          "name": "Prefiks klase"
         },
         "gapDegree": {
-          "description": "Степен зазора полукруга, 0 ~ 360",
-          "name": "Степен празнине"
+          "description": "Stepen razmaka pola kruga, 0 ~ 360",
+          "name": "Stepen jaza"
         },
         "gapPosition": {
-          "description": "Положај зареза на кружној траци напретка",
-          "name": "Положај празнине"
+          "description": "Kružna traka napretka Položaj zareza",
+          "name": "Položaj jaza"
         },
         "percent": {
-          "description": "Проценат напретка",
-          "name": "Проценат"
+          "description": "Procenat napretka",
+          "name": "procenat"
         },
         "showInfo": {
-          "description": "Прикажи текст",
-          "name": "Прикажи информације"
+          "description": "Prikaži tekst",
+          "name": "Prikaži informacije"
         },
         "status": {
-          "description": "Статус извршења",
-          "name": "Статус"
+          "description": "Status napretka",
+          "name": "Status"
         },
         "strokeColor": {
-          "description": "Боја линије",
-          "name": "Боја потеза"
+          "description": "Boja linije",
+          "name": "Boja poteza"
         },
         "strokeLinecap": {
-          "description": "Крај различитих врста отворених стаза",
-          "name": "Линеарни утикач потеза"
+          "description": "Kraj različitih vrsta otvorenih staza",
+          "name": "Linijska kapa za moždani udar"
         },
         "strokeWidth": {
-          "description": "Ширина линије",
-          "name": "Ширина потеза"
+          "description": "Širina linije",
+          "name": "Širina hoda"
         },
         "trailColor": {
-          "description": "Боја трага",
-          "name": "Боја трага"
+          "description": "Boja staze",
+          "name": "Boja staze"
         },
         "trailWidth": {
-          "description": "Ширина стазе",
-          "name": "Ширина стазе"
+          "description": "Širina staze",
+          "name": "Širina staze"
         }
       }
     },
     "RsProgressLine": {
-      "description": "Приказивање тренутног напретка операције као низа",
-      "name": "Линија напретка",
+      "description": "Prikazivanje trenutnog napretka operacije kao linije",
+      "name": "Linija napretka",
       "props": {
         "classPrefix": {
-          "description": "Префикс ЦСС класе компоненте",
-          "name": "Префикс класе"
+          "description": "Prefiks komponente CSS klase",
+          "name": "Prefiks klase"
         },
         "percent": {
-          "description": "Проценат напретка",
-          "name": "Проценат"
+          "description": "Procenat napretka",
+          "name": "procenat"
         },
         "showInfo": {
-          "description": "Прикажи текст",
-          "name": "Прикажи информације"
+          "description": "Prikaži tekst",
+          "name": "Prikaži informacije"
         },
         "status": {
-          "description": "Статус извршења",
-          "name": "Статус"
+          "description": "Status napretka",
+          "name": "Status"
         },
         "strokeColor": {
-          "description": "Боја линије",
-          "name": "Боја потеза"
+          "description": "Boja linije",
+          "name": "Boja poteza"
         },
         "strokeWidth": {
-          "description": "Ширина линије",
-          "name": "Ширина потеза"
+          "description": "Širina linije",
+          "name": "Širina hoda"
         },
         "vertical": {
-          "description": "Трака напретка је приказана вертикално",
-          "name": "Вертикални"
+          "description": "Traka napretka se prikazuje vertikalno",
+          "name": "Vertikalno"
         }
       }
     },
     "RsRadioGroup": {
-      "description": "Радио станице се користе у случајевима када се из неколико опција може изабрати само једна",
-      "name": "Радио Група",
+      "description": "Radio uređaji se koriste kada se u nizu opcija može izabrati samo jedan izbor",
+      "name": "Radio grupa",
       "props": {
         "appearance": {
-          "description": "Радио група може имати различит изглед",
-          "name": "Изглед"
+          "description": "Radio grupa može imati različite izglede",
+          "name": "Izgled"
         },
         "inline": {
-          "description": "Уграђени распоред",
-          "name": "Уграђени"
+          "description": "Ugrađeni raspored",
+          "name": "Inline"
         },
         "items": {
-          "description": "Предмети за радио групу",
-          "name": "Предмети"
+          "description": "Predmeti za radio grupu",
+          "name": "Predmeti"
         },
         "name": {
-          "description": "Назив радио групе",
-          "name": "Име"
+          "description": "Naziv radio grupe",
+          "name": "Naziv"
         },
         "onChange": {
-          "description": "Позива се након промене вредности",
-          "name": "На промени"
+          "description": "Poziva se nakon promene vrednosti",
+          "name": "OnChange"
         }
       }
     },
     "RsSearch": {
-      "description": "Компонента за претрагу са подршком за ознаке и учитавање података",
-      "name": "Претрага",
+      "description": "Pretraživanje komponente sa podrškom za učitavanje oznaka i podataka",
+      "name": "Pretraga",
       "props": {
         "cleanable": {
-          "description": "Да ли је могуће уклонити ову опцију",
-          "name": "Чишћење"
+          "description": "Da li se opcija može isprazniti",
+          "name": "Čisti se"
         },
         "creatable": {
-          "description": "Подешавања могу да креирају нове опције",
-          "name": "Подложан стварању"
+          "description": "Podešavanja mogu da kreiraju nove opcije",
+          "name": "Kreativo"
         },
         "data": {
-          "description": "Изабрани подаци",
-          "name": "Подаци"
+          "description": "Podaci koji se mogu birati",
+          "name": "Podaci"
         },
         "disableVirtualized": {
-          "description": "Да ли треба онемогућити виртуелизацију",
-          "name": "Онемогући виртуелизовано"
+          "description": "Da li treba onemogućiti virtuelizaciju",
+          "name": "Onemogućite virtuelizovani"
         },
         "groupBy": {
-          "description": "Поставите критеријуме за груписање \"кључ\" у одељку\"Подаци\"",
-          "name": "Групиши по"
+          "description": "Podesite kriterijume grupisanja „ključ“ u „podacima“",
+          "name": "Grupirajte po"
         },
         "onChange": {
-          "description": "Функција повратног позива када се вредност промени",
-          "name": "На промени"
+          "description": "Funkcija povratnog poziva kada se vrednost promeni",
+          "name": "OnChange"
         },
         "onClean": {
-          "description": "Повратни позив за чишћење",
-          "name": "Једини чист"
+          "description": "Povratni poziv za čišćenje",
+          "name": "OnClean"
         },
         "onClose": {
-          "description": "Повратни позив за затварање",
-          "name": "На блиској удаљености"
+          "description": "Povratni poziv za zatvaranje",
+          "name": "OnClose"
         },
         "onCreate": {
-          "description": "Повратни позив за стварање",
-          "name": "Поново креирајте"
+          "description": "Povratni poziv za kreiranje",
+          "name": "OnCreate"
         },
         "onLoadData": {
-          "description": "Повратни позив за учитавање података",
-          "name": "Подаци за преузимање"
+          "description": "Povratni poziv za učitavanje podataka",
+          "name": "OnLoadData"
         },
         "onSearch": {
-          "description": "Повратни позив за претрагу",
-          "name": "онсеарцх-претрага"
+          "description": "Povratni poziv za pretragu",
+          "name": "OnSearch"
         },
         "onSelect": {
-          "description": "Повратни позив за избор",
-          "name": "Приликом избора"
+          "description": "Povratni poziv za odabir",
+          "name": "OnSelect"
         },
         "preload": {
-          "description": "Да ли треба унапред учитати податке",
-          "name": "Предваривни натяг"
+          "description": "Da li treba unapred učitati podatke",
+          "name": "Predučitaj"
         }
       }
     },
     "RsStaticContent": {
-      "description": "Компонента статичког садржаја која приказује текстуални или ХТМЛ садржај",
-      "name": "Статички садржај",
+      "description": "Komponenta statičkog sadržaja koja prikazuje tekst ili HTML sadržaj",
+      "name": "Statički sadržaj",
       "props": {
         "allowHtml": {
-          "description": "Да ли дозволити употребу ХТМЛ садржаја",
-          "name": "Дозволите употребу ХТМЛ-а"
+          "description": "Da li da dozvolite HTML sadržaj",
+          "name": "Dozvoli HTML"
         },
         "content": {
-          "description": "Садржај за приказ",
-          "name": "Садржај"
+          "description": "Sadržaj koji treba prikazati",
+          "name": "Sadržaj"
         }
       }
     },
     "RsTab": {
-      "description": "Картице су скуп слојевитих одељака садржаја познатих као траке са картицама које приказују једну по једну траку садржаја",
-      "name": "Табулација",
+      "description": "Kartice su skup slojevitih delova sadržaja, poznatih kao tabele kartica, koji prikazuju jedan panel sadržaja odjednom",
+      "name": "Kartica",
       "props": {
         "activeKey": {
-          "description": "Активни кључ који одговара вредности једног од елемената",
-          "name": "Активни тастер"
+          "description": "Aktivni ključ, koji odgovara vrednosti jedne od stavki",
+          "name": "Aktivni ključ"
         },
         "appearance": {
-          "description": "Картица може имати другачији изглед",
-          "name": "Изглед"
+          "description": "Kartica može imati različite izglede",
+          "name": "Izgled"
         },
         "items": {
-          "description": "Ставке за картицу",
-          "name": "Предмети"
+          "description": "Stavke za karticu",
+          "name": "Predmeti"
         },
         "justified": {
-          "description": "Утемељена навигација",
-          "name": "Оправдано"
+          "description": "Opravdana navigacija",
+          "name": "Opravdano"
         },
         "onSelect": {
-          "description": "Функција повратног позива покренута након избора",
-          "name": "Приликом избора"
+          "description": "Funkcija povratnog poziva aktivirana nakon izbora",
+          "name": "OnSelect"
         },
         "pane": {
-          "description": "Подређена компонента картице",
-          "name": "Панел"
+          "description": "Dječja komponenta kartice",
+          "name": "Okno"
         },
         "reversed": {
-          "description": "Обрнути смер језичака / танак",
-          "name": "Обрнуто"
+          "description": "Obrnuti smer kartica/suptilno",
+          "name": "Obrnuto"
         },
         "showNavigation": {
-          "description": "Прикажи или сакриј навигацију",
-          "name": "Прикажи навигацију"
+          "description": "Prikaži ili sakrij navigaciju",
+          "name": "Prikaži navigaciju"
         },
         "vertical": {
-          "description": "Вишеслојна навигација",
-          "name": "Вертикални"
+          "description": "Složena navigacija",
+          "name": "Vertikalno"
         }
       }
     },
     "RsTagPicker": {
-      "description": "Компонента за одабир ознака са подршком за ознаке",
-      "name": "Бирач ознака",
+      "description": "Komponenta za biranje oznaka sa podrškom za nalepnice",
+      "name": "Ber oznaka",
       "props": {
         "cleanable": {
-          "description": "Да ли је могуће уклонити ову опцију",
-          "name": "Чишћење"
+          "description": "Da li se opcija može isprazniti",
+          "name": "Čisti se"
         },
         "creatable": {
-          "description": "Подешавања могу да креирају нове опције",
-          "name": "Подложан стварању"
+          "description": "Podešavanja mogu da kreiraju nove opcije",
+          "name": "Kreativo"
         },
         "data": {
-          "description": "Изабрани подаци",
-          "name": "Подаци"
+          "description": "Podaci koji se mogu birati",
+          "name": "Podaci"
         },
         "groupBy": {
-          "description": "Поставите критеријуме за груписање \"кључ\" у одељку\"Подаци\"",
-          "name": "Групиши по"
+          "description": "Podesite kriterijume grupisanja „ključ“ u „podacima“",
+          "name": "Grupirajte po"
         },
         "onChange": {
-          "description": "Функција повратног позива када се вредност промени",
-          "name": "На промени"
+          "description": "Funkcija povratnog poziva kada se vrednost promeni",
+          "name": "OnChange"
         },
         "onClean": {
-          "description": "Повратни позив за чишћење",
-          "name": "Једини чист"
+          "description": "Povratni poziv za čišćenje",
+          "name": "OnClean"
         },
         "onClose": {
-          "description": "Повратни позив за затварање",
-          "name": "На блиској удаљености"
+          "description": "Povratni poziv za zatvaranje",
+          "name": "OnClose"
         },
         "onCreate": {
-          "description": "Повратни позив за стварање",
-          "name": "Поново креирајте"
+          "description": "Povratni poziv za kreiranje",
+          "name": "OnCreate"
         },
         "onSearch": {
-          "description": "Повратни позив за претрагу",
-          "name": "онсеарцх-претрага"
+          "description": "Povratni poziv za pretragu",
+          "name": "OnSearch"
         },
         "onSelect": {
-          "description": "Повратни позив за избор",
-          "name": "Приликом избора"
+          "description": "Povratni poziv za odabir",
+          "name": "OnSelect"
         }
       }
     },
     "RsTextArea": {
-      "description": "Компонента текстуалног подручја за вишередни унос текста",
-      "name": "Текстуално подручје",
+      "description": "Komponenta tekstualnog područja za unos teksta u više linija",
+      "name": "Oblast teksta",
       "props": {
         "onChange": {
-          "description": "Функција повратног позива у којој се вредност мења",
-          "name": "На промени"
+          "description": "Funkcija povratnog poziva u kojoj se vrednost menja",
+          "name": "OnChange"
         },
         "onPressEnter": {
-          "description": "Позива се притиском на тастер Ентер",
-          "name": "онпресцентар"
+          "description": "Pozvano na pritisnite enter",
+          "name": "OnPressenter"
         },
         "rows": {
-          "description": "Број видљивих редова текста",
-          "name": "Редови"
+          "description": "Broj vidljivih tekstualnih linija",
+          "name": "Redovi"
         }
       }
     },
     "RsTimePicker": {
-      "description": "Компонента за одабир времена са подршком за ознаке",
-      "name": "Бирач времена",
+      "description": "Komponenta za biranje vremena sa podrškom za nalepnice",
+      "name": "Birač vremena",
       "props": {
         "cleanable": {
-          "description": "Да ли је могуће обрисати изабрану вредност",
-          "name": "Чишћење"
+          "description": "Da li se izabrana vrednost može izbrisati",
+          "name": "Čisti se"
         },
         "defaultValue": {
-          "description": "Подразумевана вредност",
-          "name": "Подразумевана вредност"
+          "description": "Podrazumevana vrednost",
+          "name": "Podrazumevana vrednost"
         },
         "editable": {
-          "description": "Време приказано као улаз може се унети помоћу тастатуре",
-          "name": "Уређивачки"
+          "description": "Prikazano kao ulaz, vreme se može uneti preko tastature",
+          "name": "Uređivački"
         },
         "format": {
-          "description": "Формат времена када се приказује у улазима",
-          "name": "Формат"
+          "description": "Format vremena kada je prikazan u ulazu",
+          "name": "Format"
         },
         "onChange": {
-          "description": "Повратни позив се активира када се вредност промени",
-          "name": "На промени"
+          "description": "Povratni poziv otpušten kada se vrednost promeni",
+          "name": "OnChange"
         },
         "onClean": {
-          "description": "Повратни позив се покреће приликом брисања вредности",
-          "name": "Једини чист"
+          "description": "Povratni poziv je pokrenut kada je vrednost čista",
+          "name": "OnClean"
         },
         "onClose": {
-          "description": "Повратни позив се активира када се компонента затвори",
-          "name": "На блиској удаљености"
+          "description": "Povratni poziv se otvara kada je komponenta zatvorena",
+          "name": "OnClose"
         },
         "onEnter": {
-          "description": "Повратни позив се покреће пре него што прекривач пређе на",
-          "name": "У центру"
+          "description": "Povratni poziv je pokrenut pre prelaska na prekrivanje",
+          "name": "onEnter"
         },
         "onEntered": {
-          "description": "Повратни позив се покреће након завршетка преласка преклапања у",
-          "name": "Ушао"
+          "description": "Povratni poziv otpušten nakon što prekrivanje završi prelazak",
+          "name": "onUšao"
         },
         "onEntering": {
-          "description": "Повратни позив се покреће када прекривач почне да прелази у",
-          "name": "При уласку"
+          "description": "Povratni poziv se otvara kada prekrivanje počinje da prelazi",
+          "name": "onUlazak"
         },
         "onExit": {
-          "description": "Повратни позив се покреће непосредно пре завршетка прелаза преклапања",
-          "name": "Неуспех"
+          "description": "Povratni poziv je pokrenut neposredno pre prelaska prekrivanja",
+          "name": "OnExit"
         },
         "onExited": {
-          "description": "Повратни позив се покреће након завршетка преласка прекривача",
-          "name": "Узбуђен"
+          "description": "Povratni poziv je pokrenut nakon što se prekrivanje završi sa prelaskom",
+          "name": "OneExited"
         },
         "onExiting": {
-          "description": "Повратни позив се покреће када прекривач почне да пропада",
-          "name": "Узбудљиво"
+          "description": "Povratni poziv otpušten dok prekrivač počinje da prelazi",
+          "name": "OneKiting"
         },
         "onOk": {
-          "description": "Кликните на дугме у реду за функцију повратног позива",
-          "name": "онОк"
+          "description": "Kliknite na OK funkciju povratnog poziva",
+          "name": "OnoK"
         },
         "onOpen": {
-          "description": "Повратни позив се активира када се компонента отвори",
-          "name": "Приликом отварања"
+          "description": "Povratni poziv je pokrenut kada je otvorena komponenta",
+          "name": "OnOpen"
         },
         "onSelect": {
-          "description": "Повратни позив започиње одабиром датума или времена",
-          "name": "Приликом избора"
+          "description": "Povratni poziv otpušten kada je izabran datum ili vreme",
+          "name": "OnSelect"
         },
         "open": {
-          "description": "Без обзира да ли је компонента отворена",
-          "name": "Отвори"
+          "description": "Da li otvorite komponentu",
+          "name": "Otvori"
         }
       }
     },
     "RsToggle": {
-      "description": "Прекидач који се користи за избор између две вредности",
-      "name": "Тумблер",
+      "description": "Prekidač, koji se koristi za izbor između dve vrednosti",
+      "name": "Prebaci",
       "props": {
         "checked": {
-          "description": "Да ли је поље за потврду означено",
-          "name": "Проверено"
+          "description": "Da li je prekidač proveren",
+          "name": "Provereno"
         },
         "checkedChildren": {
-          "description": "Текст који се приказује у провереном стању",
-          "name": "Верификовани текст"
+          "description": "Tekst koji se prikazuje u proverenom stanju",
+          "name": "Provereni tekst"
         },
         "children": {
-          "description": "Ознака компоненте",
-          "name": "Ознака"
+          "description": "Oznaka komponente",
+          "name": "Oznaka"
         },
         "color": {
-          "description": "Боја прекидача",
-          "name": "Боја"
+          "description": "Boja prekidača",
+          "name": "Boja"
         },
         "loading": {
-          "description": "Да ли је компонента у стању покретања",
-          "name": "Утовар"
+          "description": "Da li je komponenta u stanju učitavanja",
+          "name": "Učitavanje"
         },
         "onChange": {
-          "description": "Позива се када се промени стање прекидача",
-          "name": "На промени"
+          "description": "Poziva se kada se stanje preklopnika promeni",
+          "name": "OnChange"
         },
         "unCheckedChildren": {
-          "description": "Текст који се приказује у непровереном стању",
-          "name": "Непроверени текст"
+          "description": "Tekst koji se prikazuje u neoznačenom stanju",
+          "name": "Neoznačeni tekst"
         }
       }
     },
     "RsTooltip": {
-      "description": "Текстуални упит за сецондари који замењује подразумевано својство наслова ХТМЛ елемента",
-      "name": "Савет",
+      "description": "Tekstualni savet za sekundarni, koji zamenjuje podrazumevano svojstvo naslova HTML elementa",
+      "name": "Savet za alat",
       "props": {
         "children": {
-          "description": "Дете са описом алата",
-          "name": "Деца"
+          "description": "Dečiji element saveta alata",
+          "name": "Deca"
         },
         "text": {
-          "description": "Текст описа",
-          "name": "Текст"
+          "description": "Tekst saveta alata",
+          "name": "Tekst"
         },
         "trigger": {
-          "description": "Окидач описа",
-          "name": "Окидач"
+          "description": "Okidač alata",
+          "name": "Okidač"
         }
       }
     },
     "RsUploader": {
-      "description": "Преузмите датотеке кликом миша или превлачењем и испуштањем, програм подржава преглед преузете слике",
-      "name": "Утоваривач",
+      "description": "Otpremite datoteke klikom ili prevlačenjem i ispuštanjem, podržava pregled otpremljene slike",
+      "name": "Otpremnik",
       "props": {
         "accept": {
-          "description": "Врсте датотека које се могу прихватити. Погледајте стандардни ХТМЛ атрибут: Аццепт",
-          "name": "Прихвати"
+          "description": "Tipovi datoteka koje se mogu prihvatiti. Pogledajte standardni HTML atribut: prihvati",
+          "name": "Prihvati"
         },
         "action": {
-          "description": "УРЛ за преузимање",
-          "name": "Акција"
+          "description": "Otpremanje URL-a",
+          "name": "Akcija"
         },
         "autoUpload": {
-          "description": "Аутоматски учитајте датотеке након што их одаберете",
-          "name": "Аутоматско преузимање"
+          "description": "Automatski otpremite datoteke nakon što ih odaberete",
+          "name": "Automatsko otpremanje"
         },
         "children": {
-          "description": "Основни садржај",
-          "name": "Деца"
+          "description": "Primarni sadržaj",
+          "name": "Deca"
         },
         "customElement": {
-          "description": "Да ли треба да користим прилагођени елемент за боотлоадер",
-          "name": "Прилагођени елемент"
+          "description": "Da li da koristite prilagođeni element za učitavaoca",
+          "name": "Prilagođeni element"
         },
         "disableMultipart": {
-          "description": "Ако је\" тачно\", онемогућите употребу сложеног обрасца за преузимање датотеке и уместо тога стримујте датотеку. Неки АПИ-ји (попут Амазон С3) могу очекивати да се датотека стримује уместо да се пошаље путем обрасца",
-          "name": "Онемогући саставни део"
+          "description": "Ako je „tačno“, onemogućite korišćenje višedijelnog obrasca za otpremanje datoteka i umesto toga strimujte datoteku. Neki API-ji (npr. Amazon S3) mogu očekivati da će se datoteka strimovati umesto slanja putem obrasca",
+          "name": "Onemogućite višedijelni"
         },
         "disabledFileItem": {
-          "description": "Онемогућени елемент датотеке",
-          "name": "Онемогућени елемент датотеке"
+          "description": "Onemogućena stavka datoteke",
+          "name": "Onemogućena stavka datoteke"
         },
         "draggable": {
-          "description": "Омогућено превлачење и испуштање за преузимање",
-          "name": "Драг &amp; Дроп"
+          "description": "Omogućeno prevlačenje i ispuštanje za otpremanje",
+          "name": "Vučljivo"
         },
         "fileList": {
-          "description": "Листа преузетих датотека",
-          "name": "Списак датотека"
+          "description": "Lista otpremljenih datoteka",
+          "name": "Lista datoteka"
         },
         "fileListVisible": {
-          "description": "Листа датотека се може приказати",
-          "name": "Листа датотека је видљива"
+          "description": "Lista datoteka se može prikazati",
+          "name": "Vidljiva lista datoteka"
         },
         "listType": {
-          "description": "Стил листе за преузимање",
-          "name": "Тип листе"
+          "description": "Otpremite stil liste",
+          "name": "Tip liste"
         },
         "method": {
-          "description": "Хттп метода захтева за преузимање",
-          "name": "Метода"
+          "description": "HTTP metoda zahteva za otpremanje",
+          "name": "Metod"
         },
         "multiple": {
-          "description": "Дозволите преузимање више датотека",
-          "name": "Вишеструки"
+          "description": "Dozvolite otpremanje više datoteka",
+          "name": "Višestruki"
         },
         "name": {
-          "description": "Учитајте назив параметра одговарајуће датотеке",
-          "name": "Име"
+          "description": "Otpremite ime parametra odgovarajuće datoteke",
+          "name": "Naziv"
         },
         "onChange": {
-          "description": "Функција повратног позива која извештава о промени реда покретања",
-          "name": "На промени"
+          "description": "Funkcija povratnog poziva koju je red za otpremanje promenio",
+          "name": "OnChange"
         },
         "onError": {
-          "description": "Учитавање функције повратног позива са грешком",
-          "name": "Једна грешка"
+          "description": "Otpremite funkciju povratnog poziva sa greškom",
+          "name": "OnError"
         },
         "onPreview": {
-          "description": "На листи датотека изаберите функцију повратног позива за преузету датотеку",
-          "name": "онпревиев (преглед)"
+          "description": "Na listi datoteka kliknite na funkciju povratnog poziva za otpremljenu datoteku",
+          "name": "OnPreview"
         },
         "onProgress": {
-          "description": "Функције повратног позива које мењају ток покретања",
-          "name": "У процесу"
+          "description": "Funkcije povratnog poziva koje otpremaju promenu napretka",
+          "name": "OnProgress"
         },
         "onRemove": {
-          "description": "На листи датотека изаберите функцију повратног позива да бисте избрисали датотеку",
-          "name": "Приликом брисања"
+          "description": "Na listi datoteka kliknite na funkciju povratnog poziva da biste izbrisali datoteku",
+          "name": "OnRemove"
         },
         "onReupload": {
-          "description": "На листи датотека, за преузимање датотека са грешком, изаберите функцију повратног позива за преузимање",
-          "name": "Поновно учитавање"
+          "description": "Na listi datoteka, za otpremanje neuspelih datoteka, kliknite na funkciju povratnog poziva da biste otpremili",
+          "name": "OnReUpload"
         },
         "onSuccess": {
-          "description": "Функција повратног позива након успешног учитавања",
-          "name": "На путу ка успеху"
+          "description": "Funkcija povratnog poziva nakon uspešnog otpremanja",
+          "name": "OnUspeh"
         },
         "onUpload": {
-          "description": "Функција повратног позива која покреће преузимање датотеке",
-          "name": "Боотстрап"
+          "description": "Funkcija povratnog poziva koja pokreće datoteku za otpremanje",
+          "name": "OnUpload"
         },
         "removable": {
-          "description": "Датотека листе за брисање",
-          "name": "Уклоњиви"
+          "description": "Datoteka koja se može ukloniti",
+          "name": "Uklonjivi"
         },
         "timeout": {
-          "description": "Подесите време чекања за покретање",
-          "name": "Пауза"
+          "description": "Podesite vremensko ograničenje otpremanja",
+          "name": "Timeout"
         },
         "withCredentials": {
-          "description": "Да ли треба да чувам колачиће приликом учитавања захтева",
-          "name": "Са акредитивима"
+          "description": "Da li da nosite kolačiće prilikom otpremanja zahteva",
+          "name": "Sa akreditivima"
         }
       }
     },
     "RsWizard": {
-      "description": "Компонента чаробњака са детаљном навигацијом и провером",
-      "name": "Чаробњак",
+      "description": "Komponenta čarobnjaka sa koračnom navigacijom i validacijom",
+      "name": "Čarobnjak",
       "props": {
         "activeIndex": {
-          "description": "Индекс активног корака",
-          "name": "Активни индекс"
+          "description": "Indeks aktivnog koraka",
+          "name": "Aktivni indeks"
         },
         "children": {
-          "description": "Деца чаробњаци",
-          "name": "Деца"
+          "description": "Sadržaj koraka čarobnjaka",
+          "name": "Deca"
         },
         "finishButtonLabel": {
-          "description": "Натпис на дугмету\"Готово\"",
-          "name": "Ознака дугмета за завршетак"
+          "description": "Oznaka dugmeta za završnu obradu",
+          "name": "Završite nalepnicu dugmeta"
         },
         "nextButtonLabel": {
-          "description": "Следећи натпис на дугмету",
-          "name": "Натпис на следећем дугмету"
+          "description": "Sledeća etiketa dugmeta",
+          "name": "Sledeća etiketa dugmeta"
         },
         "onFinish": {
-          "description": "Повратни позив када кликнете на дугме Готово",
-          "name": "На финишу"
+          "description": "Povratni poziv kada se klikne dugme za završetak",
+          "name": "OnFinish"
         },
         "onNext": {
-          "description": "Повратни позив када кликнете на дугме Даље",
-          "name": "У следећем"
+          "description": "Povratni poziv kada se klikne sledeće dugme",
+          "name": "OnSledeće"
         },
         "onPrev": {
-          "description": "Повратни позив притиском на претходно дугме",
-          "name": "Раније"
+          "description": "Povratni poziv kada se klikne na prethodno dugme",
+          "name": "OnPrev"
         },
         "prevButtonLabel": {
-          "description": "Претходна ознака дугмета",
-          "name": "Претходна ознака дугмета"
+          "description": "Prethodna oznaka dugmeta",
+          "name": "Prethodna etiketa dugmeta"
         },
         "showSteps": {
-          "description": "Ако је вредност Труе, тада ће се приказати следећи кораци",
-          "name": "Прикажи кораке"
+          "description": "Ako je tačno, koraci će biti prikazani",
+          "name": "Prikaži korake"
         },
         "showStepsLabels": {
-          "description": "Ако је вредност Труе, тада ће се приказати ознаке корака",
-          "name": "Прикажи ознаке корака"
+          "description": "Ako je tačno, prikazaće se oznake koraka",
+          "name": "Prikaži oznake koraka"
         },
         "steps": {
-          "description": "Кораци чаробњака",
-          "name": "Кораци"
+          "description": "Čarobnjak koraci",
+          "name": "Koraci"
         },
         "stepsNavigation": {
-          "description": "Одређује који су кораци доступни за навигацију кликом",
-          "name": "Навигација по корацима"
+          "description": "Klikom određuje koji su koraci dostupni za navigaciju",
+          "name": "Navigacija koracima"
         },
         "validateOnFinish": {
-          "description": "Ако је вредност Труе, чаробњак ће бити проверен пре искључивања",
-          "name": "Провера по завршетку"
+          "description": "Ako je tačno, čarobnjak će biti potvrđen pre nego što završi čarobnjak",
+          "name": "Potvrdite na kraju"
         },
         "validateOnNext": {
-          "description": "Ако је вредност Труе, корак ће бити потврђен пре него што пређете на следећи корак",
-          "name": "Потврдите на следећем"
+          "description": "Ako je tačno, korak će biti potvrđen pre nego što pređete na sledeći korak",
+          "name": "Potvrdite na sledećem"
         },
         "verticalSteps": {
-          "description": "Ако је вредност Труе, кораци ће се приказати вертикално",
-          "name": "Вертикалне степенице"
+          "description": "Ako je tačno, koraci će biti prikazani vertikalno",
+          "name": "Vertikalni koraci"
         }
       }
     },
     "RsWizardStep": {
-      "description": "Корак по корак компонента чаробњака са флексибилним распоредом",
-      "name": "Корак чаробњака",
+      "description": "Komponenta koraka čarobnjaka sa fleksibilnim rasporedom",
+      "name": "Korak čarobnjaka",
       "props": {
         "children": {
-          "description": "Дечје компоненте",
-          "name": "Деца"
+          "description": "Dečiji elementi komponente",
+          "name": "Deca"
         }
       }
     }

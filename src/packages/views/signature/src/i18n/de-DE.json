@@ -1,48 +1,48 @@
 {
   "categories": {
     "fields": {
-      "name": "Datenfelder"
+      "name": "Felder"
     }
   },
   "components": {
     "RsSignature": {
-      "description": "HTML5 Canvas basierte glatte Signaturzeichnung",
-      "name": "Signatur",
+      "description": "Glatte Signaturzeichnung auf HTML5-Leinwand",
+      "name": "Unterschrift",
       "props": {
         "backgroundColor": {
-          "description": "Hintergrundfarbe",
-          "name": "Hintergrundfarbe"
+          "description": "Die Hintergrundfarbe",
+          "name": "Farbe des Hintergrunds"
         },
         "clearButtonText": {
-          "description": "Schaltflächenbeschriftung löschen",
+          "description": "Klare Tastenbeschriftung",
           "name": "Schaltflächentext löschen"
         },
         "height": {
-          "description": "Die Leinwandhöhe",
+          "description": "Die Höhe der Leinwand",
           "name": "Höhe"
         },
         "label": {
-          "description": "Das Etikett für die Komponente",
-          "name": "Beschriftung"
+          "description": "Die Bezeichnung für die Komponente",
+          "name": "Etikett"
         },
         "lineWidth": {
-          "description": "Linienbreite",
+          "description": "Die Linienbreite",
           "name": "Linienbreite"
         },
         "penColor": {
-          "description": "Stiftfarbe",
-          "name": "Stiftfarbe"
+          "description": "Die Stiftfarbe",
+          "name": "Farbe des Stifts"
         },
         "readOnly": {
-          "description": "Schreibgeschütztes Flag",
-          "name": "Schreibgeschützt"
+          "description": "Flagge „Nur lesen“",
+          "name": "Nur lesen"
         },
         "value": {
-          "description": "Die anfängliche Daten-URL zum Zeichnen des Signaturbilds",
+          "description": "Die ursprüngliche Daten-URL zum Zeichnen des Signaturbilds",
           "name": "Wert"
         },
         "width": {
-          "description": "Die Leinwandbreite",
+          "description": "Die Breite der Leinwand",
           "name": "Breite"
         }
       }

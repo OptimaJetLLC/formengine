@@ -7,83 +7,83 @@
   "components": {
     "RsCell": {
       "description": "테이블 셀",
-      "name": "셀",
+      "name": "세포",
       "props": {
         "dataKey": {
-          "description": "데이터 바인딩 키뿐만 아니라 키의 종류",
+          "description": "데이터 바인딩 키뿐만 아니라 일종의 키이기도 함",
           "name": "데이터 키"
         }
       }
     },
     "RsColumn": {
-      "description": "테이블 열",
-      "name": "열",
+      "description": "테이블 컬럼",
+      "name": "칼럼",
       "props": {
         "align": {
-          "description": "정렬",
+          "description": "얼라인먼트",
           "name": "정렬"
         },
         "colSpan": {
-          "description": "병합된 열의'데이터 키'값이 널 또는 정의되지 않은 경우 병합할 열 셀을 병합합니다",
-          "name": "콜 스팬"
+          "description": "병합된 열의 '데이터 키' 값이 null이거나 정의되지 않은 경우 병합할 열 셀을 병합합니다.",
+          "name": "열 병합"
         },
         "fixed": {
-          "description": "고정 열",
+          "description": "고정 컬럼",
           "name": "고정"
         },
         "flexGrow": {
-          "description": "열 너비를 설정하면'플렉스 성장'을 설정하면'크기 조정 가능'및'너비'속성을 설정할 수 없습니다",
-          "name": "플렉스 성장"
+          "description": "열 너비를 설정하면 자동으로 조정됩니다. 'Flex grow'를 설정하면 '크기 조정 가능' 및 '너비' 속성을 설정할 수 없습니다.",
+          "name": "플렉스 그로우"
         },
         "fullText": {
-          "description": "마우스를 이동할 때 셀 내용의 전체 텍스트를 표시할지 여부",
+          "description": "마우스를 가리킬 때 셀 내용의 전체 텍스트를 표시할지 여부",
           "name": "전체 텍스트"
         },
         "minWidth": {
-          "description": "'플렉스 성장'을 사용할 때 최소 너비를 설정할 수 있습니다",
-          "name": "최소한도 폭"
+          "description": "'Flex grow'를 사용할 때 최소 너비를 설정할 수 있습니다.",
+          "name": "최소 너비"
         },
         "resizable": {
-          "description": "사용자 정의 크기 조정 열 너비",
+          "description": "사용자 지정 가능한 열 너비 크기 조정",
           "name": "크기 조정 가능"
         },
         "rowSpan": {
-          "description": "지정된 열의 행을 병합합니다",
-          "name": "줄 경간"
+          "description": "지정된 열의 행을 병합합니다.",
+          "name": "행 범위"
         },
         "sortable": {
-          "description": "분류 가능",
-          "name": "분류 가능"
+          "description": "정렬 가능",
+          "name": "정렬 가능"
         },
         "verticalAlign": {
           "description": "수직 정렬",
           "name": "수직 정렬"
         },
         "width": {
-          "description": "란 폭",
-          "name": "폭"
+          "description": "컬럼 너비",
+          "name": "너비"
         }
       }
     },
     "RsColumnGroup": {
-      "description": "테이블 열 그룹",
-      "name": "열 그룹",
+      "description": "테이블 컬럼 그룹",
+      "name": "컬럼 그룹",
       "props": {
         "align": {
-          "description": "정렬",
+          "description": "얼라인먼트",
           "name": "정렬"
         },
         "fixed": {
-          "description": "고정 열 그룹",
+          "description": "고정 컬럼 그룹",
           "name": "고정"
         },
         "groupHeaderHeight": {
-          "description": "병합된 셀 그룹의 머리글 높이",
+          "description": "병합된 셀 그룹의 헤더 높이",
           "name": "그룹 헤더 높이"
         },
         "header": {
           "description": "그룹 헤더",
-          "name": "헤더"
+          "name": "머리글"
         },
         "verticalAlign": {
           "description": "수직 정렬",
@@ -96,8 +96,8 @@
       "name": "헤더 셀",
       "props": {
         "children": {
-          "description": "테이블 열 머리글",
-          "name": "내용"
+          "description": "테이블 컬럼 헤더",
+          "name": "콘텐츠"
         }
       }
     },
@@ -106,24 +106,24 @@
       "name": "표",
       "props": {
         "affixHeader": {
-          "description": "페이지의 지정된 위치에 테이블 머리글을 붙입니다",
-          "name": "접두사 헤더"
+          "description": "페이지의 지정된 위치에 표 머리글을 부착합니다.",
+          "name": "머리글 부착"
         },
         "affixHorizontalScrollbar": {
-          "description": "페이지의 지정된 위치에 테이블 가로 스크롤 막대를 부착합니다",
-          "name": "수평 스크롤 막대 부착"
+          "description": "표의 가로 스크롤 막대를 페이지의 지정된 위치에 부착합니다.",
+          "name": "가로 스크롤바 부착"
         },
         "autoHeight": {
-          "description": "테이블의 높이는 데이터 행 수에 따라 자동으로 확장되며 세로 스크롤 막대가 나타나지 않습니다",
-          "name": "자동 고도"
+          "description": "테이블의 높이는 데이터 행 수에 따라 자동으로 확장되며 세로 스크롤 막대는 나타나지 않습니다.",
+          "name": "자동 높이"
         },
         "bordered": {
-          "description": "테두리 표시",
-          "name": "경계"
+          "description": "테두리 보기",
+          "name": "테두리"
         },
         "cellBordered": {
-          "description": "셀 테두리 표시",
-          "name": "경계 셀"
+          "description": "셀 테두리 보기",
+          "name": "셀 경계"
         },
         "data": {
           "description": "테이블 데이터",
@@ -134,8 +134,8 @@
           "name": "기본 정렬 유형"
         },
         "fillHeight": {
-          "description": "테이블의 높이가 부모 컨테이너의 높이와 같도록 합니다. '자동 높이'와 함께 사용할 수 없습니다.",
-          "name": "채우기 높이"
+          "description": "테이블의 높이를 부모 컨테이너의 높이와 같게 합니다.'자동 높이'와 함께 사용할 수 없습니다.",
+          "name": "충전 높이"
         },
         "headerHeight": {
           "description": "테이블 헤더 높이",
@@ -146,31 +146,31 @@
           "name": "높이"
         },
         "hover": {
-          "description": "테이블의 행에 마우스 오버 효과가 있습니다",
-          "name": "호버"
+          "description": "테이블 행에 마우스 오버 효과가 있습니다.",
+          "name": "맴돌다"
         },
         "loading": {
-          "description": "로드 표시",
-          "name": "로드 중"
+          "description": "로딩 보기",
+          "name": "불러오는 중"
         },
         "maxHeight": {
-          "description": "최대 고도",
-          "name": "최대 고도"
+          "description": "최대 높이",
+          "name": "최대 높이"
         },
         "minHeight": {
           "description": "최소 높이",
-          "name": "최소한도 고도"
+          "name": "최소 높이"
         },
         "rowClassName": {
           "description": "행에 선택적 추가 클래스 이름 추가",
           "name": "행 클래스 이름"
         },
         "rowHeight": {
-          "description": "줄 고도",
-          "name": "줄 고도"
+          "description": "행 높이",
+          "name": "행 높이"
         },
         "rowKey": {
-          "description": "각 행은 데이터의 고유 키에 해당합니다",
+          "description": "각 행은 데이터의 고유 키에 해당합니다.",
           "name": "행 키"
         },
         "shouldUpdateScroll": {
@@ -179,7 +179,7 @@
         },
         "showHeader": {
           "description": "디스플레이 헤더",
-          "name": "헤더 표시"
+          "name": "헤더 보기"
         },
         "sortColumn": {
           "description": "열 이름 정렬",
@@ -190,16 +190,16 @@
           "name": "정렬 유형"
         },
         "virtualized": {
-          "description": "큰 테이블 형식의 데이터를 효과적으로 렌더링",
-          "name": "가상화"
+          "description": "대규모 테이블 형식 데이터를 효과적으로 렌더링",
+          "name": "가상화됨"
         },
         "width": {
-          "description": "테이블 폭",
-          "name": "폭"
+          "description": "테이블 너비",
+          "name": "너비"
         },
         "wordWrap": {
-          "description": "텍스트가 콘텐츠 상자를 오버플로할 때 줄 바꿈을 표시할지 여부",
-          "name": "단어 줄 바꿈"
+          "description": "텍스트가 내용 상자 위에 줄 바꿈을 표시할지 여부",
+          "name": "워드 랩"
         }
       }
     }

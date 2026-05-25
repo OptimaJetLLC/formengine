@@ -1,21 +1,21 @@
 {
   "categories": {
     "fields": {
-      "name": "Campo"
+      "name": "Campi"
     }
   },
   "components": {
     "GoogleMap": {
-      "description": "Componente visualizzazione di una mappa Google",
+      "description": "Componente che mostra una mappa di Google",
       "name": "Mappa Google",
       "props": {
         "addMarkerOnSearch": {
-          "description": "Indica se aggiungere un marcatore alla ricerca",
+          "description": "Se aggiungere un marcatore alla ricerca",
           "name": "Aggiungi marcatore alla ricerca"
         },
         "allowChangingMarkers": {
-          "description": "Se selezionato, l'utente può modificare i marcatori",
-          "name": "Consenti la modifica dei marcatori"
+          "description": "Se selezionata, l'utente può modificare i marker",
+          "name": "Consenti la modifica dei marker"
         },
         "allowMultipleMarkers": {
           "description": "Marcatori multipli",
@@ -26,27 +26,27 @@
           "name": "Chiave API"
         },
         "collisionBehavior": {
-          "description": "Il comportamento di collisione dei marcatori",
+          "description": "Il comportamento di collisione dei marker",
           "name": "Comportamento di collisione"
         },
         "colorScheme": {
-          "description": "La combinazione di colori da utilizzare",
+          "description": "La combinazione di colori da usare",
           "name": "Combinazione di colori"
         },
         "gestureHandling": {
           "description": "La gestione dei gesti da usare",
-          "name": "Gesture handling"
+          "name": "Gestione dei gesti"
         },
         "height": {
           "description": "Altezza della mappa",
           "name": "Altezza"
         },
         "label": {
-          "description": "Etichetta mappa",
+          "description": "Etichetta della mappa",
           "name": "Etichetta"
         },
         "language": {
-          "description": "Il linguaggio da usare",
+          "description": "La lingua da usare",
           "name": "Lingua"
         },
         "latitude": {
@@ -62,7 +62,7 @@
           "name": "Posizione di controllo della mappa"
         },
         "mapId": {
-          "description": "L'ID mappa è un identificatore associato a uno stile o a una caratteristica specifica della mappa",
+          "description": "L'ID della mappa è un identificatore associato a uno stile o a una caratteristica specifica della mappa",
           "name": "ID mappa"
         },
         "mapTypeId": {
@@ -70,28 +70,28 @@
           "name": "Tipo di mappa"
         },
         "markerWindowTitle": {
-          "description": "Il titolo della finestra marker",
-          "name": "Titolo finestra Marker"
+          "description": "Il titolo della finestra dei marker",
+          "name": "Titolo della finestra Marker"
         },
         "markers": {
-          "description": "Coordinate dei marcatori",
-          "name": "Marcatore"
+          "description": "Coordinate dei marker",
+          "name": "Pennarelli"
         },
         "region": {
-          "description": "Il codice regione da utilizzare",
+          "description": "Il codice regionale da utilizzare",
           "name": "Regione"
         },
         "removeMarkerCaption": {
-          "description": "La didascalia sul pulsante rimozione marcatore",
-          "name": "Rimuovi la didascalia del marcatore"
+          "description": "La didascalia sul pulsante di rimozione del pennarello",
+          "name": "Rimuovi la didascalia dell'indicatore"
         },
         "searchPlaceholder": {
-          "description": "Testo segnaposto per l'input di ricerca della mappa",
-          "name": "Cerca segnaposto"
+          "description": "Testo segnaposto per l'input di ricerca sulla mappa",
+          "name": "Segnaposto di ricerca"
         },
         "showMapControl": {
-          "description": "Indica se mostrare il controllo della mappa",
-          "name": "Visualizza mappa controllo"
+          "description": "Se mostrare il controllo della mappa",
+          "name": "Mostra il controllo della mappa"
         },
         "width": {
           "description": "Larghezza della mappa",

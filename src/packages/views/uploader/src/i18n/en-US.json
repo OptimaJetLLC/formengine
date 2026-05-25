@@ -39,11 +39,11 @@
         },
         "disabled": {
           "name": "Disabled",
-          "description": "If true, the children are in disabled state"
+          "description": "If true, the uploader is disabled"
         },
         "readOnly": {
           "name": "Read Only",
-          "description": "If true, the children are in read-only state"
+          "description": "If true, the uploader is read-only"
         }
       }
     }

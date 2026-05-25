@@ -10,28 +10,28 @@
       "name": "ファイルアップローダー",
       "props": {
         "accept": {
-          "description": "受け入れられるファイルタイプ(例:image/*,.pdf,.docx）\"をリリース。",
-          "name": "受け入れる"
+          "description": "受け入れられるファイルタイプ (例:画像/*、.pdf、.docx)",
+          "name": "承諾する"
         },
         "action": {
-          "description": "ファイルをアップロードするURL",
-          "name": "アクションURL"
+          "description": "ファイルのアップロード先の URL",
+          "name": "アクション URL"
         },
         "children": {
           "description": "アップローダー内に表示するコンテンツ",
-          "name": "子供たち"
+          "name": "子ども"
         },
         "disabled": {
-          "description": "Trueの場合、子は無効状態になります",
+          "description": "true の場合、アップローダーは無効になります",
           "name": "無効"
         },
         "dropzone": {
-          "description": "Trueの場合、dropzoneが表示されます",
+          "description": "true の場合、ドロップゾーンが表示されます",
           "name": "ドロップゾーン"
         },
         "multiple": {
-          "description": "複数のファイル選択を許可する",
-          "name": "複数のファイル"
+          "description": "複数ファイルの選択を許可",
+          "name": "複数ファイル"
         },
         "onChange": {
           "description": "ファイルが正常にアップロードされたときのコールバック",
@@ -42,8 +42,8 @@
           "name": "エラー時"
         },
         "readOnly": {
-          "description": "Trueの場合、子は読み取り専用状態になります",
-          "name": "読み取り専用"
+          "description": "true の場合、アップローダーは読み取り専用です",
+          "name": "[読み取り専用]"
         }
       }
     }

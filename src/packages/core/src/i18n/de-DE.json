@@ -5,7 +5,7 @@
       "name": "Eingebettetes Formular",
       "props": {
         "disabled": {
-          "description": "Ob das eingebettete Formular deaktiviert ist",
+          "description": "Wenn wahr, ist das eingebettete Formular deaktiviert",
           "name": "Deaktiviert"
         },
         "formName": {
@@ -17,22 +17,22 @@
           "name": "Optionen"
         },
         "readOnly": {
-          "description": "Ob das eingebettete Formular schreibgeschützt ist",
-          "name": "Schreibgeschützt"
+          "description": "Wenn wahr, ist das eingebettete Formular schreibgeschützt",
+          "name": "Nur lesen"
         },
         "storeDataInParentForm": {
-          "description": "Wenn false, werden verschachtelte Formulardaten als verschachteltes Objekt angezeigt, sonst flach im übergeordneten Formular",
+          "description": "Wenn falsch, werden verschachtelte Formulardaten als verschachteltes Objekt angezeigt, andernfalls wahr",
           "name": "Daten im übergeordneten Formular speichern"
         }
       }
     },
     "Repeater": {
-      "description": "Die Repeater-Komponente ist eine spezielle Komponente, die für die Anzeige eines Arrays sich wiederholender Komponenten verantwortlich ist",
+      "description": "Die Repeater-Komponente ist eine spezielle Komponente, die für die Anzeige einer Reihe sich wiederholender Komponenten verantwortlich ist",
       "name": "Repeater",
       "props": {
         "itemRenderWhen": {
-          "description": "Der Ausdruck oder die Funktion zum bedingten Rendern eines Wiederholungselements",
-          "name": "Element rendern wenn"
+          "description": "Der Ausdruck oder die Funktion zum bedingten Rendern eines Repeater-Elements",
+          "name": "Objekt wird gerendert, wenn"
         }
       }
     }

@@ -1,253 +1,253 @@
 {
   "categories": {
     "antd": {
-      "name": "Компоненте Ант дизајна"
+      "name": "Komponente dizajna mrava"
     }
   },
   "components": {
     "AntButton": {
-      "description": "Дугме означава операцију (или редослед операција). Кликом на дугме покреће се одговарајућа пословна логика",
-      "name": "Дугме мрава",
+      "description": "Dugme znači operaciju (ili niz operacija). Klikom na dugme pokrenuće odgovarajuću poslovnu logiku",
+      "name": "Dugme mrava",
       "props": {
         "block": {
-          "description": "Могућност прилагођавања ширине дугмета њеној родитељској ширини",
-          "name": "Блок"
+          "description": "Mogućnost prilagođavanja širine dugmeta na njegovu roditeljsku širinu",
+          "name": "Blokiraj"
         },
         "children": {
-          "description": "Потпис",
-          "name": "Садржај"
+          "description": "Naslov",
+          "name": "Sadržaj"
         },
         "danger": {
-          "description": "Подесите опасан статус дугмета",
-          "name": "Опасност"
+          "description": "Podesite status opasnosti dugmeta",
+          "name": "Opasnost"
         },
         "disabled": {
-          "description": "Онемогућено стање дугмета",
-          "name": "Неспособан за рад"
+          "description": "Onemogućeno stanje dugmeta",
+          "name": "Onemogućeno"
         },
         "ghost": {
-          "description": "Учините позадину прозирном и промените боју текста и обруба у супротну",
-          "name": "Дух"
+          "description": "Učinite pozadinu transparentnom i invertirajte boje teksta i obruba",
+          "name": "Duh"
         },
         "href": {
-          "description": "Преусмерите УРЛ дугмета\"линк\"",
-          "name": "Линк"
+          "description": "Preusmeravanje URL dugmeta veze",
+          "name": "Href"
         },
         "htmlType": {
-          "description": "Подесите изворни ХТМЛ тип дугмета",
-          "name": "HTML тип"
+          "description": "Podesite originalni HTML tip dugmeta",
+          "name": "HTML tip"
         },
         "loading": {
-          "description": "Подесите статус преузимања дугмета",
-          "name": "Утовар"
+          "description": "Podesite status učitavanja dugmeta",
+          "name": "Učitavanje"
         },
         "shape": {
-          "description": "Можете поставити облик дугмета",
-          "name": "Облик"
+          "description": "Može se podesiti oblik dugmeta",
+          "name": "Oblik"
         },
         "size": {
-          "description": "Подесите величину дугмета",
-          "name": "Величина"
+          "description": "Podesite veličinu dugmeta",
+          "name": "Veličina"
         },
         "target": {
-          "description": "Исто као и циљни атрибут а функционише када је наведена спољна веза",
-          "name": "Циљ"
+          "description": "Isto kao ciljni atribut a, radi kada je određen href",
+          "name": "Cilj"
         },
         "type": {
-          "description": "Може се поставити као основни текст везе са подразумеваном тачком духа",
-          "name": "Тип"
+          "description": "Može se podesiti na podrazumevani tekst primarne isprekidane veze sa duhom",
+          "name": "Tip"
         }
       }
     },
     "AntCol": {
-      "description": "Колона табеле",
-      "name": "Мравињак",
+      "description": "Kolona rešetke",
+      "name": "Ant Col",
       "props": {
         "flex": {
-          "description": "Флексибилан стил распореда",
-          "name": "Савити"
+          "description": "Fleksibilni stil rasporeda",
+          "name": "Flek"
         },
         "lg": {
-          "description": "Екран ≥ 992 пиксела",
-          "name": "Компанија LG"
+          "description": "Ekran ≥ 992pk",
+          "name": "Lg"
         },
         "md": {
-          "description": "Екран ≥ 768 пиксела",
-          "name": "Мериленд"
+          "description": "Ekran ≥ 768pk",
+          "name": "MD"
         },
         "offset": {
-          "description": "Број ћелија за померање Цол улево",
-          "name": "Пристрасност"
+          "description": "Broj ćelija koje će nadoknaditi Col sa leve strane",
+          "name": "Ofset"
         },
         "order": {
-          "description": "Редослед распореда растера",
-          "name": "Наручивање"
+          "description": "Rasterski poredak",
+          "name": "Naručite"
         },
         "pull": {
-          "description": "Број ћелија које растер помера улево",
-          "name": "Повуци"
+          "description": "Broj ćelija koje raster se pomeraju ulevo",
+          "name": "Povucite"
         },
         "push": {
-          "description": "Број ћелија које растер помера удесно",
-          "name": "Гурање"
+          "description": "Broj ćelija koje rasterski se pomeraju udesno",
+          "name": "Pritisni"
         },
         "sm": {
-          "description": "Екран ≥ 576 пиксела",
-          "name": "См"
+          "description": "Ekran ≥ 576pk",
+          "name": "Sm"
         },
         "span": {
-          "description": "Растер број заузетих ћелија",
-          "name": "Размакницу"
+          "description": "Rasterski broj ćelija koje treba zauzeti",
+          "name": "Raspon"
         },
         "xl": {
-          "description": "Екран ≥ 1200 пиксела",
-          "name": "Xl"
+          "description": "Ekran ≥ 1200pk",
+          "name": "KSl"
         },
         "xs": {
-          "description": "Екран &lt; 576 пиксела, као и подразумевана подешавања",
-          "name": "Xs"
+          "description": "Ekran <576pk i takođe podrazumevano podešavanje",
+          "name": "Kss"
         },
         "xxl": {
-          "description": "Екран ≥ 1600 пиксела",
-          "name": "Xxl"
+          "description": "Ekran ≥ 1600pk",
+          "name": "Ksksl"
         }
       }
     },
     "AntInput": {
-      "description": "Помоћу миша или тастатуре унесите садржај, то је најједноставнија љуска поља обрасца",
-      "name": "Унос мрава",
+      "description": "Kroz sadržaj unosa miša ili tastature, to je najosnovniji omot polja obrasca",
+      "name": "Ulaz mrava",
       "props": {
         "disabled": {
-          "description": "Да ли је пријава онемогућена",
-          "name": "Неспособан за рад"
+          "description": "Da li je unos onemogućen",
+          "name": "Onemogućeno"
         },
         "showCount": {
-          "description": "Да ли приказати број знакова",
-          "name": "Прикажи количину"
+          "description": "Da li treba prikazati broj znakova",
+          "name": "Prikaži broj"
         },
         "size": {
-          "description": "Величина поља за унос",
-          "name": "Величина"
+          "description": "Veličina kutije za unos",
+          "name": "Veličina"
         },
         "status": {
-          "description": "Подесите статус верификације",
-          "name": "Статус"
+          "description": "Podesite status validacije",
+          "name": "Status"
         },
         "value": {
-          "description": "Улазна вредност садржаја",
-          "name": "Вредност"
+          "description": "Vrednost ulaznog sadržaja",
+          "name": "Vrednost"
         },
         "variant": {
-          "description": "Опције уноса",
-          "name": "Опција"
+          "description": "Varijante ulaza",
+          "name": "Varijanta"
         }
       }
     },
     "AntModal": {
-      "description": "Прикажите модални дијалошки оквир са насловом, подручјем садржаја и дугмадима за акцију",
-      "name": "Модални мрав",
+      "description": "Prikažite modalni dijaloški okvir koji pruža naslov, područje sadržaja i dugmad za akciju",
+      "name": "Ant Modal",
       "props": {
         "cancelText": {
-          "description": "Текст дугмета за отказивање",
-          "name": "Поништи текст"
+          "description": "Tekst dugmeta Otkaži",
+          "name": "Otkaži tekst"
         },
         "centered": {
-          "description": "Центрирани модални",
-          "name": "Фокусиран"
+          "description": "Centrirani modal",
+          "name": "Centriran"
         },
         "keyboard": {
-          "description": "Да ли је притисак тастера Есц подржан за затварање",
-          "name": "Тастатура"
+          "description": "Da li podrška pritisne ESC za zatvaranje",
+          "name": "Tastatura"
         },
         "okText": {
-          "description": "Текст дугмета\"ОК\"",
-          "name": "Текст је у реду"
+          "description": "Tekst dugmeta OK",
+          "name": "OK tekst"
         }
       }
     },
     "AntRow": {
-      "description": "Линија мреже",
-      "name": "Ред мрава",
+      "description": "Red rešetke",
+      "name": "Ant Rov",
       "props": {
         "align": {
-          "description": "Вертикално поравнање",
-          "name": "Изравнати"
+          "description": "Vertikalno poravnanje",
+          "name": "Poravnati"
         },
         "gutter": {
-          "description": "Размак између мрежа",
-          "name": "Водосток"
+          "description": "Razmak između rešetki",
+          "name": "Oluci"
         },
         "justify": {
-          "description": "Хоризонтална локација",
-          "name": "Оправдати"
+          "description": "Horizontalni raspored",
+          "name": "Opravdati"
         },
         "wrap": {
-          "description": "Линија аутоматског омотача",
-          "name": "Замотајте"
+          "description": "Linija za automatsko umotavanje",
+          "name": "Omotajte"
         }
       }
     },
     "AntTable": {
-      "description": "Табела приказује редове података",
-      "name": "Мрав сто",
+      "description": "Tabela prikazuje redove podataka",
+      "name": "Tabela mrava",
       "props": {
         "bordered": {
-          "description": "Да ли треба приказати све границе табеле",
-          "name": "Гранични"
+          "description": "Da li treba prikazati sve granice tabele",
+          "name": "Ograničen"
         },
         "columns": {
-          "description": "Колоне табеле",
-          "name": "Колоне"
+          "description": "Kolone tabele",
+          "name": "Kolone"
         },
         "dataSource": {
-          "description": "Приказани низ записа података",
-          "name": "Извор података"
+          "description": "Niz zapisa podataka koji će se prikazati",
+          "name": "Izvor podataka"
         },
         "loading": {
-          "description": "Статус учитавања табеле",
-          "name": "Утовар"
+          "description": "Status učitavanja tabele",
+          "name": "Učitavanje"
         },
         "rowHoverable": {
-          "description": "Прелазак мишем преко линије",
-          "name": "Низ са могућношћу замрзавања"
+          "description": "Zadržavanje reda",
+          "name": "Red sa lebdenjem"
         },
         "rowKey": {
-          "description": "Јединствени кључ низа",
-          "name": "Кључ реда"
+          "description": "Jedinstveni ključ Rova",
+          "name": "Taster za red"
         },
         "showHeader": {
-          "description": "Да ли приказати заглавље табеле",
-          "name": "Прикажи наслов"
+          "description": "Da li treba prikazati zaglavlje tabele",
+          "name": "Prikaži zaglavlje"
         },
         "showSorterTooltip": {
-          "description": "Наслов приказује опис о следећем смеру сортирања",
-          "name": "Прикажи опис сортера"
+          "description": "Zaglavlje prikazuje sledeći savet alata za smer sortiranja",
+          "name": "Prikaži alatku za sortiranje"
         },
         "size": {
-          "description": "Величина табеле",
-          "name": "Величина"
+          "description": "Veličina stola",
+          "name": "Veličina"
         },
         "sticky": {
-          "description": "Подесите Фиксни наслов и траку за померање",
-          "name": "Лепљив"
+          "description": "Podesite lepljivo zaglavlje i traku za pomeranje",
+          "name": "Lepljivo"
         }
       }
     },
     "AntTooltip": {
-      "description": "Једноставан текстуални искачући прозор",
-      "name": "Ант опис",
+      "description": "Jednostavan iskačući okvir za tekst",
+      "name": "Tip alata za mravce",
       "props": {
         "placement": {
-          "description": "Положај описа алата у односу на циљни објекат",
-          "name": "Смештај"
+          "description": "Položaj alata u odnosu na cilj",
+          "name": "plasman"
         },
         "text": {
-          "description": "Текст приказан у опису",
-          "name": "Текст"
+          "description": "Tekst prikazan u savetu alata",
+          "name": "Tekst"
         },
         "trigger": {
-          "description": "Режим покретања алата",
-          "name": "Окидач"
+          "description": "Režim okidača alata",
+          "name": "Okidač"
         }
       }
     }

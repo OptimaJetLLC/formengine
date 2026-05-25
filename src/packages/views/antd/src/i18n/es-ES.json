@@ -1,20 +1,20 @@
 {
   "categories": {
     "antd": {
-      "name": "Componentes de Diseño Ant"
+      "name": "Componentes de Ant Design"
     }
   },
   "components": {
     "AntButton": {
-      "description": "Un botón significa una operación (o una serie de operaciones). Al hacer clic en un botón, se activará su lógica comercial correspondiente",
+      "description": "Un botón significa una operación (o una serie de operaciones). Al hacer clic en un botón, se activará su lógica empresarial correspondiente",
       "name": "Botón Ant",
       "props": {
         "block": {
           "description": "Opción para ajustar el ancho del botón a su ancho principal",
-          "name": "Bloque"
+          "name": "Bloquear"
         },
         "children": {
-          "description": "Leyenda",
+          "description": "Subtítulo",
           "name": "Contenido"
         },
         "danger": {
@@ -22,15 +22,15 @@
           "name": "Peligro"
         },
         "disabled": {
-          "description": "Estado deshabilitado del botón",
-          "name": "Discapacitados"
+          "description": "Estado desactivado del botón",
+          "name": "Discapacitado"
         },
         "ghost": {
           "description": "Haga que el fondo sea transparente e invierta los colores del texto y los bordes",
           "name": "Fantasma"
         },
         "href": {
-          "description": "Redirigir URL del botón de enlace",
+          "description": "Redirigir la URL del botón de enlace",
           "name": "Href"
         },
         "htmlType": {
@@ -54,14 +54,14 @@
           "name": "Objetivo"
         },
         "type": {
-          "description": "Se puede establecer en texto de enlace discontinuo fantasma primario predeterminado",
+          "description": "Se puede configurar como texto principal de enlace discontinuo fantasma predeterminado",
           "name": "Tipo"
         }
       }
     },
     "AntCol": {
       "description": "La columna de la cuadrícula",
-      "name": "Col de Hormiga",
+      "name": "Hormiga fría",
       "props": {
         "flex": {
           "description": "Estilo de diseño flexible",
@@ -69,57 +69,57 @@
         },
         "lg": {
           "description": "Pantalla ≥ 992px",
-          "name": "Lg"
+          "name": "Log"
         },
         "md": {
-          "description": "Pantalla ≥ 768px",
-          "name": "Md"
+          "description": "Pantalla ≥ 768 px",
+          "name": "Maryland"
         },
         "offset": {
-          "description": "El número de celdas para desplazar Col desde la izquierda",
-          "name": "Desplazamiento"
+          "description": "El número de celdas para desplazar a Col desde la izquierda",
+          "name": "Compensación"
         },
         "order": {
-          "description": "Orden de trama",
-          "name": "Orden"
+          "description": "Orden de ráster",
+          "name": "Pedido"
         },
         "pull": {
-          "description": "El número de celdas que rasteriza se mueve a la izquierda",
-          "name": "Tirar"
+          "description": "La cantidad de celdas en las que el ráster se mueve hacia la izquierda",
+          "name": "Tira"
         },
         "push": {
-          "description": "El número de celdas que rasteriza se mueve a la derecha",
-          "name": "Empuje"
+          "description": "La cantidad de celdas en las que el ráster se mueve hacia la derecha",
+          "name": "Empuja"
         },
         "sm": {
-          "description": "Pantalla ≥ 576px",
+          "description": "Pantalla ≥ 576 px",
           "name": "Sm"
         },
         "span": {
-          "description": "Raster número de celdas a ocupar",
-          "name": "Palmo"
+          "description": "Número ráster de celdas que se van a ocupar",
+          "name": "España"
         },
         "xl": {
-          "description": "Pantalla ≥ 1200 píxeles",
-          "name": "Talla Xl"
+          "description": "Pantalla ≥ 1200 px",
+          "name": "XL"
         },
         "xs": {
-          "description": "Pantalla &lt; 576px y también configuración predeterminada",
+          "description": "Pantalla < 576 píxeles y también configuración predeterminada",
           "name": "Xs"
         },
         "xxl": {
-          "description": "Pantalla ≥ 1600 píxeles",
-          "name": "Xxl"
+          "description": "Pantalla ≥ 1600 px",
+          "name": "XXL"
         }
       }
     },
     "AntInput": {
-      "description": "A través del contenido de entrada del mouse o del teclado, es el contenedor de campo de formulario más básico",
-      "name": "Entrada de Hormigas",
+      "description": "A través del contenido de entrada del ratón o el teclado, es el envoltorio de campos de formulario más básico.",
+      "name": "Entrada Ant",
       "props": {
         "disabled": {
           "description": "Si la entrada está deshabilitada",
-          "name": "Discapacitados"
+          "name": "Discapacitado"
         },
         "showCount": {
           "description": "Si mostrar el recuento de caracteres",
@@ -138,13 +138,13 @@
           "name": "Valor"
         },
         "variant": {
-          "description": "Variantes de Entrada",
+          "description": "Variantes de entrada",
           "name": "Variante"
         }
       }
     },
     "AntModal": {
-      "description": "Mostrar un cuadro de diálogo modal, que proporciona un título, un área de contenido y botones de acción",
+      "description": "Mostrar un cuadro de diálogo modal con un título, un área de contenido y botones de acción",
       "name": "Hormiga Modal",
       "props": {
         "cancelText": {
@@ -152,7 +152,7 @@
           "name": "Cancelar texto"
         },
         "centered": {
-          "description": "Modal Centrado",
+          "description": "Modal centrado",
           "name": "Centrado"
         },
         "keyboard": {
@@ -160,21 +160,21 @@
           "name": "Teclado"
         },
         "okText": {
-          "description": "Texto del botón Aceptar",
+          "description": "Texto del botón OK",
           "name": "Texto OK"
         }
       }
     },
     "AntRow": {
       "description": "La fila de la cuadrícula",
-      "name": "Fila de Hormigas",
+      "name": "Hormiga Row",
       "props": {
         "align": {
           "description": "Alineación vertical",
           "name": "Alinear"
         },
         "gutter": {
-          "description": "Espaciado entre cuadrículas",
+          "description": "Espaciado entre rejillas",
           "name": "Canalón"
         },
         "justify": {
@@ -183,16 +183,16 @@
         },
         "wrap": {
           "description": "Línea de envoltura automática",
-          "name": "Envoltura"
+          "name": "Envolver"
         }
       }
     },
     "AntTable": {
       "description": "Una tabla muestra filas de datos",
-      "name": "Mesa de Hormigas",
+      "name": "Mesa Ant",
       "props": {
         "bordered": {
-          "description": "Si mostrar todos los bordes de la tabla",
+          "description": "Si se deben mostrar todos los bordes de la tabla",
           "name": "Bordeado"
         },
         "columns": {
@@ -208,34 +208,34 @@
           "name": "Cargando"
         },
         "rowHoverable": {
-          "description": "Desplazamiento de fila",
+          "description": "Row Hover",
           "name": "Fila flotante"
         },
         "rowKey": {
-          "description": "Clave única de Row",
-          "name": "Clave de fila"
+          "description": "La clave única de Row",
+          "name": "Tecla de fila"
         },
         "showHeader": {
-          "description": "Si mostrar el encabezado de la tabla",
+          "description": "Si se debe mostrar el encabezado de la tabla",
           "name": "Mostrar encabezado"
         },
         "showSorterTooltip": {
-          "description": "El encabezado muestra la información sobre herramientas de la siguiente dirección del clasificador",
+          "description": "El encabezado muestra la siguiente información sobre la dirección del clasificador",
           "name": "Mostrar información sobre herramientas del clasificador"
         },
         "size": {
-          "description": "Tamaño de la tabla",
+          "description": "Tamaño de la mesa",
           "name": "Tamaño"
         },
         "sticky": {
-          "description": "Establecer encabezado adhesivo y barra de desplazamiento",
+          "description": "Establecer un encabezado fijo y una barra de desplazamiento",
           "name": "Pegajoso"
         }
       }
     },
     "AntTooltip": {
       "description": "Cuadro emergente de texto simple",
-      "name": "Información sobre herramientas Ant",
+      "name": "Información sobre herramientas para hormigas",
       "props": {
         "placement": {
           "description": "La posición de la información sobre herramientas en relación con el objetivo",
@@ -246,8 +246,8 @@
           "name": "Texto"
         },
         "trigger": {
-          "description": "Modo de activación de información sobre herramientas",
-          "name": "Disparador"
+          "description": "Modo de activación Tooltip",
+          "name": "Activar"
         }
       }
     }

@@ -7,31 +7,31 @@
   "components": {
     "FastQR": {
       "description": "Komponente, die Text in QR-Codes umwandeln kann und benutzerdefinierte Farben und Logos unterstützt",
-      "name": "QR-Code",
+      "name": "QR Kode",
       "props": {
         "content": {
           "description": "Der Inhalt des QR-Codes",
           "name": "Inhalt"
         },
         "errorCorrectionLevel": {
-          "description": "Die Fehlerkorrektur-Codierungsstufe",
-          "name": "Fehlerkorrekturstufe"
+          "description": "Die Codierungsstufe zur Fehlerkorrektur",
+          "name": "Stufe der Fehlerkorrektur"
         },
         "image": {
-          "description": "Das Bild, base64 oder URL",
+          "description": "Das Bild, Base64 oder URL",
           "name": "Bild"
         },
         "imageBackgroundColor": {
-          "description": "Die Hintergrundfarbe des Bildes",
-          "name": "Hintergrundfarbe des Bildes"
+          "description": "Die Hintergrundfarbe des Bilds",
+          "name": "Hintergrundfarbe des Bilds"
         },
         "imageBackgroundShape": {
-          "description": "Die Bildhintergrundform",
-          "name": "Bildhintergrundform"
+          "description": "Die Form des Bildhintergrunds",
+          "name": "Form des Bildhintergrunds"
         },
         "moduleColor": {
-          "description": "Die Modulfarbe",
-          "name": "Modulfarbe"
+          "description": "Die Farbe des Moduls",
+          "name": "Farbe des Moduls"
         },
         "shape": {
           "description": "Die verschiedenen möglichen Formen zur Darstellung von Modulen",
@@ -42,7 +42,7 @@
           "name": "QR-Version"
         },
         "width": {
-          "description": "Die QR-Code-Breite",
+          "description": "Die Breite des QR-Codes",
           "name": "Breite"
         }
       }

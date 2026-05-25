@@ -1,49 +1,49 @@
 {
   "categories": {
     "static": {
-      "name": "Статички"
+      "name": "Statički"
     }
   },
   "components": {
     "FastQR": {
-      "description": "Компонента која може претворити текст у КР кодове и одржавати прилагођену боју и логотип",
-      "name": "КР код",
+      "description": "Komponenta koja može pretvoriti tekst u KR kodove i podržava prilagođenu boju i logotip",
+      "name": "KR kod",
       "props": {
         "content": {
-          "description": "Садржај КР кода",
-          "name": "Садржај"
+          "description": "Sadržaj KR koda",
+          "name": "Sadržaj"
         },
         "errorCorrectionLevel": {
-          "description": "Ниво кодирања за исправљање грешака",
-          "name": "Ниво корекције грешака"
+          "description": "Nivo kodiranja korekcije grešaka",
+          "name": "Nivo korekcije greške"
         },
         "image": {
-          "description": "Слика, басе64 или УРЛ",
-          "name": "Слика"
+          "description": "Slika, base64 ili URL",
+          "name": "Slika"
         },
         "imageBackgroundColor": {
-          "description": "Боја позадине слике",
-          "name": "Боја позадине слике"
+          "description": "Boja pozadine slike",
+          "name": "Boja pozadine slike"
         },
         "imageBackgroundShape": {
-          "description": "Облик позадине слике",
-          "name": "Облик позадине слике"
+          "description": "Oblik pozadine slike",
+          "name": "Oblik pozadine slike"
         },
         "moduleColor": {
-          "description": "Боја модула",
-          "name": "Боја модула"
+          "description": "Boja modula",
+          "name": "Boja modula"
         },
         "shape": {
-          "description": "Различити могући облици за представљање модула",
-          "name": "Облик"
+          "description": "Različiti mogući oblici za predstavljanje modula",
+          "name": "Oblik"
         },
         "version": {
-          "description": "Верзија са КР кодом",
-          "name": "Верзија КР кода"
+          "description": "Verzija KR koda",
+          "name": "KR verzija"
         },
         "width": {
-          "description": "Ширина КР кода",
-          "name": "Ширина"
+          "description": "Širina KR koda",
+          "name": "Širina"
         }
       }
     }

@@ -14,24 +14,24 @@
           "name": "Valeur initiale"
         },
         "label": {
-          "description": "Le label",
-          "name": "Étiquette"
+          "description": "L'étiquette",
+          "name": "étiquette"
         },
         "modules": {
           "description": "Permet de personnaliser le comportement et les fonctionnalités de l'éditeur. Lisez la documentation pour plus d'informations",
-          "name": "Les Modules"
+          "name": "Modules"
         },
         "placeholder": {
           "description": "L'espace réservé",
-          "name": "Espace Réservé"
+          "name": "Espace réservé"
         },
         "readOnly": {
-          "description": "Indicateur en lecture seule",
+          "description": "Drapeau en lecture seule",
           "name": "Lecture seule"
         },
         "toolbarOptions": {
-          "description": "Groupes de boutons à afficher sur la barre d'outils",
-          "name": "Options de la barre d'outils"
+          "description": "Groupes de boutons à afficher dans la barre d'outils",
+          "name": "Options de barre d'outils"
         }
       }
     }

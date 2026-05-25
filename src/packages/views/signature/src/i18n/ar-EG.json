@@ -1,12 +1,12 @@
 {
   "categories": {
     "fields": {
-      "name": "الحقول"
+      "name": "حقول"
     }
   },
   "components": {
     "RsSignature": {
-      "description": "هتمل5 قماش على أساس السلس توقيع الرسم",
+      "description": "رسم توقيع سلس قائم على قماش HTML5",
       "name": "التوقيع",
       "props": {
         "backgroundColor": {
@@ -14,16 +14,16 @@
           "name": "لون الخلفية"
         },
         "clearButtonText": {
-          "description": "مسح تسمية الزر",
+          "description": "تسمية زر واضحة",
           "name": "مسح نص الزر"
         },
         "height": {
-          "description": "ارتفاع قماش",
+          "description": "ارتفاع القماش",
           "name": "الارتفاع"
         },
         "label": {
-          "description": "التسمية للمكون",
-          "name": "التسمية"
+          "description": "التسمية الخاصة بالمكون",
+          "name": "ملصق"
         },
         "lineWidth": {
           "description": "عرض الخط",
@@ -34,16 +34,16 @@
           "name": "لون القلم"
         },
         "readOnly": {
-          "description": "علم للقراءة فقط",
+          "description": "علامة للقراءة فقط",
           "name": "للقراءة فقط"
         },
         "value": {
-          "description": "عنوان ورل للبيانات الأولية لرسم صورة التوقيع",
+          "description": "عنوان URL للبيانات الأولية لرسم صورة التوقيع",
           "name": "القيمة"
         },
         "width": {
-          "description": "عرض قماش",
-          "name": "العرض"
+          "description": "عرض اللوحة",
+          "name": "عرض"
         }
       }
     }
