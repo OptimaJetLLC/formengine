@@ -1,4 +1,4 @@
-import {define, isNull, useComponentData} from '@react-form-builder/core'
+import {define, isBoolean, isNull, isNumber, isString, useComponentData} from '@react-form-builder/core'
 import {useMemo} from 'react'
 import './styles.css'
 
@@ -20,15 +20,15 @@ function highlightJson(json: string) {
   const processValue = (value: any, indent = 0) => {
     const indentStr = '  '.repeat(indent)
 
-    if (typeof value === 'string') {
+    if (isString(value)) {
       return processString(value)
     }
 
-    if (typeof value === 'number') {
+    if (isNumber(value)) {
       return `<span class="number">${value}</span>`
     }
 
-    if (typeof value === 'boolean') {
+    if (isBoolean(value)) {
       return `<span class="boolean">${value}</span>`
     }
 

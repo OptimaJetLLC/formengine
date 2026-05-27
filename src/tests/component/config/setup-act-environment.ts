@@ -6,12 +6,17 @@
  */
 import {beforeEach} from 'vitest'
 
-const setActEnvironment = () => {
-  (globalThis as {IS_REACT_ACT_ENVIRONMENT?: boolean}).IS_REACT_ACT_ENVIRONMENT = true
+declare global {
+  // eslint-disable-next-line no-var
+  var IS_REACT_ACT_ENVIRONMENT: boolean | undefined
 }
 
-setActEnvironment()
+const enableReactActEnvironment = () => {
+  globalThis.IS_REACT_ACT_ENVIRONMENT = true
+}
+
+enableReactActEnvironment()
 
 beforeEach(() => {
-  setActEnvironment()
+  enableReactActEnvironment()
 })

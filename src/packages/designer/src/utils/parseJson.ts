@@ -1,7 +1,7 @@
-import {isNull, isNumber, isObject, isUndefined} from '@react-form-builder/core'
+import {isDate, isNull, isNumber, isObject, isUndefined} from '@react-form-builder/core'
 import {humanizeFileSize} from './formatters'
 
-const isValidDate = (value: any) => value instanceof Date && !Number.isNaN(value.getTime())
+const isValidDate = (value: any) => isDate(value) && !Number.isNaN(value.getTime())
 
 /**
  * Parses the JSON string into a JavaScript object.
@@ -57,7 +57,7 @@ export const prepareForJson = (data: any, options?: {
       return
     }
 
-    if (value instanceof Date) {
+    if (isDate(value)) {
       filtered[key] = isValidDate(value) ? value.toISOString() : 'Invalid date'
       return
     }

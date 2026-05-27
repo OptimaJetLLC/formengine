@@ -1,7 +1,5 @@
 import type {Annotation, ResolvedValidator, Store} from '@react-form-builder/core'
-import {isEmpty, isPromise} from '@react-form-builder/core'
-
-const isDate = (value: any) => value instanceof Date
+import {isDate, isEmpty, isNumber, isPromise} from '@react-form-builder/core'
 
 /**
  * Creates a validator for the specified metadata properties of the component.
@@ -13,7 +11,7 @@ const isDate = (value: any) => value instanceof Date
 export const annotationResolver = ({annotation, store}: { annotation: Annotation, store: Store }): ResolvedValidator => {
   const checkRequired = (value: any) => {
     if (annotation.required) {
-      if (typeof value === 'number') return
+      if (isNumber(value)) return
       if (isDate(value) || !isEmpty(value)) return
       return [{
         settings: {key: 'required_property'},

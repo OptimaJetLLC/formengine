@@ -15,7 +15,7 @@ import type {IFormData} from '../IFormData'
 import {isRecord} from '../isRecord'
 import {nameObservable} from '../observableNaming'
 import {SyncEvent} from '../SyncEvent'
-import {camelCase, isEmpty, isUndefined, merge, uniqueId} from '../tools'
+import {camelCase, isEmpty, isNumber, isUndefined, merge, uniqueId} from '../tools'
 import {treeForEach} from '../treeUtils'
 
 function assignNewKey(item: ComponentStore, existingKeys: Set<string>) {
@@ -423,7 +423,7 @@ export class ComponentData implements IFormData {
    * @returns the object to read and modify parent data (available for array elements).
    */
   get parentData() {
-    const indexExists = typeof this.nearestIndex === 'number'
+    const indexExists = isNumber(this.nearestIndex)
     if (!indexExists) return undefined
     return this.parent?.data ?? this.rootData
   }

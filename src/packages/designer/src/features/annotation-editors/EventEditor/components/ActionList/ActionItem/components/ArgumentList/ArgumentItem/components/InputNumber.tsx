@@ -1,4 +1,4 @@
-import {isUndefined, namedObserver} from '@react-form-builder/core'
+import {isNumber, isUndefined, namedObserver} from '@react-form-builder/core'
 import {Close} from '@rsuite/icons'
 import {useCallback} from 'react'
 import {InputGroup, InputNumber as RInputNumber} from 'rsuite'
@@ -12,7 +12,7 @@ const RawInputNumber = ({name}: InputProps) => {
   const handleChange = useCallback((value: string | number | null) => {
     const newArgs = Object.assign({}, data.args)
     delete newArgs[name]
-    if (typeof value === 'string' || typeof value === 'number') {
+    if (typeof value === 'string' || isNumber(value)) {
       newArgs[name] = Number(value)
     }
     // eslint-disable-next-line react-hooks/immutability

@@ -8,6 +8,244 @@ import type {ILocalizationStore} from './ILocalizationStore'
 
 const className = 'LocalizationStore'
 
+class LocalizationRepository {
+  constructor(
+    private readonly getValue: () => LocalizationValue,
+    private readonly getCompatibleId: (rawId: string) => string
+  ) {
+  }
+
+  initializeLanguageState(configuredLanguageCodes: Set<LanguageFullCode>) {
+    const value = this.getValue()
+    for (const key of Object.keys(value) as LanguageFullCode[]) {
+      configuredLanguageCodes.add(key)
+      if (this.#isLanguageBucketEmpty(key)) {
+        delete value[key]
+      }
+    }
+  }
+
+  getLocalization(targetLanguage: LanguageFullCode, componentKey: string, propertyName: string, type: LocalizationType) {
+    const compatibleKey = this.getCompatibleId(componentKey)
+    const compatibleName = this.getCompatibleId(propertyName)
+    return this.getValue()[targetLanguage]?.[compatibleKey]?.[type]?.[compatibleName]
+  }
+
+  setLocalization(languageFullCode: LanguageFullCode, componentKey: string, propertyName: string, type: LocalizationType, value: unknown) {
+    const compatibleId = this.getCompatibleId(componentKey)
+    const compatibleName = this.getCompatibleId(propertyName)
+
+    if (value === '') {
+      this.#removeLocalizationProperty(languageFullCode, compatibleId, type, compatibleName)
+      return
+    }
+
+    const localization = this.getValue()
+    localization[languageFullCode] ??= {}
+    localization[languageFullCode][compatibleId] ??= {}
+    localization[languageFullCode][compatibleId][type] ??= {}
+    localization[languageFullCode][compatibleId][type][compatibleName] = value
+  }
+
+  removeLocalization(componentKey: string, langCodes: LanguageFullCode[]) {
+    const compatibleKey = this.getCompatibleId(componentKey)
+
+    for (const languageFullCode of langCodes) {
+      const languageLocalization = this.getValue()[languageFullCode]
+      if (!languageLocalization) continue
+
+      delete languageLocalization[compatibleKey]
+      if (Object.keys(languageLocalization).length === 0) {
+        delete this.getValue()[languageFullCode]
+      }
+    }
+  }
+
+  removeLocalizationForType(componentKey: string, type: LocalizationType, langCodes: LanguageFullCode[]) {
+    const compatibleKey = this.getCompatibleId(componentKey)
+
+    for (const languageFullCode of langCodes) {
+      const languageLocalization = this.getValue()[languageFullCode]
+      if (!languageLocalization?.[compatibleKey]) continue
+
+      delete languageLocalization[compatibleKey][type]
+      if (Object.keys(languageLocalization[compatibleKey]).length === 0) {
+        delete languageLocalization[compatibleKey]
+      }
+      if (Object.keys(languageLocalization).length === 0) {
+        delete this.getValue()[languageFullCode]
+      }
+    }
+  }
+
+  hasLocalization(componentKey: string, propertyName: string, type: LocalizationType) {
+    const key = this.getCompatibleId(componentKey)
+    const property = this.getCompatibleId(propertyName)
+
+    return Object.values(this.getValue()).some(localization => {
+      return !isUndefined(localization?.[key]?.[type]?.[property])
+    })
+  }
+
+  getLocalizationForComponent(componentKey: string, langCodes: LanguageFullCode[]) {
+    const compatibleKey = this.getCompatibleId(componentKey)
+    const localization: LocalizationValue = {}
+
+    for (const languageFullCode of langCodes) {
+      const languageLocalization = this.getValue()[languageFullCode]
+      if (!languageLocalization) continue
+
+      const component = languageLocalization[compatibleKey]
+      if (component) {
+        localization[languageFullCode] = {}
+        localization[languageFullCode][componentKey] = component
+      }
+    }
+    return localization
+  }
+
+  addLocalizationWithNewKey(localization: LocalizationValue, oldComponentKey: string, newComponentKey: string) {
+    const compatibleKey = this.getCompatibleId(newComponentKey)
+    const langCodes = Object.keys(localization) as Array<LanguageFullCode>
+
+    for (const languageFullCode of langCodes) {
+      const component = localization[languageFullCode][oldComponentKey]
+      if (!component) continue
+
+      const storeValue = this.getValue()
+      storeValue[languageFullCode] ??= {}
+      storeValue[languageFullCode][compatibleKey] = component
+    }
+  }
+
+  changeComponentKey(oldComponentKey: string, newComponentKey: string, langCodes: LanguageFullCode[]) {
+    const compatibleOldKey = this.getCompatibleId(oldComponentKey)
+    const compatibleNewKey = this.getCompatibleId(newComponentKey)
+
+    for (const languageFullCode of langCodes) {
+      const languageLocalization = this.getValue()[languageFullCode]
+      if (!languageLocalization) continue
+
+      const component = languageLocalization[compatibleOldKey]
+      if (component) {
+        languageLocalization[compatibleNewKey] = component
+        delete languageLocalization[compatibleOldKey]
+      }
+    }
+  }
+
+  #removeLocalizationProperty(
+    languageFullCode: LanguageFullCode,
+    compatibleId: string,
+    type: LocalizationType,
+    compatibleName: string
+  ) {
+    const localization = this.getValue()
+    const langBucket = localization[languageFullCode]
+    const componentBucket = langBucket?.[compatibleId]
+    const typeBucket = componentBucket?.[type]
+    if (!typeBucket || !Object.prototype.hasOwnProperty.call(typeBucket, compatibleName)) return
+
+    delete typeBucket[compatibleName]
+
+    if (Object.keys(typeBucket).length === 0) {
+      delete componentBucket[type]
+    }
+    if (componentBucket && Object.keys(componentBucket).length === 0) {
+      delete langBucket[compatibleId]
+    }
+    if (langBucket && Object.keys(langBucket).length === 0) {
+      delete localization[languageFullCode]
+    }
+  }
+
+  #isLanguageBucketEmpty(languageFullCode: LanguageFullCode) {
+    const localization = this.getValue()[languageFullCode]
+    return !!localization && Object.keys(localization).length === 0
+  }
+}
+
+class LocalizationLanguageResolver {
+  constructor(
+    private readonly configuredLanguageCodes: Set<LanguageFullCode>,
+    private readonly hasTranslations: (language: LanguageFullCode) => boolean,
+    private readonly withTranslationsLanguageKeys: () => LanguageFullCode[],
+  ) {
+  }
+
+  findLocalizationKey(languageFullCode: LanguageFullCode): LanguageFullCode | null {
+    const {
+      exactConfigured,
+      exactWithTranslations,
+      sameCodeConfigured,
+      sameCodeWithTranslations
+    } = this.#resolveLanguageMatch(languageFullCode)
+
+    if (exactWithTranslations) return exactWithTranslations
+    if (sameCodeWithTranslations) return sameCodeWithTranslations
+    if (exactConfigured) return exactConfigured
+    if (sameCodeConfigured) return sameCodeConfigured
+
+    return null
+  }
+
+  hasLanguage(languageFullCode: LanguageFullCode) {
+    return this.#findConfiguredLanguageKey(languageFullCode) !== null
+  }
+
+  #findConfiguredLanguageKey(languageFullCode: LanguageFullCode): LanguageFullCode | null {
+    const {exactConfigured, sameCodeConfigured} = this.#resolveLanguageMatch(languageFullCode)
+    return exactConfigured ?? sameCodeConfigured ?? null
+  }
+
+  #findExactLanguageWithTranslationsKey(languageFullCode: LanguageFullCode): LanguageFullCode | null {
+    return this.hasTranslations(languageFullCode) ? languageFullCode : null
+  }
+
+  #findExactConfiguredLanguageKey(languageFullCode: LanguageFullCode): LanguageFullCode | null {
+    if (this.hasTranslations(languageFullCode) || this.configuredLanguageCodes.has(languageFullCode)) {
+      return languageFullCode
+    }
+    return null
+  }
+
+  #findLanguageByCode(languageFullCode: LanguageFullCode, onlyWithTranslations: boolean): LanguageFullCode | null {
+    const [code] = languageFullCode.split('-')
+    for (const key of this.withTranslationsLanguageKeys()) {
+      if (!key.startsWith(`${code}-`)) continue
+      if (!onlyWithTranslations || this.hasTranslations(key)) {
+        return key
+      }
+    }
+    return null
+  }
+
+  #resolveLanguageMatch(languageFullCode: LanguageFullCode) {
+    const exactConfigured = this.#findExactConfiguredLanguageKey(languageFullCode)
+
+    const sameCodeConfigured = this.#findLanguageByCode(languageFullCode, false)
+      ?? this.#findConfiguredLanguageByCode(languageFullCode)
+
+    const exactWithTranslations = this.#findExactLanguageWithTranslationsKey(languageFullCode)
+    const sameCodeWithTranslations = this.#findLanguageByCode(languageFullCode, true)
+
+    return {
+      exactConfigured,
+      sameCodeConfigured,
+      exactWithTranslations,
+      sameCodeWithTranslations,
+    }
+  }
+
+  #findConfiguredLanguageByCode(languageFullCode: LanguageFullCode): LanguageFullCode | null {
+    const [code] = languageFullCode.split('-')
+    for (const key of this.configuredLanguageCodes) {
+      if (key.startsWith(`${code}-`)) return key
+    }
+    return null
+  }
+}
+
 class LocalizationObservable {
 
   constructor(readonly languageFullCode: LanguageFullCode,
@@ -60,6 +298,9 @@ class LocalizationObservable {
 export class LocalizationStore implements ILocalizationStore {
 
   private localizationCache = new Map<string, LocalizationObservable>()
+  private configuredLanguageCodes = new Set<LanguageFullCode>()
+  private repository: LocalizationRepository
+  private resolver: LocalizationLanguageResolver
 
   /**
    * Creates a new LocalizationStore instance.
@@ -67,7 +308,22 @@ export class LocalizationStore implements ILocalizationStore {
    * @param engine the localization engine to use.
    */
   constructor(readonly value: LocalizationValue = {}, readonly engine: ILocalizationEngine) {
+    this.repository = new LocalizationRepository(() => this.value, this.engine.getCompatibleId.bind(this.engine))
+    this.resolver = new LocalizationLanguageResolver(
+      this.configuredLanguageCodes,
+      this.#hasTranslations.bind(this),
+      () => Object.keys(this.value) as LanguageFullCode[],
+    )
+    this.#initializeLanguageState()
     makeAutoObservable(this, undefined, {name: nameObservable(className)})
+  }
+
+  #initializeLanguageState() {
+    this.repository.initializeLanguageState(this.configuredLanguageCodes)
+  }
+
+  #clearLocalizationCache() {
+    this.localizationCache.clear()
   }
 
   /**
@@ -79,11 +335,19 @@ export class LocalizationStore implements ILocalizationStore {
    * @returns the value of localization constant.
    */
   getLocalization(languageFullCode: LanguageFullCode, componentKey: string, propertyName: string, type: LocalizationType): unknown {
-    const compatibleKey = this.engine.getCompatibleId(componentKey)
-    const compatibleName = this.engine.getCompatibleId(propertyName)
     const targetKey = this.findLocalizationKey(languageFullCode) ?? languageFullCode
 
-    return this.value[targetKey]?.[compatibleKey]?.[type]?.[compatibleName]
+    return this.repository.getLocalization(targetKey, componentKey, propertyName, type)
+  }
+
+  /**
+   * Returns normalized localization item id for the component property.
+   * @param componentKey the component key.
+   * @param propertyName the component property name.
+   * @returns normalized localization item id.
+   */
+  getLocalizationItemId(componentKey: string, propertyName: string) {
+    return this.engine.getCompatibleId(`${componentKey}_${propertyName}`)
   }
 
   /**
@@ -95,42 +359,8 @@ export class LocalizationStore implements ILocalizationStore {
    * @param value the localization value to persist.
    */
   setLocalization(languageFullCode: LanguageFullCode, componentKey: string, propertyName: string, type: LocalizationType, value: unknown) {
-    const compatibleId = this.engine.getCompatibleId(componentKey)
-    const compatibleName = this.engine.getCompatibleId(propertyName)
-
-    if (value === '') {
-      this.#removeLocalizationProperty(languageFullCode, compatibleId, type, compatibleName)
-      return
-    }
-
-    this.value[languageFullCode] ??= {}
-    this.value[languageFullCode][compatibleId] ??= {}
-    this.value[languageFullCode][compatibleId][type] ??= {}
-    this.value[languageFullCode][compatibleId][type][compatibleName] = value as any
-  }
-
-  #removeLocalizationProperty(
-    languageFullCode: LanguageFullCode,
-    compatibleId: string,
-    type: LocalizationType,
-    compatibleName: string
-  ) {
-    const langBucket = this.value[languageFullCode]
-    const componentBucket = langBucket?.[compatibleId]
-    const typeBucket = componentBucket?.[type]
-    if (!typeBucket || !Object.prototype.hasOwnProperty.call(typeBucket, compatibleName)) return
-
-    delete typeBucket[compatibleName]
-
-    if (Object.keys(typeBucket).length === 0) {
-      delete componentBucket[type]
-    }
-    if (componentBucket && Object.keys(componentBucket).length === 0) {
-      delete langBucket[compatibleId]
-    }
-    if (langBucket && Object.keys(langBucket).length === 0) {
-      delete this.value[languageFullCode]
-    }
+    this.repository.setLocalization(languageFullCode, componentKey, propertyName, type, value)
+    this.#clearLocalizationCache()
   }
 
   /**
@@ -138,14 +368,8 @@ export class LocalizationStore implements ILocalizationStore {
    * @param componentKey the component key that requires localization removal.
    */
   removeLocalization(componentKey: string) {
-    const compatibleKey = this.engine.getCompatibleId(componentKey)
-
-    for (const languageFullCode of this.langCodes) {
-      delete this.value[languageFullCode][compatibleKey]
-      if (Object.keys(this.value[languageFullCode]).length === 0) {
-        delete this.value[languageFullCode]
-      }
-    }
+    this.repository.removeLocalization(componentKey, this.langCodes)
+    this.#clearLocalizationCache()
   }
 
   /**
@@ -154,18 +378,8 @@ export class LocalizationStore implements ILocalizationStore {
    * @param type the localization type.
    */
   removeLocalizationForType(componentKey: string, type: LocalizationType) {
-    const compatibleKey = this.engine.getCompatibleId(componentKey)
-
-    for (const languageFullCode of this.langCodes) {
-      if (!this.value[languageFullCode][compatibleKey]) continue
-      delete this.value[languageFullCode][compatibleKey][type]
-      if (Object.keys(this.value[languageFullCode][compatibleKey]).length === 0) {
-        delete this.value[languageFullCode][compatibleKey]
-      }
-      if (Object.keys(this.value[languageFullCode]).length === 0) {
-        delete this.value[languageFullCode]
-      }
-    }
+    this.repository.removeLocalizationForType(componentKey, type, this.langCodes)
+    this.#clearLocalizationCache()
   }
 
   /**
@@ -175,7 +389,7 @@ export class LocalizationStore implements ILocalizationStore {
    * @returns true if the specified language exists in the localization.
    */
   hasLanguage(languageFullCode: LanguageFullCode) {
-    return this.#findConfiguredLanguageKey(languageFullCode) !== null
+    return this.resolver.hasLanguage(languageFullCode)
   }
 
   /**
@@ -186,12 +400,7 @@ export class LocalizationStore implements ILocalizationStore {
    * @returns true if the specified property has localization in at least one language.
    */
   hasLocalization(componentKey: string, propertyName: string, type: LocalizationType) {
-    const key = this.engine.getCompatibleId(componentKey)
-    const property = this.engine.getCompatibleId(propertyName)
-
-    return Object.values(this.value).some(localization => {
-      return !isUndefined(localization?.[key]?.[type]?.[property])
-    })
+    return this.repository.hasLocalization(componentKey, propertyName, type)
   }
 
   /**
@@ -201,41 +410,7 @@ export class LocalizationStore implements ILocalizationStore {
    * @returns the best matching language full code or null if no match found.
    */
   findLocalizationKey(languageFullCode: LanguageFullCode): LanguageFullCode | null {
-    const exactKey = this.#findExactLanguageKey(languageFullCode)
-    if (exactKey && this.#hasTranslations(exactKey)) return exactKey
-
-    const byCodeWithTranslations = this.#findLanguageByCode(languageFullCode, true)
-    if (byCodeWithTranslations) return byCodeWithTranslations
-
-    if (exactKey) return exactKey
-    const byCode = this.#findLanguageByCode(languageFullCode, false)
-    if (byCode) return byCode
-    return null
-  }
-
-  #findConfiguredLanguageKey(languageFullCode: LanguageFullCode): LanguageFullCode | null {
-    const exactKey = this.#findExactLanguageKey(languageFullCode)
-    if (exactKey) return exactKey
-
-    return this.#findLanguageByCode(languageFullCode, false)
-  }
-
-  #findExactLanguageKey(languageFullCode: LanguageFullCode): LanguageFullCode | null {
-    if (!this.value[languageFullCode]) return null
-    return languageFullCode
-  }
-
-  #findLanguageByCode(languageFullCode: LanguageFullCode, onlyWithTranslations: boolean): LanguageFullCode | null {
-    const [code] = languageFullCode.split('-')
-    for (const key of Object.keys(this.value)) {
-      if (!key.startsWith(`${code}-`)) continue
-      const candidate = key as LanguageFullCode
-      if (!onlyWithTranslations || this.#hasTranslations(candidate)) {
-        return candidate
-      }
-    }
-
-    return null
+    return this.resolver.findLocalizationKey(languageFullCode)
   }
 
   #hasTranslations(languageFullCode: LanguageFullCode): boolean {
@@ -260,16 +435,8 @@ export class LocalizationStore implements ILocalizationStore {
    * @param newComponentKey the new component key to replace the old component key.
    */
   changeComponentKey(oldComponentKey: string, newComponentKey: string) {
-    const compatibleOldKey = this.engine.getCompatibleId(oldComponentKey)
-    const compatibleNewKey = this.engine.getCompatibleId(newComponentKey)
-
-    for (const languageFullCode of this.langCodes) {
-      const component = this.value[languageFullCode][compatibleOldKey]
-      if (component) {
-        this.value[languageFullCode][compatibleNewKey] = component
-        delete this.value[languageFullCode][compatibleOldKey]
-      }
-    }
+    this.repository.changeComponentKey(oldComponentKey, newComponentKey, this.langCodes)
+    this.#clearLocalizationCache()
   }
 
   /**
@@ -278,17 +445,7 @@ export class LocalizationStore implements ILocalizationStore {
    * @returns the object containing the localization values for the component in each supported language.
    */
   getLocalizationForComponent(componentKey: string) {
-    const compatibleKey = this.engine.getCompatibleId(componentKey)
-    const localization: LocalizationValue = {}
-
-    for (const languageFullCode of this.langCodes) {
-      const component = this.value[languageFullCode][compatibleKey]
-      if (component) {
-        localization[languageFullCode] = {}
-        localization[languageFullCode][componentKey] = component
-      }
-    }
-    return localization
+    return this.repository.getLocalizationForComponent(componentKey, this.langCodes)
   }
 
   /**
@@ -298,21 +455,17 @@ export class LocalizationStore implements ILocalizationStore {
    * @param newComponentKey the new component key to be added.
    */
   addLocalizationWithNewKey(localization: LocalizationValue, oldComponentKey: string, newComponentKey: string) {
-    const compatibleKey = this.engine.getCompatibleId(newComponentKey)
-    const langCodes = Object.keys(localization) as Array<LanguageFullCode>
-
-    for (const languageFullCode of langCodes) {
-      const component = localization[languageFullCode][oldComponentKey]
-      if (component) {
-        this.value[languageFullCode][compatibleKey] = component
-      }
-    }
+    this.repository.addLocalizationWithNewKey(localization, oldComponentKey, newComponentKey)
+    this.#clearLocalizationCache()
   }
 
   /**
    * @returns the available language codes.
    */
   get langCodes() {
-    return Object.keys(this.value) as Array<LanguageFullCode>
+    return [...new Set([
+      ...Object.keys(this.value),
+      ...this.configuredLanguageCodes,
+    ])] as Array<LanguageFullCode>
   }
 }

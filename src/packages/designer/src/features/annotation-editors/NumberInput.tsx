@@ -1,3 +1,4 @@
+import {isNumber} from '@react-form-builder/core'
 import {Close} from '@rsuite/icons'
 import cx from 'clsx'
 import {useCallback, useMemo} from 'react'
@@ -24,7 +25,7 @@ export const NumberInput = (props: AnnotationEditorProps) => {
   const inputNumberProps = {
     ...editorProps,
     ...calculateEditorProps?.(componentData),
-    value: typeof value === 'number' ? value : null,
+    value: isNumber(value) ? value : null,
   }
   const closeButton = useMemo(
     () => <Close onClick={onClean} className={styles.closeButton}/>,

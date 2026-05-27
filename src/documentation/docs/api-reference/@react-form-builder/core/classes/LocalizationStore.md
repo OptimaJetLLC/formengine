@@ -40,6 +40,10 @@ the localization engine to use.
 
 the localization engine to use.
 
+#### Implementation of
+
+[`ILocalizationStore`](../interfaces/ILocalizationStore.md).[`engine`](../interfaces/ILocalizationStore.md#engine)
+
 ***
 
 ### value
@@ -47,6 +51,10 @@ the localization engine to use.
 > `readonly` **value**: [`LocalizationValue`](../type-aliases/LocalizationValue.md) = `{}`
 
 the initial localization value.
+
+#### Implementation of
+
+[`ILocalizationStore`](../interfaces/ILocalizationStore.md).[`value`](../interfaces/ILocalizationStore.md#value)
 
 ## Accessors
 
@@ -237,6 +245,38 @@ the object containing the localization values for the component in each supporte
 
 ***
 
+### getLocalizationItemId()
+
+> **getLocalizationItemId**(`componentKey`, `propertyName`): `string`
+
+Returns normalized localization item id for the component property.
+
+#### Parameters
+
+##### componentKey
+
+`string`
+
+the component key.
+
+##### propertyName
+
+`string`
+
+the component property name.
+
+#### Returns
+
+`string`
+
+normalized localization item id.
+
+#### Implementation of
+
+[`ILocalizationStore`](../interfaces/ILocalizationStore.md).[`getLocalizationItemId`](../interfaces/ILocalizationStore.md#getlocalizationitemid)
+
+***
+
 ### hasLanguage()
 
 > **hasLanguage**(`languageFullCode`): `boolean`
@@ -257,6 +297,10 @@ The full code (en-US, en-GB etc.) of the language to be checked.
 `boolean`
 
 true if the specified language exists in the localization.
+
+#### Implementation of
+
+[`ILocalizationStore`](../interfaces/ILocalizationStore.md).[`hasLanguage`](../interfaces/ILocalizationStore.md#haslanguage)
 
 ***
 
@@ -292,6 +336,10 @@ the type of localization.
 
 true if the specified property has localization in at least one language.
 
+#### Implementation of
+
+[`ILocalizationStore`](../interfaces/ILocalizationStore.md).[`hasLocalization`](../interfaces/ILocalizationStore.md#haslocalization)
+
 ***
 
 ### removeLocalization()
@@ -311,6 +359,10 @@ the component key that requires localization removal.
 #### Returns
 
 `void`
+
+#### Implementation of
+
+[`ILocalizationStore`](../interfaces/ILocalizationStore.md).[`removeLocalization`](../interfaces/ILocalizationStore.md#removelocalization)
 
 ***
 
@@ -337,6 +389,10 @@ the localization type.
 #### Returns
 
 `void`
+
+#### Implementation of
+
+[`ILocalizationStore`](../interfaces/ILocalizationStore.md).[`removeLocalizationForType`](../interfaces/ILocalizationStore.md#removelocalizationfortype)
 
 ***
 

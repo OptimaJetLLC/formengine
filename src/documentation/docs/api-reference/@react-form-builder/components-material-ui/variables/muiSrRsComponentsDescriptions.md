@@ -14,7 +14,7 @@
 
 #### categories.dataDisplay.name
 
-> **categories.dataDisplay.name**: `string` = `"Приказ података"`
+> **categories.dataDisplay.name**: `string` = `"Prikaz podataka"`
 
 #### categories.feedback
 
@@ -22,7 +22,7 @@
 
 #### categories.feedback.name
 
-> **categories.feedback.name**: `string` = `"Повратне информације"`
+> **categories.feedback.name**: `string` = `"Povratne informacije"`
 
 #### categories.form
 
@@ -30,7 +30,7 @@
 
 #### categories.form.name
 
-> **categories.form.name**: `string` = `"Облик"`
+> **categories.form.name**: `string` = `"Obrazac"`
 
 #### categories.inputs
 
@@ -38,7 +38,7 @@
 
 #### categories.inputs.name
 
-> **categories.inputs.name**: `string` = `"Улазни"`
+> **categories.inputs.name**: `string` = `"Ulazi"`
 
 #### categories.layout
 
@@ -46,7 +46,7 @@
 
 #### categories.layout.name
 
-> **categories.layout.name**: `string` = `"Локација"`
+> **categories.layout.name**: `string` = `"Raspored"`
 
 #### categories.navigation
 
@@ -54,7 +54,7 @@
 
 #### categories.navigation.name
 
-> **categories.navigation.name**: `string` = `"Навигација"`
+> **categories.navigation.name**: `string` = `"Navigacija"`
 
 #### categories.surfaces
 
@@ -62,7 +62,7 @@
 
 #### categories.surfaces.name
 
-> **categories.surfaces.name**: `string` = `"Површине"`
+> **categories.surfaces.name**: `string` = `"Površine"`
 
 ### commonProperties
 
@@ -74,11 +74,11 @@
 
 #### commonProperties.checked.description
 
-> **commonProperties.checked.description**: `string` = `"Ако је вредност Труе, тада се компонента проверава"`
+> **commonProperties.checked.description**: `string` = `"Ako je tačno, komponenta se proverava"`
 
 #### commonProperties.checked.name
 
-> **commonProperties.checked.name**: `string` = `"Проверено"`
+> **commonProperties.checked.name**: `string` = `"Provereno"`
 
 #### commonProperties.children
 
@@ -86,11 +86,11 @@
 
 #### commonProperties.children.description
 
-> **commonProperties.children.description**: `string` = `"Садржај компоненте"`
+> **commonProperties.children.description**: `string` = `"Sadržaj komponente"`
 
 #### commonProperties.children.name
 
-> **commonProperties.children.name**: `string` = `"Деца"`
+> **commonProperties.children.name**: `string` = `"Deca"`
 
 #### commonProperties.color
 
@@ -98,11 +98,11 @@
 
 #### commonProperties.color.description
 
-> **commonProperties.color.description**: `string` = `"Боја компоненте"`
+> **commonProperties.color.description**: `string` = `"Boja komponente"`
 
 #### commonProperties.color.name
 
-> **commonProperties.color.name**: `string` = `"Боја"`
+> **commonProperties.color.name**: `string` = `"Boja"`
 
 #### commonProperties.defaultValue
 
@@ -110,11 +110,11 @@
 
 #### commonProperties.defaultValue.description
 
-> **commonProperties.defaultValue.description**: `string` = `"Подразумевана вредност. Користи се када се компонентом не управља"`
+> **commonProperties.defaultValue.description**: `string` = `"Podrazumevana vrednost. Koristite kada komponenta nije kontrolisana"`
 
 #### commonProperties.defaultValue.name
 
-> **commonProperties.defaultValue.name**: `string` = `"Подразумевана вредност"`
+> **commonProperties.defaultValue.name**: `string` = `"Podrazumevana vrednost"`
 
 #### commonProperties.dense
 
@@ -122,11 +122,11 @@
 
 #### commonProperties.dense.description
 
-> **commonProperties.dense.description**: `string` = `"Ако је вредност Труе, вертикално попуњавање се смањује"`
+> **commonProperties.dense.description**: `string` = `"Ako je tačno, smanjuje vertikalnu podlogu"`
 
 #### commonProperties.dense.name
 
-> **commonProperties.dense.name**: `string` = `"Густ"`
+> **commonProperties.dense.name**: `string` = `"Gusta"`
 
 #### commonProperties.disabled
 
@@ -134,11 +134,11 @@
 
 #### commonProperties.disabled.description
 
-> **commonProperties.disabled.description**: `string` = `"Ако је вредност Труе, тада је компонента онемогућена"`
+> **commonProperties.disabled.description**: `string` = `"Ako je tačno, komponenta je onemogućena"`
 
 #### commonProperties.disabled.name
 
-> **commonProperties.disabled.name**: `string` = `"Неспособан за рад"`
+> **commonProperties.disabled.name**: `string` = `"Onemogućeno"`
 
 #### commonProperties.disableGutters
 
@@ -146,11 +146,11 @@
 
 #### commonProperties.disableGutters.description
 
-> **commonProperties.disableGutters.description**: `string` = `"Ако је вредност Труе, онемогућава се леви и десни додатак"`
+> **commonProperties.disableGutters.description**: `string` = `"Ako je tačno, onemogućava levu i desnu podlogu"`
 
 #### commonProperties.disableGutters.name
 
-> **commonProperties.disableGutters.name**: `string` = `"Искључите олуке"`
+> **commonProperties.disableGutters.name**: `string` = `"Onemogućite oluke"`
 
 #### commonProperties.disablePadding
 
@@ -158,11 +158,11 @@
 
 #### commonProperties.disablePadding.description
 
-> **commonProperties.disablePadding.description**: `string` = `"Ако је тачно, онемогућава подразумевано попуњавање"`
+> **commonProperties.disablePadding.description**: `string` = `"Ako je tačno, onemogućava podrazumevanu podlogu"`
 
 #### commonProperties.disablePadding.name
 
-> **commonProperties.disablePadding.name**: `string` = `"Онемогући пуњење"`
+> **commonProperties.disablePadding.name**: `string` = `"Onemogućite podlogu"`
 
 #### commonProperties.error
 
@@ -170,11 +170,11 @@
 
 #### commonProperties.error.description
 
-> **commonProperties.error.description**: `string` = `"Ако је вредност Труе, компонента се приказује у стању грешке"`
+> **commonProperties.error.description**: `string` = `"Ako je tačno, komponenta se prikazuje u stanju greške"`
 
 #### commonProperties.error.name
 
-> **commonProperties.error.name**: `string` = `"Грешка"`
+> **commonProperties.error.name**: `string` = `"Greška"`
 
 #### commonProperties.fullWidth
 
@@ -182,11 +182,11 @@
 
 #### commonProperties.fullWidth.description
 
-> **commonProperties.fullWidth.description**: `string` = `"Ако је вредност Труе, компонента заузима целу ширину свог контејнера"`
+> **commonProperties.fullWidth.description**: `string` = `"Ako je tačno, komponenta zauzima punu širinu svog kontejnera"`
 
 #### commonProperties.fullWidth.name
 
-> **commonProperties.fullWidth.name**: `string` = `"Пуна ширина"`
+> **commonProperties.fullWidth.name**: `string` = `"Puna širina"`
 
 #### commonProperties.gutterBottom
 
@@ -194,11 +194,11 @@
 
 #### commonProperties.gutterBottom.description
 
-> **commonProperties.gutterBottom.description**: `string` = `"Ако је вредност Труе, онда ће текст имати доњу маргину"`
+> **commonProperties.gutterBottom.description**: `string` = `"Ako je tačno, tekst će imati donju marginu"`
 
 #### commonProperties.gutterBottom.name
 
-> **commonProperties.gutterBottom.name**: `string` = `"Дно олука"`
+> **commonProperties.gutterBottom.name**: `string` = `"Dno oluka"`
 
 #### commonProperties.helperText
 
@@ -206,11 +206,11 @@
 
 #### commonProperties.helperText.description
 
-> **commonProperties.helperText.description**: `string` = `"Помоћни текстуални садржај"`
+> **commonProperties.helperText.description**: `string` = `"Sadržaj pomoćnog teksta"`
 
 #### commonProperties.helperText.name
 
-> **commonProperties.helperText.name**: `string` = `"Помоћни текст"`
+> **commonProperties.helperText.name**: `string` = `"Pomoćni tekst"`
 
 #### commonProperties.margin
 
@@ -218,11 +218,11 @@
 
 #### commonProperties.margin.description
 
-> **commonProperties.margin.description**: `string` = `"Дефинише поље примењено на компоненту"`
+> **commonProperties.margin.description**: `string` = `"Definiše maržu koja se primenjuje na komponentu"`
 
 #### commonProperties.margin.name
 
-> **commonProperties.margin.name**: `string` = `"Профит"`
+> **commonProperties.margin.name**: `string` = `"Margina"`
 
 #### commonProperties.noWrap
 
@@ -230,11 +230,11 @@
 
 #### commonProperties.noWrap.description
 
-> **commonProperties.noWrap.description**: `string` = `"Ако је вредност Труе, текст се неће премотати, већ ће бити скраћен елипсом са преливањем текста"`
+> **commonProperties.noWrap.description**: `string` = `"Ako je tačno, tekst se neće omotati, već će se umesto toga skratiti elipsom preljeva teksta"`
 
 #### commonProperties.noWrap.name
 
-> **commonProperties.noWrap.name**: `string` = `"Без омота"`
+> **commonProperties.noWrap.name**: `string` = `"Bez omota"`
 
 #### commonProperties.onChange
 
@@ -242,11 +242,11 @@
 
 #### commonProperties.onChange.description
 
-> **commonProperties.onChange.description**: `string` = `"Повратни позив се активира када се вредност промени"`
+> **commonProperties.onChange.description**: `string` = `"Povratni poziv se otvara kada se vrednost promeni"`
 
 #### commonProperties.onChange.name
 
-> **commonProperties.onChange.name**: `string` = `"На промени"`
+> **commonProperties.onChange.name**: `string` = `"OnChange"`
 
 #### commonProperties.onClick
 
@@ -254,11 +254,11 @@
 
 #### commonProperties.onClick.description
 
-> **commonProperties.onClick.description**: `string` = `"Повратни позив се покреће када кликнете на компоненту"`
+> **commonProperties.onClick.description**: `string` = `"Povratni poziv se otvara kada se klikne komponenta"`
 
 #### commonProperties.onClick.name
 
-> **commonProperties.onClick.name**: `string` = `"Кликом миша"`
+> **commonProperties.onClick.name**: `string` = `"OnClick"`
 
 #### commonProperties.required
 
@@ -266,11 +266,11 @@
 
 #### commonProperties.required.description
 
-> **commonProperties.required.description**: `string` = `"Ако је вредност Труе, тада је елемент који се уноси обавезан"`
+> **commonProperties.required.description**: `string` = `"Ako je tačno, potreban je ulazni element"`
 
 #### commonProperties.required.name
 
-> **commonProperties.required.name**: `string` = `"Потребан"`
+> **commonProperties.required.name**: `string` = `"Obavezno"`
 
 #### commonProperties.size
 
@@ -278,11 +278,11 @@
 
 #### commonProperties.size.description
 
-> **commonProperties.size.description**: `string` = `"Величина компоненте"`
+> **commonProperties.size.description**: `string` = `"Veličina komponente"`
 
 #### commonProperties.size.name
 
-> **commonProperties.size.name**: `string` = `"Величина"`
+> **commonProperties.size.name**: `string` = `"Veličina"`
 
 #### commonProperties.sx
 
@@ -290,11 +290,11 @@
 
 #### commonProperties.sx.description
 
-> **commonProperties.sx.description**: `string` = `"Системски реквизити који вам омогућавају да дефинишете системске замене, као и додатне ЦСС стилове"`
+> **commonProperties.sx.description**: `string` = `"Sistemski rekvizit koji omogućava definisanje zamenjivanja sistema kao i dodatnih CSS stilova"`
 
 #### commonProperties.sx.name
 
-> **commonProperties.sx.name**: `string` = `"Sx"`
+> **commonProperties.sx.name**: `string` = `"Sks"`
 
 #### commonProperties.textAlign
 
@@ -302,11 +302,11 @@
 
 #### commonProperties.textAlign.description
 
-> **commonProperties.textAlign.description**: `string` = `"Поравнање текста"`
+> **commonProperties.textAlign.description**: `string` = `"Poravnanje teksta"`
 
 #### commonProperties.textAlign.name
 
-> **commonProperties.textAlign.name**: `string` = `"Поравнање"`
+> **commonProperties.textAlign.name**: `string` = `"Poravnanje"`
 
 #### commonProperties.value
 
@@ -314,11 +314,11 @@
 
 #### commonProperties.value.description
 
-> **commonProperties.value.description**: `string` = `"Вредност компоненте"`
+> **commonProperties.value.description**: `string` = `"Vrednost komponente"`
 
 #### commonProperties.value.name
 
-> **commonProperties.value.name**: `string` = `"Вредност"`
+> **commonProperties.value.name**: `string` = `"Vrednost"`
 
 #### commonProperties.variant
 
@@ -326,11 +326,11 @@
 
 #### commonProperties.variant.description
 
-> **commonProperties.variant.description**: `string` = `"Опција за употребу"`
+> **commonProperties.variant.description**: `string` = `"Varijanta za upotrebu"`
 
 #### commonProperties.variant.name
 
-> **commonProperties.variant.name**: `string` = `"Опција"`
+> **commonProperties.variant.name**: `string` = `"Varijanta"`
 
 ### components
 
@@ -342,11 +342,11 @@
 
 #### components.MuiBox.description
 
-> **components.MuiBox.description**: `string` = `"Универзални контејнер за распоред са подршком за системски стил"`
+> **components.MuiBox.description**: `string` = `"Kontejner generičkog rasporeda sa podrškom za oblikovanje sistema"`
 
 #### components.MuiBox.name
 
-> **components.MuiBox.name**: `string` = `"Кутија"`
+> **components.MuiBox.name**: `string` = `"Kutija"`
 
 #### components.MuiBreadcrumbs
 
@@ -354,11 +354,11 @@
 
 #### components.MuiBreadcrumbs.description
 
-> **components.MuiBreadcrumbs.description**: `string` = `"Приказује тренутну локацију странице у хијерархији"`
+> **components.MuiBreadcrumbs.description**: `string` = `"Prikazuje trenutnu lokaciju stranice unutar hijerarhije"`
 
 #### components.MuiBreadcrumbs.name
 
-> **components.MuiBreadcrumbs.name**: `string` = `"Хлебне мрвице"`
+> **components.MuiBreadcrumbs.name**: `string` = `"Hlebne mrvice"`
 
 #### components.MuiBreadcrumbs.props
 
@@ -370,11 +370,11 @@
 
 #### components.MuiBreadcrumbs.props.items.description
 
-> **components.MuiBreadcrumbs.props.items.description**: `string` = `"Производи од презле за демонстрацију"`
+> **components.MuiBreadcrumbs.props.items.description**: `string` = `"Predmeti krušne mrvice za prikaz"`
 
 #### components.MuiBreadcrumbs.props.items.name
 
-> **components.MuiBreadcrumbs.props.items.name**: `string` = `"Предмети"`
+> **components.MuiBreadcrumbs.props.items.name**: `string` = `"Predmeti"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse
 
@@ -382,11 +382,11 @@
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"Ако је премашен максималан број ставки, број ставки приказаних након елипсе"`
+> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"Ako je maksimalni stavki prekoračen, broj stavki koje će se prikazati nakon elipse"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.name
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.name**: `string` = `"Елементи након пресавијања"`
+> **components.MuiBreadcrumbs.props.itemsAfterCollapse.name**: `string` = `"Predmeti nakon kolapsa"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse
 
@@ -394,11 +394,11 @@
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"Ако је премашен максималан број ставки, тада је број ставки приказаних пре елипсе"`
+> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"Ako je maksimalni stavki prekoračen, broj stavki koje će se prikazati pre elipse"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.name
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.name**: `string` = `"Елементи пре пресавијања"`
+> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.name**: `string` = `"Predmeti pre kolapsa"`
 
 #### components.MuiBreadcrumbs.props.maxItems
 
@@ -406,11 +406,11 @@
 
 #### components.MuiBreadcrumbs.props.maxItems.description
 
-> **components.MuiBreadcrumbs.props.maxItems.description**: `string` = `"Означава максималан број приказаних презли"`
+> **components.MuiBreadcrumbs.props.maxItems.description**: `string` = `"Određuje maksimalni broj hlebnih mrvica koje će se prikazati"`
 
 #### components.MuiBreadcrumbs.props.maxItems.name
 
-> **components.MuiBreadcrumbs.props.maxItems.name**: `string` = `"Максималан број елемената"`
+> **components.MuiBreadcrumbs.props.maxItems.name**: `string` = `"Maksimalni predmeti"`
 
 #### components.MuiBreadcrumbs.props.separator
 
@@ -418,11 +418,11 @@
 
 #### components.MuiBreadcrumbs.props.separator.description
 
-> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"Елемент који се користи за одвајање презле"`
+> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"Element koji se koristi za odvajanje predmeta od hlebnih mrvica"`
 
 #### components.MuiBreadcrumbs.props.separator.name
 
-> **components.MuiBreadcrumbs.props.separator.name**: `string` = `"Разделник"`
+> **components.MuiBreadcrumbs.props.separator.name**: `string` = `"Separator"`
 
 #### components.MuiButton
 
@@ -430,11 +430,11 @@
 
 #### components.MuiButton.description
 
-> **components.MuiButton.description**: `string` = `"Компонента дугмета која се користи за покретање радњи или догађаја"`
+> **components.MuiButton.description**: `string` = `"Komponenta dugmeta koja se koristi za pokretanje akcija ili događaja"`
 
 #### components.MuiButton.name
 
-> **components.MuiButton.name**: `string` = `"Дугме"`
+> **components.MuiButton.name**: `string` = `"Dugme"`
 
 #### components.MuiButton.props
 
@@ -446,11 +446,11 @@
 
 #### components.MuiButton.props.children.description
 
-> **components.MuiButton.props.children.description**: `string` = `"Потпис"`
+> **components.MuiButton.props.children.description**: `string` = `"Naslov"`
 
 #### components.MuiButton.props.children.name
 
-> **components.MuiButton.props.children.name**: `string` = `"Садржај"`
+> **components.MuiButton.props.children.name**: `string` = `"Sadržaj"`
 
 #### components.MuiButton.props.disableElevation
 
@@ -458,11 +458,11 @@
 
 #### components.MuiButton.props.disableElevation.description
 
-> **components.MuiButton.props.disableElevation.description**: `string` = `"Уклања сенку дугмета када се постави на Труе"`
+> **components.MuiButton.props.disableElevation.description**: `string` = `"Uklanja senku dugmeta kada je podešena na tačno"`
 
 #### components.MuiButton.props.disableElevation.name
 
-> **components.MuiButton.props.disableElevation.name**: `string` = `"Онемогући нивелисање"`
+> **components.MuiButton.props.disableElevation.name**: `string` = `"Onemogući nadmorsku visinu"`
 
 #### components.MuiButton.props.loading
 
@@ -470,11 +470,11 @@
 
 #### components.MuiButton.props.loading.description
 
-> **components.MuiButton.props.loading.description**: `string` = `"Приказује индикатор учитавања и искључује интеракцију"`
+> **components.MuiButton.props.loading.description**: `string` = `"Prikazuje indikator učitavanja i onemogućava interakciju"`
 
 #### components.MuiButton.props.loading.name
 
-> **components.MuiButton.props.loading.name**: `string` = `"Утовар"`
+> **components.MuiButton.props.loading.name**: `string` = `"Učitavanje"`
 
 #### components.MuiButtonGroup
 
@@ -482,11 +482,11 @@
 
 #### components.MuiButtonGroup.description
 
-> **components.MuiButtonGroup.description**: `string` = `"Групише повезана дугмад заједно"`
+> **components.MuiButtonGroup.description**: `string` = `"Grupirajte dugmad povezane zajedno"`
 
 #### components.MuiButtonGroup.name
 
-> **components.MuiButtonGroup.name**: `string` = `"Група дугмади"`
+> **components.MuiButtonGroup.name**: `string` = `"Grupa dugmadi"`
 
 #### components.MuiButtonGroup.props
 
@@ -498,11 +498,11 @@
 
 #### components.MuiButtonGroup.props.fullWidth.description
 
-> **components.MuiButtonGroup.props.fullWidth.description**: `string` = `"Омогућава групи дугмади да заузму целу ширину контејнера"`
+> **components.MuiButtonGroup.props.fullWidth.description**: `string` = `"Čini da grupa dugmadi obuhvati punu širinu kontejnera"`
 
 #### components.MuiButtonGroup.props.fullWidth.name
 
-> **components.MuiButtonGroup.props.fullWidth.name**: `string` = `"Пуна ширина"`
+> **components.MuiButtonGroup.props.fullWidth.name**: `string` = `"Puna širina"`
 
 #### components.MuiButtonGroup.props.orientation
 
@@ -510,11 +510,11 @@
 
 #### components.MuiButtonGroup.props.orientation.description
 
-> **components.MuiButtonGroup.props.orientation.description**: `string` = `"Поставља смер распореда тастера"`
+> **components.MuiButtonGroup.props.orientation.description**: `string` = `"Postavlja smer rasporeda tastera"`
 
 #### components.MuiButtonGroup.props.orientation.name
 
-> **components.MuiButtonGroup.props.orientation.name**: `string` = `"Оријентација"`
+> **components.MuiButtonGroup.props.orientation.name**: `string` = `"Orijentacija"`
 
 #### components.MuiCard
 
@@ -522,11 +522,11 @@
 
 #### components.MuiCard.description
 
-> **components.MuiCard.description**: `string` = `"Површинска компонента за груписање повезаног садржаја"`
+> **components.MuiCard.description**: `string` = `"Površinska komponenta za grupisanje srodnog sadržaja"`
 
 #### components.MuiCard.name
 
-> **components.MuiCard.name**: `string` = `"Мапа"`
+> **components.MuiCard.name**: `string` = `"Kartica"`
 
 #### components.MuiCard.props
 
@@ -538,11 +538,11 @@
 
 #### components.MuiCard.props.actions.description
 
-> **components.MuiCard.props.actions.description**: `string` = `"Акциони тастери или контроле за мапу"`
+> **components.MuiCard.props.actions.description**: `string` = `"Akcioni tasteri ili kontrole za karticu"`
 
 #### components.MuiCard.props.actions.name
 
-> **components.MuiCard.props.actions.name**: `string` = `"Акције"`
+> **components.MuiCard.props.actions.name**: `string` = `"Akcije"`
 
 #### components.MuiCard.props.header
 
@@ -550,11 +550,11 @@
 
 #### components.MuiCard.props.header.description
 
-> **components.MuiCard.props.header.description**: `string` = `"Садржај приказан у наслову картице"`
+> **components.MuiCard.props.header.description**: `string` = `"Sadržaj prikazan u zaglavlju kartice"`
 
 #### components.MuiCard.props.header.name
 
-> **components.MuiCard.props.header.name**: `string` = `"Наслов"`
+> **components.MuiCard.props.header.name**: `string` = `"zaglavlje"`
 
 #### components.MuiCard.props.headerAction
 
@@ -562,11 +562,11 @@
 
 #### components.MuiCard.props.headerAction.description
 
-> **components.MuiCard.props.headerAction.description**: `string` = `"Елемент акције приказан у наслову"`
+> **components.MuiCard.props.headerAction.description**: `string` = `"Element akcije prikazan u zaglavlju"`
 
 #### components.MuiCard.props.headerAction.name
 
-> **components.MuiCard.props.headerAction.name**: `string` = `"Акција наслова"`
+> **components.MuiCard.props.headerAction.name**: `string` = `"Radnja zaglavlja"`
 
 #### components.MuiCard.props.headerAvatar
 
@@ -574,11 +574,11 @@
 
 #### components.MuiCard.props.headerAvatar.description
 
-> **components.MuiCard.props.headerAvatar.description**: `string` = `"Елемент аватара приказан у наслову"`
+> **components.MuiCard.props.headerAvatar.description**: `string` = `"Element avatara prikazan u zaglavlju"`
 
 #### components.MuiCard.props.headerAvatar.name
 
-> **components.MuiCard.props.headerAvatar.name**: `string` = `"Аватар наслова"`
+> **components.MuiCard.props.headerAvatar.name**: `string` = `"Avatar zaglavlja"`
 
 #### components.MuiCard.props.media
 
@@ -586,11 +586,11 @@
 
 #### components.MuiCard.props.media.description
 
-> **components.MuiCard.props.media.description**: `string` = `"Мултимедијални садржај као што је слика или видео"`
+> **components.MuiCard.props.media.description**: `string` = `"Medijski sadržaj kao što su slika ili video"`
 
 #### components.MuiCard.props.media.name
 
-> **components.MuiCard.props.media.name**: `string` = `"Медији"`
+> **components.MuiCard.props.media.name**: `string` = `"Mediji"`
 
 #### components.MuiCard.props.onSelect
 
@@ -598,11 +598,11 @@
 
 #### components.MuiCard.props.onSelect.description
 
-> **components.MuiCard.props.onSelect.description**: `string` = `"Повратни позив се активира када одаберете картицу"`
+> **components.MuiCard.props.onSelect.description**: `string` = `"Povratni poziv se aktivira kada je kartica izabrana"`
 
 #### components.MuiCard.props.onSelect.name
 
-> **components.MuiCard.props.onSelect.name**: `string` = `"Приликом избора"`
+> **components.MuiCard.props.onSelect.name**: `string` = `"OnSelect"`
 
 #### components.MuiCard.props.subHeader
 
@@ -610,11 +610,11 @@
 
 #### components.MuiCard.props.subHeader.description
 
-> **components.MuiCard.props.subHeader.description**: `string` = `"Додатни текст приказан испод наслова"`
+> **components.MuiCard.props.subHeader.description**: `string` = `"Sekundarni tekst prikazan ispod zaglavlja"`
 
 #### components.MuiCard.props.subHeader.name
 
-> **components.MuiCard.props.subHeader.name**: `string` = `"Поднаслов"`
+> **components.MuiCard.props.subHeader.name**: `string` = `"Podzaglavlje"`
 
 #### components.MuiCard.props.useActions
 
@@ -622,11 +622,11 @@
 
 #### components.MuiCard.props.useActions.description
 
-> **components.MuiCard.props.useActions.description**: `string` = `"Приказује одељак са радњама на дну екрана"`
+> **components.MuiCard.props.useActions.description**: `string` = `"Prikazuje odeljak radnji na dnu"`
 
 #### components.MuiCard.props.useActions.name
 
-> **components.MuiCard.props.useActions.name**: `string` = `"Користите акције"`
+> **components.MuiCard.props.useActions.name**: `string` = `"Koristite akcije"`
 
 #### components.MuiCard.props.useCardActionArea
 
@@ -634,11 +634,11 @@
 
 #### components.MuiCard.props.useCardActionArea.description
 
-> **components.MuiCard.props.useCardActionArea.description**: `string` = `"Омотајте садржај око интерактивног подручја деловања"`
+> **components.MuiCard.props.useCardActionArea.description**: `string` = `"Obložava sadržaj sa područjem akcije na koju se može kliknuti"`
 
 #### components.MuiCard.props.useCardActionArea.name
 
-> **components.MuiCard.props.useCardActionArea.name**: `string` = `"Користите опсег мапе"`
+> **components.MuiCard.props.useCardActionArea.name**: `string` = `"Koristite područje akcije kartice"`
 
 #### components.MuiCard.props.useHeader
 
@@ -646,11 +646,11 @@
 
 #### components.MuiCard.props.useHeader.description
 
-> **components.MuiCard.props.useHeader.description**: `string` = `"Укључује одељак заглавља картице"`
+> **components.MuiCard.props.useHeader.description**: `string` = `"Omogućava odeljak zaglavlja kartice"`
 
 #### components.MuiCard.props.useHeader.name
 
-> **components.MuiCard.props.useHeader.name**: `string` = `"Користите наслов"`
+> **components.MuiCard.props.useHeader.name**: `string` = `"Koristite zaglavlje"`
 
 #### components.MuiCard.props.useHeaderAction
 
@@ -658,11 +658,11 @@
 
 #### components.MuiCard.props.useHeaderAction.description
 
-> **components.MuiCard.props.useHeaderAction.description**: `string` = `"Укључује опсег унутар заглавља"`
+> **components.MuiCard.props.useHeaderAction.description**: `string` = `"Omogućava područje akcije unutar zaglavlja"`
 
 #### components.MuiCard.props.useHeaderAction.name
 
-> **components.MuiCard.props.useHeaderAction.name**: `string` = `"Користите акцију заглавља"`
+> **components.MuiCard.props.useHeaderAction.name**: `string` = `"Koristite akciju zaglavlja"`
 
 #### components.MuiCard.props.useHeaderAvatar
 
@@ -670,11 +670,11 @@
 
 #### components.MuiCard.props.useHeaderAvatar.description
 
-> **components.MuiCard.props.useHeaderAvatar.description**: `string` = `"Приказује аватар унутар наслова"`
+> **components.MuiCard.props.useHeaderAvatar.description**: `string` = `"Prikazuje avatar unutar zaglavlja"`
 
 #### components.MuiCard.props.useHeaderAvatar.name
 
-> **components.MuiCard.props.useHeaderAvatar.name**: `string` = `"Користите аватар наслова"`
+> **components.MuiCard.props.useHeaderAvatar.name**: `string` = `"Koristite avatar zaglavlja"`
 
 #### components.MuiCard.props.useMedia
 
@@ -682,11 +682,11 @@
 
 #### components.MuiCard.props.useMedia.description
 
-> **components.MuiCard.props.useMedia.description**: `string` = `"Укључује одељак за медије унутар меморијске картице"`
+> **components.MuiCard.props.useMedia.description**: `string` = `"Omogućava medijski odeljak unutar kartice"`
 
 #### components.MuiCard.props.useMedia.name
 
-> **components.MuiCard.props.useMedia.name**: `string` = `"Користите медије"`
+> **components.MuiCard.props.useMedia.name**: `string` = `"Koristite medije"`
 
 #### components.MuiCard.props.useSubheader
 
@@ -694,11 +694,11 @@
 
 #### components.MuiCard.props.useSubheader.description
 
-> **components.MuiCard.props.useSubheader.description**: `string` = `"Приказује поднаслов испод главног наслова"`
+> **components.MuiCard.props.useSubheader.description**: `string` = `"Prikazuje podzaglavlje ispod glavnog zaglavlja"`
 
 #### components.MuiCard.props.useSubheader.name
 
-> **components.MuiCard.props.useSubheader.name**: `string` = `"Користите поднаслов"`
+> **components.MuiCard.props.useSubheader.name**: `string` = `"Koristite podzaglavlje"`
 
 #### components.MuiCheckbox
 
@@ -706,11 +706,11 @@
 
 #### components.MuiCheckbox.description
 
-> **components.MuiCheckbox.description**: `string` = `"Омогућава вам да одаберете једну или више опција"`
+> **components.MuiCheckbox.description**: `string` = `"Omogućava odabir jedne ili više opcija"`
 
 #### components.MuiCheckbox.name
 
-> **components.MuiCheckbox.name**: `string` = `"Поље за потврду"`
+> **components.MuiCheckbox.name**: `string` = `"Polje za potvrdu"`
 
 #### components.MuiCheckbox.props
 
@@ -722,11 +722,11 @@
 
 #### components.MuiCheckbox.props.defaultChecked.description
 
-> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"Почетно стање које се проверава са неконтролисаним"`
+> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"Početno provereno stanje kada je nekontrolisano"`
 
 #### components.MuiCheckbox.props.defaultChecked.name
 
-> **components.MuiCheckbox.props.defaultChecked.name**: `string` = `"Означено подразумевано поље за потврду"`
+> **components.MuiCheckbox.props.defaultChecked.name**: `string` = `"Podrazumevano označeno"`
 
 #### components.MuiCircularProgress
 
@@ -734,11 +734,11 @@
 
 #### components.MuiCircularProgress.description
 
-> **components.MuiCircularProgress.description**: `string` = `"Означава учитавање или напредак у облику круга"`
+> **components.MuiCircularProgress.description**: `string` = `"Označava učitavanje ili napredak u kružnom obliku"`
 
 #### components.MuiCircularProgress.name
 
-> **components.MuiCircularProgress.name**: `string` = `"Циклични напредак"`
+> **components.MuiCircularProgress.name**: `string` = `"Kružni napredak"`
 
 #### components.MuiCircularProgress.props
 
@@ -750,11 +750,11 @@
 
 #### components.MuiCircularProgress.props.disableShrink.description
 
-> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"Онемогућава анимацију компресије"`
+> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"Onemogućava animaciju smanjenja"`
 
 #### components.MuiCircularProgress.props.disableShrink.name
 
-> **components.MuiCircularProgress.props.disableShrink.name**: `string` = `"Онемогући компресију"`
+> **components.MuiCircularProgress.props.disableShrink.name**: `string` = `"Onemogući smanjivanje"`
 
 #### components.MuiCircularProgress.props.thickness
 
@@ -762,11 +762,11 @@
 
 #### components.MuiCircularProgress.props.thickness.description
 
-> **components.MuiCircularProgress.props.thickness.description**: `string` = `"Контролише ширину потеза круга"`
+> **components.MuiCircularProgress.props.thickness.description**: `string` = `"Kontroliše širinu hoda kruga"`
 
 #### components.MuiCircularProgress.props.thickness.name
 
-> **components.MuiCircularProgress.props.thickness.name**: `string` = `"Дебљина"`
+> **components.MuiCircularProgress.props.thickness.name**: `string` = `"Debljina"`
 
 #### components.MuiContainer
 
@@ -774,11 +774,11 @@
 
 #### components.MuiContainer.description
 
-> **components.MuiContainer.description**: `string` = `"Центрира и ограничава садржај хоризонтално"`
+> **components.MuiContainer.description**: `string` = `"Centrira i ograničava sadržaj horizontalno"`
 
 #### components.MuiContainer.name
 
-> **components.MuiContainer.name**: `string` = `"Контејнер"`
+> **components.MuiContainer.name**: `string` = `"kontejner"`
 
 #### components.MuiContainer.props
 
@@ -790,11 +790,11 @@
 
 #### components.MuiContainer.props.fixed.description
 
-> **components.MuiContainer.props.fixed.description**: `string` = `"Поставља фиксну максималну ширину уместо глатке"`
+> **components.MuiContainer.props.fixed.description**: `string` = `"Postavlja fiksnu maksimalnu širinu umesto fluidne"`
 
 #### components.MuiContainer.props.fixed.name
 
-> **components.MuiContainer.props.fixed.name**: `string` = `"Поправљено"`
+> **components.MuiContainer.props.fixed.name**: `string` = `"Fiksni"`
 
 #### components.MuiContainer.props.maxWidth
 
@@ -802,11 +802,11 @@
 
 #### components.MuiContainer.props.maxWidth.description
 
-> **components.MuiContainer.props.maxWidth.description**: `string` = `"Одређује максималну ширину контејнера"`
+> **components.MuiContainer.props.maxWidth.description**: `string` = `"Definiše maksimalnu širinu kontejnera"`
 
 #### components.MuiContainer.props.maxWidth.name
 
-> **components.MuiContainer.props.maxWidth.name**: `string` = `"Максимална ширина"`
+> **components.MuiContainer.props.maxWidth.name**: `string` = `"Maksimalna širina"`
 
 #### components.MuiDatePicker
 
@@ -814,11 +814,11 @@
 
 #### components.MuiDatePicker.description
 
-> **components.MuiDatePicker.description**: `string` = `"Компонента за одабир датума"`
+> **components.MuiDatePicker.description**: `string` = `"Komponenta za izbor datuma"`
 
 #### components.MuiDatePicker.name
 
-> **components.MuiDatePicker.name**: `string` = `"Бирач датума"`
+> **components.MuiDatePicker.name**: `string` = `"Birač datuma"`
 
 #### components.MuiDatePicker.props
 
@@ -830,11 +830,11 @@
 
 #### components.MuiDatePicker.props.autoFocus.description
 
-> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"Ако је вредност Труе, аутоматски се фокусира бирач датума приликом монтирања компоненте"`
+> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"Ako je tačno, automatski fokusira birač datuma kada se komponenta montira"`
 
 #### components.MuiDatePicker.props.autoFocus.name
 
-> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"Аутоматско фокусирање"`
+> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"Automatsko fokusiranje"`
 
 #### components.MuiDatePicker.props.closeOnSelect
 
@@ -842,11 +842,11 @@
 
 #### components.MuiDatePicker.props.closeOnSelect.description
 
-> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"Аутоматски затвара дијалог за одабир датума Након одабира датума"`
+> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"Automatski zatvara dijalog za odabir datuma nakon odabira datuma"`
 
 #### components.MuiDatePicker.props.closeOnSelect.name
 
-> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"Затвори при избору"`
+> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"Zatvori pri odabiru"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery
 
@@ -854,11 +854,11 @@
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.description
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"ЦСС линија медијског упита која одређује када се пребацити у режим радне површине"`
+> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"CSS niz upita medija koji određuje kada treba preći na izgled radne površine"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.name
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"Упит за медије у режиму радне површине"`
+> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"Medijski upit u režimu radne površine"`
 
 #### components.MuiDatePicker.props.disableFuture
 
@@ -866,11 +866,11 @@
 
 #### components.MuiDatePicker.props.disableFuture.description
 
-> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"Ако је вредност Труе, избор датума након тренутног датума није дозвољен"`
+> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"Ako je tačno, sprečava izbor datuma nakon trenutnog datuma"`
 
 #### components.MuiDatePicker.props.disableFuture.name
 
-> **components.MuiDatePicker.props.disableFuture.name**: `string` = `"Искључите будућност"`
+> **components.MuiDatePicker.props.disableFuture.name**: `string` = `"Onemogućite budućnost"`
 
 #### components.MuiDatePicker.props.disableHighlightToday
 
@@ -878,11 +878,11 @@
 
 #### components.MuiDatePicker.props.disableHighlightToday.description
 
-> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"Ако је постављено на тачно, онемогућава се визуелно истицање тренутног датума у календару"`
+> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"Ako je tačno, onemogućava vizuelno isticanje trenutnog datuma u kalendaru"`
 
 #### components.MuiDatePicker.props.disableHighlightToday.name
 
-> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"Искључите позадинско осветљење данас"`
+> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"Onemogućite označavanje danas"`
 
 #### components.MuiDatePicker.props.disableOpenPicker
 
@@ -890,11 +890,11 @@
 
 #### components.MuiDatePicker.props.disableOpenPicker.description
 
-> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"Ако је постављено на тачно, неће се отворити дијалог за одабир (корисно за приказ само за читање)."`
+> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"Ako je tačno, sprečava otvaranje dijaloga birača (korisno za prikaz samo za čitanje)"`
 
 #### components.MuiDatePicker.props.disableOpenPicker.name
 
-> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"Онемогућите Бирач отварања"`
+> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"Onemogućite otvoreni birač"`
 
 #### components.MuiDatePicker.props.disablePast
 
@@ -902,11 +902,11 @@
 
 #### components.MuiDatePicker.props.disablePast.description
 
-> **components.MuiDatePicker.props.disablePast.description**: `string` = `"Ако је вредност Труе, забрањује одабир датума који претходе тренутном датуму"`
+> **components.MuiDatePicker.props.disablePast.description**: `string` = `"Ako je tačno, sprečava izbor datuma pre trenutnog datuma"`
 
 #### components.MuiDatePicker.props.disablePast.name
 
-> **components.MuiDatePicker.props.disablePast.name**: `string` = `"Онемогући прошлост"`
+> **components.MuiDatePicker.props.disablePast.name**: `string` = `"Onemogućite prošlost"`
 
 #### components.MuiDatePicker.props.displayWeekNumber
 
@@ -914,11 +914,11 @@
 
 #### components.MuiDatePicker.props.displayWeekNumber.description
 
-> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"Приказује бројеве недеља у приказу календара"`
+> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"Prikazuje brojeve nedelja u prikazu kalendara"`
 
 #### components.MuiDatePicker.props.displayWeekNumber.name
 
-> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"Приказ броја недеље"`
+> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"Prikažite broj nedelje"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber
 
@@ -926,11 +926,11 @@
 
 #### components.MuiDatePicker.props.fixedWeekNumber.description
 
-> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"Фиксни број приказаних недеља (обезбеђује доследну висину календара)"`
+> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"Fiksni broj nedelja za prikaz (prisiljava doslednu visinu kalendara)"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber.name
 
-> **components.MuiDatePicker.props.fixedWeekNumber.name**: `string` = `"Фиксни број недеље"`
+> **components.MuiDatePicker.props.fixedWeekNumber.name**: `string` = `"Fiksni broj nedelje"`
 
 #### components.MuiDatePicker.props.format
 
@@ -938,11 +938,11 @@
 
 #### components.MuiDatePicker.props.format.description
 
-> **components.MuiDatePicker.props.format.description**: `string` = `"Низ формата датума који се користи за приказ и рашчлањивање (нпр."`
+> **components.MuiDatePicker.props.format.description**: `string` = `"Niz formata datuma koji se koristi za prikaz i raščlanjivanje (npr. „GGGGG-MM-DD“, „MM/DD/GGGG“)"`
 
 #### components.MuiDatePicker.props.format.name
 
-> **components.MuiDatePicker.props.format.name**: `string` = `"Формат"`
+> **components.MuiDatePicker.props.format.name**: `string` = `"Format"`
 
 #### components.MuiDatePicker.props.formatDensity
 
@@ -950,11 +950,11 @@
 
 #### components.MuiDatePicker.props.formatDensity.description
 
-> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"Одређује интервал између редова приликом форматирања датума: густ (Цомпацт) или волуметријски (више интервала)"`
+> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"Kontrolira razmak u formatiranju datuma: gust (kompaktan) ili prostran (veći razmak)"`
 
 #### components.MuiDatePicker.props.formatDensity.name
 
-> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"Густина формата"`
+> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"Gustina formata"`
 
 #### components.MuiDatePicker.props.loading
 
@@ -962,11 +962,11 @@
 
 #### components.MuiDatePicker.props.loading.description
 
-> **components.MuiDatePicker.props.loading.description**: `string` = `"Ако је вредност Труе, приказује се индикатор учитавања који указује да се подаци учитавају"`
+> **components.MuiDatePicker.props.loading.description**: `string` = `"Ako je tačno, prikazuje okretač za učitavanje koji pokazuje da se podaci učitavaju"`
 
 #### components.MuiDatePicker.props.loading.name
 
-> **components.MuiDatePicker.props.loading.name**: `string` = `"Утовар"`
+> **components.MuiDatePicker.props.loading.name**: `string` = `"Učitavanje"`
 
 #### components.MuiDatePicker.props.maxDate
 
@@ -974,11 +974,11 @@
 
 #### components.MuiDatePicker.props.maxDate.description
 
-> **components.MuiDatePicker.props.maxDate.description**: `string` = `"Најкаснији датум који се може одабрати (укључујући)"`
+> **components.MuiDatePicker.props.maxDate.description**: `string` = `"Poslednji datum koji se može izabrati (uključujući)"`
 
 #### components.MuiDatePicker.props.maxDate.name
 
-> **components.MuiDatePicker.props.maxDate.name**: `string` = `"Максимални Датум"`
+> **components.MuiDatePicker.props.maxDate.name**: `string` = `"Maksimalni datum"`
 
 #### components.MuiDatePicker.props.minDate
 
@@ -986,11 +986,11 @@
 
 #### components.MuiDatePicker.props.minDate.description
 
-> **components.MuiDatePicker.props.minDate.description**: `string` = `"Најранији датум који се може одабрати (укључујући)"`
+> **components.MuiDatePicker.props.minDate.description**: `string` = `"Najraniji datum koji se može izabrati (uključujući)"`
 
 #### components.MuiDatePicker.props.minDate.name
 
-> **components.MuiDatePicker.props.minDate.name**: `string` = `"Минимални Датум"`
+> **components.MuiDatePicker.props.minDate.name**: `string` = `"Minimalni datum"`
 
 #### components.MuiDatePicker.props.monthsPerRow
 
@@ -998,11 +998,11 @@
 
 #### components.MuiDatePicker.props.monthsPerRow.description
 
-> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"Број календара по Месецу који се приказују у сваком реду у приказима за месец / годину"`
+> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"Broj mesečnih kalendara za prikaz po redu u prikazima meseca/godine"`
 
 #### components.MuiDatePicker.props.monthsPerRow.name
 
-> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"Месеци у низу"`
+> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"Meseci po redu"`
 
 #### components.MuiDatePicker.props.name
 
@@ -1010,11 +1010,11 @@
 
 #### components.MuiDatePicker.props.name.description
 
-> **components.MuiDatePicker.props.name.description**: `string` = `"Атрибут Наме за поље обрасца који се користи приликом слања образаца"`
+> **components.MuiDatePicker.props.name.description**: `string` = `"Atribut imena polja obrasca, koji se koristi prilikom slanja obrazaca"`
 
 #### components.MuiDatePicker.props.name.name
 
-> **components.MuiDatePicker.props.name.name**: `string` = `"Име"`
+> **components.MuiDatePicker.props.name.name**: `string` = `"Naziv"`
 
 #### components.MuiDatePicker.props.onAccept
 
@@ -1022,11 +1022,11 @@
 
 #### components.MuiDatePicker.props.onAccept.description
 
-> **components.MuiDatePicker.props.onAccept.description**: `string` = `"Повратни позив се покреће када се вредност прихвати"`
+> **components.MuiDatePicker.props.onAccept.description**: `string` = `"Povratni poziv otpušten kada je vrednost prihvaćena"`
 
 #### components.MuiDatePicker.props.onAccept.name
 
-> **components.MuiDatePicker.props.onAccept.name**: `string` = `"Прихвати"`
+> **components.MuiDatePicker.props.onAccept.name**: `string` = `"OnPrihvati"`
 
 #### components.MuiDatePicker.props.onClose
 
@@ -1034,11 +1034,11 @@
 
 #### components.MuiDatePicker.props.onClose.description
 
-> **components.MuiDatePicker.props.onClose.description**: `string` = `"Повратни позив се активира када искачући прозор затражи затварање"`
+> **components.MuiDatePicker.props.onClose.description**: `string` = `"Povratni poziv se otvara kada skočni prozor zahteva zatvaranje"`
 
 #### components.MuiDatePicker.props.onClose.name
 
-> **components.MuiDatePicker.props.onClose.name**: `string` = `"На блиској удаљености"`
+> **components.MuiDatePicker.props.onClose.name**: `string` = `"OnClose"`
 
 #### components.MuiDatePicker.props.onError
 
@@ -1046,11 +1046,11 @@
 
 #### components.MuiDatePicker.props.onError.description
 
-> **components.MuiDatePicker.props.onError.description**: `string` = `"Повратни позив се покреће када се промени грешка повезана са тренутном вредношћу"`
+> **components.MuiDatePicker.props.onError.description**: `string` = `"Povratni poziv se otvara kada se greška povezana sa trenutnom vrednošću promeni"`
 
 #### components.MuiDatePicker.props.onError.name
 
-> **components.MuiDatePicker.props.onError.name**: `string` = `"Једна грешка"`
+> **components.MuiDatePicker.props.onError.name**: `string` = `"OnError"`
 
 #### components.MuiDatePicker.props.onMonthChange
 
@@ -1058,11 +1058,11 @@
 
 #### components.MuiDatePicker.props.onMonthChange.description
 
-> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"Повратни позив је извршен када се месец промени"`
+> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"Povratni poziv otpušten zbog promene meseca"`
 
 #### components.MuiDatePicker.props.onMonthChange.name
 
-> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"Месечна смена"`
+> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"Jednomesečna promena"`
 
 #### components.MuiDatePicker.props.onOpen
 
@@ -1070,11 +1070,11 @@
 
 #### components.MuiDatePicker.props.onOpen.description
 
-> **components.MuiDatePicker.props.onOpen.description**: `string` = `"Повратни позив се активира када искачући прозор затражи отварање"`
+> **components.MuiDatePicker.props.onOpen.description**: `string` = `"Povratni poziv se otvara kada iskačući prozor zahteva otvaranje"`
 
 #### components.MuiDatePicker.props.onOpen.name
 
-> **components.MuiDatePicker.props.onOpen.name**: `string` = `"Приликом отварања"`
+> **components.MuiDatePicker.props.onOpen.name**: `string` = `"OnOpen"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange
 
@@ -1082,11 +1082,11 @@
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.description
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"Повратни позив се активира када се изабране партиције промене"`
+> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"Povratni poziv se otvara kada se izabrani odeljci promene"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.name
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"Onselectedsections промена"`
+> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"OnIzabrani odeljcijePromena"`
 
 #### components.MuiDatePicker.props.onViewChange
 
@@ -1094,11 +1094,11 @@
 
 #### components.MuiDatePicker.props.onViewChange.description
 
-> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"Повратни позив се покреће када се приказ промени"`
+> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"Povratni poziv je pokrenut pri promeni prikaza"`
 
 #### components.MuiDatePicker.props.onViewChange.name
 
-> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"Промена приликом гледања"`
+> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"OnVievChange"`
 
 #### components.MuiDatePicker.props.onYearChange
 
@@ -1106,11 +1106,11 @@
 
 #### components.MuiDatePicker.props.onYearChange.description
 
-> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"Повратни позив је извршен приликом промене године"`
+> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"Povratni poziv otpušten zbog promene godine"`
 
 #### components.MuiDatePicker.props.onYearChange.name
 
-> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"Годишња промена"`
+> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"Jednogodišnja promena"`
 
 #### components.MuiDatePicker.props.open
 
@@ -1118,11 +1118,11 @@
 
 #### components.MuiDatePicker.props.open.description
 
-> **components.MuiDatePicker.props.open.description**: `string` = `"Ако је вредност Труе, отвара се дијалог за одабир датума; може се користити за контролу контролисаног стања"`
+> **components.MuiDatePicker.props.open.description**: `string` = `"Ako je tačno, dijalog za odabir datuma je otvoren; može se koristiti za kontrolisano upravljanje državama"`
 
 #### components.MuiDatePicker.props.open.name
 
-> **components.MuiDatePicker.props.open.name**: `string` = `"Отвори"`
+> **components.MuiDatePicker.props.open.name**: `string` = `"Otvori"`
 
 #### components.MuiDatePicker.props.openTo
 
@@ -1130,11 +1130,11 @@
 
 #### components.MuiDatePicker.props.openTo.description
 
-> **components.MuiDatePicker.props.openTo.description**: `string` = `"Поглед који се отвара када се Бирач активира"`
+> **components.MuiDatePicker.props.openTo.description**: `string` = `"Prikaz koji će se otvoriti kada je birač aktiviran"`
 
 #### components.MuiDatePicker.props.openTo.name
 
-> **components.MuiDatePicker.props.openTo.name**: `string` = `"Отворено за"`
+> **components.MuiDatePicker.props.openTo.name**: `string` = `"Otvoreno za"`
 
 #### components.MuiDatePicker.props.referenceDate
 
@@ -1142,11 +1142,11 @@
 
 #### components.MuiDatePicker.props.referenceDate.description
 
-> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"Датум који се користи за креирање почетног приказа календара ако вредност није изабрана"`
+> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"Datum koji se koristi za generisanje početnog prikaza kalendara kada nije izabrana vrednost"`
 
 #### components.MuiDatePicker.props.referenceDate.name
 
-> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"Оригинални датум"`
+> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"Referentni datum"`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth
 
@@ -1154,11 +1154,11 @@
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"Приказује дане претходног и следећег месеца У приказу текућег месеца"`
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"Prikazuje dane iz prethodnih i sledećih meseci u prikazu tekućeg meseca"`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"Прикажите дане изван текућег месеца"`
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"Prikaži dane van tekućeg meseca"`
 
 #### components.MuiDatePicker.props.view
 
@@ -1166,11 +1166,11 @@
 
 #### components.MuiDatePicker.props.view.description
 
-> **components.MuiDatePicker.props.view.description**: `string` = `"Почетни приказ за приказ (календар за дан, месец или годину)"`
+> **components.MuiDatePicker.props.view.description**: `string` = `"Početni prikaz za prikaz (kalendar dana, meseca ili godine)"`
 
 #### components.MuiDatePicker.props.view.name
 
-> **components.MuiDatePicker.props.view.name**: `string` = `"Погледајте"`
+> **components.MuiDatePicker.props.view.name**: `string` = `"Pogledaj"`
 
 #### components.MuiDatePicker.props.views
 
@@ -1178,11 +1178,11 @@
 
 #### components.MuiDatePicker.props.views.description
 
-> **components.MuiDatePicker.props.views.description**: `string` = `"Доступни погледи (календар за дан, месец и годину)"`
+> **components.MuiDatePicker.props.views.description**: `string` = `"Dostupni prikazi (kalendar dana, meseca i godine)"`
 
 #### components.MuiDatePicker.props.views.name
 
-> **components.MuiDatePicker.props.views.name**: `string` = `"Прикази"`
+> **components.MuiDatePicker.props.views.name**: `string` = `"Pregledi"`
 
 #### components.MuiDatePicker.props.yearsOrder
 
@@ -1190,11 +1190,11 @@
 
 #### components.MuiDatePicker.props.yearsOrder.description
 
-> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"Редослед сортирања по годинама: узлазно (најстарије прво) или силазно (најновије прво)"`
+> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"Sortiranje godina: uzlazno (najstarije prvo) ili silazno (prvo najnovije)"`
 
 #### components.MuiDatePicker.props.yearsOrder.name
 
-> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"Редослед година"`
+> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"Godišnji redosled"`
 
 #### components.MuiDatePicker.props.yearsPerRow
 
@@ -1202,11 +1202,11 @@
 
 #### components.MuiDatePicker.props.yearsPerRow.description
 
-> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"Број ставки за годину приказаних у сваком реду у приказу за годину"`
+> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"Broj stavki iz godine koje treba prikazati po redu u prikazu godine"`
 
 #### components.MuiDatePicker.props.yearsPerRow.name
 
-> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"Године у низу"`
+> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"Godine po redu"`
 
 #### components.MuiDialog
 
@@ -1214,11 +1214,11 @@
 
 #### components.MuiDialog.description
 
-> **components.MuiDialog.description**: `string` = `"Компонента модалног дијалошког оквира која приказује садржај као прекривач"`
+> **components.MuiDialog.description**: `string` = `"Komponenta modalnog dijaloga koja prikazuje sadržaj u sloju"`
 
 #### components.MuiDialog.name
 
-> **components.MuiDialog.name**: `string` = `"Дијалог"`
+> **components.MuiDialog.name**: `string` = `"Dijalog"`
 
 #### components.MuiDialog.props
 
@@ -1230,11 +1230,11 @@
 
 #### components.MuiDialog.props.disableEscapeKeyDown.description
 
-> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"Ако је вредност Труе, притиском на тастер Есцапе неће се затворити дијалошки оквир"`
+> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"Ako je tačno, pritiskom na taster za bekstvo neće se zatvoriti dijalog"`
 
 #### components.MuiDialog.props.disableEscapeKeyDown.name
 
-> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"Онемогућите Есцапе притиском на тастер"`
+> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"Onemogućite taster za bekstvo"`
 
 #### components.MuiDialog.props.fullScreen
 
@@ -1242,11 +1242,11 @@
 
 #### components.MuiDialog.props.fullScreen.description
 
-> **components.MuiDialog.props.fullScreen.description**: `string` = `"Ако је вредност Труе, дијалошки оквир ће се приказати на целом екрану"`
+> **components.MuiDialog.props.fullScreen.description**: `string` = `"Ako je tačno, dijalog će biti preko celog ekrana"`
 
 #### components.MuiDialog.props.fullScreen.name
 
-> **components.MuiDialog.props.fullScreen.name**: `string` = `"Режим целог екрана"`
+> **components.MuiDialog.props.fullScreen.name**: `string` = `"Ceo ekran"`
 
 #### components.MuiDialog.props.fullWidth
 
@@ -1254,11 +1254,11 @@
 
 #### components.MuiDialog.props.fullWidth.description
 
-> **components.MuiDialog.props.fullWidth.description**: `string` = `"Ако је вредност Труе, дијалошки оквир се протеже до максималне ширине"`
+> **components.MuiDialog.props.fullWidth.description**: `string` = `"Ako je tačno, dijalog se proteže na MakVidth"`
 
 #### components.MuiDialog.props.fullWidth.name
 
-> **components.MuiDialog.props.fullWidth.name**: `string` = `"Пуна ширина"`
+> **components.MuiDialog.props.fullWidth.name**: `string` = `"Puna širina"`
 
 #### components.MuiDialog.props.maxWidth
 
@@ -1266,11 +1266,11 @@
 
 #### components.MuiDialog.props.maxWidth.description
 
-> **components.MuiDialog.props.maxWidth.description**: `string` = `"Максимална ширина дијалога (КСС, см, МД, ЛГ, КСЛ)"`
+> **components.MuiDialog.props.maxWidth.description**: `string` = `"Maksimalna širina dijaloga (xs, sm, md, lg, xl)"`
 
 #### components.MuiDialog.props.maxWidth.name
 
-> **components.MuiDialog.props.maxWidth.name**: `string` = `"Максимална ширина"`
+> **components.MuiDialog.props.maxWidth.name**: `string` = `"Maksimalna širina"`
 
 #### components.MuiDialog.props.onClose
 
@@ -1278,11 +1278,11 @@
 
 #### components.MuiDialog.props.onClose.description
 
-> **components.MuiDialog.props.onClose.description**: `string` = `"Повратни позив се активира када се дијалошки оквир затвори"`
+> **components.MuiDialog.props.onClose.description**: `string` = `"Povratni poziv se otvara kada se dijalog zatvara"`
 
 #### components.MuiDialog.props.onClose.name
 
-> **components.MuiDialog.props.onClose.name**: `string` = `"На блиској удаљености"`
+> **components.MuiDialog.props.onClose.name**: `string` = `"OnClose"`
 
 #### components.MuiDialog.props.open
 
@@ -1290,11 +1290,11 @@
 
 #### components.MuiDialog.props.open.description
 
-> **components.MuiDialog.props.open.description**: `string` = `"Ако је вредност Труе, дијалошки оквир ће бити отворен"`
+> **components.MuiDialog.props.open.description**: `string` = `"Ako je tačno, dijalog je otvoren"`
 
 #### components.MuiDialog.props.open.name
 
-> **components.MuiDialog.props.open.name**: `string` = `"Отвори"`
+> **components.MuiDialog.props.open.name**: `string` = `"Otvori"`
 
 #### components.MuiDialog.props.scroll
 
@@ -1302,11 +1302,11 @@
 
 #### components.MuiDialog.props.scroll.description
 
-> **components.MuiDialog.props.scroll.description**: `string` = `"Дефинише контејнер за померање дијалошког оквира (папир или главни текст)."`
+> **components.MuiDialog.props.scroll.description**: `string` = `"Određuje kontejner za pomicanje dijaloga (papir ili telo)"`
 
 #### components.MuiDialog.props.scroll.name
 
-> **components.MuiDialog.props.scroll.name**: `string` = `"Свитак"`
+> **components.MuiDialog.props.scroll.name**: `string` = `"Pomerite se"`
 
 #### components.MuiDialogActions
 
@@ -1314,11 +1314,11 @@
 
 #### components.MuiDialogActions.description
 
-> **components.MuiDialogActions.description**: `string` = `"Контејнер за акционе тастере у дијалошком оквиру"`
+> **components.MuiDialogActions.description**: `string` = `"Kontejner za dugmad za akciju dijaloga"`
 
 #### components.MuiDialogActions.name
 
-> **components.MuiDialogActions.name**: `string` = `"Дијалошке акције"`
+> **components.MuiDialogActions.name**: `string` = `"Dijaloške akcije"`
 
 #### components.MuiDialogActions.props
 
@@ -1330,11 +1330,11 @@
 
 #### components.MuiDialogActions.props.children.description
 
-> **components.MuiDialogActions.props.children.description**: `string` = `"Садржај компоненте"`
+> **components.MuiDialogActions.props.children.description**: `string` = `"Sadržaj komponente"`
 
 #### components.MuiDialogActions.props.children.name
 
-> **components.MuiDialogActions.props.children.name**: `string` = `"Деца"`
+> **components.MuiDialogActions.props.children.name**: `string` = `"Deca"`
 
 #### components.MuiDialogActions.props.disableSpacing
 
@@ -1342,11 +1342,11 @@
 
 #### components.MuiDialogActions.props.disableSpacing.description
 
-> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"Ако је вредност Труе, тада акције немају додатну залиху"`
+> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"Ako je tačno, akcije nemaju dodatnu maržu"`
 
 #### components.MuiDialogActions.props.disableSpacing.name
 
-> **components.MuiDialogActions.props.disableSpacing.name**: `string` = `"Онемогући интервал"`
+> **components.MuiDialogActions.props.disableSpacing.name**: `string` = `"Onemogućite razmak"`
 
 #### components.MuiDialogContent
 
@@ -1354,11 +1354,11 @@
 
 #### components.MuiDialogContent.description
 
-> **components.MuiDialogContent.description**: `string` = `"Главно подручје садржаја дијалошког оквира"`
+> **components.MuiDialogContent.description**: `string` = `"Glavno područje sadržaja dijaloga"`
 
 #### components.MuiDialogContent.name
 
-> **components.MuiDialogContent.name**: `string` = `"Садржај дијалошког оквира"`
+> **components.MuiDialogContent.name**: `string` = `"Sadržaj dijaloga"`
 
 #### components.MuiDialogContent.props
 
@@ -1370,11 +1370,11 @@
 
 #### components.MuiDialogContent.props.children.description
 
-> **components.MuiDialogContent.props.children.description**: `string` = `"Садржај компоненте"`
+> **components.MuiDialogContent.props.children.description**: `string` = `"Sadržaj komponente"`
 
 #### components.MuiDialogContent.props.children.name
 
-> **components.MuiDialogContent.props.children.name**: `string` = `"Деца"`
+> **components.MuiDialogContent.props.children.name**: `string` = `"Deca"`
 
 #### components.MuiDialogContent.props.dividers
 
@@ -1382,11 +1382,11 @@
 
 #### components.MuiDialogContent.props.dividers.description
 
-> **components.MuiDialogContent.props.dividers.description**: `string` = `"Ако је вредност тачна, на врх и дно садржаја дијалошког оквира додаће се границе"`
+> **components.MuiDialogContent.props.dividers.description**: `string` = `"Ako je tačno, granice se dodaju na vrh i dno sadržaja dijaloga"`
 
 #### components.MuiDialogContent.props.dividers.name
 
-> **components.MuiDialogContent.props.dividers.name**: `string` = `"Разделници"`
+> **components.MuiDialogContent.props.dividers.name**: `string` = `"Razdjelnici"`
 
 #### components.MuiDialogContentText
 
@@ -1394,11 +1394,11 @@
 
 #### components.MuiDialogContentText.description
 
-> **components.MuiDialogContentText.description**: `string` = `"Текстуални садржај унутар дијалошког оквира"`
+> **components.MuiDialogContentText.description**: `string` = `"Tekstualni sadržaj unutar dijaloga"`
 
 #### components.MuiDialogContentText.name
 
-> **components.MuiDialogContentText.name**: `string` = `"Текст садржаја дијалошког оквира"`
+> **components.MuiDialogContentText.name**: `string` = `"Tekst sadržaja dijaloga"`
 
 #### components.MuiDialogContentText.props
 
@@ -1410,11 +1410,11 @@
 
 #### components.MuiDialogContentText.props.children.description
 
-> **components.MuiDialogContentText.props.children.description**: `string` = `"Текстуални садржај"`
+> **components.MuiDialogContentText.props.children.description**: `string` = `"Sadržaj teksta"`
 
 #### components.MuiDialogContentText.props.children.name
 
-> **components.MuiDialogContentText.props.children.name**: `string` = `"Садржај"`
+> **components.MuiDialogContentText.props.children.name**: `string` = `"Sadržaj"`
 
 #### components.MuiDialogLayout
 
@@ -1422,11 +1422,11 @@
 
 #### components.MuiDialogLayout.description
 
-> **components.MuiDialogLayout.description**: `string` = `"Унапред конфигурисани распоред дијалошког оквира са заглављем, садржајем и дугмадима за акцију"`
+> **components.MuiDialogLayout.description**: `string` = `"Unapred podešeni raspored dijaloga sa dugmadima za naslov, sadržaj i radnju"`
 
 #### components.MuiDialogLayout.name
 
-> **components.MuiDialogLayout.name**: `string` = `"Изглед дијалошког оквира"`
+> **components.MuiDialogLayout.name**: `string` = `"Izgled dijaloga"`
 
 #### components.MuiDialogTitle
 
@@ -1434,11 +1434,11 @@
 
 #### components.MuiDialogTitle.description
 
-> **components.MuiDialogTitle.description**: `string` = `"Назив дијалошког оквира"`
+> **components.MuiDialogTitle.description**: `string` = `"Naslov dijaloga"`
 
 #### components.MuiDialogTitle.name
 
-> **components.MuiDialogTitle.name**: `string` = `"Наслов дијалошког оквира"`
+> **components.MuiDialogTitle.name**: `string` = `"Naslov dijaloga"`
 
 #### components.MuiDialogTitle.props
 
@@ -1450,11 +1450,11 @@
 
 #### components.MuiDialogTitle.props.children.description
 
-> **components.MuiDialogTitle.props.children.description**: `string` = `"Текст наслова"`
+> **components.MuiDialogTitle.props.children.description**: `string` = `"Tekst naslova"`
 
 #### components.MuiDialogTitle.props.children.name
 
-> **components.MuiDialogTitle.props.children.name**: `string` = `"Садржај"`
+> **components.MuiDialogTitle.props.children.name**: `string` = `"Sadržaj"`
 
 #### components.MuiErrorWrapper
 
@@ -1462,11 +1462,11 @@
 
 #### components.MuiErrorWrapper.description
 
-> **components.MuiErrorWrapper.description**: `string` = `"Омотава садржај и приказује стање грешке или поруку"`
+> **components.MuiErrorWrapper.description**: `string` = `"Omotava sadržaj i prikazuje stanje greške ili poruku"`
 
 #### components.MuiErrorWrapper.name
 
-> **components.MuiErrorWrapper.name**: `string` = `"Љуска грешке"`
+> **components.MuiErrorWrapper.name**: `string` = `"Greška omotača"`
 
 #### components.MuiFormControlLabel
 
@@ -1474,11 +1474,11 @@
 
 #### components.MuiFormControlLabel.description
 
-> **components.MuiFormControlLabel.description**: `string` = `"Повезује ознаку са контролом обрасца"`
+> **components.MuiFormControlLabel.description**: `string` = `"Povezuje oznaku sa kontrolom obrasca"`
 
 #### components.MuiFormControlLabel.name
 
-> **components.MuiFormControlLabel.name**: `string` = `"Контролна ознака обрасца"`
+> **components.MuiFormControlLabel.name**: `string` = `"Oznaka za kontrolu obrasca"`
 
 #### components.MuiFormControlLabel.props
 
@@ -1490,11 +1490,11 @@
 
 #### components.MuiFormControlLabel.props.control.description
 
-> **components.MuiFormControlLabel.props.control.description**: `string` = `"Контрола обрасца (поље за потврду, радио, прекидач)"`
+> **components.MuiFormControlLabel.props.control.description**: `string` = `"Kontrolni element obrasca (polje za potvrdu, radio, prekidač)"`
 
 #### components.MuiFormControlLabel.props.control.name
 
-> **components.MuiFormControlLabel.props.control.name**: `string` = `"Контрола"`
+> **components.MuiFormControlLabel.props.control.name**: `string` = `"Kontrola"`
 
 #### components.MuiFormControlLabel.props.labelPlacement
 
@@ -1502,11 +1502,11 @@
 
 #### components.MuiFormControlLabel.props.labelPlacement.description
 
-> **components.MuiFormControlLabel.props.labelPlacement.description**: `string` = `"Положај ознаке у односу на контролу"`
+> **components.MuiFormControlLabel.props.labelPlacement.description**: `string` = `"Položaj etikete u odnosu na kontrolu"`
 
 #### components.MuiFormControlLabel.props.labelPlacement.name
 
-> **components.MuiFormControlLabel.props.labelPlacement.name**: `string` = `"Постављање етикета"`
+> **components.MuiFormControlLabel.props.labelPlacement.name**: `string` = `"Postavljanje etiketa"`
 
 #### components.MuiFormLabel
 
@@ -1514,11 +1514,11 @@
 
 #### components.MuiFormLabel.description
 
-> **components.MuiFormLabel.description**: `string` = `"Ознака за груписање или описивање поља обрасца"`
+> **components.MuiFormLabel.description**: `string` = `"Oznaka za grupisanje ili opisivanje polja obrasca"`
 
 #### components.MuiFormLabel.name
 
-> **components.MuiFormLabel.name**: `string` = `"Ознака обрасца"`
+> **components.MuiFormLabel.name**: `string` = `"Oznaka obrasca"`
 
 #### components.MuiFormLabel.props
 
@@ -1530,11 +1530,11 @@
 
 #### components.MuiFormLabel.props.filled.description
 
-> **components.MuiFormLabel.props.filled.description**: `string` = `"Примењује стил попуњеног стања"`
+> **components.MuiFormLabel.props.filled.description**: `string` = `"Primenjuje stiling ispunjenog stanja"`
 
 #### components.MuiFormLabel.props.filled.name
 
-> **components.MuiFormLabel.props.filled.name**: `string` = `"Испуњен"`
+> **components.MuiFormLabel.props.filled.name**: `string` = `"Popunjen"`
 
 #### components.MuiLinearProgress
 
@@ -1542,11 +1542,11 @@
 
 #### components.MuiLinearProgress.description
 
-> **components.MuiLinearProgress.description**: `string` = `"Приказује учитавање или напредак у линеарној скали"`
+> **components.MuiLinearProgress.description**: `string` = `"Označava učitavanje ili napredak u linearnoj traci"`
 
 #### components.MuiLinearProgress.name
 
-> **components.MuiLinearProgress.name**: `string` = `"Линеарни напредак"`
+> **components.MuiLinearProgress.name**: `string` = `"Linearni napredak"`
 
 #### components.MuiLinearProgress.props
 
@@ -1558,11 +1558,11 @@
 
 #### components.MuiLinearProgress.props.valueBuffer.description
 
-> **components.MuiLinearProgress.props.valueBuffer.description**: `string` = `"Вредност секундарног бафера за режим извођења са бафером"`
+> **components.MuiLinearProgress.props.valueBuffer.description**: `string` = `"Sekundarna vrednost bafera za puferski režim napretka"`
 
 #### components.MuiLinearProgress.props.valueBuffer.name
 
-> **components.MuiLinearProgress.props.valueBuffer.name**: `string` = `"Бафер вредности"`
+> **components.MuiLinearProgress.props.valueBuffer.name**: `string` = `"Bafer vrednosti"`
 
 #### components.MuiLink
 
@@ -1570,11 +1570,11 @@
 
 #### components.MuiLink.description
 
-> **components.MuiLink.description**: `string` = `"Интерактивни елемент за навигацију или радње"`
+> **components.MuiLink.description**: `string` = `"Element na koji se može kliknuti za navigaciju ili radnje"`
 
 #### components.MuiLink.name
 
-> **components.MuiLink.name**: `string` = `"Линк"`
+> **components.MuiLink.name**: `string` = `"Link"`
 
 #### components.MuiLink.props
 
@@ -1586,11 +1586,11 @@
 
 #### components.MuiLink.props.href.description
 
-> **components.MuiLink.props.href.description**: `string` = `"Крајњи УРЛ"`
+> **components.MuiLink.props.href.description**: `string` = `"URL odredišta"`
 
 #### components.MuiLink.props.href.name
 
-> **components.MuiLink.props.href.name**: `string` = `"Линк"`
+> **components.MuiLink.props.href.name**: `string` = `"Href"`
 
 #### components.MuiList
 
@@ -1598,11 +1598,11 @@
 
 #### components.MuiList.description
 
-> **components.MuiList.description**: `string` = `"Приказује вертикалну листу ставки"`
+> **components.MuiList.description**: `string` = `"Prikazuje vertikalnu listu stavki"`
 
 #### components.MuiList.name
 
-> **components.MuiList.name**: `string` = `"Список"`
+> **components.MuiList.name**: `string` = `"Spisak"`
 
 #### components.MuiListItem
 
@@ -1610,11 +1610,11 @@
 
 #### components.MuiListItem.description
 
-> **components.MuiListItem.description**: `string` = `"Представља посебан елемент унутар листе"`
+> **components.MuiListItem.description**: `string` = `"Predstavlja jednu stavku unutar liste"`
 
 #### components.MuiListItem.name
 
-> **components.MuiListItem.name**: `string` = `"Ставка листе"`
+> **components.MuiListItem.name**: `string` = `"Spisak stavke"`
 
 #### components.MuiListItem.props
 
@@ -1626,11 +1626,11 @@
 
 #### components.MuiListItem.props.divider.description
 
-> **components.MuiListItem.props.divider.description**: `string` = `"Приказује сепаратор испод ставке листе"`
+> **components.MuiListItem.props.divider.description**: `string` = `"Prikazuje razdjelnik ispod stavke liste"`
 
 #### components.MuiListItem.props.divider.name
 
-> **components.MuiListItem.props.divider.name**: `string` = `"Делилац"`
+> **components.MuiListItem.props.divider.name**: `string` = `"Razdjelnik"`
 
 #### components.MuiRadioGroup
 
@@ -1638,11 +1638,11 @@
 
 #### components.MuiRadioGroup.description
 
-> **components.MuiRadioGroup.description**: `string` = `"Омогућава вам да изаберете једну опцију из скупа"`
+> **components.MuiRadioGroup.description**: `string` = `"Omogućava odabir jedne opcije iz skupa"`
 
 #### components.MuiRadioGroup.name
 
-> **components.MuiRadioGroup.name**: `string` = `"Радио Група"`
+> **components.MuiRadioGroup.name**: `string` = `"Radio grupa"`
 
 #### components.MuiRadioGroup.props
 
@@ -1654,11 +1654,11 @@
 
 #### components.MuiRadioGroup.props.name.description
 
-> **components.MuiRadioGroup.props.name.description**: `string` = `"Атрибут Наме који се користи за груписање прекидача"`
+> **components.MuiRadioGroup.props.name.description**: `string` = `"Atribut imena koji se koristi za grupisanje radio tastera"`
 
 #### components.MuiRadioGroup.props.name.name
 
-> **components.MuiRadioGroup.props.name.name**: `string` = `"Име"`
+> **components.MuiRadioGroup.props.name.name**: `string` = `"Naziv"`
 
 #### components.MuiRadioGroup.props.row
 
@@ -1666,11 +1666,11 @@
 
 #### components.MuiRadioGroup.props.row.description
 
-> **components.MuiRadioGroup.props.row.description**: `string` = `"Приказује прекидаче хоризонтално"`
+> **components.MuiRadioGroup.props.row.description**: `string` = `"Prikazuje radio tastere horizontalno"`
 
 #### components.MuiRadioGroup.props.row.name
 
-> **components.MuiRadioGroup.props.row.name**: `string` = `"Ред"`
+> **components.MuiRadioGroup.props.row.name**: `string` = `"Red"`
 
 #### components.MuiRadioItem
 
@@ -1678,11 +1678,11 @@
 
 #### components.MuiRadioItem.description
 
-> **components.MuiRadioItem.description**: `string` = `"Један прекидач који се користи у групи радио станица"`
+> **components.MuiRadioItem.description**: `string` = `"Jedno radio dugme koje se koristi u radio grupi"`
 
 #### components.MuiRadioItem.name
 
-> **components.MuiRadioItem.name**: `string` = `"Радио пријемник"`
+> **components.MuiRadioItem.name**: `string` = `"Radio predmet"`
 
 #### components.MuiSelect
 
@@ -1690,11 +1690,11 @@
 
 #### components.MuiSelect.description
 
-> **components.MuiSelect.description**: `string` = `"Падајућа компонента за одабир опција"`
+> **components.MuiSelect.description**: `string` = `"Padajuća komponenta za izbor opcija"`
 
 #### components.MuiSelect.name
 
-> **components.MuiSelect.name**: `string` = `"Изаберите"`
+> **components.MuiSelect.name**: `string` = `"Izaberite"`
 
 #### components.MuiSelect.props
 
@@ -1706,11 +1706,11 @@
 
 #### components.MuiSelect.props.autoFocus.description
 
-> **components.MuiSelect.props.autoFocus.description**: `string` = `"Аутоматски фокусира поље на монтажу"`
+> **components.MuiSelect.props.autoFocus.description**: `string` = `"Automatski fokusira polje na nosač"`
 
 #### components.MuiSelect.props.autoFocus.name
 
-> **components.MuiSelect.props.autoFocus.name**: `string` = `"Аутоматско фокусирање"`
+> **components.MuiSelect.props.autoFocus.name**: `string` = `"Automatsko fokusiranje"`
 
 #### components.MuiSelect.props.multiple
 
@@ -1718,11 +1718,11 @@
 
 #### components.MuiSelect.props.multiple.description
 
-> **components.MuiSelect.props.multiple.description**: `string` = `"Омогућава вам да одаберете више опција"`
+> **components.MuiSelect.props.multiple.description**: `string` = `"Omogućava izbor više opcija"`
 
 #### components.MuiSelect.props.multiple.name
 
-> **components.MuiSelect.props.multiple.name**: `string` = `"Вишеструки"`
+> **components.MuiSelect.props.multiple.name**: `string` = `"Višestruki"`
 
 #### components.MuiStack
 
@@ -1730,11 +1730,11 @@
 
 #### components.MuiStack.description
 
-> **components.MuiStack.description**: `string` = `"Компонује подређене елементе у једнодимензионалном стеку"`
+> **components.MuiStack.description**: `string` = `"Raspored dece u jednodimenzionalnom hrpu"`
 
 #### components.MuiStack.name
 
-> **components.MuiStack.name**: `string` = `"Стек"`
+> **components.MuiStack.name**: `string` = `"Skup"`
 
 #### components.MuiStack.props
 
@@ -1746,11 +1746,11 @@
 
 #### components.MuiStack.props.alignItems.description
 
-> **components.MuiStack.props.alignItems.description**: `string` = `"Контролише поравнање попречне осе"`
+> **components.MuiStack.props.alignItems.description**: `string` = `"Kontroliše poravnanje poprečne ose"`
 
 #### components.MuiStack.props.alignItems.name
 
-> **components.MuiStack.props.alignItems.name**: `string` = `"Поравнање елемената"`
+> **components.MuiStack.props.alignItems.name**: `string` = `"Poravnajte stavke"`
 
 #### components.MuiStack.props.direction
 
@@ -1758,11 +1758,11 @@
 
 #### components.MuiStack.props.direction.description
 
-> **components.MuiStack.props.direction.description**: `string` = `"Одређује да ли ће се ставке налазити у реду или колони"`
+> **components.MuiStack.props.direction.description**: `string` = `"Definiše da li su stavke složene u red ili kolonu"`
 
 #### components.MuiStack.props.direction.name
 
-> **components.MuiStack.props.direction.name**: `string` = `"Правац"`
+> **components.MuiStack.props.direction.name**: `string` = `"Pravac"`
 
 #### components.MuiStack.props.flexWrap
 
@@ -1770,11 +1770,11 @@
 
 #### components.MuiStack.props.flexWrap.description
 
-> **components.MuiStack.props.flexWrap.description**: `string` = `"Управља премотавањем елемената у више редова"`
+> **components.MuiStack.props.flexWrap.description**: `string` = `"Kontroliše da li se stavke umotavaju na više linija"`
 
 #### components.MuiStack.props.flexWrap.name
 
-> **components.MuiStack.props.flexWrap.name**: `string` = `"Флексибилни омот"`
+> **components.MuiStack.props.flexWrap.name**: `string` = `"Flek omotač"`
 
 #### components.MuiStack.props.justifyContent
 
@@ -1782,11 +1782,11 @@
 
 #### components.MuiStack.props.justifyContent.description
 
-> **components.MuiStack.props.justifyContent.description**: `string` = `"Контролише поравнање главне осе"`
+> **components.MuiStack.props.justifyContent.description**: `string` = `"Kontrolira poravnanje glavne ose"`
 
 #### components.MuiStack.props.justifyContent.name
 
-> **components.MuiStack.props.justifyContent.name**: `string` = `"Образложите садржај"`
+> **components.MuiStack.props.justifyContent.name**: `string` = `"Opravdajte sadržaj"`
 
 #### components.MuiStack.props.spacing
 
@@ -1794,11 +1794,11 @@
 
 #### components.MuiStack.props.spacing.description
 
-> **components.MuiStack.props.spacing.description**: `string` = `"Размак између наслаганих предмета"`
+> **components.MuiStack.props.spacing.description**: `string` = `"Razmak između naslaganih predmeta"`
 
 #### components.MuiStack.props.spacing.name
 
-> **components.MuiStack.props.spacing.name**: `string` = `"Удаљеност"`
+> **components.MuiStack.props.spacing.name**: `string` = `"Razmak"`
 
 #### components.MuiStack.props.useFlexGap
 
@@ -1806,11 +1806,11 @@
 
 #### components.MuiStack.props.useFlexGap.description
 
-> **components.MuiStack.props.useFlexGap.description**: `string` = `"Користи ЦСС размак уместо поља за размаке"`
+> **components.MuiStack.props.useFlexGap.description**: `string` = `"Koristi CSS jaz umesto margina za razmak"`
 
 #### components.MuiStack.props.useFlexGap.name
 
-> **components.MuiStack.props.useFlexGap.name**: `string` = `"Користите флексибилан размак"`
+> **components.MuiStack.props.useFlexGap.name**: `string` = `"Koristite fleksibilan razmak"`
 
 #### components.MuiSwitch
 
@@ -1818,11 +1818,11 @@
 
 #### components.MuiSwitch.description
 
-> **components.MuiSwitch.description**: `string` = `"Контрола прекидача за пребацивање између два стања"`
+> **components.MuiSwitch.description**: `string` = `"Prebacivanje kontrole za prebacivanje između dva stanja"`
 
 #### components.MuiSwitch.name
 
-> **components.MuiSwitch.name**: `string` = `"Прекидач"`
+> **components.MuiSwitch.name**: `string` = `"Prekidač"`
 
 #### components.MuiSwitch.props
 
@@ -1834,11 +1834,11 @@
 
 #### components.MuiSwitch.props.defaultChecked.description
 
-> **components.MuiSwitch.props.defaultChecked.description**: `string` = `"Почетно стање пребацивања са неконтролисаним"`
+> **components.MuiSwitch.props.defaultChecked.description**: `string` = `"Početno stanje prebacivanja kada je nekontrolisano"`
 
 #### components.MuiSwitch.props.defaultChecked.name
 
-> **components.MuiSwitch.props.defaultChecked.name**: `string` = `"Означено подразумевано поље за потврду"`
+> **components.MuiSwitch.props.defaultChecked.name**: `string` = `"Podrazumevano označeno"`
 
 #### components.MuiTextField
 
@@ -1846,11 +1846,11 @@
 
 #### components.MuiTextField.description
 
-> **components.MuiTextField.description**: `string` = `"Поље за унос текста и података обрасца"`
+> **components.MuiTextField.description**: `string` = `"Polje za unos za tekst i podatke obrasca"`
 
 #### components.MuiTextField.name
 
-> **components.MuiTextField.name**: `string` = `"Текстуално поље"`
+> **components.MuiTextField.name**: `string` = `"Tekstualno polje"`
 
 #### components.MuiTextField.props
 
@@ -1862,11 +1862,11 @@
 
 #### components.MuiTextField.props.autoFocus.description
 
-> **components.MuiTextField.props.autoFocus.description**: `string` = `"Аутоматски фокусира поље на монтажу"`
+> **components.MuiTextField.props.autoFocus.description**: `string` = `"Automatski fokusira polje na nosač"`
 
 #### components.MuiTextField.props.autoFocus.name
 
-> **components.MuiTextField.props.autoFocus.name**: `string` = `"Аутоматско фокусирање"`
+> **components.MuiTextField.props.autoFocus.name**: `string` = `"Automatsko fokusiranje"`
 
 #### components.MuiTextField.props.maxRows
 
@@ -1874,11 +1874,11 @@
 
 #### components.MuiTextField.props.maxRows.description
 
-> **components.MuiTextField.props.maxRows.description**: `string` = `"Максималан број видљивих редова за вишередни унос"`
+> **components.MuiTextField.props.maxRows.description**: `string` = `"Maksimalni broj vidljivih redova za višelinijski unos"`
 
 #### components.MuiTextField.props.maxRows.name
 
-> **components.MuiTextField.props.maxRows.name**: `string` = `"Максималан број редова"`
+> **components.MuiTextField.props.maxRows.name**: `string` = `"Maksimalni redovi"`
 
 #### components.MuiTextField.props.multiline
 
@@ -1886,11 +1886,11 @@
 
 #### components.MuiTextField.props.multiline.description
 
-> **components.MuiTextField.props.multiline.description**: `string` = `"Приказује текстуално подручје уместо једнослојног уноса"`
+> **components.MuiTextField.props.multiline.description**: `string` = `"Prikazuje tekstureju umesto jednorednog ulaza"`
 
 #### components.MuiTextField.props.multiline.name
 
-> **components.MuiTextField.props.multiline.name**: `string` = `"Вишередни"`
+> **components.MuiTextField.props.multiline.name**: `string` = `"Multiline"`
 
 #### components.MuiTextField.props.type
 
@@ -1898,11 +1898,11 @@
 
 #### components.MuiTextField.props.type.description
 
-> **components.MuiTextField.props.type.description**: `string` = `"Тип уноса хтмл (текст, лозинка, адреса е - поште итд.)"`
+> **components.MuiTextField.props.type.description**: `string` = `"HTML tip unosa (tekst, lozinka, e-pošta itd.)"`
 
 #### components.MuiTextField.props.type.name
 
-> **components.MuiTextField.props.type.name**: `string` = `"Тип"`
+> **components.MuiTextField.props.type.name**: `string` = `"Tip"`
 
 #### components.MuiTooltip
 
@@ -1910,11 +1910,11 @@
 
 #### components.MuiTooltip.description
 
-> **components.MuiTooltip.description**: `string` = `"Приказује контекстуалне информације приликом преласка мишем, фокусирања или додиривања"`
+> **components.MuiTooltip.description**: `string` = `"Prikazuje kontekstualne informacije o leđenju, fokusu ili dodiru"`
 
 #### components.MuiTooltip.name
 
-> **components.MuiTooltip.name**: `string` = `"Савет"`
+> **components.MuiTooltip.name**: `string` = `"Savet za alat"`
 
 #### components.MuiTooltip.props
 
@@ -1926,11 +1926,11 @@
 
 #### components.MuiTooltip.props.arrow.description
 
-> **components.MuiTooltip.props.arrow.description**: `string` = `"Приказује стрелицу која показује на циљни елемент"`
+> **components.MuiTooltip.props.arrow.description**: `string` = `"Prikazuje strelicu koja pokazuje na ciljni element"`
 
 #### components.MuiTooltip.props.arrow.name
 
-> **components.MuiTooltip.props.arrow.name**: `string` = `"Стрела"`
+> **components.MuiTooltip.props.arrow.name**: `string` = `"Strelica"`
 
 #### components.MuiTooltip.props.disableFocusListener
 
@@ -1938,11 +1938,11 @@
 
 #### components.MuiTooltip.props.disableFocusListener.description
 
-> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"Спречава да се описи алата појаве у фокусу"`
+> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"Sprečava pojavljivanje saveta alata u fokusu"`
 
 #### components.MuiTooltip.props.disableFocusListener.name
 
-> **components.MuiTooltip.props.disableFocusListener.name**: `string` = `"Онемогућите слушалац фокуса"`
+> **components.MuiTooltip.props.disableFocusListener.name**: `string` = `"Onemogućite slušatelj fokusa"`
 
 #### components.MuiTooltip.props.disableHoverListener
 
@@ -1950,11 +1950,11 @@
 
 #### components.MuiTooltip.props.disableHoverListener.description
 
-> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"Спречава да се појави опис када задржите показивач миша"`
+> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"Sprečava pojavljivanje saveta alata na pokazivanju pokazivača"`
 
 #### components.MuiTooltip.props.disableHoverListener.name
 
-> **components.MuiTooltip.props.disableHoverListener.name**: `string` = `"Онемогућите преслушавач миша"`
+> **components.MuiTooltip.props.disableHoverListener.name**: `string` = `"Onemogućite slušalicu pokazivača"`
 
 #### components.MuiTooltip.props.disableInteractive
 
@@ -1962,11 +1962,11 @@
 
 #### components.MuiTooltip.props.disableInteractive.description
 
-> **components.MuiTooltip.props.disableInteractive.description**: `string` = `"Онемогућава интеракцију са садржајем описа"`
+> **components.MuiTooltip.props.disableInteractive.description**: `string` = `"Onemogućava interakciju sa sadržajem alata"`
 
 #### components.MuiTooltip.props.disableInteractive.name
 
-> **components.MuiTooltip.props.disableInteractive.name**: `string` = `"Онемогућите интерактивну интеракцију"`
+> **components.MuiTooltip.props.disableInteractive.name**: `string` = `"Onemogućite interaktivno"`
 
 #### components.MuiTooltip.props.disableTouchListener
 
@@ -1974,11 +1974,11 @@
 
 #### components.MuiTooltip.props.disableTouchListener.description
 
-> **components.MuiTooltip.props.disableTouchListener.description**: `string` = `"Спречава да се појави Опис Када додирнете"`
+> **components.MuiTooltip.props.disableTouchListener.description**: `string` = `"Sprečava pojavljivanje saveta alata na dodir"`
 
 #### components.MuiTooltip.props.disableTouchListener.name
 
-> **components.MuiTooltip.props.disableTouchListener.name**: `string` = `"Онемогућите слушалац осетљив на додир"`
+> **components.MuiTooltip.props.disableTouchListener.name**: `string` = `"Onemogućite slušatelj dodira"`
 
 #### components.MuiTooltip.props.enterDelay
 
@@ -1986,11 +1986,11 @@
 
 #### components.MuiTooltip.props.enterDelay.description
 
-> **components.MuiTooltip.props.enterDelay.description**: `string` = `"Кашњење у милисекундама пре приказивања описа"`
+> **components.MuiTooltip.props.enterDelay.description**: `string` = `"Kašnjenje u milisekundama pre prikazivanja alata"`
 
 #### components.MuiTooltip.props.enterDelay.name
 
-> **components.MuiTooltip.props.enterDelay.name**: `string` = `"Кашњење уноса"`
+> **components.MuiTooltip.props.enterDelay.name**: `string` = `"Unesite kašnjenje"`
 
 #### components.MuiTooltip.props.followCursor
 
@@ -1998,11 +1998,11 @@
 
 #### components.MuiTooltip.props.followCursor.description
 
-> **components.MuiTooltip.props.followCursor.description**: `string` = `"Присиљава опис да прати положај курсора"`
+> **components.MuiTooltip.props.followCursor.description**: `string` = `"Omogućava da tip alata prati položaj kursora"`
 
 #### components.MuiTooltip.props.followCursor.name
 
-> **components.MuiTooltip.props.followCursor.name**: `string` = `"Пратите курсор"`
+> **components.MuiTooltip.props.followCursor.name**: `string` = `"Pratite kursor"`
 
 #### components.MuiTooltip.props.leaveDelay
 
@@ -2010,11 +2010,11 @@
 
 #### components.MuiTooltip.props.leaveDelay.description
 
-> **components.MuiTooltip.props.leaveDelay.description**: `string` = `"Кашњење у милисекундама пре скривања описа"`
+> **components.MuiTooltip.props.leaveDelay.description**: `string` = `"Kašnjenje u milisekundama pre sakrivanja alatke"`
 
 #### components.MuiTooltip.props.leaveDelay.name
 
-> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"Одлагање одмора"`
+> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"Ostavite kašnjenje"`
 
 #### components.MuiTooltip.props.title
 
@@ -2022,11 +2022,11 @@
 
 #### components.MuiTooltip.props.title.description
 
-> **components.MuiTooltip.props.title.description**: `string` = `"Текстуални садржај приказан у опису"`
+> **components.MuiTooltip.props.title.description**: `string` = `"Tekstualni sadržaj prikazan unutar alatke"`
 
 #### components.MuiTooltip.props.title.name
 
-> **components.MuiTooltip.props.title.name**: `string` = `"Наслов"`
+> **components.MuiTooltip.props.title.name**: `string` = `"Naslov"`
 
 #### components.MuiTypography
 
@@ -2034,11 +2034,11 @@
 
 #### components.MuiTypography.description
 
-> **components.MuiTypography.description**: `string` = `"Приказује текст са унапред дефинисаним типографским стиловима"`
+> **components.MuiTypography.description**: `string` = `"Prikazuje tekst sa unapred definisanim tipografijskim stilovima"`
 
 #### components.MuiTypography.name
 
-> **components.MuiTypography.name**: `string` = `"Типографија"`
+> **components.MuiTypography.name**: `string` = `"Tipografija"`
 
 #### components.MuiTypography.props
 
@@ -2050,11 +2050,11 @@
 
 #### components.MuiTypography.props.children.description
 
-> **components.MuiTypography.props.children.description**: `string` = `"Текстуални садржај"`
+> **components.MuiTypography.props.children.description**: `string` = `"Sadržaj teksta"`
 
 #### components.MuiTypography.props.children.name
 
-> **components.MuiTypography.props.children.name**: `string` = `"Садржај"`
+> **components.MuiTypography.props.children.name**: `string` = `"Sadržaj"`
 
 #### components.MuiUploader
 
@@ -2062,11 +2062,11 @@
 
 #### components.MuiUploader.description
 
-> **components.MuiUploader.description**: `string` = `"Компонента за преузимање једне или више датотека"`
+> **components.MuiUploader.description**: `string` = `"Komponenta za otpremanje jedne ili više datoteka"`
 
 #### components.MuiUploader.name
 
-> **components.MuiUploader.name**: `string` = `"Утоваривач"`
+> **components.MuiUploader.name**: `string` = `"Otpremnik"`
 
 #### components.MuiUploader.props
 
@@ -2078,11 +2078,11 @@
 
 #### components.MuiUploader.props.accept.description
 
-> **components.MuiUploader.props.accept.description**: `string` = `"Дозвољени типови датотека (нпр.jpg,.png\")"`
+> **components.MuiUploader.props.accept.description**: `string` = `"Dozvoljeni tipovi datoteka (npr. „.jpg, .png“)"`
 
 #### components.MuiUploader.props.accept.name
 
-> **components.MuiUploader.props.accept.name**: `string` = `"Прихвати"`
+> **components.MuiUploader.props.accept.name**: `string` = `"Prihvati"`
 
 #### components.MuiUploader.props.multiple
 
@@ -2090,8 +2090,8 @@
 
 #### components.MuiUploader.props.multiple.description
 
-> **components.MuiUploader.props.multiple.description**: `string` = `"Омогућава вам да одаберете више датотека"`
+> **components.MuiUploader.props.multiple.description**: `string` = `"Omogućava izbor više datoteka"`
 
 #### components.MuiUploader.props.multiple.name
 
-> **components.MuiUploader.props.multiple.name**: `string` = `"Вишеструки"`
+> **components.MuiUploader.props.multiple.name**: `string` = `"Višestruki"`

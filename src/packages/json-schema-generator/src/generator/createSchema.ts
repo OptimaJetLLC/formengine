@@ -1,5 +1,5 @@
 import type {Annotation, BuilderComponent, ComponentLibraryDescription, I18nItem} from '@react-form-builder/core'
-import {cfHideFromComponentPalette, ContainerAnnotation, EventAnnotation} from '@react-form-builder/core'
+import {cfHideFromComponentPalette, ContainerAnnotation, EventAnnotation, isBoolean} from '@react-form-builder/core'
 import baseSchema from '@react-form-builder/core/schemas/persisted-form.schema.json'
 import type {JSONSchema} from 'json-schema-typed/draft_07'
 
@@ -37,10 +37,6 @@ const valueIf = {
   },
   then: {required: ['value']}
 } as const
-
-function isBoolean(value: unknown): value is boolean {
-  return typeof value === 'boolean'
-}
 
 /**
  * Supported JSON schema types mapping from annotation types

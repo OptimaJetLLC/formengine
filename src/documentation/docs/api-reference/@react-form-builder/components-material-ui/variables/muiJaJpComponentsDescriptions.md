@@ -38,7 +38,7 @@
 
 #### categories.inputs.name
 
-> **categories.inputs.name**: `string` = `"入力"`
+> **categories.inputs.name**: `string` = `"インプット"`
 
 #### categories.layout
 
@@ -46,7 +46,7 @@
 
 #### categories.layout.name
 
-> **categories.layout.name**: `string` = `"レイアウト"`
+> **categories.layout.name**: `string` = `"[レイアウト]"`
 
 #### categories.navigation
 
@@ -62,7 +62,7 @@
 
 #### categories.surfaces.name
 
-> **categories.surfaces.name**: `string` = `"表面"`
+> **categories.surfaces.name**: `string` = `"サーフェス"`
 
 ### commonProperties
 
@@ -74,7 +74,7 @@
 
 #### commonProperties.checked.description
 
-> **commonProperties.checked.description**: `string` = `"Trueの場合、コンポーネントがチェックされます"`
+> **commonProperties.checked.description**: `string` = `"true の場合、コンポーネントがチェックされます"`
 
 #### commonProperties.checked.name
 
@@ -86,11 +86,11 @@
 
 #### commonProperties.children.description
 
-> **commonProperties.children.description**: `string` = `"コンポーネントのコンテンツ"`
+> **commonProperties.children.description**: `string` = `"コンポーネントの内容"`
 
 #### commonProperties.children.name
 
-> **commonProperties.children.name**: `string` = `"子供たち"`
+> **commonProperties.children.name**: `string` = `"子ども"`
 
 #### commonProperties.color
 
@@ -102,7 +102,7 @@
 
 #### commonProperties.color.name
 
-> **commonProperties.color.name**: `string` = `"色"`
+> **commonProperties.color.name**: `string` = `"[カラー]"`
 
 #### commonProperties.defaultValue
 
@@ -110,7 +110,7 @@
 
 #### commonProperties.defaultValue.description
 
-> **commonProperties.defaultValue.description**: `string` = `"デフォルト値。 コンポーネントが制御されていない場合に使用します"`
+> **commonProperties.defaultValue.description**: `string` = `"デフォルト値。コンポーネントが制御されていない場合に使用します。"`
 
 #### commonProperties.defaultValue.name
 
@@ -122,11 +122,11 @@
 
 #### commonProperties.dense.description
 
-> **commonProperties.dense.description**: `string` = `"Trueの場合、垂直方向のパディングが減少します"`
+> **commonProperties.dense.description**: `string` = `"true の場合、垂直方向のパディングが減少します"`
 
 #### commonProperties.dense.name
 
-> **commonProperties.dense.name**: `string` = `"密な"`
+> **commonProperties.dense.name**: `string` = `"高密度"`
 
 #### commonProperties.disabled
 
@@ -134,7 +134,7 @@
 
 #### commonProperties.disabled.description
 
-> **commonProperties.disabled.description**: `string` = `"Trueの場合、コンポーネントは無効になります"`
+> **commonProperties.disabled.description**: `string` = `"true の場合、コンポーネントは無効になります"`
 
 #### commonProperties.disabled.name
 
@@ -146,7 +146,7 @@
 
 #### commonProperties.disableGutters.description
 
-> **commonProperties.disableGutters.description**: `string` = `"Trueの場合、左右のパディングを無効にします"`
+> **commonProperties.disableGutters.description**: `string` = `"true の場合、左右のパディングを無効にします"`
 
 #### commonProperties.disableGutters.name
 
@@ -158,7 +158,7 @@
 
 #### commonProperties.disablePadding.description
 
-> **commonProperties.disablePadding.description**: `string` = `"Trueの場合、デフォルトのパディングを無効にします"`
+> **commonProperties.disablePadding.description**: `string` = `"true の場合、デフォルトのパディングを無効にします"`
 
 #### commonProperties.disablePadding.name
 
@@ -170,11 +170,11 @@
 
 #### commonProperties.error.description
 
-> **commonProperties.error.description**: `string` = `"Trueの場合、コンポーネントはエラー状態で表示されます"`
+> **commonProperties.error.description**: `string` = `"true の場合、コンポーネントはエラー状態で表示されます"`
 
 #### commonProperties.error.name
 
-> **commonProperties.error.name**: `string` = `"エラー"`
+> **commonProperties.error.name**: `string` = `"[エラー]"`
 
 #### commonProperties.fullWidth
 
@@ -182,7 +182,7 @@
 
 #### commonProperties.fullWidth.description
 
-> **commonProperties.fullWidth.description**: `string` = `"Trueの場合、コンポーネントはコンテナの全幅を占有します"`
+> **commonProperties.fullWidth.description**: `string` = `"true の場合、コンポーネントはコンテナの全幅を占めます"`
 
 #### commonProperties.fullWidth.name
 
@@ -194,11 +194,11 @@
 
 #### commonProperties.gutterBottom.description
 
-> **commonProperties.gutterBottom.description**: `string` = `"Trueの場合、テキストには下余白があります"`
+> **commonProperties.gutterBottom.description**: `string` = `"true に設定すると、テキストの下部に余白が表示されます"`
 
 #### commonProperties.gutterBottom.name
 
-> **commonProperties.gutterBottom.name**: `string` = `"溝の底"`
+> **commonProperties.gutterBottom.name**: `string` = `"ガターボトム"`
 
 #### commonProperties.helperText
 
@@ -222,7 +222,7 @@
 
 #### commonProperties.margin.name
 
-> **commonProperties.margin.name**: `string` = `"証拠金"`
+> **commonProperties.margin.name**: `string` = `"マージン"`
 
 #### commonProperties.noWrap
 
@@ -230,7 +230,7 @@
 
 #### commonProperties.noWrap.description
 
-> **commonProperties.noWrap.description**: `string` = `"Trueの場合、テキストは折り返されませんが、代わりにテキストオーバーフロー省略記号で切り捨てられます"`
+> **commonProperties.noWrap.description**: `string` = `"true に設定すると、テキストは折り返されず、代わりにテキストオーバーフローの省略記号で切り捨てられます"`
 
 #### commonProperties.noWrap.name
 
@@ -246,7 +246,7 @@
 
 #### commonProperties.onChange.name
 
-> **commonProperties.onChange.name**: `string` = `"オンチェンジ"`
+> **commonProperties.onChange.name**: `string` = `"変更時"`
 
 #### commonProperties.onClick
 
@@ -258,7 +258,7 @@
 
 #### commonProperties.onClick.name
 
-> **commonProperties.onClick.name**: `string` = `"onClick"`
+> **commonProperties.onClick.name**: `string` = `"オンクリック"`
 
 #### commonProperties.required
 
@@ -266,7 +266,7 @@
 
 #### commonProperties.required.description
 
-> **commonProperties.required.description**: `string` = `"Trueの場合、input要素は必須です"`
+> **commonProperties.required.description**: `string` = `"true の場合、入力要素は必須です"`
 
 #### commonProperties.required.name
 
@@ -290,11 +290,11 @@
 
 #### commonProperties.sx.description
 
-> **commonProperties.sx.description**: `string` = `"システムオーバーライドと追加のCSSスタイルを定義できるシステムプロップ"`
+> **commonProperties.sx.description**: `string` = `"システムオーバーライドや追加の CSS スタイルを定義できるシステムプロップ"`
 
 #### commonProperties.sx.name
 
-> **commonProperties.sx.name**: `string` = `"Sx"`
+> **commonProperties.sx.name**: `string` = `"セックス"`
 
 #### commonProperties.textAlign
 
@@ -302,11 +302,11 @@
 
 #### commonProperties.textAlign.description
 
-> **commonProperties.textAlign.description**: `string` = `"テキストの配置"`
+> **commonProperties.textAlign.description**: `string` = `"テキスト配置"`
 
 #### commonProperties.textAlign.name
 
-> **commonProperties.textAlign.name**: `string` = `"アライメント"`
+> **commonProperties.textAlign.name**: `string` = `"アラインメント"`
 
 #### commonProperties.value
 
@@ -318,7 +318,7 @@
 
 #### commonProperties.value.name
 
-> **commonProperties.value.name**: `string` = `"値"`
+> **commonProperties.value.name**: `string` = `"価値"`
 
 #### commonProperties.variant
 
@@ -326,11 +326,11 @@
 
 #### commonProperties.variant.description
 
-> **commonProperties.variant.description**: `string` = `"使用するバリアント"`
+> **commonProperties.variant.description**: `string` = `"使用するバリエーション"`
 
 #### commonProperties.variant.name
 
-> **commonProperties.variant.name**: `string` = `"変型"`
+> **commonProperties.variant.name**: `string` = `"バリアント"`
 
 ### components
 
@@ -342,7 +342,7 @@
 
 #### components.MuiBox.description
 
-> **components.MuiBox.description**: `string` = `"システムスタイルをサポートする汎用レイアウトコンテナ"`
+> **components.MuiBox.description**: `string` = `"システムスタイリングをサポートする汎用レイアウトコンテナ"`
 
 #### components.MuiBox.name
 
@@ -354,7 +354,7 @@
 
 #### components.MuiBreadcrumbs.description
 
-> **components.MuiBreadcrumbs.description**: `string` = `"階層内の現在のページの場所を表示します"`
+> **components.MuiBreadcrumbs.description**: `string` = `"階層内の現在のページ位置を表示します"`
 
 #### components.MuiBreadcrumbs.name
 
@@ -370,7 +370,7 @@
 
 #### components.MuiBreadcrumbs.props.items.description
 
-> **components.MuiBreadcrumbs.props.items.description**: `string` = `"表示するブレッドクラム項目"`
+> **components.MuiBreadcrumbs.props.items.description**: `string` = `"表示するブレッドクラム・アイテム"`
 
 #### components.MuiBreadcrumbs.props.items.name
 
@@ -382,7 +382,7 @@
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"最大項目数を超えると、省略記号の後に表示される項目の数が表示されます"`
+> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"最大アイテム数を超えた場合、省略記号の後に表示されるアイテムの数"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.name
 
@@ -394,7 +394,7 @@
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"最大項目数を超えると、省略記号の前に表示される項目の数が表示されます"`
+> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"最大アイテム数を超えた場合、省略記号の前に表示するアイテムの数"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.name
 
@@ -418,11 +418,11 @@
 
 #### components.MuiBreadcrumbs.props.separator.description
 
-> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"ブレッドクラム項目を分離するために使用される要素"`
+> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"ブレッドクラム・アイテムを分離するために使用される要素"`
 
 #### components.MuiBreadcrumbs.props.separator.name
 
-> **components.MuiBreadcrumbs.props.separator.name**: `string` = `"セパレータ"`
+> **components.MuiBreadcrumbs.props.separator.name**: `string` = `"セパレーター"`
 
 #### components.MuiButton
 
@@ -450,7 +450,7 @@
 
 #### components.MuiButton.props.children.name
 
-> **components.MuiButton.props.children.name**: `string` = `"コンテンツ"`
+> **components.MuiButton.props.children.name**: `string` = `"[コンテンツ]"`
 
 #### components.MuiButton.props.disableElevation
 
@@ -458,7 +458,7 @@
 
 #### components.MuiButton.props.disableElevation.description
 
-> **components.MuiButton.props.disableElevation.description**: `string` = `"Trueに設定されている場合、ボタンの影を削除します"`
+> **components.MuiButton.props.disableElevation.description**: `string` = `"true に設定すると、ボタンの影が削除されます"`
 
 #### components.MuiButton.props.disableElevation.name
 
@@ -470,11 +470,11 @@
 
 #### components.MuiButton.props.loading.description
 
-> **components.MuiButton.props.loading.description**: `string` = `"読み込みインジケータを表示し、対話を無効にします"`
+> **components.MuiButton.props.loading.description**: `string` = `"ローディングインジケータを表示し、インタラクションを無効にします"`
 
 #### components.MuiButton.props.loading.name
 
-> **components.MuiButton.props.loading.name**: `string` = `"積み込み"`
+> **components.MuiButton.props.loading.name**: `string` = `"読み込み中"`
 
 #### components.MuiButtonGroup
 
@@ -482,7 +482,7 @@
 
 #### components.MuiButtonGroup.description
 
-> **components.MuiButtonGroup.description**: `string` = `"関連するボタンをまとめてグループ化する"`
+> **components.MuiButtonGroup.description**: `string` = `"関連するボタンをまとめてグループ化します"`
 
 #### components.MuiButtonGroup.name
 
@@ -498,7 +498,7 @@
 
 #### components.MuiButtonGroup.props.fullWidth.description
 
-> **components.MuiButtonGroup.props.fullWidth.description**: `string` = `"ボタングループをコンテナの幅全体に広げます"`
+> **components.MuiButtonGroup.props.fullWidth.description**: `string` = `"ボタングループをコンテナの幅いっぱいに広げます"`
 
 #### components.MuiButtonGroup.props.fullWidth.name
 
@@ -542,7 +542,7 @@
 
 #### components.MuiCard.props.actions.name
 
-> **components.MuiCard.props.actions.name**: `string` = `"アクション"`
+> **components.MuiCard.props.actions.name**: `string` = `"[アクション]"`
 
 #### components.MuiCard.props.header
 
@@ -586,7 +586,7 @@
 
 #### components.MuiCard.props.media.description
 
-> **components.MuiCard.props.media.description**: `string` = `"画像やビデオなどのメディアコンテンツ"`
+> **components.MuiCard.props.media.description**: `string` = `"画像や動画などのメディアコンテンツ"`
 
 #### components.MuiCard.props.media.name
 
@@ -598,11 +598,11 @@
 
 #### components.MuiCard.props.onSelect.description
 
-> **components.MuiCard.props.onSelect.description**: `string` = `"カードが選択されたときにトリガーされるコールバック"`
+> **components.MuiCard.props.onSelect.description**: `string` = `"カードが選択されたときにコールバックがトリガーされます"`
 
 #### components.MuiCard.props.onSelect.name
 
-> **components.MuiCard.props.onSelect.name**: `string` = `"onSelect"`
+> **components.MuiCard.props.onSelect.name**: `string` = `"オンセレクト"`
 
 #### components.MuiCard.props.subHeader
 
@@ -626,7 +626,7 @@
 
 #### components.MuiCard.props.useActions.name
 
-> **components.MuiCard.props.useActions.name**: `string` = `"アクションを使用する"`
+> **components.MuiCard.props.useActions.name**: `string` = `"アクションを使う"`
 
 #### components.MuiCard.props.useCardActionArea
 
@@ -634,11 +634,11 @@
 
 #### components.MuiCard.props.useCardActionArea.description
 
-> **components.MuiCard.props.useCardActionArea.description**: `string` = `"クリック可能なアクション領域でコンテンツをラップします"`
+> **components.MuiCard.props.useCardActionArea.description**: `string` = `"クリック可能なアクションエリアでコンテンツをラップします"`
 
 #### components.MuiCard.props.useCardActionArea.name
 
-> **components.MuiCard.props.useCardActionArea.name**: `string` = `"カードアクション領域を使用する"`
+> **components.MuiCard.props.useCardActionArea.name**: `string` = `"カードアクションエリアを使う"`
 
 #### components.MuiCard.props.useHeader
 
@@ -646,7 +646,7 @@
 
 #### components.MuiCard.props.useHeader.description
 
-> **components.MuiCard.props.useHeader.description**: `string` = `"カードヘッダセクションを有効にします"`
+> **components.MuiCard.props.useHeader.description**: `string` = `"カードヘッダーセクションを有効にします"`
 
 #### components.MuiCard.props.useHeader.name
 
@@ -658,7 +658,7 @@
 
 #### components.MuiCard.props.useHeaderAction.description
 
-> **components.MuiCard.props.useHeaderAction.description**: `string` = `"ヘッダー内のアクション領域を有効にします"`
+> **components.MuiCard.props.useHeaderAction.description**: `string` = `"ヘッダー内のアクションエリアを有効にします"`
 
 #### components.MuiCard.props.useHeaderAction.name
 
@@ -674,7 +674,7 @@
 
 #### components.MuiCard.props.useHeaderAvatar.name
 
-> **components.MuiCard.props.useHeaderAvatar.name**: `string` = `"ヘッダーアバターを使用する"`
+> **components.MuiCard.props.useHeaderAvatar.name**: `string` = `"ヘッダーアバターを使う"`
 
 #### components.MuiCard.props.useMedia
 
@@ -698,7 +698,7 @@
 
 #### components.MuiCard.props.useSubheader.name
 
-> **components.MuiCard.props.useSubheader.name**: `string` = `"小見出しを使う"`
+> **components.MuiCard.props.useSubheader.name**: `string` = `"サブヘッダーを使用"`
 
 #### components.MuiCheckbox
 
@@ -706,7 +706,7 @@
 
 #### components.MuiCheckbox.description
 
-> **components.MuiCheckbox.description**: `string` = `"一つ以上のオプションを選択できます"`
+> **components.MuiCheckbox.description**: `string` = `"1 つまたは複数のオプションを選択できます"`
 
 #### components.MuiCheckbox.name
 
@@ -722,11 +722,11 @@
 
 #### components.MuiCheckbox.props.defaultChecked.description
 
-> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"制御されていないときの最初のチェック状態"`
+> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"制御されていないときの初期チェック状態"`
 
 #### components.MuiCheckbox.props.defaultChecked.name
 
-> **components.MuiCheckbox.props.defaultChecked.name**: `string` = `"デフォルトチェック"`
+> **components.MuiCheckbox.props.defaultChecked.name**: `string` = `"デフォルトチェック済み"`
 
 #### components.MuiCircularProgress
 
@@ -734,11 +734,11 @@
 
 #### components.MuiCircularProgress.description
 
-> **components.MuiCircularProgress.description**: `string` = `"循環形式での読み込みまたは進行状況を示します"`
+> **components.MuiCircularProgress.description**: `string` = `"ロードまたは進行状況を円形で示します"`
 
 #### components.MuiCircularProgress.name
 
-> **components.MuiCircularProgress.name**: `string` = `"循環の進行状況"`
+> **components.MuiCircularProgress.name**: `string` = `"循環プログレス"`
 
 #### components.MuiCircularProgress.props
 
@@ -750,11 +750,11 @@
 
 #### components.MuiCircularProgress.props.disableShrink.description
 
-> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"縮小アニメーションを無効にします"`
+> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"シュリンクアニメーションを無効にします"`
 
 #### components.MuiCircularProgress.props.disableShrink.name
 
-> **components.MuiCircularProgress.props.disableShrink.name**: `string` = `"縮小を無効にする"`
+> **components.MuiCircularProgress.props.disableShrink.name**: `string` = `"シュリンクを無効にする"`
 
 #### components.MuiCircularProgress.props.thickness
 
@@ -774,7 +774,7 @@
 
 #### components.MuiContainer.description
 
-> **components.MuiContainer.description**: `string` = `"コンテンツを水平方向に中央揃えおよび制約します"`
+> **components.MuiContainer.description**: `string` = `"コンテンツを水平方向に中央揃えして制限します"`
 
 #### components.MuiContainer.name
 
@@ -790,11 +790,11 @@
 
 #### components.MuiContainer.props.fixed.description
 
-> **components.MuiContainer.props.fixed.description**: `string` = `"流体の幅の代わりに固定された最大幅を設定します"`
+> **components.MuiContainer.props.fixed.description**: `string` = `"可変幅の代わりに固定の最大幅を設定します。"`
 
 #### components.MuiContainer.props.fixed.name
 
-> **components.MuiContainer.props.fixed.name**: `string` = `"固定"`
+> **components.MuiContainer.props.fixed.name**: `string` = `"修正済み"`
 
 #### components.MuiContainer.props.maxWidth
 
@@ -806,7 +806,7 @@
 
 #### components.MuiContainer.props.maxWidth.name
 
-> **components.MuiContainer.props.maxWidth.name**: `string` = `"最高の幅"`
+> **components.MuiContainer.props.maxWidth.name**: `string` = `"最大幅"`
 
 #### components.MuiDatePicker
 
@@ -830,7 +830,7 @@
 
 #### components.MuiDatePicker.props.autoFocus.description
 
-> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"Trueの場合、コンポーネントがマウントされたときに自動的に日付ピッカーに焦点を当てます"`
+> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"true の場合、コンポーネントがマウントされたときに自動的に日付ピッカーにフォーカスが当てられます"`
 
 #### components.MuiDatePicker.props.autoFocus.name
 
@@ -842,7 +842,7 @@
 
 #### components.MuiDatePicker.props.closeOnSelect.description
 
-> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"日付が選択された後、日付選択ダイアログを自動的に閉じます"`
+> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"日付を選択した後、日付ピッカーダイアログを自動的に閉じます"`
 
 #### components.MuiDatePicker.props.closeOnSelect.name
 
@@ -854,11 +854,11 @@
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.description
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"デスクトップモードのレイアウトに切り替えるタイミングを決定するCSSメディアクエリ文字列"`
+> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"デスクトップモードレイアウトに切り替えるタイミングを決定する CSS メディアクエリ文字列"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.name
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"デスクトップモードメディアクエリ"`
+> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"デスクトップモードのメディアクエリ"`
 
 #### components.MuiDatePicker.props.disableFuture
 
@@ -866,7 +866,7 @@
 
 #### components.MuiDatePicker.props.disableFuture.description
 
-> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"Trueの場合、現在の日付の後の日付の選択を禁止します"`
+> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"true に設定すると、現在の日付より後の日付を選択できなくなります。"`
 
 #### components.MuiDatePicker.props.disableFuture.name
 
@@ -878,11 +878,11 @@
 
 #### components.MuiDatePicker.props.disableHighlightToday.description
 
-> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"Trueの場合、カレンダ内の現在の日付の視覚的な強調表示を無効にします"`
+> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"true の場合、カレンダー内の現在の日付の視覚的な強調表示を無効にします"`
 
 #### components.MuiDatePicker.props.disableHighlightToday.name
 
-> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"今日のハイライトを無効にする"`
+> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"今すぐハイライトを無効にする"`
 
 #### components.MuiDatePicker.props.disableOpenPicker
 
@@ -890,11 +890,11 @@
 
 #### components.MuiDatePicker.props.disableOpenPicker.description
 
-> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"Trueの場合、ピッカーダイアログを開かないようにします（読み取り専用表示に便利です）"`
+> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"true の場合、ピッカーダイアログを開かないようにします (読み取り専用表示に便利)"`
 
 #### components.MuiDatePicker.props.disableOpenPicker.name
 
-> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"開いているピッカーを無効にする"`
+> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"オープンピッカーを無効にする"`
 
 #### components.MuiDatePicker.props.disablePast
 
@@ -902,7 +902,7 @@
 
 #### components.MuiDatePicker.props.disablePast.description
 
-> **components.MuiDatePicker.props.disablePast.description**: `string` = `"Trueの場合、現在の日付より前の日付の選択を禁止します"`
+> **components.MuiDatePicker.props.disablePast.description**: `string` = `"true に設定すると、現在の日付より前の日付が選択されなくなります"`
 
 #### components.MuiDatePicker.props.disablePast.name
 
@@ -918,7 +918,7 @@
 
 #### components.MuiDatePicker.props.displayWeekNumber.name
 
-> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"週番号の表示"`
+> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"週番号を表示"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber
 
@@ -926,7 +926,7 @@
 
 #### components.MuiDatePicker.props.fixedWeekNumber.description
 
-> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"表示する週数を固定（カレンダーの高さを強制的に一貫させる）"`
+> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"表示する週数を固定 (カレンダーの高さを一定にする)"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber.name
 
@@ -938,7 +938,7 @@
 
 #### components.MuiDatePicker.props.format.description
 
-> **components.MuiDatePicker.props.format.description**: `string` = `"表示と解析に使用される日付書式文字列（例：'yyyy-MM-dd'、'MM/dd/yyyy'）"`
+> **components.MuiDatePicker.props.format.description**: `string` = `"表示と解析に使用される日付フォーマット文字列 (例:'yyyy-MM-dd'、'MM/dd/yyyy')"`
 
 #### components.MuiDatePicker.props.format.name
 
@@ -950,7 +950,7 @@
 
 #### components.MuiDatePicker.props.formatDensity.description
 
-> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"日付の書式設定の間隔を制御します：密（コンパクト）または広々とした（より多くの間隔）"`
+> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"日付フォーマットの間隔を制御します:高密度 (コンパクト) または広く (間隔を広げる)"`
 
 #### components.MuiDatePicker.props.formatDensity.name
 
@@ -962,11 +962,11 @@
 
 #### components.MuiDatePicker.props.loading.description
 
-> **components.MuiDatePicker.props.loading.description**: `string` = `"Trueの場合、データがロードされていることを示すロードスピナーが表示されます"`
+> **components.MuiDatePicker.props.loading.description**: `string` = `"true の場合、データがロード中であることを示すロードスピナーが表示されます"`
 
 #### components.MuiDatePicker.props.loading.name
 
-> **components.MuiDatePicker.props.loading.name**: `string` = `"積み込み"`
+> **components.MuiDatePicker.props.loading.name**: `string` = `"読み込み中"`
 
 #### components.MuiDatePicker.props.maxDate
 
@@ -974,7 +974,7 @@
 
 #### components.MuiDatePicker.props.maxDate.description
 
-> **components.MuiDatePicker.props.maxDate.description**: `string` = `"選択できる最新の日付（含む）"`
+> **components.MuiDatePicker.props.maxDate.description**: `string` = `"選択できる最新の日付 (含む)"`
 
 #### components.MuiDatePicker.props.maxDate.name
 
@@ -986,11 +986,11 @@
 
 #### components.MuiDatePicker.props.minDate.description
 
-> **components.MuiDatePicker.props.minDate.description**: `string` = `"選択できる最も早い日付（包括的）"`
+> **components.MuiDatePicker.props.minDate.description**: `string` = `"選択できる最も早い日付 (含む)"`
 
 #### components.MuiDatePicker.props.minDate.name
 
-> **components.MuiDatePicker.props.minDate.name**: `string` = `"分日付"`
+> **components.MuiDatePicker.props.minDate.name**: `string` = `"最小日付"`
 
 #### components.MuiDatePicker.props.monthsPerRow
 
@@ -1002,7 +1002,7 @@
 
 #### components.MuiDatePicker.props.monthsPerRow.name
 
-> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"行あたりの月"`
+> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"1 行あたりの月数"`
 
 #### components.MuiDatePicker.props.name
 
@@ -1010,11 +1010,11 @@
 
 #### components.MuiDatePicker.props.name.description
 
-> **components.MuiDatePicker.props.name.description**: `string` = `"フォームを送信するときに使用されるフォームフィールドのname属性"`
+> **components.MuiDatePicker.props.name.description**: `string` = `"フォームを送信するときに使用されるフォームフィールドの名前属性"`
 
 #### components.MuiDatePicker.props.name.name
 
-> **components.MuiDatePicker.props.name.name**: `string` = `"名前"`
+> **components.MuiDatePicker.props.name.name**: `string` = `"[名前]"`
 
 #### components.MuiDatePicker.props.onAccept
 
@@ -1022,11 +1022,11 @@
 
 #### components.MuiDatePicker.props.onAccept.description
 
-> **components.MuiDatePicker.props.onAccept.description**: `string` = `"値が受け入れられたときに発生するコールバック"`
+> **components.MuiDatePicker.props.onAccept.description**: `string` = `"値が受け入れられたときにコールバックが発生します"`
 
 #### components.MuiDatePicker.props.onAccept.name
 
-> **components.MuiDatePicker.props.onAccept.name**: `string` = `"onAccept"`
+> **components.MuiDatePicker.props.onAccept.name**: `string` = `"受諾時について"`
 
 #### components.MuiDatePicker.props.onClose
 
@@ -1034,11 +1034,11 @@
 
 #### components.MuiDatePicker.props.onClose.description
 
-> **components.MuiDatePicker.props.onClose.description**: `string` = `"コールバックは、ポップアップが閉じられるように要求したときに発生しました"`
+> **components.MuiDatePicker.props.onClose.description**: `string` = `"ポップアップのクローズが要求されたときにコールバックが発生します"`
 
 #### components.MuiDatePicker.props.onClose.name
 
-> **components.MuiDatePicker.props.onClose.name**: `string` = `"onClose"`
+> **components.MuiDatePicker.props.onClose.name**: `string` = `"[閉じる]"`
 
 #### components.MuiDatePicker.props.onError
 
@@ -1046,11 +1046,11 @@
 
 #### components.MuiDatePicker.props.onError.description
 
-> **components.MuiDatePicker.props.onError.description**: `string` = `"現在の値に関連付けられたエラーが変更されたときに発生するコールバック"`
+> **components.MuiDatePicker.props.onError.description**: `string` = `"現在の値に関連するエラーが変更されたときに発生するコールバック"`
 
 #### components.MuiDatePicker.props.onError.name
 
-> **components.MuiDatePicker.props.onError.name**: `string` = `"onError"`
+> **components.MuiDatePicker.props.onError.name**: `string` = `"OnError"`
 
 #### components.MuiDatePicker.props.onMonthChange
 
@@ -1058,11 +1058,11 @@
 
 #### components.MuiDatePicker.props.onMonthChange.description
 
-> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"月の変更時に発生したコールバック"`
+> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"月の変更時にコールバックが発生しました"`
 
 #### components.MuiDatePicker.props.onMonthChange.name
 
-> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"onMonthChange"`
+> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"月の変更時"`
 
 #### components.MuiDatePicker.props.onOpen
 
@@ -1070,11 +1070,11 @@
 
 #### components.MuiDatePicker.props.onOpen.description
 
-> **components.MuiDatePicker.props.onOpen.description**: `string` = `"ポップアップが開かれるように要求したときに発生するコールバック"`
+> **components.MuiDatePicker.props.onOpen.description**: `string` = `"ポップアップを開くように要求されたときにコールバックが発生します"`
 
 #### components.MuiDatePicker.props.onOpen.name
 
-> **components.MuiDatePicker.props.onOpen.name**: `string` = `"onOpen（オンオープン）"`
+> **components.MuiDatePicker.props.onOpen.name**: `string` = `"[オープン中]"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange
 
@@ -1082,11 +1082,11 @@
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.description
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"選択したセクションが変更されたときに発生するコールバック"`
+> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"選択したセクションが変更されたときにコールバックが発生します"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.name
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"onSelectedSectionsChange"`
+> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"選択したセクションの変更時"`
 
 #### components.MuiDatePicker.props.onViewChange
 
@@ -1094,11 +1094,11 @@
 
 #### components.MuiDatePicker.props.onViewChange.description
 
-> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"ビューの変更時に発生するコールバック"`
+> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"ビューが変更されたときにコールバックが発生しました"`
 
 #### components.MuiDatePicker.props.onViewChange.name
 
-> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"onViewChange"`
+> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"ビュー変更時"`
 
 #### components.MuiDatePicker.props.onYearChange
 
@@ -1106,11 +1106,11 @@
 
 #### components.MuiDatePicker.props.onYearChange.description
 
-> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"年の変更時に発生したコールバック"`
+> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"年の変更時にコールバックが発生しました"`
 
 #### components.MuiDatePicker.props.onYearChange.name
 
-> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"onYearChange"`
+> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"年替わりについて"`
 
 #### components.MuiDatePicker.props.open
 
@@ -1118,11 +1118,11 @@
 
 #### components.MuiDatePicker.props.open.description
 
-> **components.MuiDatePicker.props.open.description**: `string` = `"Trueの場合、日付選択ダイアログが開きます。"`
+> **components.MuiDatePicker.props.open.description**: `string` = `"true の場合、日付ピッカーダイアログが開き、制御された状態管理に使用できます"`
 
 #### components.MuiDatePicker.props.open.name
 
-> **components.MuiDatePicker.props.open.name**: `string` = `"オープン"`
+> **components.MuiDatePicker.props.open.name**: `string` = `"[開く]"`
 
 #### components.MuiDatePicker.props.openTo
 
@@ -1130,11 +1130,11 @@
 
 #### components.MuiDatePicker.props.openTo.description
 
-> **components.MuiDatePicker.props.openTo.description**: `string` = `"ピッカーがアクティブ化されたときに開くビュー"`
+> **components.MuiDatePicker.props.openTo.description**: `string` = `"ピッカーがアクティブになったときに開くビュー"`
 
 #### components.MuiDatePicker.props.openTo.name
 
-> **components.MuiDatePicker.props.openTo.name**: `string` = `"にオープン"`
+> **components.MuiDatePicker.props.openTo.name**: `string` = `"に開く"`
 
 #### components.MuiDatePicker.props.referenceDate
 
@@ -1146,7 +1146,7 @@
 
 #### components.MuiDatePicker.props.referenceDate.name
 
-> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"参照日"`
+> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"基準日"`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth
 
@@ -1154,11 +1154,11 @@
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"現在の月ビューに、前の月と次の月の日を表示します"`
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"現在の月ビューに前月と翌月の日数を表示します"`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"現在の月以外の日を表示する"`
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"今月の外の日を表示"`
 
 #### components.MuiDatePicker.props.view
 
@@ -1166,7 +1166,7 @@
 
 #### components.MuiDatePicker.props.view.description
 
-> **components.MuiDatePicker.props.view.description**: `string` = `"表示する最初のビュー(日、月、または年のカレンダー)"`
+> **components.MuiDatePicker.props.view.description**: `string` = `"最初に表示するビュー (日、月、または年のカレンダー)"`
 
 #### components.MuiDatePicker.props.view.name
 
@@ -1178,7 +1178,7 @@
 
 #### components.MuiDatePicker.props.views.description
 
-> **components.MuiDatePicker.props.views.description**: `string` = `"利用可能なビュー（日、月、年のカレンダー）"`
+> **components.MuiDatePicker.props.views.description**: `string` = `"使用可能なビュー (日、月、年のカレンダー)"`
 
 #### components.MuiDatePicker.props.views.name
 
@@ -1190,11 +1190,11 @@
 
 #### components.MuiDatePicker.props.yearsOrder.description
 
-> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"年の並べ替え順序:昇順(最も古い最初)または降順(最も新しい最初)"`
+> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"年のソート順:昇順 (古い順) または降順 (新しい順)"`
 
 #### components.MuiDatePicker.props.yearsOrder.name
 
-> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"年順"`
+> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"年順序"`
 
 #### components.MuiDatePicker.props.yearsPerRow
 
@@ -1206,7 +1206,7 @@
 
 #### components.MuiDatePicker.props.yearsPerRow.name
 
-> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"行ごとの年"`
+> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"1 行あたりの年数"`
 
 #### components.MuiDialog
 
@@ -1214,7 +1214,7 @@
 
 #### components.MuiDialog.description
 
-> **components.MuiDialog.description**: `string` = `"オーバーレイでコンテンツを表示するモーダルダイアログコンポーネント"`
+> **components.MuiDialog.description**: `string` = `"コンテンツをオーバーレイで表示するモーダルダイアログコンポーネント"`
 
 #### components.MuiDialog.name
 
@@ -1230,7 +1230,7 @@
 
 #### components.MuiDialog.props.disableEscapeKeyDown.description
 
-> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"Trueの場合、エスケープキーを押してもダイアログは閉じません"`
+> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"true の場合、Esc キーを押してもダイアログは閉じません"`
 
 #### components.MuiDialog.props.disableEscapeKeyDown.name
 
@@ -1242,11 +1242,11 @@
 
 #### components.MuiDialog.props.fullScreen.description
 
-> **components.MuiDialog.props.fullScreen.description**: `string` = `"Trueの場合、ダイアログは全画面表示になります"`
+> **components.MuiDialog.props.fullScreen.description**: `string` = `"true の場合、ダイアログは全画面表示になります。"`
 
 #### components.MuiDialog.props.fullScreen.name
 
-> **components.MuiDialog.props.fullScreen.name**: `string` = `"フルスクリーン"`
+> **components.MuiDialog.props.fullScreen.name**: `string` = `"[フルスクリーン]"`
 
 #### components.MuiDialog.props.fullWidth
 
@@ -1254,7 +1254,7 @@
 
 #### components.MuiDialog.props.fullWidth.description
 
-> **components.MuiDialog.props.fullWidth.description**: `string` = `"Trueの場合、ダイアログはmaxWidthに伸びます"`
+> **components.MuiDialog.props.fullWidth.description**: `string` = `"true に設定すると、ダイアログは maxWidth まで拡大されます。"`
 
 #### components.MuiDialog.props.fullWidth.name
 
@@ -1266,11 +1266,11 @@
 
 #### components.MuiDialog.props.maxWidth.description
 
-> **components.MuiDialog.props.maxWidth.description**: `string` = `"ダイアログの最大幅(xs,sm,md,lg,xl)"`
+> **components.MuiDialog.props.maxWidth.description**: `string` = `"ダイアログの最大幅 (xs、sm、md、lg、xl)"`
 
 #### components.MuiDialog.props.maxWidth.name
 
-> **components.MuiDialog.props.maxWidth.name**: `string` = `"最高の幅"`
+> **components.MuiDialog.props.maxWidth.name**: `string` = `"最大幅"`
 
 #### components.MuiDialog.props.onClose
 
@@ -1278,11 +1278,11 @@
 
 #### components.MuiDialog.props.onClose.description
 
-> **components.MuiDialog.props.onClose.description**: `string` = `"ダイアログが閉じているときに発生するコールバック"`
+> **components.MuiDialog.props.onClose.description**: `string` = `"ダイアログが閉じているときにコールバックが発生します"`
 
 #### components.MuiDialog.props.onClose.name
 
-> **components.MuiDialog.props.onClose.name**: `string` = `"onClose"`
+> **components.MuiDialog.props.onClose.name**: `string` = `"[閉じる]"`
 
 #### components.MuiDialog.props.open
 
@@ -1290,11 +1290,11 @@
 
 #### components.MuiDialog.props.open.description
 
-> **components.MuiDialog.props.open.description**: `string` = `"Trueの場合、ダイアログが開きます"`
+> **components.MuiDialog.props.open.description**: `string` = `"true の場合、ダイアログが開きます。"`
 
 #### components.MuiDialog.props.open.name
 
-> **components.MuiDialog.props.open.name**: `string` = `"オープン"`
+> **components.MuiDialog.props.open.name**: `string` = `"[開く]"`
 
 #### components.MuiDialog.props.scroll
 
@@ -1302,7 +1302,7 @@
 
 #### components.MuiDialog.props.scroll.description
 
-> **components.MuiDialog.props.scroll.description**: `string` = `"ダイアログをスクロールするためのコンテナ（用紙または本文）を決定します。"`
+> **components.MuiDialog.props.scroll.description**: `string` = `"ダイアログをスクロールするコンテナ (用紙または本文) を決定します"`
 
 #### components.MuiDialog.props.scroll.name
 
@@ -1314,7 +1314,7 @@
 
 #### components.MuiDialogActions.description
 
-> **components.MuiDialogActions.description**: `string` = `"ダイアログアクションボタン用のコンテナ"`
+> **components.MuiDialogActions.description**: `string` = `"ダイアログアクションボタンのコンテナ"`
 
 #### components.MuiDialogActions.name
 
@@ -1330,11 +1330,11 @@
 
 #### components.MuiDialogActions.props.children.description
 
-> **components.MuiDialogActions.props.children.description**: `string` = `"コンポーネントのコンテンツ"`
+> **components.MuiDialogActions.props.children.description**: `string` = `"コンポーネントの内容"`
 
 #### components.MuiDialogActions.props.children.name
 
-> **components.MuiDialogActions.props.children.name**: `string` = `"子供たち"`
+> **components.MuiDialogActions.props.children.name**: `string` = `"子ども"`
 
 #### components.MuiDialogActions.props.disableSpacing
 
@@ -1342,7 +1342,7 @@
 
 #### components.MuiDialogActions.props.disableSpacing.description
 
-> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"Trueの場合、アクションには追加のマージンはありません"`
+> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"true の場合、アクションには追加のマージンはありません。"`
 
 #### components.MuiDialogActions.props.disableSpacing.name
 
@@ -1370,11 +1370,11 @@
 
 #### components.MuiDialogContent.props.children.description
 
-> **components.MuiDialogContent.props.children.description**: `string` = `"コンポーネントのコンテンツ"`
+> **components.MuiDialogContent.props.children.description**: `string` = `"コンポーネントの内容"`
 
 #### components.MuiDialogContent.props.children.name
 
-> **components.MuiDialogContent.props.children.name**: `string` = `"子供たち"`
+> **components.MuiDialogContent.props.children.name**: `string` = `"子ども"`
 
 #### components.MuiDialogContent.props.dividers
 
@@ -1382,7 +1382,7 @@
 
 #### components.MuiDialogContent.props.dividers.description
 
-> **components.MuiDialogContent.props.dividers.description**: `string` = `"Trueの場合、境界線はダイアログコンテンツの上部と下部に追加されます"`
+> **components.MuiDialogContent.props.dividers.description**: `string` = `"true の場合、ダイアログコンテンツの上部と下部に境界線が追加されます"`
 
 #### components.MuiDialogContent.props.dividers.name
 
@@ -1410,11 +1410,11 @@
 
 #### components.MuiDialogContentText.props.children.description
 
-> **components.MuiDialogContentText.props.children.description**: `string` = `"テキストの内容"`
+> **components.MuiDialogContentText.props.children.description**: `string` = `"テキストコンテンツ"`
 
 #### components.MuiDialogContentText.props.children.name
 
-> **components.MuiDialogContentText.props.children.name**: `string` = `"コンテンツ"`
+> **components.MuiDialogContentText.props.children.name**: `string` = `"[コンテンツ]"`
 
 #### components.MuiDialogLayout
 
@@ -1422,7 +1422,7 @@
 
 #### components.MuiDialogLayout.description
 
-> **components.MuiDialogLayout.description**: `string` = `"タイトル、コンテンツ、およびアクションボタンを備えたプリセットダイアログレイアウト"`
+> **components.MuiDialogLayout.description**: `string` = `"タイトル、コンテンツ、アクションボタンを含むプリセットダイアログレイアウト"`
 
 #### components.MuiDialogLayout.name
 
@@ -1454,7 +1454,7 @@
 
 #### components.MuiDialogTitle.props.children.name
 
-> **components.MuiDialogTitle.props.children.name**: `string` = `"コンテンツ"`
+> **components.MuiDialogTitle.props.children.name**: `string` = `"[コンテンツ]"`
 
 #### components.MuiErrorWrapper
 
@@ -1462,7 +1462,7 @@
 
 #### components.MuiErrorWrapper.description
 
-> **components.MuiErrorWrapper.description**: `string` = `"コンテンツをラップし、エラー状態またはメッセージを表示します"`
+> **components.MuiErrorWrapper.description**: `string` = `"コンテンツをラップし、エラー状態またはメッセージを表示する"`
 
 #### components.MuiErrorWrapper.name
 
@@ -1490,11 +1490,11 @@
 
 #### components.MuiFormControlLabel.props.control.description
 
-> **components.MuiFormControlLabel.props.control.description**: `string` = `"フォーム制御要素（チェックボックス、ラジオ、スイッチ）"`
+> **components.MuiFormControlLabel.props.control.description**: `string` = `"フォームコントロール要素 (チェックボックス、ラジオ、スイッチ)"`
 
 #### components.MuiFormControlLabel.props.control.name
 
-> **components.MuiFormControlLabel.props.control.name**: `string` = `"制御"`
+> **components.MuiFormControlLabel.props.control.name**: `string` = `"コントロール"`
 
 #### components.MuiFormControlLabel.props.labelPlacement
 
@@ -1506,7 +1506,7 @@
 
 #### components.MuiFormControlLabel.props.labelPlacement.name
 
-> **components.MuiFormControlLabel.props.labelPlacement.name**: `string` = `"ラベルの配置"`
+> **components.MuiFormControlLabel.props.labelPlacement.name**: `string` = `"ラベル配置"`
 
 #### components.MuiFormLabel
 
@@ -1514,7 +1514,7 @@
 
 #### components.MuiFormLabel.description
 
-> **components.MuiFormLabel.description**: `string` = `"フォームフィールドをグループ化または記述するためのラベル"`
+> **components.MuiFormLabel.description**: `string` = `"フォームフィールドをグループ化または説明するためのラベル"`
 
 #### components.MuiFormLabel.name
 
@@ -1530,11 +1530,11 @@
 
 #### components.MuiFormLabel.props.filled.description
 
-> **components.MuiFormLabel.props.filled.description**: `string` = `"塗りつぶされた状態のスタイルを適用します"`
+> **components.MuiFormLabel.props.filled.description**: `string` = `"塗りつぶし状態のスタイルを適用します"`
 
 #### components.MuiFormLabel.props.filled.name
 
-> **components.MuiFormLabel.props.filled.name**: `string` = `"満たされた"`
+> **components.MuiFormLabel.props.filled.name**: `string` = `"いっぱい"`
 
 #### components.MuiLinearProgress
 
@@ -1542,11 +1542,11 @@
 
 #### components.MuiLinearProgress.description
 
-> **components.MuiLinearProgress.description**: `string` = `"線形バーでの読み込みまたは進行状況を示します"`
+> **components.MuiLinearProgress.description**: `string` = `"ロード中や進行状況をリニアバーで表示"`
 
 #### components.MuiLinearProgress.name
 
-> **components.MuiLinearProgress.name**: `string` = `"線形進行"`
+> **components.MuiLinearProgress.name**: `string` = `"直線的な進行"`
 
 #### components.MuiLinearProgress.props
 
@@ -1558,11 +1558,11 @@
 
 #### components.MuiLinearProgress.props.valueBuffer.description
 
-> **components.MuiLinearProgress.props.valueBuffer.description**: `string` = `"バッファされた進行状況モードのセカンダリバッファ値"`
+> **components.MuiLinearProgress.props.valueBuffer.description**: `string` = `"バッファードプログレスモードのセカンダリバッファ値"`
 
 #### components.MuiLinearProgress.props.valueBuffer.name
 
-> **components.MuiLinearProgress.props.valueBuffer.name**: `string` = `"値バッファ"`
+> **components.MuiLinearProgress.props.valueBuffer.name**: `string` = `"バリューバッファ"`
 
 #### components.MuiLink
 
@@ -1570,7 +1570,7 @@
 
 #### components.MuiLink.description
 
-> **components.MuiLink.description**: `string` = `"ナビゲーションまたはアクションのクリック可能な要素"`
+> **components.MuiLink.description**: `string` = `"ナビゲーションまたはアクション用のクリック可能な要素"`
 
 #### components.MuiLink.name
 
@@ -1586,7 +1586,7 @@
 
 #### components.MuiLink.props.href.description
 
-> **components.MuiLink.props.href.description**: `string` = `"リンク先URL"`
+> **components.MuiLink.props.href.description**: `string` = `"デスティネーション URL"`
 
 #### components.MuiLink.props.href.name
 
@@ -1598,7 +1598,7 @@
 
 #### components.MuiList.description
 
-> **components.MuiList.description**: `string` = `"項目の縦方向のリストを表示します"`
+> **components.MuiList.description**: `string` = `"アイテムの垂直リストを表示します"`
 
 #### components.MuiList.name
 
@@ -1610,11 +1610,11 @@
 
 #### components.MuiListItem.description
 
-> **components.MuiListItem.description**: `string` = `"リスト内の単一の項目を表します"`
+> **components.MuiListItem.description**: `string` = `"リスト内の 1 つの項目を表します"`
 
 #### components.MuiListItem.name
 
-> **components.MuiListItem.name**: `string` = `"リスト項目"`
+> **components.MuiListItem.name**: `string` = `"リストアイテム"`
 
 #### components.MuiListItem.props
 
@@ -1626,7 +1626,7 @@
 
 #### components.MuiListItem.props.divider.description
 
-> **components.MuiListItem.props.divider.description**: `string` = `"リスト項目の下に分周器を表示します"`
+> **components.MuiListItem.props.divider.description**: `string` = `"リスト項目の下に仕切り線を表示します"`
 
 #### components.MuiListItem.props.divider.name
 
@@ -1638,7 +1638,7 @@
 
 #### components.MuiRadioGroup.description
 
-> **components.MuiRadioGroup.description**: `string` = `"セットから単一のオプションを選択できます"`
+> **components.MuiRadioGroup.description**: `string` = `"セットから 1 つのオプションを選択できます"`
 
 #### components.MuiRadioGroup.name
 
@@ -1654,11 +1654,11 @@
 
 #### components.MuiRadioGroup.props.name.description
 
-> **components.MuiRadioGroup.props.name.description**: `string` = `"ラジオボタンをグループ化するために使用されるName属性"`
+> **components.MuiRadioGroup.props.name.description**: `string` = `"ラジオボタンをグループ化するために使用する名前属性"`
 
 #### components.MuiRadioGroup.props.name.name
 
-> **components.MuiRadioGroup.props.name.name**: `string` = `"名前"`
+> **components.MuiRadioGroup.props.name.name**: `string` = `"[名前]"`
 
 #### components.MuiRadioGroup.props.row
 
@@ -1666,7 +1666,7 @@
 
 #### components.MuiRadioGroup.props.row.description
 
-> **components.MuiRadioGroup.props.row.description**: `string` = `"ラジオボタンを水平方向に表示します"`
+> **components.MuiRadioGroup.props.row.description**: `string` = `"ラジオボタンを水平に表示します"`
 
 #### components.MuiRadioGroup.props.row.name
 
@@ -1694,7 +1694,7 @@
 
 #### components.MuiSelect.name
 
-> **components.MuiSelect.name**: `string` = `"選択"`
+> **components.MuiSelect.name**: `string` = `"[選択]"`
 
 #### components.MuiSelect.props
 
@@ -1706,7 +1706,7 @@
 
 #### components.MuiSelect.props.autoFocus.description
 
-> **components.MuiSelect.props.autoFocus.description**: `string` = `"自動的に台紙に分野を焦点を合わせます"`
+> **components.MuiSelect.props.autoFocus.description**: `string` = `"フィールドをマウントに自動的に焦点を合わせます"`
 
 #### components.MuiSelect.props.autoFocus.name
 
@@ -1730,7 +1730,7 @@
 
 #### components.MuiStack.description
 
-> **components.MuiStack.description**: `string` = `"一次元スタック内のレイアウトの子"`
+> **components.MuiStack.description**: `string` = `"子を 1 次元のスタックにレイアウトします"`
 
 #### components.MuiStack.name
 
@@ -1746,11 +1746,11 @@
 
 #### components.MuiStack.props.alignItems.description
 
-> **components.MuiStack.props.alignItems.description**: `string` = `"クロス軸の配置を制御します"`
+> **components.MuiStack.props.alignItems.description**: `string` = `"軸間の位置合わせを制御します"`
 
 #### components.MuiStack.props.alignItems.name
 
-> **components.MuiStack.props.alignItems.name**: `string` = `"アイテムの整列"`
+> **components.MuiStack.props.alignItems.name**: `string` = `"項目を揃える"`
 
 #### components.MuiStack.props.direction
 
@@ -1758,7 +1758,7 @@
 
 #### components.MuiStack.props.direction.description
 
-> **components.MuiStack.props.direction.description**: `string` = `"項目を行または列に積み重ねるかどうかを定義します"`
+> **components.MuiStack.props.direction.description**: `string` = `"項目を行に積み重ねるか列に積み重ねるかを定義します"`
 
 #### components.MuiStack.props.direction.name
 
@@ -1770,7 +1770,7 @@
 
 #### components.MuiStack.props.flexWrap.description
 
-> **components.MuiStack.props.flexWrap.description**: `string` = `"項目を複数の行に折り返すかどうかを制御します"`
+> **components.MuiStack.props.flexWrap.description**: `string` = `"項目を複数行に折り返すかどうかを制御します"`
 
 #### components.MuiStack.props.flexWrap.name
 
@@ -1782,11 +1782,11 @@
 
 #### components.MuiStack.props.justifyContent.description
 
-> **components.MuiStack.props.justifyContent.description**: `string` = `"主軸のアライメントを制御します"`
+> **components.MuiStack.props.justifyContent.description**: `string` = `"主軸の位置合わせを制御します"`
 
 #### components.MuiStack.props.justifyContent.name
 
-> **components.MuiStack.props.justifyContent.name**: `string` = `"コンテンツの正当化"`
+> **components.MuiStack.props.justifyContent.name**: `string` = `"コンテンツを正当化する"`
 
 #### components.MuiStack.props.spacing
 
@@ -1794,7 +1794,7 @@
 
 #### components.MuiStack.props.spacing.description
 
-> **components.MuiStack.props.spacing.description**: `string` = `"積み重ねられた項目間の間隔"`
+> **components.MuiStack.props.spacing.description**: `string` = `"積み重ねられたアイテム間の間隔"`
 
 #### components.MuiStack.props.spacing.name
 
@@ -1806,11 +1806,11 @@
 
 #### components.MuiStack.props.useFlexGap.description
 
-> **components.MuiStack.props.useFlexGap.description**: `string` = `"間隔に余白の代わりにCSSギャップを使用します"`
+> **components.MuiStack.props.useFlexGap.description**: `string` = `"余白の代わりに CSS ギャップを使用して間隔を設定します"`
 
 #### components.MuiStack.props.useFlexGap.name
 
-> **components.MuiStack.props.useFlexGap.name**: `string` = `"フレックスギャップを使う"`
+> **components.MuiStack.props.useFlexGap.name**: `string` = `"フレックスギャップを使用"`
 
 #### components.MuiSwitch
 
@@ -1818,7 +1818,7 @@
 
 #### components.MuiSwitch.description
 
-> **components.MuiSwitch.description**: `string` = `"二つの状態を切り替えるためのトグル制御"`
+> **components.MuiSwitch.description**: `string` = `"2 つの状態を切り替えるためのトグルコントロール"`
 
 #### components.MuiSwitch.name
 
@@ -1838,7 +1838,7 @@
 
 #### components.MuiSwitch.props.defaultChecked.name
 
-> **components.MuiSwitch.props.defaultChecked.name**: `string` = `"デフォルトチェック"`
+> **components.MuiSwitch.props.defaultChecked.name**: `string` = `"デフォルトチェック済み"`
 
 #### components.MuiTextField
 
@@ -1846,7 +1846,7 @@
 
 #### components.MuiTextField.description
 
-> **components.MuiTextField.description**: `string` = `"テキストおよびフォームデータの入力フィールド"`
+> **components.MuiTextField.description**: `string` = `"テキストとフォームデータの入力フィールド"`
 
 #### components.MuiTextField.name
 
@@ -1862,7 +1862,7 @@
 
 #### components.MuiTextField.props.autoFocus.description
 
-> **components.MuiTextField.props.autoFocus.description**: `string` = `"自動的に台紙に分野を焦点を合わせます"`
+> **components.MuiTextField.props.autoFocus.description**: `string` = `"フィールドをマウントに自動的に焦点を合わせます"`
 
 #### components.MuiTextField.props.autoFocus.name
 
@@ -1874,7 +1874,7 @@
 
 #### components.MuiTextField.props.maxRows.description
 
-> **components.MuiTextField.props.maxRows.description**: `string` = `"複数行入力の可視行の最大数"`
+> **components.MuiTextField.props.maxRows.description**: `string` = `"複数行入力で表示される行の最大数"`
 
 #### components.MuiTextField.props.maxRows.name
 
@@ -1886,7 +1886,7 @@
 
 #### components.MuiTextField.props.multiline.description
 
-> **components.MuiTextField.props.multiline.description**: `string` = `"単一行入力の代わりにtextareaをレンダリングします"`
+> **components.MuiTextField.props.multiline.description**: `string` = `"単一行の入力の代わりにテキストエリアをレンダリングします"`
 
 #### components.MuiTextField.props.multiline.name
 
@@ -1898,7 +1898,7 @@
 
 #### components.MuiTextField.props.type.description
 
-> **components.MuiTextField.props.type.description**: `string` = `"HTML入力タイプ（テキスト、パスワード、電子メールなど）)"`
+> **components.MuiTextField.props.type.description**: `string` = `"HTML 入力タイプ (テキスト、パスワード、電子メールなど)"`
 
 #### components.MuiTextField.props.type.name
 
@@ -1910,7 +1910,7 @@
 
 #### components.MuiTooltip.description
 
-> **components.MuiTooltip.description**: `string` = `"ホバー、フォーカス、またはタッチのコンテキスト情報を表示します"`
+> **components.MuiTooltip.description**: `string` = `"ホバー、フォーカス、またはタッチでコンテキスト情報を表示します"`
 
 #### components.MuiTooltip.name
 
@@ -1930,7 +1930,7 @@
 
 #### components.MuiTooltip.props.arrow.name
 
-> **components.MuiTooltip.props.arrow.name**: `string` = `"アロー"`
+> **components.MuiTooltip.props.arrow.name**: `string` = `"矢印"`
 
 #### components.MuiTooltip.props.disableFocusListener
 
@@ -1938,7 +1938,7 @@
 
 #### components.MuiTooltip.props.disableFocusListener.description
 
-> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"ツールチップがフォーカスに表示されないようにします"`
+> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"ツールチップがフォーカスされて表示されないようにします"`
 
 #### components.MuiTooltip.props.disableFocusListener.name
 
@@ -1950,7 +1950,7 @@
 
 #### components.MuiTooltip.props.disableHoverListener.description
 
-> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"ツールチップがホバーに表示されないようにします"`
+> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"カーソルを合わせたときにツールチップが表示されないようにします"`
 
 #### components.MuiTooltip.props.disableHoverListener.name
 
@@ -1962,7 +1962,7 @@
 
 #### components.MuiTooltip.props.disableInteractive.description
 
-> **components.MuiTooltip.props.disableInteractive.description**: `string` = `"ツールヒントのコンテンツとの対話を無効にします"`
+> **components.MuiTooltip.props.disableInteractive.description**: `string` = `"ツールチップコンテンツとの対話を無効にします"`
 
 #### components.MuiTooltip.props.disableInteractive.name
 
@@ -1978,7 +1978,7 @@
 
 #### components.MuiTooltip.props.disableTouchListener.name
 
-> **components.MuiTooltip.props.disableTouchListener.name**: `string` = `"タッチリスナを無効にする"`
+> **components.MuiTooltip.props.disableTouchListener.name**: `string` = `"タッチリスナーを無効にする"`
 
 #### components.MuiTooltip.props.enterDelay
 
@@ -1986,11 +1986,11 @@
 
 #### components.MuiTooltip.props.enterDelay.description
 
-> **components.MuiTooltip.props.enterDelay.description**: `string` = `"ツールヒントを表示する前のミリ秒単位の遅延"`
+> **components.MuiTooltip.props.enterDelay.description**: `string` = `"ツールチップを表示するまでの遅延 (ミリ秒単位)"`
 
 #### components.MuiTooltip.props.enterDelay.name
 
-> **components.MuiTooltip.props.enterDelay.name**: `string` = `"遅延を入力します"`
+> **components.MuiTooltip.props.enterDelay.name**: `string` = `"遅延を入力"`
 
 #### components.MuiTooltip.props.followCursor
 
@@ -1998,11 +1998,11 @@
 
 #### components.MuiTooltip.props.followCursor.description
 
-> **components.MuiTooltip.props.followCursor.description**: `string` = `"ツールチップをカーソル位置に追従させます"`
+> **components.MuiTooltip.props.followCursor.description**: `string` = `"ツールチップをカーソル位置に合わせます"`
 
 #### components.MuiTooltip.props.followCursor.name
 
-> **components.MuiTooltip.props.followCursor.name**: `string` = `"カーソルに従ってください"`
+> **components.MuiTooltip.props.followCursor.name**: `string` = `"フォローカーソル"`
 
 #### components.MuiTooltip.props.leaveDelay
 
@@ -2010,11 +2010,11 @@
 
 #### components.MuiTooltip.props.leaveDelay.description
 
-> **components.MuiTooltip.props.leaveDelay.description**: `string` = `"ツールチップを非表示にするまでの遅延をミリ秒単位で指定します"`
+> **components.MuiTooltip.props.leaveDelay.description**: `string` = `"ツールチップを非表示にするまでの遅延 (ミリ秒単位)"`
 
 #### components.MuiTooltip.props.leaveDelay.name
 
-> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"遅延を残す"`
+> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"休暇遅延"`
 
 #### components.MuiTooltip.props.title
 
@@ -2034,7 +2034,7 @@
 
 #### components.MuiTypography.description
 
-> **components.MuiTypography.description**: `string` = `"定義済みのタイポグラフィスタイルを持つテキストを表示します"`
+> **components.MuiTypography.description**: `string` = `"定義済みのタイポグラフィスタイルでテキストを表示します"`
 
 #### components.MuiTypography.name
 
@@ -2050,11 +2050,11 @@
 
 #### components.MuiTypography.props.children.description
 
-> **components.MuiTypography.props.children.description**: `string` = `"テキストの内容"`
+> **components.MuiTypography.props.children.description**: `string` = `"テキストコンテンツ"`
 
 #### components.MuiTypography.props.children.name
 
-> **components.MuiTypography.props.children.name**: `string` = `"コンテンツ"`
+> **components.MuiTypography.props.children.name**: `string` = `"[コンテンツ]"`
 
 #### components.MuiUploader
 
@@ -2062,7 +2062,7 @@
 
 #### components.MuiUploader.description
 
-> **components.MuiUploader.description**: `string` = `"1つ以上のファイルをアップロードするためのコンポーネント"`
+> **components.MuiUploader.description**: `string` = `"1 つまたは複数のファイルをアップロードするためのコンポーネント"`
 
 #### components.MuiUploader.name
 
@@ -2078,11 +2078,11 @@
 
 #### components.MuiUploader.props.accept.description
 
-> **components.MuiUploader.props.accept.description**: `string` = `"許可されるファイルタイプ(例:\".jpg、。png\"）"`
+> **components.MuiUploader.props.accept.description**: `string` = `"許可されているファイルタイプ (例:「.jpg、.png」)"`
 
 #### components.MuiUploader.props.accept.name
 
-> **components.MuiUploader.props.accept.name**: `string` = `"受け入れる"`
+> **components.MuiUploader.props.accept.name**: `string` = `"承諾する"`
 
 #### components.MuiUploader.props.multiple
 
@@ -2090,7 +2090,7 @@
 
 #### components.MuiUploader.props.multiple.description
 
-> **components.MuiUploader.props.multiple.description**: `string` = `"複数のファイルを選択できるようにします"`
+> **components.MuiUploader.props.multiple.description**: `string` = `"複数のファイルを選択できます"`
 
 #### components.MuiUploader.props.multiple.name
 

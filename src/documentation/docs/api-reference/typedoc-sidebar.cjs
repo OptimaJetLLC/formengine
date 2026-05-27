@@ -2624,8 +2624,18 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isBoolean",
+              label: "isBoolean"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/isContainer",
               label: "isContainer"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isDate",
+              label: "isDate"
             },
             {
               type: "doc",

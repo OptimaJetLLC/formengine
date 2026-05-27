@@ -14,7 +14,7 @@
 
 #### categories.dataDisplay.name
 
-> **categories.dataDisplay.name**: `string` = `"نمایش داده ها"`
+> **categories.dataDisplay.name**: `string` = `"نمایش داده"`
 
 #### categories.feedback
 
@@ -38,7 +38,7 @@
 
 #### categories.inputs.name
 
-> **categories.inputs.name**: `string` = `"ورودی ها"`
+> **categories.inputs.name**: `string` = `"ورودی"`
 
 #### categories.layout
 
@@ -46,7 +46,7 @@
 
 #### categories.layout.name
 
-> **categories.layout.name**: `string` = `"طرح بندی"`
+> **categories.layout.name**: `string` = `"چیدمان"`
 
 #### categories.navigation
 
@@ -74,11 +74,11 @@
 
 #### commonProperties.checked.description
 
-> **commonProperties.checked.description**: `string` = `"اگر درست باشد ، جزء بررسی می شود"`
+> **commonProperties.checked.description**: `string` = `"اگر درست باشد، کامپوننت بررسی می شود"`
 
 #### commonProperties.checked.name
 
-> **commonProperties.checked.name**: `string` = `"چک شده"`
+> **commonProperties.checked.name**: `string` = `"بررسی شده"`
 
 #### commonProperties.children
 
@@ -90,7 +90,7 @@
 
 #### commonProperties.children.name
 
-> **commonProperties.children.name**: `string` = `"کودکان"`
+> **commonProperties.children.name**: `string` = `"بچه ها"`
 
 #### commonProperties.color
 
@@ -110,7 +110,7 @@
 
 #### commonProperties.defaultValue.description
 
-> **commonProperties.defaultValue.description**: `string` = `"مقدار پیش فرض. استفاده از زمانی که جزء کنترل نشده است"`
+> **commonProperties.defaultValue.description**: `string` = `"مقدار پیش فرض هنگامی که جزء کنترل نشده است استفاده کنید"`
 
 #### commonProperties.defaultValue.name
 
@@ -122,7 +122,7 @@
 
 #### commonProperties.dense.description
 
-> **commonProperties.dense.description**: `string` = `"اگر درست باشد ، پودینگ عمودی را کاهش می دهد"`
+> **commonProperties.dense.description**: `string` = `"اگر درست باشد، پوشش عمودی را کاهش می دهد"`
 
 #### commonProperties.dense.name
 
@@ -134,7 +134,7 @@
 
 #### commonProperties.disabled.description
 
-> **commonProperties.disabled.description**: `string` = `"اگر درست باشد ، جزء غیرفعال است"`
+> **commonProperties.disabled.description**: `string` = `"اگر درست باشد، کامپوننت غیرفعال است"`
 
 #### commonProperties.disabled.name
 
@@ -146,11 +146,11 @@
 
 #### commonProperties.disableGutters.description
 
-> **commonProperties.disableGutters.description**: `string` = `"اگر درست باشد ، پودینگ چپ و راست را غیرفعال می کند"`
+> **commonProperties.disableGutters.description**: `string` = `"اگر درست باشد، پد چپ و راست را غیرفعال می کند"`
 
 #### commonProperties.disableGutters.name
 
-> **commonProperties.disableGutters.name**: `string` = `"ناودان ها را غیرفعال کنید"`
+> **commonProperties.disableGutters.name**: `string` = `"ناودان را غیرفعال کنید"`
 
 #### commonProperties.disablePadding
 
@@ -158,11 +158,11 @@
 
 #### commonProperties.disablePadding.description
 
-> **commonProperties.disablePadding.description**: `string` = `"اگر درست باشد ، پودینگ پیش فرض را غیرفعال می کند"`
+> **commonProperties.disablePadding.description**: `string` = `"اگر درست باشد، پدینگ پیش فرض را غیرفعال می کند"`
 
 #### commonProperties.disablePadding.name
 
-> **commonProperties.disablePadding.name**: `string` = `"غیر فعال کردن padding"`
+> **commonProperties.disablePadding.name**: `string` = `"غیرفعال کردن پد"`
 
 #### commonProperties.error
 
@@ -170,7 +170,7 @@
 
 #### commonProperties.error.description
 
-> **commonProperties.error.description**: `string` = `"اگر درست باشد ، جزء در حالت خطا نمایش داده می شود"`
+> **commonProperties.error.description**: `string` = `"اگر درست باشد، کامپوننت در حالت خطا نمایش داده می شود"`
 
 #### commonProperties.error.name
 
@@ -182,7 +182,7 @@
 
 #### commonProperties.fullWidth.description
 
-> **commonProperties.fullWidth.description**: `string` = `"اگر درست باشد ، جزء عرض کامل ظرف خود را می گیرد"`
+> **commonProperties.fullWidth.description**: `string` = `"اگر درست باشد، جزء عرض کامل ظرف خود را اشغال می کند"`
 
 #### commonProperties.fullWidth.name
 
@@ -194,11 +194,11 @@
 
 #### commonProperties.gutterBottom.description
 
-> **commonProperties.gutterBottom.description**: `string` = `"اگر درست باشد ، متن حاشیه پایین خواهد داشت"`
+> **commonProperties.gutterBottom.description**: `string` = `"اگر درست باشد، متن حاشیه پایین خواهد داشت"`
 
 #### commonProperties.gutterBottom.name
 
-> **commonProperties.gutterBottom.name**: `string` = `"پایین رودخانه"`
+> **commonProperties.gutterBottom.name**: `string` = `"پایین ناودان"`
 
 #### commonProperties.helperText
 
@@ -206,11 +206,11 @@
 
 #### commonProperties.helperText.description
 
-> **commonProperties.helperText.description**: `string` = `"محتوای متن یاور"`
+> **commonProperties.helperText.description**: `string` = `"محتوای متن کمکی"`
 
 #### commonProperties.helperText.name
 
-> **commonProperties.helperText.name**: `string` = `"اس ام اس یار"`
+> **commonProperties.helperText.name**: `string` = `"متن کمکی"`
 
 #### commonProperties.margin
 
@@ -218,7 +218,7 @@
 
 #### commonProperties.margin.description
 
-> **commonProperties.margin.description**: `string` = `"حاشیه اعمال شده به جزء را تعریف می کند"`
+> **commonProperties.margin.description**: `string` = `"حاشیه اعمال شده به مؤلفه را تعریف می کند"`
 
 #### commonProperties.margin.name
 
@@ -230,7 +230,7 @@
 
 #### commonProperties.noWrap.description
 
-> **commonProperties.noWrap.description**: `string` = `"اگر درست باشد ، متن بسته بندی نمی شود ، بلکه در عوض با یک بیضوی سرریز متن قطع می شود"`
+> **commonProperties.noWrap.description**: `string` = `"اگر درست باشد، متن بسته نمی شود، بلکه در عوض با بیضوی سرریز متن قطع می شود"`
 
 #### commonProperties.noWrap.name
 
@@ -242,11 +242,11 @@
 
 #### commonProperties.onChange.description
 
-> **commonProperties.onChange.description**: `string` = `"وقتی مقدار تغییر کرد ، تماس برگشت اخراج شد"`
+> **commonProperties.onChange.description**: `string` = `"هنگامی که مقدار تغییر می شود، تماس برگشت آغاز می شود"`
 
 #### commonProperties.onChange.name
 
-> **commonProperties.onChange.name**: `string` = `"اونچنج"`
+> **commonProperties.onChange.name**: `string` = `"در تغییر"`
 
 #### commonProperties.onClick
 
@@ -254,11 +254,11 @@
 
 #### commonProperties.onClick.description
 
-> **commonProperties.onClick.description**: `string` = `"وقتی روی کامپوننت کلیک شد ، Callback شلیک شد"`
+> **commonProperties.onClick.description**: `string` = `"هنگامی که روی کامپوننت کلیک می شود، تماس برگشت آغاز می شود"`
 
 #### commonProperties.onClick.name
 
-> **commonProperties.onClick.name**: `string` = `"onClick"`
+> **commonProperties.onClick.name**: `string` = `"روی کلیک"`
 
 #### commonProperties.required
 
@@ -266,11 +266,11 @@
 
 #### commonProperties.required.description
 
-> **commonProperties.required.description**: `string` = `"اگر درست باشد ، عنصر ورودی مورد نیاز است"`
+> **commonProperties.required.description**: `string` = `"اگر درست باشد، عنصر ورودی مورد نیاز است"`
 
 #### commonProperties.required.name
 
-> **commonProperties.required.name**: `string` = `"مورد نیاز"`
+> **commonProperties.required.name**: `string` = `"الزامی"`
 
 #### commonProperties.size
 
@@ -278,7 +278,7 @@
 
 #### commonProperties.size.description
 
-> **commonProperties.size.description**: `string` = `"اندازه قطعه"`
+> **commonProperties.size.description**: `string` = `"اندازه جزء"`
 
 #### commonProperties.size.name
 
@@ -290,7 +290,7 @@
 
 #### commonProperties.sx.description
 
-> **commonProperties.sx.description**: `string` = `"پروپ سیستم که اجازه می دهد تا سیستم را تعریف کند و همچنین سبک های css اضافی را حذف کند"`
+> **commonProperties.sx.description**: `string` = `"پروپوزیت سیستم که امکان تعریف غلط سیستم و همچنین سبک های CSS اضافی را فراهم می کند"`
 
 #### commonProperties.sx.name
 
@@ -306,7 +306,7 @@
 
 #### commonProperties.textAlign.name
 
-> **commonProperties.textAlign.name**: `string` = `"تراز بندی"`
+> **commonProperties.textAlign.name**: `string` = `"تراز کردن"`
 
 #### commonProperties.value
 
@@ -314,7 +314,7 @@
 
 #### commonProperties.value.description
 
-> **commonProperties.value.description**: `string` = `"ارزش جزء"`
+> **commonProperties.value.description**: `string` = `"مقدار مؤلفه"`
 
 #### commonProperties.value.name
 
@@ -330,7 +330,7 @@
 
 #### commonProperties.variant.name
 
-> **commonProperties.variant.name**: `string` = `"نوع"`
+> **commonProperties.variant.name**: `string` = `"واریانس"`
 
 ### components
 
@@ -342,7 +342,7 @@
 
 #### components.MuiBox.description
 
-> **components.MuiBox.description**: `string` = `"ظرف طرح عمومی با پشتیبانی از یک ظاهر طراحی سیستم"`
+> **components.MuiBox.description**: `string` = `"ظرف طرح بندی عمومی با پشتیبانی از سبک سیستم"`
 
 #### components.MuiBox.name
 
@@ -358,7 +358,7 @@
 
 #### components.MuiBreadcrumbs.name
 
-> **components.MuiBreadcrumbs.name**: `string` = `"آرد نان"`
+> **components.MuiBreadcrumbs.name**: `string` = `"آرد سوخاری"`
 
 #### components.MuiBreadcrumbs.props
 
@@ -370,11 +370,11 @@
 
 #### components.MuiBreadcrumbs.props.items.description
 
-> **components.MuiBreadcrumbs.props.items.description**: `string` = `"وسایل نان خرد شده برای نمایش"`
+> **components.MuiBreadcrumbs.props.items.description**: `string` = `"موارد نان خرده برای نمایش"`
 
 #### components.MuiBreadcrumbs.props.items.name
 
-> **components.MuiBreadcrumbs.props.items.name**: `string` = `"آیتم ها"`
+> **components.MuiBreadcrumbs.props.items.name**: `string` = `"اقلام"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse
 
@@ -382,11 +382,11 @@
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"اگر حداکثر موارد بیش از حد باشد ، تعداد مواردی که باید پس از بیضوی نشان داده شود"`
+> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"اگر حداکثر موارد تجاوز شود، تعداد آیتم هایی که بعد از بیضی نمایش داده می شوند"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.name
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.name**: `string` = `"اقلام پس از فروپاشی"`
+> **components.MuiBreadcrumbs.props.itemsAfterCollapse.name**: `string` = `"موارد پس از فروپاشی"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse
 
@@ -394,11 +394,11 @@
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"اگر حداکثر موارد بیش از حد باشد ، تعداد مواردی که باید قبل از بیضوی نشان داده شود"`
+> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"اگر از حداکثر موارد تجاوز شود، تعداد آیتم هایی که قبل از بیضی نشان داده می شوند"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.name
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.name**: `string` = `"اقلام قبل از سقوط"`
+> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.name**: `string` = `"موارد قبل از فروپاشی"`
 
 #### components.MuiBreadcrumbs.props.maxItems
 
@@ -406,7 +406,7 @@
 
 #### components.MuiBreadcrumbs.props.maxItems.description
 
-> **components.MuiBreadcrumbs.props.maxItems.description**: `string` = `"حداکثر تعداد نان خرد شده را برای نمایش مشخص می کند"`
+> **components.MuiBreadcrumbs.props.maxItems.description**: `string` = `"حداکثر تعداد آرد سوخاری برای نمایش را مشخص می کند"`
 
 #### components.MuiBreadcrumbs.props.maxItems.name
 
@@ -418,11 +418,11 @@
 
 #### components.MuiBreadcrumbs.props.separator.description
 
-> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"عنصر مورد استفاده برای جدا کردن اقلام آرد سوخاری"`
+> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"عنصر مورد استفاده برای جدا کردن موارد نان خرده"`
 
 #### components.MuiBreadcrumbs.props.separator.name
 
-> **components.MuiBreadcrumbs.props.separator.name**: `string` = `"جدا کننده"`
+> **components.MuiBreadcrumbs.props.separator.name**: `string` = `"جداکننده"`
 
 #### components.MuiButton
 
@@ -430,7 +430,7 @@
 
 #### components.MuiButton.description
 
-> **components.MuiButton.description**: `string` = `"یک جزء دکمه ای که برای فعال کردن اقدامات یا رویدادها استفاده می شود"`
+> **components.MuiButton.description**: `string` = `"یک جزء دکمه ای که برای تحریک اقدامات یا رویدادها استفاده می شود"`
 
 #### components.MuiButton.name
 
@@ -458,11 +458,11 @@
 
 #### components.MuiButton.props.disableElevation.description
 
-> **components.MuiButton.props.disableElevation.description**: `string` = `"سایه دکمه را هنگام تنظیم به true حذف می کند"`
+> **components.MuiButton.props.disableElevation.description**: `string` = `"سایه دکمه را هنگامی که روی true تنظیم می شود حذف می کند"`
 
 #### components.MuiButton.props.disableElevation.name
 
-> **components.MuiButton.props.disableElevation.name**: `string` = `"ارتفاع را غیرفعال کنید"`
+> **components.MuiButton.props.disableElevation.name**: `string` = `"غیرفعال کردن ارتفاع"`
 
 #### components.MuiButton.props.loading
 
@@ -470,7 +470,7 @@
 
 #### components.MuiButton.props.loading.description
 
-> **components.MuiButton.props.loading.description**: `string` = `"نشانگر بارگذاری را نمایش می دهد و تعامل را غیرفعال می کند"`
+> **components.MuiButton.props.loading.description**: `string` = `"نشانگر بارگیری را نمایش می دهد و تعامل را غیرفعال می کند"`
 
 #### components.MuiButton.props.loading.name
 
@@ -482,7 +482,7 @@
 
 #### components.MuiButtonGroup.description
 
-> **components.MuiButtonGroup.description**: `string` = `"گروه دکمه های مرتبط با هم"`
+> **components.MuiButtonGroup.description**: `string` = `"دکمه های مرتبط را با هم گروه بندی"`
 
 #### components.MuiButtonGroup.name
 
@@ -498,7 +498,7 @@
 
 #### components.MuiButtonGroup.props.fullWidth.description
 
-> **components.MuiButtonGroup.props.fullWidth.description**: `string` = `"باعث می شود گروه دکمه عرض کامل ظرف را پوشش دهد"`
+> **components.MuiButtonGroup.props.fullWidth.description**: `string` = `"باعث می شود گروه دکمه به عرض کامل ظرف را پوشش دهد"`
 
 #### components.MuiButtonGroup.props.fullWidth.name
 
@@ -522,7 +522,7 @@
 
 #### components.MuiCard.description
 
-> **components.MuiCard.description**: `string` = `"جزء سطحی برای گروه بندی مطالب مرتبط"`
+> **components.MuiCard.description**: `string` = `"مؤلفه سطحی برای گروه بندی محتوای مرتبط"`
 
 #### components.MuiCard.name
 
@@ -538,7 +538,7 @@
 
 #### components.MuiCard.props.actions.description
 
-> **components.MuiCard.props.actions.description**: `string` = `"دکمه های عمل یا کنترل برای کارت"`
+> **components.MuiCard.props.actions.description**: `string` = `"دکمه های اکشن یا کنترل برای کارت"`
 
 #### components.MuiCard.props.actions.name
 
@@ -550,11 +550,11 @@
 
 #### components.MuiCard.props.header.description
 
-> **components.MuiCard.props.header.description**: `string` = `"محتوای ارائه شده در سربرگ کارت"`
+> **components.MuiCard.props.header.description**: `string` = `"محتوای ارائه شده در هدر کارت"`
 
 #### components.MuiCard.props.header.name
 
-> **components.MuiCard.props.header.name**: `string` = `"هدر"`
+> **components.MuiCard.props.header.name**: `string` = `"سربرگ"`
 
 #### components.MuiCard.props.headerAction
 
@@ -562,11 +562,11 @@
 
 #### components.MuiCard.props.headerAction.description
 
-> **components.MuiCard.props.headerAction.description**: `string` = `"عنصر اکشن نمایش داده شده در هدر"`
+> **components.MuiCard.props.headerAction.description**: `string` = `"عنصر عمل نمایش داده شده در هدر"`
 
 #### components.MuiCard.props.headerAction.name
 
-> **components.MuiCard.props.headerAction.name**: `string` = `"اقدام هدر"`
+> **components.MuiCard.props.headerAction.name**: `string` = `"عمل هدر"`
 
 #### components.MuiCard.props.headerAvatar
 
@@ -578,7 +578,7 @@
 
 #### components.MuiCard.props.headerAvatar.name
 
-> **components.MuiCard.props.headerAvatar.name**: `string` = `"هدر آواتار"`
+> **components.MuiCard.props.headerAvatar.name**: `string` = `"آواتار هدر"`
 
 #### components.MuiCard.props.media
 
@@ -586,11 +586,11 @@
 
 #### components.MuiCard.props.media.description
 
-> **components.MuiCard.props.media.description**: `string` = `"محتوای رسانه ای مانند تصویر یا ویدئو"`
+> **components.MuiCard.props.media.description**: `string` = `"محتوای رسانه ای مانند تصویر یا ویدیو"`
 
 #### components.MuiCard.props.media.name
 
-> **components.MuiCard.props.media.name**: `string` = `"رسانه ها"`
+> **components.MuiCard.props.media.name**: `string` = `"رسانه"`
 
 #### components.MuiCard.props.onSelect
 
@@ -598,11 +598,11 @@
 
 #### components.MuiCard.props.onSelect.description
 
-> **components.MuiCard.props.onSelect.description**: `string` = `"تماس برگشت وقتی کارت انتخاب شد"`
+> **components.MuiCard.props.onSelect.description**: `string` = `"هنگامی که کارت انتخاب می شود، تماس برگشت فعال می شود"`
 
 #### components.MuiCard.props.onSelect.name
 
-> **components.MuiCard.props.onSelect.name**: `string` = `"ectselect"`
+> **components.MuiCard.props.onSelect.name**: `string` = `"در انتخاب"`
 
 #### components.MuiCard.props.subHeader
 
@@ -610,11 +610,11 @@
 
 #### components.MuiCard.props.subHeader.description
 
-> **components.MuiCard.props.subHeader.description**: `string` = `"متن ثانویه نمایش داده شده در زیر هدر"`
+> **components.MuiCard.props.subHeader.description**: `string` = `"متن ثانویه در زیر هدر نمایش داده می شود"`
 
 #### components.MuiCard.props.subHeader.name
 
-> **components.MuiCard.props.subHeader.name**: `string` = `"زیر عنوان"`
+> **components.MuiCard.props.subHeader.name**: `string` = `"سربرگ فرعی"`
 
 #### components.MuiCard.props.useActions
 
@@ -622,7 +622,7 @@
 
 #### components.MuiCard.props.useActions.description
 
-> **components.MuiCard.props.useActions.description**: `string` = `"بخش اقدامات را در پایین نمایش می دهد"`
+> **components.MuiCard.props.useActions.description**: `string` = `"یک بخش اقدامات را در پایین نمایش می دهد"`
 
 #### components.MuiCard.props.useActions.name
 
@@ -634,11 +634,11 @@
 
 #### components.MuiCard.props.useCardActionArea.description
 
-> **components.MuiCard.props.useCardActionArea.description**: `string` = `"بسته بندی محتوا با یک منطقه عمل قابل کلیک"`
+> **components.MuiCard.props.useCardActionArea.description**: `string` = `"محتوا را با یک منطقه اقدام قابل کلیک بسته بندی می کند"`
 
 #### components.MuiCard.props.useCardActionArea.name
 
-> **components.MuiCard.props.useCardActionArea.name**: `string` = `"استفاده از منطقه عمل کارت"`
+> **components.MuiCard.props.useCardActionArea.name**: `string` = `"از منطقه عمل کارت استفاده کنید"`
 
 #### components.MuiCard.props.useHeader
 
@@ -646,7 +646,7 @@
 
 #### components.MuiCard.props.useHeader.description
 
-> **components.MuiCard.props.useHeader.description**: `string` = `"بخش سربرگ کارت را فعال می کند"`
+> **components.MuiCard.props.useHeader.description**: `string` = `"بخش هدر کارت را فعال می کند"`
 
 #### components.MuiCard.props.useHeader.name
 
@@ -658,11 +658,11 @@
 
 #### components.MuiCard.props.useHeaderAction.description
 
-> **components.MuiCard.props.useHeaderAction.description**: `string` = `"یک منطقه عمل را در داخل سرصفحه فعال می کند"`
+> **components.MuiCard.props.useHeaderAction.description**: `string` = `"یک منطقه عمل را در داخل هدر فعال می کند"`
 
 #### components.MuiCard.props.useHeaderAction.name
 
-> **components.MuiCard.props.useHeaderAction.name**: `string` = `"از header action استفاده کنید"`
+> **components.MuiCard.props.useHeaderAction.name**: `string` = `"استفاده از عمل هدر"`
 
 #### components.MuiCard.props.useHeaderAvatar
 
@@ -670,11 +670,11 @@
 
 #### components.MuiCard.props.useHeaderAvatar.description
 
-> **components.MuiCard.props.useHeaderAvatar.description**: `string` = `"یک آواتار را در داخل سر صفحه نمایش می دهد"`
+> **components.MuiCard.props.useHeaderAvatar.description**: `string` = `"نمایش یک آواتار در داخل هدر"`
 
 #### components.MuiCard.props.useHeaderAvatar.name
 
-> **components.MuiCard.props.useHeaderAvatar.name**: `string` = `"استفاده از هدر آواتار"`
+> **components.MuiCard.props.useHeaderAvatar.name**: `string` = `"استفاده از آواتار هدر"`
 
 #### components.MuiCard.props.useMedia
 
@@ -682,7 +682,7 @@
 
 #### components.MuiCard.props.useMedia.description
 
-> **components.MuiCard.props.useMedia.description**: `string` = `"بخش رسانه ای را در داخل کارت فعال می کند"`
+> **components.MuiCard.props.useMedia.description**: `string` = `"یک بخش رسانه را در داخل کارت فعال می کند"`
 
 #### components.MuiCard.props.useMedia.name
 
@@ -694,11 +694,11 @@
 
 #### components.MuiCard.props.useSubheader.description
 
-> **components.MuiCard.props.useSubheader.description**: `string` = `"یک زیرنویس زیر عنوان اصلی را نمایش می دهد"`
+> **components.MuiCard.props.useSubheader.description**: `string` = `"زیر هدر زیر هدر اصلی را نمایش می دهد"`
 
 #### components.MuiCard.props.useSubheader.name
 
-> **components.MuiCard.props.useSubheader.name**: `string` = `"از زیر عنوان استفاده کنید"`
+> **components.MuiCard.props.useSubheader.name**: `string` = `"استفاده از زیرهدر"`
 
 #### components.MuiCheckbox
 
@@ -706,11 +706,11 @@
 
 #### components.MuiCheckbox.description
 
-> **components.MuiCheckbox.description**: `string` = `"اجازه انتخاب یک یا چند گزینه را می دهد"`
+> **components.MuiCheckbox.description**: `string` = `"امکان انتخاب یک یا چند گزینه را فراهم می کند"`
 
 #### components.MuiCheckbox.name
 
-> **components.MuiCheckbox.name**: `string` = `"جعبه چک"`
+> **components.MuiCheckbox.name**: `string` = `"چک باکس"`
 
 #### components.MuiCheckbox.props
 
@@ -722,7 +722,7 @@
 
 #### components.MuiCheckbox.props.defaultChecked.description
 
-> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"حالت بررسی اولیه در صورت عدم کنترل"`
+> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"حالت اولیه بررسی شده در صورت کنترل نشده"`
 
 #### components.MuiCheckbox.props.defaultChecked.name
 
@@ -734,7 +734,7 @@
 
 #### components.MuiCircularProgress.description
 
-> **components.MuiCircularProgress.description**: `string` = `"نشان دهنده بارگذاری یا پیشرفت در یک فرم دایره ای است"`
+> **components.MuiCircularProgress.description**: `string` = `"بارگذاری یا پیشرفت را به شکل دایره ای نشان می دهد"`
 
 #### components.MuiCircularProgress.name
 
@@ -750,11 +750,11 @@
 
 #### components.MuiCircularProgress.props.disableShrink.description
 
-> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"انیمیشن کوچک کننده را غیرفعال می کند"`
+> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"انیمیشن کوچک را غیرفعال می کند"`
 
 #### components.MuiCircularProgress.props.disableShrink.name
 
-> **components.MuiCircularProgress.props.disableShrink.name**: `string` = `"کوچک کردن را غیرفعال کنید"`
+> **components.MuiCircularProgress.props.disableShrink.name**: `string` = `"غیرفعال کردن کوچک کردن"`
 
 #### components.MuiCircularProgress.props.thickness
 
@@ -762,7 +762,7 @@
 
 #### components.MuiCircularProgress.props.thickness.description
 
-> **components.MuiCircularProgress.props.thickness.description**: `string` = `"عرض سکته مغزی دایره را کنترل می کند"`
+> **components.MuiCircularProgress.props.thickness.description**: `string` = `"عرض ضربه دایره را کنترل می کند"`
 
 #### components.MuiCircularProgress.props.thickness.name
 
@@ -774,11 +774,11 @@
 
 #### components.MuiContainer.description
 
-> **components.MuiContainer.description**: `string` = `"مراکز و محدود کردن محتوا به صورت افقی"`
+> **components.MuiContainer.description**: `string` = `"محتوا را به صورت افقی متمرکز و محدود می کند"`
 
 #### components.MuiContainer.name
 
-> **components.MuiContainer.name**: `string` = `"ظرف"`
+> **components.MuiContainer.name**: `string` = `"کانتینر"`
 
 #### components.MuiContainer.props
 
@@ -790,7 +790,7 @@
 
 #### components.MuiContainer.props.fixed.description
 
-> **components.MuiContainer.props.fixed.description**: `string` = `"به جای عرض مایع ، حداکثر عرض ثابت را تنظیم می کند"`
+> **components.MuiContainer.props.fixed.description**: `string` = `"حداکثر عرض ثابت را به جای عرض سیال تنظیم می کند"`
 
 #### components.MuiContainer.props.fixed.name
 
@@ -818,7 +818,7 @@
 
 #### components.MuiDatePicker.name
 
-> **components.MuiDatePicker.name**: `string` = `"انتخاب کننده تاریخ"`
+> **components.MuiDatePicker.name**: `string` = `"انتخابگر تاریخ"`
 
 #### components.MuiDatePicker.props
 
@@ -830,11 +830,11 @@
 
 #### components.MuiDatePicker.props.autoFocus.description
 
-> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"اگر درست باشد ، به طور خودکار بر روی انتخاب کننده تاریخ تمرکز می کند وقتی که قطعه نصب می شود"`
+> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"اگر درست باشد، هنگام نصب کامپوننت، به طور خودکار انتخاب کننده تاریخ را متمرکز می کند"`
 
 #### components.MuiDatePicker.props.autoFocus.name
 
-> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"تمرکز خودکار"`
+> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"فوکوس خودکار"`
 
 #### components.MuiDatePicker.props.closeOnSelect
 
@@ -842,11 +842,11 @@
 
 #### components.MuiDatePicker.props.closeOnSelect.description
 
-> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"دیالوگ date picker را به طور خودکار پس از انتخاب یک تاریخ بسته می کند"`
+> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"پس از انتخاب تاریخ، محاوره انتخاب تاریخ را به طور خودکار بسته می کند"`
 
 #### components.MuiDatePicker.props.closeOnSelect.name
 
-> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"بستن بر روی انتخاب کنید"`
+> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"بستن در انتخاب"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery
 
@@ -854,11 +854,11 @@
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.description
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"Css media query string که تعیین می کند چه زمانی به طرح حالت دسکتاپ تغییر دهید"`
+> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"رشته پرس و جو رسانه CSS که تعیین می کند زمان تغییر به طرح حالت دسکتاپ"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.name
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"پرس و جو رسانه ای حالت دسکتاپ"`
+> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"پرس و جو رسانه حالت دسکتا"`
 
 #### components.MuiDatePicker.props.disableFuture
 
@@ -866,7 +866,7 @@
 
 #### components.MuiDatePicker.props.disableFuture.description
 
-> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"اگر درست باشد ، از انتخاب تاریخ ها پس از تاریخ فعلی جلوگیری می کند"`
+> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"اگر درست باشد، از انتخاب تاریخ پس از تاریخ فعلی جلوگیری می کند"`
 
 #### components.MuiDatePicker.props.disableFuture.name
 
@@ -878,11 +878,11 @@
 
 #### components.MuiDatePicker.props.disableHighlightToday.description
 
-> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"اگر درست باشد ، برجسته کردن بصری تاریخ فعلی در تقویم را غیرفعال می کند"`
+> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"اگر درست باشد، برجسته سازی بصری تاریخ فعلی در تقویم را غیرفعال می کند"`
 
 #### components.MuiDatePicker.props.disableHighlightToday.name
 
-> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"برجسته امروز را غیرفعال کنید"`
+> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"امروز برجسته را غیرفعال کنید"`
 
 #### components.MuiDatePicker.props.disableOpenPicker
 
@@ -890,11 +890,11 @@
 
 #### components.MuiDatePicker.props.disableOpenPicker.description
 
-> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"اگر درست باشد ، از باز کردن دیالوگ picker جلوگیری می کند (برای نمایش فقط برای خواندن مفید است)"`
+> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"اگر درست باشد، از باز کردن محاوره انتخاب کننده جلوگیری می کند (برای نمایش فقط خواندنی مفید است)"`
 
 #### components.MuiDatePicker.props.disableOpenPicker.name
 
-> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"انتخاب کننده باز را غیرفعال کنید"`
+> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"انتخاب باز را غیرفعال کنید"`
 
 #### components.MuiDatePicker.props.disablePast
 
@@ -902,11 +902,11 @@
 
 #### components.MuiDatePicker.props.disablePast.description
 
-> **components.MuiDatePicker.props.disablePast.description**: `string` = `"اگر درست باشد ، از انتخاب تاریخ ها قبل از تاریخ فعلی جلوگیری می کند"`
+> **components.MuiDatePicker.props.disablePast.description**: `string` = `"اگر درست باشد، از انتخاب تاریخ قبل از تاریخ فعلی جلوگیری می کند"`
 
 #### components.MuiDatePicker.props.disablePast.name
 
-> **components.MuiDatePicker.props.disablePast.name**: `string` = `"گذشته را غیرفعال کنید"`
+> **components.MuiDatePicker.props.disablePast.name**: `string` = `"غیرفعال کردن گذشته"`
 
 #### components.MuiDatePicker.props.displayWeekNumber
 
@@ -914,7 +914,7 @@
 
 #### components.MuiDatePicker.props.displayWeekNumber.description
 
-> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"نمایش شماره های هفته در نمایش تقویم"`
+> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"شماره هفته را در نمای تقویم نشان می دهد"`
 
 #### components.MuiDatePicker.props.displayWeekNumber.name
 
@@ -926,7 +926,7 @@
 
 #### components.MuiDatePicker.props.fixedWeekNumber.description
 
-> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"تعداد ثابت هفته ها برای نمایش (ارتفاع تقویم ثابت)"`
+> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"تعداد هفته ثابت برای نمایش (ارتفاع تقویم ثابت را مجبور می کند)"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber.name
 
@@ -938,7 +938,7 @@
 
 #### components.MuiDatePicker.props.format.description
 
-> **components.MuiDatePicker.props.format.description**: `string` = `"رشته فرمت تاریخ برای نمایش و تجزیه استفاده می شود (به عنوان مثال ، yyyy-MM-dd، MM / dd/yyyy)"`
+> **components.MuiDatePicker.props.format.description**: `string` = `"رشته فرمت تاریخ مورد استفاده برای نمایش و تجزیه (به عنوان مثال، 'yyyy-mm-dd'، 'mm/dd/yyyy')"`
 
 #### components.MuiDatePicker.props.format.name
 
@@ -950,11 +950,11 @@
 
 #### components.MuiDatePicker.props.formatDensity.description
 
-> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"کنترل فاصله در قالب بندی تاریخ: متراکم (جمع و جور) یا بزرگ (فاصله بیشتر)"`
+> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"فاصله را در قالب بندی تاریخ کنترل می کند: متراکم (جمع و جور) یا بزرگ (فاصله بیشتر)"`
 
 #### components.MuiDatePicker.props.formatDensity.name
 
-> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"تراکم فرمت"`
+> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"چگالی فرمت"`
 
 #### components.MuiDatePicker.props.loading
 
@@ -962,7 +962,7 @@
 
 #### components.MuiDatePicker.props.loading.description
 
-> **components.MuiDatePicker.props.loading.description**: `string` = `"اگر درست باشد ، یک اسپینر بارگذاری را نشان می دهد که نشان می دهد داده ها بارگذاری شده اند"`
+> **components.MuiDatePicker.props.loading.description**: `string` = `"اگر درست باشد، یک اسپینر بارگیری نمایش می دهد که نشان می دهد داده ها در حال بارگذاری است"`
 
 #### components.MuiDatePicker.props.loading.name
 
@@ -974,7 +974,7 @@
 
 #### components.MuiDatePicker.props.maxDate.description
 
-> **components.MuiDatePicker.props.maxDate.description**: `string` = `"آخرین تاریخ که می تواند انتخاب شود (از جمله)"`
+> **components.MuiDatePicker.props.maxDate.description**: `string` = `"آخرین تاریخ که می تواند انتخاب شود (شامل)"`
 
 #### components.MuiDatePicker.props.maxDate.name
 
@@ -986,7 +986,7 @@
 
 #### components.MuiDatePicker.props.minDate.description
 
-> **components.MuiDatePicker.props.minDate.description**: `string` = `"اولین تاریخ که می تواند انتخاب شود (از جمله)"`
+> **components.MuiDatePicker.props.minDate.description**: `string` = `"اولین تاریخی که می تواند انتخاب شود (شامل)"`
 
 #### components.MuiDatePicker.props.minDate.name
 
@@ -998,11 +998,11 @@
 
 #### components.MuiDatePicker.props.monthsPerRow.description
 
-> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"تعداد تقویم های ماه برای نمایش در هر ردیف در بازدید ماه / سال"`
+> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"تعداد تقویم های ماهانه برای نمایش در هر ردیف در نمایش ماه/سال"`
 
 #### components.MuiDatePicker.props.monthsPerRow.name
 
-> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"ماه در هر ردیف"`
+> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"ماه ها در هر ردیف"`
 
 #### components.MuiDatePicker.props.name
 
@@ -1010,7 +1010,7 @@
 
 #### components.MuiDatePicker.props.name.description
 
-> **components.MuiDatePicker.props.name.description**: `string` = `"ویژگی نام برای فیلد فرم ، که هنگام ارسال فرم ها استفاده می شود"`
+> **components.MuiDatePicker.props.name.description**: `string` = `"ویژگی نام برای فیلد فرم، که هنگام ارسال فرم استفاده می شود"`
 
 #### components.MuiDatePicker.props.name.name
 
@@ -1022,11 +1022,11 @@
 
 #### components.MuiDatePicker.props.onAccept.description
 
-> **components.MuiDatePicker.props.onAccept.description**: `string` = `"وقتی ارزش پذیرفته شد ، دوباره تماس گرفته می شود"`
+> **components.MuiDatePicker.props.onAccept.description**: `string` = `"هنگامی که مقدار پذیرفته می شود، تماس برگشت آغاز می شود"`
 
 #### components.MuiDatePicker.props.onAccept.name
 
-> **components.MuiDatePicker.props.onAccept.name**: `string` = `"اوناکسپت"`
+> **components.MuiDatePicker.props.onAccept.name**: `string` = `"در قبول"`
 
 #### components.MuiDatePicker.props.onClose
 
@@ -1034,11 +1034,11 @@
 
 #### components.MuiDatePicker.props.onClose.description
 
-> **components.MuiDatePicker.props.onClose.description**: `string` = `"وقتی درخواست های پاپ آپ بسته می شود ، تماس مجدد قطع می شود"`
+> **components.MuiDatePicker.props.onClose.description**: `string` = `"هنگامی که پاپ آپ درخواست بسته شدن را دارد، تماس برگشت آغاز می شود"`
 
 #### components.MuiDatePicker.props.onClose.name
 
-> **components.MuiDatePicker.props.onClose.name**: `string` = `"آنکلوز"`
+> **components.MuiDatePicker.props.onClose.name**: `string` = `"در بستن"`
 
 #### components.MuiDatePicker.props.onError
 
@@ -1046,11 +1046,11 @@
 
 #### components.MuiDatePicker.props.onError.description
 
-> **components.MuiDatePicker.props.onError.description**: `string` = `"تماس برگشت زمانی که خطای مرتبط با ارزش فعلی تغییر می کند"`
+> **components.MuiDatePicker.props.onError.description**: `string` = `"هنگامی که خطای مرتبط با مقدار فعلی تغییر می کند، تماس برگشت آغاز می شود"`
 
 #### components.MuiDatePicker.props.onError.name
 
-> **components.MuiDatePicker.props.onError.name**: `string` = `"rorerror"`
+> **components.MuiDatePicker.props.onError.name**: `string` = `"در خطا"`
 
 #### components.MuiDatePicker.props.onMonthChange
 
@@ -1058,11 +1058,11 @@
 
 #### components.MuiDatePicker.props.onMonthChange.description
 
-> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"تماس برگشت به خاطر تغییر ماه"`
+> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"تماس مجدد پس از تغییر ماه آغاز شد"`
 
 #### components.MuiDatePicker.props.onMonthChange.name
 
-> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"angemonthchange"`
+> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"تغییر ماهانه"`
 
 #### components.MuiDatePicker.props.onOpen
 
@@ -1070,11 +1070,11 @@
 
 #### components.MuiDatePicker.props.onOpen.description
 
-> **components.MuiDatePicker.props.onOpen.description**: `string` = `"وقتی درخواست باز شدن پاپ آپ ها باز شد ، تماس برگشت قطع شد"`
+> **components.MuiDatePicker.props.onOpen.description**: `string` = `"هنگامی که پاپ آپ درخواست باز می شود، تماس برگشت آغاز می شود"`
 
 #### components.MuiDatePicker.props.onOpen.name
 
-> **components.MuiDatePicker.props.onOpen.name**: `string` = `"اوناپن"`
+> **components.MuiDatePicker.props.onOpen.name**: `string` = `"روی باز کردن"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange
 
@@ -1082,11 +1082,11 @@
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.description
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"وقتی بخش های انتخاب شده تغییر می کنند ، Callback اخراج می شود"`
+> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"هنگامی که بخش های انتخاب شده تغییر می کنند، تماس مجدد آغاز می شود"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.name
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"angeselectedsectionschange"`
+> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"بخش های انتخابی را تغییر دهید"`
 
 #### components.MuiDatePicker.props.onViewChange
 
@@ -1094,11 +1094,11 @@
 
 #### components.MuiDatePicker.props.onViewChange.description
 
-> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"تماس برگشت با تغییر نمایش"`
+> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"در صورت تغییر نمای تماس برگردانده شد"`
 
 #### components.MuiDatePicker.props.onViewChange.name
 
-> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"angeviewchange"`
+> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"تغییر در مشاهده"`
 
 #### components.MuiDatePicker.props.onYearChange
 
@@ -1106,11 +1106,11 @@
 
 #### components.MuiDatePicker.props.onYearChange.description
 
-> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"تماس برگشت به خاطر تغییر سال"`
+> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"تماس برگشت در اثر تغییر سال آغاز شد"`
 
 #### components.MuiDatePicker.props.onYearChange.name
 
-> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"angeyearchange"`
+> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"تغییر در سال"`
 
 #### components.MuiDatePicker.props.open
 
@@ -1118,11 +1118,11 @@
 
 #### components.MuiDatePicker.props.open.description
 
-> **components.MuiDatePicker.props.open.description**: `string` = `"اگر درست باشد ، دیالوگ date picker باز است ؛ می تواند برای مدیریت کنترل شده دولت استفاده شود"`
+> **components.MuiDatePicker.props.open.description**: `string` = `"اگر درست باشد، محاوره انتخاب کننده تاریخ باز است. می تواند برای مدیریت وضعیت کنترل شده استفاده شود"`
 
 #### components.MuiDatePicker.props.open.name
 
-> **components.MuiDatePicker.props.open.name**: `string` = `"باز"`
+> **components.MuiDatePicker.props.open.name**: `string` = `"باز کردن"`
 
 #### components.MuiDatePicker.props.openTo
 
@@ -1130,7 +1130,7 @@
 
 #### components.MuiDatePicker.props.openTo.description
 
-> **components.MuiDatePicker.props.openTo.description**: `string` = `"منظره ای که وقتی انتخاب کننده فعال می شود باز می شود"`
+> **components.MuiDatePicker.props.openTo.description**: `string` = `"نمای باز می شود هنگام فعال شدن پیکر"`
 
 #### components.MuiDatePicker.props.openTo.name
 
@@ -1142,7 +1142,7 @@
 
 #### components.MuiDatePicker.props.referenceDate.description
 
-> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"تاریخ مورد استفاده برای تولید نمای تقویم اولیه زمانی که هیچ ارزشی انتخاب نشده است"`
+> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"تاریخ مورد استفاده برای تولید نمای تقویم اولیه هنگامی که هیچ مقداری انتخاب نشده است"`
 
 #### components.MuiDatePicker.props.referenceDate.name
 
@@ -1154,7 +1154,7 @@
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"نمایش روزها از ماه های قبل و بعد در نمایش ماه جاری"`
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"روزهای ماه قبل و بعدی را در نمای ماه جاری نمایش می دهد"`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
 
@@ -1166,7 +1166,7 @@
 
 #### components.MuiDatePicker.props.view.description
 
-> **components.MuiDatePicker.props.view.description**: `string` = `"نمای اولیه برای نمایش (روز ، ماه یا سال تقویم)"`
+> **components.MuiDatePicker.props.view.description**: `string` = `"نمای اولیه برای نمایش (تقویم روز، ماه یا سال)"`
 
 #### components.MuiDatePicker.props.view.name
 
@@ -1178,7 +1178,7 @@
 
 #### components.MuiDatePicker.props.views.description
 
-> **components.MuiDatePicker.props.views.description**: `string` = `"دیدگاه های موجود (تقویم روز ، ماه و سال)"`
+> **components.MuiDatePicker.props.views.description**: `string` = `"نمایش های موجود (تقویم روز، ماه و سال)"`
 
 #### components.MuiDatePicker.props.views.name
 
@@ -1190,11 +1190,11 @@
 
 #### components.MuiDatePicker.props.yearsOrder.description
 
-> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"مرتب سازی سال ها: صعودی (قدیمی ترین اول) یا نزولی (جدید ترین اول)"`
+> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"ترتیب مرتب سازی سال ها: صعودی (قدیمی ترین اول) یا نزولی (جدیدترین اول)"`
 
 #### components.MuiDatePicker.props.yearsOrder.name
 
-> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"سال سفارش"`
+> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"سفارش سال"`
 
 #### components.MuiDatePicker.props.yearsPerRow
 
@@ -1202,7 +1202,7 @@
 
 #### components.MuiDatePicker.props.yearsPerRow.description
 
-> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"تعداد آیتم های سال برای نمایش در هر ردیف در نمایش سال"`
+> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"تعداد موارد سال برای نمایش در هر ردیف در نمای سال"`
 
 #### components.MuiDatePicker.props.yearsPerRow.name
 
@@ -1214,11 +1214,11 @@
 
 #### components.MuiDialog.description
 
-> **components.MuiDialog.description**: `string` = `"یک جزء دیالوگ مودال که محتوا را در یک پوشش نمایش می دهد"`
+> **components.MuiDialog.description**: `string` = `"یک مؤلفه محاوره مودال که محتوا را در یک پوشش نمایش می دهد"`
 
 #### components.MuiDialog.name
 
-> **components.MuiDialog.name**: `string` = `"دیالوگ"`
+> **components.MuiDialog.name**: `string` = `"گفتگو"`
 
 #### components.MuiDialog.props
 
@@ -1230,11 +1230,11 @@
 
 #### components.MuiDialog.props.disableEscapeKeyDown.description
 
-> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"اگر درست باشد ، فشار دادن کلید فرار ، دیالوگ را نمی بندد"`
+> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"اگر درست باشد، فشار دادن کلید escape محاوره را بسته نمی کند"`
 
 #### components.MuiDialog.props.disableEscapeKeyDown.name
 
-> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"کلید فرار را غیرفعال کنید"`
+> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"کلید فرار را پایین غیرفعال کنید"`
 
 #### components.MuiDialog.props.fullScreen
 
@@ -1242,11 +1242,11 @@
 
 #### components.MuiDialog.props.fullScreen.description
 
-> **components.MuiDialog.props.fullScreen.description**: `string` = `"اگر درست باشد ، دیالوگ تمام صفحه خواهد بود"`
+> **components.MuiDialog.props.fullScreen.description**: `string` = `"اگر درست باشد، محاوره تمام صفحه خواهد بود"`
 
 #### components.MuiDialog.props.fullScreen.name
 
-> **components.MuiDialog.props.fullScreen.name**: `string` = `"صفحه نمایش کامل"`
+> **components.MuiDialog.props.fullScreen.name**: `string` = `"تمام صفحه"`
 
 #### components.MuiDialog.props.fullWidth
 
@@ -1254,7 +1254,7 @@
 
 #### components.MuiDialog.props.fullWidth.description
 
-> **components.MuiDialog.props.fullWidth.description**: `string` = `"اگر درست باشد ، دیالوگ به حداکثر می رسد"`
+> **components.MuiDialog.props.fullWidth.description**: `string` = `"اگر درست باشد، محاوره به maxWidth کشیده می شود"`
 
 #### components.MuiDialog.props.fullWidth.name
 
@@ -1266,7 +1266,7 @@
 
 #### components.MuiDialog.props.maxWidth.description
 
-> **components.MuiDialog.props.maxWidth.description**: `string` = `"حداکثر عرض دیالوگ (xs, sm, md, lg, xl)"`
+> **components.MuiDialog.props.maxWidth.description**: `string` = `"حداکثر عرض محاوره (xs، sm، md، lg، xl)"`
 
 #### components.MuiDialog.props.maxWidth.name
 
@@ -1278,11 +1278,11 @@
 
 #### components.MuiDialog.props.onClose.description
 
-> **components.MuiDialog.props.onClose.description**: `string` = `"وقتی که دیالوگ بسته می شود ، تماس مجدد قطع می شود"`
+> **components.MuiDialog.props.onClose.description**: `string` = `"هنگامی که محاوره بسته می شود، تماس برگشت آغاز می شود"`
 
 #### components.MuiDialog.props.onClose.name
 
-> **components.MuiDialog.props.onClose.name**: `string` = `"آنکلوز"`
+> **components.MuiDialog.props.onClose.name**: `string` = `"در بستن"`
 
 #### components.MuiDialog.props.open
 
@@ -1290,11 +1290,11 @@
 
 #### components.MuiDialog.props.open.description
 
-> **components.MuiDialog.props.open.description**: `string` = `"اگر درست باشد ، دیالوگ باز است"`
+> **components.MuiDialog.props.open.description**: `string` = `"اگر درست باشد، محاوره باز است"`
 
 #### components.MuiDialog.props.open.name
 
-> **components.MuiDialog.props.open.name**: `string` = `"باز"`
+> **components.MuiDialog.props.open.name**: `string` = `"باز کردن"`
 
 #### components.MuiDialog.props.scroll
 
@@ -1302,7 +1302,7 @@
 
 #### components.MuiDialog.props.scroll.description
 
-> **components.MuiDialog.props.scroll.description**: `string` = `"ظرف را برای پیمایش دیالوگ (کاغذ یا بدنه)تعیین می کند"`
+> **components.MuiDialog.props.scroll.description**: `string` = `"ظرف پیمایش محاوره ای را تعیین می کند (کاغذ یا بدنه)"`
 
 #### components.MuiDialog.props.scroll.name
 
@@ -1314,11 +1314,11 @@
 
 #### components.MuiDialogActions.description
 
-> **components.MuiDialogActions.description**: `string` = `"کانتینر برای دکمه های عمل دیالوگ"`
+> **components.MuiDialogActions.description**: `string` = `"ظرف برای دکمه های عمل محاوره ای"`
 
 #### components.MuiDialogActions.name
 
-> **components.MuiDialogActions.name**: `string` = `"اقدامات دیالوگ"`
+> **components.MuiDialogActions.name**: `string` = `"اقدامات محاوره ای"`
 
 #### components.MuiDialogActions.props
 
@@ -1334,7 +1334,7 @@
 
 #### components.MuiDialogActions.props.children.name
 
-> **components.MuiDialogActions.props.children.name**: `string` = `"کودکان"`
+> **components.MuiDialogActions.props.children.name**: `string` = `"بچه ها"`
 
 #### components.MuiDialogActions.props.disableSpacing
 
@@ -1342,7 +1342,7 @@
 
 #### components.MuiDialogActions.props.disableSpacing.description
 
-> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"اگر درست باشد ، اقدامات حاشیه اضافی ندارند"`
+> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"اگر درست باشد، اقدامات حاشیه اضافی ندارند"`
 
 #### components.MuiDialogActions.props.disableSpacing.name
 
@@ -1354,11 +1354,11 @@
 
 #### components.MuiDialogContent.description
 
-> **components.MuiDialogContent.description**: `string` = `"بخش محتوای اصلی یک دیالوگ"`
+> **components.MuiDialogContent.description**: `string` = `"قسمت محتوای اصلی یک محاوره"`
 
 #### components.MuiDialogContent.name
 
-> **components.MuiDialogContent.name**: `string` = `"محتوای دیالوگ"`
+> **components.MuiDialogContent.name**: `string` = `"محتوای گفتگو"`
 
 #### components.MuiDialogContent.props
 
@@ -1374,7 +1374,7 @@
 
 #### components.MuiDialogContent.props.children.name
 
-> **components.MuiDialogContent.props.children.name**: `string` = `"کودکان"`
+> **components.MuiDialogContent.props.children.name**: `string` = `"بچه ها"`
 
 #### components.MuiDialogContent.props.dividers
 
@@ -1382,11 +1382,11 @@
 
 #### components.MuiDialogContent.props.dividers.description
 
-> **components.MuiDialogContent.props.dividers.description**: `string` = `"اگر درست باشد ، مرزها به بالا و پایین محتوای دیالوگ اضافه می شوند"`
+> **components.MuiDialogContent.props.dividers.description**: `string` = `"اگر درست باشد، مرزها به بالا و پایین محتوای محاوره اضافه می شوند"`
 
 #### components.MuiDialogContent.props.dividers.name
 
-> **components.MuiDialogContent.props.dividers.name**: `string` = `"تقسیم کننده ها"`
+> **components.MuiDialogContent.props.dividers.name**: `string` = `"تقسیم کننده"`
 
 #### components.MuiDialogContentText
 
@@ -1394,11 +1394,11 @@
 
 #### components.MuiDialogContentText.description
 
-> **components.MuiDialogContentText.description**: `string` = `"محتوای متن در داخل یک دیالوگ"`
+> **components.MuiDialogContentText.description**: `string` = `"محتوای متن درون یک محاوره"`
 
 #### components.MuiDialogContentText.name
 
-> **components.MuiDialogContentText.name**: `string` = `"متن محتوای دیالوگ"`
+> **components.MuiDialogContentText.name**: `string` = `"متن محتوای محاوره ای"`
 
 #### components.MuiDialogContentText.props
 
@@ -1422,11 +1422,11 @@
 
 #### components.MuiDialogLayout.description
 
-> **components.MuiDialogLayout.description**: `string` = `"یک طرح دیالوگ از پیش تنظیم شده با عنوان ، محتوا و دکمه های عمل"`
+> **components.MuiDialogLayout.description**: `string` = `"طرح گفتگوی از پیش تعیین شده با عنوان، محتوا و دکمه های اکشن"`
 
 #### components.MuiDialogLayout.name
 
-> **components.MuiDialogLayout.name**: `string` = `"طرح دیالوگ"`
+> **components.MuiDialogLayout.name**: `string` = `"طرح گفتگو"`
 
 #### components.MuiDialogTitle
 
@@ -1434,11 +1434,11 @@
 
 #### components.MuiDialogTitle.description
 
-> **components.MuiDialogTitle.description**: `string` = `"عنوان یک دیالوگ"`
+> **components.MuiDialogTitle.description**: `string` = `"عنوان یک محاوره"`
 
 #### components.MuiDialogTitle.name
 
-> **components.MuiDialogTitle.name**: `string` = `"عنوان دیالوگ"`
+> **components.MuiDialogTitle.name**: `string` = `"عنوان محاوره"`
 
 #### components.MuiDialogTitle.props
 
@@ -1462,7 +1462,7 @@
 
 #### components.MuiErrorWrapper.description
 
-> **components.MuiErrorWrapper.description**: `string` = `"محتوای را بسته بندی می کند و یک حالت خطا یا پیام را نمایش می دهد"`
+> **components.MuiErrorWrapper.description**: `string` = `"محتوا را بسته بندی کرده و حالت خطا یا پیام را نمایش می دهد"`
 
 #### components.MuiErrorWrapper.name
 
@@ -1474,7 +1474,7 @@
 
 #### components.MuiFormControlLabel.description
 
-> **components.MuiFormControlLabel.description**: `string` = `"برچسب را با کنترل فرم مرتبط می کند"`
+> **components.MuiFormControlLabel.description**: `string` = `"یک برچسب را با کنترل فرم مرتبط می کند"`
 
 #### components.MuiFormControlLabel.name
 
@@ -1490,7 +1490,7 @@
 
 #### components.MuiFormControlLabel.props.control.description
 
-> **components.MuiFormControlLabel.props.control.description**: `string` = `"عنصر کنترل فرم (جعبه چک ، رادیو ، سوئیچ)"`
+> **components.MuiFormControlLabel.props.control.description**: `string` = `"عنصر کنترل فرم (چک باکس، رادیو، سوئیچ)"`
 
 #### components.MuiFormControlLabel.props.control.name
 
@@ -1514,7 +1514,7 @@
 
 #### components.MuiFormLabel.description
 
-> **components.MuiFormLabel.description**: `string` = `"برچسب برای گروه بندی یا توصیف زمینه های فرم"`
+> **components.MuiFormLabel.description**: `string` = `"برچسب برای گروه بندی یا توصیف فیلدهای فرم"`
 
 #### components.MuiFormLabel.name
 
@@ -1530,7 +1530,7 @@
 
 #### components.MuiFormLabel.props.filled.description
 
-> **components.MuiFormLabel.props.filled.description**: `string` = `"یک ظاهر طراحی حالت پر شده را اعمال می کند"`
+> **components.MuiFormLabel.props.filled.description**: `string` = `"سبک حالت پر شده را اعمال می کند"`
 
 #### components.MuiFormLabel.props.filled.name
 
@@ -1542,7 +1542,7 @@
 
 #### components.MuiLinearProgress.description
 
-> **components.MuiLinearProgress.description**: `string` = `"نشان دهنده بارگذاری یا پیشرفت در یک نوار خطی است"`
+> **components.MuiLinearProgress.description**: `string` = `"بارگذاری یا پیشرفت را در یک نوار خطی نشان می دهد"`
 
 #### components.MuiLinearProgress.name
 
@@ -1558,7 +1558,7 @@
 
 #### components.MuiLinearProgress.props.valueBuffer.description
 
-> **components.MuiLinearProgress.props.valueBuffer.description**: `string` = `"مقدار بافر ثانویه برای حالت پیشرفت بافر"`
+> **components.MuiLinearProgress.props.valueBuffer.description**: `string` = `"مقدار بافر ثانویه برای حالت پیشرفت بافر شده"`
 
 #### components.MuiLinearProgress.props.valueBuffer.name
 
@@ -1586,11 +1586,11 @@
 
 #### components.MuiLink.props.href.description
 
-> **components.MuiLink.props.href.description**: `string` = `"Destinationl مقصد"`
+> **components.MuiLink.props.href.description**: `string` = `"آدرس مقصد"`
 
 #### components.MuiLink.props.href.name
 
-> **components.MuiLink.props.href.name**: `string` = `"Href"`
+> **components.MuiLink.props.href.name**: `string` = `"هراف"`
 
 #### components.MuiList
 
@@ -1598,11 +1598,11 @@
 
 #### components.MuiList.description
 
-> **components.MuiList.description**: `string` = `"یک لیست عمودی از آیتم ها را نمایش می دهد"`
+> **components.MuiList.description**: `string` = `"یک لیست عمودی از موارد را نمایش می دهد"`
 
 #### components.MuiList.name
 
-> **components.MuiList.name**: `string` = `"لیست"`
+> **components.MuiList.name**: `string` = `"فهرست"`
 
 #### components.MuiListItem
 
@@ -1610,7 +1610,7 @@
 
 #### components.MuiListItem.description
 
-> **components.MuiListItem.description**: `string` = `"نشان دهنده یک آیتم در داخل یک لیست است"`
+> **components.MuiListItem.description**: `string` = `"نشان دهنده یک آیتم در داخل یک لیست"`
 
 #### components.MuiListItem.name
 
@@ -1638,11 +1638,11 @@
 
 #### components.MuiRadioGroup.description
 
-> **components.MuiRadioGroup.description**: `string` = `"اجازه انتخاب یک گزینه از یک مجموعه را می دهد"`
+> **components.MuiRadioGroup.description**: `string` = `"امکان انتخاب یک گزینه واحد از یک مجموعه را فراهم می کند"`
 
 #### components.MuiRadioGroup.name
 
-> **components.MuiRadioGroup.name**: `string` = `"گروه رادیویی"`
+> **components.MuiRadioGroup.name**: `string` = `"گروه رادیو"`
 
 #### components.MuiRadioGroup.props
 
@@ -1654,7 +1654,7 @@
 
 #### components.MuiRadioGroup.props.name.description
 
-> **components.MuiRadioGroup.props.name.description**: `string` = `"ویژگی نام برای گروه بندی دکمه های رادیویی استفاده می شود"`
+> **components.MuiRadioGroup.props.name.description**: `string` = `"ویژگی نام مورد استفاده برای گروه بندی دکمه های رادیویی"`
 
 #### components.MuiRadioGroup.props.name.name
 
@@ -1666,7 +1666,7 @@
 
 #### components.MuiRadioGroup.props.row.description
 
-> **components.MuiRadioGroup.props.row.description**: `string` = `"دکمه های رادیویی را به صورت افقی نمایش می دهد"`
+> **components.MuiRadioGroup.props.row.description**: `string` = `"دکمه های رادیویی به صورت افقی"`
 
 #### components.MuiRadioGroup.props.row.name
 
@@ -1682,7 +1682,7 @@
 
 #### components.MuiRadioItem.name
 
-> **components.MuiRadioItem.name**: `string` = `"مورد رادیو"`
+> **components.MuiRadioItem.name**: `string` = `"آیتم رادیویی"`
 
 #### components.MuiSelect
 
@@ -1706,11 +1706,11 @@
 
 #### components.MuiSelect.props.autoFocus.description
 
-> **components.MuiSelect.props.autoFocus.description**: `string` = `"به طور خودکار میدان را بر روی کوه متمرکز می کند"`
+> **components.MuiSelect.props.autoFocus.description**: `string` = `"به طور خودکار میدان را بر روی پایه متمرکز می کند"`
 
 #### components.MuiSelect.props.autoFocus.name
 
-> **components.MuiSelect.props.autoFocus.name**: `string` = `"تمرکز خودکار"`
+> **components.MuiSelect.props.autoFocus.name**: `string` = `"فوکوس خودکار"`
 
 #### components.MuiSelect.props.multiple
 
@@ -1718,7 +1718,7 @@
 
 #### components.MuiSelect.props.multiple.description
 
-> **components.MuiSelect.props.multiple.description**: `string` = `"امکان انتخاب گزینه های متعدد"`
+> **components.MuiSelect.props.multiple.description**: `string` = `"امکان انتخاب گزینه های متعدد را فراهم می کند"`
 
 #### components.MuiSelect.props.multiple.name
 
@@ -1730,7 +1730,7 @@
 
 #### components.MuiStack.description
 
-> **components.MuiStack.description**: `string` = `"طرح بندی کودکان در یک پشته یک بعدی"`
+> **components.MuiStack.description**: `string` = `"طرح بندی فرزندان در یک پشته یک بعدی"`
 
 #### components.MuiStack.name
 
@@ -1746,11 +1746,11 @@
 
 #### components.MuiStack.props.alignItems.description
 
-> **components.MuiStack.props.alignItems.description**: `string` = `"کنترل تراز محور متقاطع"`
+> **components.MuiStack.props.alignItems.description**: `string` = `"تراز محور متقابل را کنترل می کند"`
 
 #### components.MuiStack.props.alignItems.name
 
-> **components.MuiStack.props.alignItems.name**: `string` = `"آیتم ها را تراز کنید"`
+> **components.MuiStack.props.alignItems.name**: `string` = `"موارد را تراز کنید"`
 
 #### components.MuiStack.props.direction
 
@@ -1758,7 +1758,7 @@
 
 #### components.MuiStack.props.direction.description
 
-> **components.MuiStack.props.direction.description**: `string` = `"تعریف می کند که آیا آیتم ها در یک ردیف یا ستون انباشته شده اند"`
+> **components.MuiStack.props.direction.description**: `string` = `"تعریف می کند که آیا موارد در یک ردیف یا ستون انباشته می شوند"`
 
 #### components.MuiStack.props.direction.name
 
@@ -1770,11 +1770,11 @@
 
 #### components.MuiStack.props.flexWrap.description
 
-> **components.MuiStack.props.flexWrap.description**: `string` = `"کنترل می کند که آیا آیتم ها روی چندین خط بسته بندی می شوند"`
+> **components.MuiStack.props.flexWrap.description**: `string` = `"کنترل می کند که آیا موارد روی چندین خط قرار می گیرند یا خیر"`
 
 #### components.MuiStack.props.flexWrap.name
 
-> **components.MuiStack.props.flexWrap.name**: `string` = `"بسته بندی انعطاف پذیر"`
+> **components.MuiStack.props.flexWrap.name**: `string` = `"بسته بندی فلکس"`
 
 #### components.MuiStack.props.justifyContent
 
@@ -1782,11 +1782,11 @@
 
 #### components.MuiStack.props.justifyContent.description
 
-> **components.MuiStack.props.justifyContent.description**: `string` = `"کنترل تراز محور اصلی"`
+> **components.MuiStack.props.justifyContent.description**: `string` = `"تراز محور اصلی را کنترل می کند"`
 
 #### components.MuiStack.props.justifyContent.name
 
-> **components.MuiStack.props.justifyContent.name**: `string` = `"محتوای را توجیه کنید"`
+> **components.MuiStack.props.justifyContent.name**: `string` = `"محتوا را توجیه کنید"`
 
 #### components.MuiStack.props.spacing
 
@@ -1806,11 +1806,11 @@
 
 #### components.MuiStack.props.useFlexGap.description
 
-> **components.MuiStack.props.useFlexGap.description**: `string` = `"از فاصله css به جای حاشیه برای فاصله استفاده می کند"`
+> **components.MuiStack.props.useFlexGap.description**: `string` = `"از شکاف CSS به جای حاشیه برای فاصله استفاده می کند"`
 
 #### components.MuiStack.props.useFlexGap.name
 
-> **components.MuiStack.props.useFlexGap.name**: `string` = `"از flex gap استفاده کنید"`
+> **components.MuiStack.props.useFlexGap.name**: `string` = `"از شکاف فلکس استفاده کنید"`
 
 #### components.MuiSwitch
 
@@ -1818,7 +1818,7 @@
 
 #### components.MuiSwitch.description
 
-> **components.MuiSwitch.description**: `string` = `"کنترل ضامن برای تغییر بین دو حالت"`
+> **components.MuiSwitch.description**: `string` = `"تغییر کنترل برای سوئیچینگ بین دو حالت"`
 
 #### components.MuiSwitch.name
 
@@ -1834,7 +1834,7 @@
 
 #### components.MuiSwitch.props.defaultChecked.description
 
-> **components.MuiSwitch.props.defaultChecked.description**: `string` = `"حالت اولیه ضامن زمانی که کنترل نشده است"`
+> **components.MuiSwitch.props.defaultChecked.description**: `string` = `"حالت تغییر اولیه هنگامی که کنترل نشده است"`
 
 #### components.MuiSwitch.props.defaultChecked.name
 
@@ -1862,11 +1862,11 @@
 
 #### components.MuiTextField.props.autoFocus.description
 
-> **components.MuiTextField.props.autoFocus.description**: `string` = `"به طور خودکار میدان را بر روی کوه متمرکز می کند"`
+> **components.MuiTextField.props.autoFocus.description**: `string` = `"به طور خودکار میدان را بر روی پایه متمرکز می کند"`
 
 #### components.MuiTextField.props.autoFocus.name
 
-> **components.MuiTextField.props.autoFocus.name**: `string` = `"تمرکز خودکار"`
+> **components.MuiTextField.props.autoFocus.name**: `string` = `"فوکوس خودکار"`
 
 #### components.MuiTextField.props.maxRows
 
@@ -1886,7 +1886,7 @@
 
 #### components.MuiTextField.props.multiline.description
 
-> **components.MuiTextField.props.multiline.description**: `string` = `"یک textarea را به جای یک ورودی تک خطی ارائه می دهد"`
+> **components.MuiTextField.props.multiline.description**: `string` = `"به جای یک ورودی تک خطی، یک textarea را رندر می کند"`
 
 #### components.MuiTextField.props.multiline.name
 
@@ -1898,7 +1898,7 @@
 
 #### components.MuiTextField.props.type.description
 
-> **components.MuiTextField.props.type.description**: `string` = `"نوع ورودی HTML (متن ، رمز عبور ، ایمیل و غیره)"`
+> **components.MuiTextField.props.type.description**: `string` = `"نوع ورودی HTML (متن، رمز عبور، ایمیل و غیره)"`
 
 #### components.MuiTextField.props.type.name
 
@@ -1910,7 +1910,7 @@
 
 #### components.MuiTooltip.description
 
-> **components.MuiTooltip.description**: `string` = `"اطلاعات زمینه ای در مورد شناور ، تمرکز یا لمس را نمایش می دهد"`
+> **components.MuiTooltip.description**: `string` = `"اطلاعات متنی را در حین حرکت، فوکوس یا لمس نمایش می دهد"`
 
 #### components.MuiTooltip.name
 
@@ -1926,11 +1926,11 @@
 
 #### components.MuiTooltip.props.arrow.description
 
-> **components.MuiTooltip.props.arrow.description**: `string` = `"یک تیر را به عنصر هدف نشان می دهد"`
+> **components.MuiTooltip.props.arrow.description**: `string` = `"یک فلش را نشان می دهد که به عنصر هدف اشاره می کند"`
 
 #### components.MuiTooltip.props.arrow.name
 
-> **components.MuiTooltip.props.arrow.name**: `string` = `"تیر"`
+> **components.MuiTooltip.props.arrow.name**: `string` = `"پیکان"`
 
 #### components.MuiTooltip.props.disableFocusListener
 
@@ -1938,11 +1938,11 @@
 
 #### components.MuiTooltip.props.disableFocusListener.description
 
-> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"مانع از ظاهر شدن ابزار در فوکوس می شود"`
+> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"از ظاهر شدن نکته ابزار در فوکوس جلوگیری می کند"`
 
 #### components.MuiTooltip.props.disableFocusListener.name
 
-> **components.MuiTooltip.props.disableFocusListener.name**: `string` = `"تمرکز شنونده را غیرفعال کنید"`
+> **components.MuiTooltip.props.disableFocusListener.name**: `string` = `"غیر فعال کردن شنونده فوکوس"`
 
 #### components.MuiTooltip.props.disableHoverListener
 
@@ -1950,11 +1950,11 @@
 
 #### components.MuiTooltip.props.disableHoverListener.description
 
-> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"مانع از ظاهر شدن ابزار در hover می شود"`
+> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"مانع از ظاهر شدن نکته ابزار در حلقه حرکت می شود"`
 
 #### components.MuiTooltip.props.disableHoverListener.name
 
-> **components.MuiTooltip.props.disableHoverListener.name**: `string` = `"شنونده شناور را غیرفعال کنید"`
+> **components.MuiTooltip.props.disableHoverListener.name**: `string` = `"شنونده هور را غیرفعال کنید"`
 
 #### components.MuiTooltip.props.disableInteractive
 
@@ -1962,7 +1962,7 @@
 
 #### components.MuiTooltip.props.disableInteractive.description
 
-> **components.MuiTooltip.props.disableInteractive.description**: `string` = `"تعامل با محتوای ابزار را غیرفعال می کند"`
+> **components.MuiTooltip.props.disableInteractive.description**: `string` = `"تعامل با محتوای راهنمای ابزار را غیرفعال می کند"`
 
 #### components.MuiTooltip.props.disableInteractive.name
 
@@ -1974,11 +1974,11 @@
 
 #### components.MuiTooltip.props.disableTouchListener.description
 
-> **components.MuiTooltip.props.disableTouchListener.description**: `string` = `"مانع از ظاهر شدن ابزار در لمس می شود"`
+> **components.MuiTooltip.props.disableTouchListener.description**: `string` = `"از ظاهر شدن نکته ابزار در لمس جلوگیری می کند"`
 
 #### components.MuiTooltip.props.disableTouchListener.name
 
-> **components.MuiTooltip.props.disableTouchListener.name**: `string` = `"شنونده لمسی را غیرفعال کنید"`
+> **components.MuiTooltip.props.disableTouchListener.name**: `string` = `"غیر فعال کردن شنونده لمسی"`
 
 #### components.MuiTooltip.props.enterDelay
 
@@ -1986,7 +1986,7 @@
 
 #### components.MuiTooltip.props.enterDelay.description
 
-> **components.MuiTooltip.props.enterDelay.description**: `string` = `"تاخیر در میلی ثانیه قبل از نشان دادن ابزار"`
+> **components.MuiTooltip.props.enterDelay.description**: `string` = `"تاخیر در میلی ثانیه قبل از نمایش نکته ابزار"`
 
 #### components.MuiTooltip.props.enterDelay.name
 
@@ -1998,7 +1998,7 @@
 
 #### components.MuiTooltip.props.followCursor.description
 
-> **components.MuiTooltip.props.followCursor.description**: `string` = `"باعث می شود که ابزار از موقعیت نشانگر پیروی کند"`
+> **components.MuiTooltip.props.followCursor.description**: `string` = `"باعث می شود نکته ابزار موقعیت مکان نما را دنبال کند"`
 
 #### components.MuiTooltip.props.followCursor.name
 
@@ -2010,11 +2010,11 @@
 
 #### components.MuiTooltip.props.leaveDelay.description
 
-> **components.MuiTooltip.props.leaveDelay.description**: `string` = `"تاخیر در میلی ثانیه قبل از پنهان کردن ابزار"`
+> **components.MuiTooltip.props.leaveDelay.description**: `string` = `"تاخیر در میلی ثانیه قبل از پنهان کردن نکته ابزار"`
 
 #### components.MuiTooltip.props.leaveDelay.name
 
-> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"تاخیر مرخصی"`
+> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"تأخیر ترک"`
 
 #### components.MuiTooltip.props.title
 
@@ -2022,7 +2022,7 @@
 
 #### components.MuiTooltip.props.title.description
 
-> **components.MuiTooltip.props.title.description**: `string` = `"محتوای متنی که در داخل ابزار نمایش داده می شود"`
+> **components.MuiTooltip.props.title.description**: `string` = `"محتوای متنی که در داخل نکته ابزار نمایش داده می شود"`
 
 #### components.MuiTooltip.props.title.name
 
@@ -2062,11 +2062,11 @@
 
 #### components.MuiUploader.description
 
-> **components.MuiUploader.description**: `string` = `"جزء برای آپلود یک یا چند فایل"`
+> **components.MuiUploader.description**: `string` = `"کامپوننت برای آپلود یک یا چند فایل"`
 
 #### components.MuiUploader.name
 
-> **components.MuiUploader.name**: `string` = `"آپلودر"`
+> **components.MuiUploader.name**: `string` = `"آپلود کننده"`
 
 #### components.MuiUploader.props
 
@@ -2078,11 +2078,11 @@
 
 #### components.MuiUploader.props.accept.description
 
-> **components.MuiUploader.props.accept.description**: `string` = `"انواع فایل های مجاز (به عنوان مثال \".جی پی جی.png\")"`
+> **components.MuiUploader.props.accept.description**: `string` = `"انواع پرونده مجاز (به عنوان مثال «.jpg، .png»)"`
 
 #### components.MuiUploader.props.accept.name
 
-> **components.MuiUploader.props.accept.name**: `string` = `"قبول کن"`
+> **components.MuiUploader.props.accept.name**: `string` = `"قبول کردن"`
 
 #### components.MuiUploader.props.multiple
 
@@ -2090,7 +2090,7 @@
 
 #### components.MuiUploader.props.multiple.description
 
-> **components.MuiUploader.props.multiple.description**: `string` = `"امکان انتخاب چند فایل"`
+> **components.MuiUploader.props.multiple.description**: `string` = `"امکان انتخاب چندین فایل را فراهم می کند"`
 
 #### components.MuiUploader.props.multiple.name
 

@@ -1,5 +1,7 @@
 import type {ReactNode} from 'react'
 import {useEffect, useState} from 'react'
+import {isString} from '../../utils/isString'
+import {isObject} from '../../utils/tools'
 
 /**
  * Represents the props for the SuppressResizeObserverErrors component. **Internal use only.**
@@ -17,12 +19,12 @@ export interface SuppressResizeObserverErrorsProps {
  * @returns the event message or an empty string.
  */
 const getEventText = (event: unknown): string => {
-  if (typeof event === 'string') {
+  if (isString(event)) {
     return event
   }
-  if (event && typeof event === 'object' && 'message' in event) {
+  if (event && isObject(event) && 'message' in event) {
     const message = (event as { message?: unknown }).message
-    if (typeof message === 'string') {
+    if (isString(message)) {
       return message
     }
   }

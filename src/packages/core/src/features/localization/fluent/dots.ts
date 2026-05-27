@@ -1,3 +1,5 @@
+import {isString} from '../../../utils/isString'
+
 /**
  * The character used to represent a dot.
  */
@@ -33,7 +35,7 @@ export function replaceDots(value: string): string {
  * @returns the same structure with all string leaves passed through {@link replaceDots}.
  */
 export function replaceDotsDeep(value: unknown): unknown {
-  if (typeof value === 'string') {
+  if (isString(value)) {
     return replaceDots(value)
   }
   if (Array.isArray(value)) {

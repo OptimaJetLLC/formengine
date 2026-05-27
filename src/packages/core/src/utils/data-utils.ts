@@ -1,5 +1,5 @@
 import {isRecord} from './isRecord'
-import {isUndefined} from './tools'
+import {isDate, isUndefined} from './tools'
 
 const mergeArrays = (generatedData: ValueType[], initialData: ValueType[]): ValueType[] => {
   const result = [...generatedData]
@@ -17,7 +17,7 @@ const mergeArrays = (generatedData: ValueType[], initialData: ValueType[]): Valu
 type ValueType = unknown
 
 const isMergeableObject = (value: any): value is Record<string, unknown> => {
-  return !(!isRecord(value) || value instanceof Date)
+  return !(!isRecord(value) || isDate(value))
 }
 
 const mergeValues = (generatedData: ValueType, initialData: ValueType) => {

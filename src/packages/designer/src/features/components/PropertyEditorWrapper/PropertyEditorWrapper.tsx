@@ -133,8 +133,7 @@ const RawPropertyEditorWrapper = ({
   }, [propertyBlockType, patchProperty, store.viewer.form.localization, componentData.key])
 
   const hasLocalization = useCallback(() => {
-    return store.viewer.form.localization
-      .hasLocalization(componentData.key, annotation.key, propertyBlockType)
+    return store.viewer.form.localization.hasLocalization(componentData.key, annotation.key, propertyBlockType)
   }, [store, componentData, annotation, propertyBlockType])
 
   const getComputeType = useCallback(() => {

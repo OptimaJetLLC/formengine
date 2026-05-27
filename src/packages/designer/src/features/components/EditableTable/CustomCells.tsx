@@ -1,4 +1,5 @@
 import type {LabeledValue} from '@react-form-builder/core'
+import {isNumber} from '@react-form-builder/core'
 import type {IconProps} from '@rsuite/icons/Icon'
 import cx from 'clsx'
 import type {ReactElement} from 'react'
@@ -31,7 +32,7 @@ const SCell = (props: InnerCellProps<RowDataType, string | number>) => (
  */
 export const InputCell = ({rowData, dataKey, rowIndex, onChange, type, ...props}: InputCellProps) => {
   const value = rowData[dataKey] ?? ''
-  const Input = type === 'number' ? InputNumber : RsInput
+  const Input = isNumber(type) ? InputNumber : RsInput
 
   const handleChange = useCallback((newValue: any) => {
     setRowDataField(rowData, dataKey, newValue)

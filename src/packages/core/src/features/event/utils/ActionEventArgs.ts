@@ -1,7 +1,7 @@
 import type {SyntheticEvent} from 'react'
 import type {Store} from '../../../stores/Store'
 import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
-import {isUndefined} from '../../../utils/tools'
+import {isNumber, isUndefined} from '../../../utils/tools'
 import type {CellInfo} from '../../table/CellInfo'
 import {createDataProxy} from './createComponentDataProxy'
 
@@ -46,7 +46,7 @@ export class ActionEventArgs {
     readonly cellInfo?: CellInfo,
   ) {
     this.index = sender.nearestIndex
-    const indexExists = typeof this.index === 'number'
+    const indexExists = isNumber(this.index)
     const componentData = sender.dataRoot
     this.#componentDataProxy = createDataProxy(componentData)
     if (indexExists) {

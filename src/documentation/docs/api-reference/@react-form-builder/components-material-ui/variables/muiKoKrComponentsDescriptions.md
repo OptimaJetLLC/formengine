@@ -14,7 +14,7 @@
 
 #### categories.dataDisplay.name
 
-> **categories.dataDisplay.name**: `string` = `"데이터 표시"`
+> **categories.dataDisplay.name**: `string` = `"데이터 디스플레이"`
 
 #### categories.feedback
 
@@ -54,7 +54,7 @@
 
 #### categories.navigation.name
 
-> **categories.navigation.name**: `string` = `"탐색"`
+> **categories.navigation.name**: `string` = `"내비게이션"`
 
 #### categories.surfaces
 
@@ -62,7 +62,7 @@
 
 #### categories.surfaces.name
 
-> **categories.surfaces.name**: `string` = `"표면"`
+> **categories.surfaces.name**: `string` = `"서피스"`
 
 ### commonProperties
 
@@ -74,11 +74,11 @@
 
 #### commonProperties.checked.description
 
-> **commonProperties.checked.description**: `string` = `"참인 경우 구성 요소가 확인됩니다"`
+> **commonProperties.checked.description**: `string` = `"true인 경우 구성 요소가 검사됩니다."`
 
 #### commonProperties.checked.name
 
-> **commonProperties.checked.name**: `string` = `"체크"`
+> **commonProperties.checked.name**: `string` = `"확인"`
 
 #### commonProperties.children
 
@@ -86,7 +86,7 @@
 
 #### commonProperties.children.description
 
-> **commonProperties.children.description**: `string` = `"구성 요소의 내용"`
+> **commonProperties.children.description**: `string` = `"구성 요소의 콘텐츠"`
 
 #### commonProperties.children.name
 
@@ -98,7 +98,7 @@
 
 #### commonProperties.color.description
 
-> **commonProperties.color.description**: `string` = `"구성 요소의 색상"`
+> **commonProperties.color.description**: `string` = `"컴포넌트의 색상"`
 
 #### commonProperties.color.name
 
@@ -110,11 +110,11 @@
 
 #### commonProperties.defaultValue.description
 
-> **commonProperties.defaultValue.description**: `string` = `"기본값입니다. 구성 요소가 제어되지 않을 때 사용"`
+> **commonProperties.defaultValue.description**: `string` = `"기본값입니다.구성요소가 제어되지 않을 때 사용합니다."`
 
 #### commonProperties.defaultValue.name
 
-> **commonProperties.defaultValue.name**: `string` = `"기본값"`
+> **commonProperties.defaultValue.name**: `string` = `"디폴트 값"`
 
 #### commonProperties.dense
 
@@ -122,11 +122,11 @@
 
 #### commonProperties.dense.description
 
-> **commonProperties.dense.description**: `string` = `"사실 인 경우 수직 패딩을 줄입니다"`
+> **commonProperties.dense.description**: `string` = `"true인 경우 세로 패딩이 줄어듭니다."`
 
 #### commonProperties.dense.name
 
-> **commonProperties.dense.name**: `string` = `"밀도"`
+> **commonProperties.dense.name**: `string` = `"밀도가 높은"`
 
 #### commonProperties.disabled
 
@@ -134,11 +134,11 @@
 
 #### commonProperties.disabled.description
 
-> **commonProperties.disabled.description**: `string` = `"해당되는 경우 구성 요소가 비활성화됩니다"`
+> **commonProperties.disabled.description**: `string` = `"true인 경우 구성 요소가 비활성화됩니다."`
 
 #### commonProperties.disabled.name
 
-> **commonProperties.disabled.name**: `string` = `"사용 안 함"`
+> **commonProperties.disabled.name**: `string` = `"장애인"`
 
 #### commonProperties.disableGutters
 
@@ -146,11 +146,11 @@
 
 #### commonProperties.disableGutters.description
 
-> **commonProperties.disableGutters.description**: `string` = `"참인 경우 왼쪽 및 오른쪽 패딩을 비활성화합니다"`
+> **commonProperties.disableGutters.description**: `string` = `"true인 경우 왼쪽 및 오른쪽 패딩이 비활성화됩니다."`
 
 #### commonProperties.disableGutters.name
 
-> **commonProperties.disableGutters.name**: `string` = `"홈통 비활성화"`
+> **commonProperties.disableGutters.name**: `string` = `"거터 비활성화"`
 
 #### commonProperties.disablePadding
 
@@ -158,7 +158,7 @@
 
 #### commonProperties.disablePadding.description
 
-> **commonProperties.disablePadding.description**: `string` = `"참인 경우 기본 패딩을 비활성화합니다"`
+> **commonProperties.disablePadding.description**: `string` = `"true인 경우 기본 패딩을 비활성화합니다."`
 
 #### commonProperties.disablePadding.name
 
@@ -170,7 +170,7 @@
 
 #### commonProperties.error.description
 
-> **commonProperties.error.description**: `string` = `"참인 경우 구성 요소가 오류 상태로 표시됩니다"`
+> **commonProperties.error.description**: `string` = `"true인 경우 구성 요소가 오류 상태로 표시됩니다."`
 
 #### commonProperties.error.name
 
@@ -182,11 +182,11 @@
 
 #### commonProperties.fullWidth.description
 
-> **commonProperties.fullWidth.description**: `string` = `"만약 사실이라면,구성 요소는 컨테이너의 전체 너비를 차지합니다."`
+> **commonProperties.fullWidth.description**: `string` = `"true인 경우 구성 요소가 컨테이너의 전체 너비를 차지합니다."`
 
 #### commonProperties.fullWidth.name
 
-> **commonProperties.fullWidth.name**: `string` = `"가득 차있는 폭"`
+> **commonProperties.fullWidth.name**: `string` = `"전체 너비"`
 
 #### commonProperties.gutterBottom
 
@@ -194,11 +194,11 @@
 
 #### commonProperties.gutterBottom.description
 
-> **commonProperties.gutterBottom.description**: `string` = `"만약 사실이라면,텍스트는 하단 여백을 갖게 될 것입니다."`
+> **commonProperties.gutterBottom.description**: `string` = `"true인 경우 텍스트의 아래쪽 여백이 표시됩니다."`
 
 #### commonProperties.gutterBottom.name
 
-> **commonProperties.gutterBottom.name**: `string` = `"거터 바닥"`
+> **commonProperties.gutterBottom.name**: `string` = `"거터 하단"`
 
 #### commonProperties.helperText
 
@@ -206,7 +206,7 @@
 
 #### commonProperties.helperText.description
 
-> **commonProperties.helperText.description**: `string` = `"도우미 텍스트 내용"`
+> **commonProperties.helperText.description**: `string` = `"도우미 텍스트 콘텐츠"`
 
 #### commonProperties.helperText.name
 
@@ -218,7 +218,7 @@
 
 #### commonProperties.margin.description
 
-> **commonProperties.margin.description**: `string` = `"구성 요소에 적용된 여백을 정의합니다"`
+> **commonProperties.margin.description**: `string` = `"부품에 적용되는 여백을 정의합니다."`
 
 #### commonProperties.margin.name
 
@@ -230,7 +230,7 @@
 
 #### commonProperties.noWrap.description
 
-> **commonProperties.noWrap.description**: `string` = `"참이면 텍스트가 줄 바꿈되지 않고 텍스트 오버플로 줄임표 대신 잘립니다"`
+> **commonProperties.noWrap.description**: `string` = `"true인 경우 텍스트가 줄 바꿈되지 않고 대신 텍스트 오버플로 줄임표로 잘립니다."`
 
 #### commonProperties.noWrap.name
 
@@ -242,11 +242,11 @@
 
 #### commonProperties.onChange.description
 
-> **commonProperties.onChange.description**: `string` = `"값이 변경 될 때 콜백이 발생합니다"`
+> **commonProperties.onChange.description**: `string` = `"값이 변경되면 콜백이 시작됩니다."`
 
 #### commonProperties.onChange.name
 
-> **commonProperties.onChange.name**: `string` = `"변경"`
+> **commonProperties.onChange.name**: `string` = `"온체인지"`
 
 #### commonProperties.onClick
 
@@ -254,7 +254,7 @@
 
 #### commonProperties.onClick.description
 
-> **commonProperties.onClick.description**: `string` = `"구성 요소를 클릭하면 콜백이 실행됩니다"`
+> **commonProperties.onClick.description**: `string` = `"컴포넌트를 클릭하면 콜백이 시작됩니다."`
 
 #### commonProperties.onClick.name
 
@@ -266,7 +266,7 @@
 
 #### commonProperties.required.description
 
-> **commonProperties.required.description**: `string` = `"참인 경우 입력 요소가 필요합니다"`
+> **commonProperties.required.description**: `string` = `"true인 경우 입력 요소가 필요합니다."`
 
 #### commonProperties.required.name
 
@@ -282,7 +282,7 @@
 
 #### commonProperties.size.name
 
-> **commonProperties.size.name**: `string` = `"크기"`
+> **commonProperties.size.name**: `string` = `"사이즈"`
 
 #### commonProperties.sx
 
@@ -290,11 +290,11 @@
 
 #### commonProperties.sx.description
 
-> **commonProperties.sx.description**: `string` = `"시스템 재정의 및 추가 스타일을 정의할 수 있는 시스템 소품"`
+> **commonProperties.sx.description**: `string` = `"시스템 오버라이드와 추가 CSS 스타일을 정의할 수 있는 시스템 소품"`
 
 #### commonProperties.sx.name
 
-> **commonProperties.sx.name**: `string` = `"에스엑스"`
+> **commonProperties.sx.name**: `string` = `"섹스"`
 
 #### commonProperties.textAlign
 
@@ -306,7 +306,7 @@
 
 #### commonProperties.textAlign.name
 
-> **commonProperties.textAlign.name**: `string` = `"정렬"`
+> **commonProperties.textAlign.name**: `string` = `"얼라인먼트"`
 
 #### commonProperties.value
 
@@ -314,11 +314,11 @@
 
 #### commonProperties.value.description
 
-> **commonProperties.value.description**: `string` = `"구성 요소의 값"`
+> **commonProperties.value.description**: `string` = `"구성 요소의 가치"`
 
 #### commonProperties.value.name
 
-> **commonProperties.value.name**: `string` = `"값"`
+> **commonProperties.value.name**: `string` = `"가치"`
 
 #### commonProperties.variant
 
@@ -330,7 +330,7 @@
 
 #### commonProperties.variant.name
 
-> **commonProperties.variant.name**: `string` = `"변종"`
+> **commonProperties.variant.name**: `string` = `"변형"`
 
 ### components
 
@@ -342,11 +342,11 @@
 
 #### components.MuiBox.description
 
-> **components.MuiBox.description**: `string` = `"시스템 스타일을 지원하는 일반 레이아웃 컨테이너"`
+> **components.MuiBox.description**: `string` = `"시스템 스타일링을 지원하는 일반 레이아웃 컨테이너"`
 
 #### components.MuiBox.name
 
-> **components.MuiBox.name**: `string` = `"상자"`
+> **components.MuiBox.name**: `string` = `"박스"`
 
 #### components.MuiBreadcrumbs
 
@@ -354,7 +354,7 @@
 
 #### components.MuiBreadcrumbs.description
 
-> **components.MuiBreadcrumbs.description**: `string` = `"계층 내에서 현재 페이지 위치를 표시합니다"`
+> **components.MuiBreadcrumbs.description**: `string` = `"계층 내의 현재 페이지 위치를 표시합니다."`
 
 #### components.MuiBreadcrumbs.name
 
@@ -370,11 +370,11 @@
 
 #### components.MuiBreadcrumbs.props.items.description
 
-> **components.MuiBreadcrumbs.props.items.description**: `string` = `"표시할 이동 경로 항목"`
+> **components.MuiBreadcrumbs.props.items.description**: `string` = `"표시할 탐색경로 항목"`
 
 #### components.MuiBreadcrumbs.props.items.name
 
-> **components.MuiBreadcrumbs.props.items.name**: `string` = `"항목"`
+> **components.MuiBreadcrumbs.props.items.name**: `string` = `"아이템"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse
 
@@ -382,7 +382,7 @@
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"최대 항목을 초과하면 줄임표 뒤에 표시할 항목 수입니다"`
+> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"최대 항목 수를 초과한 경우 줄임표 뒤에 표시할 항목 수"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.name
 
@@ -394,7 +394,7 @@
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"최대 항목을 초과하면 줄임표 앞에 표시할 항목 수입니다"`
+> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"최대 항목 수를 초과한 경우 줄임표 앞에 표시할 항목 수"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.name
 
@@ -406,7 +406,7 @@
 
 #### components.MuiBreadcrumbs.props.maxItems.description
 
-> **components.MuiBreadcrumbs.props.maxItems.description**: `string` = `"표시할 최대 이동 경로 수를 지정합니다"`
+> **components.MuiBreadcrumbs.props.maxItems.description**: `string` = `"표시할 최대 이동 경로 수를 지정합니다."`
 
 #### components.MuiBreadcrumbs.props.maxItems.name
 
@@ -418,7 +418,7 @@
 
 #### components.MuiBreadcrumbs.props.separator.description
 
-> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"이동 경로 항목을 분리하는 데 사용되는 요소"`
+> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"탐색경로 항목을 구분하는 데 사용되는 요소"`
 
 #### components.MuiBreadcrumbs.props.separator.name
 
@@ -430,7 +430,7 @@
 
 #### components.MuiButton.description
 
-> **components.MuiButton.description**: `string` = `"작업 또는 이벤트를 트리거하는 데 사용되는 단추 구성 요소"`
+> **components.MuiButton.description**: `string` = `"액션 또는 이벤트를 트리거하는 데 사용되는 버튼 구성 요소"`
 
 #### components.MuiButton.name
 
@@ -450,7 +450,7 @@
 
 #### components.MuiButton.props.children.name
 
-> **components.MuiButton.props.children.name**: `string` = `"내용"`
+> **components.MuiButton.props.children.name**: `string` = `"콘텐츠"`
 
 #### components.MuiButton.props.disableElevation
 
@@ -458,11 +458,11 @@
 
 #### components.MuiButton.props.disableElevation.description
 
-> **components.MuiButton.props.disableElevation.description**: `string` = `"참으로 설정하면 단추 그림자를 제거합니다"`
+> **components.MuiButton.props.disableElevation.description**: `string` = `"true로 설정하면 버튼 그림자를 제거합니다."`
 
 #### components.MuiButton.props.disableElevation.name
 
-> **components.MuiButton.props.disableElevation.name**: `string` = `"상승 비활성화"`
+> **components.MuiButton.props.disableElevation.name**: `string` = `"고도 비활성화"`
 
 #### components.MuiButton.props.loading
 
@@ -470,11 +470,11 @@
 
 #### components.MuiButton.props.loading.description
 
-> **components.MuiButton.props.loading.description**: `string` = `"로드 표시기를 표시하고 상호 작용을 비활성화합니다"`
+> **components.MuiButton.props.loading.description**: `string` = `"로딩 표시기를 표시하고 상호 작용을 비활성화합니다."`
 
 #### components.MuiButton.props.loading.name
 
-> **components.MuiButton.props.loading.name**: `string` = `"로드 중"`
+> **components.MuiButton.props.loading.name**: `string` = `"불러오는 중"`
 
 #### components.MuiButtonGroup
 
@@ -498,11 +498,11 @@
 
 #### components.MuiButtonGroup.props.fullWidth.description
 
-> **components.MuiButtonGroup.props.fullWidth.description**: `string` = `"단추 그룹을 전체 컨테이너 너비에 걸쳐 만듭니다"`
+> **components.MuiButtonGroup.props.fullWidth.description**: `string` = `"버튼 그룹을 전체 컨테이너 너비로 확장합니다."`
 
 #### components.MuiButtonGroup.props.fullWidth.name
 
-> **components.MuiButtonGroup.props.fullWidth.name**: `string` = `"가득 차있는 폭"`
+> **components.MuiButtonGroup.props.fullWidth.name**: `string` = `"전체 너비"`
 
 #### components.MuiButtonGroup.props.orientation
 
@@ -510,11 +510,11 @@
 
 #### components.MuiButtonGroup.props.orientation.description
 
-> **components.MuiButtonGroup.props.orientation.description**: `string` = `"단추의 레이아웃 방향을 설정합니다"`
+> **components.MuiButtonGroup.props.orientation.description**: `string` = `"버튼의 레이아웃 방향을 설정합니다."`
 
 #### components.MuiButtonGroup.props.orientation.name
 
-> **components.MuiButtonGroup.props.orientation.name**: `string` = `"방향"`
+> **components.MuiButtonGroup.props.orientation.name**: `string` = `"오리엔테이션"`
 
 #### components.MuiCard
 
@@ -522,7 +522,7 @@
 
 #### components.MuiCard.description
 
-> **components.MuiCard.description**: `string` = `"관련 콘텐츠 그룹화를 위한 표면 구성 요소"`
+> **components.MuiCard.description**: `string` = `"관련 콘텐츠를 그룹화하기 위한 표면 구성 요소"`
 
 #### components.MuiCard.name
 
@@ -538,11 +538,11 @@
 
 #### components.MuiCard.props.actions.description
 
-> **components.MuiCard.props.actions.description**: `string` = `"카드의 동작 버튼 또는 컨트롤"`
+> **components.MuiCard.props.actions.description**: `string` = `"카드의 액션 버튼 또는 컨트롤"`
 
 #### components.MuiCard.props.actions.name
 
-> **components.MuiCard.props.actions.name**: `string` = `"행동"`
+> **components.MuiCard.props.actions.name**: `string` = `"액션"`
 
 #### components.MuiCard.props.header
 
@@ -554,7 +554,7 @@
 
 #### components.MuiCard.props.header.name
 
-> **components.MuiCard.props.header.name**: `string` = `"헤더"`
+> **components.MuiCard.props.header.name**: `string` = `"머리글"`
 
 #### components.MuiCard.props.headerAction
 
@@ -566,7 +566,7 @@
 
 #### components.MuiCard.props.headerAction.name
 
-> **components.MuiCard.props.headerAction.name**: `string` = `"헤더 동작"`
+> **components.MuiCard.props.headerAction.name**: `string` = `"헤더 액션"`
 
 #### components.MuiCard.props.headerAvatar
 
@@ -598,11 +598,11 @@
 
 #### components.MuiCard.props.onSelect.description
 
-> **components.MuiCard.props.onSelect.description**: `string` = `"카드를 선택하면 콜백이 트리거됩니다"`
+> **components.MuiCard.props.onSelect.description**: `string` = `"카드 선택 시 콜백 트리거"`
 
 #### components.MuiCard.props.onSelect.name
 
-> **components.MuiCard.props.onSelect.name**: `string` = `"선택"`
+> **components.MuiCard.props.onSelect.name**: `string` = `"온셀렉트"`
 
 #### components.MuiCard.props.subHeader
 
@@ -610,7 +610,7 @@
 
 #### components.MuiCard.props.subHeader.description
 
-> **components.MuiCard.props.subHeader.description**: `string` = `"머리글 아래에 표시되는 보조 텍스트"`
+> **components.MuiCard.props.subHeader.description**: `string` = `"헤더 아래에 표시된 보조 텍스트"`
 
 #### components.MuiCard.props.subHeader.name
 
@@ -622,11 +622,11 @@
 
 #### components.MuiCard.props.useActions.description
 
-> **components.MuiCard.props.useActions.description**: `string` = `"아래쪽에 작업 섹션을 표시합니다"`
+> **components.MuiCard.props.useActions.description**: `string` = `"하단에 작업 섹션을 표시합니다."`
 
 #### components.MuiCard.props.useActions.name
 
-> **components.MuiCard.props.useActions.name**: `string` = `"작업 사용"`
+> **components.MuiCard.props.useActions.name**: `string` = `"액션 사용"`
 
 #### components.MuiCard.props.useCardActionArea
 
@@ -634,7 +634,7 @@
 
 #### components.MuiCard.props.useCardActionArea.description
 
-> **components.MuiCard.props.useCardActionArea.description**: `string` = `"클릭 가능한 작업 영역으로 콘텐츠를 래핑합니다"`
+> **components.MuiCard.props.useCardActionArea.description**: `string` = `"콘텐츠를 클릭 가능한 작업 영역으로 바꿈합니다."`
 
 #### components.MuiCard.props.useCardActionArea.name
 
@@ -646,7 +646,7 @@
 
 #### components.MuiCard.props.useHeader.description
 
-> **components.MuiCard.props.useHeader.description**: `string` = `"카드 헤더 섹션을 활성화합니다"`
+> **components.MuiCard.props.useHeader.description**: `string` = `"카드 헤더 섹션을 활성화합니다."`
 
 #### components.MuiCard.props.useHeader.name
 
@@ -658,7 +658,7 @@
 
 #### components.MuiCard.props.useHeaderAction.description
 
-> **components.MuiCard.props.useHeaderAction.description**: `string` = `"헤더 내부의 작업 영역을 활성화합니다"`
+> **components.MuiCard.props.useHeaderAction.description**: `string` = `"헤더 내부의 작업 영역을 활성화합니다."`
 
 #### components.MuiCard.props.useHeaderAction.name
 
@@ -670,7 +670,7 @@
 
 #### components.MuiCard.props.useHeaderAvatar.description
 
-> **components.MuiCard.props.useHeaderAvatar.description**: `string` = `"헤더 안에 아바타를 표시합니다"`
+> **components.MuiCard.props.useHeaderAvatar.description**: `string` = `"헤더 안에 아바타를 표시합니다."`
 
 #### components.MuiCard.props.useHeaderAvatar.name
 
@@ -682,7 +682,7 @@
 
 #### components.MuiCard.props.useMedia.description
 
-> **components.MuiCard.props.useMedia.description**: `string` = `"카드 내부의 미디어 섹션을 활성화합니다"`
+> **components.MuiCard.props.useMedia.description**: `string` = `"카드 내부의 미디어 섹션을 활성화합니다."`
 
 #### components.MuiCard.props.useMedia.name
 
@@ -694,11 +694,11 @@
 
 #### components.MuiCard.props.useSubheader.description
 
-> **components.MuiCard.props.useSubheader.description**: `string` = `"주 헤더 아래에 하위 헤더를 표시합니다"`
+> **components.MuiCard.props.useSubheader.description**: `string` = `"기본 헤더 아래에 하위 헤더를 표시합니다."`
 
 #### components.MuiCard.props.useSubheader.name
 
-> **components.MuiCard.props.useSubheader.name**: `string` = `"서브 헤더 사용"`
+> **components.MuiCard.props.useSubheader.name**: `string` = `"서브헤더 사용"`
 
 #### components.MuiCheckbox
 
@@ -706,7 +706,7 @@
 
 #### components.MuiCheckbox.description
 
-> **components.MuiCheckbox.description**: `string` = `"하나 이상의 옵션을 선택할 수 있습니다"`
+> **components.MuiCheckbox.description**: `string` = `"하나 이상의 옵션을 선택할 수 있습니다."`
 
 #### components.MuiCheckbox.name
 
@@ -722,7 +722,7 @@
 
 #### components.MuiCheckbox.props.defaultChecked.description
 
-> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"통제되지 않은 경우 초기 검사 상태"`
+> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"제어되지 않을 때의 초기 확인 상태"`
 
 #### components.MuiCheckbox.props.defaultChecked.name
 
@@ -734,7 +734,7 @@
 
 #### components.MuiCircularProgress.description
 
-> **components.MuiCircularProgress.description**: `string` = `"순환 형태로 로드 또는 진행 상황을 나타냅니다"`
+> **components.MuiCircularProgress.description**: `string` = `"원형 형태로 로드 또는 진행 상황을 나타냅니다."`
 
 #### components.MuiCircularProgress.name
 
@@ -750,7 +750,7 @@
 
 #### components.MuiCircularProgress.props.disableShrink.description
 
-> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"축소 애니메이션 비활성화"`
+> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"축소 애니메이션을 비활성화합니다."`
 
 #### components.MuiCircularProgress.props.disableShrink.name
 
@@ -762,7 +762,7 @@
 
 #### components.MuiCircularProgress.props.thickness.description
 
-> **components.MuiCircularProgress.props.thickness.description**: `string` = `"원의 획 폭을 제어합니다"`
+> **components.MuiCircularProgress.props.thickness.description**: `string` = `"원의 선 너비를 제어합니다."`
 
 #### components.MuiCircularProgress.props.thickness.name
 
@@ -774,7 +774,7 @@
 
 #### components.MuiContainer.description
 
-> **components.MuiContainer.description**: `string` = `"콘텐츠를 가로로 가운데 및 제한"`
+> **components.MuiContainer.description**: `string` = `"콘텐츠를 가로로 중앙에 배치하고 제한합니다."`
 
 #### components.MuiContainer.name
 
@@ -790,7 +790,7 @@
 
 #### components.MuiContainer.props.fixed.description
 
-> **components.MuiContainer.props.fixed.description**: `string` = `"유체 너비 대신 고정 최대 너비를 설정합니다"`
+> **components.MuiContainer.props.fixed.description**: `string` = `"유동 너비 대신 고정 최대 너비를 설정합니다."`
 
 #### components.MuiContainer.props.fixed.name
 
@@ -802,11 +802,11 @@
 
 #### components.MuiContainer.props.maxWidth.description
 
-> **components.MuiContainer.props.maxWidth.description**: `string` = `"컨테이너의 최대 너비를 정의합니다"`
+> **components.MuiContainer.props.maxWidth.description**: `string` = `"컨테이너의 최대 너비를 정의합니다."`
 
 #### components.MuiContainer.props.maxWidth.name
 
-> **components.MuiContainer.props.maxWidth.name**: `string` = `"최대 폭"`
+> **components.MuiContainer.props.maxWidth.name**: `string` = `"최대 너비"`
 
 #### components.MuiDatePicker
 
@@ -814,7 +814,7 @@
 
 #### components.MuiDatePicker.description
 
-> **components.MuiDatePicker.description**: `string` = `"날짜 선택을 위한 구성 요소"`
+> **components.MuiDatePicker.description**: `string` = `"날짜 선택을 위한 컴포넌트"`
 
 #### components.MuiDatePicker.name
 
@@ -830,11 +830,11 @@
 
 #### components.MuiDatePicker.props.autoFocus.description
 
-> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"해당되는 경우 구성 요소가 마운트될 때 날짜 선택기에 자동으로 초점을 맞 춥니 다"`
+> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"true인 경우 구성 요소가 마운트될 때 날짜 선택기에 자동으로 초점을 맞춥니다."`
 
 #### components.MuiDatePicker.props.autoFocus.name
 
-> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"자동 초점"`
+> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"오토 포커스"`
 
 #### components.MuiDatePicker.props.closeOnSelect
 
@@ -842,7 +842,7 @@
 
 #### components.MuiDatePicker.props.closeOnSelect.description
 
-> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"날짜를 선택한 후 날짜 선택 대화 상자를 자동으로 닫습니다"`
+> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"날짜를 선택한 후 날짜 선택 대화 상자를 자동으로 닫습니다."`
 
 #### components.MuiDatePicker.props.closeOnSelect.name
 
@@ -854,7 +854,7 @@
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.description
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"데스크톱 모드 레이아웃으로 전환할 시기를 결정하는 미디어 쿼리 문자열"`
+> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"데스크탑 모드 레이아웃으로 전환할 시기를 결정하는 CSS 미디어 쿼리 문자열"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.name
 
@@ -866,7 +866,7 @@
 
 #### components.MuiDatePicker.props.disableFuture.description
 
-> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"참인 경우 현재 날짜 이후의 날짜 선택을 방지합니다"`
+> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"true인 경우 현재 날짜 이후의 날짜를 선택할 수 없습니다."`
 
 #### components.MuiDatePicker.props.disableFuture.name
 
@@ -878,11 +878,11 @@
 
 #### components.MuiDatePicker.props.disableHighlightToday.description
 
-> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"참인 경우 달력에서 현재 날짜의 시각적 강조 표시를 비활성화합니다"`
+> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"true인 경우 달력에서 현재 날짜를 시각적으로 강조 표시할 수 없습니다."`
 
 #### components.MuiDatePicker.props.disableHighlightToday.name
 
-> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"오늘 강조 표시 비활성화"`
+> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"오늘 하이라이트를 비활성화하세요"`
 
 #### components.MuiDatePicker.props.disableOpenPicker
 
@@ -890,11 +890,11 @@
 
 #### components.MuiDatePicker.props.disableOpenPicker.description
 
-> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"참인 경우 선택 대화 상자를 열 수 없습니다(읽기 전용 표시에 유용함)."`
+> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"true인 경우 선택기 대화 상자를 열 수 없습니다 (읽기 전용 표시에 유용함)."`
 
 #### components.MuiDatePicker.props.disableOpenPicker.name
 
-> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"열기 선택기 비활성화"`
+> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"오픈 피커 비활성화"`
 
 #### components.MuiDatePicker.props.disablePast
 
@@ -902,11 +902,11 @@
 
 #### components.MuiDatePicker.props.disablePast.description
 
-> **components.MuiDatePicker.props.disablePast.description**: `string` = `"참인 경우 현재 날짜 이전 날짜 선택을 방지합니다"`
+> **components.MuiDatePicker.props.disablePast.description**: `string` = `"true인 경우 현재 날짜 이전의 날짜를 선택할 수 없습니다."`
 
 #### components.MuiDatePicker.props.disablePast.name
 
-> **components.MuiDatePicker.props.disablePast.name**: `string` = `"과거 비활성화"`
+> **components.MuiDatePicker.props.disablePast.name**: `string` = `"과거 사용 중지"`
 
 #### components.MuiDatePicker.props.displayWeekNumber
 
@@ -914,11 +914,11 @@
 
 #### components.MuiDatePicker.props.displayWeekNumber.description
 
-> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"달력 보기에 주 번호 표시"`
+> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"달력 보기에 주 번호를 표시합니다."`
 
 #### components.MuiDatePicker.props.displayWeekNumber.name
 
-> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"표시 주 번호"`
+> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"주 번호 표시"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber
 
@@ -926,7 +926,7 @@
 
 #### components.MuiDatePicker.props.fixedWeekNumber.description
 
-> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"표시 주 고정 수(강제 일관된 달력 높이)"`
+> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"표시할 주 수 고정 (캘린더 높이를 일정하게 유지)"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber.name
 
@@ -938,7 +938,7 @@
 
 #### components.MuiDatePicker.props.format.description
 
-> **components.MuiDatePicker.props.format.description**: `string` = `"날짜 형식 문자열 표시 및 구문 분석에 사용(예:'년/년/년','년/년')"`
+> **components.MuiDatePicker.props.format.description**: `string` = `"표시 및 구문 분석에 사용되는 날짜 형식 문자열 (예: 'yyyy-mm-dd', 'mm/dd/yyyy')"`
 
 #### components.MuiDatePicker.props.format.name
 
@@ -950,11 +950,11 @@
 
 #### components.MuiDatePicker.props.formatDensity.description
 
-> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"날짜 서식에서 간격을 제어합니다:조밀함(조밀함)또는 넓음(더 많은 간격)"`
+> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"날짜 서식의 간격을 조절합니다: 빽빽한 (간결한) 또는 넓음 (넓은 간격)"`
 
 #### components.MuiDatePicker.props.formatDensity.name
 
-> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"체재 조밀도"`
+> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"포맷 밀도"`
 
 #### components.MuiDatePicker.props.loading
 
@@ -962,11 +962,11 @@
 
 #### components.MuiDatePicker.props.loading.description
 
-> **components.MuiDatePicker.props.loading.description**: `string` = `"만약 사실이라면,데이터가 로드되고 있음을 나타내는 로딩 스피너를 표시합니다."`
+> **components.MuiDatePicker.props.loading.description**: `string` = `"true인 경우 데이터가 로드되고 있음을 나타내는 로드 스피너가 표시됩니다."`
 
 #### components.MuiDatePicker.props.loading.name
 
-> **components.MuiDatePicker.props.loading.name**: `string` = `"로드 중"`
+> **components.MuiDatePicker.props.loading.name**: `string` = `"불러오는 중"`
 
 #### components.MuiDatePicker.props.maxDate
 
@@ -974,7 +974,7 @@
 
 #### components.MuiDatePicker.props.maxDate.description
 
-> **components.MuiDatePicker.props.maxDate.description**: `string` = `"선택할 수 있는 최신 날짜(포함)"`
+> **components.MuiDatePicker.props.maxDate.description**: `string` = `"선택할 수 있는 가장 최근 날짜 (포함)"`
 
 #### components.MuiDatePicker.props.maxDate.name
 
@@ -986,7 +986,7 @@
 
 #### components.MuiDatePicker.props.minDate.description
 
-> **components.MuiDatePicker.props.minDate.description**: `string` = `"선택할 수 있는 가장 빠른 날짜(포함)"`
+> **components.MuiDatePicker.props.minDate.description**: `string` = `"선택할 수 있는 가장 빠른 날짜 (포함)"`
 
 #### components.MuiDatePicker.props.minDate.name
 
@@ -1002,7 +1002,7 @@
 
 #### components.MuiDatePicker.props.monthsPerRow.name
 
-> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"행당 월"`
+> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"행당 개월 수"`
 
 #### components.MuiDatePicker.props.name
 
@@ -1010,7 +1010,7 @@
 
 #### components.MuiDatePicker.props.name.description
 
-> **components.MuiDatePicker.props.name.description**: `string` = `"양식을 제출할 때 사용되는 양식 필드의 이름 특성"`
+> **components.MuiDatePicker.props.name.description**: `string` = `"양식을 제출할 때 사용되는 양식 필드의 이름 속성"`
 
 #### components.MuiDatePicker.props.name.name
 
@@ -1022,11 +1022,11 @@
 
 #### components.MuiDatePicker.props.onAccept.description
 
-> **components.MuiDatePicker.props.onAccept.description**: `string` = `"값이 허용되면 콜백이 실행됩니다"`
+> **components.MuiDatePicker.props.onAccept.description**: `string` = `"값이 수락되면 콜백이 시작됩니다."`
 
 #### components.MuiDatePicker.props.onAccept.name
 
-> **components.MuiDatePicker.props.onAccept.name**: `string` = `"동의"`
+> **components.MuiDatePicker.props.onAccept.name**: `string` = `"onAccept"`
 
 #### components.MuiDatePicker.props.onClose
 
@@ -1034,11 +1034,11 @@
 
 #### components.MuiDatePicker.props.onClose.description
 
-> **components.MuiDatePicker.props.onClose.description**: `string` = `"팝업 요청이 닫힐 때 콜백이 발생합니다"`
+> **components.MuiDatePicker.props.onClose.description**: `string` = `"팝업 종료 요청 시 콜백 발생"`
 
 #### components.MuiDatePicker.props.onClose.name
 
-> **components.MuiDatePicker.props.onClose.name**: `string` = `"온클로즈"`
+> **components.MuiDatePicker.props.onClose.name**: `string` = `"OnClose"`
 
 #### components.MuiDatePicker.props.onError
 
@@ -1046,11 +1046,11 @@
 
 #### components.MuiDatePicker.props.onError.description
 
-> **components.MuiDatePicker.props.onError.description**: `string` = `"현재 값과 관련된 오류가 변경될 때 콜백이 발생합니다"`
+> **components.MuiDatePicker.props.onError.description**: `string` = `"현재 값과 관련된 오류가 변경되면 콜백이 시작됩니다."`
 
 #### components.MuiDatePicker.props.onError.name
 
-> **components.MuiDatePicker.props.onError.name**: `string` = `"오너러"`
+> **components.MuiDatePicker.props.onError.name**: `string` = `"OnError"`
 
 #### components.MuiDatePicker.props.onMonthChange
 
@@ -1058,11 +1058,11 @@
 
 #### components.MuiDatePicker.props.onMonthChange.description
 
-> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"월 변경 시 해고된 콜백"`
+> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"월 변경 시 콜백 실행됨"`
 
 #### components.MuiDatePicker.props.onMonthChange.name
 
-> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"월 변경"`
+> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"월 변경 시"`
 
 #### components.MuiDatePicker.props.onOpen
 
@@ -1070,11 +1070,11 @@
 
 #### components.MuiDatePicker.props.onOpen.description
 
-> **components.MuiDatePicker.props.onOpen.description**: `string` = `"팝업 요청이 열릴 때 콜백이 발생했습니다"`
+> **components.MuiDatePicker.props.onOpen.description**: `string` = `"팝업이 열리도록 요청하면 콜백이 시작됩니다."`
 
 #### components.MuiDatePicker.props.onOpen.name
 
-> **components.MuiDatePicker.props.onOpen.name**: `string` = `"오노펜"`
+> **components.MuiDatePicker.props.onOpen.name**: `string` = `"OnOpen"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange
 
@@ -1082,11 +1082,11 @@
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.description
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"선택한 섹션이 변경될 때 콜백이 실행됩니다"`
+> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"선택한 섹션이 변경되면 콜백이 시작됩니다."`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.name
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"선택한 섹션변경"`
+> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"선택한 섹션 변경 시"`
 
 #### components.MuiDatePicker.props.onViewChange
 
@@ -1094,11 +1094,11 @@
 
 #### components.MuiDatePicker.props.onViewChange.description
 
-> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"뷰 변경 시 콜백 발생"`
+> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"뷰 변경 시 콜백 실행"`
 
 #### components.MuiDatePicker.props.onViewChange.name
 
-> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"온뷰변경"`
+> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"온뷰 체인지"`
 
 #### components.MuiDatePicker.props.onYearChange
 
@@ -1106,11 +1106,11 @@
 
 #### components.MuiDatePicker.props.onYearChange.description
 
-> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"연도 변경 시 해고된 콜백"`
+> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"연도 변경 시 콜백 실행"`
 
 #### components.MuiDatePicker.props.onYearChange.name
 
-> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"오니 어챈지"`
+> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"연도 변경 시"`
 
 #### components.MuiDatePicker.props.open
 
@@ -1118,11 +1118,11 @@
 
 #### components.MuiDatePicker.props.open.description
 
-> **components.MuiDatePicker.props.open.description**: `string` = `"제어된 상태 관리에 사용할 수 있습니다"`
+> **components.MuiDatePicker.props.open.description**: `string` = `"true인 경우 날짜 선택 대화 상자가 열려 제어된 상태 관리에 사용할 수 있습니다."`
 
 #### components.MuiDatePicker.props.open.name
 
-> **components.MuiDatePicker.props.open.name**: `string` = `"오픈"`
+> **components.MuiDatePicker.props.open.name**: `string` = `"열기"`
 
 #### components.MuiDatePicker.props.openTo
 
@@ -1130,11 +1130,11 @@
 
 #### components.MuiDatePicker.props.openTo.description
 
-> **components.MuiDatePicker.props.openTo.description**: `string` = `"선택기가 활성화될 때 열 뷰"`
+> **components.MuiDatePicker.props.openTo.description**: `string` = `"피커가 활성화될 때 열리는 뷰입니다."`
 
 #### components.MuiDatePicker.props.openTo.name
 
-> **components.MuiDatePicker.props.openTo.name**: `string` = `"오픈"`
+> **components.MuiDatePicker.props.openTo.name**: `string` = `"로 열기"`
 
 #### components.MuiDatePicker.props.referenceDate
 
@@ -1154,11 +1154,11 @@
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"현재 월 보기에서 이전 및 다음 월의 일수를 표시합니다"`
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"이번 달 보기에서 이전 달과 다음 달의 날짜를 표시합니다."`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"현재 월 이외의 일 표시"`
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"이번 달 외의 날짜 보기"`
 
 #### components.MuiDatePicker.props.view
 
@@ -1166,7 +1166,7 @@
 
 #### components.MuiDatePicker.props.view.description
 
-> **components.MuiDatePicker.props.view.description**: `string` = `"표시 할 초기보기(일,월 또는 연도 달력)"`
+> **components.MuiDatePicker.props.view.description**: `string` = `"표시할 초기 보기 (일, 월 또는 연도 달력)"`
 
 #### components.MuiDatePicker.props.view.name
 
@@ -1178,11 +1178,11 @@
 
 #### components.MuiDatePicker.props.views.description
 
-> **components.MuiDatePicker.props.views.description**: `string` = `"사용 가능한 보기(일,월 및 연도 달력)"`
+> **components.MuiDatePicker.props.views.description**: `string` = `"사용 가능한 보기 (일, 월, 연도 달력)"`
 
 #### components.MuiDatePicker.props.views.name
 
-> **components.MuiDatePicker.props.views.name**: `string` = `"보기"`
+> **components.MuiDatePicker.props.views.name**: `string` = `"조회수"`
 
 #### components.MuiDatePicker.props.yearsOrder
 
@@ -1190,11 +1190,11 @@
 
 #### components.MuiDatePicker.props.yearsOrder.description
 
-> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"년 정렬 순서:오름차순(가장 오래된 첫 번째)또는 내림차순(최신 첫 번째)"`
+> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"연도 정렬 순서: 오름차순 (가장 오래된 것부터) 또는 내림차순 (최신순)"`
 
 #### components.MuiDatePicker.props.yearsOrder.name
 
-> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"년 순서"`
+> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"연도 주문"`
 
 #### components.MuiDatePicker.props.yearsPerRow
 
@@ -1206,7 +1206,7 @@
 
 #### components.MuiDatePicker.props.yearsPerRow.name
 
-> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"행당 년"`
+> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"행당 연도 수"`
 
 #### components.MuiDialog
 
@@ -1214,11 +1214,11 @@
 
 #### components.MuiDialog.description
 
-> **components.MuiDialog.description**: `string` = `"오버레이에 콘텐츠를 표시하는 모달 대화 상자 구성 요소"`
+> **components.MuiDialog.description**: `string` = `"콘텐츠를 오버레이로 표시하는 모달 대화 컴포넌트"`
 
 #### components.MuiDialog.name
 
-> **components.MuiDialog.name**: `string` = `"대화 상자"`
+> **components.MuiDialog.name**: `string` = `"대화"`
 
 #### components.MuiDialog.props
 
@@ -1230,7 +1230,7 @@
 
 #### components.MuiDialog.props.disableEscapeKeyDown.description
 
-> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"이스케이프 키를 누르면 대화 상자가 닫히지 않습니다"`
+> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"true인 경우 Esc 키를 눌러도 대화 상자가 닫히지 않습니다."`
 
 #### components.MuiDialog.props.disableEscapeKeyDown.name
 
@@ -1242,7 +1242,7 @@
 
 #### components.MuiDialog.props.fullScreen.description
 
-> **components.MuiDialog.props.fullScreen.description**: `string` = `"참인 경우 대화 상자가 전체 화면으로 표시됩니다"`
+> **components.MuiDialog.props.fullScreen.description**: `string` = `"true인 경우 대화 상자가 전체 화면으로 표시됩니다."`
 
 #### components.MuiDialog.props.fullScreen.name
 
@@ -1254,11 +1254,11 @@
 
 #### components.MuiDialog.props.fullWidth.description
 
-> **components.MuiDialog.props.fullWidth.description**: `string` = `"참인 경우 대화 상자가 최대 너비로 늘어납니다"`
+> **components.MuiDialog.props.fullWidth.description**: `string` = `"true인 경우 대화 상자가 MaxWidth로 확장됩니다."`
 
 #### components.MuiDialog.props.fullWidth.name
 
-> **components.MuiDialog.props.fullWidth.name**: `string` = `"가득 차있는 폭"`
+> **components.MuiDialog.props.fullWidth.name**: `string` = `"전체 너비"`
 
 #### components.MuiDialog.props.maxWidth
 
@@ -1266,11 +1266,11 @@
 
 #### components.MuiDialog.props.maxWidth.description
 
-> **components.MuiDialog.props.maxWidth.description**: `string` = `"대화 상자의 최대 너비(엑스에스엠엠엠엠엠엠엠엠엠엠엠엠엠엠엠엠엠)"`
+> **components.MuiDialog.props.maxWidth.description**: `string` = `"대화 상자의 최대 너비 (xs, sm, md, lg, xl)"`
 
 #### components.MuiDialog.props.maxWidth.name
 
-> **components.MuiDialog.props.maxWidth.name**: `string` = `"최대 폭"`
+> **components.MuiDialog.props.maxWidth.name**: `string` = `"최대 너비"`
 
 #### components.MuiDialog.props.onClose
 
@@ -1278,11 +1278,11 @@
 
 #### components.MuiDialog.props.onClose.description
 
-> **components.MuiDialog.props.onClose.description**: `string` = `"대화 상자가 닫힐 때 콜백이 발생합니다"`
+> **components.MuiDialog.props.onClose.description**: `string` = `"대화 상자가 닫힐 때 콜백이 시작됩니다."`
 
 #### components.MuiDialog.props.onClose.name
 
-> **components.MuiDialog.props.onClose.name**: `string` = `"온클로즈"`
+> **components.MuiDialog.props.onClose.name**: `string` = `"OnClose"`
 
 #### components.MuiDialog.props.open
 
@@ -1290,11 +1290,11 @@
 
 #### components.MuiDialog.props.open.description
 
-> **components.MuiDialog.props.open.description**: `string` = `"참인 경우 대화 상자가 열려 있습니다"`
+> **components.MuiDialog.props.open.description**: `string` = `"true인 경우 대화 상자가 열립니다."`
 
 #### components.MuiDialog.props.open.name
 
-> **components.MuiDialog.props.open.name**: `string` = `"오픈"`
+> **components.MuiDialog.props.open.name**: `string` = `"열기"`
 
 #### components.MuiDialog.props.scroll
 
@@ -1302,11 +1302,11 @@
 
 #### components.MuiDialog.props.scroll.description
 
-> **components.MuiDialog.props.scroll.description**: `string` = `"대화 상자(용지 또는 본문)를 스크롤할 컨테이너를 결정합니다."`
+> **components.MuiDialog.props.scroll.description**: `string` = `"대화 상자를 스크롤하기 위한 컨테이너 (용지 또는 본문) 를 결정합니다."`
 
 #### components.MuiDialog.props.scroll.name
 
-> **components.MuiDialog.props.scroll.name**: `string` = `"2019 년"`
+> **components.MuiDialog.props.scroll.name**: `string` = `"스크롤"`
 
 #### components.MuiDialogActions
 
@@ -1314,11 +1314,11 @@
 
 #### components.MuiDialogActions.description
 
-> **components.MuiDialogActions.description**: `string` = `"대화 작업 단추 용 컨테이너"`
+> **components.MuiDialogActions.description**: `string` = `"대화 작업 버튼용 컨테이너"`
 
 #### components.MuiDialogActions.name
 
-> **components.MuiDialogActions.name**: `string` = `"대화 작업"`
+> **components.MuiDialogActions.name**: `string` = `"다이얼로그 액션"`
 
 #### components.MuiDialogActions.props
 
@@ -1330,7 +1330,7 @@
 
 #### components.MuiDialogActions.props.children.description
 
-> **components.MuiDialogActions.props.children.description**: `string` = `"구성 요소의 내용"`
+> **components.MuiDialogActions.props.children.description**: `string` = `"구성 요소의 콘텐츠"`
 
 #### components.MuiDialogActions.props.children.name
 
@@ -1342,7 +1342,7 @@
 
 #### components.MuiDialogActions.props.disableSpacing.description
 
-> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"만약 사실이라면,액션에 추가적인 여백이 없습니다."`
+> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"참인 경우 액션에는 추가 마진이 없습니다."`
 
 #### components.MuiDialogActions.props.disableSpacing.name
 
@@ -1354,11 +1354,11 @@
 
 #### components.MuiDialogContent.description
 
-> **components.MuiDialogContent.description**: `string` = `"대화 상자의 주요 내용 영역"`
+> **components.MuiDialogContent.description**: `string` = `"대화상자의 주요 콘텐츠 영역"`
 
 #### components.MuiDialogContent.name
 
-> **components.MuiDialogContent.name**: `string` = `"대화 내용"`
+> **components.MuiDialogContent.name**: `string` = `"대화 콘텐츠"`
 
 #### components.MuiDialogContent.props
 
@@ -1370,7 +1370,7 @@
 
 #### components.MuiDialogContent.props.children.description
 
-> **components.MuiDialogContent.props.children.description**: `string` = `"구성 요소의 내용"`
+> **components.MuiDialogContent.props.children.description**: `string` = `"구성 요소의 콘텐츠"`
 
 #### components.MuiDialogContent.props.children.name
 
@@ -1382,11 +1382,11 @@
 
 #### components.MuiDialogContent.props.dividers.description
 
-> **components.MuiDialogContent.props.dividers.description**: `string` = `"참인 경우 대화 상자 내용의 위쪽과 아래쪽에 테두리가 추가됩니다"`
+> **components.MuiDialogContent.props.dividers.description**: `string` = `"true인 경우 대화 내용 상단과 하단에 테두리가 추가됩니다."`
 
 #### components.MuiDialogContent.props.dividers.name
 
-> **components.MuiDialogContent.props.dividers.name**: `string` = `"분할기"`
+> **components.MuiDialogContent.props.dividers.name**: `string` = `"디바이더"`
 
 #### components.MuiDialogContentText
 
@@ -1394,7 +1394,7 @@
 
 #### components.MuiDialogContentText.description
 
-> **components.MuiDialogContentText.description**: `string` = `"대화 상자 내의 텍스트 내용"`
+> **components.MuiDialogContentText.description**: `string` = `"대화 상자 내의 텍스트 콘텐츠"`
 
 #### components.MuiDialogContentText.name
 
@@ -1410,11 +1410,11 @@
 
 #### components.MuiDialogContentText.props.children.description
 
-> **components.MuiDialogContentText.props.children.description**: `string` = `"텍스트 내용"`
+> **components.MuiDialogContentText.props.children.description**: `string` = `"텍스트 콘텐츠"`
 
 #### components.MuiDialogContentText.props.children.name
 
-> **components.MuiDialogContentText.props.children.name**: `string` = `"내용"`
+> **components.MuiDialogContentText.props.children.name**: `string` = `"콘텐츠"`
 
 #### components.MuiDialogLayout
 
@@ -1422,11 +1422,11 @@
 
 #### components.MuiDialogLayout.description
 
-> **components.MuiDialogLayout.description**: `string` = `"제목,내용 및 작업 버튼이 있는 사전 설정 대화 상자 레이아웃"`
+> **components.MuiDialogLayout.description**: `string` = `"제목, 내용 및 작업 버튼이 있는 사전 설정된 대화 상자 레이아웃"`
 
 #### components.MuiDialogLayout.name
 
-> **components.MuiDialogLayout.name**: `string` = `"대화 상자 레이아웃"`
+> **components.MuiDialogLayout.name**: `string` = `"대화상자 레이아웃"`
 
 #### components.MuiDialogTitle
 
@@ -1434,11 +1434,11 @@
 
 #### components.MuiDialogTitle.description
 
-> **components.MuiDialogTitle.description**: `string` = `"대화 상자 제목"`
+> **components.MuiDialogTitle.description**: `string` = `"대화상자 제목"`
 
 #### components.MuiDialogTitle.name
 
-> **components.MuiDialogTitle.name**: `string` = `"대화 제목"`
+> **components.MuiDialogTitle.name**: `string` = `"대화상자 제목"`
 
 #### components.MuiDialogTitle.props
 
@@ -1454,7 +1454,7 @@
 
 #### components.MuiDialogTitle.props.children.name
 
-> **components.MuiDialogTitle.props.children.name**: `string` = `"내용"`
+> **components.MuiDialogTitle.props.children.name**: `string` = `"콘텐츠"`
 
 #### components.MuiErrorWrapper
 
@@ -1462,7 +1462,7 @@
 
 #### components.MuiErrorWrapper.description
 
-> **components.MuiErrorWrapper.description**: `string` = `"콘텐츠를 래핑하고 오류 상태 또는 메시지를 표시합니다"`
+> **components.MuiErrorWrapper.description**: `string` = `"콘텐츠를 줄바꿈하고 오류 상태 또는 메시지를 표시합니다."`
 
 #### components.MuiErrorWrapper.name
 
@@ -1474,7 +1474,7 @@
 
 #### components.MuiFormControlLabel.description
 
-> **components.MuiFormControlLabel.description**: `string` = `"레이블을 양식 컨트롤과 연결"`
+> **components.MuiFormControlLabel.description**: `string` = `"레이블을 양식 콘트롤과 연결합니다."`
 
 #### components.MuiFormControlLabel.name
 
@@ -1490,7 +1490,7 @@
 
 #### components.MuiFormControlLabel.props.control.description
 
-> **components.MuiFormControlLabel.props.control.description**: `string` = `"양식 제어 요소(체크 박스,라디오,스위치)"`
+> **components.MuiFormControlLabel.props.control.description**: `string` = `"폼 컨트롤 요소 (체크박스, 라디오, 스위치)"`
 
 #### components.MuiFormControlLabel.props.control.name
 
@@ -1502,7 +1502,7 @@
 
 #### components.MuiFormControlLabel.props.labelPlacement.description
 
-> **components.MuiFormControlLabel.props.labelPlacement.description**: `string` = `"컨트롤에 대한 레이블의 위치"`
+> **components.MuiFormControlLabel.props.labelPlacement.description**: `string` = `"컨트롤을 기준으로 한 레이블의 위치"`
 
 #### components.MuiFormControlLabel.props.labelPlacement.name
 
@@ -1530,11 +1530,11 @@
 
 #### components.MuiFormLabel.props.filled.description
 
-> **components.MuiFormLabel.props.filled.description**: `string` = `"채워진 상태 스타일 적용"`
+> **components.MuiFormLabel.props.filled.description**: `string` = `"채워진 상태 스타일을 적용합니다."`
 
 #### components.MuiFormLabel.props.filled.name
 
-> **components.MuiFormLabel.props.filled.name**: `string` = `"채워진"`
+> **components.MuiFormLabel.props.filled.name**: `string` = `"채워져 있습니다"`
 
 #### components.MuiLinearProgress
 
@@ -1542,7 +1542,7 @@
 
 #### components.MuiLinearProgress.description
 
-> **components.MuiLinearProgress.description**: `string` = `"선형 막대에서 로드 또는 진행 상황을 나타냅니다"`
+> **components.MuiLinearProgress.description**: `string` = `"선형 막대에 로딩 또는 진행 상황을 나타냅니다."`
 
 #### components.MuiLinearProgress.name
 
@@ -1570,7 +1570,7 @@
 
 #### components.MuiLink.description
 
-> **components.MuiLink.description**: `string` = `"탐색 또는 작업을 위해 클릭 가능한 요소"`
+> **components.MuiLink.description**: `string` = `"탐색 또는 작업을 위한 클릭 가능한 요소"`
 
 #### components.MuiLink.name
 
@@ -1586,11 +1586,11 @@
 
 #### components.MuiLink.props.href.description
 
-> **components.MuiLink.props.href.description**: `string` = `"목적지"`
+> **components.MuiLink.props.href.description**: `string` = `"목적지 URL"`
 
 #### components.MuiLink.props.href.name
 
-> **components.MuiLink.props.href.name**: `string` = `"헤프"`
+> **components.MuiLink.props.href.name**: `string` = `"Href"`
 
 #### components.MuiList
 
@@ -1598,11 +1598,11 @@
 
 #### components.MuiList.description
 
-> **components.MuiList.description**: `string` = `"항목의 수직 목록을 표시합니다"`
+> **components.MuiList.description**: `string` = `"항목의 세로 목록을 표시합니다."`
 
 #### components.MuiList.name
 
-> **components.MuiList.name**: `string` = `"목록"`
+> **components.MuiList.name**: `string` = `"리스트"`
 
 #### components.MuiListItem
 
@@ -1610,7 +1610,7 @@
 
 #### components.MuiListItem.description
 
-> **components.MuiListItem.description**: `string` = `"목록 내의 단일 항목을 나타냅니다"`
+> **components.MuiListItem.description**: `string` = `"목록 내의 단일 항목을 나타냅니다."`
 
 #### components.MuiListItem.name
 
@@ -1626,11 +1626,11 @@
 
 #### components.MuiListItem.props.divider.description
 
-> **components.MuiListItem.props.divider.description**: `string` = `"목록 항목 아래에 구분선을 표시합니다"`
+> **components.MuiListItem.props.divider.description**: `string` = `"목록 항목 아래에 구분선을 표시합니다."`
 
 #### components.MuiListItem.props.divider.name
 
-> **components.MuiListItem.props.divider.name**: `string` = `"분할기"`
+> **components.MuiListItem.props.divider.name**: `string` = `"디바이더"`
 
 #### components.MuiRadioGroup
 
@@ -1638,7 +1638,7 @@
 
 #### components.MuiRadioGroup.description
 
-> **components.MuiRadioGroup.description**: `string` = `"집합에서 단일 옵션을 선택할 수 있습니다"`
+> **components.MuiRadioGroup.description**: `string` = `"세트에서 단일 옵션을 선택할 수 있습니다."`
 
 #### components.MuiRadioGroup.name
 
@@ -1654,7 +1654,7 @@
 
 #### components.MuiRadioGroup.props.name.description
 
-> **components.MuiRadioGroup.props.name.description**: `string` = `"라디오 단추를 그룹화하는 데 사용되는 이름 속성"`
+> **components.MuiRadioGroup.props.name.description**: `string` = `"라디오 버튼을 그룹화하는 데 사용되는 이름 속성"`
 
 #### components.MuiRadioGroup.props.name.name
 
@@ -1666,7 +1666,7 @@
 
 #### components.MuiRadioGroup.props.row.description
 
-> **components.MuiRadioGroup.props.row.description**: `string` = `"라디오 버튼을 수평으로 표시합니다."`
+> **components.MuiRadioGroup.props.row.description**: `string` = `"라디오 버튼을 가로로 표시합니다."`
 
 #### components.MuiRadioGroup.props.row.name
 
@@ -1682,7 +1682,7 @@
 
 #### components.MuiRadioItem.name
 
-> **components.MuiRadioItem.name**: `string` = `"라디오 항목"`
+> **components.MuiRadioItem.name**: `string` = `"라디오 아이템"`
 
 #### components.MuiSelect
 
@@ -1690,7 +1690,7 @@
 
 #### components.MuiSelect.description
 
-> **components.MuiSelect.description**: `string` = `"옵션 선택을위한 드롭 다운 구성 요소"`
+> **components.MuiSelect.description**: `string` = `"옵션 선택을 위한 드롭다운 구성 요소"`
 
 #### components.MuiSelect.name
 
@@ -1706,11 +1706,11 @@
 
 #### components.MuiSelect.props.autoFocus.description
 
-> **components.MuiSelect.props.autoFocus.description**: `string` = `"자동으로 마운트에 필드를 집중"`
+> **components.MuiSelect.props.autoFocus.description**: `string` = `"마운트에 필드 초점을 자동으로 맞춥니다."`
 
 #### components.MuiSelect.props.autoFocus.name
 
-> **components.MuiSelect.props.autoFocus.name**: `string` = `"자동 초점"`
+> **components.MuiSelect.props.autoFocus.name**: `string` = `"오토 포커스"`
 
 #### components.MuiSelect.props.multiple
 
@@ -1722,7 +1722,7 @@
 
 #### components.MuiSelect.props.multiple.name
 
-> **components.MuiSelect.props.multiple.name**: `string` = `"다중"`
+> **components.MuiSelect.props.multiple.name**: `string` = `"멀티플"`
 
 #### components.MuiStack
 
@@ -1730,7 +1730,7 @@
 
 #### components.MuiStack.description
 
-> **components.MuiStack.description**: `string` = `"1 차원 스택의 레이아웃 어린이"`
+> **components.MuiStack.description**: `string` = `"자식을 1차원 스택으로 레이아웃합니다."`
 
 #### components.MuiStack.name
 
@@ -1746,7 +1746,7 @@
 
 #### components.MuiStack.props.alignItems.description
 
-> **components.MuiStack.props.alignItems.description**: `string` = `"교차 축 정렬을 제어합니다"`
+> **components.MuiStack.props.alignItems.description**: `string` = `"축 간 정렬을 제어합니다"`
 
 #### components.MuiStack.props.alignItems.name
 
@@ -1758,7 +1758,7 @@
 
 #### components.MuiStack.props.direction.description
 
-> **components.MuiStack.props.direction.description**: `string` = `"항목이 행 또는 열에 누적되는지 여부를 정의합니다"`
+> **components.MuiStack.props.direction.description**: `string` = `"항목을 행 또는 열에 누적할지 여부를 정의합니다."`
 
 #### components.MuiStack.props.direction.name
 
@@ -1770,7 +1770,7 @@
 
 #### components.MuiStack.props.flexWrap.description
 
-> **components.MuiStack.props.flexWrap.description**: `string` = `"항목이 여러 줄로 줄 바꿈 여부를 제어합니다"`
+> **components.MuiStack.props.flexWrap.description**: `string` = `"항목을 여러 줄로 줄바꿈할지 여부를 제어합니다."`
 
 #### components.MuiStack.props.flexWrap.name
 
@@ -1782,7 +1782,7 @@
 
 #### components.MuiStack.props.justifyContent.description
 
-> **components.MuiStack.props.justifyContent.description**: `string` = `"주축 정렬을 제어합니다"`
+> **components.MuiStack.props.justifyContent.description**: `string` = `"주축 정렬을 제어합니다."`
 
 #### components.MuiStack.props.justifyContent.name
 
@@ -1794,7 +1794,7 @@
 
 #### components.MuiStack.props.spacing.description
 
-> **components.MuiStack.props.spacing.description**: `string` = `"누적 된 항목 사이의 간격"`
+> **components.MuiStack.props.spacing.description**: `string` = `"쌓인 항목 사이의 간격"`
 
 #### components.MuiStack.props.spacing.name
 
@@ -1806,7 +1806,7 @@
 
 #### components.MuiStack.props.useFlexGap.description
 
-> **components.MuiStack.props.useFlexGap.description**: `string` = `"간격에 여백 대신 간격 사용"`
+> **components.MuiStack.props.useFlexGap.description**: `string` = `"여백 대신 CSS 간격을 간격을 사용합니다."`
 
 #### components.MuiStack.props.useFlexGap.name
 
@@ -1818,7 +1818,7 @@
 
 #### components.MuiSwitch.description
 
-> **components.MuiSwitch.description**: `string` = `"두 상태 간 전환을 위한 토글 제어"`
+> **components.MuiSwitch.description**: `string` = `"두 상태 간 전환을 위한 토글 컨트롤"`
 
 #### components.MuiSwitch.name
 
@@ -1834,7 +1834,7 @@
 
 #### components.MuiSwitch.props.defaultChecked.description
 
-> **components.MuiSwitch.props.defaultChecked.description**: `string` = `"제어되지 않은 경우 초기 토글 상태"`
+> **components.MuiSwitch.props.defaultChecked.description**: `string` = `"제어되지 않을 때의 초기 토글 상태"`
 
 #### components.MuiSwitch.props.defaultChecked.name
 
@@ -1862,11 +1862,11 @@
 
 #### components.MuiTextField.props.autoFocus.description
 
-> **components.MuiTextField.props.autoFocus.description**: `string` = `"자동으로 마운트에 필드를 집중"`
+> **components.MuiTextField.props.autoFocus.description**: `string` = `"마운트에 필드 초점을 자동으로 맞춥니다."`
 
 #### components.MuiTextField.props.autoFocus.name
 
-> **components.MuiTextField.props.autoFocus.name**: `string` = `"자동 초점"`
+> **components.MuiTextField.props.autoFocus.name**: `string` = `"오토 포커스"`
 
 #### components.MuiTextField.props.maxRows
 
@@ -1874,11 +1874,11 @@
 
 #### components.MuiTextField.props.maxRows.description
 
-> **components.MuiTextField.props.maxRows.description**: `string` = `"여러 줄 입력에 대해 표시되는 최대 행 수"`
+> **components.MuiTextField.props.maxRows.description**: `string` = `"여러 줄 입력에 표시되는 최대 행 수"`
 
 #### components.MuiTextField.props.maxRows.name
 
-> **components.MuiTextField.props.maxRows.name**: `string` = `"최대 행"`
+> **components.MuiTextField.props.maxRows.name**: `string` = `"최대 행 수"`
 
 #### components.MuiTextField.props.multiline
 
@@ -1886,7 +1886,7 @@
 
 #### components.MuiTextField.props.multiline.description
 
-> **components.MuiTextField.props.multiline.description**: `string` = `"한 줄 입력 대신 텍스트 영역을 렌더링합니다"`
+> **components.MuiTextField.props.multiline.description**: `string` = `"한 줄 입력 대신 텍스트 영역을 렌더링합니다."`
 
 #### components.MuiTextField.props.multiline.name
 
@@ -1898,11 +1898,11 @@
 
 #### components.MuiTextField.props.type.description
 
-> **components.MuiTextField.props.type.description**: `string` = `"입력 유형(텍스트,비밀번호,이메일 등))"`
+> **components.MuiTextField.props.type.description**: `string` = `"HTML 입력 유형 (텍스트, 비밀번호, 이메일 등)"`
 
 #### components.MuiTextField.props.type.name
 
-> **components.MuiTextField.props.type.name**: `string` = `"유형"`
+> **components.MuiTextField.props.type.name**: `string` = `"타입"`
 
 #### components.MuiTooltip
 
@@ -1910,7 +1910,7 @@
 
 #### components.MuiTooltip.description
 
-> **components.MuiTooltip.description**: `string` = `"호버,포커스 또는 터치에 대한 상황별 정보를 표시합니다"`
+> **components.MuiTooltip.description**: `string` = `"마우스 오버, 포커스 또는 터치 시 상황에 맞는 정보를 표시합니다."`
 
 #### components.MuiTooltip.name
 
@@ -1926,11 +1926,11 @@
 
 #### components.MuiTooltip.props.arrow.description
 
-> **components.MuiTooltip.props.arrow.description**: `string` = `"대상 요소를 가리키는 화살표를 표시합니다"`
+> **components.MuiTooltip.props.arrow.description**: `string` = `"대상 요소를 가리키는 화살표를 표시합니다."`
 
 #### components.MuiTooltip.props.arrow.name
 
-> **components.MuiTooltip.props.arrow.name**: `string` = `"화살표"`
+> **components.MuiTooltip.props.arrow.name**: `string` = `"애로우"`
 
 #### components.MuiTooltip.props.disableFocusListener
 
@@ -1938,7 +1938,7 @@
 
 #### components.MuiTooltip.props.disableFocusListener.description
 
-> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"도구 설명이 포커스에 나타나지 않도록 합니다"`
+> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"포커스 시 툴팁이 표시되지 않도록 합니다."`
 
 #### components.MuiTooltip.props.disableFocusListener.name
 
@@ -1950,7 +1950,7 @@
 
 #### components.MuiTooltip.props.disableHoverListener.description
 
-> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"마우스에 도구 설명이 나타나지 않도록 합니다"`
+> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"마우스 오버시 툴팁이 나타나지 않도록 합니다."`
 
 #### components.MuiTooltip.props.disableHoverListener.name
 
@@ -1962,11 +1962,11 @@
 
 #### components.MuiTooltip.props.disableInteractive.description
 
-> **components.MuiTooltip.props.disableInteractive.description**: `string` = `"도구 설명 콘텐츠와의 상호 작용을 비활성화합니다"`
+> **components.MuiTooltip.props.disableInteractive.description**: `string` = `"툴팁 콘텐츠와의 상호 작용을 비활성화합니다."`
 
 #### components.MuiTooltip.props.disableInteractive.name
 
-> **components.MuiTooltip.props.disableInteractive.name**: `string` = `"대화식 비활성화"`
+> **components.MuiTooltip.props.disableInteractive.name**: `string` = `"인터랙티브 비활성화"`
 
 #### components.MuiTooltip.props.disableTouchListener
 
@@ -1974,7 +1974,7 @@
 
 #### components.MuiTooltip.props.disableTouchListener.description
 
-> **components.MuiTooltip.props.disableTouchListener.description**: `string` = `"터치 시 툴팁이 나타나지 않도록 합니다"`
+> **components.MuiTooltip.props.disableTouchListener.description**: `string` = `"터치 시 툴팁이 표시되지 않도록 합니다."`
 
 #### components.MuiTooltip.props.disableTouchListener.name
 
@@ -1986,7 +1986,7 @@
 
 #### components.MuiTooltip.props.enterDelay.description
 
-> **components.MuiTooltip.props.enterDelay.description**: `string` = `"도구 설명을 표시하기 전에 밀리 초 지연"`
+> **components.MuiTooltip.props.enterDelay.description**: `string` = `"툴팁을 표시하기 전의 지연 시간 (밀리초)"`
 
 #### components.MuiTooltip.props.enterDelay.name
 
@@ -1998,11 +1998,11 @@
 
 #### components.MuiTooltip.props.followCursor.description
 
-> **components.MuiTooltip.props.followCursor.description**: `string` = `"툴팁이 커서 위치를 따르도록 합니다"`
+> **components.MuiTooltip.props.followCursor.description**: `string` = `"툴팁이 커서 위치를 따르도록 합니다."`
 
 #### components.MuiTooltip.props.followCursor.name
 
-> **components.MuiTooltip.props.followCursor.name**: `string` = `"커서를 따라"`
+> **components.MuiTooltip.props.followCursor.name**: `string` = `"커서 따라가기"`
 
 #### components.MuiTooltip.props.leaveDelay
 
@@ -2010,11 +2010,11 @@
 
 #### components.MuiTooltip.props.leaveDelay.description
 
-> **components.MuiTooltip.props.leaveDelay.description**: `string` = `"도구 설명을 숨기기 전에 밀리 초 지연"`
+> **components.MuiTooltip.props.leaveDelay.description**: `string` = `"툴팁을 숨기기 전의 지연 시간 (밀리초)"`
 
 #### components.MuiTooltip.props.leaveDelay.name
 
-> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"지연 휴가"`
+> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"휴가 지연"`
 
 #### components.MuiTooltip.props.title
 
@@ -2022,11 +2022,11 @@
 
 #### components.MuiTooltip.props.title.description
 
-> **components.MuiTooltip.props.title.description**: `string` = `"도구 설명 안에 표시되는 텍스트 내용"`
+> **components.MuiTooltip.props.title.description**: `string` = `"툴팁 내에 표시되는 텍스트 콘텐츠"`
 
 #### components.MuiTooltip.props.title.name
 
-> **components.MuiTooltip.props.title.name**: `string` = `"제목"`
+> **components.MuiTooltip.props.title.name**: `string` = `"타이틀"`
 
 #### components.MuiTypography
 
@@ -2034,7 +2034,7 @@
 
 #### components.MuiTypography.description
 
-> **components.MuiTypography.description**: `string` = `"미리 정의된 타이포그래피 스타일로 텍스트를 표시합니다"`
+> **components.MuiTypography.description**: `string` = `"미리 정의된 타이포그래피 스타일로 텍스트를 표시합니다."`
 
 #### components.MuiTypography.name
 
@@ -2050,11 +2050,11 @@
 
 #### components.MuiTypography.props.children.description
 
-> **components.MuiTypography.props.children.description**: `string` = `"텍스트 내용"`
+> **components.MuiTypography.props.children.description**: `string` = `"텍스트 콘텐츠"`
 
 #### components.MuiTypography.props.children.name
 
-> **components.MuiTypography.props.children.name**: `string` = `"내용"`
+> **components.MuiTypography.props.children.name**: `string` = `"콘텐츠"`
 
 #### components.MuiUploader
 
@@ -2066,7 +2066,7 @@
 
 #### components.MuiUploader.name
 
-> **components.MuiUploader.name**: `string` = `"업 로더"`
+> **components.MuiUploader.name**: `string` = `"업로더"`
 
 #### components.MuiUploader.props
 
@@ -2078,11 +2078,11 @@
 
 #### components.MuiUploader.props.accept.description
 
-> **components.MuiUploader.props.accept.description**: `string` = `"허용된 파일 형식(예:\".-그래,그래\")"`
+> **components.MuiUploader.props.accept.description**: `string` = `"허용된 파일 유형 (예: “.jpg, .png”)"`
 
 #### components.MuiUploader.props.accept.name
 
-> **components.MuiUploader.props.accept.name**: `string` = `"동의"`
+> **components.MuiUploader.props.accept.name**: `string` = `"수락"`
 
 #### components.MuiUploader.props.multiple
 
@@ -2094,4 +2094,4 @@
 
 #### components.MuiUploader.props.multiple.name
 
-> **components.MuiUploader.props.multiple.name**: `string` = `"다중"`
+> **components.MuiUploader.props.multiple.name**: `string` = `"멀티플"`

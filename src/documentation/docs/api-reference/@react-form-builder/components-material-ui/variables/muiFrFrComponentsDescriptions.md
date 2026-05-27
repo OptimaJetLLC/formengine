@@ -22,7 +22,7 @@
 
 #### categories.feedback.name
 
-> **categories.feedback.name**: `string` = `"Commentaires"`
+> **categories.feedback.name**: `string` = `"Feedback"`
 
 #### categories.form
 
@@ -30,7 +30,7 @@
 
 #### categories.form.name
 
-> **categories.form.name**: `string` = `"Forme"`
+> **categories.form.name**: `string` = `"Formulaire"`
 
 #### categories.inputs
 
@@ -46,7 +46,7 @@
 
 #### categories.layout.name
 
-> **categories.layout.name**: `string` = `"Mise en page"`
+> **categories.layout.name**: `string` = `"Disposition"`
 
 #### categories.navigation
 
@@ -74,7 +74,7 @@
 
 #### commonProperties.checked.description
 
-> **commonProperties.checked.description**: `string` = `"Si vrai, le composant est vérifié"`
+> **commonProperties.checked.description**: `string` = `"Si c'est vrai, le composant est vérifié"`
 
 #### commonProperties.checked.name
 
@@ -102,7 +102,7 @@
 
 #### commonProperties.color.name
 
-> **commonProperties.color.name**: `string` = `"Couleur"`
+> **commonProperties.color.name**: `string` = `"couleur"`
 
 #### commonProperties.defaultValue
 
@@ -110,7 +110,7 @@
 
 #### commonProperties.defaultValue.description
 
-> **commonProperties.defaultValue.description**: `string` = `"La valeur par défaut. Utiliser lorsque le composant n'est pas contrôlé"`
+> **commonProperties.defaultValue.description**: `string` = `"La valeur par défaut. À utiliser lorsque le composant n'est pas contrôlé"`
 
 #### commonProperties.defaultValue.name
 
@@ -122,7 +122,7 @@
 
 #### commonProperties.dense.description
 
-> **commonProperties.dense.description**: `string` = `"Si vrai, réduit le remplissage vertical"`
+> **commonProperties.dense.description**: `string` = `"Si c'est vrai, réduit le rembourrage vertical"`
 
 #### commonProperties.dense.name
 
@@ -134,7 +134,7 @@
 
 #### commonProperties.disabled.description
 
-> **commonProperties.disabled.description**: `string` = `"Si vrai, le composant est désactivé"`
+> **commonProperties.disabled.description**: `string` = `"Si c'est vrai, le composant est désactivé"`
 
 #### commonProperties.disabled.name
 
@@ -146,7 +146,7 @@
 
 #### commonProperties.disableGutters.description
 
-> **commonProperties.disableGutters.description**: `string` = `"Si vrai, désactive le remplissage gauche et droit"`
+> **commonProperties.disableGutters.description**: `string` = `"Si c'est vrai, désactive le rembourrage gauche et droit"`
 
 #### commonProperties.disableGutters.name
 
@@ -162,7 +162,7 @@
 
 #### commonProperties.disablePadding.name
 
-> **commonProperties.disablePadding.name**: `string` = `"Désactiver le remplissage"`
+> **commonProperties.disablePadding.name**: `string` = `"Désactiver le rembourrage"`
 
 #### commonProperties.error
 
@@ -170,7 +170,7 @@
 
 #### commonProperties.error.description
 
-> **commonProperties.error.description**: `string` = `"Si vrai, le composant est affiché dans un état d'erreur"`
+> **commonProperties.error.description**: `string` = `"Si c'est vrai, le composant est affiché dans un état d'erreur"`
 
 #### commonProperties.error.name
 
@@ -182,7 +182,7 @@
 
 #### commonProperties.fullWidth.description
 
-> **commonProperties.fullWidth.description**: `string` = `"Si true, le composant occupe toute la largeur de son conteneur"`
+> **commonProperties.fullWidth.description**: `string` = `"Si c'est vrai, le composant occupe toute la largeur de son conteneur"`
 
 #### commonProperties.fullWidth.name
 
@@ -194,7 +194,7 @@
 
 #### commonProperties.gutterBottom.description
 
-> **commonProperties.gutterBottom.description**: `string` = `"Si vrai, le texte aura une marge inférieure"`
+> **commonProperties.gutterBottom.description**: `string` = `"Si c'est vrai, le texte aura une marge inférieure"`
 
 #### commonProperties.gutterBottom.name
 
@@ -230,7 +230,7 @@
 
 #### commonProperties.noWrap.description
 
-> **commonProperties.noWrap.description**: `string` = `"Si vrai, le texte ne s'enroulera pas, mais sera tronqué avec des points de suspension de débordement de texte"`
+> **commonProperties.noWrap.description**: `string` = `"Si cela est vrai, le texte ne sera pas encapsulé, mais sera tronqué avec une ellipse de débordement de texte"`
 
 #### commonProperties.noWrap.name
 
@@ -246,7 +246,7 @@
 
 #### commonProperties.onChange.name
 
-> **commonProperties.onChange.name**: `string` = `"Changement"`
+> **commonProperties.onChange.name**: `string` = `"Sur le changement"`
 
 #### commonProperties.onClick
 
@@ -258,7 +258,7 @@
 
 #### commonProperties.onClick.name
 
-> **commonProperties.onClick.name**: `string` = `"OnClick"`
+> **commonProperties.onClick.name**: `string` = `"En un clic"`
 
 #### commonProperties.required
 
@@ -266,11 +266,11 @@
 
 #### commonProperties.required.description
 
-> **commonProperties.required.description**: `string` = `"Si vrai, l'élément d'entrée est requis"`
+> **commonProperties.required.description**: `string` = `"Si vrai, l'élément d'entrée est obligatoire"`
 
 #### commonProperties.required.name
 
-> **commonProperties.required.name**: `string` = `"Requis"`
+> **commonProperties.required.name**: `string` = `"Nécessaire"`
 
 #### commonProperties.size
 
@@ -290,11 +290,11 @@
 
 #### commonProperties.sx.description
 
-> **commonProperties.sx.description**: `string` = `"La prop système qui permet de définir des remplacements système ainsi que des styles CSS supplémentaires"`
+> **commonProperties.sx.description**: `string` = `"L'accessoire système qui permet de définir les remplacements du système ainsi que des styles CSS supplémentaires"`
 
 #### commonProperties.sx.name
 
-> **commonProperties.sx.name**: `string` = `"Sx"`
+> **commonProperties.sx.name**: `string` = `"Sexe"`
 
 #### commonProperties.textAlign
 
@@ -342,7 +342,7 @@
 
 #### components.MuiBox.description
 
-> **components.MuiBox.description**: `string` = `"Conteneur de mise en page générique avec prise en charge du style système"`
+> **components.MuiBox.description**: `string` = `"Conteneur de mise en page générique avec prise en charge du style du système"`
 
 #### components.MuiBox.name
 
@@ -370,11 +370,11 @@
 
 #### components.MuiBreadcrumbs.props.items.description
 
-> **components.MuiBreadcrumbs.props.items.description**: `string` = `"Éléments de fil d'ariane à afficher"`
+> **components.MuiBreadcrumbs.props.items.description**: `string` = `"Éléments du fil d'Ariane à afficher"`
 
 #### components.MuiBreadcrumbs.props.items.name
 
-> **components.MuiBreadcrumbs.props.items.name**: `string` = `"Articles"`
+> **components.MuiBreadcrumbs.props.items.name**: `string` = `"Objets"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse
 
@@ -382,11 +382,11 @@
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"Si le nombre maximal d'éléments est dépassé, le nombre d'éléments à afficher après les points de suspension"`
+> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"Si le nombre maximum d'éléments est dépassé, le nombre d'éléments à afficher après les points de suspension"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.name
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.name**: `string` = `"Éléments après effondrement"`
+> **components.MuiBreadcrumbs.props.itemsAfterCollapse.name**: `string` = `"Objets après l'effondrement"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse
 
@@ -394,11 +394,11 @@
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"Si le nombre maximal d'éléments est dépassé, le nombre d'éléments à afficher avant les points de suspension"`
+> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"Si le nombre maximum d'éléments est dépassé, le nombre d'éléments à afficher avant les points de suspension"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.name
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.name**: `string` = `"Éléments avant l'effondrement"`
+> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.name**: `string` = `"Objets avant l'effondrement"`
 
 #### components.MuiBreadcrumbs.props.maxItems
 
@@ -406,11 +406,11 @@
 
 #### components.MuiBreadcrumbs.props.maxItems.description
 
-> **components.MuiBreadcrumbs.props.maxItems.description**: `string` = `"Spécifie le nombre maximal de fils d'ariane à afficher"`
+> **components.MuiBreadcrumbs.props.maxItems.description**: `string` = `"Spécifie le nombre maximum de fils d'Ariane à afficher"`
 
 #### components.MuiBreadcrumbs.props.maxItems.name
 
-> **components.MuiBreadcrumbs.props.maxItems.name**: `string` = `"Articles maximum"`
+> **components.MuiBreadcrumbs.props.maxItems.name**: `string` = `"Nombre maximum d'articles"`
 
 #### components.MuiBreadcrumbs.props.separator
 
@@ -418,7 +418,7 @@
 
 #### components.MuiBreadcrumbs.props.separator.description
 
-> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"Élément utilisé pour séparer les éléments de fil d'ariane"`
+> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"Élément utilisé pour séparer les éléments du fil d'Ariane"`
 
 #### components.MuiBreadcrumbs.props.separator.name
 
@@ -458,11 +458,11 @@
 
 #### components.MuiButton.props.disableElevation.description
 
-> **components.MuiButton.props.disableElevation.description**: `string` = `"Supprime l'ombre du bouton lorsqu'il est défini sur true"`
+> **components.MuiButton.props.disableElevation.description**: `string` = `"Supprime l'ombre des boutons lorsqu'il est réglé sur true"`
 
 #### components.MuiButton.props.disableElevation.name
 
-> **components.MuiButton.props.disableElevation.name**: `string` = `"Désactiver l'élévation"`
+> **components.MuiButton.props.disableElevation.name**: `string` = `"Désactiver l'altitude"`
 
 #### components.MuiButton.props.loading
 
@@ -482,7 +482,7 @@
 
 #### components.MuiButtonGroup.description
 
-> **components.MuiButtonGroup.description**: `string` = `"Regroupe les boutons liés ensemble"`
+> **components.MuiButtonGroup.description**: `string` = `"Regroupe les boutons associés"`
 
 #### components.MuiButtonGroup.name
 
@@ -510,7 +510,7 @@
 
 #### components.MuiButtonGroup.props.orientation.description
 
-> **components.MuiButtonGroup.props.orientation.description**: `string` = `"Définit la direction de la disposition des boutons"`
+> **components.MuiButtonGroup.props.orientation.description**: `string` = `"Définit le sens de disposition des boutons"`
 
 #### components.MuiButtonGroup.props.orientation.name
 
@@ -538,7 +538,7 @@
 
 #### components.MuiCard.props.actions.description
 
-> **components.MuiCard.props.actions.description**: `string` = `"Boutons d'action ou commandes pour la carte"`
+> **components.MuiCard.props.actions.description**: `string` = `"Boutons d'action ou commandes de la carte"`
 
 #### components.MuiCard.props.actions.name
 
@@ -550,7 +550,7 @@
 
 #### components.MuiCard.props.header.description
 
-> **components.MuiCard.props.header.description**: `string` = `"Contenu rendu dans l'en-tête de la carte"`
+> **components.MuiCard.props.header.description**: `string` = `"Contenu affiché dans l'en-tête de la carte"`
 
 #### components.MuiCard.props.header.name
 
@@ -574,7 +574,7 @@
 
 #### components.MuiCard.props.headerAvatar.description
 
-> **components.MuiCard.props.headerAvatar.description**: `string` = `"Élément Avatar affiché dans l'en-tête"`
+> **components.MuiCard.props.headerAvatar.description**: `string` = `"Élément d'avatar affiché dans l'en-tête"`
 
 #### components.MuiCard.props.headerAvatar.name
 
@@ -602,7 +602,7 @@
 
 #### components.MuiCard.props.onSelect.name
 
-> **components.MuiCard.props.onSelect.name**: `string` = `"Sélectionner"`
+> **components.MuiCard.props.onSelect.name**: `string` = `"Sur Select"`
 
 #### components.MuiCard.props.subHeader
 
@@ -622,11 +622,11 @@
 
 #### components.MuiCard.props.useActions.description
 
-> **components.MuiCard.props.useActions.description**: `string` = `"Affiche une section actions en bas"`
+> **components.MuiCard.props.useActions.description**: `string` = `"Affiche une section d'actions en bas"`
 
 #### components.MuiCard.props.useActions.name
 
-> **components.MuiCard.props.useActions.name**: `string` = `"Utiliser des actions"`
+> **components.MuiCard.props.useActions.name**: `string` = `"Utiliser les actions"`
 
 #### components.MuiCard.props.useCardActionArea
 
@@ -634,7 +634,7 @@
 
 #### components.MuiCard.props.useCardActionArea.description
 
-> **components.MuiCard.props.useCardActionArea.description**: `string` = `"Enveloppe le contenu avec une zone d'action cliquable"`
+> **components.MuiCard.props.useCardActionArea.description**: `string` = `"Encapsule le contenu avec une zone d'action cliquable"`
 
 #### components.MuiCard.props.useCardActionArea.name
 
@@ -646,7 +646,7 @@
 
 #### components.MuiCard.props.useHeader.description
 
-> **components.MuiCard.props.useHeader.description**: `string` = `"Active la section d'en-tête de carte"`
+> **components.MuiCard.props.useHeader.description**: `string` = `"Active la section d'en-tête de la carte"`
 
 #### components.MuiCard.props.useHeader.name
 
@@ -670,11 +670,11 @@
 
 #### components.MuiCard.props.useHeaderAvatar.description
 
-> **components.MuiCard.props.useHeaderAvatar.description**: `string` = `"Affiche un avatar à l'intérieur de l'en-tête"`
+> **components.MuiCard.props.useHeaderAvatar.description**: `string` = `"Affiche un avatar dans l'en-tête"`
 
 #### components.MuiCard.props.useHeaderAvatar.name
 
-> **components.MuiCard.props.useHeaderAvatar.name**: `string` = `"Utiliser l'avatar d'en-tête"`
+> **components.MuiCard.props.useHeaderAvatar.name**: `string` = `"Utiliser un avatar d'en-tête"`
 
 #### components.MuiCard.props.useMedia
 
@@ -686,7 +686,7 @@
 
 #### components.MuiCard.props.useMedia.name
 
-> **components.MuiCard.props.useMedia.name**: `string` = `"Utiliser des médias"`
+> **components.MuiCard.props.useMedia.name**: `string` = `"Utiliser les médias"`
 
 #### components.MuiCard.props.useSubheader
 
@@ -694,7 +694,7 @@
 
 #### components.MuiCard.props.useSubheader.description
 
-> **components.MuiCard.props.useSubheader.description**: `string` = `"Affiche un sous-en-tête sous l'en-tête principal"`
+> **components.MuiCard.props.useSubheader.description**: `string` = `"Affiche un sous-en-tête en dessous de l'en-tête principal"`
 
 #### components.MuiCard.props.useSubheader.name
 
@@ -710,7 +710,7 @@
 
 #### components.MuiCheckbox.name
 
-> **components.MuiCheckbox.name**: `string` = `"Case à Cocher"`
+> **components.MuiCheckbox.name**: `string` = `"Case à cocher"`
 
 #### components.MuiCheckbox.props
 
@@ -722,11 +722,11 @@
 
 #### components.MuiCheckbox.props.defaultChecked.description
 
-> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"État initial vérifié lorsqu'il n'est pas contrôlé"`
+> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"État vérifié initial lorsqu'il n'est pas contrôlé"`
 
 #### components.MuiCheckbox.props.defaultChecked.name
 
-> **components.MuiCheckbox.props.defaultChecked.name**: `string` = `"Valeur par défaut cochée"`
+> **components.MuiCheckbox.props.defaultChecked.name**: `string` = `"Coché par défaut"`
 
 #### components.MuiCircularProgress
 
@@ -750,11 +750,11 @@
 
 #### components.MuiCircularProgress.props.disableShrink.description
 
-> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"Désactive l'animation de rétrécissement"`
+> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"Désactive l'animation de réduction"`
 
 #### components.MuiCircularProgress.props.disableShrink.name
 
-> **components.MuiCircularProgress.props.disableShrink.name**: `string` = `"Désactiver la réduction"`
+> **components.MuiCircularProgress.props.disableShrink.name**: `string` = `"Désactiver le rétrécissement"`
 
 #### components.MuiCircularProgress.props.thickness
 
@@ -766,7 +766,7 @@
 
 #### components.MuiCircularProgress.props.thickness.name
 
-> **components.MuiCircularProgress.props.thickness.name**: `string` = `"Épaisseur"`
+> **components.MuiCircularProgress.props.thickness.name**: `string` = `"Epaisseur"`
 
 #### components.MuiContainer
 
@@ -774,11 +774,11 @@
 
 #### components.MuiContainer.description
 
-> **components.MuiContainer.description**: `string` = `"Centre et contraint le contenu horizontalement"`
+> **components.MuiContainer.description**: `string` = `"Centre et restreint le contenu horizontalement"`
 
 #### components.MuiContainer.name
 
-> **components.MuiContainer.name**: `string` = `"Conteneur"`
+> **components.MuiContainer.name**: `string` = `"Récipient"`
 
 #### components.MuiContainer.props
 
@@ -794,7 +794,7 @@
 
 #### components.MuiContainer.props.fixed.name
 
-> **components.MuiContainer.props.fixed.name**: `string` = `"Fixe"`
+> **components.MuiContainer.props.fixed.name**: `string` = `"Fixé"`
 
 #### components.MuiContainer.props.maxWidth
 
@@ -806,7 +806,7 @@
 
 #### components.MuiContainer.props.maxWidth.name
 
-> **components.MuiContainer.props.maxWidth.name**: `string` = `"Largeur maximum"`
+> **components.MuiContainer.props.maxWidth.name**: `string` = `"Largeur maximale"`
 
 #### components.MuiDatePicker
 
@@ -814,11 +814,11 @@
 
 #### components.MuiDatePicker.description
 
-> **components.MuiDatePicker.description**: `string` = `"Composant pour sélectionner une date"`
+> **components.MuiDatePicker.description**: `string` = `"Composant de sélection d'une date"`
 
 #### components.MuiDatePicker.name
 
-> **components.MuiDatePicker.name**: `string` = `"Sélecteur de date"`
+> **components.MuiDatePicker.name**: `string` = `"Sélecteur de dates"`
 
 #### components.MuiDatePicker.props
 
@@ -830,7 +830,7 @@
 
 #### components.MuiDatePicker.props.autoFocus.description
 
-> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"Si vrai, focalise automatiquement le sélecteur de date lors du montage du composant"`
+> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"Si cela est vrai, met automatiquement au point le sélecteur de date lors du montage du composant"`
 
 #### components.MuiDatePicker.props.autoFocus.name
 
@@ -846,7 +846,7 @@
 
 #### components.MuiDatePicker.props.closeOnSelect.name
 
-> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"Fermer sur sélectionner"`
+> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"Fermer en sélectionnant"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery
 
@@ -854,7 +854,7 @@
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.description
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"Chaîne de requête multimédia CSS qui détermine quand passer à la disposition en mode bureau"`
+> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"Chaîne de requête multimédia CSS qui détermine quand passer à la mise en page en mode bureau"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.name
 
@@ -866,7 +866,7 @@
 
 #### components.MuiDatePicker.props.disableFuture.description
 
-> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"Si vrai, empêche la sélection de dates après la date actuelle"`
+> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"Si c'est vrai, empêche la sélection de dates postérieures à la date actuelle"`
 
 #### components.MuiDatePicker.props.disableFuture.name
 
@@ -878,11 +878,11 @@
 
 #### components.MuiDatePicker.props.disableHighlightToday.description
 
-> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"Si vrai, désactive la mise en évidence visuelle de la date actuelle dans le calendrier"`
+> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"Si c'est vrai, désactive la mise en évidence visuelle de la date actuelle dans le calendrier"`
 
 #### components.MuiDatePicker.props.disableHighlightToday.name
 
-> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"Désactiver la surbrillance aujourd'hui"`
+> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"Désactivez le surlignage aujourd'hui"`
 
 #### components.MuiDatePicker.props.disableOpenPicker
 
@@ -890,11 +890,11 @@
 
 #### components.MuiDatePicker.props.disableOpenPicker.description
 
-> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"Si vrai, empêche l'ouverture de la boîte de dialogue du sélecteur (utile pour l'affichage en lecture seule)"`
+> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"Si true, empêche l'ouverture de la boîte de dialogue du sélecteur (utile pour l'affichage en lecture seule)"`
 
 #### components.MuiDatePicker.props.disableOpenPicker.name
 
-> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"Désactiver le sélecteur d'ouverture"`
+> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"Désactiver le sélecteur ouvert"`
 
 #### components.MuiDatePicker.props.disablePast
 
@@ -902,7 +902,7 @@
 
 #### components.MuiDatePicker.props.disablePast.description
 
-> **components.MuiDatePicker.props.disablePast.description**: `string` = `"Si vrai, empêche la sélection des dates avant la date actuelle"`
+> **components.MuiDatePicker.props.disablePast.description**: `string` = `"Si c'est vrai, empêche la sélection de dates antérieures à la date actuelle"`
 
 #### components.MuiDatePicker.props.disablePast.name
 
@@ -914,7 +914,7 @@
 
 #### components.MuiDatePicker.props.displayWeekNumber.description
 
-> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"Affiche les numéros de semaine dans la vue calendrier"`
+> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"Affiche les numéros de semaine dans la vue du calendrier"`
 
 #### components.MuiDatePicker.props.displayWeekNumber.name
 
@@ -926,7 +926,7 @@
 
 #### components.MuiDatePicker.props.fixedWeekNumber.description
 
-> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"Nombre fixe de semaines à afficher (force une hauteur de calendrier cohérente)"`
+> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"Nombre fixe de semaines à afficher (force une hauteur de calendrier constante)"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber.name
 
@@ -938,11 +938,11 @@
 
 #### components.MuiDatePicker.props.format.description
 
-> **components.MuiDatePicker.props.format.description**: `string` = `"Chaîne de format de date utilisée pour l'affichage et l'analyse syntaxique (par exemple, 'aaaa-MM-jj', 'MM / jj / aaaa')"`
+> **components.MuiDatePicker.props.format.description**: `string` = `"Chaîne de format de date utilisée pour l'affichage et l'analyse (par exemple, 'yyyy-MM-dd', 'MM/dd/yyyy')"`
 
 #### components.MuiDatePicker.props.format.name
 
-> **components.MuiDatePicker.props.format.name**: `string` = `"Format"`
+> **components.MuiDatePicker.props.format.name**: `string` = `"Formater"`
 
 #### components.MuiDatePicker.props.formatDensity
 
@@ -950,7 +950,7 @@
 
 #### components.MuiDatePicker.props.formatDensity.description
 
-> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"Contrôle l'espacement dans le formatage de la date: dense (compact) ou spacieux (plus d'espacement)"`
+> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"Contrôle l'espacement dans le formatage des dates : dense (compact) ou spacieux (plus d'espacement)"`
 
 #### components.MuiDatePicker.props.formatDensity.name
 
@@ -986,7 +986,7 @@
 
 #### components.MuiDatePicker.props.minDate.description
 
-> **components.MuiDatePicker.props.minDate.description**: `string` = `"Date la plus ancienne pouvant être sélectionnée (incluse)"`
+> **components.MuiDatePicker.props.minDate.description**: `string` = `"Date la plus proche pouvant être sélectionnée (incluse)"`
 
 #### components.MuiDatePicker.props.minDate.name
 
@@ -1010,7 +1010,7 @@
 
 #### components.MuiDatePicker.props.name.description
 
-> **components.MuiDatePicker.props.name.description**: `string` = `"L'attribut name du champ de formulaire, utilisé lors de la soumission des formulaires"`
+> **components.MuiDatePicker.props.name.description**: `string` = `"L'attribut name du champ de formulaire, utilisé lors de l'envoi de formulaires"`
 
 #### components.MuiDatePicker.props.name.name
 
@@ -1026,7 +1026,7 @@
 
 #### components.MuiDatePicker.props.onAccept.name
 
-> **components.MuiDatePicker.props.onAccept.name**: `string` = `"ONACCEPTE"`
+> **components.MuiDatePicker.props.onAccept.name**: `string` = `"sur Accepter"`
 
 #### components.MuiDatePicker.props.onClose
 
@@ -1038,7 +1038,7 @@
 
 #### components.MuiDatePicker.props.onClose.name
 
-> **components.MuiDatePicker.props.onClose.name**: `string` = `"Fermer"`
+> **components.MuiDatePicker.props.onClose.name**: `string` = `"À la fermeture"`
 
 #### components.MuiDatePicker.props.onError
 
@@ -1050,7 +1050,7 @@
 
 #### components.MuiDatePicker.props.onError.name
 
-> **components.MuiDatePicker.props.onError.name**: `string` = `"Une erreur"`
+> **components.MuiDatePicker.props.onError.name**: `string` = `"En cas d'erreur"`
 
 #### components.MuiDatePicker.props.onMonthChange
 
@@ -1058,11 +1058,11 @@
 
 #### components.MuiDatePicker.props.onMonthChange.description
 
-> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"Rappel déclenché sur le changement de mois"`
+> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"Rappel déclenché en cas de changement de mois"`
 
 #### components.MuiDatePicker.props.onMonthChange.name
 
-> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"Changement de mois"`
+> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"Sur le changement de mois"`
 
 #### components.MuiDatePicker.props.onOpen
 
@@ -1074,7 +1074,7 @@
 
 #### components.MuiDatePicker.props.onOpen.name
 
-> **components.MuiDatePicker.props.onOpen.name**: `string` = `"ONOUVERT"`
+> **components.MuiDatePicker.props.onOpen.name**: `string` = `"sur Open"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange
 
@@ -1086,7 +1086,7 @@
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.name
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"changementsectionsélectionnées"`
+> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"Dans les sections sélectionnées, modifiez"`
 
 #### components.MuiDatePicker.props.onViewChange
 
@@ -1098,7 +1098,7 @@
 
 #### components.MuiDatePicker.props.onViewChange.name
 
-> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"Changement de vue"`
+> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"OnViewChange"`
 
 #### components.MuiDatePicker.props.onYearChange
 
@@ -1106,11 +1106,11 @@
 
 #### components.MuiDatePicker.props.onYearChange.description
 
-> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"Rappel déclenché sur le changement d'année"`
+> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"Rappel déclenché lors d'un changement d'année"`
 
 #### components.MuiDatePicker.props.onYearChange.name
 
-> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"Échange d'une année"`
+> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"sur Year Change"`
 
 #### components.MuiDatePicker.props.open
 
@@ -1118,11 +1118,11 @@
 
 #### components.MuiDatePicker.props.open.description
 
-> **components.MuiDatePicker.props.open.description**: `string` = `"Si vrai, la boîte de dialogue du sélecteur de date est ouverte; peut être utilisé pour la gestion des états contrôlés"`
+> **components.MuiDatePicker.props.open.description**: `string` = `"Si c'est vrai, la boîte de dialogue du sélecteur de date est ouverte ; peut être utilisée pour une gestion contrôlée de l'état"`
 
 #### components.MuiDatePicker.props.open.name
 
-> **components.MuiDatePicker.props.open.name**: `string` = `"Ouvert"`
+> **components.MuiDatePicker.props.open.name**: `string` = `"Ouvrir"`
 
 #### components.MuiDatePicker.props.openTo
 
@@ -1142,7 +1142,7 @@
 
 #### components.MuiDatePicker.props.referenceDate.description
 
-> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"Date utilisée pour générer la vue initiale du calendrier lorsqu'aucune valeur n'est sélectionnée"`
+> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"Date utilisée pour générer l'affichage initial du calendrier lorsqu'aucune valeur n'est sélectionnée"`
 
 #### components.MuiDatePicker.props.referenceDate.name
 
@@ -1154,7 +1154,7 @@
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"Affiche les jours des mois précédents et suivants dans la vue mensuelle actuelle"`
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"Affiche les jours du mois précédent et du mois suivant dans la vue du mois en cours"`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
 
@@ -1166,11 +1166,11 @@
 
 #### components.MuiDatePicker.props.view.description
 
-> **components.MuiDatePicker.props.view.description**: `string` = `"La vue initiale à afficher (calendrier jour, mois ou année)"`
+> **components.MuiDatePicker.props.view.description**: `string` = `"La vue initiale à afficher (calendrier du jour, du mois ou de l'année)"`
 
 #### components.MuiDatePicker.props.view.name
 
-> **components.MuiDatePicker.props.view.name**: `string` = `"Vue"`
+> **components.MuiDatePicker.props.view.name**: `string` = `"Afficher"`
 
 #### components.MuiDatePicker.props.views
 
@@ -1178,7 +1178,7 @@
 
 #### components.MuiDatePicker.props.views.description
 
-> **components.MuiDatePicker.props.views.description**: `string` = `"Les vues disponibles (calendrier jour, mois et année)"`
+> **components.MuiDatePicker.props.views.description**: `string` = `"Les vues disponibles (calendrier des jours, des mois et de l'année)"`
 
 #### components.MuiDatePicker.props.views.name
 
@@ -1190,7 +1190,7 @@
 
 #### components.MuiDatePicker.props.yearsOrder.description
 
-> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"Ordre de tri des années: croissant (le plus ancien en premier) ou décroissant (le plus récent en premier)"`
+> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"Ordre de tri des années : croissant (les plus anciennes en premier) ou décroissant (les plus récentes en premier)"`
 
 #### components.MuiDatePicker.props.yearsOrder.name
 
@@ -1202,7 +1202,7 @@
 
 #### components.MuiDatePicker.props.yearsPerRow.description
 
-> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"Nombre d'éléments de l'année à afficher par ligne dans la vue de l'année"`
+> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"Nombre d'éléments annuels à afficher par ligne dans la vue annuelle"`
 
 #### components.MuiDatePicker.props.yearsPerRow.name
 
@@ -1214,7 +1214,7 @@
 
 #### components.MuiDialog.description
 
-> **components.MuiDialog.description**: `string` = `"Un composant de dialogue modal qui affiche le contenu dans une superposition"`
+> **components.MuiDialog.description**: `string` = `"Composant de dialogue modal qui affiche le contenu dans une superposition"`
 
 #### components.MuiDialog.name
 
@@ -1230,11 +1230,11 @@
 
 #### components.MuiDialog.props.disableEscapeKeyDown.description
 
-> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"Si la valeur est true, appuyer sur la touche échap ne fermera pas la boîte de dialogue"`
+> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"Si c'est vrai, appuyer sur la touche d'échappement ne fermera pas la boîte de dialogue"`
 
 #### components.MuiDialog.props.disableEscapeKeyDown.name
 
-> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"Désactiver la touche d'échappement vers le bas"`
+> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"Désactiver la touche d'échappement"`
 
 #### components.MuiDialog.props.fullScreen
 
@@ -1242,7 +1242,7 @@
 
 #### components.MuiDialog.props.fullScreen.description
 
-> **components.MuiDialog.props.fullScreen.description**: `string` = `"Si vrai, la boîte de dialogue sera en plein écran"`
+> **components.MuiDialog.props.fullScreen.description**: `string` = `"Si c'est vrai, la boîte de dialogue sera en plein écran"`
 
 #### components.MuiDialog.props.fullScreen.name
 
@@ -1254,7 +1254,7 @@
 
 #### components.MuiDialog.props.fullWidth.description
 
-> **components.MuiDialog.props.fullWidth.description**: `string` = `"Si vrai, la boîte de dialogue s'étend à maxWidth"`
+> **components.MuiDialog.props.fullWidth.description**: `string` = `"Si c'est vrai, la boîte de dialogue s'étend jusqu'à MaxWidth"`
 
 #### components.MuiDialog.props.fullWidth.name
 
@@ -1270,7 +1270,7 @@
 
 #### components.MuiDialog.props.maxWidth.name
 
-> **components.MuiDialog.props.maxWidth.name**: `string` = `"Largeur maximum"`
+> **components.MuiDialog.props.maxWidth.name**: `string` = `"Largeur maximale"`
 
 #### components.MuiDialog.props.onClose
 
@@ -1278,11 +1278,11 @@
 
 #### components.MuiDialog.props.onClose.description
 
-> **components.MuiDialog.props.onClose.description**: `string` = `"Rappel déclenché à la fermeture de la boîte de dialogue"`
+> **components.MuiDialog.props.onClose.description**: `string` = `"Rappel déclenché lors de la fermeture de la boîte de dialogue"`
 
 #### components.MuiDialog.props.onClose.name
 
-> **components.MuiDialog.props.onClose.name**: `string` = `"Fermer"`
+> **components.MuiDialog.props.onClose.name**: `string` = `"À la fermeture"`
 
 #### components.MuiDialog.props.open
 
@@ -1290,11 +1290,11 @@
 
 #### components.MuiDialog.props.open.description
 
-> **components.MuiDialog.props.open.description**: `string` = `"Si vrai, la boîte de dialogue est ouverte"`
+> **components.MuiDialog.props.open.description**: `string` = `"Si c'est vrai, la boîte de dialogue est ouverte"`
 
 #### components.MuiDialog.props.open.name
 
-> **components.MuiDialog.props.open.name**: `string` = `"Ouvert"`
+> **components.MuiDialog.props.open.name**: `string` = `"Ouvrir"`
 
 #### components.MuiDialog.props.scroll
 
@@ -1302,11 +1302,11 @@
 
 #### components.MuiDialog.props.scroll.description
 
-> **components.MuiDialog.props.scroll.description**: `string` = `"Détermine le conteneur pour faire défiler la boîte de dialogue (papier ou corps)"`
+> **components.MuiDialog.props.scroll.description**: `string` = `"Détermine le conteneur dans lequel faire défiler la boîte de dialogue (papier ou corps)"`
 
 #### components.MuiDialog.props.scroll.name
 
-> **components.MuiDialog.props.scroll.name**: `string` = `"Défiler"`
+> **components.MuiDialog.props.scroll.name**: `string` = `"Faites défiler"`
 
 #### components.MuiDialogActions
 
@@ -1314,7 +1314,7 @@
 
 #### components.MuiDialogActions.description
 
-> **components.MuiDialogActions.description**: `string` = `"Conteneur pour les boutons d'action de dialogue"`
+> **components.MuiDialogActions.description**: `string` = `"Conteneur pour les boutons d'action des boîtes de dialogue"`
 
 #### components.MuiDialogActions.name
 
@@ -1342,7 +1342,7 @@
 
 #### components.MuiDialogActions.props.disableSpacing.description
 
-> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"Si vrai, les actions n'ont pas de marge supplémentaire"`
+> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"Si c'est vrai, les actions n'ont pas de marge supplémentaire"`
 
 #### components.MuiDialogActions.props.disableSpacing.name
 
@@ -1358,7 +1358,7 @@
 
 #### components.MuiDialogContent.name
 
-> **components.MuiDialogContent.name**: `string` = `"Contenu de la boîte de dialogue"`
+> **components.MuiDialogContent.name**: `string` = `"Contenu du dialogue"`
 
 #### components.MuiDialogContent.props
 
@@ -1382,11 +1382,11 @@
 
 #### components.MuiDialogContent.props.dividers.description
 
-> **components.MuiDialogContent.props.dividers.description**: `string` = `"Si la valeur est true, des bordures sont ajoutées en haut et en bas du contenu de la boîte de dialogue"`
+> **components.MuiDialogContent.props.dividers.description**: `string` = `"Si cela est vrai, des bordures sont ajoutées en haut et en bas du contenu de la boîte de dialogue"`
 
 #### components.MuiDialogContent.props.dividers.name
 
-> **components.MuiDialogContent.props.dividers.name**: `string` = `"Séparateurs"`
+> **components.MuiDialogContent.props.dividers.name**: `string` = `"Diviseurs"`
 
 #### components.MuiDialogContentText
 
@@ -1398,7 +1398,7 @@
 
 #### components.MuiDialogContentText.name
 
-> **components.MuiDialogContentText.name**: `string` = `"Texte du contenu de la boîte de dialogue"`
+> **components.MuiDialogContentText.name**: `string` = `"Texte du contenu du dialogue"`
 
 #### components.MuiDialogContentText.props
 
@@ -1422,11 +1422,11 @@
 
 #### components.MuiDialogLayout.description
 
-> **components.MuiDialogLayout.description**: `string` = `"Une disposition de dialogue prédéfinie avec des boutons de titre, de contenu et d'action"`
+> **components.MuiDialogLayout.description**: `string` = `"Disposition de boîte de dialogue prédéfinie avec titre, contenu et boutons d'action"`
 
 #### components.MuiDialogLayout.name
 
-> **components.MuiDialogLayout.name**: `string` = `"Disposition de la boîte de dialogue"`
+> **components.MuiDialogLayout.name**: `string` = `"Disposition des dialogues"`
 
 #### components.MuiDialogTitle
 
@@ -1438,7 +1438,7 @@
 
 #### components.MuiDialogTitle.name
 
-> **components.MuiDialogTitle.name**: `string` = `"Titre de la boîte de dialogue"`
+> **components.MuiDialogTitle.name**: `string` = `"Titre du dialogue"`
 
 #### components.MuiDialogTitle.props
 
@@ -1466,7 +1466,7 @@
 
 #### components.MuiErrorWrapper.name
 
-> **components.MuiErrorWrapper.name**: `string` = `"Wrapper d'erreur"`
+> **components.MuiErrorWrapper.name**: `string` = `"Enveloppe d'erreur"`
 
 #### components.MuiFormControlLabel
 
@@ -1490,7 +1490,7 @@
 
 #### components.MuiFormControlLabel.props.control.description
 
-> **components.MuiFormControlLabel.props.control.description**: `string` = `"Élément de contrôle de formulaire (case à cocher, radio, commutateur)"`
+> **components.MuiFormControlLabel.props.control.description**: `string` = `"Élément de contrôle du formulaire (case à cocher, radio, interrupteur)"`
 
 #### components.MuiFormControlLabel.props.control.name
 
@@ -1502,7 +1502,7 @@
 
 #### components.MuiFormControlLabel.props.labelPlacement.description
 
-> **components.MuiFormControlLabel.props.labelPlacement.description**: `string` = `"Position de l'étiquette par rapport au contrôle"`
+> **components.MuiFormControlLabel.props.labelPlacement.description**: `string` = `"Position de l'étiquette par rapport à la commande"`
 
 #### components.MuiFormControlLabel.props.labelPlacement.name
 
@@ -1514,11 +1514,11 @@
 
 #### components.MuiFormLabel.description
 
-> **components.MuiFormLabel.description**: `string` = `"Étiquette pour regrouper ou décrire les champs de formulaire"`
+> **components.MuiFormLabel.description**: `string` = `"Libellé pour regrouper ou décrire les champs de formulaire"`
 
 #### components.MuiFormLabel.name
 
-> **components.MuiFormLabel.name**: `string` = `"Étiquette de formulaire"`
+> **components.MuiFormLabel.name**: `string` = `"Libellé du formulaire"`
 
 #### components.MuiFormLabel.props
 
@@ -1530,7 +1530,7 @@
 
 #### components.MuiFormLabel.props.filled.description
 
-> **components.MuiFormLabel.props.filled.description**: `string` = `"Applique le style d'état rempli"`
+> **components.MuiFormLabel.props.filled.description**: `string` = `"Applique le style à l'état rempli"`
 
 #### components.MuiFormLabel.props.filled.name
 
@@ -1558,11 +1558,11 @@
 
 #### components.MuiLinearProgress.props.valueBuffer.description
 
-> **components.MuiLinearProgress.props.valueBuffer.description**: `string` = `"Valeur de tampon secondaire pour le mode de progression tamponné"`
+> **components.MuiLinearProgress.props.valueBuffer.description**: `string` = `"Valeur de mémoire tampon secondaire pour le mode de progression mis en mémoire tampon"`
 
 #### components.MuiLinearProgress.props.valueBuffer.name
 
-> **components.MuiLinearProgress.props.valueBuffer.name**: `string` = `"Tampon de valeur"`
+> **components.MuiLinearProgress.props.valueBuffer.name**: `string` = `"Tampon de valeurs"`
 
 #### components.MuiLink
 
@@ -1586,11 +1586,11 @@
 
 #### components.MuiLink.props.href.description
 
-> **components.MuiLink.props.href.description**: `string` = `"URL de DESTINATION"`
+> **components.MuiLink.props.href.description**: `string` = `"URL de destination"`
 
 #### components.MuiLink.props.href.name
 
-> **components.MuiLink.props.href.name**: `string` = `"FRH"`
+> **components.MuiLink.props.href.name**: `string` = `"Brouf"`
 
 #### components.MuiList
 
@@ -1626,11 +1626,11 @@
 
 #### components.MuiListItem.props.divider.description
 
-> **components.MuiListItem.props.divider.description**: `string` = `"Affiche un diviseur sous l'élément de liste"`
+> **components.MuiListItem.props.divider.description**: `string` = `"Affiche un séparateur en dessous de l'élément de liste"`
 
 #### components.MuiListItem.props.divider.name
 
-> **components.MuiListItem.props.divider.name**: `string` = `"Diviseur"`
+> **components.MuiListItem.props.divider.name**: `string` = `"Séparateur"`
 
 #### components.MuiRadioGroup
 
@@ -1642,7 +1642,7 @@
 
 #### components.MuiRadioGroup.name
 
-> **components.MuiRadioGroup.name**: `string` = `"Groupe radio"`
+> **components.MuiRadioGroup.name**: `string` = `"Groupe de radio"`
 
 #### components.MuiRadioGroup.props
 
@@ -1654,7 +1654,7 @@
 
 #### components.MuiRadioGroup.props.name.description
 
-> **components.MuiRadioGroup.props.name.description**: `string` = `"Attribut de nom utilisé pour grouper les boutons radio"`
+> **components.MuiRadioGroup.props.name.description**: `string` = `"Attribut de nom utilisé pour regrouper les boutons radio"`
 
 #### components.MuiRadioGroup.props.name.name
 
@@ -1678,11 +1678,11 @@
 
 #### components.MuiRadioItem.description
 
-> **components.MuiRadioItem.description**: `string` = `"Un seul bouton radio utilisé au sein d'un groupe radio"`
+> **components.MuiRadioItem.description**: `string` = `"Un seul bouton radio utilisé au sein d'un groupe de radios"`
 
 #### components.MuiRadioItem.name
 
-> **components.MuiRadioItem.name**: `string` = `"Élément radio"`
+> **components.MuiRadioItem.name**: `string` = `"Article radio"`
 
 #### components.MuiSelect
 
@@ -1690,11 +1690,11 @@
 
 #### components.MuiSelect.description
 
-> **components.MuiSelect.description**: `string` = `"Composant déroulant pour la sélection des options"`
+> **components.MuiSelect.description**: `string` = `"Composant déroulant pour sélectionner les options"`
 
 #### components.MuiSelect.name
 
-> **components.MuiSelect.name**: `string` = `"Sélectionner"`
+> **components.MuiSelect.name**: `string` = `"Sélectionnez"`
 
 #### components.MuiSelect.props
 
@@ -1722,7 +1722,7 @@
 
 #### components.MuiSelect.props.multiple.name
 
-> **components.MuiSelect.props.multiple.name**: `string` = `"Multiples"`
+> **components.MuiSelect.props.multiple.name**: `string` = `"Multiple"`
 
 #### components.MuiStack
 
@@ -1730,7 +1730,7 @@
 
 #### components.MuiStack.description
 
-> **components.MuiStack.description**: `string` = `"Dispositions des enfants dans une pile unidimensionnelle"`
+> **components.MuiStack.description**: `string` = `"Dispose les enfants dans une pile unidimensionnelle"`
 
 #### components.MuiStack.name
 
@@ -1746,7 +1746,7 @@
 
 #### components.MuiStack.props.alignItems.description
 
-> **components.MuiStack.props.alignItems.description**: `string` = `"Contrôle l'alignement des axes croisés"`
+> **components.MuiStack.props.alignItems.description**: `string` = `"Contrôle l'alignement transversal"`
 
 #### components.MuiStack.props.alignItems.name
 
@@ -1762,7 +1762,7 @@
 
 #### components.MuiStack.props.direction.name
 
-> **components.MuiStack.props.direction.name**: `string` = `"Direction Générale"`
+> **components.MuiStack.props.direction.name**: `string` = `"Direction"`
 
 #### components.MuiStack.props.flexWrap
 
@@ -1770,11 +1770,11 @@
 
 #### components.MuiStack.props.flexWrap.description
 
-> **components.MuiStack.props.flexWrap.description**: `string` = `"Contrôle si les éléments s'enroulent sur plusieurs lignes"`
+> **components.MuiStack.props.flexWrap.description**: `string` = `"Détermine si les éléments s'enroulent sur plusieurs lignes"`
 
 #### components.MuiStack.props.flexWrap.name
 
-> **components.MuiStack.props.flexWrap.name**: `string` = `"Enveloppe flexible"`
+> **components.MuiStack.props.flexWrap.name**: `string` = `"Enveloppe Flex"`
 
 #### components.MuiStack.props.justifyContent
 
@@ -1794,7 +1794,7 @@
 
 #### components.MuiStack.props.spacing.description
 
-> **components.MuiStack.props.spacing.description**: `string` = `"Espacement entre les éléments empilés"`
+> **components.MuiStack.props.spacing.description**: `string` = `"Espacement entre les articles empilés"`
 
 #### components.MuiStack.props.spacing.name
 
@@ -1806,11 +1806,11 @@
 
 #### components.MuiStack.props.useFlexGap.description
 
-> **components.MuiStack.props.useFlexGap.description**: `string` = `"Utilise l'écart CSS au lieu des marges pour l'espacement"`
+> **components.MuiStack.props.useFlexGap.description**: `string` = `"Utilise un espace CSS au lieu de marges pour l'espacement"`
 
 #### components.MuiStack.props.useFlexGap.name
 
-> **components.MuiStack.props.useFlexGap.name**: `string` = `"Utiliser l'écart flexible"`
+> **components.MuiStack.props.useFlexGap.name**: `string` = `"Utiliser Flex Gap"`
 
 #### components.MuiSwitch
 
@@ -1818,11 +1818,11 @@
 
 #### components.MuiSwitch.description
 
-> **components.MuiSwitch.description**: `string` = `"Commande à bascule pour basculer entre deux états"`
+> **components.MuiSwitch.description**: `string` = `"Commande à bascule pour passer d'un état à l'autre"`
 
 #### components.MuiSwitch.name
 
-> **components.MuiSwitch.name**: `string` = `"Commutateur"`
+> **components.MuiSwitch.name**: `string` = `"Interrupteur"`
 
 #### components.MuiSwitch.props
 
@@ -1834,11 +1834,11 @@
 
 #### components.MuiSwitch.props.defaultChecked.description
 
-> **components.MuiSwitch.props.defaultChecked.description**: `string` = `"État de basculement initial lorsqu'il n'est pas contrôlé"`
+> **components.MuiSwitch.props.defaultChecked.description**: `string` = `"État de bascule initial lorsqu'il n'est pas contrôlé"`
 
 #### components.MuiSwitch.props.defaultChecked.name
 
-> **components.MuiSwitch.props.defaultChecked.name**: `string` = `"Valeur par défaut cochée"`
+> **components.MuiSwitch.props.defaultChecked.name**: `string` = `"Coché par défaut"`
 
 #### components.MuiTextField
 
@@ -1846,7 +1846,7 @@
 
 #### components.MuiTextField.description
 
-> **components.MuiTextField.description**: `string` = `"Champ de saisie pour les données de texte et de formulaire"`
+> **components.MuiTextField.description**: `string` = `"Champ de saisie pour le texte et les données de formulaire"`
 
 #### components.MuiTextField.name
 
@@ -1874,11 +1874,11 @@
 
 #### components.MuiTextField.props.maxRows.description
 
-> **components.MuiTextField.props.maxRows.description**: `string` = `"Nombre maximal de lignes visibles pour l'entrée multiligne"`
+> **components.MuiTextField.props.maxRows.description**: `string` = `"Nombre maximum de lignes visibles pour la saisie multiligne"`
 
 #### components.MuiTextField.props.maxRows.name
 
-> **components.MuiTextField.props.maxRows.name**: `string` = `"Lignes max"`
+> **components.MuiTextField.props.maxRows.name**: `string` = `"Nombre maximum de lignes"`
 
 #### components.MuiTextField.props.multiline
 
@@ -1886,7 +1886,7 @@
 
 #### components.MuiTextField.props.multiline.description
 
-> **components.MuiTextField.props.multiline.description**: `string` = `"Affiche une zone de texte au lieu d'une entrée sur une seule ligne"`
+> **components.MuiTextField.props.multiline.description**: `string` = `"Rend une zone de texte au lieu d'une entrée sur une seule ligne"`
 
 #### components.MuiTextField.props.multiline.name
 
@@ -1902,7 +1902,7 @@
 
 #### components.MuiTextField.props.type.name
 
-> **components.MuiTextField.props.type.name**: `string` = `"Type"`
+> **components.MuiTextField.props.type.name**: `string` = `"Tapez"`
 
 #### components.MuiTooltip
 
@@ -1910,11 +1910,11 @@
 
 #### components.MuiTooltip.description
 
-> **components.MuiTooltip.description**: `string` = `"Affiche des informations contextuelles sur le survol, le focus ou le toucher"`
+> **components.MuiTooltip.description**: `string` = `"Affiche des informations contextuelles lors du survol, de la mise au point ou du toucher"`
 
 #### components.MuiTooltip.name
 
-> **components.MuiTooltip.name**: `string` = `"Infobulle"`
+> **components.MuiTooltip.name**: `string` = `"Info-bulle"`
 
 #### components.MuiTooltip.props
 
@@ -1938,11 +1938,11 @@
 
 #### components.MuiTooltip.props.disableFocusListener.description
 
-> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"Empêche l'info-bulle d'apparaître sur le focus"`
+> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"Empêche l'affichage de l'info-bulle au moment de la mise au point"`
 
 #### components.MuiTooltip.props.disableFocusListener.name
 
-> **components.MuiTooltip.props.disableFocusListener.name**: `string` = `"Désactiver l'écouteur de focus"`
+> **components.MuiTooltip.props.disableFocusListener.name**: `string` = `"Désactiver Focus Listener"`
 
 #### components.MuiTooltip.props.disableHoverListener
 
@@ -1950,7 +1950,7 @@
 
 #### components.MuiTooltip.props.disableHoverListener.description
 
-> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"Empêche l'infobulle d'apparaître au survol"`
+> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"Empêche l'apparition de l'info-bulle au survol"`
 
 #### components.MuiTooltip.props.disableHoverListener.name
 
@@ -1966,7 +1966,7 @@
 
 #### components.MuiTooltip.props.disableInteractive.name
 
-> **components.MuiTooltip.props.disableInteractive.name**: `string` = `"Désactiver interactif"`
+> **components.MuiTooltip.props.disableInteractive.name**: `string` = `"Désactiver l'interaction"`
 
 #### components.MuiTooltip.props.disableTouchListener
 
@@ -1974,7 +1974,7 @@
 
 #### components.MuiTooltip.props.disableTouchListener.description
 
-> **components.MuiTooltip.props.disableTouchListener.description**: `string` = `"Empêche l'infobulle d'apparaître au toucher"`
+> **components.MuiTooltip.props.disableTouchListener.description**: `string` = `"Empêche l'apparition de l'info-bulle au toucher"`
 
 #### components.MuiTooltip.props.disableTouchListener.name
 
@@ -1986,11 +1986,11 @@
 
 #### components.MuiTooltip.props.enterDelay.description
 
-> **components.MuiTooltip.props.enterDelay.description**: `string` = `"Délai en millisecondes avant d'afficher l'info-bulle"`
+> **components.MuiTooltip.props.enterDelay.description**: `string` = `"Délai en millisecondes avant l'affichage de l'info-bulle"`
 
 #### components.MuiTooltip.props.enterDelay.name
 
-> **components.MuiTooltip.props.enterDelay.name**: `string` = `"Entrer le délai"`
+> **components.MuiTooltip.props.enterDelay.name**: `string` = `"Entrez le délai"`
 
 #### components.MuiTooltip.props.followCursor
 
@@ -1998,11 +1998,11 @@
 
 #### components.MuiTooltip.props.followCursor.description
 
-> **components.MuiTooltip.props.followCursor.description**: `string` = `"Fait que l'info-bulle suit la position du curseur"`
+> **components.MuiTooltip.props.followCursor.description**: `string` = `"Fait en sorte que l'info-bulle suive la position du curseur"`
 
 #### components.MuiTooltip.props.followCursor.name
 
-> **components.MuiTooltip.props.followCursor.name**: `string` = `"Suivre le curseur"`
+> **components.MuiTooltip.props.followCursor.name**: `string` = `"Suivez le curseur"`
 
 #### components.MuiTooltip.props.leaveDelay
 
@@ -2014,7 +2014,7 @@
 
 #### components.MuiTooltip.props.leaveDelay.name
 
-> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"Délai de congé"`
+> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"Retard de congé"`
 
 #### components.MuiTooltip.props.title
 
@@ -2022,7 +2022,7 @@
 
 #### components.MuiTooltip.props.title.description
 
-> **components.MuiTooltip.props.title.description**: `string` = `"Contenu textuel affiché à l'intérieur de l'info-bulle"`
+> **components.MuiTooltip.props.title.description**: `string` = `"Contenu textuel affiché dans l'info-bulle"`
 
 #### components.MuiTooltip.props.title.name
 
@@ -2062,11 +2062,11 @@
 
 #### components.MuiUploader.description
 
-> **components.MuiUploader.description**: `string` = `"Composant pour télécharger un ou plusieurs fichiers"`
+> **components.MuiUploader.description**: `string` = `"Composant permettant de télécharger un ou plusieurs fichiers"`
 
 #### components.MuiUploader.name
 
-> **components.MuiUploader.name**: `string` = `"Téléchargeur"`
+> **components.MuiUploader.name**: `string` = `"Uploader"`
 
 #### components.MuiUploader.props
 
@@ -2078,7 +2078,7 @@
 
 #### components.MuiUploader.props.accept.description
 
-> **components.MuiUploader.props.accept.description**: `string` = `"Types de fichiers autorisés (par exemple \".jpg,.png\")"`
+> **components.MuiUploader.props.accept.description**: `string` = `"Types de fichiers autorisés (par exemple « .jpg, .png »)"`
 
 #### components.MuiUploader.props.accept.name
 
@@ -2094,4 +2094,4 @@
 
 #### components.MuiUploader.props.multiple.name
 
-> **components.MuiUploader.props.multiple.name**: `string` = `"Multiples"`
+> **components.MuiUploader.props.multiple.name**: `string` = `"Multiple"`

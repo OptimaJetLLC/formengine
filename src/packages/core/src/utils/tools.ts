@@ -26,6 +26,24 @@ export function isNumber(value: unknown): value is number {
 }
 
 /**
+ * Returns true if value is a boolean.
+ * @param value input value.
+ * @returns boolean indicating boolean.
+ */
+export function isBoolean(value: unknown): value is boolean {
+  return typeof value === 'boolean'
+}
+
+/**
+ * Returns true if value is instance of Date.
+ * @param value input value.
+ * @returns boolean indicating value is instance of Date.
+ */
+export function isDate(value: unknown): value is Date {
+  return value instanceof Date
+}
+
+/**
  * Type guard: true if value is a non-null object.
  * @param value input value.
  * @returns boolean indicating object.
@@ -295,7 +313,7 @@ export function cloneDeep<T>(value: T, weakMap = new WeakMap()): T {
   }
 
   // Handle Date
-  if (value instanceof Date) {
+  if (isDate(value)) {
     return new Date(value.getTime()) as T
   }
 

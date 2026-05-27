@@ -62,7 +62,7 @@
 
 #### commonProperties.children.description
 
-> **commonProperties.children.description**: `string` = `"Component children"`
+> **commonProperties.children.description**: `string` = `"Child elements of the component"`
 
 #### commonProperties.children.name
 
@@ -946,7 +946,7 @@
 
 #### components.RsContainer.props.children.description
 
-> **components.RsContainer.props.children.description**: `string` = `"Component children"`
+> **components.RsContainer.props.children.description**: `string` = `"Child elements of the component"`
 
 #### components.RsContainer.props.children.name
 
@@ -1758,7 +1758,7 @@
 
 #### components.RsLink.props.children.description
 
-> **components.RsLink.props.children.description**: `string` = `"Component children"`
+> **components.RsLink.props.children.description**: `string` = `"Child elements of the component"`
 
 #### components.RsLink.props.children.name
 
@@ -4198,7 +4198,7 @@
 
 #### components.RsWizard.props.children.description
 
-> **components.RsWizard.props.children.description**: `string` = `"The wizard children"`
+> **components.RsWizard.props.children.description**: `string` = `"Wizard step content"`
 
 #### components.RsWizard.props.children.name
 
@@ -4382,7 +4382,7 @@
 
 #### components.RsWizardStep.props.children.description
 
-> **components.RsWizardStep.props.children.description**: `string` = `"Component children"`
+> **components.RsWizardStep.props.children.description**: `string` = `"Child elements of the component"`
 
 #### components.RsWizardStep.props.children.name
 

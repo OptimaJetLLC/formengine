@@ -21,7 +21,7 @@ type FormLocalization = {
   hasLocalization: (componentKey: string, propertyName: string, type: string) => boolean
 }
 
-describe('designer localization save behavior', () => {
+describe('designer localization persistence and viewer resolution', () => {
   it('removes the entry for the selected language from persisted localization when the value is cleared on save', async () => {
     const {getFormBuilder, findByTestId} = await renderBuilder(formEnDe)
     await findByTestId(textareaTestId)
@@ -41,18 +41,6 @@ describe('designer localization save behavior', () => {
     }
 
     expect(getFormJson()?.localization).toStrictEqual(expectedLocalization)
-  })
-
-  it('persists whitespace-only values in localization', async () => {
-    const {getFormBuilder, findByTestId} = await renderBuilder(formEnDe)
-    await findByTestId(textareaTestId)
-    const localization = getBuilderFormLocalization<FormLocalization>(getFormBuilder)
-    await asyncAct(async () => {
-      localization.setLocalization('en-US', 'locText', 'placeholder', 'component', '   ')
-    })
-
-    const parsed = parseForm(getFormBuilder()?.formAsString)
-    expect(parsed?.localization?.['en-US']?.locText?.component?.placeholder).toBe('   ')
   })
 
   it('persists non-empty strings including leading and trailing spaces', async () => {
@@ -121,18 +109,21 @@ describe('designer localization save behavior', () => {
     expect(parsed?.localization?.['en-US']?.locText?.component?.placeholder).toBe('Preview placeholder')
   })
 
-  it('persists whitespace-only localization in form json and falls back in preview mode', async () => {
+  it('persists whitespace-only in JSON and re-resolves via fluent in preview (fallback after trim)', async () => {
     const {getFormBuilder, findByTestId, findByText} = await renderBuilder(formEnDe)
     await findByTestId(textareaTestId)
     const localization = getBuilderFormLocalization<FormLocalization>(getFormBuilder)
+
+    await switchToViewerMode(findByText)
+    const textareaBefore = await findByTestId(textareaTestId)
+    expect(textareaBefore).toHaveAttribute('placeholder', 'Localized placeholder')
 
     await asyncAct(async () => {
       localization.setLocalization('en-US', 'locText', 'placeholder', 'component', '   ')
     })
 
-    await switchToViewerMode(findByText)
-    const textarea = await findByTestId(textareaTestId)
-    expect(textarea).toHaveAttribute('placeholder', 'RsTextArea')
+    const textareaAfter = await findByTestId(textareaTestId)
+    expect(textareaAfter).toHaveAttribute('placeholder', 'RsTextArea')
 
     const parsed = parseForm(getFormBuilder()?.formAsString)
     expect(parsed?.localization?.['en-US']?.locText?.component?.placeholder).toBe('   ')

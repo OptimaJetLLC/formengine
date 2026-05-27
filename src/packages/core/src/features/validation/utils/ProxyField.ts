@@ -1,6 +1,7 @@
 import {autorun, makeAutoObservable, observable} from 'mobx'
 import type {ComponentStore} from '../../../stores/ComponentStore'
 import type {Setter} from '../../../types'
+import {isString} from '../../../utils/isString'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import {isNull, isUndefined} from '../../../utils/tools'
 import type {Model} from '../../define/utils/Model'
@@ -199,7 +200,7 @@ export class ProxyField implements Field {
    * @throws {Error} throws an error if the provided value is not a string, undefined, or null.
    */
   setError = (error: unknown) => {
-    if (typeof error === 'string') {
+    if (isString(error)) {
       this.error = error
     } else if (isUndefined(error) || isNull(error)) {
       this.error = undefined

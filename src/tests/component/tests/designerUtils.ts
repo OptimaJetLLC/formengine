@@ -66,7 +66,7 @@ export const switchLanguageAndWaitForText = async (
 }
 
 /**
- * Switches the form language.
+ * Switches the form language in the header picker.
  * @param code the full language code.
  * @param findByTestId the function to find elements by test id.
  */

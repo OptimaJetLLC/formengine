@@ -271,6 +271,8 @@ export {
   uniqueId,
   isEqualWith,
   isNumber,
+  isBoolean,
+  isDate,
   cloneDeep
 } from './utils/tools'
 export type {

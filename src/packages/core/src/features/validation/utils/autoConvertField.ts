@@ -1,4 +1,5 @@
-import {isNull, isObject, isUndefined} from '../../../utils/tools'
+import {isString} from '../../../utils/isString'
+import {isBoolean, isDate, isNull, isNumber, isObject, isUndefined} from '../../../utils/tools'
 import type {SchemaType} from '../types/SchemaType'
 
 const same = (from: any) => from
@@ -128,12 +129,12 @@ const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
 }
 
 const getValueType = (value: unknown): SchemaType => {
-  if (typeof value === 'string') return 'string'
-  if (typeof value === 'number') return 'number'
-  if (typeof value === 'boolean') return 'boolean'
-  if (value instanceof Date) return 'date'
+  if (isString(value)) return 'string'
+  if (isNumber(value)) return 'number'
+  if (isBoolean(value)) return 'boolean'
+  if (isDate(value)) return 'date'
   if (Array.isArray(value)) return 'array'
-  if (typeof value === 'object') return 'object'
+  if (isObject(value)) return 'object'
   return 'enum'
 }
 

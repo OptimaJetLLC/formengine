@@ -174,7 +174,7 @@ the localized error message or undefined.
 
 ### localizeProperties()
 
-> **localizeProperties**(`form`, `formData`, `language`, `componentStore`, `type`): `Record`\<`string`, `any`\>
+> **localizeProperties**(`form`, `formData`, `language`, `componentStore`, `type`): `Record`\<`string`, `unknown`\>
 
 Localizes properties for a component.
 
@@ -212,7 +212,7 @@ the type of localization (default: 'component').
 
 #### Returns
 
-`Record`\<`string`, `any`\>
+`Record`\<`string`, `unknown`\>
 
 the object with localized property values.
 

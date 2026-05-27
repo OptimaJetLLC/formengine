@@ -78,7 +78,7 @@
 
 #### components.Uploader.props.disabled.description
 
-> **components.Uploader.props.disabled.description**: `string` = `"If true, the children are in disabled state"`
+> **components.Uploader.props.disabled.description**: `string` = `"If true, the uploader is disabled"`
 
 #### components.Uploader.props.disabled.name
 
@@ -138,7 +138,7 @@
 
 #### components.Uploader.props.readOnly.description
 
-> **components.Uploader.props.readOnly.description**: `string` = `"If true, the children are in read-only state"`
+> **components.Uploader.props.readOnly.description**: `string` = `"If true, the uploader is read-only"`
 
 #### components.Uploader.props.readOnly.name
 

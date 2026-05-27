@@ -1,4 +1,4 @@
-import {array, boolean, define, isString, number, oneOf, string} from '@react-form-builder/core'
+import {array, boolean, define, isNumber, isString, number, oneOf, string} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import type {NumericFormatProps} from 'react-number-format'
 import {NumericFormat} from 'react-number-format'
@@ -81,7 +81,7 @@ const RsNumberFormat = ({style, className, label, onChange, value, ...props}: Rs
   const {decimalSeparator, thousandSeparator} = getSeparators(props)
 
   value = value ?? ''
-  if (typeof value === 'number' && !Number.isFinite(value)) {
+  if (isNumber(value) && !Number.isFinite(value)) {
     value = ''
   }
 

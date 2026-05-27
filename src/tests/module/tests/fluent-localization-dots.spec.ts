@@ -1,16 +1,10 @@
-import {BiDi} from '../../../packages/core/src/features/localization/bidi'
-import {FluentLocalizationEngine} from '../../../packages/core/src/features/localization/fluent/FluentLocalizationEngine'
-import {Language} from '../../../packages/core/src/features/localization/language'
-import type {IFormData} from '../../../packages/core/src/utils/IFormData'
+import {FluentLocalizationEngine} from '@react-form-builder/core'
 import {describe, expect, it} from 'vitest'
+import {enUS, minimalFormData} from './fluent-localization-engine.test-helpers'
 
-const enUS = new Language('en', 'US', 'en-US', 'en-US', BiDi.LTR)
-
-const minimalFormData = (data: Record<string, unknown>): IFormData =>
-  ({
-    data,
-  }) as IFormData
-
+/**
+ * Focused dot-placeholder smoke tests. Full coverage is in fluent-localization-engine.spec.ts.
+ */
 describe('FluentLocalizationEngine user-facing dots in placeholders', () => {
   const engine = new FluentLocalizationEngine('en-US')
 

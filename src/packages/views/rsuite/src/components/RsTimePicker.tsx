@@ -1,4 +1,4 @@
-import {boolean, define, disabled, event, isNull, string, time, timeFormat} from '@react-form-builder/core'
+import {boolean, define, disabled, event, isDate, isNull, string, time, timeFormat} from '@react-form-builder/core'
 import {format as formatDate, parse} from 'date-fns'
 import type {SyntheticEvent} from 'react'
 import {useCallback, useMemo} from 'react'
@@ -10,7 +10,7 @@ import {fieldsCategory} from './categories'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 import {Labeled} from './internal/Labeled'
 
-const isValidDate = (value: any) => value instanceof Date && !Number.isNaN(value.getTime())
+const isValidDate = (value: any) => isDate(value) && !Number.isNaN(value.getTime())
 
 /**
  * Returns the time converted to Date format.

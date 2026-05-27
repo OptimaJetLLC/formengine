@@ -1,4 +1,5 @@
 import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
+import {isNumber} from '../../../utils/tools'
 import {ActionDefinition} from '../ActionDefinition'
 
 const parseRowData = (data?: string) => {
@@ -13,11 +14,11 @@ const parseRowData = (data?: string) => {
 const addRow = (data: Record<string, any>, repeaterKey: string, maxItems?: number,
                 rowValue?: string, rowIndex?: number) => {
   const repeaterData = data[repeaterKey] ?? []
-  if (typeof maxItems === 'number' && repeaterData.length >= maxItems) return
+  if (isNumber(maxItems) && repeaterData.length >= maxItems) return
 
   const rowData = parseRowData(rowValue) ?? {}
   const modifiedData = [...repeaterData]
-  if (typeof rowIndex === 'number') {
+  if (isNumber(rowIndex)) {
     modifiedData.splice(rowIndex, 0, rowData)
   } else {
     modifiedData.push(rowData)
@@ -29,7 +30,7 @@ const removeRow = (data: Record<string, any>, repeaterKey: string, index: number
                    minItems?: number) => {
   const repeaterData = data[repeaterKey]
   if (!Array.isArray(repeaterData)) return
-  if (typeof minItems === 'number' && repeaterData.length <= minItems) return
+  if (isNumber(minItems) && repeaterData.length <= minItems) return
 
   const modifiedData = [...repeaterData]
   modifiedData.splice(index, 1)
@@ -38,7 +39,7 @@ const removeRow = (data: Record<string, any>, repeaterKey: string, index: number
 
 const getParentRepeaterDataKey = (componentData: ComponentData) => {
   const dataRoot = componentData.dataRoot
-  if (typeof dataRoot.index === 'number') {
+  if (isNumber(dataRoot.index)) {
     return dataRoot.store.props?.repeaterDataKey?.value
   }
 }

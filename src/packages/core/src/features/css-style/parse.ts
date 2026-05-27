@@ -3,6 +3,9 @@
 // https://github.com/visionmedia/css-parse/pull/49#issuecomment-30088027
 // original https://github.com/reworkcss/css/blob/master/lib/parse/index.js
 
+import {isString} from '../../utils/isString'
+import {isObject} from '../../utils/tools'
+
 const commentRe = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//g
 
 /**
@@ -10,7 +13,7 @@ const commentRe = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//g
  */
 
 function addParent(obj: any, parent?: any) {
-  const isNode = obj && typeof obj.type === 'string'
+  const isNode = obj && isString(obj.type)
   const childParent = isNode ? obj : parent
 
   for (const k in obj) {
@@ -19,7 +22,7 @@ function addParent(obj: any, parent?: any) {
       value.forEach(function (v) {
         addParent(v, childParent)
       })
-    } else if (value && typeof value === 'object') {
+    } else if (value && isObject(value)) {
       addParent(value, childParent)
     }
   }

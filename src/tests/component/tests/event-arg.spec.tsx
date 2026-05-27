@@ -207,12 +207,12 @@ const openCodeEditor = async (app: RenderResult, argName: string, functionArgume
       fireEvent.click(button)
       return
     }
-    const button = await within(block.children[1] as HTMLElement).getAllByText('Edit code')
+    const button = within(block.children[1] as HTMLElement).getAllByText('Edit code')
     fireEvent.click(button[0])
   })
 }
 
-async function selectActions<Container>(app: RenderResult) {
+async function selectActions(app: RenderResult) {
   await selectComponent(app, 'button')
   await switchTab(app, 'Actions_Tab')
 }
@@ -351,8 +351,8 @@ describe('Event args UI should display and pass arguments', () => {
   it('should show function argument execution result in test output', async () => {
     await openCodeEditor(app, 'funcArgs', 'fnArg')
 
-    const runButton = await app.findByText('Run')
     await asyncAct(async () => {
+      const runButton = await app.findByText('Run')
       fireEvent.click(runButton)
     })
 

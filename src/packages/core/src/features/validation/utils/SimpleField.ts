@@ -2,6 +2,7 @@ import {autorun, makeAutoObservable, observable, reaction} from 'mobx'
 import type {ComponentStore} from '../../../stores/ComponentStore'
 import {dataKey, isComputedProperty} from '../../../stores/ComponentStore'
 import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
+import {isString} from '../../../utils/isString'
 import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import {isNull, isUndefined} from '../../../utils/tools'
@@ -228,7 +229,7 @@ export class SimpleField implements Field, IDataReaction {
    * @throws {Error} throws an error if the provided value is not a string, undefined, or null.
    */
   setError = (error: unknown) => {
-    if (typeof error === 'string') {
+    if (isString(error)) {
       this.error = error
     } else if (isUndefined(error) || isNull(error)) {
       this.error = undefined

@@ -1,5 +1,6 @@
 import {useMemo} from 'react'
 import {useBuilderMode} from './contexts/BuilderModeContext'
+import {isString} from './isString'
 
 const isEmptyString = (value: string) => {
   return value.trim() === ''
@@ -17,7 +18,7 @@ export const useBuilderValue = <T, >(value: T, builderValue: T): T => {
   return useMemo(() => {
     if (mode === 'viewer') return value
 
-    if (typeof value === 'string' && isEmptyString(value)) return builderValue
+    if (isString(value) && isEmptyString(value)) return builderValue
     return value ?? builderValue
   }, [builderValue, mode, value])
 }
