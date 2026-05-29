@@ -1,5 +1,6 @@
 import type {CalculableResult, IFormData, ILocalizationEngine, Language} from '@react-form-builder/core'
 import {CalculableResult as CalculableResultFactory, isBoolean, isNumber, isString, isUndefined} from '@react-form-builder/core'
+import {buildConstrainedDocument, extractEditableBody} from '../components/CodeEditor/constrainedDocument'
 
 /**
  * Returns true when the localization value contains only whitespace characters.
@@ -41,19 +42,11 @@ export const resolveLocalizationStoreValue = (storedLocalizationValue: string, c
  * @returns the normalized editable body.
  */
 export const normalizeLocalizationEditorValue = (source: string, beginContextLine: string): string => {
-  let normalized = source
-
-  if (beginContextLine) {
-    const prefixAt = normalized.startsWith(beginContextLine) ? 0 : normalized.indexOf(beginContextLine)
-    if (prefixAt !== -1) {
-      normalized = normalized.slice(prefixAt + beginContextLine.length)
-    }
+  if (!beginContextLine) {
+    return source
   }
-  if (beginContextLine && normalized.startsWith('\n')) {
-    normalized = normalized.slice(1)
-  }
-
-  return normalized
+  const extracted = extractEditableBody(source, beginContextLine, true, undefined)
+  return extracted.startsWith('\n') ? extracted.slice(1) : extracted
 }
 
 /**
@@ -63,8 +56,10 @@ export const normalizeLocalizationEditorValue = (source: string, beginContextLin
  * @returns the document value for the constrained editor.
  */
 export const buildConstrainedLocalizationDocument = (beginContextLine: string, fluentBody: string): string => {
-  if (!beginContextLine) return fluentBody
-  return beginContextLine + fluentBody
+  if (!beginContextLine) {
+    return fluentBody
+  }
+  return buildConstrainedDocument(fluentBody, beginContextLine, true, undefined)
 }
 
 /**

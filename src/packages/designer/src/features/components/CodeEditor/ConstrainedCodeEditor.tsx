@@ -1,16 +1,11 @@
 import type {OnMount} from '@monaco-editor/react'
-import type {ConstrainedMonacoEditorModel, RangeRestrictionObject} from 'constrained-editor-plugin'
-import {constrainedEditor} from 'constrained-editor-plugin'
 import type {editor} from 'monaco-editor'
 import {useCallback, useEffect, useMemo, useRef} from 'react'
 import type {CodeEditorProps} from './CodeEditorProps'
+import {buildConstrainedDocument} from './constrainedDocument'
 import {MonacoCodeEditor} from './MonacoCodeEditor'
-
-function getEndPosition(str: string) {
-  const lines = str.split('\n')
-  const lastLineLength = lines.at(-1)?.length ?? 0
-  return [lines.length, lastLineLength + 1] as const
-}
+import type {ConstrainedMonacoEditorModel} from './setupConstrainedMonaco'
+import {setupConstrainedMonaco, withSuppressedConstrainedValidation} from './setupConstrainedMonaco'
 
 /**
  * The React component that displays constrained code editor.
@@ -18,72 +13,47 @@ function getEndPosition(str: string) {
  * @returns the React element.
  */
 export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
-  const initialValue = useMemo(() => {
-    const prefix = props.beginContextLine ?? ''
-    const contentDelimiter = props.beginContextLine && props.canEditBeginContextLine ? '' : '\n'
-    const postfix = props.endContextLine ? `\n${props.endContextLine}` : ''
-    return prefix + contentDelimiter + props.initialValue + postfix
-  }, [props.beginContextLine, props.endContextLine, props.initialValue, props.canEditBeginContextLine])
+  const context = useMemo(() => ({
+    beginContextLine: props.beginContextLine,
+    canEditBeginContextLine: props.canEditBeginContextLine,
+    endContextLine: props.endContextLine
+  }), [props.beginContextLine, props.canEditBeginContextLine, props.endContextLine])
+
+  const documentValue = useMemo(
+    () => buildConstrainedDocument(
+      props.initialValue,
+      context.beginContextLine,
+      context.canEditBeginContextLine,
+      context.endContextLine
+    ),
+    [context, props.initialValue]
+  )
 
   const editorRef = useRef<editor.IStandaloneCodeEditor>(null)
-  const constrainedMonacoEditorModelRef = useRef<ConstrainedMonacoEditorModel>(null)
-
-  const getRestrictions = useCallback((model: editor.ITextModel): RangeRestrictionObject[] => {
-    const hasEndContextLine = !!props.endContextLine
-
-    const [beginContextLineEndLine, beginContextLineEndColumn] = getEndPosition(props.beginContextLine ?? '')
-    const [endContextLineEndLine] = getEndPosition(props.endContextLine ?? '')
-    const lastEditableLine = hasEndContextLine ? model.getLineCount() - (endContextLineEndLine - 1) : model.getLineCount()
-    const lastEditableColumn = hasEndContextLine ? 1 : model.getFullModelRange().endColumn
-
-    return [{
-      label: 'body',
-      allowMultiline: true,
-      range: [beginContextLineEndLine, beginContextLineEndColumn, lastEditableLine, lastEditableColumn],
-      validate: (current, _, {endLineOfRange, startLineOfRange}) => {
-        if (startLineOfRange) return current.startsWith('\n') || props.canEditBeginContextLine
-        if (endLineOfRange) return current.endsWith('\n') || !hasEndContextLine
-        return true
-      }
-    }]
-  }, [props.beginContextLine, props.canEditBeginContextLine, props.endContextLine])
+  const constrainedModelRef = useRef<ConstrainedMonacoEditorModel>(null)
 
   useEffect(() => {
-    editorRef.current?.setValue(initialValue)
-    if (!constrainedMonacoEditorModelRef.current) return
-
-    const restrictions = getRestrictions(constrainedMonacoEditorModelRef.current)
-    constrainedMonacoEditorModelRef.current.updateRestrictions(restrictions)
-  }, [getRestrictions, initialValue])
+    const editor = editorRef.current
+    const constrainedModel = constrainedModelRef.current
+    if (!editor) {
+      return
+    }
+    if (constrainedModel) {
+      withSuppressedConstrainedValidation(constrainedModel, () => {
+        editor.setValue(documentValue)
+        constrainedModel.updateRestrictions(context)
+      })
+    } else {
+      editor.setValue(documentValue)
+    }
+  }, [context, documentValue])
 
   const {onChange, onMount} = props
   const handleMount: OnMount = useCallback((editor, monaco) => {
     onMount?.(editor, monaco)
-
     editorRef.current = editor
-
-    const model = editor.getModel()
-    if (!model) return
-
-    const constrainedInstance = constrainedEditor(monaco)
-    constrainedInstance.initializeIn(editor)
-    const restrictions = getRestrictions(model)
-    const constrainedModel = constrainedInstance.addRestrictionsTo(model, restrictions)
-
-    constrainedModel.onDidChangeContentInEditableRange(value => {
-      let editableCode = value.body
-      if (!editableCode) return
-
-      if (!!props.beginContextLine && editableCode.startsWith('\n')) {
-        editableCode = editableCode.substring(1)
-      }
-      if (!!props.endContextLine && editableCode.endsWith('\n')) {
-        editableCode = editableCode.substring(0, editableCode.length - 1)
-      }
-      onChange(editableCode)
-    })
-    constrainedMonacoEditorModelRef.current = constrainedModel
-  }, [getRestrictions, onMount, props.beginContextLine, props.endContextLine, onChange])
+    constrainedModelRef.current = setupConstrainedMonaco(editor, monaco, context, onChange)
+  }, [context, onChange, onMount])
 
   const options = useMemo(() => ({
     wordWrap: 'on',
@@ -93,7 +63,7 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
   return <MonacoCodeEditor
     onMount={handleMount}
     className={props.className}
-    defaultValue={initialValue}
+    defaultValue={documentValue}
     height={props.height ?? '100%'}
     width={props.width ?? '100%'}
     language={props.language ?? 'javascript'}

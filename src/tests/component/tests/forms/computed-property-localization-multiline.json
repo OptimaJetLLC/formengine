@@ -1,0 +1,42 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "locMulti",
+        "type": "RsStaticContent",
+        "props": {
+          "content": {
+            "computeType": "localization"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "locMultiStaticContent"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "locMulti": {
+        "component": {
+          "content": "Line one\nLine two\nLine three"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

@@ -1,0 +1,42 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "locStatic",
+        "type": "RsStaticContent",
+        "props": {
+          "content": {
+            "computeType": "localization"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "locStaticContent"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "locStatic": {
+        "component": {
+          "content": "Hello from fluent"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
