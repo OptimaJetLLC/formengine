@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 
-/* eslint-disable import/no-nodejs-modules,no-console */
 // @ts-nocheck TS5097 allow .ts import
 
-import {execSync} from 'child_process'
-import {join, dirname} from 'path'
-import {fileURLToPath} from 'url'
+import {execSync} from 'node:child_process'
+import {dirname, join} from 'node:path'
+import {fileURLToPath} from 'node:url'
 import {analyzeBundle, printAnalysis, getDistTestDir} from './utils.ts'
 
 const __filename = fileURLToPath(import.meta.url)

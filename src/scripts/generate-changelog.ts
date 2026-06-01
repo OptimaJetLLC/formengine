@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-/* eslint-disable import/no-nodejs-modules,no-console */
-
-import {readFileSync, readdirSync, writeFileSync} from 'fs'
-import {basename, extname, join, dirname} from 'path'
-import {fileURLToPath} from 'url'
+import {readdirSync, readFileSync, writeFileSync} from 'node:fs'
+import {basename, dirname, extname, join} from 'node:path'
+import {fileURLToPath} from 'node:url'
 
 interface ReleaseDocMeta {
   version: string
@@ -169,9 +167,7 @@ function buildChangelog(releases: ReleaseDocMeta[]): string {
 
   for (const release of releases) {
     const lines: string[] = []
-    const heading = release.date
-      ? `## ${release.version} - ${release.date}`
-      : `## ${release.version}`
+    const heading = release.date ? `## ${release.version} - ${release.date}` : `## ${release.version}`
 
     lines.push(heading)
 
@@ -216,9 +212,7 @@ function main(): void {
     return
   }
 
-  const versions = sortVersionsDescending(
-    docFiles.map(name => basename(name, extname(name))),
-  )
+  const versions = sortVersionsDescending(docFiles.map(name => basename(name, extname(name))))
 
   const releases = versions.map(version => {
     const filePath = join(DOCS_ROOT, `${version}.md`)
@@ -231,5 +225,9 @@ function main(): void {
   console.log(`Generated CHANGELOG.md with ${releases.length} releases.`)
 }
 
-main()
-
+try {
+  main()
+} catch (error) {
+  console.error('❌ generate-changelog script failed.', error)
+  process.exitCode = 1
+}

@@ -1,7 +1,7 @@
 const Module = require('module');
-const {readFileSync} = require('fs');
-const {sep} = require('path');
-const {join, resolve} = require('path');
+const {readFileSync} = require('node:fs');
+const {sep} = require('node:path');
+const {join, resolve} = require('node:path');
 const {createLogger} = require("@react-form-builder/tests-common/lib/loader/util.cjs");
 
 const log = createLogger('@@@@@@@@@@@')

@@ -38,5 +38,8 @@
     "@react-form-builder/core": {
       "optional": false
     }
+  },
+  "devDependencies": {
+    "@react-form-builder/cli-lib": "*"
   }
 }

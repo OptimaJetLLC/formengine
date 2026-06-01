@@ -1,11 +1,7 @@
-/* eslint-disable no-console */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/no-nodejs-modules */
-
 import {defineConfig, devices} from '@playwright/test'
+import {dirname, resolve} from 'node:path'
 import {chdir} from 'node:process'
-import {dirname, resolve} from 'path'
-import {fileURLToPath} from 'url'
+import {fileURLToPath} from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

@@ -1,8 +1,14 @@
 {
   "compilerOptions": {
-    "module": "ES2020",
+    "module": "ES2022",
     "target": "ES2022",
     "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@react-form-builder/cli-lib/*": [
+        "./scripts/cli-lib/*"
+      ]
+    },
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -12,6 +18,7 @@
     "skipLibCheck": true,
     "emitDeclarationOnly": true,
     "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "declaration": true,
     "declarationDir": "dist/types",
@@ -27,7 +34,6 @@
   "exclude": [
     "documentation",
     "node_modules",
-    "packages/**/dist",
-    "scripts"
+    "packages/**/dist"
   ]
 }

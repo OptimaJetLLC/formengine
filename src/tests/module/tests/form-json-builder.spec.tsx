@@ -3,11 +3,11 @@ import actionWithArgs from '../data/form-json-builder/action-with-args.json'
 import chainChildren from '../data/form-json-builder/chain-children.json'
 import chain from '../data/form-json-builder/chain.json'
 import complexForm from '../data/form-json-builder/complex-form.json'
+import computedAfterEvent from '../data/form-json-builder/computed-after-event.json'
+import computedAfterValidation from '../data/form-json-builder/computed-after-validation.json'
 import emptyForm from '../data/form-json-builder/empty-form.json'
 import localizedAfterEvent from '../data/form-json-builder/localized-after-event.json'
-import computedAfterEvent from '../data/form-json-builder/computed-after-event.json'
 import localizedAfterValidation from '../data/form-json-builder/localized-after-validation.json'
-import computedAfterValidation from '../data/form-json-builder/computed-after-validation.json'
 
 describe(`Should build correctly`, function () {
   it('empty form', async () => {

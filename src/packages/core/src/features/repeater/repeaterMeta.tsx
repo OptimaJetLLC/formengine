@@ -2,9 +2,9 @@ import type {Annotation} from '../annotation/types/annotations/Annotation'
 import {modules} from '../define/constants'
 import {Meta} from '../define/utils/Meta'
 import {
+  repeaterItemStyleProperties,
   repeaterModel,
   repeaterProps,
-  repeaterItemStyleProperties,
   repeaterValuedAnnotation,
   repeaterWrapperStyleProperties
 } from './repeaterModel'

@@ -7,6 +7,8 @@
     "run-designer": "node ./run-designer.ts",
     "run-viewer": "node ./run-viewer.ts",
     "run-viewer-premium": "node ./run-viewer-premium.ts"
+  },
+  "devDependencies": {
+    "@react-form-builder/cli-lib": "file:../../src/scripts/cli-lib"
   }
 }
-

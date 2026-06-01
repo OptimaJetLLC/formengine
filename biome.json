@@ -21,6 +21,7 @@
       "src/packages/indexed-db-form-storage/**/*.{ts,tsx}",
       "src/packages/viewer-bundle/**/*.{ts,tsx}",
       "src/packages/viewer-bundle-premium/**/*.{ts,tsx}",
+      "src/scripts/**/*.ts",
       "!src/documentation/website/static"
     ]
   },

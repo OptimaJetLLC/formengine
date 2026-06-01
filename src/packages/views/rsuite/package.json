@@ -184,6 +184,7 @@
     "LICENSE"
   ],
   "devDependencies": {
+    "@react-form-builder/cli-lib": "*",
     "@react-form-builder/json-schema-generator": "^9.0.0",
     "postcss": "^8.5.10",
     "vite-inline-css-plugin": "^0.0.1",

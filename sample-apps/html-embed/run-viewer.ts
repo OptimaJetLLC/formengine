@@ -1,49 +1,45 @@
 #!/usr/bin/env node
 
-/* eslint-disable import/no-nodejs-modules,no-console */
-
-import {execSync} from 'child_process'
-import {dirname, join, resolve} from 'path'
-import {fileURLToPath} from 'url'
+import {execSync} from 'node:child_process'
+import {dirname, join, resolve} from 'node:path'
+import {fileURLToPath} from 'node:url'
 
 function getScriptRoot(): string {
-  const __filename = fileURLToPath(import.meta.url)
-  return dirname(__filename)
+  return dirname(fileURLToPath(import.meta.url))
 }
 
-function runCommand(command: string, cwd: string): void {
+function runCommandInDir(command: string, cwd: string): void {
   console.log(`▶ ${command} (cwd=${cwd})`)
   execSync(command, {cwd, stdio: 'inherit'})
 }
 
-function openHtmlFile(filePath: string): void {
-  const platform = process.platform
-
-  if (platform === 'win32') {
+function openFileInOs(filePath: string): void {
+  if (process.platform === 'win32') {
     execSync(`start "" ${JSON.stringify(filePath)}`, {stdio: 'ignore'})
-  } else if (platform === 'darwin') {
-    execSync(`open ${JSON.stringify(filePath)}`, {stdio: 'ignore'})
-  } else {
-    execSync(`xdg-open ${JSON.stringify(filePath)}`, {stdio: 'ignore'})
+    return
   }
+  if (process.platform === 'darwin') {
+    execSync(`open ${JSON.stringify(filePath)}`, {stdio: 'ignore'})
+    return
+  }
+  execSync(`xdg-open ${JSON.stringify(filePath)}`, {stdio: 'ignore'})
 }
 
 function main(): void {
   const scriptRoot = getScriptRoot()
   const viewerBundleDir = resolve(scriptRoot, '../../src/packages/viewer-bundle')
 
-  try {
-    runCommand('npm install', viewerBundleDir)
-    runCommand('npm run build', viewerBundleDir)
+  runCommandInDir('npm install', viewerBundleDir)
+  runCommandInDir('npm run build', viewerBundleDir)
 
-    const htmlPath = join(scriptRoot, 'viewer-bundle', 'viewer-bundle.html')
-    console.log(`🌐 Opening ${htmlPath}`)
-    openHtmlFile(htmlPath)
-  } catch (error) {
-    console.error('❌ run-viewer script failed.', error)
-    process.exitCode = 1
-  }
+  const htmlPath = join(scriptRoot, 'viewer-bundle', 'viewer-bundle.html')
+  console.log(`🌐 Opening ${htmlPath}`)
+  openFileInOs(htmlPath)
 }
 
-main()
-
+try {
+  main()
+} catch (error) {
+  console.error('❌ run-viewer script failed.', error)
+  process.exitCode = 1
+}

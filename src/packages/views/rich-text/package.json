@@ -40,5 +40,8 @@
   "files": [
     "dist/*",
     "README.md"
-  ]
+  ],
+  "devDependencies": {
+    "@react-form-builder/cli-lib": "*"
+  }
 }

@@ -15,6 +15,16 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 
+/*
+ * Linux: Chromium may fail to create shared memory in /tmp or /dev/shm without these switches.
+ * Alternatively, configure the setuid sandbox binary:
+ *   cd node_modules/electron/dist && sudo chown root:root chrome-sandbox && sudo chmod 4755 chrome-sandbox
+ */
+if (process.platform === 'linux') {
+  app.commandLine.appendSwitch('no-sandbox');
+  app.commandLine.appendSwitch('disable-dev-shm-usage');
+}
+
 class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
@@ -135,14 +145,3 @@ app
     });
   })
   .catch(console.log);
-
-/*
-Workaround to run on modern linux, Chromium requires a setuid on sandbox binary, ie
-```
-cd ./sample-apps/electron/node_modules/electron/dist
-sudo chown root:root chrome-sandbox
-sudo chmod 4755 chrome-sandbox
-```
-or disable sandboxing via cli
-*/
-app.commandLine.appendSwitch('no-sandbox');

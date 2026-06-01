@@ -1,7 +1,7 @@
 import {upperFirst} from '@react-form-builder/core'
 import type {ComponentType} from 'react'
 import {Table} from 'rsuite'
-import {InputCell, CheckCell, SelectCell, ActionCell} from './CustomCells'
+import {ActionCell, CheckCell, InputCell, SelectCell} from './CustomCells'
 
 const {Column, HeaderCell} = Table
 

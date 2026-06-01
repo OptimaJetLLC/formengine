@@ -1,8 +1,10 @@
-import mantinePackageJson from '../../../packages/views/mantine/package.json'
+import mantinePackageJsonRaw from '../../../packages/views/mantine/package.json'
 
 interface PackageJsonExports {
   [key: string]: string | { import?: string; require?: string }
 }
+
+const mantinePackageJson = mantinePackageJsonRaw as {exports?: PackageJsonExports}
 
 const EXCLUDED_COMPONENT_TYPES = new Set(['MtViewerWrapper'])
 

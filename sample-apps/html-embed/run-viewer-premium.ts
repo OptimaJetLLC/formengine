@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint-disable import/no-nodejs-modules,no-console */
-
 import {execSync} from 'child_process'
 import {dirname, join, resolve} from 'path'
 import {fileURLToPath} from 'url'
@@ -32,18 +30,18 @@ function main(): void {
   const scriptRoot = getScriptRoot()
   const viewerBundleDir = resolve(scriptRoot, '../../src/packages/viewer-bundle-premium')
 
-  try {
-    runCommand('npm install', viewerBundleDir)
-    runCommand('npm run build', viewerBundleDir)
+  runCommand('npm install', viewerBundleDir)
+  runCommand('npm run build', viewerBundleDir)
 
-    const htmlPath = join(scriptRoot, 'viewer-bundle-premium', 'viewer-bundle-premium.html')
-    console.log(`🌐 Opening ${htmlPath}`)
-    openHtmlFile(htmlPath)
-  } catch (error) {
-    console.error('❌ run-viewer script failed.', error)
-    process.exitCode = 1
-  }
+  const htmlPath = join(scriptRoot, 'viewer-bundle-premium', 'viewer-bundle-premium.html')
+  console.log(`🌐 Opening ${htmlPath}`)
+  openHtmlFile(htmlPath)
 }
 
-main()
+try {
+  main()
+} catch (error) {
+  console.error('❌ run-viewer script failed.', error)
+  process.exitCode = 1
+}
 

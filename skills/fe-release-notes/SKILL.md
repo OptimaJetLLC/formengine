@@ -104,14 +104,14 @@ Identify potential release highlights and ask the user to refine them. Draft rel
 3. **Draft release notes** in English only (see repository `AGENTS.md`). Follow structure, changelog sections, and tone in **`skills/fe-release-notes/references/release-notes-guidelines-combined.md`**.
    - Create or edit **`src/documentation/docs/release-notes/X.Y.Z.md`** (YAML frontmatter, internal doc links).
    - When describing added or updated **fields**, **methods**, **properties**, or other public API members, **always include links** to the relevant documentation pages or anchors (see **Constraints**).
-   - Optionally set **`NpmVersion=X.Y.Z`** in **`scripts/version.txt`** so the draft matches the intended version (or wait until after approval).
+   - Optionally set **`"version": "X.Y.Z"`** in **`src/lerna.json`** so the draft matches the intended version (or wait until after approval).
 4. **Human verification (mandatory gate before automation)**  
    **Stop** and ask the user to **read the draft** `X.Y.Z.md` and **confirm or adjust**:
    - Version, **release date** line, overview, key features, and every changelog subsection (including dependency bullets if present).
    - Internal doc links and slugs (Docusaurus fails the build on broken links).
    Apply any edits the user requests. **Do not** run `generate:github-release-notes`, `generate:changelog`, `version-update`, or `docs:build` until the user **explicitly confirms** the release notes are ready (or asks you to proceed). If the user wants to edit the file themselves, wait until they say they are done.
 5. **After the draft is approved**, run automation in order:
-   - Ensure **`scripts/version.txt`** has **`NpmVersion=X.Y.Z`**.
+   - Ensure **`src/lerna.json`** has **`"version": "X.Y.Z"`** (monorepo source of truth for `npm run version-update` and CI).
    - From **`src`**, run **`npm run version-update`** (updates Lerna package versions, internal dependency pins, and invokes **`update-release-date`** for `common-designer` when configured in `scripts/version-update.ts`).
    - From **`src`**, run **`npm run generate:github-release-notes`** and **`npm run generate:changelog`**. Generated GitHub notes under **`scripts/github-release-notes/`** must use absolute links starting with **`https://formengine.io/documentation/...`** (the script rewrites relative paths).
    - From **`src`**, run **`npm run docs:build`** for `@react-form-builder/docs` (or the project’s documented docs build).
@@ -154,6 +154,7 @@ Identify potential release highlights and ask the user to refine them. Draft rel
 
 ## If something fails
 
+# - If `version-update` fails on a missing example path, check **`allVersionTargetPaths`** usage in **`src/scripts/version-update.ts`** against the repo (e.g. Angular examples under `examples/premium/with-angular-forms/...`).
 - If `version-update` fails on a missing example path, check **`PACKAGE_LIST`** in **`scripts/version-update.ts`** against the repo (e.g. Angular examples under `examples/premium/with-angular-forms/...`).
 - If `update-release-date` is missing, note it and continue; do not invent scripts.
 - If YouTrack returns **404** for an issue ID, double-check the readable ID and verify that the token user can access the project.
@@ -167,7 +168,7 @@ Identify potential release highlights and ask the user to refine them. Draft rel
 | Release notes guide    | `skills/fe-release-notes/references/release-notes-guidelines-combined.md` |
 | YouTrack credentials   | `skills/fe-release-notes/scripts/.env` (`YT_TOKEN`, optional `YT_BASE`)   |
 | API helper scripts     | `skills/fe-release-notes/scripts/`                             |
-| Version file           | `scripts/version.txt`                                                     |
+| Monorepo version       | `src/lerna.json` (`version` field)                                      |
 | Version bump           | from `src`: `npm run version-update` → `scripts/version-update.ts`        |
 | Docs site              | `src/documentation/website` (Docusaurus)                                  |
 | Release notes (docs)   | `src/documentation/docs/release-notes/`                                   |

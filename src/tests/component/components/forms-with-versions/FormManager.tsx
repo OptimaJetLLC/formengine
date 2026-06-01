@@ -2,10 +2,10 @@ import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {FormBuilder} from '@react-form-builder/designer'
 import {useMemo, useState} from 'react'
 import {customization} from './customization'
-import {licenseKey} from './utils/license'
 import {FormsContext} from './FormsProvider'
 import type {CurrentFormOptions} from './FormsStorage'
 import {FormStorage} from './FormsStorage'
+import {licenseKey} from './utils/license'
 
 type FormManagerProps = {
   onLoadForm?: (options?: CurrentFormOptions) => void

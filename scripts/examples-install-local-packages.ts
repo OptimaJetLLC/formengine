@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 
-/* eslint-disable import/no-nodejs-modules,no-console */
-
 /**
  * Packs publishable @react-form-builder packages into scripts/.examples-local-packs/, temporarily rewrites
  * example package.json entries to file: tarballs, runs npm install, then restores package.json to
- * ^NpmVersion from scripts/version.txt so committed manifests stay semver-based. package-lock.json is
+ * ^monorepo version from src/lerna.json so committed manifests stay semver-based. package-lock.json is
  * then rewritten so root dependency specs match package.json and @react-form-builder/* entries use
  * registry tarball URLs (integrity is preserved from the local pack). Unpublished example-only packages
  * such as @react-form-builder/bundle-size-shared keep file: resolutions.
@@ -35,7 +33,7 @@ const PACKAGE_PREFIX = '@react-form-builder/'
 /**
  * Packed for examples but not published to npm; lockfile normalization leaves file: resolutions for these.
  */
-const PACKAGES_EXCLUDED_FROM_REGISTRY_LOCK = new Set<string>(['@react-form-builder/bundle-size-shared'])
+const PACKAGES_EXCLUDED_FROM_REGISTRY_LOCK = new Set<string>(['@react-form-builder/bundle-size-shared', '@react-form-builder/cli-lib'])
 const EXCLUDED_PACKAGE_RESTORE_SPEC: Record<string, string> = {
   '@react-form-builder/bundle-size-shared': '*',
 }
@@ -95,19 +93,17 @@ function writePackageJson(path: string, data: PackageJson): void {
   writeFileSync(path, `${JSON.stringify(data, undefined, 2)}\n`)
 }
 
-function readVersions(): {NpmVersion?: string} {
-  const path = join(REPO_ROOT, 'scripts', 'version.txt')
-  const lines = readFileSync(path, 'utf8').split('\n')
-  const versions: Record<string, string> = {}
-  for (const line of lines) {
-    const t = line.trim()
-    if (!t || !t.includes('=')) {
-      continue
-    }
-    const [k, v] = t.split('=')
-    versions[k.trim()] = (v ?? '').trim()
+/**
+ * Reads the monorepo version from `src/lerna.json` (Lerna `version` field).
+ */
+function readLernaVersion(): string | undefined {
+  const lernaPath = join(SRC_ROOT, 'lerna.json')
+  if (!existsSync(lernaPath)) {
+    return undefined
   }
-  return {NpmVersion: versions.NpmVersion}
+
+  const lerna = JSON.parse(readFileSync(lernaPath, 'utf8')) as {version?: string}
+  return lerna.version?.trim() || undefined
 }
 
 function tarballBaseName(packageName: string, version: string): string {
@@ -464,7 +460,7 @@ function normalizeWorkspaceParentLockIfNeeded(exampleDir: string, dryRun: boolea
 /**
  * Sets every @react-form-builder dependency in an example package.json to ^npmVersion (registry style).
  * @param exampleRel path relative to repo root
- * @param npmVersion version from scripts/version.txt (NpmVersion)
+ * @param npmVersion monorepo version from src/lerna.json
  * @param dryRun when true, do not write
  * @returns true when package.json was updated or would be updated
  */
@@ -515,18 +511,13 @@ function runNpmInstall(exampleRel: string, dryRun: boolean): void {
     return
   }
   const dir = join(REPO_ROOT, exampleRel)
-  const nm = join(dir, 'node_modules')
   const lock = join(dir, 'package-lock.json')
-  if (existsSync(nm)) {
-    console.log(`▶ rm -rf node_modules (cwd=${exampleRel})`)
-    rmSync(nm, {recursive: true, force: true})
-  }
   if (existsSync(lock)) {
     console.log(`▶ rm package-lock.json (cwd=${exampleRel})`)
     rmSync(lock, {force: true})
   }
-  console.log(`▶ npm install (cwd=${exampleRel})`)
-  execSync('npm install', {cwd: dir, stdio: 'inherit'})
+  console.log(`▶ npm install --package-lock-only (cwd=${exampleRel})`)
+  execSync('npm install --package-lock-only', {cwd: dir, stdio: 'inherit'})
 }
 
 function printUsage(): void {
@@ -535,7 +526,7 @@ function printUsage(): void {
 Options:
   --dry-run            Log actions without packing, patching, or installing.
   --no-install         Pack only into ${STAGING_DIR}; do not change examples.
-  --restore-registry   Set example @react-form-builder/* deps to ^NpmVersion and npm install (needs packages on npm).
+  --restore-registry   Set example @react-form-builder/* deps to ^(src/lerna.json version) and npm install (needs packages on npm).
 
 Packs into ${STAGING_DIR} (gitignored). Requires npm install in src/ before first run.`)
 }
@@ -552,13 +543,13 @@ function main(): void {
   const restore = argv.includes('--restore-registry')
 
   if (restore) {
-    const {NpmVersion} = readVersions()
-    if (!NpmVersion) {
-      console.error('❌ NpmVersion missing in scripts/version.txt')
+    const npmVersion = readLernaVersion()
+    if (!npmVersion) {
+      console.error('❌ Monorepo version missing. Expected src/lerna.json to include a non-empty "version" field.')
       process.exitCode = 1
       return
     }
-    patchExamplesToRegistry(NpmVersion, dryRun)
+    patchExamplesToRegistry(npmVersion, dryRun)
     if (!dryRun && !noInstall) {
       for (const exampleRel of EXAMPLE_PATHS) {
         const pjPath = join(REPO_ROOT, exampleRel, 'package.json')
@@ -581,9 +572,9 @@ function main(): void {
     return
   }
 
-  const {NpmVersion} = readVersions()
-  if (!NpmVersion) {
-    console.error('❌ NpmVersion missing in scripts/version.txt')
+  const npmVersion = readLernaVersion()
+  if (!npmVersion) {
+    console.error('❌ Monorepo version missing. Expected src/lerna.json to include a non-empty "version" field.')
     process.exitCode = 1
     return
   }
@@ -617,11 +608,16 @@ function main(): void {
     if (patched && !dryRun) {
       const exampleDir = join(REPO_ROOT, exampleRel)
       runNpmInstall(exampleRel, false)
-      restoreExampleRegistrySemver(exampleRel, NpmVersion, false)
+      restoreExampleRegistrySemver(exampleRel, npmVersion, false)
       normalizeExamplePackageLock(exampleDir, false)
       normalizeWorkspaceParentLockIfNeeded(exampleDir, false)
     }
   }
 }
 
-main()
+try {
+  await main()
+} catch (error) {
+  console.error('❌ examples-install-local-packages script failed.', error)
+  process.exitCode = 1
+}

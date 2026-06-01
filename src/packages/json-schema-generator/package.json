@@ -35,5 +35,8 @@
     "dist",
     "README.md",
     "LICENSE"
-  ]
+  ],
+  "devDependencies": {
+    "@react-form-builder/cli-lib": "*"
+  }
 }

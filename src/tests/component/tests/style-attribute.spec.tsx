@@ -1,6 +1,6 @@
+import {expect} from 'vitest'
 import {renderForm} from '../util/renderForm'
 import form from './forms/style-attribute-form.json'
-import {expect} from 'vitest'
 
 describe('Style property test', () => {
   it('Should apply style attributes', async () => {

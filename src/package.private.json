@@ -14,9 +14,11 @@
   "workspaces": [
     "packages/*",
     "packages/apps/*",
-    "packages/views/*"
+    "packages/views/*",
+    "scripts/cli-lib"
   ],
   "devDependencies": {
+    "@react-form-builder/cli-lib": "*",
     "@types/node": "^24.12.0",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",

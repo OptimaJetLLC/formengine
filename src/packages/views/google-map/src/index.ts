@@ -1,6 +1,5 @@
-import googleMapEnUsComponentsDescriptions from './i18n/en-US.json'
-
 import {googleMap} from './GoogleMap'
+import googleMapEnUsComponentsDescriptions from './i18n/en-US.json'
 
 export const googleMapComponent = googleMap
 export const googleMapModel = googleMap.build().model

@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-/* eslint-disable import/no-nodejs-modules,no-console */
-
-import {mkdirSync, readFileSync, readdirSync, writeFileSync} from 'fs'
-import {basename, extname, join, dirname} from 'path'
-import {fileURLToPath} from 'url'
+import {mkdirSync, readdirSync, readFileSync, writeFileSync} from 'node:fs'
+import {basename, dirname, extname, join} from 'node:path'
+import {fileURLToPath} from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -27,10 +25,7 @@ function parseFrontmatterAndBody(content: string): {body: string} {
 }
 
 function toAbsoluteLinks(markdown: string): string {
-  return markdown.replace(
-    /\]\((\/[^\s)]+)\)/g,
-    (_match, path: string) => `](${`https://formengine.io/documentation${path}`})`,
-  )
+  return markdown.replace(/\]\((\/[^\s)]+)\)/g, (_match, path: string) => `](${`https://formengine.io/documentation${path}`})`)
 }
 
 /**
@@ -92,8 +87,7 @@ function collapseSoftLineBreaksForGitHub(markdown: string): string {
     }
 
     const trimmedIndented = line.trimStart()
-    const isIndentedNestedListItem =
-      /^ {2,}\S/.test(line) && (/^[-*+]\s/.test(trimmedIndented) || /^\d+\.\s/.test(trimmedIndented))
+    const isIndentedNestedListItem = /^ {2,}\S/.test(line) && (/^[-*+]\s/.test(trimmedIndented) || /^\d+\.\s/.test(trimmedIndented))
     if (/^ {2,}\S/.test(line) && !isIndentedNestedListItem) {
       out[out.length - 1] = `${prev.trimEnd()} ${line.trim()}`
       continue
@@ -149,5 +143,9 @@ function main(): void {
   console.log(`Generated GitHub release notes for ${docFiles.length} versions in ${OUTPUT_DIR}.`)
 }
 
-main()
-
+try {
+  main()
+} catch (error) {
+  console.error('❌ generate-github-release-notes script failed.', error)
+  process.exitCode = 1
+}

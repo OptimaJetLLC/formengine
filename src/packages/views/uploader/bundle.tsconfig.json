@@ -6,6 +6,7 @@
   },
   "exclude": [
     "./config",
+    "./dist",
     "./vite.config.ts"
   ]
 }

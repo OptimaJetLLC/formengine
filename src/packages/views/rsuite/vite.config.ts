@@ -1,3 +1,4 @@
+import {exportsToEntries, getDirname, getFilesByMask, readPackageJson} from '@react-form-builder/cli-lib/view-pack-tools'
 import {copyFile, mkdir, readdir, readFile, writeFile} from 'node:fs/promises'
 import {join, normalize, resolve} from 'node:path'
 import postcss from 'postcss'
@@ -7,7 +8,6 @@ import {defineConfig, mergeConfig, Plugin, ResolvedConfig} from 'vite'
 import {inlineCssPlugin} from 'vite-inline-css-plugin'
 import dts from 'vite-plugin-dts'
 import base from '../../../vite.config'
-import {exportsToEntries, getDirname, getFilesByMask, readPackageJson} from './config/build-tools'
 
 const __dirname = getDirname(import.meta.url)
 

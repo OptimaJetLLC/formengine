@@ -12,10 +12,7 @@ const SRC_ROOT = join(__dirname, '..')
 
 const EXPIRY_THRESHOLD_DAYS = 30
 
-const LICENSE_FILES = [
-  'packages/apps/common-designer/src/utils/licenseKey.ts',
-  'packages/apps/example-builder/src/utils/license.ts',
-]
+const LICENSE_FILES = ['packages/apps/common-designer/src/utils/licenseKey.ts', 'packages/apps/example-builder/src/utils/license.ts']
 
 /**
  * Extracts the JSON payload from a license key string.

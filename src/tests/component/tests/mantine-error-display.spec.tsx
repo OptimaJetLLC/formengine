@@ -1,5 +1,5 @@
-import {ComponentData} from '@react-form-builder/core'
 import {view} from '@react-form-builder/components-mantine'
+import {ComponentData} from '@react-form-builder/core'
 import {renderForm} from '../util/renderForm'
 import {asyncAct} from './asyncAct'
 import form from './forms/mantine-error-display-form.json'

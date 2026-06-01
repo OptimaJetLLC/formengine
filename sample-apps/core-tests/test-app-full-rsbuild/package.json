@@ -9,7 +9,7 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
-    "@react-form-builder/core": "file:../react-form-builder-core-7.14.0.tgz",
+    "@react-form-builder/core": "file:../react-form-builder-core-9.0.0.tgz",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

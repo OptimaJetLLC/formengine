@@ -14,5 +14,9 @@ function main(): void {
   execSync(`npx lerna run --stream build --ignore @react-form-builder/docs --concurrency=${concurrency}`, {stdio: 'inherit'})
 }
 
-main()
-
+try {
+  main()
+} catch (error) {
+  console.error('❌ build-with-concurrency script failed.', error)
+  process.exitCode = 1
+}

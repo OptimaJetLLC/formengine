@@ -1,9 +1,8 @@
 import {readdirSync} from 'node:fs'
 import {copyFile, readFile, unlink, writeFile} from 'node:fs/promises'
-import path from 'path'
+import path from 'node:path'
+import {fileURLToPath} from 'node:url'
 import type {ModuleFormat} from 'rollup'
-// @ts-ignore
-import {fileURLToPath} from 'url'
 import type {Plugin, ResolvedConfig} from 'vite'
 import {defineConfig, mergeConfig} from 'vite'
 import {inlineCssPlugin} from 'vite-inline-css-plugin'

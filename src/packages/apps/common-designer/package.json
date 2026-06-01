@@ -35,5 +35,8 @@
   },
   "scripts": {
     "update-release-date": "node ./scripts/update-release-date.ts"
+  },
+  "devDependencies": {
+    "@react-form-builder/cli-lib": "*"
   }
 }

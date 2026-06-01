@@ -11,18 +11,20 @@
     "install-deps-and-run": "node ./install-deps-and-run.ts"
   },
   "dependencies": {
-    "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-7.15.0.tgz",
-    "@react-form-builder/core": "file:react-form-builder-core-7.15.0.tgz",
-    "@react-form-builder/designer": "file:react-form-builder-designer-7.15.0.tgz",
+    "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-9.0.0.tgz",
+    "@react-form-builder/core": "file:react-form-builder-core-9.0.0.tgz",
+    "@react-form-builder/designer": "file:react-form-builder-designer-9.0.0.tgz",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@react-form-builder/cli-lib": "file:../../src/scripts/cli-lib",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "esbuild": "^0.28.0",
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",

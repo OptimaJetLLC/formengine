@@ -57,6 +57,7 @@
     "scroll-into-view-if-needed": "^3.0.10"
   },
   "devDependencies": {
+    "@react-form-builder/cli-lib": "*",
     "@types/file-saver": "^2.0.5",
     "postcss": "^8.5.10",
     "vite-inline-css-plugin": "^0.0.1"

@@ -1,5 +1,5 @@
-import {signature} from './Signature'
 import signatureEnUsComponentsDescriptions from './i18n/en-US.json'
+import {signature} from './Signature'
 
 export const signatureComponent = signature
 export const signatureModel = signature.build().model

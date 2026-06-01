@@ -12,6 +12,7 @@
     "eslint-fix": "npx eslint . --fix"
   },
   "workspaces": [
+    "scripts/cli-lib",
     "packages/*",
     "packages/apps/*",
     "packages/views/*"

@@ -97,9 +97,6 @@ npm run check:circular-deps
 # Find unused exports
 npm run check:unused-exports
 
-# Find wrong imports
-npm run check:wrong-imports
-
 # Find TODO comments
 npm run todo
 ```
@@ -401,6 +398,7 @@ The project has several types of ESLint errors:
 1. **Console statements**: Remove or comment out `console.log` in production code
 2. **JSDoc comments**: Add JSDoc for all public functions
 3. **TODO comments**: Handle or remove TODO comments not marked as task number, example // TODO FE-1011
+4. **Wrong imports**: Scoped imports that reach into a package `src/` tree are disallowed (`no-restricted-imports`); use the package public API instead
 
 ### TypeScript Issues
 

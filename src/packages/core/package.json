@@ -68,6 +68,7 @@
     "react": ">=17.0.2 || ^18 || ^19"
   },
   "devDependencies": {
+    "@react-form-builder/cli-lib": "*",
     "ts-json-schema-generator": "^2.4.0",
     "vite-node": "^5.2.0"
   },

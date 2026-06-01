@@ -59,5 +59,9 @@ function updatePackages(): void {
 // If the documentation refers to packages in the mono repository, then when the documentation is assembled,
 // the product packages will be compiled using another package builder (Rspack/Webpack) that is not configured.
 // To avoid problems with packaging, packages are assembled and copied to the documentation folder in advance.
-updatePackages()
-
+try {
+  updatePackages()
+} catch (error) {
+  console.error('❌ generate-doc-bundles script failed.', error)
+  process.exitCode = 1
+}

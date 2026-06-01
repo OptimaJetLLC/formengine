@@ -1,7 +1,5 @@
-/* eslint-disable import/no-nodejs-modules,no-console */
-
-import {readFileSync, existsSync} from 'fs'
-import {join} from 'path'
+import {existsSync, readFileSync} from 'node:fs'
+import {join} from 'node:path'
 
 /**
  * Analyzes a bundle file and returns analysis results.

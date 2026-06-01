@@ -21,14 +21,14 @@ import {notRemovable} from './components/debug/NotRemovable'
 import {throwErrorComponent} from './components/ThrowErrorComponent'
 import {customization} from './customization'
 import {Designer} from './Designer'
+
+import data from './initialFormData'
 import initialPresets from './preset-components.json'
 import {generatedLicenseKey} from './utils/license'
 import {useRefWithLog} from './utils/useRefWithLog'
 
 import '@react-form-builder/core/assets/styles.css'
 import '@react-form-builder/components-rsuite/assets/styles.ltr.css'
-
-import data from './initialFormData'
 
 const presets = initialPresets.map(preset => {
   return definePreset(preset.name, preset.components as ComponentStore[]).category('Presets')

@@ -1,5 +1,5 @@
-import {FormManager} from '../components/forms-with-versions/FormManager'
 import {fireEvent, render, waitFor} from '@testing-library/react'
+import {FormManager} from '../components/forms-with-versions/FormManager'
 
 const defaultFormOptions = {formName: 'a', formVersion: 1}
 

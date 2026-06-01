@@ -35,7 +35,9 @@
     "react-is": "^18.2.0"
   },
   "devDependencies": {
-    "vite-inline-css-plugin": "^0.0.1"
+    "@react-form-builder/cli-lib": "*",
+    "vite-inline-css-plugin": "^0.0.1",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
   },
   "peerDependencies": {
     "@react-form-builder/core": "9.0.0"

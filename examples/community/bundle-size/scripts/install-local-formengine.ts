@@ -1,23 +1,12 @@
 #!/usr/bin/env node
 
-import {existsSync} from 'fs'
-import {dirname, join, resolve} from 'path'
-import {fileURLToPath} from 'url'
-import {installLocalPackage, removeFromPackageJson} from './utils.ts'
+import {packAndInstallLocalPackage, removeDependencyFromPackageJson} from '@react-form-builder/cli-lib/install-local-package'
+import {existsSync} from 'node:fs'
+import {dirname, join, resolve} from 'node:path'
+import {fileURLToPath} from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-const scriptRoot = __dirname
-
-process.on('uncaughtException', error => {
-  console.error('Uncaught exception:', error)
-  process.exit(1)
-})
-
-process.on('unhandledRejection', reason => {
-  console.error('Unhandled rejection:', reason)
-  process.exit(1)
-})
 
 function printUsage(exitCode = 0): void {
   const script = process.argv[1] ?? 'install-local-formengine.ts'
@@ -30,50 +19,59 @@ This will:
 - Remove local RFB dependencies from the target package.json
 - Pack and install local core + rsuite + material-ui + mantine packages
 `)
-  process.exit(exitCode)
+  process.exitCode = exitCode
 }
 
 /**
  * Main execution function.
  * @param targetDir target directory to run the script in
  */
-function main(targetDir: string): void {
-  const originalCwd = process.cwd()
+function run(targetDir: string): void {
+  const packagesRoot = resolve(__dirname, '../../../../src/packages')
 
-  try {
-    process.chdir(targetDir)
+  removeDependencyFromPackageJson(targetDir, '@react-form-builder/core')
+  removeDependencyFromPackageJson(targetDir, '@react-form-builder/components-rsuite')
+  removeDependencyFromPackageJson(targetDir, '@react-form-builder/components-material-ui')
+  removeDependencyFromPackageJson(targetDir, '@react-form-builder/components-mantine')
 
-    removeFromPackageJson('@react-form-builder/core')
-    removeFromPackageJson('@react-form-builder/components-rsuite')
-    removeFromPackageJson('@react-form-builder/components-material-ui')
-    removeFromPackageJson('@react-form-builder/components-mantine')
+  packAndInstallLocalPackage(targetDir, join(packagesRoot, 'core'), targetDir)
+  packAndInstallLocalPackage(targetDir, join(packagesRoot, 'views/rsuite'), targetDir)
+  packAndInstallLocalPackage(targetDir, join(packagesRoot, 'views/material-ui'), targetDir)
+  packAndInstallLocalPackage(targetDir, join(packagesRoot, 'views/mantine'), targetDir)
+}
 
-    const packagesRoot = resolve(scriptRoot, '../../../../src/packages')
-    installLocalPackage(targetDir, join(packagesRoot, 'core'))
-    installLocalPackage(targetDir, join(packagesRoot, 'views/rsuite'))
-    installLocalPackage(targetDir, join(packagesRoot, 'views/material-ui'))
-    installLocalPackage(targetDir, join(packagesRoot, 'views/mantine'))
-  } finally {
-    process.chdir(originalCwd)
+function parseArgs(): string | undefined {
+  const args = process.argv.slice(2)
+  if (args.includes('-h') || args.includes('--help')) {
+    printUsage(0)
+    return undefined
   }
+
+  const targetDirInput = args[0]
+  if (!targetDirInput) {
+    throw new Error('Missing target directory.')
+  }
+
+  const targetDir = resolve(targetDirInput)
+  if (!existsSync(targetDir)) {
+    throw new Error(`Target directory does not exist: ${targetDir}`)
+  }
+
+  return targetDir
 }
 
-const args = process.argv.slice(2)
-if (args.includes('-h') || args.includes('--help')) {
-  printUsage(0)
+function main(): void {
+  const targetDir = parseArgs()
+  if (!targetDir) {
+    return
+  }
+  run(targetDir)
 }
 
-const targetDirInput = args[0]
-if (!targetDirInput) {
-  console.error('❌ Missing target directory.')
-  printUsage(1)
+try {
+  main()
+} catch (error) {
+  console.error('install-local-formengine failed.')
+  console.error(error)
+  process.exitCode = 1
 }
-
-const targetDir = resolve(targetDirInput)
-
-if (!existsSync(targetDir)) {
-  console.error(`❌ Target directory does not exist: ${targetDir}`)
-  printUsage(1)
-}
-
-main(targetDir)

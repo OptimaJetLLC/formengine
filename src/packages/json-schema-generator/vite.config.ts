@@ -1,7 +1,6 @@
-import path from 'path'
-// @ts-ignore
+import path from 'node:path'
+import {fileURLToPath} from 'node:url'
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
-import {fileURLToPath} from 'url'
 import {defineConfig, mergeConfig} from 'vite'
 import dts from 'vite-plugin-dts'
 import base from '../../vite.config'

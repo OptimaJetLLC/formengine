@@ -1,6 +1,6 @@
-import cx from 'clsx'
 import type {FormViewerWrapperComponentProps} from '@react-form-builder/core'
 import {BiDi, useBuilderTheme} from '@react-form-builder/core'
+import cx from 'clsx'
 import {CustomProvider} from 'rsuite'
 import {
   arEG,

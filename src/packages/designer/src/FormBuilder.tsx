@@ -13,10 +13,10 @@ import {ComponentsModal} from './features/ui/ComponentBar/ComponentsModal'
 import {LeftPanel} from './features/ui/LeftPanel/LeftPanel'
 import {PromptDialog} from './features/ui/PromptDialog'
 import {RightPanel} from './features/ui/RightPanel/RightPanel'
-import type {FormBuilderProps} from './FormBuilderProps'
-import {useBuilderStore} from './utils/BuilderStoreContext'
 
 import styles from './FormBuilder.module.css'
+import type {FormBuilderProps} from './FormBuilderProps'
+import {useBuilderStore} from './utils/BuilderStoreContext'
 
 const GlobalHotkeys = ({children}: { children: ReactNode }) => {
   const handleKeyDown = useHotkeys()

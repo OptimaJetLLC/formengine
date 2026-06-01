@@ -2040,7 +2040,7 @@
                 "children": {
                   "type": "object",
                   "$ref": "#/definitions/undefinedPropertyCalculable",
-                  "description": "Component children"
+                  "description": "Child elements of the component"
                 },
                 "closable": {
                   "type": "object",
@@ -2484,7 +2484,7 @@
                 "children": {
                   "type": "object",
                   "$ref": "#/definitions/undefinedPropertyCalculable",
-                  "description": "Component children"
+                  "description": "Child elements of the component"
                 },
                 "target": {
                   "type": "object",
@@ -2709,7 +2709,7 @@
                 "children": {
                   "type": "object",
                   "$ref": "#/definitions/undefinedPropertyCalculable",
-                  "description": "Component children"
+                  "description": "Child elements of the component"
                 },
                 "disabled": {
                   "type": "object",
@@ -2841,7 +2841,7 @@
                 "children": {
                   "type": "object",
                   "$ref": "#/definitions/undefinedPropertyCalculable",
-                  "description": "The wizard children"
+                  "description": "Wizard step content"
                 },
                 "prevButtonLabel": {
                   "type": "object",
@@ -2922,7 +2922,7 @@
                 "children": {
                   "type": "object",
                   "$ref": "#/definitions/undefinedPropertyCalculable",
-                  "description": "Component children"
+                  "description": "Child elements of the component"
                 },
                 "additionalProperties": false
               }

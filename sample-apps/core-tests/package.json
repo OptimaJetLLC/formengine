@@ -17,7 +17,7 @@
     "install-deps-and-run": "node ./install-deps-and-run.ts"
   },
   "dependencies": {
-    "@react-form-builder/core": "file:react-form-builder-core-7.14.0.tgz",
+    "@react-form-builder/core": "file:react-form-builder-core-9.0.0.tgz",
     "@types/node": "^24.10.1",
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.8",
@@ -28,6 +28,7 @@
     "vite-bundle-analyzer": "^1.2.3"
   },
   "devDependencies": {
+    "@react-form-builder/cli-lib": "file:../../src/scripts/cli-lib",
     "terser": "^5.46.0"
   }
 }

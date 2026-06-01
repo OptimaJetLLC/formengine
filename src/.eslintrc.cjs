@@ -72,6 +72,17 @@ module.exports = {
     'import/consistent-type-specifier-style': 'error',
     'import/first': 'error',
     'import/newline-after-import': 'error',
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [
+          {
+            group: ['@*/**/src/**'],
+            message: 'Do not import from package internal src paths; use the package public API.',
+          },
+        ],
+      },
+    ],
     '@typescript-eslint/no-import-type-side-effects': 'error',
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/no-confusing-non-null-assertion': 'error',
@@ -127,7 +138,21 @@ module.exports = {
         'jsdoc/require-jsdoc': 'off',
         'import/no-extraneous-dependencies': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/require-await': 'off',
         'no-inner-declarations': 'off',
+      },
+    },
+    {
+      files: [
+        'scripts/*.ts',
+        'scripts/**/*.ts',
+        'documentation/website/scripts/*.ts',
+        'documentation/website/scripts/**/*.ts',
+      ],
+      rules: {
+        '@typescript-eslint/require-await': 'off',
+        'no-console': 'off',
+        'import/no-nodejs-modules': 'off'
       },
     },
   ],

@@ -28,15 +28,20 @@ const fixFile = async (filePath: string) => {
   console.info(`File '${filePath}' patched`)
 }
 
-const main = async () => {
+async function main(): Promise<void> {
   const outputPath = resolve(__dirname, '..', 'build')
   const targetFiles = ['llms.txt', 'llms-full.txt']
 
-  for (let targetFile of targetFiles) {
+  for (const targetFile of targetFiles) {
     const filePath = resolve(outputPath, targetFile)
     await fixFile(filePath)
   }
 }
 
 // fixes bug in @signalwire/docusaurus-plugin-llms-txt
-main().catch(console.error)
+try {
+  await main()
+} catch (error) {
+  console.error('❌ fix-llms-links script failed.', error)
+  process.exitCode = 1
+}

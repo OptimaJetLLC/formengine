@@ -5,10 +5,10 @@ import {ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
 import {EditButton, RemoveButton} from '../../../../../components/Buttons'
 import {Columns} from '../../../../../components/Containers'
-import {ArgumentList} from './components/ArgumentList/ArgumentList'
-import {ActionDataProvider} from './contexts/ActionDataContext'
 
 import styles from './ActionItem.module.css'
+import {ArgumentList} from './components/ArgumentList/ArgumentList'
+import {ActionDataProvider} from './contexts/ActionDataContext'
 
 interface ActionItemProps {
   action: ActionData

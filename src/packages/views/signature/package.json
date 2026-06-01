@@ -39,6 +39,7 @@
     }
   },
   "devDependencies": {
+    "@react-form-builder/cli-lib": "*",
     "@react-form-builder/json-schema-generator": "^9.0.0",
     "vite-node": "^5.2.0"
   },
