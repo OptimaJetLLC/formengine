@@ -9,8 +9,8 @@
     "start:viewer": "vite --port=15001 -c viewer.vite.config.ts",
     "start:designer": "vite --port=15002 -c designer.vite.config.ts",
     "clean": "rimraf dist",
-    "test": "dotenv -v NODE_OPTIONS=\"--loader ./import.js -r ./require.cjs\" vitest run",
-    "test:debug": "dotenv -v NODE_OPTIONS=\"--loader ./import.js -r ./require.cjs\" vitest run -- --test-timeout=0 --no-file-parallelism --inspect-brk",
+    "test": "dotenv -v NODE_OPTIONS=\"--import ./import.js -r ./require.cjs\" vitest run",
+    "test:debug": "dotenv -v NODE_OPTIONS=\"--import ./import.js -r ./require.cjs\" vitest run -- --test-timeout=0 --no-file-parallelism --inspect-brk",
     "test:component": "npm run test"
   },
   "dependencies": {

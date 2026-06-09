@@ -1,8 +1,8 @@
 import {BuilderView, define, type RuleValidator, string} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
+import {asyncAct} from '../../common/lib/asyncAct'
 import {getPropertyInput} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'
-import {asyncAct} from './asyncAct'
 
 const TestComponent = define(() => <div data-testid="test-component"/>, 'TestComponent')
   .props({

@@ -3,7 +3,7 @@ import {createView, define, ErrorWrapperProps, FormViewer, FormViewerProps} from
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {useState} from 'react'
 import {expect} from 'vitest'
-import {asyncAct} from './asyncAct'
+import {asyncAct} from '../../common/lib/asyncAct'
 import sameDataKeyForm from './forms/form-errors-prop/same-data-key-form.json'
 import template from './forms/form-errors-prop/template.json'
 import testForm from './forms/form-errors-prop/test-form.json'

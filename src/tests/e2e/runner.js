@@ -30,9 +30,12 @@ const reactVersions = {
   'react-19': '19.0.0',
 }
 
-console.info('Starting projects test...')
-
 const ENV = JSON.parse(JSON.stringify(process.env))
+const isCI = !!ENV.CI
+
+if (!isCI) {
+  console.info('Starting projects test...')
+}
 
 let withError = false
 
@@ -41,19 +44,20 @@ const debug = ENV['DEBUG_TPL']
 for (const tpl of config.templates) {
   if (debug && tpl !== debug) continue
 
-  console.log(tpl)
-
-  console.info(`Starting with project: ${tpl}`)
+  if (!isCI) {
+    console.log(tpl)
+    console.info(`Starting with project: ${tpl}`)
+  }
 
   for (const {name, port, command} of config.projects) {
     const path = resolve(join(__dirname, '..', tpl))
-    const args = ['--verbose', 'playwright', 'test']
+    const args = isCI ? ['playwright', 'test'] : ['--verbose', 'playwright', 'test']
 
     if (debug) {
       args.push('--ui')
     }
 
-    console.info({path, name, command})
+    console.info(isCI ? `Running e2e: ${tpl} / ${name}` : {path, name, command})
 
     const result = spawn.sync('npx', args, {
       cwd: __dirname,

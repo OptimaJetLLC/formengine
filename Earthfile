@@ -35,6 +35,7 @@ npm-documentation-build:
 # npm-test performs tests
 npm-test:
   FROM +sources
+  ENV CI=true
   TRY
     RUN npm run test:module
   FINALLY

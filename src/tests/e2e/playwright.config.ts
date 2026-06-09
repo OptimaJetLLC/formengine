@@ -8,9 +8,12 @@ const __dirname = dirname(__filename)
 const workspaceRoot = resolve(__dirname, '../..')
 
 chdir(workspaceRoot)
-console.log(`Running playwright... from ${workspaceRoot}`)
 
 const env = JSON.parse(JSON.stringify(process.env))
+
+if (!env.CI) {
+  console.log(`Running playwright... from ${workspaceRoot}`)
+}
 
 const port = env['TEST_PORT'] ?? '15002'
 const baseURL = env['TEST_BASE_URL'] ?? `http://localhost:${port}`
@@ -44,13 +47,13 @@ export default defineConfig({
   retries: env.CI ? 2 : 0,
   workers: env.CI ? 2 : undefined,
   reporter: [
+    env.CI ? ['dot'] : ['list'],
     ['html', {
       open: 'never',
       outputFolder: `${reportsDir}/report-html`
       // attachmentsBaseURL: 'https://external-storage.com/' }
     }],
     ['blob', {outputFile: `${blobReportsDir}/report-${testName}.zip`}],
-    ['list'],
     ['monocart-reporter', {
       name: testName,
       outputFile: `${reportsDir}/monocart/index.html`

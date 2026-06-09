@@ -1,6 +1,6 @@
 import {waitFor} from '@testing-library/react'
+import {asyncAct} from '../../common/lib/asyncAct'
 import {renderBuilder} from '../util/renderBuilder'
-import {asyncAct} from './asyncAct'
 
 const form = {
   form: {

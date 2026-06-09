@@ -1,6 +1,6 @@
 import {fireEvent} from '@testing-library/react'
+import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderForm'
-import {asyncAct} from './asyncAct'
 import withRepeater from './forms/conditional-validation/repeater.json'
 import form from './forms/conditional-validation/simple.json'
 

@@ -1,8 +1,8 @@
 import {viewWithCss} from '@react-form-builder/components-rsuite'
 import {array, boolean, date, define, object, SchemaType, string, ValidationRuleSettings} from '@react-form-builder/core'
 import {expect} from 'vitest'
+import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderForm'
-import {asyncAct} from './asyncAct'
 
 const FakeArrayComponent = (props: any) => {
   const {value, ...rest} = props

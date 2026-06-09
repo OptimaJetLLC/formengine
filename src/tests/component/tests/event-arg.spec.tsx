@@ -5,7 +5,8 @@ import {testLicense} from '@react-form-builder/tests-common/license/vaild'
 import {cleanup, fireEvent, render, RenderResult, waitFor, within} from '@testing-library/react'
 import {useCallback, useEffect, useState} from 'react'
 import {MockInstance} from 'vitest'
-import {asyncAct} from './asyncAct'
+import {asyncAct} from '../../common/lib/asyncAct'
+import {clickRun} from '../../common/lib/designer/clickRun'
 import form from './forms/event-arg.form.json'
 
 const view = new BuilderView(allComponentsBuilder)
@@ -109,20 +110,21 @@ const App = ({throwAssert, getForm}: { throwAssert: boolean, getForm?: (_?: stri
 }
 
 const switchTab = async (app: RenderResult, tabName: string) => {
-  const {findByTestId} = app
-  const tab = await findByTestId(tabName)
+  const tab = await app.findByTestId(tabName)
 
   expect(tab).toBeInTheDocument()
 
-  fireEvent.click(tab)
+  await asyncAct(async () => {
+    fireEvent.click(tab)
+  })
 }
 
 const selectComponent = async (app: RenderResult, testId: string) => {
-  const {findByTestId} = app
+  const component = await app.findByTestId(testId)
 
-  const component = await findByTestId(testId)
-
-  fireEvent.click(component)
+  await asyncAct(async () => {
+    fireEvent.click(component)
+  })
 }
 
 function getRightPanel({container}: RenderResult) {
@@ -142,7 +144,9 @@ const toggleArguments = async (app: RenderResult, argName: string) => {
   const block = label?.parentNode?.parentNode as HTMLElement
   const button = await within(block).findByText('Arguments')
 
-  fireEvent.click(button)
+  await asyncAct(async () => {
+    fireEvent.click(button)
+  })
 }
 
 const matchAllArguments = async (app: RenderResult, argName: string, values: Array<{
@@ -184,30 +188,34 @@ const togglePreview = async (app: RenderResult) => {
   const header = container.querySelector('.FE_Header:not(.FE_Palette_Component)') as HTMLElement
   const button = await within(header).findByText('Preview')
 
-  fireEvent.click(button)
+  await asyncAct(async () => {
+    fireEvent.click(button)
+  })
 }
 
 const clickButton = async (app: RenderResult) => {
-  await asyncAct(async () => {
-    const {container} = app
-    const form = container.querySelector('.FE_FormContainer') as HTMLElement
-    const button = await within(form).findByText('Button')
+  const {container} = app
+  const form = container.querySelector('.FE_FormContainer') as HTMLElement
+  const button = await within(form).findByText('Button')
 
+  await asyncAct(async () => {
     fireEvent.click(button)
   })
 }
 
 const openCodeEditor = async (app: RenderResult, argName: string, functionArgumentName?: string) => {
-  await asyncAct(async () => {
-    const block = await getActionBlock(app, argName)
-    if (functionArgumentName) {
-      const functionArgumentLabel = await within(block).findByText(functionArgumentName)
-      const functionArgumentBlock = functionArgumentLabel.parentNode as HTMLElement
-      const button = await within(functionArgumentBlock).findByText('Edit code')
+  const block = await getActionBlock(app, argName)
+  if (functionArgumentName) {
+    const functionArgumentLabel = await within(block).findByText(functionArgumentName)
+    const functionArgumentBlock = functionArgumentLabel.parentNode as HTMLElement
+    const button = await within(functionArgumentBlock).findByText('Edit code')
+    await asyncAct(async () => {
       fireEvent.click(button)
-      return
-    }
-    const button = within(block.children[1] as HTMLElement).getAllByText('Edit code')
+    })
+    return
+  }
+  const button = within(block.children[1] as HTMLElement).getAllByText('Edit code')
+  await asyncAct(async () => {
     fireEvent.click(button[0])
   })
 }
@@ -350,12 +358,12 @@ describe('Event args UI should display and pass arguments', () => {
 
   it('should show function argument execution result in test output', async () => {
     await openCodeEditor(app, 'funcArgs', 'fnArg')
+    await app.findByText('Edit code action: rsButton1.onClick[0] funcArgs:fnArg')
 
-    const runButton = await app.findByText('Run')
-    fireEvent.click(runButton)
-    const result = app.getByTestId('test-result')
+    await clickRun(app)
 
-    await waitFor(() => {
+    await waitFor(async () => {
+      const result = await app.findByTestId('test-result')
       expect(result).not.toHaveTextContent('Unexpected')
       expect(result).not.toHaveTextContent('Has not returned value')
     })
@@ -367,8 +375,7 @@ describe('Event args UI should display and pass arguments', () => {
     await toggleArguments(app, 'funcArgs')
     await openCodeEditor(app, 'funcArgs', 'fnArg')
 
-    const runButton = await app.findByText('Run')
-    fireEvent.click(runButton)
+    await clickRun(app)
 
     const result = await app.findByTestId('test-result')
     expect(result).toHaveTextContent('Unexpected')

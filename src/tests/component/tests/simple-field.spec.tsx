@@ -16,8 +16,8 @@ import {
 import {fireEvent, render} from '@testing-library/react'
 import {useEffect, useState} from 'react'
 import {expect} from 'vitest'
+import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderForm'
-import {asyncAct} from './asyncAct'
 
 function randomString(prefix?: string) {
   return `${prefix ?? ''}${new Date().toISOString()}`

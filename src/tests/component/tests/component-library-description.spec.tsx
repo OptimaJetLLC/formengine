@@ -1,7 +1,7 @@
 import {BuilderView, type ComponentLibraryDescription, define, type LanguageFullCode, string} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
+import {asyncAct} from '../../common/lib/asyncAct'
 import {renderBuilder} from '../util/renderBuilder'
-import {asyncAct} from './asyncAct'
 import {switchLanguage} from './designerUtils'
 import form from './forms/component-library-description-form.json'
 

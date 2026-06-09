@@ -1,5 +1,5 @@
+import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderForm'
-import {asyncAct} from './asyncAct'
 import form from './forms/rs-date-picker-form.json'
 
 describe('RsDatePicker test', () => {

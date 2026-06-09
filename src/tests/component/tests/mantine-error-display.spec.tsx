@@ -1,7 +1,7 @@
 import {view} from '@react-form-builder/components-mantine'
 import {ComponentData} from '@react-form-builder/core'
+import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderForm'
-import {asyncAct} from './asyncAct'
 import form from './forms/mantine-error-display-form.json'
 
 const findFieldByDataKey = (formData: ComponentData, dataKey: string) =>

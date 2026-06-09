@@ -1,5 +1,5 @@
+import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderForm'
-import {asyncAct} from './asyncAct'
 import form from './forms/aria-attributes.json'
 
 // RsToggle and RsCheckbox is excluded because it has this functionality implemented by RSuite with different structure.
@@ -30,7 +30,7 @@ describe('All valued components', () => {
       const field = container.querySelector(`*[id=${fieldId}]`)
 
       try {
-        expect(field).not.toBeNull();
+        expect(field).not.toBeNull()
         expect(field?.getAttribute('aria-labelledby')).toEqual(label.getAttribute('id'))
       } catch (e) {
         console.error(`Failed for: ${key}`)

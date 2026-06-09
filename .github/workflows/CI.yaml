@@ -85,7 +85,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Tests
-        run: earthly +npm-test
+        run: earthly --ci +npm-test
 
   #      - name: Upload test results
   #        uses: actions/upload-artifact@v4

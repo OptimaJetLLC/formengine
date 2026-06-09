@@ -1,7 +1,7 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {ActionData, FormViewer, FormViewerProps, PersistedForm} from '@react-form-builder/core'
 import {fireEvent, render, waitFor} from '@testing-library/react'
-import {asyncAct} from './asyncAct'
+import {asyncAct} from '../../common/lib/asyncAct'
 
 function createForm(failOnError: boolean): PersistedForm {
   const persistedForm = {

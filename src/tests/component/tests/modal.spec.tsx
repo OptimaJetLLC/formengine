@@ -5,6 +5,7 @@ import {FormViewer} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor, within} from '@testing-library/react'
 import enUS from '../../../packages/designer/public/locales/en-US.json'
+import {clickRun} from '../../common/lib/designer/clickRun'
 import {addCustomEventHandler, getInputElement, togglePreview} from '../util/controls'
 
 type ModalLibraryName = 'rsuite' | 'mantine' | 'material-ui'
@@ -616,7 +617,7 @@ describe('Modal tests', () => {
     const getForm = makeGetForm(name, buildBeforeHideDataShowModalForm)
 
     const renderResult = render(<FormBuilder view={builderView} getForm={getForm}/>)
-    const {container, findByTestId, findByText} = renderResult
+    const {container, findByTestId} = renderResult
 
     fireEvent.click(await findByTestId('Tree_Tab'))
     const showModalButtons = await renderResult.findAllByTestId('showModalButton')
@@ -635,8 +636,7 @@ describe('Modal tests', () => {
     const editCodeButton = await within(beforeHideBlock).findByText('Edit code')
     fireEvent.click(editCodeButton)
 
-    const runButton = await findByText('Run')
-    fireEvent.click(runButton)
+    await clickRun(renderResult)
 
     const result = await findByTestId('test-result')
     await waitFor(() => expect(result).toHaveTextContent(compilationOkText))

@@ -10,6 +10,8 @@ import {configDefaults} from 'vitest/config'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+const isCI = !!(process.env.CI || process.env.GITHUB_ACTIONS || process.env.EARTHLY_CI)
+
 const plugins: PluginOption = [
   react(),
   svgr({
@@ -51,8 +53,13 @@ export default defineConfig(() => ({
       ...configDefaults.exclude,
       'examples/**',
     ],
+    silent: isCI ? 'passed-only' : false,
+    reporters: isCI ? ['dot', 'junit'] : ['default', 'junit'],
+    outputFile: {
+      junit: './reports/junit-report.xml',
+    },
     onConsoleLog(log: string, type: 'stdout' | 'stderr'): boolean | void {
-      if (type === 'stderr') {
+      if (!isCI && type === 'stderr') {
         // additionally, write to console.error to make the tests crash
         console.error(log)
       }
