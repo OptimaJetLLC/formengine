@@ -4,7 +4,7 @@ Props for the RsDatePicker component.
 
 ## Extends
 
-- `DatePickerProps`
+- `Omit`\<`DatePickerProps`, `"inline"`\>
 
 ## Properties
 
@@ -16,7 +16,7 @@ A picker can have different appearances.
 
 #### Inherited from
 
-`DatePickerProps.appearance`
+`Omit.appearance`
 
 ***
 
@@ -28,7 +28,7 @@ You can use a custom element for this component
 
 #### Inherited from
 
-`DatePickerProps.as`
+`Omit.as`
 
 ***
 
@@ -40,7 +40,7 @@ Format picker to appear inside a content block
 
 #### Inherited from
 
-`DatePickerProps.block`
+`Omit.block`
 
 ***
 
@@ -52,7 +52,7 @@ Calendar panel default presentation date and time
 
 #### Inherited from
 
-`DatePickerProps.calendarDefaultDate`
+`Omit.calendarDefaultDate`
 
 ***
 
@@ -64,7 +64,7 @@ Custom caret component
 
 #### Inherited from
 
-`DatePickerProps.caretAs`
+`Omit.caretAs`
 
 ***
 
@@ -76,7 +76,7 @@ Primary content
 
 #### Inherited from
 
-`DatePickerProps.children`
+`Omit.children`
 
 ***
 
@@ -88,7 +88,7 @@ Additional classes
 
 #### Inherited from
 
-`DatePickerProps.className`
+`Omit.className`
 
 ***
 
@@ -100,7 +100,7 @@ The prefix of the component CSS class
 
 #### Inherited from
 
-`DatePickerProps.classPrefix`
+`Omit.classPrefix`
 
 ***
 
@@ -112,7 +112,7 @@ A picker that can clear values
 
 #### Inherited from
 
-`DatePickerProps.cleanable`
+`Omit.cleanable`
 
 ***
 
@@ -124,7 +124,7 @@ Sets the rendering container
 
 #### Inherited from
 
-`DatePickerProps.container`
+`Omit.container`
 
 ***
 
@@ -136,7 +136,7 @@ Set the padding of the container.
 
 #### Inherited from
 
-`DatePickerProps.containerPadding`
+`Omit.containerPadding`
 
 ***
 
@@ -148,7 +148,7 @@ Initial open menu
 
 #### Inherited from
 
-`DatePickerProps.defaultOpen`
+`Omit.defaultOpen`
 
 ***
 
@@ -160,7 +160,7 @@ Initial value
 
 #### Inherited from
 
-`DatePickerProps.defaultValue`
+`Omit.defaultValue`
 
 ***
 
@@ -172,7 +172,7 @@ Whether disabled the component
 
 #### Inherited from
 
-`DatePickerProps.disabled`
+`Omit.disabled`
 
 ***
 
@@ -200,7 +200,7 @@ Use [shouldDisableDate](#shoulddisabledate) instead
 
 #### Inherited from
 
-`DatePickerProps.disabledDate`
+`Omit.disabledDate`
 
 ***
 
@@ -230,7 +230,7 @@ Use [shouldDisableHour](#shoulddisablehour) instead
 
 #### Inherited from
 
-`DatePickerProps.disabledHours`
+`Omit.disabledHours`
 
 ***
 
@@ -260,7 +260,7 @@ Use [shouldDisableMinute](#shoulddisableminute) instead
 
 #### Inherited from
 
-`DatePickerProps.disabledMinutes`
+`Omit.disabledMinutes`
 
 ***
 
@@ -290,7 +290,7 @@ Use [shouldDisableSecond](#shoulddisablesecond) instead
 
 #### Inherited from
 
-`DatePickerProps.disabledSeconds`
+`Omit.disabledSeconds`
 
 ***
 
@@ -302,7 +302,7 @@ Rendered as an input, the date can be entered via the keyboard
 
 #### Inherited from
 
-`DatePickerProps.editable`
+`Omit.editable`
 
 ***
 
@@ -314,7 +314,7 @@ Format date string
 
 #### Inherited from
 
-`DatePickerProps.format`
+`Omit.format`
 
 ***
 
@@ -340,7 +340,7 @@ Hide specific hour options
 
 #### Inherited from
 
-`DatePickerProps.hideHours`
+`Omit.hideHours`
 
 ***
 
@@ -366,7 +366,7 @@ Hide specific minute options
 
 #### Inherited from
 
-`DatePickerProps.hideMinutes`
+`Omit.hideMinutes`
 
 ***
 
@@ -392,7 +392,7 @@ Hide specific second options
 
 #### Inherited from
 
-`DatePickerProps.hideSeconds`
+`Omit.hideSeconds`
 
 ***
 
@@ -402,19 +402,7 @@ Hide specific second options
 
 #### Inherited from
 
-`DatePickerProps.id`
-
-***
-
-### ~~inline?~~
-
-> `optional` **inline**: `boolean`
-
-#### Deprecated
-
-#### Overrides
-
-`DatePickerProps.inline`
+`Omit.id`
 
 ***
 
@@ -430,7 +418,7 @@ https://en.wikipedia.org/wiki/ISO_week_date
 
 #### Inherited from
 
-`DatePickerProps.isoWeek`
+`Omit.isoWeek`
 
 ***
 
@@ -442,7 +430,7 @@ Label for the date picker.
 
 #### Overrides
 
-`DatePickerProps.label`
+`Omit.label`
 
 ***
 
@@ -454,7 +442,7 @@ Set the upper limit of the available year relative to the current selection date
 
 #### Inherited from
 
-`DatePickerProps.limitEndYear`
+`Omit.limitEndYear`
 
 ***
 
@@ -466,7 +454,7 @@ Set the lower limit of the available year relative to the current selection date
 
 #### Inherited from
 
-`DatePickerProps.limitStartYear`
+`Omit.limitStartYear`
 
 ***
 
@@ -478,7 +466,7 @@ Whether to display a loading state indicator
 
 #### Inherited from
 
-`DatePickerProps.loading`
+`Omit.loading`
 
 ***
 
@@ -490,7 +478,7 @@ Custom locale
 
 #### Inherited from
 
-`DatePickerProps.locale`
+`Omit.locale`
 
 ***
 
@@ -502,7 +490,7 @@ Picker menu auto width
 
 #### Inherited from
 
-`DatePickerProps.menuAutoWidth`
+`Omit.menuAutoWidth`
 
 ***
 
@@ -514,7 +502,7 @@ A CSS class to apply to the Menu DOM node.
 
 #### Inherited from
 
-`DatePickerProps.menuClassName`
+`Omit.menuClassName`
 
 ***
 
@@ -526,7 +514,7 @@ Picker menu max Height
 
 #### Inherited from
 
-`DatePickerProps.menuMaxHeight`
+`Omit.menuMaxHeight`
 
 ***
 
@@ -538,7 +526,7 @@ A style to apply to the Menu DOM node.
 
 #### Inherited from
 
-`DatePickerProps.menuStyle`
+`Omit.menuStyle`
 
 ***
 
@@ -550,7 +538,7 @@ The props for the Month Dropdown component.
 
 #### Inherited from
 
-`DatePickerProps.monthDropdownProps`
+`Omit.monthDropdownProps`
 
 ***
 
@@ -562,7 +550,7 @@ Name of the form field
 
 #### Inherited from
 
-`DatePickerProps.name`
+`Omit.name`
 
 ***
 
@@ -574,7 +562,7 @@ Called when the component is blurred.
 
 #### Inherited from
 
-`DatePickerProps.onBlur`
+`Omit.onBlur`
 
 ***
 
@@ -598,7 +586,7 @@ the value.
 
 #### Overrides
 
-`DatePickerProps.onChange`
+`Omit.onChange`
 
 ***
 
@@ -624,7 +612,7 @@ Called when the calendar panel date changes
 
 #### Inherited from
 
-`DatePickerProps.onChangeCalendarDate`
+`Omit.onChangeCalendarDate`
 
 ***
 
@@ -646,7 +634,7 @@ Called when clean
 
 #### Inherited from
 
-`DatePickerProps.onClean`
+`Omit.onClean`
 
 ***
 
@@ -662,7 +650,7 @@ Called when Modal is closed
 
 #### Inherited from
 
-`DatePickerProps.onClose`
+`Omit.onClose`
 
 ***
 
@@ -684,7 +672,7 @@ Callback fired before the Modal transitions in
 
 #### Inherited from
 
-`DatePickerProps.onEnter`
+`Omit.onEnter`
 
 ***
 
@@ -706,7 +694,7 @@ Callback fired after the Modal finishes transitioning in
 
 #### Inherited from
 
-`DatePickerProps.onEntered`
+`Omit.onEntered`
 
 ***
 
@@ -728,7 +716,7 @@ Callback fired as the Modal begins to transition in
 
 #### Inherited from
 
-`DatePickerProps.onEntering`
+`Omit.onEntering`
 
 ***
 
@@ -740,7 +728,7 @@ One-click selection date
 
 #### Inherited from
 
-`DatePickerProps.oneTap`
+`Omit.oneTap`
 
 ***
 
@@ -762,7 +750,7 @@ Callback fired right before the Modal transitions out
 
 #### Inherited from
 
-`DatePickerProps.onExit`
+`Omit.onExit`
 
 ***
 
@@ -784,7 +772,7 @@ Callback fired after the Modal finishes transitioning out
 
 #### Inherited from
 
-`DatePickerProps.onExited`
+`Omit.onExited`
 
 ***
 
@@ -806,7 +794,7 @@ Callback fired as the Modal begins to transition out
 
 #### Inherited from
 
-`DatePickerProps.onExiting`
+`Omit.onExiting`
 
 ***
 
@@ -818,7 +806,7 @@ Called when the component is focused.
 
 #### Inherited from
 
-`DatePickerProps.onFocus`
+`Omit.onFocus`
 
 ***
 
@@ -840,7 +828,7 @@ Called after the next month
 
 #### Inherited from
 
-`DatePickerProps.onNextMonth`
+`Omit.onNextMonth`
 
 ***
 
@@ -866,7 +854,7 @@ Called after clicking the OK button
 
 #### Inherited from
 
-`DatePickerProps.onOk`
+`Omit.onOk`
 
 ***
 
@@ -882,7 +870,7 @@ Called when Modal is displayed
 
 #### Inherited from
 
-`DatePickerProps.onOpen`
+`Omit.onOpen`
 
 ***
 
@@ -904,7 +892,7 @@ Called after the prev month
 
 #### Inherited from
 
-`DatePickerProps.onPrevMonth`
+`Omit.onPrevMonth`
 
 ***
 
@@ -930,7 +918,7 @@ Called when the option is selected
 
 #### Inherited from
 
-`DatePickerProps.onSelect`
+`Omit.onSelect`
 
 ***
 
@@ -956,7 +944,7 @@ Called after clicking the shortcut button
 
 #### Inherited from
 
-`DatePickerProps.onShortcutClick`
+`Omit.onShortcutClick`
 
 ***
 
@@ -978,7 +966,7 @@ Called when opening the month view
 
 #### Inherited from
 
-`DatePickerProps.onToggleMonthDropdown`
+`Omit.onToggleMonthDropdown`
 
 ***
 
@@ -1000,7 +988,7 @@ Called when opening the time view
 
 #### Inherited from
 
-`DatePickerProps.onToggleTimeDropdown`
+`Omit.onToggleTimeDropdown`
 
 ***
 
@@ -1012,7 +1000,7 @@ Open the menu and control it
 
 #### Inherited from
 
-`DatePickerProps.open`
+`Omit.open`
 
 ***
 
@@ -1024,7 +1012,7 @@ Placeholder text
 
 #### Inherited from
 
-`DatePickerProps.placeholder`
+`Omit.placeholder`
 
 ***
 
@@ -1036,7 +1024,7 @@ The placement of picker
 
 #### Inherited from
 
-`DatePickerProps.placement`
+`Omit.placement`
 
 ***
 
@@ -1048,7 +1036,7 @@ Whether plaintext the component
 
 #### Inherited from
 
-`DatePickerProps.plaintext`
+`Omit.plaintext`
 
 ***
 
@@ -1060,7 +1048,7 @@ Prevent floating element overflow
 
 #### Inherited from
 
-`DatePickerProps.preventOverflow`
+`Omit.preventOverflow`
 
 ***
 
@@ -1072,7 +1060,7 @@ Predefined date Ranges
 
 #### Inherited from
 
-`DatePickerProps.ranges`
+`Omit.ranges`
 
 ***
 
@@ -1084,7 +1072,7 @@ Whether read only the component
 
 #### Inherited from
 
-`DatePickerProps.readOnly`
+`Omit.readOnly`
 
 ***
 
@@ -1110,7 +1098,7 @@ Custom rendering calendar cell content.
 
 #### Inherited from
 
-`DatePickerProps.renderCell`
+`Omit.renderCell`
 
 ***
 
@@ -1126,7 +1114,7 @@ Custom render extra footer
 
 #### Inherited from
 
-`DatePickerProps.renderExtraFooter`
+`Omit.renderExtraFooter`
 
 ***
 
@@ -1152,7 +1140,7 @@ Custom rendering of the selected date.
 
 #### Inherited from
 
-`DatePickerProps.renderValue`
+`Omit.renderValue`
 
 ***
 
@@ -1176,7 +1164,7 @@ date should be disabled (not selectable)
 
 #### Inherited from
 
-`DatePickerProps.shouldDisableDate`
+`Omit.shouldDisableDate`
 
 ***
 
@@ -1202,7 +1190,7 @@ Disabled hours on the time view
 
 #### Inherited from
 
-`DatePickerProps.shouldDisableHour`
+`Omit.shouldDisableHour`
 
 ***
 
@@ -1228,7 +1216,7 @@ Disabled minutes on the time view
 
 #### Inherited from
 
-`DatePickerProps.shouldDisableMinute`
+`Omit.shouldDisableMinute`
 
 ***
 
@@ -1254,7 +1242,7 @@ Disabled seconds on the time view
 
 #### Inherited from
 
-`DatePickerProps.shouldDisableSecond`
+`Omit.shouldDisableSecond`
 
 ***
 
@@ -1268,7 +1256,7 @@ Use `showMeridiem` instead
 
 #### Inherited from
 
-`DatePickerProps.showMeridian`
+`Omit.showMeridian`
 
 ***
 
@@ -1280,7 +1268,7 @@ Meridiem format for 12-hour time
 
 #### Inherited from
 
-`DatePickerProps.showMeridiem`
+`Omit.showMeridiem`
 
 ***
 
@@ -1292,7 +1280,7 @@ Whether to show week numbers
 
 #### Inherited from
 
-`DatePickerProps.showWeekNumbers`
+`Omit.showWeekNumbers`
 
 ***
 
@@ -1304,7 +1292,7 @@ A picker can have different sizes
 
 #### Inherited from
 
-`DatePickerProps.size`
+`Omit.size`
 
 ***
 
@@ -1316,7 +1304,7 @@ Additional style
 
 #### Inherited from
 
-`DatePickerProps.style`
+`Omit.style`
 
 ***
 
@@ -1328,7 +1316,7 @@ You can use a custom element for this component
 
 #### Inherited from
 
-`DatePickerProps.toggleAs`
+`Omit.toggleAs`
 
 ***
 
@@ -1340,7 +1328,7 @@ Current value of the component. Creates a controlled component
 
 #### Inherited from
 
-`DatePickerProps.value`
+`Omit.value`
 
 ***
 
@@ -1359,4 +1347,4 @@ If `isoWeek` is `true`, the value of `weekStart` is ignored.
 
 #### Inherited from
 
-`DatePickerProps.weekStart`
+`Omit.weekStart`

@@ -487,47 +487,6 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     expected: {}
   }],
 
-  finite: [{
-    name: 'empty data',
-    componentType: 'RsNumberFormat',
-    validation: {key: 'finite'},
-    expected: {zodInput: 'Required'}
-  }, {
-    name: 'filled with Number.POSITIVE_INFINITY',
-    initialData: {zodInput: Number.POSITIVE_INFINITY},
-    // the input value will be "-"
-    skipInputValueCheck: true,
-    // the data value will {zodInput: undefined},
-    skipDataCheck: true,
-    componentType: 'RsNumberFormat',
-    validation: {key: 'finite'},
-    expected: {zodInput: 'Invalid number: must be finite'}
-  }, {
-    name: 'filled with Number.NEGATIVE_INFINITY',
-    initialData: {zodInput: Number.NEGATIVE_INFINITY},
-    // the input value will be "-"
-    skipInputValueCheck: true,
-    // the data value will {zodInput: undefined},
-    skipDataCheck: true,
-    componentType: 'RsNumberFormat',
-    validation: {key: 'finite'},
-    expected: {zodInput: 'Invalid number: must be finite'}
-  }, {
-    name: 'filled with Number.NaN',
-    initialData: {zodInput: Number.NaN},
-    // the input value will be ""
-    skipInputValueCheck: true,
-    componentType: 'RsNumberFormat',
-    validation: {key: 'finite'},
-    expected: {zodInput: 'Invalid number: must be finite'}
-  }, {
-    name: 'filled data',
-    initialData: {zodInput: 3},
-    componentType: 'RsNumberFormat',
-    validation: {key: 'finite'},
-    expected: {}
-  }],
-
   code: [{
     name: 'empty data',
     componentType: 'RsNumberFormat',

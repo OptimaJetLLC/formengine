@@ -400,30 +400,6 @@ the modified instance of the builder.
 
 ***
 
-### ~~preview()~~
-
-> **preview**(`customPreview`): `Definer`\<`T`\>
-
-#### Parameters
-
-##### customPreview
-
-`ReactNode`
-
-the custom component.
-
-#### Returns
-
-`Definer`\<`T`\>
-
-the modified Definer class instance.
-
-#### Deprecated
-
-Adds the custom component to be displayed in the component list. **Internal use only.**
-
-***
-
 ### props()
 
 > **props**(`properties`): `Definer`\<`T`\>

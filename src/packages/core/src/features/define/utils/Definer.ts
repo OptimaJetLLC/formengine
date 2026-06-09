@@ -1,4 +1,4 @@
-import type {ComponentType, ReactNode} from 'react'
+import type {ComponentType} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {commonStyles} from '../../annotation/commonStyles'
 import {toArray} from '../../annotation/toArray'
@@ -89,11 +89,6 @@ export type DefinerData<T extends object> = {
    * The property metadata.
    */
   properties?: Annotations<T>,
-  /**
-   * @deprecated
-   * The custom component to display in the component list (unused).
-   */
-  customPreview?: ReactNode,
   /**
    * The JSON source for the component (instance of {@link ComponentStore} class serialised to JSON).
    */
@@ -232,14 +227,6 @@ export class Definer<T extends object> {
    * @returns the modified Definer class instance.
    */
   actions = (fn: ActionsInitializer) => this.#updateWith({actionsInitializer: fn})
-
-  /**
-   * @deprecated
-   * Adds the custom component to be displayed in the component list. **Internal use only.**
-   * @param customPreview the custom component.
-   * @returns the modified Definer class instance.
-   */
-  preview = (customPreview: ReactNode) => this.#updateWith({customPreview})
 
   /**
    * @returns the component type name.
@@ -432,7 +419,6 @@ export class Definer<T extends object> {
       cssAns,
       cssWrapperAns,
       modules,
-      this.data.customPreview,
       valuedAn,
       this.data.initialJson,
       this.data.eventListeners,

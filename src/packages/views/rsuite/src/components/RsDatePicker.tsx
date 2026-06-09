@@ -11,7 +11,7 @@ import {Labeled} from './internal/Labeled'
 /**
  * Props for the RsDatePicker component.
  */
-export interface RsDatePickerProps extends DatePickerProps {
+export interface RsDatePickerProps extends Omit<DatePickerProps, 'inline'> {
   /**
    * Label for the date picker.
    */
@@ -21,10 +21,6 @@ export interface RsDatePickerProps extends DatePickerProps {
    * @param value the value.
    */
   onChange?: (value: Date | null) => void
-  /**
-   * @deprecated
-   */
-  inline?: boolean
 }
 
 /**

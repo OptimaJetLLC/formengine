@@ -46,16 +46,6 @@ The component CSS metadata.
 
 ***
 
-### ~~customPreview?~~
-
-> `optional` **customPreview**: `ReactNode`
-
-#### Deprecated
-
-The custom component to display in the component list (unused).
-
-***
-
 ### eventListeners?
 
 > `optional` **eventListeners**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)

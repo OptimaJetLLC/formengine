@@ -4,7 +4,7 @@ Props for the RsTimePicker component.
 
 ## Extends
 
-- `Omit`\<`DatePickerProps`, `"onChange"` \| `"value"`\>
+- `Omit`\<`DatePickerProps`, `"inline"` \| `"onChange"` \| `"value"`\>
 
 ## Properties
 
@@ -403,18 +403,6 @@ Hide specific second options
 #### Inherited from
 
 `Omit.id`
-
-***
-
-### ~~inline?~~
-
-> `optional` **inline**: `boolean`
-
-#### Deprecated
-
-#### Overrides
-
-`Omit.inline`
 
 ***
 

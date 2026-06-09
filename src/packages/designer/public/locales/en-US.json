@@ -1060,8 +1060,7 @@
       "lessThan": "Less than",
       "moreThan": "More than",
       "integer": "Integer",
-      "multipleOf": "Multiple of",
-      "finite": "Finite"
+      "multipleOf": "Multiple of"
     }
   },
   "promptDialog": {

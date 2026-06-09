@@ -33,7 +33,7 @@ const parseTimeValue = (value: any, format: string) => {
 /**
  * Props for the RsTimePicker component.
  */
-export interface RsTimePickerProps extends Omit<DatePickerProps, 'value' | 'onChange'> {
+export interface RsTimePickerProps extends Omit<DatePickerProps, 'value' | 'onChange' | 'inline'> {
   /**
    * Value of the time picker.
    */
@@ -46,10 +46,6 @@ export interface RsTimePickerProps extends Omit<DatePickerProps, 'value' | 'onCh
    * Label for the time picker.
    */
   label: string
-  /**
-   * @deprecated
-   */
-  inline?: boolean
 }
 
 /**

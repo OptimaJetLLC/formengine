@@ -6,7 +6,7 @@ Component metadata for the form builder.
 
 ### Constructor
 
-> **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `customPreview?`, `valuedAn?`, `initialJson?`, `eventListeners?`, `icon?`, `insertRestriction?`): `Meta`
+> **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `valuedAn?`, `initialJson?`, `eventListeners?`, `icon?`, `insertRestriction?`): `Meta`
 
 Creates the component metadata for the form builder.
 
@@ -41,12 +41,6 @@ the component's wrapper CSS metadata.
 [`Annotation`](Annotation.md)[]
 
 common metadata for the component.
-
-##### customPreview?
-
-`ReactNode`
-
-the custom ReactNode to be drawn on the toolbar.
 
 ##### valuedAn?
 
@@ -89,16 +83,6 @@ the function that restricts the insertion of a component into another component.
 > `readonly` **css**: [`Annotation`](Annotation.md)[]
 
 the component's CSS metadata.
-
-***
-
-### ~~customPreview?~~
-
-> `readonly` `optional` **customPreview**: `ReactNode`
-
-#### Deprecated
-
-The custom ReactNode to be drawn on the toolbar.
 
 ***
 
