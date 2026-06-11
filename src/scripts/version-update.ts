@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
+import {allVersionTargetPaths} from '@react-form-builder/cli-lib/workspace-package-paths'
 import {execSync} from 'node:child_process'
 import {readFileSync, writeFileSync} from 'node:fs'
 import {dirname, join} from 'node:path'
 import {fileURLToPath, pathToFileURL} from 'node:url'
-
-import {allVersionTargetPaths} from '@react-form-builder/cli-lib/workspace-package-paths'
+import {syncDistributionPackageJsons} from './sync-distribution-package-json.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -150,6 +150,9 @@ async function main(): Promise<void> {
 
   // 5) Update assembly date in designer package.
   updateAssemblyDate()
+
+  // 6) Keep GitHub distribution root manifests in sync with the dev monorepo root package.json.
+  syncDistributionPackageJsons(SRC_ROOT)
 }
 
 try {

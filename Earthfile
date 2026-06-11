@@ -171,7 +171,8 @@ prepare-github-formengine-archive:
   COPY .editorconfig github-formengine/community/src/
   COPY .gitignore github-formengine/
   COPY src/package.public.json github-formengine/community/src/package.json
-  COPY src/package-lock.json github-formengine/community/src/
+  COPY src/package-lock.json github-formengine/community/src/package-lock.json
+  RUN cd github-formengine/community/src && npm install --package-lock-only --no-audit --no-fund
   COPY CHANGELOG.md github-formengine
   RUN tar -czvf formengine.tgz -C github-formengine .
   SAVE ARTIFACT formengine.tgz AS LOCAL .archives/formengine.tgz
@@ -210,8 +211,8 @@ prepare-github-formenginesupport-archive:
   COPY src/lerna.json $dst/
   COPY src/LICENSE.md $dst/
   COPY src/package.private.json $dst/package.json
+  COPY src/package-lock.json $dst/package-lock.json
   COPY src/README.private.md $dst/README.md
-  COPY src/package-lock.json $dst/
   COPY src/.eslintrc.cjs $dst/
   COPY src/.eslintignore $dst/
   COPY src/tsconfig.json $dst/
@@ -222,7 +223,7 @@ prepare-github-formenginesupport-archive:
   COPY .gitignore $dst/
   COPY src/.npmrc $dst/
 
-  RUN cd $dst && npm install --package-lock-only
+  RUN cd $dst && npm install --package-lock-only --no-audit --no-fund
 
   RUN tar -czvf formenginesupport.tgz -C $dst .
 
