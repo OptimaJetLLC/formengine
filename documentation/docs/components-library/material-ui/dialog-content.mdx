@@ -1,0 +1,49 @@
+---
+title: Dialog Content
+description: The DialogContent component provides a container for the main content area of dialog windows
+slug: /components-library/material-ui/dialog-content
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/material-ui/src/components/MuiDialogContent.tsx"
+/>
+
+## Introduction
+
+The DialogContent component provides a dedicated container for the main content area of dialog windows. It follows Material Design
+guidelines for dialog content, providing proper padding and layout for text, forms, images, or any other content within a dialog. The
+component ensures consistent spacing and scroll behavior for dialog content across your application.
+
+The DialogContent component is based on [Material UI DialogContent](https://mui.com/material-ui/api/dialog-content/). It is included within
+the following NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The DialogContent component can be configured to fit specific dialog layouts and design requirements by using various properties that are
+presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name     | Type        | Description                                               | Default |
+|:---------|:------------|:----------------------------------------------------------|:--------|
+| Children | `ReactNode` | The main content displayed in the dialog content area     | -       |
+| Dividers | `boolean`   | If `true`, adds dividers above and below the content area | -       |
+
+### Property details
+
+- **Children**: This property accepts any React nodes, including text, forms, images, lists, or other components. The content is
+  automatically padded according to Material Design guidelines.
+- **Dividers**: When enabled, adds horizontal dividers above and below the content area. This is useful for visually separating the dialog
+  content from the title and actions sections.
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

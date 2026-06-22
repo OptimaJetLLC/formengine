@@ -1,0 +1,44 @@
+---
+title: MonthMultiplePicker
+description: The MtMonthMultiplePicker component selects multiple months
+slug: /components-library/mantine/month-multiple-picker
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtMonthPicker.tsx"
+/>
+
+## Introduction
+
+`MtMonthMultiplePicker` is the multiple-month variant of the month picker. It lets users select several months independently.
+
+This page describes the properties of the **MtMonthMultiplePicker** component. For other variants, see the
+[MonthPicker overview](/components-library/mantine/month-picker).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name      | Type                                   | Description                           |
+|:----------|:---------------------------------------|:--------------------------------------|
+| Value     | `Date[]`                               | Array of selected months              |
+| Min date  | `Date`                                 | Minimum selectable month              |
+| Max date  | `Date`                                 | Maximum selectable month              |
+| Size      | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Size of the picker                    |
+| Disabled  | `boolean`                              | Disables the picker                   |
+| On change | `event`                                | Fired when the selected months change |
+
+Additional configuration (columns, locale, formats, levels, etc.) is inherited from Mantine `MonthPicker`.
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
+

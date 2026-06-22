@@ -1,0 +1,48 @@
+---
+sidebar_position: 90
+title: Radio group
+description: Allows users to select one option from a list of choices.
+slug: /components-library/fields-components/radio-group
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsRadioGroup.tsx"
+/>
+
+## Introduction
+
+Radio group is used to define a collection of radio buttons that allow users to select one option from a list of choices. It is
+particularly helpful when there are multiple options available, but only one option should be selected at a time. Thus, each defined radio
+button represents a specific option, and only one option can be selected at a time.
+
+The radio group component is based on [RadioGroup](https://rsuitejs.com/components/radio/). It is included within
+the following NPM package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+This component can be customized to include a range of custom choices and also to change the appearance of the radio group by using various
+properties that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name       | Type      | Description                                                                                                           |
+|:-----------|:----------|:----------------------------------------------------------------------------------------------------------------------|
+| Name       | `string`  | Sets the name for the component                                                                                       |
+| Appearance | `choice`  | Select either _default_ or _picker_ appearance for the radio group                                                    |
+| Label      | `string`  | Text that is displayed for the radio group component                                                                  |
+| Disabled   | `boolean` | Disables the component                                                                                                |
+| Read Only  | `boolean` | If set to _true_, makes your component unavailable for users to interact with                                         |
+| Items      | `string`  | Used to define _values_ and _labels_ for your radio group. Add more options by using the corresponding (**+**) button |
+| Value      | `string`  | Sets default value for the component                                                                                  |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

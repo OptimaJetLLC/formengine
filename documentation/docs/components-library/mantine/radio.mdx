@@ -1,0 +1,42 @@
+---
+title: Radio
+description: The Radio component represents a single option within a radio group
+slug: /components-library/mantine/radio
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtRadio.tsx"
+/>
+
+## Introduction
+
+The Radio component represents a single option in a radio group. It is used together with MtRadioGroup for single-selection
+choices. The component is based on [Mantine Radio](https://mantine.dev/core/radio/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name          | Type      | Description                                                                                  |
+|:--------------|:----------|:---------------------------------------------------------------------------------------------|
+| Label         | `string`  | Text displayed next to the radio                                                            |
+| Value         | `string`  | Value of this option (when used inside RadioGroup)                                           |
+| Label position| `'left' \| 'right'` | Position of the label relative to the radio                                    |
+| Description   | `string`  | Helper text below the option                                                                |
+| Size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | Size of the radio                                      |
+| Color         | `string`  | Mantine theme color when selected                                                           |
+| Disabled      | `boolean` | Disables the radio                                                                          |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

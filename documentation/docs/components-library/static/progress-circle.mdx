@@ -1,0 +1,51 @@
+---
+sidebar_position: 90
+title: Progress Circle
+description: Represents a circular progress indicator for users
+slug: /components-library/static-components/progress-circle
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsProgress.tsx"
+/>
+
+## Introduction
+
+The [Progress Circle](https://rsuitejs.com/components/progress/#code-lt-progress-circle-gt-code) component represents the progress or
+completion of a task or process in a circular format. It is typically used to show the progress of form completion, file uploads, or any
+other task that involves a sequential process. This component is included within the following NPM
+package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+This component typically includes a circular shape with a customizable color and size, along with a percentage or label indicating the
+progress value. You can customize the appearance of the progress circle, including the color, size, behavior, and more. All available
+properties and options of this component is presented below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name           | Type      | Description                                                                             |
+|:---------------|:----------|:----------------------------------------------------------------------------------------|
+| Class Prefix   | `string`  | The prefix for the CSS class names of the progress circle                               |
+| Percent        | `number`  | The presented percentage value of the progress circle                                   |
+| Show Info      | `boolean` | If set to _true_, the progress circle will display the percentage value                 |
+| Status         | `choice`  | The status and the color of the progress circle (i.e., _success_, _active_, or _fail_)  |
+| Stroke Color   | `color`   | Sets the custom color of the progress circle's stroke                                   |
+| Stroke Width   | `number`  | The width of the progress circle's stroke                                               |
+| Gap Degree     | `number`  | The degree of the gap in the progress circle                                            |
+| Gap Position   | `choice`  | The position of the gap in the progress circle (i.e., _top_, _bottom_, _left_, _right_) |
+| Stroke Linecap | `choice`  | The shape of the progress circle's stroke linecap (i.e., _butt_, _round_, _square_)     |
+| Trail Color    | `color`   | The color of the progress circle's trail                                                |
+| Trail Width    | `number`  | The width of the progress circle's trail                                                |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

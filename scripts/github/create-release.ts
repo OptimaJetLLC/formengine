@@ -47,7 +47,7 @@ async function callGetReleaseByTagName(octokit: Octokit, data: ReleaseConfig) {
   })
 }
 
-async function callUpdateRelease(octokit: Octokit, data: ReleaseConfig, release: { id: number }) {
+async function callUpdateRelease(octokit: Octokit, data: ReleaseConfig, release: {id: number}) {
   return octokit.request(`PATCH /repos/${data.owner}/${data.repo}/releases/${release.id}`, {
     release_id: release.id,
     owner: data.owner,
@@ -82,10 +82,9 @@ async function createOrUpdateRelease(octokit: Octokit, data: ReleaseConfig): Pro
   try {
     response = await callCreateRelease(octokit, data)
   } catch (error: unknown) {
-    const err = error as { status?: number; response?: { data?: { errors?: Array<{ code?: string; field?: string }> } } }
+    const err = error as {status?: number; response?: {data?: {errors?: Array<{code?: string; field?: string}>}}}
     const alreadyExists =
-      err.status === 422 &&
-      err.response?.data?.errors?.some(entry => entry.code === 'already_exists' && entry.field === 'tag_name')
+      err.status === 422 && err.response?.data?.errors?.some(entry => entry.code === 'already_exists' && entry.field === 'tag_name')
 
     if (!alreadyExists) {
       throw error
@@ -93,7 +92,7 @@ async function createOrUpdateRelease(octokit: Octokit, data: ReleaseConfig): Pro
 
     console.info(`Release ${releaseDescription} has already been created.`)
     const releaseResponse = await callGetReleaseByTagName(octokit, data)
-    response = await callUpdateRelease(octokit, data, releaseResponse.data as { id: number })
+    response = await callUpdateRelease(octokit, data, releaseResponse.data as {id: number})
   }
 
   if (!response || response.status < 200 || response.status > 201) {
@@ -119,4 +118,3 @@ try {
   console.error('❌ Failed to create or update GitHub release.', error)
   process.exitCode = 1
 }
-

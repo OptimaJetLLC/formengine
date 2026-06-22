@@ -1,0 +1,58 @@
+---
+sidebar_position: 50
+title: Label
+description: Used to provide descriptive text or captions
+slug: /components-library/static-components/label
+---
+
+import AdditionalOptions from '../_additional-options.mdx';
+import StyleForDevice from '../_style-for-device.mdx'
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsLabel.tsx"
+/>
+
+## Introduction
+
+The Label component is a basic HTML element that associates a text label with a form control. It can be used to provide descriptive text or
+captions on the form. This component is especially useful to label other components, making it easier for users to understand the purpose of
+each utilized component or expected action.
+
+The following introduces and describes properties and options presented for the label component customization.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name | Type     | Description                           |
+|:-----|:---------|:--------------------------------------|
+| Text | `string` | The text content of the label element |
+
+<AdditionalOptions/>
+
+## Style properties
+
+These are properties that allow to customize the size, color and other style properties of your component:
+
+<StyleForDevice/>
+
+- **Component**:
+
+  - _Alignment_: Sets the alignment of your component (i.e., _Start_, _Center_, or _End_).
+  - _Font Size_: Specifies the font size of the component.
+  - _Font Weight_: Sets the font weight (i.e., _Normal_, _Lighter_, or _Bold_) for the component.
+  - _Color_: Sets the text color for the label text. Corresponds to the similar property within the Wrapper options.
+  - _Class Name_: Add a class name for your component for the subsequent styling if necessary.
+
+- **Wrapper**: The options below enable you to tailor the appearance of your component and customize it for a specific device type, as
+selected in the _For Device_ property:
+  | Name                         | Type     | Description                              |
+  |:-----------------------------|:---------|:-----------------------------------------|
+  | Width                        | `number` | Specifies the width for your component   |
+  | Height                       | `number` | Specifies the height for your component  |
+  | Margin top/right/bottom/left | `number` | Margin values for you component          |
+  | Color                        | `string` | Allows customizing the text color        |
+  | Background color             | `string` | Enables customizing the background color |

@@ -1,0 +1,50 @@
+---
+sidebar_position: 20
+title: Card
+description: Creates organized layout for your components
+slug: /components-library/structure-components/card
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsCard.tsx"
+/>
+
+## Introduction
+
+The Card component is used to create and organize layouts for your components. It allows displaying information or content in a visually
+appealing and structured manner. Cards are typically used to present a container or collection of related data, such as product details,
+articles, or user profiles. Cards can provide images with descriptions or any other combinations of components that are required for your
+use case.
+
+This component is based on [Panel](https://rsuitejs.com/components/panel/). This component is included within the following NPM
+package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+You can customize the appearance of the card component by enabling or disabling borders, shadows, making it collapsible and so on. It also
+provides other properties and styling options that are presented below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name             | Type      | Description                                                   |
+|:-----------------|:----------|:--------------------------------------------------------------|
+| Title            | `string`  | Sets the card title                                           |
+| Header Size      | `string`  | Specifies the title size (e.g., _h4_, _h3_, etc.)             |
+| Body Fill        | `boolean` | If set to _true_, content area will be filled with containers |
+| Bordered         | `boolean` | If set to _true_, the component will include a border         |
+| Shaded           | `boolean` | If set to _true_, the card will have a shaded background      |
+| Default Expanded | `boolean` | If set to _true_, the card will be expanded by default        |
+| Collapsible      | `boolean` | If set to _true_, the card can be collapsed and expanded      |
+| Event Key        | `string`  | The key of the event that corresponds to this element         |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

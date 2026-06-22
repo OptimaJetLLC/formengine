@@ -1,0 +1,50 @@
+---
+title: MonthRangePickerInput
+description: The MtMonthRangePickerInput component uses an input and month picker to select a range of months
+slug: /components-library/mantine/month-range-picker-input
+---
+
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtMonthPickerInput.tsx"
+/>
+
+## Introduction
+
+`MtMonthRangePickerInput` is the range variant of the month picker input. It provides a text field and popover to select a start and
+end month.
+
+This page describes the properties of the **MtMonthRangePickerInput** component. For other variants, see the
+[MonthPickerInput overview](/components-library/mantine/month-picker-input).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name        | Type                                   | Description                                    |
+|:------------|:---------------------------------------|:-----------------------------------------------|
+| Label       | `string`                               | Label for the input                            |
+| Value       | `[Date, Date] \| null`                 | Selected month range (start and end)           |
+| Placeholder | `string`                               | Placeholder when no selection                  |
+| Description | `string`                               | Helper text displayed below the input          |
+| Error       | `string`                               | Error message; when set, applies error styling |
+| Size        | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Size of the input                              |
+| Variant     | `'filled' \| 'default' \| 'unstyled'`  | Visual variant                                 |
+| Disabled    | `boolean`                              | Disables the input                             |
+| Clearable   | `boolean`                              | If `true`, allows clearing the selection       |
+| On change   | `event`                                | Fired when the selected range changes          |
+
+Additional configuration (columns, locale, formats, levels, etc.) is inherited from Mantine `MonthPickerInput`.
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
+

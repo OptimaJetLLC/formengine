@@ -1,0 +1,42 @@
+---
+title: Dialog Actions
+description: The DialogActions component provides a container for action buttons at the bottom of dialog windows
+slug: /components-library/material-ui/dialog-actions
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/material-ui/src/components/MuiDialogActions.tsx"
+/>
+
+## Introduction
+
+The DialogActions component provides a dedicated container for action buttons and controls at the bottom of dialog windows. It follows
+Material Design guidelines for dialog actions, providing proper spacing and layout for buttons like "Cancel", "OK", "Agree", or "Disagree".
+The component ensures consistent spacing and alignment for dialog actions across your application.
+
+The DialogActions component is based on [Material UI DialogActions](https://mui.com/material-ui/api/dialog-actions/). It is included within
+the following NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The DialogActions component can be configured to fit specific dialog layouts and design requirements by using various properties that
+are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name            | Type        | Description                                                  | Default |
+|:----------------|:------------|:-------------------------------------------------------------|:--------|
+| Children        | `ReactNode` | Action buttons or controls placed in the dialog actions area | -       |
+| Disable spacing | `boolean`   | If `true`, removes the default spacing between action items  | -       |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

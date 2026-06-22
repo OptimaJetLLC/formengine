@@ -1,0 +1,47 @@
+---
+sidebar_position: 100
+title: Progress Line
+description: Provides a linear progress indicator for users
+slug: /components-library/static-components/progress-line
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsProgress.tsx"
+/>
+
+## Introduction
+
+The [Progress Line](https://rsuitejs.com/components/progress/#code-lt-progress-line-gt-code) component represents the progress or completion
+of a task or process in a linear format. It is commonly used to show the progress of file downloads, form completion, or any other task that
+involves a sequential or incremental process. This component is included within the following NPM
+package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+In general, this component displays a horizontal line with a customizable color and length, along with a percentage or label indicating the
+progress value. It allows customizing the appearance of the progress bar, including the color, size, behavior, and more. All available
+properties and options of this component is presented below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type      | Description                                                                          |
+|:-------------|:----------|:-------------------------------------------------------------------------------------|
+| Class Prefix | `string`  | The prefix for the CSS class names of the progress line                              |
+| Percent      | `number`  | The presented percentage value of the progress line                                  |
+| Show Info    | `boolean` | If set to _true_, the progress line will display the percentage value                |
+| Status       | `choice`  | The status and the color of the progress line (i.e., _success_, _active_, or _fail_) |
+| Stroke Color | `color`   | Sets the custom color of the progress line's stroke                                  |
+| Stroke Width | `number`  | The width of the progress line's stroke                                              |
+| Vertical     | `boolean` | If set to _true_, the progress line will be displayed vertically                     |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

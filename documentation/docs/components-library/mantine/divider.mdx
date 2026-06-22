@@ -1,0 +1,41 @@
+---
+title: Divider
+description: The Divider component renders a visual line or label between content sections
+slug: /components-library/mantine/divider
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtDivider.tsx"
+/>
+
+## Introduction
+
+The Divider component renders a horizontal or vertical line to separate content. It can optionally display a label in the center or
+on the left/right. The component is based on [Mantine Divider](https://mantine.dev/core/divider/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name            | Type      | Description                                                                                  |
+|:----------------|:----------|:---------------------------------------------------------------------------------------------|
+| Label           | `string`  | Optional text displayed on the divider                                                       |
+| Label position  | `'left' \| 'center' \| 'right'`                                                             | Position of the label (default: `'center'`)             |
+| Orientation    | `'horizontal' \| 'vertical'`                                                                | Orientation of the line (default: `'horizontal'`)      |
+| Variant         | `'solid' \| 'dashed' \| 'dotted'`                                                            | Line style (default: `'solid'`)                        |
+| Size            | `string`  | Thickness of the line (e.g. Mantine size or CSS value)                                       |
+| Color           | `string`  | Color of the line                                                                            |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

@@ -1,0 +1,46 @@
+---
+title: Breadcrumbs
+description: The Breadcrumbs component displays a navigation trail for users to track their location within an application
+slug: /components-library/material-ui/breadcrumbs
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/material-ui/src/components/MuiBreadcrumbs.tsx"
+/>
+
+## Introduction
+
+The Breadcrumbs component displays a navigation trail for users to track their location within an application. It is commonly used in
+multi-level navigation structures, file systems, e-commerce categories, or any hierarchical content where users need to understand their
+current position and navigate back to parent levels. The component follows Material Design guidelines for breadcrumb navigation with clear
+separators and interactive links.
+
+The Breadcrumbs component is based on [Material UI Breadcrumbs](https://mui.com/material-ui/react-breadcrumbs/). It is included within
+the following NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Breadcrumbs component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name                  | Type        | Description                                                                                                                                              |
+|:----------------------|:------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Separator             | `ReactNode` | Custom separator node (default: `'/'`)                                                                                                                   |
+| Items                 | `array`     | Breadcrumb items to display                                                                                                                              |
+| Max items             | `number`    | Maximum number of breadcrumbs to display. When there are more than this number, only the first and last items will be shown, with an ellipsis in between |
+| Items after collapse  | `number`    | If maxItems is exceeded, the number of items to show after the ellipsis                                                                                  |
+| Items before collapse | `number`    | If maxItems is exceeded, the number of items to show before the ellipsis                                                                                 |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

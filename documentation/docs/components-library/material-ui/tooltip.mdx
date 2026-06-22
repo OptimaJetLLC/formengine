@@ -1,0 +1,50 @@
+---
+title: Tooltip
+description: The Tooltip component displays informative text when users hover over, focus on, or tap an element
+slug: /components-library/material-ui/tooltip
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/material-ui/src/components/MuiTooltip.tsx"
+/>
+
+## Introduction
+
+The Tooltip component displays informative text when users hover over, focus on, or tap an element. It is commonly used to provide
+additional context, explanations, or instructions for UI elements. The component follows Material Design guidelines for tooltips with
+smooth animations and proper positioning.
+
+The Tooltip component is based on [Material UI Tooltip](https://mui.com/material-ui/react-tooltip/). It is included within the following
+NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Tooltip component can be styled and configured to fit specific design and functionality requirements by using various properties that
+are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name                   | Type                                                                                                                                                                 | Description                                                                                        |
+|:-----------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------|
+| Arrow                  | `boolean`                                                                                                                                                            | If `true`, an arrow will be shown pointing to the target element                                   |
+| Disable focus listener | `boolean`                                                                                                                                                            | If `true`, the tooltip won't appear on focus                                                       |
+| Disable interactive    | `boolean`                                                                                                                                                            | If `true`, the tooltip will not be interactive (won't close when hovering over the tooltip itself) |
+| Disable hover listener | `boolean`                                                                                                                                                            | If `true`, the tooltip won't appear on hover                                                       |
+| Disable touch listener | `boolean`                                                                                                                                                            | If `true`, the tooltip won't appear on touch                                                       |
+| Follow cursor          | `boolean`                                                                                                                                                            | If `true`, the tooltip will follow the cursor (mouse only)                                         |
+| Enter delay            | `number`                                                                                                                                                             | Delay in milliseconds before the tooltip appears (default: 100ms)                                  |
+| Leave delay            | `number`                                                                                                                                                             | Delay in milliseconds before the tooltip disappears (default: 0ms)                                 |
+| Placement              | `'bottom-end' \| 'bottom-start' \| 'bottom' \| 'left-end' \| 'left-start' \| 'left' \| 'right-end' \| 'right-start' \| 'right' \| 'top-end' \| 'top-start' \| 'top'` | The placement of the tooltip relative to the target element                                        |
+| Title                  | `string \| ReactNode`                                                                                                                                                | The text or content to display in the tooltip                                                      |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

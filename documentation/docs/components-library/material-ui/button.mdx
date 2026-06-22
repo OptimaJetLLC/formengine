@@ -1,0 +1,46 @@
+---
+title: Button
+description: The Button component allows users to trigger actions with a single click
+slug: /components-library/material-ui/button
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/material-ui/src/components/MuiButton.tsx"
+/>
+
+## Introduction
+
+The Button component allows users to trigger actions with a single click. It is commonly used for form submissions, dialog confirmations,
+navigation, and other interactive elements. The component provides a visually prominent call-to-action with Material Design styling.
+
+The Button component is based on [Material UI Button](https://mui.com/material-ui/react-button/). It is included within the following
+NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Button component can be styled and configured to fit specific design and functionality requirements by using various properties that
+are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name              | Type                                                                                   | Description                                           |
+|:------------------|:---------------------------------------------------------------------------------------|:------------------------------------------------------|
+| Content           | `string`                                                                               | The text displayed on the button                      |
+| Color             | `'primary' \| 'secondary' \| 'success' \| 'error' \| 'info' \| 'warning' \| 'inherit'` | The color of the button                               |
+| Disabled          | `boolean`                                                                              | If `true`, the button will be disabled                |
+| Disable elevation | `boolean`                                                                              | Removes the button shadow when set to true            |
+| Loading           | `boolean`                                                                              | Displays a loading indicator and disables interaction |
+| Variant           | `'text' \| 'outlined' \| 'contained'`                                                  | The variant of the button style                       |
+| Size              | `'small' \| 'medium' \| 'large'`                                                       | The size of the button                                |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

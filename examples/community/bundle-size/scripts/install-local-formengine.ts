@@ -27,7 +27,7 @@ This will:
  * @param targetDir target directory to run the script in
  */
 function run(targetDir: string): void {
-  const packagesRoot = resolve(__dirname, '../../../../src/packages')
+  const packagesRoot = resolve(__dirname, '../../../../packages')
 
   removeDependencyFromPackageJson(targetDir, '@react-form-builder/core')
   removeDependencyFromPackageJson(targetDir, '@react-form-builder/components-rsuite')

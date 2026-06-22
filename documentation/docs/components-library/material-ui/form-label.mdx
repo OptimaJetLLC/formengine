@@ -1,0 +1,45 @@
+---
+title: FormLabel
+description: The FormLabel component provides labels for form controls with consistent styling and accessibility features
+slug: /components-library/material-ui/form-label
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/material-ui/src/components/MuiFormLabel.tsx"
+/>
+
+## Introduction
+
+The FormLabel component provides labels for form controls with consistent styling and accessibility features. It is commonly used to
+label form fields, groups of controls, or sections within forms, ensuring proper accessibility attributes and visual hierarchy. The
+component follows Material Design guidelines for form labels with consistent typography, spacing, and interaction states.
+
+The FormLabel component is based on [Material UI FormLabel](https://mui.com/material-ui/api/form-label/). It is included within the
+following NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The FormLabel component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name     | Type                                                                      | Description                                                                            |
+|:---------|:--------------------------------------------------------------------------|:---------------------------------------------------------------------------------------|
+| Color    | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning'` | The color of the component                                                             |
+| Disabled | `boolean`                                                                 | If `true`, the label will be disabled                                                  |
+| Error    | `boolean`                                                                 | If `true`, the label will display an error state                                       |
+| Filled   | `boolean`                                                                 | If `true`, the label will display a filled state                                       |
+| Required | `boolean`                                                                 | If `true`, the label will indicate that the field is required                          |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

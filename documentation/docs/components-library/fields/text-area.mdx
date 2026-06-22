@@ -1,0 +1,48 @@
+---
+sidebar_position: 130
+title: Text area
+description: Multi-line input field that allows users to enter and edit text
+slug: /components-library/fields-components/text-area
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsTextArea.tsx"
+/>
+
+## Introduction
+
+Text Area represents a component that allows users to enter and edit multiple lines of text. It provides a larger input field compared to a
+regular input, allowing users to enter longer paragraphs or multiline text. It is especially useful for collecting longer blocks of text,
+such as comments, descriptions, or feedback.
+
+This component is based on [Input](https://rsuitejs.com/components/input/). It is included within the following NPM
+package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+The text area component can be customized in terms of size, rows, placeholder text, and style to align with your design and requirements.
+The following introduces and describes available properties and customization options.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name        | Type      | Description                                                                      |
+|:------------|:----------|:---------------------------------------------------------------------------------|
+| Label       | `string`  | Text that is displayed for the component                                         |
+| Value       | `string`  | Enter default value for the text area                                            |
+| Placeholder | `string`  | Specify placeholder for the text area. Will not visible if a _Value_ is provided |
+| Rows        | `number`  | Sets the number of displayed rows for the text area                              |
+| Size        | `choice`  | Sets the size of the text area (e.g., _large_, _small_, etc. )                   |
+| Disabled    | `boolean` | Disables the component                                                           |
+| Read Only   | `boolean` | If set to _true_, makes your component unavailable for users to interact with    |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

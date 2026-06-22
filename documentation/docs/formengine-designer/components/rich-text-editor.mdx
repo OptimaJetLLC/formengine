@@ -1,0 +1,62 @@
+---
+sidebar_position: 95
+title: Rich text editor
+description: Powerful text editor.
+slug: /formengine-designer/components/rich-text-editor
+---
+
+import StyleBlock from '../../components-library/_style-props.mdx';
+import AdditionalOptions from '../../components-library/_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rich-text"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rich-text"
+/>
+
+## Introduction
+
+RichTextEditor is a thin wrapper around the rich text editor [Quill](https://quilljs.com).
+
+This component is in a separate
+package [@react-form-builder/components-rich-text](https://www.npmjs.com/package/@react-form-builder/components-rich-text).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name            | Type     | Description                                                                                                                    |
+|:----------------|:---------|:-------------------------------------------------------------------------------------------------------------------------------|
+| Initial Value   | `string` | Initial value for the editor                                                                                                   |
+| Label           | `string` | Provide a title for your component                                                                                             |
+| Placeholder     | `string` | Placeholder string                                                                                                             |
+| Read only       | `string` | If set to _true_, makes your component unavailable for users to interact with                                                  |
+| Toolbar options | `choice` | Groups of buttons to display on the toolbar. The order in which the values are selected determines the order of the buttons    |
+| Modules         | `json`   | Allows to customize the behavior and functionality of the editor. [Read docs](https://quilljs.com/docs/modules) for more info. |
+
+Example of a value for Modules property:
+
+```json
+{
+  "toolbar": [
+    [{ "header": [1, 2, 3, 4, 5, 6, false] }],
+    ["bold", "italic", "underline", "strike"],
+    [{ "list": "ordered" }, { "list": "bullet" }],
+    [{ "script": "sub" }, { "script": "super" }],
+    [{ "indent": "-1" }, { "indent": "+1" }],
+    [{ "direction": "rtl" }],
+    [{ "size": ["small", false, "large", "huge"] }],
+    [{ "color": [] }, { "background": [] }],
+    [{ "font": [] }],
+    [{ "align": [] }],
+    ["link", "image", "video"],
+    ["clean"]
+  ]
+}
+```
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

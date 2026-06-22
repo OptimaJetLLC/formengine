@@ -3,18 +3,18 @@
 /**
  * Packs publishable @react-form-builder packages into scripts/.examples-local-packs/, temporarily rewrites
  * example package.json entries to file: tarballs, runs npm install, then restores package.json to
- * ^monorepo version from src/lerna.json so committed manifests stay semver-based. package-lock.json is
+ * ^monorepo version from lerna.json so committed manifests stay semver-based. package-lock.json is
  * then rewritten so root dependency specs match package.json and @react-form-builder/* entries use
  * registry tarball URLs (integrity is preserved from the local pack). Unpublished example-only packages
  * such as @react-form-builder/bundle-size-shared keep file: resolutions.
  *
- * Usage (from repo root or src):
+ * Usage (from repository root):
  *   node scripts/examples-install-local-packages.ts
  *   node scripts/examples-install-local-packages.ts --dry-run
  *   node scripts/examples-install-local-packages.ts --no-install
  *   node scripts/examples-install-local-packages.ts --restore-registry
  *
- * Prerequisites: run `npm install` in src/ so package builds (vite, etc.) succeed.
+ * Prerequisites: run `npm install` at the repository root so package builds (vite, etc.) succeed.
  */
 
 import {execSync} from 'node:child_process'
@@ -26,7 +26,6 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 const REPO_ROOT = join(__dirname, '..')
-const SRC_ROOT = join(REPO_ROOT, 'src')
 const STAGING_DIR = join(__dirname, '.examples-local-packs')
 const PACKAGE_PREFIX = '@react-form-builder/'
 
@@ -40,21 +39,21 @@ const EXCLUDED_PACKAGE_RESTORE_SPEC: Record<string, string> = {
 
 /** Paths under REPO_ROOT for packages that support `npm run pack` (or plain `npm pack` for bundle-size-shared). */
 const PACKAGE_SOURCE: Record<string, string> = {
-  '@react-form-builder/core': 'src/packages/core',
-  '@react-form-builder/designer': 'src/packages/designer',
-  '@react-form-builder/designer-bundle': 'src/packages/designer-bundle',
-  '@react-form-builder/indexed-db-form-storage': 'src/packages/indexed-db-form-storage',
-  '@react-form-builder/viewer-bundle': 'src/packages/viewer-bundle',
-  '@react-form-builder/viewer-bundle-premium': 'src/packages/viewer-bundle-premium',
-  '@react-form-builder/components-rsuite': 'src/packages/views/rsuite',
-  '@react-form-builder/components-material-ui': 'src/packages/views/material-ui',
-  '@react-form-builder/components-mantine': 'src/packages/views/mantine',
-  '@react-form-builder/components-fast-qr': 'src/packages/views/fast-qr',
-  '@react-form-builder/components-google-map': 'src/packages/views/google-map',
-  '@react-form-builder/components-rich-text': 'src/packages/views/rich-text',
-  '@react-form-builder/components-rsuite-table': 'src/packages/views/rsuite-table',
-  '@react-form-builder/components-signature': 'src/packages/views/signature',
-  '@react-form-builder/components-uploader': 'src/packages/views/uploader',
+  '@react-form-builder/core': 'packages/core',
+  '@react-form-builder/designer': 'packages/designer',
+  '@react-form-builder/designer-bundle': 'packages/designer-bundle',
+  '@react-form-builder/indexed-db-form-storage': 'packages/indexed-db-form-storage',
+  '@react-form-builder/viewer-bundle': 'packages/viewer-bundle',
+  '@react-form-builder/viewer-bundle-premium': 'packages/viewer-bundle-premium',
+  '@react-form-builder/components-rsuite': 'packages/views/rsuite',
+  '@react-form-builder/components-material-ui': 'packages/views/material-ui',
+  '@react-form-builder/components-mantine': 'packages/views/mantine',
+  '@react-form-builder/components-fast-qr': 'packages/views/fast-qr',
+  '@react-form-builder/components-google-map': 'packages/views/google-map',
+  '@react-form-builder/components-rich-text': 'packages/views/rich-text',
+  '@react-form-builder/components-rsuite-table': 'packages/views/rsuite-table',
+  '@react-form-builder/components-signature': 'packages/views/signature',
+  '@react-form-builder/components-uploader': 'packages/views/uploader',
   '@react-form-builder/bundle-size-shared': 'examples/community/bundle-size/shared',
 }
 
@@ -94,16 +93,30 @@ function writePackageJson(path: string, data: PackageJson): void {
 }
 
 /**
- * Reads the monorepo version from `src/lerna.json` (Lerna `version` field).
+ * Reads the monorepo version from `lerna.json` (Lerna `version` field).
  */
 function readLernaVersion(): string | undefined {
-  const lernaPath = join(SRC_ROOT, 'lerna.json')
+  const lernaPath = join(REPO_ROOT, 'lerna.json')
   if (!existsSync(lernaPath)) {
     return undefined
   }
 
   const lerna = JSON.parse(readFileSync(lernaPath, 'utf8')) as {version?: string}
   return lerna.version?.trim() || undefined
+}
+
+/**
+ * Resolves the workspace root used when patching example package.json files.
+ * @param argv process arguments
+ * @returns absolute path to the directory that contains the `examples/` tree
+ */
+function parsePatchRoot(argv: string[]): string {
+  const patchRootIndex = argv.indexOf('--patch-root')
+  if (patchRootIndex !== -1 && argv[patchRootIndex + 1]) {
+    return argv[patchRootIndex + 1]
+  }
+
+  return REPO_ROOT
 }
 
 function tarballBaseName(packageName: string, version: string): string {
@@ -371,10 +384,7 @@ function normalizeExamplePackageLock(exampleDir: string, dryRun: boolean): boole
   }
   let changed = false
 
-  function syncLockPackageSpecsFromPackageJson(
-    lockEntry: Record<string, unknown> | undefined,
-    packageJsonPath: string,
-  ): void {
+  function syncLockPackageSpecsFromPackageJson(lockEntry: Record<string, unknown> | undefined, packageJsonPath: string): void {
     if (!lockEntry) {
       return
     }
@@ -460,12 +470,12 @@ function normalizeWorkspaceParentLockIfNeeded(exampleDir: string, dryRun: boolea
 /**
  * Sets every @react-form-builder dependency in an example package.json to ^npmVersion (registry style).
  * @param exampleRel path relative to repo root
- * @param npmVersion monorepo version from src/lerna.json
+ * @param npmVersion monorepo version from lerna.json
  * @param dryRun when true, do not write
  * @returns true when package.json was updated or would be updated
  */
-function restoreExampleRegistrySemver(exampleRel: string, npmVersion: string, dryRun: boolean): boolean {
-  const pjPath = join(REPO_ROOT, exampleRel, 'package.json')
+function restoreExampleRegistrySemver(exampleRel: string, npmVersion: string, dryRun: boolean, patchRoot: string = REPO_ROOT): boolean {
+  const pjPath = join(patchRoot, exampleRel, 'package.json')
   if (!existsSync(pjPath)) {
     return false
   }
@@ -499,18 +509,18 @@ function restoreExampleRegistrySemver(exampleRel: string, npmVersion: string, dr
   return patched
 }
 
-function patchExamplesToRegistry(version: string, dryRun: boolean): void {
+function patchExamplesToRegistry(version: string, dryRun: boolean, patchRoot: string = REPO_ROOT): void {
   for (const exampleRel of EXAMPLE_PATHS) {
-    restoreExampleRegistrySemver(exampleRel, version, dryRun)
+    restoreExampleRegistrySemver(exampleRel, version, dryRun, patchRoot)
   }
 }
 
-function runNpmInstall(exampleRel: string, dryRun: boolean): void {
+function runNpmInstall(exampleRel: string, dryRun: boolean, patchRoot: string = REPO_ROOT): void {
   if (dryRun) {
     console.log(`[dry-run] would npm install in ${exampleRel}`)
     return
   }
-  const dir = join(REPO_ROOT, exampleRel)
+  const dir = join(patchRoot, exampleRel)
   const lock = join(dir, 'package-lock.json')
   if (existsSync(lock)) {
     console.log(`▶ rm package-lock.json (cwd=${exampleRel})`)
@@ -526,9 +536,10 @@ function printUsage(): void {
 Options:
   --dry-run            Log actions without packing, patching, or installing.
   --no-install         Pack only into ${STAGING_DIR}; do not change examples.
-  --restore-registry   Set example @react-form-builder/* deps to ^(src/lerna.json version) and npm install (needs packages on npm).
+  --restore-registry   Set example @react-form-builder/* deps to ^(lerna.json version) and npm install (needs packages on npm).
+  --patch-root <dir>   Patch examples under <dir> instead of the repository root (for release archive staging).
 
-Packs into ${STAGING_DIR} (gitignored). Requires npm install in src/ before first run.`)
+Packs into ${STAGING_DIR} (gitignored). Requires npm install before first run.`)
 }
 
 function main(): void {
@@ -541,18 +552,19 @@ function main(): void {
   const dryRun = argv.includes('--dry-run')
   const noInstall = argv.includes('--no-install')
   const restore = argv.includes('--restore-registry')
+  const patchRoot = parsePatchRoot(argv)
 
   if (restore) {
     const npmVersion = readLernaVersion()
     if (!npmVersion) {
-      console.error('❌ Monorepo version missing. Expected src/lerna.json to include a non-empty "version" field.')
+      console.error('❌ Monorepo version missing. Expected lerna.json to include a non-empty "version" field.')
       process.exitCode = 1
       return
     }
-    patchExamplesToRegistry(npmVersion, dryRun)
+    patchExamplesToRegistry(npmVersion, dryRun, patchRoot)
     if (!dryRun && !noInstall) {
       for (const exampleRel of EXAMPLE_PATHS) {
-        const pjPath = join(REPO_ROOT, exampleRel, 'package.json')
+        const pjPath = join(patchRoot, exampleRel, 'package.json')
         if (!existsSync(pjPath)) {
           continue
         }
@@ -562,8 +574,8 @@ function main(): void {
           return deps && Object.keys(deps).some(k => k.startsWith(PACKAGE_PREFIX))
         })
         if (hasRfb) {
-          const exampleDir = join(REPO_ROOT, exampleRel)
-          runNpmInstall(exampleRel, false)
+          const exampleDir = join(patchRoot, exampleRel)
+          runNpmInstall(exampleRel, false, patchRoot)
           normalizeExamplePackageLock(exampleDir, false)
           normalizeWorkspaceParentLockIfNeeded(exampleDir, false)
         }
@@ -574,7 +586,7 @@ function main(): void {
 
   const npmVersion = readLernaVersion()
   if (!npmVersion) {
-    console.error('❌ Monorepo version missing. Expected src/lerna.json to include a non-empty "version" field.')
+    console.error('❌ Monorepo version missing. Expected lerna.json to include a non-empty "version" field.')
     process.exitCode = 1
     return
   }

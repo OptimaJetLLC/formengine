@@ -1,0 +1,48 @@
+---
+title: Link
+description: The Link component displays hyperlinks with Material Design styling and accessibility features
+slug: /components-library/material-ui/link
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/material-ui/src/components/MuiLink.tsx"
+/>
+
+## Introduction
+
+The Link component displays hyperlinks with Material Design styling and accessibility features. It is commonly used for navigation,
+references, actions, and any text-based links within an application. The component provides consistent link styling, hover effects,
+and proper semantic HTML while following Material Design guidelines for typography and interaction.
+
+The Link component is based on [Material UI Link](https://mui.com/material-ui/react-link/). It is included within the following
+NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Link component can be styled and configured to fit specific design and functionality requirements by using various properties that
+are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name          | Type                                                                                                                                                   | Description                                                                              |
+|:--------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------|
+| Children      | `string`                                                                                                                                               | The link text                                                                            |
+| Href          | `string`                                                                                                                                               | The URL that the link points to                                                          |
+| Target        | `string`                                                                                                                                               | Where to display the linked URL (e.g., `'_blank'`, `'_self'`, `'_parent'`, `'_top'`)     |
+| Variant       | `'body1' \| 'body2' \| 'button' \| 'caption' \| 'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6' \| 'inherit' \| 'overline' \| 'subtitle1' \| 'subtitle2'` | The typography variant to use                                                            |
+| Color         | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning' \| 'textPrimary' \| 'textSecondary' \| 'inherit'`                             | The color of the link                                                                    |
+| Alignment     | `'inherit' \| 'left' \| 'center' \| 'right' \| 'justify'`                                                                                              | Text alignment                                                                           |
+| No wrap       | `boolean`                                                                                                                                              | If true, the text will not wrap, but instead will truncate with a text overflow ellipsis |
+| Gutter bottom | `boolean`                                                                                                                                              | If true, the text will have a bottom margin                                              |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

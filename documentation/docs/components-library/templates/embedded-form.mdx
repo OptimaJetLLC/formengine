@@ -1,0 +1,33 @@
+---
+sidebar_position: 10
+title: Embedded form
+description: Displays a nested form
+slug: /components-library/templates-components/embedded-form
+---
+
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/core"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/core"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/core/src/features/template/embeddedFormModel.tsx"
+/>
+
+## Overview
+
+The Embedded form component allows you to display a nested form.
+
+This component is the successor to the Template component. All template components are now displayed using the Embedded form component.
+
+## Main properties
+
+| Name                      | Type      | Description                                                        |
+|:--------------------------|:----------|:-------------------------------------------------------------------|
+| Store data in parent form | `boolean` | If false, nested form data show as nested object, true otherwise   |
+| Form name                 | `string`  | The form name                                                      |
+| Options                   | `object`  | The additional options for loading the embedded form               |
+| Disabled                  | `boolean` | If set to _true_, makes your checkbox inactive                     |
+| Read Only                 | `boolean` | If set to _true_, makes your checkbox unavailable to interact with |
+
+<AdditionalOptions/>

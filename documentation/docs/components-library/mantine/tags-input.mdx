@@ -1,0 +1,46 @@
+---
+title: TagsInput
+description: The TagsInput component allows users to enter multiple values as tags
+slug: /components-library/mantine/tags-input
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtTagsInput.tsx"
+/>
+
+## Introduction
+
+The TagsInput component allows users to enter multiple values as tags, either by typing and confirming or by selecting from
+suggestions. The component is based on [Mantine TagsInput](https://mantine.dev/core/tags-input/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type      | Description                                                                                  |
+|:-------------|:----------|:---------------------------------------------------------------------------------------------|
+| Label        | `string`  | Label for the input                                                                         |
+| Value        | `array`   | Array of tag strings (uncontrolled value)                                                   |
+| Data         | `array`   | Optional suggestions (e.g. `[{ value: 'tag1', label: 'Tag 1' }, ...]`)                      |
+| Placeholder  | `string`  | Placeholder when empty                                                                      |
+| Description  | `string`  | Helper text below the field                                                                 |
+| Error        | `string`  | Error message; when set, applies error styling                                              |
+| Size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | Size of the input                                    |
+| Variant      | `'filled' \| 'default' \| 'unstyled'`                                                        | Visual variant                                       |
+| Disabled     | `boolean` | Disables the input                                                                          |
+| Clearable    | `boolean` | If `true`, shows clear button                                                               |
+| On change    | `event`   | Fired when the tags change                                                                  |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

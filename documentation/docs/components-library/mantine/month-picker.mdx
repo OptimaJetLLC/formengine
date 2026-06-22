@@ -1,0 +1,75 @@
+---
+title: MonthPicker
+description: The MonthPicker component allows users to select a month (and optionally year)
+slug: /components-library/mantine/month-picker
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtMonthPicker.tsx"
+/>
+
+## Introduction
+
+The MonthPicker component allows users to select a month. Variants include single month, month range, and multiple months. The
+component requires `@mantine/dates` and is based on [Mantine MonthPicker](https://mantine.dev/dates/month-picker/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Components covered
+
+- **MtMonthPicker**: Single month selection.
+- **MtMonthRangePicker**: Month range selection.
+- **MtMonthMultiplePicker**: Multiple months selection.
+
+## Differences between components
+
+| Component                   | Selection type     | Value shape                     | Typical use case                          |
+|:----------------------------|:------------------|:--------------------------------|:------------------------------------------|
+| **MtMonthPicker**          | Single month      | `Date \| null`                  | Pick one month (e.g. billing month)       |
+| **MtMonthRangePicker**     | Month range       | `[Date, Date] \| null`          | Select a start and end month              |
+| **MtMonthMultiplePicker**  | Multiple months   | `Date[]`                        | Choose several non-contiguous months      |
+
+### MtMonthPicker
+
+Single-month variant that focuses on choosing one month/year combination. It is suitable for fields like \"billing month\" or
+\"reporting month\".
+
+### MtMonthRangePicker
+
+Range variant that lets the user select a start and end month. Use this when you want to represent a contiguous multi-month period.
+
+### MtMonthMultiplePicker
+
+Multiple-month variant that allows selecting many months independently. It is useful for recurring cycles or manually curated sets
+of months.
+
+## Detailed component pages
+
+- [MtMonthPicker (single)](/components-library/mantine/month-picker-single)
+- [MtMonthRangePicker](/components-library/mantine/month-range-picker)
+- [MtMonthMultiplePicker](/components-library/mantine/month-multiple-picker)
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type      | Description                                                                                  |
+|:-------------|:----------|:---------------------------------------------------------------------------------------------|
+| Value        | `Date \| null` (or range/multiple) | Selected month(s) (uncontrolled value)                          |
+| Min date     | `Date`    | Minimum selectable month                                                                    |
+| Max date     | `Date`    | Maximum selectable month                                                                    |
+| Size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | Size of the picker                                  |
+| Disabled     | `boolean` | Disables the picker                                                                        |
+| On change    | `event`   | Fired when the selection changes                                                            |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

@@ -1,0 +1,41 @@
+---
+title: ColorPicker
+description: The ColorPicker component provides a color picker with swatches and optional alpha
+slug: /components-library/mantine/color-picker
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtColorPicker.tsx"
+/>
+
+## Introduction
+
+The ColorPicker component displays a color picker UI (e.g. hue/saturation and optional alpha) and can show preset swatches. It is
+used when you need full color selection without a text input. The component is based on [Mantine ColorPicker](https://mantine.dev/core/color-picker/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type      | Description                                                                                  |
+|:-------------|:----------|:---------------------------------------------------------------------------------------------|
+| Value        | `string`  | Current color value (uncontrolled value)                                                     |
+| Format       | `string`  | Color format (e.g. `'hex'`, `'rgba'`)                                                       |
+| Size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | Size of the picker                                  |
+| Full width   | `boolean` | If `true`, picker stretches to container width                                             |
+| With swatches | `boolean` | If `true`, shows color swatches                                                            |
+| On change    | `event`   | Fired when the color changes                                                                |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

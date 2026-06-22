@@ -1,0 +1,47 @@
+---
+sidebar_position: 60
+title: Input
+description: The Input component is a text input field that allows users to enter and edit text
+slug: /components-library/fields-components/input
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsInput.tsx"
+/>
+
+## Introduction
+
+Input represents a text input field that allows users to enter and edit text. It provides a more flexible and customizable alternative to
+native HTML input controls, and can be used to collect user input, such as names, email addresses, or passwords.
+
+The input component is based on [Input and InputGroup](https://rsuitejs.com/components/input/). It is included within
+the following NPM package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+The Input component can be styled and configured to fit specific design and functionality requirements by using various properties that are
+presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name          | Type      | Description                                                                                              |
+|:--------------|:----------|:---------------------------------------------------------------------------------------------------------|
+| Label         | `string`  | Text that is displayed for the component                                                                 |
+| Placeholder   | `string`  | Placeholder string                                                                                       |
+| Size          | `choice`  | Sets the size of the input field (e.g., _large_, _small_, etc. )                                         |
+| Disabled      | `boolean` | Disables the component                                                                                   |
+| Read Only     | `boolean` | If set to _true_, makes your component unavailable for users to interact with                            |
+| Value         | `string`  | Sets the default value for the input field                                                               |
+| Password mask | `boolean` | Adds an icon that displays and hides the password; especially helpful for creating password input fields |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

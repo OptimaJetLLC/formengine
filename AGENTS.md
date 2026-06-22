@@ -26,19 +26,16 @@ React Form Builder is a monorepository using Lerna and Nx for package management
 
 ```
 fb/
-├── src/
-│   ├── packages/           # Main packages
-│   ├── tests/              # Tests
-│   ├── documentation/      # Documentation
-│   └── scripts/            # Utility scripts
-├── examples/               # Usage examples
-├── sample-apps/            # Sample applications
-└── tools/                  # Development tools
+├── packages/               # Main packages
+├── tests/                  # Tests
+├── documentation/          # Documentation
+├── scripts/                # Utility scripts
+└── examples/               # Usage examples
 ```
 
 ## Commands for Development
 
-Run the commands in the `src` folder.
+Run the commands from the repository root.
 
 ### Basic Commands
 
@@ -315,13 +312,13 @@ setValue(value);
 
 ### Test Suites Layout
 
-All automated tests live under `src/tests`, and each suite is an isolated package with its own tooling:
+All automated tests live under `tests/`, and each suite is an isolated package with its own tooling:
 
-- `src/tests/common` contains shared helpers, fixtures, and license validation logic consumed by other suites.
-- `src/tests/component` uses React Testing Library to exercise packaged widgets against fixture JSON located in `components/` and `tests/`.
-- `src/tests/module` runs Vitest-driven integration checks that import the published modules (`@react-form-builder/core`, designer, indexed-db storage, etc.) through their real entry points.
-- `src/tests/e2e` hosts the Playwright harness. It spins up a sample designer/viewer app and drives cross-browser scenarios, producing reports under `src/tests/e2e/reports`.
-- `src/tests/react-17`, `src/tests/react-18`, and `src/tests/react-19` are lightweight host apps used by the test suite to verify backwards compatibility with multiple React majors.
+- `tests/common` contains shared helpers, fixtures, and license validation logic consumed by other suites.
+- `tests/component` uses React Testing Library to exercise packaged widgets against fixture JSON located in `components/` and `tests/`.
+- `tests/module` runs Vitest-driven integration checks that import the published modules (`@react-form-builder/core`, designer, indexed-db storage, etc.) through their real entry points.
+- `tests/e2e` hosts the Playwright harness. It spins up a sample designer/viewer app and drives cross-browser scenarios, producing reports under `tests/e2e/reports`.
+- `tests/react-17`, `tests/react-18`, and `tests/react-19` are lightweight host apps used by the test suite to verify backwards compatibility with multiple React majors.
 
 ### Writing Tests
 
@@ -351,13 +348,13 @@ From the repository root, use the provided npm scripts:
 
 ```bash
 npm run test            # Executes the default Nx target for the selected suite
-npm run test:component  # Launches the component tests in src/tests/component
-npm run test:module     # Runs Vitest inside src/tests/module
-npm run test:e2e        # Starts the Playwright harness in src/tests/e2e
+npm run test:component  # Launches the component tests in tests/component
+npm run test:module     # Runs Vitest inside tests/module
+npm run test:e2e        # Starts the Playwright harness in tests/e2e
 npm run test:browser    # Additional browser-focused checks when needed
 ```
 
-When developing E2E scenarios, start the desired React host (`npm run start:designer` or `npm run start:viewer` from the relevant `src/tests/react-*` directory) before invoking Playwright, or override the `TEST_*` environment variables described in `src/tests/e2e/playwright.config.ts`.
+When developing E2E scenarios, start the desired React host (`npm run start:designer` or `npm run start:viewer` from the relevant `tests/react-*` directory) before invoking Playwright, or override the `TEST_*` environment variables described in `tests/e2e/playwright.config.ts`.
 
 ## Development Process
 
@@ -477,4 +474,4 @@ const logger = {
 
 ## Documentation Style Guide
 
-For documentation work under `src/documentation/docs`, follow `src/documentation/AGENTS.md`.
+For documentation work under `documentation/docs`, follow `documentation/AGENTS.md`.

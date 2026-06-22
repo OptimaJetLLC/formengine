@@ -1,0 +1,52 @@
+---
+sidebar_position: 85
+title: Placeholder grid
+description: Shows the grid placeholder before loading the component
+slug: /components-library/static-components/placeholder-grid
+---
+
+import AdditionalOptions from '../_additional-options.mdx';
+import StyleWrapper from '../_style-wrapper.mdx';
+import StyleForDevice from '../_style-for-device.mdx'
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsPlaceholder.tsx"
+/>
+
+## Introduction
+
+The Placeholder grid component displays the placeholder as a grid. This component is based on
+the [Placeholder.Grid](https://rsuitejs.com/components/placeholder/#grid-or-table) component.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name        | Type      | Description                       |
+|:------------|:----------|:----------------------------------|
+| Rows        | `number`  | The number of rows                |
+| Columns     | `number`  | The number of columns             |
+| Row height  | `number`  | The height of the row             |
+| Row spacing | `number`  | The spacing between rows          |
+| Active      | `boolean` | Whether the placeholder is active |
+
+<AdditionalOptions/>
+
+## Style properties
+
+These are properties that allow to customize the size, color and other style properties of your component:
+
+<StyleForDevice/>
+
+- **Component**:
+
+- _Alignment_: Sets the alignment of your component (i.e., _Start_, _Center_, or _End_).
+- _Font Size_: Specifies the font size of the component.
+- _Font Weight_: Sets the font weight (i.e., _Normal_, _Lighter_, or _Bold_).
+- _Color_: Sets the text color for the link text. Corresponds to the similar property within the Wrapper options.
+- _Class Name_: Add a class name for your component for the subsequent styling if necessary.
+
+<StyleWrapper/>

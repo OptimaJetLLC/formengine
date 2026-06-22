@@ -1,0 +1,52 @@
+---
+title: Textarea
+description: The Textarea component is a multi-line text input for longer content
+slug: /components-library/mantine/textarea
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtTextarea.tsx"
+/>
+
+## Introduction
+
+The Textarea component is a multi-line text input that allows users to enter and edit longer text content. It is commonly used for
+comments, descriptions, or any content that requires more than a single line. The component follows Mantine styling and supports
+resizing and min/max rows.
+
+The Textarea component is based on [Mantine Textarea](https://mantine.dev/core/textarea/). It is included within the following
+NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+The Textarea component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type      | Description                                                                                  |
+|:-------------|:----------|:---------------------------------------------------------------------------------------------|
+| Label        | `string`  | Text displayed as the label for the textarea                                                 |
+| Value        | `string`  | The current value (data-bound)                                                              |
+| Placeholder  | `string`  | Placeholder text when empty                                                                  |
+| Description  | `string`  | Helper text below the field                                                                  |
+| Error        | `string`  | Error message; when set, applies error styling                                               |
+| Min rows     | `number`  | Minimum number of visible rows                                                               |
+| Size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | The size of the textarea                                |
+| Variant      | `'filled' \| 'default' \| 'unstyled'`                                                        | The visual variant                                     |
+| Disabled     | `boolean` | Disables the textarea                                                                        |
+| Read only    | `boolean` | Makes the textarea read-only                                                                |
+| With asterisk| `boolean` | Shows a required indicator next to the label                                                 |
+| On change    | `event`   | Fired when the value changes                                                                 |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

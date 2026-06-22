@@ -1,0 +1,50 @@
+---
+sidebar_position: 10
+title: Calendar
+description: The Calendar component enables you to add a calendar to your form.
+slug: /components-library/fields-components/calendar
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsCalendar.tsx"
+/>
+
+## Introduction
+
+The [Calendar](https://rsuitejs.com/components/calendar/) component, as its name suggests, enables you to add a calendar to your form. This
+component displays your provided data in a calendar format and allows you to customize calendar's appearance and behavior by modifying
+various properties.
+
+This component enables users to easily select dates and time ranges for form fields, such as scheduling appointments or events.
+Additionally, the calendar component can prevent invalid date entries, ensuring accurate data collection. This component is included within
+the following NPM package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+The following instructions showcase configuration and customization of the calendar component. Explore the various properties and options
+available to tailor its behavior and appearance to your requirements.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name          | Type      | Description                                                                                                         |
+|:--------------|:----------|:--------------------------------------------------------------------------------------------------------------------|
+| Label         | `string`  | Provide a title for your component                                                                                  |
+| Key           | `string`  | A unique key (name) for you calendar                                                                                |
+| Bordered      | `boolean` | Adds visible borders when checked                                                                                   |
+| Compact       | `string`  | Makes your calendar compact (smaller) when checked                                                                  |
+| Default value | `Date`    | Sets a default value (default date) for your calendar                                                               |
+| Read Only     | `boolean` | If set to _true_, makes your checkbox unavailable to interact with                                                  |
+| Iso week      | `boolean` | Enables [ISO 8601 standard](https://en.wikipedia.org/wiki/ISO_week_date), starts each week with Monday when checked |
+| Value         | `Date`    | Sets a controlled value (selected date) for your calendar                                                           |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

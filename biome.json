@@ -10,19 +10,19 @@
     "ignoreUnknown": false,
     "includes": [
       "**/*.{js,jsx,json,css,md}",
-      "src/packages/views/rsuite/config/**/*",
-      "src/packages/views/rsuite/vite.config.ts",
-      "src/packages/views/material-ui/config/*",
-      "src/packages/views/material-ui/vite.config.ts",
+      "packages/views/rsuite/config/**/*",
+      "packages/views/rsuite/vite.config.ts",
+      "packages/views/material-ui/config/*",
+      "packages/views/material-ui/vite.config.ts",
       "!**/rsuite-no-reset*.css",
       "!**/formengine-rsuite.css",
-      "src/packages/apps/**/*.{ts,tsx}",
-      "src/packages/designer-bundle/**/*.{ts,tsx}",
-      "src/packages/indexed-db-form-storage/**/*.{ts,tsx}",
-      "src/packages/viewer-bundle/**/*.{ts,tsx}",
-      "src/packages/viewer-bundle-premium/**/*.{ts,tsx}",
-      "src/scripts/**/*.ts",
-      "!src/documentation/website/static"
+      "packages/apps/**/*.{ts,tsx}",
+      "packages/designer-bundle/**/*.{ts,tsx}",
+      "packages/indexed-db-form-storage/**/*.{ts,tsx}",
+      "packages/viewer-bundle/**/*.{ts,tsx}",
+      "packages/viewer-bundle-premium/**/*.{ts,tsx}",
+      "scripts/**/*.ts",
+      "!documentation/website/static"
     ]
   },
   "formatter": {
@@ -40,7 +40,8 @@
   },
   "css": {
     "parser": {
-      "cssModules": true
+      "cssModules": true,
+      "tailwindDirectives": true
     },
     "formatter": {
       "quoteStyle": "double"

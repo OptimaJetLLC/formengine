@@ -1,0 +1,42 @@
+---
+sidebar_position: 20
+title: Error message
+description: Used to display an error message to the user, typically in response to form validation error
+slug: /components-library/static-components/error-message
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsErrorMessage.tsx"
+/>
+
+## Introduction
+
+This component is used to display an error message to the user, typically in response to form validation error (i.e., in case of invalid
+input or an error that occurred during a specific process). You can choose the placement of the error message and customize its style like
+any other component. The error message text, as well as additional error options for your form, are configured within the **Settings** menu,
+which can be accessed by using the left side panel.
+
+The error message component is a part
+of [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+The following introduces and describes available properties and options that are available within the right side panel.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name       | Type     | Description                                                                            |
+|:-----------|:---------|:---------------------------------------------------------------------------------------|
+| Placement  | `choice` | Select the placement of component (e.g., _bottom end_, _top start_, etc.)              |
+| Class Name | `string` | Adds a class name for your component, which is also used within the _Style properties_ |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

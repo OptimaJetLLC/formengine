@@ -1,0 +1,47 @@
+---
+title: DateRangePicker
+description: The MtDateRangePicker component selects a start and end date
+slug: /components-library/mantine/date-range-picker
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtDatePicker.tsx"
+/>
+
+## Introduction
+
+`MtDateRangePicker` is the range variant of the Mantine date picker. It lets users select a start and end date, representing a continuous
+period (for example, booking dates or report intervals).
+
+This page describes the properties of the **MtDateRangePicker** component. For an overview of all date picker variants, see the
+[DatePicker overview](/components-library/mantine/date-picker).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name                  | Type                        | Description                                            |
+|:----------------------|:----------------------------|:-------------------------------------------------------|
+| Value                 | `[Date, Date] \| null`      | Selected date range (start and end)                    |
+| Allow single date in range | `boolean`             | If `true`, allows selecting the same date twice        |
+| Min date              | `Date`                      | Minimum selectable date                                |
+| Max date              | `Date`                      | Maximum selectable date                                |
+| Size                  | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Size of the calendar                        |
+| Disabled              | `boolean`                   | Disables the picker                                    |
+| On change             | `event`                     | Fired when the range changes                           |
+
+Advanced calendar configuration props (columns, locale, label formats, levels, etc.) are also supported via the underlying
+Mantine `DatePicker` API.
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
+

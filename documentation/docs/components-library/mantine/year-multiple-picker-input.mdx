@@ -1,0 +1,49 @@
+---
+title: YearMultiplePickerInput
+description: The MtYearMultiplePickerInput component uses an input and year picker to select multiple years
+slug: /components-library/mantine/year-multiple-picker-input
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtYearPickerInput.tsx"
+/>
+
+## Introduction
+
+`MtYearMultiplePickerInput` is the multiple-year variant of the year picker input. It combines a text field and popover to select
+several specific years.
+
+This page describes the properties of the **MtYearMultiplePickerInput** component. For other variants, see the
+[YearPickerInput overview](/components-library/mantine/year-picker-input).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name        | Type                                   | Description                                    |
+|:------------|:---------------------------------------|:-----------------------------------------------|
+| Label       | `string`                               | Label for the input                            |
+| Value       | `Date[]`                               | Array of selected years                        |
+| Placeholder | `string`                               | Placeholder when no selection                  |
+| Description | `string`                               | Helper text displayed below the input          |
+| Error       | `string`                               | Error message; when set, applies error styling |
+| Size        | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Size of the input                              |
+| Variant     | `'filled' \| 'default' \| 'unstyled'`  | Visual variant                                 |
+| Disabled    | `boolean`                              | Disables the input                             |
+| Clearable   | `boolean`                              | If `true`, allows clearing the selection       |
+| On change   | `event`                                | Fired when the selected years change           |
+
+Additional configuration (columns, locale, formats, levels, etc.) is inherited from Mantine `YearPickerInput`.
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
+

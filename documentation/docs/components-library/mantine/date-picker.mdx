@@ -1,0 +1,76 @@
+---
+title: DatePicker
+description: The DatePicker component allows users to select a date from a calendar
+slug: /components-library/mantine/date-picker
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtDatePicker.tsx"
+/>
+
+## Introduction
+
+The DatePicker component displays a calendar for selecting a single date. Variants include MtDatePicker (single), MtDateRangePicker,
+and MtDateMultiplePicker. The component requires `@mantine/dates` and is based on [Mantine DatePicker](https://mantine.dev/dates/date-picker/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Components covered
+
+- **MtDatePicker**: Single date selection.
+- **MtDateRangePicker**: Start/end date range selection.
+- **MtDateMultiplePicker**: Multiple distinct date selection.
+
+## Differences between components
+
+| Component              | Selection type     | Value shape           | Typical use case                        |
+|:-----------------------|:------------------|:----------------------|:----------------------------------------|
+| **MtDatePicker**       | Single date       | `Date \| null`        | Simple date fields (birthday, due date) |
+| **MtDateRangePicker**  | Date range        | `[Date, Date] \| null`| Periods (from–to), bookings, intervals  |
+| **MtDateMultiplePicker** | Multiple dates  | `Date[]`              | Highlighted days, recurring selections  |
+
+### MtDatePicker
+
+Single-date variant that lets the user pick exactly one day from the calendar. It is the most common choice for simple date fields and
+uses the `Value` property as `Date \| null`.
+
+### MtDateRangePicker
+
+Range variant that lets the user select a start and end date. The `Value` is a `[Date, Date]` tuple (or `null` when not set) and is best
+suited for booking periods or any from–to scenarios.
+
+### MtDateMultiplePicker
+
+Multiple-dates variant that allows choosing any number of distinct dates. The `Value` is a `Date[]` array and is useful for highlighting
+custom sets of days (for example, unavailable dates or special events).
+
+## Detailed component pages
+
+- [MtDatePicker (single)](/components-library/mantine/date-picker-single)
+- [MtDateRangePicker](/components-library/mantine/date-range-picker)
+- [MtDateMultiplePicker](/components-library/mantine/date-multiple-picker)
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type      | Description                                                                                  |
+|:-------------|:----------|:---------------------------------------------------------------------------------------------|
+| Value        | `Date \| null` | Selected date (uncontrolled value)                                                 |
+| Min date     | `Date`    | Minimum selectable date                                                                     |
+| Max date     | `Date`    | Maximum selectable date                                                                     |
+| Size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | Size of the calendar                                  |
+| Disabled     | `boolean` | Disables the picker                                                                        |
+| On change    | `event`   | Fired when the date changes                                                                |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

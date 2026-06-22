@@ -1,0 +1,52 @@
+---
+sidebar_position: 5
+title: AutoComplete
+description: The AutoComplete component allows you to add an auto-complete field to a form.
+slug: /components-library/fields-components/autocomplete
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from '@site/src/components/ComponentInfo';
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsAutocomplete.tsx"
+/>
+
+## Introduction
+
+The [AutoComplete](https://rsuitejs.com/components/auto-complete/) component, as its name suggests, enables you to add an auto-complete to
+your form.
+
+This component is included within
+the following NPM package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+The following instructions showcase configuration and customization of the auto-complete component. Explore the various properties and options
+available to tailor its behavior and appearance to your requirements.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name            | Type       | Description                                                                                                                  |
+|:----------------|:-----------|:-----------------------------------------------------------------------------------------------------------------------------|
+| Key             | `string`   | A unique key (name) for you auto-complete                                                                                    |
+| Label           | `string`   | Provide a title for your component                                                                                           |
+| Placeholder     | `string`   | Specify placeholder for the auto-complete field. Will not visible if a _Value_ is provided                                   |
+| Data            | `string`   | Used to define _values_ and _labels_ for your auto-complete list. Add more options by using the corresponding (**+**) button |
+| Default value   | `Date`     | Sets a default value (default date) for your auto-complete                                                                   |
+| Value           | `Date`     | Sets a controlled value for your auto-complete                                                                               |
+| Disabled        | `boolean`  | Disables the component                                                                                                       |
+| Read Only       | `boolean`  | If set to _true_, makes your component unavailable for users to interact with                                                |
+| Size            | `choice`   | Sets the size of the input field (e.g., _large_, _small_, etc. )                                                             |
+| Filter by       | `function` | Custom filter rules (will only display items that value is a substring of which by default)                                  |
+| Menu class name | `string`   | A CSS class to apply to the Menu DOM                                                                                         |
+| Select on Enter | `boolean`  | When set to `false`, the <kbd>Enter</kbd> key selection function is invalid                                                  |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

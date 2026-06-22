@@ -1,0 +1,55 @@
+---
+sidebar_position: 120
+title: Tooltip
+description: Text box that appears when users interact with your component
+slug: /components-library/static-components/tooltip
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsTooltip.tsx"
+/>
+
+## Introduction
+
+The Tooltip component is used to provide a pop-up text box that appears when a user hovers over, activates, focuses or clicks on a component
+within your form. This component is commonly used to display explanatory text, hints, descriptions, or context for any component, allowing
+for complex and dynamic tooltip content.
+
+This component displays the pop-up messages using [Whisper](https://rsuitejs.com/components/whisper/)
+and [Tooltip](https://rsuitejs.com/components/tooltip/). It can be customized to appear on a specific trigger, and can also be customized
+with different placement, colors, and styles. The following introduces and describes properties and options presented for the tooltip
+component customization.
+
+## Main properties
+
+These are the properties that are available within the _Main_ tab. Note that all provided properties are **required**.
+
+| Name      | Type     | Description                                                                                            |
+|:----------|:---------|:-------------------------------------------------------------------------------------------------------|
+| Text      | `string` | Determines the text content of the tooltip                                                             |
+| Placement | `choice` | The position of the tooltip relative to the trigger element (e.g., _Top_, _Bottom_, _Left_, and so on) |
+| Trigger   | `choice` | The event that triggers the tooltip to appear. Refer to trigger options below for more details         |
+
+### Trigger options
+
+These trigger options provide users with flexibility in determining how the tooltip should be activated based on different user
+interactions:
+
+- _Click_: The tooltip will be triggered when the element is clicked and closed when clicked again.
+- _Context Menu_: It will be triggered when you trigger context menu on the component.
+- _Focus_: Typically triggered when the user clicks, taps on an element or selects it with the keyboard's tab key.
+- _Hover_: Will be triggered when the cursor (mouse pointer) is hovering over the component.
+- _Active_: Will be triggered when the element is activated.
+- _None_: No trigger event, generally used when it needs to be triggered by a method.
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

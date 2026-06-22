@@ -1,0 +1,52 @@
+---
+sidebar_position: 100
+title: Search
+description: Allows users to search for specific information within your specified dataset
+slug: /components-library/fields-components/search
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsSearch.tsx"
+/>
+
+## Introduction
+
+The Search component represents a user interface element that allows users to search for specific information within your specified dataset.
+This component consists of an input field where users can enter their search query and a search button to initiate the search. It provides
+a convenient way for users to quickly find relevant information by filtering and narrowing down the available options.
+
+This component is based on [Input Picker](https://rsuitejs.com/components/input-picker/). It is included within the following NPM package:
+[@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+You can customize this component to fit your needs by using available options and properties that are introduced and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name        | Type      | Description                                                                                                       |
+|:------------|:----------|:------------------------------------------------------------------------------------------------------------------|
+| Label       | `string`  | Text that is displayed for your search component                                                                  |
+| Value       | `string`  | Sets default value for the component                                                                              |
+| Placeholder | `string`  | Placeholder for the search field                                                                                  |
+| Placement   | `choice`  | Select the placement of component (e.g., _bottom end_, _top start_, etc.)                                         |
+| Size        | `choice`  | Select the size of the input field (e.g., _large_, _small_, etc. )                                                |
+| Preload     | `boolean` | If set to _true_, the data is downloaded in advance, before the user starts searching                             |
+| Data        | `string`  | Used to define _values_ and _labels_ for subsequent search. Add options by using the corresponding (**+**) button |
+| Cleanable   | `boolean` | If set to _true_, allows users to clear their selection                                                           |
+| Creatable   | `boolean` | If set to _true_, allows users to create and select their own data                                                |
+| Disabled    | `boolean` | Disables the component                                                                                            |
+| Read Only   | `boolean` | If set to _true_, makes your component unavailable for users to interact with                                     |
+| Group by    | `string`  | Used to specify the key; i.e., criteria for grouping data                                                         |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

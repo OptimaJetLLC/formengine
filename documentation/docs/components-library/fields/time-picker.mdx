@@ -1,0 +1,52 @@
+---
+sidebar_position: 135
+title: TimePicker
+description: A component that allows users to enter and select time in various formats.
+slug: /components-library/fields-components/time-picker
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsTimePicker.tsx"
+/>
+
+## Introduction
+
+[TimePicker](https://rsuitejs.com/components/date-picker/) represents a highly customizable component that allows users to enter and pick
+time in various formats. In particular, it provides a text input field and a selection element where users can select the desired time.
+You can customise this component to work with a specific time format, change its appearance, etc.
+
+This component is a part of [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+The following introduces and describes available properties and options for the TimePicker component.
+
+TimePicker component data is stored in `HH:mm:ss` format.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name          | Type      | Description                                                               |
+|:--------------|:----------|:--------------------------------------------------------------------------|
+| Label         | `string`  | Provide a title for your component                                        |
+| Placeholder   | `string`  | Placeholder string                                                        |
+| Value         | `string`  | Provide value for the input field                                         |
+| Default value | `boolean` | Sets default time value for the input field                               |
+| Format        | `string`  | Format of the time when rendered in the input (e.g., `HH:mm:ss`)          |
+| Editable      | `boolean` | If set to _true_, the time can be entered via the keyboard                |
+| Cleanable     | `boolean` | If set to _true_, allows users to change specified time                   |
+| Disabled      | `boolean` | Disables the component                                                    |
+| Read Only     | `boolean` | If set to _true_, makes your checkbox unavailable to interact with        |
+| Open          | `boolean` | Whether the time selection window is open                                 |
+| Placement     | `choice`  | Select the placement of component (e.g., _bottom end_, _top start_, etc.) |
+| Size          | `choice`  | Select the size of the input field (e.g., _large_, _small_, etc.)         |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

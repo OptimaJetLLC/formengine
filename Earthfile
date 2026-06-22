@@ -1,6 +1,6 @@
 VERSION --try 0.8
 FROM node:24.11.0
-WORKDIR /form-engine/src
+WORKDIR /form-engine
 
 # npm-build builds all npm packages
 npm-build:
@@ -10,6 +10,7 @@ npm-build:
 # npm-bundle builds all npm bundles
 npm-bundle:
   FROM +sources
+  ENV NODE_OPTIONS="--max-old-space-size=18192"
   RUN npm run pack
 
 # npm-update-release-date updates apps release date
@@ -132,15 +133,15 @@ prepare-github-formengine-examples:
   RUN node scripts/examples-install-local-packages.ts --restore-registry
   RUN mkdir -p /prepared/src/packages/views /prepared/src/packages/apps
   RUN cp -r /form-engine/examples /prepared/examples
-  RUN cp -r /form-engine/src/packages/core /prepared/src/packages/core
-  RUN cp -r /form-engine/src/packages/json-schema-generator /prepared/src/packages/json-schema-generator
-  RUN cp -r /form-engine/src/packages/views/rsuite /prepared/src/packages/views/rsuite
-  RUN cp -r /form-engine/src/packages/views/material-ui /prepared/src/packages/views/material-ui
-  RUN cp -r /form-engine/src/packages/views/mantine /prepared/src/packages/views/mantine
-  RUN cp -r /form-engine/src/packages/views/uploader /prepared/src/packages/views/uploader
-  RUN cp -r /form-engine/src/packages/viewer-bundle /prepared/src/packages/viewer-bundle
-  RUN cp -r /form-engine/src/packages/apps/common /prepared/src/packages/apps/common
-  RUN cp -r /form-engine/src/packages/apps/example-viewer /prepared/src/packages/apps/example-viewer
+  RUN cp -r /form-engine/packages/core /prepared/src/packages/core
+  RUN cp -r /form-engine/packages/json-schema-generator /prepared/src/packages/json-schema-generator
+  RUN cp -r /form-engine/packages/views/rsuite /prepared/src/packages/views/rsuite
+  RUN cp -r /form-engine/packages/views/material-ui /prepared/src/packages/views/material-ui
+  RUN cp -r /form-engine/packages/views/mantine /prepared/src/packages/views/mantine
+  RUN cp -r /form-engine/packages/views/uploader /prepared/src/packages/views/uploader
+  RUN cp -r /form-engine/packages/viewer-bundle /prepared/src/packages/viewer-bundle
+  RUN cp -r /form-engine/packages/apps/common /prepared/src/packages/apps/common
+  RUN cp -r /form-engine/packages/apps/example-viewer /prepared/src/packages/apps/example-viewer
   SAVE ARTIFACT /prepared
 
 # prepare-github-formengine-archive creates an archive for the GitHub repository optimajet/formengine
@@ -157,21 +158,21 @@ prepare-github-formengine-archive:
   COPY --dir +prepare-github-formengine-examples/prepared/src/packages/apps/common github-formengine/community/src/packages/apps/common
   COPY --dir +prepare-github-formengine-examples/prepared/src/packages/apps/example-viewer github-formengine/community/src/packages/apps/example-viewer
   COPY --dir +prepare-github-formengine-examples/prepared/examples/community github-formengine/community/examples
-  COPY --dir src/scripts/cli-lib github-formengine/community/src/scripts/cli-lib
-  COPY src/.npmrc github-formengine/community/src/
+  COPY --dir scripts/cli-lib github-formengine/community/src/scripts/cli-lib
+  COPY .npmrc github-formengine/community/src/
   RUN rm -rf github-formengine/community/examples/bundle-size/scripts/install-local-formengine.ts
   RUN sed -i 's|file:../../../src/scripts/cli-lib|file:../../src/scripts/cli-lib|g' github-formengine/community/examples/bundle-size/package.json
   RUN cd github-formengine/community/examples/bundle-size && npm install --package-lock-only
   COPY --dir +prepare-github-formengine-examples/prepared/examples/premium github-formengine/premium/examples
-  COPY src/lerna.json github-formengine/community/src/
-  COPY src/tsconfig.json github-formengine/community/src/
-  COPY src/vite.config.ts github-formengine/community/src/
-  COPY src/.eslintrc.cjs github-formengine/community/src/
-  COPY src/.eslintignore github-formengine/community/src/
+  COPY lerna.json github-formengine/community/src/
+  COPY tsconfig.json github-formengine/community/src/
+  COPY vite.config.ts github-formengine/community/src/
+  COPY .eslintrc.cjs github-formengine/community/src/
+  COPY .eslintignore github-formengine/community/src/
   COPY .editorconfig github-formengine/community/src/
   COPY .gitignore github-formengine/
-  COPY src/package.public.json github-formengine/community/src/package.json
-  COPY src/package-lock.json github-formengine/community/src/package-lock.json
+  COPY package.public.json github-formengine/community/src/package.json
+  COPY package-lock.json github-formengine/community/src/package-lock.json
   RUN cd github-formengine/community/src && npm install --package-lock-only --no-audit --no-fund
   COPY CHANGELOG.md github-formengine
   RUN tar -czvf formengine.tgz -C github-formengine .
@@ -184,44 +185,44 @@ prepare-github-formenginesupport-archive:
 
   LET dst = private-github
 
-  COPY --dir src/packages/apps/common $dst/packages/apps/common
-  COPY --dir src/packages/apps/common-designer $dst/packages/apps/common-designer
-  COPY --dir src/packages/apps/example-builder $dst/packages/apps/example-builder
-  COPY --dir src/packages/apps/example-viewer $dst/packages/apps/example-viewer
-  COPY --dir src/packages/core $dst/packages/core
-  COPY --dir src/packages/designer $dst/packages/designer
-  COPY --dir src/packages/designer-bundle $dst/packages/designer-bundle
-  COPY --dir src/packages/indexed-db-form-storage $dst/packages/indexed-db-form-storage
-  COPY --dir src/packages/json-schema-generator $dst/packages/json-schema-generator
-  COPY --dir src/packages/viewer-bundle $dst/packages/viewer-bundle
-  COPY --dir src/packages/viewer-bundle-premium $dst/packages/viewer-bundle-premium
-  COPY --dir src/packages/views/antd $dst/packages/views/antd
-  COPY --dir src/packages/views/rsuite $dst/packages/views/rsuite
-  COPY --dir src/packages/views/mantine $dst/packages/views/mantine
-  COPY --dir src/packages/views/material-ui $dst/packages/views/material-ui
-  COPY --dir src/packages/views/rsuite-table $dst/packages/views/rsuite-table
-  COPY --dir src/packages/views/signature $dst/packages/views/signature
-  COPY --dir src/packages/views/fast-qr $dst/packages/views/fast-qr
-  COPY --dir src/packages/views/rich-text $dst/packages/views/rich-text
-  COPY --dir src/packages/views/google-map $dst/packages/views/google-map
-  COPY --dir src/packages/views/uploader $dst/packages/views/uploader
+  COPY --dir packages/apps/common $dst/packages/apps/common
+  COPY --dir packages/apps/common-designer $dst/packages/apps/common-designer
+  COPY --dir packages/apps/example-builder $dst/packages/apps/example-builder
+  COPY --dir packages/apps/example-viewer $dst/packages/apps/example-viewer
+  COPY --dir packages/core $dst/packages/core
+  COPY --dir packages/designer $dst/packages/designer
+  COPY --dir packages/designer-bundle $dst/packages/designer-bundle
+  COPY --dir packages/indexed-db-form-storage $dst/packages/indexed-db-form-storage
+  COPY --dir packages/json-schema-generator $dst/packages/json-schema-generator
+  COPY --dir packages/viewer-bundle $dst/packages/viewer-bundle
+  COPY --dir packages/viewer-bundle-premium $dst/packages/viewer-bundle-premium
+  COPY --dir packages/views/antd $dst/packages/views/antd
+  COPY --dir packages/views/rsuite $dst/packages/views/rsuite
+  COPY --dir packages/views/mantine $dst/packages/views/mantine
+  COPY --dir packages/views/material-ui $dst/packages/views/material-ui
+  COPY --dir packages/views/rsuite-table $dst/packages/views/rsuite-table
+  COPY --dir packages/views/signature $dst/packages/views/signature
+  COPY --dir packages/views/fast-qr $dst/packages/views/fast-qr
+  COPY --dir packages/views/rich-text $dst/packages/views/rich-text
+  COPY --dir packages/views/google-map $dst/packages/views/google-map
+  COPY --dir packages/views/uploader $dst/packages/views/uploader
 
-  COPY --dir src/scripts/cli-lib $dst/scripts/cli-lib
+  COPY --dir scripts/cli-lib $dst/scripts/cli-lib
 
-  COPY src/lerna.json $dst/
-  COPY src/LICENSE.md $dst/
-  COPY src/package.private.json $dst/package.json
-  COPY src/package-lock.json $dst/package-lock.json
-  COPY src/README.private.md $dst/README.md
-  COPY src/.eslintrc.cjs $dst/
-  COPY src/.eslintignore $dst/
-  COPY src/tsconfig.json $dst/
-  COPY src/vite.config.ts $dst/
+  COPY lerna.json $dst/
+  COPY LICENSE.md $dst/
+  COPY package.private.json $dst/package.json
+  COPY package-lock.json $dst/package-lock.json
+  COPY README.private.md $dst/README.md
+  COPY .eslintrc.cjs $dst/
+  COPY .eslintignore $dst/
+  COPY tsconfig.json $dst/
+  COPY vite.config.ts $dst/
   COPY CHANGELOG.md $dst/
 
   COPY .editorconfig $dst/
   COPY .gitignore $dst/
-  COPY src/.npmrc $dst/
+  COPY .npmrc $dst/
 
   RUN cd $dst && npm install --package-lock-only --no-audit --no-fund
 
@@ -230,7 +231,7 @@ prepare-github-formenginesupport-archive:
   SAVE ARTIFACT formenginesupport.tgz AS LOCAL .archives/formenginesupport.tgz
 
 prepare-version-archive:
-  COPY src/lerna.json lerna.json
+  COPY lerna.json lerna.json
   SAVE ARTIFACT lerna.json AS LOCAL .archives/lerna.json
 
 prepare-github-release-notes-archive:
@@ -514,85 +515,77 @@ run-sonar-analysis:
 sources:
   FROM +dependencies
   WORKDIR /form-engine
-  COPY src ./src
-  WORKDIR /form-engine/src
-  SAVE ARTIFACT /form-engine/src
+  COPY packages ./packages
+  COPY documentation ./documentation
+  COPY tests ./tests
+  COPY scripts ./scripts
+  COPY examples ./examples
+  COPY skills ./skills
+  COPY .editorconfig .eslintignore .eslintrc.cjs .gitignore .madgerc .npmrc \
+        AGENTS.md LICENSE.md README.private.md \
+        biome.json lerna.json localization.config.json tsconfig.json vite.config.ts knip.config.ts \
+        ./
+  COPY package.json package-lock.json package.private.json package.public.json ./
+  SAVE ARTIFACT /form-engine
 
 # dependencies installs node_modules dependencies
 dependencies:
   WORKDIR /form-engine
   COPY .gitignore biome.json .
-  COPY src/package.json src/package-lock.json ./src
+  COPY package.json package-lock.json package.private.json package.public.json ./
+  RUN mkdir -p \
+    scripts/cli-lib \
+    documentation/website documentation/website/packages \
+    packages/apps/common packages/apps/common-designer packages/apps/demo packages/apps/example-builder packages/apps/example-viewer packages/apps/formbuilder \
+    packages/core packages/designer packages/designer-bundle packages/indexed-db-form-storage packages/json-schema-generator \
+    packages/viewer-bundle packages/viewer-bundle-premium \
+    packages/views/antd packages/views/default packages/views/rsuite packages/views/mantine packages/views/material-ui packages/views/rsuite-table packages/views/signature \
+    packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/uploader \
+    tests/component tests/common tests/react-17 tests/react-18 tests/react-19 tests/e2e
 
-  RUN mkdir src/documentation src/packages \
-   src/documentation/website src/packages/apps src/packages/views \
-   src/packages/apps/common src/packages/apps/common-designer src/packages/apps/demo src/packages/apps/example-builder \
-   src/packages/apps/example-viewer src/packages/apps/formbuilder \
-   src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
-   src/packages/json-schema-generator \
-   src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
-   src/packages/viewer-bundle-premium \
-   src/packages/views/rsuite \
-   src/packages/views/mantine \
-   src/packages/views/material-ui \
-   src/packages/views/rsuite-table \
-   src/packages/views/signature \
-   src/packages/views/fast-qr \
-   src/packages/views/rich-text \
-   src/packages/views/google-map \
-   src/packages/views/uploader \
-   src/tests src/tests/common src/tests/module src/tests/component src/tests/react-17 src/tests/react-18 src/tests/react-19 \
-   src/tests/e2e
+  COPY --dir scripts/cli-lib scripts/cli-lib
+  COPY documentation/website/package.json documentation/website/
+  COPY --dir documentation/website/packages documentation/website/
+  COPY packages/apps/common/package.json packages/apps/common/
+  COPY packages/apps/common-designer/package.json packages/apps/common-designer/
+  COPY packages/apps/demo/package.json packages/apps/demo/
+  COPY packages/apps/example-builder/package.json packages/apps/example-builder/
+  COPY packages/apps/example-viewer/package.json packages/apps/example-viewer/
+  COPY packages/apps/formbuilder/package.json packages/apps/formbuilder/
+  COPY packages/core/package.json packages/core/
+  COPY packages/designer/package.json packages/designer/
+  COPY packages/designer-bundle/package.json packages/designer-bundle/
+  COPY packages/indexed-db-form-storage/package.json packages/indexed-db-form-storage/
+  COPY packages/json-schema-generator/package.json packages/json-schema-generator/
+  COPY packages/viewer-bundle/package.json packages/viewer-bundle/
+  COPY packages/viewer-bundle-premium/package.json packages/viewer-bundle-premium/
+  COPY packages/views/antd/package.json packages/views/antd/
+  COPY packages/views/default/package.json packages/views/default/
+  COPY packages/views/rsuite/package.json packages/views/rsuite/
+  COPY packages/views/mantine/package.json packages/views/mantine/
+  COPY packages/views/material-ui/package.json packages/views/material-ui/
+  COPY packages/views/rsuite-table/package.json packages/views/rsuite-table/
+  COPY packages/views/signature/package.json packages/views/signature/
+  COPY packages/views/fast-qr/package.json packages/views/fast-qr/
+  COPY packages/views/rich-text/package.json packages/views/rich-text/
+  COPY packages/views/google-map/package.json packages/views/google-map/
+  COPY packages/views/uploader/package.json packages/views/uploader/
+  COPY tests/component/package.json tests/component/
+  COPY tests/common/package.json tests/common/
+  COPY tests/react-17/package.json tests/react-17/
+  COPY tests/react-18/package.json tests/react-18/
+  COPY tests/react-19/package.json tests/react-19/
+  COPY tests/e2e/package.json tests/e2e/
 
-  COPY --dir src/scripts/cli-lib src/scripts/cli-lib
-
-  COPY src/documentation/website/package.json src/documentation/website
-  COPY --dir src/documentation/website/packages src/documentation/website
-
-  COPY src/packages/apps/common/package.json src/packages/apps/common
-  COPY src/packages/apps/common-designer/package.json src/packages/apps/common-designer
-  COPY src/packages/apps/demo/package.json src/packages/apps/demo
-  COPY src/packages/apps/example-builder/package.json src/packages/apps/example-builder
-  COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
-  COPY src/packages/apps/formbuilder/package.json src/packages/apps/formbuilder
-
-  COPY src/packages/core/package.json src/packages/core
-  COPY src/packages/designer/package.json src/packages/designer
-  COPY src/packages/designer-bundle/package.json src/packages/designer-bundle
-  COPY src/packages/indexed-db-form-storage/package.json src/packages/indexed-db-form-storage
-  COPY src/packages/json-schema-generator/package.json src/packages/json-schema-generator
-  COPY src/packages/viewer-bundle/package.json src/packages/viewer-bundle
-  COPY src/packages/viewer-bundle-premium/package.json src/packages/viewer-bundle-premium
-
-  COPY src/packages/views/antd/package.json src/packages/views/antd
-  COPY src/packages/views/default/package.json src/packages/views/default
-  COPY src/packages/views/rsuite/package.json src/packages/views/rsuite
-  COPY src/packages/views/mantine/package.json src/packages/views/mantine
-  COPY src/packages/views/material-ui/package.json src/packages/views/material-ui
-  COPY src/packages/views/rsuite-table/package.json src/packages/views/rsuite-table
-  COPY src/packages/views/signature/package.json src/packages/views/signature
-  COPY src/packages/views/fast-qr/package.json src/packages/views/fast-qr
-  COPY src/packages/views/rich-text/package.json src/packages/views/rich-text
-  COPY src/packages/views/google-map/package.json src/packages/views/google-map
-  COPY src/packages/views/uploader/package.json src/packages/views/uploader
-
-  COPY src/tests/component/package.json src/tests/component
-  COPY src/tests/common/package.json src/tests/common
-  COPY src/tests/module/package.json src/tests/react-17
-  COPY src/tests/react-17/package.json src/tests/react-17
-  COPY src/tests/react-18/package.json src/tests/react-18
-  COPY src/tests/react-19/package.json src/tests/react-19
-  COPY src/tests/e2e/package.json src/tests/e2e
-
-  WORKDIR /form-engine/src
+  WORKDIR /form-engine
   # Speed up CI installs and avoid long silent audit output.
   ENV npm_config_audit=false
   ENV npm_config_fund=false
   ENV npm_config_progress=true
   RUN npm ci --no-audit --no-fund
 
-  SAVE ARTIFACT package.json AS LOCAL src/package.json
-  SAVE ARTIFACT package-lock.json AS LOCAL src/package-lock.json
+  SAVE ARTIFACT package.json AS LOCAL package.json
+  SAVE ARTIFACT package-lock.json AS LOCAL package-lock.json
 
 GITHUB_COMMIT_AND_PUSH:
   FUNCTION

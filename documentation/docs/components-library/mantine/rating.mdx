@@ -1,0 +1,42 @@
+---
+title: Rating
+description: The Rating component allows users to rate by selecting a number of stars or symbols
+slug: /components-library/mantine/rating
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/mantine/src/components/MtRating.tsx"
+/>
+
+## Introduction
+
+The Rating component displays a row of symbols (e.g. stars) that users can click to set a numeric rating. It is commonly used for
+feedback and reviews. The component is based on [Mantine Rating](https://mantine.dev/core/rating/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type      | Description                                                                                  |
+|:-------------|:----------|:---------------------------------------------------------------------------------------------|
+| Value        | `number`  | Current rating value (uncontrolled value)                                                     |
+| Count        | `number`  | Number of symbols (e.g. stars) (default: `5`)                                               |
+| Size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | Size of the symbols                                  |
+| Read only    | `boolean` | If `true`, the rating is not editable                                                        |
+| Fractions    | `number`  | Number of fractional steps (e.g. 2 for half stars)                                          |
+| Disabled     | `boolean` | Disables the rating                                                                         |
+| On change    | `event`   | Fired when the value changes                                                                |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
