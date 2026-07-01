@@ -1,16 +1,17 @@
 #!/usr/bin/env node
 
 import {mkdir, readdir, rename, rm, stat} from 'node:fs/promises'
-import {cpus} from 'node:os'
 import {basename, dirname, extname, join} from 'node:path'
 import process from 'node:process'
 import {fileURLToPath} from 'node:url'
 
 import sharp from 'sharp'
 
+import {getCpuScaledConcurrency} from '../../../scripts/cli-lib/concurrency.ts'
+
 const QUALITY = 80
 const SUPPORTED_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.gif'])
-const MAX_CONCURRENCY = Math.max(1, Math.floor(cpus().length / 3))
+const {concurrency: MAX_CONCURRENCY} = getCpuScaledConcurrency()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const PACKAGE_ROOT = join(__dirname, '..')

@@ -1,0 +1,51 @@
+name: Check, build, draft
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Static checks
+    runs-on: [self-hosted]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          clean: false
+      - name: Run static checks in Docker
+        run: earthly --ci +npm-check-all
+
+  tests:
+    needs: checks
+    uses: ./.github/workflows/ci-tests.yml
+
+  e2e:
+    needs: checks
+    uses: ./.github/workflows/ci-e2e.yml
+
+  bundle:
+    needs:
+      - tests
+      - e2e
+    uses: ./.github/workflows/ci-bundle.yml
+
+  build-documentation:
+    needs:
+      - tests
+      - e2e
+    uses: ./.github/workflows/ci-build-documentation.yml
+
+  build-apps-and-views:
+    needs: checks
+    uses: ./.github/workflows/ci-build-apps-and-views.yml
+
+  publish-rc-release:
+    needs:
+      - bundle
+      - build-documentation
+    if: ${{ github.event_name == 'workflow_dispatch' && startsWith(github.ref, 'refs/heads/rc/') }}
+    uses: ./.github/workflows/ci-publish-rc-release.yml

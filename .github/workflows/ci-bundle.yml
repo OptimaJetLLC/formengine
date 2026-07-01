@@ -1,0 +1,32 @@
+name: CI bundle
+
+on:
+  workflow_call:
+
+jobs:
+  bundle:
+    name: Bundle packages
+    timeout-minutes: 60
+    runs-on: [self-hosted]
+    env:
+      RC_RELEASE: ${{ startsWith(github.ref, 'refs/heads/rc/') || startsWith(github.head_ref, 'rc/') }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          clean: false
+      - name: Run bundle
+        run: |
+          if [ "${{ env.RC_RELEASE }}" = "true" ]; then
+            earthly --ci --output +prepare-rc-archives-from-pack
+          else
+            earthly --ci +npm-bundle --arg prepareRcArchives=0
+          fi
+      - name: Upload release archives
+        if: env.RC_RELEASE == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-archives
+          path: .archives/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 5

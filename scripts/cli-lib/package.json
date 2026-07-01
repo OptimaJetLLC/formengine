@@ -6,6 +6,7 @@
   "description": "Shared Node CLI helpers for pack, check-pack, and install workflows",
   "exports": {
     "./check-pack-workflow": "./check-pack-workflow.ts",
+    "./concurrency": "./concurrency.ts",
     "./fs-utils": "./fs-utils.ts",
     "./install-local-package": "./install-local-package.ts",
     "./json-fs": "./json-fs.ts",

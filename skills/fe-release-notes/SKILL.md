@@ -1,12 +1,12 @@
 ---
 name: fe-release-notes
-description: Prepares FormEngine release notes (Docusaurus + GitHub), updates versions, and runs local release scripts defined in AGENTS.md. The user must review and adjust the draft release notes before any generators or version updates run. Use when preparing a FormEngine release, writing release notes for a version, running version-update or docs build, or when the user mentions release tickets, YouTrack fix versions, or rc branches.
+description: Prepares FormEngine release notes (Docusaurus + GitHub), bumps monorepo versions, and runs generator/docs scripts. Does not run CI, deploy, or TeamCity. The user must review and approve the draft before generators or version-update run. Use when preparing a FormEngine release, writing release notes for a version, running version-update or docs build, or when the user mentions release tickets, YouTrack fix versions, or rc branches.
 compatibility: YouTrack REST API (YT_TOKEN in skills/fe-release-notes/scripts/.env); Chrome DevTools MCP optional when API output is insufficient or token access is missing
 ---
 
 # FE release
 
-_FormEngine release notes + local release scripts._
+_FormEngine release notes + version/docs automation (not deploy)._
 
 **Location:** `skills/fe-release-notes/SKILL.md` (this repo). If your workspace symlinks `skills` to another folder, resolve the same file there.
 
@@ -48,7 +48,7 @@ From the repo root:
 ```bash
 set -a
 # shellcheck source=/dev/null
-. skills/fe-release-notes/references/.env
+. skills/fe-release-notes/scripts/.env
 set +a
 ```
 
@@ -89,7 +89,7 @@ Tune the `query` string to match how FormEngine encodes versions in YouTrack (fi
 
 ### When the API is not enough
 
-- If **`YT_TOKEN` is missing or requests return 401/403**, tell the user to add or refresh the token in `skills/fe-release-notes/references/.env`.
+- If **`YT_TOKEN` is missing or requests return 401/403**, tell the user to add or refresh the token in `skills/fe-release-notes/scripts/.env`.
 - If some content exists only in the web UI or the API payload is incomplete, use **browser tools** (Chrome DevTools MCP) as a supplement — e.g. navigate to the ticket URL and follow links. If the browser session is logged out, wait for the user to sign in.
 
 Identify potential release highlights and ask the user to refine them. Draft release notes only after this step.
@@ -110,18 +110,36 @@ Identify potential release highlights and ask the user to refine them. Draft rel
    - Version, **release date** line, overview, key features, and every changelog subsection (including dependency bullets if present).
    - Internal doc links and slugs (Docusaurus fails the build on broken links).
    Apply any edits the user requests. **Do not** run `generate:github-release-notes`, `generate:changelog`, `version-update`, or `docs:build` until the user **explicitly confirms** the release notes are ready (or asks you to proceed). If the user wants to edit the file themselves, wait until they say they are done.
-5. **After the draft is approved**, run automation in order:
+5. **After the draft is approved**, run automation **from the repository root** in order:
    - Ensure **`lerna.json`** has **`"version": "X.Y.Z"`** (monorepo source of truth for `npm run version-update` and CI).
-   - From **`src`**, run **`npm run version-update`** (updates Lerna package versions, internal dependency pins, and invokes **`update-release-date`** for `common-designer` when configured in `scripts/version-update.ts`).
-   - From **`src`**, run **`npm run generate:github-release-notes`** and **`npm run generate:changelog`**. Generated GitHub notes under **`scripts/github-release-notes/`** must use absolute links starting with **`https://formengine.io/documentation/...`** (the script rewrites relative paths).
-   - From **`src`**, run **`npm run docs:build`** for `@react-form-builder/docs` (or the project’s documented docs build).
+   - Run **`npm run version-update`** (updates Lerna package versions, internal dependency pins, refreshes `package-lock.json`, and invokes **`update-release-date`** for `common-designer` when configured in `scripts/version-update.ts`).
+   - Run **`npm run generate:github-release-notes`** and **`npm run generate:changelog`**. Generated GitHub notes under **`scripts/github-release-notes/`** must use absolute links starting with **`https://formengine.io/documentation/...`** (the script rewrites relative paths).
+   - Run **`npm run docs:build`** for `@react-form-builder/docs`.
 6. **At the end**, provide a list of ticket URLs that have linked issues in the `SUPPORT` project.
+7. **Hand off to release ops** (inform the user; do not run unless explicitly asked):
+   - Open a PR and merge version bump, `documentation/docs/release-notes/X.Y.Z.md`, `CHANGELOG.md`, and generated `scripts/github-release-notes/` into **`master`**.
+   - Create or merge into **`rc/major.minor`** for the release line.
+   - Run **GitHub Actions CI** (`ci.yml`) on the RC branch (PR or `workflow_dispatch`). Manually run **Check, build, draft** on the `rc/*` branch to publish the **draft GitHub Release** (tag = version from `lerna.json`) with all `.archives/` assets.
+   - **Deploy** is outside this skill: [formengine-tools](https://github.com/OptimaJetLLC/formengine-tools) TeamCity pipeline downloads release assets and publishes. See [teamcity/PIPELINES-UI.md](https://github.com/OptimaJetLLC/formengine-tools/blob/main/teamcity/PIPELINES-UI.md).
+
+---
+
+## Release pipeline context (read-only for this skill)
+
+| Phase                            | Where                                                            | This skill       |
+|----------------------------------|------------------------------------------------------------------|------------------|
+| CI: checks, tests, bundle, docs  | GitHub Actions `ci.yml` → `earthly --ci +…` | Does not trigger |
+| RC artifact publish              | Manual `workflow_dispatch` on `rc/*` → `ci-publish-rc-release.yml` → draft GitHub Release | Does not trigger |
+| Deploy: npm, SSH, mirrors, smoke | [formengine-tools](https://github.com/OptimaJetLLC/formengine-tools) TeamCity | Does not run     |
+| Release notes + version bump     | This skill + PR to `master`                                      | **Yes**          |
+
+CI builds RC archives on `rc/*` branches; publishing to a draft GitHub Release requires a manual **workflow_dispatch** on that branch. formengine-tools downloads those assets and deploys.
 
 ---
 
 ## Constraints
 
-- **No `git push`** and no server-side or CI triggers unless the user explicitly asks.
+- **No `git push`**, **no GitHub Actions / TeamCity / deploy** unless the user explicitly asks.
 - **All repository text in English** (release notes, bullets, comments).
 - Do not include issues list.
 - Match existing release-note style in `documentation/docs/release-notes/` (overview, key features, changelog sections, resources as needed). Prefer instructions from **`skills/fe-release-notes/references/release-notes-guidelines-combined.md`**.
@@ -154,8 +172,7 @@ Identify potential release highlights and ask the user to refine them. Draft rel
 
 ## If something fails
 
-# - If `version-update` fails on a missing example path, check **`allVersionTargetPaths`** usage in **`scripts/version-update.ts`** against the repo (e.g. Angular examples under `examples/premium/with-angular-forms/...`).
-- If `version-update` fails on a missing example path, check **`PACKAGE_LIST`** in **`scripts/version-update.ts`** against the repo (e.g. Angular examples under `examples/premium/with-angular-forms/...`).
+- If `version-update` fails on a missing example path, check **`allVersionTargetPaths`** in **`scripts/cli-lib`** / usage in **`scripts/version-update.ts`** against the repo (e.g. Angular examples under `examples/premium/with-angular-forms/...`).
 - If `update-release-date` is missing, note it and continue; do not invent scripts.
 - If YouTrack returns **404** for an issue ID, double-check the readable ID and verify that the token user can access the project.
 
@@ -163,15 +180,18 @@ Identify potential release highlights and ask the user to refine them. Draft rel
 
 ## Quick reference (paths)
 
-| Item                   | Location                                                                  |
-|------------------------|---------------------------------------------------------------------------|
-| Release notes guide    | `skills/fe-release-notes/references/release-notes-guidelines-combined.md` |
-| YouTrack credentials   | `skills/fe-release-notes/scripts/.env` (`YT_TOKEN`, optional `YT_BASE`)   |
-| API helper scripts     | `skills/fe-release-notes/scripts/`                             |
-| Monorepo version       | `lerna.json` (`version` field)                                      |
-| Version bump           | from `src`: `npm run version-update` → `scripts/version-update.ts`        |
-| Docs site              | `documentation/website` (Docusaurus)                                  |
-| Release notes (docs)   | `documentation/docs/release-notes/`                                   |
-| Release notes (GitHub) | `scripts/github-release-notes/`                                           |
+| Item                   | Location                                                                                                                     |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| Release notes guide    | `skills/fe-release-notes/references/release-notes-guidelines-combined.md`                                                    |
+| YouTrack credentials   | `skills/fe-release-notes/scripts/.env` (`YT_TOKEN`, optional `YT_BASE`)                                                      |
+| API helper scripts     | `skills/fe-release-notes/scripts/`                                                                                           |
+| Monorepo version       | `lerna.json` (`version` field)                                                                                               |
+| Version bump           | `npm run version-update` → `scripts/version-update.ts` (repo root)                                                           |
+| Docs site              | `documentation/website` (Docusaurus)                                                                                         |
+| Release notes (docs)   | `documentation/docs/release-notes/`                                                                                          |
+| Release notes (GitHub) | `scripts/github-release-notes/`                                                                                              |
+| Release archive contract | `scripts/release/constants.ts` (`REQUIRED_ARCHIVE_FILES`)                                                                  |
+| Deploy                 | [formengine-tools](https://github.com/OptimaJetLLC/formengine-tools)                                                         |
+| TeamCity pipelines     | [formengine-tools/teamcity](https://github.com/OptimaJetLLC/formengine-tools/tree/main/teamcity)                             |
 
 For full project standards, read `AGENTS.md` at the repository root.

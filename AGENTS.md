@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-React Form Builder is a monorepository using Lerna and Nx for package management. The project consists of several main packages:
+React Form Builder is a monorepository using Lerna for package management. The project consists of several main packages:
 
 - **core** - core logic and types
 - **designer** - form designer
@@ -64,7 +64,6 @@ includes:
 - Circular dependencies (`check:circular-deps`)
 - TypeScript errors (`check:tsc`)
 - Unused exports (`check:unused-exports`)
-- Wrong imports (`check:wrong-imports`)
 - ESLint errors (`check:eslint`)
 - Formatting issues (`check:format`)
 
@@ -347,7 +346,7 @@ describe('Button', () => {
 From the repository root, use the provided npm scripts:
 
 ```bash
-npm run test            # Executes the default Nx target for the selected suite
+npm run test            # Executes all test configurations
 npm run test:component  # Launches the component tests in tests/component
 npm run test:module     # Runs Vitest inside tests/module
 npm run test:e2e        # Starts the Playwright harness in tests/e2e

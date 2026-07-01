@@ -1,9 +1,7 @@
 **/node_modules
 **/build
 **/dist
-
 **/.next
-
 **/.fleet
 **/.github
 **/.idea
@@ -11,6 +9,10 @@
 **/.docusaurus
 **/.DS_Store
 **/.swc
-
-src/**/*.tgz
-!src/documentation/website/packages/*.tgz
+**/.archives
+!/.archives
+!/.archives/**
+**/.tmp
+**/*.tgz
+!documentation/website/packages/*.tgz
+!/.archives/**

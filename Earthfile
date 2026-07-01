@@ -1,41 +1,118 @@
 VERSION --try 0.8
-FROM node:24.11.0
-WORKDIR /form-engine
 
-# npm-build builds all npm packages
+FROM node:24.18.0
+
+# --- Shared helpers ---
+
+# Installs platform-specific native npm bindings (Linux containers in CI/verify).
+INSTALL_NATIVE_BINDINGS:
+  FUNCTION
+  ARG --required targetDir
+  RUN cd "$targetDir" && npm install oxc-parser oxc-resolver rollup @swc/core @biomejs/biome --no-save --no-audit --no-fund
+  RUN case "$(uname -m)" in \
+    aarch64|arm64) \
+      cd "$targetDir" && npm install \
+        @rollup/rollup-linux-arm64-gnu \
+        @swc/core-linux-arm64-gnu \
+        @swc/html-linux-arm64-gnu \
+        @oxc-parser/binding-linux-arm64-gnu \
+        @biomejs/cli-linux-arm64 \
+        @rspack/binding-linux-arm64-gnu \
+        --no-save --no-audit --no-fund ;; \
+    *) \
+      cd "$targetDir" && npm install \
+        @rollup/rollup-linux-x64-gnu \
+        @swc/core-linux-x64-gnu \
+        @swc/html-linux-x64-gnu \
+        @oxc-parser/binding-linux-x64-gnu \
+        @biomejs/cli-linux-x64 \
+        @rspack/binding-linux-x64-gnu \
+        --no-save --no-audit --no-fund ;; \
+    esac
+
+# --- Dependencies (repo-root build context) ---
+
+dependencies:
+  WORKDIR /repo
+  COPY package.json package-lock.json package.public.json package.private.json lerna.json biome.json .npmrc ./
+  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts ./
+  COPY .madgerc ./
+  COPY --dir packages documentation tests scripts examples ./
+  ENV npm_config_audit=false
+  ENV npm_config_fund=false
+  ENV npm_config_progress=true
+  RUN npm ci --no-audit --no-fund
+  SAVE ARTIFACT /repo /repo
+
+sources:
+  FROM +dependencies
+  SAVE ARTIFACT /repo /repo
+
+# --- CI ---
+
 npm-build:
   FROM +sources
+  WORKDIR /repo
   RUN npm run build:ci
 
-# npm-bundle builds all npm bundles
 npm-bundle:
-  FROM +sources
-  ENV NODE_OPTIONS="--max-old-space-size=18192"
-  RUN npm run pack
+  ARG prepareRcArchives=0
+  IF [ "$prepareRcArchives" = "1" ]
+    BUILD +prepare-rc-archives-from-pack
+  ELSE
+    FROM +sources
+    WORKDIR /repo
+    ENV NODE_OPTIONS="--max-old-space-size=8192"
+    RUN npm run pack:ci
+  END
 
-# npm-update-release-date updates apps release date
 npm-update-release-date:
   FROM +sources
+  WORKDIR /repo
   RUN cd ./packages/apps/common-designer && npm run update-release-date
 
-# npm-demo-build builds demo
 npm-demo-build:
   FROM +npm-update-release-date
+  WORKDIR /repo
   RUN npm run demo:build
 
-# npm-formbuilder-build builds formbuilder
 npm-formbuilder-build:
   FROM +npm-update-release-date
+  WORKDIR /repo
   RUN cd ./packages/apps/formbuilder && npm run build
 
-# npm-documentation-build builds documentation
+npm-build-apps-and-views:
+  FROM +npm-update-release-date
+  WORKDIR /repo
+  RUN npm run build:check-build:ci
+
 npm-documentation-build:
   FROM +sources
+  WORKDIR /repo
   RUN npm run docs:build
 
-# npm-test performs tests
+npm-publish-rc-release:
+  FROM node:24.18.0
+  WORKDIR /repo
+  COPY scripts/release scripts/release
+  COPY .archives .archives
+  ARG --required REPO_SLUG
+  ARG --required GITHUB_SHA
+  ENV GITHUB_REPOSITORY=$REPO_SLUG
+  ENV GITHUB_SHA=$GITHUB_SHA
+  RUN --secret GH_TOKEN \
+    node scripts/release/upload-release-artifacts.ts
+
+validate-rc-archives:
+  FROM node:24.18.0
+  WORKDIR /repo
+  COPY scripts/release scripts/release
+  COPY .archives .archives
+  RUN node scripts/release/validate-archives.ts --archives-dir=.archives
+
 npm-test:
   FROM +sources
+  WORKDIR /repo
   ENV CI=true
   TRY
     RUN npm run test:module
@@ -50,141 +127,134 @@ npm-test:
     SAVE ARTIFACT tests/react-19/reports/junit-report.xml AS LOCAL test-results/react-19-report.xml
   END
 
-# npm-check-all performs all checks
 npm-check-all:
   FROM +sources
-  RUN npm install -D @biomejs/biome # fixes Error: Cannot find module '@biomejs/cli-linux-arm64/biome'
+  WORKDIR /repo
+  RUN npm install -D @biomejs/biome
   RUN npm run check:all
 
-# npm-check-circular-deps checks for cyclic dependencies
 npm-check-circular-deps:
   FROM +sources
+  WORKDIR /repo
   RUN npm run check:circular-deps
 
-# npm-eslint performs eslint
 npm-eslint:
   FROM +sources
+  WORKDIR /repo
   RUN npm run eslint
 
-# npm-check-unused-exports checks for unused import statements
 npm-check-unused-exports:
   FROM +sources
+  WORKDIR /repo
   RUN npm run check:unused-exports
 
-# npm-check-tsc performs a TypeScript compilation check
 npm-check-tsc:
   FROM +sources
+  WORKDIR /repo
   RUN npm run check:tsc
 
-# prepare-npm-archives packs npm modules into tgz archives
-prepare-npm-archives:
-  FROM +sources
-  RUN apt-get update && apt-get -y install jq
-  LET packagesToArchive = "
-    packages/core
-    packages/designer
-    packages/designer-bundle
-    packages/indexed-db-form-storage
-    packages/json-schema-generator
-    packages/viewer-bundle
-    packages/viewer-bundle-premium
-    packages/views/fast-qr
-    packages/views/google-map
-    packages/views/mantine
-    packages/views/material-ui
-    packages/views/rsuite
-    packages/views/rsuite-table
-    packages/views/rich-text
-    packages/views/signature
-    packages/views/uploader
-  "
-  LET archiveName = ''
-  FOR package IN $packagesToArchive
-    RUN cd $package && npm run pack
-    # We use jq to get the archive name from the npm pack command
-    SET archiveName=$(cd $package && npm pack --json | jq -r .[0].filename)
-    SAVE ARTIFACT $package/$archiveName AS LOCAL .archives/$archiveName
-  END
+npm-e2e:
+  FROM mcr.microsoft.com/playwright:v1.57.0-noble
+  ENV CI=true
+  ENV PLAYWRIGHT_DOCKER=1
+  ENV PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1
+  COPY +sources/repo+ /repo
+  WORKDIR /repo
+  RUN npm run test:e2e
+  RUN npx lerna run --stream test:browser:headless --concurrency=1
 
-# prepare-demo-archive archive the demo
+# --- Prepare (release archives) ---
+
+prepare-npm-archives:
+  FROM +npm-build
+  WORKDIR /repo
+  RUN cd ./packages/apps/common-designer && npm run update-release-date
+  RUN mkdir -p .archives
+  RUN node scripts/release/prepare-npm-archives.ts
+  SAVE ARTIFACT --force .archives AS LOCAL .archives
+
+prepare-npm-archives-from-pack:
+  FROM +sources
+  WORKDIR /repo
+  RUN mkdir -p .archives
+  RUN node scripts/release/prepare-npm-archives.ts --from-pack
+  SAVE ARTIFACT --force .archives AS LOCAL .archives
+
 prepare-demo-archive:
   FROM +npm-demo-build
+  WORKDIR /repo
   RUN cd packages/apps/demo/dist/ && tar -zcvf demo.tgz *
-  SAVE ARTIFACT packages/apps/demo/dist/demo.tgz AS LOCAL .archives/demo.tgz
+  SAVE ARTIFACT --force packages/apps/demo/dist/demo.tgz AS LOCAL .archives/demo.tgz
 
-# prepare-formbuilder-archive archive the formbuilder
 prepare-formbuilder-archive:
   FROM +npm-formbuilder-build
+  WORKDIR /repo
   RUN cd packages/apps/formbuilder/dist/ && tar -zcvf formbuilder.tgz *
-  SAVE ARTIFACT packages/apps/formbuilder/dist/formbuilder.tgz AS LOCAL .archives/formbuilder.tgz
+  SAVE ARTIFACT --force packages/apps/formbuilder/dist/formbuilder.tgz AS LOCAL .archives/formbuilder.tgz
 
-# prepare-documentation-archive archive the documentation
 prepare-documentation-archive:
   FROM +npm-documentation-build
+  WORKDIR /repo
   RUN tar -czvf documentation.tgz -C documentation/website/build .
-  SAVE ARTIFACT documentation.tgz AS LOCAL .archives/documentation.tgz
+  SAVE ARTIFACT --force documentation.tgz AS LOCAL .archives/documentation.tgz
 
-# prepare-github-formengine-examples normalizes example dependencies/lockfiles for the github formengine archive
 prepare-github-formengine-examples:
   FROM +sources
-  WORKDIR /form-engine
-  COPY --dir scripts scripts
-  COPY --dir examples examples
+  WORKDIR /repo
   RUN node scripts/examples-install-local-packages.ts --restore-registry
-  RUN mkdir -p /prepared/src/packages/views /prepared/src/packages/apps
-  RUN cp -r /form-engine/examples /prepared/examples
-  RUN cp -r /form-engine/packages/core /prepared/src/packages/core
-  RUN cp -r /form-engine/packages/json-schema-generator /prepared/src/packages/json-schema-generator
-  RUN cp -r /form-engine/packages/views/rsuite /prepared/src/packages/views/rsuite
-  RUN cp -r /form-engine/packages/views/material-ui /prepared/src/packages/views/material-ui
-  RUN cp -r /form-engine/packages/views/mantine /prepared/src/packages/views/mantine
-  RUN cp -r /form-engine/packages/views/uploader /prepared/src/packages/views/uploader
-  RUN cp -r /form-engine/packages/viewer-bundle /prepared/src/packages/viewer-bundle
-  RUN cp -r /form-engine/packages/apps/common /prepared/src/packages/apps/common
-  RUN cp -r /form-engine/packages/apps/example-viewer /prepared/src/packages/apps/example-viewer
+  RUN mkdir -p /prepared/packages/views /prepared/packages/apps
+  RUN cp -r /repo/examples /prepared/examples
+  RUN cp -r /repo/packages/core /prepared/packages/core
+  RUN cp -r /repo/packages/json-schema-generator /prepared/packages/json-schema-generator
+  RUN cp -r /repo/packages/views/rsuite /prepared/packages/views/rsuite
+  RUN cp -r /repo/packages/views/material-ui /prepared/packages/views/material-ui
+  RUN cp -r /repo/packages/views/mantine /prepared/packages/views/mantine
+  RUN cp -r /repo/packages/views/uploader /prepared/packages/views/uploader
+  RUN cp -r /repo/packages/viewer-bundle /prepared/packages/viewer-bundle
+  RUN cp -r /repo/packages/apps/common /prepared/packages/apps/common
+  RUN cp -r /repo/packages/apps/example-viewer /prepared/packages/apps/example-viewer
   SAVE ARTIFACT /prepared
 
-# prepare-github-formengine-archive creates an archive for the GitHub repository optimajet/formengine
 prepare-github-formengine-archive:
   FROM +prepare-github-formengine-examples
+  WORKDIR /repo
   COPY --dir scripts/includes/github-optimajet-formengine/ github-formengine
-  COPY --dir +prepare-github-formengine-examples/prepared/src/packages/core github-formengine/community/src/packages/core
-  COPY --dir +prepare-github-formengine-examples/prepared/src/packages/json-schema-generator github-formengine/community/src/packages/json-schema-generator
-  COPY --dir +prepare-github-formengine-examples/prepared/src/packages/views/rsuite github-formengine/community/src/packages/views/rsuite
-  COPY --dir +prepare-github-formengine-examples/prepared/src/packages/views/material-ui github-formengine/community/src/packages/views/material-ui
-  COPY --dir +prepare-github-formengine-examples/prepared/src/packages/views/mantine github-formengine/community/src/packages/views/mantine
-  COPY --dir +prepare-github-formengine-examples/prepared/src/packages/views/uploader github-formengine/community/src/packages/views/uploader
-  COPY --dir +prepare-github-formengine-examples/prepared/src/packages/viewer-bundle github-formengine/community/src/packages/viewer-bundle
-  COPY --dir +prepare-github-formengine-examples/prepared/src/packages/apps/common github-formengine/community/src/packages/apps/common
-  COPY --dir +prepare-github-formengine-examples/prepared/src/packages/apps/example-viewer github-formengine/community/src/packages/apps/example-viewer
+  COPY --dir +prepare-github-formengine-examples/prepared/packages/core github-formengine/community/packages/core
+  COPY --dir +prepare-github-formengine-examples/prepared/packages/json-schema-generator github-formengine/community/packages/json-schema-generator
+  COPY --dir +prepare-github-formengine-examples/prepared/packages/views/rsuite github-formengine/community/packages/views/rsuite
+  COPY --dir +prepare-github-formengine-examples/prepared/packages/views/material-ui github-formengine/community/packages/views/material-ui
+  COPY --dir +prepare-github-formengine-examples/prepared/packages/views/mantine github-formengine/community/packages/views/mantine
+  COPY --dir +prepare-github-formengine-examples/prepared/packages/views/uploader github-formengine/community/packages/views/uploader
+  COPY --dir +prepare-github-formengine-examples/prepared/packages/viewer-bundle github-formengine/community/packages/viewer-bundle
+  COPY --dir +prepare-github-formengine-examples/prepared/packages/apps/common github-formengine/community/packages/apps/common
+  COPY --dir +prepare-github-formengine-examples/prepared/packages/apps/example-viewer github-formengine/community/packages/apps/example-viewer
   COPY --dir +prepare-github-formengine-examples/prepared/examples/community github-formengine/community/examples
-  COPY --dir scripts/cli-lib github-formengine/community/src/scripts/cli-lib
-  COPY .npmrc github-formengine/community/src/
-  RUN rm -rf github-formengine/community/examples/bundle-size/scripts/install-local-formengine.ts
-  RUN sed -i 's|file:../../../src/scripts/cli-lib|file:../../src/scripts/cli-lib|g' github-formengine/community/examples/bundle-size/package.json
-  RUN cd github-formengine/community/examples/bundle-size && npm install --package-lock-only
+  COPY --dir scripts/cli-lib github-formengine/community/scripts/cli-lib
+  COPY .npmrc github-formengine/community/
+  RUN rm -f github-formengine/community/examples/bundle-size/scripts/install-local-formengine.ts
+  RUN sed -i 's|file:../../../scripts/cli-lib|file:../../scripts/cli-lib|g' github-formengine/community/examples/bundle-size/package.json
+  RUN cd github-formengine/community/examples/bundle-size && npm install --package-lock-only --no-audit --no-fund
   COPY --dir +prepare-github-formengine-examples/prepared/examples/premium github-formengine/premium/examples
-  COPY lerna.json github-formengine/community/src/
-  COPY tsconfig.json github-formengine/community/src/
-  COPY vite.config.ts github-formengine/community/src/
-  COPY .eslintrc.cjs github-formengine/community/src/
-  COPY .eslintignore github-formengine/community/src/
-  COPY .editorconfig github-formengine/community/src/
+  COPY lerna.json github-formengine/community/
+  COPY tsconfig.json github-formengine/community/
+  COPY vite.config.ts github-formengine/community/
+  COPY .eslintrc.cjs github-formengine/community/
+  COPY .eslintignore github-formengine/community/
+  COPY .editorconfig github-formengine/community/
   COPY .gitignore github-formengine/
-  COPY package.public.json github-formengine/community/src/package.json
-  COPY package-lock.json github-formengine/community/src/package-lock.json
-  RUN cd github-formengine/community/src && npm install --package-lock-only --no-audit --no-fund
+  COPY package.public.json github-formengine/community/package.json
+  COPY package-lock.json github-formengine/community/package-lock.json
+  RUN cd github-formengine/community && npm install --package-lock-only --no-audit --no-fund
   COPY CHANGELOG.md github-formengine
+  RUN find github-formengine -name node_modules -type d -prune -exec rm -rf '{}' +
+  RUN find github-formengine \( -name dist -o -name build -o -name reports \) -type d -prune -exec rm -rf '{}' +
   RUN tar -czvf formengine.tgz -C github-formengine .
-  SAVE ARTIFACT formengine.tgz AS LOCAL .archives/formengine.tgz
+  SAVE ARTIFACT --force formengine.tgz AS LOCAL .archives/formengine.tgz
 
-# prepare-github-formenginesupport-archive creates an archive for the GitHub repository optimajet/formenginesupport
 prepare-github-formenginesupport-archive:
   FROM +sources
-  WORKDIR /form-engine
-
-  LET dst = private-github
-
+  WORKDIR /repo
+  LET dst=private-github
   COPY --dir packages/apps/common $dst/packages/apps/common
   COPY --dir packages/apps/common-designer $dst/packages/apps/common-designer
   COPY --dir packages/apps/example-builder $dst/packages/apps/example-builder
@@ -206,9 +276,7 @@ prepare-github-formenginesupport-archive:
   COPY --dir packages/views/rich-text $dst/packages/views/rich-text
   COPY --dir packages/views/google-map $dst/packages/views/google-map
   COPY --dir packages/views/uploader $dst/packages/views/uploader
-
   COPY --dir scripts/cli-lib $dst/scripts/cli-lib
-
   COPY lerna.json $dst/
   COPY LICENSE.md $dst/
   COPY package.private.json $dst/package.json
@@ -219,29 +287,28 @@ prepare-github-formenginesupport-archive:
   COPY tsconfig.json $dst/
   COPY vite.config.ts $dst/
   COPY CHANGELOG.md $dst/
-
   COPY .editorconfig $dst/
   COPY .gitignore $dst/
   COPY .npmrc $dst/
-
   RUN cd $dst && npm install --package-lock-only --no-audit --no-fund
-
+  RUN find $dst -name node_modules -type d -prune -exec rm -rf '{}' +
+  RUN find $dst \( -name dist -o -name build -o -name reports \) -type d -prune -exec rm -rf '{}' +
   RUN tar -czvf formenginesupport.tgz -C $dst .
-
-  SAVE ARTIFACT formenginesupport.tgz AS LOCAL .archives/formenginesupport.tgz
+  SAVE ARTIFACT --force formenginesupport.tgz AS LOCAL .archives/formenginesupport.tgz
 
 prepare-version-archive:
-  COPY lerna.json lerna.json
-  SAVE ARTIFACT lerna.json AS LOCAL .archives/lerna.json
+  FROM +sources
+  WORKDIR /repo
+  SAVE ARTIFACT --force lerna.json AS LOCAL .archives/lerna.json
 
 prepare-github-release-notes-archive:
-  RUN mkdir -p gh-release-notes
-  COPY --dir scripts/github-release-notes ./gh-release-notes
-  COPY --dir scripts/github ./gh-release-notes
-  RUN tar -czvf gh-release-notes.tgz -C gh-release-notes .
-  SAVE ARTIFACT gh-release-notes.tgz AS LOCAL .archives/gh-release-notes.tgz
+  FROM +sources
+  WORKDIR /repo
+  RUN mkdir -p /tmp/gh-release-notes
+  RUN cp -r scripts/github-release-notes /tmp/gh-release-notes/
+  RUN tar -czvf gh-release-notes.tgz -C /tmp/gh-release-notes .
+  SAVE ARTIFACT --force gh-release-notes.tgz AS LOCAL .archives/gh-release-notes.tgz
 
-# prepare-all-archives creates all archives for publishing
 prepare-all-archives:
   BUILD +prepare-npm-archives
   BUILD +prepare-github-formengine-archive
@@ -252,367 +319,54 @@ prepare-all-archives:
   BUILD +prepare-version-archive
   BUILD +prepare-github-release-notes-archive
 
-PUBLISH_DEMO:
-  FUNCTION
-  RUN mkdir -p ~/.ssh
-  RUN echo "demo.formengine.io ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBA0e2FxO/vVLKPM9R4Xd64wmh7G//xe2yZyY2SKF8CXx3SjxuIScKaUx9B8gEPz2Xq7iIFiUT3rVDgCbFQ72bvQ=" >> ~/.ssh/known_hosts
-  RUN --push --ssh scp demo.tgz root@demo.formengine.io:/home/demo-fb2/archive
-  RUN --push --ssh ssh root@demo.formengine.io 'tar -xvf /home/demo-fb2/archive/demo.tgz -C /home/demo-fb2/www/'
+prepare-rc-archives-from-pack:
+  # Documentation archive is built separately (ci-build-documentation GHA job).
+  FROM +sources
+  WORKDIR /repo
+  ENV NODE_OPTIONS="--max-old-space-size=8192"
+  RUN npm run pack:ci
+  RUN mkdir -p .archives
+  RUN node scripts/release/prepare-npm-archives.ts --from-pack
+  SAVE ARTIFACT --force .archives AS LOCAL .archives
+  BUILD +prepare-github-formengine-archive
+  BUILD +prepare-github-formenginesupport-archive
+  BUILD +prepare-demo-archive
+  BUILD +prepare-formbuilder-archive
+  BUILD +prepare-version-archive
+  BUILD +prepare-github-release-notes-archive
 
-# publish-artifact-demo publishes a demo from a local artifact
-publish-artifact-demo:
-  COPY +prepare-demo-archive/demo.tgz demo.tgz
-  DO +PUBLISH_DEMO
-
-# publish-archive-demo publishes a demo from the local ".archives" folder
-publish-archive-demo:
-  COPY .archives/demo.tgz ./
-  DO +PUBLISH_DEMO
-
-PUBLISH_FORMBUILDER:
-  FUNCTION
-  RUN mkdir -p ~/.ssh
-  RUN echo "formbuilder.formengine.io ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBA0e2FxO/vVLKPM9R4Xd64wmh7G//xe2yZyY2SKF8CXx3SjxuIScKaUx9B8gEPz2Xq7iIFiUT3rVDgCbFQ72bvQ=" >> ~/.ssh/known_hosts
-  RUN --push --ssh scp formbuilder.tgz root@formbuilder.formengine.io:/home/service-formbuilder/archive
-  RUN --push --ssh ssh root@formbuilder.formengine.io 'tar -xvf /home/service-formbuilder/archive/formbuilder.tgz -C /home/service-formbuilder/www/'
-
-# publish-artifact-formbuilder publishes a formbuilder from a local artifact
-publish-artifact-formbuilder:
-  COPY +prepare-formbuilder-archive/formbuilder.tgz formbuilder.tgz
-  DO +PUBLISH_FORMBUILDER
-
-# publish-archive-formbuilder publishes a formbuilder from the local ".archives" folder
-publish-archive-formbuilder:
-  COPY .archives/formbuilder.tgz ./
-  DO +PUBLISH_FORMBUILDER
-
-PUBLISH_DOCUMENTATION:
-  FUNCTION
-  RUN mkdir -p ~/.ssh
-  RUN echo "formengine.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH2R3RNAOu8lPXTAZc1gPB7SCOGjMcpcc50c2uTzOt6h" >> ~/.ssh/known_hosts
-  RUN --push --ssh scp documentation.tgz root@formengine.io:/home/formengine-site/archive
-  RUN --push --ssh ssh root@formengine.io 'tar -xvf /home/formengine-site/archive/documentation.tgz -C /home/formengine-site/www/documentation'
-
-# publish-artifact-documentation publishes documentation from the local artifact
-publish-artifact-documentation:
-  COPY +prepare-documentation-archive/documentation.tgz documentation.tgz
-  DO +PUBLISH_DOCUMENTATION
-
-# publish-archive-documentation publishes documentation from the local ".archives" folder
-publish-archive-documentation:
-  COPY .archives/documentation.tgz ./
-  DO +PUBLISH_DOCUMENTATION
-
-PUBLISH_GITHUB_OPTIMAJET_FORMENGINE:
-  FUNCTION
-  ARG --required disableDryRun
-  LET gitUrl=git@github.com:optimajet/formengine.git
-  LET libVersion=$(node -pe "JSON.parse(require('fs').readFileSync('lerna.json','utf8')).version" | tr -d "\r")
-  LET gitDestDir=formengine-copy
-  DO +DEEP_CLONE_GITHUB_REPOSITORY --gitUrl=$gitUrl --destDir=$gitDestDir
-
-  LET tempGitDir=gh-formengine
-  RUN mkdir -p $tempGitDir
-  RUN cp -r $gitDestDir/.git $tempGitDir
-  RUN rm -rf $gitDestDir
-  RUN tar -xvf formengine.tgz -C $tempGitDir
-
-  WORKDIR $tempGitDir
-  DO +GITHUB_COMMIT_AND_PUSH --gitRepository=$gitUrl --gitBranch=master --commitMessage="Version $libVersion (autocommit)" --disableDryRun=$disableDryRun
+# --- Verify (archive smoke tests) ---
 
 test-github-formengine-archive:
+  FROM +sources
+  WORKDIR /work
   COPY .archives/formengine.tgz formengine.tgz
   ENV NODE_OPTIONS="--max-old-space-size=8192"
   RUN tar zxvf formengine.tgz
   RUN cd community/examples/file-upload-server && npm install
-  RUN cd community/examples/bundle-size && npm install
-  RUN cd community/src && npm install && npm run pack
-  RUN cd premium/examples/formengine && npm install && npm run build
-  RUN cd premium/examples/with-formik && npm install && npm run build
-  RUN cd premium/examples/with-nextjs/with-nextjs-v16 && npm install && npm run build
-  RUN cd premium/examples/with-remix/with-remix-v2 && npm install && npm run build
+  RUN cd /work/community/examples/bundle-size && npm install
+  RUN cd /work/community && npm install
+  DO +INSTALL_NATIVE_BINDINGS --targetDir=/work/community
+  RUN cd /work/community && npm run pack
+  RUN cd /work/premium/examples/formengine && npm install
+  DO +INSTALL_NATIVE_BINDINGS --targetDir=/work/premium/examples/formengine
+  RUN cd /work/premium/examples/formengine && npm run build
+  RUN cd /work/premium/examples/with-formik && npm install
+  DO +INSTALL_NATIVE_BINDINGS --targetDir=/work/premium/examples/with-formik
+  RUN cd /work/premium/examples/with-formik && npm run build
+  RUN cd /work/premium/examples/with-nextjs/with-nextjs-v16 && npm install
+  DO +INSTALL_NATIVE_BINDINGS --targetDir=/work/premium/examples/with-nextjs/with-nextjs-v16
+  RUN cd /work/premium/examples/with-nextjs/with-nextjs-v16 && npm run build
+  RUN cd /work/premium/examples/with-remix/with-remix-v2 && npm install
+  DO +INSTALL_NATIVE_BINDINGS --targetDir=/work/premium/examples/with-remix/with-remix-v2
+  RUN cd /work/premium/examples/with-remix/with-remix-v2 && npm run build
 
 test-github-formenginesupport-archive:
+  FROM +sources
+  WORKDIR /work
   COPY .archives/formenginesupport.tgz formenginesupport.tgz
   ENV NODE_OPTIONS="--max-old-space-size=8192"
   RUN tar zxvf formenginesupport.tgz
   RUN npm install
   RUN npm run build
   RUN npm run pack
-
-# publish-artifact-github-optimajet-formengine updates the GitHub repository optimajet/formengine from the local artifact
-publish-artifact-github-optimajet-formengine:
-  COPY +prepare-github-formengine-archive/formengine.tgz formengine.tgz
-  COPY +prepare-version-archive/lerna.json lerna.json
-  ARG disableDryRun=false
-  DO +PUBLISH_GITHUB_OPTIMAJET_FORMENGINE --disableDryRun=$disableDryRun
-
-# publish-archive-github-optimajet-formengine updates the GitHub repository optimajet/formengine from the local ".archives" folder
-publish-archive-github-optimajet-formengine:
-  COPY .archives/formengine.tgz ./
-  COPY .archives/lerna.json ./lerna.json
-  ARG disableDryRun=false
-  DO +PUBLISH_GITHUB_OPTIMAJET_FORMENGINE --disableDryRun=$disableDryRun
-
-PUBLISH_GITHUB_OPTIMAJET_FORMENGINESUPPORT:
-  FUNCTION
-  ARG --required disableDryRun
-  LET gitUrl=git@github.com:optimajet/formenginesupport.git
-  LET libVersion=$(node -pe "JSON.parse(require('fs').readFileSync('lerna.json','utf8')).version" | tr -d "\r")
-  LET gitDestDir=formenginesupport-copy
-  DO +DEEP_CLONE_GITHUB_REPOSITORY --gitUrl=$gitUrl --destDir=$gitDestDir
-
-  LET tempGitDir=gh-formenginesupport
-  RUN mkdir -p $tempGitDir
-  RUN cp -r $gitDestDir/.git $tempGitDir
-  RUN rm -rf $gitDestDir
-  RUN tar zxvf formenginesupport.tgz -C $tempGitDir
-
-  WORKDIR $tempGitDir
-  DO +GITHUB_COMMIT_AND_PUSH --gitRepository=$gitUrl --gitBranch=master --commitMessage="Version $libVersion (autocommit)" --disableDryRun=$disableDryRun
-
-# publish-artifact-github-optimajet-formenginesupport updates the GitHub repository optimajet/formenginesupport from the local artifact
-publish-artifact-github-optimajet-formenginesupport:
-  COPY +prepare-github-formenginesupport-archive/formenginesupport.tgz formenginesupport.tgz
-  COPY +prepare-version-archive/lerna.json lerna.json
-  ARG disableDryRun=false
-  DO +PUBLISH_GITHUB_OPTIMAJET_FORMENGINESUPPORT --disableDryRun=$disableDryRun
-
-# publish-archive-github-optimajet-formenginesupport updates the GitHub repository optimajet/formenginesupport from the local ".archives" folder
-publish-archive-github-optimajet-formenginesupport:
-  COPY .archives/formenginesupport.tgz ./
-  COPY .archives/lerna.json ./lerna.json
-  ARG disableDryRun=false
-  DO +PUBLISH_GITHUB_OPTIMAJET_FORMENGINESUPPORT --disableDryRun=$disableDryRun
-
-PUBLISH_GITHUB_RELEASE_NOTES:
-  FUNCTION
-  ARG owner=optimajet
-  ARG --required repository
-  ARG --required product
-  RUN apt-get update && apt-get -y install jq
-
-  RUN tar -xvf gh-release-notes.tgz -C ./
-
-  LET libVersion=$(jq -r .version lerna.json | tr -d "\r")
-  LET notesBody=$(cat github-release-notes/notes-$libVersion.md)
-  RUN jq --null-input \
-    --arg owner "$owner" \
-    --arg repo "$repository" \
-    --arg tagName "$libVersion" \
-    --arg name "$product $libVersion" \
-    --arg body "$notesBody" \
-    '$ARGS.named' > ./github/release.json
-
-  RUN cd github && npm install
-  RUN --push --secret GITHUB_ACCESS_TOKEN cd github && \
-    env GITHUB_ACCESS_TOKEN="$GITHUB_ACCESS_TOKEN" npm run create-release
-
-# publish-artifact-github-optimajet-formenginesupport-release-notes creates release on the GitHub repository optimajet/formenginesupport
-# from local artifacts
-publish-artifact-github-optimajet-formenginesupport-release-notes:
-  COPY +prepare-github-release-notes-archive/gh-release-notes.tgz ./
-  COPY +prepare-version-archive/lerna.json lerna.json
-  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formenginesupport --product="Form Engine"
-
-# publish-archive-github-optimajet-formenginesupport-release-notes creates release on the GitHub repository optimajet/formenginesupport
-# from local archives
-publish-archive-github-optimajet-formenginesupport-release-notes:
-  COPY .archives/gh-release-notes.tgz ./
-  COPY .archives/lerna.json ./lerna.json
-  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formenginesupport --product="Form Engine"
-
-# publish-artifact-github-optimajet-formengine-release-notes creates release on the GitHub repository optimajet/formengine
-# from local artifacts
-publish-artifact-github-optimajet-formengine-release-notes:
-  COPY +prepare-github-release-notes-archive/gh-release-notes.tgz ./
-  COPY +prepare-version-archive/lerna.json lerna.json
-  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formengine --product="Form Engine"
-
-# publish-archive-github-optimajet-formengine-release-notes creates release on the GitHub repository optimajet/formengine
-# from local archives
-publish-archive-github-optimajet-formengine-release-notes:
-  COPY .archives/gh-release-notes.tgz ./
-  COPY .archives/lerna.json ./lerna.json
-  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formengine --product="Form Engine"
-
-PUBLISH_NPM_PACKAGE:
-  FUNCTION
-  ARG --required disableDryRun
-  ARG --required archivePrefix
-  LET libVersion=$(jq -r .version lerna.json | tr -d "\r")
-  LET libTag=latest
-  LET fileName="$archivePrefix-$libVersion.tgz"
-  LET tempFolderName=temp
-  RUN mkdir -p $tempFolderName
-  RUN tar -xvf $fileName -C $tempFolderName
-  # We use jq to get the package name and version
-  LET packageName=$(jq -r .name $tempFolderName/package/package.json)
-  LET packageVersion=$(jq -r .version $tempFolderName/package/package.json)
-  RUN rm -rf $tempFolderName
-
-  LET fullName="$packageName@$packageVersion"
-  LET existsCheck=$(npm view --json $fullName | jq -r .name 2>&1)
-  IF [ "$existsCheck" != "$packageName" ]
-    IF [ "$disableDryRun" = "true" ]
-      RUN --push npm publish $fileName --access public --tag $libTag
-    ELSE
-      RUN --push npm publish --dry-run $fileName --access public --tag $libTag
-    END
-  ELSE
-    RUN --push echo "Package $fullName already published"
-  END
-
-PUBLISH_RELEASE_TO_NPM:
-  FUNCTION
-  ARG --required disableDryRun
-  RUN apt-get update && apt-get -y install jq
-  RUN --secret NPMRC_FILE printf "$NPMRC_FILE" > ~/.npmrc
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-core"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-designer"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rsuite"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-mantine"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-material-ui"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rsuite-table"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-fast-qr"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rich-text"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-signature"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-google-map"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-uploader"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-designer-bundle"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-indexed-db-form-storage"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-json-schema-generator"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-viewer-bundle"
-  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-viewer-bundle-premium"
-
-# publish-artifact-release-to-npm publishes npm packages from local artifacts
-publish-artifact-release-to-npm:
-  COPY +prepare-npm-archives/react-form-builder-*.tgz ./
-  COPY +prepare-version-archive/lerna.json lerna.json
-  ARG disableDryRun=false
-  DO +PUBLISH_RELEASE_TO_NPM --disableDryRun=$disableDryRun
-
-# publish-archive-release-to-npm publishes npm packages from the local ".archives" folder
-publish-archive-release-to-npm:
-  COPY .archives/react-form-builder-*.tgz ./
-  COPY .archives/lerna.json ./lerna.json
-  ARG disableDryRun=false
-  DO +PUBLISH_RELEASE_TO_NPM --disableDryRun=$disableDryRun
-
-run-sonar-analysis:
-  FROM sonarsource/sonar-scanner-cli
-  LET SONAR_HOST_URL=https://sonar.optimajet.com
-  LET SONAR_SCANNER_OPTS=-Dsonar.projectKey=FB -Dsonar.scm.provider=git -Dsonar.sourceEncoding=UTF-8 -Dsonar.projectBaseDir=./
-  WORKDIR /usr/src
-  COPY +sources/form-engine ./
-  COPY .git ./
-  # Delete directories from the current working directory:
-  RUN find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
-  RUN --push --secret SONAR_FB_TOKEN echo "sonar.token=$SONAR_FB_TOKEN" > sonar-project.properties
-  RUN --push sonar-scanner
-
-# sources copies the source code
-sources:
-  FROM +dependencies
-  WORKDIR /form-engine
-  COPY packages ./packages
-  COPY documentation ./documentation
-  COPY tests ./tests
-  COPY scripts ./scripts
-  COPY examples ./examples
-  COPY skills ./skills
-  COPY .editorconfig .eslintignore .eslintrc.cjs .gitignore .madgerc .npmrc \
-        AGENTS.md LICENSE.md README.private.md \
-        biome.json lerna.json localization.config.json tsconfig.json vite.config.ts knip.config.ts \
-        ./
-  COPY package.json package-lock.json package.private.json package.public.json ./
-  SAVE ARTIFACT /form-engine
-
-# dependencies installs node_modules dependencies
-dependencies:
-  WORKDIR /form-engine
-  COPY .gitignore biome.json .
-  COPY package.json package-lock.json package.private.json package.public.json ./
-  RUN mkdir -p \
-    scripts/cli-lib \
-    documentation/website documentation/website/packages \
-    packages/apps/common packages/apps/common-designer packages/apps/demo packages/apps/example-builder packages/apps/example-viewer packages/apps/formbuilder \
-    packages/core packages/designer packages/designer-bundle packages/indexed-db-form-storage packages/json-schema-generator \
-    packages/viewer-bundle packages/viewer-bundle-premium \
-    packages/views/antd packages/views/default packages/views/rsuite packages/views/mantine packages/views/material-ui packages/views/rsuite-table packages/views/signature \
-    packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/uploader \
-    tests/component tests/common tests/react-17 tests/react-18 tests/react-19 tests/e2e
-
-  COPY --dir scripts/cli-lib scripts/cli-lib
-  COPY documentation/website/package.json documentation/website/
-  COPY --dir documentation/website/packages documentation/website/
-  COPY packages/apps/common/package.json packages/apps/common/
-  COPY packages/apps/common-designer/package.json packages/apps/common-designer/
-  COPY packages/apps/demo/package.json packages/apps/demo/
-  COPY packages/apps/example-builder/package.json packages/apps/example-builder/
-  COPY packages/apps/example-viewer/package.json packages/apps/example-viewer/
-  COPY packages/apps/formbuilder/package.json packages/apps/formbuilder/
-  COPY packages/core/package.json packages/core/
-  COPY packages/designer/package.json packages/designer/
-  COPY packages/designer-bundle/package.json packages/designer-bundle/
-  COPY packages/indexed-db-form-storage/package.json packages/indexed-db-form-storage/
-  COPY packages/json-schema-generator/package.json packages/json-schema-generator/
-  COPY packages/viewer-bundle/package.json packages/viewer-bundle/
-  COPY packages/viewer-bundle-premium/package.json packages/viewer-bundle-premium/
-  COPY packages/views/antd/package.json packages/views/antd/
-  COPY packages/views/default/package.json packages/views/default/
-  COPY packages/views/rsuite/package.json packages/views/rsuite/
-  COPY packages/views/mantine/package.json packages/views/mantine/
-  COPY packages/views/material-ui/package.json packages/views/material-ui/
-  COPY packages/views/rsuite-table/package.json packages/views/rsuite-table/
-  COPY packages/views/signature/package.json packages/views/signature/
-  COPY packages/views/fast-qr/package.json packages/views/fast-qr/
-  COPY packages/views/rich-text/package.json packages/views/rich-text/
-  COPY packages/views/google-map/package.json packages/views/google-map/
-  COPY packages/views/uploader/package.json packages/views/uploader/
-  COPY tests/component/package.json tests/component/
-  COPY tests/common/package.json tests/common/
-  COPY tests/react-17/package.json tests/react-17/
-  COPY tests/react-18/package.json tests/react-18/
-  COPY tests/react-19/package.json tests/react-19/
-  COPY tests/e2e/package.json tests/e2e/
-
-  WORKDIR /form-engine
-  # Speed up CI installs and avoid long silent audit output.
-  ENV npm_config_audit=false
-  ENV npm_config_fund=false
-  ENV npm_config_progress=true
-  RUN npm ci --no-audit --no-fund
-
-  SAVE ARTIFACT package.json AS LOCAL package.json
-  SAVE ARTIFACT package-lock.json AS LOCAL package-lock.json
-
-GITHUB_COMMIT_AND_PUSH:
-  FUNCTION
-  ARG --required commitMessage
-  ARG --required gitRepository
-  ARG --required gitBranch
-  ARG --required disableDryRun
-  RUN git add --all
-  RUN git config --global user.email "support@optimajet.com"
-  RUN git config --global user.name "optimajet"
-  RUN git commit -m "$commitMessage"
-  IF [ "$disableDryRun" = "true" ]
-    RUN --push --ssh git push --set-upstream $gitRepository $gitBranch
-  ELSE
-    RUN --push --ssh git push --dry-run --set-upstream $gitRepository $gitBranch
-  END
-
-DEEP_CLONE_GITHUB_REPOSITORY:
-  FUNCTION
-  DO +ADD_GITHUB_KNOWN_HOSTS
-  ARG --required gitUrl
-  ARG --required destDir
-  RUN --ssh git clone $gitUrl $destDir
-
-ADD_GITHUB_KNOWN_HOSTS:
-  FUNCTION
-  RUN mkdir -p ~/.ssh
-  RUN echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVsmerOBYfNqltV9/hWCqBywINIR+5dIg6JTJ72pcEpEjcYgXkE2YEFXV1JHnsKgbLWNlhScqb2UmyRkQyytRLtL+38TGxkxCflmO+5Z8CSSNY7GidjMIZ7Q4zMjA2n1nGrlTDkzwDCsw+wqFPGQA179cnfGWOWRVruj16z6XyvxvjJwbz0wQZ75XK5tKSb7FNyeIEs4TT4jk+S4dhPeAUC5y+bDYirYgM4GC7uEnztnZyaVWQ7B381AK4Qdrwt51ZqExKbQpTUNn+EjqoTwvqNj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S5hpQs+p1vN1/wsjk=" >> ~/.ssh/known_hosts
-  RUN echo "github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=" >> ~/.ssh/known_hosts
-  RUN echo "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl" >> ~/.ssh/known_hosts

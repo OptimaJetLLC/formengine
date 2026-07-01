@@ -1,0 +1,16 @@
+name: CI build apps and views
+
+on:
+  workflow_call:
+
+jobs:
+  build-apps-and-views:
+    name: Build apps and view packages
+    timeout-minutes: 60
+    runs-on: [self-hosted]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          clean: false
+      - name: Build apps and view packages in Docker
+        run: earthly --ci --output +npm-build-apps-and-views

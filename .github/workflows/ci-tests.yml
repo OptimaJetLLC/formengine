@@ -1,0 +1,16 @@
+name: CI tests
+
+on:
+  workflow_call:
+
+jobs:
+  tests:
+    name: Module and component tests
+    timeout-minutes: 60
+    runs-on: [self-hosted]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          clean: false
+      - name: Run tests in Docker
+        run: earthly --ci +npm-test

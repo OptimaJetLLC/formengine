@@ -1,0 +1,36 @@
+name: CI publish RC release
+
+on:
+  workflow_call:
+
+jobs:
+  publish-rc-release:
+    name: Publish RC draft release
+    runs-on: [self-hosted]
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          clean: false
+      - name: Download release archives
+        uses: actions/download-artifact@v7
+        with:
+          name: release-archives
+          path: .archives
+      - name: Download documentation archive
+        uses: actions/download-artifact@v7
+        with:
+          name: documentation-archive
+          path: .archives
+      - name: Validate downloaded archives
+        run: earthly --ci +validate-rc-archives
+      - name: Publish draft GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          test -n "${{ github.repository }}"
+          test -n "${{ github.sha }}"
+          earthly --ci --secret GH_TOKEN +npm-publish-rc-release \
+            --REPO_SLUG="${{ github.repository }}" \
+            --GITHUB_SHA="${{ github.sha }}"

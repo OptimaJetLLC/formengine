@@ -99,7 +99,7 @@ export const DEV_MONOREPO_ONLY_DEPENDENCIES = [
   'dotenv-cli',
   'jsdom',
   'klona',
-  'octokit',
+  'lefthook',
   'knip',
   'leasot',
   'madge',

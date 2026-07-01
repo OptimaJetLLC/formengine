@@ -1,0 +1,21 @@
+name: CI e2e
+
+on:
+  workflow_call:
+
+jobs:
+  e2e:
+    name: E2E and browser tests
+    timeout-minutes: 120
+    runs-on: [self-hosted]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          clean: false
+      - name: Run e2e in Docker
+        run: earthly --ci +npm-e2e
+      - uses: ctrf-io/github-test-reporter@v1
+        if: always()
+        with:
+          report-path: tests/e2e/reports/ctrf/ctrf-report.json
+          github-report: true

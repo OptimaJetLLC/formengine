@@ -1,0 +1,5 @@
+pre-commit:
+  jobs:
+    - name: format code
+      run: npx biome format --write --staged --no-errors-on-unmatched .
+      stage_fixed: true

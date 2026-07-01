@@ -9,7 +9,7 @@ ln -s  ../skills/ .cursor/skills
 
 ## YouTrack auth
 
-Provide youtrack token (YT_TOKEN) in .env, get it on your profile page at "Account security" tab.
+Provide YouTrack token (`YT_TOKEN`) in **`skills/fe-release-notes/scripts/.env`** (copy from `scripts/.env.example`). Get the token on your profile page under the **Account security** tab.
 
 ## Chrome devtools MCP
 

@@ -5,11 +5,11 @@
  */
 
 import {execSync} from 'node:child_process'
-import os from 'node:os'
+
+import {getCpuScaledConcurrency} from '@react-form-builder/cli-lib/concurrency'
 
 function main(): void {
-  const cpus = os.cpus().length
-  const concurrency = Math.max(1, Math.floor(cpus / 3))
+  const {concurrency} = getCpuScaledConcurrency()
 
   execSync(`npx lerna run --stream build --ignore @react-form-builder/docs --concurrency=${concurrency}`, {stdio: 'inherit'})
 }

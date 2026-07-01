@@ -147,7 +147,17 @@ and then prefixed with a minus sign.
 - `title` — product name and version
 - `description` — short description of the release
 
-## Example
+---
+
+## After release notes are merged (out of scope for the writing skill)
+
+These steps are performed by the release owner after the version bump and notes land in **`master`** and **`rc/*`**:
+
+1. Merge the release PR into **`master`**, then into **`rc/major.minor`** (create the RC branch for new major/minor lines).
+2. Run **GitHub Actions CI** (`ci.yml`) on the RC branch — via PR or `workflow_dispatch`. For the **draft GitHub Release**, manually run **Check, build, draft** (`workflow_dispatch`) on the `rc/*` branch. Wait for **success** and a draft release tagged with the release version, with all archive assets attached.
+3. **Deploy** (TeamCity in formengine-tools): run the release deploy pipeline; select the `rc/*` branch. See [teamcity/PIPELINES-UI.md](https://github.com/OptimaJetLLC/formengine-tools/blob/main/teamcity/PIPELINES-UI.md).
+
+---
 
 ```markdown
 ---
