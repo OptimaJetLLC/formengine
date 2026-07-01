@@ -29,6 +29,9 @@ if (process.env.VITE_BUNDLE_ANALYZER === 'true') {
 }
 
 export default defineConfig(() => ({
+  build: {
+    cssMinify: 'lightningcss',
+  },
   plugins,
   define: {
     'process.env.WDYR': `"${process.env.WDYR ? '1' : ''}"`
