@@ -8,7 +8,7 @@ import type {RuleValidator} from '../types/RuleValidator'
  */
 export function zodTypeToValidator(zodValidator: ZodType): RuleValidator {
   return async value => {
-    const result = await zodValidator?.safeParseAsync(value)
+    const result = await zodValidator?.safeParseAsync(value, {reportInput: true})
     if (result?.success) return true
     return result?.error.issues?.[0].message ?? false
   }

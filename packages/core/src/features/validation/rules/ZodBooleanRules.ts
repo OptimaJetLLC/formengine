@@ -1,10 +1,10 @@
 import {z} from 'zod'
 import type {ValidationRuleSet} from '../types/ValidationRuleSet'
 import {ruleBuilder} from '../utils/ruleBuilder'
-import {errorMapForUndefined, requiredMessage} from './consts'
+import {errorForUndefined, requiredMessage} from './consts'
 import {zodTypeToValidator} from './zodTypeToValidator'
 
-const scheme = z.boolean(errorMapForUndefined)
+const scheme = z.boolean({error: errorForUndefined})
 
 export const ZodBooleanRules: ValidationRuleSet = {
   required: ruleBuilder()

@@ -1,10 +1,10 @@
 import {z} from 'zod'
 import type {ValidationRuleSet} from '../types/ValidationRuleSet'
 import {ruleBuilder} from '../utils/ruleBuilder'
-import {errorMapForUndefined} from './consts'
+import {errorForUndefined} from './consts'
 import {zodTypeToValidator} from './zodTypeToValidator'
 
-const scheme = z.number(errorMapForUndefined)
+const scheme = z.number({error: errorForUndefined})
 
 export const ZodNumberRules: ValidationRuleSet = {
   required: ruleBuilder()
@@ -27,7 +27,7 @@ export const ZodNumberRules: ValidationRuleSet = {
     .withValidatorFactory(({message, value}) => zodTypeToValidator(scheme.gt(value, message))),
 
   integer: ruleBuilder()
-    .withValidatorFactory(() => zodTypeToValidator(z.int(errorMapForUndefined))),
+    .withValidatorFactory(() => zodTypeToValidator(z.int({error: errorForUndefined}))),
 
   multipleOf: ruleBuilder()
     .withParameter('value', 'number', true)
