@@ -10,14 +10,10 @@
  * Flags: --stdout  --out <file>
  */
 
-import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
-function integrityForTgz(absolutePath) {
-  const buf = fs.readFileSync(absolutePath);
-  return `sha512-${crypto.createHash("sha512").update(buf).digest("base64")}`;
-}
+import { integrityForTgz } from "./npm-tgz-integrity.ts";
 
 function resolveFromCwd(p, cwd) {
   return path.isAbsolute(p) ? p : path.resolve(cwd, p);

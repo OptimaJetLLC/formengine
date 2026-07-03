@@ -12,15 +12,18 @@
  *   node scripts/examples-install-local-packages.ts
  *   node scripts/examples-install-local-packages.ts --dry-run
  *   node scripts/examples-install-local-packages.ts --no-install
+ *   node scripts/examples-install-local-packages.ts --from-archives .archives
  *   node scripts/examples-install-local-packages.ts --restore-registry
  *
  * Prerequisites: run `npm install` at the repository root so package builds (vite, etc.) succeed.
  */
 
 import {execSync} from 'node:child_process'
-import {existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync} from 'node:fs'
-import {basename, dirname, join, relative} from 'node:path'
+import {copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync} from 'node:fs'
+import {basename, dirname, join, relative, resolve} from 'node:path'
 import {fileURLToPath} from 'node:url'
+
+import {integrityForTgz} from './npm-tgz-integrity.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -105,6 +108,13 @@ function readLernaVersion(): string | undefined {
   return lerna.version?.trim() || undefined
 }
 
+type ArchiveMetadata = {
+  packageName: string
+  version: string
+  integrity: string
+  filename: string
+}
+
 /**
  * Resolves the workspace root used when patching example package.json files.
  * @param argv process arguments
@@ -117,6 +127,19 @@ function parsePatchRoot(argv: string[]): string {
   }
 
   return REPO_ROOT
+}
+
+/**
+ * Resolves the npm release archives directory for `--from-archives`.
+ * @param argv process arguments
+ * @returns absolute path when `--from-archives` is set
+ */
+function parseArchivesDir(argv: string[]): string | undefined {
+  const archivesIndex = argv.indexOf('--from-archives')
+  if (archivesIndex === -1 || !argv[archivesIndex + 1]) {
+    return undefined
+  }
+  return resolve(argv[archivesIndex + 1])
 }
 
 function tarballBaseName(packageName: string, version: string): string {
@@ -227,6 +250,42 @@ function packPackage(packageName: string, dryRun: boolean): string {
   renameSync(archivePath, dest)
   console.log(`Packed ${packageName} -> scripts/.examples-local-packs/${archiveBase}`)
   return archiveBase
+}
+
+/**
+ * Copies a release npm archive into the staging directory for example installs.
+ * @param archivesDir absolute path to `.archives/`
+ * @param packageName scoped package name
+ * @param releaseArchives index built from the archives directory
+ * @param dryRun when true, do not copy
+ * @returns tarball filename under {@link STAGING_DIR}
+ */
+function stageReleaseArchive(archivesDir: string, packageName: string, dryRun: boolean): {filename: string; metadata: ArchiveMetadata} {
+  const expected = expectedArchiveBaseName(packageName)
+  const src = join(archivesDir, expected)
+  if (!dryRun && !existsSync(src)) {
+    throw new Error(`Missing release archive ${expected} for ${packageName} in ${archivesDir}`)
+  }
+  const rel = PACKAGE_SOURCE[packageName]
+  const pj = readPackageJson(join(REPO_ROOT, rel, 'package.json'))
+  const version = pj.version
+  if (!version) {
+    throw new Error(`Missing version for ${packageName}`)
+  }
+  const metadata: ArchiveMetadata = {
+    packageName,
+    version,
+    integrity: dryRun ? '' : integrityForTgz(src),
+    filename: expected,
+  }
+  if (dryRun) {
+    console.log(`[dry-run] would stage ${expected} from ${archivesDir}`)
+    return {filename: expected, metadata}
+  }
+  const dest = join(STAGING_DIR, expected)
+  copyFileSync(src, dest)
+  console.log(`Staged ${packageName} from ${relative(REPO_ROOT, archivesDir)}/${expected}`)
+  return {filename: expected, metadata}
 }
 
 function declaresFormEngineDep(pj: PackageJson, depName: string): boolean {
@@ -369,7 +428,7 @@ function registryTarballUrl(packageName: string, version: string): string {
  * @param dryRun when true, do not write
  * @returns true when the lockfile was changed or would be changed
  */
-function normalizeExamplePackageLock(exampleDir: string, dryRun: boolean): boolean {
+function normalizeExamplePackageLock(exampleDir: string, dryRun: boolean, releaseArchives?: Map<string, ArchiveMetadata>): boolean {
   const lockPath = join(exampleDir, 'package-lock.json')
   const pjPath = join(exampleDir, 'package.json')
   if (!existsSync(lockPath) || !existsSync(pjPath)) {
@@ -430,12 +489,33 @@ function normalizeExamplePackageLock(exampleDir: string, dryRun: boolean): boole
     if (PACKAGES_EXCLUDED_FROM_REGISTRY_LOCK.has(pkgName)) {
       continue
     }
-    const entry = packages[lockKey] as {resolved?: string; version?: string} | undefined
-    if (!entry?.resolved?.startsWith('file:') || !entry.version) {
+    const entry = packages[lockKey] as {resolved?: string; version?: string; integrity?: string} | undefined
+    if (!entry?.version) {
       continue
     }
-    entry.resolved = registryTarballUrl(pkgName, entry.version)
-    changed = true
+    const archive = releaseArchives?.get(pkgName)
+    const targetVersion = archive?.version ?? entry.version
+    const targetResolved = registryTarballUrl(pkgName, targetVersion)
+    const fromFile = entry.resolved?.startsWith('file:')
+    const needsRegistryUrl = fromFile || entry.resolved !== targetResolved
+    const needsIntegrity = archive !== undefined && entry.integrity !== archive.integrity
+    if (!needsRegistryUrl && !needsIntegrity) {
+      continue
+    }
+    if (needsRegistryUrl) {
+      entry.resolved = targetResolved
+      changed = true
+    }
+    if (archive) {
+      if (entry.version !== archive.version) {
+        entry.version = archive.version
+        changed = true
+      }
+      if (entry.integrity !== archive.integrity) {
+        entry.integrity = archive.integrity
+        changed = true
+      }
+    }
   }
 
   if (changed && !dryRun) {
@@ -452,7 +532,7 @@ function normalizeExamplePackageLock(exampleDir: string, dryRun: boolean): boole
  * @param exampleDir absolute path to the example directory (workspace member)
  * @param dryRun when true, do not write
  */
-function normalizeWorkspaceParentLockIfNeeded(exampleDir: string, dryRun: boolean): void {
+function normalizeWorkspaceParentLockIfNeeded(exampleDir: string, dryRun: boolean, releaseArchives?: Map<string, ArchiveMetadata>): void {
   const memberName = basename(exampleDir)
   const parentDir = dirname(exampleDir)
   const parentPjPath = join(parentDir, 'package.json')
@@ -464,7 +544,7 @@ function normalizeWorkspaceParentLockIfNeeded(exampleDir: string, dryRun: boolea
   if (!Array.isArray(ws) || !ws.some(entry => String(entry) === memberName)) {
     return
   }
-  normalizeExamplePackageLock(parentDir, dryRun)
+  normalizeExamplePackageLock(parentDir, dryRun, releaseArchives)
 }
 
 /**
@@ -522,12 +602,36 @@ function runNpmInstall(exampleRel: string, dryRun: boolean, patchRoot: string = 
   }
   const dir = join(patchRoot, exampleRel)
   const lock = join(dir, 'package-lock.json')
+  const modules = join(dir, 'node_modules')
   if (existsSync(lock)) {
     console.log(`▶ rm package-lock.json (cwd=${exampleRel})`)
     rmSync(lock, {force: true})
   }
+  if (existsSync(modules)) {
+    console.log(`▶ rm -rf node_modules (cwd=${exampleRel})`)
+    rmSync(modules, {recursive: true, force: true})
+  }
   console.log(`▶ npm install --package-lock-only (cwd=${exampleRel})`)
   execSync('npm install --package-lock-only', {cwd: dir, stdio: 'inherit'})
+}
+
+function installExamplesWithArchives(
+  archives: Map<string, string>,
+  npmVersion: string,
+  dryRun: boolean,
+  releaseArchives: Map<string, ArchiveMetadata> | undefined,
+  patchRoot: string = REPO_ROOT
+): void {
+  for (const exampleRel of EXAMPLE_PATHS) {
+    const patched = patchExampleToFileDeps(exampleRel, archives, dryRun)
+    if (patched && !dryRun) {
+      const exampleDir = join(patchRoot, exampleRel)
+      runNpmInstall(exampleRel, false, patchRoot)
+      restoreExampleRegistrySemver(exampleRel, npmVersion, false, patchRoot)
+      normalizeExamplePackageLock(exampleDir, false, releaseArchives)
+      normalizeWorkspaceParentLockIfNeeded(exampleDir, false, releaseArchives)
+    }
+  }
 }
 
 function printUsage(): void {
@@ -536,7 +640,8 @@ function printUsage(): void {
 Options:
   --dry-run            Log actions without packing, patching, or installing.
   --no-install         Pack only into ${STAGING_DIR}; do not change examples.
-  --restore-registry   Set example @react-form-builder/* deps to ^(lerna.json version) and npm install (needs packages on npm).
+  --from-archives <dir>  Use react-form-builder-*.tgz from a release archives directory (CI).
+  --restore-registry   Deprecated alias; requires --from-archives (does not fetch from npm).
   --patch-root <dir>   Patch examples under <dir> instead of the repository root (for release archive staging).
 
 Packs into ${STAGING_DIR} (gitignored). Requires npm install before first run.`)
@@ -552,35 +657,12 @@ function main(): void {
   const dryRun = argv.includes('--dry-run')
   const noInstall = argv.includes('--no-install')
   const restore = argv.includes('--restore-registry')
+  const archivesDir = parseArchivesDir(argv)
   const patchRoot = parsePatchRoot(argv)
 
-  if (restore) {
-    const npmVersion = readLernaVersion()
-    if (!npmVersion) {
-      console.error('❌ Monorepo version missing. Expected lerna.json to include a non-empty "version" field.')
-      process.exitCode = 1
-      return
-    }
-    patchExamplesToRegistry(npmVersion, dryRun, patchRoot)
-    if (!dryRun && !noInstall) {
-      for (const exampleRel of EXAMPLE_PATHS) {
-        const pjPath = join(patchRoot, exampleRel, 'package.json')
-        if (!existsSync(pjPath)) {
-          continue
-        }
-        const pj = readPackageJson(pjPath)
-        const hasRfb = DEPS_SECTIONS.some(section => {
-          const deps = pj[section] as Record<string, string> | undefined
-          return deps && Object.keys(deps).some(k => k.startsWith(PACKAGE_PREFIX))
-        })
-        if (hasRfb) {
-          const exampleDir = join(patchRoot, exampleRel)
-          runNpmInstall(exampleRel, false, patchRoot)
-          normalizeExamplePackageLock(exampleDir, false)
-          normalizeWorkspaceParentLockIfNeeded(exampleDir, false)
-        }
-      }
-    }
+  if (restore && !archivesDir) {
+    console.error('❌ --restore-registry requires --from-archives <dir> with release .tgz files (unpublished versions are not on npm).')
+    process.exitCode = 1
     return
   }
 
@@ -591,13 +673,27 @@ function main(): void {
     return
   }
 
+  if (restore) {
+    patchExamplesToRegistry(npmVersion, dryRun, patchRoot)
+  }
+
   const seed = collectDirectExampleDeps()
   if (seed.size === 0) {
     console.warn('No @react-form-builder dependencies found in example package.json files.')
     return
   }
   const closure = expandPackageClosure(seed)
-  console.log(`Packages to pack (${closure.size}): ${[...closure].sort().join(', ')}`)
+  console.log(`Packages to stage (${closure.size}): ${[...closure].sort().join(', ')}`)
+
+  let releaseArchives: Map<string, ArchiveMetadata> | undefined
+  if (archivesDir) {
+    if (!existsSync(archivesDir)) {
+      console.error(`❌ Archives directory not found: ${archivesDir}`)
+      process.exitCode = 1
+      return
+    }
+    releaseArchives = new Map()
+  }
 
   if (!dryRun) {
     rmSync(STAGING_DIR, {recursive: true, force: true})
@@ -606,6 +702,17 @@ function main(): void {
 
   const archives = new Map<string, string>()
   for (const pkg of [...closure].sort()) {
+    if (archivesDir) {
+      const expected = expectedArchiveBaseName(pkg)
+      const src = join(archivesDir, expected)
+      if (dryRun || existsSync(src)) {
+        const {filename, metadata} = stageReleaseArchive(archivesDir, pkg, dryRun)
+        archives.set(pkg, filename)
+        releaseArchives!.set(pkg, metadata)
+        continue
+      }
+      console.warn(`Archive ${expected} not in ${archivesDir}; packing ${pkg} locally`)
+    }
     const base = packPackage(pkg, dryRun)
     archives.set(pkg, base)
   }
@@ -615,16 +722,7 @@ function main(): void {
     return
   }
 
-  for (const exampleRel of EXAMPLE_PATHS) {
-    const patched = patchExampleToFileDeps(exampleRel, archives, dryRun)
-    if (patched && !dryRun) {
-      const exampleDir = join(REPO_ROOT, exampleRel)
-      runNpmInstall(exampleRel, false)
-      restoreExampleRegistrySemver(exampleRel, npmVersion, false)
-      normalizeExamplePackageLock(exampleDir, false)
-      normalizeWorkspaceParentLockIfNeeded(exampleDir, false)
-    }
-  }
+  installExamplesWithArchives(archives, npmVersion, dryRun, releaseArchives, patchRoot)
 }
 
 try {

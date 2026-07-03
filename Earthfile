@@ -176,9 +176,11 @@ prepare-npm-archives:
 prepare-npm-archives-from-pack:
   FROM +sources
   WORKDIR /repo
+  ENV NODE_OPTIONS="--max-old-space-size=8192"
+  RUN npm run pack:ci
   RUN mkdir -p .archives
   RUN node scripts/release/prepare-npm-archives.ts --from-pack
-  SAVE ARTIFACT --force .archives AS LOCAL .archives
+  SAVE ARTIFACT /repo/.archives AS LOCAL .archives
 
 prepare-demo-archive:
   FROM +npm-demo-build
@@ -201,7 +203,11 @@ prepare-documentation-archive:
 prepare-github-formengine-examples:
   FROM +sources
   WORKDIR /repo
-  RUN node scripts/examples-install-local-packages.ts --restore-registry
+  ENV NODE_OPTIONS="--max-old-space-size=8192"
+  RUN npm run pack:ci
+  RUN mkdir -p .archives
+  RUN node scripts/release/prepare-npm-archives.ts --from-pack
+  RUN node scripts/examples-install-local-packages.ts --from-archives .archives
   RUN mkdir -p /prepared/packages/views /prepared/packages/apps
   RUN cp -r /repo/examples /prepared/examples
   RUN cp -r /repo/packages/core /prepared/packages/core
@@ -213,11 +219,13 @@ prepare-github-formengine-examples:
   RUN cp -r /repo/packages/viewer-bundle /prepared/packages/viewer-bundle
   RUN cp -r /repo/packages/apps/common /prepared/packages/apps/common
   RUN cp -r /repo/packages/apps/example-viewer /prepared/packages/apps/example-viewer
+  SAVE ARTIFACT /repo/.archives
   SAVE ARTIFACT /prepared
 
 prepare-github-formengine-archive:
   FROM +prepare-github-formengine-examples
   WORKDIR /repo
+  COPY +prepare-github-formengine-examples/.archives /repo/.archives
   COPY --dir scripts/includes/github-optimajet-formengine/ github-formengine
   COPY --dir +prepare-github-formengine-examples/prepared/packages/core github-formengine/community/packages/core
   COPY --dir +prepare-github-formengine-examples/prepared/packages/json-schema-generator github-formengine/community/packages/json-schema-generator
@@ -233,7 +241,7 @@ prepare-github-formengine-archive:
   COPY .npmrc github-formengine/community/
   RUN rm -f github-formengine/community/examples/bundle-size/scripts/install-local-formengine.ts
   RUN sed -i 's|file:../../../scripts/cli-lib|file:../../scripts/cli-lib|g' github-formengine/community/examples/bundle-size/package.json
-  RUN cd github-formengine/community/examples/bundle-size && npm install --package-lock-only --no-audit --no-fund
+  RUN node scripts/patch-package-lock-from-archives.ts --archives-dir .archives --lockfile github-formengine/community/examples/bundle-size/package-lock.json --package-json github-formengine/community/examples/bundle-size/package.json
   COPY --dir +prepare-github-formengine-examples/prepared/examples/premium github-formengine/premium/examples
   COPY lerna.json github-formengine/community/
   COPY tsconfig.json github-formengine/community/
@@ -244,7 +252,7 @@ prepare-github-formengine-archive:
   COPY .gitignore github-formengine/
   COPY package.public.json github-formengine/community/package.json
   COPY package-lock.json github-formengine/community/package-lock.json
-  RUN cd github-formengine/community && npm install --package-lock-only --no-audit --no-fund
+  RUN node scripts/patch-package-lock-from-archives.ts --archives-dir .archives --lockfile github-formengine/community/package-lock.json --package-json github-formengine/community/package.json
   COPY CHANGELOG.md github-formengine
   RUN find github-formengine -name node_modules -type d -prune -exec rm -rf '{}' +
   RUN find github-formengine \( -name dist -o -name build -o -name reports \) -type d -prune -exec rm -rf '{}' +
@@ -254,6 +262,7 @@ prepare-github-formengine-archive:
 prepare-github-formenginesupport-archive:
   FROM +sources
   WORKDIR /repo
+  COPY +prepare-github-formengine-examples/.archives /repo/.archives
   LET dst=private-github
   COPY --dir packages/apps/common $dst/packages/apps/common
   COPY --dir packages/apps/common-designer $dst/packages/apps/common-designer
@@ -290,7 +299,7 @@ prepare-github-formenginesupport-archive:
   COPY .editorconfig $dst/
   COPY .gitignore $dst/
   COPY .npmrc $dst/
-  RUN cd $dst && npm install --package-lock-only --no-audit --no-fund
+  RUN node scripts/patch-package-lock-from-archives.ts --archives-dir .archives --lockfile $dst/package-lock.json --package-json $dst/package.json
   RUN find $dst -name node_modules -type d -prune -exec rm -rf '{}' +
   RUN find $dst \( -name dist -o -name build -o -name reports \) -type d -prune -exec rm -rf '{}' +
   RUN tar -czvf formenginesupport.tgz -C $dst .
@@ -321,19 +330,15 @@ prepare-all-archives:
 
 prepare-rc-archives-from-pack:
   # Documentation archive is built separately (ci-build-documentation GHA job).
-  FROM +sources
-  WORKDIR /repo
-  ENV NODE_OPTIONS="--max-old-space-size=8192"
-  RUN npm run pack:ci
-  RUN mkdir -p .archives
-  RUN node scripts/release/prepare-npm-archives.ts --from-pack
-  SAVE ARTIFACT --force .archives AS LOCAL .archives
   BUILD +prepare-github-formengine-archive
   BUILD +prepare-github-formenginesupport-archive
   BUILD +prepare-demo-archive
   BUILD +prepare-formbuilder-archive
   BUILD +prepare-version-archive
   BUILD +prepare-github-release-notes-archive
+  FROM +prepare-github-formengine-examples
+  WORKDIR /repo
+  SAVE ARTIFACT --force .archives AS LOCAL .archives
 
 # --- Verify (archive smoke tests) ---
 
