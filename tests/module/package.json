@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/test-module",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "private": true,
   "type": "module",
   "author": "Optimajet",
@@ -10,13 +10,13 @@
     "test:module": "npm run test"
   },
   "dependencies": {
-    "@react-form-builder/components-antd": "^9.0.0",
-    "@react-form-builder/components-fast-qr": "^9.0.0",
-    "@react-form-builder/components-google-map": "^9.0.0",
-    "@react-form-builder/components-rich-text": "^9.0.0",
-    "@react-form-builder/components-rsuite": "^9.0.0",
-    "@react-form-builder/core": "^9.0.0",
-    "@react-form-builder/designer": "^9.0.0",
-    "@react-form-builder/indexed-db-form-storage": "^9.0.0"
+    "@react-form-builder/components-antd": "^10.0.0",
+    "@react-form-builder/components-fast-qr": "^10.0.0",
+    "@react-form-builder/components-google-map": "^10.0.0",
+    "@react-form-builder/components-rich-text": "^10.0.0",
+    "@react-form-builder/components-rsuite": "^10.0.0",
+    "@react-form-builder/core": "^10.0.0",
+    "@react-form-builder/designer": "^10.0.0",
+    "@react-form-builder/indexed-db-form-storage": "^10.0.0"
   }
 }
