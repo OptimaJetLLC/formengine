@@ -1,11 +1,11 @@
 <svg width="330" height="255" viewBox="0 0 330 255" xmlns="http://www.w3.org/2000/svg">
     <text x="165" y="18" text-anchor="middle" font-size="14" font-weight="600" fill="#333">SurveyJS - login-mantine (raw)</text>
-    <path d="M 60.50000000000001 145 L 60.50000000000001 94.5 A 50.50000000000001 50.50000000000001 0 1 1 49.79346572935362 95.64799777201056 Z" fill="#4CAF50" stroke="#fff" stroke-width="2"/><path d="M 60.50000000000001 145 L 49.79346572935362 95.64799777201056 A 50.50000000000001 50.50000000000001 0 0 1 60.5 94.5 Z" fill="#2196F3" stroke="#fff" stroke-width="2"/>
+    <path d="M 60.50000000000001 145 L 60.50000000000001 94.5 A 50.50000000000001 50.50000000000001 0 1 1 49.46096562356118 95.72130561758152 Z" fill="#4CAF50" stroke="#fff" stroke-width="2"/><path d="M 60.50000000000001 145 L 49.46096562356118 95.72130561758152 A 50.50000000000001 50.50000000000001 0 0 1 60.5 94.5 Z" fill="#2196F3" stroke="#fff" stroke-width="2"/>
     <g>
       <rect x="151" y="45" width="16" height="16" fill="#4CAF50" rx="3"/>
-      <text x="175" y="57" font-size="13" fill="#333">Code (96.6%)</text>
+      <text x="175" y="57" font-size="13" fill="#333">Code (96.5%)</text>
     </g><g>
       <rect x="151" y="73" width="16" height="16" fill="#2196F3" rx="3"/>
-      <text x="175" y="85" font-size="13" fill="#333">CSS (3.4%)</text>
+      <text x="175" y="85" font-size="13" fill="#333">CSS (3.5%)</text>
     </g>
   </svg>

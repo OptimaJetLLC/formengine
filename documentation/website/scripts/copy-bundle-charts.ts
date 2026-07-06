@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 function main(): void {
-  const bundleSizeDir = join(__dirname, '../../../examples/community/bundle-size')
+  const bundleSizeDir = join(__dirname, '../../../../examples/community/bundle-size')
   const bundleSizeIncludesDir = join(bundleSizeDir, '.bundle-stats')
   const bundleSizeChartsDir = join(bundleSizeIncludesDir, 'charts')
   const docsStaticDir = join(__dirname, '../static/includes/bundle-size')

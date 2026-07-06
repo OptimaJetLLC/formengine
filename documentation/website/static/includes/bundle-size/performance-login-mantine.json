@@ -6,72 +6,72 @@
       {
         "framework": "SurveyJS",
         "metric": "3G LCP",
-        "value": 7174
+        "value": 7295
       },
       {
         "framework": "SurveyJS",
         "metric": "3G TTI",
-        "value": 9246
+        "value": 9387
       },
       {
         "framework": "SurveyJS",
         "metric": "4G LCP",
-        "value": 784
+        "value": 797
       },
       {
         "framework": "SurveyJS",
         "metric": "4G TTI",
-        "value": 2856
+        "value": 2889
       },
       {
         "framework": "SurveyJS",
         "metric": "Parse",
-        "value": 2072
+        "value": 2092
       },
       {
         "framework": "RJSF",
         "metric": "3G LCP",
-        "value": 5005
+        "value": 5249
       },
       {
         "framework": "RJSF",
         "metric": "3G TTI",
-        "value": 6192
+        "value": 6457
       },
       {
         "framework": "RJSF",
         "metric": "4G LCP",
-        "value": 567
+        "value": 592
       },
       {
         "framework": "RJSF",
         "metric": "4G TTI",
-        "value": 1755
+        "value": 1801
       },
       {
         "framework": "RJSF",
         "metric": "Parse",
-        "value": 1187
+        "value": 1208
       },
       {
         "framework": "FormEngine Core",
         "metric": "3G LCP",
-        "value": 3226
+        "value": 3277
       },
       {
         "framework": "FormEngine Core",
         "metric": "3G TTI",
-        "value": 4006
+        "value": 4056
       },
       {
         "framework": "FormEngine Core",
         "metric": "4G LCP",
-        "value": 390
+        "value": 396
       },
       {
         "framework": "FormEngine Core",
         "metric": "4G TTI",
-        "value": 1169
+        "value": 1175
       },
       {
         "framework": "FormEngine Core",
