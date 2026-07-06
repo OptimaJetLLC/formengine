@@ -1,0 +1,172 @@
+[
+  {
+    "filename": "assets/booking-DSwjCXjX.js",
+    "label": "assets/booking-DSwjCXjX.js",
+    "parsedSize": 189979,
+    "mapSize": 4020059,
+    "gzipSize": 60613,
+    "brotliSize": 52554,
+    "source": [
+      {
+        "parsedSize": 189979,
+        "gzipSize": 60613,
+        "brotliSize": 52554,
+        "label": "node_modules",
+        "groups": [
+          {
+            "parsedSize": 3523,
+            "gzipSize": 1542,
+            "brotliSize": 1380,
+            "label": "scheduler",
+            "groups": [
+              {
+                "parsedSize": 26,
+                "gzipSize": 46,
+                "brotliSize": 30,
+                "importedBy": [],
+                "label": "index.js",
+                "filename": "node_modules/scheduler/index.js"
+              },
+              {
+                "parsedSize": 3497,
+                "gzipSize": 1496,
+                "brotliSize": 1350,
+                "label": "cjs",
+                "groups": [
+                  {
+                    "parsedSize": 3497,
+                    "gzipSize": 1496,
+                    "brotliSize": 1350,
+                    "importedBy": [],
+                    "label": "scheduler.production.js",
+                    "filename": "node_modules/scheduler/cjs/scheduler.production.js"
+                  }
+                ],
+                "filename": "node_modules/scheduler/cjs"
+              }
+            ],
+            "filename": "node_modules/scheduler"
+          },
+          {
+            "parsedSize": 7834,
+            "gzipSize": 3126,
+            "brotliSize": 2779,
+            "label": "react",
+            "groups": [
+              {
+                "parsedSize": 26,
+                "gzipSize": 46,
+                "brotliSize": 30,
+                "importedBy": [],
+                "label": "index.js",
+                "filename": "node_modules/react/index.js"
+              },
+              {
+                "parsedSize": 20,
+                "gzipSize": 40,
+                "brotliSize": 24,
+                "importedBy": [],
+                "label": "jsx-runtime.js",
+                "filename": "node_modules/react/jsx-runtime.js"
+              },
+              {
+                "parsedSize": 7788,
+                "gzipSize": 3040,
+                "brotliSize": 2725,
+                "label": "cjs",
+                "groups": [
+                  {
+                    "parsedSize": 287,
+                    "gzipSize": 222,
+                    "brotliSize": 194,
+                    "importedBy": [],
+                    "label": "react-jsx-runtime.production.js",
+                    "filename": "node_modules/react/cjs/react-jsx-runtime.production.js"
+                  },
+                  {
+                    "parsedSize": 7501,
+                    "gzipSize": 2818,
+                    "brotliSize": 2531,
+                    "importedBy": [],
+                    "label": "react.production.js",
+                    "filename": "node_modules/react/cjs/react.production.js"
+                  }
+                ],
+                "filename": "node_modules/react/cjs"
+              }
+            ],
+            "filename": "node_modules/react"
+          },
+          {
+            "parsedSize": 178622,
+            "gzipSize": 55945,
+            "brotliSize": 48395,
+            "label": "react-dom",
+            "groups": [
+              {
+                "parsedSize": 225,
+                "gzipSize": 158,
+                "brotliSize": 123,
+                "importedBy": [],
+                "label": "index.js",
+                "filename": "node_modules/react-dom/index.js"
+              },
+              {
+                "parsedSize": 233,
+                "gzipSize": 165,
+                "brotliSize": 129,
+                "importedBy": [],
+                "label": "client.js",
+                "filename": "node_modules/react-dom/client.js"
+              },
+              {
+                "parsedSize": 178164,
+                "gzipSize": 55622,
+                "brotliSize": 48143,
+                "label": "cjs",
+                "groups": [
+                  {
+                    "parsedSize": 3249,
+                    "gzipSize": 1193,
+                    "brotliSize": 1031,
+                    "importedBy": [],
+                    "label": "react-dom.production.js",
+                    "filename": "node_modules/react-dom/cjs/react-dom.production.js"
+                  },
+                  {
+                    "parsedSize": 174915,
+                    "gzipSize": 54429,
+                    "brotliSize": 47112,
+                    "importedBy": [],
+                    "label": "react-dom-client.production.js",
+                    "filename": "node_modules/react-dom/cjs/react-dom-client.production.js"
+                  }
+                ],
+                "filename": "node_modules/react-dom/cjs"
+              }
+            ],
+            "filename": "node_modules/react-dom"
+          }
+        ],
+        "filename": "node_modules"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [],
+    "actualSize": 1579002
+  },
+  {
+    "filename": "assets/booking-BSKMcLMH.css",
+    "label": "assets/booking-BSKMcLMH.css",
+    "parsedSize": 308835,
+    "mapSize": 0,
+    "gzipSize": 35654,
+    "brotliSize": 27727,
+    "source": [],
+    "isAsset": true,
+    "isEntry": false,
+    "imports": [],
+    "actualSize": 308835
+  }
+]
