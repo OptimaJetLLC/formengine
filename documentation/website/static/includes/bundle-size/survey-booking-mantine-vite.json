@@ -1,0 +1,269 @@
+[
+  {
+    "filename": "assets/booking-mantine-BZROHnxv.js",
+    "label": "assets/booking-mantine-BZROHnxv.js",
+    "parsedSize": 193714,
+    "mapSize": 4869685,
+    "gzipSize": 62525,
+    "brotliSize": 54247,
+    "source": [
+      {
+        "parsedSize": 193714,
+        "gzipSize": 62525,
+        "brotliSize": 54247,
+        "label": "node_modules",
+        "groups": [
+          {
+            "parsedSize": 7837,
+            "gzipSize": 3137,
+            "brotliSize": 2787,
+            "label": "react",
+            "groups": [
+              {
+                "parsedSize": 20,
+                "gzipSize": 40,
+                "brotliSize": 24,
+                "importedBy": [],
+                "label": "jsx-runtime.js",
+                "filename": "node_modules/react/jsx-runtime.js"
+              },
+              {
+                "parsedSize": 7800,
+                "gzipSize": 3060,
+                "brotliSize": 2742,
+                "label": "cjs",
+                "groups": [
+                  {
+                    "parsedSize": 339,
+                    "gzipSize": 243,
+                    "brotliSize": 213,
+                    "importedBy": [],
+                    "label": "react-jsx-runtime.production.js",
+                    "filename": "node_modules/react/cjs/react-jsx-runtime.production.js"
+                  },
+                  {
+                    "parsedSize": 7461,
+                    "gzipSize": 2817,
+                    "brotliSize": 2529,
+                    "importedBy": [],
+                    "label": "react.production.js",
+                    "filename": "node_modules/react/cjs/react.production.js"
+                  }
+                ],
+                "filename": "node_modules/react/cjs"
+              },
+              {
+                "parsedSize": 17,
+                "gzipSize": 37,
+                "brotliSize": 21,
+                "importedBy": [],
+                "label": "index.js",
+                "filename": "node_modules/react/index.js"
+              }
+            ],
+            "filename": "node_modules/react"
+          },
+          {
+            "parsedSize": 3520,
+            "gzipSize": 1542,
+            "brotliSize": 1380,
+            "label": "scheduler",
+            "groups": [
+              {
+                "parsedSize": 28,
+                "gzipSize": 48,
+                "brotliSize": 32,
+                "importedBy": [],
+                "label": "index.js",
+                "filename": "node_modules/scheduler/index.js"
+              },
+              {
+                "parsedSize": 3492,
+                "gzipSize": 1494,
+                "brotliSize": 1348,
+                "label": "cjs",
+                "groups": [
+                  {
+                    "parsedSize": 3492,
+                    "gzipSize": 1494,
+                    "brotliSize": 1348,
+                    "importedBy": [],
+                    "label": "scheduler.production.js",
+                    "filename": "node_modules/scheduler/cjs/scheduler.production.js"
+                  }
+                ],
+                "filename": "node_modules/scheduler/cjs"
+              }
+            ],
+            "filename": "node_modules/scheduler"
+          },
+          {
+            "parsedSize": 178679,
+            "gzipSize": 55923,
+            "brotliSize": 48455,
+            "label": "react-dom",
+            "groups": [
+              {
+                "parsedSize": 217,
+                "gzipSize": 152,
+                "brotliSize": 117,
+                "importedBy": [],
+                "label": "index.js",
+                "filename": "node_modules/react-dom/index.js"
+              },
+              {
+                "parsedSize": 219,
+                "gzipSize": 155,
+                "brotliSize": 118,
+                "importedBy": [],
+                "label": "client.js",
+                "filename": "node_modules/react-dom/client.js"
+              },
+              {
+                "parsedSize": 178243,
+                "gzipSize": 55616,
+                "brotliSize": 48220,
+                "label": "cjs",
+                "groups": [
+                  {
+                    "parsedSize": 3250,
+                    "gzipSize": 1192,
+                    "brotliSize": 1051,
+                    "importedBy": [],
+                    "label": "react-dom.production.js",
+                    "filename": "node_modules/react-dom/cjs/react-dom.production.js"
+                  },
+                  {
+                    "parsedSize": 174993,
+                    "gzipSize": 54424,
+                    "brotliSize": 47169,
+                    "importedBy": [],
+                    "label": "react-dom-client.production.js",
+                    "filename": "node_modules/react-dom/cjs/react-dom-client.production.js"
+                  }
+                ],
+                "filename": "node_modules/react-dom/cjs"
+              }
+            ],
+            "filename": "node_modules/react-dom"
+          },
+          {
+            "parsedSize": 71,
+            "gzipSize": 84,
+            "brotliSize": 71,
+            "importedBy": [
+              {
+                "id": "react",
+                "kind": "static"
+              },
+              {
+                "id": "use-isomorphic-layout-effect",
+                "kind": "static"
+              }
+            ],
+            "label": "use-latest/dist/use-latest.esm.js",
+            "filename": "node_modules/use-latest/dist/use-latest.esm.js"
+          },
+          {
+            "parsedSize": 361,
+            "gzipSize": 312,
+            "brotliSize": 232,
+            "label": "@babel/runtime/helpers/esm",
+            "groups": [
+              {
+                "parsedSize": 219,
+                "gzipSize": 174,
+                "brotliSize": 126,
+                "importedBy": [],
+                "label": "extends.js",
+                "filename": "node_modules/@babel/runtime/helpers/esm/extends.js"
+              },
+              {
+                "parsedSize": 142,
+                "gzipSize": 138,
+                "brotliSize": 106,
+                "importedBy": [],
+                "label": "objectWithoutPropertiesLoose.js",
+                "filename": "node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js"
+              }
+            ],
+            "filename": "node_modules/@babel/runtime/helpers/esm"
+          },
+          {
+            "parsedSize": 3015,
+            "gzipSize": 1334,
+            "brotliSize": 1172,
+            "importedBy": [
+              {
+                "id": "@babel/runtime/helpers/esm/extends",
+                "kind": "static"
+              },
+              {
+                "id": "@babel/runtime/helpers/esm/objectWithoutPropertiesLoose",
+                "kind": "static"
+              },
+              {
+                "id": "react",
+                "kind": "static"
+              },
+              {
+                "id": "use-latest",
+                "kind": "static"
+              },
+              {
+                "id": "use-composed-ref",
+                "kind": "static"
+              }
+            ],
+            "label": "react-textarea-autosize/dist/react-textarea-autosize.browser.esm.js",
+            "filename": "node_modules/react-textarea-autosize/dist/react-textarea-autosize.browser.esm.js"
+          },
+          {
+            "parsedSize": 206,
+            "gzipSize": 148,
+            "brotliSize": 121,
+            "importedBy": [
+              {
+                "id": "react",
+                "kind": "static"
+              }
+            ],
+            "label": "use-composed-ref/dist/use-composed-ref.esm.js",
+            "filename": "node_modules/use-composed-ref/dist/use-composed-ref.esm.js"
+          },
+          {
+            "parsedSize": 25,
+            "gzipSize": 45,
+            "brotliSize": 29,
+            "importedBy": [
+              {
+                "id": "react",
+                "kind": "static"
+              }
+            ],
+            "label": "use-isomorphic-layout-effect/dist/use-isomorphic-layout-effect.browser.esm.js",
+            "filename": "node_modules/use-isomorphic-layout-effect/dist/use-isomorphic-layout-effect.browser.esm.js"
+          }
+        ],
+        "filename": "node_modules"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [],
+    "actualSize": 1730645
+  },
+  {
+    "filename": "assets/booking-mantine-C5iI9Gf3.css",
+    "label": "assets/booking-mantine-C5iI9Gf3.css",
+    "parsedSize": 219742,
+    "mapSize": 0,
+    "gzipSize": 31982,
+    "brotliSize": 25973,
+    "source": [],
+    "isAsset": true,
+    "isEntry": false,
+    "imports": [],
+    "actualSize": 219742
+  }
+]
