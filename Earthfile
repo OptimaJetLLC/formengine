@@ -171,7 +171,7 @@ prepare-npm-archives:
   RUN cd ./packages/apps/common-designer && npm run update-release-date
   RUN mkdir -p .archives
   RUN node scripts/release/prepare-npm-archives.ts
-  SAVE ARTIFACT --force .archives AS LOCAL .archives
+  SAVE ARTIFACT --force .archives/* AS LOCAL .archives/
 
 prepare-npm-archives-from-pack:
   FROM +sources
@@ -180,19 +180,19 @@ prepare-npm-archives-from-pack:
   RUN npm run pack:ci
   RUN mkdir -p .archives
   RUN node scripts/release/prepare-npm-archives.ts --from-pack
-  SAVE ARTIFACT /repo/.archives AS LOCAL .archives
+  SAVE ARTIFACT /repo/.archives/* AS LOCAL .archives/
 
 prepare-demo-archive:
   FROM +npm-demo-build
   WORKDIR /repo
-  RUN cd packages/apps/demo/dist/ && tar -zcvf demo.tgz *
-  SAVE ARTIFACT --force packages/apps/demo/dist/demo.tgz AS LOCAL .archives/demo.tgz
+  RUN tar -czvf demo.tgz -C packages/apps/demo/dist .
+  SAVE ARTIFACT --force demo.tgz AS LOCAL .archives/demo.tgz
 
 prepare-formbuilder-archive:
   FROM +npm-formbuilder-build
   WORKDIR /repo
-  RUN cd packages/apps/formbuilder/dist/ && tar -zcvf formbuilder.tgz *
-  SAVE ARTIFACT --force packages/apps/formbuilder/dist/formbuilder.tgz AS LOCAL .archives/formbuilder.tgz
+  RUN tar -czvf formbuilder.tgz -C packages/apps/formbuilder/dist .
+  SAVE ARTIFACT --force formbuilder.tgz AS LOCAL .archives/formbuilder.tgz
 
 prepare-documentation-archive:
   FROM +npm-documentation-build
@@ -225,7 +225,9 @@ prepare-github-formengine-examples:
 prepare-github-formengine-archive:
   FROM +prepare-github-formengine-examples
   WORKDIR /repo
-  COPY +prepare-github-formengine-examples/.archives /repo/.archives
+  RUN mkdir -p .archives
+  COPY +prepare-github-formengine-examples/.archives /tmp/npm-archives
+  RUN find /tmp/npm-archives -name 'react-form-builder-*.tgz' -exec cp {} .archives/ \;
   COPY --dir scripts/includes/github-optimajet-formengine/ github-formengine
   COPY --dir +prepare-github-formengine-examples/prepared/packages/core github-formengine/community/packages/core
   COPY --dir +prepare-github-formengine-examples/prepared/packages/json-schema-generator github-formengine/community/packages/json-schema-generator
@@ -263,7 +265,9 @@ prepare-github-formengine-archive:
 prepare-github-formenginesupport-archive:
   FROM +sources
   WORKDIR /repo
-  COPY +prepare-github-formengine-examples/.archives /repo/.archives
+  RUN mkdir -p .archives
+  COPY +prepare-github-formengine-examples/.archives /tmp/npm-archives
+  RUN find /tmp/npm-archives -name 'react-form-builder-*.tgz' -exec cp {} .archives/ \;
   LET dst=private-github
   COPY --dir packages/apps/common $dst/packages/apps/common
   COPY --dir packages/apps/common-designer $dst/packages/apps/common-designer
@@ -338,9 +342,18 @@ prepare-rc-archives-from-pack:
   BUILD +prepare-formbuilder-archive
   BUILD +prepare-version-archive
   BUILD +prepare-github-release-notes-archive
-  FROM +prepare-github-formengine-examples
+  FROM +sources
   WORKDIR /repo
-  SAVE ARTIFACT --force .archives AS LOCAL .archives
+  RUN mkdir -p .archives
+  COPY +prepare-github-formengine-examples/.archives /tmp/npm-archives
+  RUN find /tmp/npm-archives -name 'react-form-builder-*.tgz' -exec cp {} .archives/ \;
+  COPY +prepare-github-formengine-archive/formengine.tgz .archives/formengine.tgz
+  COPY +prepare-github-formenginesupport-archive/formenginesupport.tgz .archives/formenginesupport.tgz
+  COPY +prepare-demo-archive/demo.tgz .archives/demo.tgz
+  COPY +prepare-formbuilder-archive/formbuilder.tgz .archives/formbuilder.tgz
+  COPY +prepare-version-archive/lerna.json .archives/lerna.json
+  COPY +prepare-github-release-notes-archive/gh-release-notes.tgz .archives/gh-release-notes.tgz
+  SAVE ARTIFACT --force .archives/* AS LOCAL .archives/
 
 # --- Verify (archive smoke tests) ---
 
