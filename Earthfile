@@ -35,7 +35,7 @@ INSTALL_NATIVE_BINDINGS:
 dependencies:
   WORKDIR /repo
   COPY package.json package-lock.json package.public.json package.private.json lerna.json biome.json .npmrc ./
-  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts ./
+  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts vite-plugin-app-version.ts knip.config.ts ./
   COPY .madgerc ./
   COPY --dir packages documentation tests scripts examples ./
   ENV npm_config_audit=false
@@ -246,6 +246,7 @@ prepare-github-formengine-archive:
   COPY lerna.json github-formengine/community/
   COPY tsconfig.json github-formengine/community/
   COPY vite.config.ts github-formengine/community/
+  COPY vite-plugin-app-version.ts github-formengine/community/
   COPY .eslintrc.cjs github-formengine/community/
   COPY .eslintignore github-formengine/community/
   COPY .editorconfig github-formengine/community/
@@ -295,6 +296,7 @@ prepare-github-formenginesupport-archive:
   COPY .eslintignore $dst/
   COPY tsconfig.json $dst/
   COPY vite.config.ts $dst/
+  COPY vite-plugin-app-version.ts $dst/
   COPY CHANGELOG.md $dst/
   COPY .editorconfig $dst/
   COPY .gitignore $dst/
