@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 #
-# Simulate the GitHub Actions CI build and RC release publish flow locally.
+# Simulate the GitHub Actions **fb producer** CI build and RC draft-release upload.
 #
-# Mirrors `.github/workflows/ci.yml` on `rc/*` branches:
-#   1. bundle          → earthly +prepare-rc-archives-from-pack (RC) or +npm-bundle (PR)
-#   2. documentation   → earthly +prepare-documentation-archive
-#   3. publish         → earthly +npm-publish-rc-release (optional)
+# Does NOT run formengine-tools deploy (npm publish, compose-mirrors, GitHub mirrors).
+# See scripts/release/README.md section "Full release test (fb + tools)".
+#
+# Mirrors GHA RC release flow (orchestrated by `.github/workflows/ci.yml`):
+#   ci-bundle.yml              → earthly +prepare-rc-archives-from-pack (RC) or +npm-bundle (PR)
+#   ci-build-documentation.yml → earthly +prepare-documentation-archive
+#   ci-publish-rc-release.yml  → earthly +validate-rc-archives, +npm-publish-rc-release (optional)
 #
 # Optional CI jobs (disabled by default; pass flags to enable):
 #   --checks           → earthly +npm-check-all
@@ -50,7 +53,7 @@
 #     Extra arguments appended to every earthly invocation (e.g. `--disable-remote-cache`).
 #
 # Set inside Earthly targets (normally no need to set locally):
-#   NODE_OPTIONS=--max-old-space-size=8192   (npm-bundle, archive smoke tests)
+#   NODE_OPTIONS=--max-old-space-size=8192   (npm-bundle, archive prepare)
 #   CI=true                                   (npm-test, npm-e2e)
 #   PLAYWRIGHT_DOCKER=1                       (npm-e2e)
 #   PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 (npm-e2e)
@@ -267,16 +270,23 @@ check_requirements() {
   fi
 }
 
+validate_archives_at() {
+  local archives_dir="$1"
+  test -d "$archives_dir" || die "Missing archives directory $archives_dir"
+  find "$archives_dir" -maxdepth 1 -type f | grep -q . || die "$archives_dir is empty"
+  local required name
+  required=$(node -e "import {REQUIRED_ARCHIVE_FILES} from './scripts/release/constants.ts'; process.stdout.write(REQUIRED_ARCHIVE_FILES.join(' '))")
+  for name in $required; do
+    test -f "$archives_dir/$name" || die "Missing $archives_dir/$name"
+  done
+  find "$archives_dir" -maxdepth 1 -type f -name 'react-form-builder-*.tgz' | grep -q . \
+    || die "No react-form-builder-*.tgz in $archives_dir"
+  log "Archives OK: $archives_dir"
+}
+
 validate_archives() {
   log "Validate archives in ${ARCHIVES_DIR}"
-  node --input-type=module <<'EOF'
-import {archivesDir} from './scripts/release/env.ts'
-import {validateArchivesDir} from './scripts/release/validate-archives.ts'
-
-const dir = archivesDir()
-validateArchivesDir(dir)
-console.log(`Archives OK: ${dir}`)
-EOF
+  validate_archives_at "${REPO_ROOT}/${ARCHIVES_DIR}"
 }
 
 publish_release() {

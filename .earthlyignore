@@ -7,8 +7,14 @@
 **/.idea
 **/.vscode
 **/.docusaurus
+**/.astro
 **/.DS_Store
 **/.swc
+**/.angular
+**/.bundle-stats
+**/coverage
+**/playwright-report
+scripts/.examples-local-packs
 **/.archives
 !/.archives
 !/.archives/**

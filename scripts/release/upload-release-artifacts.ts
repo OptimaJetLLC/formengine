@@ -5,7 +5,6 @@ import {join, resolve} from 'node:path'
 
 import {parseArchivesDir, requireGhToken, githubRepository} from './env.ts'
 import {ensureDraftArtifactRelease, uploadReleaseAsset} from './github-api.ts'
-import {validateArchivesDir} from './validate-archives.ts'
 
 function listArchiveFilenames(archivesDir: string): string[] {
   return readdirSync(archivesDir)
@@ -24,7 +23,6 @@ function targetCommitish(): string {
 async function main(): Promise<void> {
   const argv = process.argv.slice(2)
   const archivesDir = resolve(parseArchivesDir(argv))
-  validateArchivesDir(archivesDir)
 
   const {version} = JSON.parse(readFileSync(join(archivesDir, 'lerna.json'), 'utf8')) as {version: string}
   const repo = githubRepository()

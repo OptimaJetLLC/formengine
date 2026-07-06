@@ -489,7 +489,14 @@ function normalizeExamplePackageLock(exampleDir: string, dryRun: boolean, releas
     if (PACKAGES_EXCLUDED_FROM_REGISTRY_LOCK.has(pkgName)) {
       continue
     }
-    const entry = packages[lockKey] as {resolved?: string; version?: string; integrity?: string} | undefined
+    const entry = packages[lockKey] as
+      | {
+          resolved?: string
+          version?: string
+          integrity?: string
+          link?: boolean
+        }
+      | undefined
     if (!entry?.version) {
       continue
     }
@@ -499,8 +506,13 @@ function normalizeExamplePackageLock(exampleDir: string, dryRun: boolean, releas
     const fromFile = entry.resolved?.startsWith('file:')
     const needsRegistryUrl = fromFile || entry.resolved !== targetResolved
     const needsIntegrity = archive !== undefined && entry.integrity !== archive.integrity
-    if (!needsRegistryUrl && !needsIntegrity) {
+    const needsLinkRemoval = 'link' in entry
+    if (!needsRegistryUrl && !needsIntegrity && !needsLinkRemoval) {
       continue
+    }
+    if (needsLinkRemoval) {
+      delete entry.link
+      changed = true
     }
     if (needsRegistryUrl) {
       entry.resolved = targetResolved

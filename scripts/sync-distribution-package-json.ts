@@ -73,6 +73,7 @@ const DISTRIBUTION_BASE_DEV_DEPENDENCIES = [
   '@vitejs/plugin-react-swc',
   '@vitest/browser-playwright',
   'lerna',
+  'lightningcss',
   'npm-run-all',
   'rimraf',
   'rollup-plugin-exclude-dependencies-from-bundle',

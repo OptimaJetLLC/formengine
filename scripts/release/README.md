@@ -58,12 +58,88 @@ Earthly targets also set `NODE_OPTIONS`, `CI`, and Playwright env vars internall
 
 ## Scripts
 
-| Script                        | Purpose                                                 |
-|-------------------------------|---------------------------------------------------------|
-| `prepare-npm-archives.ts`     | Pack workspace packages into `react-form-builder-*.tgz` |
-| `validate-archives.ts`        | Verify `.archives/` matches `REQUIRED_ARCHIVE_FILES`    |
-| `upload-release-artifacts.ts` | Create or update draft GitHub Release and upload assets |
+| Script                            | Purpose                                                                             |
+|-----------------------------------|-------------------------------------------------------------------------------------|
+| `validate-publication-tarball.ts` | Assert npm `.tgz` metadata is publishable (used by Earthly `+PREPARE_NPM_ARCHIVES`) |
+| `upload-release-artifacts.ts`     | Create or update draft GitHub Release and upload assets                             |
 
 ## Archive contract
 
 Keep `REQUIRED_ARCHIVE_FILES` in `constants.ts` aligned with formengine-tools `scripts/release/constants.ts`.
+
+fb builds and publishes `formengine-src.tgz` — the full monorepo source tree (`packages/`, `examples/`, `scripts/`, `tests/`, `documentation/`, root configs). Built from `+formengine-src-sources` (COPY only, no `npm ci`) with `tar --exclude` patterns from `FORMENGINE_SRC_TAR_EXCLUDES` (node_modules, `.angular`, `.bundle-stats`, dist/build, etc.). npm tarballs ship separately as `react-form-builder-*.tgz`. formengine-tools composes mirror archives from subsets of this tree in `compose-mirrors` (after npm publish).
+
+Earthly targets `+PREPARE_NPM_ARCHIVES`, `+prepare-formengine-src-archive`, and `+VALIDATE_ARCHIVES` read those constants at build time.
+
+## Full release test (fb + tools)
+
+Release is split across two repos:
+
+| Phase | Repo | What runs |
+|-------|------|-----------|
+| Build archives | **fb** | `prepare-rc-archives-from-pack`, documentation, validate, upload draft GitHub Release |
+| Deploy | **formengine-tools** | download assets → npm publish → `compose-mirrors` → mirror push → smoke |
+
+### 1. fb only (no GitHub upload)
+
+```bash
+# From fb repo root on an rc/* branch (or any branch):
+./scripts/simulate-ci-rc-release.sh --no-publish
+
+# Or with full CI parity:
+./scripts/simulate-ci-rc-release.sh --all --no-publish
+```
+
+Checks: `.archives/` contains `formengine-src.tgz`, npm tarballs, demo, formbuilder, `gh-release-notes.tgz`, `lerna.json`, and `documentation.tgz` (from the docs earthly target).
+
+### 2. fb draft release upload
+
+```bash
+export GH_TOKEN="$(gh auth token)"
+./scripts/simulate-ci-rc-release.sh --publish
+# uploads every file in .archives/ to a draft prerelease on GITHUB_REPOSITORY
+```
+
+### 3. formengine-tools deploy (mock — no npm publish, no git push)
+
+Uses local draft release assets (or pass `--version` matching the draft tag):
+
+```bash
+cd ../formengine-tools
+export GH_TOKEN="$(gh auth token)"
+export GITHUB_REPOSITORY=OptimaJetLLC/fb   # product repo with the draft release
+
+# Download draft assets to .archives/
+earthly --ci --output --secret GH_TOKEN +deploy-prepare --version=X.Y.Z --GITHUB_REPOSITORY=$GITHUB_REPOSITORY
+
+# Dry-run all deploy steps (compose-mirrors uses local tarball integrity, not registry)
+earthly --ci +deploy-all --dryRun=true
+```
+
+`compose-mirrors` composes `formengine.tgz` / `formenginesupport.tgz`, patches lockfiles, and runs the full mirror smoke suite.
+
+### 4. formengine-tools deploy (live — publishes npm and pushes mirrors)
+
+Requires npm credentials (`NPMRC_FILE` earthly secret), SSH keys for demo/formbuilder/docs hosts, and `GITHUB_ACCESS_TOKEN` for public mirror releases.
+
+```bash
+export GH_TOKEN="$(gh auth token)"
+export GITHUB_REPOSITORY=OptimaJetLLC/fb
+export NPMRC_FILE="$(cat ~/.npmrc)"          # passed as earthly secret
+export GITHUB_ACCESS_TOKEN="..."             # for mirror GitHub releases
+
+earthly --ci --output --secret GH_TOKEN +deploy-prepare --version=X.Y.Z --GITHUB_REPOSITORY=$GITHUB_REPOSITORY
+earthly --ci --push --secret GH_TOKEN --secret NPMRC_FILE --secret GITHUB_ACCESS_TOKEN +deploy-all --dryRun=false
+```
+
+Or run steps individually via `./scripts/teamcity/earthly-deploy.sh <step>` (`npm`, `npm-wait`, `compose-mirrors`, `formengine-mirror`, …).
+
+### 5. Compose + verify mirrors only (offline, from fb `.archives/`)
+
+When you already have `.archives/` from step 1 and want to test mirror composition without the draft release:
+
+```bash
+cd formengine-tools
+cp -r ../fb/.archives .archives
+DRY_RUN=true node scripts/release/deploy.ts compose-github-mirror-archives --archives-dir=.archives
+```
