@@ -14,6 +14,9 @@ jobs:
       - uses: actions/checkout@v6
         with:
           clean: false
+      - name: Clean stale archives directory
+        if: env.RC_RELEASE == 'true'
+        run: rm -rf .archives
       - name: Run bundle
         run: |
           if [ "${{ env.RC_RELEASE }}" = "true" ]; then
