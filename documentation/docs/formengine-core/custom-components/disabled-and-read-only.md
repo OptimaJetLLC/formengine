@@ -71,6 +71,7 @@ export const customButton = define(CustomButton, 'CustomButton')
 ```
 
 In this example:
+
 - The `disabled` annotation marks this property as a special state property
 - The component receives the `disabled` prop and applies appropriate styling
 - The `onClick` event is automatically prevented when the component is disabled
@@ -290,6 +291,7 @@ function App() {
 ```
 
 In this example:
+
 - The `readOnly` annotation marks this property as a special state property
 - The component conditionally prevents user input when in read-only mode
 - Visual styling changes to indicate the read-only state
@@ -350,6 +352,7 @@ export const customContainer = define(CustomContainer, 'CustomContainer')
 ```
 
 When you use this container in a form:
+
 - If the container is `disabled: true`, all child components inside it will automatically receive `disabled: true`
 - If the container is `readOnly: true`, all child components inside it will automatically receive `readOnly: true`
 

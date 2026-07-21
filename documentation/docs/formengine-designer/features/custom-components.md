@@ -407,6 +407,7 @@ To summarise, you need to:
 
 1. Define one of the component properties as [valued](/api-reference/@react-form-builder/core/classes/Annotation#valued).
 2. Define a `onChange` functional property in the component, such as this:
+
    ```typescript
    onChange?: (value: any) => void
    ```
@@ -829,7 +830,7 @@ to it, which will draw the icon.
 
 Illustrating example:
 
-```typescript jsx {1-5,14} title='Component icon example' showLineNumbers 
+```typescript jsx {1-5,14} title='Component icon example' showLineNumbers
 const MyIcon = () => {
   return <span style={
     {width: 16, height: 16, backgroundColor: 'rgba(150,130,20,0.5)', borderRadius: 8}

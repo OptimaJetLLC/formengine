@@ -178,7 +178,7 @@ Start your development server:
 npm run dev
 ```
 
-Open your browser and navigate to http://localhost:5173/. You should see your beautiful, fully functional contact form! 🎉
+Open your browser and navigate to [http://localhost:5173/](http://localhost:5173/) You should see your beautiful, fully functional contact form! 🎉
 
 ## Framework-Specific Guides
 
@@ -189,8 +189,10 @@ FormEngine Core works with all popular React frameworks and build tools:
 FormEngine Core is fully compatible with Next.js (both pages and app router):
 
 1. Install FormEngine Core:
+
    ```bash
    npm install @react-form-builder/core
+
    ```
 2. Install components library, for example Material UI:
    ```bash

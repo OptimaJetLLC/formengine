@@ -461,8 +461,8 @@ bundle. Therefore, we will connect the component styles separately.
    the [formengine-rsuite.css](https://unpkg.com/@react-form-builder/viewer-bundle@1.2.0/dist/formengine-rsuite.css) file. Place them in
    the `app/tasklist/styles` folder. To avoid configuring the CSP policy, download the styles locally.
 
-4. **Modify `user-styles.css`:**  
-   
+4. **Modify `user-styles.css`:**
+
    Add the following highlighted lines to `app/tasklist/styles/user-styles.css`:
 
    ```css title="user-styles.css" {13-18}
@@ -472,12 +472,12 @@ bundle. Therefore, we will connect the component styles separately.
      background-image: url(./path/to/the/logo.png);
      width: 80px;
    }
-   
+
    [cam-widget-header] {
      border-bottom-color: blue;
    }
    */
-   
+
    @import url('./rsuite-no-reset.min.css');
    @import url('./formengine-rsuite.css');
 

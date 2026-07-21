@@ -40,7 +40,7 @@ function Calculation(form) {
 Sometimes you want to prefill the form-level state with values that come from your host application.
 You can do this by using the `initialState` prop on the form viewer or form builder.
 
-The `initialState` prop is a plain object that is set in 
+The `initialState` prop is a plain object that is set in
 [`IFormData.state`](/api-reference/@react-form-builder/core/interfaces/IFormData#state)
 when the form is initialized. When the prop changes, the form state is updated accordingly.
 

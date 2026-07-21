@@ -107,7 +107,7 @@ This form enables a tooltip for the email field using `MuiTooltip`:
 }
 ```
 
-#### Live example
+### Live example
 
 ```jsx live
 function App() {
@@ -367,6 +367,7 @@ function App() {
 ---
 
 For more information:
+
 - [Localization](/formengine-core/localization)
 - [Forms JSON](/formengine-core/forms-json)
 - [Components Library](/components-library)

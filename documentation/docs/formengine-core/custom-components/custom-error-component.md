@@ -690,6 +690,7 @@ const CustomField = () => {
 **Problem:** Error messages don't appear when validation fails.
 
 **Solutions:**
+
 - Verify `.componentRole('error-message')` is set
 - Check that error component is added to the view
 - Ensure `errorType` is specified in form JSON or `errorWrapper` prop is set

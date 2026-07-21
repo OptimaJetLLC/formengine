@@ -495,7 +495,9 @@ function App() {
     </div>
   )
 }
+
 ```
+
 ## Working with Form Data in Actions
 
 Actions provide a powerful way to manipulate form data from within the form itself. You can access and modify form data directly in action

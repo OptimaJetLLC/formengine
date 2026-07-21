@@ -11,6 +11,7 @@ You can access the desired API via [custom actions](/formengine-designer/feature
 event, such as `onClick`.
 
 1. Adding a custom action to `FormBuilder` props:
+
    ```tsx
    <FormBuilder
      actions={{

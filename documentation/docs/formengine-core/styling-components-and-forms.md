@@ -71,7 +71,7 @@ same way components do.
 ```
 
 This distinction is critical for styling: when you apply `wrapperCss` to a container component, **it will be fully merged with `css`
-styles**. 
+styles**.
 
 ## Basic CSS Styling
 
@@ -372,7 +372,6 @@ The `style` property applies directly to the component element, similar to React
 Styling with `style` only works for components that support the `style` property.
 
 :::
-
 
 ### Live example
 
@@ -885,7 +884,9 @@ function App() {
 ```
 
 In this example:
+
 - `wrapperCss` controls the field's spacing and positions the label
+
 - `css` styles the text field input itself
 
 ## Complete Styling Example

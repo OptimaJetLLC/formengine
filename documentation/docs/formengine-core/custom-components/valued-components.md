@@ -40,7 +40,7 @@ valued component:
 4. **Validation** → Validation runs (if enabled)
 5. **UI Sync** → All components bound to that data key update automatically
 
-```
+```text
 User types "Hello" → Input onChange("Hello") → Store updates → Validation runs → Other components refresh
 ```
 
@@ -994,7 +994,7 @@ export const colorPicker = define(ColorPicker, 'ColorPicker')
 }
 ```
 
-#### Live Example
+### Live Example
 
 ```jsx live
 function App() {

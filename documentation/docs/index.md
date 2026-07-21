@@ -1,7 +1,6 @@
 ---
-description: 'Complete guide to FormEngine: React form library, drag & drop designer,
-  AI form builder. Learn how to build, validate, and deploy forms in minutes. Free
-  & open source.'
+description: 'Complete guide to FormEngine: React form library, drag & drop designer.
+  Learn how to build, validate, and deploy forms in minutes. Free & open source.'
 sidebar_label: Introduction
 sidebar_position: -100
 slug: /
@@ -67,23 +66,6 @@ With Online FormBuilder, you can:
 - Start from pre-built templates and examples
 - Preview responsive designs across device sizes
 
-### 🤖 AI React Form Builder
-
-**[Build a complex form with AI, drop it into GPT](https://formengine.io/ai-form-builder/)**
-
-AI React Form Builder uses artificial intelligence to generate forms from natural language descriptions. Describe what you need in plain
-English, and the AI creates a complete form with appropriate fields, validation, and layout. The generated forms are compatible with
-FormEngine Core, giving you a powerful synergy between AI-assisted creation and a robust rendering engine.
-
-With AI React Form Builder, you can:
-
-- Generate forms from natural language
-- Get AI-powered field selection and validation
-- Receive context-aware layout suggestions
-- Export to FormEngine Core JSON format
-- Integrate with GPT and other AI models
-- Refine forms iteratively based on feedback
-
 ## How Products Work Together
 
 The FormEngine ecosystem is designed as interconnected components that work seamlessly together:
@@ -91,7 +73,6 @@ The FormEngine ecosystem is designed as interconnected components that work seam
 ```mermaid
 flowchart TD
     subgraph "Form Creation Tools"
-        AI["🤖 AI Form Builder<br/>Natural Language → Form"]
         Online["🌐 Online FormBuilder<br/>Visual Drag & Drop"]
         Designer["🎨 FormEngine Designer<br/>Embedded in Apps"]
     end
@@ -101,14 +82,12 @@ flowchart TD
         Core["🎯 FormEngine Core<br/>Render Engine"]
     end
 
-    AI --> JSON
     Online --> JSON
     Designer --> JSON
     JSON --> Core
     
     Core --> Rendered["🚀 Rendered Forms<br/>in Your Applications"]
     
-    class AI mermaid-ai-form-builder;
     class Designer mermaid-form-engine-designer;
     class Online mermaid-online-form-builder;
     class JSON mermaid-form-engine-core-json;
@@ -119,7 +98,6 @@ flowchart TD
 **Workflow Explanation:**
 
 1. **Creation**: Forms can be created through multiple entry points:
-   - **AI FormBuilder**: Describe forms in natural language
    - **Online FormBuilder**: Use the cloud-based visual designer
    - **FormEngine Designer**: Embed the designer in your applications
 2. **Output**: All creation methods produce **FormEngine Core JSON** - a standardized format that describes the form structure, logic, and
@@ -216,13 +194,3 @@ drag-and-drop interface to create forms without writing code.
 
 Try the **[Online FormBuilder](https://formbuilder.formengine.io/)** when you need to design forms fast. No installation required—just
 create, export JSON, and integrate with FormEngine Core.
-
-### For AI-Assisted Development
-
-Experiment with the **[AI React Form Builder](https://formengine.io/ai-form-builder/)** to generate forms from natural language
-descriptions. Describe what you need, and let AI handle the details.
-
-Whichever path you choose, all roads lead to **FormEngine Core JSON**—the universal format that powers the entire ecosystem. This
-consistency ensures your forms work seamlessly across all FormEngine products.
-
-**Your first form is just minutes away.** Pick your starting point and begin creating!

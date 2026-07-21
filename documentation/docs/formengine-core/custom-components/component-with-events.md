@@ -19,7 +19,7 @@ See also [the section](/formengine-core/actions-and-events) on event handling.
 
 ### Event Flow
 
-```
+```text
 User Interaction → Component Event → FormEngine → Actions
 ```
 

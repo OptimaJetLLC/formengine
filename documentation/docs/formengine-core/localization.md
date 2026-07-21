@@ -856,7 +856,7 @@ After the value is resolved, **Fluent placeholders** in any string inside that a
 
 The localization entry for an array property is stored under the same path as string properties:
 
-```
+```text
 localization[languageCode][componentKey][type][propertyName]
 ```
 
@@ -1360,7 +1360,7 @@ function App() {
 
 :::info note
 
-Validation error messages are not automatically translated when the language is changed, but they change after calling the validate 
+Validation error messages are not automatically translated when the language is changed, but they change after calling the validate
 `action`.
 
 :::
@@ -1731,7 +1731,9 @@ export const myDialog = define(MyDialog, 'MyDialog')
   })
   .componentRole('modal')
   .build()
+
 ```
+
 ##### Live example
 
 ```jsx live
@@ -2246,8 +2248,10 @@ Consider a form with these language definitions:
 ```
 
 When a user requests `fr-CA` (Canadian French):
+
 1. FormEngine looks for `fr-CA` translations - Not found
 2. Falls back to `fr` (French) - Finds `"label": "Adresse Email"` but `helperText` is missing
+
 3. Falls back to form default `en-US` - Uses `"helperText": "Enter your email"` for the missing translation
 4. Result: `label` in French, `helperText` in English
 

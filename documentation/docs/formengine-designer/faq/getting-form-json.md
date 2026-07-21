@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Getting form JSON
+title: Getting JSON form in React component
 description: Getting form JSON.
 slug: /formengine-designer/faq/getting-form-json
 ---

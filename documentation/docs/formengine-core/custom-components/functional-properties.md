@@ -552,7 +552,6 @@ function indicatorStyle() {
 }
 ```
 
-
 #### Live Example
 
 ```jsx live

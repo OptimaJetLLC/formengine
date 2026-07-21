@@ -52,7 +52,7 @@ Before starting, ensure you have:
 
 Create a folder named `components/custom` inside the `src` folder. The directory structure in this example will be as follows:
 
-```
+```text
 src/
 ├── components/
 │   └── custom/

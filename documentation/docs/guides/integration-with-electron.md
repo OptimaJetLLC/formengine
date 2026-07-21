@@ -219,7 +219,6 @@ const configuration: webpack.Configuration = {
 
 ### Without monaco-editor-webpack-plugin
 
-
 The last bit is fixing the webpack configuration files to package Monaco workers. You can find many examples of how to do this in
 the official [Monaco repository](https://github.com/microsoft/monaco-editor/tree/main/samples). Take a look at
 this [example](https://github.com/microsoft/monaco-editor/blob/main/samples/electron-esm-webpack/webpack.config.js).
@@ -312,4 +311,4 @@ the code editor, notice that IntelliSense is working:
 ## Conclusion
 
 Packaging a FormEngine application in Electron is not much different from packaging any other React application, only packaging the Monaco
-editor can cause difficulties. We hope this article will help you save your time. 
+editor can cause difficulties. We hope this article will help you save your time.

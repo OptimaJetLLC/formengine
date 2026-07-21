@@ -565,7 +565,7 @@ export const simpleNote = define(SimpleNote, 'SimpleNote')
   .build()
 ```
 
-#### Live example
+### Live example
 
 ```jsx live
 function App() {

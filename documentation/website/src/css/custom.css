@@ -308,67 +308,6 @@
   }
 }
 
-[data-theme="light"] {
-  #flowchart-AI-0.mermaid-ai-form-builder > rect.basic.label-container {
-    fill: #8abfd9;
-  }
-
-  #flowchart-Online-1.mermaid-online-form-builder > rect.basic.label-container {
-    fill: #e8f5e8;
-  }
-
-  #flowchart-Designer-2.mermaid-form-engine-designer > rect.basic.label-container {
-    fill: #fff3e0;
-  }
-
-  #flowchart-JSON-3.mermaid-form-engine-core-json > rect.basic.label-container {
-    fill: #f3e5f5;
-  }
-
-  #flowchart-Core-4.mermaid-form-engine-core > rect.basic.label-container {
-    fill: #ffebee;
-  }
-
-  #flowchart-Rendered-14.mermaid-rendered-forms > rect.basic.label-container {
-    fill: #e0f2f1;
-  }
-}
-
-[data-theme="dark"] {
-  #flowchart-AI-0.mermaid-ai-form-builder > rect.basic.label-container {
-    fill: #5a9fbd;
-  }
-
-  #flowchart-Online-1.mermaid-online-form-builder > rect.basic.label-container {
-    fill: #a8c9a8;
-  }
-
-  #flowchart-Designer-2.mermaid-form-engine-designer > rect.basic.label-container {
-    fill: #d0b890;
-  }
-
-  #flowchart-JSON-3.mermaid-form-engine-core-json > rect.basic.label-container {
-    fill: #b59ab5;
-  }
-
-  #flowchart-Core-4.mermaid-form-engine-core > rect.basic.label-container {
-    fill: #e0a8b0;
-  }
-
-  #flowchart-Rendered-14.mermaid-rendered-forms > rect.basic.label-container {
-    fill: #8aa8a8;
-  }
-
-  .mermaid-ai-form-builder p,
-  .mermaid-online-form-builder p,
-  .mermaid-form-engine-designer p,
-  .mermaid-form-engine-core-json p,
-  .mermaid-form-engine-core p,
-  .mermaid-rendered-forms p {
-    color: white;
-  }
-}
-
 /* Overriding the font size for headings, as h5 and h6 headings already have the required size */
 h1 {
   font-size: 1.85em;

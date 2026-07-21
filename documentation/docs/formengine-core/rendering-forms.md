@@ -957,7 +957,6 @@ If you encounter issues:
 4. **Consult the community** on GitHub discussions.
 5. **File an issue** with reproducible example.
 
-
 ---
 
 For more information:

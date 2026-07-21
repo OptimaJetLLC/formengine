@@ -369,7 +369,6 @@ window.onload = function () {
 }
 ```
 
-
 ### How to use Designer (FormBuilder) with a strict Content-Security-Policy
 
 You can set a stricter Content-Security-Policy and avoid automatically adding CSS styles to the page. The URL https://cdn.jsdelivr.net is

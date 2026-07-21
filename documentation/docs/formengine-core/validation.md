@@ -1393,7 +1393,7 @@ href: '/formengine-core/custom-components/custom-error-component'
 
 By default, FormEngine Core displays the first validation error for a component, even if the component has multiple validators specified.
 You can configure `FormViewer` so that it displays all validation errors for the component at once. To do this, set the value of the
-(showAllValidationErrors)[/api-reference/@react-form-builder/core/interfaces/FormViewerProps#showallvalidationerrors] property to `true`.
+[showAllValidationErrors](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#showallvalidationerrors) property to `true`.
 
 ```tsx {4}
 <FormViewer
@@ -1644,6 +1644,7 @@ function App() {
 The `formValidator` code should be a JavaScript function body that:
 
 1. Receives a `formData` parameter containing all form field values
+
 2. Returns an object where:
   - Keys are field names
   - Values are error messages for those fields
@@ -1922,7 +1923,6 @@ When form validation is triggered (e.g., by the `validate` action), FormEngine C
 Errors from all sources are combined. If multiple validators return errors for the same field, the errors are concatenated (unless
 [showAllValidationErrors](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#showallvalidationerrors) is `false`, in which
 case only the first error is shown).
-
 
 #### Live example
 

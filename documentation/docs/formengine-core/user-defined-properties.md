@@ -311,6 +311,7 @@ function App() {
 2. **Document overrides**: When you use `setUserDefinedProps`, add comments explaining why the override is necessary.
 3. **Merge, don't replace**: When updating `userDefinedProps` in React components, spread existing properties to avoid losing other
    overrides:
+
    ```typescript
    // Good
    componentData.userDefinedProps = {
@@ -320,6 +321,7 @@ function App() {
    
    // Bad (loses other overrides)
    componentData.userDefinedProps = { newProp: value }
+
    ```
 4. **Test thoroughly**: Overrides can have unexpected side effects with validation, data binding, and conditional rendering.
 

@@ -78,15 +78,3 @@ color to green.
 ![Apply_class](/assets/guides/styling-multiple-components/multicss4.png)
 
 By following this workflow, you can ensure consistent styling across all your required components.
-
-
-
-
-
-
-
-
-
-
-
-

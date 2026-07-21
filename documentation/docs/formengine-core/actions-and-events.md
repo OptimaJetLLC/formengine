@@ -58,7 +58,6 @@ flowchart LR
   C --> D("Form Updates");
 ```
 
-
 When a user interacts with a component (like clicking a button), the component fires an event. FormEngine Core captures this event and
 executes all actions bound to it, in the order they were defined.
 

@@ -226,7 +226,6 @@ export const AppWithColorScheme = () => {
 
 When you need immediate client-side color scheme detection (for non-SSR usage), pass `getInitialValueInEffect: true`:
 
-
 ```tsx
 import {useColorScheme} from '@mantine/hooks'
 

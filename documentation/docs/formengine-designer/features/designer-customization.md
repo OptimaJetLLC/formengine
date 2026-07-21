@@ -129,8 +129,8 @@ const FormBuilderApp = () => {
 
 | #  | Name                                    | className                                  |
 |:--:|:----------------------------------------|--------------------------------------------|
-| 1  | MainContainer                           | FE_MainContainer                           | 
-| 2  | LeftPanel                               | FE_LeftPanel                               | 
+| 1  | MainContainer                           | FE_MainContainer                           |
+| 2  | LeftPanel                               | FE_LeftPanel                               |
 | 3  | CentralPanel                            | FE_CentralPanel                            |
 | 4  | RightPanel                              | FE_RightPanel                              |
 | 5  | LeftPanel_Nav                           | FE_LeftPanel_Nav                           |
@@ -202,7 +202,7 @@ const menuCustomization: CustomizationMap = {
   MainMenu_Item_Clear: {
     hidden: true
   },
-  
+
   // Customize the "Download" button style
   MainMenu_Item_Download: {
     className: 'custom-download-button',
@@ -211,7 +211,7 @@ const menuCustomization: CustomizationMap = {
       color: 'white'
     }
   },
-  
+
   // Replace the "Save" button with a custom component
   MainMenu_Item_Save: {
     customRenderer: (defaultElement, component, props) => (

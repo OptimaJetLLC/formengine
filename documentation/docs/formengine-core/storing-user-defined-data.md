@@ -118,7 +118,7 @@ function Calculation(form) {
 `form.state` for all actions and calculations.
 :::
 
-#### Live example
+### Live example
 
 ```jsx live
 function App() {
@@ -267,7 +267,7 @@ This live example shows how to:
 - Log form submissions and state changes.
 - Send form data and form-level state to a backend endpoint.
 
-#### Live example
+### Live example
 
 ```jsx live
 function App() {
@@ -417,7 +417,7 @@ function App() {
 This example uses `onFormDataChange` to log every change and keep a compact log in React state. It does not depend on `userContext`, but it
 is a useful pattern to combine with a logger from your environment.
 
-#### Live example
+### Live example
 
 ```jsx live
 function App() {

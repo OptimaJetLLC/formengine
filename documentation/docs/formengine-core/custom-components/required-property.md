@@ -140,8 +140,10 @@ className addition in your custom components
    - Optional text indicating the field is required
 
 3. **Use Semantic HTML Attributes**: When implementing your component, use the appropriate HTML attributes:
+
    ```jsx
    <input required={required} aria-required={required} />
+
    ```
 4. **Leverage Automatic ClassName**: Use the automatically added `required` className for styling instead of relying only on the prop value:
    ```css
