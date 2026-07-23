@@ -2,34 +2,6 @@ VERSION --try 0.8
 
 FROM node:24.18.0
 
-# --- Shared helpers ---
-
-# Installs platform-specific native npm bindings (Linux containers in CI/verify).
-INSTALL_NATIVE_BINDINGS:
-  FUNCTION
-  ARG --required targetDir
-  RUN cd "$targetDir" && npm install oxc-parser oxc-resolver rollup @swc/core @biomejs/biome --no-save --no-audit --no-fund
-  RUN case "$(uname -m)" in \
-    aarch64|arm64) \
-      cd "$targetDir" && npm install \
-        @rollup/rollup-linux-arm64-gnu \
-        @swc/core-linux-arm64-gnu \
-        @swc/html-linux-arm64-gnu \
-        @oxc-parser/binding-linux-arm64-gnu \
-        @biomejs/cli-linux-arm64 \
-        @rspack/binding-linux-arm64-gnu \
-        --no-save --no-audit --no-fund ;; \
-    *) \
-      cd "$targetDir" && npm install \
-        @rollup/rollup-linux-x64-gnu \
-        @swc/core-linux-x64-gnu \
-        @swc/html-linux-x64-gnu \
-        @oxc-parser/binding-linux-x64-gnu \
-        @biomejs/cli-linux-x64 \
-        @rspack/binding-linux-x64-gnu \
-        --no-save --no-audit --no-fund ;; \
-    esac
-
 # Copies validated react-form-builder-*.tgz archives into .archives/.
 # fromPack=0: run npm run pack in each workspace package.
 # fromPack=1: copy tarballs produced earlier (for example by npm run pack:ci).
@@ -177,7 +149,7 @@ npm-test:
 npm-check-all:
   FROM +sources
   WORKDIR /repo
-  RUN npm install -D @biomejs/biome
+  RUN npm rebuild
   RUN npm run check:all
 
 npm-check-circular-deps:
