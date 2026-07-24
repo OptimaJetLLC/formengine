@@ -186,7 +186,7 @@
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",
     "@react-form-builder/json-schema-generator": "^10.0.1",
-    "postcss": "^8.5.10",
+    "postcss": "^8.5.12",
     "vite-inline-css-plugin": "^0.0.1",
     "vite-node": "^5.2.0"
   }
