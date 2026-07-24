@@ -18,7 +18,7 @@
     "@playwright/test": "1.57.0",
     "cross-spawn": "^7.0.6",
     "ctrf": "^0.0.17",
-    "monocart-reporter": "^2.9.23",
+    "monocart-reporter": "^2.12.3",
     "playwright-ctrf-json-reporter": "^0.0.27"
   }
 }
