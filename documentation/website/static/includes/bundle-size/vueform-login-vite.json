@@ -20,12 +20,12 @@
             "label": "lodash",
             "groups": [
               {
-                "parsedSize": 107,
-                "gzipSize": 116,
-                "brotliSize": 84,
+                "parsedSize": 98,
+                "gzipSize": 110,
+                "brotliSize": 83,
                 "importedBy": [],
-                "label": "_copyArray.js",
-                "filename": "node_modules/lodash/_copyArray.js"
+                "label": "_baseIsMap.js",
+                "filename": "node_modules/lodash/_baseIsMap.js"
               },
               {
                 "parsedSize": 70,
@@ -44,12 +44,20 @@
                 "filename": "node_modules/lodash/_listCacheDelete.js"
               },
               {
-                "parsedSize": 98,
-                "gzipSize": 110,
-                "brotliSize": 83,
+                "parsedSize": 107,
+                "gzipSize": 116,
+                "brotliSize": 84,
                 "importedBy": [],
-                "label": "_baseIsMap.js",
-                "filename": "node_modules/lodash/_baseIsMap.js"
+                "label": "_copyArray.js",
+                "filename": "node_modules/lodash/_copyArray.js"
+              },
+              {
+                "parsedSize": 537,
+                "gzipSize": 346,
+                "brotliSize": 315,
+                "importedBy": [],
+                "label": "_equalArrays.js",
+                "filename": "node_modules/lodash/_equalArrays.js"
               },
               {
                 "parsedSize": 106,
@@ -76,28 +84,12 @@
                 "filename": "node_modules/lodash/toInteger.js"
               },
               {
-                "parsedSize": 537,
-                "gzipSize": 346,
-                "brotliSize": 315,
-                "importedBy": [],
-                "label": "_equalArrays.js",
-                "filename": "node_modules/lodash/_equalArrays.js"
-              },
-              {
                 "parsedSize": 377,
                 "gzipSize": 268,
                 "brotliSize": 229,
                 "importedBy": [],
                 "label": "toNumber.js",
                 "filename": "node_modules/lodash/toNumber.js"
-              },
-              {
-                "parsedSize": 43,
-                "gzipSize": 63,
-                "brotliSize": 47,
-                "importedBy": [],
-                "label": "_Set.js",
-                "filename": "node_modules/lodash/_Set.js"
               },
               {
                 "parsedSize": 135,
@@ -116,6 +108,14 @@
                 "filename": "node_modules/lodash/capitalize.js"
               },
               {
+                "parsedSize": 43,
+                "gzipSize": 63,
+                "brotliSize": 47,
+                "importedBy": [],
+                "label": "_Set.js",
+                "filename": "node_modules/lodash/_Set.js"
+              },
+              {
                 "parsedSize": 60,
                 "gzipSize": 80,
                 "brotliSize": 62,
@@ -124,20 +124,20 @@
                 "filename": "node_modules/lodash/clone.js"
               },
               {
-                "parsedSize": 37,
-                "gzipSize": 57,
-                "brotliSize": 41,
-                "importedBy": [],
-                "label": "_Symbol.js",
-                "filename": "node_modules/lodash/_Symbol.js"
-              },
-              {
                 "parsedSize": 186,
                 "gzipSize": 147,
                 "brotliSize": 122,
                 "importedBy": [],
                 "label": "isBuffer.js",
                 "filename": "node_modules/lodash/isBuffer.js"
+              },
+              {
+                "parsedSize": 37,
+                "gzipSize": 57,
+                "brotliSize": 41,
+                "importedBy": [],
+                "label": "_Symbol.js",
+                "filename": "node_modules/lodash/_Symbol.js"
               },
               {
                 "parsedSize": 133,
@@ -164,6 +164,14 @@
                 "filename": "node_modules/lodash/_baseSetToString.js"
               },
               {
+                "parsedSize": 401,
+                "gzipSize": 272,
+                "brotliSize": 231,
+                "importedBy": [],
+                "label": "isEmpty.js",
+                "filename": "node_modules/lodash/isEmpty.js"
+              },
+              {
                 "parsedSize": 207,
                 "gzipSize": 171,
                 "brotliSize": 131,
@@ -180,28 +188,12 @@
                 "filename": "node_modules/lodash/head.js"
               },
               {
-                "parsedSize": 401,
-                "gzipSize": 272,
-                "brotliSize": 231,
-                "importedBy": [],
-                "label": "isEmpty.js",
-                "filename": "node_modules/lodash/isEmpty.js"
-              },
-              {
                 "parsedSize": 190,
                 "gzipSize": 149,
                 "brotliSize": 115,
                 "importedBy": [],
                 "label": "_baseCreate.js",
                 "filename": "node_modules/lodash/_baseCreate.js"
-              },
-              {
-                "parsedSize": 139,
-                "gzipSize": 127,
-                "brotliSize": 88,
-                "importedBy": [],
-                "label": "_isPrototype.js",
-                "filename": "node_modules/lodash/_isPrototype.js"
               },
               {
                 "parsedSize": 48,
@@ -212,12 +204,12 @@
                 "filename": "node_modules/lodash/_DataView.js"
               },
               {
-                "parsedSize": 160,
-                "gzipSize": 139,
-                "brotliSize": 111,
+                "parsedSize": 139,
+                "gzipSize": 127,
+                "brotliSize": 88,
                 "importedBy": [],
-                "label": "_basePickBy.js",
-                "filename": "node_modules/lodash/_basePickBy.js"
+                "label": "_isPrototype.js",
+                "filename": "node_modules/lodash/_isPrototype.js"
               },
               {
                 "parsedSize": 210,
@@ -226,6 +218,14 @@
                 "importedBy": [],
                 "label": "_apply.js",
                 "filename": "node_modules/lodash/_apply.js"
+              },
+              {
+                "parsedSize": 160,
+                "gzipSize": 139,
+                "brotliSize": 111,
+                "importedBy": [],
+                "label": "_basePickBy.js",
+                "filename": "node_modules/lodash/_basePickBy.js"
               },
               {
                 "parsedSize": 210,
@@ -276,20 +276,20 @@
                 "filename": "node_modules/lodash/_baseFilter.js"
               },
               {
-                "parsedSize": 97,
-                "gzipSize": 105,
-                "brotliSize": 80,
-                "importedBy": [],
-                "label": "_flatRest.js",
-                "filename": "node_modules/lodash/_flatRest.js"
-              },
-              {
                 "parsedSize": 287,
                 "gzipSize": 199,
                 "brotliSize": 173,
                 "importedBy": [],
                 "label": "_compareAscending.js",
                 "filename": "node_modules/lodash/_compareAscending.js"
+              },
+              {
+                "parsedSize": 97,
+                "gzipSize": 105,
+                "brotliSize": 80,
+                "importedBy": [],
+                "label": "_flatRest.js",
+                "filename": "node_modules/lodash/_flatRest.js"
               },
               {
                 "parsedSize": 46,
@@ -324,20 +324,20 @@
                 "filename": "node_modules/lodash/_stringToPath.js"
               },
               {
+                "parsedSize": 518,
+                "gzipSize": 331,
+                "brotliSize": 273,
+                "importedBy": [],
+                "label": "_getTag.js",
+                "filename": "node_modules/lodash/_getTag.js"
+              },
+              {
                 "parsedSize": 168,
                 "gzipSize": 153,
                 "brotliSize": 127,
                 "importedBy": [],
                 "label": "_assignValue.js",
                 "filename": "node_modules/lodash/_assignValue.js"
-              },
-              {
-                "parsedSize": 198,
-                "gzipSize": 170,
-                "brotliSize": 129,
-                "importedBy": [],
-                "label": "_baseKeys.js",
-                "filename": "node_modules/lodash/_baseKeys.js"
               },
               {
                 "parsedSize": 59,
@@ -348,12 +348,12 @@
                 "filename": "node_modules/lodash/_getValue.js"
               },
               {
-                "parsedSize": 518,
-                "gzipSize": 331,
-                "brotliSize": 273,
+                "parsedSize": 198,
+                "gzipSize": 170,
+                "brotliSize": 129,
                 "importedBy": [],
-                "label": "_getTag.js",
-                "filename": "node_modules/lodash/_getTag.js"
+                "label": "_baseKeys.js",
+                "filename": "node_modules/lodash/_baseKeys.js"
               },
               {
                 "parsedSize": 47,
@@ -404,14 +404,6 @@
                 "filename": "node_modules/lodash/_hashClear.js"
               },
               {
-                "parsedSize": 166,
-                "gzipSize": 152,
-                "brotliSize": 125,
-                "importedBy": [],
-                "label": "_hashSet.js",
-                "filename": "node_modules/lodash/_hashSet.js"
-              },
-              {
                 "parsedSize": 188,
                 "gzipSize": 169,
                 "brotliSize": 132,
@@ -420,12 +412,12 @@
                 "filename": "node_modules/lodash/_baseGetTag.js"
               },
               {
-                "parsedSize": 131,
-                "gzipSize": 135,
-                "brotliSize": 110,
+                "parsedSize": 166,
+                "gzipSize": 152,
+                "brotliSize": 125,
                 "importedBy": [],
-                "label": "_isFlattenable.js",
-                "filename": "node_modules/lodash/_isFlattenable.js"
+                "label": "_hashSet.js",
+                "filename": "node_modules/lodash/_hashSet.js"
               },
               {
                 "parsedSize": 73,
@@ -436,6 +428,14 @@
                 "filename": "node_modules/lodash/isObjectLike.js"
               },
               {
+                "parsedSize": 131,
+                "gzipSize": 135,
+                "brotliSize": 110,
+                "importedBy": [],
+                "label": "_isFlattenable.js",
+                "filename": "node_modules/lodash/_isFlattenable.js"
+              },
+              {
                 "parsedSize": 77,
                 "gzipSize": 83,
                 "brotliSize": 60,
@@ -444,12 +444,12 @@
                 "filename": "node_modules/lodash/_basePropertyOf.js"
               },
               {
-                "parsedSize": 100,
-                "gzipSize": 106,
-                "brotliSize": 86,
+                "parsedSize": 84,
+                "gzipSize": 94,
+                "brotliSize": 68,
                 "importedBy": [],
-                "label": "property.js",
-                "filename": "node_modules/lodash/property.js"
+                "label": "set.js",
+                "filename": "node_modules/lodash/set.js"
               },
               {
                 "parsedSize": 103,
@@ -474,6 +474,14 @@
                 "importedBy": [],
                 "label": "_baseIsNaN.js",
                 "filename": "node_modules/lodash/_baseIsNaN.js"
+              },
+              {
+                "parsedSize": 100,
+                "gzipSize": 106,
+                "brotliSize": 86,
+                "importedBy": [],
+                "label": "property.js",
+                "filename": "node_modules/lodash/property.js"
               },
               {
                 "parsedSize": 203,
@@ -508,14 +516,6 @@
                 "filename": "node_modules/lodash/_baseValues.js"
               },
               {
-                "parsedSize": 84,
-                "gzipSize": 94,
-                "brotliSize": 68,
-                "importedBy": [],
-                "label": "set.js",
-                "filename": "node_modules/lodash/set.js"
-              },
-              {
                 "parsedSize": 219,
                 "gzipSize": 169,
                 "brotliSize": 132,
@@ -530,6 +530,14 @@
                 "importedBy": [],
                 "label": "_defineProperty.js",
                 "filename": "node_modules/lodash/_defineProperty.js"
+              },
+              {
+                "parsedSize": 391,
+                "gzipSize": 277,
+                "brotliSize": 234,
+                "importedBy": [],
+                "label": "_arrayLikeKeys.js",
+                "filename": "node_modules/lodash/_arrayLikeKeys.js"
               },
               {
                 "parsedSize": 119,
@@ -548,12 +556,12 @@
                 "filename": "node_modules/lodash/_createSet.js"
               },
               {
-                "parsedSize": 391,
-                "gzipSize": 277,
-                "brotliSize": 234,
+                "parsedSize": 109,
+                "gzipSize": 115,
+                "brotliSize": 88,
                 "importedBy": [],
-                "label": "_arrayLikeKeys.js",
-                "filename": "node_modules/lodash/_arrayLikeKeys.js"
+                "label": "_castPath.js",
+                "filename": "node_modules/lodash/_castPath.js"
               },
               {
                 "parsedSize": 51,
@@ -564,12 +572,12 @@
                 "filename": "node_modules/lodash/stubArray.js"
               },
               {
-                "parsedSize": 109,
-                "gzipSize": 115,
-                "brotliSize": 88,
+                "parsedSize": 480,
+                "gzipSize": 305,
+                "brotliSize": 263,
                 "importedBy": [],
-                "label": "_castPath.js",
-                "filename": "node_modules/lodash/_castPath.js"
+                "label": "_unicodeToArray.js",
+                "filename": "node_modules/lodash/_unicodeToArray.js"
               },
               {
                 "parsedSize": 108,
@@ -578,14 +586,6 @@
                 "importedBy": [],
                 "label": "get.js",
                 "filename": "node_modules/lodash/get.js"
-              },
-              {
-                "parsedSize": 480,
-                "gzipSize": 305,
-                "brotliSize": 263,
-                "importedBy": [],
-                "label": "_unicodeToArray.js",
-                "filename": "node_modules/lodash/_unicodeToArray.js"
               },
               {
                 "parsedSize": 61,
@@ -652,14 +652,6 @@
                 "filename": "node_modules/lodash/_mapCacheSet.js"
               },
               {
-                "parsedSize": 193,
-                "gzipSize": 168,
-                "brotliSize": 140,
-                "importedBy": [],
-                "label": "_createCaseFirst.js",
-                "filename": "node_modules/lodash/_createCaseFirst.js"
-              },
-              {
                 "parsedSize": 84,
                 "gzipSize": 96,
                 "brotliSize": 69,
@@ -668,12 +660,12 @@
                 "filename": "node_modules/lodash/_getAllKeysIn.js"
               },
               {
-                "parsedSize": 148,
-                "gzipSize": 136,
-                "brotliSize": 105,
+                "parsedSize": 193,
+                "gzipSize": 168,
+                "brotliSize": 140,
                 "importedBy": [],
-                "label": "_createCompounder.js",
-                "filename": "node_modules/lodash/_createCompounder.js"
+                "label": "_createCaseFirst.js",
+                "filename": "node_modules/lodash/_createCaseFirst.js"
               },
               {
                 "parsedSize": 85,
@@ -682,6 +674,14 @@
                 "importedBy": [],
                 "label": "_castFunction.js",
                 "filename": "node_modules/lodash/_castFunction.js"
+              },
+              {
+                "parsedSize": 148,
+                "gzipSize": 136,
+                "brotliSize": 105,
+                "importedBy": [],
+                "label": "_createCompounder.js",
+                "filename": "node_modules/lodash/_createCompounder.js"
               },
               {
                 "parsedSize": 33,
@@ -708,12 +708,12 @@
                 "filename": "node_modules/lodash/_baseForOwn.js"
               },
               {
-                "parsedSize": 77,
-                "gzipSize": 92,
-                "brotliSize": 75,
+                "parsedSize": 85,
+                "gzipSize": 97,
+                "brotliSize": 74,
                 "importedBy": [],
-                "label": "toString.js",
-                "filename": "node_modules/lodash/toString.js"
+                "label": "_baseAssign.js",
+                "filename": "node_modules/lodash/_baseAssign.js"
               },
               {
                 "parsedSize": 71,
@@ -724,20 +724,12 @@
                 "filename": "node_modules/lodash/_stackHas.js"
               },
               {
-                "parsedSize": 85,
-                "gzipSize": 97,
-                "brotliSize": 74,
+                "parsedSize": 77,
+                "gzipSize": 92,
+                "brotliSize": 75,
                 "importedBy": [],
-                "label": "_baseAssign.js",
-                "filename": "node_modules/lodash/_baseAssign.js"
-              },
-              {
-                "parsedSize": 135,
-                "gzipSize": 135,
-                "brotliSize": 99,
-                "importedBy": [],
-                "label": "_hasUnicodeWord.js",
-                "filename": "node_modules/lodash/_hasUnicodeWord.js"
+                "label": "toString.js",
+                "filename": "node_modules/lodash/toString.js"
               },
               {
                 "parsedSize": 74,
@@ -746,6 +738,14 @@
                 "importedBy": [],
                 "label": "_isStrictComparable.js",
                 "filename": "node_modules/lodash/_isStrictComparable.js"
+              },
+              {
+                "parsedSize": 135,
+                "gzipSize": 135,
+                "brotliSize": 99,
+                "importedBy": [],
+                "label": "_hasUnicodeWord.js",
+                "filename": "node_modules/lodash/_hasUnicodeWord.js"
               },
               {
                 "parsedSize": 292,
@@ -772,20 +772,20 @@
                 "filename": "node_modules/lodash/_copyObject.js"
               },
               {
-                "parsedSize": 72,
-                "gzipSize": 86,
-                "brotliSize": 63,
-                "importedBy": [],
-                "label": "eq.js",
-                "filename": "node_modules/lodash/eq.js"
-              },
-              {
                 "parsedSize": 133,
                 "gzipSize": 128,
                 "brotliSize": 94,
                 "importedBy": [],
                 "label": "_cloneRegExp.js",
                 "filename": "node_modules/lodash/_cloneRegExp.js"
+              },
+              {
+                "parsedSize": 72,
+                "gzipSize": 86,
+                "brotliSize": 63,
+                "importedBy": [],
+                "label": "eq.js",
+                "filename": "node_modules/lodash/eq.js"
               },
               {
                 "parsedSize": 129,
@@ -820,20 +820,20 @@
                 "filename": "node_modules/lodash/_baseIsArguments.js"
               },
               {
-                "parsedSize": 94,
-                "gzipSize": 107,
-                "brotliSize": 76,
-                "importedBy": [],
-                "label": "_baseTimes.js",
-                "filename": "node_modules/lodash/_baseTimes.js"
-              },
-              {
                 "parsedSize": 241,
                 "gzipSize": 154,
                 "brotliSize": 123,
                 "importedBy": [],
                 "label": "trim.js",
                 "filename": "node_modules/lodash/trim.js"
+              },
+              {
+                "parsedSize": 94,
+                "gzipSize": 107,
+                "brotliSize": 76,
+                "importedBy": [],
+                "label": "_baseTimes.js",
+                "filename": "node_modules/lodash/_baseTimes.js"
               },
               {
                 "parsedSize": 97,
@@ -852,20 +852,20 @@
                 "filename": "node_modules/lodash/_copySymbolsIn.js"
               },
               {
-                "parsedSize": 91,
-                "gzipSize": 103,
-                "brotliSize": 81,
-                "importedBy": [],
-                "label": "_objectToString.js",
-                "filename": "node_modules/lodash/_objectToString.js"
-              },
-              {
                 "parsedSize": 1185,
                 "gzipSize": 505,
                 "brotliSize": 312,
                 "importedBy": [],
                 "label": "_deburrLetter.js",
                 "filename": "node_modules/lodash/_deburrLetter.js"
+              },
+              {
+                "parsedSize": 91,
+                "gzipSize": 103,
+                "brotliSize": 81,
+                "importedBy": [],
+                "label": "_objectToString.js",
+                "filename": "node_modules/lodash/_objectToString.js"
               },
               {
                 "parsedSize": 98,
@@ -972,6 +972,14 @@
                 "filename": "node_modules/lodash/_baseToString.js"
               },
               {
+                "parsedSize": 72,
+                "gzipSize": 92,
+                "brotliSize": 75,
+                "importedBy": [],
+                "label": "isSet.js",
+                "filename": "node_modules/lodash/isSet.js"
+              },
+              {
                 "parsedSize": 122,
                 "gzipSize": 120,
                 "brotliSize": 95,
@@ -1012,12 +1020,12 @@
                 "filename": "node_modules/lodash/flatten.js"
               },
               {
-                "parsedSize": 72,
-                "gzipSize": 92,
-                "brotliSize": 75,
+                "parsedSize": 126,
+                "gzipSize": 123,
+                "brotliSize": 95,
                 "importedBy": [],
-                "label": "isSet.js",
-                "filename": "node_modules/lodash/isSet.js"
+                "label": "_root.js",
+                "filename": "node_modules/lodash/_root.js"
               },
               {
                 "parsedSize": 71,
@@ -1028,28 +1036,20 @@
                 "filename": "node_modules/lodash/_stackGet.js"
               },
               {
-                "parsedSize": 254,
-                "gzipSize": 180,
-                "brotliSize": 140,
-                "importedBy": [],
-                "label": "_nodeUtil.js",
-                "filename": "node_modules/lodash/_nodeUtil.js"
-              },
-              {
-                "parsedSize": 126,
-                "gzipSize": 123,
-                "brotliSize": 95,
-                "importedBy": [],
-                "label": "_root.js",
-                "filename": "node_modules/lodash/_root.js"
-              },
-              {
                 "parsedSize": 143,
                 "gzipSize": 134,
                 "brotliSize": 111,
                 "importedBy": [],
                 "label": "_baseIsEqual.js",
                 "filename": "node_modules/lodash/_baseIsEqual.js"
+              },
+              {
+                "parsedSize": 254,
+                "gzipSize": 180,
+                "brotliSize": 140,
+                "importedBy": [],
+                "label": "_nodeUtil.js",
+                "filename": "node_modules/lodash/_nodeUtil.js"
               },
               {
                 "parsedSize": 147,
@@ -1092,6 +1092,14 @@
                 "filename": "node_modules/lodash/constant.js"
               },
               {
+                "parsedSize": 218,
+                "gzipSize": 161,
+                "brotliSize": 135,
+                "importedBy": [],
+                "label": "isFunction.js",
+                "filename": "node_modules/lodash/isFunction.js"
+              },
+              {
                 "parsedSize": 105,
                 "gzipSize": 114,
                 "brotliSize": 77,
@@ -1108,14 +1116,6 @@
                 "filename": "node_modules/lodash/_copySymbols.js"
               },
               {
-                "parsedSize": 218,
-                "gzipSize": 161,
-                "brotliSize": 135,
-                "importedBy": [],
-                "label": "isFunction.js",
-                "filename": "node_modules/lodash/isFunction.js"
-              },
-              {
                 "parsedSize": 90,
                 "gzipSize": 103,
                 "brotliSize": 86,
@@ -1124,20 +1124,20 @@
                 "filename": "node_modules/lodash/_stringToArray.js"
               },
               {
-                "parsedSize": 167,
-                "gzipSize": 151,
-                "brotliSize": 126,
-                "importedBy": [],
-                "label": "_baseIteratee.js",
-                "filename": "node_modules/lodash/_baseIteratee.js"
-              },
-              {
                 "parsedSize": 427,
                 "gzipSize": 302,
                 "brotliSize": 272,
                 "importedBy": [],
                 "label": "_baseUniq.js",
                 "filename": "node_modules/lodash/_baseUniq.js"
+              },
+              {
+                "parsedSize": 167,
+                "gzipSize": 151,
+                "brotliSize": 126,
+                "importedBy": [],
+                "label": "_baseIteratee.js",
+                "filename": "node_modules/lodash/_baseIteratee.js"
               },
               {
                 "parsedSize": 97,
@@ -1212,20 +1212,20 @@
                 "filename": "node_modules/lodash/camelCase.js"
               },
               {
+                "parsedSize": 85,
+                "gzipSize": 97,
+                "brotliSize": 74,
+                "importedBy": [],
+                "label": "_baseAssignIn.js",
+                "filename": "node_modules/lodash/_baseAssignIn.js"
+              },
+              {
                 "parsedSize": 182,
                 "gzipSize": 160,
                 "brotliSize": 133,
                 "importedBy": [],
                 "label": "sortBy.js",
                 "filename": "node_modules/lodash/sortBy.js"
-              },
-              {
-                "parsedSize": 119,
-                "gzipSize": 124,
-                "brotliSize": 93,
-                "importedBy": [],
-                "label": "_arrayIncludesWith.js",
-                "filename": "node_modules/lodash/_arrayIncludesWith.js"
               },
               {
                 "parsedSize": 160,
@@ -1236,12 +1236,12 @@
                 "filename": "node_modules/lodash/_hasUnicode.js"
               },
               {
-                "parsedSize": 85,
-                "gzipSize": 97,
-                "brotliSize": 74,
+                "parsedSize": 119,
+                "gzipSize": 124,
+                "brotliSize": 93,
                 "importedBy": [],
-                "label": "_baseAssignIn.js",
-                "filename": "node_modules/lodash/_baseAssignIn.js"
+                "label": "_arrayIncludesWith.js",
+                "filename": "node_modules/lodash/_arrayIncludesWith.js"
               },
               {
                 "parsedSize": 123,
@@ -1292,20 +1292,20 @@
                 "filename": "node_modules/lodash/isArrayLikeObject.js"
               },
               {
-                "parsedSize": 84,
-                "gzipSize": 99,
-                "brotliSize": 76,
-                "importedBy": [],
-                "label": "pick.js",
-                "filename": "node_modules/lodash/pick.js"
-              },
-              {
                 "parsedSize": 116,
                 "gzipSize": 104,
                 "brotliSize": 86,
                 "importedBy": [],
                 "label": "_baseSome.js",
                 "filename": "node_modules/lodash/_baseSome.js"
+              },
+              {
+                "parsedSize": 84,
+                "gzipSize": 99,
+                "brotliSize": 76,
+                "importedBy": [],
+                "label": "pick.js",
+                "filename": "node_modules/lodash/pick.js"
               },
               {
                 "parsedSize": 103,
@@ -1316,20 +1316,20 @@
                 "filename": "node_modules/lodash/_baseIndexOf.js"
               },
               {
-                "parsedSize": 262,
-                "gzipSize": 212,
-                "brotliSize": 185,
-                "importedBy": [],
-                "label": "_hasPath.js",
-                "filename": "node_modules/lodash/_hasPath.js"
-              },
-              {
                 "parsedSize": 100,
                 "gzipSize": 108,
                 "brotliSize": 79,
                 "importedBy": [],
                 "label": "forEach.js",
                 "filename": "node_modules/lodash/forEach.js"
+              },
+              {
+                "parsedSize": 262,
+                "gzipSize": 212,
+                "brotliSize": 185,
+                "importedBy": [],
+                "label": "_hasPath.js",
+                "filename": "node_modules/lodash/_hasPath.js"
               },
               {
                 "parsedSize": 104,
@@ -1340,14 +1340,6 @@
                 "filename": "node_modules/lodash/_setCacheAdd.js"
               },
               {
-                "parsedSize": 120,
-                "gzipSize": 124,
-                "brotliSize": 92,
-                "importedBy": [],
-                "label": "isSymbol.js",
-                "filename": "node_modules/lodash/isSymbol.js"
-              },
-              {
                 "parsedSize": 179,
                 "gzipSize": 162,
                 "brotliSize": 134,
@@ -1356,12 +1348,12 @@
                 "filename": "node_modules/lodash/_baseSlice.js"
               },
               {
-                "parsedSize": 207,
-                "gzipSize": 174,
-                "brotliSize": 141,
+                "parsedSize": 120,
+                "gzipSize": 124,
+                "brotliSize": 92,
                 "importedBy": [],
-                "label": "concat.js",
-                "filename": "node_modules/lodash/concat.js"
+                "label": "isSymbol.js",
+                "filename": "node_modules/lodash/isSymbol.js"
               },
               {
                 "parsedSize": 70,
@@ -1370,6 +1362,14 @@
                 "importedBy": [],
                 "label": "flatMap.js",
                 "filename": "node_modules/lodash/flatMap.js"
+              },
+              {
+                "parsedSize": 207,
+                "gzipSize": 174,
+                "brotliSize": 141,
+                "importedBy": [],
+                "label": "concat.js",
+                "filename": "node_modules/lodash/concat.js"
               },
               {
                 "parsedSize": 124,
@@ -1436,20 +1436,20 @@
                 "filename": "node_modules/lodash/_Map.js"
               },
               {
-                "parsedSize": 116,
-                "gzipSize": 121,
-                "brotliSize": 89,
-                "importedBy": [],
-                "label": "_mapToArray.js",
-                "filename": "node_modules/lodash/_mapToArray.js"
-              },
-              {
                 "parsedSize": 45,
                 "gzipSize": 65,
                 "brotliSize": 49,
                 "importedBy": [],
                 "label": "_baseEach.js",
                 "filename": "node_modules/lodash/_baseEach.js"
+              },
+              {
+                "parsedSize": 116,
+                "gzipSize": 121,
+                "brotliSize": 89,
+                "importedBy": [],
+                "label": "_mapToArray.js",
+                "filename": "node_modules/lodash/_mapToArray.js"
               },
               {
                 "parsedSize": 284,
@@ -1516,20 +1516,20 @@
                 "filename": "node_modules/lodash/_cloneTypedArray.js"
               },
               {
-                "parsedSize": 72,
-                "gzipSize": 92,
-                "brotliSize": 68,
-                "importedBy": [],
-                "label": "isMap.js",
-                "filename": "node_modules/lodash/isMap.js"
-              },
-              {
                 "parsedSize": 1590,
                 "gzipSize": 768,
                 "brotliSize": 699,
                 "importedBy": [],
                 "label": "_baseClone.js",
                 "filename": "node_modules/lodash/_baseClone.js"
+              },
+              {
+                "parsedSize": 72,
+                "gzipSize": 92,
+                "brotliSize": 68,
+                "importedBy": [],
+                "label": "isMap.js",
+                "filename": "node_modules/lodash/isMap.js"
               },
               {
                 "parsedSize": 326,
@@ -1548,14 +1548,6 @@
                 "filename": "node_modules/lodash/_createBaseEach.js"
               },
               {
-                "parsedSize": 205,
-                "gzipSize": 170,
-                "brotliSize": 135,
-                "importedBy": [],
-                "label": "_getSymbols.js",
-                "filename": "node_modules/lodash/_getSymbols.js"
-              },
-              {
                 "parsedSize": 132,
                 "gzipSize": 133,
                 "brotliSize": 105,
@@ -1564,12 +1556,12 @@
                 "filename": "node_modules/lodash/_arrayReduce.js"
               },
               {
-                "parsedSize": 143,
-                "gzipSize": 136,
-                "brotliSize": 120,
+                "parsedSize": 205,
+                "gzipSize": 170,
+                "brotliSize": 135,
                 "importedBy": [],
-                "label": "some.js",
-                "filename": "node_modules/lodash/some.js"
+                "label": "_getSymbols.js",
+                "filename": "node_modules/lodash/_getSymbols.js"
               },
               {
                 "parsedSize": 76,
@@ -1588,20 +1580,20 @@
                 "filename": "node_modules/lodash/_baseGet.js"
               },
               {
+                "parsedSize": 143,
+                "gzipSize": 136,
+                "brotliSize": 120,
+                "importedBy": [],
+                "label": "some.js",
+                "filename": "node_modules/lodash/some.js"
+              },
+              {
                 "parsedSize": 388,
                 "gzipSize": 249,
                 "brotliSize": 218,
                 "importedBy": [],
                 "label": "_baseDifference.js",
                 "filename": "node_modules/lodash/_baseDifference.js"
-              },
-              {
-                "parsedSize": 175,
-                "gzipSize": 167,
-                "brotliSize": 135,
-                "importedBy": [],
-                "label": "_isIndex.js",
-                "filename": "node_modules/lodash/_isIndex.js"
               },
               {
                 "parsedSize": 74,
@@ -1612,20 +1604,20 @@
                 "filename": "node_modules/lodash/_baseUnary.js"
               },
               {
+                "parsedSize": 175,
+                "gzipSize": 167,
+                "brotliSize": 135,
+                "importedBy": [],
+                "label": "_isIndex.js",
+                "filename": "node_modules/lodash/_isIndex.js"
+              },
+              {
                 "parsedSize": 62,
                 "gzipSize": 82,
                 "brotliSize": 52,
                 "importedBy": [],
                 "label": "_asciiToArray.js",
                 "filename": "node_modules/lodash/_asciiToArray.js"
-              },
-              {
-                "parsedSize": 264,
-                "gzipSize": 201,
-                "brotliSize": 170,
-                "importedBy": [],
-                "label": "_overRest.js",
-                "filename": "node_modules/lodash/_overRest.js"
               },
               {
                 "parsedSize": 40,
@@ -1644,6 +1636,14 @@
                 "filename": "node_modules/lodash/_initCloneByTag.js"
               },
               {
+                "parsedSize": 264,
+                "gzipSize": 201,
+                "brotliSize": 170,
+                "importedBy": [],
+                "label": "_overRest.js",
+                "filename": "node_modules/lodash/_overRest.js"
+              },
+              {
                 "parsedSize": 111,
                 "gzipSize": 117,
                 "brotliSize": 89,
@@ -1660,20 +1660,20 @@
                 "filename": "node_modules/lodash/startsWith.js"
               },
               {
-                "parsedSize": 103,
-                "gzipSize": 107,
-                "brotliSize": 79,
-                "importedBy": [],
-                "label": "map.js",
-                "filename": "node_modules/lodash/map.js"
-              },
-              {
                 "parsedSize": 79,
                 "gzipSize": 97,
                 "brotliSize": 74,
                 "importedBy": [],
                 "label": "isTypedArray.js",
                 "filename": "node_modules/lodash/isTypedArray.js"
+              },
+              {
+                "parsedSize": 103,
+                "gzipSize": 107,
+                "brotliSize": 79,
+                "importedBy": [],
+                "label": "map.js",
+                "filename": "node_modules/lodash/map.js"
               },
               {
                 "parsedSize": 264,
@@ -1692,6 +1692,22 @@
                 "filename": "node_modules/lodash/_hashHas.js"
               },
               {
+                "parsedSize": 49,
+                "gzipSize": 69,
+                "brotliSize": 53,
+                "importedBy": [],
+                "label": "_nativeCreate.js",
+                "filename": "node_modules/lodash/_nativeCreate.js"
+              },
+              {
+                "parsedSize": 495,
+                "gzipSize": 337,
+                "brotliSize": 310,
+                "importedBy": [],
+                "label": "_baseMergeDeep.js",
+                "filename": "node_modules/lodash/_baseMergeDeep.js"
+              },
+              {
                 "parsedSize": 88,
                 "gzipSize": 99,
                 "brotliSize": 82,
@@ -1708,12 +1724,12 @@
                 "filename": "node_modules/lodash/_arrayEach.js"
               },
               {
-                "parsedSize": 49,
-                "gzipSize": 69,
-                "brotliSize": 53,
+                "parsedSize": 352,
+                "gzipSize": 261,
+                "brotliSize": 235,
                 "importedBy": [],
-                "label": "_nativeCreate.js",
-                "filename": "node_modules/lodash/_nativeCreate.js"
+                "label": "_baseSet.js",
+                "filename": "node_modules/lodash/_baseSet.js"
               },
               {
                 "parsedSize": 88,
@@ -1724,20 +1740,12 @@
                 "filename": "node_modules/lodash/_basePropertyDeep.js"
               },
               {
-                "parsedSize": 495,
-                "gzipSize": 337,
-                "brotliSize": 310,
+                "parsedSize": 210,
+                "gzipSize": 179,
+                "brotliSize": 144,
                 "importedBy": [],
-                "label": "_baseMergeDeep.js",
-                "filename": "node_modules/lodash/_baseMergeDeep.js"
-              },
-              {
-                "parsedSize": 352,
-                "gzipSize": 261,
-                "brotliSize": 235,
-                "importedBy": [],
-                "label": "_baseSet.js",
-                "filename": "node_modules/lodash/_baseSet.js"
+                "label": "_baseKeysIn.js",
+                "filename": "node_modules/lodash/_baseKeysIn.js"
               },
               {
                 "parsedSize": 105,
@@ -1746,14 +1754,6 @@
                 "importedBy": [],
                 "label": "_baseTrim.js",
                 "filename": "node_modules/lodash/_baseTrim.js"
-              },
-              {
-                "parsedSize": 210,
-                "gzipSize": 179,
-                "brotliSize": 144,
-                "importedBy": [],
-                "label": "_baseKeysIn.js",
-                "filename": "node_modules/lodash/_baseKeysIn.js"
               },
               {
                 "parsedSize": 99,
@@ -1804,14 +1804,6 @@
                 "filename": "node_modules/lodash/_MapCache.js"
               },
               {
-                "parsedSize": 89,
-                "gzipSize": 100,
-                "brotliSize": 79,
-                "importedBy": [],
-                "label": "filter.js",
-                "filename": "node_modules/lodash/filter.js"
-              },
-              {
                 "parsedSize": 124,
                 "gzipSize": 124,
                 "brotliSize": 95,
@@ -1826,6 +1818,14 @@
                 "importedBy": [],
                 "label": "_isKey.js",
                 "filename": "node_modules/lodash/_isKey.js"
+              },
+              {
+                "parsedSize": 89,
+                "gzipSize": 100,
+                "brotliSize": 79,
+                "importedBy": [],
+                "label": "filter.js",
+                "filename": "node_modules/lodash/filter.js"
               },
               {
                 "parsedSize": 139,
@@ -1852,12 +1852,12 @@
                 "filename": "node_modules/lodash/toFinite.js"
               },
               {
-                "parsedSize": 207,
-                "gzipSize": 174,
-                "brotliSize": 131,
+                "parsedSize": 262,
+                "gzipSize": 186,
+                "brotliSize": 175,
                 "importedBy": [],
-                "label": "_initCloneArray.js",
-                "filename": "node_modules/lodash/_initCloneArray.js"
+                "label": "_stackSet.js",
+                "filename": "node_modules/lodash/_stackSet.js"
               },
               {
                 "parsedSize": 78,
@@ -1868,12 +1868,12 @@
                 "filename": "node_modules/lodash/toPlainObject.js"
               },
               {
-                "parsedSize": 262,
-                "gzipSize": 186,
-                "brotliSize": 175,
+                "parsedSize": 207,
+                "gzipSize": 174,
+                "brotliSize": 131,
                 "importedBy": [],
-                "label": "_stackSet.js",
-                "filename": "node_modules/lodash/_stackSet.js"
+                "label": "_initCloneArray.js",
+                "filename": "node_modules/lodash/_initCloneArray.js"
               },
               {
                 "parsedSize": 133,
@@ -1916,14 +1916,6 @@
                 "filename": "node_modules/lodash/identity.js"
               },
               {
-                "parsedSize": 171,
-                "gzipSize": 163,
-                "brotliSize": 154,
-                "importedBy": [],
-                "label": "_isMasked.js",
-                "filename": "node_modules/lodash/_isMasked.js"
-              },
-              {
                 "parsedSize": 32,
                 "gzipSize": 52,
                 "brotliSize": 36,
@@ -1938,6 +1930,14 @@
                 "importedBy": [],
                 "label": "_charsEndIndex.js",
                 "filename": "node_modules/lodash/_charsEndIndex.js"
+              },
+              {
+                "parsedSize": 171,
+                "gzipSize": 163,
+                "brotliSize": 154,
+                "importedBy": [],
+                "label": "_isMasked.js",
+                "filename": "node_modules/lodash/_isMasked.js"
               },
               {
                 "parsedSize": 127,
@@ -1996,28 +1996,12 @@
                 "filename": "node_modules/lodash/isEqual.js"
               },
               {
-                "parsedSize": 80,
-                "gzipSize": 83,
-                "brotliSize": 57,
-                "importedBy": [],
-                "label": "_overArg.js",
-                "filename": "node_modules/lodash/_overArg.js"
-              },
-              {
                 "parsedSize": 596,
                 "gzipSize": 374,
                 "brotliSize": 343,
                 "importedBy": [],
                 "label": "_baseIsEqualDeep.js",
                 "filename": "node_modules/lodash/_baseIsEqualDeep.js"
-              },
-              {
-                "parsedSize": 47,
-                "gzipSize": 67,
-                "brotliSize": 50,
-                "importedBy": [],
-                "label": "_WeakMap.js",
-                "filename": "node_modules/lodash/_WeakMap.js"
               },
               {
                 "parsedSize": 770,
@@ -2034,6 +2018,22 @@
                 "importedBy": [],
                 "label": "_getSymbolsIn.js",
                 "filename": "node_modules/lodash/_getSymbolsIn.js"
+              },
+              {
+                "parsedSize": 80,
+                "gzipSize": 83,
+                "brotliSize": 57,
+                "importedBy": [],
+                "label": "_overArg.js",
+                "filename": "node_modules/lodash/_overArg.js"
+              },
+              {
+                "parsedSize": 47,
+                "gzipSize": 67,
+                "brotliSize": 50,
+                "importedBy": [],
+                "label": "_WeakMap.js",
+                "filename": "node_modules/lodash/_WeakMap.js"
               }
             ],
             "filename": "node_modules/lodash"
@@ -2650,14 +2650,6 @@
                             "filename": "node_modules/@vueform/vueform/src/composables/elements/useTemplates.js"
                           },
                           {
-                            "parsedSize": 121,
-                            "gzipSize": 116,
-                            "brotliSize": 95,
-                            "importedBy": [],
-                            "label": "useHandleBlur.js",
-                            "filename": "node_modules/@vueform/vueform/src/composables/elements/useHandleBlur.js"
-                          },
-                          {
                             "parsedSize": 348,
                             "gzipSize": 224,
                             "brotliSize": 185,
@@ -2685,6 +2677,14 @@
                             ],
                             "label": "useReadonly.js",
                             "filename": "node_modules/@vueform/vueform/src/composables/elements/useReadonly.js"
+                          },
+                          {
+                            "parsedSize": 121,
+                            "gzipSize": 116,
+                            "brotliSize": 95,
+                            "importedBy": [],
+                            "label": "useHandleBlur.js",
+                            "filename": "node_modules/@vueform/vueform/src/composables/elements/useHandleBlur.js"
                           },
                           {
                             "parsedSize": 639,
@@ -2817,19 +2817,6 @@
                             "filename": "node_modules/@vueform/vueform/src/composables/elements/useHandleKeyEvents.js"
                           },
                           {
-                            "parsedSize": 162,
-                            "gzipSize": 143,
-                            "brotliSize": 113,
-                            "importedBy": [
-                              {
-                                "id": "vue",
-                                "kind": "static"
-                              }
-                            ],
-                            "label": "useFloating.js",
-                            "filename": "node_modules/@vueform/vueform/src/composables/elements/useFloating.js"
-                          },
-                          {
                             "parsedSize": 696,
                             "gzipSize": 363,
                             "brotliSize": 327,
@@ -2858,6 +2845,19 @@
                             ],
                             "label": "useInput.js",
                             "filename": "node_modules/@vueform/vueform/src/composables/elements/useInput.js"
+                          },
+                          {
+                            "parsedSize": 162,
+                            "gzipSize": 143,
+                            "brotliSize": 113,
+                            "importedBy": [
+                              {
+                                "id": "vue",
+                                "kind": "static"
+                              }
+                            ],
+                            "label": "useFloating.js",
+                            "filename": "node_modules/@vueform/vueform/src/composables/elements/useFloating.js"
                           },
                           {
                             "parsedSize": 122,
@@ -3094,14 +3094,6 @@
                             "filename": "node_modules/@vueform/vueform/src/composables/elements/useBaseElement.js"
                           },
                           {
-                            "parsedSize": 275,
-                            "gzipSize": 195,
-                            "brotliSize": 149,
-                            "importedBy": [],
-                            "label": "useFocus.js",
-                            "filename": "node_modules/@vueform/vueform/src/composables/elements/useFocus.js"
-                          },
-                          {
                             "parsedSize": 1648,
                             "gzipSize": 447,
                             "brotliSize": 395,
@@ -3149,6 +3141,14 @@
                             ],
                             "label": "useDefault.js",
                             "filename": "node_modules/@vueform/vueform/src/composables/elements/useDefault.js"
+                          },
+                          {
+                            "parsedSize": 275,
+                            "gzipSize": 195,
+                            "brotliSize": 149,
+                            "importedBy": [],
+                            "label": "useFocus.js",
+                            "filename": "node_modules/@vueform/vueform/src/composables/elements/useFocus.js"
                           },
                           {
                             "parsedSize": 414,
@@ -3623,6 +3623,55 @@
                     "filename": "node_modules/@vueform/vueform/src/composables"
                   },
                   {
+                    "parsedSize": 2694,
+                    "gzipSize": 909,
+                    "brotliSize": 699,
+                    "label": "mixins",
+                    "groups": [
+                      {
+                        "parsedSize": 1560,
+                        "gzipSize": 353,
+                        "brotliSize": 268,
+                        "importedBy": [],
+                        "label": "HasView.js",
+                        "filename": "node_modules/@vueform/vueform/src/mixins/HasView.js"
+                      },
+                      {
+                        "parsedSize": 76,
+                        "gzipSize": 96,
+                        "brotliSize": 74,
+                        "importedBy": [],
+                        "label": "HasChange.js",
+                        "filename": "node_modules/@vueform/vueform/src/mixins/HasChange.js"
+                      },
+                      {
+                        "parsedSize": 168,
+                        "gzipSize": 115,
+                        "brotliSize": 95,
+                        "importedBy": [],
+                        "label": "HasData.js",
+                        "filename": "node_modules/@vueform/vueform/src/mixins/HasData.js"
+                      },
+                      {
+                        "parsedSize": 250,
+                        "gzipSize": 163,
+                        "brotliSize": 121,
+                        "importedBy": [],
+                        "label": "HasValidation.js",
+                        "filename": "node_modules/@vueform/vueform/src/mixins/HasValidation.js"
+                      },
+                      {
+                        "parsedSize": 640,
+                        "gzipSize": 182,
+                        "brotliSize": 141,
+                        "importedBy": [],
+                        "label": "BaseElement.js",
+                        "filename": "node_modules/@vueform/vueform/src/mixins/BaseElement.js"
+                      }
+                    ],
+                    "filename": "node_modules/@vueform/vueform/src/mixins"
+                  },
+                  {
                     "parsedSize": 5750,
                     "gzipSize": 1984,
                     "brotliSize": 1729,
@@ -3718,55 +3767,6 @@
                     ],
                     "label": "installer.js",
                     "filename": "node_modules/@vueform/vueform/src/installer.js"
-                  },
-                  {
-                    "parsedSize": 2694,
-                    "gzipSize": 909,
-                    "brotliSize": 699,
-                    "label": "mixins",
-                    "groups": [
-                      {
-                        "parsedSize": 1560,
-                        "gzipSize": 353,
-                        "brotliSize": 268,
-                        "importedBy": [],
-                        "label": "HasView.js",
-                        "filename": "node_modules/@vueform/vueform/src/mixins/HasView.js"
-                      },
-                      {
-                        "parsedSize": 76,
-                        "gzipSize": 96,
-                        "brotliSize": 74,
-                        "importedBy": [],
-                        "label": "HasChange.js",
-                        "filename": "node_modules/@vueform/vueform/src/mixins/HasChange.js"
-                      },
-                      {
-                        "parsedSize": 168,
-                        "gzipSize": 115,
-                        "brotliSize": 95,
-                        "importedBy": [],
-                        "label": "HasData.js",
-                        "filename": "node_modules/@vueform/vueform/src/mixins/HasData.js"
-                      },
-                      {
-                        "parsedSize": 250,
-                        "gzipSize": 163,
-                        "brotliSize": 121,
-                        "importedBy": [],
-                        "label": "HasValidation.js",
-                        "filename": "node_modules/@vueform/vueform/src/mixins/HasValidation.js"
-                      },
-                      {
-                        "parsedSize": 640,
-                        "gzipSize": 182,
-                        "brotliSize": 141,
-                        "importedBy": [],
-                        "label": "BaseElement.js",
-                        "filename": "node_modules/@vueform/vueform/src/mixins/BaseElement.js"
-                      }
-                    ],
-                    "filename": "node_modules/@vueform/vueform/src/mixins"
                   },
                   {
                     "parsedSize": 17029,
@@ -4775,6 +4775,14 @@
                         "filename": "node_modules/@vueform/vueform/src/utils/convertFormData.js"
                       },
                       {
+                        "parsedSize": 48,
+                        "gzipSize": 68,
+                        "brotliSize": 52,
+                        "importedBy": [],
+                        "label": "getRowKey.js",
+                        "filename": "node_modules/@vueform/vueform/src/utils/getRowKey.js"
+                      },
+                      {
                         "parsedSize": 6382,
                         "gzipSize": 1981,
                         "brotliSize": 1755,
@@ -4790,14 +4798,6 @@
                         ],
                         "label": "shouldApplyPlugin.js",
                         "filename": "node_modules/@vueform/vueform/src/utils/shouldApplyPlugin.js"
-                      },
-                      {
-                        "parsedSize": 48,
-                        "gzipSize": 68,
-                        "brotliSize": 52,
-                        "importedBy": [],
-                        "label": "getRowKey.js",
-                        "filename": "node_modules/@vueform/vueform/src/utils/getRowKey.js"
                       }
                     ],
                     "filename": "node_modules/@vueform/vueform/src/utils"

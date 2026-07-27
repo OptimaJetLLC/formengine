@@ -14,40 +14,6 @@
         "label": "node_modules",
         "groups": [
           {
-            "parsedSize": 3523,
-            "gzipSize": 1542,
-            "brotliSize": 1380,
-            "label": "scheduler",
-            "groups": [
-              {
-                "parsedSize": 26,
-                "gzipSize": 46,
-                "brotliSize": 30,
-                "importedBy": [],
-                "label": "index.js",
-                "filename": "node_modules/scheduler/index.js"
-              },
-              {
-                "parsedSize": 3497,
-                "gzipSize": 1496,
-                "brotliSize": 1350,
-                "label": "cjs",
-                "groups": [
-                  {
-                    "parsedSize": 3497,
-                    "gzipSize": 1496,
-                    "brotliSize": 1350,
-                    "importedBy": [],
-                    "label": "scheduler.production.js",
-                    "filename": "node_modules/scheduler/cjs/scheduler.production.js"
-                  }
-                ],
-                "filename": "node_modules/scheduler/cjs"
-              }
-            ],
-            "filename": "node_modules/scheduler"
-          },
-          {
             "parsedSize": 7834,
             "gzipSize": 3126,
             "brotliSize": 2779,
@@ -98,19 +64,45 @@
             "filename": "node_modules/react"
           },
           {
+            "parsedSize": 3523,
+            "gzipSize": 1542,
+            "brotliSize": 1380,
+            "label": "scheduler",
+            "groups": [
+              {
+                "parsedSize": 26,
+                "gzipSize": 46,
+                "brotliSize": 30,
+                "importedBy": [],
+                "label": "index.js",
+                "filename": "node_modules/scheduler/index.js"
+              },
+              {
+                "parsedSize": 3497,
+                "gzipSize": 1496,
+                "brotliSize": 1350,
+                "label": "cjs",
+                "groups": [
+                  {
+                    "parsedSize": 3497,
+                    "gzipSize": 1496,
+                    "brotliSize": 1350,
+                    "importedBy": [],
+                    "label": "scheduler.production.js",
+                    "filename": "node_modules/scheduler/cjs/scheduler.production.js"
+                  }
+                ],
+                "filename": "node_modules/scheduler/cjs"
+              }
+            ],
+            "filename": "node_modules/scheduler"
+          },
+          {
             "parsedSize": 178622,
             "gzipSize": 55945,
             "brotliSize": 48395,
             "label": "react-dom",
             "groups": [
-              {
-                "parsedSize": 225,
-                "gzipSize": 158,
-                "brotliSize": 123,
-                "importedBy": [],
-                "label": "index.js",
-                "filename": "node_modules/react-dom/index.js"
-              },
               {
                 "parsedSize": 233,
                 "gzipSize": 165,
@@ -118,6 +110,14 @@
                 "importedBy": [],
                 "label": "client.js",
                 "filename": "node_modules/react-dom/client.js"
+              },
+              {
+                "parsedSize": 225,
+                "gzipSize": 158,
+                "brotliSize": 123,
+                "importedBy": [],
+                "label": "index.js",
+                "filename": "node_modules/react-dom/index.js"
               },
               {
                 "parsedSize": 178164,

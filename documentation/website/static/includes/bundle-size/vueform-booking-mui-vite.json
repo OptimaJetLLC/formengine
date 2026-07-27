@@ -20,20 +20,20 @@
             "label": "lodash",
             "groups": [
               {
-                "parsedSize": 108,
-                "gzipSize": 117,
-                "brotliSize": 84,
-                "importedBy": [],
-                "label": "_copyArray.js",
-                "filename": "node_modules/lodash/_copyArray.js"
-              },
-              {
                 "parsedSize": 98,
                 "gzipSize": 110,
                 "brotliSize": 82,
                 "importedBy": [],
                 "label": "_baseIsMap.js",
                 "filename": "node_modules/lodash/_baseIsMap.js"
+              },
+              {
+                "parsedSize": 108,
+                "gzipSize": 117,
+                "brotliSize": 84,
+                "importedBy": [],
+                "label": "_copyArray.js",
+                "filename": "node_modules/lodash/_copyArray.js"
               },
               {
                 "parsedSize": 70,
@@ -68,20 +68,20 @@
                 "filename": "node_modules/lodash/_basePick.js"
               },
               {
-                "parsedSize": 347,
-                "gzipSize": 231,
-                "brotliSize": 199,
-                "importedBy": [],
-                "label": "memoize.js",
-                "filename": "node_modules/lodash/memoize.js"
-              },
-              {
                 "parsedSize": 94,
                 "gzipSize": 107,
                 "brotliSize": 80,
                 "importedBy": [],
                 "label": "toInteger.js",
                 "filename": "node_modules/lodash/toInteger.js"
+              },
+              {
+                "parsedSize": 347,
+                "gzipSize": 231,
+                "brotliSize": 199,
+                "importedBy": [],
+                "label": "memoize.js",
+                "filename": "node_modules/lodash/memoize.js"
               },
               {
                 "parsedSize": 134,
@@ -116,12 +116,12 @@
                 "filename": "node_modules/lodash/_Set.js"
               },
               {
-                "parsedSize": 185,
-                "gzipSize": 146,
-                "brotliSize": 122,
+                "parsedSize": 37,
+                "gzipSize": 57,
+                "brotliSize": 41,
                 "importedBy": [],
-                "label": "isBuffer.js",
-                "filename": "node_modules/lodash/isBuffer.js"
+                "label": "_Symbol.js",
+                "filename": "node_modules/lodash/_Symbol.js"
               },
               {
                 "parsedSize": 133,
@@ -132,20 +132,12 @@
                 "filename": "node_modules/lodash/isString.js"
               },
               {
-                "parsedSize": 37,
-                "gzipSize": 57,
-                "brotliSize": 41,
+                "parsedSize": 185,
+                "gzipSize": 146,
+                "brotliSize": 122,
                 "importedBy": [],
-                "label": "_Symbol.js",
-                "filename": "node_modules/lodash/_Symbol.js"
-              },
-              {
-                "parsedSize": 148,
-                "gzipSize": 140,
-                "brotliSize": 112,
-                "importedBy": [],
-                "label": "_baseSetToString.js",
-                "filename": "node_modules/lodash/_baseSetToString.js"
+                "label": "isBuffer.js",
+                "filename": "node_modules/lodash/isBuffer.js"
               },
               {
                 "parsedSize": 1219,
@@ -154,6 +146,14 @@
                 "importedBy": [],
                 "label": "_unicodeWords.js",
                 "filename": "node_modules/lodash/_unicodeWords.js"
+              },
+              {
+                "parsedSize": 148,
+                "gzipSize": 140,
+                "brotliSize": 112,
+                "importedBy": [],
+                "label": "_baseSetToString.js",
+                "filename": "node_modules/lodash/_baseSetToString.js"
               },
               {
                 "parsedSize": 207,
@@ -188,20 +188,20 @@
                 "filename": "node_modules/lodash/head.js"
               },
               {
-                "parsedSize": 139,
-                "gzipSize": 127,
-                "brotliSize": 85,
-                "importedBy": [],
-                "label": "_isPrototype.js",
-                "filename": "node_modules/lodash/_isPrototype.js"
-              },
-              {
                 "parsedSize": 48,
                 "gzipSize": 68,
                 "brotliSize": 48,
                 "importedBy": [],
                 "label": "_DataView.js",
                 "filename": "node_modules/lodash/_DataView.js"
+              },
+              {
+                "parsedSize": 139,
+                "gzipSize": 127,
+                "brotliSize": 85,
+                "importedBy": [],
+                "label": "_isPrototype.js",
+                "filename": "node_modules/lodash/_isPrototype.js"
               },
               {
                 "parsedSize": 210,
@@ -236,20 +236,20 @@
                 "filename": "node_modules/lodash/_assignMergeValue.js"
               },
               {
-                "parsedSize": 122,
-                "gzipSize": 121,
-                "brotliSize": 93,
-                "importedBy": [],
-                "label": "_matchesStrictComparable.js",
-                "filename": "node_modules/lodash/_matchesStrictComparable.js"
-              },
-              {
                 "parsedSize": 127,
                 "gzipSize": 128,
                 "brotliSize": 96,
                 "importedBy": [],
                 "label": "_cloneSymbol.js",
                 "filename": "node_modules/lodash/_cloneSymbol.js"
+              },
+              {
+                "parsedSize": 122,
+                "gzipSize": 121,
+                "brotliSize": 93,
+                "importedBy": [],
+                "label": "_matchesStrictComparable.js",
+                "filename": "node_modules/lodash/_matchesStrictComparable.js"
               },
               {
                 "parsedSize": 116,
@@ -308,6 +308,14 @@
                 "filename": "node_modules/lodash/_assignValue.js"
               },
               {
+                "parsedSize": 198,
+                "gzipSize": 170,
+                "brotliSize": 128,
+                "importedBy": [],
+                "label": "_baseKeys.js",
+                "filename": "node_modules/lodash/_baseKeys.js"
+              },
+              {
                 "parsedSize": 518,
                 "gzipSize": 332,
                 "brotliSize": 276,
@@ -330,14 +338,6 @@
                 "importedBy": [],
                 "label": "_getValue.js",
                 "filename": "node_modules/lodash/_getValue.js"
-              },
-              {
-                "parsedSize": 198,
-                "gzipSize": 170,
-                "brotliSize": 128,
-                "importedBy": [],
-                "label": "_baseKeys.js",
-                "filename": "node_modules/lodash/_baseKeys.js"
               },
               {
                 "parsedSize": 230,
@@ -380,14 +380,6 @@
                 "filename": "node_modules/lodash/_hashClear.js"
               },
               {
-                "parsedSize": 166,
-                "gzipSize": 152,
-                "brotliSize": 125,
-                "importedBy": [],
-                "label": "_hashSet.js",
-                "filename": "node_modules/lodash/_hashSet.js"
-              },
-              {
                 "parsedSize": 188,
                 "gzipSize": 169,
                 "brotliSize": 132,
@@ -396,12 +388,12 @@
                 "filename": "node_modules/lodash/_baseGetTag.js"
               },
               {
-                "parsedSize": 77,
-                "gzipSize": 83,
-                "brotliSize": 61,
+                "parsedSize": 166,
+                "gzipSize": 152,
+                "brotliSize": 125,
                 "importedBy": [],
-                "label": "_basePropertyOf.js",
-                "filename": "node_modules/lodash/_basePropertyOf.js"
+                "label": "_hashSet.js",
+                "filename": "node_modules/lodash/_hashSet.js"
               },
               {
                 "parsedSize": 131,
@@ -410,6 +402,14 @@
                 "importedBy": [],
                 "label": "_isFlattenable.js",
                 "filename": "node_modules/lodash/_isFlattenable.js"
+              },
+              {
+                "parsedSize": 77,
+                "gzipSize": 83,
+                "brotliSize": 61,
+                "importedBy": [],
+                "label": "_basePropertyOf.js",
+                "filename": "node_modules/lodash/_basePropertyOf.js"
               },
               {
                 "parsedSize": 73,
@@ -444,20 +444,20 @@
                 "filename": "node_modules/lodash/property.js"
               },
               {
-                "parsedSize": 103,
-                "gzipSize": 109,
-                "brotliSize": 89,
-                "importedBy": [],
-                "label": "_stackDelete.js",
-                "filename": "node_modules/lodash/_stackDelete.js"
-              },
-              {
                 "parsedSize": 138,
                 "gzipSize": 133,
                 "brotliSize": 103,
                 "importedBy": [],
                 "label": "_toKey.js",
                 "filename": "node_modules/lodash/_toKey.js"
+              },
+              {
+                "parsedSize": 103,
+                "gzipSize": 109,
+                "brotliSize": 89,
+                "importedBy": [],
+                "label": "_stackDelete.js",
+                "filename": "node_modules/lodash/_stackDelete.js"
               },
               {
                 "parsedSize": 203,
@@ -468,20 +468,20 @@
                 "filename": "node_modules/lodash/endsWith.js"
               },
               {
-                "parsedSize": 56,
-                "gzipSize": 76,
-                "brotliSize": 60,
-                "importedBy": [],
-                "label": "_baseIsNaN.js",
-                "filename": "node_modules/lodash/_baseIsNaN.js"
-              },
-              {
                 "parsedSize": 52,
                 "gzipSize": 67,
                 "brotliSize": 56,
                 "importedBy": [],
                 "label": "_nativeKeys.js",
                 "filename": "node_modules/lodash/_nativeKeys.js"
+              },
+              {
+                "parsedSize": 56,
+                "gzipSize": 76,
+                "brotliSize": 60,
+                "importedBy": [],
+                "label": "_baseIsNaN.js",
+                "filename": "node_modules/lodash/_baseIsNaN.js"
               },
               {
                 "parsedSize": 88,
@@ -492,20 +492,20 @@
                 "filename": "node_modules/lodash/keys.js"
               },
               {
-                "parsedSize": 93,
-                "gzipSize": 95,
-                "brotliSize": 70,
-                "importedBy": [],
-                "label": "_baseValues.js",
-                "filename": "node_modules/lodash/_baseValues.js"
-              },
-              {
                 "parsedSize": 219,
                 "gzipSize": 170,
                 "brotliSize": 133,
                 "importedBy": [],
                 "label": "deburr.js",
                 "filename": "node_modules/lodash/deburr.js"
+              },
+              {
+                "parsedSize": 93,
+                "gzipSize": 95,
+                "brotliSize": 70,
+                "importedBy": [],
+                "label": "_baseValues.js",
+                "filename": "node_modules/lodash/_baseValues.js"
               },
               {
                 "parsedSize": 118,
@@ -556,14 +556,6 @@
                 "filename": "node_modules/lodash/_unicodeToArray.js"
               },
               {
-                "parsedSize": 61,
-                "gzipSize": 78,
-                "brotliSize": 54,
-                "importedBy": [],
-                "label": "_cacheHas.js",
-                "filename": "node_modules/lodash/_cacheHas.js"
-              },
-              {
                 "parsedSize": 108,
                 "gzipSize": 107,
                 "brotliSize": 85,
@@ -580,12 +572,12 @@
                 "filename": "node_modules/lodash/_castPath.js"
               },
               {
-                "parsedSize": 144,
-                "gzipSize": 106,
-                "brotliSize": 83,
+                "parsedSize": 61,
+                "gzipSize": 78,
+                "brotliSize": 54,
                 "importedBy": [],
-                "label": "_baseMap.js",
-                "filename": "node_modules/lodash/_baseMap.js"
+                "label": "_cacheHas.js",
+                "filename": "node_modules/lodash/_cacheHas.js"
               },
               {
                 "parsedSize": 78,
@@ -596,12 +588,28 @@
                 "filename": "node_modules/lodash/_mapCacheGet.js"
               },
               {
+                "parsedSize": 144,
+                "gzipSize": 106,
+                "brotliSize": 83,
+                "importedBy": [],
+                "label": "_baseMap.js",
+                "filename": "node_modules/lodash/_baseMap.js"
+              },
+              {
                 "parsedSize": 113,
                 "gzipSize": 123,
                 "brotliSize": 92,
                 "importedBy": [],
                 "label": "_charsStartIndex.js",
                 "filename": "node_modules/lodash/_charsStartIndex.js"
+              },
+              {
+                "parsedSize": 92,
+                "gzipSize": 103,
+                "brotliSize": 76,
+                "importedBy": [],
+                "label": "keysIn.js",
+                "filename": "node_modules/lodash/keysIn.js"
               },
               {
                 "parsedSize": 78,
@@ -626,14 +634,6 @@
                 "importedBy": [],
                 "label": "_mapCacheSet.js",
                 "filename": "node_modules/lodash/_mapCacheSet.js"
-              },
-              {
-                "parsedSize": 92,
-                "gzipSize": 103,
-                "brotliSize": 76,
-                "importedBy": [],
-                "label": "keysIn.js",
-                "filename": "node_modules/lodash/keysIn.js"
               },
               {
                 "parsedSize": 193,
@@ -748,20 +748,20 @@
                 "filename": "node_modules/lodash/_copyObject.js"
               },
               {
-                "parsedSize": 133,
-                "gzipSize": 128,
-                "brotliSize": 93,
-                "importedBy": [],
-                "label": "_cloneRegExp.js",
-                "filename": "node_modules/lodash/_cloneRegExp.js"
-              },
-              {
                 "parsedSize": 72,
                 "gzipSize": 86,
                 "brotliSize": 63,
                 "importedBy": [],
                 "label": "eq.js",
                 "filename": "node_modules/lodash/eq.js"
+              },
+              {
+                "parsedSize": 133,
+                "gzipSize": 128,
+                "brotliSize": 93,
+                "importedBy": [],
+                "label": "_cloneRegExp.js",
+                "filename": "node_modules/lodash/_cloneRegExp.js"
               },
               {
                 "parsedSize": 129,
@@ -804,20 +804,20 @@
                 "filename": "node_modules/lodash/_baseTimes.js"
               },
               {
-                "parsedSize": 97,
-                "gzipSize": 102,
-                "brotliSize": 80,
-                "importedBy": [],
-                "label": "_getNative.js",
-                "filename": "node_modules/lodash/_getNative.js"
-              },
-              {
                 "parsedSize": 241,
                 "gzipSize": 155,
                 "brotliSize": 129,
                 "importedBy": [],
                 "label": "trim.js",
                 "filename": "node_modules/lodash/trim.js"
+              },
+              {
+                "parsedSize": 97,
+                "gzipSize": 102,
+                "brotliSize": 80,
+                "importedBy": [],
+                "label": "_getNative.js",
+                "filename": "node_modules/lodash/_getNative.js"
               },
               {
                 "parsedSize": 82,
@@ -916,14 +916,6 @@
                 "filename": "node_modules/lodash/omit.js"
               },
               {
-                "parsedSize": 38,
-                "gzipSize": 58,
-                "brotliSize": 42,
-                "importedBy": [],
-                "label": "find.js",
-                "filename": "node_modules/lodash/find.js"
-              },
-              {
                 "parsedSize": 109,
                 "gzipSize": 117,
                 "brotliSize": 92,
@@ -932,12 +924,28 @@
                 "filename": "node_modules/lodash/_strictIndexOf.js"
               },
               {
+                "parsedSize": 38,
+                "gzipSize": 58,
+                "brotliSize": 42,
+                "importedBy": [],
+                "label": "find.js",
+                "filename": "node_modules/lodash/find.js"
+              },
+              {
                 "parsedSize": 136,
                 "gzipSize": 131,
                 "brotliSize": 102,
                 "importedBy": [],
                 "label": "_getMatchData.js",
                 "filename": "node_modules/lodash/_getMatchData.js"
+              },
+              {
+                "parsedSize": 251,
+                "gzipSize": 196,
+                "brotliSize": 167,
+                "importedBy": [],
+                "label": "_baseToString.js",
+                "filename": "node_modules/lodash/_baseToString.js"
               },
               {
                 "parsedSize": 72,
@@ -954,14 +962,6 @@
                 "importedBy": [],
                 "label": "_safeGet.js",
                 "filename": "node_modules/lodash/_safeGet.js"
-              },
-              {
-                "parsedSize": 251,
-                "gzipSize": 196,
-                "brotliSize": 167,
-                "importedBy": [],
-                "label": "_baseToString.js",
-                "filename": "node_modules/lodash/_baseToString.js"
               },
               {
                 "parsedSize": 32,
@@ -1012,20 +1012,20 @@
                 "filename": "node_modules/lodash/_stackGet.js"
               },
               {
-                "parsedSize": 143,
-                "gzipSize": 134,
-                "brotliSize": 111,
-                "importedBy": [],
-                "label": "_baseIsEqual.js",
-                "filename": "node_modules/lodash/_baseIsEqual.js"
-              },
-              {
                 "parsedSize": 254,
                 "gzipSize": 182,
                 "brotliSize": 145,
                 "importedBy": [],
                 "label": "_nodeUtil.js",
                 "filename": "node_modules/lodash/_nodeUtil.js"
+              },
+              {
+                "parsedSize": 143,
+                "gzipSize": 134,
+                "brotliSize": 111,
+                "importedBy": [],
+                "label": "_baseIsEqual.js",
+                "filename": "node_modules/lodash/_baseIsEqual.js"
               },
               {
                 "parsedSize": 147,
@@ -1060,14 +1060,6 @@
                 "filename": "node_modules/lodash/isPlainObject.js"
               },
               {
-                "parsedSize": 71,
-                "gzipSize": 77,
-                "brotliSize": 70,
-                "importedBy": [],
-                "label": "constant.js",
-                "filename": "node_modules/lodash/constant.js"
-              },
-              {
                 "parsedSize": 287,
                 "gzipSize": 199,
                 "brotliSize": 176,
@@ -1076,12 +1068,12 @@
                 "filename": "node_modules/lodash/_compareAscending.js"
               },
               {
-                "parsedSize": 105,
-                "gzipSize": 115,
-                "brotliSize": 77,
+                "parsedSize": 71,
+                "gzipSize": 77,
+                "brotliSize": 70,
                 "importedBy": [],
-                "label": "_nativeKeysIn.js",
-                "filename": "node_modules/lodash/_nativeKeysIn.js"
+                "label": "constant.js",
+                "filename": "node_modules/lodash/constant.js"
               },
               {
                 "parsedSize": 182,
@@ -1090,6 +1082,14 @@
                 "importedBy": [],
                 "label": "sortBy.js",
                 "filename": "node_modules/lodash/sortBy.js"
+              },
+              {
+                "parsedSize": 105,
+                "gzipSize": 115,
+                "brotliSize": 77,
+                "importedBy": [],
+                "label": "_nativeKeysIn.js",
+                "filename": "node_modules/lodash/_nativeKeysIn.js"
               },
               {
                 "parsedSize": 217,
@@ -1116,12 +1116,12 @@
                 "filename": "node_modules/lodash/_copySymbols.js"
               },
               {
-                "parsedSize": 90,
-                "gzipSize": 103,
-                "brotliSize": 84,
+                "parsedSize": 427,
+                "gzipSize": 303,
+                "brotliSize": 275,
                 "importedBy": [],
-                "label": "_stringToArray.js",
-                "filename": "node_modules/lodash/_stringToArray.js"
+                "label": "_baseUniq.js",
+                "filename": "node_modules/lodash/_baseUniq.js"
               },
               {
                 "parsedSize": 167,
@@ -1132,12 +1132,12 @@
                 "filename": "node_modules/lodash/_baseIteratee.js"
               },
               {
-                "parsedSize": 427,
-                "gzipSize": 303,
-                "brotliSize": 275,
+                "parsedSize": 90,
+                "gzipSize": 103,
+                "brotliSize": 84,
                 "importedBy": [],
-                "label": "_baseUniq.js",
-                "filename": "node_modules/lodash/_baseUniq.js"
+                "label": "_stringToArray.js",
+                "filename": "node_modules/lodash/_stringToArray.js"
               },
               {
                 "parsedSize": 97,
@@ -1196,20 +1196,20 @@
                 "filename": "node_modules/lodash/_castSlice.js"
               },
               {
-                "parsedSize": 47,
-                "gzipSize": 67,
-                "brotliSize": 46,
-                "importedBy": [],
-                "label": "_Promise.js",
-                "filename": "node_modules/lodash/_Promise.js"
-              },
-              {
                 "parsedSize": 88,
                 "gzipSize": 101,
                 "brotliSize": 81,
                 "importedBy": [],
                 "label": "camelCase.js",
                 "filename": "node_modules/lodash/camelCase.js"
+              },
+              {
+                "parsedSize": 47,
+                "gzipSize": 67,
+                "brotliSize": 46,
+                "importedBy": [],
+                "label": "_Promise.js",
+                "filename": "node_modules/lodash/_Promise.js"
               },
               {
                 "parsedSize": 119,
@@ -1220,20 +1220,20 @@
                 "filename": "node_modules/lodash/_arrayIncludesWith.js"
               },
               {
-                "parsedSize": 85,
-                "gzipSize": 96,
-                "brotliSize": 69,
-                "importedBy": [],
-                "label": "_baseAssignIn.js",
-                "filename": "node_modules/lodash/_baseAssignIn.js"
-              },
-              {
                 "parsedSize": 160,
                 "gzipSize": 144,
                 "brotliSize": 110,
                 "importedBy": [],
                 "label": "_hasUnicode.js",
                 "filename": "node_modules/lodash/_hasUnicode.js"
+              },
+              {
+                "parsedSize": 85,
+                "gzipSize": 96,
+                "brotliSize": 69,
+                "importedBy": [],
+                "label": "_baseAssignIn.js",
+                "filename": "node_modules/lodash/_baseAssignIn.js"
               },
               {
                 "parsedSize": 123,
@@ -1252,20 +1252,20 @@
                 "filename": "node_modules/lodash/_baseRest.js"
               },
               {
-                "parsedSize": 139,
-                "gzipSize": 132,
-                "brotliSize": 104,
-                "importedBy": [],
-                "label": "_listCacheSet.js",
-                "filename": "node_modules/lodash/_listCacheSet.js"
-              },
-              {
                 "parsedSize": 53,
                 "gzipSize": 73,
                 "brotliSize": 56,
                 "importedBy": [],
                 "label": "_coreJsData.js",
                 "filename": "node_modules/lodash/_coreJsData.js"
+              },
+              {
+                "parsedSize": 139,
+                "gzipSize": 132,
+                "brotliSize": 104,
+                "importedBy": [],
+                "label": "_listCacheSet.js",
+                "filename": "node_modules/lodash/_listCacheSet.js"
               },
               {
                 "parsedSize": 114,
@@ -1284,20 +1284,20 @@
                 "filename": "node_modules/lodash/isArrayLikeObject.js"
               },
               {
-                "parsedSize": 84,
-                "gzipSize": 99,
-                "brotliSize": 76,
-                "importedBy": [],
-                "label": "pick.js",
-                "filename": "node_modules/lodash/pick.js"
-              },
-              {
                 "parsedSize": 116,
                 "gzipSize": 106,
                 "brotliSize": 95,
                 "importedBy": [],
                 "label": "_baseSome.js",
                 "filename": "node_modules/lodash/_baseSome.js"
+              },
+              {
+                "parsedSize": 84,
+                "gzipSize": 99,
+                "brotliSize": 76,
+                "importedBy": [],
+                "label": "pick.js",
+                "filename": "node_modules/lodash/pick.js"
               },
               {
                 "parsedSize": 104,
@@ -1484,28 +1484,12 @@
                 "filename": "node_modules/lodash/_baseEach.js"
               },
               {
-                "parsedSize": 237,
-                "gzipSize": 191,
-                "brotliSize": 170,
-                "importedBy": [],
-                "label": "_baseMerge.js",
-                "filename": "node_modules/lodash/_baseMerge.js"
-              },
-              {
                 "parsedSize": 284,
                 "gzipSize": 211,
                 "brotliSize": 178,
                 "importedBy": [],
                 "label": "_cloneBuffer.js",
                 "filename": "node_modules/lodash/_cloneBuffer.js"
-              },
-              {
-                "parsedSize": 167,
-                "gzipSize": 153,
-                "brotliSize": 117,
-                "importedBy": [],
-                "label": "_createBaseFor.js",
-                "filename": "node_modules/lodash/_createBaseFor.js"
               },
               {
                 "parsedSize": 71,
@@ -1516,28 +1500,28 @@
                 "filename": "node_modules/lodash/_listCacheClear.js"
               },
               {
+                "parsedSize": 237,
+                "gzipSize": 191,
+                "brotliSize": 170,
+                "importedBy": [],
+                "label": "_baseMerge.js",
+                "filename": "node_modules/lodash/_baseMerge.js"
+              },
+              {
+                "parsedSize": 167,
+                "gzipSize": 153,
+                "brotliSize": 117,
+                "importedBy": [],
+                "label": "_createBaseFor.js",
+                "filename": "node_modules/lodash/_createBaseFor.js"
+              },
+              {
                 "parsedSize": 150,
                 "gzipSize": 133,
                 "brotliSize": 103,
                 "importedBy": [],
                 "label": "_toSource.js",
                 "filename": "node_modules/lodash/_toSource.js"
-              },
-              {
-                "parsedSize": 236,
-                "gzipSize": 192,
-                "brotliSize": 161,
-                "importedBy": [],
-                "label": "_getRawTag.js",
-                "filename": "node_modules/lodash/_getRawTag.js"
-              },
-              {
-                "parsedSize": 135,
-                "gzipSize": 126,
-                "brotliSize": 97,
-                "importedBy": [],
-                "label": "_cloneTypedArray.js",
-                "filename": "node_modules/lodash/_cloneTypedArray.js"
               },
               {
                 "parsedSize": 212,
@@ -1548,12 +1532,12 @@
                 "filename": "node_modules/lodash/flattenDeep.js"
               },
               {
-                "parsedSize": 72,
-                "gzipSize": 92,
-                "brotliSize": 69,
+                "parsedSize": 236,
+                "gzipSize": 192,
+                "brotliSize": 161,
                 "importedBy": [],
-                "label": "isMap.js",
-                "filename": "node_modules/lodash/isMap.js"
+                "label": "_getRawTag.js",
+                "filename": "node_modules/lodash/_getRawTag.js"
               },
               {
                 "parsedSize": 1600,
@@ -1564,12 +1548,28 @@
                 "filename": "node_modules/lodash/_baseClone.js"
               },
               {
+                "parsedSize": 72,
+                "gzipSize": 92,
+                "brotliSize": 69,
+                "importedBy": [],
+                "label": "isMap.js",
+                "filename": "node_modules/lodash/isMap.js"
+              },
+              {
                 "parsedSize": 326,
                 "gzipSize": 226,
                 "brotliSize": 188,
                 "importedBy": [],
                 "label": "_baseUnset.js",
                 "filename": "node_modules/lodash/_baseUnset.js"
+              },
+              {
+                "parsedSize": 135,
+                "gzipSize": 126,
+                "brotliSize": 97,
+                "importedBy": [],
+                "label": "_cloneTypedArray.js",
+                "filename": "node_modules/lodash/_cloneTypedArray.js"
               },
               {
                 "parsedSize": 203,
@@ -1724,14 +1724,6 @@
                 "filename": "node_modules/lodash/hasIn.js"
               },
               {
-                "parsedSize": 143,
-                "gzipSize": 143,
-                "brotliSize": 107,
-                "importedBy": [],
-                "label": "_hashHas.js",
-                "filename": "node_modules/lodash/_hashHas.js"
-              },
-              {
                 "parsedSize": 488,
                 "gzipSize": 340,
                 "brotliSize": 311,
@@ -1754,6 +1746,14 @@
                 "importedBy": [],
                 "label": "_arrayEach.js",
                 "filename": "node_modules/lodash/_arrayEach.js"
+              },
+              {
+                "parsedSize": 143,
+                "gzipSize": 143,
+                "brotliSize": 107,
+                "importedBy": [],
+                "label": "_hashHas.js",
+                "filename": "node_modules/lodash/_hashHas.js"
               },
               {
                 "parsedSize": 351,
@@ -1796,6 +1796,14 @@
                 "filename": "node_modules/lodash/_baseGetAllKeys.js"
               },
               {
+                "parsedSize": 24,
+                "gzipSize": 44,
+                "brotliSize": 28,
+                "importedBy": [],
+                "label": "findLast.js",
+                "filename": "node_modules/lodash/findLast.js"
+              },
+              {
                 "parsedSize": 105,
                 "gzipSize": 113,
                 "brotliSize": 87,
@@ -1812,28 +1820,12 @@
                 "filename": "node_modules/lodash/_customOmitClone.js"
               },
               {
-                "parsedSize": 24,
-                "gzipSize": 44,
-                "brotliSize": 28,
-                "importedBy": [],
-                "label": "findLast.js",
-                "filename": "node_modules/lodash/findLast.js"
-              },
-              {
                 "parsedSize": 386,
                 "gzipSize": 270,
                 "brotliSize": 253,
                 "importedBy": [],
                 "label": "_baseIsMatch.js",
                 "filename": "node_modules/lodash/_baseIsMatch.js"
-              },
-              {
-                "parsedSize": 89,
-                "gzipSize": 100,
-                "brotliSize": 79,
-                "importedBy": [],
-                "label": "filter.js",
-                "filename": "node_modules/lodash/filter.js"
               },
               {
                 "parsedSize": 103,
@@ -1852,20 +1844,20 @@
                 "filename": "node_modules/lodash/_MapCache.js"
               },
               {
+                "parsedSize": 89,
+                "gzipSize": 100,
+                "brotliSize": 79,
+                "importedBy": [],
+                "label": "filter.js",
+                "filename": "node_modules/lodash/filter.js"
+              },
+              {
                 "parsedSize": 126,
                 "gzipSize": 122,
                 "brotliSize": 94,
                 "importedBy": [],
                 "label": "_initCloneObject.js",
                 "filename": "node_modules/lodash/_initCloneObject.js"
-              },
-              {
-                "parsedSize": 268,
-                "gzipSize": 223,
-                "brotliSize": 191,
-                "importedBy": [],
-                "label": "_isKey.js",
-                "filename": "node_modules/lodash/_isKey.js"
               },
               {
                 "parsedSize": 139,
@@ -1914,6 +1906,14 @@
                 "importedBy": [],
                 "label": "toPlainObject.js",
                 "filename": "node_modules/lodash/toPlainObject.js"
+              },
+              {
+                "parsedSize": 268,
+                "gzipSize": 223,
+                "brotliSize": 191,
+                "importedBy": [],
+                "label": "_isKey.js",
+                "filename": "node_modules/lodash/_isKey.js"
               },
               {
                 "parsedSize": 133,
@@ -2096,445 +2096,6 @@
                     "brotliSize": 50846,
                     "label": "src",
                     "groups": [
-                      {
-                        "parsedSize": 21115,
-                        "gzipSize": 8472,
-                        "brotliSize": 7249,
-                        "label": "services",
-                        "groups": [
-                          {
-                            "parsedSize": 8546,
-                            "gzipSize": 3313,
-                            "brotliSize": 2839,
-                            "label": "validation",
-                            "groups": [
-                              {
-                                "parsedSize": 297,
-                                "gzipSize": 221,
-                                "brotliSize": 191,
-                                "importedBy": [
-                                  {
-                                    "id": "lodash/each",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/utils/normalize",
-                                    "kind": "static"
-                                  }
-                                ],
-                                "label": "parse.js",
-                                "filename": "node_modules/@vueform/vueform/src/services/validation/parse.js"
-                              },
-                              {
-                                "parsedSize": 596,
-                                "gzipSize": 526,
-                                "brotliSize": 397,
-                                "label": "rules",
-                                "groups": [
-                                  {
-                                    "parsedSize": 221,
-                                    "gzipSize": 171,
-                                    "brotliSize": 143,
-                                    "importedBy": [
-                                      {
-                                        "id": "node_modules/@vueform/vueform/src/services/validation/validator",
-                                        "kind": "static"
-                                      }
-                                    ],
-                                    "label": "email.js",
-                                    "filename": "node_modules/@vueform/vueform/src/services/validation/rules/email.js"
-                                  },
-                                  {
-                                    "parsedSize": 193,
-                                    "gzipSize": 151,
-                                    "brotliSize": 114,
-                                    "importedBy": [
-                                      {
-                                        "id": "node_modules/@vueform/vueform/src/services/validation/validator",
-                                        "kind": "static"
-                                      }
-                                    ],
-                                    "label": "min.js",
-                                    "filename": "node_modules/@vueform/vueform/src/services/validation/rules/min.js"
-                                  },
-                                  {
-                                    "parsedSize": 129,
-                                    "gzipSize": 131,
-                                    "brotliSize": 88,
-                                    "importedBy": [
-                                      {
-                                        "id": "node_modules/@vueform/vueform/src/services/validation/validator",
-                                        "kind": "static"
-                                      }
-                                    ],
-                                    "label": "regex.js",
-                                    "filename": "node_modules/@vueform/vueform/src/services/validation/rules/regex.js"
-                                  },
-                                  {
-                                    "parsedSize": 53,
-                                    "gzipSize": 73,
-                                    "brotliSize": 52,
-                                    "importedBy": [
-                                      {
-                                        "id": "node_modules/@vueform/vueform/src/services/validation/validator",
-                                        "kind": "static"
-                                      }
-                                    ],
-                                    "label": "required.js",
-                                    "filename": "node_modules/@vueform/vueform/src/services/validation/rules/required.js"
-                                  }
-                                ],
-                                "filename": "node_modules/@vueform/vueform/src/services/validation/rules"
-                              },
-                              {
-                                "parsedSize": 5443,
-                                "gzipSize": 1613,
-                                "brotliSize": 1444,
-                                "importedBy": [
-                                  {
-                                    "id": "lodash/get",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/isEqual",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/isPlainObject",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/each",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/map",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/some",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/isString",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/isArray",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/trim",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "vue",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/utils/dataEquals",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/utils/localize",
-                                    "kind": "static"
-                                  }
-                                ],
-                                "label": "validator.js",
-                                "filename": "node_modules/@vueform/vueform/src/services/validation/validator.js"
-                              },
-                              {
-                                "parsedSize": 39,
-                                "gzipSize": 59,
-                                "brotliSize": 43,
-                                "importedBy": [
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/services/validation/factory",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/services/validation/rules",
-                                    "kind": "static"
-                                  }
-                                ],
-                                "label": "index.js",
-                                "filename": "node_modules/@vueform/vueform/src/services/validation/index.js"
-                              },
-                              {
-                                "parsedSize": 2171,
-                                "gzipSize": 894,
-                                "brotliSize": 764,
-                                "importedBy": [
-                                  {
-                                    "id": "lodash/map",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/isArray",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/flatMap",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/isPlainObject",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/values",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/keys",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/get",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/services/validation/parse",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/utils/replaceWildcards",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/utils/replaceWildcardsExpr",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/utils/compare",
-                                    "kind": "static"
-                                  }
-                                ],
-                                "label": "factory.js",
-                                "filename": "node_modules/@vueform/vueform/src/services/validation/factory.js"
-                              }
-                            ],
-                            "filename": "node_modules/@vueform/vueform/src/services/validation"
-                          },
-                          {
-                            "parsedSize": 3593,
-                            "gzipSize": 1673,
-                            "brotliSize": 1357,
-                            "label": "location",
-                            "groups": [
-                              {
-                                "parsedSize": 31,
-                                "gzipSize": 46,
-                                "brotliSize": 35,
-                                "importedBy": [
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/services/location/google",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/services/location/algolia",
-                                    "kind": "static"
-                                  }
-                                ],
-                                "label": "index.js",
-                                "filename": "node_modules/@vueform/vueform/src/services/location/index.js"
-                              },
-                              {
-                                "parsedSize": 1874,
-                                "gzipSize": 669,
-                                "brotliSize": 567,
-                                "importedBy": [
-                                  {
-                                    "id": "lodash/each",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/isPlainObject",
-                                    "kind": "static"
-                                  }
-                                ],
-                                "label": "google.js",
-                                "filename": "node_modules/@vueform/vueform/src/services/location/google.js"
-                              },
-                              {
-                                "parsedSize": 1688,
-                                "gzipSize": 958,
-                                "brotliSize": 755,
-                                "importedBy": [
-                                  {
-                                    "id": "lodash/isPlainObject",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/values",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/keys",
-                                    "kind": "static"
-                                  }
-                                ],
-                                "label": "algolia.js",
-                                "filename": "node_modules/@vueform/vueform/src/services/location/algolia.js"
-                              }
-                            ],
-                            "filename": "node_modules/@vueform/vueform/src/services/location"
-                          },
-                          {
-                            "parsedSize": 100,
-                            "gzipSize": 106,
-                            "brotliSize": 83,
-                            "importedBy": [
-                              {
-                                "id": "dompurify",
-                                "kind": "static"
-                              }
-                            ],
-                            "label": "sanitize/index.js",
-                            "filename": "node_modules/@vueform/vueform/src/services/sanitize/index.js"
-                          },
-                          {
-                            "parsedSize": 1981,
-                            "gzipSize": 650,
-                            "brotliSize": 590,
-                            "importedBy": [
-                              {
-                                "id": "lodash/each",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "lodash/merge",
-                                "kind": "static"
-                              }
-                            ],
-                            "label": "columns/index.js",
-                            "filename": "node_modules/@vueform/vueform/src/services/columns/index.js"
-                          },
-                          {
-                            "parsedSize": 344,
-                            "gzipSize": 183,
-                            "brotliSize": 153,
-                            "importedBy": [
-                              {
-                                "id": "lodash/each",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "lodash/get",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "lodash/isPlainObject",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "lodash/values",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "lodash/keys",
-                                "kind": "static"
-                              }
-                            ],
-                            "label": "i18n/index.js",
-                            "filename": "node_modules/@vueform/vueform/src/services/i18n/index.js"
-                          },
-                          {
-                            "parsedSize": 10,
-                            "gzipSize": 30,
-                            "brotliSize": 14,
-                            "importedBy": [
-                              {
-                                "id": "autosize",
-                                "kind": "static"
-                              }
-                            ],
-                            "label": "autosize/index.js",
-                            "filename": "node_modules/@vueform/vueform/src/services/autosize/index.js"
-                          },
-                          {
-                            "parsedSize": 1412,
-                            "gzipSize": 402,
-                            "brotliSize": 362,
-                            "importedBy": [
-                              {
-                                "id": "lodash/concat",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "lodash/head",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "lodash/each",
-                                "kind": "static"
-                              }
-                            ],
-                            "label": "messageBag/index.js",
-                            "filename": "node_modules/@vueform/vueform/src/services/messageBag/index.js"
-                          },
-                          {
-                            "parsedSize": 21,
-                            "gzipSize": 41,
-                            "brotliSize": 25,
-                            "importedBy": [
-                              {
-                                "id": "axios",
-                                "kind": "static"
-                              }
-                            ],
-                            "label": "axios/index.js",
-                            "filename": "node_modules/@vueform/vueform/src/services/axios/index.js"
-                          },
-                          {
-                            "parsedSize": 842,
-                            "gzipSize": 474,
-                            "brotliSize": 405,
-                            "importedBy": [
-                              {
-                                "id": "lodash/each",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "lodash/isArray",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "node_modules/@vueform/vueform/src/utils/compare",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "node_modules/@vueform/vueform/src/utils/replaceWildcards",
-                                "kind": "static"
-                              }
-                            ],
-                            "label": "condition/index.js",
-                            "filename": "node_modules/@vueform/vueform/src/services/condition/index.js"
-                          },
-                          {
-                            "parsedSize": 4266,
-                            "gzipSize": 1600,
-                            "brotliSize": 1421,
-                            "importedBy": [
-                              {
-                                "id": "expr-eval",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "node_modules/@vueform/vueform/src/utils/replaceWildcardsExpr",
-                                "kind": "static"
-                              },
-                              {
-                                "id": "node_modules/@vueform/vueform/src/utils/localize",
-                                "kind": "static"
-                              }
-                            ],
-                            "label": "expression/index.js",
-                            "filename": "node_modules/@vueform/vueform/src/services/expression/index.js"
-                          }
-                        ],
-                        "filename": "node_modules/@vueform/vueform/src/services"
-                      },
                       {
                         "parsedSize": 46031,
                         "gzipSize": 16599,
@@ -4164,6 +3725,445 @@
                         "filename": "node_modules/@vueform/vueform/src/components"
                       },
                       {
+                        "parsedSize": 21115,
+                        "gzipSize": 8472,
+                        "brotliSize": 7249,
+                        "label": "services",
+                        "groups": [
+                          {
+                            "parsedSize": 8546,
+                            "gzipSize": 3313,
+                            "brotliSize": 2839,
+                            "label": "validation",
+                            "groups": [
+                              {
+                                "parsedSize": 297,
+                                "gzipSize": 221,
+                                "brotliSize": 191,
+                                "importedBy": [
+                                  {
+                                    "id": "lodash/each",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/utils/normalize",
+                                    "kind": "static"
+                                  }
+                                ],
+                                "label": "parse.js",
+                                "filename": "node_modules/@vueform/vueform/src/services/validation/parse.js"
+                              },
+                              {
+                                "parsedSize": 5443,
+                                "gzipSize": 1613,
+                                "brotliSize": 1444,
+                                "importedBy": [
+                                  {
+                                    "id": "lodash/get",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/isEqual",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/isPlainObject",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/each",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/map",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/some",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/isString",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/isArray",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/trim",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "vue",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/utils/dataEquals",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/utils/localize",
+                                    "kind": "static"
+                                  }
+                                ],
+                                "label": "validator.js",
+                                "filename": "node_modules/@vueform/vueform/src/services/validation/validator.js"
+                              },
+                              {
+                                "parsedSize": 596,
+                                "gzipSize": 526,
+                                "brotliSize": 397,
+                                "label": "rules",
+                                "groups": [
+                                  {
+                                    "parsedSize": 221,
+                                    "gzipSize": 171,
+                                    "brotliSize": 143,
+                                    "importedBy": [
+                                      {
+                                        "id": "node_modules/@vueform/vueform/src/services/validation/validator",
+                                        "kind": "static"
+                                      }
+                                    ],
+                                    "label": "email.js",
+                                    "filename": "node_modules/@vueform/vueform/src/services/validation/rules/email.js"
+                                  },
+                                  {
+                                    "parsedSize": 193,
+                                    "gzipSize": 151,
+                                    "brotliSize": 114,
+                                    "importedBy": [
+                                      {
+                                        "id": "node_modules/@vueform/vueform/src/services/validation/validator",
+                                        "kind": "static"
+                                      }
+                                    ],
+                                    "label": "min.js",
+                                    "filename": "node_modules/@vueform/vueform/src/services/validation/rules/min.js"
+                                  },
+                                  {
+                                    "parsedSize": 129,
+                                    "gzipSize": 131,
+                                    "brotliSize": 88,
+                                    "importedBy": [
+                                      {
+                                        "id": "node_modules/@vueform/vueform/src/services/validation/validator",
+                                        "kind": "static"
+                                      }
+                                    ],
+                                    "label": "regex.js",
+                                    "filename": "node_modules/@vueform/vueform/src/services/validation/rules/regex.js"
+                                  },
+                                  {
+                                    "parsedSize": 53,
+                                    "gzipSize": 73,
+                                    "brotliSize": 52,
+                                    "importedBy": [
+                                      {
+                                        "id": "node_modules/@vueform/vueform/src/services/validation/validator",
+                                        "kind": "static"
+                                      }
+                                    ],
+                                    "label": "required.js",
+                                    "filename": "node_modules/@vueform/vueform/src/services/validation/rules/required.js"
+                                  }
+                                ],
+                                "filename": "node_modules/@vueform/vueform/src/services/validation/rules"
+                              },
+                              {
+                                "parsedSize": 39,
+                                "gzipSize": 59,
+                                "brotliSize": 43,
+                                "importedBy": [
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/services/validation/factory",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/services/validation/rules",
+                                    "kind": "static"
+                                  }
+                                ],
+                                "label": "index.js",
+                                "filename": "node_modules/@vueform/vueform/src/services/validation/index.js"
+                              },
+                              {
+                                "parsedSize": 2171,
+                                "gzipSize": 894,
+                                "brotliSize": 764,
+                                "importedBy": [
+                                  {
+                                    "id": "lodash/map",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/isArray",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/flatMap",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/isPlainObject",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/values",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/keys",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/get",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/services/validation/parse",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/utils/replaceWildcards",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/utils/replaceWildcardsExpr",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/utils/compare",
+                                    "kind": "static"
+                                  }
+                                ],
+                                "label": "factory.js",
+                                "filename": "node_modules/@vueform/vueform/src/services/validation/factory.js"
+                              }
+                            ],
+                            "filename": "node_modules/@vueform/vueform/src/services/validation"
+                          },
+                          {
+                            "parsedSize": 3593,
+                            "gzipSize": 1673,
+                            "brotliSize": 1357,
+                            "label": "location",
+                            "groups": [
+                              {
+                                "parsedSize": 31,
+                                "gzipSize": 46,
+                                "brotliSize": 35,
+                                "importedBy": [
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/services/location/google",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/services/location/algolia",
+                                    "kind": "static"
+                                  }
+                                ],
+                                "label": "index.js",
+                                "filename": "node_modules/@vueform/vueform/src/services/location/index.js"
+                              },
+                              {
+                                "parsedSize": 1874,
+                                "gzipSize": 669,
+                                "brotliSize": 567,
+                                "importedBy": [
+                                  {
+                                    "id": "lodash/each",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/isPlainObject",
+                                    "kind": "static"
+                                  }
+                                ],
+                                "label": "google.js",
+                                "filename": "node_modules/@vueform/vueform/src/services/location/google.js"
+                              },
+                              {
+                                "parsedSize": 1688,
+                                "gzipSize": 958,
+                                "brotliSize": 755,
+                                "importedBy": [
+                                  {
+                                    "id": "lodash/isPlainObject",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/values",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/keys",
+                                    "kind": "static"
+                                  }
+                                ],
+                                "label": "algolia.js",
+                                "filename": "node_modules/@vueform/vueform/src/services/location/algolia.js"
+                              }
+                            ],
+                            "filename": "node_modules/@vueform/vueform/src/services/location"
+                          },
+                          {
+                            "parsedSize": 100,
+                            "gzipSize": 106,
+                            "brotliSize": 83,
+                            "importedBy": [
+                              {
+                                "id": "dompurify",
+                                "kind": "static"
+                              }
+                            ],
+                            "label": "sanitize/index.js",
+                            "filename": "node_modules/@vueform/vueform/src/services/sanitize/index.js"
+                          },
+                          {
+                            "parsedSize": 1981,
+                            "gzipSize": 650,
+                            "brotliSize": 590,
+                            "importedBy": [
+                              {
+                                "id": "lodash/each",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "lodash/merge",
+                                "kind": "static"
+                              }
+                            ],
+                            "label": "columns/index.js",
+                            "filename": "node_modules/@vueform/vueform/src/services/columns/index.js"
+                          },
+                          {
+                            "parsedSize": 344,
+                            "gzipSize": 183,
+                            "brotliSize": 153,
+                            "importedBy": [
+                              {
+                                "id": "lodash/each",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "lodash/get",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "lodash/isPlainObject",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "lodash/values",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "lodash/keys",
+                                "kind": "static"
+                              }
+                            ],
+                            "label": "i18n/index.js",
+                            "filename": "node_modules/@vueform/vueform/src/services/i18n/index.js"
+                          },
+                          {
+                            "parsedSize": 10,
+                            "gzipSize": 30,
+                            "brotliSize": 14,
+                            "importedBy": [
+                              {
+                                "id": "autosize",
+                                "kind": "static"
+                              }
+                            ],
+                            "label": "autosize/index.js",
+                            "filename": "node_modules/@vueform/vueform/src/services/autosize/index.js"
+                          },
+                          {
+                            "parsedSize": 1412,
+                            "gzipSize": 402,
+                            "brotliSize": 362,
+                            "importedBy": [
+                              {
+                                "id": "lodash/concat",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "lodash/head",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "lodash/each",
+                                "kind": "static"
+                              }
+                            ],
+                            "label": "messageBag/index.js",
+                            "filename": "node_modules/@vueform/vueform/src/services/messageBag/index.js"
+                          },
+                          {
+                            "parsedSize": 842,
+                            "gzipSize": 474,
+                            "brotliSize": 405,
+                            "importedBy": [
+                              {
+                                "id": "lodash/each",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "lodash/isArray",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "node_modules/@vueform/vueform/src/utils/compare",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "node_modules/@vueform/vueform/src/utils/replaceWildcards",
+                                "kind": "static"
+                              }
+                            ],
+                            "label": "condition/index.js",
+                            "filename": "node_modules/@vueform/vueform/src/services/condition/index.js"
+                          },
+                          {
+                            "parsedSize": 21,
+                            "gzipSize": 41,
+                            "brotliSize": 25,
+                            "importedBy": [
+                              {
+                                "id": "axios",
+                                "kind": "static"
+                              }
+                            ],
+                            "label": "axios/index.js",
+                            "filename": "node_modules/@vueform/vueform/src/services/axios/index.js"
+                          },
+                          {
+                            "parsedSize": 4266,
+                            "gzipSize": 1600,
+                            "brotliSize": 1421,
+                            "importedBy": [
+                              {
+                                "id": "expr-eval",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "node_modules/@vueform/vueform/src/utils/replaceWildcardsExpr",
+                                "kind": "static"
+                              },
+                              {
+                                "id": "node_modules/@vueform/vueform/src/utils/localize",
+                                "kind": "static"
+                              }
+                            ],
+                            "label": "expression/index.js",
+                            "filename": "node_modules/@vueform/vueform/src/services/expression/index.js"
+                          }
+                        ],
+                        "filename": "node_modules/@vueform/vueform/src/services"
+                      },
+                      {
                         "parsedSize": 50638,
                         "gzipSize": 21214,
                         "brotliSize": 18462,
@@ -4222,27 +4222,6 @@
                                 "filename": "node_modules/@vueform/vueform/src/composables/elements/useToggle.js"
                               },
                               {
-                                "parsedSize": 174,
-                                "gzipSize": 106,
-                                "brotliSize": 85,
-                                "importedBy": [
-                                  {
-                                    "id": "lodash/isArray",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "lodash/each",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "vue",
-                                    "kind": "static"
-                                  }
-                                ],
-                                "label": "useNullValue.js",
-                                "filename": "node_modules/@vueform/vueform/src/composables/elements/useNullValue.js"
-                              },
-                              {
                                 "parsedSize": 4518,
                                 "gzipSize": 1321,
                                 "brotliSize": 1154,
@@ -4266,6 +4245,27 @@
                                 ],
                                 "label": "useOptions.js",
                                 "filename": "node_modules/@vueform/vueform/src/composables/elements/useOptions.js"
+                              },
+                              {
+                                "parsedSize": 174,
+                                "gzipSize": 106,
+                                "brotliSize": 85,
+                                "importedBy": [
+                                  {
+                                    "id": "lodash/isArray",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "lodash/each",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "vue",
+                                    "kind": "static"
+                                  }
+                                ],
+                                "label": "useNullValue.js",
+                                "filename": "node_modules/@vueform/vueform/src/composables/elements/useNullValue.js"
                               },
                               {
                                 "parsedSize": 244,
@@ -4622,14 +4622,6 @@
                                 "filename": "node_modules/@vueform/vueform/src/composables/elements/useDateFormat.js"
                               },
                               {
-                                "parsedSize": 275,
-                                "gzipSize": 195,
-                                "brotliSize": 149,
-                                "importedBy": [],
-                                "label": "useFocus.js",
-                                "filename": "node_modules/@vueform/vueform/src/composables/elements/useFocus.js"
-                              },
-                              {
                                 "parsedSize": 2616,
                                 "gzipSize": 961,
                                 "brotliSize": 866,
@@ -4677,6 +4669,14 @@
                                 ],
                                 "label": "useValue.js",
                                 "filename": "node_modules/@vueform/vueform/src/composables/elements/useValue.js"
+                              },
+                              {
+                                "parsedSize": 275,
+                                "gzipSize": 195,
+                                "brotliSize": 149,
+                                "importedBy": [],
+                                "label": "useFocus.js",
+                                "filename": "node_modules/@vueform/vueform/src/composables/elements/useFocus.js"
                               },
                               {
                                 "parsedSize": 349,
@@ -4772,23 +4772,6 @@
                                 "filename": "node_modules/@vueform/vueform/src/composables/elements/useReadonly.js"
                               },
                               {
-                                "parsedSize": 334,
-                                "gzipSize": 234,
-                                "brotliSize": 194,
-                                "importedBy": [
-                                  {
-                                    "id": "vue",
-                                    "kind": "static"
-                                  },
-                                  {
-                                    "id": "node_modules/@vueform/vueform/src/utils/mergeClasses",
-                                    "kind": "static"
-                                  }
-                                ],
-                                "label": "useClasses.js",
-                                "filename": "node_modules/@vueform/vueform/src/composables/elements/useClasses.js"
-                              },
-                              {
                                 "parsedSize": 573,
                                 "gzipSize": 310,
                                 "brotliSize": 271,
@@ -4808,6 +4791,23 @@
                                 ],
                                 "label": "useLabel.js",
                                 "filename": "node_modules/@vueform/vueform/src/composables/elements/useLabel.js"
+                              },
+                              {
+                                "parsedSize": 334,
+                                "gzipSize": 234,
+                                "brotliSize": 194,
+                                "importedBy": [
+                                  {
+                                    "id": "vue",
+                                    "kind": "static"
+                                  },
+                                  {
+                                    "id": "node_modules/@vueform/vueform/src/utils/mergeClasses",
+                                    "kind": "static"
+                                  }
+                                ],
+                                "label": "useClasses.js",
+                                "filename": "node_modules/@vueform/vueform/src/composables/elements/useClasses.js"
                               },
                               {
                                 "parsedSize": 94,
@@ -5522,20 +5522,20 @@
                         "label": "utils",
                         "groups": [
                           {
-                            "parsedSize": 132,
-                            "gzipSize": 131,
-                            "brotliSize": 90,
-                            "importedBy": [],
-                            "label": "normalize.js",
-                            "filename": "node_modules/@vueform/vueform/src/utils/normalize.js"
-                          },
-                          {
                             "parsedSize": 309,
                             "gzipSize": 200,
                             "brotliSize": 163,
                             "importedBy": [],
                             "label": "findScrollableParent.js",
                             "filename": "node_modules/@vueform/vueform/src/utils/findScrollableParent.js"
+                          },
+                          {
+                            "parsedSize": 132,
+                            "gzipSize": 131,
+                            "brotliSize": 90,
+                            "importedBy": [],
+                            "label": "normalize.js",
+                            "filename": "node_modules/@vueform/vueform/src/utils/normalize.js"
                           },
                           {
                             "parsedSize": 173,
@@ -5707,14 +5707,6 @@
                             "filename": "node_modules/@vueform/vueform/src/utils/valueGet.js"
                           },
                           {
-                            "parsedSize": 577,
-                            "gzipSize": 309,
-                            "brotliSize": 265,
-                            "importedBy": [],
-                            "label": "tree.js",
-                            "filename": "node_modules/@vueform/vueform/src/utils/tree.js"
-                          },
-                          {
                             "parsedSize": 5728,
                             "gzipSize": 1500,
                             "brotliSize": 1372,
@@ -5750,6 +5742,14 @@
                             ],
                             "label": "mergeClasses.js",
                             "filename": "node_modules/@vueform/vueform/src/utils/mergeClasses.js"
+                          },
+                          {
+                            "parsedSize": 577,
+                            "gzipSize": 309,
+                            "brotliSize": 265,
+                            "importedBy": [],
+                            "label": "tree.js",
+                            "filename": "node_modules/@vueform/vueform/src/utils/tree.js"
                           },
                           {
                             "parsedSize": 2409,
@@ -6173,19 +6173,6 @@
                         "filename": "node_modules/@vueform/multiselect/src/composables/useI18n.js"
                       },
                       {
-                        "parsedSize": 112,
-                        "gzipSize": 102,
-                        "brotliSize": 82,
-                        "importedBy": [
-                          {
-                            "id": "vue",
-                            "kind": "static"
-                          }
-                        ],
-                        "label": "useRefs.js",
-                        "filename": "node_modules/@vueform/multiselect/src/composables/useRefs.js"
-                      },
-                      {
                         "parsedSize": 8308,
                         "gzipSize": 2919,
                         "brotliSize": 2680,
@@ -6221,6 +6208,19 @@
                         ],
                         "label": "useOptions.js",
                         "filename": "node_modules/@vueform/multiselect/src/composables/useOptions.js"
+                      },
+                      {
+                        "parsedSize": 112,
+                        "gzipSize": 102,
+                        "brotliSize": 82,
+                        "importedBy": [
+                          {
+                            "id": "vue",
+                            "kind": "static"
+                          }
+                        ],
+                        "label": "useRefs.js",
+                        "filename": "node_modules/@vueform/multiselect/src/composables/useRefs.js"
                       },
                       {
                         "parsedSize": 366,
@@ -6552,23 +6552,6 @@
                     "filename": "node_modules/axios/lib/core/transformData.js"
                   },
                   {
-                    "parsedSize": 1211,
-                    "gzipSize": 611,
-                    "brotliSize": 514,
-                    "importedBy": [
-                      {
-                        "id": "node_modules/axios/lib/utils.js",
-                        "kind": "static"
-                      },
-                      {
-                        "id": "node_modules/axios/lib/core/AxiosHeaders.js",
-                        "kind": "static"
-                      }
-                    ],
-                    "label": "mergeConfig.js",
-                    "filename": "node_modules/axios/lib/core/mergeConfig.js"
-                  },
-                  {
                     "parsedSize": 2599,
                     "gzipSize": 1146,
                     "brotliSize": 1031,
@@ -6614,6 +6597,23 @@
                     "filename": "node_modules/axios/lib/core/Axios.js"
                   },
                   {
+                    "parsedSize": 1211,
+                    "gzipSize": 611,
+                    "brotliSize": 514,
+                    "importedBy": [
+                      {
+                        "id": "node_modules/axios/lib/utils.js",
+                        "kind": "static"
+                      },
+                      {
+                        "id": "node_modules/axios/lib/core/AxiosHeaders.js",
+                        "kind": "static"
+                      }
+                    ],
+                    "label": "mergeConfig.js",
+                    "filename": "node_modules/axios/lib/core/mergeConfig.js"
+                  },
+                  {
                     "parsedSize": 1170,
                     "gzipSize": 611,
                     "brotliSize": 528,
@@ -6638,23 +6638,6 @@
                     ],
                     "label": "InterceptorManager.js",
                     "filename": "node_modules/axios/lib/core/InterceptorManager.js"
-                  },
-                  {
-                    "parsedSize": 3261,
-                    "gzipSize": 1506,
-                    "brotliSize": 1373,
-                    "importedBy": [
-                      {
-                        "id": "node_modules/axios/lib/utils.js",
-                        "kind": "static"
-                      },
-                      {
-                        "id": "node_modules/axios/lib/helpers/parseHeaders.js",
-                        "kind": "static"
-                      }
-                    ],
-                    "label": "AxiosHeaders.js",
-                    "filename": "node_modules/axios/lib/core/AxiosHeaders.js"
                   },
                   {
                     "parsedSize": 640,
@@ -6688,6 +6671,23 @@
                     ],
                     "label": "dispatchRequest.js",
                     "filename": "node_modules/axios/lib/core/dispatchRequest.js"
+                  },
+                  {
+                    "parsedSize": 3261,
+                    "gzipSize": 1506,
+                    "brotliSize": 1373,
+                    "importedBy": [
+                      {
+                        "id": "node_modules/axios/lib/utils.js",
+                        "kind": "static"
+                      },
+                      {
+                        "id": "node_modules/axios/lib/helpers/parseHeaders.js",
+                        "kind": "static"
+                      }
+                    ],
+                    "label": "AxiosHeaders.js",
+                    "filename": "node_modules/axios/lib/core/AxiosHeaders.js"
                   },
                   {
                     "parsedSize": 226,
@@ -7459,6 +7459,19 @@
                     "filename": "node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js"
                   },
                   {
+                    "parsedSize": 176,
+                    "gzipSize": 147,
+                    "brotliSize": 113,
+                    "importedBy": [
+                      {
+                        "id": "node_modules/@popperjs/core/lib/dom-utils/instanceOf.js",
+                        "kind": "static"
+                      }
+                    ],
+                    "label": "contains.js",
+                    "filename": "node_modules/@popperjs/core/lib/dom-utils/contains.js"
+                  },
+                  {
                     "parsedSize": 421,
                     "gzipSize": 285,
                     "brotliSize": 243,
@@ -7482,19 +7495,6 @@
                     ],
                     "label": "getBoundingClientRect.js",
                     "filename": "node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js"
-                  },
-                  {
-                    "parsedSize": 176,
-                    "gzipSize": 147,
-                    "brotliSize": 113,
-                    "importedBy": [
-                      {
-                        "id": "node_modules/@popperjs/core/lib/dom-utils/instanceOf.js",
-                        "kind": "static"
-                      }
-                    ],
-                    "label": "contains.js",
-                    "filename": "node_modules/@popperjs/core/lib/dom-utils/contains.js"
                   },
                   {
                     "parsedSize": 189,
@@ -7589,14 +7589,6 @@
                     "filename": "node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js"
                   },
                   {
-                    "parsedSize": 60,
-                    "gzipSize": 80,
-                    "brotliSize": 57,
-                    "importedBy": [],
-                    "label": "getNodeName.js",
-                    "filename": "node_modules/@popperjs/core/lib/dom-utils/getNodeName.js"
-                  },
-                  {
                     "parsedSize": 91,
                     "gzipSize": 90,
                     "brotliSize": 69,
@@ -7621,6 +7613,14 @@
                     ],
                     "label": "isTableElement.js",
                     "filename": "node_modules/@popperjs/core/lib/dom-utils/isTableElement.js"
+                  },
+                  {
+                    "parsedSize": 60,
+                    "gzipSize": 80,
+                    "brotliSize": 57,
+                    "importedBy": [],
+                    "label": "getNodeName.js",
+                    "filename": "node_modules/@popperjs/core/lib/dom-utils/getNodeName.js"
                   },
                   {
                     "parsedSize": 54,
@@ -8096,19 +8096,6 @@
                     "filename": "node_modules/@popperjs/core/lib/utils/mergePaddingObject.js"
                   },
                   {
-                    "parsedSize": 90,
-                    "gzipSize": 81,
-                    "brotliSize": 83,
-                    "importedBy": [
-                      {
-                        "id": "node_modules/@popperjs/core/lib/utils/math.js",
-                        "kind": "static"
-                      }
-                    ],
-                    "label": "within.js",
-                    "filename": "node_modules/@popperjs/core/lib/utils/within.js"
-                  },
-                  {
                     "parsedSize": 500,
                     "gzipSize": 280,
                     "brotliSize": 231,
@@ -8132,6 +8119,19 @@
                     ],
                     "label": "computeOffsets.js",
                     "filename": "node_modules/@popperjs/core/lib/utils/computeOffsets.js"
+                  },
+                  {
+                    "parsedSize": 90,
+                    "gzipSize": 81,
+                    "brotliSize": 83,
+                    "importedBy": [
+                      {
+                        "id": "node_modules/@popperjs/core/lib/utils/math.js",
+                        "kind": "static"
+                      }
+                    ],
+                    "label": "within.js",
+                    "filename": "node_modules/@popperjs/core/lib/utils/within.js"
                   },
                   {
                     "parsedSize": 52,
@@ -8161,19 +8161,6 @@
                     "importedBy": [],
                     "label": "getMainAxisFromPlacement.js",
                     "filename": "node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js"
-                  },
-                  {
-                    "parsedSize": 38,
-                    "gzipSize": 58,
-                    "brotliSize": 41,
-                    "importedBy": [
-                      {
-                        "id": "node_modules/@popperjs/core/lib/enums.js",
-                        "kind": "static"
-                      }
-                    ],
-                    "label": "getBasePlacement.js",
-                    "filename": "node_modules/@popperjs/core/lib/utils/getBasePlacement.js"
                   },
                   {
                     "parsedSize": 896,
@@ -8219,6 +8206,19 @@
                     ],
                     "label": "detectOverflow.js",
                     "filename": "node_modules/@popperjs/core/lib/utils/detectOverflow.js"
+                  },
+                  {
+                    "parsedSize": 38,
+                    "gzipSize": 58,
+                    "brotliSize": 41,
+                    "importedBy": [
+                      {
+                        "id": "node_modules/@popperjs/core/lib/enums.js",
+                        "kind": "static"
+                      }
+                    ],
+                    "label": "getBasePlacement.js",
+                    "filename": "node_modules/@popperjs/core/lib/utils/getBasePlacement.js"
                   },
                   {
                     "parsedSize": 131,

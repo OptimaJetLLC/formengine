@@ -56,27 +56,27 @@
       {
         "framework": "FormEngine Core",
         "metric": "3G LCP",
-        "value": 3745
+        "value": 3548
       },
       {
         "framework": "FormEngine Core",
         "metric": "3G TTI",
-        "value": 4662
+        "value": 4404
       },
       {
         "framework": "FormEngine Core",
         "metric": "4G LCP",
-        "value": 420
+        "value": 400
       },
       {
         "framework": "FormEngine Core",
         "metric": "4G TTI",
-        "value": 1336
+        "value": 1257
       },
       {
         "framework": "FormEngine Core",
         "metric": "Parse",
-        "value": 916
+        "value": 856
       },
       {
         "framework": "VueForm",

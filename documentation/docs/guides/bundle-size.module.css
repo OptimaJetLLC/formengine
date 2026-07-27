@@ -3,3 +3,15 @@ th sub {
   margin-left: 0.5ch;
   font-size: 0.7em;
 }
+
+:global(.bundle-size-smallest) {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+:global([data-theme="dark"] .bundle-size-smallest) {
+  background-color: #1b4332;
+  color: #b7f0c8;
+}

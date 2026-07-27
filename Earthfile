@@ -2,6 +2,8 @@ VERSION --try 0.8
 
 FROM node:24.18.0
 
+# --- Shared helpers ---
+
 # Copies validated react-form-builder-*.tgz archives into .archives/.
 # fromPack=0: run npm run pack in each workspace package.
 # fromPack=1: copy tarballs produced earlier (for example by npm run pack:ci).

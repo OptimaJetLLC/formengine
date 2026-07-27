@@ -71,19 +71,19 @@ travels over the network to users' browsers.
 
 | Library             | Default UI Size | With Material UI | With Mantine  | Key Insight                                   |
 |---------------------|-----------------|------------------|---------------|-----------------------------------------------|
-| **Vueform**         | **141.64 KB**   | **142.02 KB**    | —             | Smallest baseline, minimal MUI impact         |
-| **RJSF**            | 176.39 KB       | 233.38 KB        | 258.70 KB     | Mantine adds more overhead than MUI           |
-| **FormEngine Core** | 237.83 KB       | 188.56 KB        | **159.75 KB** | Lowest Mantine size among tested React stacks |
-| **SurveyJS**        | 426.85 KB       | 395.42 KB        | 361.00 KB     | Large baseline, but lower with Mantine        |
+| **Vueform**         | **136.12 KB**   | **136.46 KB**    | —             | Smallest baseline, minimal MUI impact         |
+| **RJSF**            | 167.00 KB       | 222.60 KB        | 246.55 KB     | Mantine adds more overhead than MUI           |
+| **FormEngine Core** | 219.56 KB       | 174.87 KB        | **147.68 KB** | Lowest Mantine size among tested React stacks |
+| **SurveyJS**        | 418.52 KB       | 387.92 KB        | 354.99 KB     | Large baseline, but lower with Mantine        |
 
 ### Complex booking form results
 
-| Library             | Default UI Size | With Material UI | With Mantine  | Key Insight                                    |
-|---------------------|-----------------|------------------|---------------|------------------------------------------------|
-| **Vueform**         | 199.86 KB       | 200.03 KB        | —             | Stable size, integrated UI                     |
-| **RJSF**            | **179.22 KB**   | 236.31 KB        | 285.08 KB     | Strong baseline, large growth with UI overlays |
-| **FormEngine Core** | 309.99 KB       | **195.71 KB**    | 232.92 KB     | Smallest Material UI booking bundle in this set |
-| **SurveyJS**        | 428.87 KB       | 460.49 KB        | 473.09 KB     | Highest overall sizes in this scenario         |
+| Library             | Default UI Size | With Material UI | With Mantine  | Key Insight                                     |
+|---------------------|-----------------|------------------|---------------|-------------------------------------------------|
+| **Vueform**         | 191.87 KB       | 192.02 KB        | —             | Stable size, integrated UI                      |
+| **RJSF**            | **169.79 KB**   | 225.48 KB        | 272.53 KB     | Strong baseline, large growth with UI overlays  |
+| **FormEngine Core** | 286.88 KB       | **181.96 KB**    | **240.42 KB** | Smallest Material UI booking bundle in this set |
+| **SurveyJS**        | 420.61 KB       | 448.92 KB        | 462.20 KB     | Highest overall sizes in this scenario          |
 
 ## Architectural analysis: Why results vary
 
@@ -148,9 +148,9 @@ SurveyJS prioritizes features over size:
 > **Choose FormEngine Core for optimal size-to-capability ratio**
 
 FormEngine Core is one of the strongest options when integrating external UI libraries. In our current tests, Material UI reduces
-FormEngine bundle size by roughly 21–37% compared to the default React Suite view, and Mantine keeps it
-competitive as well. This modular approach makes FormEngine a strong fit for teams that standardize on either Material UI or Mantine across
-their applications.
+FormEngine bundle size by roughly 20–37% compared to the default React Suite view, and Mantine cuts the login bundle by about one third
+while remaining competitive on booking. This modular approach makes FormEngine a strong fit for teams that standardize on either Material UI
+or Mantine across their applications.
 
 **Benefits:**
 - Complete UI replacement eliminates default UI overhead
