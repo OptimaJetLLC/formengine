@@ -8,12 +8,14 @@ import {useEffect, useMemo, useRef, useState} from 'react'
 import {FormViewer} from './FormViewer'
 import styles from './TableExample.module.css'
 import {useNearViewport} from './useNearViewport'
-import {useSequentialRender} from './useSequentialRender'
 
 const emptyForm = buildForm().json()
 const STYLE_READY_TIMEOUT_MS = 2000
 
+type TableExampleStatus = 'loading-css' | 'mounting' | 'ready'
+
 let rsuiteCssPromise: Promise<void> | null = null
+let renderGate = Promise.resolve()
 
 /**
  * Loads RSuite LTR stylesheet once and reuses the result for subsequent examples.
@@ -24,6 +26,21 @@ const ensureRsuiteCss = (): Promise<void> => {
     rsuiteCssPromise = ltrCssLoader().then(() => undefined)
   }
   return rsuiteCssPromise
+}
+
+/**
+ * Runs work behind a shared lock so only one example mounts at a time.
+ * The lock is always released, even when work throws.
+ * @param work async work to run
+ * @returns the work result
+ */
+const withRenderLock = <T,>(work: () => Promise<T>): Promise<T> => {
+  const run = renderGate.then(() => work(), () => work())
+  renderGate = run.then(
+    () => undefined,
+    () => undefined,
+  )
+  return run
 }
 
 const waitForNextPaint = (): Promise<void> =>
@@ -54,35 +71,31 @@ const waitForTableLayout = (root: HTMLElement): Promise<void> =>
       return
     }
 
+    let timeoutId = 0
+    const finish = () => {
+      observer.disconnect()
+      resizeObserver?.disconnect()
+      window.clearTimeout(timeoutId)
+      resolve()
+    }
+
     const observer = new MutationObserver(() => {
       if (isReady()) {
-        cleanup()
-        resolve()
+        finish()
       }
     })
 
     const resizeObserver = typeof ResizeObserver !== 'undefined'
       ? new ResizeObserver(() => {
         if (isReady()) {
-          cleanup()
-          resolve()
+          finish()
         }
       })
       : null
 
-    const timeoutId = window.setTimeout(() => {
-      cleanup()
-      resolve()
-    }, STYLE_READY_TIMEOUT_MS)
-
-    const cleanup = () => {
-      observer.disconnect()
-      resizeObserver?.disconnect()
-      window.clearTimeout(timeoutId)
-    }
-
     observer.observe(root, {childList: true, subtree: true})
     resizeObserver?.observe(root)
+    timeoutId = window.setTimeout(finish, STYLE_READY_TIMEOUT_MS)
   })
 
 const getForm = async (formName?: string) => {
@@ -129,10 +142,9 @@ const TableExampleSkeleton = () => (
   </div>
 )
 
-const TableExampleContent = ({onRendered, ...props}: Partial<FormViewerProps> & { onRendered: () => void }) => {
+const TableExampleContent = (props: Partial<FormViewerProps>) => {
   const contentRef = useRef<HTMLDivElement>(null)
-  const [cssReady, setCssReady] = useState(false)
-  const [isStyled, setIsStyled] = useState(false)
+  const [status, setStatus] = useState<TableExampleStatus>('loading-css')
 
   const view = useMemo(() => {
     const result = viewWithCss
@@ -143,59 +155,58 @@ const TableExampleContent = ({onRendered, ...props}: Partial<FormViewerProps> & 
   useEffect(() => {
     let cancelled = false
 
-    ensureRsuiteCss()
-      .then(() => {
-        if (!cancelled) {
-          setCssReady(true)
-        }
-      })
-      .catch(console.error)
+    withRenderLock(async () => {
+      try {
+        await ensureRsuiteCss()
+      } catch (error) {
+        console.error(error)
+      }
+
+      if (cancelled) {
+        return
+      }
+
+      setStatus('mounting')
+      await waitForNextPaint()
+      await waitForNextPaint()
+
+      if (cancelled) {
+        return
+      }
+
+      const root = contentRef.current
+      if (root) {
+        await waitForTableLayout(root)
+        await waitForNextPaint()
+      }
+
+      if (!cancelled) {
+        setStatus('ready')
+      }
+    }).catch(console.error)
 
     return () => {
       cancelled = true
     }
   }, [])
 
-  useEffect(() => {
-    if (!cssReady || isStyled || !contentRef.current) {
-      return
-    }
-
-    let cancelled = false
-    const root = contentRef.current
-
-    const reveal = async () => {
-      await waitForTableLayout(root)
-      await waitForNextPaint()
-      if (cancelled) {
-        return
-      }
-      setIsStyled(true)
-      onRendered()
-    }
-
-    reveal().catch(console.error)
-
-    return () => {
-      cancelled = true
-    }
-  }, [cssReady, isStyled, onRendered])
-
-  if (!cssReady) {
+  if (status === 'loading-css') {
     return <TableExampleSkeleton/>
   }
 
+  const isReady = status === 'ready'
+
   return (
     <div className={styles.contentWrap}>
-      {!isStyled && (
+      {!isReady && (
         <div className={styles.skeletonOverlay}>
           <TableExampleSkeleton/>
         </div>
       )}
       <div
         ref={contentRef}
-        className={isStyled ? undefined : styles.pendingStyles}
-        aria-hidden={!isStyled}
+        className={isReady ? undefined : styles.pendingStyles}
+        aria-hidden={!isReady}
       >
         <Tabs>
           <TabItem value="form" label="Form" default>
@@ -212,11 +223,10 @@ const TableExampleContent = ({onRendered, ...props}: Partial<FormViewerProps> & 
 
 export const TableExample = (props: Partial<FormViewerProps>) => {
   const {ref, isNearViewport} = useNearViewport()
-  const {canRender, markRendered} = useSequentialRender(isNearViewport)
 
   return (
     <div ref={ref} className={styles.container}>
-      {canRender ? <TableExampleContent {...props} onRendered={markRendered} /> : <TableExampleSkeleton/>}
+      {isNearViewport ? <TableExampleContent {...props} /> : <TableExampleSkeleton/>}
     </div>
   )
 }
