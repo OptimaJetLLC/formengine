@@ -846,6 +846,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/variables/RsLocalizationWrapper",
+              label: "RsLocalizationWrapper"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/variables/rsMenu",
               label: "rsMenu"
             },
@@ -931,6 +936,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/variables/RsThemeWrapper",
+              label: "RsThemeWrapper"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/variables/rsTimePicker",
               label: "rsTimePicker"
             },
@@ -966,6 +976,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/variables/RsViewWrapper",
+              label: "RsViewWrapper"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/variables/rsWizard",
               label: "rsWizard"
             },
@@ -994,11 +1009,6 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/functions/ltrCssLoader",
               label: "ltrCssLoader"
-            },
-            {
-              type: "doc",
-              id: "api-reference/@react-form-builder/components-rsuite/functions/RsLocalizationWrapper",
-              label: "RsLocalizationWrapper"
             },
             {
               type: "doc",
@@ -3554,6 +3564,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/RsLocalizationWrapper",
+                      label: "RsLocalizationWrapper"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rsMenu",
                       label: "rsMenu"
                     },
@@ -3639,6 +3654,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/RsThemeWrapper",
+                      label: "RsThemeWrapper"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rsTimePicker",
                       label: "rsTimePicker"
                     },
@@ -3674,6 +3694,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/RsViewWrapper",
+                      label: "RsViewWrapper"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rsWizard",
                       label: "rsWizard"
                     },
@@ -3702,11 +3727,6 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/functions/ltrCssLoader",
                       label: "ltrCssLoader"
-                    },
-                    {
-                      type: "doc",
-                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/functions/RsLocalizationWrapper",
-                      label: "RsLocalizationWrapper"
                     },
                     {
                       type: "doc",
@@ -4186,6 +4206,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/RsLocalizationWrapper",
+                      label: "RsLocalizationWrapper"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/rsMenu",
                       label: "rsMenu"
                     },
@@ -4271,6 +4296,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/RsThemeWrapper",
+                      label: "RsThemeWrapper"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/rsTimePicker",
                       label: "rsTimePicker"
                     },
@@ -4306,6 +4336,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/RsViewWrapper",
+                      label: "RsViewWrapper"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/rsWizard",
                       label: "rsWizard"
                     },
@@ -4334,11 +4369,6 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/functions/ltrCssLoader",
                       label: "ltrCssLoader"
-                    },
-                    {
-                      type: "doc",
-                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/functions/RsLocalizationWrapper",
-                      label: "RsLocalizationWrapper"
                     },
                     {
                       type: "doc",
@@ -4872,6 +4902,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/RsLocalizationWrapper",
+                      label: "RsLocalizationWrapper"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rsMenu",
                       label: "rsMenu"
                     },
@@ -4957,6 +4992,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/RsThemeWrapper",
+                      label: "RsThemeWrapper"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rsTimePicker",
                       label: "rsTimePicker"
                     },
@@ -4992,6 +5032,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/RsViewWrapper",
+                      label: "RsViewWrapper"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rsWizard",
                       label: "rsWizard"
                     },
@@ -5020,11 +5065,6 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/functions/ltrCssLoader",
                       label: "ltrCssLoader"
-                    },
-                    {
-                      type: "doc",
-                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/functions/RsLocalizationWrapper",
-                      label: "RsLocalizationWrapper"
                     },
                     {
                       type: "doc",

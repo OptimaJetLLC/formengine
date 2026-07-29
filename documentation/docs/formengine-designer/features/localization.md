@@ -429,7 +429,7 @@ type [FormViewerWrapperComponentProps](/api-reference/@react-form-builder/core/i
 your own wrapper for your component library and pass it to the `withViewerWrapper` function.
 
 One practical example of using the `withViewerWrapper` function is by implementing
-the [RsLocalizationWrapper](/api-reference/@react-form-builder/components-rsuite/functions/RsLocalizationWrapper) for React Suite
+the [RsLocalizationWrapper](/api-reference/@react-form-builder/components-rsuite/variables/RsLocalizationWrapper) for React Suite
 components, i.e.:
 
 ```typescript

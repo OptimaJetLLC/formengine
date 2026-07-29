@@ -1,4 +1,4 @@
-import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponents, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, rSuiteComponents, RsViewWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, createView, FormViewer} from '@react-form-builder/core'
 import {useCallback, useRef} from 'react'
@@ -11,7 +11,7 @@ const componentsMetadata = rSuiteComponents.map(definer => definer.build().model
 
 const view = createView(componentsMetadata)
   // The following parameters are required for correct CSS loading in LTR and RTL modes
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 

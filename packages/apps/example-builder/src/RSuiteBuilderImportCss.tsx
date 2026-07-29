@@ -3,7 +3,7 @@ import {antdComponents, antI18nComponentsDescriptions} from '@react-form-builder
 import {fastQrComponent, fastQrComponentsDescriptions} from '@react-form-builder/components-fast-qr'
 import {googleMapComponent, googleMapComponentsDescriptions} from '@react-form-builder/components-google-map'
 import {richTextComponent, richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
-import {RsLocalizationWrapper, rSuiteComponents, rSuiteComponentsDescriptions} from '@react-form-builder/components-rsuite'
+import {RsViewWrapper, rSuiteComponents, rSuiteComponentsDescriptions} from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
 import {uploaderComponent, uploaderComponentsDescriptions} from '@react-form-builder/components-uploader'
@@ -51,7 +51,7 @@ const components = [
 
 const view = new BuilderView(components)
   .withTemplates(['template', 'agreement', 'login form'])
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withComponentLibraryDescription(antI18nComponentsDescriptions)
   .withComponentLibraryDescription(fastQrComponentsDescriptions)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)

@@ -2,7 +2,7 @@ import {antdComponents, antI18nComponentsDescriptions} from '@react-form-builder
 import {fastQrComponent, fastQrComponentsDescriptions} from '@react-form-builder/components-fast-qr'
 import {googleMapComponent, googleMapComponentsDescriptions} from '@react-form-builder/components-google-map'
 import {richTextComponent, richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
-import {RsLocalizationWrapper, rSuiteComponents, rSuiteComponentsDescriptions} from '@react-form-builder/components-rsuite'
+import {RsViewWrapper, rSuiteComponents, rSuiteComponentsDescriptions} from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
 import {BuilderView, loadResource, unloadResource} from '@react-form-builder/core'
@@ -23,7 +23,7 @@ const components = [
 ].map(definer => definer.build())
 
 const view = new BuilderView(components)
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withComponentLibraryDescription(antI18nComponentsDescriptions)
   .withComponentLibraryDescription(fastQrComponentsDescriptions)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)

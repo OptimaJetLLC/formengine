@@ -5,7 +5,7 @@ import {googleMapComponent, googleMapComponentsDescriptions} from '@react-form-b
 import {richTextComponent, richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
 import {
   ltrCssLoader,
-  RsLocalizationWrapper,
+  RsViewWrapper,
   rSuiteComponents,
   rSuiteComponentsDescriptions,
   rtlCssLoader,
@@ -53,7 +53,7 @@ const components = [
 
 const view = new BuilderView(components)
   .withTemplates(['template', 'agreement', 'login form'])
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withComponentLibraryDescription(antI18nComponentsDescriptions)

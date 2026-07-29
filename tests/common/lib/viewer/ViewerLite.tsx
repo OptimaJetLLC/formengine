@@ -1,4 +1,4 @@
-import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponents, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, rSuiteComponents, RsViewWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentLocalizer, createView, FormViewerLite} from '@react-form-builder/core'
 import formObj from './user.form.json'
 
@@ -7,7 +7,7 @@ const form = JSON.stringify(formObj)
 const componentsMetadata = rSuiteComponents.map(definer => definer.build().model)
 
 const view = createView(componentsMetadata)
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 

@@ -1,4 +1,4 @@
-import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsViewWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {
   ActionDefinition,
   BiDi,
@@ -76,7 +76,7 @@ const data = {
 
 const view = new BuilderView(allComponentsBuilder)
   .withTemplates(['template', 'agreement', 'login form'])
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 

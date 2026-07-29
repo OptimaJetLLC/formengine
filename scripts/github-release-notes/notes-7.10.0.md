@@ -31,7 +31,7 @@ Update all packages to version **7.10.0**. No additional actions are required.
 
 ### Enhancements
 
-* Added support for [BuilderThemeProvider](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/BuilderThemeProvider) in [RsLocalizationWrapper](https://formengine.io/documentation/api-reference/@react-form-builder/components-rsuite/functions/RsLocalizationWrapper) to enable theme switching in FormViewer when using RSuite components.
+* Added support for [BuilderThemeProvider](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/BuilderThemeProvider) in [RsLocalizationWrapper](https://formengine.io/documentation/api-reference/@react-form-builder/components-rsuite/variables/RsLocalizationWrapper) to enable theme switching in FormViewer when using RSuite components.
 * Added new `ComponentStore` methods:
   * `addValidationRule`
   * `hasValidationRule`

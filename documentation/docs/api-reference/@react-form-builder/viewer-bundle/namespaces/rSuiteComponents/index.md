@@ -61,6 +61,7 @@
 - [rsInput](variables/rsInput.md)
 - [rsLabel](variables/rsLabel.md)
 - [rsLink](variables/rsLink.md)
+- [RsLocalizationWrapper](variables/RsLocalizationWrapper.md)
 - [rsMenu](variables/rsMenu.md)
 - [rsMessage](variables/rsMessage.md)
 - [rsModal](variables/rsModal.md)
@@ -78,6 +79,7 @@
 - [rsTab](variables/rsTab.md)
 - [rsTagPicker](variables/rsTagPicker.md)
 - [rsTextArea](variables/rsTextArea.md)
+- [RsThemeWrapper](variables/RsThemeWrapper.md)
 - [rsTimePicker](variables/rsTimePicker.md)
 - [rsToggle](variables/rsToggle.md)
 - [rsTooltip](variables/rsTooltip.md)
@@ -85,6 +87,7 @@
 - [rSuiteComponentsDescriptions](variables/rSuiteComponentsDescriptions.md)
 - [rSuiteEnUsComponentsDescriptions](variables/rSuiteEnUsComponentsDescriptions.md)
 - [rsUploader](variables/rsUploader.md)
+- [RsViewWrapper](variables/RsViewWrapper.md)
 - [rsWizard](variables/rsWizard.md)
 - [rsWizardStep](variables/rsWizardStep.md)
 - [view](variables/view.md)
@@ -93,5 +96,4 @@
 ## Functions
 
 - [ltrCssLoader](functions/ltrCssLoader.md)
-- [RsLocalizationWrapper](functions/RsLocalizationWrapper.md)
 - [rtlCssLoader](functions/rtlCssLoader.md)

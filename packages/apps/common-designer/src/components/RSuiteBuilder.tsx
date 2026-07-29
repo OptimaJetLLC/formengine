@@ -1,4 +1,4 @@
-import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsViewWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, namedObserver} from '@react-form-builder/core'
 import {BuilderView} from '@react-form-builder/designer'
 import type {FormBuilderAppProps} from '../utils/types'
@@ -14,7 +14,7 @@ import {
 } from './rsuiteDesignerComponents'
 
 const view = new BuilderView(designerComponents)
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withComponentLibraryDescription(fastQrComponentsDescriptions)

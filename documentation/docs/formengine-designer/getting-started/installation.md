@@ -340,7 +340,7 @@ window.onload = function () {
   const {
     ltrCssLoader,
     rsErrorMessage,
-    RsLocalizationWrapper,
+    RsViewWrapper,
     rsTooltip,
     rtlCssLoader
   } = rSuiteComponents
@@ -358,7 +358,7 @@ window.onload = function () {
   ].map(component => component.build())
 
   const view = createBuilderView(myComponentsSet)
-    .withViewerWrapper(RsLocalizationWrapper)
+    .withViewerWrapper(RsViewWrapper)
     .withCssLoader('ltr', ltrCssLoader)
     .withCssLoader('rtl', rtlCssLoader)
 

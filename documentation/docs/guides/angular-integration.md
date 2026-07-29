@@ -672,6 +672,7 @@ import {createElement, ForwardedRef} from 'react';
 import {
   ltrCssLoader,
   RsLocalizationWrapper,
+  RsViewWrapper,
   rSuiteComponents,
   rtlCssLoader,
 } from '@react-form-builder/components-rsuite';
@@ -692,7 +693,7 @@ const componentsMetadata = rSuiteComponents.map((definer) => definer.build());
 const viewerComponents = componentsMetadata.map((componentMetadata) => componentMetadata.model);
 
 const builderView = new BuilderView(componentsMetadata)
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 

@@ -1,4 +1,4 @@
-import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponents, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsViewWrapper, rSuiteComponents, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi} from '@react-form-builder/core'
 import type {IFormStorage} from '@react-form-builder/designer'
@@ -12,7 +12,7 @@ const builderView = new BuilderView(componentsMetadata)
   // Pass an array of template names to the withTemplates function to display them in the designer
   .withTemplates([])
   // The following parameters are required for correct CSS loading in LTR and RTL modes
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 

@@ -1,4 +1,4 @@
-import {RsLocalizationWrapper} from '@react-form-builder/components-rsuite'
+import {RsViewWrapper} from '@react-form-builder/components-rsuite'
 import {namedObserver} from '@react-form-builder/core'
 import {BuilderView} from '@react-form-builder/designer'
 import type {FormBuilderAppProps} from '../utils/types'
@@ -17,7 +17,7 @@ import '@react-form-builder/core/assets/styles.css'
 import '@react-form-builder/components-rsuite/assets/styles.ltr.css'
 
 const view = new BuilderView(designerComponents)
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withComponentLibraryDescription(fastQrComponentsDescriptions)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)

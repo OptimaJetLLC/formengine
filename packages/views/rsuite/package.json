@@ -89,6 +89,12 @@
     "./localization-wrapper": {
       "import": "./src/components/RsLocalizationWrapper.tsx"
     },
+    "./theme-wrapper": {
+      "import": "./src/components/RsThemeWrapper.tsx"
+    },
+    "./view-wrapper": {
+      "import": "./src/components/RsViewWrapper.tsx"
+    },
     "./menu": {
       "import": "./src/components/RsMenu.tsx"
     },

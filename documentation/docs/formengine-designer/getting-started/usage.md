@@ -29,7 +29,7 @@ You can simply copy and paste the below code into your project and use the `Desi
 import {
   ltrCssLoader,
   rsErrorMessage,
-  RsLocalizationWrapper,
+  RsViewWrapper,
   rsTooltip,
   rSuiteComponents,
   rtlCssLoader
@@ -45,7 +45,7 @@ const builderView = new BuilderView(componentsMetadata)
   // Pass an array of template names to the withTemplates function to display them in the designer
   .withTemplates([])
   // The following parameters are required for correct CSS loading in LTR and RTL modes
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 

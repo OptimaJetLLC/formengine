@@ -5,7 +5,7 @@ import {googleMapComponentsDescriptions} from '@react-form-builder/components-go
 import * as richTextComponent from '@react-form-builder/components-rich-text'
 import {richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
 import * as rSuiteComponents from '@react-form-builder/components-rsuite'
-import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponentsDescriptions, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsViewWrapper, rSuiteComponentsDescriptions, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import * as rSuiteTableComponents from '@react-form-builder/components-rsuite-table'
 import {rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import * as signatureComponent from '@react-form-builder/components-signature'
@@ -28,7 +28,7 @@ const components = [
 ].map(definer => definer.build())
 
 const defaultView = new BuilderView(components)
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withComponentLibraryDescription(fastQrComponentsDescriptions)
@@ -39,7 +39,7 @@ const defaultView = new BuilderView(components)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
 const noCssView = new BuilderView(components)
-  .withViewerWrapper(RsLocalizationWrapper)
+  .withViewerWrapper(RsViewWrapper)
   .withComponentLibraryDescription(fastQrComponentsDescriptions)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
