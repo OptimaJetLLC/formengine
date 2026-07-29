@@ -1,0 +1,94 @@
+.container {
+  min-height: 320px;
+}
+
+.contentWrap {
+  position: relative;
+  min-height: 320px;
+}
+
+.pendingStyles {
+  visibility: hidden;
+}
+
+.skeletonOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.skeleton {
+  border-radius: var(--ifm-global-radius);
+  box-shadow: var(--ifm-global-shadow-lw);
+  overflow: hidden;
+  height: 100%;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.5rem 0.5rem 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.tab {
+  width: 3.5rem;
+  height: 2rem;
+  border-radius: var(--ifm-global-radius) var(--ifm-global-radius) 0 0;
+}
+
+.tabWide {
+  width: 4.5rem;
+}
+
+.content {
+  padding: 1rem;
+  background: var(--ifm-pre-background);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--ifm-color-emphasis-200) 25%,
+    var(--ifm-color-emphasis-300) 50%,
+    var(--ifm-color-emphasis-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.textLine {
+  composes: shimmer;
+  height: 0.875rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.textLineShort {
+  composes: textLine;
+  width: 70%;
+}
+
+.tableHeader {
+  composes: shimmer;
+  height: 2.25rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.tableRow {
+  composes: shimmer;
+  height: 2rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
