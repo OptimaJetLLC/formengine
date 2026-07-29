@@ -39,7 +39,6 @@ FormEngine 8.0.0 removes Emotion-based style injection from Core, Designer, and 
   * [RsWizard](https://formengine.io/documentation/api-reference/@react-form-builder/components-rsuite/variables/rsWizard)
 * `SimpleField` [clear](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/Field#clear) now sets the field value to `undefined` instead of the control `modelValue`.
 
-
 ### Update instructions
 
 Update all packages to version **8.0.0**.

@@ -12,9 +12,9 @@ FormEngine 7.12.0 introduces **[Mantine components](https://formengine.io/docume
 
 ## Key features
 
-* Mantine components integration for building forms with the Mantine UI library.
-* JSON schemas for component libraries.
-* Extended configuration options, including support for passing user-defined context.
+- Mantine components integration for building forms with the Mantine UI library.
+- JSON schemas for component libraries.
+- Extended configuration options, including support for passing user-defined context.
 
 ## Changelog
 
@@ -24,17 +24,17 @@ Update all packages to version **7.12.0**. No additional actions are required.
 
 ### Features
 
-* Added **[Mantine components](https://formengine.io/documentation/components-library/mantine)** to the [component library](https://formengine.io/documentation/components-library/) as an alternative to Material UI and RSuite.
-* Added **JSON schemas for component libraries** to improve tooling and validation.
-* Added support for passing **[user-defined context](https://formengine.io/documentation/formengine-core/storing-user-defined-data#accessing-your-environment-via-usercontext)** and **[initialState](https://formengine.io/documentation/formengine-core/storing-user-defined-data#initializing-form-state-from-formviewer)**  so that advanced scenarios can inject additional data into forms at runtime.
+- Added **[Mantine components](https://formengine.io/documentation/components-library/mantine)** to the [component library](https://formengine.io/documentation/components-library/) as an alternative to Material UI and RSuite.
+- Added **JSON schemas for component libraries** to improve tooling and validation.
+- Added support for passing **[user-defined context](https://formengine.io/documentation/formengine-core/storing-user-defined-data#accessing-your-environment-via-usercontext)** and **[initialState](https://formengine.io/documentation/formengine-core/storing-user-defined-data#initializing-form-state-from-formviewer)**  so that advanced scenarios can inject additional data into forms at runtime.
 
 ### Bug fixes
 
-* Fixed an issue where the **RSuite view** could break styles on the first load.
-* Fixed a problem where **every created form** appeared as a **Template** in the templates section.
-* Fixed **extra indentation in nested forms** so layouts render correctly.
-* Fixed documentation issues related to the **data table dark theme**.
-* Fixed a bug where the **modal template picker** could appear empty.
+- Fixed an issue where the **RSuite view** could break styles on the first load.
+- Fixed a problem where **every created form** appeared as a **Template** in the templates section.
+- Fixed **extra indentation in nested forms** so layouts render correctly.
+- Fixed documentation issues related to the **data table dark theme**.
+- Fixed a bug where the **modal template picker** could appear empty.
 
 ### Resources
 

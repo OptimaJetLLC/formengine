@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/components-rich-text",
-  "version": "10.0.1",
+  "version": "10.1.0",
   "private": false,
   "main": "src/index.ts",
   "type": "module",
@@ -29,7 +29,7 @@
     "react-quill-new": "^3.3.0"
   },
   "peerDependencies": {
-    "@react-form-builder/core": "10.0.1",
+    "@react-form-builder/core": "10.1.0",
     "react": ">=17.0.2 || ^18 || ^19"
   },
   "peerDependenciesMeta": {

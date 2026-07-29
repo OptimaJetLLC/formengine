@@ -16,8 +16,8 @@ Additionally, this release improves theming capabilities in FormViewer, includin
 
 ## Key features
 
-* Integration with the **Material UI** components library for building and rendering forms.
-* Improved theming capabilities in FormViewer, including support for theme switching.
+- Integration with the **Material UI** components library for building and rendering forms.
+- Improved theming capabilities in FormViewer, including support for theme switching.
 
 ## Changelog
 
@@ -27,20 +27,20 @@ Update all packages to version **7.10.0**. No additional actions are required.
 
 ### Features
 
-* Added integration with the [Material UI components library](https://formengine.io/documentation/components-library/#material-ui-components).
+- Added integration with the [Material UI components library](https://formengine.io/documentation/components-library/#material-ui-components).
 
 ### Enhancements
 
-* Added support for [BuilderThemeProvider](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/BuilderThemeProvider) in [RsLocalizationWrapper](https://formengine.io/documentation/api-reference/@react-form-builder/components-rsuite/variables/RsLocalizationWrapper) to enable theme switching in FormViewer when using RSuite components.
-* Added new `ComponentStore` methods:
-  * `addValidationRule`
-  * `hasValidationRule`
-  * `removeValidationRule`
-* Extended the parameters of [Definer.icon](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/Definer#icon) to support using either a component icon or an icon name.
-* Added the [required](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/required) annotation builder for `boolean` properties that mark a field as required.
-* Added [Annotation.controlsRequiredProp](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/Annotation#controlsrequiredprop) to indicate that a property value controls the required flag.
-* Added a link to the npm package on the documentation page for each component.
-* Renamed the **Generate JSON form schema** menu item to **Export JSON form schema**.
+- Added support for [BuilderThemeProvider](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/BuilderThemeProvider) in [RsLocalizationWrapper](https://formengine.io/documentation/api-reference/@react-form-builder/components-rsuite/variables/RsLocalizationWrapper) to enable theme switching in FormViewer when using RSuite components.
+- Added new `ComponentStore` methods:
+  - `addValidationRule`
+  - `hasValidationRule`
+  - `removeValidationRule`
+- Extended the parameters of [Definer.icon](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/Definer#icon) to support using either a component icon or an icon name.
+- Added the [required](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/required) annotation builder for `boolean` properties that mark a field as required.
+- Added [Annotation.controlsRequiredProp](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/Annotation#controlsrequiredprop) to indicate that a property value controls the required flag.
+- Added a link to the npm package on the documentation page for each component.
+- Renamed the **Generate JSON form schema** menu item to **Export JSON form schema**.
 
 ### Bug fixes
 

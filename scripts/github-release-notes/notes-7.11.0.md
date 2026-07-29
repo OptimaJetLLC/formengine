@@ -12,9 +12,9 @@ FormEngine 7.11.0 focuses on **core package structure**, **MUI component improve
 
 ## Key features
 
-* Leaner core package after barrel file removal (improved tree shaking).
-* MUI disabled and read-only support and new component options (MuiDialog, MuiTextField type).
-* Dependency and security updates across examples and core.
+- Leaner core package after barrel file removal (improved tree shaking).
+- MUI disabled and read-only support and new component options (MuiDialog, MuiTextField type).
+- Dependency and security updates across examples and core.
 
 ## Changelog
 
@@ -24,18 +24,18 @@ Update all packages to version **7.11.0**. No additional actions are required.
 
 ### Features
 
-* Added **MuiDialog** component (see [Forms JSON — Modal component](https://formengine.io/documentation/components-library/material-ui/dialog)).
-* Added **type** property support to [MuiTextField](https://formengine.io/documentation/components-library/material-ui/text-field#main-properties).
-* Added support for **disabled and read-only** properties for MUI components (see [Disabled and read-only](https://formengine.io/documentation/formengine-core/disabled-and-read-only)).
+- Added **MuiDialog** component (see [Forms JSON — Modal component](https://formengine.io/documentation/components-library/material-ui/dialog)).
+- Added **type** property support to [MuiTextField](https://formengine.io/documentation/components-library/material-ui/text-field#main-properties).
+- Added support for **disabled and read-only** properties for MUI components (see [Disabled and read-only](https://formengine.io/documentation/formengine-core/disabled-and-read-only)).
 
 ### Enhancements
 
-* Removed barrel files from the core package to improve tree shaking and package structure.
-* Moved bundle-size tooling to public examples and dropped install-from-tgz flow.
-* Extended FormEngine core documentation.
-* Documented bundle size comparison with competitors.
-* Bumped Next.js from 15.4.10 to 16.1.5 in `/examples/premium/with-nextjs`.
-* Bumped ESLint and related packages in premium examples (with-nextjs-v16, with-remix-v2).
+- Removed barrel files from the core package to improve tree shaking and package structure.
+- Moved bundle-size tooling to public examples and dropped install-from-tgz flow.
+- Extended FormEngine core documentation.
+- Documented bundle size comparison with competitors.
+- Bumped Next.js from 15.4.10 to 16.1.5 in `/examples/premium/with-nextjs`.
+- Bumped ESLint and related packages in premium examples (with-nextjs-v16, with-remix-v2).
 
 ### Bug fixes
 

@@ -52,12 +52,24 @@ function extractDate(body: string): string | undefined {
 }
 
 function extractSection(body: string, heading: string): string | undefined {
-  const pattern = new RegExp(`^## ${heading}\\s*([\\s\\S]*?)(^##\\s|\\Z)`, 'm')
-  const match = body.match(pattern)
-  if (!match) {
+  const headingLine = `## ${heading}`
+  const lines = body.split('\n')
+  const startLine = lines.findIndex(line => line.trim() === headingLine)
+  if (startLine === -1) {
     return undefined
   }
-  return match[1].trim()
+
+  const sectionLines: string[] = []
+  for (let index = startLine + 1; index < lines.length; index++) {
+    const line = lines[index]
+    if (line.startsWith('## ')) {
+      break
+    }
+    sectionLines.push(line)
+  }
+
+  const section = sectionLines.join('\n').trim()
+  return section || undefined
 }
 
 function extractKeyFeatures(body: string): string[] | undefined {

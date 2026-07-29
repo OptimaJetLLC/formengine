@@ -12,10 +12,10 @@ FormEngine 7.13.0 delivers improvements across the designer, components, and bui
 
 ## Key features
 
-* Added [MuiDatePicker](https://formengine.io/documentation/components-library/material-ui/date-picker) support.
-* Added [component toolbar customization](https://formengine.io/documentation/formengine-designer/features/designer-customization#customizing-the-formbuilder-interface) in the designer.
-* Added designer events for [add/remove callbacks](https://formengine.io/documentation/formengine-designer/faq/tracking-component-add-and-remove-events).
-* Added direct component ref handling in action events via [refValue](https://formengine.io/documentation/formengine-core/actions-and-events#accessing-the-component-dom-element-in-actions) (DOM element, imperative handle, or `null`).
+- Added [MuiDatePicker](https://formengine.io/documentation/components-library/material-ui/date-picker) support.
+- Added [component toolbar customization](https://formengine.io/documentation/formengine-designer/features/designer-customization#customizing-the-formbuilder-interface) in the designer.
+- Added designer events for [add/remove callbacks](https://formengine.io/documentation/formengine-designer/faq/tracking-component-add-and-remove-events).
+- Added direct component ref handling in action events via [refValue](https://formengine.io/documentation/formengine-core/actions-and-events#accessing-the-component-dom-element-in-actions) (DOM element, imperative handle, or `null`).
 
 ## Changelog
 
@@ -25,18 +25,18 @@ Update all packages to version **7.13.0**. No additional actions are required.
 
 ### Features
 
-* Added [component toolbar customization](https://formengine.io/documentation/formengine-designer/features/designer-customization#customizing-the-formbuilder-interface).
-* Added designer events for [add/remove callbacks](https://formengine.io/documentation/formengine-designer/faq/tracking-component-add-and-remove-events).
-* Added direct [refValue](https://formengine.io/documentation/formengine-core/actions-and-events#accessing-the-component-dom-element-in-actions) support for component refs in action events.
-* Added [MuiDatePicker](https://formengine.io/documentation/components-library/material-ui/date-picker).
-* Added Mantine to bundle size comparison.
+- Added [component toolbar customization](https://formengine.io/documentation/formengine-designer/features/designer-customization#customizing-the-formbuilder-interface).
+- Added designer events for [add/remove callbacks](https://formengine.io/documentation/formengine-designer/faq/tracking-component-add-and-remove-events).
+- Added direct [refValue](https://formengine.io/documentation/formengine-core/actions-and-events#accessing-the-component-dom-element-in-actions) support for component refs in action events.
+- Added [MuiDatePicker](https://formengine.io/documentation/components-library/material-ui/date-picker).
+- Added Mantine to bundle size comparison.
 
 ### Enhancements
 
-* Improved tree shaking in the core library.
-* Added a link to the bundle size comparison on public GitHub.
-* Replaced the documentation search engine with Algolia.
-* Sorted union types in API reference output.
+- Improved tree shaking in the core library.
+- Added a link to the bundle size comparison on public GitHub.
+- Replaced the documentation search engine with Algolia.
+- Sorted union types in API reference output.
 
 ### Bug fixes
 
