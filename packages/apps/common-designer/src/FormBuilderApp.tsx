@@ -14,6 +14,7 @@ import {RSuiteBuilderImportCss} from './components/RSuiteBuilderImportCss'
 import {customization} from './utils/customization'
 import {licenseKey} from './utils/licenseKey'
 import type {FormBuilderAppProps} from './utils/types'
+import {parseDemoUrlBootstrap} from './utils/urlFormBootstrap'
 
 import '@react-form-builder/apps-common/public/style.css'
 
@@ -33,15 +34,24 @@ const getBuilder = (view: ViewType, appName: string, props: Partial<FormBuilderP
       return <RSuiteBuilderImportCss {...props} />
     case 'rsuite-inject-css':
       return <RSuiteBuilder {...props} />
-    default:
-      return null
+    default: {
+      const _exhaustive: never = view
+      return _exhaustive
+    }
   }
 }
 
 const RawFormBuilderApp = (builderProps: FormBuilderAppProps = {}) => {
   const {appName = 'form-builder', viewPickerPreset = 'full', ...formBuilderPassThrough} = builderProps
-  const [view, setView] = usePersistentView(appName)
+  const urlBootstrap = useMemo(() => {
+    if (typeof window === 'undefined') {
+      return null
+    }
+    return parseDemoUrlBootstrap(window.location.search)
+  }, [])
+  const [view, setView] = usePersistentView(appName, {initialView: urlBootstrap?.view})
   const viewStorageKey = getViewStorageKey(appName)
+
   const providerValue = useMemo(
     () => ({
       view,

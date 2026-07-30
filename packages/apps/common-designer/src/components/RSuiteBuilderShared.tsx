@@ -16,6 +16,7 @@ import config from '../utils/config.json'
 import {licenseKey} from '../utils/licenseKey'
 import type {FormBuilderAppProps} from '../utils/types'
 import {useIndexedDbStorage} from '../utils/useIndexedDbStorage'
+import {useUrlFormBootstrap} from '../utils/useUrlFormBootstrap'
 import {useSetBuilderRef} from './BuilderRefContext'
 
 import {forms, sampleFormName} from './rsuiteDesignerComponents'
@@ -45,6 +46,12 @@ export function RSuiteBuilderShared(props: RSuiteBuilderSharedProps) {
   }, [setBuilderRef])
 
   const {formStorage, initialized, indexedDbExists} = useIndexedDbStorage(dbName, storeName, forms)
+  const getBundledForm = useCallback((name: string) => getFormFromJson(name), [])
+  const urlBootstrap = useUrlFormBootstrap({
+    formStorage,
+    storageReady: initialized,
+    getBundledForm,
+  })
 
   const presetStorage = useMemo(() => {
     return indexedDbExists ? new IndexedDbPresetStorage(presetDbName, presetStoreName) : undefined
@@ -52,13 +59,21 @@ export function RSuiteBuilderShared(props: RSuiteBuilderSharedProps) {
 
   const getFormFn = useCallback(
     (formName?: string) => {
-      const name = !formName || isUndefined(formName) ? sampleFormName : formName
-      if (!indexedDbExists || !formStorage) {
+      const name = !formName || isUndefined(formName) ? (urlBootstrap.formName ?? sampleFormName) : formName
+      if (formStorage) {
+        return formStorage.getForm(name).catch(() => {
+          if (urlBootstrap.bootstrap?.form?.mode === 'named' || !urlBootstrap.bootstrap?.form) {
+            return getFormFromJson(name)
+          }
+          throw new Error(`Unable to load form '${name}'`)
+        })
+      }
+      if (!indexedDbExists) {
         return getFormFromJson(name)
       }
-      return formStorage.getForm(name).catch(() => getFormFromJson(name))
+      return Promise.reject(new Error(`Unable to load form '${name}'`))
     },
-    [formStorage, indexedDbExists]
+    [formStorage, indexedDbExists, urlBootstrap.bootstrap?.form, urlBootstrap.formName]
   )
 
   const initDatabase = useCallback(async (dbFormStorage: IndexedDbFormStorage) => {
@@ -120,13 +135,14 @@ export function RSuiteBuilderShared(props: RSuiteBuilderSharedProps) {
     initDb().catch(e => console.error(e))
   }, [formStorage, presetStorage, getPresetOptions, initDatabase])
 
-  if (!initialized) return null
+  if (!initialized || !urlBootstrap.ready) return null
 
   return (
     <FormBuilder
       licenseKey={licenseKey}
       getForm={getFormFn}
-      formName={sampleFormName}
+      formName={urlBootstrap.formName ?? sampleFormName}
+      persistFormName={urlBootstrap.persistFormName}
       view={view}
       formStorage={formStorage}
       presetComponentOptions={presetOptions}

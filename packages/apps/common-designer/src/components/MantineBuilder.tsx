@@ -11,6 +11,7 @@ import '@mantine/tiptap/styles.css'
 import {licenseKey} from '../utils/licenseKey'
 import type {FormBuilderAppProps} from '../utils/types'
 import {useIndexedDbStorage} from '../utils/useIndexedDbStorage'
+import {useUrlFormBootstrap} from '../utils/useUrlFormBootstrap'
 import {useSetBuilderRef} from './BuilderRefContext'
 
 const sampleFormName = 'MantineForm'
@@ -22,16 +23,29 @@ const RawMantineBuilder = ({appName = 'form-builder', getForm, ...props}: FormBu
   const builderRef = useRef<IFormBuilder>(null)
   const setBuilderRef = useSetBuilderRef()
   const {formStorage, initialized, indexedDbExists} = useIndexedDbStorage(dbName, storeName, forms)
+  const getBundledForm = useCallback((name: string) => getFormFromJson(name), [])
+  const urlBootstrap = useUrlFormBootstrap({
+    formStorage: getForm ? undefined : formStorage,
+    storageReady: initialized,
+    getBundledForm,
+  })
   const getFormFn = useCallback(
     (formName?: string) => {
-      const name = formName ?? sampleFormName
-      if (!indexedDbExists || !formStorage) {
+      const name = formName ?? urlBootstrap.formName ?? sampleFormName
+      if (formStorage) {
+        return formStorage.getForm(name).catch(() => {
+          if (urlBootstrap.bootstrap?.form?.mode === 'named' || !urlBootstrap.bootstrap?.form) {
+            return getFormFromJson(name)
+          }
+          throw new Error(`Unable to load form '${name}'`)
+        })
+      }
+      if (!indexedDbExists) {
         return getFormFromJson(name)
       }
-
-      return formStorage.getForm(name).catch(() => getFormFromJson(name))
+      return Promise.reject(new Error(`Unable to load form '${name}'`))
     },
-    [formStorage, indexedDbExists]
+    [formStorage, indexedDbExists, urlBootstrap.bootstrap?.form, urlBootstrap.formName]
   )
   const storage = getForm ? undefined : formStorage
 
@@ -39,7 +53,7 @@ const RawMantineBuilder = ({appName = 'form-builder', getForm, ...props}: FormBu
     setBuilderRef?.(builderRef)
   }, [setBuilderRef])
 
-  if (!initialized) {
+  if (!initialized || !urlBootstrap.ready) {
     return null
   }
 
@@ -47,7 +61,8 @@ const RawMantineBuilder = ({appName = 'form-builder', getForm, ...props}: FormBu
     <FormBuilder
       licenseKey={licenseKey}
       getForm={getForm ?? getFormFn}
-      formName={sampleFormName}
+      formName={urlBootstrap.formName ?? sampleFormName}
+      persistFormName={urlBootstrap.persistFormName}
       localStoragePrefix={`${appName}-mantine`}
       view={builderView}
       formStorage={storage}

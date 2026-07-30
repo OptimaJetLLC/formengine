@@ -474,3 +474,5 @@ const logger = {
 ## Documentation Style Guide
 
 For documentation work under `documentation/docs`, follow `documentation/AGENTS.md`.
+
+When writing **any** markdown in this repository (docs, reports, plans, README tables), **format tables with aligned columns**: pad each cell so pipes line up vertically in the source. See the table formatting rules and examples in `documentation/AGENTS.md`.

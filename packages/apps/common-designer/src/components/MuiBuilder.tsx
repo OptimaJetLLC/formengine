@@ -13,6 +13,7 @@ import {useCallback, useEffect, useRef} from 'react'
 import {licenseKey} from '../utils/licenseKey'
 import type {FormBuilderAppProps} from '../utils/types'
 import {useIndexedDbStorage} from '../utils/useIndexedDbStorage'
+import {useUrlFormBootstrap} from '../utils/useUrlFormBootstrap'
 import {useSetBuilderRef} from './BuilderRefContext'
 
 const builderView = new BuilderView(components)
@@ -34,20 +35,33 @@ const RawMuiBuilder = ({appName = 'form-builder', ...props}: FormBuilderAppProps
   }, [setBuilderRef])
 
   const {formStorage, initialized, indexedDbExists} = useIndexedDbStorage(dbName, storeName, forms)
+  const getBundledForm = useCallback((name: string) => getFormFromJson(name), [])
+  const urlBootstrap = useUrlFormBootstrap({
+    formStorage,
+    storageReady: initialized,
+    getBundledForm,
+  })
 
   const getFormFn = useCallback(
     (formName?: string) => {
-      const name = formName ?? sampleFormName
-      if (!indexedDbExists || !formStorage) {
+      const name = formName ?? urlBootstrap.formName ?? sampleFormName
+      if (formStorage) {
+        return formStorage.getForm(name).catch(() => {
+          if (urlBootstrap.bootstrap?.form?.mode === 'named' || !urlBootstrap.bootstrap?.form) {
+            return getFormFromJson(name)
+          }
+          throw new Error(`Unable to load form '${name}'`)
+        })
+      }
+      if (!indexedDbExists) {
         return getFormFromJson(name)
       }
-
-      return formStorage.getForm(name).catch(() => getFormFromJson(name))
+      return Promise.reject(new Error(`Unable to load form '${name}'`))
     },
-    [formStorage, indexedDbExists]
+    [formStorage, indexedDbExists, urlBootstrap.bootstrap?.form, urlBootstrap.formName]
   )
 
-  if (!initialized) {
+  if (!initialized || !urlBootstrap.ready) {
     return null
   }
 
@@ -55,7 +69,8 @@ const RawMuiBuilder = ({appName = 'form-builder', ...props}: FormBuilderAppProps
     <FormBuilder
       licenseKey={licenseKey}
       getForm={getFormFn}
-      formName={sampleFormName}
+      formName={urlBootstrap.formName ?? sampleFormName}
+      persistFormName={urlBootstrap.persistFormName}
       localStoragePrefix={`${appName}-mui`}
       view={builderView}
       formStorage={formStorage}
