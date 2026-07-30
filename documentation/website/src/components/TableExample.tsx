@@ -4,7 +4,7 @@ import {buildForm, FormViewerProps} from '@react-form-builder/core'
 import CodeBlock from '@theme/CodeBlock'
 import TabItem from '@theme/TabItem'
 import Tabs from '@theme/Tabs'
-import {useEffect, useMemo, useRef, useState} from 'react'
+import {Component, useEffect, useMemo, useRef, useState} from 'react'
 import {FormViewer} from './FormViewer'
 import styles from './TableExample.module.css'
 import {useNearViewport} from './useNearViewport'
@@ -142,15 +142,26 @@ const TableExampleSkeleton = () => (
   </div>
 )
 
+const TableWithData = ({ view, props }) => (
+    <Tabs>
+      <TabItem value="form" label="Form" default>
+        <FormViewer view={view} getForm={getForm} {...props} />
+      </TabItem>
+      <TabItem value="json" label="JSON">
+        <JsonBlock formName={props.formName}/>
+      </TabItem>
+    </Tabs>
+)
+
+const view = (() => {
+  const result = viewWithCss
+  tableModels.forEach(model => result.define(model))
+  return result
+})()
+
 const TableExampleContent = (props: Partial<FormViewerProps>) => {
   const contentRef = useRef<HTMLDivElement>(null)
   const [status, setStatus] = useState<TableExampleStatus>('loading-css')
-
-  const view = useMemo(() => {
-    const result = viewWithCss
-    tableModels.forEach(model => result.define(model))
-    return result
-  }, [])
 
   useEffect(() => {
     let cancelled = false
@@ -208,14 +219,7 @@ const TableExampleContent = (props: Partial<FormViewerProps>) => {
         className={isReady ? undefined : styles.pendingStyles}
         aria-hidden={!isReady}
       >
-        <Tabs>
-          <TabItem value="form" label="Form" default>
-            <FormViewer view={view} getForm={getForm} {...props} />
-          </TabItem>
-          <TabItem value="json" label="JSON">
-            <JsonBlock formName={props.formName}/>
-          </TabItem>
-        </Tabs>
+        <TableWithData view={view} props={props}/>
       </div>
     </div>
   )
