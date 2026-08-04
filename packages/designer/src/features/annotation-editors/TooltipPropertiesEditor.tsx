@@ -4,7 +4,7 @@ import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useUniqueId} from '../../utils/useUniqueId'
 import {LabeledInput} from '../components/Containers'
 import {useTranslationPart} from '../localization/hooks'
-import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/Properties'
+import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/PropertyBlock'
 import {SCheckbox} from './BooleanInput'
 import {HintedLabel} from './Hinted'
 

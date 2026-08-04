@@ -177,6 +177,13 @@ const FormBuilderApp = () => {
 | 16 | PropertyLabel                                                                              | FE_PropertyLabel                                                                                       |               |
 | 17 | PropertyInput                                                                              | FE_PropertyInput                                                                                       |               |
 
+:::info note
+
+The right-panel content keys (`Main_Tab_Content`, `Style_Tab_Content`, `Actions_Tab_Content`, and `Rules_Tab_Content`) wrap the active
+properties tab body. They mount only when a component is selected on the canvas and that tab is open.
+
+:::
+
 ### Menu items customization
 
 Each item in the main menu can be customized individually. The following keys are available:
@@ -285,8 +292,8 @@ export const richTextEditor = define(RichTextEditor, 'RichTextEditor')
 
 #### Components group
 
-A component group is assigned the static class `FE_Palette_ComponentGroup` along with a category name prefixed with `FE_`.
-If a component group is not defined, components appear at the top of the list without a title and within container with additional class
+A component group is assigned the static class `FE_Palette_ComponentGroup` along with a category name prefixed with `FE_`. If a component
+group is not defined, components appear at the top of the list without a title and within container with additional class
 `FE_top`.
 
 ![Groups classes](/assets/customization/customization-groups-classes.png)

@@ -5,6 +5,7 @@ import {
   CustomizationMap,
   FormBuilder,
   FormBuilderProps,
+  IFormStorage,
   Options,
   useFormBuilder
 } from '@react-form-builder/designer'
@@ -13,60 +14,28 @@ import {fireEvent, render} from '@testing-library/react'
 import {klona} from 'klona/full'
 import {useCallback} from 'react'
 import {Button} from 'rsuite'
-import {describe, expect} from 'vitest'
+import {describe, expect, vi} from 'vitest'
 import form from './forms/designer-customization.json'
+
+/**
+ * Avoid @monaco-editor/react async ready setState (act warnings). Customization only needs a mountable stub.
+ */
+vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCodeEditor', () => ({
+  MonacoCodeEditor: ({className}: { className?: string }) => (
+    <div className={['monaco-editor', className].filter(Boolean).join(' ')}/>
+  ),
+}))
 
 const getFormFn = () => JSON.stringify(form)
 
-const App = ({customization}: Partial<FormBuilderProps>) => {
+const App = (props: Partial<FormBuilderProps>) => {
   return <FormBuilder
-    customization={customization}
     licenseKey={generatedLicenseKey}
     getForm={getFormFn}
     view={builderViewWithCss}
+    {...props}
   />
 }
-
-// TODO FE-1134
-const disabledZones = new Set([
-  'LocalizationSelect',
-  'JsonViewButton',
-  'ToggleThemeButton',
-
-  'PropertyInput',
-  'PropertyLabel',
-  'PropertyCodeButton',
-  'LabeledProperty',
-
-  'RightPanel_Content',
-
-  'Forms_Tab',
-
-  'Main_Tab_Content',
-  'Actions_Tab_Content',
-  'Style_Tab_Content',
-  'Tree_Tab_Content',
-  'Components_Tab_Content',
-  'Settings_Tab_Content',
-  'Rules_Tab_Content',
-  'Forms_Tab_Content',
-
-  // main menu
-  'MainMenu_Button',
-  'MainMenu_Dropdown',
-  'MainMenu_Item_AddNewForm',
-  'MainMenu_Item_Download',
-  'MainMenu_Item_Upload',
-  'MainMenu_Item_Save',
-  'MainMenu_Item_SaveAs',
-  // eslint-disable-next-line no-secrets/no-secrets
-  'MainMenu_Item_ExportForms',
-  'MainMenu_Item_ImportForms',
-  'MainMenu_Item_Clear',
-  // eslint-disable-next-line no-secrets/no-secrets
-  'MainMenu_Item_ExportJsonFormSchema',
-  'MainMenu_Item_LanguageSwitch',
-])
 
 const targetStyle = {
   backgroundColor: 'red !important'
@@ -80,29 +49,139 @@ const customRenderer = () => {
   </div>)
 }
 
-const isolate = false
-const only = isolate ? new Set(['Tree_Tab']) : undefined
 const editableWrapperTestId = 'comment-editable-wrapper'
-const toolbarZones = new Set<CustomizableKey>([
-  'Component_Toolbar',
-  'Component_Toolbar_Items',
-  'Component_Toolbar_Title',
-  'Component_Toolbar_AddButton',
-  'Component_Toolbar_CloneButton',
-  'Component_Toolbar_PresetComponentButton',
-  'Component_Toolbar_RemoveButton',
-])
 
-const activateToolbarZone = async (zone: CustomizableKey, findByTestId: (id: string) => Promise<HTMLElement>) => {
-  if (!toolbarZones.has(zone)) return
-  const editable = await findByTestId(editableWrapperTestId)
-  fireEvent.click(editable)
+type ActivateHelpers = {
+  container: HTMLElement
+  findByTestId: (id: string) => Promise<HTMLElement>
 }
 
-function createZoneStaticCustomization(): Array<[CustomizableKey, CustomizationMap]> {
+type ZoneAccess = {
+  /** Extra FormBuilder props required for the zone to mount. */
+  builderProps?: Partial<FormBuilderProps>
+  /** UI steps required before the zone is present and testable. */
+  activate?: (helpers: ActivateHelpers) => Promise<void>
+  /**
+   * Extra wait used by presence/class/style assertions after activate.
+   * Skipped for hidden/customRenderer where the zone content is intentionally absent.
+   */
+  awaitVisible?: (helpers: ActivateHelpers) => Promise<void>
+}
+
+const formStorage: IFormStorage = {
+  getForm: async () => getFormFn(),
+  getFormNames: async () => ['designer-customization'],
+  removeForm: async () => undefined,
+  saveForm: async () => undefined,
+}
+
+const formStorageProps: Partial<FormBuilderProps> = {
+  formStorage,
+  formName: 'designer-customization',
+  persistFormName: false,
+}
+
+const selectEditableComponent = async ({findByTestId}: ActivateHelpers) => {
+  fireEvent.click(await findByTestId(editableWrapperTestId))
+}
+
+const openLeftTab = (tabTestId: string) => async ({findByTestId}: ActivateHelpers) => {
+  fireEvent.click(await findByTestId(tabTestId))
+}
+
+const openRightTab = (tabTestId: string) => async (helpers: ActivateHelpers) => {
+  await selectEditableComponent(helpers)
+  fireEvent.click(await helpers.findByTestId(tabTestId))
+}
+
+const openMainMenu = async ({container}: ActivateHelpers) => {
+  const menuButton = container.querySelector('.FE_MainMenu_Button > button') as HTMLElement | null
+  expect(menuButton).toBeInTheDocument()
+  fireEvent.click(menuButton!)
+}
+
+/**
+ * Zones that wrap the form canvas. Hiding or replacing them removes `reactVersion` from the document.
+ */
+const formHostZones = new Set<CustomizableKey>(['MainContainer', 'CentralPanel', 'FormContainer'])
+
+const assignZoneAccess = (
+  zones: readonly CustomizableKey[],
+  access: ZoneAccess
+): Partial<Record<CustomizableKey, ZoneAccess>> =>
+  Object.fromEntries(zones.map(zone => [zone, access]))
+
+const selectEditableAccess: ZoneAccess = {activate: selectEditableComponent}
+const openMainMenuAccess: ZoneAccess = {activate: openMainMenu}
+const openMainMenuWithStorageAccess: ZoneAccess = {
+  builderProps: formStorageProps,
+  activate: openMainMenu,
+}
+
+/**
+ * FE-1134: zones that need builder props and/or extra UI steps before customization can be asserted.
+ */
+const zoneAccessConfig: Partial<Record<CustomizableKey, ZoneAccess>> = {
+  ...assignZoneAccess([
+    'Component_Toolbar',
+    'Component_Toolbar_Items',
+    'Component_Toolbar_Title',
+    'Component_Toolbar_AddButton',
+    'Component_Toolbar_CloneButton',
+    'Component_Toolbar_PresetComponentButton',
+    'Component_Toolbar_RemoveButton',
+    'RightPanel_Content',
+    'LabeledProperty',
+    'PropertyInput',
+    'PropertyLabel',
+    'PropertyCodeButton',
+  ], selectEditableAccess),
+
+  Tree_Tab_Content: {activate: openLeftTab('Tree_Tab')},
+  Settings_Tab_Content: {activate: openLeftTab('Settings_Tab')},
+  Forms_Tab: {builderProps: formStorageProps},
+  Forms_Tab_Content: {
+    builderProps: formStorageProps,
+    activate: openLeftTab('Forms_Tab'),
+    // Wait for async form list reload so presence assertions do not race setState.
+    awaitVisible: async ({findByTestId}) => {
+      await findByTestId('add-new-form-button')
+      await findByTestId('form-list-item-designer-customization')
+    },
+  },
+
+  Main_Tab_Content: {activate: openRightTab('Main_Tab')},
+  Style_Tab_Content: {activate: openRightTab('Style_Tab')},
+  Actions_Tab_Content: {activate: openRightTab('Actions_Tab')},
+  Rules_Tab_Content: {activate: openRightTab('Rules_Tab')},
+
+  ...assignZoneAccess([
+    'MainMenu_Item_Download',
+    'MainMenu_Item_Upload',
+    'MainMenu_Item_Clear',
+    'MainMenu_Item_LanguageSwitch',
+  ], openMainMenuAccess),
+
+  ...assignZoneAccess([
+    'MainMenu_Item_AddNewForm',
+    'MainMenu_Item_Save',
+    'MainMenu_Item_SaveAs',
+    // eslint-disable-next-line no-secrets/no-secrets
+    'MainMenu_Item_ExportForms',
+    'MainMenu_Item_ImportForms',
+  ], openMainMenuWithStorageAccess),
+
+  // eslint-disable-next-line no-secrets/no-secrets
+  MainMenu_Item_ExportJsonFormSchema: {
+    builderProps: {
+      generateJsonFormSchema: () => '{}',
+    },
+    activate: openMainMenu,
+  },
+}
+
+function createZoneStaticCustomization(): Array<[CustomizableKey, CustomizationMap, ZoneAccess | undefined]> {
   return Array.from(CustomizableZone)
-    .filter(z => !disabledZones.has(z))
-    .filter(z => typeof only === 'undefined' ? true : only.has(z))
     .map(zone => ([zone, {
       [zone]: {
         className: zoneCustomClass,
@@ -110,79 +189,76 @@ function createZoneStaticCustomization(): Array<[CustomizableKey, CustomizationM
         customRenderer: undefined,
         hidden: undefined
       } as Options
-    }]))
+    }, zoneAccessConfig[zone]]))
 }
 
-describe.each(createZoneStaticCustomization())(`should apply all possible customization settings for every zone`, function (zone, customization) {
-  const zoneClassName = `.FE_${zone}:not(.FE_Palette_Component):not(.FE_Palette_ComponentGroup)`
+describe.each(createZoneStaticCustomization())(
+  `should apply all possible customization settings for every zone`,
+  function (zone, customization, access) {
+    const zoneClassName = `.FE_${zone}:not(.FE_Palette_Component):not(.FE_Palette_ComponentGroup)`
+    const builderProps = access?.builderProps
+    // Form-host zones remove/replace the canvas, so reactVersion is unavailable under hide/replace.
+    const awaitForm = !formHostZones.has(zone)
 
-  it(`should have target zone ${zone} in the document`, async () => {
-    const {container, findByTestId} = render(<App customization={customization}/>)
+    const renderZone = (zoneCustomization: CustomizationMap) => {
+      return render(<App customization={zoneCustomization} {...builderProps}/>)
+    }
 
-    // ensure that the component is rendered
-    expect(await findByTestId('reactVersion')).toBeInTheDocument()
-    await activateToolbarZone(zone, findByTestId)
+    const readyAndActivate = async (
+      container: HTMLElement,
+      findByTestId: (id: string) => Promise<HTMLElement>,
+      options?: {awaitForm?: boolean, awaitVisible?: boolean}
+    ) => {
+      if (options?.awaitForm ?? true) {
+        expect(await findByTestId('reactVersion')).toBeInTheDocument()
+      }
+      await access?.activate?.({container, findByTestId})
+      if (options?.awaitVisible) {
+        await access?.awaitVisible?.({container, findByTestId})
+      }
+    }
 
-    expect(container.querySelector(zoneClassName)).toBeInTheDocument()
-  })
+    it(`should apply class and style customization for ${zone}`, async () => {
+      const {container, findByTestId, unmount} = renderZone(customization)
+      try {
+        await readyAndActivate(container, findByTestId, {awaitVisible: true})
+        const el = container.querySelector(zoneClassName)
+        expect(el).toBeInTheDocument()
+        expect(el).toHaveClass(zoneCustomClass)
+        expect(el).toHaveStyle(targetStyle)
+      } finally {
+        unmount()
+      }
+    })
 
-  it(`should apply respect hidden customization for ${zone}`, async () => {
-    const config = klona(customization)
-    config[zone]!.hidden = true
+    it(`should apply respect hidden customization for ${zone}`, async () => {
+      const config = klona(customization)
+      config[zone]!.hidden = true
 
-    const {container, findByTestId} = render(<div data-testid="test-app"><App customization={config}/></div>)
+      const {container, findByTestId} = render(
+        <div data-testid="test-app"><App customization={config} {...builderProps}/></div>
+      )
 
-    // ensure that the component is rendered
-    expect(await findByTestId('test-app')).toBeInTheDocument()
-    await activateToolbarZone(zone, findByTestId)
+      expect(await findByTestId('test-app')).toBeInTheDocument()
+      await readyAndActivate(container, findByTestId, {awaitForm})
 
-    expect(container.querySelector(zoneClassName)).not.toBeInTheDocument()
-  })
+      expect(container.querySelector(zoneClassName)).not.toBeInTheDocument()
+    })
 
-  it(`should apply class customization for ${zone}`, async () => {
-    const {container, findByTestId} = render(<App customization={customization}/>)
+    it(`should apply custom renderer customization for ${zone}`, async () => {
+      const config = klona(customization)
+      config[zone]!.customRenderer = customRenderer
+      const {container, findByTestId, findAllByTestId} = renderZone(config)
+      await readyAndActivate(container, findByTestId, {awaitForm})
 
-    // ensure that the component is rendered
-    expect(await findByTestId('reactVersion')).toBeInTheDocument()
-    await activateToolbarZone(zone, findByTestId)
-
-    expect(container.querySelector(zoneClassName)).toHaveClass(zoneCustomClass)
-  })
-
-  it(`should apply custom renderer customization for ${zone} with className`, async () => {
-    const config = klona(customization)
-    config[zone]!.customRenderer = customRenderer
-    const {container, findByTestId} = render(<App customization={config}/>)
-    await activateToolbarZone(zone, findByTestId)
-
-    // ensure that the component is rendered
-    expect(await findByTestId('custom-renderer')).toBeInTheDocument()
-
-    expect(container.querySelector(`div.${zoneRenderedClass}`)).toBeInTheDocument()
-  })
-
-  it(`should apply custom renderer customization for ${zone} with replaced content`, async () => {
-    const config = klona(customization)
-    config[zone]!.customRenderer = customRenderer
-    const {container, findByTestId} = render(<App customization={config}/>)
-    await activateToolbarZone(zone, findByTestId)
-
-    // ensure that the component is rendered
-    expect(await findByTestId('custom-renderer')).toBeInTheDocument()
-
-    expect(container.querySelector(`div.${zoneRenderedClass}`)).toHaveTextContent(zoneRenderContent)
-  })
-
-  it(`should apply style customization for ${zone}`, async () => {
-    const {container, findByTestId} = render(<App customization={customization}/>)
-
-    // ensure that the component is rendered
-    expect(await findByTestId('reactVersion')).toBeInTheDocument()
-    await activateToolbarZone(zone, findByTestId)
-
-    expect(container.querySelector(zoneClassName)).toHaveStyle(targetStyle)
-  })
-})
+      // Some zones (e.g. property editors) mount many instances of the same customizable key.
+      expect(await findAllByTestId('custom-renderer')).not.toHaveLength(0)
+      const rendered = container.querySelector(`div.${zoneRenderedClass}`)
+      expect(rendered).toBeInTheDocument()
+      expect(rendered).toHaveTextContent(zoneRenderContent)
+    })
+  }
+)
 
 const toggleTestId = 'test-toggle-button'
 const toggleLabels = {

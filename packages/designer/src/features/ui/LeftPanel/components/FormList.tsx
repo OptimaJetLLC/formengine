@@ -45,6 +45,7 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
   const [searchValue, setSearchValue] = useState<string>('')
   const {t} = useTranslation()
   const showMessage = useShowMessage()
+  const {className, ...listProps} = props
 
   const onError = useCallback((err: any) => {
     console.error(err)
@@ -74,10 +75,10 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
     [formList, searchValue]
   )
 
-  return <Rows className={styles.container}>
+  return <Rows className={cx(styles.container, className)}>
     <SearchForm onChange={setSearchValue} className={styles.search}/>
     <Button block onClick={showPromptDialog} data-testid={'add-new-form-button'}>{t('formsList.addNewForm')}</Button>
-    <List {...props}>
+    <List {...listProps}>
       {filteredFormList.length
         ? filteredFormList.map((name, index) =>
           <FormListItem key={index} active={name === builderStore.formName} name={name} onLoadForm={loadForm} onRemoveForm={removeForm}/>)

@@ -8,7 +8,7 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {SCheckbox} from '../../../annotation-editors/BooleanInput'
 import {Rows} from '../../../components/Containers'
 import {LabeledWrapper} from '../../../components/LabeledProperty'
-import {PropertyBlock} from '../../RightPanel/PropertiesEditor/components/Properties'
+import {PropertyBlock} from '../../RightPanel/PropertiesEditor/components/PropertyBlock'
 import {ErrorComponentPicker} from './ErrorComponentPicker'
 import styles from './ErrorSettings.module.css'
 

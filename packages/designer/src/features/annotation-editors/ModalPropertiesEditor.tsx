@@ -3,7 +3,7 @@ import {ComponentDataProvider, namedObserver, useModalComponentData, useModalTyp
 import {useCallback, useEffect, useMemo} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../localization/hooks'
-import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/Properties'
+import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/PropertyBlock'
 import {Section} from '../ui/RightPanel/PropertiesEditor/Section'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {HintedLabel} from './Hinted'

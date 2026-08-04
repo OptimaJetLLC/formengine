@@ -10,9 +10,18 @@ import styles from './JsonViewButton.module.css'
 
 const icon = <FaIcon icon={faCode as any}/>
 
-type JsonViewButtonProps = Omit<ComponentProps<typeof Whisper>, 'placement' | 'speaker' | 'children'>
+type JsonViewButtonProps = Omit<ComponentProps<typeof Whisper>, 'placement' | 'speaker' | 'children'> & {
+  className?: string
+}
 
-const RawJsonViewButton = (props: JsonViewButtonProps) => {
+/**
+ * Button that opens the form JSON editor modal.
+ * Customization (`className`) is applied to the IconButton; remaining props are passed to Whisper.
+ * @param props the Whisper props plus optional customization className.
+ * @param props.className CSS class name from designer customization.
+ * @returns the React element.
+ */
+const RawJsonViewButton = ({className, ...props}: JsonViewButtonProps) => {
   const {t} = useTranslation()
   const [open, setOpen] = useState(false)
   const handleOpen = useCallback(() => setOpen(true), [])
@@ -21,7 +30,7 @@ const RawJsonViewButton = (props: JsonViewButtonProps) => {
 
   return <>
     <Whisper {...props} speaker={speaker} placement="bottom">
-      <IconButton onClick={handleOpen} icon={icon} size={'sm'}/>
+      <IconButton className={className} onClick={handleOpen} icon={icon} size={'sm'}/>
     </Whisper>
     <Modal open={open} size={'full'} backdrop={true}>
       <Modal.Header closeButton onClose={handleClose}>

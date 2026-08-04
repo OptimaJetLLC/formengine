@@ -100,15 +100,26 @@ const RawControlGroups = (props: ControlGroupsProps) => {
 const ControlGroups = namedObserver('ControlGroups', RawControlGroups)
 
 /**
+ * The ComponentBar React component properties.
+ */
+interface ComponentBarProps extends DraggableProps {
+  /**
+   * Additional CSS class name.
+   */
+  className?: string
+}
+
+/**
  * The React form builder component that displays all available components for use.
- * @param componentProps the component properties.
+ * @param props the component properties.
  * @returns the React element.
  */
-export const ComponentBar = (componentProps: DraggableProps) => {
+export const ComponentBar = (props: ComponentBarProps) => {
+  const {className, ...componentProps} = props
   const [filtered, setFiltered] = useState<string>()
 
   return (
-    <div className={styles.componentBar}>
+    <div className={cx(styles.componentBar, className)}>
       <div className={styles.header}>
         <SearchForm onChange={setFiltered} className={styles.search}/>
       </div>

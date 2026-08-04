@@ -1,5 +1,6 @@
 import type {Language} from '@react-form-builder/core'
 import {namedObserver, toUpper} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {ReactNode} from 'react'
 import {useCallback, useMemo} from 'react'
 import type {ItemDataType} from 'rsuite/esm/internals/types'
@@ -36,9 +37,13 @@ interface LocalizationPickerProps {
    * @param language the selected language.
    */
   onSelect: (language: Language) => void
+  /**
+   * Additional CSS class name.
+   */
+  className?: string
 }
 
-const RawLocalizationPicker = ({value, onSelect, ...props}: LocalizationPickerProps) => {
+const RawLocalizationPicker = ({value, onSelect, className, ...props}: LocalizationPickerProps) => {
   const {availableLanguages} = useBuilderStore()
 
   const langData = useMemo(() => {
@@ -68,7 +73,7 @@ const RawLocalizationPicker = ({value, onSelect, ...props}: LocalizationPickerPr
                             searchable={false}
                             width={62}
                             renderMenuItem={renderMenuItem}
-                            className={'subtle-style'}/>
+                            className={cx('subtle-style', className)}/>
 }
 
 export const LocalizationPicker = namedObserver('LocalizationPicker', RawLocalizationPicker)

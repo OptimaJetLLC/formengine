@@ -64,6 +64,10 @@ interface CodeButtonProps extends CalculableEditorProps {
    * Current property value.
    */
   value?: unknown
+  /**
+   * CSS class name from designer customization.
+   */
+  className?: string
 }
 
 type ButtonType = 'disabled' | 'calculation' | 'localization' | 'localizable' | 'calculable' | 'calculableAndLocalizable'
@@ -105,7 +109,17 @@ const ButtonAppearance: Record<ButtonType, ButtonAppearance> = {
 }
 
 const RawCodeButton = (props: CodeButtonProps) => {
-  const {annotation, getComputeCode, setComputeCode, disableCompute, getComputeType, hasComputeCode, componentData, value} = props
+  const {
+    annotation,
+    getComputeCode,
+    setComputeCode,
+    disableCompute,
+    getComputeType,
+    hasComputeCode,
+    componentData,
+    value,
+    className
+  } = props
   const store = useBuilderStore()
   const disabled = !annotation.calculable && !annotation.localizable
   const getLabel = useTranslationPart('propertiesEditor.codeButton')
@@ -142,7 +156,7 @@ const RawCodeButton = (props: CodeButtonProps) => {
   return (
     <Hinted hint={buttonStyle.hint}>
       <IconButton
-        className={styles.iconButton}
+        className={cx(styles.iconButton, className)}
         onClick={handleClick}
         disabled={disabled}
         icon={icon}
