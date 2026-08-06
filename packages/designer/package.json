@@ -59,7 +59,7 @@
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",
     "@types/file-saver": "^2.0.5",
-    "postcss": "^8.5.12",
+    "postcss": "^8.5.23",
     "vite-inline-css-plugin": "^0.0.1"
   },
   "peerDependencies": {
