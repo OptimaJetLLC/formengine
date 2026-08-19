@@ -16,6 +16,8 @@ import {closeCurrentModalActionName} from './closeCurrentModalActionName'
 import {useModalComponentData} from './useModalComponentData'
 import {useModalType} from './useModalType'
 
+import styles from './Modal.module.css'
+
 const useModalModel = () => {
   const modalType = useModalType()
   const formViewerProps = useViewerProps()
@@ -30,7 +32,7 @@ export interface ModalProps {
   /**
    * The modal form name.
    */
-  modalTemplate: string
+  modalTemplate?: string
 }
 
 const RawModalBuilder = ({modalTemplate}: ModalProps) => {
@@ -47,7 +49,9 @@ const RawModalBuilder = ({modalTemplate}: ModalProps) => {
   }
 
   if (!modalTemplate) {
-    return <div>Modal: template not specified</div>
+    // eslint-disable-next-line no-console
+    console.info('Modal: template not specified')
+    return <div className={styles.warn}>Modal: <em>template not specified</em></div>
   }
 
   return <div>{`Modal: '${modalTemplateName}'`}</div>
@@ -131,18 +135,25 @@ const RawModalViewer = (props: ModalProps) => {
     }
   }), [context, formViewerProps.context, handleClose, modalOnClose, postFn])
 
-  const modalViewerProps: FormViewerProps = useMemo(() => ({
-    ...formViewerProps,
-    formName: getTemplateName(modalTemplate),
-    initialData: initialData,
-    errors: undefined,
-    onFormDataChange: undefined,
-    readOnly: undefined,
-    disabled: undefined,
-    context: contextValue
-  }), [formViewerProps, modalTemplate, initialData, contextValue])
+  const formName = modalTemplate && isTemplateType(modalTemplate)
+    ? getTemplateName(modalTemplate)
+    : modalTemplate
 
-  if (!modalModel || !modalTemplate) return null
+  const modalViewerProps: FormViewerProps | undefined = useMemo(() => {
+    if (!formName) return undefined
+    return {
+      ...formViewerProps,
+      formName,
+      initialData: initialData,
+      errors: undefined,
+      onFormDataChange: undefined,
+      readOnly: undefined,
+      disabled: undefined,
+      context: contextValue
+    }
+  }, [formViewerProps, formName, initialData, contextValue])
+
+  if (!modalModel || !formName || !modalViewerProps) return null
 
   return <ComponentModal model={modalModel} open={open} handleClose={handleClose} onCloseRef={modalRef}>
     <NewStoreProvider props={modalViewerProps}>

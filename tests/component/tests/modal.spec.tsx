@@ -673,4 +673,30 @@ describe('Modal tests', () => {
     // the modal window is no longer displayed
     await waitFor(() => expect(queryByTestId('modalInput')).not.toBeInTheDocument())
   })
+
+  it.each(modalTestViews)('Should render a form with Modal when modalTemplate is missing ($name)', async ({name, viewerView}) => {
+    const form = createFormWithMeta(name, {
+      key: 'Screen',
+      type: 'Screen',
+      props: {},
+      children: [
+        {
+          key: 'marker',
+          type: buttonTypeByLibrary[name],
+          props: {children: {value: 'Ready'}},
+          htmlAttributes: [{name: 'data-testid', value: 'readyMarker'}]
+        },
+        {
+          key: 'modal1',
+          type: 'Modal',
+          props: {},
+          modal: {props: {}, events: {}}
+        }
+      ]
+    }, true)
+
+    const {findByTestId} = render(<FormViewer getForm={() => JSON.stringify(form)} view={viewerView}/>)
+
+    expect(await findByTestId('readyMarker')).toBeInTheDocument()
+  })
 })
