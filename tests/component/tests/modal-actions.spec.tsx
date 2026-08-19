@@ -1,5 +1,6 @@
 import {fireEvent} from '@testing-library/react'
 import {renderBuilder} from '../util/renderBuilder'
+import {switchToViewerMode} from './designerUtils'
 
 const codeActionsForm = {
   modalType: 'RsModal',
@@ -33,8 +34,8 @@ const codeActionsForm = {
 
 describe('Modal actions test', () => {
   it('The renamed action with the code should be re-attached to the component\'s event list', async () => {
-    const {findByTestId, findByText} = await renderBuilder(codeActionsForm)
-    const modal = await findByText('Modal: template not specified')
+    const {findByTestId} = await renderBuilder(codeActionsForm)
+    const modal = await findByTestId('modal-template-not-specified')
     fireEvent.click(modal)
 
     const actionsTab = await findByTestId('Actions_Tab')
@@ -61,12 +62,12 @@ describe('Modal actions test', () => {
   })
 
   it('The renamed action from the settings tab should be re-attached to the component\'s event list', async () => {
-    const {findByTestId, findByText} = await renderBuilder(codeActionsForm)
+    const {findByTestId} = await renderBuilder(codeActionsForm)
 
     fireEvent.click(await findByTestId('Settings_Tab'))
     fireEvent.click(await findByTestId('edit-action-myAction'))
 
-    const modal = await findByText('Modal: template not specified')
+    const modal = await findByTestId('modal-template-not-specified')
     fireEvent.click(modal)
 
     const actionsTab = await findByTestId('Actions_Tab')
@@ -90,11 +91,11 @@ describe('Modal actions test', () => {
   })
 
   it('Removing the action should detach the action from the modal events', async () => {
-    const {findByTestId, findByText, queryByTestId} = await renderBuilder(codeActionsForm)
+    const {findByTestId, queryByTestId} = await renderBuilder(codeActionsForm)
 
     fireEvent.click(await findByTestId('Settings_Tab'))
 
-    const modal = await findByText('Modal: template not specified')
+    const modal = await findByTestId('modal-template-not-specified')
     fireEvent.click(modal)
 
     const actionsTab = await findByTestId('Actions_Tab')
@@ -109,9 +110,9 @@ describe('Modal actions test', () => {
   })
 
   it('A new code action should be added to the event after creation', async () => {
-    const {findByTestId, findByText} = await renderBuilder(codeActionsForm)
+    const {findByTestId} = await renderBuilder(codeActionsForm)
 
-    const modal = await findByText('Modal: template not specified')
+    const modal = await findByTestId('modal-template-not-specified')
     fireEvent.click(modal)
 
     const actionsTab = await findByTestId('Actions_Tab')
@@ -134,5 +135,15 @@ describe('Modal actions test', () => {
     fireEvent.click(await findByTestId('save-code-action-button'))
 
     expect(await findByTestId('edit-action-onClose-code-newAction')).toBeInTheDocument()
+  })
+
+  it('Should show a warning in preview when modalTemplate is missing', async () => {
+    const {findByText, findByTestId} = await renderBuilder(codeActionsForm)
+
+    expect(await findByTestId('modal-template-not-specified')).toBeInTheDocument()
+
+    await switchToViewerMode(findByText)
+
+    expect(await findByTestId('modal-template-not-specified')).toBeInTheDocument()
   })
 })

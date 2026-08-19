@@ -25,6 +25,18 @@ const useModalModel = () => {
   return formViewerProps.view.get(modalType)
 }
 
+const ModalTypeNotSpecified = () => {
+  return <div className={styles.warn}>Modal: <em>specify the component to display the modal window to use</em></div>
+}
+
+const ModalTemplateNotSpecified = () => {
+  // eslint-disable-next-line no-console
+  console.info('Modal: template not specified')
+  return <div className={styles.warn} data-testid="modal-template-not-specified">
+    Modal: <em>template not specified</em>
+  </div>
+}
+
 /**
  * The properties of the modal component.
  */
@@ -44,15 +56,8 @@ const RawModalBuilder = ({modalTemplate}: ModalProps) => {
       : modalTemplate
   }, [modalTemplate])
 
-  if (!modalModel) {
-    return <div>Modal: specify the component to display the modal window to use</div>
-  }
-
-  if (!modalTemplate) {
-    // eslint-disable-next-line no-console
-    console.info('Modal: template not specified')
-    return <div className={styles.warn}>Modal: <em>template not specified</em></div>
-  }
+  if (!modalModel) return <ModalTypeNotSpecified/>
+  if (!modalTemplate) return <ModalTemplateNotSpecified/>
 
   return <div>{`Modal: '${modalTemplateName}'`}</div>
 }
@@ -153,7 +158,7 @@ const RawModalViewer = (props: ModalProps) => {
     }
   }, [formViewerProps, formName, initialData, contextValue])
 
-  if (!modalModel || !formName || !modalViewerProps) return null
+  if (!modalModel || !formName || !modalViewerProps) return <ModalTypeNotSpecified/>
 
   return <ComponentModal model={modalModel} open={open} handleClose={handleClose} onCloseRef={modalRef}>
     <NewStoreProvider props={modalViewerProps}>

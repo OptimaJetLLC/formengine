@@ -674,7 +674,7 @@ describe('Modal tests', () => {
     await waitFor(() => expect(queryByTestId('modalInput')).not.toBeInTheDocument())
   })
 
-  it.each(modalTestViews)('Should render a form with Modal when modalTemplate is missing ($name)', async ({name, viewerView}) => {
+  it.each(modalTestViews)('Should show a warning when modalTemplate is missing ($name)', async ({name, viewerView}) => {
     const form = createFormWithMeta(name, {
       key: 'Screen',
       type: 'Screen',
@@ -698,5 +698,48 @@ describe('Modal tests', () => {
     const {findByTestId} = render(<FormViewer getForm={() => JSON.stringify(form)} view={viewerView}/>)
 
     expect(await findByTestId('readyMarker')).toBeInTheDocument()
+    expect(await findByTestId('modal-template-not-specified')).toBeInTheDocument()
+  })
+
+  const rsModalLayoutWithUnconfiguredModalForm = createFormWithMeta('rsuite', {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    children: [
+      {
+        key: 'rsModalLayout1',
+        type: 'RsModalLayout',
+        props: {},
+        htmlAttributes: [{name: 'data-testid', value: 'rsModalLayout1'}]
+      },
+      {
+        key: 'modal1',
+        type: 'Modal',
+        props: {},
+        modal: {props: {}, events: {}}
+      }
+    ]
+  }, true)
+
+  it('Should render RsModalLayout next to Modal without modalTemplate', async () => {
+    const {findByTestId} = render(
+      <FormViewer getForm={() => JSON.stringify(rsModalLayoutWithUnconfiguredModalForm)} view={viewWithCss}/>
+    )
+
+    expect(await findByTestId('rsModalLayout1')).toBeInTheDocument()
+    expect(await findByTestId('modal-template-not-specified')).toBeInTheDocument()
+  })
+
+  it('Should show a warning in preview when RsModalLayout is a sibling of Modal without modalTemplate', async () => {
+    const renderResult = render(
+      <FormBuilder view={builderViewWithCss} getForm={() => JSON.stringify(rsModalLayoutWithUnconfiguredModalForm)}/>
+    )
+
+    expect(await renderResult.findByTestId('modal-template-not-specified')).toBeInTheDocument()
+
+    await togglePreview(renderResult)
+
+    expect(await renderResult.findByTestId('rsModalLayout1')).toBeInTheDocument()
+    expect(await renderResult.findByTestId('modal-template-not-specified')).toBeInTheDocument()
   })
 })
