@@ -1,13 +1,13 @@
 import {useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
 import cx from 'clsx'
-import type {HTMLAttributes, PropsWithoutRef} from 'react'
+import type {HTMLAttributes} from 'react'
 import {forwardRef, useCallback, useMemo} from 'react'
 import {IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import styles from './DropView.module.css'
 
-interface DropViewProps extends PropsWithoutRef<any> {
+interface DropViewProps {
   className?: string
   slot?: string
   slotCondition?: string
@@ -35,7 +35,7 @@ const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: strin
  * @param props the React component properties.
  * @returns the React element.
  */
-export const InnerDropView = forwardRef<any, DropViewProps>(({slot, slotCondition, className}, ref) => {
+export const InnerDropView = forwardRef<HTMLDivElement, DropViewProps>(({slot, slotCondition, className}, ref) => {
   return (
     <div
       ref={ref}

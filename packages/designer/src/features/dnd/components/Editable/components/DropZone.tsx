@@ -1,16 +1,17 @@
 import type {ComponentData} from '@react-form-builder/core'
 import {isNull, namedObserver, useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
-import type {ComponentProps, RefCallback} from 'react'
+import type {RefCallback} from 'react'
 import {useCallback} from 'react'
+import type {DropTargetMonitor} from 'react-dnd'
 import {useDrop} from 'react-dnd'
-import type {ConnectDropTarget, DropTargetMonitor} from 'react-dnd/dist/types/types'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AcceptDrop, ItemType} from '../../../consts'
+import {useConnectAsRef} from '../hooks/useConnectAsRef'
 import {DropView, InnerDropView} from './DropView'
 import styles from './DropZone.module.css'
 
-const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCondition?: string): [DropState, ConnectDropTarget] => {
+const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCondition?: string): [DropState, RefCallback<HTMLDivElement>] => {
   const store = useBuilderStore()
   const target = useComponentData()
   const insertPosition = isInner
@@ -59,32 +60,32 @@ const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCo
     })
   }, [store, target, insertPosition, slot, slotCondition])
 
-  return [{isActive, isOver, isDragging, canDrop}, drop]
+  const setDropRef = useConnectAsRef<HTMLDivElement>(drop)
+
+  return [{isActive, isOver, isDragging, canDrop}, setDropRef]
 }
 
-interface DropZoneProps extends ComponentProps<any> {
+interface DropZoneProps {
   isAfter?: boolean
   isInner?: boolean
   slot?: string
   slotCondition?: string
 }
 
-const RawDropZone = ({isAfter, isInner, ...props}: DropZoneProps) => {
+const RawDropZone = ({isAfter, isInner, slot, slotCondition}: DropZoneProps) => {
   const componentData = useComponentData()
   const {store, isRoot} = componentData
   const isContainer = Boolean(store.children)
 
   const inner = isRoot || isInner
-  const [{isActive, isOver, isDragging, canDrop}, drop] = useDropZone(isAfter, inner, props.slot, props.slotCondition)
+  const [{isActive, isOver, isDragging, canDrop}, drop] = useDropZone(isAfter, inner, slot, slotCondition)
   const className = cx({isAfter, isActive, isContainer, isRoot, isInner, isOver, isDragging, canDrop})
-  // TODO FE-1065
-  const ref = drop as unknown as RefCallback<HTMLDivElement>
 
   return (
     <>
       {inner
-        ? <InnerDropView ref={ref} className={className} {...props}/>
-        : <div ref={ref} className={cx(styles.container, className)} data-testid="dropzone"/>
+        ? <InnerDropView ref={drop} className={className} slot={slot} slotCondition={slotCondition}/>
+        : <div ref={drop} className={cx(styles.container, className)} data-testid="dropzone"/>
       }
       {!inner && <DropView className={className}/>}
     </>

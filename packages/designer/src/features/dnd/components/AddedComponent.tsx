@@ -1,6 +1,6 @@
 import {cfComponentIsPreset, getTemplateName, isTemplateType, namedObserver, startCase, useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
-import type {FunctionComponent, MouseEventHandler, ReactNode, RefCallback, SVGProps} from 'react'
+import type {FunctionComponent, MouseEventHandler, ReactNode, SVGProps} from 'react'
 import {useCallback, useMemo} from 'react'
 import {icons} from '../../../icons/icons'
 import {getIcon} from '../../../icons/utils'
@@ -24,8 +24,7 @@ const Draggable = ({children}: { children: ReactNode }) => {
 
   return (
     <>
-      {/* TODO FE-1065 */}
-      <div className={styles.draggableContainer} ref={drag as unknown as RefCallback<HTMLDivElement>}>
+      <div className={styles.draggableContainer} ref={drag}>
         {children}
       </div>
       {isDragging && <DragPreview>{children}</DragPreview>}

@@ -1,11 +1,12 @@
 import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
-import type {ComponentProps} from 'react'
+import type {ComponentProps, HTMLAttributes, RefCallback} from 'react'
 import {forwardRef, useCallback, useMemo} from 'react'
 import {useDragLayer, useDrop} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AcceptDrop, ItemType} from '../../../consts'
+import {useConnectAsRef} from '../hooks/useConnectAsRef'
 import {useDragWithPreview} from '../hooks/useDragWithPreview'
 import styles from './Draggable.module.css'
 import {DragPreview} from './DragPreview'
@@ -23,7 +24,7 @@ interface DndState {
   canDrop: boolean,
 }
 
-const useDnd = (isRoot?: boolean): [DndState, (node: HTMLElement | null) => void] => {
+const useDnd = (isRoot?: boolean): [DndState, RefCallback<HTMLElement>] => {
   const data = useComponentData()
 
   const [dropProps, drop] = useDrop({
@@ -38,19 +39,17 @@ const useDnd = (isRoot?: boolean): [DndState, (node: HTMLElement | null) => void
 
   const [dragState, drag] = useDragWithPreview(ItemType.Component)
   const state: DndState = useMemo(() => ({...dropProps, ...dragState}), [dropProps, dragState])
+  const setDropRef = useConnectAsRef<HTMLElement>(drop)
 
-  const setDndRef = useCallback(
-    (node: HTMLElement | null) => {
-      if (!isRoot) drag(node)
-      drop(node)
-    },
-    [drag, drop, isRoot],
-  )
+  const setDndRef = useCallback<RefCallback<HTMLElement>>((node) => {
+    if (!isRoot) drag(node)
+    setDropRef(node)
+  }, [drag, setDropRef, isRoot])
 
   return [state, setDndRef]
 }
 
-interface DraggableProps extends ComponentProps<any> {
+interface DraggableProps extends HTMLAttributes<HTMLDivElement> {
   isInner?: boolean
   isTree?: boolean
 }
