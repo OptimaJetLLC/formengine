@@ -13,10 +13,9 @@ import {useEmbeddedFormViewer} from '../form-viewer/EmbeddedFormViewerContext'
 import type {FormViewerProps} from '../form-viewer/types'
 import {getTemplateName, isTemplateType} from '../ui/templateUtil'
 import {closeCurrentModalActionName} from './closeCurrentModalActionName'
+import styles from './Modal.module.css'
 import {useModalComponentData} from './useModalComponentData'
 import {useModalType} from './useModalType'
-
-import styles from './Modal.module.css'
 
 const useModalModel = () => {
   const modalType = useModalType()
