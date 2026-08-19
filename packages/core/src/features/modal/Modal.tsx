@@ -26,7 +26,9 @@ const useModalModel = () => {
 }
 
 const ModalTypeNotSpecified = () => {
-  return <div className={styles.warn}>Modal: <em>specify the component to display the modal window to use</em></div>
+  return <div className={styles.warn} data-testid="modal-type-not-specified">
+    Modal: <em>specify the component to display the modal window to use</em>
+  </div>
 }
 
 const ModalTemplateNotSpecified = () => {
@@ -158,7 +160,8 @@ const RawModalViewer = (props: ModalProps) => {
     }
   }, [formViewerProps, formName, initialData, contextValue])
 
-  if (!modalModel || !formName || !modalViewerProps) return <ModalTypeNotSpecified/>
+  if (!modalModel) return <ModalTypeNotSpecified/>
+  if (!formName || !modalViewerProps) return <ModalTemplateNotSpecified/>
 
   return <ComponentModal model={modalModel} open={open} handleClose={handleClose} onCloseRef={modalRef}>
     <NewStoreProvider props={modalViewerProps}>
