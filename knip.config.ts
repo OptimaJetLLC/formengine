@@ -1,7 +1,9 @@
 import type {KnipConfig} from 'knip'
 
 const config: KnipConfig = {
-  vite: true,
+  vite: {
+    config: ['vite.config.{js,mjs,ts,cjs,mts,cts}', '**/*.vite.config.ts'],
+  },
   vitest: true,
   typescript: true,
   tags: ['-knipignore'],
