@@ -1,12 +1,4 @@
-#TODO
-
-- recorder
-  - start
-  - drag and drop
-- add new project
-  - add test to project
-
-## Testing
+# Testing
 
 ### Test recorder
 
@@ -182,8 +174,3 @@ Start interactive UI using:
 - https://www.npmjs.com/package/playwright-cleanup
 - https://www.npmjs.com/package/playwright-performance
 - https://github.com/playwright-community/eslint-plugin-playwright
-
-### TODO
-
-- screenshot comparison
-- raise the interface for results (Allure?)

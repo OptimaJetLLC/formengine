@@ -644,7 +644,6 @@ describe('Modal tests', () => {
   })
 
   it.skip('Confirmation should close the parent modal', async () => {
-    // todo requires actions that return a value and interrupt the chain of actions
     const getForm = (name?: string) => {
       let form: any = buildBeforeHideDataShowModalForm('rsuite')
       if (name === 'modal-layout') form = buildModalLayoutWithConfirmationForm('rsuite')

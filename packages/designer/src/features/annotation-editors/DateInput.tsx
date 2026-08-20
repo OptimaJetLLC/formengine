@@ -11,10 +11,10 @@ export const DateInput = (props: AnnotationEditorProps) => {
   const {onChange, onClean} = props
   let {value} = props
 
-  // TODO FE-1304 Date values conversion on form load in validation schema
   if (typeof value === 'string') {
     value = new Date(value)
   }
+
   return <LabeledProperty {...props}>
     <DatePicker editable={false} cleanable={true} placement={'auto'}
                 value={value ?? null} onChange={onChange} onClean={onClean} size={'xs'}/>

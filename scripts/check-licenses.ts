@@ -16,8 +16,7 @@ const REPO_ROOT = join(__dirname, '..')
 
 const LICENSE_CANDIDATES = ['LICENSE', 'LICENSE.md', 'LICENSE.txt', 'LICENSE.html']
 
-// TODO check sample-apps in tools repo
-const EXTRA_LICENSE_DIRS: string[] = ['examples' /*, 'sample-apps'*/]
+const EXTRA_LICENSE_DIRS: string[] = ['examples']
 
 function hasLicenseFile(dir: string): boolean {
   for (const candidate of LICENSE_CANDIDATES) {
