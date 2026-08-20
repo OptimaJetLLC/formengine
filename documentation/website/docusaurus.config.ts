@@ -164,14 +164,7 @@ const config: Config = {
           position: 'right',
           target: '_self',
           className: 'demo-link'
-        },
-        {
-          label: 'Build Form with AI',
-          to: 'https://formengine.io/ai-form-builder/',
-          position: 'right',
-          target: '_self',
-          className: 'ai-button'
-        },
+        }
       ],
     },
     footer: {
