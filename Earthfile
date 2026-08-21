@@ -152,7 +152,7 @@ npm-check-all:
   FROM +sources
   WORKDIR /repo
   RUN npm rebuild
-  RUN npm run check:all
+  RUN npm run check-all
 
 npm-check-circular-deps:
   FROM +sources

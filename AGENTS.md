@@ -58,7 +58,7 @@ npm run pack
 
 ## Pre-Push Checklist
 
-**Always run `npm run check:all` before committing and pushing changes.** Fix all errors related to your changes before pushing. This
+**Always run `npm run check-all` before committing and pushing changes.** Fix all errors related to your changes before pushing. This
 includes:
 
 - Circular dependencies (`check:circular-deps`)

@@ -2,9 +2,6 @@
 #
 # Simulate the GitHub Actions **fb producer** CI build and RC draft-release upload.
 #
-# Does NOT run formengine-tools deploy (npm publish, compose-mirrors, GitHub mirrors).
-# See scripts/release/README.md section "Full release test (fb + tools)".
-#
 # Mirrors GHA RC release flow (orchestrated by `.github/workflows/ci.yml`):
 #   ci-bundle.yml              → earthly +prepare-rc-archives-from-pack (RC) or +npm-bundle (PR)
 #   ci-build-documentation.yml → earthly +prepare-documentation-archive

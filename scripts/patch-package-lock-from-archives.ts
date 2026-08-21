@@ -123,7 +123,7 @@ function parseArgs(argv: string[]): {archivesDir: string; lockfile: string; pack
  * @param dryRun when true, do not write
  * @returns true when the lockfile was changed or would be changed
  */
-export function patchPackageLockFromArchives(
+function patchPackageLockFromArchives(
   lockfile: string,
   archives: Map<string, ArchiveEntry>,
   packageJson: string | undefined,

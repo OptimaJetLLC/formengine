@@ -74,7 +74,7 @@ const DISTRIBUTION_BASE_DEV_DEPENDENCIES = [
   '@vitest/browser-playwright',
   'lerna',
   'lightningcss',
-  'npm-run-all',
+  'npm-run-all2',
   'rimraf',
   'rollup-plugin-exclude-dependencies-from-bundle',
   'typescript',

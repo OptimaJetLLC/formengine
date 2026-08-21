@@ -1,4 +1,4 @@
-/** Release archive contract (published to GitHub Releases; consumed by formengine-tools). */
+/** Release archive contract (published to GitHub Releases). */
 
 export const REQUIRED_ARCHIVE_FILES = [
   'demo.tgz',
@@ -32,7 +32,7 @@ export const NPM_PACKAGE_PATHS = [
 /** Filename prefix for packed npm archives (react-form-builder-*.tgz). */
 export const NPM_ARCHIVE_FILENAME_PREFIX = 'react-form-builder-' as const
 
-/** Package and app paths included in formenginesupport.tgz (keep aligned with formengine-tools compose constants). */
+/** Package and app paths included in formenginesupport.tgz. */
 export const FORMENGINE_SUPPORT_PACKAGE_PATHS = [
   'packages/apps/common',
   'packages/apps/common-designer',
@@ -59,7 +59,6 @@ export const FORMENGINE_SUPPORT_PACKAGE_PATHS = [
 ] as const
 
 /**
- * Path name segments omitted from formengine-src.tgz (aligned with .gitignore and formengine-tools compose).
  * Passed to tar as repeated --exclude flags when archiving the whole repo source tree.
  */
 export const FORMENGINE_SRC_TAR_EXCLUDES = [

@@ -1,6 +1,6 @@
 /** Environment helpers for release scripts (run inside Earthly or GitHub Actions). */
 
-export function requireEnv(name: string): string {
+function requireEnv(name: string): string {
   const value = process.env[name]
   if (!value) {
     throw new Error(`Missing required environment variable: ${name}`)
@@ -16,11 +16,11 @@ export function githubRepository(): string {
   return requireEnv('GITHUB_REPOSITORY')
 }
 
-export function archivesDir(): string {
+function archivesDir(): string {
   return process.env.ARCHIVES_DIR ?? '.archives'
 }
 
-export function parseFlag(argv: string[], name: string): string | undefined {
+function parseFlag(argv: string[], name: string): string | undefined {
   const idx = argv.indexOf(name)
   if (idx === -1) {
     return undefined

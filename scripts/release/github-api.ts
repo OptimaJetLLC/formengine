@@ -4,13 +4,11 @@ import {readFileSync} from 'node:fs'
 
 export const GITHUB_API_VERSION = '2022-11-28'
 
-export function githubHeaders(token: string): Record<string, string> {
-  return {
-    Authorization: `Bearer ${token}`,
-    Accept: 'application/vnd.github+json',
-    'X-GitHub-Api-Version': GITHUB_API_VERSION,
-  }
-}
+const githubHeaders = (token: string): Record<string, string> => ({
+  Authorization: `Bearer ${token}`,
+  Accept: 'application/vnd.github+json',
+  'X-GitHub-Api-Version': GITHUB_API_VERSION,
+})
 
 export interface GitHubApiErrorBody {
   message?: string
@@ -138,7 +136,7 @@ function draftArtifactReleasePayload(version: string, targetCommitish: string): 
     tag_name: version,
     target_commitish: targetCommitish,
     name: `${version} (RC artifacts)`,
-    body: 'Draft release with deployment archives. Consumed by formengine-tools.',
+    body: 'Draft release with deployment archives.',
     draft: true,
     prerelease: true,
     generate_release_notes: false,
