@@ -262,9 +262,11 @@ the clone of the specified component settings.
 
 ### createFromObject()
 
-> `static` **createFromObject**(`value`): `any`
+> `static` **createFromObject**(`value`): `ComponentStore`
 
 Correctly creates the ComponentStore from deserialized data.
+Recursively materializes the tree so constructor defaults (for example `props`) apply to every node.
+JSON form children are often `{key, type}` without `props`; wrapping only the root would leave those as plain objects.
 
 #### Parameters
 
@@ -276,7 +278,7 @@ the deserialized data.
 
 #### Returns
 
-`any`
+`ComponentStore`
 
 the component Store.
 

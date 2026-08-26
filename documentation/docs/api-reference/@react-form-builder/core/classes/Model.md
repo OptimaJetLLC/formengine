@@ -242,6 +242,20 @@ the component's wrapper CSS values.
 
 ## Accessors
 
+### dateProperties
+
+#### Get Signature
+
+> **get** **dateProperties**(): readonly `string`[]
+
+##### Returns
+
+readonly `string`[]
+
+the names of the component properties that store Date values.
+
+***
+
 ### name
 
 #### Get Signature
@@ -339,3 +353,25 @@ the feature name.
 `boolean`
 
 true if feature is present in the component feature set and equals `true`, false otherwise.
+
+***
+
+### withDateProperties()
+
+> **withDateProperties**(`keys`): `this`
+
+Sets the names of the date-typed component properties. **Internal use only.**
+
+#### Parameters
+
+##### keys
+
+readonly `string`[]
+
+the property keys that store Date values.
+
+#### Returns
+
+`this`
+
+the model.

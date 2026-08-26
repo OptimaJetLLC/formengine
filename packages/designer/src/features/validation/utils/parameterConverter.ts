@@ -1,5 +1,5 @@
 import type {ValidationRuleParameter} from '@react-form-builder/core'
-import {createAnnotation, createProperty} from '@react-form-builder/core'
+import {coerceIfDate, createAnnotation, createProperty} from '@react-form-builder/core'
 
 /**
  * The annotation that defines the validateWhen parameter.
@@ -21,7 +21,7 @@ function convertValidationRuleParameterToAnnotation(parameter: ValidationRulePar
     annotationBuilder = annotationBuilder.required
   }
   if (parameter.default) {
-    annotationBuilder = annotationBuilder.default(parameter.default)
+    annotationBuilder = annotationBuilder.default(coerceIfDate(parameter.type, parameter.default))
   }
   annotationBuilder = parameter.key === 'message' ? annotationBuilder.localize : annotationBuilder.notLocalize
 

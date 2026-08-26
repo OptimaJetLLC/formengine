@@ -2539,6 +2539,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/coerceIfDate",
+              label: "coerceIfDate"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/ComponentTree",
               label: "ComponentTree"
             },
@@ -2621,6 +2626,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/getTemplateName",
               label: "getTemplateName"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/getValidationRuleDefinition",
+              label: "getValidationRuleDefinition"
             },
             {
               type: "doc",

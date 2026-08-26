@@ -155,6 +155,36 @@ function getUser(id: any): any {
 }
 ```
 
+In `switch` statements over discriminated unions or enums, unhandled variants must fail at compile time. Prefer handling
+every variant and using the last remaining member as the final return. A new variant then fails type-checking without a
+`default` branch.
+
+When the function must not return the unmatched value (it returns a fallback such as `undefined`), type the unused
+argument as `never` and return the fallback. Do not `return value satisfies never` unless `never` is a valid result. Do
+not assign the unmatched value to a `never` variable.
+
+```typescript
+// Preferred when all variants are handled
+if (resolved.type === 'internal') {
+  return createInternal(resolved.definition)
+}
+return createCustom(resolved.definition)
+
+// Fallback when the runtime value may be outside the union
+switch (validatorType) {
+  case 'internal':
+    return lookupInternal()
+  case 'custom':
+    return lookupCustom()
+  default:
+    return unhandledValidatorType(validatorType)
+}
+
+function unhandledValidatorType(_type: never): undefined {
+  return undefined
+}
+```
+
 ### React Components
 
 - Use functional components with hooks

@@ -1,5 +1,5 @@
-import type {Annotation, SchemaType, ValidationRuleSettings} from '@react-form-builder/core'
-import {getValidatorPropertyBlockType, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
+import type {Annotation, ValidationRuleSettings} from '@react-form-builder/core'
+import {getValidationRuleDefinition, getValidatorPropertyBlockType, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
 import {RemindFill} from '@rsuite/icons'
 import type {ComponentProps} from 'react'
 import {useCallback, useMemo} from 'react'
@@ -58,15 +58,9 @@ const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) =>
   const type = model.valueType
   if (!type || !schema) return null
 
-  const getValidationRule = (type: SchemaType, ruleKey: string) => {
-    const rulesByType = viewerStore.getValidationRules(type)
-    if (!rule.type || rule.type === 'internal') return rulesByType.internal[ruleKey]
-    if (rule.type === 'custom') return rulesByType.custom?.[ruleKey]
-  }
-
   let annotations: Annotation[] | null = null
 
-  const ruleDefinition = getValidationRule(type, rule.key)
+  const ruleDefinition = getValidationRuleDefinition(viewerStore.getValidationRules(type), rule)?.definition
   if (ruleDefinition) {
     annotations = convertValidationRuleParametersToAnnotations(ruleDefinition.params ?? [])
   }
