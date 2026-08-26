@@ -1,0 +1,23 @@
+.tabs {
+  flex: 0;
+}
+
+.editorWrapper :global(.suggest-widget) {
+  width: 100% !important;
+  inset-inline-start: 0 !important;
+  overflow: hidden;
+}
+
+.editorContainer {
+  position: relative;
+}
+
+.cleanButton {
+  position: absolute;
+  z-index: 10;
+  top: 4px;
+  inset-inline-end: 28px;
+  width: 12px;
+  height: 12px;
+  color: var(--rs-text-secondary);
+}

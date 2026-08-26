@@ -1,15 +1,14 @@
 import type {CssPart} from '@react-form-builder/core'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
-import type {editor} from 'monaco-editor'
-import {useCallback, useEffect, useMemo, useState} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import type {Device} from '../../utils/types'
-import {CodeEditor} from '../components/CodeEditor/CodeEditor'
 import {Rows} from '../components/Containers'
 import type {RadioButtonsProps} from '../components/RadioButtons'
 import {RadioButtons} from '../components/RadioButtons'
 import {useTranslationPart} from '../localization/hooks'
 import {PropertyBlockHeader} from '../ui/RightPanel/PropertiesEditor/components/PropertyBlockHeader'
-import styles from './CSSEditor.module.css'
+import styles from './StyleCodeEditor.module.css'
+import {StyleCodeField} from './StyleCodeField'
 
 /**
  * CSSEditor React component properties.
@@ -31,22 +30,9 @@ interface CSSEditorProps {
 
 type Item = { value: CssPart, label: string, hint?: string }
 
-const RawCSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorProps) => {
-  const {store} = useComponentData()
+const CSSEditorBody = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorProps) => {
   const t = useTranslationPart('style')
   const [activeTab, setActiveTab] = useState<CssPart>(defaultActiveTab ?? 'css')
-  useEffect(() => {
-    setActiveTab(defaultActiveTab ?? 'css')
-  }, [defaultActiveTab])
-  const initialValue = useMemo(() => {
-    return store[activeTab]?.[device]?.string ?? ''
-  }, [store, device, activeTab])
-
-  const onChange = useCallback((value: any) => {
-    store[activeTab] ??= {}
-    store[activeTab][device] ??= {}
-    store[activeTab][device].string = value
-  }, [store, activeTab, device])
 
   const handleSelect: RadioButtonsProps['onChange'] = useCallback(value => setActiveTab(value as CssPart), [setActiveTab])
 
@@ -55,34 +41,23 @@ const RawCSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorPro
     {value: 'wrapperCss', label: t('wrapper'), hint: t('wrapperTab.hint')}
   ]), [t])
 
-  const options = useMemo(() => ({
-    contextmenu: false,
-    lineNumbers: 'off',
-    minimap: {enabled: false},
-    glyphMargin: false,
-    folding: false,
-    lineDecorationsWidth: 0,
-    lineNumbersMinChars: 0,
-    autoIndent: 'full'
-  } satisfies editor.IStandaloneEditorConstructionOptions), [])
-
   return (
-    <Rows>
+    <Rows data-testid="css-editor">
       <PropertyBlockHeader header={t('header.name')} hint={t('header.hint')}/>
-      {useWrapperStyles && <RadioButtons value={activeTab} onChange={handleSelect} items={items}/>}
-      <CodeEditor
-        key={`${store.key}${activeTab}${device}`}
-        language="css"
-        className={styles.editorWrapper}
-        beginContextLine={'element.style {'}
-        endContextLine="}"
-        initialValue={initialValue}
-        onChange={onChange}
-        height={'20vh'}
-        options={options}
+      {useWrapperStyles && <RadioButtons className={styles.tabs} value={activeTab} onChange={handleSelect} items={items}/>}
+      <StyleCodeField
+        part={activeTab}
+        device={device}
+        beginContextLine="element.style {"
+        cleanButtonTestId="css-editor-clean-button"
       />
     </Rows>
   )
+}
+
+const RawCSSEditor = (props: CSSEditorProps) => {
+  const {store} = useComponentData()
+  return <CSSEditorBody key={store.key} {...props}/>
 }
 
 export const CSSEditor = namedObserver('CSSEditor', RawCSSEditor)

@@ -7,6 +7,35 @@ import {MonacoCodeEditor} from './MonacoCodeEditor'
 import type {ConstrainedMonacoEditorModel} from './setupConstrainedMonaco'
 import {setupConstrainedMonaco, withSuppressedConstrainedValidation} from './setupConstrainedMonaco'
 
+type ConstrainedContext = {
+  beginContextLine?: string
+  canEditBeginContextLine?: boolean
+  endContextLine?: string
+}
+
+const applyConstrainedEditorValue = (
+  editor: editor.IStandaloneCodeEditor | null,
+  constrainedModel: ConstrainedMonacoEditorModel | null,
+  documentValue: string,
+  context: ConstrainedContext
+) => {
+  if (!editor) {
+    return
+  }
+  if (editor.getValue() === documentValue) {
+    constrainedModel?.updateRestrictions(context)
+    return
+  }
+  if (constrainedModel) {
+    withSuppressedConstrainedValidation(constrainedModel, () => {
+      editor.setValue(documentValue)
+      constrainedModel.updateRestrictions(context)
+    })
+    return
+  }
+  editor.setValue(documentValue)
+}
+
 /**
  * The React component that displays constrained code editor.
  * @param props the React component properties.
@@ -33,19 +62,7 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
   const constrainedModelRef = useRef<ConstrainedMonacoEditorModel>(null)
 
   useEffect(() => {
-    const editor = editorRef.current
-    const constrainedModel = constrainedModelRef.current
-    if (!editor) {
-      return
-    }
-    if (constrainedModel) {
-      withSuppressedConstrainedValidation(constrainedModel, () => {
-        editor.setValue(documentValue)
-        constrainedModel.updateRestrictions(context)
-      })
-    } else {
-      editor.setValue(documentValue)
-    }
+    applyConstrainedEditorValue(editorRef.current, constrainedModelRef.current, documentValue, context)
   }, [context, documentValue])
 
   const {onChange, onMount} = props

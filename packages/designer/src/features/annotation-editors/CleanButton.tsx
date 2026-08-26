@@ -20,6 +20,10 @@ interface CrossButtonProps {
    * The class name.
    */
   className?: string
+  /**
+   * The test identifier.
+   */
+  'data-testid'?: string
 }
 
 /**
@@ -28,11 +32,10 @@ interface CrossButtonProps {
  * @returns the React element.
  */
 export const CrossButton = (props: CrossButtonProps) => {
-  const {onClick, hint, className} = props
-  const cls = useMemo(() => cx(['rs-picker-clean', 'rs-btn-close', className]), [className])
+  const {onClick, hint, className, ['data-testid']: testId} = props
 
   return <Hinted hint={hint}>
-    <button className={cls} onClick={onClick}>
+    <button className={cx(['rs-picker-clean', 'rs-btn-close', className])} onClick={onClick} data-testid={testId}>
       <Close/>
     </button>
   </Hinted>
@@ -50,6 +53,10 @@ interface CleanButtonProps {
    * The class name.
    */
   className?: string
+  /**
+   * The test identifier.
+   */
+  'data-testid'?: string
 }
 
 /**
@@ -58,9 +65,9 @@ interface CleanButtonProps {
  * @returns the React element.
  */
 export const CleanButton = (props: CleanButtonProps) => {
-  const {onClick, className} = props
+  const {onClick, className, ['data-testid']: testId} = props
   const getLabel = useTranslationPart('propertiesEditor')
   const cleanLabel = useMemo(() => getLabel('clean'), [getLabel])
 
-  return <CrossButton hint={cleanLabel} onClick={onClick} className={className}/>
+  return <CrossButton hint={cleanLabel} onClick={onClick} className={className} data-testid={testId}/>
 }

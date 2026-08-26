@@ -1,14 +1,13 @@
 import {namedObserver, useComponentData} from '@react-form-builder/core'
-import type {editor} from 'monaco-editor'
-import {useCallback, useEffect, useMemo, useState} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import type {Device} from '../../utils/types'
-import {CodeEditor} from '../components/CodeEditor/CodeEditor'
 import {Rows} from '../components/Containers'
 import type {RadioButtonsProps} from '../components/RadioButtons'
 import {RadioButtons} from '../components/RadioButtons'
 import {useTranslationPart} from '../localization/hooks'
 import {PropertyBlockHeader} from '../ui/RightPanel/PropertiesEditor/components/PropertyBlockHeader'
-import styles from './StyleEditor.module.css'
+import styles from './StyleCodeEditor.module.css'
+import {StyleCodeField} from './StyleCodeField'
 
 /**
  * The part of the style properties of a component.
@@ -16,7 +15,7 @@ import styles from './StyleEditor.module.css'
 type StylePart = 'style' | 'wrapperStyle'
 
 /**
- * CSSEditor React component properties.
+ * StyleEditor React component properties.
  */
 interface StyleEditorProps {
   /**
@@ -35,31 +34,9 @@ interface StyleEditorProps {
 
 type Item = { value: StylePart, label: string }
 
-const options: editor.IStandaloneEditorConstructionOptions = {
-  contextmenu: false,
-  lineNumbers: 'off',
-  minimap: {enabled: false},
-  glyphMargin: false,
-  folding: false,
-  lineDecorationsWidth: 0,
-  lineNumbersMinChars: 0,
-  autoIndent: 'full'
-}
-
-const RawStyleEditor = ({device, useWrapperStyles, defaultActiveTab}: StyleEditorProps) => {
-  const {store} = useComponentData()
+const StyleEditorBody = ({device, useWrapperStyles, defaultActiveTab}: StyleEditorProps) => {
   const t = useTranslationPart('styleEditor')
   const [activeTab, setActiveTab] = useState<StylePart>(defaultActiveTab ?? 'style')
-
-  const initialValue = useMemo(() => {
-    return store[activeTab]?.[device]?.string ?? ''
-  }, [store, activeTab, device])
-
-  const onChange = useCallback((value: any) => {
-    store[activeTab] ??= {}
-    store[activeTab][device] ??= {}
-    store[activeTab][device].string = value
-  }, [activeTab, device, store])
 
   const handleSelect: RadioButtonsProps['onChange'] = useCallback(value => {
     setActiveTab(value as StylePart)
@@ -70,27 +47,23 @@ const RawStyleEditor = ({device, useWrapperStyles, defaultActiveTab}: StyleEdito
     {value: 'wrapperStyle', label: t('wrapperTab.name'), hint: t('wrapperTab.hint')}
   ], [t])
 
-  useEffect(() => {
-    setActiveTab(defaultActiveTab ?? 'style')
-  }, [defaultActiveTab])
-
   return (
-    <Rows>
+    <Rows data-testid="style-editor">
       <PropertyBlockHeader header={t('header.name')} hint={t('header.hint')}/>
-      {useWrapperStyles && <RadioButtons value={activeTab} onChange={handleSelect} items={items}/>}
-      <CodeEditor
-        key={`${store.key}${activeTab}${device}`}
-        language="css"
-        className={styles.editorWrapper}
+      {useWrapperStyles && <RadioButtons className={styles.tabs} value={activeTab} onChange={handleSelect} items={items}/>}
+      <StyleCodeField
+        part={activeTab}
+        device={device}
         beginContextLine={`${activeTab} {`}
-        endContextLine="}"
-        initialValue={initialValue}
-        onChange={onChange}
-        height={'20vh'}
-        options={options}
+        cleanButtonTestId="style-editor-clean-button"
       />
     </Rows>
   )
+}
+
+const RawStyleEditor = (props: StyleEditorProps) => {
+  const {store} = useComponentData()
+  return <StyleEditorBody key={store.key} {...props}/>
 }
 
 export const StyleEditor = namedObserver('StyleEditor', RawStyleEditor)

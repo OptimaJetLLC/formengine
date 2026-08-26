@@ -14,7 +14,11 @@ export const UnconstrainedCodeEditor = (props: UnconstrainedCodeEditorProps) => 
   const {onChange, onMount} = props
 
   useEffect(() => {
-    editorRef.current?.setValue(props.initialValue)
+    const editor = editorRef.current
+    if (!editor || editor.getValue() === props.initialValue) {
+      return
+    }
+    editor.setValue(props.initialValue)
   }, [props.initialValue])
 
   const handleMount: OnMount = useCallback((editor, monaco) => {
