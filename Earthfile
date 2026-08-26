@@ -46,7 +46,7 @@ VALIDATE_ARCHIVES:
 dependencies:
   WORKDIR /repo
   COPY package.json package-lock.json package.public.json package.private.json lerna.json biome.json .npmrc LICENSE.md README.private.md CHANGELOG.md ./
-  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts ./
+  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
   COPY .madgerc ./
   COPY --dir packages documentation tests scripts examples ./
   ENV npm_config_audit=false
@@ -63,7 +63,7 @@ sources:
 formengine-src-sources:
   WORKDIR /repo
   COPY package.json package-lock.json package.public.json package.private.json lerna.json biome.json .npmrc LICENSE.md README.private.md CHANGELOG.md ./
-  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts ./
+  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
   COPY .madgerc ./
   COPY --dir packages documentation tests scripts examples ./
 

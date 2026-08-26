@@ -6,8 +6,8 @@ import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-fr
 import type {Plugin, ResolvedConfig} from 'vite'
 import {defineConfig, mergeConfig} from 'vite'
 import {inlineCssPlugin} from 'vite-inline-css-plugin'
-import dts from 'vite-plugin-dts'
 import svgr from 'vite-plugin-svgr'
+import {libDts} from '../../vite-plugin-api-extractor.ts'
 
 import base from '../../vite.config'
 
@@ -106,7 +106,7 @@ const composeDesignerDistCssPlugin = (): Plugin => {
 
 export default defineConfig((env) => mergeConfig(base(env), {
   plugins: [
-    dts({rollupTypes: true, tsconfigPath: './bundle.tsconfig.json'}),
+    libDts(),
     svgr({
       include: '**/*.svg',
     }),
