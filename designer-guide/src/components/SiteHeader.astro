@@ -1,0 +1,67 @@
+---
+import DocSearch from './DocSearch.astro';
+import { getDemoBase } from '../lib/demo-base.mjs';
+import { mainDocsUrl } from '../lib/main-docs-base.mjs';
+import { siteUrl } from '../utils/site-url';
+
+const demoUrl = getDemoBase({ isDev: import.meta.env.DEV });
+---
+
+<header class="fe-header" transition:name="docs-header" transition:persist="docs-header">
+  <div class="fe-header__inner">
+    <div class="fe-header__brand">
+      <button
+        type="button"
+        class="fe-nav-toggle"
+        id="fe-nav-toggle"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="docs-sidebar-island"
+      >
+        <svg class="fe-nav-toggle__icon fe-nav-toggle__icon--open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg class="fe-nav-toggle__icon fe-nav-toggle__icon--close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+      <a href="/" class="fe-header__logo" aria-label="FormEngine home">
+        <img src={siteUrl('img/logo.svg')} alt="FormEngine" width="185" height="30" class="fe-site-logo fe-site-logo--light fe-site-logo--full" />
+        <img src={siteUrl('img/logo_dark.svg')} alt="FormEngine" width="185" height="30" class="fe-site-logo fe-site-logo--dark fe-site-logo--full" />
+        <img src={siteUrl('img/favicon.svg')} alt="FormEngine" height="30" width="30" class="fe-site-logo fe-site-logo--light fe-site-logo--icon" />
+        <img src={siteUrl('img/favicon.svg')} alt="FormEngine" height="30" width="30" class="fe-site-logo fe-site-logo--dark fe-site-logo--icon" />
+      </a>
+    </div>
+    <nav class="fe-header__nav" aria-label="Main">
+      <DocSearch />
+      <a href={mainDocsUrl()} class="fe-nav-docs-link" target="_blank" rel="noreferrer">Developer docs</a>
+      <a href={demoUrl} target="_blank" rel="noreferrer" class="fe-demo-link">Demo</a>
+      <button type="button" class="fe-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <span class="fe-theme-toggle__text">Theme</span>
+        <svg class="fe-theme-toggle__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const storageKey = 'fe-designer-guide-theme';
+  const root = document.documentElement;
+
+  function applyTheme(theme) {
+    root.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem(storageKey, theme);
+  }
+
+  const toggle = document.getElementById('theme-toggle');
+  toggle?.addEventListener('click', () => {
+    applyTheme(root.classList.contains('dark') ? 'light' : 'dark');
+  });
+</script>
+
+<script>
+  import '../scripts/docs-mobile-nav.client';
+</script>

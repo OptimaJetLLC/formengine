@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import navigation from '../data/navigation.json';
+import { docPageUrl } from '../utils/site-url';
+
+interface NavPage {
+  slug: string;
+  label: string;
+}
+
+interface NavSection {
+  slug: string;
+  label: string;
+  pages: NavPage[];
+}
+
+interface Props {
+  sectionSlug: string;
+}
+
+const { sectionSlug } = Astro.props;
+const section = (navigation as { sections: NavSection[] }).sections.find((item) => item.slug === sectionSlug);
+const docs = await getCollection('docs');
+const descriptions = new Map(docs.map((entry) => [entry.id, entry.data.description ?? '']));
+const pages = (section?.pages ?? []).map((page) => ({
+  ...page,
+  description: descriptions.get(page.slug) ?? '',
+}));
+---
+
+{
+  pages.length > 0 && (
+    <nav class="fe-section-toc" aria-label="In this section">
+      <table>
+        <tbody>
+          {pages.map((page) => (
+            <tr>
+              <td>
+                <a href={docPageUrl(page.slug)}>{page.label}</a>
+              </td>
+              <td>{page.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </nav>
+  )
+}

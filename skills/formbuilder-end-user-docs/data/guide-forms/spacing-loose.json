@@ -1,0 +1,72 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "spacingTitle",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h5"
+          },
+          "children": {
+            "value": "Team profile",
+            "editorType": "string"
+          }
+        }
+      },
+      {
+        "key": "looseStack",
+        "type": "MuiStack",
+        "props": {
+          "spacing": {
+            "value": "72px"
+          }
+        },
+        "children": [
+          {
+            "key": "companyName",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "Company name"
+              }
+            }
+          },
+          {
+            "key": "department",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "Department"
+              }
+            }
+          },
+          {
+            "key": "role",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "Role"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

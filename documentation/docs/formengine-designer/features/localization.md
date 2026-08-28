@@ -5,7 +5,14 @@ slug: /formengine-designer/features/localization
 description: In this guide, we will look at how to localize the string properties of a component
 ---
 
-# Localization
+:::info For form authors
+
+Switch form language in the header and use **Settings** → **Language settings** for locale setup.
+
+[Full guide →](designer-guide:appearance-and-readability/localization-for-form-authors/)
+:::
+
+## Localization
 
 ## Overview
 
@@ -373,7 +380,7 @@ You can use the same `{$variableName}` placeholders in **any string** inside the
 fields, nested objects, and string keys). At runtime, the viewer replaces them using the form’s **initial data** (the same source as for
 localized strings).
 
-Example — option label depends on another field:
+Example - option label depends on another field:
 
 ```json
 [

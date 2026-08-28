@@ -1,0 +1,53 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "companyName",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "computeType": "localization"
+          }
+        }
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "companyName": {
+        "component": {
+          "label": "Company name"
+        }
+      }
+    },
+    "de-DE": {
+      "companyName": {
+        "component": {
+          "label": "Firmenname"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "de",
+      "dialect": "DE",
+      "name": "Deutsch",
+      "description": "German",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

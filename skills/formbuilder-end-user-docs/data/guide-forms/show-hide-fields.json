@@ -1,0 +1,72 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "accountType",
+        "type": "MuiRadioGroup",
+        "props": {
+          "label": {
+            "value": "Account type"
+          },
+          "name": {
+            "value": "accountType"
+          }
+        },
+        "children": [
+          {
+            "key": "personal",
+            "type": "MuiRadioItem",
+            "props": {
+              "value": {
+                "value": "Personal"
+              },
+              "label": {
+                "value": "Personal"
+              }
+            }
+          },
+          {
+            "key": "business",
+            "type": "MuiRadioItem",
+            "props": {
+              "value": {
+                "value": "Business"
+              },
+              "label": {
+                "value": "Business"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "taxId",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Tax ID"
+          }
+        },
+        "renderWhen": {
+          "computeType": "function",
+          "fnSource": "return form.data.accountType === 'Business'"
+        }
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

@@ -1,0 +1,37 @@
+{
+  "actions": {
+    "loadData": {
+      "body": "const [searchValue, loadCallback, currentDataLength] = e.args\n\nfetch('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n  .then(data => data.json())\n  .then(data => {\n    const preparedData = data\n      .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n      .slice(currentDataLength, currentDataLength + 20)\n      .map(value => ({value, label: value}))\n\n    loadCallback(preparedData)\n  })",
+      "params": {}
+    }
+  },
+  "tooltipType": "RsTooltip",
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "name",
+        "type": "RsDropdown",
+        "props": {
+          "data": {
+            "value": []
+          },
+          "label": {
+            "value": "Name"
+          }
+        },
+        "events": {
+          "onLoadData": [
+            {
+              "name": "loadData",
+              "type": "code"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "formTitle",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h5"
+          },
+          "children": {
+            "value": "Contact us",
+            "editorType": "string"
+          }
+        }
+      },
+      {
+        "key": "fullName",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Full name"
+          }
+        }
+      },
+      {
+        "key": "email",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Email"
+          }
+        }
+      },
+      {
+        "key": "message",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Message"
+          },
+          "multiline": {
+            "value": true
+          },
+          "rows": {
+            "value": 4
+          }
+        }
+      },
+      {
+        "key": "submit",
+        "type": "MuiButton",
+        "props": {
+          "variant": {
+            "value": "contained"
+          },
+          "children": {
+            "value": "Submit"
+          }
+        }
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

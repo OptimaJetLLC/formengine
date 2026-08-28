@@ -1,0 +1,101 @@
+---
+import {
+  docsearchConfig,
+  docsearchEnabled,
+  docsearchPathPrefix,
+} from '../constants/docsearch-config.mjs';
+import { DOCSEARCH_JS } from '../constants/docsearch.mjs';
+---
+
+{docsearchEnabled && <div id="docsearch" class="fe-docsearch"></div>}
+
+{docsearchEnabled && (
+  <script
+    is:inline
+    define:vars={{
+      appId: docsearchConfig.appId,
+      apiKey: docsearchConfig.apiKey,
+      indexName: docsearchConfig.indexName,
+      docsearchJs: DOCSEARCH_JS,
+      pathPrefix: docsearchPathPrefix,
+    }}
+  >
+    function portalDocSearchModal() {
+      const modal = document.querySelector('.DocSearch-Container');
+      if (modal && modal.parentElement !== document.body) {
+        document.body.appendChild(modal);
+      }
+    }
+
+    function watchDocSearchModal() {
+      if (window.__feDocSearchModalWatcher) {
+        portalDocSearchModal();
+        return;
+      }
+
+      const observer = new MutationObserver(portalDocSearchModal);
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+      window.__feDocSearchModalWatcher = observer;
+      portalDocSearchModal();
+    }
+
+    function initDocSearch() {
+      const container = document.getElementById('docsearch');
+      if (!container || container.dataset.docsearchReady === 'true') {
+        watchDocSearchModal();
+        return;
+      }
+      if (typeof window.docsearch !== 'function') {
+        return;
+      }
+
+      const options = {
+        container: '#docsearch',
+        appId,
+        apiKey,
+        indexName,
+        placeholder: 'Search docs…',
+      };
+
+      if (pathPrefix) {
+        const normalized = pathPrefix.endsWith('/') ? pathPrefix : `${pathPrefix}/`;
+        options.transformItems = (items) =>
+          items.filter(({ url }) => {
+            try {
+              const pathname = new URL(url, window.location.origin).pathname;
+              return pathname === pathPrefix || pathname.startsWith(normalized);
+            } catch {
+              return url.includes(pathPrefix);
+            }
+          });
+      }
+
+      window.docsearch(options);
+      container.dataset.docsearchReady = 'true';
+      watchDocSearchModal();
+    }
+
+    function loadDocSearch() {
+      if (typeof window.docsearch === 'function') {
+        initDocSearch();
+        return;
+      }
+
+      const existing = document.querySelector('script[data-docsearch-loader="true"]');
+      if (existing) {
+        existing.addEventListener('load', initDocSearch);
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = docsearchJs;
+      script.async = true;
+      script.dataset.docsearchLoader = 'true';
+      script.addEventListener('load', initDocSearch);
+      document.head.appendChild(script);
+    }
+
+    loadDocSearch();
+    document.addEventListener('astro:page-load', initDocSearch);
+  </script>
+)}

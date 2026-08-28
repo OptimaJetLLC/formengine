@@ -5,7 +5,14 @@ slug: /formengine-designer/features/user-defined-properties
 description: How to override the properties of a component in runtime.
 ---
 
-# User defined properties
+:::info For form authors
+
+Dynamic extra fields on a form are an advanced integration topic.
+
+[Full guide →](designer-guide:advanced-topics/when-to-involve-developers/)
+:::
+
+## User defined properties
 
 In cases where you need to change (override) the properties of a component inside the form action or the component code in React, you can
 use [userDefinedProps](/api-reference/@react-form-builder/core/classes/ComponentData#userdefinedprops)

@@ -1,0 +1,48 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "sectionTitle",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h5"
+          },
+          "children": {
+            "value": "Contact details",
+            "editorType": "string"
+          }
+        },
+        "css": {
+          "any": {
+            "string": "font-weight: bold;"
+          }
+        }
+      },
+      {
+        "key": "email",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Email"
+          }
+        }
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

@@ -5,7 +5,14 @@ sidebar_position: 5
 slug: /formengine-designer/features/validation
 ---
 
-# Validation
+:::info For form authors
+
+Add **Required** and built-in rules on the **Rules** tab, then test messages in **Preview**.
+
+[Full guide →](designer-guide:behavior-and-validation/validation-basics/)
+:::
+
+## Validation
 
 ## Overview
 

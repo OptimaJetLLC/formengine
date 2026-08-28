@@ -4,7 +4,7 @@ import {act} from '@testing-library/react'
  * Forcibly dispatches synthetic `load` events on all `<link rel="stylesheet">` elements in the DOM.
  *
  * @remarks
- * jsdom (used in test environments) does not fully emulate external stylesheet loading —
+ * jsdom (used in test environments) does not fully emulate external stylesheet loading -
  * the native `load` event on `<link>` elements may never fire. This function works around
  * that limitation by manually invoking any registered `onload` handlers with a fake `Event`.
  *

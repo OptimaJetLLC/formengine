@@ -46,9 +46,9 @@ VALIDATE_ARCHIVES:
 dependencies:
   WORKDIR /repo
   COPY package.json package-lock.json package.public.json package.private.json lerna.json biome.json .npmrc LICENSE.md README.private.md CHANGELOG.md ./
-  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
+  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts .mdxlintrc.mjs vite-plugin-api-extractor.ts ./
   COPY .madgerc ./
-  COPY --dir packages documentation tests scripts examples ./
+  COPY --dir packages documentation designer-guide tests scripts examples ./
   ENV npm_config_audit=false
   ENV npm_config_fund=false
   ENV npm_config_progress=true
@@ -59,13 +59,13 @@ sources:
   FROM +dependencies
   SAVE ARTIFACT /repo /repo
 
-# Source tree for formengine-src.tgz only (no npm ci — avoids node_modules in the archive).
+# Source tree for formengine-src.tgz only (no npm ci - avoids node_modules in the archive).
 formengine-src-sources:
   WORKDIR /repo
   COPY package.json package-lock.json package.public.json package.private.json lerna.json biome.json .npmrc LICENSE.md README.private.md CHANGELOG.md ./
   COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
   COPY .madgerc ./
-  COPY --dir packages documentation tests scripts examples ./
+  COPY --dir packages documentation designer-guide tests scripts examples ./
 
 # --- CI ---
 
@@ -110,6 +110,16 @@ npm-documentation-build:
   ENV NODE_OPTIONS="--max-old-space-size=8192"
   WORKDIR /repo
   RUN npm run docs:build
+
+npm-designer-guide-build:
+  FROM +sources
+  WORKDIR /repo
+  RUN npm run designer-guide:build
+
+npm-documentation-sites-build:
+  FROM +sources
+  WORKDIR /repo
+  RUN npm run docs:build && npm run designer-guide:build
 
 npm-publish-rc-release:
   FROM node:24.18.0
@@ -162,7 +172,7 @@ npm-check-circular-deps:
 npm-eslint:
   FROM +sources
   WORKDIR /repo
-  RUN npm run eslint
+  RUN npm run check:eslint
 
 npm-check-unused-exports:
   FROM +sources
@@ -212,6 +222,21 @@ prepare-documentation-archive:
   RUN tar -czvf documentation.tgz -C documentation/website/build .
   SAVE ARTIFACT --force documentation.tgz AS LOCAL .archives/documentation.tgz
 
+prepare-designer-guide-archive:
+  FROM +npm-designer-guide-build
+  WORKDIR /repo
+  RUN tar -czvf designer-guide.tgz -C designer-guide/dist .
+  SAVE ARTIFACT --force designer-guide.tgz AS LOCAL .archives/designer-guide.tgz
+
+prepare-documentation-sites-archives:
+  FROM +npm-documentation-sites-build
+  WORKDIR /repo
+  RUN mkdir -p .archives
+  RUN tar -czvf .archives/documentation.tgz -C documentation/website/build .
+  RUN tar -czvf .archives/designer-guide.tgz -C designer-guide/dist .
+  SAVE ARTIFACT --force .archives/documentation.tgz AS LOCAL .archives/documentation.tgz
+  SAVE ARTIFACT --force .archives/designer-guide.tgz AS LOCAL .archives/designer-guide.tgz
+
 prepare-formengine-src-archive:
   FROM +formengine-src-sources
   WORKDIR /repo
@@ -239,6 +264,7 @@ prepare-all-archives:
   BUILD +prepare-demo-archive
   BUILD +prepare-formbuilder-archive
   BUILD +prepare-documentation-archive
+  BUILD +prepare-designer-guide-archive
   BUILD +prepare-version-archive
   BUILD +prepare-github-release-notes-archive
 

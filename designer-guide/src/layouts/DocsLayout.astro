@@ -1,0 +1,104 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import DocsSidebarIsland from '../components/DocsSidebarIsland.astro';
+import ArticlePagination from '../components/ArticlePagination.astro';
+import GuideImageLightbox from '../components/GuideImageLightbox.astro';
+import GuideImageMagnifier from '../components/GuideImageMagnifier.astro';
+import DemoWindow from '../components/DemoWindow.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import { themeInitScript } from '../components/ThemeInit.astro';
+import { docsearchEnabled } from '../constants/docsearch-config.mjs';
+import { DOCSEARCH_JS } from '../constants/docsearch.mjs';
+import '../styles/custom.css';
+import '@docsearch/css/dist/style.css';
+import { siteUrl } from '../utils/site-url';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPath: string;
+  entryId: string;
+  headings: Heading[];
+}
+
+const { title, description, currentPath, entryId, headings } = Astro.props;
+const pageTitle = title.includes('FormEngine') ? title : `${title} | FormEngine Designer Guide`;
+const ogDescription = description || 'Step-by-step help for form authors using FormEngine Designer. No programming required.';
+const ogImageUrl = new URL(siteUrl('img/og-image.png'), Astro.site).href;
+// const editUrl = `https://github.com/optimajet/formengine/edit/master/designer-guide/content/${entryId === 'index' ? 'index.md' : `${entryId}.md`}`;
+---
+
+<!doctype html>
+<html lang="en" transition:animate="fade" data-guide-base={import.meta.env.BASE_URL}>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-PJLK5MXP');
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline set:html={themeInitScript} />
+    <ClientRouter />
+    <title>{pageTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={Astro.url.href} />
+    <link rel="icon" href={siteUrl('img/favicon.svg')} />
+    <link rel="stylesheet" href={siteUrl('fonts/inter.css')} />
+    {docsearchEnabled && <link rel="preload" href={DOCSEARCH_JS} as="script" />}
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PJLK5MXP"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <SiteHeader />
+    <button type="button" class="fe-nav-backdrop" id="fe-nav-backdrop" aria-label="Close navigation" hidden></button>
+    <div class="fe-docs">
+      <DocsSidebarIsland currentPath={currentPath} />
+      <main class="fe-content" transition:name="docs-main" transition:animate="fade">
+        <!--<a href={editUrl} class="fe-content__edit" target="_blank" rel="noreferrer">Edit this page on GitHub</a>-->
+        <article class="fe-prose">
+          <slot />
+          <ArticlePagination entryId={entryId} position="bottom" />
+        </article>
+      </main>
+      <TableOfContents headings={headings} />
+    </div>
+    <SiteFooter />
+    <GuideImageLightbox />
+    <GuideImageMagnifier />
+    <DemoWindow />
+    <script>
+      import '../scripts/guide-image-interactions.client';
+    </script>
+  </body>
+</html>

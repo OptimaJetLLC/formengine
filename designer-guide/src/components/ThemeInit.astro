@@ -1,0 +1,22 @@
+---
+/** Inline theme bootstrap - must run in <head> before paint to avoid flash. */
+export const themeInitScript = `(function () {
+  var storageKey = 'fe-designer-guide-theme';
+
+  function resolveTheme() {
+    var stored = localStorage.getItem(storageKey);
+    if (stored === 'dark' || stored === 'light') {
+      return stored;
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyStoredTheme() {
+    document.documentElement.classList.toggle('dark', resolveTheme() === 'dark');
+  }
+
+  applyStoredTheme();
+  document.addEventListener('astro:page-load', applyStoredTheme);
+  document.addEventListener('astro:after-swap', applyStoredTheme);
+})();`;
+---

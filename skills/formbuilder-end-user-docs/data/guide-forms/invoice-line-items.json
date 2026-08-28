@@ -1,0 +1,135 @@
+{
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "formTitle",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h5"
+          },
+          "children": {
+            "value": "Invoice",
+            "editorType": "string"
+          }
+        }
+      },
+      {
+        "key": "lineItemsRepeater",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": [
+              {}
+            ]
+          }
+        },
+        "children": [
+          {
+            "key": "lineItemRow",
+            "type": "MuiStack",
+            "props": {
+              "spacing": {
+                "value": "12px"
+              },
+              "direction": {
+                "value": "row"
+              }
+            },
+            "children": [
+              {
+                "key": "itemName",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Item name"
+                  }
+                }
+              },
+              {
+                "key": "quantity",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Quantity"
+                  }
+                }
+              },
+              {
+                "key": "unitPrice",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Unit price"
+                  }
+                }
+              },
+              {
+                "key": "removeLineItem",
+                "type": "MuiButton",
+                "props": {
+                  "children": {
+                    "value": "Remove line item"
+                  },
+                  "variant": {
+                    "value": "outlined"
+                  },
+                  "color": {
+                    "value": "error"
+                  }
+                },
+                "wrapperCss": {
+                  "any": {
+                    "object": {
+                      "width": "180px",
+                      "alignSelf": "center",
+                      "flexShrink": 0
+                    }
+                  }
+                },
+                "events": {
+                  "onClick": [
+                    {
+                      "name": "removeRow",
+                      "type": "common",
+                      "args": {
+                        "min": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "addLineItem",
+        "type": "MuiButton",
+        "props": {
+          "children": {
+            "value": "Add line item"
+          },
+          "variant": {
+            "value": "outlined"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "addRow",
+              "type": "common",
+              "args": {
+                "dataKey": "lineItemsRepeater"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -350,7 +350,7 @@ User-defined properties bypass FormEngine Core's normal property resolution. Thi
 - User-defined properties let you override component properties at runtime via `userDefinedProps` and `setUserDefinedProps`.
 - They take precedence over all other property sources (static, computed, localized, defaults).
 - You can set them from actions using `e.setUserDefinedProps()` or directly in React components.
-- This is an advanced feature—use it sparingly and document your overrides.
+- This is an advanced feature - use it sparingly and document your overrides.
 - Always merge with existing properties to avoid losing other overrides.
 
 ---

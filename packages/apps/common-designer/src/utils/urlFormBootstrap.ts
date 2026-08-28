@@ -2,11 +2,11 @@
  * URL bootstrap for demo / formbuilder apps.
  *
  * Supported query params:
- *   ?form={}                 — open a blank Screen form
- *   ?form=<bundledName>      — open a seeded/bundled form name (e.g. MuiForm)
- *   ?formBody=<encoded>      — open a form from an encoded JSON body (minified UTF-8)
- *   ?formName=<displayName>  — optional storage/display name when using formBody
- *   ?view=mui|mantine|rsuite-inject-css|rsuite-import-css — force UI kit
+ *   ?form={}                 - open a blank Screen form
+ *   ?form=<bundledName>      - open a seeded/bundled form name (e.g. MuiForm)
+ *   ?formBody=<encoded>      - open a form from an encoded JSON body (minified UTF-8)
+ *   ?formName=<displayName>  - optional storage/display name when using formBody
+ *   ?view=mui|mantine|rsuite-inject-css|rsuite-import-css - force UI kit
  *
  * When a form-related param is present, form-name persistence is disabled so localStorage
  * does not override the URL.

@@ -4,6 +4,12 @@ description: Read articles about using FormEngine.
 slug: /formengine-designer/getting-started
 ---
 
+:::info For form authors
+
+Building forms in the UI? Start with the [Form Author Guide](designer-guide:), not this technical getting-started section.
+
+:::
+
 ## Key features of Form Builder
 
 1. Web interface with drag and drop functionality.

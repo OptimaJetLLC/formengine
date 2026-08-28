@@ -5,7 +5,14 @@ sidebar_position: 2
 slug: /formengine-designer/features/nested-components
 ---
 
-# Nested components
+:::info For form authors
+
+Group fields with containers and view nesting in **Tree**.
+
+[Full guide →](designer-guide:form-structure-and-layout/form-structure-and-containers/)
+:::
+
+## Nested components
 
 Form Builder supports nested components out of the box. There are two types of nested components:
 

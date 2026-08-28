@@ -1,0 +1,50 @@
+{
+  "viewport": "1440x900",
+  "description": "Measured from live builder DOM during capture (light theme). Re-capture after layout changes.",
+  "zones": [
+    {
+      "id": 1,
+      "label": "Top bar",
+      "rect": [
+        0,
+        0,
+        1440,
+        63
+      ],
+      "color": "#8B5CF6"
+    },
+    {
+      "id": 2,
+      "label": "Left panel",
+      "rect": [
+        0,
+        63,
+        290,
+        822
+      ],
+      "color": "#3B82F6"
+    },
+    {
+      "id": 3,
+      "label": "Canvas",
+      "rect": [
+        290,
+        63,
+        860,
+        822
+      ],
+      "color": "#10B981"
+    },
+    {
+      "id": 4,
+      "label": "Properties",
+      "rect": [
+        1150,
+        63,
+        290,
+        822
+      ],
+      "color": "#F59E0B"
+    }
+  ]
+}

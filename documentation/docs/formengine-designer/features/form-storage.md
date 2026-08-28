@@ -5,7 +5,12 @@ slug: /formengine-designer/features/form-storage
 description: In this guide, we will look at how to connect external storage for forms
 ---
 
-# Form storage
+:::info For form authors
+
+When the **Forms** tab is visible, your app uses storage-see [Work with multiple forms](designer-guide:manage-forms/work-with-multiple-forms/).
+:::
+
+## Form storage
 
 By default, the designer does not use external form stores. In this mode you can create forms, export and import forms to JSON files.
 If this is not enough for you and you would like to save forms in the form store, you can do it by connecting an external form store.
@@ -192,4 +197,3 @@ export const kvClear = (customStore?: UseStore): Promise<void> => {
   return clear(customStore)
 }
 ```
-

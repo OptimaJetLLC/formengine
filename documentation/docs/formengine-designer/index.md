@@ -9,6 +9,12 @@ title: FormEngine Designer - Visual Drag & Drop Form Builder
 
 # FormEngine Designer - Visual Drag & Drop Form Builder
 
+:::info For form authors
+
+If you design forms in the visual UI **without writing code**, use the **[Form Author Guide](designer-guide:)** for step-by-step help: workspace tour, fields, validation, preview, and export.
+
+:::
+
 Form Builder is a client-side library for creating web forms. The library allows you to map a form from JSON to a dynamic HTML form and send
 the results to your server. The library has no built-in visual components to display the form. Instead, it is made to display your
 components. However, if you don't have your component set, there is a ready-made component set based on [React Suite](/components-library/)
@@ -279,6 +285,8 @@ For a more complete example, see [the link](/formengine-designer/getting-started
 
 ## Further reading
 
+- [Form Author Guide](designer-guide:) - step-by-step documentation for form authors (no code required).
+- [FormEngine Designer for developers](/formengine-designer/getting-started/for-developers) - packages, architecture, and integration for React developers.
 - Component styling [using CSS](/formengine-designer/features/component-styling).
 - [Validation](/formengine-designer/features/validation).
 - Connecting [form storage](/formengine-designer/features/form-storage) to Designer.

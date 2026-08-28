@@ -1,0 +1,33 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "email",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Email"
+          },
+          "value": {
+            "value": "alex@example.com"
+          }
+        }
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

@@ -1,0 +1,93 @@
+{
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "message",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h6"
+          },
+          "children": {
+            "value": "Are you sure you want to continue?",
+            "editorType": "string"
+          }
+        }
+      },
+      {
+        "key": "actions",
+        "type": "MuiStack",
+        "props": {
+          "direction": {
+            "value": "row"
+          },
+          "spacing": {
+            "value": "12px"
+          }
+        },
+        "children": [
+          {
+            "key": "ok",
+            "type": "MuiButton",
+            "props": {
+              "variant": {
+                "value": "contained"
+              },
+              "children": {
+                "value": "OK"
+              }
+            },
+            "events": {
+              "onClick": [
+                {
+                  "name": "closeModal",
+                  "type": "common",
+                  "args": {
+                    "result": "ok"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "key": "cancel",
+            "type": "MuiButton",
+            "props": {
+              "variant": {
+                "value": "outlined"
+              },
+              "children": {
+                "value": "Cancel"
+              }
+            },
+            "events": {
+              "onClick": [
+                {
+                  "name": "closeModal",
+                  "type": "common",
+                  "args": {
+                    "result": "cancel"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

@@ -24,7 +24,7 @@ Update all packages to version **7.11.0**. No additional actions are required.
 
 ### Features
 
-- Added **MuiDialog** component (see [Forms JSON — Modal component](https://formengine.io/documentation/components-library/material-ui/dialog)).
+- Added **MuiDialog** component (see [Forms JSON - Modal component](https://formengine.io/documentation/components-library/material-ui/dialog)).
 - Added **type** property support to [MuiTextField](https://formengine.io/documentation/components-library/material-ui/text-field#main-properties).
 - Added support for **disabled and read-only** properties for MUI components (see [Disabled and read-only](https://formengine.io/documentation/formengine-core/disabled-and-read-only)).
 

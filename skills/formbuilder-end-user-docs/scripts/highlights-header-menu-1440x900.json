@@ -1,0 +1,46 @@
+{
+  "viewport": "1440x900",
+  "description": "Measured header menu item rects with menu open (light theme).",
+  "highlights": {
+    "save": {
+      "rect": [
+        305,
+        195,
+        148,
+        36
+      ],
+      "color": "#F59E0B",
+      "showLabel": false
+    },
+    "exportForms": {
+      "rect": [
+        305,
+        267,
+        202,
+        36
+      ],
+      "color": "#F59E0B",
+      "showLabel": false
+    },
+    "importForms": {
+      "rect": [
+        305,
+        303,
+        202,
+        36
+      ],
+      "color": "#F59E0B",
+      "showLabel": false
+    },
+    "clear": {
+      "rect": [
+        305,
+        339,
+        202,
+        36
+      ],
+      "color": "#F59E0B",
+      "showLabel": false
+    }
+  }
+}

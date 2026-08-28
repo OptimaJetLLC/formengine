@@ -1,0 +1,112 @@
+User-agent: *
+Allow: /
+
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+
+# Google Search
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing Search
+User-agent: Bingbot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Yandex (relevant for some EU/CIS technical audiences)
+User-agent: YandexBot
+Allow: /
+
+# OpenAI: ChatGPT search retrieval (NOT training)
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI: user-initiated browsing from ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ChatGPT-User/2.0
+Allow: /
+
+# Anthropic: Claude search retrieval
+User-agent: Claude-SearchBot
+Allow: /
+
+# Anthropic: user-initiated browsing from Claude
+User-agent: Claude-User
+Allow: /
+
+# Perplexity: indexing
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity: user-initiated retrieval
+User-agent: Perplexity-User
+Allow: /
+
+# Microsoft Copilot uses Bingbot - already allowed above
+# Apple Intelligence search (separate from Applebot-Extended training)
+User-agent: Applebot
+Allow: /
+
+# Google Gemini grounding for AI Overviews and AI Mode
+# Note: Google-Extended controls TRAINING + grounding, not Google Search ranking
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI training
+User-agent: GPTBot
+Allow: /
+
+# Anthropic training
+User-agent: ClaudeBot
+Allow: /
+
+# Common Crawl - used by many smaller LLMs
+User-agent: CCBot
+Allow: /
+
+# Apple training (Apple Intelligence)
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI / Llama
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# ByteDance / TikTok / Doubao
+User-agent: Bytespider
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+User-agent: cohere-training-data-crawler
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# Diffbot (used by some enterprise AI)
+User-agent: Diffbot
+Allow: /
+
+# Older Anthropic strings (deprecated July 2024 in favor of ClaudeBot)
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: claude-web
+Allow: /
+
+Sitemap: https://learn.formengine.io/sitemap.xml

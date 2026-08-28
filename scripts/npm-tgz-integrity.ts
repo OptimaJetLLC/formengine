@@ -2,7 +2,7 @@ import {createHash} from 'node:crypto'
 import {readFileSync} from 'node:fs'
 
 /**
- * npm integrity (sha512-...) for a .tgz file — same algorithm as package-lock / npm.
+ * npm integrity (sha512-...) for a .tgz file - same algorithm as package-lock / npm.
  * @param absolutePath absolute path to the tarball
  * @returns integrity string (e.g. sha512-...)
  */

@@ -135,12 +135,12 @@ Variable names are case-sensitive and should match the property names available 
 
 Fluent values and spaces:
 
-- **Leading spaces** — Use a placeable with a quoted run of spaces, for example `{"       "}`, when you need leading spaces in the rendered
+- **Leading spaces** - Use a placeable with a quoted run of spaces, for example `{"       "}`, when you need leading spaces in the rendered
   text (adjust the number of spaces as needed).
-- **Trailing spaces** — Trailing spaces in the value are preserved.
-- **Intentional empty render** — Use `{""}` when you intentionally want an empty rendered value from Fluent while still keeping a concrete
+- **Trailing spaces** - Trailing spaces in the value are preserved.
+- **Intentional empty render** - Use `{""}` when you intentionally want an empty rendered value from Fluent while still keeping a concrete
   message pattern.
-- **Whitespace-only patterns** — A value that contains only whitespace can format to an empty rendered string. For component properties,
+- **Whitespace-only patterns** - A value that contains only whitespace can format to an empty rendered string. For component properties,
   this then follows the property-level fallback behavior described in [How Fallback Works](#how-fallback-works).
 
 :::
@@ -162,13 +162,13 @@ per language.
 `initialData` become Fluent variables with the same name.
 
 **Nested fields in form data:** Use a normal dot path in the placeholder (for example `{$user.name}` or `{$profile.displayName}`).
-FormEngine resolves nested `initialData` against those paths automatically—for example, form data `{ "user": { "name": "Alex" } }` is
+FormEngine resolves nested `initialData` against those paths automatically-for example, form data `{ "user": { "name": "Alex" } }` is
 referenced as `{$user.name}` in patterns.
 
 **Missing variables:** If a referenced key is not present in the form data, the placeholder resolves to an empty string (same behavior as
 for localized strings).
 
-**Example — localized `items` with dynamic labels:**
+**Example - localized `items` with dynamic labels:**
 
 ```json
 {
@@ -196,7 +196,7 @@ for localized strings).
 With `initialData` such as `{ "productName": "Acme XL" }`, the first option label renders as `Custom size for Acme XL`; the second option
 has no placeholders and stays `Standard`.
 
-**Example — placeholders in both `label` and `value`:**
+**Example - placeholders in both `label` and `value`:**
 
 ```json
 {
@@ -217,7 +217,7 @@ has no placeholders and stays `Standard`.
 }
 ```
 
-**Example — nested object (metadata per language):**
+**Example - nested object (metadata per language):**
 
 ```json
 {

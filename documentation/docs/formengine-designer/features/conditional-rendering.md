@@ -5,7 +5,14 @@ slug: /formengine-designer/features/conditional-rendering
 description: FormBuilder out of the box supports conditional rendering for components
 ---
 
-# Conditional rendering
+:::info For form authors
+
+Show or hide fields based on answers using **Render When** on **Main** for simple cases.
+
+[Full guide →](designer-guide:simple-data-driven-screens/show-or-hide-fields/)
+:::
+
+## Conditional rendering
 
 ## Overview
 

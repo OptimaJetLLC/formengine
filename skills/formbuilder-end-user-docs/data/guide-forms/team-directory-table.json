@@ -1,0 +1,140 @@
+{
+  "version": "1",
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "formTitle",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "value": "Team directory"
+          },
+          "headerSize": {
+            "value": "h4"
+          }
+        }
+      },
+      {
+        "key": "teamTable",
+        "type": "RsTable",
+        "props": {
+          "height": {
+            "value": 280
+          },
+          "data": {
+            "value": [
+              {
+                "name": "Alex Morgan",
+                "department": "Engineering",
+                "email": "alex.morgan@example.com"
+              },
+              {
+                "name": "Jordan Lee",
+                "department": "Design",
+                "email": "jordan.lee@example.com"
+              },
+              {
+                "name": "Sam Patel",
+                "department": "Support",
+                "email": "sam.patel@example.com"
+              }
+            ]
+          }
+        },
+        "children": [
+          {
+            "key": "nameColumn",
+            "type": "RsColumn",
+            "props": {
+              "width": {
+                "value": 180
+              }
+            },
+            "children": [
+              {
+                "key": "nameHeader",
+                "type": "RsHeaderCell",
+                "props": {
+                  "children": {
+                    "value": "Name"
+                  }
+                }
+              },
+              {
+                "key": "nameCell",
+                "type": "RsCell",
+                "props": {
+                  "dataKey": {
+                    "value": "name"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "key": "departmentColumn",
+            "type": "RsColumn",
+            "props": {
+              "width": {
+                "value": 160
+              }
+            },
+            "children": [
+              {
+                "key": "departmentHeader",
+                "type": "RsHeaderCell",
+                "props": {
+                  "children": {
+                    "value": "Department"
+                  }
+                }
+              },
+              {
+                "key": "departmentCell",
+                "type": "RsCell",
+                "props": {
+                  "dataKey": {
+                    "value": "department"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "key": "emailColumn",
+            "type": "RsColumn",
+            "props": {
+              "width": {
+                "value": 260
+              }
+            },
+            "children": [
+              {
+                "key": "emailHeader",
+                "type": "RsHeaderCell",
+                "props": {
+                  "children": {
+                    "value": "Email"
+                  }
+                }
+              },
+              {
+                "key": "emailCell",
+                "type": "RsCell",
+                "props": {
+                  "dataKey": {
+                    "value": "email"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

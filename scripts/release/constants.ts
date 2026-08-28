@@ -6,6 +6,7 @@ export const REQUIRED_ARCHIVE_FILES = [
   'formengine-src.tgz',
   'gh-release-notes.tgz',
   'documentation.tgz',
+  'designer-guide.tgz',
   'lerna.json',
 ] as const
 

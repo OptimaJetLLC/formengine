@@ -1,0 +1,36 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "workEmail",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Business email"
+          },
+          "placeholder": {
+            "value": "name@company.com"
+          },
+          "helperText": {
+            "value": "Use your work address."
+          }
+        }
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

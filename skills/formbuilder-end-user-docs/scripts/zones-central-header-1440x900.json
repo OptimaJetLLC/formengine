@@ -1,0 +1,72 @@
+{
+  "viewport": "1440x900",
+  "description": "Measured from live builder DOM during capture (light theme). Zones are relative to the central header crop.",
+  "zones": [
+    {
+      "id": 1,
+      "label": "Menu",
+      "rect": [
+        15,
+        11,
+        30,
+        30
+      ],
+      "color": "#8B5CF6"
+    },
+    {
+      "id": 2,
+      "label": "Undo / Redo",
+      "rect": [
+        85,
+        11,
+        60,
+        30
+      ],
+      "color": "#3B82F6"
+    },
+    {
+      "id": 3,
+      "label": "Component library",
+      "rect": [
+        156,
+        11,
+        153,
+        30
+      ],
+      "color": "#10B981"
+    },
+    {
+      "id": 4,
+      "label": "Preview",
+      "rect": [
+        381,
+        10,
+        98,
+        30
+      ],
+      "color": "#F59E0B"
+    },
+    {
+      "id": 5,
+      "label": "Device icons",
+      "rect": [
+        619,
+        10,
+        120,
+        30
+      ],
+      "color": "#EC4899"
+    },
+    {
+      "id": 6,
+      "label": "Language",
+      "rect": [
+        749,
+        10,
+        62,
+        30
+      ],
+      "color": "#14B8A6"
+    }
+  ]
+}

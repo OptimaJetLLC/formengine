@@ -1,0 +1,139 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+---
+
+{
+  toc.length > 0 && (
+    <nav class="fe-toc" aria-label="On this page" transition:name="docs-toc" transition:animate="fade">
+      <p class="fe-toc__title">On this page</p>
+      <ul class="fe-toc__list">
+        {toc.map((heading) => (
+          <li class:list={[`fe-toc__item`, `fe-toc__item--depth-${heading.depth}`]}>
+            <a href={`#${heading.slug}`} class="fe-toc__link" data-slug={heading.slug}>
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <button type="button" class="fe-toc__back-to-top" aria-label="Back to top" title="Back to top">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 15l-6-6-6 6"/>
+        </svg>
+      </button>
+    </nav>
+  )
+}
+
+<script>
+  (function () {
+    let observer: IntersectionObserver | null = null;
+
+    const updateBackToTopVisibility = () => {
+      const backToTop = document.querySelector('.fe-toc__back-to-top');
+      if (backToTop) {
+        backToTop.classList.toggle('fe-toc__back-to-top--visible', window.scrollY >= 400);
+      }
+    };
+
+    // View transitions replace the TOC markup on client navigation, so the observer and
+    // handlers must be rebound to the new page's nodes after every swap.
+    const initToc = () => {
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
+
+      const toc = document.querySelector('.fe-toc');
+      if (!toc) {
+        return;
+      }
+
+      const links = toc.querySelectorAll('.fe-toc__link');
+
+      const setActive = (slug: string) => {
+        links.forEach((link) => {
+          link.classList.toggle('fe-toc__link--active', link.getAttribute('data-slug') === slug);
+        });
+      };
+
+      const headingObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              setActive(entry.target.id);
+              break;
+            }
+          }
+        },
+        {
+          rootMargin: '-100px 0px -80% 0px',
+          threshold: 0,
+        }
+      );
+      observer = headingObserver;
+
+      links.forEach((link) => {
+        const slug = link.getAttribute('data-slug');
+        const heading = slug ? document.getElementById(slug) : null;
+        if (heading) {
+          headingObserver.observe(heading);
+        }
+      });
+
+      if (toc instanceof HTMLElement && toc.dataset.tocBound !== 'true') {
+        toc.dataset.tocBound = 'true';
+
+        links.forEach((link) => {
+          link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const slug = link.getAttribute('data-slug');
+            const target = slug ? document.getElementById(slug) : null;
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              history.pushState(null, '', `#${slug}`);
+            }
+          });
+        });
+
+        const backToTop = toc.querySelector('.fe-toc__back-to-top');
+        if (backToTop) {
+          backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+      }
+
+      const hash = window.location.hash.slice(1);
+      if (hash) {
+        setActive(hash);
+      } else if (window.scrollY < 100) {
+        const firstSlug = links[0]?.getAttribute('data-slug');
+        if (firstSlug) {
+          setActive(firstSlug);
+        }
+      }
+    };
+
+    if (document.documentElement.dataset.tocReady === 'true') {
+      initToc();
+      return;
+    }
+
+    document.documentElement.dataset.tocReady = 'true';
+    window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+    document.addEventListener('astro:after-swap', initToc);
+    document.addEventListener('astro:page-load', initToc);
+    initToc();
+  })();
+</script>

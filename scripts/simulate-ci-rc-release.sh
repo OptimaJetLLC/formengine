@@ -4,7 +4,7 @@
 #
 # Mirrors GHA RC release flow (orchestrated by `.github/workflows/ci.yml`):
 #   ci-bundle.yml              → earthly +prepare-rc-archives-from-pack (RC) or +npm-bundle (PR)
-#   ci-build-documentation.yml → earthly +prepare-documentation-archive
+#   ci-build-documentation.yml → earthly +prepare-documentation-sites-archives
 #   ci-publish-rc-release.yml  → earthly +validate-rc-archives, +npm-publish-rc-release (optional)
 #
 # Optional CI jobs (disabled by default; pass flags to enable):
@@ -41,7 +41,7 @@
 #   PREPARE_RC_ARCHIVES
 #     When `1` (default), runs `earthly --output +prepare-rc-archives-from-pack`
 #     (pack + RC archives exported to `.archives/`). When `0` (or `--pr`), runs
-#     `earthly +npm-bundle` with pack only — same as a non-RC PR.
+#     `earthly +npm-bundle` with pack only - same as a non-RC PR.
 #
 #   EARTHLY_BIN
 #     Earthly executable name/path. Default: `earthly`
@@ -57,8 +57,8 @@
 #
 # Prerequisites:
 #   earthly, git
-#   node — required when archive validation runs (default RC flow)
-#   gh — optional; used to infer GITHUB_REPOSITORY
+#   node - required when archive validation runs (default RC flow)
+#   gh - optional; used to infer GITHUB_REPOSITORY
 #
 # See also: scripts/release/README.md
 
@@ -405,8 +405,8 @@ if [[ "${RUN_BUNDLE}" == true ]]; then
 fi
 
 if [[ "${RUN_DOCS}" == true ]]; then
-  log "CI documentation build: earthly +prepare-documentation-archive"
-  run_earthly --output +prepare-documentation-archive
+  log "CI documentation sites build: earthly +prepare-documentation-sites-archives"
+  run_earthly --output +prepare-documentation-sites-archives
 fi
 
 if [[ "${RUN_APPS_AND_VIEWS}" == true ]]; then

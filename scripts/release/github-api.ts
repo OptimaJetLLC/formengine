@@ -30,7 +30,7 @@ export class GitHubApiError extends Error {
         parts.push(summary)
       }
     }
-    super(parts.join(' — '))
+    super(parts.join(' - '))
     this.status = status
     this.body = body
   }

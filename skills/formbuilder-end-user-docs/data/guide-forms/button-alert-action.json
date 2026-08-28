@@ -1,0 +1,36 @@
+{
+  "actions": {
+    "showAlert": {
+      "body": "alert('Button clicked');",
+      "params": {}
+    }
+  },
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "save",
+        "type": "MuiButton",
+        "props": {
+          "variant": {
+            "value": "contained"
+          },
+          "children": {
+            "value": "Save"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "showAlert",
+              "type": "code"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

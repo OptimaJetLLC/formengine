@@ -1,0 +1,59 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "addressBlock",
+        "type": "MuiStack",
+        "props": {
+          "spacing": {
+            "value": "12px"
+          }
+        },
+        "children": [
+          {
+            "key": "street",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "Street"
+              }
+            }
+          },
+          {
+            "key": "city",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "City"
+              }
+            }
+          },
+          {
+            "key": "zip",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "ZIP / Postal"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

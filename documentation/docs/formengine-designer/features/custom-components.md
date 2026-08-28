@@ -5,7 +5,12 @@ slug: /formengine-designer/features/custom-components
 description: Custom components in Form Builder are regular React components that are described using the Form Builder API
 ---
 
-# Custom components
+:::info For form authors
+
+Custom palette items are built by developers-see [Custom components overview](designer-guide:advanced-topics/custom-components-overview/).
+:::
+
+## Custom components
 
 ## Overview
 

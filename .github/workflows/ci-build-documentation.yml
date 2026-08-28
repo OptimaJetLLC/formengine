@@ -1,11 +1,11 @@
-name: CI build documentation
+name: CI build documentation sites
 
 on:
   workflow_call:
 
 jobs:
   build-documentation:
-    name: Build documentation archive
+    name: Build documentation site archives
     timeout-minutes: 180
     runs-on: [self-hosted]
     env:
@@ -17,14 +17,23 @@ jobs:
       - name: Clean stale archives directory
         if: env.RC_RELEASE == 'true'
         run: rm -rf .archives
-      - name: Build documentation in Docker
-        run: earthly --ci --output +prepare-documentation-archive
+      - name: Build documentation sites in Docker
+        run: earthly --ci --output +prepare-documentation-sites-archives
       - name: Upload documentation archive
         if: env.RC_RELEASE == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: documentation-archive
           path: .archives/documentation.tgz
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 5
+      - name: Upload designer guide archive
+        if: env.RC_RELEASE == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: designer-guide-archive
+          path: .archives/designer-guide.tgz
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 5

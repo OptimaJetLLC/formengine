@@ -1,0 +1,82 @@
+{
+  "modalType": "MuiDialog",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "title",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h5"
+          },
+          "children": {
+            "value": "Account settings",
+            "editorType": "string"
+          }
+        }
+      },
+      {
+        "key": "email",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Email"
+          }
+        }
+      },
+      {
+        "key": "showConfirmation",
+        "type": "MuiButton",
+        "props": {
+          "variant": {
+            "value": "contained"
+          },
+          "children": {
+            "value": "Show confirmation"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "openModal",
+              "type": "common",
+              "args": {
+                "modalKey": "confirmModal"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "confirmModal",
+        "type": "Modal",
+        "props": {
+          "modalTemplate": {
+            "value": "Template:confirm-dialog"
+          }
+        },
+        "modal": {
+          "props": {
+            "maxWidth": {
+              "value": "sm"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

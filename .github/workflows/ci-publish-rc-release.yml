@@ -25,6 +25,11 @@ jobs:
         with:
           name: documentation-archive
           path: .archives
+      - name: Download designer guide archive
+        uses: actions/download-artifact@v7
+        with:
+          name: designer-guide-archive
+          path: .archives
       - name: Validate downloaded archives
         run: earthly --ci +validate-rc-archives
       - name: Publish draft GitHub release

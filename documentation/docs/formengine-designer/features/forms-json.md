@@ -5,11 +5,19 @@ slug: /formengine-designer/features/forms-json
 description: Each form created in the form designer is JSON, with the designer, you can export a form to JSON, and you can import a form from JSON
 ---
 
-# Form's JSON
+:::info For form authors
+
+Use **Menu** → **Download** or **Export forms** to share your design-no need to edit JSON by hand.
+
+[Full guide →](designer-guide:manage-forms/save-export-and-import-forms/). To inspect raw JSON in the designer, see
+[View and edit form JSON](designer-guide:advanced-topics/view-and-edit-form-json/).
+:::
+
+## Form's JSON
 
 Each form created in the form designer is JSON. With the designer, you can export a form to JSON, and you can import a form from JSON.
 
-Let's take for example the form from [this section](/formengine-designer/getting-started/overview#creating-a-simple-form) of the
+Let's take for example the form from the [developer demo tutorial](/formengine-designer/getting-started/for-developers#detailed-demo-tutorial-rsuite) in the
 documentation.
 
 ## Export form to JSON

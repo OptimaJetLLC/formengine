@@ -65,16 +65,16 @@ function checkFile(file: string): boolean {
   const daysUntilExpiry = Math.ceil((expiresAt.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
 
   if (daysUntilExpiry <= 0) {
-    console.error(`  EXPIRED: ${file} — expired on ${licenseEndDate}`)
+    console.error(`  EXPIRED: ${file} - expired on ${licenseEndDate}`)
     return false
   }
 
   if (daysUntilExpiry <= EXPIRY_THRESHOLD_DAYS) {
-    console.warn(`  EXPIRING SOON: ${file} — expires ${licenseEndDate} (${daysUntilExpiry} days remaining)`)
+    console.warn(`  EXPIRING SOON: ${file} - expires ${licenseEndDate} (${daysUntilExpiry} days remaining)`)
     return false
   }
 
-  console.log(`  OK: ${file} — expires ${licenseEndDate} (${daysUntilExpiry} days remaining)`)
+  console.log(`  OK: ${file} - expires ${licenseEndDate} (${daysUntilExpiry} days remaining)`)
   return true
 }
 
@@ -87,7 +87,7 @@ function main(): void {
         allOk = false
       }
     } catch (e) {
-      console.error(`  ERROR: ${file} — ${(e as Error).message}`)
+      console.error(`  ERROR: ${file} - ${(e as Error).message}`)
       allOk = false
     }
   }

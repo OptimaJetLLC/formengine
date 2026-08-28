@@ -1,0 +1,174 @@
+{
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "formTitle",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "value": "Employee onboarding"
+          },
+          "headerSize": {
+            "value": "h4"
+          }
+        }
+      },
+      {
+        "key": "onboardingWizard",
+        "type": "RsWizard",
+        "props": {
+          "activeIndex": {
+            "value": 0
+          },
+          "finishButtonLabel": {
+            "value": "Submit onboarding"
+          },
+          "validateOnNext": {
+            "value": true
+          },
+          "validateOnFinish": {
+            "value": true
+          }
+        },
+        "children": [
+          {
+            "key": "profileStep",
+            "type": "RsWizardStep",
+            "props": {
+              "label": {
+                "value": "Profile"
+              }
+            },
+            "children": [
+              {
+                "key": "fullName",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "Full name"
+                  }
+                },
+                "schema": {
+                  "type": "string",
+                  "validations": [
+                    {
+                      "key": "required"
+                    }
+                  ],
+                  "autoValidate": true
+                }
+              },
+              {
+                "key": "workEmail",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "Work email"
+                  }
+                }
+              },
+              {
+                "key": "phone",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "Phone"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "key": "jobDetailsStep",
+            "type": "RsWizardStep",
+            "props": {
+              "label": {
+                "value": "Job details"
+              }
+            },
+            "children": [
+              {
+                "key": "department",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "Department"
+                  }
+                },
+                "schema": {
+                  "type": "string",
+                  "validations": [
+                    {
+                      "key": "required"
+                    }
+                  ],
+                  "autoValidate": true
+                }
+              },
+              {
+                "key": "startDate",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "Start date"
+                  }
+                }
+              },
+              {
+                "key": "manager",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "Manager"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "key": "documentsStep",
+            "type": "RsWizardStep",
+            "props": {
+              "label": {
+                "value": "Documents"
+              }
+            },
+            "children": [
+              {
+                "key": "idDocument",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "ID document number"
+                  }
+                },
+                "schema": {
+                  "type": "string",
+                  "validations": [
+                    {
+                      "key": "required"
+                    }
+                  ],
+                  "autoValidate": true
+                }
+              },
+              {
+                "key": "contractSigned",
+                "type": "RsCheckbox",
+                "props": {
+                  "children": {
+                    "value": "Employment contract signed"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

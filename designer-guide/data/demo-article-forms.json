@@ -1,0 +1,285 @@
+{
+  "description": "Maps Form Author Guide walkthrough articles to demo deep links (packages/apps/demo URL params).",
+  "demoBase": "https://demo.formengine.io/",
+  "articles": {
+    "your-first-form/create-your-first-form": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "form": "empty",
+        "view": "mui",
+        "label": "Open empty form in demo"
+      }
+    },
+    "your-first-form/add-fields-to-your-form": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "add-fields-two-fields.json",
+        "view": "mui"
+      }
+    },
+    "your-first-form/name-fields-for-data-capture": {
+      "start": {
+        "formFile": "add-fields-one-field.json",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "add-fields-two-fields.json",
+        "view": "mui"
+      }
+    },
+    "your-first-form/add-validation-on-your-first-form": {
+      "start": {
+        "formFile": "add-fields-two-fields.json",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "add-fields-validated.json",
+        "view": "mui",
+        "label": "Open form with validation in demo"
+      }
+    },
+    "your-first-form/add-button-actions-on-your-first-form": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "button-alert-action.json",
+        "view": "mui",
+        "label": "Open form with Save button alert action in demo"
+      }
+    },
+    "your-first-form/preview-your-first-form": {
+      "start": {
+        "formFile": "add-fields-validated.json",
+        "view": "mui",
+        "label": "Open form with validation in demo"
+      },
+      "end": {
+        "formFile": "add-fields-with-button.json",
+        "view": "mui",
+        "label": "Open finished first form in demo"
+      }
+    },
+    "your-first-form/first-form-checklist": {
+      "start": {
+        "formFile": "add-fields-with-button.json",
+        "view": "mui",
+        "label": "Open finished first form in demo"
+      },
+      "end": {
+        "formFile": "add-fields-with-button.json",
+        "view": "mui",
+        "label": "Open finished first form in demo"
+      }
+    },
+    "form-structure-and-layout/tabs-and-multi-step-layouts": {
+      "start": {
+        "form": "empty",
+        "view": "rsuite-inject-css"
+      },
+      "end": {
+        "formFile": "employee-onboarding-tabs.json",
+        "view": "rsuite-inject-css"
+      }
+    },
+    "form-structure-and-layout/wizard-and-multi-step-flows": {
+      "start": {
+        "form": "empty",
+        "view": "rsuite-inject-css"
+      },
+      "end": {
+        "formFile": "employee-onboarding-wizard.json",
+        "view": "rsuite-inject-css"
+      }
+    },
+    "form-structure-and-layout/rows-columns-and-grids": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "shipping-columns.json",
+        "view": "mui"
+      }
+    },
+    "form-structure-and-layout/spacing-and-alignment-basics": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "spacing-loose.json",
+        "view": "mui"
+      }
+    },
+    "form-structure-and-layout/form-structure-and-containers": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "event-registration.json",
+        "view": "mui",
+        "label": "Open Event registration in demo"
+      }
+    },
+    "fields-and-data/tables-and-repeating-rows": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "team-directory-table.json",
+        "view": "rsuite-inject-css",
+        "label": "Open Team directory table in demo"
+      }
+    },
+    "fields-and-data/labels-and-help-text": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "labels-demo.json",
+        "view": "mui",
+        "label": "Open Business email field in demo"
+      }
+    },
+    "simple-data-driven-screens/show-or-hide-fields": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "show-hide-fields.json",
+        "view": "mui"
+      }
+    },
+    "simple-data-driven-screens/calculated-fields-overview": {
+      "end": {
+        "formFile": "calculated-full-name.json",
+        "view": "mui",
+        "label": "Open calculated Full name in demo"
+      }
+    },
+    "simple-data-driven-screens/prefill-a-form": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "prefill-static.json",
+        "view": "mui"
+      }
+    },
+    "simple-data-driven-screens/static-vs-dynamic-content": {
+      "start": {
+        "formFile": "static-select-options.json",
+        "view": "mui",
+        "label": "Open static Select options in demo"
+      },
+      "end": {
+        "formFile": "dynamic-dropdown-names.json",
+        "view": "rsuite-inject-css",
+        "label": "Open dynamic Name dropdown in demo"
+      }
+    },
+    "manage-forms/preset-components": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "preset-address.json",
+        "view": "mui"
+      }
+    },
+    "appearance-and-readability/style-tab-basics": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "style-bold.json",
+        "view": "mui"
+      }
+    },
+    "appearance-and-readability/localization-for-form-authors": {
+      "start": {
+        "form": "empty",
+        "view": "mui"
+      },
+      "end": {
+        "formFile": "localization-authors.json",
+        "view": "mui"
+      }
+    },
+    "meet-the-designer/the-designer-workspace": {
+      "start": {
+        "formFile": "event-registration.json",
+        "view": "mui",
+        "label": "Open Event registration in demo"
+      }
+    },
+    "meet-the-designer/use-the-left-panel-tabs": {
+      "start": {
+        "formFile": "event-registration.json",
+        "view": "mui",
+        "label": "Open Event registration in demo"
+      }
+    },
+    "meet-the-designer/preview-and-edit": {
+      "start": {
+        "formFile": "event-registration.json",
+        "view": "mui",
+        "label": "Open Event registration in demo"
+      }
+    },
+    "meet-the-designer/use-the-right-properties-panel": {
+      "start": {
+        "formFile": "checkout-sections.json",
+        "view": "mui",
+        "label": "Open the Checkout form in demo"
+      }
+    },
+    "meet-the-designer/use-the-component-tree": {
+      "start": {
+        "formFile": "event-registration.json",
+        "view": "mui",
+        "label": "Open Event registration in demo"
+      }
+    },
+    "meet-the-designer/add-components-from-the-palette": {
+      "start": {
+        "form": "empty",
+        "view": "mui",
+        "label": "Open empty form in demo"
+      },
+      "end": {
+        "formFile": "add-fields-two-fields.json",
+        "view": "mui"
+      }
+    },
+    "meet-the-designer/save-and-share": {
+      "start": {
+        "formFile": "event-registration.json",
+        "view": "mui",
+        "label": "Open Event registration in demo"
+      }
+    },
+    "meet-the-designer/canvas-drag-and-drop": {
+      "start": {
+        "formFile": "event-registration.json",
+        "view": "mui",
+        "label": "Open Event registration in demo"
+      }
+    }
+  }
+}

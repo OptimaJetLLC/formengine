@@ -25,6 +25,7 @@ reference for tone, structure, and formatting.
 ### Frontmatter Requirements
 
 All documentation pages have to include the following frontmatter fields:
+
 - `title`: Page title (SEO-H1 with primary keyword)
 - `description`: Meta description (150-160 characters with benefit + CTA)
 - `tags`: Relevant keywords for categorization and search
@@ -40,6 +41,30 @@ changes to API documentation should be made in the corresponding source code fil
 - Use **bold** to introduce key terms or list labels.
 - Use inline code for property names, types, component names, and file names.
 - Use tables for property/validator lists (header row + separator row).
+- **Align markdown tables** - pad every column so pipes line up vertically in the source file. This applies to all markdown tables in documentation (reports, plans, guides, AGENTS files).
+
+  **Bad** (minimal pipes, uneven columns):
+
+  ```markdown
+  | Site | Base path | Source | Build tool |
+  |------|-----------|--------|------------|
+  | Developer documentation | `/documentation/` | `documentation/docs/` | Docusaurus |
+  ```
+
+  **Good** (columns padded to the widest cell in each column, including the header):
+
+  ```markdown
+  | Site                          | Base path               | Source                    | Build tool |
+  |-------------------------------|-------------------------|---------------------------|------------|
+  | Developer documentation       | `/documentation/`       | `documentation/docs/`     | Docusaurus |
+  | Form Author Guide (end users) | `/`                     | `designer-guide/content/` | Astro      |
+  ```
+
+  Rules:
+  - One space after each opening `|` and one space before each closing `|`.
+  - Separator row dashes match the header column width (at least three dashes per column).
+  - Pad cells with spaces so every row has pipes in the same columns.
+  - Trailing spaces on data rows are optional; align pipes consistently.
 - Use Docusaurus admonitions where helpful:
   - `:::info note`, `:::info Important`, `:::warning`, `:::tip info`
   - Close with `:::` on its own line.
@@ -67,10 +92,17 @@ changes to API documentation should be made in the corresponding source code fil
   - Render `<FormViewer view={muiView} getForm={getForm} />`
 - In jsx live examples, use React hooks without the 'React.' prefix (e.g., `useState`, not `React.useState`).
 
+## Website scripts
+
+Prefer TypeScript for new scripts under `documentation/website/scripts/` (run with `node scripts/name.ts`, import local files with a `.ts` extension). Use `.mjs` only when TypeScript cannot run in that context.
+
 ## Link Style
 
 - Use absolute internal links (for example, `/formengine-core/validation`).
 - Link to API reference types and members using `/api-reference/...` paths.
+- **Cross-subsite links** to the Form Author Guide use the shorthand `designer-guide:section/page` (rewritten at build from `DESIGNER_GUIDE_URL` to a path or absolute URL). Defaults to `https://learn.formengine.io/`. For local Caddy set `DESIGNER_GUIDE_URL=https://learn.formengine.local/` in `documentation/website/.env`; for direct Astro set `DESIGNER_GUIDE_URL=http://localhost:4321/`. See `documentation/website/src/lib/designer-guide-base.mjs` and `documentation/website/src/constants/siteLinks.ts`.
+- **Cross-subsite links** from the Form Author Guide to developer docs use the shorthand `docs:path/under/docs` (for example `docs:formengine-designer/features/actions`). Configure the base with `MAIN_DOCS_URL` in `designer-guide/.env` - see `designer-guide/src/lib/main-docs-base.mjs`. Defaults to `/documentation/`.
+- **Algolia DocSearch** for the Form Author Guide uses `designer-guide/docsearch.config.json`, overridable via `DOCSEARCH_APP_ID`, `DOCSEARCH_API_KEY`, and `DOCSEARCH_INDEX_NAME` at build time - see `designer-guide/src/lib/docsearch-base.mjs`.
 - When referencing props, types, or API members anywhere on the page, link to the API reference entry instead of repeating the API text.
   This
   applies to tables, lists, prose, callouts, and captions wherever it is practical.
@@ -161,8 +193,8 @@ You are a Senior Technical Writer for developer tools, SEO strategist, and engin
 ##### 1. Introduction (150–250 words)
 
 - Immediately highlight the benefit:
-    - What problem does the article solve?
-    - Who will find it especially useful?
+  - What problem does the article solve?
+  - Who will find it especially useful?
 - No company history or filler content
 - Include primary keyword naturally
 
@@ -171,13 +203,13 @@ You are a Senior Technical Writer for developer tools, SEO strategist, and engin
 For each H2 section:
 
 - Answer these questions:
-    - Why is this needed?
-    - When should it be used?
-    - What are the limitations?
+  - Why is this needed?
+  - When should it be used?
+  - What are the limitations?
 - Use:
-    - Lists
-    - Comparison tables (when appropriate)
-    - Code blocks
+  - Lists
+  - Comparison tables (when appropriate)
+  - Code blocks
 - Add 3–5 internal links to other documentation articles
   (if articles don't exist, suggest hypothetical ones)
 
@@ -196,7 +228,7 @@ For each H2 section:
 
 2. **Add share block:**
 
-```
+```text
 Useful for the team?
 
 Share:
@@ -215,8 +247,8 @@ Share:
 At the end provide:
 
 - Ideas for:
-    - Additional keywords
-    - Related articles
+  - Additional keywords
+  - Related articles
 - 2–3 A/B headline variants
 - What to improve for even better SEO
 
@@ -260,7 +292,7 @@ In this guide, you'll learn:
 }
 ```
 
-#### Live example
+**Live example**
 
 ```jsx live
 function App() {
@@ -300,7 +332,7 @@ For more information:
 - [Related topic](/formengine-core/<page>)
 - [API reference](/api-reference/<path>)
 
-```
+```text
 
 **Step-by-step tutorial template**
 
@@ -384,10 +416,6 @@ sidebar_position: <position>
 ## Common scenarios and edge cases
 
 <Describe typical use cases and potential pitfalls>
-
-## Troubleshooting common errors
-
-<List common mistakes and how to fix them>
 
 ## Summary and takeaways
 

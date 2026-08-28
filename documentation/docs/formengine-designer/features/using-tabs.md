@@ -5,7 +5,14 @@ slug: /formengine-designer/features/using-tabs
 description: In this guide, you will learn how to connect components with tabs
 ---
 
-# Using tabs
+:::info For form authors
+
+Split long forms with tab layout components from the palette.
+
+[Full guide →](designer-guide:form-structure-and-layout/tabs-and-multi-step-layouts/)
+:::
+
+## Using tabs
 
 Imagine you have a component that displays tabs. As an example, let's use the [Nav](https://rsuitejs.com/components/nav/#nav) component from
 the React Suite library. The `Nav` component only displays the navigation, but what if we need to display different content when the user

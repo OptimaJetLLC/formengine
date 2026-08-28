@@ -1,0 +1,56 @@
+{
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "formTitle",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h5"
+          },
+          "children": {
+            "value": "Shipping destination",
+            "editorType": "string"
+          }
+        }
+      },
+      {
+        "key": "country",
+        "type": "MuiSelect",
+        "props": {
+          "label": {
+            "value": "Country"
+          },
+          "items": {
+            "value": [
+              {
+                "value": "us",
+                "label": "United States"
+              },
+              {
+                "value": "ca",
+                "label": "Canada"
+              },
+              {
+                "value": "gb",
+                "label": "United Kingdom"
+              },
+              {
+                "value": "de",
+                "label": "Germany"
+              },
+              {
+                "value": "fr",
+                "label": "France"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

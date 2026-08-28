@@ -1,0 +1,28 @@
+{
+  "viewport": "1440x900",
+  "description": "Measured from live builder DOM during capture (light theme). Right panel collapsed before screenshot.",
+  "zones": [
+    {
+      "id": 1,
+      "label": "Left panel collapse",
+      "rect": [
+        285,
+        403,
+        20,
+        80
+      ],
+      "color": "#3B82F6"
+    },
+    {
+      "id": 2,
+      "label": "Right panel collapse",
+      "rect": [
+        1415,
+        403,
+        20,
+        80
+      ],
+      "color": "#F59E0B"
+    }
+  ]
+}

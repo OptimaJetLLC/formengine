@@ -1,0 +1,64 @@
+---
+import { getDemoBase } from '../lib/demo-base.mjs';
+import { siteUrl } from '../utils/site-url';
+
+const year = new Date().getFullYear();
+const demoUrl = getDemoBase({ isDev: import.meta.env.DEV });
+
+const columns = [
+  {
+    title: 'Contacts',
+    items: [{ label: 'sales@optimajet.com', href: 'mailto:sales@optimajet.com' }],
+  },
+  {
+    title: 'Resources',
+    items: [
+      { label: 'GitHub', href: 'https://github.com/optimajet/formengine', external: true },
+      { label: 'Form Builder Demo', href: demoUrl, external: true },
+    ],
+  },
+  {
+    title: 'Products',
+    items: [
+      { label: 'FormEngine', href: 'https://formengine.io', external: true },
+      { label: 'Workflow Engine', href: 'https://workflowengine.io', external: true },
+      { label: 'Workflow Server', href: 'https://workflowserver.io', external: true },
+    ],
+  },
+];
+---
+
+<footer class="fe-footer" transition:name="docs-footer" transition:persist="docs-footer">
+  <div class="fe-footer__inner">
+    <div class="fe-footer__columns">
+      {
+        columns.map((column) => (
+          <div class="fe-footer__column">
+            <p class="fe-footer__column-title">{column.title}</p>
+            <ul class="fe-footer__links">
+              {column.items.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class={`fe-footer__link${item.external ? ' fe-footer__link--external' : ''}`}
+                    {...(item.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div class="fe-footer__bottom">
+    <div class="fe-footer__brand">
+      <a href="https://optimajet.com" class="fe-footer__logo" target="_blank" rel="noreferrer">
+        <img src={siteUrl('img/optimajet.svg')} alt="OptimaJet" width="80" height="80" />
+      </a>
+    </div>
+    <p class="fe-footer__copyright">Copyright © {year} Optimajet Limited. All rights reserved.</p>
+  </div>
+</footer>

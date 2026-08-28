@@ -1,0 +1,16 @@
+export default {
+  'what-is-formengine-designer': 'What is FormEngine Designer?',
+  'the-designer-workspace': 'The Designer workspace',
+  'add-components-from-the-palette': 'Add components from the palette',
+  'select-and-edit-components': 'Select and edit components',
+  'preview-and-edit': 'Preview and Edit',
+  'save-and-share': 'Save and share',
+  'use-the-left-panel-tabs': 'Use the left panel tabs',
+  'use-the-right-properties-panel': 'Use the right properties panel',
+  'use-the-component-tree': 'Use the component tree',
+  'canvas-drag-and-drop': 'Canvas drag and drop',
+  'undo-and-redo': 'Undo and redo',
+  'examples-and-use-cases': 'Examples and use cases',
+  'collapse-panels-and-resize-the-code-panel': 'Collapse panels and resize the code panel',
+  'light-and-dark-theme': 'Light and dark theme',
+}

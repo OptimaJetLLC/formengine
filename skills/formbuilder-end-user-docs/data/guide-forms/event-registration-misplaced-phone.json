@@ -1,0 +1,144 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "formTitle",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h5"
+          },
+          "children": {
+            "value": "Event registration",
+            "editorType": "string"
+          }
+        }
+      },
+      {
+        "key": "contactSection",
+        "type": "MuiCard",
+        "props": {},
+        "children": [
+          {
+            "key": "contactStack",
+            "type": "MuiStack",
+            "props": {
+              "spacing": {
+                "value": "12px"
+              }
+            },
+            "children": [
+              {
+                "key": "contactHeading",
+                "type": "MuiTypography",
+                "props": {
+                  "variant": {
+                    "value": "h6"
+                  },
+                  "children": {
+                    "value": "Contact details",
+                    "editorType": "string"
+                  }
+                }
+              },
+              {
+                "key": "fullName",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Full name"
+                  }
+                }
+              },
+              {
+                "key": "email",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Email"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "ticketSection",
+        "type": "MuiCard",
+        "props": {},
+        "children": [
+          {
+            "key": "ticketStack",
+            "type": "MuiStack",
+            "props": {
+              "spacing": {
+                "value": "12px"
+              }
+            },
+            "children": [
+              {
+                "key": "ticketHeading",
+                "type": "MuiTypography",
+                "props": {
+                  "variant": {
+                    "value": "h6"
+                  },
+                  "children": {
+                    "value": "Ticket options",
+                    "editorType": "string"
+                  }
+                }
+              },
+              {
+                "key": "phone",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Phone"
+                  }
+                }
+              },
+              {
+                "key": "ticketType",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Ticket type"
+                  }
+                }
+              },
+              {
+                "key": "quantity",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Quantity"
+                  },
+                  "type": {
+                    "value": "number"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

@@ -1,0 +1,36 @@
+---
+import { getArticleNeighbors } from '../utils/article-neighbors';
+import { docPageUrl } from '../utils/site-url';
+
+interface Props {
+  entryId: string;
+  /** Distinguishes the top and bottom blocks for styling hooks. */
+  position: 'top' | 'bottom';
+}
+
+const { entryId, position } = Astro.props;
+const { prev, next } = getArticleNeighbors(entryId);
+---
+
+{
+  (prev || next) && (
+    <nav class:list={['fe-article-pager', `fe-article-pager--${position}`]} aria-label="Article pagination">
+      {prev ? (
+        <a class="fe-article-pager__link fe-article-pager__link--prev" href={docPageUrl(prev.slug)} rel="prev">
+          <span class="fe-article-pager__direction">Previous</span>
+          <span class="fe-article-pager__title">{prev.label}</span>
+        </a>
+      ) : (
+        <span class="fe-article-pager__spacer" aria-hidden="true" />
+      )}
+      {next ? (
+        <a class="fe-article-pager__link fe-article-pager__link--next" href={docPageUrl(next.slug)} rel="next">
+          <span class="fe-article-pager__direction">Next</span>
+          <span class="fe-article-pager__title">{next.label}</span>
+        </a>
+      ) : (
+        <span class="fe-article-pager__spacer" aria-hidden="true" />
+      )}
+    </nav>
+  )
+}

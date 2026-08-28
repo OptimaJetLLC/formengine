@@ -10,7 +10,7 @@ title: FormEngine Documentation - React Form Builder Guide
 # FormEngine Documentation - React Form Builder Guide
 
 FormEngine is a comprehensive suite of products that enables you to create, manage, and deploy online forms with unprecedented ease and
-flexibility. The platform offers solutions for every stage of form development—from visual building tools to powerful rendering engines and
+flexibility. The platform offers solutions for every stage of form development - from visual building tools to powerful rendering engines and
 AI-assisted creation.
 
 ## Product Ecosystem
@@ -192,5 +192,5 @@ drag-and-drop interface to create forms without writing code.
 
 ### For Quick Form Prototyping
 
-Try the **[Online FormBuilder](https://formbuilder.formengine.io/)** when you need to design forms fast. No installation required—just
+Try the **[Online FormBuilder](https://formbuilder.formengine.io/)** when you need to design forms fast. No installation required - just
 create, export JSON, and integrate with FormEngine Core.

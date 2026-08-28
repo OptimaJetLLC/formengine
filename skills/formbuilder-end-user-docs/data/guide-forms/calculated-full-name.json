@@ -1,0 +1,61 @@
+{
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "nameRow",
+        "type": "MuiStack",
+        "props": {
+          "direction": {
+            "value": "row"
+          },
+          "spacing": {
+            "value": "16px"
+          }
+        },
+        "children": [
+          {
+            "key": "firstName",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "First name"
+              }
+            }
+          },
+          {
+            "key": "lastName",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "Last name"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "fullName",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Full name"
+          },
+          "value": {
+            "computeType": "function",
+            "fnSource": "const firstName = form.data.firstName ?? '';\nconst lastName = form.data.lastName ?? '';\nreturn `${firstName} ${lastName}`.trim();"
+          },
+          "readOnly": {
+            "value": true
+          },
+          "helperText": {
+            "value": "Calculated automatically from First name and Last name."
+          }
+        }
+      }
+    ]
+  }
+}

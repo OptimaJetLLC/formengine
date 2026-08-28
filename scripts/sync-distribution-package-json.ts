@@ -104,6 +104,11 @@ export const DEV_MONOREPO_ONLY_DEPENDENCIES = [
   'knip',
   'leasot',
   'madge',
+  'mdxlint',
+  'remark-custom-heading-id',
+  'remark-directive',
+  'remark-frontmatter',
+  'remark-gfm',
   'vitest-fail-on-console',
 ] as const
 

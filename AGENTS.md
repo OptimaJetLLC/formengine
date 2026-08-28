@@ -212,6 +212,10 @@ export type { ButtonProps };
 - Constants: `UPPER_SNAKE_CASE.ts`
 - Types: `types.ts` or `interfaces.ts`
 
+### Scripts
+
+Prefer TypeScript (`.ts`) for new Node scripts, including `scripts/`, `documentation/website/scripts/`, and `designer-guide/scripts/`. Match neighboring `.ts` scripts (run with `node path/to/script.ts`, import local files with a `.ts` extension). Use `.mjs` or `.js` only when TypeScript cannot run in that context (for example an existing toolchain that does not load `.ts`).
+
 ### Imports and Exports
 
 - Use named exports instead of default exports

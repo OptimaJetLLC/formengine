@@ -5,7 +5,14 @@ slug: /formengine-designer/features/modal-components
 description: A modal component is a component that can display information in a modal window/dialog box on top of a form
 ---
 
-# Modal components
+:::info For form authors
+
+Use **Modal** components and **Settings** → **Modal** for dialog behavior.
+
+[Full guide →](designer-guide:behavior-and-validation/modals-for-form-authors/)
+:::
+
+## Modal components
 
 A modal component is a component that can display information in a modal window/dialog box on top of a form. Most popular component
 libraries support such components. You can find such a component in

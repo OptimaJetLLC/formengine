@@ -1,8 +1,11 @@
+import './scripts/load-website-env.ts'
 import type * as Preset from '@docusaurus/preset-classic'
 import type {Config} from '@docusaurus/types'
 import {resolve} from 'node:path'
 import {env} from 'node:process'
 import {themes as prismThemes} from 'prism-react-renderer'
+import remarkDesignerGuideLinks from './src/remark/designerGuideLinks.mjs'
+import {getDesignerGuideBase, SITE_HOME_URL} from './src/constants/siteLinks'
 
 const docusaurusPluginTypedocConfig = [
   'docusaurus-plugin-typedoc',
@@ -63,6 +66,10 @@ const config: Config = {
   onBrokenAnchors: 'throw',
   onBrokenMarkdownLinks: 'throw',
 
+  customFields: {
+    designerGuideBaseUrl: getDesignerGuideBase(),
+  },
+
   scripts: [
     '/documentation/js/analytics.js?id=GTM-PPS66XRX'
   ],
@@ -91,6 +98,7 @@ const config: Config = {
           path: '../docs',
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
+          remarkPlugins: [[remarkDesignerGuideLinks, {baseUrl: getDesignerGuideBase()}]],
         },
         blog: false,
         theme: {
@@ -164,7 +172,7 @@ const config: Config = {
           position: 'right',
           target: '_self',
           className: 'demo-link'
-        }
+        },
       ],
     },
     footer: {

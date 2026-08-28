@@ -1,0 +1,187 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "checkoutTitle",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h5"
+          },
+          "children": {
+            "value": "Checkout",
+            "editorType": "string"
+          }
+        }
+      },
+      {
+        "key": "personalSection",
+        "type": "MuiCard",
+        "props": {},
+        "children": [
+          {
+            "key": "personalStack",
+            "type": "MuiStack",
+            "props": {
+              "spacing": {
+                "value": "12px"
+              }
+            },
+            "children": [
+              {
+                "key": "personalHeading",
+                "type": "MuiTypography",
+                "props": {
+                  "variant": {
+                    "value": "h6"
+                  },
+                  "children": {
+                    "value": "Personal",
+                    "editorType": "string"
+                  }
+                }
+              },
+              {
+                "key": "fullName",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Full name"
+                  }
+                }
+              },
+              {
+                "key": "email",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Email"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "billingSection",
+        "type": "MuiCard",
+        "props": {},
+        "children": [
+          {
+            "key": "billingStack",
+            "type": "MuiStack",
+            "props": {
+              "spacing": {
+                "value": "12px"
+              }
+            },
+            "children": [
+              {
+                "key": "billingHeading",
+                "type": "MuiTypography",
+                "props": {
+                  "variant": {
+                    "value": "h6"
+                  },
+                  "children": {
+                    "value": "Billing",
+                    "editorType": "string"
+                  }
+                }
+              },
+              {
+                "key": "cardNumber",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Card number"
+                  }
+                }
+              },
+              {
+                "key": "expiry",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Expiry"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "reviewSection",
+        "type": "MuiCard",
+        "props": {},
+        "children": [
+          {
+            "key": "reviewStack",
+            "type": "MuiStack",
+            "props": {
+              "spacing": {
+                "value": "12px"
+              }
+            },
+            "children": [
+              {
+                "key": "reviewHeading",
+                "type": "MuiTypography",
+                "props": {
+                  "variant": {
+                    "value": "h6"
+                  },
+                  "children": {
+                    "value": "Review",
+                    "editorType": "string"
+                  }
+                }
+              },
+              {
+                "key": "orderNotes",
+                "type": "MuiTextField",
+                "props": {
+                  "label": {
+                    "value": "Order notes"
+                  },
+                  "multiline": {
+                    "value": true
+                  }
+                }
+              },
+              {
+                "key": "submitOrder",
+                "type": "MuiButton",
+                "props": {
+                  "variant": {
+                    "value": "contained"
+                  },
+                  "children": {
+                    "value": "Submit order"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

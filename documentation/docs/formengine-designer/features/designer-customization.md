@@ -5,7 +5,14 @@ slug: /formengine-designer/features/designer-customization
 description: Using the customization FormBuilder prop, you can hide, style, or replace any parts of the FormBuilder interface
 ---
 
-# Designer customization
+:::info For form authors
+
+Changing the designer UI or adding custom tools requires developers.
+
+[Full guide →](designer-guide:advanced-topics/when-to-involve-developers/)
+:::
+
+## Designer customization
 
 ## Customizing the FormBuilder interface
 

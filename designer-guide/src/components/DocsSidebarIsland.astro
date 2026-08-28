@@ -1,0 +1,86 @@
+---
+import navigation from '../data/navigation.json';
+import { docPageUrl, siteUrl } from '../utils/site-url';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+function isActive(slug: string): boolean {
+  if (slug === 'index') {
+    return currentPath === '/' || currentPath === '/index' || currentPath === '';
+  }
+  return currentPath === `/${slug}` || currentPath === `/${slug}/`;
+}
+
+const navPayload = {
+  base: import.meta.env.BASE_URL,
+  home: navigation.home,
+  sections: navigation.sections,
+};
+---
+
+<aside
+  id="docs-sidebar-island"
+  class="fe-sidebar"
+  aria-label="Documentation"
+  tabindex="-1"
+  transition:persist="docs-sidebar-island"
+>
+  <nav class="fe-sidebar__nav">
+    <a
+      href={siteUrl()}
+      class:list={['fe-sidebar__link', 'fe-sidebar__link--home', { 'is-active': isActive('index') }]}
+      title={navigation.home?.description}
+    >
+      <svg
+        class="fe-sidebar__home-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path d="M3 11.5L12 4l9 7.5"></path>
+        <path d="M5 10.5V20h14v-9.5"></path>
+      </svg>
+      Home
+    </a>
+    {
+      navigation.sections.map((section) => (
+        <section class="fe-sidebar__section">
+          <a
+            href={docPageUrl(section.slug)}
+            class:list={['fe-sidebar__link', 'fe-sidebar__section-title', { 'is-active': isActive(section.slug) }]}
+            title={section.description}
+          >
+            {section.label}
+          </a>
+          <ul class="fe-sidebar__pages">
+            {section.pages.map((page) => (
+              <li>
+                <a
+                  href={docPageUrl(page.slug)}
+                  class:list={['fe-sidebar__link', { 'is-active': isActive(page.slug) }]}
+                  title={page.description}
+                >
+                  {page.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </nav>
+</aside>
+
+<script type="application/json" id="docs-nav-data" set:html={JSON.stringify(navPayload)} />
+
+<script>
+  import '../scripts/docs-sidebar-nav.client';
+</script>

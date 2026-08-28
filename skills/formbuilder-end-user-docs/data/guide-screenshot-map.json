@@ -1,0 +1,940 @@
+{
+  "meet-the-designer/use-the-left-panel-tabs.md": {
+    "components tab": {
+      "src": "/assets/guide/workspace/highlight-palette.png",
+      "alt": "Components palette highlighted in the left panel."
+    },
+    "tree tab": {
+      "src": "/assets/guide/workspace/tree-panel-plain.png",
+      "alt": "Tree tab on Event registration with component hierarchy."
+    },
+    "settings tab": {
+      "src": "/assets/guide/workspace/settings-tab-plain.png",
+      "alt": "Settings tab with form-wide options."
+    },
+    "forms tab": {
+      "src": "/assets/guide/manage-forms/forms-tab-plain.png",
+      "alt": "Forms tab listing saved forms."
+    }
+  },
+  "meet-the-designer/use-the-right-properties-panel.md": {
+    "select a component": {
+      "src": "/assets/guide/workspace/highlight-right-panel-select.png",
+      "alt": "Full name selected in Tree and on the canvas of the Checkout form, with the right Properties panel populated on Main."
+    },
+    "main tab": {
+      "src": "/assets/guide/workspace/highlight-right-panel-main.png",
+      "alt": "Right panel Main tab highlighted for the Full name field on the Checkout form."
+    },
+    "style tab": {
+      "src": "/assets/guide/workspace/highlight-right-panel-style.png",
+      "alt": "Right panel Style tab highlighted for the Full name field on the Checkout form."
+    },
+    "actions tab": {
+      "src": "/assets/guide/workspace/highlight-right-panel-actions.png",
+      "alt": "Right panel Actions tab highlighted for the Submit order button on the Checkout form."
+    },
+    "rules tab": {
+      "src": "/assets/guide/workspace/highlight-right-panel-rules.png",
+      "alt": "Right panel Rules tab highlighted for the Full name field on the Checkout form."
+    },
+    "form-wide settings are not here": {
+      "src": "/assets/guide/workspace/highlight-right-panel-settings.png",
+      "alt": "Settings tab on the left panel highlighted on the Checkout form."
+    }
+  },
+  "meet-the-designer/preview-and-edit.md": {
+    "canvas": {
+      "src": "/assets/guide/structure/containers-canvas-plain.png",
+      "alt": "Event registration form on the center canvas."
+    },
+    "header toolbar": {
+      "src": "/assets/guide/workspace/highlight-central-header.png",
+      "alt": "Central header toolbar with numbered controls: menu, undo/redo, component library, preview, device icons, and language."
+    },
+    "step: preview your layout": {
+      "src": "/assets/guide/workspace/highlight-preview.png",
+      "alt": "Preview button in the top bar."
+    }
+  },
+  "meet-the-designer/collapse-panels-and-resize-the-code-panel.md": {
+    "collapse left or right panels": {
+      "src": "/assets/guide/workspace/highlight-panel-collapse.png",
+      "alt": "Panel collapse chevrons on the left and right panel edges, with the right panel collapsed."
+    },
+    "bottom panel (code editors)": {
+      "src": "/assets/guide/workspace/bottom-panel-calculable-plain.png",
+      "alt": "Bottom code panel with Calculable value selected for a component property."
+    }
+  },
+  "meet-the-designer/canvas-drag-and-drop.md": {
+    "drag from the palette": {
+      "src": "/assets/guide/workspace/highlight-canvas-drag-palette.png",
+      "alt": "Components palette highlighted on Event registration."
+    },
+    "reorder on the canvas": {
+      "src": "/assets/guide/workspace/canvas-reorder-plain.png",
+      "alt": "Event registration after dragging Phone above Email on the canvas."
+    },
+    "multi-select": {
+      "src": "/assets/guide/workspace/canvas-multi-select-plain.png",
+      "alt": "Full name, Email, and Phone selected together on Event registration."
+    },
+    "floating toolbar": {
+      "src": "/assets/guide/workspace/floating-toolbar-plain.png",
+      "alt": "Floating toolbar on the selected Email field on Event registration."
+    }
+  },
+  "advanced-topics/view-and-edit-form-json.md": {
+    "open json view": {
+      "src": "/assets/guide/workspace/highlight-json-view-open.png",
+      "alt": "Red arrow pointing to the Edit JSON button in the header."
+    },
+    "close json view": {
+      "src": "/assets/guide/workspace/highlight-json-view-close.png",
+      "alt": "Edit JSON modal open with a red arrow pointing to the close button."
+    }
+  },
+  "meet-the-designer/light-and-dark-theme.md": {
+    "toggle theme": {
+      "src": "/assets/guide/workspace/highlight-theme-toggle.png",
+      "alt": "Red arrow pointing to the Toggle theme button in the header."
+    }
+  },
+  "meet-the-designer/undo-and-redo.md": {
+    "toolbar": {
+      "src": "/assets/guide/workspace/highlight-undo-redo.png",
+      "alt": "Red arrow pointing to the Undo and Redo buttons in the header toolbar."
+    }
+  },
+  "meet-the-designer/add-components-from-the-palette.md": {
+    "step 1: search the palette": {
+      "src": "/assets/guide/workspace/components-search-plain.png",
+      "alt": "Components palette with search filter applied."
+    },
+    "step 2: drag onto the canvas": {
+      "src": "/assets/guide/workspace/highlight-palette.png",
+      "alt": "Components palette highlighted."
+    },
+    "double-click to insert": {
+      "src": "/assets/guide/first-form/canvas-plain.png",
+      "alt": "Canvas after inserting a component."
+    },
+    "components modal": {
+      "src": "/assets/guide/workspace/components-add-button-hover-plain.png",
+      "alt": "Add button on the component toolbar with Before and After options."
+    }
+  },
+  "meet-the-designer/select-and-edit-components.md": {
+    "select on the canvas": {
+      "src": "/assets/guide/workspace/canvas-selected-plain.png",
+      "alt": "Selected component on the form canvas."
+    },
+    "select in tree": {
+      "src": "/assets/guide/workspace/highlight-tree-select.png",
+      "alt": "Email selected in Tree with the matching field highlighted on the canvas."
+    },
+    "edit properties": {
+      "src": "/assets/guide/workspace/highlight-properties-main-tab.png",
+      "alt": "Properties panel highlighted with Main tab selected."
+    },
+    "multi-select": {
+      "src": "/assets/guide/workspace/canvas-multi-select-plain.png",
+      "alt": "Three form fields selected on the canvas with Ctrl+click."
+    },
+    "duplicate a component": {
+      "src": "/assets/guide/workspace/highlight-toolbar-clone.png",
+      "alt": "Selected component with an arrow pointing to the clone button on the floating toolbar."
+    },
+    "delete a component": {
+      "src": "/assets/guide/workspace/highlight-toolbar-delete.png",
+      "alt": "Selected component with an arrow pointing to the delete button on the floating toolbar."
+    }
+  },
+  "meet-the-designer/use-the-component-tree.md": {
+    "open tree": {
+      "src": "/assets/guide/workspace/tree-panel-plain.png",
+      "alt": "Tree tab on Event registration with Expand all and Collapse all."
+    },
+    "select a component": {
+      "src": "/assets/guide/workspace/highlight-tree-select.png",
+      "alt": "Email selected in Tree with the matching field highlighted on the canvas."
+    },
+    "reorder": {
+      "src": "/assets/guide/workspace/tree-expanded-nested-plain.png",
+      "alt": "Event registration after dragging Phone above Email in Tree."
+    },
+    "find deeply nested fields": {
+      "src": "/assets/guide/workspace/highlight-tree-expand-all.png",
+      "alt": "Tree tab with Expand all highlighted and nested containers expanded."
+    }
+  },
+  "behavior-and-validation/validation-basics.md": {
+    "required fields": {
+      "src": "/assets/guide/workspace/main-tab-plain.png",
+      "alt": "Main tab where Required can be set on a field."
+    },
+    "rule picker": {
+      "src": "/assets/guide/first-form/highlight-rules-tab.png",
+      "alt": "Rules tab with Add a validation rule."
+    },
+    "auto validate": {
+      "src": "/assets/guide/first-form/rules-tab-plain.png",
+      "alt": "Rules tab showing Auto Validate."
+    },
+    "test validation": {
+      "src": "/assets/guide/preview-and-handoff/preview-mode-plain.png",
+      "alt": "Preview mode for testing validation."
+    }
+  },
+  "behavior-and-validation/form-level-actions-in-settings.md": {
+    "settings vs button actions": {
+      "src": "/assets/guide/workspace/overview-zones.png",
+      "alt": "Workspace: left Settings vs right button Actions."
+    },
+    "step 1: open settings": {
+      "src": "/assets/guide/workspace/settings-tab-plain.png",
+      "alt": "Settings tab with form-wide Actions block."
+    },
+    "step 2: add a form action": {
+      "src": "/assets/guide/behavior/highlight-add-form-code-action.png",
+      "alt": "Settings Actions block with an arrow pointing to Add a code action."
+    },
+    "step 2b: form action code editor": {
+      "src": "/assets/guide/behavior/highlight-form-action-code-editor.png",
+      "alt": "Bottom panel code editor open for a new form-level code action."
+    },
+    "step 3: form validator (optional)": {
+      "src": "/assets/guide/behavior/highlight-form-validator-edit.png",
+      "alt": "Form validator block with an arrow pointing to Edit code."
+    },
+    "step 3b: form validator code editor": {
+      "src": "/assets/guide/behavior/highlight-form-validator-code-editor.png",
+      "alt": "Bottom panel code editor open for Edit form validation code."
+    },
+    "step 4: test": {
+      "src": "/assets/guide/preview-and-handoff/preview-data-panel-plain.png",
+      "alt": "Preview with Data and Errors panels."
+    }
+  },
+  "behavior-and-validation/actions-basics.md": {
+    "configure on a button": {
+      "src": "/assets/guide/behavior/button-actions-tab-plain.png",
+      "alt": "Actions tab on a selected button."
+    },
+    "form-level vs component actions": {
+      "src": "/assets/guide/workspace/settings-tab-plain.png",
+      "alt": "Settings tab for form-level actions."
+    },
+    "test in preview": {
+      "src": "/assets/guide/preview-and-handoff/preview-mode-plain.png",
+      "alt": "Preview mode to test button actions."
+    }
+  },
+  "behavior-and-validation/custom-error-messages.md": {
+    "edit per rule": {
+      "src": "/assets/guide/behavior/highlight-custom-error-message.png",
+      "alt": "Rules tab for the Email field with Message set to Enter a valid email address."
+    },
+    "form-wide display": {
+      "src": "/assets/guide/appearance/settings-error-tooltip-plain.png",
+      "alt": "Error settings on the Settings tab."
+    }
+  },
+  "behavior-and-validation/events-and-actions-concept.md": {
+    "in the designer": {
+      "src": "/assets/guide/behavior/highlight-onclick-actions-menu.png",
+      "alt": "onClick Add an action menu open on the Actions tab."
+    },
+    "common actions": {
+      "src": "/assets/guide/behavior/highlight-common-actions-submenu.png",
+      "alt": "Common submenu listing built-in actions such as validate and clear."
+    },
+    "code actions": {
+      "src": "/assets/guide/behavior/highlight-code-actions-submenu.png",
+      "alt": "Code submenu with a saved code action and Add a code action."
+    }
+  },
+  "behavior-and-validation/common-validation-patterns.md": {
+    "add a rule": {
+      "src": "/assets/guide/first-form/highlight-rules-tab.png",
+      "alt": "Rules tab with validation rule picker."
+    },
+    "test": {
+      "src": "/assets/guide/preview-and-handoff/preview-mode-plain.png",
+      "alt": "Preview mode to test validation patterns."
+    }
+  },
+  "behavior-and-validation/action-order-on-buttons.md": {
+    "validate before submit": {
+      "src": "/assets/guide/behavior/highlight-action-order-validate.png",
+      "alt": "Save button Actions tab with the validate action highlighted under onClick."
+    },
+    "reorder": {
+      "src": "/assets/guide/behavior/highlight-action-order-reorder.png",
+      "alt": "onClick list with validate above clear, both highlighted for reordering."
+    }
+  },
+  "behavior-and-validation/modals-for-form-authors.md": {
+    "step 1: create the modal form": {
+      "src": "/assets/guide/behavior/highlight-modals-forms-create.png",
+      "alt": "Forms tab with an arrow pointing to Add a new form."
+    },
+    "step 2: build the modal content": {
+      "src": "/assets/guide/behavior/highlight-modals-confirm-form.png",
+      "alt": "confirm-dialog form with message, OK, and Cancel highlighted."
+    },
+    "step 3: close the modal from ok and cancel": {
+      "src": "/assets/guide/behavior/highlight-modals-close-action.png",
+      "alt": "OK button Actions tab with closeModal and result ok highlighted."
+    },
+    "step 4: open the main form and set modal type": {
+      "src": "/assets/guide/behavior/highlight-modals-settings-type.png",
+      "alt": "Settings Modal block with an arrow pointing to the modal type picker."
+    },
+    "step 5: add a modal component": {
+      "src": "/assets/guide/behavior/highlight-components-search-modal.png",
+      "alt": "Components search for modal with the Modal palette item highlighted."
+    },
+    "step 6: point modal at the modal form": {
+      "src": "/assets/guide/behavior/highlight-modals-template.png",
+      "alt": "confirmModal selected with an arrow pointing to Modal template set to confirm-dialog."
+    },
+    "step 7: add a button that opens the modal": {
+      "src": "/assets/guide/behavior/highlight-modals-open-action.png",
+      "alt": "Show confirmation button Actions with openModal and modalKey confirmModal highlighted."
+    },
+    "step 8: test in preview": {
+      "src": "/assets/guide/behavior/highlight-modals-preview-open.png",
+      "alt": "Preview with the confirmation dialog open after clicking Show confirmation."
+    }
+  },
+  "appearance-and-readability/style-tab-basics.md": {
+    "open style": {
+      "src": "/assets/guide/appearance/highlight-style-bold.png",
+      "alt": "Style tab with font-weight bold CSS applied to a heading."
+    },
+    "preview": {
+      "src": "/assets/guide/appearance/style-bold-preview-plain.png",
+      "alt": "Preview mode showing the bold heading style on the canvas."
+    }
+  },
+  "appearance-and-readability/form-wide-errors-and-tooltips.md": {
+    "error settings": {
+      "src": "/assets/guide/appearance/highlight-settings-error-block.png",
+      "alt": "Error settings block with arrow pointing to the error type picker."
+    },
+    "tooltip settings": {
+      "src": "/assets/guide/appearance/highlight-settings-tooltip.png",
+      "alt": "Tooltip settings block with arrow pointing to the tooltip type picker."
+    },
+    "modal settings": {
+      "src": "/assets/guide/appearance/highlight-settings-modal.png",
+      "alt": "Modal settings block with arrow pointing to the modal type picker."
+    }
+  },
+  "appearance-and-readability/localization-for-form-authors.md": {
+    "preview form language": {
+      "src": "/assets/guide/appearance/highlight-header-language.png",
+      "alt": "Header language picker with arrow pointing to the EN language selector."
+    },
+    "localizable properties": {
+      "src": "/assets/guide/appearance/highlight-localization-editor.png",
+      "alt": "Localization editor open for a field Label property with EN and DE translations."
+    },
+    "language settings (form-wide)": {
+      "src": "/assets/guide/appearance/highlight-language-settings.png",
+      "alt": "Settings tab with the Language settings block highlighted."
+    },
+    "author workflow": {
+      "src": "/assets/guide/preview-and-handoff/preview-mode-plain.png",
+      "alt": "Preview mode to verify translations."
+    }
+  },
+  "appearance-and-readability/why-appearance-matters-for-forms.md": {
+    "what you can change": {
+      "src": "/assets/guide/appearance/style-tab-plain.png",
+      "alt": "Style tab options for component appearance."
+    }
+  },
+  "fields-and-data/common-field-types.md": {
+    "add a component": {
+      "src": "/assets/guide/workspace/highlight-palette.png",
+      "alt": "Components palette highlighted."
+    }
+  },
+  "fields-and-data/labels-and-help-text.md": {
+    "step 1: select the field": {
+      "src": "/assets/guide/fields-and-data/highlight-labels-select.png",
+      "alt": "Work email selected in Tree and on the canvas."
+    },
+    "step 2: edit on main": {
+      "src": "/assets/guide/fields-and-data/highlight-labels-main.png",
+      "alt": "Main tab with Label and Helper text fields highlighted."
+    },
+    "step 3: check in preview": {
+      "src": "/assets/guide/fields-and-data/highlight-labels-preview.png",
+      "alt": "Preview mode showing updated label and helper text."
+    }
+  },
+  "fields-and-data/default-values.md": {
+    "set a static default": {
+      "src": "/assets/guide/workspace/main-tab-plain.png",
+      "alt": "Main tab where default values are set."
+    }
+  },
+  "fields-and-data/read-only-and-disabled-fields.md": {
+    "set on main": {
+      "src": "/assets/guide/workspace/main-tab-plain.png",
+      "alt": "Main tab with read-only and disabled options."
+    }
+  },
+  "fields-and-data/choice-fields.md": {
+    "pick a component": {
+      "src": "/assets/guide/workspace/components-search-plain.png",
+      "alt": "Components palette filtered for choice fields."
+    },
+    "add static options": {
+      "src": "/assets/guide/workspace/main-tab-plain.png",
+      "alt": "Main tab where static options are configured."
+    }
+  },
+  "fields-and-data/tables-and-repeating-rows.md": {
+    "choose a pattern": {
+      "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-pattern.png",
+      "alt": "Components tab open with Repeater highlighted in the palette search."
+    },
+    "step 1: add a repeater": {
+      "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-repeater-palette.png",
+      "alt": "Components tab open with Repeater highlighted in the palette."
+    },
+    "step 3: add fields to the row template": {
+      "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-repeater-row-tree.png",
+      "alt": "Tree tab showing Line items repeater with Line item row, nested text fields, and the row removal button."
+    },
+    "step 4: add a remove line item button inside the row": {
+      "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-repeater-remove-button.png",
+      "alt": "Invoice form with Remove line item highlighted inside the repeater row and its removeRow action visible."
+    },
+    "step 5: add an add line item button": {
+      "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-repeater-canvas.png",
+      "alt": "Invoice form with Add line item highlighted below the repeater and its addRow action visible."
+    },
+    "step 6: verify the component tree": {
+      "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-repeater-tree-final.png",
+      "alt": "Tree tab showing the Remove line item button inside the repeater row and Add line item below the repeater."
+    },
+    "step 7: test adding and removing rows in preview": {
+      "src": "/assets/guide/fields-and-data/tables-repeaters-repeater-preview-plain.png",
+      "alt": "Preview mode showing two invoice rows after adding rows and removing the middle line item."
+    },
+    "step 1: select the rsuite component library": {
+      "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-table-library.png",
+      "alt": "Top toolbar with RSuite UI inject selected for table components."
+    },
+    "step 2: add a table component": {
+      "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-table-palette.png",
+      "alt": "Components tab open with Table highlighted in the palette search."
+    },
+    "step 3: add and configure columns": {
+      "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-table-tree.png",
+      "alt": "Tree tab showing Team table with Name, Department, and Email columns."
+    },
+    "step 4: check the canvas": {
+      "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-table-canvas.png",
+      "alt": "Team directory table on the canvas with Name, Department, and Email columns."
+    },
+    "step 5: test the table in preview": {
+      "src": "/assets/guide/fields-and-data/tables-repeaters-table-preview-plain.png",
+      "alt": "Preview mode showing Team directory table with sample rows."
+    }
+  },
+  "fields-and-data/what-is-form-data.md": {
+    "field keys": {
+      "src": "/assets/guide/workspace/main-tab-plain.png",
+      "alt": "Main tab showing the field Key property."
+    },
+    "where to inspect data": {
+      "src": "/assets/guide/preview-and-handoff/preview-data-panel-plain.png",
+      "alt": "Preview Data panel with field values."
+    }
+  },
+  "your-first-form/create-your-first-form.md": {
+    "add a new form from the menu": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-add-new-form.png",
+      "alt": "Header menu open with Add a new form highlighted."
+    },
+    "use the forms tab (when enabled)": {
+      "src": "/assets/guide/manage-forms/forms-tab-plain.png",
+      "alt": "Forms tab for managing saved forms."
+    }
+  },
+  "your-first-form/add-fields-to-your-form.md": {
+    "step 1: drag a text field": {
+      "src": "/assets/guide/workspace/highlight-palette.png",
+      "alt": "Components palette with Inputs list visible."
+    },
+    "step 4: check in preview": {
+      "src": "/assets/guide/preview-and-handoff/preview-mode-plain.png",
+      "alt": "Preview mode with the new fields."
+    }
+  },
+  "your-first-form/name-fields-for-data-capture.md": {
+    "set the key": {
+      "src": "/assets/guide/workspace/main-tab-plain.png",
+      "alt": "Main tab Key field for data binding."
+    }
+  },
+  "your-first-form/add-validation-on-your-first-form.md": {
+    "select the field": {
+      "src": "/assets/guide/first-form/highlight-select-validation-field.png",
+      "alt": "Tree with Full name selected, ready to add validation rules."
+    },
+    "open rules": {
+      "src": "/assets/guide/first-form/highlight-rules-tab.png",
+      "alt": "Rules tab with Add a validation rule and Auto Validate."
+    },
+    "add a validation rule": {
+      "src": "/assets/guide/first-form/highlight-validation-add-rule.png",
+      "alt": "Add a validation rule picker open on Full name, with Non empty in the list."
+    },
+    "test in preview": {
+      "src": "/assets/guide/first-form/validation-preview-errors-plain.png",
+      "alt": "Preview after Validate, showing required errors on Full name and Email address."
+    }
+  },
+  "your-first-form/add-button-actions-on-your-first-form.md": {
+    "add or select a button": {
+      "src": "/assets/guide/first-form/highlight-components-search-button.png",
+      "alt": "Empty form with Components search set to Button and Button highlighted."
+    },
+    "configure actions": {
+      "src": "/assets/guide/first-form/highlight-button-onclick-code.png",
+      "alt": "Save button Actions tab with onClick showAlert code action and alert in the editor."
+    },
+    "test in preview": {
+      "src": "/assets/guide/first-form/highlight-button-preview-alert.png",
+      "alt": "Preview mode after clicking Save, with an alert dialog showing Button clicked."
+    }
+  },
+  "your-first-form/preview-your-first-form.md": {
+    "open preview": {
+      "src": "/assets/guide/first-form/highlight-preview.png",
+      "alt": "Preview control in the header toolbar on the first-form walkthrough."
+    },
+    "run through your checklist": {
+      "src": "/assets/guide/first-form/add-fields-with-button-plain.png",
+      "alt": "Finished first form with required fields and a Save button before Preview."
+    },
+    "return to edit": {
+      "src": "/assets/guide/first-form/highlight-edit-button.png",
+      "alt": "Edit button in the header to leave Preview."
+    }
+  },
+  "manage-forms/work-with-multiple-forms.md": {
+    "step 1: open the forms tab": {
+      "src": "/assets/guide/manage-forms/highlight-forms-list-multiple.png",
+      "alt": "Forms tab listing multiple saved forms."
+    },
+    "search": {
+      "src": "/assets/guide/manage-forms/highlight-forms-search.png",
+      "alt": "Forms tab with Search filled to Feedback and only FeedbackSurvey shown."
+    },
+    "open another form": {
+      "src": "/assets/guide/manage-forms/highlight-forms-edit-button.png",
+      "alt": "Forms tab with Edit button highlighted on a row."
+    },
+    "remove a form": {
+      "src": "/assets/guide/manage-forms/highlight-forms-remove-button.png",
+      "alt": "Forms tab with Remove button highlighted on a row."
+    },
+    "step 4: add a new form": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-add-new-form.png",
+      "alt": "Header menu with Add a new form highlighted."
+    }
+  },
+  "manage-forms/save-export-and-import-forms.md": {
+    "save": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-save.png",
+      "alt": "Header menu open with Save highlighted."
+    },
+    "save as": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-save-as.png",
+      "alt": "Header menu open with Save as highlighted."
+    },
+    "download": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-download.png",
+      "alt": "Header menu open with Download highlighted."
+    },
+    "upload": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-upload.png",
+      "alt": "Header menu open with Upload highlighted."
+    },
+    "export forms": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-export-forms.png",
+      "alt": "Header menu open with Export forms highlighted."
+    },
+    "import forms": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-import-forms.png",
+      "alt": "Header menu open with Import forms highlighted."
+    },
+    "clear": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-clear.png",
+      "alt": "Header menu open with Clear highlighted."
+    },
+    "add a new form": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-add-new-form.png",
+      "alt": "Header menu open with Add a new form highlighted."
+    }
+  },
+  "manage-forms/duplicate-and-rename-forms.md": {
+    "save as (storage enabled)": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-save-as.png",
+      "alt": "Header menu open with Save as highlighted."
+    },
+    "copy via file": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-download.png",
+      "alt": "Header menu open with Download highlighted."
+    }
+  },
+  "manage-forms/form-settings-every-author-should-know.md": {
+    "settings blocks": {
+      "src": "/assets/guide/workspace/settings-tab-plain.png",
+      "alt": "Settings tab with form-wide configuration blocks."
+    }
+  },
+  "manage-forms/preset-components.md": {
+    "step 1: select two or more components": {
+      "src": "/assets/guide/manage-forms/highlight-preset-select.png",
+      "alt": "Street and City text fields multi-selected on the canvas."
+    },
+    "step 2: click the preset button on the toolbar": {
+      "src": "/assets/guide/manage-forms/highlight-preset-toolbar-button.png",
+      "alt": "Floating toolbar on multi-selected fields with an arrow pointing at the preset bookmark button."
+    },
+    "step 3: set options in the popup": {
+      "src": "/assets/guide/manage-forms/highlight-preset-dialog.png",
+      "alt": "Preset dialog with Name and Category fields highlighted."
+    },
+    "step 4: locate the preset in components": {
+      "src": "/assets/guide/manage-forms/highlight-preset-palette.png",
+      "alt": "Components palette with Address block preset highlighted after search."
+    }
+  },
+  "preview-and-handoff/preview-on-mobile-and-tablet.md": {
+    "choose a device mode": {
+      "src": "/assets/guide/preview-and-handoff/highlight-device-mode-selector.png",
+      "alt": "Header device mode selector highlighted with Desktop, Mobile, and Tablet buttons; Mobile selected."
+    },
+    "toggle orientation (mobile / tablet only)": {
+      "src": "/assets/guide/preview-and-handoff/highlight-device-orientation.png",
+      "alt": "Tablet mode selected with the Orientation rotate control highlighted to the left of the device buttons."
+    },
+    "test interactions": {
+      "src": "/assets/guide/preview-and-handoff/device-mobile-preview-plain.png",
+      "alt": "Preview mode on a narrow mobile width."
+    }
+  },
+  "preview-and-handoff/export-and-share-your-form.md": {
+    "save": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-save.png",
+      "alt": "Header menu open with Save highlighted."
+    },
+    "export forms": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-export-forms.png",
+      "alt": "Header menu open with Export forms highlighted."
+    },
+    "import forms": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-import-forms.png",
+      "alt": "Header menu open with Import forms highlighted."
+    },
+    "clear": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-clear.png",
+      "alt": "Header menu open with Clear highlighted."
+    }
+  },
+  "preview-and-handoff/use-preview-mode-tools-data-validate-reset.md": {
+    "open preview": {
+      "src": "/assets/guide/preview-and-handoff/highlight-preview-button.png",
+      "alt": "Header Preview button highlighted before entering Preview mode."
+    },
+    "preview left panel": {
+      "src": "/assets/guide/preview-and-handoff/preview-data-panel-plain.png",
+      "alt": "Preview left panel with Data, Validate, Reset to default, Clear, and Errors."
+    },
+    "read live data": {
+      "src": "/assets/guide/preview-and-handoff/highlight-preview-data.png",
+      "alt": "Preview Data panel with live field values."
+    },
+    "run validate": {
+      "src": "/assets/guide/preview-and-handoff/highlight-preview-validate.png",
+      "alt": "Validate button highlighted in the Preview Data toolbar."
+    },
+    "validate errors": {
+      "src": "/assets/guide/preview-and-handoff/preview-validate-errors-plain.png",
+      "alt": "Preview Errors panel after clicking Validate."
+    },
+    "reset or clear test data": {
+      "src": "/assets/guide/preview-and-handoff/highlight-preview-clear.png",
+      "alt": "Clear button highlighted in the Preview Data toolbar."
+    },
+    "return to edit": {
+      "src": "/assets/guide/workspace/highlight-edit-button.png",
+      "alt": "Edit button in the header to leave Preview."
+    }
+  },
+  "preview-and-handoff/testing-checklist-before-handoff.md": {
+    "run preview": {
+      "src": "/assets/guide/preview-and-handoff/preview-mode-plain.png",
+      "alt": "Preview mode for end-to-end testing."
+    },
+    "check validation": {
+      "src": "/assets/guide/preview-and-handoff/preview-data-panel-plain.png",
+      "alt": "Preview Errors panel during testing."
+    }
+  },
+  "form-structure-and-layout/form-structure-and-containers.md": {
+    "step 1: add a card container": {
+      "src": "/assets/guide/structure/highlight-containers-palette.png",
+      "alt": "Components palette with Card highlighted."
+    },
+    "step 4: check the canvas": {
+      "src": "/assets/guide/structure/containers-canvas-plain.png",
+      "alt": "Event registration form with grouped Card sections."
+    },
+    "step 5: verify in tree": {
+      "src": "/assets/guide/structure/highlight-containers-tree-final.png",
+      "alt": "Tree tab with nested Card and Stack structure."
+    }
+  },
+  "form-structure-and-layout/rows-columns-and-grids.md": {
+    "step 1: add a horizontal stack": {
+      "src": "/assets/guide/structure/highlight-rows-columns-palette.png",
+      "alt": "Components tab open with Stack highlighted in the palette search."
+    },
+    "step 4: check the canvas": {
+      "src": "/assets/guide/structure/highlight-rows-columns-canvas.png",
+      "alt": "Components tab selected with shipping address form showing side-by-side fields."
+    },
+    "step 5: verify in tree": {
+      "src": "/assets/guide/structure/highlight-rows-columns-tree-final.png",
+      "alt": "Tree tab open with Name row and City row Stacks and child text fields highlighted."
+    },
+    "test responsive layout desktop": {
+      "src": "/assets/guide/structure/highlight-rows-columns-preview-desktop.png",
+      "alt": "Desktop preview with arrow pointing at the selected Desktop device button."
+    },
+    "test responsive layout mobile": {
+      "src": "/assets/guide/structure/highlight-rows-columns-preview-mobile.png",
+      "alt": "Mobile preview with arrow pointing at the selected Mobile device button."
+    }
+  },
+  "form-structure-and-layout/parent-and-child-in-the-tree.md": {
+    "read the hierarchy": {
+      "src": "/assets/guide/structure/highlight-parent-child-parent.png",
+      "alt": "Contact section selected in Tree with the Contact section card highlighted on the canvas."
+    },
+    "select a child and see it on the canvas": {
+      "src": "/assets/guide/structure/highlight-parent-child-child.png",
+      "alt": "Email selected in Tree with the Email field highlighted on the canvas."
+    },
+    "move a misplaced field": {
+      "src": "/assets/guide/structure/highlight-parent-child-move.png",
+      "alt": "Phone moved under Contact stack in Tree and shown in Contact details on the canvas."
+    },
+    "edit a child quickly": {
+      "src": "/assets/guide/structure/highlight-parent-child-edit.png",
+      "alt": "Email selected in Tree with Key and Label on Main highlighted."
+    }
+  },
+  "form-structure-and-layout/spacing-and-alignment-basics.md": {
+    "step 1: select the parent stack": {
+      "src": "/assets/guide/structure/highlight-spacing-canvas.png",
+      "alt": "Team profile form with large vertical gaps between fields."
+    },
+    "step 2: set spacing on main": {
+      "src": "/assets/guide/structure/highlight-spacing-properties.png",
+      "alt": "Main tab with Stack Spacing property highlighted."
+    },
+    "preview check": {
+      "src": "/assets/guide/structure/spacing-preview-plain.png",
+      "alt": "Preview of the team profile form with generous vertical spacing."
+    }
+  },
+  "form-structure-and-layout/tabs-and-multi-step-layouts.md": {
+    "step 0: select the rsuite component library": {
+      "src": "/assets/guide/structure/highlight-tabs-sections-library.png",
+      "alt": "Top toolbar with RSuite UI inject selected in the Component library menu."
+    },
+    "step 1: add a tab component": {
+      "src": "/assets/guide/structure/highlight-tabs-sections-palette.png",
+      "alt": "Components tab open with Tab highlighted in the palette search."
+    },
+    "step 2: add fields to the first tab pane": {
+      "src": "/assets/guide/structure/highlight-tabs-sections-personal-tree.png",
+      "alt": "Tree tab showing Onboarding tabs with Profile pane and nested input fields."
+    },
+    "step 4: check the canvas": {
+      "src": "/assets/guide/structure/highlight-tabs-sections-canvas.png",
+      "alt": "Components tab selected with Employee onboarding form showing Profile, Job details, and Documents tabs."
+    },
+    "step 5: verify the component tree": {
+      "src": "/assets/guide/structure/highlight-tabs-sections-tree-final.png",
+      "alt": "Tree tab showing full Employee onboarding hierarchy with Tab, three pane containers, fields, and Submit onboarding button."
+    },
+    "test the flow": {
+      "src": "/assets/guide/structure/tabs-sections-preview-plain.png",
+      "alt": "Preview mode showing Employee onboarding Profile, Job details, and Documents tabs."
+    }
+  },
+  "form-structure-and-layout/wizard-and-multi-step-flows.md": {
+    "step 0: select the rsuite component library": {
+      "src": "/assets/guide/structure/highlight-wizard-sections-library.png",
+      "alt": "Top toolbar with RSuite UI inject selected in the Component library menu."
+    },
+    "step 1: add a wizard component": {
+      "src": "/assets/guide/structure/highlight-wizard-sections-palette.png",
+      "alt": "Components tab open with Wizard highlighted in the palette search."
+    },
+    "step 2: configure steps and add fields to profile": {
+      "src": "/assets/guide/structure/highlight-wizard-sections-profile-tree.png",
+      "alt": "Tree tab showing Onboarding wizard with Profile step and nested input fields."
+    },
+    "step 4: add field rules and enable wizard validation": {
+      "src": "/assets/guide/structure/highlight-wizard-sections-validation-settings.png",
+      "alt": "Main properties for the Onboarding wizard with Validate on next and Validate on finish enabled."
+    },
+    "step 5: check the canvas": {
+      "src": "/assets/guide/structure/highlight-wizard-sections-canvas.png",
+      "alt": "Components tab selected with Employee onboarding wizard showing Profile step fields and Next button."
+    },
+    "step 6: verify the component tree": {
+      "src": "/assets/guide/structure/highlight-wizard-sections-tree-final.png",
+      "alt": "Tree tab showing full Employee onboarding wizard hierarchy with three Wizard step branches and fields."
+    },
+    "test the flow": {
+      "src": "/assets/guide/structure/highlight-wizard-sections-validation-blocked.png",
+      "alt": "Preview mode showing Required under an empty Full name field while the wizard remains on Profile after Next is clicked."
+    }
+  },
+  "simple-data-driven-screens/show-or-hide-fields.md": {
+    "plain-language example": {
+      "src": "/assets/guide/data-driven/highlight-show-hide-canvas.png",
+      "alt": "Account type and Tax ID fields on the canvas."
+    },
+    "in the designer": {
+      "src": "/assets/guide/data-driven/highlight-render-when-editor.png",
+      "alt": "Render When editor open for the Tax ID field with a Business account condition."
+    },
+    "test in preview": {
+      "src": "/assets/guide/data-driven/highlight-show-hide-preview.png",
+      "alt": "Preview mode with Business selected and Tax ID field visible."
+    }
+  },
+  "simple-data-driven-screens/prefill-a-form.md": {
+    "static defaults": {
+      "src": "/assets/guide/data-driven/highlight-prefill-static-value.png",
+      "alt": "Main tab Value field filled with a static default email."
+    }
+  },
+  "simple-data-driven-screens/load-options-from-external-data.md": {
+    "what authors do": {
+      "src": "/assets/guide/workspace/main-tab-plain.png",
+      "alt": "Main tab for configuring field options."
+    }
+  },
+  "simple-data-driven-screens/calculated-fields-overview.md": {
+    "common examples": {
+      "src": "/assets/guide/data-driven/highlight-value-edit-icon.png",
+      "alt": "Full name field below First name and Last name, with an arrow pointing to the edit icon beside Value."
+    },
+    "full name example": {
+      "src": "/assets/guide/data-driven/highlight-computed-property-example.png",
+      "alt": "Full name Value calculation open below a form with First name, Last name, and a read-only Full name field."
+    },
+    "test the result": {
+      "src": "/assets/guide/data-driven/highlight-calculated-full-name-preview.png",
+      "alt": "Preview showing First name Ada, Last name Lovelace, and read-only Full name Ada Lovelace."
+    }
+  },
+  "simple-data-driven-screens/list-and-detail-pattern.md": {
+    "author setup": {
+      "src": "/assets/guide/workspace/tree-panel-plain.png",
+      "alt": "Tree structure for list and detail forms."
+    }
+  },
+  "simple-data-driven-screens/static-vs-dynamic-content.md": {
+    "static (you control)": {
+      "src": "/assets/guide/data-driven/highlight-static-select-items.png",
+      "alt": "Select component on Main with the Items options table highlighted."
+    },
+    "dynamic (resolved at runtime)": {
+      "src": "/assets/guide/data-driven/highlight-dynamic-dropdown-onload.png",
+      "alt": "Dropdown Actions tab with onLoadData bound to a loadData action."
+    }
+  },
+  "components-by-task/choose-the-right-field-type.md": {
+    "quick guide": {
+      "src": "/assets/guide/workspace/components-tab-plain.png",
+      "alt": "Components palette grouped by field type."
+    }
+  },
+  "components-by-task/browse-components-and-guides.md": {
+    "text and numbers": {
+      "src": "/assets/guide/workspace/components-search-plain.png",
+      "alt": "Components palette filtered for text inputs."
+    }
+  },
+  "meet-the-designer/examples-and-use-cases.md": {
+    "contact form": {
+      "src": "/assets/guide/workspace/builder-overview-plain.png",
+      "alt": "Contact-style form on the canvas."
+    }
+  },
+  "advanced-topics/custom-components-overview.md": {
+    "what you see": {
+      "src": "/assets/guide/workspace/components-tab-plain.png",
+      "alt": "Components palette including custom components."
+    }
+  },
+  "help/common-problems-and-fixes.md": {
+    "preview looks different": {
+      "src": "/assets/guide/preview-and-handoff/preview-mode-plain.png",
+      "alt": "Preview mode compared to Edit mode."
+    },
+    "validation does not run on the canvas": {
+      "src": "/assets/guide/preview-and-handoff/preview-data-panel-plain.png",
+      "alt": "Use Preview Validate to test rules."
+    }
+  },
+  "help/faq-for-form-authors.md": {
+    "how do i get the form json for my developer?": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-export-forms.png",
+      "alt": "Header menu open with Export forms highlighted."
+    },
+    "why does preview look different from edit?": {
+      "src": "/assets/guide/help/faq-preview-mode-plain.png",
+      "alt": "Preview mode with the Edit button and Data and Validate tools."
+    },
+    "validation does not run on the canvas": {
+      "src": "/assets/guide/first-form/canvas-plain.png",
+      "alt": "Form canvas in the center."
+    },
+    "components look broken after import": {
+      "src": "/assets/guide/help/highlight-component-library.png",
+      "alt": "Red arrow pointing to the Component library dropdown in the header."
+    }
+  },
+  "help/hand-off-to-your-technical-team.md": {
+    "what to send": {
+      "src": "/assets/guide/manage-forms/header-menu-plain.png",
+      "alt": "Export and Download from the header menu."
+    }
+  },
+  "help/get-more-help.md": {
+    "practice in the browser": {
+      "src": "/assets/guide/workspace/builder-overview-plain.png",
+      "alt": "Live FormEngine Designer demo."
+    }
+  }
+}

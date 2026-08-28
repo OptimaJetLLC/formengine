@@ -1,0 +1,39 @@
+{
+  "name": "@react-form-builder/designer-guide",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:navigation": "node scripts/build-navigation.mjs",
+    "optimize:images": "node scripts/optimize-guide-images.mjs",
+    "catalog:screenshots": "node ../skills/formbuilder-end-user-docs/scripts/build-guide-screenshot-catalog.mjs",
+    "catalog:screenshots:check": "node ../skills/formbuilder-end-user-docs/scripts/build-guide-screenshot-catalog.mjs --check",
+    "clean": "node scripts/clean.mjs",
+    "inject:demo-links": "node scripts/inject-demo-links.mjs",
+    "check:all": "npm run check:links && npm run check:tsc && npm run check:eslint && npm run check:stylelint",
+    "check:links": "node scripts/check-links.mjs",
+    "check:tsc": "npm run build:navigation && tsc --noEmit",
+    "check:eslint": "eslint --ext .ts,.tsx,.js,.mjs,.cjs .",
+    "check:stylelint": "stylelint \"src/**/*.css\"",
+    "stylelint-fix": "stylelint \"src/**/*.css\" --fix",
+    "dev": "npm run build:navigation && astro dev",
+    "build": "npm run optimize:images && npm run build:navigation && rm -rf .astro node_modules/.astro && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.2.4",
+    "@astrojs/mdx": "^7.0.8",
+    "@docsearch/css": "^4.3.2",
+    "@docsearch/js": "^4.3.2",
+    "astro": "^7.2.9",
+    "cookie": "2.0.1",
+    "rehype-raw": "^7.0.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^8.1.1",
+    "typescript": "5.8.3"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "shippingTitle",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h5"
+          },
+          "children": {
+            "value": "Shipping address",
+            "editorType": "string"
+          }
+        }
+      },
+      {
+        "key": "nameRow",
+        "type": "MuiStack",
+        "props": {
+          "direction": {
+            "value": "row"
+          },
+          "spacing": {
+            "value": "16px"
+          }
+        },
+        "children": [
+          {
+            "key": "firstName",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "First name"
+              }
+            }
+          },
+          {
+            "key": "lastName",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "Last name"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "street",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Street address"
+          }
+        }
+      },
+      {
+        "key": "cityRow",
+        "type": "MuiStack",
+        "props": {
+          "direction": {
+            "value": "row"
+          },
+          "spacing": {
+            "value": "16px"
+          }
+        },
+        "children": [
+          {
+            "key": "city",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "City"
+              }
+            }
+          },
+          {
+            "key": "state",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "State"
+              }
+            }
+          },
+          {
+            "key": "zip",
+            "type": "MuiTextField",
+            "props": {
+              "label": {
+                "value": "ZIP / Postal"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

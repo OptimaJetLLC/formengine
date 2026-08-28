@@ -1,0 +1,119 @@
+{
+  "version": "1",
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "formTitle",
+        "type": "MuiTypography",
+        "props": {
+          "variant": {
+            "value": "h5"
+          },
+          "children": {
+            "value": "Feedback survey",
+            "editorType": "string"
+          }
+        }
+      },
+      {
+        "key": "satisfaction",
+        "type": "MuiRadioGroup",
+        "props": {
+          "label": {
+            "value": "How satisfied are you?"
+          },
+          "name": {
+            "value": "satisfaction"
+          }
+        },
+        "schema": {
+          "type": "string",
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        },
+        "children": [
+          {
+            "key": "verySatisfied",
+            "type": "MuiRadioItem",
+            "props": {
+              "value": {
+                "value": "Very satisfied"
+              },
+              "label": {
+                "value": "Very satisfied"
+              }
+            }
+          },
+          {
+            "key": "neutral",
+            "type": "MuiRadioItem",
+            "props": {
+              "value": {
+                "value": "Neutral"
+              },
+              "label": {
+                "value": "Neutral"
+              }
+            }
+          },
+          {
+            "key": "unsatisfied",
+            "type": "MuiRadioItem",
+            "props": {
+              "value": {
+                "value": "Unsatisfied"
+              },
+              "label": {
+                "value": "Unsatisfied"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "comments",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Comments (optional)"
+          },
+          "multiline": {
+            "value": true
+          },
+          "rows": {
+            "value": 3
+          }
+        }
+      },
+      {
+        "key": "submitFeedback",
+        "type": "MuiButton",
+        "props": {
+          "variant": {
+            "value": "contained"
+          },
+          "children": {
+            "value": "Submit feedback"
+          }
+        }
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

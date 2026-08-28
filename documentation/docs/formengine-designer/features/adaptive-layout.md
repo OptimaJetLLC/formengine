@@ -5,7 +5,14 @@ slug: /formengine-designer/features/adaptive-layout
 description: Form Builder allows you to set different styles for different layouts
 ---
 
-# Adaptive layout
+:::info For form authors
+
+Preview **Desktop**, **Mobile**, and **Tablet** in the header before you publish.
+
+[Full guide →](designer-guide:preview-and-handoff/preview-on-mobile-and-tablet/)
+:::
+
+## Adaptive layout
 
 Form Builder allows you to set different styles for different layouts. In the "For device" drop-down menu on the "Style" tab, you
 can select the device for which the styles will be applied. The device is determined by the width of the window:

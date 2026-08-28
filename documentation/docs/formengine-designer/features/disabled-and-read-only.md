@@ -5,7 +5,14 @@ description: How to make a form or part of it disabled or read-only
 slug: /formengine-designer/features/disabled-and-read-only
 ---
 
-# Disabled and read-only properties
+:::info For form authors
+
+Toggle **Read only** or **Disabled** on **Main** for the selected field.
+
+[Full guide →](designer-guide:fields-and-data/read-only-and-disabled-fields/)
+:::
+
+## Disabled and read-only properties
 
 You can make all or part of the form disabled or read-only. There are several mechanisms for this.
 
