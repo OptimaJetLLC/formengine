@@ -13,7 +13,7 @@ import {
 } from '@react-form-builder/core'
 import {cleanup, render, waitFor} from '@testing-library/react'
 import {useContext} from 'react'
-import {CustomContext} from 'rsuite/CustomProvider'
+import {CustomContext} from 'rsuite/esm/CustomProvider/CustomContext.js'
 import {afterEach, describe, expect, it} from 'vitest'
 
 const enUS = new Language('en', 'US', 'English', 'American English', BiDi.LTR)
