@@ -10,23 +10,23 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           clean: false
       - name: Clean stale archives directory
         run: rm -rf .archives
       - name: Download release archives
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: release-archives
           path: .archives
       - name: Download documentation archive
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: documentation-archive
           path: .archives
       - name: Download designer guide archive
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: designer-guide-archive
           path: .archives

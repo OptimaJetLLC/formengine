@@ -11,7 +11,7 @@ jobs:
     env:
       RC_RELEASE: ${{ startsWith(github.ref, 'refs/heads/rc/') || startsWith(github.head_ref, 'rc/') }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           clean: false
       - name: Clean stale archives directory
