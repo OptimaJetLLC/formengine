@@ -1,0 +1,94 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directories:
+      - /
+      - /examples/**
+    schedule:
+      interval: daily
+    cooldown:
+      default-days: 5
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
+    groups:
+      patch:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        update-types:
+          - patch
+      minor:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        update-types:
+          - minor
+      major:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        update-types:
+          - major
+      security-patch:
+        applies-to: security-updates
+        patterns:
+          - '*'
+        update-types:
+          - patch
+      security-minor:
+        applies-to: security-updates
+        patterns:
+          - '*'
+        update-types:
+          - minor
+      security-major:
+        applies-to: security-updates
+        patterns:
+          - '*'
+        update-types:
+          - major
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+    cooldown:
+      default-days: 5
+    groups:
+      patch:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        update-types:
+          - patch
+      minor:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        update-types:
+          - minor
+      major:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        update-types:
+          - major
+      security-patch:
+        applies-to: security-updates
+        patterns:
+          - '*'
+        update-types:
+          - patch
+      security-minor:
+        applies-to: security-updates
+        patterns:
+          - '*'
+        update-types:
+          - minor
+      security-major:
+        applies-to: security-updates
+        patterns:
+          - '*'
+        update-types:
+          - major
