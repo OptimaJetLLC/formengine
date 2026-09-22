@@ -177,6 +177,10 @@
           "name": "Should update scroll",
           "description": "Whether to update the scroll after the table size is updated"
         },
+        "showDataInDesigner": {
+          "name": "Show data in designer",
+          "description": "Display table data on the canvas in design mode"
+        },
         "showHeader": {
           "name": "Show header",
           "description": "Display header"

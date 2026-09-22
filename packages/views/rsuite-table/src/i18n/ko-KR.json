@@ -177,6 +177,10 @@
           "description": "테이블 크기가 업데이트된 후 스크롤을 업데이트할지 여부",
           "name": "스크롤을 업데이트해야 함"
         },
+        "showDataInDesigner": {
+          "description": "디자인 모드의 캔버스에 테이블 데이터를 표시합니다",
+          "name": "디자이너에서 데이터 표시"
+        },
         "showHeader": {
           "description": "디스플레이 헤더",
           "name": "헤더 보기"

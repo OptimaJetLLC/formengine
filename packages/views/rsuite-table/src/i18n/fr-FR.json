@@ -177,6 +177,10 @@
           "description": "S'il faut mettre à jour le défilement après la mise à jour de la taille du tableau",
           "name": "Devrait mettre à jour le scroll"
         },
+        "showDataInDesigner": {
+          "description": "Afficher les données du tableau sur le canevas en mode conception",
+          "name": "Afficher les données dans le concepteur"
+        },
         "showHeader": {
           "description": "Afficher l'en-tête",
           "name": "Afficher l'en-tête"

@@ -177,6 +177,10 @@
           "description": "表格大小更新后是否更新滚动",
           "name": "应该更新滚动"
         },
+        "showDataInDesigner": {
+          "description": "在设计模式下于画布上显示表格数据",
+          "name": "在设计器中显示数据"
+        },
         "showHeader": {
           "description": "显示标题",
           "name": "显示标题"

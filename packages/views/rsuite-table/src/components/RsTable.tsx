@@ -2,6 +2,7 @@ import type {ComponentData} from '@react-form-builder/core'
 import {
   array,
   boolean,
+  BuilderModeProvider,
   define,
   event,
   isNull,
@@ -37,10 +38,12 @@ const {HeaderCell, Cell, ColumnGroup} = Table
 
 interface RsTableProps extends ComponentProps<typeof Table> {
   columns?: ReactNode[]
+  showDataInDesigner?: boolean
 }
 
 const renderComponentData = (item: ComponentData) => {
-  const {children, ...props} = item.componentState.get
+  const {children: ownChildren, ...props} = item.componentState.ownProps
+  const children = item.children?.length ? item.componentState.get.children : ownChildren
   return createElement(item.model.component, props, children)
 }
 
@@ -102,10 +105,12 @@ class TableColumns {
     const columnChildren = getColumnChildren(item)
     const {key, ...otherProps} = item.componentState.ownProps
     const ColumnComponent = item.model.component
-    return <ColumnComponent key={key} {...otherProps}>
-      {columnChildren.headerCell}
-      {columnChildren.cell}
-    </ColumnComponent>
+    return (
+      <ColumnComponent key={key} {...otherProps}>
+        {columnChildren.headerCell}
+        {columnChildren.cell}
+      </ColumnComponent>
+    )
   }
 }
 
@@ -121,13 +126,21 @@ const RsViewerTable = (props: RsTableProps) => {
   const componentData = useComponentData()
   const columns = useMemo(() => (new TableColumns(componentData)), [componentData])
 
-  const {children, ...otherProps} = props
+  const {children, showDataInDesigner, ...otherProps} = props
 
-  return <Table {...otherProps}>{columns.children}</Table>
+  return (
+    <BuilderModeProvider value="viewer">
+      <Table {...otherProps}>{columns.children}</Table>
+    </BuilderModeProvider>
+  )
 }
 
 const RsTable = (props: RsTableProps) => {
-  return useBuilderComponent(RsBuilderTable, RsViewerTable, props)
+  return useBuilderComponent(
+    props.showDataInDesigner ? RsViewerTable : RsBuilderTable,
+    RsViewerTable,
+    props,
+  )
 }
 
 const getRsTableComponentStore = () => {
@@ -170,6 +183,7 @@ export const rsTable = define(RsTable, rsTableTypeName)
     rowHeight: number.default(46),
     rowKey: string.default('key'),
     shouldUpdateScroll: boolean,
+    showDataInDesigner: boolean,
     showHeader: boolean,
     sortColumn: string,
     sortType: oneOf('desc', 'asc'),

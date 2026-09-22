@@ -177,6 +177,10 @@
           "description": "Si se debe actualizar el pergamino después de actualizar el tamaño de la tabla",
           "name": "Debería actualizar el pergamino"
         },
+        "showDataInDesigner": {
+          "description": "Mostrar los datos de la tabla en el lienzo en modo diseño",
+          "name": "Mostrar datos en el diseñador"
+        },
         "showHeader": {
           "description": "Mostrar encabezado",
           "name": "Mostrar encabezado"

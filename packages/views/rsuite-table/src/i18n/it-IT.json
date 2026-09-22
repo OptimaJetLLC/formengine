@@ -177,6 +177,10 @@
           "description": "Se aggiornare lo scroll dopo l'aggiornamento delle dimensioni della tabella",
           "name": "Dovrebbe aggiornare lo scroll"
         },
+        "showDataInDesigner": {
+          "description": "Mostra i dati della tabella sull'area di disegno in modalità progettazione",
+          "name": "Mostra dati nel designer"
+        },
         "showHeader": {
           "description": "Intestazione dello schermo",
           "name": "Mostra intestazione"

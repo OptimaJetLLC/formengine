@@ -719,6 +719,11 @@
                   "$ref": "#/definitions/booleanPropertyCalculable",
                   "description": "Whether to update the scroll after the table size is updated"
                 },
+                "showDataInDesigner": {
+                  "type": "object",
+                  "$ref": "#/definitions/booleanPropertyCalculable",
+                  "description": "Display table data on the canvas in design mode"
+                },
                 "showHeader": {
                   "type": "object",
                   "$ref": "#/definitions/booleanPropertyCalculable",

@@ -177,6 +177,10 @@
           "description": "Ob der Scroll aktualisiert werden soll, nachdem die Tabellengröße aktualisiert wurde",
           "name": "Sollte den Scroll aktualisieren"
         },
+        "showDataInDesigner": {
+          "description": "Tabellendaten im Entwurfsmodus auf der Arbeitsfläche anzeigen",
+          "name": "Daten im Designer anzeigen"
+        },
         "showHeader": {
           "description": "Kopfzeile anzeigen",
           "name": "Header anzeigen"

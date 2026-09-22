@@ -177,6 +177,10 @@
           "description": "Da li treba ažurirati svitak nakon ažuriranja veličine tabele",
           "name": "Trebalo bi da ažurira skrolu"
         },
+        "showDataInDesigner": {
+          "description": "Prikaži podatke tabele na platnu u režimu dizajna",
+          "name": "Prikaži podatke u dizajneru"
+        },
         "showHeader": {
           "description": "Prikaz zaglavlja",
           "name": "Prikaži zaglavlje"

@@ -177,6 +177,10 @@
           "description": "テーブルサイズが更新された後にスクロールを更新するかどうか",
           "name": "スクロールを更新する必要があります"
         },
+        "showDataInDesigner": {
+          "description": "デザインモードのキャンバスにテーブルデータを表示します",
+          "name": "デザイナーでデータを表示"
+        },
         "showHeader": {
           "description": "ヘッダーを表示",
           "name": "ヘッダーを表示"
