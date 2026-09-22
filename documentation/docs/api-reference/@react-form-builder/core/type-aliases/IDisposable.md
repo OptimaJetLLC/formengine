@@ -6,7 +6,7 @@ Type of disposable object.
 
 ## Properties
 
-### dispose()
+### dispose
 
 > **dispose**: () => `void`
 

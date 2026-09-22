@@ -8,7 +8,7 @@ Modal settings for serialization in JSON.
 
 ### events?
 
-> `optional` **events**: `Record`\<[`EventName`](EventName.md), [`ActionData`](ActionData.md)[]\>
+> `optional` **events?**: `Record`\<[`EventName`](EventName.md), [`ActionData`](ActionData.md)[]\>
 
 The set of event handlers.
 

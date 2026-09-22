@@ -8,13 +8,13 @@ The properties of the Uploader component.
 
 ## Indexable
 
-\[`key`: `string`\]: `any`
+> \[`key`: `string`\]: `any`
 
 ## Properties
 
 ### accept?
 
-> `optional` **accept**: `Accept`
+> `optional` **accept?**: `Accept`
 
 #### Inherited from
 
@@ -32,7 +32,7 @@ URL to upload files to.
 
 ### autoFocus?
 
-> `optional` **autoFocus**: `boolean`
+> `optional` **autoFocus?**: `boolean`
 
 #### Inherited from
 
@@ -42,7 +42,7 @@ URL to upload files to.
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 If true, the children are in disabled state.
 
@@ -54,15 +54,15 @@ If true, the children are in disabled state.
 
 ### dropzone?
 
-> `optional` **dropzone**: `boolean`
+> `optional` **dropzone?**: `boolean`
 
 If true, the dropzone will show.
 
 ***
 
-### getFilesFromEvent()?
+### getFilesFromEvent?
 
-> `optional` **getFilesFromEvent**: (`event`) => `Promise`\<(`DataTransferItem` \| `File`)[]\>
+> `optional` **getFilesFromEvent?**: (`event`) => `Promise`\<(`DataTransferItem` \| `File`)[]\>
 
 #### Parameters
 
@@ -82,7 +82,7 @@ If true, the dropzone will show.
 
 ### maxFiles?
 
-> `optional` **maxFiles**: `number`
+> `optional` **maxFiles?**: `number`
 
 #### Inherited from
 
@@ -92,7 +92,7 @@ If true, the dropzone will show.
 
 ### maxSize?
 
-> `optional` **maxSize**: `number`
+> `optional` **maxSize?**: `number`
 
 #### Inherited from
 
@@ -102,7 +102,7 @@ If true, the dropzone will show.
 
 ### minSize?
 
-> `optional` **minSize**: `number`
+> `optional` **minSize?**: `number`
 
 #### Inherited from
 
@@ -112,7 +112,7 @@ If true, the dropzone will show.
 
 ### multiple?
 
-> `optional` **multiple**: `boolean`
+> `optional` **multiple?**: `boolean`
 
 #### Inherited from
 
@@ -122,7 +122,7 @@ If true, the dropzone will show.
 
 ### noClick?
 
-> `optional` **noClick**: `boolean`
+> `optional` **noClick?**: `boolean`
 
 #### Inherited from
 
@@ -132,7 +132,7 @@ If true, the dropzone will show.
 
 ### noDrag?
 
-> `optional` **noDrag**: `boolean`
+> `optional` **noDrag?**: `boolean`
 
 #### Inherited from
 
@@ -142,7 +142,7 @@ If true, the dropzone will show.
 
 ### noDragEventsBubbling?
 
-> `optional` **noDragEventsBubbling**: `boolean`
+> `optional` **noDragEventsBubbling?**: `boolean`
 
 #### Inherited from
 
@@ -152,7 +152,7 @@ If true, the dropzone will show.
 
 ### noKeyboard?
 
-> `optional` **noKeyboard**: `boolean`
+> `optional` **noKeyboard?**: `boolean`
 
 #### Inherited from
 
@@ -162,7 +162,7 @@ If true, the dropzone will show.
 
 ### onChange?
 
-> `optional` **onChange**: [`OnSuccess`](../type-aliases/OnSuccess.md)
+> `optional` **onChange?**: [`OnSuccess`](../type-aliases/OnSuccess.md)
 
 Callback function called when files are successfully uploaded.
 
@@ -170,7 +170,7 @@ Callback function called when files are successfully uploaded.
 
 ### onDragEnter?
 
-> `optional` **onDragEnter**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragEnter?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -180,7 +180,7 @@ Callback function called when files are successfully uploaded.
 
 ### onDragLeave?
 
-> `optional` **onDragLeave**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragLeave?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -190,7 +190,7 @@ Callback function called when files are successfully uploaded.
 
 ### onDragOver?
 
-> `optional` **onDragOver**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragOver?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -198,9 +198,9 @@ Callback function called when files are successfully uploaded.
 
 ***
 
-### onDrop()?
+### onDrop?
 
-> `optional` **onDrop**: \<`T`\>(`acceptedFiles`, `fileRejections`, `event`) => `void`
+> `optional` **onDrop?**: \<`T`\>(`acceptedFiles`, `fileRejections`, `event`) => `void`
 
 #### Type Parameters
 
@@ -232,9 +232,9 @@ Callback function called when files are successfully uploaded.
 
 ***
 
-### onDropAccepted()?
+### onDropAccepted?
 
-> `optional` **onDropAccepted**: \<`T`\>(`files`, `event`) => `void`
+> `optional` **onDropAccepted?**: \<`T`\>(`files`, `event`) => `void`
 
 #### Type Parameters
 
@@ -262,9 +262,9 @@ Callback function called when files are successfully uploaded.
 
 ***
 
-### onDropRejected()?
+### onDropRejected?
 
-> `optional` **onDropRejected**: (`fileRejections`, `event`) => `void`
+> `optional` **onDropRejected?**: (`fileRejections`, `event`) => `void`
 
 #### Parameters
 
@@ -288,7 +288,7 @@ Callback function called when files are successfully uploaded.
 
 ### onError?
 
-> `optional` **onError**: [`OnError`](../type-aliases/OnError.md)
+> `optional` **onError?**: [`OnError`](../type-aliases/OnError.md)
 
 Callback function called when an error occurs during upload.
 
@@ -298,9 +298,9 @@ Callback function called when an error occurs during upload.
 
 ***
 
-### onFileDialogCancel()?
+### onFileDialogCancel?
 
-> `optional` **onFileDialogCancel**: () => `void`
+> `optional` **onFileDialogCancel?**: () => `void`
 
 #### Returns
 
@@ -312,9 +312,9 @@ Callback function called when an error occurs during upload.
 
 ***
 
-### onFileDialogOpen()?
+### onFileDialogOpen?
 
-> `optional` **onFileDialogOpen**: () => `void`
+> `optional` **onFileDialogOpen?**: () => `void`
 
 #### Returns
 
@@ -328,7 +328,7 @@ Callback function called when an error occurs during upload.
 
 ### preventDropOnDocument?
 
-> `optional` **preventDropOnDocument**: `boolean`
+> `optional` **preventDropOnDocument?**: `boolean`
 
 #### Inherited from
 
@@ -338,7 +338,7 @@ Callback function called when an error occurs during upload.
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 If true, the children are in read-only state.
 
@@ -346,7 +346,7 @@ If true, the children are in read-only state.
 
 ### useFsAccessApi?
 
-> `optional` **useFsAccessApi**: `boolean`
+> `optional` **useFsAccessApi?**: `boolean`
 
 #### Inherited from
 
@@ -354,9 +354,9 @@ If true, the children are in read-only state.
 
 ***
 
-### validator()?
+### validator?
 
-> `optional` **validator**: \<`T`\>(`file`) => readonly `FileError`[] \| `FileError` \| `null`
+> `optional` **validator?**: \<`T`\>(`file`) => readonly `FileError`[] \| `FileError` \| `null`
 
 #### Type Parameters
 

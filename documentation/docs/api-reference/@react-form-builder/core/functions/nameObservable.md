@@ -1,6 +1,6 @@
 # Function: nameObservable()
 
-> **nameObservable**(`owner`, `params`): `string`
+> **nameObservable**(`owner`, `params?`): `string`
 
 Computes the observable name based on the owner, name, and parameters. **Internal use only.**
 
@@ -12,7 +12,7 @@ Computes the observable name based on the owner, name, and parameters. **Interna
 
 the owner of the observable.
 
-### params
+### params?
 
 `Record`\<`string`, `any`\> = `{}`
 

@@ -10,7 +10,7 @@ Props for the MuiDialog component.
 
 ### about?
 
-> `optional` **about**: `string`
+> `optional` **about?**: `string`
 
 #### Inherited from
 
@@ -20,7 +20,7 @@ Props for the MuiDialog component.
 
 ### accessKey?
 
-> `optional` **accessKey**: `string`
+> `optional` **accessKey?**: `string`
 
 #### Inherited from
 
@@ -30,7 +30,7 @@ Props for the MuiDialog component.
 
 ### aria-activedescendant?
 
-> `optional` **aria-activedescendant**: `string`
+> `optional` **aria-activedescendant?**: `string`
 
 Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application.
 
@@ -42,7 +42,7 @@ Identifies the currently active element when DOM focus is on a composite widget,
 
 ### aria-atomic?
 
-> `optional` **aria-atomic**: `Booleanish`
+> `optional` **aria-atomic?**: `Booleanish`
 
 Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute.
 
@@ -54,7 +54,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
+> `optional` **aria-autocomplete?**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -67,7 +67,7 @@ presented if they are made.
 
 ### aria-braillelabel?
 
-> `optional` **aria-braillelabel**: `string`
+> `optional` **aria-braillelabel?**: `string`
 
 Defines a string value that labels the current element, which is intended to be converted into Braille.
 
@@ -83,7 +83,7 @@ aria-label.
 
 ### aria-brailleroledescription?
 
-> `optional` **aria-brailleroledescription**: `string`
+> `optional` **aria-brailleroledescription?**: `string`
 
 Defines a human-readable, author-localized abbreviated description for the role of an element, which is intended to be converted into Braille.
 
@@ -99,7 +99,7 @@ aria-roledescription.
 
 ### aria-busy?
 
-> `optional` **aria-busy**: `Booleanish`
+> `optional` **aria-busy?**: `Booleanish`
 
 #### Inherited from
 
@@ -109,7 +109,7 @@ aria-roledescription.
 
 ### aria-checked?
 
-> `optional` **aria-checked**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
+> `optional` **aria-checked?**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
 
@@ -126,7 +126,7 @@ Indicates the current "checked" state of checkboxes, radio buttons, and other wi
 
 ### aria-colcount?
 
-> `optional` **aria-colcount**: `number`
+> `optional` **aria-colcount?**: `number`
 
 Defines the total number of columns in a table, grid, or treegrid.
 
@@ -142,7 +142,7 @@ aria-colindex.
 
 ### aria-colindex?
 
-> `optional` **aria-colindex**: `number`
+> `optional` **aria-colindex?**: `number`
 
 Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid.
 
@@ -159,7 +159,7 @@ Defines an element's column index or position with respect to the total number o
 
 ### aria-colindextext?
 
-> `optional` **aria-colindextext**: `string`
+> `optional` **aria-colindextext?**: `string`
 
 Defines a human readable text alternative of aria-colindex.
 
@@ -175,7 +175,7 @@ aria-rowindextext.
 
 ### aria-colspan?
 
-> `optional` **aria-colspan**: `number`
+> `optional` **aria-colspan?**: `number`
 
 Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid.
 
@@ -192,7 +192,7 @@ Defines the number of columns spanned by a cell or gridcell within a table, grid
 
 ### aria-controls?
 
-> `optional` **aria-controls**: `string`
+> `optional` **aria-controls?**: `string`
 
 Identifies the element (or elements) whose contents or presence are controlled by the current element.
 
@@ -208,7 +208,7 @@ aria-owns.
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
+> `optional` **aria-current?**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -220,7 +220,7 @@ Indicates the element that represents the current item within a container or set
 
 ### aria-describedby?
 
-> `optional` **aria-describedby**: `string`
+> `optional` **aria-describedby?**: `string`
 
 The id(s) of the element(s) that describe the dialog.
 
@@ -232,7 +232,7 @@ The id(s) of the element(s) that describe the dialog.
 
 ### aria-description?
 
-> `optional` **aria-description**: `string`
+> `optional` **aria-description?**: `string`
 
 Defines a string value that describes or annotates the current element.
 
@@ -248,7 +248,7 @@ related aria-describedby.
 
 ### aria-details?
 
-> `optional` **aria-details**: `string`
+> `optional` **aria-details?**: `string`
 
 Identifies the element that provides a detailed, extended description for the object.
 
@@ -264,7 +264,7 @@ aria-describedby.
 
 ### aria-disabled?
 
-> `optional` **aria-disabled**: `Booleanish`
+> `optional` **aria-disabled?**: `Booleanish`
 
 Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
 
@@ -281,7 +281,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### aria-errormessage?
 
-> `optional` **aria-errormessage**: `string`
+> `optional` **aria-errormessage?**: `string`
 
 Identifies the element that provides an error message for the object.
 
@@ -298,7 +298,7 @@ Identifies the element that provides an error message for the object.
 
 ### aria-expanded?
 
-> `optional` **aria-expanded**: `Booleanish`
+> `optional` **aria-expanded?**: `Booleanish`
 
 Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed.
 
@@ -310,7 +310,7 @@ Indicates whether the element, or another grouping element it controls, is curre
 
 ### aria-flowto?
 
-> `optional` **aria-flowto**: `string`
+> `optional` **aria-flowto?**: `string`
 
 Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion,
 allows assistive technology to override the general default of reading in document source order.
@@ -323,7 +323,7 @@ allows assistive technology to override the general default of reading in docume
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
+> `optional` **aria-haspopup?**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -335,7 +335,7 @@ Indicates the availability and type of interactive popup element, such as menu o
 
 ### aria-hidden?
 
-> `optional` **aria-hidden**: `Booleanish`
+> `optional` **aria-hidden?**: `Booleanish`
 
 Indicates whether the element is exposed to an accessibility API.
 
@@ -351,7 +351,7 @@ aria-disabled.
 
 ### aria-invalid?
 
-> `optional` **aria-invalid**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
+> `optional` **aria-invalid?**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
 
 Indicates the entered value does not conform to the format expected by the application.
 
@@ -367,7 +367,7 @@ aria-errormessage.
 
 ### aria-keyshortcuts?
 
-> `optional` **aria-keyshortcuts**: `string`
+> `optional` **aria-keyshortcuts?**: `string`
 
 Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element.
 
@@ -379,7 +379,7 @@ Indicates keyboard shortcuts that an author has implemented to activate or give 
 
 ### aria-label?
 
-> `optional` **aria-label**: `string`
+> `optional` **aria-label?**: `string`
 
 Defines a string value that labels the current element.
 
@@ -395,7 +395,7 @@ aria-labelledby.
 
 ### aria-labelledby?
 
-> `optional` **aria-labelledby**: `string`
+> `optional` **aria-labelledby?**: `string`
 
 The id(s) of the element(s) that label the dialog.
 
@@ -407,7 +407,7 @@ The id(s) of the element(s) that label the dialog.
 
 ### aria-level?
 
-> `optional` **aria-level**: `number`
+> `optional` **aria-level?**: `number`
 
 Defines the hierarchical level of an element within a structure.
 
@@ -419,7 +419,7 @@ Defines the hierarchical level of an element within a structure.
 
 ### aria-live?
 
-> `optional` **aria-live**: `"assertive"` \| `"off"` \| `"polite"`
+> `optional` **aria-live?**: `"assertive"` \| `"off"` \| `"polite"`
 
 Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
 
@@ -431,7 +431,7 @@ Indicates that an element will be updated, and describes the types of updates th
 
 ### aria-modal?
 
-> `optional` **aria-modal**: `boolean` \| `"false"` \| `"true"`
+> `optional` **aria-modal?**: `boolean` \| `"false"` \| `"true"`
 
 Informs assistive technologies that the element is modal.
 It's added on the element with role="dialog".
@@ -450,7 +450,7 @@ true
 
 ### aria-multiline?
 
-> `optional` **aria-multiline**: `Booleanish`
+> `optional` **aria-multiline?**: `Booleanish`
 
 Indicates whether a text box accepts multiple lines of input or only a single line.
 
@@ -462,7 +462,7 @@ Indicates whether a text box accepts multiple lines of input or only a single li
 
 ### aria-multiselectable?
 
-> `optional` **aria-multiselectable**: `Booleanish`
+> `optional` **aria-multiselectable?**: `Booleanish`
 
 Indicates that the user may select more than one item from the current selectable descendants.
 
@@ -474,7 +474,7 @@ Indicates that the user may select more than one item from the current selectabl
 
 ### aria-orientation?
 
-> `optional` **aria-orientation**: `"horizontal"` \| `"vertical"`
+> `optional` **aria-orientation?**: `"horizontal"` \| `"vertical"`
 
 Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
 
@@ -486,7 +486,7 @@ Indicates whether the element's orientation is horizontal, vertical, or unknown/
 
 ### aria-owns?
 
-> `optional` **aria-owns**: `string`
+> `optional` **aria-owns?**: `string`
 
 Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship
 between DOM elements where the DOM hierarchy cannot be used to represent the relationship.
@@ -503,7 +503,7 @@ aria-controls.
 
 ### aria-placeholder?
 
-> `optional` **aria-placeholder**: `string`
+> `optional` **aria-placeholder?**: `string`
 
 Defines a short hint (a word or short phrase) intended to aid the user with data entry when the control has no value.
 A hint could be a sample value or a brief description of the expected format.
@@ -516,7 +516,7 @@ A hint could be a sample value or a brief description of the expected format.
 
 ### aria-posinset?
 
-> `optional` **aria-posinset**: `number`
+> `optional` **aria-posinset?**: `number`
 
 Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
 
@@ -532,7 +532,7 @@ aria-setsize.
 
 ### aria-pressed?
 
-> `optional` **aria-pressed**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
+> `optional` **aria-pressed?**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "pressed" state of toggle buttons.
 
@@ -549,7 +549,7 @@ Indicates the current "pressed" state of toggle buttons.
 
 ### aria-readonly?
 
-> `optional` **aria-readonly**: `Booleanish`
+> `optional` **aria-readonly?**: `Booleanish`
 
 Indicates that the element is not editable, but is otherwise operable.
 
@@ -565,7 +565,7 @@ aria-disabled.
 
 ### aria-relevant?
 
-> `optional` **aria-relevant**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
+> `optional` **aria-relevant?**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
 
 Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
 
@@ -581,7 +581,7 @@ aria-atomic.
 
 ### aria-required?
 
-> `optional` **aria-required**: `Booleanish`
+> `optional` **aria-required?**: `Booleanish`
 
 Indicates that user input is required on the element before a form may be submitted.
 
@@ -593,7 +593,7 @@ Indicates that user input is required on the element before a form may be submit
 
 ### aria-roledescription?
 
-> `optional` **aria-roledescription**: `string`
+> `optional` **aria-roledescription?**: `string`
 
 Defines a human-readable, author-localized description for the role of an element.
 
@@ -605,7 +605,7 @@ Defines a human-readable, author-localized description for the role of an elemen
 
 ### aria-rowcount?
 
-> `optional` **aria-rowcount**: `number`
+> `optional` **aria-rowcount?**: `number`
 
 Defines the total number of rows in a table, grid, or treegrid.
 
@@ -621,7 +621,7 @@ aria-rowindex.
 
 ### aria-rowindex?
 
-> `optional` **aria-rowindex**: `number`
+> `optional` **aria-rowindex?**: `number`
 
 Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid.
 
@@ -638,7 +638,7 @@ Defines an element's row index or position with respect to the total number of r
 
 ### aria-rowindextext?
 
-> `optional` **aria-rowindextext**: `string`
+> `optional` **aria-rowindextext?**: `string`
 
 Defines a human readable text alternative of aria-rowindex.
 
@@ -654,7 +654,7 @@ aria-colindextext.
 
 ### aria-rowspan?
 
-> `optional` **aria-rowspan**: `number`
+> `optional` **aria-rowspan?**: `number`
 
 Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid.
 
@@ -671,7 +671,7 @@ Defines the number of rows spanned by a cell or gridcell within a table, grid, o
 
 ### aria-selected?
 
-> `optional` **aria-selected**: `Booleanish`
+> `optional` **aria-selected?**: `Booleanish`
 
 Indicates the current "selected" state of various widgets.
 
@@ -688,7 +688,7 @@ Indicates the current "selected" state of various widgets.
 
 ### aria-setsize?
 
-> `optional` **aria-setsize**: `number`
+> `optional` **aria-setsize?**: `number`
 
 Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
 
@@ -704,7 +704,7 @@ aria-posinset.
 
 ### aria-sort?
 
-> `optional` **aria-sort**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
+> `optional` **aria-sort?**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
 
 Indicates if items in a table or grid are sorted in ascending or descending order.
 
@@ -716,7 +716,7 @@ Indicates if items in a table or grid are sorted in ascending or descending orde
 
 ### aria-valuemax?
 
-> `optional` **aria-valuemax**: `number`
+> `optional` **aria-valuemax?**: `number`
 
 Defines the maximum allowed value for a range widget.
 
@@ -728,7 +728,7 @@ Defines the maximum allowed value for a range widget.
 
 ### aria-valuemin?
 
-> `optional` **aria-valuemin**: `number`
+> `optional` **aria-valuemin?**: `number`
 
 Defines the minimum allowed value for a range widget.
 
@@ -740,7 +740,7 @@ Defines the minimum allowed value for a range widget.
 
 ### aria-valuenow?
 
-> `optional` **aria-valuenow**: `number`
+> `optional` **aria-valuenow?**: `number`
 
 Defines the current value for a range widget.
 
@@ -756,7 +756,7 @@ aria-valuetext.
 
 ### aria-valuetext?
 
-> `optional` **aria-valuetext**: `string`
+> `optional` **aria-valuetext?**: `string`
 
 Defines the human readable text alternative of aria-valuenow for a range widget.
 
@@ -768,7 +768,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
+> `optional` **autoCapitalize?**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
 
 #### Inherited from
 
@@ -778,7 +778,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoCorrect?
 
-> `optional` **autoCorrect**: `string`
+> `optional` **autoCorrect?**: `string`
 
 #### Inherited from
 
@@ -788,7 +788,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoFocus?
 
-> `optional` **autoFocus**: `boolean`
+> `optional` **autoFocus?**: `boolean`
 
 #### Inherited from
 
@@ -798,7 +798,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoSave?
 
-> `optional` **autoSave**: `string`
+> `optional` **autoSave?**: `string`
 
 #### Inherited from
 
@@ -808,7 +808,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 Dialog children, usually the included sub-components.
 
@@ -820,7 +820,7 @@ Dialog children, usually the included sub-components.
 
 ### classes?
 
-> `optional` **classes**: `Partial`\<`DialogClasses`\>
+> `optional` **classes?**: `Partial`\<`DialogClasses`\>
 
 Override or extend the styles applied to the component.
 
@@ -832,7 +832,7 @@ Override or extend the styles applied to the component.
 
 ### closeAfterTransition?
 
-> `optional` **closeAfterTransition**: `boolean`
+> `optional` **closeAfterTransition?**: `boolean`
 
 When set to true the Modal waits until a nested Transition is completed before closing.
 
@@ -850,7 +850,7 @@ false
 
 ### color?
 
-> `optional` **color**: `string`
+> `optional` **color?**: `string`
 
 #### Inherited from
 
@@ -860,7 +860,7 @@ false
 
 ### component?
 
-> `optional` **component**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **component?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 #### Inherited from
 
@@ -870,7 +870,7 @@ false
 
 ### container?
 
-> `optional` **container**: () => `Element` \| `null` \| `Element` \| `null`
+> `optional` **container?**: (() => `Element` \| `null`) \| `Element` \| `null`
 
 An HTML element or function that returns one.
 The `container` will have the portal children appended to it.
@@ -889,7 +889,7 @@ so it's simply `document.body` most of the time.
 
 ### content?
 
-> `optional` **content**: `string`
+> `optional` **content?**: `string`
 
 #### Inherited from
 
@@ -899,7 +899,7 @@ so it's simply `document.body` most of the time.
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
+> `optional` **contentEditable?**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
 
 #### Inherited from
 
@@ -909,7 +909,7 @@ so it's simply `document.body` most of the time.
 
 ### contextMenu?
 
-> `optional` **contextMenu**: `string`
+> `optional` **contextMenu?**: `string`
 
 #### Inherited from
 
@@ -919,7 +919,7 @@ so it's simply `document.body` most of the time.
 
 ### dangerouslySetInnerHTML?
 
-> `optional` **dangerouslySetInnerHTML**: `object`
+> `optional` **dangerouslySetInnerHTML?**: `object`
 
 #### \_\_html
 
@@ -933,7 +933,7 @@ so it's simply `document.body` most of the time.
 
 ### datatype?
 
-> `optional` **datatype**: `string`
+> `optional` **datatype?**: `string`
 
 #### Inherited from
 
@@ -943,7 +943,7 @@ so it's simply `document.body` most of the time.
 
 ### defaultChecked?
 
-> `optional` **defaultChecked**: `boolean`
+> `optional` **defaultChecked?**: `boolean`
 
 #### Inherited from
 
@@ -953,7 +953,7 @@ so it's simply `document.body` most of the time.
 
 ### defaultValue?
 
-> `optional` **defaultValue**: readonly `string`[] \| `number` \| `string`
+> `optional` **defaultValue?**: readonly `string`[] \| `number` \| `string`
 
 #### Inherited from
 
@@ -963,7 +963,7 @@ so it's simply `document.body` most of the time.
 
 ### dir?
 
-> `optional` **dir**: `string`
+> `optional` **dir?**: `string`
 
 #### Inherited from
 
@@ -973,7 +973,7 @@ so it's simply `document.body` most of the time.
 
 ### disableAutoFocus?
 
-> `optional` **disableAutoFocus**: `boolean`
+> `optional` **disableAutoFocus?**: `boolean`
 
 If `true`, the modal will not automatically shift focus to itself when it opens, and
 replace it to the last focused element when it closes.
@@ -996,7 +996,7 @@ false
 
 ### disableEnforceFocus?
 
-> `optional` **disableEnforceFocus**: `boolean`
+> `optional` **disableEnforceFocus?**: `boolean`
 
 If `true`, the modal will not prevent focus from leaving the modal while open.
 
@@ -1017,7 +1017,7 @@ false
 
 ### disableEscapeKeyDown?
 
-> `optional` **disableEscapeKeyDown**: `boolean`
+> `optional` **disableEscapeKeyDown?**: `boolean`
 
 If `true`, hitting escape will not fire the `onClose` callback.
 
@@ -1035,7 +1035,7 @@ false
 
 ### disablePortal?
 
-> `optional` **disablePortal**: `boolean`
+> `optional` **disablePortal?**: `boolean`
 
 The `children` will be under the DOM hierarchy of the parent component.
 
@@ -1053,7 +1053,7 @@ false
 
 ### disableRestoreFocus?
 
-> `optional` **disableRestoreFocus**: `boolean`
+> `optional` **disableRestoreFocus?**: `boolean`
 
 If `true`, the modal will not restore focus to previously focused element once
 modal is hidden or unmounted.
@@ -1072,7 +1072,7 @@ false
 
 ### disableScrollLock?
 
-> `optional` **disableScrollLock**: `boolean`
+> `optional` **disableScrollLock?**: `boolean`
 
 Disable the scroll lock behavior.
 
@@ -1090,7 +1090,7 @@ false
 
 ### draggable?
 
-> `optional` **draggable**: `Booleanish`
+> `optional` **draggable?**: `Booleanish`
 
 #### Inherited from
 
@@ -1100,7 +1100,7 @@ false
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
+> `optional` **enterKeyHint?**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
 
 #### Inherited from
 
@@ -1110,7 +1110,7 @@ false
 
 ### exportparts?
 
-> `optional` **exportparts**: `string`
+> `optional` **exportparts?**: `string`
 
 #### See
 
@@ -1124,7 +1124,7 @@ false
 
 ### fullScreen?
 
-> `optional` **fullScreen**: `boolean`
+> `optional` **fullScreen?**: `boolean`
 
 If `true`, the dialog is full-screen.
 
@@ -1142,7 +1142,7 @@ false
 
 ### fullWidth?
 
-> `optional` **fullWidth**: `boolean`
+> `optional` **fullWidth?**: `boolean`
 
 If `true`, the dialog stretches to `maxWidth`.
 
@@ -1160,9 +1160,9 @@ false
 
 ***
 
-### handleClose()?
+### handleClose?
 
-> `optional` **handleClose**: () => `void`
+> `optional` **handleClose?**: () => `void`
 
 Custom close handler function.
 
@@ -1174,7 +1174,7 @@ Custom close handler function.
 
 ### hidden?
 
-> `optional` **hidden**: `boolean`
+> `optional` **hidden?**: `boolean`
 
 #### Inherited from
 
@@ -1184,7 +1184,7 @@ Custom close handler function.
 
 ### hideBackdrop?
 
-> `optional` **hideBackdrop**: `boolean`
+> `optional` **hideBackdrop?**: `boolean`
 
 If `true`, the backdrop is not rendered.
 
@@ -1202,7 +1202,7 @@ false
 
 ### id?
 
-> `optional` **id**: `string`
+> `optional` **id?**: `string`
 
 #### Inherited from
 
@@ -1212,7 +1212,7 @@ false
 
 ### inert?
 
-> `optional` **inert**: `boolean`
+> `optional` **inert?**: `boolean`
 
 #### See
 
@@ -1226,7 +1226,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inlist?
 
-> `optional` **inlist**: `any`
+> `optional` **inlist?**: `any`
 
 #### Inherited from
 
@@ -1236,7 +1236,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inputMode?
 
-> `optional` **inputMode**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
+> `optional` **inputMode?**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1252,7 +1252,7 @@ Hints at the type of data that might be entered by the user while editing the el
 
 ### is?
 
-> `optional` **is**: `string`
+> `optional` **is?**: `string`
 
 Specify that a standard HTML element should behave like a defined custom built-in element
 
@@ -1268,7 +1268,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### itemID?
 
-> `optional` **itemID**: `string`
+> `optional` **itemID?**: `string`
 
 #### Inherited from
 
@@ -1278,7 +1278,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### itemProp?
 
-> `optional` **itemProp**: `string`
+> `optional` **itemProp?**: `string`
 
 #### Inherited from
 
@@ -1288,7 +1288,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### itemRef?
 
-> `optional` **itemRef**: `string`
+> `optional` **itemRef?**: `string`
 
 #### Inherited from
 
@@ -1298,7 +1298,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### itemScope?
 
-> `optional` **itemScope**: `boolean`
+> `optional` **itemScope?**: `boolean`
 
 #### Inherited from
 
@@ -1308,7 +1308,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### itemType?
 
-> `optional` **itemType**: `string`
+> `optional` **itemType?**: `string`
 
 #### Inherited from
 
@@ -1318,7 +1318,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### keepMounted?
 
-> `optional` **keepMounted**: `boolean`
+> `optional` **keepMounted?**: `boolean`
 
 Always keep the children in the DOM.
 This prop can be useful in SEO situation or
@@ -1338,7 +1338,7 @@ false
 
 ### key?
 
-> `optional` **key**: `Key` \| `null`
+> `optional` **key?**: `Key` \| `null`
 
 #### Inherited from
 
@@ -1348,7 +1348,7 @@ false
 
 ### lang?
 
-> `optional` **lang**: `string`
+> `optional` **lang?**: `string`
 
 #### Inherited from
 
@@ -1358,7 +1358,7 @@ false
 
 ### maxWidth?
 
-> `optional` **maxWidth**: `Breakpoint` \| `false`
+> `optional` **maxWidth?**: `Breakpoint` \| `false`
 
 Determine the max-width of the dialog.
 The dialog width grows with the size of the screen.
@@ -1378,7 +1378,7 @@ Set to `false` to disable `maxWidth`.
 
 ### nonce?
 
-> `optional` **nonce**: `string`
+> `optional` **nonce?**: `string`
 
 #### Inherited from
 
@@ -1388,7 +1388,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onAbort?
 
-> `optional` **onAbort**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onAbort?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1398,7 +1398,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onAbortCapture?
 
-> `optional` **onAbortCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onAbortCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1408,7 +1408,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onAnimationEnd?
 
-> `optional` **onAnimationEnd**: `AnimationEventHandler`\<`HTMLDivElement`\>
+> `optional` **onAnimationEnd?**: `AnimationEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1418,7 +1418,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onAnimationEndCapture?
 
-> `optional` **onAnimationEndCapture**: `AnimationEventHandler`\<`HTMLDivElement`\>
+> `optional` **onAnimationEndCapture?**: `AnimationEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1428,7 +1428,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onAnimationIteration?
 
-> `optional` **onAnimationIteration**: `AnimationEventHandler`\<`HTMLDivElement`\>
+> `optional` **onAnimationIteration?**: `AnimationEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1438,7 +1438,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onAnimationIterationCapture?
 
-> `optional` **onAnimationIterationCapture**: `AnimationEventHandler`\<`HTMLDivElement`\>
+> `optional` **onAnimationIterationCapture?**: `AnimationEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1448,7 +1448,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onAnimationStart?
 
-> `optional` **onAnimationStart**: `AnimationEventHandler`\<`HTMLDivElement`\>
+> `optional` **onAnimationStart?**: `AnimationEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1458,7 +1458,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onAnimationStartCapture?
 
-> `optional` **onAnimationStartCapture**: `AnimationEventHandler`\<`HTMLDivElement`\>
+> `optional` **onAnimationStartCapture?**: `AnimationEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1468,7 +1468,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onAuxClick?
 
-> `optional` **onAuxClick**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onAuxClick?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1478,7 +1478,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onAuxClickCapture?
 
-> `optional` **onAuxClickCapture**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onAuxClickCapture?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1488,7 +1488,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLDivElement`\>
+> `optional` **onBeforeInput?**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1498,7 +1498,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1508,7 +1508,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onBeforeToggle?
 
-> `optional` **onBeforeToggle**: `ToggleEventHandler`\<`HTMLDivElement`\>
+> `optional` **onBeforeToggle?**: `ToggleEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1518,7 +1518,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onBlur?
 
-> `optional` **onBlur**: `FocusEventHandler`\<`HTMLDivElement`\>
+> `optional` **onBlur?**: `FocusEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1528,7 +1528,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onBlurCapture?
 
-> `optional` **onBlurCapture**: `FocusEventHandler`\<`HTMLDivElement`\>
+> `optional` **onBlurCapture?**: `FocusEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1538,7 +1538,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onCanPlay?
 
-> `optional` **onCanPlay**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCanPlay?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1548,7 +1548,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onCanPlayCapture?
 
-> `optional` **onCanPlayCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCanPlayCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1558,7 +1558,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onCanPlayThrough?
 
-> `optional` **onCanPlayThrough**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCanPlayThrough?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1568,7 +1568,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onCanPlayThroughCapture?
 
-> `optional` **onCanPlayThroughCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCanPlayThroughCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1578,7 +1578,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onChange?
 
-> `optional` **onChange**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onChange?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1588,7 +1588,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1598,7 +1598,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onClick?
 
-> `optional` **onClick**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onClick?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1608,7 +1608,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onClickCapture?
 
-> `optional` **onClickCapture**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onClickCapture?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1616,9 +1616,9 @@ Set to `false` to disable `maxWidth`.
 
 ***
 
-### onClose()?
+### onClose?
 
-> `optional` **onClose**: (`event`, `reason`) => `void`
+> `optional` **onClose?**: (`event`, `reason`) => `void`
 
 Callback fired when the component requests to be closed.
 
@@ -1630,9 +1630,9 @@ The event source of the callback.
 
 ##### reason
 
-Can be: `"escapeKeyDown"`, `"backdropClick"`.
+`"backdropClick"` \| `"escapeKeyDown"`
 
-`"backdropClick"` | `"escapeKeyDown"`
+Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Returns
 
@@ -1646,7 +1646,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onCompositionEnd?
 
-> `optional` **onCompositionEnd**: `CompositionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCompositionEnd?**: `CompositionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1656,7 +1656,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onCompositionEndCapture?
 
-> `optional` **onCompositionEndCapture**: `CompositionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCompositionEndCapture?**: `CompositionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1666,7 +1666,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onCompositionStart?
 
-> `optional` **onCompositionStart**: `CompositionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCompositionStart?**: `CompositionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1676,7 +1676,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onCompositionStartCapture?
 
-> `optional` **onCompositionStartCapture**: `CompositionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCompositionStartCapture?**: `CompositionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1686,7 +1686,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onCompositionUpdate?
 
-> `optional` **onCompositionUpdate**: `CompositionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCompositionUpdate?**: `CompositionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1696,7 +1696,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onCompositionUpdateCapture?
 
-> `optional` **onCompositionUpdateCapture**: `CompositionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCompositionUpdateCapture?**: `CompositionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1706,7 +1706,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onContextMenu?
 
-> `optional` **onContextMenu**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onContextMenu?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1716,7 +1716,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onContextMenuCapture?
 
-> `optional` **onContextMenuCapture**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onContextMenuCapture?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1726,7 +1726,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onCopy?
 
-> `optional` **onCopy**: `ClipboardEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCopy?**: `ClipboardEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1736,7 +1736,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onCopyCapture?
 
-> `optional` **onCopyCapture**: `ClipboardEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCopyCapture?**: `ClipboardEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1746,7 +1746,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onCut?
 
-> `optional` **onCut**: `ClipboardEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCut?**: `ClipboardEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1756,7 +1756,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onCutCapture?
 
-> `optional` **onCutCapture**: `ClipboardEventHandler`\<`HTMLDivElement`\>
+> `optional` **onCutCapture?**: `ClipboardEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1766,7 +1766,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDoubleClick?
 
-> `optional` **onDoubleClick**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDoubleClick?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1776,7 +1776,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDoubleClickCapture?
 
-> `optional` **onDoubleClickCapture**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDoubleClickCapture?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1786,7 +1786,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDrag?
 
-> `optional` **onDrag**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDrag?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1796,7 +1796,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragCapture?
 
-> `optional` **onDragCapture**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragCapture?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1806,7 +1806,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragEnd?
 
-> `optional` **onDragEnd**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragEnd?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1816,7 +1816,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragEndCapture?
 
-> `optional` **onDragEndCapture**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragEndCapture?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1826,7 +1826,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragEnter?
 
-> `optional` **onDragEnter**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragEnter?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1836,7 +1836,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragEnterCapture?
 
-> `optional` **onDragEnterCapture**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragEnterCapture?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1846,7 +1846,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragExit?
 
-> `optional` **onDragExit**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragExit?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1856,7 +1856,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragExitCapture?
 
-> `optional` **onDragExitCapture**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragExitCapture?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1866,7 +1866,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragLeave?
 
-> `optional` **onDragLeave**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragLeave?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1876,7 +1876,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragLeaveCapture?
 
-> `optional` **onDragLeaveCapture**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragLeaveCapture?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1886,7 +1886,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragOver?
 
-> `optional` **onDragOver**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragOver?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1896,7 +1896,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragOverCapture?
 
-> `optional` **onDragOverCapture**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragOverCapture?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1906,7 +1906,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragStart?
 
-> `optional` **onDragStart**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragStart?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1916,7 +1916,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDragStartCapture?
 
-> `optional` **onDragStartCapture**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDragStartCapture?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1926,7 +1926,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDrop?
 
-> `optional` **onDrop**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDrop?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1936,7 +1936,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDropCapture?
 
-> `optional` **onDropCapture**: `DragEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDropCapture?**: `DragEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1946,7 +1946,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDurationChange?
 
-> `optional` **onDurationChange**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDurationChange?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1956,7 +1956,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onDurationChangeCapture?
 
-> `optional` **onDurationChangeCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onDurationChangeCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1966,7 +1966,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onEmptied?
 
-> `optional` **onEmptied**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onEmptied?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1976,7 +1976,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onEmptiedCapture?
 
-> `optional` **onEmptiedCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onEmptiedCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1986,7 +1986,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onEncrypted?
 
-> `optional` **onEncrypted**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onEncrypted?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1996,7 +1996,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onEncryptedCapture?
 
-> `optional` **onEncryptedCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onEncryptedCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2006,7 +2006,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onEnded?
 
-> `optional` **onEnded**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onEnded?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2016,7 +2016,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onEndedCapture?
 
-> `optional` **onEndedCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onEndedCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2026,7 +2026,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onError?
 
-> `optional` **onError**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onError?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2036,7 +2036,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onErrorCapture?
 
-> `optional` **onErrorCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onErrorCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2046,7 +2046,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onFocus?
 
-> `optional` **onFocus**: `FocusEventHandler`\<`HTMLDivElement`\>
+> `optional` **onFocus?**: `FocusEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2056,7 +2056,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onFocusCapture?
 
-> `optional` **onFocusCapture**: `FocusEventHandler`\<`HTMLDivElement`\>
+> `optional` **onFocusCapture?**: `FocusEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2066,7 +2066,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onGotPointerCapture?
 
-> `optional` **onGotPointerCapture**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onGotPointerCapture?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2076,7 +2076,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onGotPointerCaptureCapture?
 
-> `optional` **onGotPointerCaptureCapture**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onGotPointerCaptureCapture?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2086,7 +2086,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onInput?
 
-> `optional` **onInput**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInput?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2096,7 +2096,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onInputCapture?
 
-> `optional` **onInputCapture**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2106,7 +2106,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onInvalid?
 
-> `optional` **onInvalid**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2116,7 +2116,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2126,7 +2126,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onKeyDown?
 
-> `optional` **onKeyDown**: `KeyboardEventHandler`\<`HTMLDivElement`\>
+> `optional` **onKeyDown?**: `KeyboardEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2136,7 +2136,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onKeyDownCapture?
 
-> `optional` **onKeyDownCapture**: `KeyboardEventHandler`\<`HTMLDivElement`\>
+> `optional` **onKeyDownCapture?**: `KeyboardEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2146,7 +2146,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onKeyUp?
 
-> `optional` **onKeyUp**: `KeyboardEventHandler`\<`HTMLDivElement`\>
+> `optional` **onKeyUp?**: `KeyboardEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2156,7 +2156,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onKeyUpCapture?
 
-> `optional` **onKeyUpCapture**: `KeyboardEventHandler`\<`HTMLDivElement`\>
+> `optional` **onKeyUpCapture?**: `KeyboardEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2166,7 +2166,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onLoad?
 
-> `optional` **onLoad**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onLoad?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2176,7 +2176,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onLoadCapture?
 
-> `optional` **onLoadCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onLoadCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2186,7 +2186,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onLoadedData?
 
-> `optional` **onLoadedData**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onLoadedData?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2196,7 +2196,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onLoadedDataCapture?
 
-> `optional` **onLoadedDataCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onLoadedDataCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2206,7 +2206,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onLoadedMetadata?
 
-> `optional` **onLoadedMetadata**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onLoadedMetadata?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2216,7 +2216,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onLoadedMetadataCapture?
 
-> `optional` **onLoadedMetadataCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onLoadedMetadataCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2226,7 +2226,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onLoadStart?
 
-> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onLoadStart?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2236,7 +2236,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onLoadStartCapture?
 
-> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onLoadStartCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2246,7 +2246,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onLostPointerCapture?
 
-> `optional` **onLostPointerCapture**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onLostPointerCapture?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2256,7 +2256,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onLostPointerCaptureCapture?
 
-> `optional` **onLostPointerCaptureCapture**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onLostPointerCaptureCapture?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2266,7 +2266,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseDown?
 
-> `optional` **onMouseDown**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseDown?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2276,7 +2276,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseDownCapture?
 
-> `optional` **onMouseDownCapture**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseDownCapture?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2286,7 +2286,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseEnter?
 
-> `optional` **onMouseEnter**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseEnter?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2296,7 +2296,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseLeave?
 
-> `optional` **onMouseLeave**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseLeave?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2306,7 +2306,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseMove?
 
-> `optional` **onMouseMove**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseMove?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2316,7 +2316,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseMoveCapture?
 
-> `optional` **onMouseMoveCapture**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseMoveCapture?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2326,7 +2326,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseOut?
 
-> `optional` **onMouseOut**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseOut?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2336,7 +2336,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseOutCapture?
 
-> `optional` **onMouseOutCapture**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseOutCapture?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2346,7 +2346,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseOver?
 
-> `optional` **onMouseOver**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseOver?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2356,7 +2356,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseOverCapture?
 
-> `optional` **onMouseOverCapture**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseOverCapture?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2366,7 +2366,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseUp?
 
-> `optional` **onMouseUp**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseUp?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2376,7 +2376,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onMouseUpCapture?
 
-> `optional` **onMouseUpCapture**: `MouseEventHandler`\<`HTMLDivElement`\>
+> `optional` **onMouseUpCapture?**: `MouseEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2384,9 +2384,9 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ***
 
-### onOpen()?
+### onOpen?
 
-> `optional` **onOpen**: () => `void`
+> `optional` **onOpen?**: () => `void`
 
 Callback fired when the dialog opens.
 
@@ -2398,7 +2398,7 @@ Callback fired when the dialog opens.
 
 ### onPaste?
 
-> `optional` **onPaste**: `ClipboardEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPaste?**: `ClipboardEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2408,7 +2408,7 @@ Callback fired when the dialog opens.
 
 ### onPasteCapture?
 
-> `optional` **onPasteCapture**: `ClipboardEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPasteCapture?**: `ClipboardEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2418,7 +2418,7 @@ Callback fired when the dialog opens.
 
 ### onPause?
 
-> `optional` **onPause**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPause?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2428,7 +2428,7 @@ Callback fired when the dialog opens.
 
 ### onPauseCapture?
 
-> `optional` **onPauseCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPauseCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2438,7 +2438,7 @@ Callback fired when the dialog opens.
 
 ### onPlay?
 
-> `optional` **onPlay**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPlay?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2448,7 +2448,7 @@ Callback fired when the dialog opens.
 
 ### onPlayCapture?
 
-> `optional` **onPlayCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPlayCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2458,7 +2458,7 @@ Callback fired when the dialog opens.
 
 ### onPlaying?
 
-> `optional` **onPlaying**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPlaying?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2468,7 +2468,7 @@ Callback fired when the dialog opens.
 
 ### onPlayingCapture?
 
-> `optional` **onPlayingCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPlayingCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2478,7 +2478,7 @@ Callback fired when the dialog opens.
 
 ### onPointerCancel?
 
-> `optional` **onPointerCancel**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerCancel?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2488,7 +2488,7 @@ Callback fired when the dialog opens.
 
 ### onPointerCancelCapture?
 
-> `optional` **onPointerCancelCapture**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerCancelCapture?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2498,7 +2498,7 @@ Callback fired when the dialog opens.
 
 ### onPointerDown?
 
-> `optional` **onPointerDown**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerDown?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2508,7 +2508,7 @@ Callback fired when the dialog opens.
 
 ### onPointerDownCapture?
 
-> `optional` **onPointerDownCapture**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerDownCapture?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2518,7 +2518,7 @@ Callback fired when the dialog opens.
 
 ### onPointerEnter?
 
-> `optional` **onPointerEnter**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerEnter?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2528,7 +2528,7 @@ Callback fired when the dialog opens.
 
 ### onPointerLeave?
 
-> `optional` **onPointerLeave**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerLeave?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2538,7 +2538,7 @@ Callback fired when the dialog opens.
 
 ### onPointerMove?
 
-> `optional` **onPointerMove**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerMove?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2548,7 +2548,7 @@ Callback fired when the dialog opens.
 
 ### onPointerMoveCapture?
 
-> `optional` **onPointerMoveCapture**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerMoveCapture?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2558,7 +2558,7 @@ Callback fired when the dialog opens.
 
 ### onPointerOut?
 
-> `optional` **onPointerOut**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerOut?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2568,7 +2568,7 @@ Callback fired when the dialog opens.
 
 ### onPointerOutCapture?
 
-> `optional` **onPointerOutCapture**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerOutCapture?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2578,7 +2578,7 @@ Callback fired when the dialog opens.
 
 ### onPointerOver?
 
-> `optional` **onPointerOver**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerOver?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2588,7 +2588,7 @@ Callback fired when the dialog opens.
 
 ### onPointerOverCapture?
 
-> `optional` **onPointerOverCapture**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerOverCapture?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2598,7 +2598,7 @@ Callback fired when the dialog opens.
 
 ### onPointerUp?
 
-> `optional` **onPointerUp**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerUp?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2608,7 +2608,7 @@ Callback fired when the dialog opens.
 
 ### onPointerUpCapture?
 
-> `optional` **onPointerUpCapture**: `PointerEventHandler`\<`HTMLDivElement`\>
+> `optional` **onPointerUpCapture?**: `PointerEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2618,7 +2618,7 @@ Callback fired when the dialog opens.
 
 ### onProgress?
 
-> `optional` **onProgress**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onProgress?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2628,7 +2628,7 @@ Callback fired when the dialog opens.
 
 ### onProgressCapture?
 
-> `optional` **onProgressCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onProgressCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2638,7 +2638,7 @@ Callback fired when the dialog opens.
 
 ### onRateChange?
 
-> `optional` **onRateChange**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onRateChange?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2648,7 +2648,7 @@ Callback fired when the dialog opens.
 
 ### onRateChangeCapture?
 
-> `optional` **onRateChangeCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onRateChangeCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2658,7 +2658,7 @@ Callback fired when the dialog opens.
 
 ### onReset?
 
-> `optional` **onReset**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onReset?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2668,7 +2668,7 @@ Callback fired when the dialog opens.
 
 ### onResetCapture?
 
-> `optional` **onResetCapture**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2678,7 +2678,7 @@ Callback fired when the dialog opens.
 
 ### onScroll?
 
-> `optional` **onScroll**: `UIEventHandler`\<`HTMLDivElement`\>
+> `optional` **onScroll?**: `UIEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2688,7 +2688,7 @@ Callback fired when the dialog opens.
 
 ### onScrollCapture?
 
-> `optional` **onScrollCapture**: `UIEventHandler`\<`HTMLDivElement`\>
+> `optional` **onScrollCapture?**: `UIEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2698,7 +2698,7 @@ Callback fired when the dialog opens.
 
 ### onScrollEnd?
 
-> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLDivElement`\>
+> `optional` **onScrollEnd?**: `UIEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2708,7 +2708,7 @@ Callback fired when the dialog opens.
 
 ### onScrollEndCapture?
 
-> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLDivElement`\>
+> `optional` **onScrollEndCapture?**: `UIEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2718,7 +2718,7 @@ Callback fired when the dialog opens.
 
 ### onSeeked?
 
-> `optional` **onSeeked**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSeeked?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2728,7 +2728,7 @@ Callback fired when the dialog opens.
 
 ### onSeekedCapture?
 
-> `optional` **onSeekedCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSeekedCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2738,7 +2738,7 @@ Callback fired when the dialog opens.
 
 ### onSeeking?
 
-> `optional` **onSeeking**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSeeking?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2748,7 +2748,7 @@ Callback fired when the dialog opens.
 
 ### onSeekingCapture?
 
-> `optional` **onSeekingCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSeekingCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2758,7 +2758,7 @@ Callback fired when the dialog opens.
 
 ### onSelect?
 
-> `optional` **onSelect**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSelect?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2768,7 +2768,7 @@ Callback fired when the dialog opens.
 
 ### onSelectCapture?
 
-> `optional` **onSelectCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSelectCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2778,7 +2778,7 @@ Callback fired when the dialog opens.
 
 ### onStalled?
 
-> `optional` **onStalled**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onStalled?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2788,7 +2788,7 @@ Callback fired when the dialog opens.
 
 ### onStalledCapture?
 
-> `optional` **onStalledCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onStalledCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2798,7 +2798,7 @@ Callback fired when the dialog opens.
 
 ### onSubmit?
 
-> `optional` **onSubmit**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2808,7 +2808,7 @@ Callback fired when the dialog opens.
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2818,7 +2818,7 @@ Callback fired when the dialog opens.
 
 ### onSuspend?
 
-> `optional` **onSuspend**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSuspend?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2828,7 +2828,7 @@ Callback fired when the dialog opens.
 
 ### onSuspendCapture?
 
-> `optional` **onSuspendCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSuspendCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2838,7 +2838,7 @@ Callback fired when the dialog opens.
 
 ### onTimeUpdate?
 
-> `optional` **onTimeUpdate**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTimeUpdate?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2848,7 +2848,7 @@ Callback fired when the dialog opens.
 
 ### onTimeUpdateCapture?
 
-> `optional` **onTimeUpdateCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTimeUpdateCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2858,7 +2858,7 @@ Callback fired when the dialog opens.
 
 ### onToggle?
 
-> `optional` **onToggle**: `ToggleEventHandler`\<`HTMLDivElement`\>
+> `optional` **onToggle?**: `ToggleEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2868,7 +2868,7 @@ Callback fired when the dialog opens.
 
 ### onTouchCancel?
 
-> `optional` **onTouchCancel**: `TouchEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTouchCancel?**: `TouchEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2878,7 +2878,7 @@ Callback fired when the dialog opens.
 
 ### onTouchCancelCapture?
 
-> `optional` **onTouchCancelCapture**: `TouchEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTouchCancelCapture?**: `TouchEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2888,7 +2888,7 @@ Callback fired when the dialog opens.
 
 ### onTouchEnd?
 
-> `optional` **onTouchEnd**: `TouchEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTouchEnd?**: `TouchEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2898,7 +2898,7 @@ Callback fired when the dialog opens.
 
 ### onTouchEndCapture?
 
-> `optional` **onTouchEndCapture**: `TouchEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTouchEndCapture?**: `TouchEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2908,7 +2908,7 @@ Callback fired when the dialog opens.
 
 ### onTouchMove?
 
-> `optional` **onTouchMove**: `TouchEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTouchMove?**: `TouchEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2918,7 +2918,7 @@ Callback fired when the dialog opens.
 
 ### onTouchMoveCapture?
 
-> `optional` **onTouchMoveCapture**: `TouchEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTouchMoveCapture?**: `TouchEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2928,7 +2928,7 @@ Callback fired when the dialog opens.
 
 ### onTouchStart?
 
-> `optional` **onTouchStart**: `TouchEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTouchStart?**: `TouchEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2938,7 +2938,7 @@ Callback fired when the dialog opens.
 
 ### onTouchStartCapture?
 
-> `optional` **onTouchStartCapture**: `TouchEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTouchStartCapture?**: `TouchEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2948,7 +2948,7 @@ Callback fired when the dialog opens.
 
 ### onTransitionCancel?
 
-> `optional` **onTransitionCancel**: `TransitionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTransitionCancel?**: `TransitionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2958,7 +2958,7 @@ Callback fired when the dialog opens.
 
 ### onTransitionCancelCapture?
 
-> `optional` **onTransitionCancelCapture**: `TransitionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTransitionCancelCapture?**: `TransitionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2968,7 +2968,7 @@ Callback fired when the dialog opens.
 
 ### onTransitionEnd?
 
-> `optional` **onTransitionEnd**: `TransitionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTransitionEnd?**: `TransitionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2978,7 +2978,7 @@ Callback fired when the dialog opens.
 
 ### onTransitionEndCapture?
 
-> `optional` **onTransitionEndCapture**: `TransitionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTransitionEndCapture?**: `TransitionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2986,9 +2986,9 @@ Callback fired when the dialog opens.
 
 ***
 
-### onTransitionEnter()?
+### onTransitionEnter?
 
-> `optional` **onTransitionEnter**: () => `void`
+> `optional` **onTransitionEnter?**: () => `void`
 
 A function called when a transition enters.
 
@@ -3002,9 +3002,9 @@ A function called when a transition enters.
 
 ***
 
-### onTransitionExited()?
+### onTransitionExited?
 
-> `optional` **onTransitionExited**: () => `void`
+> `optional` **onTransitionExited?**: () => `void`
 
 A function called when a transition has exited.
 
@@ -3020,7 +3020,7 @@ A function called when a transition has exited.
 
 ### onTransitionRun?
 
-> `optional` **onTransitionRun**: `TransitionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTransitionRun?**: `TransitionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3030,7 +3030,7 @@ A function called when a transition has exited.
 
 ### onTransitionRunCapture?
 
-> `optional` **onTransitionRunCapture**: `TransitionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTransitionRunCapture?**: `TransitionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3040,7 +3040,7 @@ A function called when a transition has exited.
 
 ### onTransitionStart?
 
-> `optional` **onTransitionStart**: `TransitionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTransitionStart?**: `TransitionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3050,7 +3050,7 @@ A function called when a transition has exited.
 
 ### onTransitionStartCapture?
 
-> `optional` **onTransitionStartCapture**: `TransitionEventHandler`\<`HTMLDivElement`\>
+> `optional` **onTransitionStartCapture?**: `TransitionEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3060,7 +3060,7 @@ A function called when a transition has exited.
 
 ### onVolumeChange?
 
-> `optional` **onVolumeChange**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onVolumeChange?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3070,7 +3070,7 @@ A function called when a transition has exited.
 
 ### onVolumeChangeCapture?
 
-> `optional` **onVolumeChangeCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onVolumeChangeCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3080,7 +3080,7 @@ A function called when a transition has exited.
 
 ### onWaiting?
 
-> `optional` **onWaiting**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onWaiting?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3090,7 +3090,7 @@ A function called when a transition has exited.
 
 ### onWaitingCapture?
 
-> `optional` **onWaitingCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
+> `optional` **onWaitingCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3100,7 +3100,7 @@ A function called when a transition has exited.
 
 ### onWheel?
 
-> `optional` **onWheel**: `WheelEventHandler`\<`HTMLDivElement`\>
+> `optional` **onWheel?**: `WheelEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3110,7 +3110,7 @@ A function called when a transition has exited.
 
 ### onWheelCapture?
 
-> `optional` **onWheelCapture**: `WheelEventHandler`\<`HTMLDivElement`\>
+> `optional` **onWheelCapture?**: `WheelEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3132,7 +3132,7 @@ If `true`, the component is shown.
 
 ### PaperComponent?
 
-> `optional` **PaperComponent**: `JSXElementConstructor`\<`PaperProps`\>
+> `optional` **PaperComponent?**: `JSXElementConstructor`\<`PaperProps`\>
 
 The component used to render the body of the dialog.
 
@@ -3150,7 +3150,7 @@ Paper
 
 ### part?
 
-> `optional` **part**: `string`
+> `optional` **part?**: `string`
 
 #### See
 
@@ -3164,7 +3164,7 @@ Paper
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
+> `optional` **popover?**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
 
 #### Inherited from
 
@@ -3174,7 +3174,7 @@ Paper
 
 ### popoverTarget?
 
-> `optional` **popoverTarget**: `string`
+> `optional` **popoverTarget?**: `string`
 
 #### Inherited from
 
@@ -3184,7 +3184,7 @@ Paper
 
 ### popoverTargetAction?
 
-> `optional` **popoverTargetAction**: `"hide"` \| `"show"` \| `"toggle"`
+> `optional` **popoverTargetAction?**: `"hide"` \| `"show"` \| `"toggle"`
 
 #### Inherited from
 
@@ -3194,7 +3194,7 @@ Paper
 
 ### prefix?
 
-> `optional` **prefix**: `string`
+> `optional` **prefix?**: `string`
 
 #### Inherited from
 
@@ -3204,7 +3204,7 @@ Paper
 
 ### property?
 
-> `optional` **property**: `string`
+> `optional` **property?**: `string`
 
 #### Inherited from
 
@@ -3214,7 +3214,7 @@ Paper
 
 ### radioGroup?
 
-> `optional` **radioGroup**: `string`
+> `optional` **radioGroup?**: `string`
 
 #### Inherited from
 
@@ -3224,7 +3224,7 @@ Paper
 
 ### ref?
 
-> `optional` **ref**: (`instance`) => () => `VoidOrUndefinedOnly` \| `void` \| `null` \| `RefObject`\<`HTMLDivElement` \| `null`\>
+> `optional` **ref?**: ((`instance`) => (() => `VoidOrUndefinedOnly`) \| `void`) \| `null` \| `RefObject`\<`HTMLDivElement` \| `null`\>
 
 Allows getting a ref to the component instance.
 Once the component unmounts, React will set `ref.current` to `null`
@@ -3242,7 +3242,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### rel?
 
-> `optional` **rel**: `string`
+> `optional` **rel?**: `string`
 
 #### Inherited from
 
@@ -3252,7 +3252,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### resource?
 
-> `optional` **resource**: `string`
+> `optional` **resource?**: `string`
 
 #### Inherited from
 
@@ -3262,7 +3262,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### results?
 
-> `optional` **results**: `number`
+> `optional` **results?**: `number`
 
 #### Inherited from
 
@@ -3272,7 +3272,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### rev?
 
-> `optional` **rev**: `string`
+> `optional` **rev?**: `string`
 
 #### Inherited from
 
@@ -3282,7 +3282,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### role?
 
-> `optional` **role**: `AriaRole`
+> `optional` **role?**: `AriaRole`
 
 #### Inherited from
 
@@ -3292,7 +3292,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### scroll?
 
-> `optional` **scroll**: `"body"` \| `"paper"`
+> `optional` **scroll?**: `"body"` \| `"paper"`
 
 Determine the container for scrolling the dialog.
 
@@ -3310,7 +3310,7 @@ Determine the container for scrolling the dialog.
 
 ### security?
 
-> `optional` **security**: `string`
+> `optional` **security?**: `string`
 
 #### Inherited from
 
@@ -3320,7 +3320,7 @@ Determine the container for scrolling the dialog.
 
 ### slot?
 
-> `optional` **slot**: `string`
+> `optional` **slot?**: `string`
 
 #### Inherited from
 
@@ -3330,41 +3330,41 @@ Determine the container for scrolling the dialog.
 
 ### slotProps?
 
-> `optional` **slotProps**: `object`
+> `optional` **slotProps?**: `object`
 
 The props used for each slot inside.
 
 #### backdrop?
 
-> `optional` **backdrop**: `SlotProps`\<`ElementType`\<`BackdropProps`, keyof IntrinsicElements\>, `DialogBackdropSlotPropsOverrides`, `DialogOwnerState`\>
+> `optional` **backdrop?**: `SlotProps`\<`ElementType`\<`BackdropProps`, keyof IntrinsicElements\>, `DialogBackdropSlotPropsOverrides`, `DialogOwnerState`\>
 
 Props forwarded to the backdrop slot.
 By default, the available props are based on the [Backdrop](https://mui.com/material-ui/api/backdrop/#props) component.
 
 #### container?
 
-> `optional` **container**: `SlotProps`\<`"div"`, `DialogContainerSlotPropsOverrides`, `DialogOwnerState`\>
+> `optional` **container?**: `SlotProps`\<`"div"`, `DialogContainerSlotPropsOverrides`, `DialogOwnerState`\>
 
 Props forwarded to the container slot.
 By default, the available props are based on a div element.
 
 #### paper?
 
-> `optional` **paper**: `SlotProps`\<`ElementType`\<`PaperProps`, keyof IntrinsicElements\>, `DialogPaperSlotPropsOverrides`, `DialogOwnerState`\>
+> `optional` **paper?**: `SlotProps`\<`ElementType`\<`PaperProps`, keyof IntrinsicElements\>, `DialogPaperSlotPropsOverrides`, `DialogOwnerState`\>
 
 Props forwarded to the paper slot.
 By default, the available props are based on the [Paper](https://mui.com/material-ui/api/paper/#props) component.
 
 #### root?
 
-> `optional` **root**: `SlotProps`\<`ElementType`\<`ModalProps`, keyof IntrinsicElements\>, `DialogRootSlotPropsOverrides`, `DialogOwnerState`\>
+> `optional` **root?**: `SlotProps`\<`ElementType`\<`ModalProps`, keyof IntrinsicElements\>, `DialogRootSlotPropsOverrides`, `DialogOwnerState`\>
 
 Props forwarded to the root slot.
 By default, the available props are based on the [Modal](https://mui.com/material-ui/api/modal/#props) component.
 
 #### transition?
 
-> `optional` **transition**: `SlotComponentProps`\<`ElementType`\<`any`, keyof IntrinsicElements\>, `TransitionProps` & `DialogTransitionSlotPropsOverrides`, `DialogOwnerState`\>
+> `optional` **transition?**: `SlotComponentProps`\<`ElementType`\<`any`, keyof IntrinsicElements\>, `TransitionProps` & `DialogTransitionSlotPropsOverrides`, `DialogOwnerState`\>
 
 Props forwarded to the transition slot.
 By default, the available props are based on the [Fade](https://mui.com/material-ui/api/fade/#props) component.
@@ -3383,7 +3383,7 @@ By default, the available props are based on the [Fade](https://mui.com/material
 
 ### slots?
 
-> `optional` **slots**: `Partial`\<`DialogSlots`\>
+> `optional` **slots?**: `Partial`\<`DialogSlots`\>
 
 The components used for each slot inside.
 
@@ -3401,7 +3401,7 @@ The components used for each slot inside.
 
 ### spellCheck?
 
-> `optional` **spellCheck**: `Booleanish`
+> `optional` **spellCheck?**: `Booleanish`
 
 #### Inherited from
 
@@ -3411,7 +3411,7 @@ The components used for each slot inside.
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 #### Inherited from
 
@@ -3421,7 +3421,7 @@ The components used for each slot inside.
 
 ### suppressContentEditableWarning?
 
-> `optional` **suppressContentEditableWarning**: `boolean`
+> `optional` **suppressContentEditableWarning?**: `boolean`
 
 #### Inherited from
 
@@ -3431,7 +3431,7 @@ The components used for each slot inside.
 
 ### suppressHydrationWarning?
 
-> `optional` **suppressHydrationWarning**: `boolean`
+> `optional` **suppressHydrationWarning?**: `boolean`
 
 #### Inherited from
 
@@ -3441,7 +3441,7 @@ The components used for each slot inside.
 
 ### sx?
 
-> `optional` **sx**: `SxProps`\<`Theme`\>
+> `optional` **sx?**: `SxProps`\<`Theme`\>
 
 The system prop that allows defining system overrides as well as additional CSS styles.
 
@@ -3453,7 +3453,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### tabIndex?
 
-> `optional` **tabIndex**: `number`
+> `optional` **tabIndex?**: `number`
 
 #### Inherited from
 
@@ -3463,7 +3463,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 #### Inherited from
 
@@ -3473,7 +3473,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### transitionDuration?
 
-> `optional` **transitionDuration**: \{ `appear?`: `number`; `enter?`: `number`; `exit?`: `number`; \} \| \{ `appear?`: `number`; `enter?`: `number`; `exit?`: `number`; \} \| `number`
+> `optional` **transitionDuration?**: \{ `appear?`: `number`; `enter?`: `number`; `exit?`: `number`; \} \| \{ `appear?`: `number`; `enter?`: `number`; `exit?`: `number`; \} \| `number`
 
 The duration for the transition, in milliseconds.
 You may specify a single timeout for all transitions, or individually with an object.
@@ -3495,7 +3495,7 @@ You may specify a single timeout for all transitions, or individually with an ob
 
 ### translate?
 
-> `optional` **translate**: `"no"` \| `"yes"`
+> `optional` **translate?**: `"no"` \| `"yes"`
 
 #### Inherited from
 
@@ -3505,7 +3505,7 @@ You may specify a single timeout for all transitions, or individually with an ob
 
 ### typeof?
 
-> `optional` **typeof**: `string`
+> `optional` **typeof?**: `string`
 
 #### Inherited from
 
@@ -3515,7 +3515,7 @@ You may specify a single timeout for all transitions, or individually with an ob
 
 ### unselectable?
 
-> `optional` **unselectable**: `"off"` \| `"on"`
+> `optional` **unselectable?**: `"off"` \| `"on"`
 
 #### Inherited from
 
@@ -3525,7 +3525,7 @@ You may specify a single timeout for all transitions, or individually with an ob
 
 ### vocab?
 
-> `optional` **vocab**: `string`
+> `optional` **vocab?**: `string`
 
 #### Inherited from
 

@@ -1,4 +1,4 @@
-# Variable: createView()
+# Variable: createView
 
 > `const` **createView**: (`models`) => [`View`](../classes/View.md) = `View.create`
 

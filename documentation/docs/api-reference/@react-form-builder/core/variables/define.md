@@ -1,4 +1,4 @@
-# Variable: define()
+# Variable: define
 
 > `const` **define**: \<`T`\>(`component`, `typeName?`) => [`Definer`](../interfaces/Definer.md)\<`T`\> = `Definer.define`
 

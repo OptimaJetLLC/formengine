@@ -8,9 +8,9 @@ Returns the value as a Date when the type is date and conversion succeeds.
 
 ### type
 
-the value type.
+keyof SchemaTypeMap \| `undefined`
 
-keyof SchemaTypeMap | `undefined`
+the value type.
 
 ### value
 

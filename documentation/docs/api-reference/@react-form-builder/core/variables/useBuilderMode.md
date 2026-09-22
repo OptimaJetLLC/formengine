@@ -1,4 +1,4 @@
-# Variable: useBuilderMode()
+# Variable: useBuilderMode
 
 > **useBuilderMode**: () => [`BuilderMode`](../type-aliases/BuilderMode.md)
 

@@ -8,13 +8,13 @@ Props for the RsWizardStep component.
 
 ## Indexable
 
-\[`key`: `string`\]: `any`
+> \[`key`: `string`\]: `any`
 
 ## Properties
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 className for element.
 
@@ -22,6 +22,6 @@ className for element.
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 Label for the wizard step.

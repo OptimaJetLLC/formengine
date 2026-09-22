@@ -4,9 +4,9 @@ Calculates all the properties of the form view component.
 
 ## Properties
 
-### getRefValue()?
+### getRefValue?
 
-> `optional` **getRefValue**: () => `any`
+> `optional` **getRefValue?**: () => `any`
 
 #### Returns
 
@@ -16,9 +16,9 @@ the object associated with this component in the viewer.
 
 ***
 
-### setRef()?
+### setRef?
 
-> `optional` **setRef**: (`object`) => `void`
+> `optional` **setRef?**: (`object`) => `void`
 
 Sets the object associated with this component in the viewer.
 

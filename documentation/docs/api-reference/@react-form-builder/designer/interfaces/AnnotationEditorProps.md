@@ -24,7 +24,7 @@ The component data.
 
 ***
 
-### disableCompute()
+### disableCompute
 
 > **disableCompute**: () => `void`
 
@@ -42,13 +42,13 @@ Disables the ability to make the property computable.
 
 ### displayedSection?
 
-> `optional` **displayedSection**: [`Section`](../enumerations/Section.md)
+> `optional` **displayedSection?**: [`Section`](../enumerations/Section.md)
 
 The displayed section.
 
 ***
 
-### getComputeCode()
+### getComputeCode
 
 > **getComputeCode**: \<`T`\>(`type`, `params?`) => `string`
 
@@ -88,7 +88,7 @@ the code of the computed property.
 
 ***
 
-### getComputeType()
+### getComputeType
 
 > **getComputeType**: () => [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md) \| `undefined`
 
@@ -104,7 +104,7 @@ Returns the type of calculation for the property.
 
 ***
 
-### hasComputeCode()
+### hasComputeCode
 
 > **hasComputeCode**: (`type`) => `boolean`
 
@@ -130,7 +130,7 @@ true if the property has a compute code for the specified type, false otherwise.
 
 ***
 
-### onChange()
+### onChange
 
 > **onChange**: (`value`) => `void`
 
@@ -148,7 +148,7 @@ Annotation editor onChange handler.
 
 ***
 
-### onClean()
+### onClean
 
 > **onClean**: () => `void`
 
@@ -160,7 +160,7 @@ Annotation editor onClean handler.
 
 ***
 
-### setComputeCode()
+### setComputeCode
 
 > **setComputeCode**: \<`T`\>(`value`, `type`, `params?`) => `void`
 
@@ -204,9 +204,9 @@ the parameters of the compute code.
 
 ***
 
-### showError()?
+### showError?
 
-> `optional` **showError**: (`message?`) => `void`
+> `optional` **showError?**: (`message?`) => `void`
 
 Displays an error message to the user.
 

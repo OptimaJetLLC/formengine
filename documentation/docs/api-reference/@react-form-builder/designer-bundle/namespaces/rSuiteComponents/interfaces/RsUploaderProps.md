@@ -10,17 +10,17 @@ Props for the RsUploader component.
 
 ### about?
 
-> `optional` **about**: `string`
+> `optional` **about?**: `string`
 
 #### Inherited from
 
-`UploaderProps.about`
+[`RsImageProps`](RsImageProps.md).[`about`](RsImageProps.md#about)
 
 ***
 
 ### accept?
 
-> `optional` **accept**: `string`
+> `optional` **accept?**: `string`
 
 File types that can be accepted. See input accept Attribute
 
@@ -32,11 +32,11 @@ File types that can be accepted. See input accept Attribute
 
 ### accessKey?
 
-> `optional` **accessKey**: `string`
+> `optional` **accessKey?**: `string`
 
 #### Inherited from
 
-`UploaderProps.accessKey`
+[`RsImageProps`](RsImageProps.md).[`accessKey`](RsImageProps.md#accesskey)
 
 ***
 
@@ -54,7 +54,7 @@ Uploading URL
 
 ### active?
 
-> `optional` **active**: `boolean`
+> `optional` **active?**: `boolean`
 
 A button can show it is currently the active user selection
 
@@ -66,7 +66,7 @@ A button can show it is currently the active user selection
 
 ### appearance?
 
-> `optional` **appearance**: `Appearance`
+> `optional` **appearance?**: `Appearance`
 
 A button can have different appearances.
 
@@ -78,44 +78,44 @@ A button can have different appearances.
 
 ### aria-activedescendant?
 
-> `optional` **aria-activedescendant**: `string`
+> `optional` **aria-activedescendant?**: `string`
 
 Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application.
 
 #### Inherited from
 
-`UploaderProps.aria-activedescendant`
+[`RsImageProps`](RsImageProps.md).[`aria-activedescendant`](RsImageProps.md#aria-activedescendant)
 
 ***
 
 ### aria-atomic?
 
-> `optional` **aria-atomic**: `Booleanish`
+> `optional` **aria-atomic?**: `Booleanish`
 
 Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute.
 
 #### Inherited from
 
-`UploaderProps.aria-atomic`
+[`RsImageProps`](RsImageProps.md).[`aria-atomic`](RsImageProps.md#aria-atomic)
 
 ***
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
+> `optional` **aria-autocomplete?**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
 
 #### Inherited from
 
-`UploaderProps.aria-autocomplete`
+[`RsImageProps`](RsImageProps.md).[`aria-autocomplete`](RsImageProps.md#aria-autocomplete)
 
 ***
 
 ### aria-braillelabel?
 
-> `optional` **aria-braillelabel**: `string`
+> `optional` **aria-braillelabel?**: `string`
 
 Defines a string value that labels the current element, which is intended to be converted into Braille.
 
@@ -125,13 +125,13 @@ aria-label.
 
 #### Inherited from
 
-`UploaderProps.aria-braillelabel`
+[`RsImageProps`](RsImageProps.md).[`aria-braillelabel`](RsImageProps.md#aria-braillelabel)
 
 ***
 
 ### aria-brailleroledescription?
 
-> `optional` **aria-brailleroledescription**: `string`
+> `optional` **aria-brailleroledescription?**: `string`
 
 Defines a human-readable, author-localized abbreviated description for the role of an element, which is intended to be converted into Braille.
 
@@ -141,23 +141,23 @@ aria-roledescription.
 
 #### Inherited from
 
-`UploaderProps.aria-brailleroledescription`
+[`RsImageProps`](RsImageProps.md).[`aria-brailleroledescription`](RsImageProps.md#aria-brailleroledescription)
 
 ***
 
 ### aria-busy?
 
-> `optional` **aria-busy**: `Booleanish`
+> `optional` **aria-busy?**: `Booleanish`
 
 #### Inherited from
 
-`UploaderProps.aria-busy`
+[`RsImageProps`](RsImageProps.md).[`aria-busy`](RsImageProps.md#aria-busy)
 
 ***
 
 ### aria-checked?
 
-> `optional` **aria-checked**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
+> `optional` **aria-checked?**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
 
@@ -168,13 +168,13 @@ Indicates the current "checked" state of checkboxes, radio buttons, and other wi
 
 #### Inherited from
 
-`UploaderProps.aria-checked`
+[`RsImageProps`](RsImageProps.md).[`aria-checked`](RsImageProps.md#aria-checked)
 
 ***
 
 ### aria-colcount?
 
-> `optional` **aria-colcount**: `number`
+> `optional` **aria-colcount?**: `number`
 
 Defines the total number of columns in a table, grid, or treegrid.
 
@@ -184,13 +184,13 @@ aria-colindex.
 
 #### Inherited from
 
-`UploaderProps.aria-colcount`
+[`RsImageProps`](RsImageProps.md).[`aria-colcount`](RsImageProps.md#aria-colcount)
 
 ***
 
 ### aria-colindex?
 
-> `optional` **aria-colindex**: `number`
+> `optional` **aria-colindex?**: `number`
 
 Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid.
 
@@ -201,13 +201,13 @@ Defines an element's column index or position with respect to the total number o
 
 #### Inherited from
 
-`UploaderProps.aria-colindex`
+[`RsImageProps`](RsImageProps.md).[`aria-colindex`](RsImageProps.md#aria-colindex)
 
 ***
 
 ### aria-colindextext?
 
-> `optional` **aria-colindextext**: `string`
+> `optional` **aria-colindextext?**: `string`
 
 Defines a human readable text alternative of aria-colindex.
 
@@ -217,13 +217,13 @@ aria-rowindextext.
 
 #### Inherited from
 
-`UploaderProps.aria-colindextext`
+[`RsImageProps`](RsImageProps.md).[`aria-colindextext`](RsImageProps.md#aria-colindextext)
 
 ***
 
 ### aria-colspan?
 
-> `optional` **aria-colspan**: `number`
+> `optional` **aria-colspan?**: `number`
 
 Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid.
 
@@ -234,13 +234,13 @@ Defines the number of columns spanned by a cell or gridcell within a table, grid
 
 #### Inherited from
 
-`UploaderProps.aria-colspan`
+[`RsImageProps`](RsImageProps.md).[`aria-colspan`](RsImageProps.md#aria-colspan)
 
 ***
 
 ### aria-controls?
 
-> `optional` **aria-controls**: `string`
+> `optional` **aria-controls?**: `string`
 
 Identifies the element (or elements) whose contents or presence are controlled by the current element.
 
@@ -250,25 +250,25 @@ aria-owns.
 
 #### Inherited from
 
-`UploaderProps.aria-controls`
+[`RsImageProps`](RsImageProps.md).[`aria-controls`](RsImageProps.md#aria-controls)
 
 ***
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
+> `optional` **aria-current?**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
 #### Inherited from
 
-`UploaderProps.aria-current`
+[`RsImageProps`](RsImageProps.md).[`aria-current`](RsImageProps.md#aria-current)
 
 ***
 
 ### aria-describedby?
 
-> `optional` **aria-describedby**: `string`
+> `optional` **aria-describedby?**: `string`
 
 Identifies the element (or elements) that describes the object.
 
@@ -278,13 +278,13 @@ aria-labelledby
 
 #### Inherited from
 
-`UploaderProps.aria-describedby`
+[`RsImageProps`](RsImageProps.md).[`aria-describedby`](RsImageProps.md#aria-describedby)
 
 ***
 
 ### aria-description?
 
-> `optional` **aria-description**: `string`
+> `optional` **aria-description?**: `string`
 
 Defines a string value that describes or annotates the current element.
 
@@ -294,13 +294,13 @@ related aria-describedby.
 
 #### Inherited from
 
-`UploaderProps.aria-description`
+[`RsImageProps`](RsImageProps.md).[`aria-description`](RsImageProps.md#aria-description)
 
 ***
 
 ### aria-details?
 
-> `optional` **aria-details**: `string`
+> `optional` **aria-details?**: `string`
 
 Identifies the element that provides a detailed, extended description for the object.
 
@@ -310,13 +310,13 @@ aria-describedby.
 
 #### Inherited from
 
-`UploaderProps.aria-details`
+[`RsImageProps`](RsImageProps.md).[`aria-details`](RsImageProps.md#aria-details)
 
 ***
 
 ### aria-disabled?
 
-> `optional` **aria-disabled**: `Booleanish`
+> `optional` **aria-disabled?**: `Booleanish`
 
 Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
 
@@ -327,13 +327,13 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 #### Inherited from
 
-`UploaderProps.aria-disabled`
+[`RsImageProps`](RsImageProps.md).[`aria-disabled`](RsImageProps.md#aria-disabled)
 
 ***
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"copy"` \| `"execute"` \| `"link"` \| `"move"` \| `"none"` \| `"popup"`
+> `optional` **aria-dropeffect?**: `"copy"` \| `"execute"` \| `"link"` \| `"move"` \| `"none"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -343,13 +343,13 @@ in ARIA 1.1
 
 #### Inherited from
 
-`UploaderProps.aria-dropeffect`
+[`RsImageProps`](RsImageProps.md).[`aria-dropeffect`](RsImageProps.md#aria-dropeffect)
 
 ***
 
 ### aria-errormessage?
 
-> `optional` **aria-errormessage**: `string`
+> `optional` **aria-errormessage?**: `string`
 
 Identifies the element that provides an error message for the object.
 
@@ -360,38 +360,38 @@ Identifies the element that provides an error message for the object.
 
 #### Inherited from
 
-`UploaderProps.aria-errormessage`
+[`RsImageProps`](RsImageProps.md).[`aria-errormessage`](RsImageProps.md#aria-errormessage)
 
 ***
 
 ### aria-expanded?
 
-> `optional` **aria-expanded**: `Booleanish`
+> `optional` **aria-expanded?**: `Booleanish`
 
 Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed.
 
 #### Inherited from
 
-`UploaderProps.aria-expanded`
+[`RsImageProps`](RsImageProps.md).[`aria-expanded`](RsImageProps.md#aria-expanded)
 
 ***
 
 ### aria-flowto?
 
-> `optional` **aria-flowto**: `string`
+> `optional` **aria-flowto?**: `string`
 
 Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion,
 allows assistive technology to override the general default of reading in document source order.
 
 #### Inherited from
 
-`UploaderProps.aria-flowto`
+[`RsImageProps`](RsImageProps.md).[`aria-flowto`](RsImageProps.md#aria-flowto)
 
 ***
 
 ### ~~aria-grabbed?~~
 
-> `optional` **aria-grabbed**: `Booleanish`
+> `optional` **aria-grabbed?**: `Booleanish`
 
 Indicates an element's "grabbed" state in a drag-and-drop operation.
 
@@ -401,25 +401,25 @@ in ARIA 1.1
 
 #### Inherited from
 
-`UploaderProps.aria-grabbed`
+[`RsImageProps`](RsImageProps.md).[`aria-grabbed`](RsImageProps.md#aria-grabbed)
 
 ***
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
+> `optional` **aria-haspopup?**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
 #### Inherited from
 
-`UploaderProps.aria-haspopup`
+[`RsImageProps`](RsImageProps.md).[`aria-haspopup`](RsImageProps.md#aria-haspopup)
 
 ***
 
 ### aria-hidden?
 
-> `optional` **aria-hidden**: `Booleanish`
+> `optional` **aria-hidden?**: `Booleanish`
 
 Indicates whether the element is exposed to an accessibility API.
 
@@ -429,13 +429,13 @@ aria-disabled.
 
 #### Inherited from
 
-`UploaderProps.aria-hidden`
+[`RsImageProps`](RsImageProps.md).[`aria-hidden`](RsImageProps.md#aria-hidden)
 
 ***
 
 ### aria-invalid?
 
-> `optional` **aria-invalid**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
+> `optional` **aria-invalid?**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
 
 Indicates the entered value does not conform to the format expected by the application.
 
@@ -445,25 +445,25 @@ aria-errormessage.
 
 #### Inherited from
 
-`UploaderProps.aria-invalid`
+[`RsImageProps`](RsImageProps.md).[`aria-invalid`](RsImageProps.md#aria-invalid)
 
 ***
 
 ### aria-keyshortcuts?
 
-> `optional` **aria-keyshortcuts**: `string`
+> `optional` **aria-keyshortcuts?**: `string`
 
 Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element.
 
 #### Inherited from
 
-`UploaderProps.aria-keyshortcuts`
+[`RsImageProps`](RsImageProps.md).[`aria-keyshortcuts`](RsImageProps.md#aria-keyshortcuts)
 
 ***
 
 ### aria-label?
 
-> `optional` **aria-label**: `string`
+> `optional` **aria-label?**: `string`
 
 Defines a string value that labels the current element.
 
@@ -473,13 +473,13 @@ aria-labelledby.
 
 #### Inherited from
 
-`UploaderProps.aria-label`
+[`RsImageProps`](RsImageProps.md).[`aria-label`](RsImageProps.md#aria-label)
 
 ***
 
 ### aria-labelledby?
 
-> `optional` **aria-labelledby**: `string`
+> `optional` **aria-labelledby?**: `string`
 
 Identifies the element (or elements) that labels the current element.
 
@@ -489,85 +489,85 @@ aria-describedby.
 
 #### Inherited from
 
-`UploaderProps.aria-labelledby`
+[`RsImageProps`](RsImageProps.md).[`aria-labelledby`](RsImageProps.md#aria-labelledby)
 
 ***
 
 ### aria-level?
 
-> `optional` **aria-level**: `number`
+> `optional` **aria-level?**: `number`
 
 Defines the hierarchical level of an element within a structure.
 
 #### Inherited from
 
-`UploaderProps.aria-level`
+[`RsImageProps`](RsImageProps.md).[`aria-level`](RsImageProps.md#aria-level)
 
 ***
 
 ### aria-live?
 
-> `optional` **aria-live**: `"assertive"` \| `"off"` \| `"polite"`
+> `optional` **aria-live?**: `"assertive"` \| `"off"` \| `"polite"`
 
 Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
 
 #### Inherited from
 
-`UploaderProps.aria-live`
+[`RsImageProps`](RsImageProps.md).[`aria-live`](RsImageProps.md#aria-live)
 
 ***
 
 ### aria-modal?
 
-> `optional` **aria-modal**: `Booleanish`
+> `optional` **aria-modal?**: `Booleanish`
 
 Indicates whether an element is modal when displayed.
 
 #### Inherited from
 
-`UploaderProps.aria-modal`
+[`RsImageProps`](RsImageProps.md).[`aria-modal`](RsImageProps.md#aria-modal)
 
 ***
 
 ### aria-multiline?
 
-> `optional` **aria-multiline**: `Booleanish`
+> `optional` **aria-multiline?**: `Booleanish`
 
 Indicates whether a text box accepts multiple lines of input or only a single line.
 
 #### Inherited from
 
-`UploaderProps.aria-multiline`
+[`RsImageProps`](RsImageProps.md).[`aria-multiline`](RsImageProps.md#aria-multiline)
 
 ***
 
 ### aria-multiselectable?
 
-> `optional` **aria-multiselectable**: `Booleanish`
+> `optional` **aria-multiselectable?**: `Booleanish`
 
 Indicates that the user may select more than one item from the current selectable descendants.
 
 #### Inherited from
 
-`UploaderProps.aria-multiselectable`
+[`RsImageProps`](RsImageProps.md).[`aria-multiselectable`](RsImageProps.md#aria-multiselectable)
 
 ***
 
 ### aria-orientation?
 
-> `optional` **aria-orientation**: `"horizontal"` \| `"vertical"`
+> `optional` **aria-orientation?**: `"horizontal"` \| `"vertical"`
 
 Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
 
 #### Inherited from
 
-`UploaderProps.aria-orientation`
+[`RsImageProps`](RsImageProps.md).[`aria-orientation`](RsImageProps.md#aria-orientation)
 
 ***
 
 ### aria-owns?
 
-> `optional` **aria-owns**: `string`
+> `optional` **aria-owns?**: `string`
 
 Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship
 between DOM elements where the DOM hierarchy cannot be used to represent the relationship.
@@ -578,26 +578,26 @@ aria-controls.
 
 #### Inherited from
 
-`UploaderProps.aria-owns`
+[`RsImageProps`](RsImageProps.md).[`aria-owns`](RsImageProps.md#aria-owns)
 
 ***
 
 ### aria-placeholder?
 
-> `optional` **aria-placeholder**: `string`
+> `optional` **aria-placeholder?**: `string`
 
 Defines a short hint (a word or short phrase) intended to aid the user with data entry when the control has no value.
 A hint could be a sample value or a brief description of the expected format.
 
 #### Inherited from
 
-`UploaderProps.aria-placeholder`
+[`RsImageProps`](RsImageProps.md).[`aria-placeholder`](RsImageProps.md#aria-placeholder)
 
 ***
 
 ### aria-posinset?
 
-> `optional` **aria-posinset**: `number`
+> `optional` **aria-posinset?**: `number`
 
 Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
 
@@ -607,13 +607,13 @@ aria-setsize.
 
 #### Inherited from
 
-`UploaderProps.aria-posinset`
+[`RsImageProps`](RsImageProps.md).[`aria-posinset`](RsImageProps.md#aria-posinset)
 
 ***
 
 ### aria-pressed?
 
-> `optional` **aria-pressed**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
+> `optional` **aria-pressed?**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "pressed" state of toggle buttons.
 
@@ -624,13 +624,13 @@ Indicates the current "pressed" state of toggle buttons.
 
 #### Inherited from
 
-`UploaderProps.aria-pressed`
+[`RsImageProps`](RsImageProps.md).[`aria-pressed`](RsImageProps.md#aria-pressed)
 
 ***
 
 ### aria-readonly?
 
-> `optional` **aria-readonly**: `Booleanish`
+> `optional` **aria-readonly?**: `Booleanish`
 
 Indicates that the element is not editable, but is otherwise operable.
 
@@ -640,13 +640,13 @@ aria-disabled.
 
 #### Inherited from
 
-`UploaderProps.aria-readonly`
+[`RsImageProps`](RsImageProps.md).[`aria-readonly`](RsImageProps.md#aria-readonly)
 
 ***
 
 ### aria-relevant?
 
-> `optional` **aria-relevant**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
+> `optional` **aria-relevant?**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
 
 Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
 
@@ -656,37 +656,37 @@ aria-atomic.
 
 #### Inherited from
 
-`UploaderProps.aria-relevant`
+[`RsImageProps`](RsImageProps.md).[`aria-relevant`](RsImageProps.md#aria-relevant)
 
 ***
 
 ### aria-required?
 
-> `optional` **aria-required**: `Booleanish`
+> `optional` **aria-required?**: `Booleanish`
 
 Indicates that user input is required on the element before a form may be submitted.
 
 #### Inherited from
 
-`UploaderProps.aria-required`
+[`RsImageProps`](RsImageProps.md).[`aria-required`](RsImageProps.md#aria-required)
 
 ***
 
 ### aria-roledescription?
 
-> `optional` **aria-roledescription**: `string`
+> `optional` **aria-roledescription?**: `string`
 
 Defines a human-readable, author-localized description for the role of an element.
 
 #### Inherited from
 
-`UploaderProps.aria-roledescription`
+[`RsImageProps`](RsImageProps.md).[`aria-roledescription`](RsImageProps.md#aria-roledescription)
 
 ***
 
 ### aria-rowcount?
 
-> `optional` **aria-rowcount**: `number`
+> `optional` **aria-rowcount?**: `number`
 
 Defines the total number of rows in a table, grid, or treegrid.
 
@@ -696,13 +696,13 @@ aria-rowindex.
 
 #### Inherited from
 
-`UploaderProps.aria-rowcount`
+[`RsImageProps`](RsImageProps.md).[`aria-rowcount`](RsImageProps.md#aria-rowcount)
 
 ***
 
 ### aria-rowindex?
 
-> `optional` **aria-rowindex**: `number`
+> `optional` **aria-rowindex?**: `number`
 
 Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid.
 
@@ -713,13 +713,13 @@ Defines an element's row index or position with respect to the total number of r
 
 #### Inherited from
 
-`UploaderProps.aria-rowindex`
+[`RsImageProps`](RsImageProps.md).[`aria-rowindex`](RsImageProps.md#aria-rowindex)
 
 ***
 
 ### aria-rowindextext?
 
-> `optional` **aria-rowindextext**: `string`
+> `optional` **aria-rowindextext?**: `string`
 
 Defines a human readable text alternative of aria-rowindex.
 
@@ -729,13 +729,13 @@ aria-colindextext.
 
 #### Inherited from
 
-`UploaderProps.aria-rowindextext`
+[`RsImageProps`](RsImageProps.md).[`aria-rowindextext`](RsImageProps.md#aria-rowindextext)
 
 ***
 
 ### aria-rowspan?
 
-> `optional` **aria-rowspan**: `number`
+> `optional` **aria-rowspan?**: `number`
 
 Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid.
 
@@ -746,13 +746,13 @@ Defines the number of rows spanned by a cell or gridcell within a table, grid, o
 
 #### Inherited from
 
-`UploaderProps.aria-rowspan`
+[`RsImageProps`](RsImageProps.md).[`aria-rowspan`](RsImageProps.md#aria-rowspan)
 
 ***
 
 ### aria-selected?
 
-> `optional` **aria-selected**: `Booleanish`
+> `optional` **aria-selected?**: `Booleanish`
 
 Indicates the current "selected" state of various widgets.
 
@@ -763,13 +763,13 @@ Indicates the current "selected" state of various widgets.
 
 #### Inherited from
 
-`UploaderProps.aria-selected`
+[`RsImageProps`](RsImageProps.md).[`aria-selected`](RsImageProps.md#aria-selected)
 
 ***
 
 ### aria-setsize?
 
-> `optional` **aria-setsize**: `number`
+> `optional` **aria-setsize?**: `number`
 
 Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
 
@@ -779,49 +779,49 @@ aria-posinset.
 
 #### Inherited from
 
-`UploaderProps.aria-setsize`
+[`RsImageProps`](RsImageProps.md).[`aria-setsize`](RsImageProps.md#aria-setsize)
 
 ***
 
 ### aria-sort?
 
-> `optional` **aria-sort**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
+> `optional` **aria-sort?**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
 
 Indicates if items in a table or grid are sorted in ascending or descending order.
 
 #### Inherited from
 
-`UploaderProps.aria-sort`
+[`RsImageProps`](RsImageProps.md).[`aria-sort`](RsImageProps.md#aria-sort)
 
 ***
 
 ### aria-valuemax?
 
-> `optional` **aria-valuemax**: `number`
+> `optional` **aria-valuemax?**: `number`
 
 Defines the maximum allowed value for a range widget.
 
 #### Inherited from
 
-`UploaderProps.aria-valuemax`
+[`RsImageProps`](RsImageProps.md).[`aria-valuemax`](RsImageProps.md#aria-valuemax)
 
 ***
 
 ### aria-valuemin?
 
-> `optional` **aria-valuemin**: `number`
+> `optional` **aria-valuemin?**: `number`
 
 Defines the minimum allowed value for a range widget.
 
 #### Inherited from
 
-`UploaderProps.aria-valuemin`
+[`RsImageProps`](RsImageProps.md).[`aria-valuemin`](RsImageProps.md#aria-valuemin)
 
 ***
 
 ### aria-valuenow?
 
-> `optional` **aria-valuenow**: `number`
+> `optional` **aria-valuenow?**: `number`
 
 Defines the current value for a range widget.
 
@@ -831,25 +831,25 @@ aria-valuetext.
 
 #### Inherited from
 
-`UploaderProps.aria-valuenow`
+[`RsImageProps`](RsImageProps.md).[`aria-valuenow`](RsImageProps.md#aria-valuenow)
 
 ***
 
 ### aria-valuetext?
 
-> `optional` **aria-valuetext**: `string`
+> `optional` **aria-valuetext?**: `string`
 
 Defines the human readable text alternative of aria-valuenow for a range widget.
 
 #### Inherited from
 
-`UploaderProps.aria-valuetext`
+[`RsImageProps`](RsImageProps.md).[`aria-valuetext`](RsImageProps.md#aria-valuetext)
 
 ***
 
 ### as?
 
-> `optional` **as**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **as?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
@@ -861,47 +861,47 @@ You can use a custom element for this component
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
+> `optional` **autoCapitalize?**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
 
 #### Inherited from
 
-`UploaderProps.autoCapitalize`
+[`RsImageProps`](RsImageProps.md).[`autoCapitalize`](RsImageProps.md#autocapitalize)
 
 ***
 
 ### autoCorrect?
 
-> `optional` **autoCorrect**: `string`
+> `optional` **autoCorrect?**: `string`
 
 #### Inherited from
 
-`UploaderProps.autoCorrect`
+[`RsImageProps`](RsImageProps.md).[`autoCorrect`](RsImageProps.md#autocorrect)
 
 ***
 
 ### autoFocus?
 
-> `optional` **autoFocus**: `boolean`
+> `optional` **autoFocus?**: `boolean`
 
 #### Inherited from
 
-`UploaderProps.autoFocus`
+[`RsImageProps`](RsImageProps.md).[`autoFocus`](RsImageProps.md#autofocus)
 
 ***
 
 ### autoSave?
 
-> `optional` **autoSave**: `string`
+> `optional` **autoSave?**: `string`
 
 #### Inherited from
 
-`UploaderProps.autoSave`
+[`RsImageProps`](RsImageProps.md).[`autoSave`](RsImageProps.md#autosave)
 
 ***
 
 ### autoUpload?
 
-> `optional` **autoUpload**: `boolean`
+> `optional` **autoUpload?**: `boolean`
 
 Automatically upload files after selecting them
 
@@ -913,7 +913,7 @@ Automatically upload files after selecting them
 
 ### block?
 
-> `optional` **block**: `boolean`
+> `optional` **block?**: `boolean`
 
 Format button to appear inside a content block
 
@@ -925,7 +925,7 @@ Format button to appear inside a content block
 
 ### children?
 
-> `optional` **children**: `ReactElement`\<`unknown`, `JSXElementConstructor`\<`any`\> \| `string`\>
+> `optional` **children?**: `ReactElement`\<`unknown`, `JSXElementConstructor`\<`any`\> \| `string`\>
 
 Primary content
 
@@ -937,7 +937,7 @@ Primary content
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 Additional classes
 
@@ -949,7 +949,7 @@ Additional classes
 
 ### classPrefix?
 
-> `optional` **classPrefix**: `string`
+> `optional` **classPrefix?**: `string`
 
 The prefix of the component CSS class
 
@@ -961,7 +961,7 @@ The prefix of the component CSS class
 
 ### color?
 
-> `optional` **color**: `Color`
+> `optional` **color?**: `Color`
 
 A button can have different colors
 
@@ -973,31 +973,31 @@ A button can have different colors
 
 ### content?
 
-> `optional` **content**: `string`
+> `optional` **content?**: `string`
 
 #### Inherited from
 
-`UploaderProps.content`
+[`RsImageProps`](RsImageProps.md).[`content`](RsImageProps.md#content)
 
 ***
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
+> `optional` **contentEditable?**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
 
 #### Inherited from
 
-`UploaderProps.contentEditable`
+[`RsImageProps`](RsImageProps.md).[`contentEditable`](RsImageProps.md#contenteditable)
 
 ***
 
 ### contextMenu?
 
-> `optional` **contextMenu**: `string`
+> `optional` **contextMenu?**: `string`
 
 #### Inherited from
 
-`UploaderProps.contextMenu`
+[`RsImageProps`](RsImageProps.md).[`contextMenu`](RsImageProps.md#contextmenu)
 
 ***
 
@@ -1011,7 +1011,7 @@ Whether to use a custom element for the uploader.
 
 ### dangerouslySetInnerHTML?
 
-> `optional` **dangerouslySetInnerHTML**: `object`
+> `optional` **dangerouslySetInnerHTML?**: `object`
 
 #### \_\_html
 
@@ -1025,7 +1025,7 @@ Whether to use a custom element for the uploader.
 
 ### data?
 
-> `optional` **data**: `any`
+> `optional` **data?**: `any`
 
 Upload the parameters with
 
@@ -1037,27 +1037,27 @@ Upload the parameters with
 
 ### datatype?
 
-> `optional` **datatype**: `string`
+> `optional` **datatype?**: `string`
 
 #### Inherited from
 
-`UploaderProps.datatype`
+[`RsImageProps`](RsImageProps.md).[`datatype`](RsImageProps.md#datatype)
 
 ***
 
 ### defaultChecked?
 
-> `optional` **defaultChecked**: `boolean`
+> `optional` **defaultChecked?**: `boolean`
 
 #### Inherited from
 
-`UploaderProps.defaultChecked`
+[`RsImageProps`](RsImageProps.md).[`defaultChecked`](RsImageProps.md#defaultchecked)
 
 ***
 
 ### defaultFileList?
 
-> `optional` **defaultFileList**: `FileType`[]
+> `optional` **defaultFileList?**: `FileType`[]
 
 List of uploaded files
 
@@ -1069,27 +1069,27 @@ List of uploaded files
 
 ### defaultValue?
 
-> `optional` **defaultValue**: readonly `string`[] \| `number` \| `string`
+> `optional` **defaultValue?**: readonly `string`[] \| `number` \| `string`
 
 #### Inherited from
 
-`UploaderProps.defaultValue`
+[`RsImageProps`](RsImageProps.md).[`defaultValue`](RsImageProps.md#defaultvalue)
 
 ***
 
 ### dir?
 
-> `optional` **dir**: `string`
+> `optional` **dir?**: `string`
 
 #### Inherited from
 
-`UploaderProps.dir`
+[`RsImageProps`](RsImageProps.md).[`dir`](RsImageProps.md#dir)
 
 ***
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 Disabled upload button
 
@@ -1101,7 +1101,7 @@ Disabled upload button
 
 ### disabledFileItem?
 
-> `optional` **disabledFileItem**: `boolean`
+> `optional` **disabledFileItem?**: `boolean`
 
 Disabled file item
 
@@ -1113,7 +1113,7 @@ Disabled file item
 
 ### disableMultipart?
 
-> `optional` **disableMultipart**: `boolean`
+> `optional` **disableMultipart?**: `boolean`
 
 If 'true', disable using a multipart form for file upload and instead stream the file.
 Some APIs (e.g. Amazon S3) may expect the file to be streamed rather than sent via a form. Defaults to false.
@@ -1126,7 +1126,7 @@ Some APIs (e.g. Amazon S3) may expect the file to be streamed rather than sent v
 
 ### draggable?
 
-> `optional` **draggable**: `boolean`
+> `optional` **draggable?**: `boolean`
 
 Supported Drag and drop upload *
 
@@ -1138,7 +1138,7 @@ Supported Drag and drop upload *
 
 ### endIcon?
 
-> `optional` **endIcon**: `ReactNode`
+> `optional` **endIcon?**: `ReactNode`
 
 The icon element placed _after_ the button text
 
@@ -1150,17 +1150,17 @@ The icon element placed _after_ the button text
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
+> `optional` **enterKeyHint?**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
 
 #### Inherited from
 
-`UploaderProps.enterKeyHint`
+[`RsImageProps`](RsImageProps.md).[`enterKeyHint`](RsImageProps.md#enterkeyhint)
 
 ***
 
 ### exportparts?
 
-> `optional` **exportparts**: `string`
+> `optional` **exportparts?**: `string`
 
 #### See
 
@@ -1168,13 +1168,13 @@ The icon element placed _after_ the button text
 
 #### Inherited from
 
-`UploaderProps.exportparts`
+[`RsImageProps`](RsImageProps.md).[`exportparts`](RsImageProps.md#exportparts)
 
 ***
 
 ### fileList?
 
-> `optional` **fileList**: `FileType`[]
+> `optional` **fileList?**: `FileType`[]
 
 List of uploaded files （Controlled）
 
@@ -1186,7 +1186,7 @@ List of uploaded files （Controlled）
 
 ### fileListVisible?
 
-> `optional` **fileListVisible**: `boolean`
+> `optional` **fileListVisible?**: `boolean`
 
 File list can be rendered
 
@@ -1198,7 +1198,7 @@ File list can be rendered
 
 ### headers?
 
-> `optional` **headers**: `any`
+> `optional` **headers?**: `any`
 
 Set Upload request Header
 
@@ -1210,17 +1210,17 @@ Set Upload request Header
 
 ### hidden?
 
-> `optional` **hidden**: `boolean`
+> `optional` **hidden?**: `boolean`
 
 #### Inherited from
 
-`UploaderProps.hidden`
+[`RsImageProps`](RsImageProps.md).[`hidden`](RsImageProps.md#hidden)
 
 ***
 
 ### href?
 
-> `optional` **href**: `string`
+> `optional` **href?**: `string`
 
 Providing a `href` will render an `<a>` element, _styled_ as a button
 
@@ -1232,17 +1232,17 @@ Providing a `href` will render an `<a>` element, _styled_ as a button
 
 ### id?
 
-> `optional` **id**: `string`
+> `optional` **id?**: `string`
 
 #### Inherited from
 
-`UploaderProps.id`
+[`RsImageProps`](RsImageProps.md).[`id`](RsImageProps.md#id)
 
 ***
 
 ### inert?
 
-> `optional` **inert**: `boolean`
+> `optional` **inert?**: `boolean`
 
 #### See
 
@@ -1250,23 +1250,23 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 #### Inherited from
 
-`UploaderProps.inert`
+[`RsImageProps`](RsImageProps.md).[`inert`](RsImageProps.md#inert)
 
 ***
 
 ### inlist?
 
-> `optional` **inlist**: `any`
+> `optional` **inlist?**: `any`
 
 #### Inherited from
 
-`UploaderProps.inlist`
+[`RsImageProps`](RsImageProps.md).[`inlist`](RsImageProps.md#inlist)
 
 ***
 
 ### inputMode?
 
-> `optional` **inputMode**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
+> `optional` **inputMode?**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1276,13 +1276,13 @@ Hints at the type of data that might be entered by the user while editing the el
 
 #### Inherited from
 
-`UploaderProps.inputMode`
+[`RsImageProps`](RsImageProps.md).[`inputMode`](RsImageProps.md#inputmode)
 
 ***
 
 ### is?
 
-> `optional` **is**: `string`
+> `optional` **is?**: `string`
 
 Specify that a standard HTML element should behave like a defined custom built-in element
 
@@ -1292,63 +1292,63 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### Inherited from
 
-`UploaderProps.is`
+[`RsImageProps`](RsImageProps.md).[`is`](RsImageProps.md#is)
 
 ***
 
 ### itemID?
 
-> `optional` **itemID**: `string`
+> `optional` **itemID?**: `string`
 
 #### Inherited from
 
-`UploaderProps.itemID`
+[`RsImageProps`](RsImageProps.md).[`itemID`](RsImageProps.md#itemid)
 
 ***
 
 ### itemProp?
 
-> `optional` **itemProp**: `string`
+> `optional` **itemProp?**: `string`
 
 #### Inherited from
 
-`UploaderProps.itemProp`
+[`RsImageProps`](RsImageProps.md).[`itemProp`](RsImageProps.md#itemprop)
 
 ***
 
 ### itemRef?
 
-> `optional` **itemRef**: `string`
+> `optional` **itemRef?**: `string`
 
 #### Inherited from
 
-`UploaderProps.itemRef`
+[`RsImageProps`](RsImageProps.md).[`itemRef`](RsImageProps.md#itemref)
 
 ***
 
 ### itemScope?
 
-> `optional` **itemScope**: `boolean`
+> `optional` **itemScope?**: `boolean`
 
 #### Inherited from
 
-`UploaderProps.itemScope`
+[`RsImageProps`](RsImageProps.md).[`itemScope`](RsImageProps.md#itemscope)
 
 ***
 
 ### itemType?
 
-> `optional` **itemType**: `string`
+> `optional` **itemType?**: `string`
 
 #### Inherited from
 
-`UploaderProps.itemType`
+[`RsImageProps`](RsImageProps.md).[`itemType`](RsImageProps.md#itemtype)
 
 ***
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 The label for the uploader.
 
@@ -1356,17 +1356,17 @@ The label for the uploader.
 
 ### lang?
 
-> `optional` **lang**: `string`
+> `optional` **lang?**: `string`
 
 #### Inherited from
 
-`UploaderProps.lang`
+[`RsImageProps`](RsImageProps.md).[`lang`](RsImageProps.md#lang)
 
 ***
 
 ### listType?
 
-> `optional` **listType**: `"picture"` \| `"picture-text"` \| `"text"`
+> `optional` **listType?**: `"picture"` \| `"picture-text"` \| `"text"`
 
 Upload list Style
 
@@ -1378,7 +1378,7 @@ Upload list Style
 
 ### loading?
 
-> `optional` **loading**: `boolean`
+> `optional` **loading?**: `boolean`
 
 A button can show a loading indicator
 
@@ -1390,7 +1390,7 @@ A button can show a loading indicator
 
 ### locale?
 
-> `optional` **locale**: `UploaderLocale`
+> `optional` **locale?**: `UploaderLocale`
 
 Custom locale
 
@@ -1402,7 +1402,7 @@ Custom locale
 
 ### maxPreviewFileSize?
 
-> `optional` **maxPreviewFileSize**: `number`
+> `optional` **maxPreviewFileSize?**: `number`
 
 Max file size limit of the preview file
 
@@ -1414,7 +1414,7 @@ Max file size limit of the preview file
 
 ### method?
 
-> `optional` **method**: `string`
+> `optional` **method?**: `string`
 
 The http method of upload request
 
@@ -1426,7 +1426,7 @@ The http method of upload request
 
 ### multiple?
 
-> `optional` **multiple**: `boolean`
+> `optional` **multiple?**: `boolean`
 
 Allow multiple file uploads
 
@@ -1438,7 +1438,7 @@ Allow multiple file uploads
 
 ### name?
 
-> `optional` **name**: `string`
+> `optional` **name?**: `string`
 
 Upload the parameter name of the corresponding file
 
@@ -1450,17 +1450,17 @@ Upload the parameter name of the corresponding file
 
 ### nonce?
 
-> `optional` **nonce**: `string`
+> `optional` **nonce?**: `string`
 
 #### Inherited from
 
-`UploaderProps.nonce`
+[`RsImageProps`](RsImageProps.md).[`nonce`](RsImageProps.md#nonce)
 
 ***
 
 ### onAbort?
 
-> `optional` **onAbort**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onAbort?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1470,7 +1470,7 @@ Upload the parameter name of the corresponding file
 
 ### onAbortCapture?
 
-> `optional` **onAbortCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onAbortCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1480,7 +1480,7 @@ Upload the parameter name of the corresponding file
 
 ### onAnimationEnd?
 
-> `optional` **onAnimationEnd**: `AnimationEventHandler`\<`HTMLElement`\>
+> `optional` **onAnimationEnd?**: `AnimationEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1490,7 +1490,7 @@ Upload the parameter name of the corresponding file
 
 ### onAnimationEndCapture?
 
-> `optional` **onAnimationEndCapture**: `AnimationEventHandler`\<`HTMLElement`\>
+> `optional` **onAnimationEndCapture?**: `AnimationEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1500,7 +1500,7 @@ Upload the parameter name of the corresponding file
 
 ### onAnimationIteration?
 
-> `optional` **onAnimationIteration**: `AnimationEventHandler`\<`HTMLElement`\>
+> `optional` **onAnimationIteration?**: `AnimationEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1510,7 +1510,7 @@ Upload the parameter name of the corresponding file
 
 ### onAnimationIterationCapture?
 
-> `optional` **onAnimationIterationCapture**: `AnimationEventHandler`\<`HTMLElement`\>
+> `optional` **onAnimationIterationCapture?**: `AnimationEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1520,7 +1520,7 @@ Upload the parameter name of the corresponding file
 
 ### onAnimationStart?
 
-> `optional` **onAnimationStart**: `AnimationEventHandler`\<`HTMLElement`\>
+> `optional` **onAnimationStart?**: `AnimationEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1530,7 +1530,7 @@ Upload the parameter name of the corresponding file
 
 ### onAnimationStartCapture?
 
-> `optional` **onAnimationStartCapture**: `AnimationEventHandler`\<`HTMLElement`\>
+> `optional` **onAnimationStartCapture?**: `AnimationEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1540,7 +1540,7 @@ Upload the parameter name of the corresponding file
 
 ### onAuxClick?
 
-> `optional` **onAuxClick**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onAuxClick?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1550,7 +1550,7 @@ Upload the parameter name of the corresponding file
 
 ### onAuxClickCapture?
 
-> `optional` **onAuxClickCapture**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onAuxClickCapture?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1560,7 +1560,7 @@ Upload the parameter name of the corresponding file
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeInput?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1570,7 +1570,7 @@ Upload the parameter name of the corresponding file
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1580,7 +1580,7 @@ Upload the parameter name of the corresponding file
 
 ### onBeforeToggle?
 
-> `optional` **onBeforeToggle**: `ToggleEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeToggle?**: `ToggleEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1590,7 +1590,7 @@ Upload the parameter name of the corresponding file
 
 ### onBlur?
 
-> `optional` **onBlur**: `FocusEventHandler`\<`HTMLElement`\>
+> `optional` **onBlur?**: `FocusEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1600,7 +1600,7 @@ Upload the parameter name of the corresponding file
 
 ### onBlurCapture?
 
-> `optional` **onBlurCapture**: `FocusEventHandler`\<`HTMLElement`\>
+> `optional` **onBlurCapture?**: `FocusEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1610,7 +1610,7 @@ Upload the parameter name of the corresponding file
 
 ### onCanPlay?
 
-> `optional` **onCanPlay**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onCanPlay?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1620,7 +1620,7 @@ Upload the parameter name of the corresponding file
 
 ### onCanPlayCapture?
 
-> `optional` **onCanPlayCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onCanPlayCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1630,7 +1630,7 @@ Upload the parameter name of the corresponding file
 
 ### onCanPlayThrough?
 
-> `optional` **onCanPlayThrough**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onCanPlayThrough?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1640,7 +1640,7 @@ Upload the parameter name of the corresponding file
 
 ### onCanPlayThroughCapture?
 
-> `optional` **onCanPlayThroughCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onCanPlayThroughCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1648,9 +1648,9 @@ Upload the parameter name of the corresponding file
 
 ***
 
-### onChange()?
+### onChange?
 
-> `optional` **onChange**: (`fileList`, `event`) => `void`
+> `optional` **onChange?**: (`fileList`, `event`) => `void`
 
 callback function that the upload queue has changed
 
@@ -1662,7 +1662,7 @@ callback function that the upload queue has changed
 
 ##### event
 
-`ChangeEvent`\<`Element`\> | `MouseEvent`\<`Element`, `MouseEvent`\>
+`ChangeEvent`\<`Element`\> \| `MouseEvent`\<`Element`, `MouseEvent`\>
 
 #### Returns
 
@@ -1676,7 +1676,7 @@ callback function that the upload queue has changed
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1686,7 +1686,7 @@ callback function that the upload queue has changed
 
 ### onClick?
 
-> `optional` **onClick**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onClick?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1696,7 +1696,7 @@ callback function that the upload queue has changed
 
 ### onClickCapture?
 
-> `optional` **onClickCapture**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onClickCapture?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1706,7 +1706,7 @@ callback function that the upload queue has changed
 
 ### onCompositionEnd?
 
-> `optional` **onCompositionEnd**: `CompositionEventHandler`\<`HTMLElement`\>
+> `optional` **onCompositionEnd?**: `CompositionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1716,7 +1716,7 @@ callback function that the upload queue has changed
 
 ### onCompositionEndCapture?
 
-> `optional` **onCompositionEndCapture**: `CompositionEventHandler`\<`HTMLElement`\>
+> `optional` **onCompositionEndCapture?**: `CompositionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1726,7 +1726,7 @@ callback function that the upload queue has changed
 
 ### onCompositionStart?
 
-> `optional` **onCompositionStart**: `CompositionEventHandler`\<`HTMLElement`\>
+> `optional` **onCompositionStart?**: `CompositionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1736,7 +1736,7 @@ callback function that the upload queue has changed
 
 ### onCompositionStartCapture?
 
-> `optional` **onCompositionStartCapture**: `CompositionEventHandler`\<`HTMLElement`\>
+> `optional` **onCompositionStartCapture?**: `CompositionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1746,7 +1746,7 @@ callback function that the upload queue has changed
 
 ### onCompositionUpdate?
 
-> `optional` **onCompositionUpdate**: `CompositionEventHandler`\<`HTMLElement`\>
+> `optional` **onCompositionUpdate?**: `CompositionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1756,7 +1756,7 @@ callback function that the upload queue has changed
 
 ### onCompositionUpdateCapture?
 
-> `optional` **onCompositionUpdateCapture**: `CompositionEventHandler`\<`HTMLElement`\>
+> `optional` **onCompositionUpdateCapture?**: `CompositionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1766,7 +1766,7 @@ callback function that the upload queue has changed
 
 ### onContextMenu?
 
-> `optional` **onContextMenu**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onContextMenu?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1776,7 +1776,7 @@ callback function that the upload queue has changed
 
 ### onContextMenuCapture?
 
-> `optional` **onContextMenuCapture**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onContextMenuCapture?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1786,7 +1786,7 @@ callback function that the upload queue has changed
 
 ### onCopy?
 
-> `optional` **onCopy**: `ClipboardEventHandler`\<`HTMLElement`\>
+> `optional` **onCopy?**: `ClipboardEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1796,7 +1796,7 @@ callback function that the upload queue has changed
 
 ### onCopyCapture?
 
-> `optional` **onCopyCapture**: `ClipboardEventHandler`\<`HTMLElement`\>
+> `optional` **onCopyCapture?**: `ClipboardEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1806,7 +1806,7 @@ callback function that the upload queue has changed
 
 ### onCut?
 
-> `optional` **onCut**: `ClipboardEventHandler`\<`HTMLElement`\>
+> `optional` **onCut?**: `ClipboardEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1816,7 +1816,7 @@ callback function that the upload queue has changed
 
 ### onCutCapture?
 
-> `optional` **onCutCapture**: `ClipboardEventHandler`\<`HTMLElement`\>
+> `optional` **onCutCapture?**: `ClipboardEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1826,7 +1826,7 @@ callback function that the upload queue has changed
 
 ### onDoubleClick?
 
-> `optional` **onDoubleClick**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onDoubleClick?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1836,7 +1836,7 @@ callback function that the upload queue has changed
 
 ### onDoubleClickCapture?
 
-> `optional` **onDoubleClickCapture**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onDoubleClickCapture?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1846,7 +1846,7 @@ callback function that the upload queue has changed
 
 ### onDrag?
 
-> `optional` **onDrag**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDrag?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1856,7 +1856,7 @@ callback function that the upload queue has changed
 
 ### onDragCapture?
 
-> `optional` **onDragCapture**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragCapture?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1866,7 +1866,7 @@ callback function that the upload queue has changed
 
 ### onDragEnd?
 
-> `optional` **onDragEnd**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragEnd?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1876,7 +1876,7 @@ callback function that the upload queue has changed
 
 ### onDragEndCapture?
 
-> `optional` **onDragEndCapture**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragEndCapture?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1886,7 +1886,7 @@ callback function that the upload queue has changed
 
 ### onDragEnter?
 
-> `optional` **onDragEnter**: `DragEventHandler`\<`HTMLInputElement`\>
+> `optional` **onDragEnter?**: `DragEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -1896,7 +1896,7 @@ callback function that the upload queue has changed
 
 ### onDragEnterCapture?
 
-> `optional` **onDragEnterCapture**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragEnterCapture?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1906,7 +1906,7 @@ callback function that the upload queue has changed
 
 ### onDragExit?
 
-> `optional` **onDragExit**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragExit?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1916,7 +1916,7 @@ callback function that the upload queue has changed
 
 ### onDragExitCapture?
 
-> `optional` **onDragExitCapture**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragExitCapture?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1926,7 +1926,7 @@ callback function that the upload queue has changed
 
 ### onDragLeave?
 
-> `optional` **onDragLeave**: `DragEventHandler`\<`HTMLInputElement`\>
+> `optional` **onDragLeave?**: `DragEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -1936,7 +1936,7 @@ callback function that the upload queue has changed
 
 ### onDragLeaveCapture?
 
-> `optional` **onDragLeaveCapture**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragLeaveCapture?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1946,7 +1946,7 @@ callback function that the upload queue has changed
 
 ### onDragOver?
 
-> `optional` **onDragOver**: `DragEventHandler`\<`HTMLInputElement`\>
+> `optional` **onDragOver?**: `DragEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -1956,7 +1956,7 @@ callback function that the upload queue has changed
 
 ### onDragOverCapture?
 
-> `optional` **onDragOverCapture**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragOverCapture?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1966,7 +1966,7 @@ callback function that the upload queue has changed
 
 ### onDragStart?
 
-> `optional` **onDragStart**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragStart?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1976,7 +1976,7 @@ callback function that the upload queue has changed
 
 ### onDragStartCapture?
 
-> `optional` **onDragStartCapture**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDragStartCapture?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1986,7 +1986,7 @@ callback function that the upload queue has changed
 
 ### onDrop?
 
-> `optional` **onDrop**: `DragEventHandler`\<`HTMLInputElement`\>
+> `optional` **onDrop?**: `DragEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -1996,7 +1996,7 @@ callback function that the upload queue has changed
 
 ### onDropCapture?
 
-> `optional` **onDropCapture**: `DragEventHandler`\<`HTMLElement`\>
+> `optional` **onDropCapture?**: `DragEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2006,7 +2006,7 @@ callback function that the upload queue has changed
 
 ### onDurationChange?
 
-> `optional` **onDurationChange**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onDurationChange?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2016,7 +2016,7 @@ callback function that the upload queue has changed
 
 ### onDurationChangeCapture?
 
-> `optional` **onDurationChangeCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onDurationChangeCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2026,7 +2026,7 @@ callback function that the upload queue has changed
 
 ### onEmptied?
 
-> `optional` **onEmptied**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onEmptied?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2036,7 +2036,7 @@ callback function that the upload queue has changed
 
 ### onEmptiedCapture?
 
-> `optional` **onEmptiedCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onEmptiedCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2046,7 +2046,7 @@ callback function that the upload queue has changed
 
 ### onEncrypted?
 
-> `optional` **onEncrypted**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onEncrypted?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2056,7 +2056,7 @@ callback function that the upload queue has changed
 
 ### onEncryptedCapture?
 
-> `optional` **onEncryptedCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onEncryptedCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2066,7 +2066,7 @@ callback function that the upload queue has changed
 
 ### onEnded?
 
-> `optional` **onEnded**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onEnded?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2076,7 +2076,7 @@ callback function that the upload queue has changed
 
 ### onEndedCapture?
 
-> `optional` **onEndedCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onEndedCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2084,9 +2084,9 @@ callback function that the upload queue has changed
 
 ***
 
-### onError()?
+### onError?
 
-> `optional` **onError**: (`status`, `file`, `event`, `xhr`) => `void`
+> `optional` **onError?**: (`status`, `file`, `event`, `xhr`) => `void`
 
 Upload callback function with error
 
@@ -2120,7 +2120,7 @@ Upload callback function with error
 
 ### onErrorCapture?
 
-> `optional` **onErrorCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onErrorCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2130,7 +2130,7 @@ Upload callback function with error
 
 ### onFocus?
 
-> `optional` **onFocus**: `FocusEventHandler`\<`HTMLElement`\>
+> `optional` **onFocus?**: `FocusEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2140,7 +2140,7 @@ Upload callback function with error
 
 ### onFocusCapture?
 
-> `optional` **onFocusCapture**: `FocusEventHandler`\<`HTMLElement`\>
+> `optional` **onFocusCapture?**: `FocusEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2150,7 +2150,7 @@ Upload callback function with error
 
 ### onGotPointerCapture?
 
-> `optional` **onGotPointerCapture**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onGotPointerCapture?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2160,7 +2160,7 @@ Upload callback function with error
 
 ### onGotPointerCaptureCapture?
 
-> `optional` **onGotPointerCaptureCapture**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onGotPointerCaptureCapture?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2170,7 +2170,7 @@ Upload callback function with error
 
 ### onInput?
 
-> `optional` **onInput**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInput?**: `FormEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2180,7 +2180,7 @@ Upload callback function with error
 
 ### onInputCapture?
 
-> `optional` **onInputCapture**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2190,7 +2190,7 @@ Upload callback function with error
 
 ### onInvalid?
 
-> `optional` **onInvalid**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2200,7 +2200,7 @@ Upload callback function with error
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2210,7 +2210,7 @@ Upload callback function with error
 
 ### onKeyDown?
 
-> `optional` **onKeyDown**: `KeyboardEventHandler`\<`HTMLElement`\>
+> `optional` **onKeyDown?**: `KeyboardEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2220,7 +2220,7 @@ Upload callback function with error
 
 ### onKeyDownCapture?
 
-> `optional` **onKeyDownCapture**: `KeyboardEventHandler`\<`HTMLElement`\>
+> `optional` **onKeyDownCapture?**: `KeyboardEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2230,7 +2230,7 @@ Upload callback function with error
 
 ### ~~onKeyPress?~~
 
-> `optional` **onKeyPress**: `KeyboardEventHandler`\<`HTMLElement`\>
+> `optional` **onKeyPress?**: `KeyboardEventHandler`\<`HTMLElement`\>
 
 #### Deprecated
 
@@ -2244,7 +2244,7 @@ Use `onKeyUp` or `onKeyDown` instead
 
 ### ~~onKeyPressCapture?~~
 
-> `optional` **onKeyPressCapture**: `KeyboardEventHandler`\<`HTMLElement`\>
+> `optional` **onKeyPressCapture?**: `KeyboardEventHandler`\<`HTMLElement`\>
 
 #### Deprecated
 
@@ -2258,7 +2258,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onKeyUp?
 
-> `optional` **onKeyUp**: `KeyboardEventHandler`\<`HTMLElement`\>
+> `optional` **onKeyUp?**: `KeyboardEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2268,7 +2268,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onKeyUpCapture?
 
-> `optional` **onKeyUpCapture**: `KeyboardEventHandler`\<`HTMLElement`\>
+> `optional` **onKeyUpCapture?**: `KeyboardEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2278,7 +2278,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoad?
 
-> `optional` **onLoad**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onLoad?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2288,7 +2288,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadCapture?
 
-> `optional` **onLoadCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onLoadCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2298,7 +2298,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedData?
 
-> `optional` **onLoadedData**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onLoadedData?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2308,7 +2308,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedDataCapture?
 
-> `optional` **onLoadedDataCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onLoadedDataCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2318,7 +2318,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedMetadata?
 
-> `optional` **onLoadedMetadata**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onLoadedMetadata?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2328,7 +2328,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedMetadataCapture?
 
-> `optional` **onLoadedMetadataCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onLoadedMetadataCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2338,7 +2338,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadStart?
 
-> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onLoadStart?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2348,7 +2348,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadStartCapture?
 
-> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onLoadStartCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2358,7 +2358,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLostPointerCapture?
 
-> `optional` **onLostPointerCapture**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onLostPointerCapture?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2368,7 +2368,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLostPointerCaptureCapture?
 
-> `optional` **onLostPointerCaptureCapture**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onLostPointerCaptureCapture?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2378,7 +2378,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseDown?
 
-> `optional` **onMouseDown**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseDown?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2388,7 +2388,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseDownCapture?
 
-> `optional` **onMouseDownCapture**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseDownCapture?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2398,7 +2398,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseEnter?
 
-> `optional` **onMouseEnter**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseEnter?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2408,7 +2408,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseLeave?
 
-> `optional` **onMouseLeave**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseLeave?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2418,7 +2418,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseMove?
 
-> `optional` **onMouseMove**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseMove?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2428,7 +2428,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseMoveCapture?
 
-> `optional` **onMouseMoveCapture**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseMoveCapture?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2438,7 +2438,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOut?
 
-> `optional` **onMouseOut**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseOut?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2448,7 +2448,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOutCapture?
 
-> `optional` **onMouseOutCapture**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseOutCapture?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2458,7 +2458,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOver?
 
-> `optional` **onMouseOver**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseOver?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2468,7 +2468,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOverCapture?
 
-> `optional` **onMouseOverCapture**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseOverCapture?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2478,7 +2478,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseUp?
 
-> `optional` **onMouseUp**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseUp?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2488,7 +2488,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseUpCapture?
 
-> `optional` **onMouseUpCapture**: `MouseEventHandler`\<`HTMLElement`\>
+> `optional` **onMouseUpCapture?**: `MouseEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2498,7 +2498,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPaste?
 
-> `optional` **onPaste**: `ClipboardEventHandler`\<`HTMLElement`\>
+> `optional` **onPaste?**: `ClipboardEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2508,7 +2508,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPasteCapture?
 
-> `optional` **onPasteCapture**: `ClipboardEventHandler`\<`HTMLElement`\>
+> `optional` **onPasteCapture?**: `ClipboardEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2518,7 +2518,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPause?
 
-> `optional` **onPause**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onPause?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2528,7 +2528,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPauseCapture?
 
-> `optional` **onPauseCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onPauseCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2538,7 +2538,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlay?
 
-> `optional` **onPlay**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onPlay?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2548,7 +2548,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlayCapture?
 
-> `optional` **onPlayCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onPlayCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2558,7 +2558,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlaying?
 
-> `optional` **onPlaying**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onPlaying?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2568,7 +2568,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlayingCapture?
 
-> `optional` **onPlayingCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onPlayingCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2578,7 +2578,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerCancel?
 
-> `optional` **onPointerCancel**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerCancel?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2588,7 +2588,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerCancelCapture?
 
-> `optional` **onPointerCancelCapture**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerCancelCapture?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2598,7 +2598,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerDown?
 
-> `optional` **onPointerDown**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerDown?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2608,7 +2608,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerDownCapture?
 
-> `optional` **onPointerDownCapture**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerDownCapture?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2618,7 +2618,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerEnter?
 
-> `optional` **onPointerEnter**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerEnter?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2628,7 +2628,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerLeave?
 
-> `optional` **onPointerLeave**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerLeave?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2638,7 +2638,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerMove?
 
-> `optional` **onPointerMove**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerMove?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2648,7 +2648,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerMoveCapture?
 
-> `optional` **onPointerMoveCapture**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerMoveCapture?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2658,7 +2658,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOut?
 
-> `optional` **onPointerOut**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerOut?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2668,7 +2668,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOutCapture?
 
-> `optional` **onPointerOutCapture**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerOutCapture?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2678,7 +2678,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOver?
 
-> `optional` **onPointerOver**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerOver?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2688,7 +2688,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOverCapture?
 
-> `optional` **onPointerOverCapture**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerOverCapture?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2698,7 +2698,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerUp?
 
-> `optional` **onPointerUp**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerUp?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2708,7 +2708,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerUpCapture?
 
-> `optional` **onPointerUpCapture**: `PointerEventHandler`\<`HTMLElement`\>
+> `optional` **onPointerUpCapture?**: `PointerEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2716,9 +2716,9 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onPreview()?
+### onPreview?
 
-> `optional` **onPreview**: (`file`, `event`) => `void`
+> `optional` **onPreview?**: (`file`, `event`) => `void`
 
 In the file list, click the callback function for the uploaded file
 
@@ -2742,9 +2742,9 @@ In the file list, click the callback function for the uploaded file
 
 ***
 
-### onProgress()?
+### onProgress?
 
-> `optional` **onProgress**: (`percent`, `file`, `event`, `xhr`) => `void`
+> `optional` **onProgress?**: (`percent`, `file`, `event`, `xhr`) => `void`
 
 Callback functions that upload progress change
 
@@ -2778,7 +2778,7 @@ Callback functions that upload progress change
 
 ### onProgressCapture?
 
-> `optional` **onProgressCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onProgressCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2788,7 +2788,7 @@ Callback functions that upload progress change
 
 ### onRateChange?
 
-> `optional` **onRateChange**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onRateChange?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2798,7 +2798,7 @@ Callback functions that upload progress change
 
 ### onRateChangeCapture?
 
-> `optional` **onRateChangeCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onRateChangeCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2806,9 +2806,9 @@ Callback functions that upload progress change
 
 ***
 
-### onRemove()?
+### onRemove?
 
-> `optional` **onRemove**: (`file`) => `void`
+> `optional` **onRemove?**: (`file`) => `void`
 
 In the file list, click the callback function to delete a file
 
@@ -2830,7 +2830,7 @@ In the file list, click the callback function to delete a file
 
 ### onReset?
 
-> `optional` **onReset**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onReset?**: `FormEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2840,7 +2840,7 @@ In the file list, click the callback function to delete a file
 
 ### onResetCapture?
 
-> `optional` **onResetCapture**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2848,9 +2848,9 @@ In the file list, click the callback function to delete a file
 
 ***
 
-### onReupload()?
+### onReupload?
 
-> `optional` **onReupload**: (`file`) => `void`
+> `optional` **onReupload?**: (`file`) => `void`
 
 In the file list, for uploading failed files, click the callback function to upload
 
@@ -2872,7 +2872,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onScroll?
 
-> `optional` **onScroll**: `UIEventHandler`\<`HTMLElement`\>
+> `optional` **onScroll?**: `UIEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2882,7 +2882,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onScrollCapture?
 
-> `optional` **onScrollCapture**: `UIEventHandler`\<`HTMLElement`\>
+> `optional` **onScrollCapture?**: `UIEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2892,7 +2892,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onScrollEnd?
 
-> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLElement`\>
+> `optional` **onScrollEnd?**: `UIEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2902,7 +2902,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onScrollEndCapture?
 
-> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLElement`\>
+> `optional` **onScrollEndCapture?**: `UIEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2912,7 +2912,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onSeeked?
 
-> `optional` **onSeeked**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onSeeked?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2922,7 +2922,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onSeekedCapture?
 
-> `optional` **onSeekedCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onSeekedCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2932,7 +2932,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onSeeking?
 
-> `optional` **onSeeking**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onSeeking?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2942,7 +2942,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onSeekingCapture?
 
-> `optional` **onSeekingCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onSeekingCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2952,7 +2952,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onSelect?
 
-> `optional` **onSelect**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onSelect?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2962,7 +2962,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onSelectCapture?
 
-> `optional` **onSelectCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onSelectCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2972,7 +2972,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onStalled?
 
-> `optional` **onStalled**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onStalled?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2982,7 +2982,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onStalledCapture?
 
-> `optional` **onStalledCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onStalledCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2992,7 +2992,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onSubmit?
 
-> `optional` **onSubmit**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3002,7 +3002,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3010,9 +3010,9 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ***
 
-### onSuccess()?
+### onSuccess?
 
-> `optional` **onSuccess**: (`response`, `file`, `event`, `xhr`) => `void`
+> `optional` **onSuccess?**: (`response`, `file`, `event`, `xhr`) => `void`
 
 callback function after successful upload
 
@@ -3046,7 +3046,7 @@ callback function after successful upload
 
 ### onSuspend?
 
-> `optional` **onSuspend**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onSuspend?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3056,7 +3056,7 @@ callback function after successful upload
 
 ### onSuspendCapture?
 
-> `optional` **onSuspendCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onSuspendCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3066,7 +3066,7 @@ callback function after successful upload
 
 ### onTimeUpdate?
 
-> `optional` **onTimeUpdate**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onTimeUpdate?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3076,7 +3076,7 @@ callback function after successful upload
 
 ### onTimeUpdateCapture?
 
-> `optional` **onTimeUpdateCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onTimeUpdateCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3086,7 +3086,7 @@ callback function after successful upload
 
 ### onToggle?
 
-> `optional` **onToggle**: `ToggleEventHandler`\<`HTMLElement`\>
+> `optional` **onToggle?**: `ToggleEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3096,7 +3096,7 @@ callback function after successful upload
 
 ### onTouchCancel?
 
-> `optional` **onTouchCancel**: `TouchEventHandler`\<`HTMLElement`\>
+> `optional` **onTouchCancel?**: `TouchEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3106,7 +3106,7 @@ callback function after successful upload
 
 ### onTouchCancelCapture?
 
-> `optional` **onTouchCancelCapture**: `TouchEventHandler`\<`HTMLElement`\>
+> `optional` **onTouchCancelCapture?**: `TouchEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3116,7 +3116,7 @@ callback function after successful upload
 
 ### onTouchEnd?
 
-> `optional` **onTouchEnd**: `TouchEventHandler`\<`HTMLElement`\>
+> `optional` **onTouchEnd?**: `TouchEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3126,7 +3126,7 @@ callback function after successful upload
 
 ### onTouchEndCapture?
 
-> `optional` **onTouchEndCapture**: `TouchEventHandler`\<`HTMLElement`\>
+> `optional` **onTouchEndCapture?**: `TouchEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3136,7 +3136,7 @@ callback function after successful upload
 
 ### onTouchMove?
 
-> `optional` **onTouchMove**: `TouchEventHandler`\<`HTMLElement`\>
+> `optional` **onTouchMove?**: `TouchEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3146,7 +3146,7 @@ callback function after successful upload
 
 ### onTouchMoveCapture?
 
-> `optional` **onTouchMoveCapture**: `TouchEventHandler`\<`HTMLElement`\>
+> `optional` **onTouchMoveCapture?**: `TouchEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3156,7 +3156,7 @@ callback function after successful upload
 
 ### onTouchStart?
 
-> `optional` **onTouchStart**: `TouchEventHandler`\<`HTMLElement`\>
+> `optional` **onTouchStart?**: `TouchEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3166,7 +3166,7 @@ callback function after successful upload
 
 ### onTouchStartCapture?
 
-> `optional` **onTouchStartCapture**: `TouchEventHandler`\<`HTMLElement`\>
+> `optional` **onTouchStartCapture?**: `TouchEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3176,7 +3176,7 @@ callback function after successful upload
 
 ### onTransitionCancel?
 
-> `optional` **onTransitionCancel**: `TransitionEventHandler`\<`HTMLElement`\>
+> `optional` **onTransitionCancel?**: `TransitionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3186,7 +3186,7 @@ callback function after successful upload
 
 ### onTransitionCancelCapture?
 
-> `optional` **onTransitionCancelCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+> `optional` **onTransitionCancelCapture?**: `TransitionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3196,7 +3196,7 @@ callback function after successful upload
 
 ### onTransitionEnd?
 
-> `optional` **onTransitionEnd**: `TransitionEventHandler`\<`HTMLElement`\>
+> `optional` **onTransitionEnd?**: `TransitionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3206,7 +3206,7 @@ callback function after successful upload
 
 ### onTransitionEndCapture?
 
-> `optional` **onTransitionEndCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+> `optional` **onTransitionEndCapture?**: `TransitionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3216,7 +3216,7 @@ callback function after successful upload
 
 ### onTransitionRun?
 
-> `optional` **onTransitionRun**: `TransitionEventHandler`\<`HTMLElement`\>
+> `optional` **onTransitionRun?**: `TransitionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3226,7 +3226,7 @@ callback function after successful upload
 
 ### onTransitionRunCapture?
 
-> `optional` **onTransitionRunCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+> `optional` **onTransitionRunCapture?**: `TransitionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3236,7 +3236,7 @@ callback function after successful upload
 
 ### onTransitionStart?
 
-> `optional` **onTransitionStart**: `TransitionEventHandler`\<`HTMLElement`\>
+> `optional` **onTransitionStart?**: `TransitionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3246,7 +3246,7 @@ callback function after successful upload
 
 ### onTransitionStartCapture?
 
-> `optional` **onTransitionStartCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+> `optional` **onTransitionStartCapture?**: `TransitionEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3254,9 +3254,9 @@ callback function after successful upload
 
 ***
 
-### onUpload()?
+### onUpload?
 
-> `optional` **onUpload**: (`file`, `uploadData`, `xhr`) => `void`
+> `optional` **onUpload?**: (`file`, `uploadData`, `xhr`) => `void`
 
 The callback function that starts the upload file
 
@@ -3286,7 +3286,7 @@ The callback function that starts the upload file
 
 ### onVolumeChange?
 
-> `optional` **onVolumeChange**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onVolumeChange?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3296,7 +3296,7 @@ The callback function that starts the upload file
 
 ### onVolumeChangeCapture?
 
-> `optional` **onVolumeChangeCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onVolumeChangeCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3306,7 +3306,7 @@ The callback function that starts the upload file
 
 ### onWaiting?
 
-> `optional` **onWaiting**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onWaiting?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3316,7 +3316,7 @@ The callback function that starts the upload file
 
 ### onWaitingCapture?
 
-> `optional` **onWaitingCapture**: `ReactEventHandler`\<`HTMLElement`\>
+> `optional` **onWaitingCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3326,7 +3326,7 @@ The callback function that starts the upload file
 
 ### onWheel?
 
-> `optional` **onWheel**: `WheelEventHandler`\<`HTMLElement`\>
+> `optional` **onWheel?**: `WheelEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3336,7 +3336,7 @@ The callback function that starts the upload file
 
 ### onWheelCapture?
 
-> `optional` **onWheelCapture**: `WheelEventHandler`\<`HTMLElement`\>
+> `optional` **onWheelCapture?**: `WheelEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3346,7 +3346,7 @@ The callback function that starts the upload file
 
 ### part?
 
-> `optional` **part**: `string`
+> `optional` **part?**: `string`
 
 #### See
 
@@ -3354,13 +3354,13 @@ The callback function that starts the upload file
 
 #### Inherited from
 
-`UploaderProps.part`
+[`RsImageProps`](RsImageProps.md).[`part`](RsImageProps.md#part)
 
 ***
 
 ### plaintext?
 
-> `optional` **plaintext**: `boolean`
+> `optional` **plaintext?**: `boolean`
 
 Render the control as plain text
 
@@ -3372,67 +3372,67 @@ Render the control as plain text
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
+> `optional` **popover?**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
 
 #### Inherited from
 
-`UploaderProps.popover`
+[`RsImageProps`](RsImageProps.md).[`popover`](RsImageProps.md#popover)
 
 ***
 
 ### popoverTarget?
 
-> `optional` **popoverTarget**: `string`
+> `optional` **popoverTarget?**: `string`
 
 #### Inherited from
 
-`UploaderProps.popoverTarget`
+[`RsImageProps`](RsImageProps.md).[`popoverTarget`](RsImageProps.md#popovertarget)
 
 ***
 
 ### popoverTargetAction?
 
-> `optional` **popoverTargetAction**: `"hide"` \| `"show"` \| `"toggle"`
+> `optional` **popoverTargetAction?**: `"hide"` \| `"show"` \| `"toggle"`
 
 #### Inherited from
 
-`UploaderProps.popoverTargetAction`
+[`RsImageProps`](RsImageProps.md).[`popoverTargetAction`](RsImageProps.md#popovertargetaction)
 
 ***
 
 ### prefix?
 
-> `optional` **prefix**: `string`
+> `optional` **prefix?**: `string`
 
 #### Inherited from
 
-`UploaderProps.prefix`
+[`RsImageProps`](RsImageProps.md).[`prefix`](RsImageProps.md#prefix)
 
 ***
 
 ### property?
 
-> `optional` **property**: `string`
+> `optional` **property?**: `string`
 
 #### Inherited from
 
-`UploaderProps.property`
+[`RsImageProps`](RsImageProps.md).[`property`](RsImageProps.md#property)
 
 ***
 
 ### radioGroup?
 
-> `optional` **radioGroup**: `string`
+> `optional` **radioGroup?**: `string`
 
 #### Inherited from
 
-`UploaderProps.radioGroup`
+[`RsImageProps`](RsImageProps.md).[`radioGroup`](RsImageProps.md#radiogroup)
 
 ***
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 Make the control readonly
 
@@ -3444,17 +3444,17 @@ Make the control readonly
 
 ### rel?
 
-> `optional` **rel**: `string`
+> `optional` **rel?**: `string`
 
 #### Inherited from
 
-`UploaderProps.rel`
+[`RsImageProps`](RsImageProps.md).[`rel`](RsImageProps.md#rel)
 
 ***
 
 ### removable?
 
-> `optional` **removable**: `boolean`
+> `optional` **removable?**: `boolean`
 
 Removable list file
 
@@ -3464,9 +3464,9 @@ Removable list file
 
 ***
 
-### renderFileInfo()?
+### renderFileInfo?
 
-> `optional` **renderFileInfo**: (`file`, `fileElement`) => `ReactNode`
+> `optional` **renderFileInfo?**: (`file`, `fileElement`) => `ReactNode`
 
 Custom render file information
 
@@ -3490,9 +3490,9 @@ Custom render file information
 
 ***
 
-### renderThumbnail()?
+### renderThumbnail?
 
-> `optional` **renderThumbnail**: (`file`, `thumbnail`) => `ReactNode`
+> `optional` **renderThumbnail?**: (`file`, `thumbnail`) => `ReactNode`
 
 Custom render thumbnail
 
@@ -3518,37 +3518,37 @@ Custom render thumbnail
 
 ### resource?
 
-> `optional` **resource**: `string`
+> `optional` **resource?**: `string`
 
 #### Inherited from
 
-`UploaderProps.resource`
+[`RsImageProps`](RsImageProps.md).[`resource`](RsImageProps.md#resource)
 
 ***
 
 ### results?
 
-> `optional` **results**: `number`
+> `optional` **results?**: `number`
 
 #### Inherited from
 
-`UploaderProps.results`
+[`RsImageProps`](RsImageProps.md).[`results`](RsImageProps.md#results)
 
 ***
 
 ### rev?
 
-> `optional` **rev**: `string`
+> `optional` **rev?**: `string`
 
 #### Inherited from
 
-`UploaderProps.rev`
+[`RsImageProps`](RsImageProps.md).[`rev`](RsImageProps.md#rev)
 
 ***
 
 ### ripple?
 
-> `optional` **ripple**: `boolean`
+> `optional` **ripple?**: `boolean`
 
 Ripple after button click
 
@@ -3560,27 +3560,27 @@ Ripple after button click
 
 ### role?
 
-> `optional` **role**: `AriaRole`
+> `optional` **role?**: `AriaRole`
 
 #### Inherited from
 
-`UploaderProps.role`
+[`RsImageProps`](RsImageProps.md).[`role`](RsImageProps.md#role)
 
 ***
 
 ### security?
 
-> `optional` **security**: `string`
+> `optional` **security?**: `string`
 
 #### Inherited from
 
-`UploaderProps.security`
+[`RsImageProps`](RsImageProps.md).[`security`](RsImageProps.md#security)
 
 ***
 
-### shouldQueueUpdate()?
+### shouldQueueUpdate?
 
-> `optional` **shouldQueueUpdate**: (`fileList`, `newFile`) => `boolean` \| `Promise`\<`boolean`\>
+> `optional` **shouldQueueUpdate?**: (`fileList`, `newFile`) => `boolean` \| `Promise`\<`boolean`\>
 
 Allow the queue to be updated. After you select a file, update the checksum function before the upload file queue, and return false to not update
 
@@ -3592,7 +3592,7 @@ Allow the queue to be updated. After you select a file, update the checksum func
 
 ##### newFile
 
-`FileType`[] | `FileType`
+`FileType`[] \| `FileType`
 
 #### Returns
 
@@ -3604,9 +3604,9 @@ Allow the queue to be updated. After you select a file, update the checksum func
 
 ***
 
-### shouldUpload()?
+### shouldUpload?
 
-> `optional` **shouldUpload**: (`file`) => `boolean` \| `Promise`\<`boolean`\>
+> `optional` **shouldUpload?**: (`file`) => `boolean` \| `Promise`\<`boolean`\>
 
 Allow uploading of files. Check function before file upload, return false without uploading
 
@@ -3628,7 +3628,7 @@ Allow uploading of files. Check function before file upload, return false withou
 
 ### size?
 
-> `optional` **size**: `Size`
+> `optional` **size?**: `Size`
 
 A button can have different sizes
 
@@ -3640,27 +3640,27 @@ A button can have different sizes
 
 ### slot?
 
-> `optional` **slot**: `string`
+> `optional` **slot?**: `string`
 
 #### Inherited from
 
-`UploaderProps.slot`
+[`RsImageProps`](RsImageProps.md).[`slot`](RsImageProps.md#slot)
 
 ***
 
 ### spellCheck?
 
-> `optional` **spellCheck**: `Booleanish`
+> `optional` **spellCheck?**: `Booleanish`
 
 #### Inherited from
 
-`UploaderProps.spellCheck`
+[`RsImageProps`](RsImageProps.md).[`spellCheck`](RsImageProps.md#spellcheck)
 
 ***
 
 ### startIcon?
 
-> `optional` **startIcon**: `ReactNode`
+> `optional` **startIcon?**: `ReactNode`
 
 The icon element placed _before_ the button text
 
@@ -3672,7 +3672,7 @@ The icon element placed _before_ the button text
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 Additional style
 
@@ -3684,37 +3684,37 @@ Additional style
 
 ### suppressContentEditableWarning?
 
-> `optional` **suppressContentEditableWarning**: `boolean`
+> `optional` **suppressContentEditableWarning?**: `boolean`
 
 #### Inherited from
 
-`UploaderProps.suppressContentEditableWarning`
+[`RsImageProps`](RsImageProps.md).[`suppressContentEditableWarning`](RsImageProps.md#suppresscontenteditablewarning)
 
 ***
 
 ### suppressHydrationWarning?
 
-> `optional` **suppressHydrationWarning**: `boolean`
+> `optional` **suppressHydrationWarning?**: `boolean`
 
 #### Inherited from
 
-`UploaderProps.suppressHydrationWarning`
+[`RsImageProps`](RsImageProps.md).[`suppressHydrationWarning`](RsImageProps.md#suppresshydrationwarning)
 
 ***
 
 ### tabIndex?
 
-> `optional` **tabIndex**: `number`
+> `optional` **tabIndex?**: `number`
 
 #### Inherited from
 
-`UploaderProps.tabIndex`
+[`RsImageProps`](RsImageProps.md).[`tabIndex`](RsImageProps.md#tabindex)
 
 ***
 
 ### target?
 
-> `optional` **target**: `string`
+> `optional` **target?**: `string`
 
 Where to display the linked URL
 
@@ -3726,7 +3726,7 @@ Where to display the linked URL
 
 ### timeout?
 
-> `optional` **timeout**: `number`
+> `optional` **timeout?**: `number`
 
 Set upload timeout
 
@@ -3738,17 +3738,17 @@ Set upload timeout
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 #### Inherited from
 
-`UploaderProps.title`
+[`RsImageProps`](RsImageProps.md).[`title`](RsImageProps.md#title)
 
 ***
 
 ### toggleAs?
 
-> `optional` **toggleAs**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **toggleAs?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
@@ -3760,17 +3760,17 @@ You can use a custom element for this component
 
 ### translate?
 
-> `optional` **translate**: `"no"` \| `"yes"`
+> `optional` **translate?**: `"no"` \| `"yes"`
 
 #### Inherited from
 
-`UploaderProps.translate`
+[`RsImageProps`](RsImageProps.md).[`translate`](RsImageProps.md#translate)
 
 ***
 
 ### type?
 
-> `optional` **type**: `"button"` \| `"reset"` \| `"submit"`
+> `optional` **type?**: `"button"` \| `"reset"` \| `"submit"`
 
 Defines HTML button type attribute
 
@@ -3782,37 +3782,37 @@ Defines HTML button type attribute
 
 ### typeof?
 
-> `optional` **typeof**: `string`
+> `optional` **typeof?**: `string`
 
 #### Inherited from
 
-`UploaderProps.typeof`
+[`RsImageProps`](RsImageProps.md).[`typeof`](RsImageProps.md#typeof)
 
 ***
 
 ### unselectable?
 
-> `optional` **unselectable**: `"off"` \| `"on"`
+> `optional` **unselectable?**: `"off"` \| `"on"`
 
 #### Inherited from
 
-`UploaderProps.unselectable`
+[`RsImageProps`](RsImageProps.md).[`unselectable`](RsImageProps.md#unselectable)
 
 ***
 
 ### vocab?
 
-> `optional` **vocab**: `string`
+> `optional` **vocab?**: `string`
 
 #### Inherited from
 
-`UploaderProps.vocab`
+[`RsImageProps`](RsImageProps.md).[`vocab`](RsImageProps.md#vocab)
 
 ***
 
 ### withCredentials?
 
-> `optional` **withCredentials**: `boolean`
+> `optional` **withCredentials?**: `boolean`
 
 Whether to carry cookies when uploading requests
 

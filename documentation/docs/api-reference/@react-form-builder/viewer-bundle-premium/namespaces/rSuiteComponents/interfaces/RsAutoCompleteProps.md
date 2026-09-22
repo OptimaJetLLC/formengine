@@ -10,19 +10,19 @@ The properties of the RsAutoComplete component.
 
 ### appearance?
 
-> `optional` **appearance**: `PickerAppearance`
+> `optional` **appearance?**: `PickerAppearance`
 
 A picker can have different appearances.
 
 #### Inherited from
 
-`AutoCompleteProps.appearance`
+[`RsDropdownProps`](RsDropdownProps.md).[`appearance`](RsDropdownProps.md#appearance)
 
 ***
 
 ### as?
 
-> `optional` **as**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **as?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
@@ -34,7 +34,7 @@ You can use a custom element for this component
 
 ### autoComplete?
 
-> `optional` **autoComplete**: `string`
+> `optional` **autoComplete?**: `string`
 
 AutoComplete Content
 
@@ -46,19 +46,19 @@ AutoComplete Content
 
 ### block?
 
-> `optional` **block**: `boolean`
+> `optional` **block?**: `boolean`
 
 Format picker to appear inside a content block
 
 #### Inherited from
 
-`AutoCompleteProps.block`
+[`RsDropdownProps`](RsDropdownProps.md).[`block`](RsDropdownProps.md#block)
 
 ***
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 Primary content
 
@@ -70,7 +70,7 @@ Primary content
 
 ### childrenKey?
 
-> `optional` **childrenKey**: `string`
+> `optional` **childrenKey?**: `string`
 
 The key to use for setting the children in the data.
 
@@ -82,13 +82,13 @@ children
 
 #### Inherited from
 
-`AutoCompleteProps.childrenKey`
+[`RsDropdownProps`](RsDropdownProps.md).[`childrenKey`](RsDropdownProps.md#childrenkey)
 
 ***
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 The component class name.
 
@@ -100,7 +100,7 @@ The component class name.
 
 ### classPrefix?
 
-> `optional` **classPrefix**: `string`
+> `optional` **classPrefix?**: `string`
 
 The prefix of the component CSS class
 
@@ -112,19 +112,19 @@ The prefix of the component CSS class
 
 ### cleanable?
 
-> `optional` **cleanable**: `boolean`
+> `optional` **cleanable?**: `boolean`
 
 A picker that can clear values
 
 #### Inherited from
 
-`AutoCompleteProps.cleanable`
+[`RsDropdownProps`](RsDropdownProps.md).[`cleanable`](RsDropdownProps.md#cleanable)
 
 ***
 
 ### container?
 
-> `optional` **container**: () => `HTMLElement` \| `HTMLElement`
+> `optional` **container?**: (() => `HTMLElement`) \| `HTMLElement`
 
 Sets the rendering container
 
@@ -136,13 +136,13 @@ Sets the rendering container
 
 ### containerPadding?
 
-> `optional` **containerPadding**: `number`
+> `optional` **containerPadding?**: `number`
 
 Set the padding of the container.
 
 #### Inherited from
 
-`AutoCompleteProps.containerPadding`
+[`RsDropdownProps`](RsDropdownProps.md).[`containerPadding`](RsDropdownProps.md#containerpadding)
 
 ***
 
@@ -160,19 +160,19 @@ The data of the component.
 
 ### defaultOpen?
 
-> `optional` **defaultOpen**: `boolean`
+> `optional` **defaultOpen?**: `boolean`
 
 Initial open menu
 
 #### Inherited from
 
-`AutoCompleteProps.defaultOpen`
+[`RsDropdownProps`](RsDropdownProps.md).[`defaultOpen`](RsDropdownProps.md#defaultopen)
 
 ***
 
 ### defaultValue?
 
-> `optional` **defaultValue**: `string`
+> `optional` **defaultValue?**: `string`
 
 Initial value
 
@@ -184,7 +184,7 @@ Initial value
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 A picker can show it is currently unable to be interacted with
 
@@ -196,7 +196,7 @@ A picker can show it is currently unable to be interacted with
 
 ### disabledItemValues?
 
-> `optional` **disabledItemValues**: `string`[]
+> `optional` **disabledItemValues?**: `string`[]
 
 Disabled items
 
@@ -206,9 +206,9 @@ Disabled items
 
 ***
 
-### filterBy()?
+### filterBy?
 
-> `optional` **filterBy**: (`value`, `item`) => `boolean`
+> `optional` **filterBy?**: (`value`, `item`) => `boolean`
 
 Custom filter function to determine whether the item will be displayed
 
@@ -234,17 +234,17 @@ Custom filter function to determine whether the item will be displayed
 
 ### id?
 
-> `optional` **id**: `string`
+> `optional` **id?**: `string`
 
 #### Inherited from
 
-`AutoCompleteProps.id`
+[`RsDropdownProps`](RsDropdownProps.md).[`id`](RsDropdownProps.md#id)
 
 ***
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 The component label.
 
@@ -252,7 +252,7 @@ The component label.
 
 ### labelKey?
 
-> `optional` **labelKey**: `string`
+> `optional` **labelKey?**: `string`
 
 The key to use for displaying the options in the data.
 
@@ -264,13 +264,13 @@ label
 
 #### Inherited from
 
-`AutoCompleteProps.labelKey`
+[`RsDropdownProps`](RsDropdownProps.md).[`labelKey`](RsDropdownProps.md#labelkey)
 
 ***
 
 ### locale?
 
-> `optional` **locale**: `Partial`\<`any`\>
+> `optional` **locale?**: `Partial`\<`any`\>
 
 Custom locale
 
@@ -282,7 +282,7 @@ Custom locale
 
 ### menuAutoWidth?
 
-> `optional` **menuAutoWidth**: `boolean`
+> `optional` **menuAutoWidth?**: `boolean`
 
 The width of the menu will automatically follow the width of the input box
 
@@ -294,7 +294,7 @@ The width of the menu will automatically follow the width of the input box
 
 ### menuClassName?
 
-> `optional` **menuClassName**: `string`
+> `optional` **menuClassName?**: `string`
 
 Additional classes for menu
 
@@ -306,43 +306,43 @@ Additional classes for menu
 
 ### menuMaxHeight?
 
-> `optional` **menuMaxHeight**: `number`
+> `optional` **menuMaxHeight?**: `number`
 
 Picker menu max Height
 
 #### Inherited from
 
-`AutoCompleteProps.menuMaxHeight`
+[`RsDropdownProps`](RsDropdownProps.md).[`menuMaxHeight`](RsDropdownProps.md#menumaxheight)
 
 ***
 
 ### menuStyle?
 
-> `optional` **menuStyle**: `CSSProperties`
+> `optional` **menuStyle?**: `CSSProperties`
 
 A style to apply to the Menu DOM node.
 
 #### Inherited from
 
-`AutoCompleteProps.menuStyle`
+[`RsDropdownProps`](RsDropdownProps.md).[`menuStyle`](RsDropdownProps.md#menustyle)
 
 ***
 
 ### name?
 
-> `optional` **name**: `string`
+> `optional` **name?**: `string`
 
 Name of the form field
 
 #### Inherited from
 
-`AutoCompleteProps.name`
+[`RsDropdownProps`](RsDropdownProps.md).[`name`](RsDropdownProps.md#name)
 
 ***
 
 ### onBlur?
 
-> `optional` **onBlur**: `FocusEventHandler`\<`Element`\>
+> `optional` **onBlur?**: `FocusEventHandler`\<`Element`\>
 
 Called on blur
 
@@ -352,9 +352,9 @@ Called on blur
 
 ***
 
-### onChange()?
+### onChange?
 
-> `optional` **onChange**: (`value`) => `void`
+> `optional` **onChange?**: (`value`) => `void`
 
 Called after the value has been changed.
 
@@ -376,9 +376,9 @@ the value.
 
 ***
 
-### onClose()?
+### onClose?
 
-> `optional` **onClose**: () => `void`
+> `optional` **onClose?**: () => `void`
 
 Called on close
 
@@ -392,9 +392,9 @@ Called on close
 
 ***
 
-### onEnter()?
+### onEnter?
 
-> `optional` **onEnter**: (`node`) => `void`
+> `optional` **onEnter?**: (`node`) => `void`
 
 Callback fired before the Modal transitions in
 
@@ -414,9 +414,9 @@ Callback fired before the Modal transitions in
 
 ***
 
-### onEntered()?
+### onEntered?
 
-> `optional` **onEntered**: (`node`) => `void`
+> `optional` **onEntered?**: (`node`) => `void`
 
 Callback fired after the Modal finishes transitioning in
 
@@ -436,9 +436,9 @@ Callback fired after the Modal finishes transitioning in
 
 ***
 
-### onEntering()?
+### onEntering?
 
-> `optional` **onEntering**: (`node`) => `void`
+> `optional` **onEntering?**: (`node`) => `void`
 
 Callback fired as the Modal begins to transition in
 
@@ -458,9 +458,9 @@ Callback fired as the Modal begins to transition in
 
 ***
 
-### onExit()?
+### onExit?
 
-> `optional` **onExit**: (`node`) => `void`
+> `optional` **onExit?**: (`node`) => `void`
 
 Callback fired right before the Modal transitions out
 
@@ -480,9 +480,9 @@ Callback fired right before the Modal transitions out
 
 ***
 
-### onExited()?
+### onExited?
 
-> `optional` **onExited**: (`node`) => `void`
+> `optional` **onExited?**: (`node`) => `void`
 
 Callback fired after the Modal finishes transitioning out
 
@@ -502,9 +502,9 @@ Callback fired after the Modal finishes transitioning out
 
 ***
 
-### onExiting()?
+### onExiting?
 
-> `optional` **onExiting**: (`node`) => `void`
+> `optional` **onExiting?**: (`node`) => `void`
 
 Callback fired as the Modal begins to transition out
 
@@ -526,7 +526,7 @@ Callback fired as the Modal begins to transition out
 
 ### onFocus?
 
-> `optional` **onFocus**: `FocusEventHandler`\<`Element`\>
+> `optional` **onFocus?**: `FocusEventHandler`\<`Element`\>
 
 Called on focus
 
@@ -536,9 +536,9 @@ Called on focus
 
 ***
 
-### onKeyDown()?
+### onKeyDown?
 
-> `optional` **onKeyDown**: (`event`) => `void`
+> `optional` **onKeyDown?**: (`event`) => `void`
 
 The callback triggered by keyboard events.
 
@@ -558,9 +558,9 @@ The callback triggered by keyboard events.
 
 ***
 
-### onMenuFocus()?
+### onMenuFocus?
 
-> `optional` **onMenuFocus**: (`focusItemValue`, `event`) => `void`
+> `optional` **onMenuFocus?**: (`focusItemValue`, `event`) => `void`
 
 Called on menu focus
 
@@ -584,9 +584,9 @@ Called on menu focus
 
 ***
 
-### onOpen()?
+### onOpen?
 
-> `optional` **onOpen**: () => `void`
+> `optional` **onOpen?**: () => `void`
 
 Called on open
 
@@ -600,9 +600,9 @@ Called on open
 
 ***
 
-### onSelect()?
+### onSelect?
 
-> `optional` **onSelect**: (`value`, `item`, `event`) => `void`
+> `optional` **onSelect?**: (`value`, `item`, `event`) => `void`
 
 Called when a option is selected
 
@@ -632,7 +632,7 @@ Called when a option is selected
 
 ### open?
 
-> `optional` **open**: `boolean`
+> `optional` **open?**: `boolean`
 
 Open the menu and control it
 
@@ -644,7 +644,7 @@ Open the menu and control it
 
 ### placeholder?
 
-> `optional` **placeholder**: `string`
+> `optional` **placeholder?**: `string`
 
 Placeholder text
 
@@ -656,7 +656,7 @@ Placeholder text
 
 ### placement?
 
-> `optional` **placement**: `Placement`
+> `optional` **placement?**: `Placement`
 
 The placement of component
 
@@ -668,31 +668,31 @@ The placement of component
 
 ### plaintext?
 
-> `optional` **plaintext**: `boolean`
+> `optional` **plaintext?**: `boolean`
 
 Render the control as plain text
 
 #### Inherited from
 
-`AutoCompleteProps.plaintext`
+[`RsDropdownProps`](RsDropdownProps.md).[`plaintext`](RsDropdownProps.md#plaintext)
 
 ***
 
 ### preventOverflow?
 
-> `optional` **preventOverflow**: `boolean`
+> `optional` **preventOverflow?**: `boolean`
 
 Prevent floating element overflow
 
 #### Inherited from
 
-`AutoCompleteProps.preventOverflow`
+[`RsDropdownProps`](RsDropdownProps.md).[`preventOverflow`](RsDropdownProps.md#preventoverflow)
 
 ***
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 Make the control readonly
 
@@ -702,9 +702,9 @@ Make the control readonly
 
 ***
 
-### renderExtraFooter()?
+### renderExtraFooter?
 
-> `optional` **renderExtraFooter**: () => `ReactNode`
+> `optional` **renderExtraFooter?**: () => `ReactNode`
 
 Custom render extra footer
 
@@ -718,9 +718,9 @@ Custom render extra footer
 
 ***
 
-### renderMenu()?
+### renderMenu?
 
-> `optional` **renderMenu**: (`menu`) => `ReactNode`
+> `optional` **renderMenu?**: (`menu`) => `ReactNode`
 
 Customizing the Rendering Menu list
 
@@ -740,9 +740,9 @@ Customizing the Rendering Menu list
 
 ***
 
-### renderMenuItem()?
+### renderMenuItem?
 
-> `optional` **renderMenuItem**: (`label`, `item`) => `ReactNode`
+> `optional` **renderMenuItem?**: (`label`, `item`) => `ReactNode`
 
 Custom selected option
 
@@ -768,7 +768,7 @@ Custom selected option
 
 ### selectOnEnter?
 
-> `optional` **selectOnEnter**: `boolean`
+> `optional` **selectOnEnter?**: `boolean`
 
 When set to false, the Enter key selection function is invalid
 
@@ -780,7 +780,7 @@ When set to false, the Enter key selection function is invalid
 
 ### size?
 
-> `optional` **size**: `Size`
+> `optional` **size?**: `Size`
 
 A component can have different sizes
 
@@ -792,7 +792,7 @@ A component can have different sizes
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 The component styles.
 
@@ -804,19 +804,19 @@ The component styles.
 
 ### toggleAs?
 
-> `optional` **toggleAs**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **toggleAs?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
 #### Inherited from
 
-`AutoCompleteProps.toggleAs`
+[`RsDropdownProps`](RsDropdownProps.md).[`toggleAs`](RsDropdownProps.md#toggleas)
 
 ***
 
 ### value?
 
-> `optional` **value**: `string`
+> `optional` **value?**: `string`
 
 Current value of the component. Creates a controlled component
 
@@ -828,7 +828,7 @@ Current value of the component. Creates a controlled component
 
 ### valueKey?
 
-> `optional` **valueKey**: `string`
+> `optional` **valueKey?**: `string`
 
 The key to use for setting the option value in the data.
 
@@ -840,4 +840,4 @@ value
 
 #### Inherited from
 
-`AutoCompleteProps.valueKey`
+[`RsDropdownProps`](RsDropdownProps.md).[`valueKey`](RsDropdownProps.md#valuekey)

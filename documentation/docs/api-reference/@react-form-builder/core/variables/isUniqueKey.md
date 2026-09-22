@@ -6,9 +6,13 @@ Returns true if the component key is unique across the entire component tree. **
 
 ## Param
 
+**value**
+
 the component key.
 
 ## Param
+
+**store**
 
 the form viewer settings.
 

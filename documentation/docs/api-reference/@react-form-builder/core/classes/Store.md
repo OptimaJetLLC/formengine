@@ -76,7 +76,7 @@ The form.
 
 ### formLoadError?
 
-> `optional` **formLoadError**: `string`
+> `optional` **formLoadError?**: `string`
 
 The loading form error.
 
@@ -92,7 +92,7 @@ the form viewer store settings.
 
 ### getInitialData?
 
-> `readonly` `optional` **getInitialData**: [`GetInitialDataFn`](../type-aliases/GetInitialDataFn.md)
+> `readonly` `optional` **getInitialData?**: [`GetInitialDataFn`](../type-aliases/GetInitialDataFn.md)
 
 the function to get initial data for the Store.
 
@@ -100,7 +100,7 @@ the function to get initial data for the Store.
 
 ### parentStore?
 
-> `readonly` `optional` **parentStore**: `Store`
+> `readonly` `optional` **parentStore?**: `Store`
 
 the form viewer settings, used in templates.
 
@@ -108,7 +108,7 @@ the form viewer settings, used in templates.
 
 ### selectedLanguage?
 
-> `optional` **selectedLanguage**: [`Language`](Language.md)
+> `optional` **selectedLanguage?**: [`Language`](Language.md)
 
 The currently selected language.
 
@@ -116,7 +116,7 @@ The currently selected language.
 
 ### setInitialData?
 
-> `readonly` `optional` **setInitialData**: [`SetInitialDataFn`](../type-aliases/SetInitialDataFn.md)
+> `readonly` `optional` **setInitialData?**: [`SetInitialDataFn`](../type-aliases/SetInitialDataFn.md)
 
 the function for updating initial data.
 
@@ -266,7 +266,7 @@ Clears the form in Form Viewer.
 
 ### createComponentData()
 
-> **createComponentData**(`componentStore`, `deferFieldCalculation`): [`ComponentData`](ComponentData.md)
+> **createComponentData**(`componentStore`, `deferFieldCalculation?`): [`ComponentData`](ComponentData.md)
 
 Creates the element for the component tree. **Internal use only.**
 
@@ -278,7 +278,7 @@ Creates the element for the component tree. **Internal use only.**
 
 the component settings.
 
-##### deferFieldCalculation
+##### deferFieldCalculation?
 
 `boolean` = `false`
 

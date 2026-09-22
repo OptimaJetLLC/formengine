@@ -1,6 +1,6 @@
 # Function: createNonNullableContext()
 
-> **createNonNullableContext**\<`T`\>(`name`, `defaultValue`): \[() => `T`, `Provider`\<`T`\>, `Context`\<`null` \| `T`\>\]
+> **createNonNullableContext**\<`T`\>(`name`, `defaultValue?`): \[() => `T`, `Provider`\<`T`\>, `Context`\<`null` \| `T`\>\]
 
 Creates non-nullable React context. **Internal use only.**
 
@@ -18,11 +18,11 @@ Creates non-nullable React context. **Internal use only.**
 
 the context name.
 
-### defaultValue
+### defaultValue?
+
+`null` \| `T`
 
 the optional default value.
-
-`null` | `T`
 
 ## Returns
 

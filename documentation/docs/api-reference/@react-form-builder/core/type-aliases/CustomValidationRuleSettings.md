@@ -8,7 +8,7 @@ Custom validation rule settings.
 
 ### params?
 
-> `optional` **params**: [`ValidationRuleParameter`](ValidationRuleParameter.md)[]
+> `optional` **params?**: [`ValidationRuleParameter`](ValidationRuleParameter.md)[]
 
 Metadata of validation rule parameters.
 

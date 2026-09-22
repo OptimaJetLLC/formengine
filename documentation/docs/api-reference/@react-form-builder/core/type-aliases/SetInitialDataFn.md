@@ -1,4 +1,4 @@
-# Type Alias: SetInitialDataFn()
+# Type Alias: SetInitialDataFn
 
 > **SetInitialDataFn** = (`key`, `value`) => `void`
 
@@ -8,7 +8,7 @@ Sets the initial data.
 
 ### key
 
-`number` | `string`
+`number` \| `string`
 
 ### value
 

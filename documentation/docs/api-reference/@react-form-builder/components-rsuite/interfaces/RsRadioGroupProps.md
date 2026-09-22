@@ -10,7 +10,7 @@ Props for the RsRadioGroup component.
 
 ### appearance?
 
-> `optional` **appearance**: `"default"` \| `"picker"`
+> `optional` **appearance?**: `"default"` \| `"picker"`
 
 A radio group can have different appearances
 
@@ -22,7 +22,7 @@ A radio group can have different appearances
 
 ### as?
 
-> `optional` **as**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **as?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
@@ -34,7 +34,7 @@ You can use a custom element for this component
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 Primary content
 
@@ -46,7 +46,7 @@ Primary content
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 Additional classes
 
@@ -58,7 +58,7 @@ Additional classes
 
 ### classPrefix?
 
-> `optional` **classPrefix**: `string`
+> `optional` **classPrefix?**: `string`
 
 The prefix of the component CSS class
 
@@ -70,7 +70,7 @@ The prefix of the component CSS class
 
 ### defaultValue?
 
-> `optional` **defaultValue**: `string`
+> `optional` **defaultValue?**: `string`
 
 Initial value
 
@@ -82,7 +82,7 @@ Initial value
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 Set the component to be disabled and cannot be entered
 
@@ -94,7 +94,7 @@ Set the component to be disabled and cannot be entered
 
 ### inline?
 
-> `optional` **inline**: `boolean`
+> `optional` **inline?**: `boolean`
 
 Inline layout
 
@@ -114,7 +114,7 @@ The items for the radio group.
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 The label for the radio group.
 
@@ -122,7 +122,7 @@ The label for the radio group.
 
 ### name?
 
-> `optional` **name**: `string`
+> `optional` **name?**: `string`
 
 Name to use for form
 
@@ -132,9 +132,9 @@ Name to use for form
 
 ***
 
-### onChange()?
+### onChange?
 
-> `optional` **onChange**: (`value`) => `void`
+> `optional` **onChange?**: (`value`) => `void`
 
 Called after the value has been changed.
 
@@ -158,7 +158,7 @@ the value.
 
 ### plaintext?
 
-> `optional` **plaintext**: `boolean`
+> `optional` **plaintext?**: `boolean`
 
 Render the control as plain text
 
@@ -170,7 +170,7 @@ Render the control as plain text
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 Make the control readonly
 
@@ -182,7 +182,7 @@ Make the control readonly
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 Additional style
 
@@ -194,7 +194,7 @@ Additional style
 
 ### value?
 
-> `optional` **value**: `string`
+> `optional` **value?**: `string`
 
 Current value of the component. Creates a controlled component
 

@@ -4,11 +4,11 @@
 
 Props for the MuiTextField component.
 
-## Type declaration
+## Type Declaration
 
-### onChange()?
+### onChange?
 
-> `optional` **onChange**: (`value`) => `void`
+> `optional` **onChange?**: (`value`) => `void`
 
 Callback function when the text field value changes.
 
@@ -24,6 +24,6 @@ Callback function when the text field value changes.
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 If true, the form control will be read-only.

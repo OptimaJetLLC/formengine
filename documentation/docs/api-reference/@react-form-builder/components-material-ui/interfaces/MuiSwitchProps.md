@@ -10,7 +10,7 @@ Props for the MuiSwitch component.
 
 ### checked?
 
-> `optional` **checked**: `boolean`
+> `optional` **checked?**: `boolean`
 
 If `true`, the component is checked.
 
@@ -22,7 +22,7 @@ If `true`, the component is checked.
 
 ### color?
 
-> `optional` **color**: `OverridableStringUnion`\<`"default"` \| `"error"` \| `"info"` \| `"primary"` \| `"secondary"` \| `"success"` \| `"warning"`, `SwitchPropsColorOverrides`\>
+> `optional` **color?**: `OverridableStringUnion`\<`"default"` \| `"error"` \| `"info"` \| `"primary"` \| `"secondary"` \| `"success"` \| `"warning"`, `SwitchPropsColorOverrides`\>
 
 The color of the component.
 It supports both default and custom theme colors, which can be added as shown in the
@@ -42,7 +42,7 @@ It supports both default and custom theme colors, which can be added as shown in
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 If `true`, the component is disabled.
 
@@ -54,13 +54,13 @@ If `true`, the component is disabled.
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 The label for the radio checkbox.
 
 ***
 
-### onChange()
+### onChange
 
 > **onChange**: (`checked?`) => `void`
 
@@ -80,7 +80,7 @@ Callback fired when the checkbox state changes.
 
 ### size?
 
-> `optional` **size**: `OverridableStringUnion`\<`"medium"` \| `"small"`, `SwitchPropsSizeOverrides`\>
+> `optional` **size?**: `OverridableStringUnion`\<`"medium"` \| `"small"`, `SwitchPropsSizeOverrides`\>
 
 The size of the component.
 `small` is equivalent to the dense switch styling.

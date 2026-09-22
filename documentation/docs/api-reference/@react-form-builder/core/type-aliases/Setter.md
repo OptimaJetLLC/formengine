@@ -1,4 +1,4 @@
-# Type Alias: Setter()\<T\>
+# Type Alias: Setter\<T\>
 
 > **Setter**\<`T`\> = (`value`) => `void`
 

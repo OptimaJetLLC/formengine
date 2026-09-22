@@ -1,4 +1,4 @@
-# Type Alias: SchemaResolver()\<T\>
+# Type Alias: SchemaResolver\<T\>
 
 > **SchemaResolver**\<`T`\> = (`value`) => [`ResolvedValidator`](ResolvedValidator.md)
 

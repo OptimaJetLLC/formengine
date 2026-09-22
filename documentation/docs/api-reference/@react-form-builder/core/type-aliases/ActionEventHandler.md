@@ -1,4 +1,4 @@
-# Type Alias: ActionEventHandler()
+# Type Alias: ActionEventHandler
 
 > **ActionEventHandler** = (`e`, `args?`) => `Promise`\<`void`\> \| `void`
 

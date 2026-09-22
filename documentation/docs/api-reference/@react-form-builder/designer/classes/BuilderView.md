@@ -42,15 +42,15 @@ The array of metadata of form builder components.
 
 ### i18nDescriptions?
 
-> `optional` **i18nDescriptions**: `Record`\<`` `${string}-${string}` ``, [`ComponentLibraryDescription`](../../core/type-aliases/ComponentLibraryDescription.md)\>[]
+> `optional` **i18nDescriptions?**: `Record`\<`` `${string}-${string}` ``, [`ComponentLibraryDescription`](../../core/type-aliases/ComponentLibraryDescription.md)\>[]
 
 The description of the component library in different languages.
 
 ***
 
-### paletteFilter()?
+### paletteFilter?
 
-> `optional` **paletteFilter**: (`builderComponent`) => `boolean`
+> `optional` **paletteFilter?**: (`builderComponent`) => `boolean`
 
 The function for filtering components on the component palette.
 

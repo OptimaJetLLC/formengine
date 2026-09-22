@@ -1,4 +1,4 @@
-# Variable: FormBuilder()
+# Variable: FormBuilder
 
 > `const` **FormBuilder**: (`props`) => `Element`
 

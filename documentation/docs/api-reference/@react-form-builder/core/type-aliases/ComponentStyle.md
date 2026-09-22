@@ -8,7 +8,7 @@ The type for the style property of a React component.
 
 ### any?
 
-> `optional` **any**: [`ComponentDeviceStyle`](ComponentDeviceStyle.md)
+> `optional` **any?**: [`ComponentDeviceStyle`](ComponentDeviceStyle.md)
 
 Styles for an arbitrary device.
 
@@ -16,7 +16,7 @@ Styles for an arbitrary device.
 
 ### desktop?
 
-> `optional` **desktop**: [`ComponentDeviceStyle`](ComponentDeviceStyle.md)
+> `optional` **desktop?**: [`ComponentDeviceStyle`](ComponentDeviceStyle.md)
 
 Styles for desktop devices.
 
@@ -24,7 +24,7 @@ Styles for desktop devices.
 
 ### mobile?
 
-> `optional` **mobile**: [`ComponentDeviceStyle`](ComponentDeviceStyle.md)
+> `optional` **mobile?**: [`ComponentDeviceStyle`](ComponentDeviceStyle.md)
 
 Styles for mobile devices.
 
@@ -32,6 +32,6 @@ Styles for mobile devices.
 
 ### tablet?
 
-> `optional` **tablet**: [`ComponentDeviceStyle`](ComponentDeviceStyle.md)
+> `optional` **tablet?**: [`ComponentDeviceStyle`](ComponentDeviceStyle.md)
 
 Styles for tablet devices.

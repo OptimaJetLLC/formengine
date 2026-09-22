@@ -4,7 +4,7 @@ Field with the form data.
 
 ## Properties
 
-### clear()
+### clear
 
 > **clear**: () => `void`
 
@@ -16,7 +16,7 @@ Clears the data in the field.
 
 ***
 
-### dispose()
+### dispose
 
 > **dispose**: () => `void`
 
@@ -30,7 +30,7 @@ Releases allocated resources, must be used when destroying an object instance.
 
 ### error?
 
-> `optional` **error**: `string`
+> `optional` **error?**: `string`
 
 Contains a field validation error if the field data is not valid.
 
@@ -38,7 +38,7 @@ Contains a field validation error if the field data is not valid.
 
 ### errors?
 
-> `optional` **errors**: `Record`\<`string`, `unknown`\>[] \| `Record`\<`string`, `unknown`\>
+> `optional` **errors?**: `Record`\<`string`, `unknown`\>[] \| `Record`\<`string`, `unknown`\>
 
 Contains a field validation errors if the field provides multiple errors (i.e. field is template).
 Contains an array of field validation errors if the field contains an array of components.
@@ -53,7 +53,7 @@ The field type.
 
 ***
 
-### getValidationResult()
+### getValidationResult
 
 > **getValidationResult**: () => `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)[] \| [`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
 
@@ -67,7 +67,7 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 
 ***
 
-### init()
+### init
 
 > **init**: () => `void`
 
@@ -79,7 +79,7 @@ Initializes the value of the field.
 
 ***
 
-### reset()
+### reset
 
 > **reset**: () => `void`
 
@@ -91,7 +91,7 @@ Sets the field to its default value.
 
 ***
 
-### setError()
+### setError
 
 > **setError**: (`error`) => `void`
 
@@ -111,7 +111,7 @@ The error value to be set.
 
 ***
 
-### setTouched()
+### setTouched
 
 > **setTouched**: () => `void`
 
@@ -123,7 +123,7 @@ Marks the field as touched.
 
 ***
 
-### setValue()
+### setValue
 
 > **setValue**: (`value`) => `void`
 
@@ -145,7 +145,7 @@ the value.
 
 ### storeDataInParentForm?
 
-> `optional` **storeDataInParentForm**: `boolean`
+> `optional` **storeDataInParentForm?**: `boolean`
 
 Flag, false if nested form data show as nested object, true otherwise.
 
@@ -159,7 +159,7 @@ Flag, true, if the field is marked as touched.
 
 ***
 
-### validate()
+### validate
 
 > **validate**: () => `Promise`\<`void`\>
 

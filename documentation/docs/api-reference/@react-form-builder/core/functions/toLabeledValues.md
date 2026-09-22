@@ -1,6 +1,6 @@
 # Function: toLabeledValues()
 
-> **toLabeledValues**(`items`, `upper`): [`LabeledValue`](../interfaces/LabeledValue.md)[]
+> **toLabeledValues**(`items`, `upper?`): [`LabeledValue`](../interfaces/LabeledValue.md)[]
 
 Converts the array of elements into the array of [LabeledValue](../interfaces/LabeledValue.md) elements.
 
@@ -12,7 +12,7 @@ Converts the array of elements into the array of [LabeledValue](../interfaces/La
 
 the array of elements.
 
-### upper
+### upper?
 
 `boolean` = `true`
 

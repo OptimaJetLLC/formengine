@@ -1,4 +1,4 @@
-# Variable: useFormBuilder()
+# Variable: useFormBuilder
 
 > **useFormBuilder**: () => [`IFormBuilder`](../interfaces/IFormBuilder.md)
 

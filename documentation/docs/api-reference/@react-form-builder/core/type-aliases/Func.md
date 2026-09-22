@@ -1,4 +1,4 @@
-# Type Alias: Func()
+# Type Alias: Func
 
 > **Func** = (...`arg`) => `Promise`\<`void`\> \| `void`
 

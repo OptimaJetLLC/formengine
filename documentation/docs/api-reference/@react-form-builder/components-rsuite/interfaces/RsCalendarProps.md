@@ -10,7 +10,7 @@ Props for the RsCalendar component.
 
 ### as?
 
-> `optional` **as**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **as?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
@@ -22,7 +22,7 @@ You can use a custom element for this component
 
 ### bordered?
 
-> `optional` **bordered**: `boolean`
+> `optional` **bordered?**: `boolean`
 
 Show border
 
@@ -32,9 +32,9 @@ Show border
 
 ***
 
-### cellClassName()?
+### cellClassName?
 
-> `optional` **cellClassName**: (`date`) => `string` \| `undefined`
+> `optional` **cellClassName?**: (`date`) => `string` \| `undefined`
 
 Custom cell classes base on it's date
 
@@ -56,7 +56,7 @@ Custom cell classes base on it's date
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 Primary content
 
@@ -68,7 +68,7 @@ Primary content
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 Additional classes
 
@@ -80,7 +80,7 @@ Additional classes
 
 ### classPrefix?
 
-> `optional` **classPrefix**: `string`
+> `optional` **classPrefix?**: `string`
 
 The prefix of the component CSS class
 
@@ -92,7 +92,7 @@ The prefix of the component CSS class
 
 ### compact?
 
-> `optional` **compact**: `boolean`
+> `optional` **compact?**: `boolean`
 
 Display a compact calendar
 
@@ -104,7 +104,7 @@ Display a compact calendar
 
 ### defaultValue?
 
-> `optional` **defaultValue**: `Date`
+> `optional` **defaultValue?**: `Date`
 
 Default value
 
@@ -116,7 +116,7 @@ Default value
 
 ### isoWeek?
 
-> `optional` **isoWeek**: `boolean`
+> `optional` **isoWeek?**: `boolean`
 
 ISO 8601 standard, each calendar week begins on Monday and Sunday on the seventh day
 
@@ -132,7 +132,7 @@ https://en.wikipedia.org/wiki/ISO_week_date
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 Label for the calendar.
 
@@ -140,7 +140,7 @@ Label for the calendar.
 
 ### locale?
 
-> `optional` **locale**: `CalendarLocale`
+> `optional` **locale?**: `CalendarLocale`
 
 Custom locale object
 
@@ -156,7 +156,7 @@ https://rsuitejs.com/guide/i18n/#calendar
 
 ### monthDropdownProps?
 
-> `optional` **monthDropdownProps**: `MonthDropdownProps`
+> `optional` **monthDropdownProps?**: `MonthDropdownProps`
 
 The props for the Month Dropdown component.
 
@@ -166,9 +166,9 @@ The props for the Month Dropdown component.
 
 ***
 
-### onChange()?
+### onChange?
 
-> `optional` **onChange**: (`date`) => `void`
+> `optional` **onChange?**: (`date`) => `void`
 
 Callback fired before the value changed
 
@@ -188,12 +188,11 @@ Callback fired before the value changed
 
 ***
 
-### onMonthChange()?
+### onMonthChange?
 
-> `optional` **onMonthChange**: (`date`) => `void`
+> `optional` **onMonthChange?**: (`date`) => `void`
 
 Callback fired before the month changed
-@todo-Doma Change signature to `onMonthChange(year: number, month: number, reason: string)`?
 
 #### Parameters
 
@@ -205,15 +204,19 @@ Callback fired before the month changed
 
 `void`
 
+#### Todo-Doma
+
+Change signature to `onMonthChange(year: number, month: number, reason: string)`?
+
 #### Inherited from
 
 `CalendarProps.onMonthChange`
 
 ***
 
-### onSelect()?
+### onSelect?
 
-> `optional` **onSelect**: (`date`) => `void`
+> `optional` **onSelect?**: (`date`) => `void`
 
 Callback fired before the date selected
 
@@ -241,9 +244,9 @@ Whether the calendar is read only.
 
 ***
 
-### renderCell()?
+### renderCell?
 
-> `optional` **renderCell**: (`date`) => `ReactNode`
+> `optional` **renderCell?**: (`date`) => `ReactNode`
 
 Custom render calendar cells
 
@@ -265,7 +268,7 @@ Custom render calendar cells
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 Additional style
 
@@ -277,7 +280,7 @@ Additional style
 
 ### value?
 
-> `optional` **value**: `Date`
+> `optional` **value?**: `Date`
 
 Controlled value
 
@@ -289,7 +292,7 @@ Controlled value
 
 ### weekStart?
 
-> `optional` **weekStart**: `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6`
+> `optional` **weekStart?**: `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6`
 
 The index of the first day of the week (0 - Sunday)
 If `isoWeek` is `true`, the value of `weekStart` is ignored.

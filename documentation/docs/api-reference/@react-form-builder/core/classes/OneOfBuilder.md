@@ -45,7 +45,7 @@ Partial metadata for a component property.
 
 ### labels?
 
-> `optional` **labels**: `string`[]
+> `optional` **labels?**: `string`[]
 
 Labels for the possible values of the property.
 

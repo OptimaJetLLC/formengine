@@ -1,4 +1,4 @@
-# Variable: useBuilderTheme()
+# Variable: useBuilderTheme
 
 > **useBuilderTheme**: () => [`BuilderTheme`](../type-aliases/BuilderTheme.md)
 

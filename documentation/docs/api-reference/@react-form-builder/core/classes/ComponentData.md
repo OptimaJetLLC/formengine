@@ -64,7 +64,7 @@ The state of the component. **Internal use only.
 
 ### dataRootProvider?
 
-> `optional` **dataRootProvider**: [`IDataRootProvider`](../interfaces/IDataRootProvider.md)
+> `optional` **dataRootProvider?**: [`IDataRootProvider`](../interfaces/IDataRootProvider.md)
 
 Specifies the root component for the data in the component tree. **Internal use only.**
 
@@ -72,15 +72,15 @@ Specifies the root component for the data in the component tree. **Internal use 
 
 ### field?
 
-> `optional` **field**: [`Field`](../interfaces/Field.md)
+> `optional` **field?**: [`Field`](../interfaces/Field.md)
 
 The field with the form data.
 
 ***
 
-### getInitialData()?
+### getInitialData?
 
-> `optional` **getInitialData**: () => `unknown`
+> `optional` **getInitialData?**: () => `unknown`
 
 The function for getting initial data. **Internal use only.**
 
@@ -100,7 +100,7 @@ The unique identifier.
 
 ### index?
 
-> `optional` **index**: `number`
+> `optional` **index?**: `number`
 
 Specifies the index in the array if the component is in the component array.
 This is not an index in a parent-child structure.
@@ -121,7 +121,7 @@ The component metadata.
 
 ### parent?
 
-> `optional` **parent**: `ComponentData`
+> `optional` **parent?**: `ComponentData`
 
 The parent node in the component data tree.
 
@@ -129,7 +129,7 @@ The parent node in the component data tree.
 
 ### setInitialData?
 
-> `optional` **setInitialData**: [`SetInitialDataFn`](../type-aliases/SetInitialDataFn.md)
+> `optional` **setInitialData?**: [`SetInitialDataFn`](../type-aliases/SetInitialDataFn.md)
 
 The function for updating initial data. **Internal use only.**
 
@@ -145,7 +145,7 @@ The component settings.
 
 ### userDefinedProps?
 
-> `optional` **userDefinedProps**: `Record`\<`string`, `any`\>
+> `optional` **userDefinedProps?**: `Record`\<`string`, `any`\>
 
 User defined properties of the React component.
 
@@ -474,11 +474,11 @@ Sets state object.
 
 ### clear()
 
-> **clear**(`clearInitialData`): `void`
+> **clear**(`clearInitialData?`): `void`
 
 #### Parameters
 
-##### clearInitialData
+##### clearInitialData?
 
 `boolean` = `true`
 
@@ -611,11 +611,11 @@ the node to insert.
 
 ### reset()
 
-> **reset**(`clearInitialData`): `void`
+> **reset**(`clearInitialData?`): `void`
 
 #### Parameters
 
-##### clearInitialData
+##### clearInitialData?
 
 `boolean` = `true`
 
@@ -717,9 +717,9 @@ Updates the initial data. **Internal use only.**
 
 ##### key
 
-the initial data key.
+`number` \| `string`
 
-`number` | `string`
+the initial data key.
 
 ##### value
 

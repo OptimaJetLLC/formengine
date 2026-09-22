@@ -13,7 +13,7 @@ Properties of the React component that wraps the form view component and display
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 The wrapped component.
 
@@ -21,7 +21,7 @@ The wrapped component.
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 The CSS class name.
 
@@ -29,6 +29,6 @@ The CSS class name.
 
 ### error?
 
-> `optional` **error**: `string`
+> `optional` **error?**: `string`
 
 The error text.

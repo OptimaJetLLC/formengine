@@ -1,4 +1,4 @@
-# Variable: useStore()
+# Variable: useStore
 
 > **useStore**: () => [`Store`](../classes/Store.md)
 

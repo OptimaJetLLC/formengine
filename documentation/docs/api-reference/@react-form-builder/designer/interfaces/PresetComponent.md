@@ -6,7 +6,7 @@ The preset component settings.
 
 ### category?
 
-> `optional` **category**: `string`
+> `optional` **category?**: `string`
 
 The category of the preset component.
 

@@ -8,7 +8,7 @@ Represents the marker data on the map.
 
 ### address?
 
-> `optional` **address**: [`Address`](Address.md)
+> `optional` **address?**: [`Address`](Address.md)
 
 The address of the location.
 
@@ -32,7 +32,7 @@ Latitude and longitude of the geographical location.
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 The title of the marker.
 

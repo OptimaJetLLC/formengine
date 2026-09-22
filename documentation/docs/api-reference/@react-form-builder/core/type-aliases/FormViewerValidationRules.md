@@ -8,7 +8,7 @@ Validation rules for FormViewer.
 
 ### custom?
 
-> `optional` **custom**: [`CustomValidationRules`](CustomValidationRules.md)
+> `optional` **custom?**: [`CustomValidationRules`](CustomValidationRules.md)
 
 The set of custom validators.
 

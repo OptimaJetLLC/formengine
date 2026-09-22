@@ -9,7 +9,7 @@ Used for add a new action, store information about it.
 
 ### \[KeySymbol\]?
 
-> `optional` **\[KeySymbol\]**: `string`
+> `optional` **\[KeySymbol\]?**: `string`
 
 The unique action key.
 
@@ -17,7 +17,7 @@ The unique action key.
 
 ### args?
 
-> `optional` **args**: [`Arguments`](Arguments.md)
+> `optional` **args?**: [`Arguments`](Arguments.md)
 
 The action arguments.
 

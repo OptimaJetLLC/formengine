@@ -8,7 +8,7 @@ Describes the settings of the validation rule parameter.
 
 ### default?
 
-> `optional` **default**: `unknown`
+> `optional` **default?**: `unknown`
 
 The default value.
 
@@ -16,7 +16,7 @@ The default value.
 
 ### editorType?
 
-> `optional` **editorType**: `string`
+> `optional` **editorType?**: `string`
 
 The editor type of the setting value.
 

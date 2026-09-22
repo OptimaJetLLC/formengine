@@ -1,4 +1,4 @@
-# Variable: oneOf()
+# Variable: oneOf
 
 > `const` **oneOf**: \<`U`\>(...`values`) => [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`U`\>
 

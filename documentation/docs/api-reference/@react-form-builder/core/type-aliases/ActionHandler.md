@@ -1,4 +1,4 @@
-# Type Alias: ActionHandler()\<T\>
+# Type Alias: ActionHandler\<T\>
 
 > **ActionHandler**\<`T`\> = (`e`, `params`) => `Promise`\<`void`\> \| `void`
 

@@ -4,9 +4,9 @@ Component metadata event listeners.
 
 ## Properties
 
-### onCreateNode()?
+### onCreateNode?
 
-> `optional` **onCreateNode**: (`node`, `store`) => `void`
+> `optional` **onCreateNode?**: (`node`, `store`) => `void`
 
 The callback function that is called when a component is created and added to a form.
 
@@ -30,9 +30,9 @@ the form viewer settings.
 
 ***
 
-### onSelectNode()?
+### onSelectNode?
 
-> `optional` **onSelectNode**: (`node`, `self`) => `void`
+> `optional` **onSelectNode?**: (`node`, `self`) => `void`
 
 The callback function that is called when the component is selected.
 

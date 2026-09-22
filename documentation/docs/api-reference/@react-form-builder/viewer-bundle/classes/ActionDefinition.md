@@ -38,7 +38,7 @@ the parameters of the Action.
 
 ### body?
 
-> `readonly` `optional` **body**: `string`
+> `readonly` `optional` **body?**: `string`
 
 the source code of the Action.
 
@@ -84,7 +84,7 @@ the ActionDefinition instance.
 
 ### functionalAction()
 
-> `static` **functionalAction**(`func`, `params`): `ActionDefinition`
+> `static` **functionalAction**(`func`, `params?`): `ActionDefinition`
 
 Creates an action from the function.
 
@@ -96,7 +96,7 @@ Creates an action from the function.
 
 the function of an action.
 
-##### params
+##### params?
 
 [`ActionParameters`](../../core/type-aliases/ActionParameters.md) = `{}`
 
@@ -112,7 +112,7 @@ the new instance of the ActionDefinition class.
 
 ### sourceAction()
 
-> `static` **sourceAction**(`body`, `params`): `ActionDefinition`
+> `static` **sourceAction**(`body`, `params?`): `ActionDefinition`
 
 Creates an action from the source code.
 
@@ -124,7 +124,7 @@ Creates an action from the source code.
 
 the source code of the Action.
 
-##### params
+##### params?
 
 [`ActionParameters`](../../core/type-aliases/ActionParameters.md) = `{}`
 

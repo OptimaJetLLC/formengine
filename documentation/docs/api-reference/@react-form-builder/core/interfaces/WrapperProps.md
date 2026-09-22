@@ -21,6 +21,6 @@ The React child node.
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 The CSS class name.

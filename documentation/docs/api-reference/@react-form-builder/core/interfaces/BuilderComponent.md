@@ -7,7 +7,7 @@ Contains metadata for the form builder and metadata for the form viewer.
 
 ### category?
 
-> `readonly` `optional` **category**: `string`
+> `readonly` `optional` **category?**: `string`
 
 The name of the component category in the designer.
 

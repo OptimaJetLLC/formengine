@@ -6,13 +6,13 @@ Calculable result.
 
 ### Constructor
 
-> **new CalculableResult**(`error`, `result?`, `exceptions?`, `warning?`): `CalculableResult`
+> **new CalculableResult**(`error?`, `result?`, `exceptions?`, `warning?`): `CalculableResult`
 
 Constructor.
 
 #### Parameters
 
-##### error
+##### error?
 
 `boolean` = `false`
 
@@ -52,7 +52,7 @@ the error.
 
 ### exceptions?
 
-> `readonly` `optional` **exceptions**: `Error`[]
+> `readonly` `optional` **exceptions?**: `Error`[]
 
 the exceptions.
 
@@ -60,7 +60,7 @@ the exceptions.
 
 ### result?
 
-> `readonly` `optional` **result**: `any`
+> `readonly` `optional` **result?**: `any`
 
 the result.
 
@@ -68,7 +68,7 @@ the result.
 
 ### warning?
 
-> `readonly` `optional` **warning**: `boolean`
+> `readonly` `optional` **warning?**: `boolean`
 
 the warning.
 

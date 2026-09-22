@@ -1,4 +1,4 @@
-# Type Alias: OnSuccess()
+# Type Alias: OnSuccess
 
 > **OnSuccess** = (`files`) => `void`
 

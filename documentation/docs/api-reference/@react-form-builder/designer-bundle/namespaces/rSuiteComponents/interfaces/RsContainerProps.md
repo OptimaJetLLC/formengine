@@ -6,7 +6,7 @@ Props for the RsContainer component.
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 Children elements of the container.
 
@@ -14,7 +14,7 @@ Children elements of the container.
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 CSS class name.
 
@@ -22,7 +22,7 @@ CSS class name.
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 Whether the container is disabled.
 
@@ -30,6 +30,6 @@ Whether the container is disabled.
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 Whether the container is read only.

@@ -6,7 +6,7 @@ The i18n data of the form builder.
 
 ## Properties
 
-### getData()
+### getData
 
 > **getData**: (`languageFullCode`) => `Promise`\<[`FormBuilderI18nData`](FormBuilderI18nData.md)\>
 

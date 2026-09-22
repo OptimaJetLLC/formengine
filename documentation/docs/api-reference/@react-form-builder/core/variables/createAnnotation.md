@@ -1,4 +1,4 @@
-# Variable: createAnnotation()
+# Variable: createAnnotation
 
 > `const` **createAnnotation**: \<`T`\>(`editor`) => [`AnnotationBuilder`](../classes/AnnotationBuilder.md)\<`T`\> = `AnnotationBuilder.create`
 

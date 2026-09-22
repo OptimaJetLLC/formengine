@@ -4,7 +4,7 @@ The interface for accessing the form data.
 
 ## Properties
 
-### clear()
+### clear
 
 > **clear**: (`clearInitialData?`) => `void`
 
@@ -30,7 +30,7 @@ true
 
 ***
 
-### getValidationResult()
+### getValidationResult
 
 > **getValidationResult**: () => `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
 
@@ -46,7 +46,7 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 
 ### index?
 
-> `optional` **index**: `number`
+> `optional` **index?**: `number`
 
 #### Returns
 
@@ -54,7 +54,7 @@ the index in the array if the component is in the component array.
 
 ***
 
-### reset()
+### reset
 
 > **reset**: (`clearInitialData?`) => `void`
 
@@ -80,7 +80,7 @@ true
 
 ***
 
-### setAllErrors()
+### setAllErrors
 
 > **setAllErrors**: (`message?`) => `void`
 
@@ -100,7 +100,7 @@ the validation error message.
 
 ***
 
-### validate()
+### validate
 
 > **validate**: () => `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
 

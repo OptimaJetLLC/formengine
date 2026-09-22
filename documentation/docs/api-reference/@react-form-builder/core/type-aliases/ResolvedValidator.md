@@ -1,4 +1,4 @@
-# Type Alias: ResolvedValidator()
+# Type Alias: ResolvedValidator
 
 > **ResolvedValidator** = (`value`, `store`, `getFormData?`) => `Promise`\<[`ValidationResult`](ValidationResult.md)[] \| `undefined`\>
 

@@ -20,6 +20,8 @@ Definer class data.
 
 #### Template
 
+**T**
+
 React component property type.
 
 ## Methods
@@ -148,13 +150,13 @@ the modified Definer class instance.
 
 ### disableRemove()
 
-> **disableRemove**(`value`): `Definer`\<`T`\>
+> **disableRemove**(`value?`): `Definer`\<`T`\>
 
 Prevent this component from being removed.
 
 #### Parameters
 
-##### value
+##### value?
 
 `boolean` = `true`
 
@@ -204,13 +206,13 @@ the component type name.
 
 ### hideActionEditors()
 
-> **hideActionEditors**(`value`): `Definer`\<`T`\>
+> **hideActionEditors**(`value?`): `Definer`\<`T`\>
 
 Hides or shows the 'Actions' editors.
 
 #### Parameters
 
-##### value
+##### value?
 
 `boolean` = `true`
 
@@ -226,13 +228,13 @@ the modified Definer class instance.
 
 ### hideFromComponentPalette()
 
-> **hideFromComponentPalette**(`value`): `Definer`\<`T`\>
+> **hideFromComponentPalette**(`value?`): `Definer`\<`T`\>
 
 Hides a component from the component palette.
 
 #### Parameters
 
-##### value
+##### value?
 
 `boolean` = `true`
 
@@ -248,13 +250,13 @@ the modified Definer class instance.
 
 ### hideTooltipEditor()
 
-> **hideTooltipEditor**(`value`): `Definer`\<`T`\>
+> **hideTooltipEditor**(`value?`): `Definer`\<`T`\>
 
 Show or hide 'Tooltip' properties editor.
 
 #### Parameters
 
-##### value
+##### value?
 
 `boolean` = `true`
 
@@ -278,9 +280,9 @@ Sets the icon of the component.
 
 ##### icon
 
-the component icon or the icon name.
+`"Breadcrumb"` \| `"Button"` \| `"Card"` \| `"Checkbox"` \| `"CollectionEditor"` \| `ComponentType` \| `"Container"` \| `"Content"` \| `"CustomBlock"` \| `"CustomControl"` \| `"DatePicker"` \| `"Default"` \| `"Dropdown"` \| `"Dropzone"` \| `"ErrorMessage"` \| `"Footer"` \| `"Grid"` \| `"GridLayout"` \| `"GridView"` \| `"Header"` \| `"Image"` \| `"Input"` \| `"Label"` \| `"Link"` \| `"Menu"` \| `"Message"` \| `"NumberFormat"` \| `"PatternFormat"` \| `"ProgressCircle"` \| `"ProgressLine"` \| `"RadioGroup"` \| `"Repeater"` \| `"RichTextEditor"` \| `"Search"` \| `"Sidebar"` \| `"Signature"` \| `"Sparks"` \| `"StaticContent"` \| `"Tab"` \| `"TextArea"` \| `"TimePicker"` \| `"Toggle"` \| `"Tooltip"` \| `"TreePicker"` \| `"Uploader"`
 
-`"Breadcrumb"` | `"Button"` | `"Card"` | `"Checkbox"` | `"CollectionEditor"` | `ComponentType` | `"Container"` | `"Content"` | `"CustomBlock"` | `"CustomControl"` | `"DatePicker"` | `"Default"` | `"Dropdown"` | `"Dropzone"` | `"ErrorMessage"` | `"Footer"` | `"Grid"` | `"GridLayout"` | `"GridView"` | `"Header"` | `"Image"` | `"Input"` | `"Label"` | `"Link"` | `"Menu"` | `"Message"` | `"NumberFormat"` | `"PatternFormat"` | `"ProgressCircle"` | `"ProgressLine"` | `"RadioGroup"` | `"Repeater"` | `"RichTextEditor"` | `"Search"` | `"Sidebar"` | `"Signature"` | `"Sparks"` | `"StaticContent"` | `"Tab"` | `"TextArea"` | `"TimePicker"` | `"Toggle"` | `"Tooltip"` | `"TreePicker"` | `"Uploader"`
+the component icon or the icon name.
 
 #### Returns
 
@@ -468,14 +470,14 @@ the modified Definer class instance.
 
 ### skipChildrenDuringFieldCollection()
 
-> **skipChildrenDuringFieldCollection**(`value`): `Definer`\<`T`\>
+> **skipChildrenDuringFieldCollection**(`value?`): `Definer`\<`T`\>
 
 Hides child components from the field collection.
 It is used when components are dynamically added to the form, for example in the Repeater component.
 
 #### Parameters
 
-##### value
+##### value?
 
 `boolean` = `true`
 
@@ -513,13 +515,13 @@ the modified Definer class instance.
 
 ### withoutStyles()
 
-> **withoutStyles**(`value`): `Definer`\<`T`\>
+> **withoutStyles**(`value?`): `Definer`\<`T`\>
 
 Disables the styling of the component.
 
 #### Parameters
 
-##### value
+##### value?
 
 `boolean` = `true`
 
@@ -535,13 +537,13 @@ the modified Definer class instance.
 
 ### withoutWrapperStyles()
 
-> **withoutWrapperStyles**(`value`): `Definer`\<`T`\>
+> **withoutWrapperStyles**(`value?`): `Definer`\<`T`\>
 
 Disables the styling of the component wrapper.
 
 #### Parameters
 
-##### value
+##### value?
 
 `boolean` = `true`
 

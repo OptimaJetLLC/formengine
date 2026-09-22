@@ -8,7 +8,7 @@ Menu item for RsMenu component.
 
 ### href?
 
-> `optional` **href**: `string`
+> `optional` **href?**: `string`
 
 The href for the menu item.
 
@@ -16,6 +16,6 @@ The href for the menu item.
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 The title for the menu item.

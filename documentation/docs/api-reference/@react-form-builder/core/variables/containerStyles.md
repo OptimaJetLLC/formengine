@@ -4,7 +4,7 @@
 
 The annotations for generic CSS properties of a container component.
 
-## Type declaration
+## Type Declaration
 
 ### alignItems
 

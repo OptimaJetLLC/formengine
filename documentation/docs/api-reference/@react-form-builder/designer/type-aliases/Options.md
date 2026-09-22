@@ -8,15 +8,15 @@ Customization options for the FormBuilder component.
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 The component className.
 
 ***
 
-### customRenderer()?
+### customRenderer?
 
-> `optional` **customRenderer**: (`defaultElement`, `component`, `props`) => `null` \| `ReactElement`
+> `optional` **customRenderer?**: (`defaultElement`, `component`, `props`) => `null` \| `ReactElement`
 
 The component custom renderer.
 
@@ -50,7 +50,7 @@ the customized ReactElement.
 
 ### hidden?
 
-> `optional` **hidden**: `boolean`
+> `optional` **hidden?**: `boolean`
 
 True if you want to hide the component.
 
@@ -58,6 +58,6 @@ True if you want to hide the component.
 
 ### style?
 
-> `optional` **style**: `CSSProperties` \| `string`
+> `optional` **style?**: `CSSProperties` \| `string`
 
 The component style. Supported formats - CSSProperties object, standard CSS as string, nested selectors.

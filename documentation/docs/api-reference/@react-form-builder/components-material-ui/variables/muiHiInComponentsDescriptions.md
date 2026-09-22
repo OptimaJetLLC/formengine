@@ -2,7 +2,7 @@
 
 > **muiHiInComponentsDescriptions**: `object`
 
-## Type declaration
+## Type Declaration
 
 ### categories
 
@@ -10,59 +10,59 @@
 
 #### categories.dataDisplay
 
-> **categories.dataDisplay**: `object`
+> **dataDisplay**: `object`
 
 #### categories.dataDisplay.name
 
-> **categories.dataDisplay.name**: `string` = `"डेटा डिस्प्ले"`
+> **name**: `string` = `"डेटा डिस्प्ले"`
 
 #### categories.feedback
 
-> **categories.feedback**: `object`
+> **feedback**: `object`
 
 #### categories.feedback.name
 
-> **categories.feedback.name**: `string` = `"फ़ीडबैक"`
+> **name**: `string` = `"फ़ीडबैक"`
 
 #### categories.form
 
-> **categories.form**: `object`
+> **form**: `object`
 
 #### categories.form.name
 
-> **categories.form.name**: `string` = `"प्रपत्र"`
+> **name**: `string` = `"प्रपत्र"`
 
 #### categories.inputs
 
-> **categories.inputs**: `object`
+> **inputs**: `object`
 
 #### categories.inputs.name
 
-> **categories.inputs.name**: `string` = `"इनपुट्स"`
+> **name**: `string` = `"इनपुट्स"`
 
 #### categories.layout
 
-> **categories.layout**: `object`
+> **layout**: `object`
 
 #### categories.layout.name
 
-> **categories.layout.name**: `string` = `"लेआउट"`
+> **name**: `string` = `"लेआउट"`
 
 #### categories.navigation
 
-> **categories.navigation**: `object`
+> **navigation**: `object`
 
 #### categories.navigation.name
 
-> **categories.navigation.name**: `string` = `"नेवीगेशन"`
+> **name**: `string` = `"नेवीगेशन"`
 
 #### categories.surfaces
 
-> **categories.surfaces**: `object`
+> **surfaces**: `object`
 
 #### categories.surfaces.name
 
-> **categories.surfaces.name**: `string` = `"सतहें"`
+> **name**: `string` = `"सतहें"`
 
 ### commonProperties
 
@@ -70,267 +70,267 @@
 
 #### commonProperties.checked
 
-> **commonProperties.checked**: `object`
+> **checked**: `object`
 
 #### commonProperties.checked.description
 
-> **commonProperties.checked.description**: `string` = `"यदि सही है, तो घटक की जाँच की जाती है"`
+> **description**: `string` = `"यदि सही है, तो घटक की जाँच की जाती है"`
 
 #### commonProperties.checked.name
 
-> **commonProperties.checked.name**: `string` = `"चेक किया गया"`
+> **name**: `string` = `"चेक किया गया"`
 
 #### commonProperties.children
 
-> **commonProperties.children**: `object`
+> **children**: `object`
 
 #### commonProperties.children.description
 
-> **commonProperties.children.description**: `string` = `"घटक की सामग्री"`
+> **description**: `string` = `"घटक की सामग्री"`
 
 #### commonProperties.children.name
 
-> **commonProperties.children.name**: `string` = `"बच्चे"`
+> **name**: `string` = `"बच्चे"`
 
 #### commonProperties.color
 
-> **commonProperties.color**: `object`
+> **color**: `object`
 
 #### commonProperties.color.description
 
-> **commonProperties.color.description**: `string` = `"कॉम्पोनेंट का रंग"`
+> **description**: `string` = `"कॉम्पोनेंट का रंग"`
 
 #### commonProperties.color.name
 
-> **commonProperties.color.name**: `string` = `"रंग"`
+> **name**: `string` = `"रंग"`
 
 #### commonProperties.defaultValue
 
-> **commonProperties.defaultValue**: `object`
+> **defaultValue**: `object`
 
 #### commonProperties.defaultValue.description
 
-> **commonProperties.defaultValue.description**: `string` = `"तयशुदा मान। जब घटक नियंत्रित न हो तब उपयोग करें"`
+> **description**: `string` = `"तयशुदा मान। जब घटक नियंत्रित न हो तब उपयोग करें"`
 
 #### commonProperties.defaultValue.name
 
-> **commonProperties.defaultValue.name**: `string` = `"तयशुदा मान"`
+> **name**: `string` = `"तयशुदा मान"`
 
 #### commonProperties.dense
 
-> **commonProperties.dense**: `object`
+> **dense**: `object`
 
 #### commonProperties.dense.description
 
-> **commonProperties.dense.description**: `string` = `"अगर सही है, तो वर्टिकल पैडिंग को कम करता है"`
+> **description**: `string` = `"अगर सही है, तो वर्टिकल पैडिंग को कम करता है"`
 
 #### commonProperties.dense.name
 
-> **commonProperties.dense.name**: `string` = `"घना"`
+> **name**: `string` = `"घना"`
 
 #### commonProperties.disabled
 
-> **commonProperties.disabled**: `object`
+> **disabled**: `object`
 
 #### commonProperties.disabled.description
 
-> **commonProperties.disabled.description**: `string` = `"यदि सही है, तो घटक अक्षम है"`
+> **description**: `string` = `"यदि सही है, तो घटक अक्षम है"`
 
 #### commonProperties.disabled.name
 
-> **commonProperties.disabled.name**: `string` = `"अक्षम"`
+> **name**: `string` = `"अक्षम"`
 
 #### commonProperties.disableGutters
 
-> **commonProperties.disableGutters**: `object`
+> **disableGutters**: `object`
 
 #### commonProperties.disableGutters.description
 
-> **commonProperties.disableGutters.description**: `string` = `"यदि सही है, तो बाएँ और दाएँ पैडिंग को अक्षम करता है"`
+> **description**: `string` = `"यदि सही है, तो बाएँ और दाएँ पैडिंग को अक्षम करता है"`
 
 #### commonProperties.disableGutters.name
 
-> **commonProperties.disableGutters.name**: `string` = `"गटर अक्षम करें"`
+> **name**: `string` = `"गटर अक्षम करें"`
 
 #### commonProperties.disablePadding
 
-> **commonProperties.disablePadding**: `object`
+> **disablePadding**: `object`
 
 #### commonProperties.disablePadding.description
 
-> **commonProperties.disablePadding.description**: `string` = `"यदि सही है, तो डिफ़ॉल्ट पैडिंग को अक्षम करता है"`
+> **description**: `string` = `"यदि सही है, तो डिफ़ॉल्ट पैडिंग को अक्षम करता है"`
 
 #### commonProperties.disablePadding.name
 
-> **commonProperties.disablePadding.name**: `string` = `"पैडिंग अक्षम करें"`
+> **name**: `string` = `"पैडिंग अक्षम करें"`
 
 #### commonProperties.error
 
-> **commonProperties.error**: `object`
+> **error**: `object`
 
 #### commonProperties.error.description
 
-> **commonProperties.error.description**: `string` = `"यदि सही है, तो घटक त्रुटि स्थिति में प्रदर्शित होता है"`
+> **description**: `string` = `"यदि सही है, तो घटक त्रुटि स्थिति में प्रदर्शित होता है"`
 
 #### commonProperties.error.name
 
-> **commonProperties.error.name**: `string` = `"एरर"`
+> **name**: `string` = `"एरर"`
 
 #### commonProperties.fullWidth
 
-> **commonProperties.fullWidth**: `object`
+> **fullWidth**: `object`
 
 #### commonProperties.fullWidth.description
 
-> **commonProperties.fullWidth.description**: `string` = `"यदि सही है, तो घटक अपने कंटेनर की पूरी चौड़ाई लेता है"`
+> **description**: `string` = `"यदि सही है, तो घटक अपने कंटेनर की पूरी चौड़ाई लेता है"`
 
 #### commonProperties.fullWidth.name
 
-> **commonProperties.fullWidth.name**: `string` = `"पूरी चौड़ाई"`
+> **name**: `string` = `"पूरी चौड़ाई"`
 
 #### commonProperties.gutterBottom
 
-> **commonProperties.gutterBottom**: `object`
+> **gutterBottom**: `object`
 
 #### commonProperties.gutterBottom.description
 
-> **commonProperties.gutterBottom.description**: `string` = `"यदि सही है, तो टेक्स्ट का निचला मार्जिन होगा"`
+> **description**: `string` = `"यदि सही है, तो टेक्स्ट का निचला मार्जिन होगा"`
 
 #### commonProperties.gutterBottom.name
 
-> **commonProperties.gutterBottom.name**: `string` = `"गटर बॉटम"`
+> **name**: `string` = `"गटर बॉटम"`
 
 #### commonProperties.helperText
 
-> **commonProperties.helperText**: `object`
+> **helperText**: `object`
 
 #### commonProperties.helperText.description
 
-> **commonProperties.helperText.description**: `string` = `"सहायक पाठ सामग्री"`
+> **description**: `string` = `"सहायक पाठ सामग्री"`
 
 #### commonProperties.helperText.name
 
-> **commonProperties.helperText.name**: `string` = `"हेल्पर टेक्स्ट"`
+> **name**: `string` = `"हेल्पर टेक्स्ट"`
 
 #### commonProperties.margin
 
-> **commonProperties.margin**: `object`
+> **margin**: `object`
 
 #### commonProperties.margin.description
 
-> **commonProperties.margin.description**: `string` = `"घटक पर लागू मार्जिन को परिभाषित करता है"`
+> **description**: `string` = `"घटक पर लागू मार्जिन को परिभाषित करता है"`
 
 #### commonProperties.margin.name
 
-> **commonProperties.margin.name**: `string` = `"हाशिया"`
+> **name**: `string` = `"हाशिया"`
 
 #### commonProperties.noWrap
 
-> **commonProperties.noWrap**: `object`
+> **noWrap**: `object`
 
 #### commonProperties.noWrap.description
 
-> **commonProperties.noWrap.description**: `string` = `"यदि सही है, तो टेक्स्ट रैप नहीं होगा, बल्कि टेक्स्ट ओवरफ़्लो इलिप्सिस के साथ छोटा हो जाएगा"`
+> **description**: `string` = `"यदि सही है, तो टेक्स्ट रैप नहीं होगा, बल्कि टेक्स्ट ओवरफ़्लो इलिप्सिस के साथ छोटा हो जाएगा"`
 
 #### commonProperties.noWrap.name
 
-> **commonProperties.noWrap.name**: `string` = `"कोई रैप नहीं"`
+> **name**: `string` = `"कोई रैप नहीं"`
 
 #### commonProperties.onChange
 
-> **commonProperties.onChange**: `object`
+> **onChange**: `object`
 
 #### commonProperties.onChange.description
 
-> **commonProperties.onChange.description**: `string` = `"मान बदलने पर कॉलबैक सक्रिय होता है"`
+> **description**: `string` = `"मान बदलने पर कॉलबैक सक्रिय होता है"`
 
 #### commonProperties.onChange.name
 
-> **commonProperties.onChange.name**: `string` = `"ऑन चेंज"`
+> **name**: `string` = `"ऑन चेंज"`
 
 #### commonProperties.onClick
 
-> **commonProperties.onClick**: `object`
+> **onClick**: `object`
 
 #### commonProperties.onClick.description
 
-> **commonProperties.onClick.description**: `string` = `"कॉम्पोनेंट पर क्लिक करने पर कॉलबैक सक्रिय होता है"`
+> **description**: `string` = `"कॉम्पोनेंट पर क्लिक करने पर कॉलबैक सक्रिय होता है"`
 
 #### commonProperties.onClick.name
 
-> **commonProperties.onClick.name**: `string` = `"ऑनक्लिक"`
+> **name**: `string` = `"ऑनक्लिक"`
 
 #### commonProperties.required
 
-> **commonProperties.required**: `object`
+> **required**: `object`
 
 #### commonProperties.required.description
 
-> **commonProperties.required.description**: `string` = `"यदि सही है, तो इनपुट तत्व आवश्यक है"`
+> **description**: `string` = `"यदि सही है, तो इनपुट तत्व आवश्यक है"`
 
 #### commonProperties.required.name
 
-> **commonProperties.required.name**: `string` = `"ज़रूरी"`
+> **name**: `string` = `"ज़रूरी"`
 
 #### commonProperties.size
 
-> **commonProperties.size**: `object`
+> **size**: `object`
 
 #### commonProperties.size.description
 
-> **commonProperties.size.description**: `string` = `"घटक का आकार"`
+> **description**: `string` = `"घटक का आकार"`
 
 #### commonProperties.size.name
 
-> **commonProperties.size.name**: `string` = `"साइज़"`
+> **name**: `string` = `"साइज़"`
 
 #### commonProperties.sx
 
-> **commonProperties.sx**: `object`
+> **sx**: `object`
 
 #### commonProperties.sx.description
 
-> **commonProperties.sx.description**: `string` = `"सिस्टम प्रोप जो सिस्टम ओवरराइड के साथ-साथ अतिरिक्त CSS शैलियों को परिभाषित करने की अनुमति देता है"`
+> **description**: `string` = `"सिस्टम प्रोप जो सिस्टम ओवरराइड के साथ-साथ अतिरिक्त CSS शैलियों को परिभाषित करने की अनुमति देता है"`
 
 #### commonProperties.sx.name
 
-> **commonProperties.sx.name**: `string` = `"Sx"`
+> **name**: `string` = `"Sx"`
 
 #### commonProperties.textAlign
 
-> **commonProperties.textAlign**: `object`
+> **textAlign**: `object`
 
 #### commonProperties.textAlign.description
 
-> **commonProperties.textAlign.description**: `string` = `"टेक्स्ट अलाइनमेंट"`
+> **description**: `string` = `"टेक्स्ट अलाइनमेंट"`
 
 #### commonProperties.textAlign.name
 
-> **commonProperties.textAlign.name**: `string` = `"संरेखण"`
+> **name**: `string` = `"संरेखण"`
 
 #### commonProperties.value
 
-> **commonProperties.value**: `object`
+> **value**: `object`
 
 #### commonProperties.value.description
 
-> **commonProperties.value.description**: `string` = `"घटक का मान"`
+> **description**: `string` = `"घटक का मान"`
 
 #### commonProperties.value.name
 
-> **commonProperties.value.name**: `string` = `"वैल्यू"`
+> **name**: `string` = `"वैल्यू"`
 
 #### commonProperties.variant
 
-> **commonProperties.variant**: `object`
+> **variant**: `object`
 
 #### commonProperties.variant.description
 
-> **commonProperties.variant.description**: `string` = `"इस्तेमाल करने के लिए वैरिएंट"`
+> **description**: `string` = `"इस्तेमाल करने के लिए वैरिएंट"`
 
 #### commonProperties.variant.name
 
-> **commonProperties.variant.name**: `string` = `"वेरिएंट"`
+> **name**: `string` = `"वेरिएंट"`
 
 ### components
 
@@ -338,1760 +338,1760 @@
 
 #### components.MuiBox
 
-> **components.MuiBox**: `object`
+> **MuiBox**: `object`
 
 #### components.MuiBox.description
 
-> **components.MuiBox.description**: `string` = `"सिस्टम स्टाइलिंग सपोर्ट के साथ जेनेरिक लेआउट कंटेनर"`
+> **description**: `string` = `"सिस्टम स्टाइलिंग सपोर्ट के साथ जेनेरिक लेआउट कंटेनर"`
 
 #### components.MuiBox.name
 
-> **components.MuiBox.name**: `string` = `"बॉक्स"`
+> **name**: `string` = `"बॉक्स"`
 
 #### components.MuiBreadcrumbs
 
-> **components.MuiBreadcrumbs**: `object`
+> **MuiBreadcrumbs**: `object`
 
 #### components.MuiBreadcrumbs.description
 
-> **components.MuiBreadcrumbs.description**: `string` = `"पदानुक्रम के भीतर वर्तमान पृष्ठ स्थान दिखाता है"`
+> **description**: `string` = `"पदानुक्रम के भीतर वर्तमान पृष्ठ स्थान दिखाता है"`
 
 #### components.MuiBreadcrumbs.name
 
-> **components.MuiBreadcrumbs.name**: `string` = `"ब्रेडक्रंब"`
+> **name**: `string` = `"ब्रेडक्रंब"`
 
 #### components.MuiBreadcrumbs.props
 
-> **components.MuiBreadcrumbs.props**: `object`
+> **props**: `object`
 
 #### components.MuiBreadcrumbs.props.items
 
-> **components.MuiBreadcrumbs.props.items**: `object`
+> **items**: `object`
 
 #### components.MuiBreadcrumbs.props.items.description
 
-> **components.MuiBreadcrumbs.props.items.description**: `string` = `"प्रदर्शित करने के लिए ब्रेडक्रंब आइटम"`
+> **description**: `string` = `"प्रदर्शित करने के लिए ब्रेडक्रंब आइटम"`
 
 #### components.MuiBreadcrumbs.props.items.name
 
-> **components.MuiBreadcrumbs.props.items.name**: `string` = `"आइटम"`
+> **name**: `string` = `"आइटम"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse**: `object`
+> **itemsAfterCollapse**: `object`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"यदि अधिकतम आइटम पार हो गए हैं, तो इलिप्सिस के बाद दिखाए जाने वाले आइटम की संख्या"`
+> **description**: `string` = `"यदि अधिकतम आइटम पार हो गए हैं, तो इलिप्सिस के बाद दिखाए जाने वाले आइटम की संख्या"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.name
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.name**: `string` = `"ढहने के बाद की वस्तुएं"`
+> **name**: `string` = `"ढहने के बाद की वस्तुएं"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse**: `object`
+> **itemsBeforeCollapse**: `object`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"यदि अधिकतम आइटम पार हो गए हैं, तो इलिप्सिस से पहले दिखाए जाने वाले आइटम की संख्या"`
+> **description**: `string` = `"यदि अधिकतम आइटम पार हो गए हैं, तो इलिप्सिस से पहले दिखाए जाने वाले आइटम की संख्या"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.name
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.name**: `string` = `"ढहने से पहले की वस्तुएं"`
+> **name**: `string` = `"ढहने से पहले की वस्तुएं"`
 
 #### components.MuiBreadcrumbs.props.maxItems
 
-> **components.MuiBreadcrumbs.props.maxItems**: `object`
+> **maxItems**: `object`
 
 #### components.MuiBreadcrumbs.props.maxItems.description
 
-> **components.MuiBreadcrumbs.props.maxItems.description**: `string` = `"प्रदर्शित करने के लिए ब्रेडक्रंब की अधिकतम संख्या निर्दिष्ट करता है"`
+> **description**: `string` = `"प्रदर्शित करने के लिए ब्रेडक्रंब की अधिकतम संख्या निर्दिष्ट करता है"`
 
 #### components.MuiBreadcrumbs.props.maxItems.name
 
-> **components.MuiBreadcrumbs.props.maxItems.name**: `string` = `"अधिकतम आइटम"`
+> **name**: `string` = `"अधिकतम आइटम"`
 
 #### components.MuiBreadcrumbs.props.separator
 
-> **components.MuiBreadcrumbs.props.separator**: `object`
+> **separator**: `object`
 
 #### components.MuiBreadcrumbs.props.separator.description
 
-> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"ब्रेडक्रंब आइटम को अलग करने के लिए इस्तेमाल किया जाने वाला तत्व"`
+> **description**: `string` = `"ब्रेडक्रंब आइटम को अलग करने के लिए इस्तेमाल किया जाने वाला तत्व"`
 
 #### components.MuiBreadcrumbs.props.separator.name
 
-> **components.MuiBreadcrumbs.props.separator.name**: `string` = `"सेपरेटर"`
+> **name**: `string` = `"सेपरेटर"`
 
 #### components.MuiButton
 
-> **components.MuiButton**: `object`
+> **MuiButton**: `object`
 
 #### components.MuiButton.description
 
-> **components.MuiButton.description**: `string` = `"क्रियाओं या घटनाओं को ट्रिगर करने के लिए उपयोग किया जाने वाला बटन घटक"`
+> **description**: `string` = `"क्रियाओं या घटनाओं को ट्रिगर करने के लिए उपयोग किया जाने वाला बटन घटक"`
 
 #### components.MuiButton.name
 
-> **components.MuiButton.name**: `string` = `"बटन"`
+> **name**: `string` = `"बटन"`
 
 #### components.MuiButton.props
 
-> **components.MuiButton.props**: `object`
+> **props**: `object`
 
 #### components.MuiButton.props.children
 
-> **components.MuiButton.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiButton.props.children.description
 
-> **components.MuiButton.props.children.description**: `string` = `"कैप्शन"`
+> **description**: `string` = `"कैप्शन"`
 
 #### components.MuiButton.props.children.name
 
-> **components.MuiButton.props.children.name**: `string` = `"कॉन्टेंट"`
+> **name**: `string` = `"कॉन्टेंट"`
 
 #### components.MuiButton.props.disableElevation
 
-> **components.MuiButton.props.disableElevation**: `object`
+> **disableElevation**: `object`
 
 #### components.MuiButton.props.disableElevation.description
 
-> **components.MuiButton.props.disableElevation.description**: `string` = `"सही पर सेट होने पर बटन शैडो को हटाता है"`
+> **description**: `string` = `"सही पर सेट होने पर बटन शैडो को हटाता है"`
 
 #### components.MuiButton.props.disableElevation.name
 
-> **components.MuiButton.props.disableElevation.name**: `string` = `"ऊंचाई को अक्षम करें"`
+> **name**: `string` = `"ऊंचाई को अक्षम करें"`
 
 #### components.MuiButton.props.loading
 
-> **components.MuiButton.props.loading**: `object`
+> **loading**: `object`
 
 #### components.MuiButton.props.loading.description
 
-> **components.MuiButton.props.loading.description**: `string` = `"लोडिंग इंडिकेटर प्रदर्शित करता है और इंटरैक्शन को अक्षम करता है"`
+> **description**: `string` = `"लोडिंग इंडिकेटर प्रदर्शित करता है और इंटरैक्शन को अक्षम करता है"`
 
 #### components.MuiButton.props.loading.name
 
-> **components.MuiButton.props.loading.name**: `string` = `"लोड हो रहा"`
+> **name**: `string` = `"लोड हो रहा"`
 
 #### components.MuiButtonGroup
 
-> **components.MuiButtonGroup**: `object`
+> **MuiButtonGroup**: `object`
 
 #### components.MuiButtonGroup.description
 
-> **components.MuiButtonGroup.description**: `string` = `"संबंधित बटनों को एक साथ समूहित करें"`
+> **description**: `string` = `"संबंधित बटनों को एक साथ समूहित करें"`
 
 #### components.MuiButtonGroup.name
 
-> **components.MuiButtonGroup.name**: `string` = `"बटन समूह"`
+> **name**: `string` = `"बटन समूह"`
 
 #### components.MuiButtonGroup.props
 
-> **components.MuiButtonGroup.props**: `object`
+> **props**: `object`
 
 #### components.MuiButtonGroup.props.fullWidth
 
-> **components.MuiButtonGroup.props.fullWidth**: `object`
+> **fullWidth**: `object`
 
 #### components.MuiButtonGroup.props.fullWidth.description
 
-> **components.MuiButtonGroup.props.fullWidth.description**: `string` = `"बटन समूह को कंटेनर की पूरी चौड़ाई तक फैला देता है"`
+> **description**: `string` = `"बटन समूह को कंटेनर की पूरी चौड़ाई तक फैला देता है"`
 
 #### components.MuiButtonGroup.props.fullWidth.name
 
-> **components.MuiButtonGroup.props.fullWidth.name**: `string` = `"पूरी चौड़ाई"`
+> **name**: `string` = `"पूरी चौड़ाई"`
 
 #### components.MuiButtonGroup.props.orientation
 
-> **components.MuiButtonGroup.props.orientation**: `object`
+> **orientation**: `object`
 
 #### components.MuiButtonGroup.props.orientation.description
 
-> **components.MuiButtonGroup.props.orientation.description**: `string` = `"बटनों की लेआउट दिशा सेट करता है"`
+> **description**: `string` = `"बटनों की लेआउट दिशा सेट करता है"`
 
 #### components.MuiButtonGroup.props.orientation.name
 
-> **components.MuiButtonGroup.props.orientation.name**: `string` = `"ओरिएंटेशन"`
+> **name**: `string` = `"ओरिएंटेशन"`
 
 #### components.MuiCard
 
-> **components.MuiCard**: `object`
+> **MuiCard**: `object`
 
 #### components.MuiCard.description
 
-> **components.MuiCard.description**: `string` = `"संबंधित सामग्री को समूहीकृत करने के लिए सतही घटक"`
+> **description**: `string` = `"संबंधित सामग्री को समूहीकृत करने के लिए सतही घटक"`
 
 #### components.MuiCard.name
 
-> **components.MuiCard.name**: `string` = `"कार्ड"`
+> **name**: `string` = `"कार्ड"`
 
 #### components.MuiCard.props
 
-> **components.MuiCard.props**: `object`
+> **props**: `object`
 
 #### components.MuiCard.props.actions
 
-> **components.MuiCard.props.actions**: `object`
+> **actions**: `object`
 
 #### components.MuiCard.props.actions.description
 
-> **components.MuiCard.props.actions.description**: `string` = `"कार्ड के लिए एक्शन बटन या नियंत्रण"`
+> **description**: `string` = `"कार्ड के लिए एक्शन बटन या नियंत्रण"`
 
 #### components.MuiCard.props.actions.name
 
-> **components.MuiCard.props.actions.name**: `string` = `"क्रियाएँ"`
+> **name**: `string` = `"क्रियाएँ"`
 
 #### components.MuiCard.props.header
 
-> **components.MuiCard.props.header**: `object`
+> **header**: `object`
 
 #### components.MuiCard.props.header.description
 
-> **components.MuiCard.props.header.description**: `string` = `"कार्ड हेडर में रेंडर किया गया कॉन्टेंट"`
+> **description**: `string` = `"कार्ड हेडर में रेंडर किया गया कॉन्टेंट"`
 
 #### components.MuiCard.props.header.name
 
-> **components.MuiCard.props.header.name**: `string` = `"शीर्षिका"`
+> **name**: `string` = `"शीर्षिका"`
 
 #### components.MuiCard.props.headerAction
 
-> **components.MuiCard.props.headerAction**: `object`
+> **headerAction**: `object`
 
 #### components.MuiCard.props.headerAction.description
 
-> **components.MuiCard.props.headerAction.description**: `string` = `"हेडर में प्रदर्शित एक्शन एलिमेंट"`
+> **description**: `string` = `"हेडर में प्रदर्शित एक्शन एलिमेंट"`
 
 #### components.MuiCard.props.headerAction.name
 
-> **components.MuiCard.props.headerAction.name**: `string` = `"शीर्षलेख क्रिया"`
+> **name**: `string` = `"शीर्षलेख क्रिया"`
 
 #### components.MuiCard.props.headerAvatar
 
-> **components.MuiCard.props.headerAvatar**: `object`
+> **headerAvatar**: `object`
 
 #### components.MuiCard.props.headerAvatar.description
 
-> **components.MuiCard.props.headerAvatar.description**: `string` = `"हेडर में प्रदर्शित अवतार तत्व"`
+> **description**: `string` = `"हेडर में प्रदर्शित अवतार तत्व"`
 
 #### components.MuiCard.props.headerAvatar.name
 
-> **components.MuiCard.props.headerAvatar.name**: `string` = `"हैडर अवतार"`
+> **name**: `string` = `"हैडर अवतार"`
 
 #### components.MuiCard.props.media
 
-> **components.MuiCard.props.media**: `object`
+> **media**: `object`
 
 #### components.MuiCard.props.media.description
 
-> **components.MuiCard.props.media.description**: `string` = `"मीडिया कॉन्टेंट, जैसे कि इमेज या वीडियो"`
+> **description**: `string` = `"मीडिया कॉन्टेंट, जैसे कि इमेज या वीडियो"`
 
 #### components.MuiCard.props.media.name
 
-> **components.MuiCard.props.media.name**: `string` = `"मीडिया"`
+> **name**: `string` = `"मीडिया"`
 
 #### components.MuiCard.props.onSelect
 
-> **components.MuiCard.props.onSelect**: `object`
+> **onSelect**: `object`
 
 #### components.MuiCard.props.onSelect.description
 
-> **components.MuiCard.props.onSelect.description**: `string` = `"कार्ड चुने जाने पर कॉलबैक ट्रिगर हो जाता है"`
+> **description**: `string` = `"कार्ड चुने जाने पर कॉलबैक ट्रिगर हो जाता है"`
 
 #### components.MuiCard.props.onSelect.name
 
-> **components.MuiCard.props.onSelect.name**: `string` = `"ऑनसेलेक्ट"`
+> **name**: `string` = `"ऑनसेलेक्ट"`
 
 #### components.MuiCard.props.subHeader
 
-> **components.MuiCard.props.subHeader**: `object`
+> **subHeader**: `object`
 
 #### components.MuiCard.props.subHeader.description
 
-> **components.MuiCard.props.subHeader.description**: `string` = `"शीर्षलेख के नीचे प्रदर्शित द्वितीयक पाठ"`
+> **description**: `string` = `"शीर्षलेख के नीचे प्रदर्शित द्वितीयक पाठ"`
 
 #### components.MuiCard.props.subHeader.name
 
-> **components.MuiCard.props.subHeader.name**: `string` = `"उप शीर्षलेख"`
+> **name**: `string` = `"उप शीर्षलेख"`
 
 #### components.MuiCard.props.useActions
 
-> **components.MuiCard.props.useActions**: `object`
+> **useActions**: `object`
 
 #### components.MuiCard.props.useActions.description
 
-> **components.MuiCard.props.useActions.description**: `string` = `"नीचे एक क्रिया अनुभाग प्रदर्शित करता है"`
+> **description**: `string` = `"नीचे एक क्रिया अनुभाग प्रदर्शित करता है"`
 
 #### components.MuiCard.props.useActions.name
 
-> **components.MuiCard.props.useActions.name**: `string` = `"क्रियाओं का उपयोग करें"`
+> **name**: `string` = `"क्रियाओं का उपयोग करें"`
 
 #### components.MuiCard.props.useCardActionArea
 
-> **components.MuiCard.props.useCardActionArea**: `object`
+> **useCardActionArea**: `object`
 
 #### components.MuiCard.props.useCardActionArea.description
 
-> **components.MuiCard.props.useCardActionArea.description**: `string` = `"क्लिक किए जा सकने वाले ऐक्शन एरिया के साथ कॉन्टेंट को रैप करता है"`
+> **description**: `string` = `"क्लिक किए जा सकने वाले ऐक्शन एरिया के साथ कॉन्टेंट को रैप करता है"`
 
 #### components.MuiCard.props.useCardActionArea.name
 
-> **components.MuiCard.props.useCardActionArea.name**: `string` = `"कार्ड एक्शन एरिया का उपयोग करें"`
+> **name**: `string` = `"कार्ड एक्शन एरिया का उपयोग करें"`
 
 #### components.MuiCard.props.useHeader
 
-> **components.MuiCard.props.useHeader**: `object`
+> **useHeader**: `object`
 
 #### components.MuiCard.props.useHeader.description
 
-> **components.MuiCard.props.useHeader.description**: `string` = `"कार्ड हेडर सेक्शन को सक्षम करता है"`
+> **description**: `string` = `"कार्ड हेडर सेक्शन को सक्षम करता है"`
 
 #### components.MuiCard.props.useHeader.name
 
-> **components.MuiCard.props.useHeader.name**: `string` = `"हेडर का उपयोग करें"`
+> **name**: `string` = `"हेडर का उपयोग करें"`
 
 #### components.MuiCard.props.useHeaderAction
 
-> **components.MuiCard.props.useHeaderAction**: `object`
+> **useHeaderAction**: `object`
 
 #### components.MuiCard.props.useHeaderAction.description
 
-> **components.MuiCard.props.useHeaderAction.description**: `string` = `"हेडर के अंदर एक एक्शन एरिया को सक्षम करता है"`
+> **description**: `string` = `"हेडर के अंदर एक एक्शन एरिया को सक्षम करता है"`
 
 #### components.MuiCard.props.useHeaderAction.name
 
-> **components.MuiCard.props.useHeaderAction.name**: `string` = `"शीर्षलेख क्रिया का उपयोग करें"`
+> **name**: `string` = `"शीर्षलेख क्रिया का उपयोग करें"`
 
 #### components.MuiCard.props.useHeaderAvatar
 
-> **components.MuiCard.props.useHeaderAvatar**: `object`
+> **useHeaderAvatar**: `object`
 
 #### components.MuiCard.props.useHeaderAvatar.description
 
-> **components.MuiCard.props.useHeaderAvatar.description**: `string` = `"हेडर के अंदर एक अवतार प्रदर्शित करता है"`
+> **description**: `string` = `"हेडर के अंदर एक अवतार प्रदर्शित करता है"`
 
 #### components.MuiCard.props.useHeaderAvatar.name
 
-> **components.MuiCard.props.useHeaderAvatar.name**: `string` = `"हेडर अवतार का उपयोग करें"`
+> **name**: `string` = `"हेडर अवतार का उपयोग करें"`
 
 #### components.MuiCard.props.useMedia
 
-> **components.MuiCard.props.useMedia**: `object`
+> **useMedia**: `object`
 
 #### components.MuiCard.props.useMedia.description
 
-> **components.MuiCard.props.useMedia.description**: `string` = `"कार्ड के अंदर मीडिया सेक्शन को सक्षम करता है"`
+> **description**: `string` = `"कार्ड के अंदर मीडिया सेक्शन को सक्षम करता है"`
 
 #### components.MuiCard.props.useMedia.name
 
-> **components.MuiCard.props.useMedia.name**: `string` = `"मीडिया का इस्तेमाल करें"`
+> **name**: `string` = `"मीडिया का इस्तेमाल करें"`
 
 #### components.MuiCard.props.useSubheader
 
-> **components.MuiCard.props.useSubheader**: `object`
+> **useSubheader**: `object`
 
 #### components.MuiCard.props.useSubheader.description
 
-> **components.MuiCard.props.useSubheader.description**: `string` = `"मुख्य हेडर के नीचे एक सबहेडर प्रदर्शित करता है"`
+> **description**: `string` = `"मुख्य हेडर के नीचे एक सबहेडर प्रदर्शित करता है"`
 
 #### components.MuiCard.props.useSubheader.name
 
-> **components.MuiCard.props.useSubheader.name**: `string` = `"सबहेडर का उपयोग करें"`
+> **name**: `string` = `"सबहेडर का उपयोग करें"`
 
 #### components.MuiCheckbox
 
-> **components.MuiCheckbox**: `object`
+> **MuiCheckbox**: `object`
 
 #### components.MuiCheckbox.description
 
-> **components.MuiCheckbox.description**: `string` = `"एक या अधिक विकल्प चुनने की अनुमति देता है"`
+> **description**: `string` = `"एक या अधिक विकल्प चुनने की अनुमति देता है"`
 
 #### components.MuiCheckbox.name
 
-> **components.MuiCheckbox.name**: `string` = `"चेकबॉक्स"`
+> **name**: `string` = `"चेकबॉक्स"`
 
 #### components.MuiCheckbox.props
 
-> **components.MuiCheckbox.props**: `object`
+> **props**: `object`
 
 #### components.MuiCheckbox.props.defaultChecked
 
-> **components.MuiCheckbox.props.defaultChecked**: `object`
+> **defaultChecked**: `object`
 
 #### components.MuiCheckbox.props.defaultChecked.description
 
-> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"अनियंत्रित होने पर प्रारंभिक जाँच की गई स्थिति"`
+> **description**: `string` = `"अनियंत्रित होने पर प्रारंभिक जाँच की गई स्थिति"`
 
 #### components.MuiCheckbox.props.defaultChecked.name
 
-> **components.MuiCheckbox.props.defaultChecked.name**: `string` = `"डिफ़ॉल्ट चेक किया गया"`
+> **name**: `string` = `"डिफ़ॉल्ट चेक किया गया"`
 
 #### components.MuiCircularProgress
 
-> **components.MuiCircularProgress**: `object`
+> **MuiCircularProgress**: `object`
 
 #### components.MuiCircularProgress.description
 
-> **components.MuiCircularProgress.description**: `string` = `"परिपत्र रूप में लोडिंग या प्रगति को इंगित करता है"`
+> **description**: `string` = `"परिपत्र रूप में लोडिंग या प्रगति को इंगित करता है"`
 
 #### components.MuiCircularProgress.name
 
-> **components.MuiCircularProgress.name**: `string` = `"वृत्ताकार प्रगति"`
+> **name**: `string` = `"वृत्ताकार प्रगति"`
 
 #### components.MuiCircularProgress.props
 
-> **components.MuiCircularProgress.props**: `object`
+> **props**: `object`
 
 #### components.MuiCircularProgress.props.disableShrink
 
-> **components.MuiCircularProgress.props.disableShrink**: `object`
+> **disableShrink**: `object`
 
 #### components.MuiCircularProgress.props.disableShrink.description
 
-> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"श्रिंक एनीमेशन को अक्षम करता है"`
+> **description**: `string` = `"श्रिंक एनीमेशन को अक्षम करता है"`
 
 #### components.MuiCircularProgress.props.disableShrink.name
 
-> **components.MuiCircularProgress.props.disableShrink.name**: `string` = `"श्रिंक अक्षम करें"`
+> **name**: `string` = `"श्रिंक अक्षम करें"`
 
 #### components.MuiCircularProgress.props.thickness
 
-> **components.MuiCircularProgress.props.thickness**: `object`
+> **thickness**: `object`
 
 #### components.MuiCircularProgress.props.thickness.description
 
-> **components.MuiCircularProgress.props.thickness.description**: `string` = `"सर्कल की स्ट्रोक चौड़ाई को नियंत्रित करता है"`
+> **description**: `string` = `"सर्कल की स्ट्रोक चौड़ाई को नियंत्रित करता है"`
 
 #### components.MuiCircularProgress.props.thickness.name
 
-> **components.MuiCircularProgress.props.thickness.name**: `string` = `"मोटाई"`
+> **name**: `string` = `"मोटाई"`
 
 #### components.MuiContainer
 
-> **components.MuiContainer**: `object`
+> **MuiContainer**: `object`
 
 #### components.MuiContainer.description
 
-> **components.MuiContainer.description**: `string` = `"क्षैतिज रूप से सामग्री को केंद्र में रखता है और सीमित करता है"`
+> **description**: `string` = `"क्षैतिज रूप से सामग्री को केंद्र में रखता है और सीमित करता है"`
 
 #### components.MuiContainer.name
 
-> **components.MuiContainer.name**: `string` = `"कन्टेनर"`
+> **name**: `string` = `"कन्टेनर"`
 
 #### components.MuiContainer.props
 
-> **components.MuiContainer.props**: `object`
+> **props**: `object`
 
 #### components.MuiContainer.props.fixed
 
-> **components.MuiContainer.props.fixed**: `object`
+> **fixed**: `object`
 
 #### components.MuiContainer.props.fixed.description
 
-> **components.MuiContainer.props.fixed.description**: `string` = `"तरल पदार्थ के बजाय एक निश्चित अधिकतम चौड़ाई सेट करता है"`
+> **description**: `string` = `"तरल पदार्थ के बजाय एक निश्चित अधिकतम चौड़ाई सेट करता है"`
 
 #### components.MuiContainer.props.fixed.name
 
-> **components.MuiContainer.props.fixed.name**: `string` = `"फिक्स्ड"`
+> **name**: `string` = `"फिक्स्ड"`
 
 #### components.MuiContainer.props.maxWidth
 
-> **components.MuiContainer.props.maxWidth**: `object`
+> **maxWidth**: `object`
 
 #### components.MuiContainer.props.maxWidth.description
 
-> **components.MuiContainer.props.maxWidth.description**: `string` = `"कंटेनर की अधिकतम चौड़ाई को परिभाषित करता है"`
+> **description**: `string` = `"कंटेनर की अधिकतम चौड़ाई को परिभाषित करता है"`
 
 #### components.MuiContainer.props.maxWidth.name
 
-> **components.MuiContainer.props.maxWidth.name**: `string` = `"अधिकतम चौड़ाई"`
+> **name**: `string` = `"अधिकतम चौड़ाई"`
 
 #### components.MuiDatePicker
 
-> **components.MuiDatePicker**: `object`
+> **MuiDatePicker**: `object`
 
 #### components.MuiDatePicker.description
 
-> **components.MuiDatePicker.description**: `string` = `"तिथि चुनने के लिए घटक"`
+> **description**: `string` = `"तिथि चुनने के लिए घटक"`
 
 #### components.MuiDatePicker.name
 
-> **components.MuiDatePicker.name**: `string` = `"खजूर बीनने वाला"`
+> **name**: `string` = `"खजूर बीनने वाला"`
 
 #### components.MuiDatePicker.props
 
-> **components.MuiDatePicker.props**: `object`
+> **props**: `object`
 
 #### components.MuiDatePicker.props.autoFocus
 
-> **components.MuiDatePicker.props.autoFocus**: `object`
+> **autoFocus**: `object`
 
 #### components.MuiDatePicker.props.autoFocus.description
 
-> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"यदि सही है, तो घटक माउंट होने पर दिनांक पिकर को स्वचालित रूप से फ़ोकस कर देता है"`
+> **description**: `string` = `"यदि सही है, तो घटक माउंट होने पर दिनांक पिकर को स्वचालित रूप से फ़ोकस कर देता है"`
 
 #### components.MuiDatePicker.props.autoFocus.name
 
-> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"ऑटो फ़ोकस"`
+> **name**: `string` = `"ऑटो फ़ोकस"`
 
 #### components.MuiDatePicker.props.closeOnSelect
 
-> **components.MuiDatePicker.props.closeOnSelect**: `object`
+> **closeOnSelect**: `object`
 
 #### components.MuiDatePicker.props.closeOnSelect.description
 
-> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"तिथि चुने जाने के बाद दिनांक पिकर संवाद को स्वचालित रूप से बंद कर देता है"`
+> **description**: `string` = `"तिथि चुने जाने के बाद दिनांक पिकर संवाद को स्वचालित रूप से बंद कर देता है"`
 
 #### components.MuiDatePicker.props.closeOnSelect.name
 
-> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"चयन पर बंद करें"`
+> **name**: `string` = `"चयन पर बंद करें"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery**: `object`
+> **desktopModeMediaQuery**: `object`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.description
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"CSS मीडिया क्वेरी स्ट्रिंग जो निर्धारित करती है कि डेस्कटॉप मोड लेआउट पर कब स्विच करना है"`
+> **description**: `string` = `"CSS मीडिया क्वेरी स्ट्रिंग जो निर्धारित करती है कि डेस्कटॉप मोड लेआउट पर कब स्विच करना है"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.name
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"डेस्कटॉप मोड मीडिया क्वेरी"`
+> **name**: `string` = `"डेस्कटॉप मोड मीडिया क्वेरी"`
 
 #### components.MuiDatePicker.props.disableFuture
 
-> **components.MuiDatePicker.props.disableFuture**: `object`
+> **disableFuture**: `object`
 
 #### components.MuiDatePicker.props.disableFuture.description
 
-> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"अगर सही है, तो मौजूदा तारीख के बाद तारीखों के चयन को रोकता है"`
+> **description**: `string` = `"अगर सही है, तो मौजूदा तारीख के बाद तारीखों के चयन को रोकता है"`
 
 #### components.MuiDatePicker.props.disableFuture.name
 
-> **components.MuiDatePicker.props.disableFuture.name**: `string` = `"भविष्य को अक्षम करें"`
+> **name**: `string` = `"भविष्य को अक्षम करें"`
 
 #### components.MuiDatePicker.props.disableHighlightToday
 
-> **components.MuiDatePicker.props.disableHighlightToday**: `object`
+> **disableHighlightToday**: `object`
 
 #### components.MuiDatePicker.props.disableHighlightToday.description
 
-> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"यदि सही है, तो कैलेंडर में वर्तमान दिनांक की विज़ुअल हाइलाइटिंग को अक्षम करता है"`
+> **description**: `string` = `"यदि सही है, तो कैलेंडर में वर्तमान दिनांक की विज़ुअल हाइलाइटिंग को अक्षम करता है"`
 
 #### components.MuiDatePicker.props.disableHighlightToday.name
 
-> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"आज हाइलाइट अक्षम करें"`
+> **name**: `string` = `"आज हाइलाइट अक्षम करें"`
 
 #### components.MuiDatePicker.props.disableOpenPicker
 
-> **components.MuiDatePicker.props.disableOpenPicker**: `object`
+> **disableOpenPicker**: `object`
 
 #### components.MuiDatePicker.props.disableOpenPicker.description
 
-> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"अगर सही है, तो पिकर डायलॉग खोलने से रोकता है (सिर्फ़ पढ़ने के लिए डिसप्ले के लिए उपयोगी)"`
+> **description**: `string` = `"अगर सही है, तो पिकर डायलॉग खोलने से रोकता है (सिर्फ़ पढ़ने के लिए डिसप्ले के लिए उपयोगी)"`
 
 #### components.MuiDatePicker.props.disableOpenPicker.name
 
-> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"ओपन पिकर को अक्षम करें"`
+> **name**: `string` = `"ओपन पिकर को अक्षम करें"`
 
 #### components.MuiDatePicker.props.disablePast
 
-> **components.MuiDatePicker.props.disablePast**: `object`
+> **disablePast**: `object`
 
 #### components.MuiDatePicker.props.disablePast.description
 
-> **components.MuiDatePicker.props.disablePast.description**: `string` = `"अगर सही है, तो मौजूदा तारीख से पहले तारीखों के चयन को रोकता है"`
+> **description**: `string` = `"अगर सही है, तो मौजूदा तारीख से पहले तारीखों के चयन को रोकता है"`
 
 #### components.MuiDatePicker.props.disablePast.name
 
-> **components.MuiDatePicker.props.disablePast.name**: `string` = `"अतीत को अक्षम करें"`
+> **name**: `string` = `"अतीत को अक्षम करें"`
 
 #### components.MuiDatePicker.props.displayWeekNumber
 
-> **components.MuiDatePicker.props.displayWeekNumber**: `object`
+> **displayWeekNumber**: `object`
 
 #### components.MuiDatePicker.props.displayWeekNumber.description
 
-> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"कैलेंडर दृश्य में सप्ताह के नंबर दिखाता है"`
+> **description**: `string` = `"कैलेंडर दृश्य में सप्ताह के नंबर दिखाता है"`
 
 #### components.MuiDatePicker.props.displayWeekNumber.name
 
-> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"सप्ताह संख्या प्रदर्शित करें"`
+> **name**: `string` = `"सप्ताह संख्या प्रदर्शित करें"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber
 
-> **components.MuiDatePicker.props.fixedWeekNumber**: `object`
+> **fixedWeekNumber**: `object`
 
 #### components.MuiDatePicker.props.fixedWeekNumber.description
 
-> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"प्रदर्शित करने के लिए सप्ताहों की निश्चित संख्या (कैलेंडर की ऊंचाई के अनुरूप होने पर बल देता है)"`
+> **description**: `string` = `"प्रदर्शित करने के लिए सप्ताहों की निश्चित संख्या (कैलेंडर की ऊंचाई के अनुरूप होने पर बल देता है)"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber.name
 
-> **components.MuiDatePicker.props.fixedWeekNumber.name**: `string` = `"निश्चित सप्ताह संख्या"`
+> **name**: `string` = `"निश्चित सप्ताह संख्या"`
 
 #### components.MuiDatePicker.props.format
 
-> **components.MuiDatePicker.props.format**: `object`
+> **format**: `object`
 
 #### components.MuiDatePicker.props.format.description
 
-> **components.MuiDatePicker.props.format.description**: `string` = `"प्रदर्शन और पार्सिंग के लिए उपयोग की जाने वाली दिनांक प्रारूप स्ट्रिंग (जैसे, 'yyyy-mm-dd', 'mm/dd/yyyy')"`
+> **description**: `string` = `"प्रदर्शन और पार्सिंग के लिए उपयोग की जाने वाली दिनांक प्रारूप स्ट्रिंग (जैसे, 'yyyy-mm-dd', 'mm/dd/yyyy')"`
 
 #### components.MuiDatePicker.props.format.name
 
-> **components.MuiDatePicker.props.format.name**: `string` = `"फ़ॉर्मेट"`
+> **name**: `string` = `"फ़ॉर्मेट"`
 
 #### components.MuiDatePicker.props.formatDensity
 
-> **components.MuiDatePicker.props.formatDensity**: `object`
+> **formatDensity**: `object`
 
 #### components.MuiDatePicker.props.formatDensity.description
 
-> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"तारीख फ़ॉर्मेटिंग में अंतराल को नियंत्रित करता है: सघन (कॉम्पैक्ट) या विशाल (अधिक स्पेसिंग)"`
+> **description**: `string` = `"तारीख फ़ॉर्मेटिंग में अंतराल को नियंत्रित करता है: सघन (कॉम्पैक्ट) या विशाल (अधिक स्पेसिंग)"`
 
 #### components.MuiDatePicker.props.formatDensity.name
 
-> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"प्रारूप का घनत्व"`
+> **name**: `string` = `"प्रारूप का घनत्व"`
 
 #### components.MuiDatePicker.props.loading
 
-> **components.MuiDatePicker.props.loading**: `object`
+> **loading**: `object`
 
 #### components.MuiDatePicker.props.loading.description
 
-> **components.MuiDatePicker.props.loading.description**: `string` = `"अगर सही है, तो एक लोडिंग स्पिनर दिखाता है जो बताता है कि डेटा लोड किया जा रहा है"`
+> **description**: `string` = `"अगर सही है, तो एक लोडिंग स्पिनर दिखाता है जो बताता है कि डेटा लोड किया जा रहा है"`
 
 #### components.MuiDatePicker.props.loading.name
 
-> **components.MuiDatePicker.props.loading.name**: `string` = `"लोड हो रहा"`
+> **name**: `string` = `"लोड हो रहा"`
 
 #### components.MuiDatePicker.props.maxDate
 
-> **components.MuiDatePicker.props.maxDate**: `object`
+> **maxDate**: `object`
 
 #### components.MuiDatePicker.props.maxDate.description
 
-> **components.MuiDatePicker.props.maxDate.description**: `string` = `"चुनी जा सकने वाली नवीनतम तिथि (शामिल)"`
+> **description**: `string` = `"चुनी जा सकने वाली नवीनतम तिथि (शामिल)"`
 
 #### components.MuiDatePicker.props.maxDate.name
 
-> **components.MuiDatePicker.props.maxDate.name**: `string` = `"अधिकतम तारीख"`
+> **name**: `string` = `"अधिकतम तारीख"`
 
 #### components.MuiDatePicker.props.minDate
 
-> **components.MuiDatePicker.props.minDate**: `object`
+> **minDate**: `object`
 
 #### components.MuiDatePicker.props.minDate.description
 
-> **components.MuiDatePicker.props.minDate.description**: `string` = `"सबसे पुरानी तारीख जिसे चुना जा सकता है (शामिल है)"`
+> **description**: `string` = `"सबसे पुरानी तारीख जिसे चुना जा सकता है (शामिल है)"`
 
 #### components.MuiDatePicker.props.minDate.name
 
-> **components.MuiDatePicker.props.minDate.name**: `string` = `"न्यूनतम तारीख"`
+> **name**: `string` = `"न्यूनतम तारीख"`
 
 #### components.MuiDatePicker.props.monthsPerRow
 
-> **components.MuiDatePicker.props.monthsPerRow**: `object`
+> **monthsPerRow**: `object`
 
 #### components.MuiDatePicker.props.monthsPerRow.description
 
-> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"महीने/वर्ष के दृश्यों में प्रति पंक्ति प्रदर्शित करने के लिए माह कैलेंडर की संख्या"`
+> **description**: `string` = `"महीने/वर्ष के दृश्यों में प्रति पंक्ति प्रदर्शित करने के लिए माह कैलेंडर की संख्या"`
 
 #### components.MuiDatePicker.props.monthsPerRow.name
 
-> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"महीने प्रति पंक्ति"`
+> **name**: `string` = `"महीने प्रति पंक्ति"`
 
 #### components.MuiDatePicker.props.name
 
-> **components.MuiDatePicker.props.name**: `object`
+> **name**: `object`
 
 #### components.MuiDatePicker.props.name.description
 
-> **components.MuiDatePicker.props.name.description**: `string` = `"फ़ॉर्म फ़ील्ड के लिए नाम विशेषता, जिसका उपयोग फ़ॉर्म सबमिट करते समय किया जाता है"`
+> **description**: `string` = `"फ़ॉर्म फ़ील्ड के लिए नाम विशेषता, जिसका उपयोग फ़ॉर्म सबमिट करते समय किया जाता है"`
 
 #### components.MuiDatePicker.props.name.name
 
-> **components.MuiDatePicker.props.name.name**: `string` = `"नाम"`
+> **name**: `string` = `"नाम"`
 
 #### components.MuiDatePicker.props.onAccept
 
-> **components.MuiDatePicker.props.onAccept**: `object`
+> **onAccept**: `object`
 
 #### components.MuiDatePicker.props.onAccept.description
 
-> **components.MuiDatePicker.props.onAccept.description**: `string` = `"मान स्वीकार किए जाने पर कॉलबैक सक्रिय होता है"`
+> **description**: `string` = `"मान स्वीकार किए जाने पर कॉलबैक सक्रिय होता है"`
 
 #### components.MuiDatePicker.props.onAccept.name
 
-> **components.MuiDatePicker.props.onAccept.name**: `string` = `"स्वीकार करने पर"`
+> **name**: `string` = `"स्वीकार करने पर"`
 
 #### components.MuiDatePicker.props.onClose
 
-> **components.MuiDatePicker.props.onClose**: `object`
+> **onClose**: `object`
 
 #### components.MuiDatePicker.props.onClose.description
 
-> **components.MuiDatePicker.props.onClose.description**: `string` = `"पॉपअप बंद होने का अनुरोध करने पर कॉलबैक सक्रिय होता है"`
+> **description**: `string` = `"पॉपअप बंद होने का अनुरोध करने पर कॉलबैक सक्रिय होता है"`
 
 #### components.MuiDatePicker.props.onClose.name
 
-> **components.MuiDatePicker.props.onClose.name**: `string` = `"बंद पर"`
+> **name**: `string` = `"बंद पर"`
 
 #### components.MuiDatePicker.props.onError
 
-> **components.MuiDatePicker.props.onError**: `object`
+> **onError**: `object`
 
 #### components.MuiDatePicker.props.onError.description
 
-> **components.MuiDatePicker.props.onError.description**: `string` = `"मौजूदा मान से जुड़ी त्रुटि में परिवर्तन होने पर कॉलबैक सक्रिय होता है"`
+> **description**: `string` = `"मौजूदा मान से जुड़ी त्रुटि में परिवर्तन होने पर कॉलबैक सक्रिय होता है"`
 
 #### components.MuiDatePicker.props.onError.name
 
-> **components.MuiDatePicker.props.onError.name**: `string` = `"ऑन एरर"`
+> **name**: `string` = `"ऑन एरर"`
 
 #### components.MuiDatePicker.props.onMonthChange
 
-> **components.MuiDatePicker.props.onMonthChange**: `object`
+> **onMonthChange**: `object`
 
 #### components.MuiDatePicker.props.onMonthChange.description
 
-> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"महीने के बदलाव पर कॉलबैक निकाल दिया गया"`
+> **description**: `string` = `"महीने के बदलाव पर कॉलबैक निकाल दिया गया"`
 
 #### components.MuiDatePicker.props.onMonthChange.name
 
-> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"महीने में बदलाव पर"`
+> **name**: `string` = `"महीने में बदलाव पर"`
 
 #### components.MuiDatePicker.props.onOpen
 
-> **components.MuiDatePicker.props.onOpen**: `object`
+> **onOpen**: `object`
 
 #### components.MuiDatePicker.props.onOpen.description
 
-> **components.MuiDatePicker.props.onOpen.description**: `string` = `"पॉपअप खोलने का अनुरोध करने पर कॉलबैक सक्रिय होता है"`
+> **description**: `string` = `"पॉपअप खोलने का अनुरोध करने पर कॉलबैक सक्रिय होता है"`
 
 #### components.MuiDatePicker.props.onOpen.name
 
-> **components.MuiDatePicker.props.onOpen.name**: `string` = `"OnOpen"`
+> **name**: `string` = `"OnOpen"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange**: `object`
+> **onSelectedSectionsChange**: `object`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.description
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"चुने गए सेक्शन में बदलाव होने पर कॉलबैक सक्रिय होता है"`
+> **description**: `string` = `"चुने गए सेक्शन में बदलाव होने पर कॉलबैक सक्रिय होता है"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.name
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"चयनित अनुभागों पर परिवर्तन"`
+> **name**: `string` = `"चयनित अनुभागों पर परिवर्तन"`
 
 #### components.MuiDatePicker.props.onViewChange
 
-> **components.MuiDatePicker.props.onViewChange**: `object`
+> **onViewChange**: `object`
 
 #### components.MuiDatePicker.props.onViewChange.description
 
-> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"दृश्य परिवर्तन पर कॉलबैक सक्रिय किया गया"`
+> **description**: `string` = `"दृश्य परिवर्तन पर कॉलबैक सक्रिय किया गया"`
 
 #### components.MuiDatePicker.props.onViewChange.name
 
-> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"ऑनव्यूचेंज"`
+> **name**: `string` = `"ऑनव्यूचेंज"`
 
 #### components.MuiDatePicker.props.onYearChange
 
-> **components.MuiDatePicker.props.onYearChange**: `object`
+> **onYearChange**: `object`
 
 #### components.MuiDatePicker.props.onYearChange.description
 
-> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"वर्ष परिवर्तन पर कॉलबैक निकाल दिया गया"`
+> **description**: `string` = `"वर्ष परिवर्तन पर कॉलबैक निकाल दिया गया"`
 
 #### components.MuiDatePicker.props.onYearChange.name
 
-> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"ऑन-ईयर चेंज"`
+> **name**: `string` = `"ऑन-ईयर चेंज"`
 
 #### components.MuiDatePicker.props.open
 
-> **components.MuiDatePicker.props.open**: `object`
+> **open**: `object`
 
 #### components.MuiDatePicker.props.open.description
 
-> **components.MuiDatePicker.props.open.description**: `string` = `"अगर सही है, तो तारीख पिकर संवाद खुला है; नियंत्रित राज्य प्रबंधन के लिए इस्तेमाल किया जा सकता है"`
+> **description**: `string` = `"अगर सही है, तो तारीख पिकर संवाद खुला है; नियंत्रित राज्य प्रबंधन के लिए इस्तेमाल किया जा सकता है"`
 
 #### components.MuiDatePicker.props.open.name
 
-> **components.MuiDatePicker.props.open.name**: `string` = `"खोलें"`
+> **name**: `string` = `"खोलें"`
 
 #### components.MuiDatePicker.props.openTo
 
-> **components.MuiDatePicker.props.openTo**: `object`
+> **openTo**: `object`
 
 #### components.MuiDatePicker.props.openTo.description
 
-> **components.MuiDatePicker.props.openTo.description**: `string` = `"पिकर सक्रिय होने पर खुलने वाला दृश्य"`
+> **description**: `string` = `"पिकर सक्रिय होने पर खुलने वाला दृश्य"`
 
 #### components.MuiDatePicker.props.openTo.name
 
-> **components.MuiDatePicker.props.openTo.name**: `string` = `"के लिए खोलें"`
+> **name**: `string` = `"के लिए खोलें"`
 
 #### components.MuiDatePicker.props.referenceDate
 
-> **components.MuiDatePicker.props.referenceDate**: `object`
+> **referenceDate**: `object`
 
 #### components.MuiDatePicker.props.referenceDate.description
 
-> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"कोई मान नहीं चुने जाने पर प्रारंभिक कैलेंडर दृश्य जेनरेट करने के लिए उपयोग की जाने वाली तिथि"`
+> **description**: `string` = `"कोई मान नहीं चुने जाने पर प्रारंभिक कैलेंडर दृश्य जेनरेट करने के लिए उपयोग की जाने वाली तिथि"`
 
 #### components.MuiDatePicker.props.referenceDate.name
 
-> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"संदर्भ तिथि"`
+> **name**: `string` = `"संदर्भ तिथि"`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth**: `object`
+> **showDaysOutsideCurrentMonth**: `object`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"चालू माह दृश्य में पिछले और अगले महीनों के दिनों को प्रदर्शित करता है"`
+> **description**: `string` = `"चालू माह दृश्य में पिछले और अगले महीनों के दिनों को प्रदर्शित करता है"`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"चालू माह के बाहर के दिन दिखाएं"`
+> **name**: `string` = `"चालू माह के बाहर के दिन दिखाएं"`
 
 #### components.MuiDatePicker.props.view
 
-> **components.MuiDatePicker.props.view**: `object`
+> **view**: `object`
 
 #### components.MuiDatePicker.props.view.description
 
-> **components.MuiDatePicker.props.view.description**: `string` = `"प्रदर्शित करने के लिए प्रारंभिक दृश्य (दिन, महीना, या वर्ष कैलेंडर)"`
+> **description**: `string` = `"प्रदर्शित करने के लिए प्रारंभिक दृश्य (दिन, महीना, या वर्ष कैलेंडर)"`
 
 #### components.MuiDatePicker.props.view.name
 
-> **components.MuiDatePicker.props.view.name**: `string` = `"देखें"`
+> **name**: `string` = `"देखें"`
 
 #### components.MuiDatePicker.props.views
 
-> **components.MuiDatePicker.props.views**: `object`
+> **views**: `object`
 
 #### components.MuiDatePicker.props.views.description
 
-> **components.MuiDatePicker.props.views.description**: `string` = `"उपलब्ध दृश्य (दिन, महीना, और वर्ष कैलेंडर)"`
+> **description**: `string` = `"उपलब्ध दृश्य (दिन, महीना, और वर्ष कैलेंडर)"`
 
 #### components.MuiDatePicker.props.views.name
 
-> **components.MuiDatePicker.props.views.name**: `string` = `"व्यूज"`
+> **name**: `string` = `"व्यूज"`
 
 #### components.MuiDatePicker.props.yearsOrder
 
-> **components.MuiDatePicker.props.yearsOrder**: `object`
+> **yearsOrder**: `object`
 
 #### components.MuiDatePicker.props.yearsOrder.description
 
-> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"वर्षों का क्रमबद्ध क्रम: आरोही (सबसे पुराना पहला) या अवरोही (सबसे नया पहला)"`
+> **description**: `string` = `"वर्षों का क्रमबद्ध क्रम: आरोही (सबसे पुराना पहला) या अवरोही (सबसे नया पहला)"`
 
 #### components.MuiDatePicker.props.yearsOrder.name
 
-> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"वर्षों का क्रम"`
+> **name**: `string` = `"वर्षों का क्रम"`
 
 #### components.MuiDatePicker.props.yearsPerRow
 
-> **components.MuiDatePicker.props.yearsPerRow**: `object`
+> **yearsPerRow**: `object`
 
 #### components.MuiDatePicker.props.yearsPerRow.description
 
-> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"वर्ष दृश्य में प्रति पंक्ति प्रदर्शित करने के लिए वर्ष आइटम की संख्या"`
+> **description**: `string` = `"वर्ष दृश्य में प्रति पंक्ति प्रदर्शित करने के लिए वर्ष आइटम की संख्या"`
 
 #### components.MuiDatePicker.props.yearsPerRow.name
 
-> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"वर्ष प्रति पंक्ति"`
+> **name**: `string` = `"वर्ष प्रति पंक्ति"`
 
 #### components.MuiDialog
 
-> **components.MuiDialog**: `object`
+> **MuiDialog**: `object`
 
 #### components.MuiDialog.description
 
-> **components.MuiDialog.description**: `string` = `"एक मोडल संवाद घटक जो ओवरले में सामग्री प्रदर्शित करता है"`
+> **description**: `string` = `"एक मोडल संवाद घटक जो ओवरले में सामग्री प्रदर्शित करता है"`
 
 #### components.MuiDialog.name
 
-> **components.MuiDialog.name**: `string` = `"डायलॉग"`
+> **name**: `string` = `"डायलॉग"`
 
 #### components.MuiDialog.props
 
-> **components.MuiDialog.props**: `object`
+> **props**: `object`
 
 #### components.MuiDialog.props.disableEscapeKeyDown
 
-> **components.MuiDialog.props.disableEscapeKeyDown**: `object`
+> **disableEscapeKeyDown**: `object`
 
 #### components.MuiDialog.props.disableEscapeKeyDown.description
 
-> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"यदि सही है, तो एस्केप कुंजी दबाने से डायलॉग बंद नहीं होगा"`
+> **description**: `string` = `"यदि सही है, तो एस्केप कुंजी दबाने से डायलॉग बंद नहीं होगा"`
 
 #### components.MuiDialog.props.disableEscapeKeyDown.name
 
-> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"एस्केप कुंजी को अक्षम करें"`
+> **name**: `string` = `"एस्केप कुंजी को अक्षम करें"`
 
 #### components.MuiDialog.props.fullScreen
 
-> **components.MuiDialog.props.fullScreen**: `object`
+> **fullScreen**: `object`
 
 #### components.MuiDialog.props.fullScreen.description
 
-> **components.MuiDialog.props.fullScreen.description**: `string` = `"अगर सही है, तो डायलॉग फ़ुल स्क्रीन होगा"`
+> **description**: `string` = `"अगर सही है, तो डायलॉग फ़ुल स्क्रीन होगा"`
 
 #### components.MuiDialog.props.fullScreen.name
 
-> **components.MuiDialog.props.fullScreen.name**: `string` = `"फ़ुल स्क्रीन"`
+> **name**: `string` = `"फ़ुल स्क्रीन"`
 
 #### components.MuiDialog.props.fullWidth
 
-> **components.MuiDialog.props.fullWidth**: `object`
+> **fullWidth**: `object`
 
 #### components.MuiDialog.props.fullWidth.description
 
-> **components.MuiDialog.props.fullWidth.description**: `string` = `"यदि सही है, तो संवाद maxWidth तक फैला हुआ है"`
+> **description**: `string` = `"यदि सही है, तो संवाद maxWidth तक फैला हुआ है"`
 
 #### components.MuiDialog.props.fullWidth.name
 
-> **components.MuiDialog.props.fullWidth.name**: `string` = `"पूरी चौड़ाई"`
+> **name**: `string` = `"पूरी चौड़ाई"`
 
 #### components.MuiDialog.props.maxWidth
 
-> **components.MuiDialog.props.maxWidth**: `object`
+> **maxWidth**: `object`
 
 #### components.MuiDialog.props.maxWidth.description
 
-> **components.MuiDialog.props.maxWidth.description**: `string` = `"संवाद की अधिकतम चौड़ाई (xs, sm, md, lg, xl)"`
+> **description**: `string` = `"संवाद की अधिकतम चौड़ाई (xs, sm, md, lg, xl)"`
 
 #### components.MuiDialog.props.maxWidth.name
 
-> **components.MuiDialog.props.maxWidth.name**: `string` = `"अधिकतम चौड़ाई"`
+> **name**: `string` = `"अधिकतम चौड़ाई"`
 
 #### components.MuiDialog.props.onClose
 
-> **components.MuiDialog.props.onClose**: `object`
+> **onClose**: `object`
 
 #### components.MuiDialog.props.onClose.description
 
-> **components.MuiDialog.props.onClose.description**: `string` = `"डायलॉग बंद होने पर कॉलबैक सक्रिय होता है"`
+> **description**: `string` = `"डायलॉग बंद होने पर कॉलबैक सक्रिय होता है"`
 
 #### components.MuiDialog.props.onClose.name
 
-> **components.MuiDialog.props.onClose.name**: `string` = `"बंद पर"`
+> **name**: `string` = `"बंद पर"`
 
 #### components.MuiDialog.props.open
 
-> **components.MuiDialog.props.open**: `object`
+> **open**: `object`
 
 #### components.MuiDialog.props.open.description
 
-> **components.MuiDialog.props.open.description**: `string` = `"यदि सही है, तो संवाद खुला है"`
+> **description**: `string` = `"यदि सही है, तो संवाद खुला है"`
 
 #### components.MuiDialog.props.open.name
 
-> **components.MuiDialog.props.open.name**: `string` = `"खोलें"`
+> **name**: `string` = `"खोलें"`
 
 #### components.MuiDialog.props.scroll
 
-> **components.MuiDialog.props.scroll**: `object`
+> **scroll**: `object`
 
 #### components.MuiDialog.props.scroll.description
 
-> **components.MuiDialog.props.scroll.description**: `string` = `"संवाद (पेपर या बॉडी) स्क्रॉल करने के लिए कंटेनर निर्धारित करता है"`
+> **description**: `string` = `"संवाद (पेपर या बॉडी) स्क्रॉल करने के लिए कंटेनर निर्धारित करता है"`
 
 #### components.MuiDialog.props.scroll.name
 
-> **components.MuiDialog.props.scroll.name**: `string` = `"स्क्रोल"`
+> **name**: `string` = `"स्क्रोल"`
 
 #### components.MuiDialogActions
 
-> **components.MuiDialogActions**: `object`
+> **MuiDialogActions**: `object`
 
 #### components.MuiDialogActions.description
 
-> **components.MuiDialogActions.description**: `string` = `"डायलॉग एक्शन बटन के लिए कंटेनर"`
+> **description**: `string` = `"डायलॉग एक्शन बटन के लिए कंटेनर"`
 
 #### components.MuiDialogActions.name
 
-> **components.MuiDialogActions.name**: `string` = `"संवाद क्रियाएँ"`
+> **name**: `string` = `"संवाद क्रियाएँ"`
 
 #### components.MuiDialogActions.props
 
-> **components.MuiDialogActions.props**: `object`
+> **props**: `object`
 
 #### components.MuiDialogActions.props.children
 
-> **components.MuiDialogActions.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiDialogActions.props.children.description
 
-> **components.MuiDialogActions.props.children.description**: `string` = `"घटक की सामग्री"`
+> **description**: `string` = `"घटक की सामग्री"`
 
 #### components.MuiDialogActions.props.children.name
 
-> **components.MuiDialogActions.props.children.name**: `string` = `"बच्चे"`
+> **name**: `string` = `"बच्चे"`
 
 #### components.MuiDialogActions.props.disableSpacing
 
-> **components.MuiDialogActions.props.disableSpacing**: `object`
+> **disableSpacing**: `object`
 
 #### components.MuiDialogActions.props.disableSpacing.description
 
-> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"यदि सही है, तो क्रियाओं में अतिरिक्त मार्जिन नहीं है"`
+> **description**: `string` = `"यदि सही है, तो क्रियाओं में अतिरिक्त मार्जिन नहीं है"`
 
 #### components.MuiDialogActions.props.disableSpacing.name
 
-> **components.MuiDialogActions.props.disableSpacing.name**: `string` = `"स्पेसिंग अक्षम करें"`
+> **name**: `string` = `"स्पेसिंग अक्षम करें"`
 
 #### components.MuiDialogContent
 
-> **components.MuiDialogContent**: `object`
+> **MuiDialogContent**: `object`
 
 #### components.MuiDialogContent.description
 
-> **components.MuiDialogContent.description**: `string` = `"संवाद का मुख्य सामग्री क्षेत्र"`
+> **description**: `string` = `"संवाद का मुख्य सामग्री क्षेत्र"`
 
 #### components.MuiDialogContent.name
 
-> **components.MuiDialogContent.name**: `string` = `"संवाद सामग्री"`
+> **name**: `string` = `"संवाद सामग्री"`
 
 #### components.MuiDialogContent.props
 
-> **components.MuiDialogContent.props**: `object`
+> **props**: `object`
 
 #### components.MuiDialogContent.props.children
 
-> **components.MuiDialogContent.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiDialogContent.props.children.description
 
-> **components.MuiDialogContent.props.children.description**: `string` = `"घटक की सामग्री"`
+> **description**: `string` = `"घटक की सामग्री"`
 
 #### components.MuiDialogContent.props.children.name
 
-> **components.MuiDialogContent.props.children.name**: `string` = `"बच्चे"`
+> **name**: `string` = `"बच्चे"`
 
 #### components.MuiDialogContent.props.dividers
 
-> **components.MuiDialogContent.props.dividers**: `object`
+> **dividers**: `object`
 
 #### components.MuiDialogContent.props.dividers.description
 
-> **components.MuiDialogContent.props.dividers.description**: `string` = `"यदि सही है, तो संवाद सामग्री के ऊपर और नीचे बॉर्डर जोड़े जाते हैं"`
+> **description**: `string` = `"यदि सही है, तो संवाद सामग्री के ऊपर और नीचे बॉर्डर जोड़े जाते हैं"`
 
 #### components.MuiDialogContent.props.dividers.name
 
-> **components.MuiDialogContent.props.dividers.name**: `string` = `"डिवाइडर"`
+> **name**: `string` = `"डिवाइडर"`
 
 #### components.MuiDialogContentText
 
-> **components.MuiDialogContentText**: `object`
+> **MuiDialogContentText**: `object`
 
 #### components.MuiDialogContentText.description
 
-> **components.MuiDialogContentText.description**: `string` = `"एक संवाद के अंदर पाठ सामग्री"`
+> **description**: `string` = `"एक संवाद के अंदर पाठ सामग्री"`
 
 #### components.MuiDialogContentText.name
 
-> **components.MuiDialogContentText.name**: `string` = `"डायलॉग कॉन्टेंट टेक्स्ट"`
+> **name**: `string` = `"डायलॉग कॉन्टेंट टेक्स्ट"`
 
 #### components.MuiDialogContentText.props
 
-> **components.MuiDialogContentText.props**: `object`
+> **props**: `object`
 
 #### components.MuiDialogContentText.props.children
 
-> **components.MuiDialogContentText.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiDialogContentText.props.children.description
 
-> **components.MuiDialogContentText.props.children.description**: `string` = `"टेक्स्ट कॉन्टेंट"`
+> **description**: `string` = `"टेक्स्ट कॉन्टेंट"`
 
 #### components.MuiDialogContentText.props.children.name
 
-> **components.MuiDialogContentText.props.children.name**: `string` = `"कॉन्टेंट"`
+> **name**: `string` = `"कॉन्टेंट"`
 
 #### components.MuiDialogLayout
 
-> **components.MuiDialogLayout**: `object`
+> **MuiDialogLayout**: `object`
 
 #### components.MuiDialogLayout.description
 
-> **components.MuiDialogLayout.description**: `string` = `"टाइटल, कॉन्टेंट और ऐक्शन बटन के साथ एक प्रीसेट डायलॉग लेआउट"`
+> **description**: `string` = `"टाइटल, कॉन्टेंट और ऐक्शन बटन के साथ एक प्रीसेट डायलॉग लेआउट"`
 
 #### components.MuiDialogLayout.name
 
-> **components.MuiDialogLayout.name**: `string` = `"डायलॉग लेआउट"`
+> **name**: `string` = `"डायलॉग लेआउट"`
 
 #### components.MuiDialogTitle
 
-> **components.MuiDialogTitle**: `object`
+> **MuiDialogTitle**: `object`
 
 #### components.MuiDialogTitle.description
 
-> **components.MuiDialogTitle.description**: `string` = `"संवाद का शीर्षक"`
+> **description**: `string` = `"संवाद का शीर्षक"`
 
 #### components.MuiDialogTitle.name
 
-> **components.MuiDialogTitle.name**: `string` = `"संवाद का शीर्षक"`
+> **name**: `string` = `"संवाद का शीर्षक"`
 
 #### components.MuiDialogTitle.props
 
-> **components.MuiDialogTitle.props**: `object`
+> **props**: `object`
 
 #### components.MuiDialogTitle.props.children
 
-> **components.MuiDialogTitle.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiDialogTitle.props.children.description
 
-> **components.MuiDialogTitle.props.children.description**: `string` = `"टाइटल टेक्स्ट"`
+> **description**: `string` = `"टाइटल टेक्स्ट"`
 
 #### components.MuiDialogTitle.props.children.name
 
-> **components.MuiDialogTitle.props.children.name**: `string` = `"कॉन्टेंट"`
+> **name**: `string` = `"कॉन्टेंट"`
 
 #### components.MuiErrorWrapper
 
-> **components.MuiErrorWrapper**: `object`
+> **MuiErrorWrapper**: `object`
 
 #### components.MuiErrorWrapper.description
 
-> **components.MuiErrorWrapper.description**: `string` = `"सामग्री को लपेटता है और त्रुटि स्थिति या संदेश प्रदर्शित करता है"`
+> **description**: `string` = `"सामग्री को लपेटता है और त्रुटि स्थिति या संदेश प्रदर्शित करता है"`
 
 #### components.MuiErrorWrapper.name
 
-> **components.MuiErrorWrapper.name**: `string` = `"त्रुटि रैपर"`
+> **name**: `string` = `"त्रुटि रैपर"`
 
 #### components.MuiFormControlLabel
 
-> **components.MuiFormControlLabel**: `object`
+> **MuiFormControlLabel**: `object`
 
 #### components.MuiFormControlLabel.description
 
-> **components.MuiFormControlLabel.description**: `string` = `"किसी लेबल को फ़ॉर्म नियंत्रण के साथ जोड़ता है"`
+> **description**: `string` = `"किसी लेबल को फ़ॉर्म नियंत्रण के साथ जोड़ता है"`
 
 #### components.MuiFormControlLabel.name
 
-> **components.MuiFormControlLabel.name**: `string` = `"प्रपत्र नियंत्रण लेबल"`
+> **name**: `string` = `"प्रपत्र नियंत्रण लेबल"`
 
 #### components.MuiFormControlLabel.props
 
-> **components.MuiFormControlLabel.props**: `object`
+> **props**: `object`
 
 #### components.MuiFormControlLabel.props.control
 
-> **components.MuiFormControlLabel.props.control**: `object`
+> **control**: `object`
 
 #### components.MuiFormControlLabel.props.control.description
 
-> **components.MuiFormControlLabel.props.control.description**: `string` = `"प्रपत्र नियंत्रण तत्व (चेकबॉक्स, रेडियो, स्विच)"`
+> **description**: `string` = `"प्रपत्र नियंत्रण तत्व (चेकबॉक्स, रेडियो, स्विच)"`
 
 #### components.MuiFormControlLabel.props.control.name
 
-> **components.MuiFormControlLabel.props.control.name**: `string` = `"कंट्रोल"`
+> **name**: `string` = `"कंट्रोल"`
 
 #### components.MuiFormControlLabel.props.labelPlacement
 
-> **components.MuiFormControlLabel.props.labelPlacement**: `object`
+> **labelPlacement**: `object`
 
 #### components.MuiFormControlLabel.props.labelPlacement.description
 
-> **components.MuiFormControlLabel.props.labelPlacement.description**: `string` = `"नियंत्रण के सापेक्ष लेबल की स्थिति"`
+> **description**: `string` = `"नियंत्रण के सापेक्ष लेबल की स्थिति"`
 
 #### components.MuiFormControlLabel.props.labelPlacement.name
 
-> **components.MuiFormControlLabel.props.labelPlacement.name**: `string` = `"लेबल प्लेसमेंट"`
+> **name**: `string` = `"लेबल प्लेसमेंट"`
 
 #### components.MuiFormLabel
 
-> **components.MuiFormLabel**: `object`
+> **MuiFormLabel**: `object`
 
 #### components.MuiFormLabel.description
 
-> **components.MuiFormLabel.description**: `string` = `"फ़ॉर्म फ़ील्ड को समूहीकृत करने या उनका वर्णन करने के लिए लेबल"`
+> **description**: `string` = `"फ़ॉर्म फ़ील्ड को समूहीकृत करने या उनका वर्णन करने के लिए लेबल"`
 
 #### components.MuiFormLabel.name
 
-> **components.MuiFormLabel.name**: `string` = `"प्रपत्र लेबल"`
+> **name**: `string` = `"प्रपत्र लेबल"`
 
 #### components.MuiFormLabel.props
 
-> **components.MuiFormLabel.props**: `object`
+> **props**: `object`
 
 #### components.MuiFormLabel.props.filled
 
-> **components.MuiFormLabel.props.filled**: `object`
+> **filled**: `object`
 
 #### components.MuiFormLabel.props.filled.description
 
-> **components.MuiFormLabel.props.filled.description**: `string` = `"भरे हुए स्टेट स्टाइल को लागू करता है"`
+> **description**: `string` = `"भरे हुए स्टेट स्टाइल को लागू करता है"`
 
 #### components.MuiFormLabel.props.filled.name
 
-> **components.MuiFormLabel.props.filled.name**: `string` = `"भरा हुआ"`
+> **name**: `string` = `"भरा हुआ"`
 
 #### components.MuiLinearProgress
 
-> **components.MuiLinearProgress**: `object`
+> **MuiLinearProgress**: `object`
 
 #### components.MuiLinearProgress.description
 
-> **components.MuiLinearProgress.description**: `string` = `"एक रेखीय पट्टी में लोडिंग या प्रगति को इंगित करता है"`
+> **description**: `string` = `"एक रेखीय पट्टी में लोडिंग या प्रगति को इंगित करता है"`
 
 #### components.MuiLinearProgress.name
 
-> **components.MuiLinearProgress.name**: `string` = `"रेखीय प्रगति"`
+> **name**: `string` = `"रेखीय प्रगति"`
 
 #### components.MuiLinearProgress.props
 
-> **components.MuiLinearProgress.props**: `object`
+> **props**: `object`
 
 #### components.MuiLinearProgress.props.valueBuffer
 
-> **components.MuiLinearProgress.props.valueBuffer**: `object`
+> **valueBuffer**: `object`
 
 #### components.MuiLinearProgress.props.valueBuffer.description
 
-> **components.MuiLinearProgress.props.valueBuffer.description**: `string` = `"बफ़र्ड प्रगति मोड के लिए द्वितीयक बफर मान"`
+> **description**: `string` = `"बफ़र्ड प्रगति मोड के लिए द्वितीयक बफर मान"`
 
 #### components.MuiLinearProgress.props.valueBuffer.name
 
-> **components.MuiLinearProgress.props.valueBuffer.name**: `string` = `"वैल्यू बफर"`
+> **name**: `string` = `"वैल्यू बफर"`
 
 #### components.MuiLink
 
-> **components.MuiLink**: `object`
+> **MuiLink**: `object`
 
 #### components.MuiLink.description
 
-> **components.MuiLink.description**: `string` = `"नेविगेशन या क्रियाओं के लिए क्लिक करने योग्य तत्व"`
+> **description**: `string` = `"नेविगेशन या क्रियाओं के लिए क्लिक करने योग्य तत्व"`
 
 #### components.MuiLink.name
 
-> **components.MuiLink.name**: `string` = `"लिंक"`
+> **name**: `string` = `"लिंक"`
 
 #### components.MuiLink.props
 
-> **components.MuiLink.props**: `object`
+> **props**: `object`
 
 #### components.MuiLink.props.href
 
-> **components.MuiLink.props.href**: `object`
+> **href**: `object`
 
 #### components.MuiLink.props.href.description
 
-> **components.MuiLink.props.href.description**: `string` = `"डेस्टिनेशन URL"`
+> **description**: `string` = `"डेस्टिनेशन URL"`
 
 #### components.MuiLink.props.href.name
 
-> **components.MuiLink.props.href.name**: `string` = `"Href"`
+> **name**: `string` = `"Href"`
 
 #### components.MuiList
 
-> **components.MuiList**: `object`
+> **MuiList**: `object`
 
 #### components.MuiList.description
 
-> **components.MuiList.description**: `string` = `"मदों की एक लंबवत सूची प्रदर्शित करता है"`
+> **description**: `string` = `"मदों की एक लंबवत सूची प्रदर्शित करता है"`
 
 #### components.MuiList.name
 
-> **components.MuiList.name**: `string` = `"सूची"`
+> **name**: `string` = `"सूची"`
 
 #### components.MuiListItem
 
-> **components.MuiListItem**: `object`
+> **MuiListItem**: `object`
 
 #### components.MuiListItem.description
 
-> **components.MuiListItem.description**: `string` = `"सूची के अंदर एक आइटम का प्रतिनिधित्व करता है"`
+> **description**: `string` = `"सूची के अंदर एक आइटम का प्रतिनिधित्व करता है"`
 
 #### components.MuiListItem.name
 
-> **components.MuiListItem.name**: `string` = `"सूची आइटम"`
+> **name**: `string` = `"सूची आइटम"`
 
 #### components.MuiListItem.props
 
-> **components.MuiListItem.props**: `object`
+> **props**: `object`
 
 #### components.MuiListItem.props.divider
 
-> **components.MuiListItem.props.divider**: `object`
+> **divider**: `object`
 
 #### components.MuiListItem.props.divider.description
 
-> **components.MuiListItem.props.divider.description**: `string` = `"सूची आइटम के नीचे एक डिवाइडर प्रदर्शित करता है"`
+> **description**: `string` = `"सूची आइटम के नीचे एक डिवाइडर प्रदर्शित करता है"`
 
 #### components.MuiListItem.props.divider.name
 
-> **components.MuiListItem.props.divider.name**: `string` = `"डिवाइडर"`
+> **name**: `string` = `"डिवाइडर"`
 
 #### components.MuiRadioGroup
 
-> **components.MuiRadioGroup**: `object`
+> **MuiRadioGroup**: `object`
 
 #### components.MuiRadioGroup.description
 
-> **components.MuiRadioGroup.description**: `string` = `"सेट से एक विकल्प चुनने की अनुमति देता है"`
+> **description**: `string` = `"सेट से एक विकल्प चुनने की अनुमति देता है"`
 
 #### components.MuiRadioGroup.name
 
-> **components.MuiRadioGroup.name**: `string` = `"रेडियो ग्रुप"`
+> **name**: `string` = `"रेडियो ग्रुप"`
 
 #### components.MuiRadioGroup.props
 
-> **components.MuiRadioGroup.props**: `object`
+> **props**: `object`
 
 #### components.MuiRadioGroup.props.name
 
-> **components.MuiRadioGroup.props.name**: `object`
+> **name**: `object`
 
 #### components.MuiRadioGroup.props.name.description
 
-> **components.MuiRadioGroup.props.name.description**: `string` = `"रेडियो बटनों को समूहबद्ध करने के लिए उपयोग की जाने वाली नाम विशेषता"`
+> **description**: `string` = `"रेडियो बटनों को समूहबद्ध करने के लिए उपयोग की जाने वाली नाम विशेषता"`
 
 #### components.MuiRadioGroup.props.name.name
 
-> **components.MuiRadioGroup.props.name.name**: `string` = `"नाम"`
+> **name**: `string` = `"नाम"`
 
 #### components.MuiRadioGroup.props.row
 
-> **components.MuiRadioGroup.props.row**: `object`
+> **row**: `object`
 
 #### components.MuiRadioGroup.props.row.description
 
-> **components.MuiRadioGroup.props.row.description**: `string` = `"रेडियो बटन क्षैतिज रूप से प्रदर्शित करता है"`
+> **description**: `string` = `"रेडियो बटन क्षैतिज रूप से प्रदर्शित करता है"`
 
 #### components.MuiRadioGroup.props.row.name
 
-> **components.MuiRadioGroup.props.row.name**: `string` = `"पंक्ति"`
+> **name**: `string` = `"पंक्ति"`
 
 #### components.MuiRadioItem
 
-> **components.MuiRadioItem**: `object`
+> **MuiRadioItem**: `object`
 
 #### components.MuiRadioItem.description
 
-> **components.MuiRadioItem.description**: `string` = `"एक रेडियो समूह के भीतर इस्तेमाल किया जाने वाला एकल रेडियो बटन"`
+> **description**: `string` = `"एक रेडियो समूह के भीतर इस्तेमाल किया जाने वाला एकल रेडियो बटन"`
 
 #### components.MuiRadioItem.name
 
-> **components.MuiRadioItem.name**: `string` = `"रेडियो आइटम"`
+> **name**: `string` = `"रेडियो आइटम"`
 
 #### components.MuiSelect
 
-> **components.MuiSelect**: `object`
+> **MuiSelect**: `object`
 
 #### components.MuiSelect.description
 
-> **components.MuiSelect.description**: `string` = `"विकल्प चुनने के लिए ड्रॉपडाउन घटक"`
+> **description**: `string` = `"विकल्प चुनने के लिए ड्रॉपडाउन घटक"`
 
 #### components.MuiSelect.name
 
-> **components.MuiSelect.name**: `string` = `"चुनें"`
+> **name**: `string` = `"चुनें"`
 
 #### components.MuiSelect.props
 
-> **components.MuiSelect.props**: `object`
+> **props**: `object`
 
 #### components.MuiSelect.props.autoFocus
 
-> **components.MuiSelect.props.autoFocus**: `object`
+> **autoFocus**: `object`
 
 #### components.MuiSelect.props.autoFocus.description
 
-> **components.MuiSelect.props.autoFocus.description**: `string` = `"फ़ील्ड को माउंट पर स्वचालित रूप से फ़ोकस करता है"`
+> **description**: `string` = `"फ़ील्ड को माउंट पर स्वचालित रूप से फ़ोकस करता है"`
 
 #### components.MuiSelect.props.autoFocus.name
 
-> **components.MuiSelect.props.autoFocus.name**: `string` = `"ऑटो फ़ोकस"`
+> **name**: `string` = `"ऑटो फ़ोकस"`
 
 #### components.MuiSelect.props.multiple
 
-> **components.MuiSelect.props.multiple**: `object`
+> **multiple**: `object`
 
 #### components.MuiSelect.props.multiple.description
 
-> **components.MuiSelect.props.multiple.description**: `string` = `"कई विकल्पों को चुनने की अनुमति देता है"`
+> **description**: `string` = `"कई विकल्पों को चुनने की अनुमति देता है"`
 
 #### components.MuiSelect.props.multiple.name
 
-> **components.MuiSelect.props.multiple.name**: `string` = `"मल्टीपल"`
+> **name**: `string` = `"मल्टीपल"`
 
 #### components.MuiStack
 
-> **components.MuiStack**: `object`
+> **MuiStack**: `object`
 
 #### components.MuiStack.description
 
-> **components.MuiStack.description**: `string` = `"बच्चों को एक-आयामी स्टैक में लेआउट करता है"`
+> **description**: `string` = `"बच्चों को एक-आयामी स्टैक में लेआउट करता है"`
 
 #### components.MuiStack.name
 
-> **components.MuiStack.name**: `string` = `"स्टैक"`
+> **name**: `string` = `"स्टैक"`
 
 #### components.MuiStack.props
 
-> **components.MuiStack.props**: `object`
+> **props**: `object`
 
 #### components.MuiStack.props.alignItems
 
-> **components.MuiStack.props.alignItems**: `object`
+> **alignItems**: `object`
 
 #### components.MuiStack.props.alignItems.description
 
-> **components.MuiStack.props.alignItems.description**: `string` = `"क्रॉस-एक्सिस संरेखण को नियंत्रित करता है"`
+> **description**: `string` = `"क्रॉस-एक्सिस संरेखण को नियंत्रित करता है"`
 
 #### components.MuiStack.props.alignItems.name
 
-> **components.MuiStack.props.alignItems.name**: `string` = `"आइटम संरेखित करें"`
+> **name**: `string` = `"आइटम संरेखित करें"`
 
 #### components.MuiStack.props.direction
 
-> **components.MuiStack.props.direction**: `object`
+> **direction**: `object`
 
 #### components.MuiStack.props.direction.description
 
-> **components.MuiStack.props.direction.description**: `string` = `"परिभाषित करता है कि आइटम एक पंक्ति या स्तंभ में स्टैक किए गए हैं या नहीं"`
+> **description**: `string` = `"परिभाषित करता है कि आइटम एक पंक्ति या स्तंभ में स्टैक किए गए हैं या नहीं"`
 
 #### components.MuiStack.props.direction.name
 
-> **components.MuiStack.props.direction.name**: `string` = `"डायरेक्शन"`
+> **name**: `string` = `"डायरेक्शन"`
 
 #### components.MuiStack.props.flexWrap
 
-> **components.MuiStack.props.flexWrap**: `object`
+> **flexWrap**: `object`
 
 #### components.MuiStack.props.flexWrap.description
 
-> **components.MuiStack.props.flexWrap.description**: `string` = `"नियंत्रित करता है कि आइटम कई लाइनों पर रैप करते हैं या नहीं"`
+> **description**: `string` = `"नियंत्रित करता है कि आइटम कई लाइनों पर रैप करते हैं या नहीं"`
 
 #### components.MuiStack.props.flexWrap.name
 
-> **components.MuiStack.props.flexWrap.name**: `string` = `"फ्लेक्स रैप"`
+> **name**: `string` = `"फ्लेक्स रैप"`
 
 #### components.MuiStack.props.justifyContent
 
-> **components.MuiStack.props.justifyContent**: `object`
+> **justifyContent**: `object`
 
 #### components.MuiStack.props.justifyContent.description
 
-> **components.MuiStack.props.justifyContent.description**: `string` = `"मुख्य-अक्ष संरेखण को नियंत्रित करता है"`
+> **description**: `string` = `"मुख्य-अक्ष संरेखण को नियंत्रित करता है"`
 
 #### components.MuiStack.props.justifyContent.name
 
-> **components.MuiStack.props.justifyContent.name**: `string` = `"सामग्री का औचित्य सिद्ध करें"`
+> **name**: `string` = `"सामग्री का औचित्य सिद्ध करें"`
 
 #### components.MuiStack.props.spacing
 
-> **components.MuiStack.props.spacing**: `object`
+> **spacing**: `object`
 
 #### components.MuiStack.props.spacing.description
 
-> **components.MuiStack.props.spacing.description**: `string` = `"स्टैक्ड आइटम के बीच अंतर"`
+> **description**: `string` = `"स्टैक्ड आइटम के बीच अंतर"`
 
 #### components.MuiStack.props.spacing.name
 
-> **components.MuiStack.props.spacing.name**: `string` = `"स्पेसिंग"`
+> **name**: `string` = `"स्पेसिंग"`
 
 #### components.MuiStack.props.useFlexGap
 
-> **components.MuiStack.props.useFlexGap**: `object`
+> **useFlexGap**: `object`
 
 #### components.MuiStack.props.useFlexGap.description
 
-> **components.MuiStack.props.useFlexGap.description**: `string` = `"स्पेसिंग के लिए मार्जिन के बजाय CSS गैप का उपयोग करता है"`
+> **description**: `string` = `"स्पेसिंग के लिए मार्जिन के बजाय CSS गैप का उपयोग करता है"`
 
 #### components.MuiStack.props.useFlexGap.name
 
-> **components.MuiStack.props.useFlexGap.name**: `string` = `"फ्लेक्स गैप का इस्तेमाल करें"`
+> **name**: `string` = `"फ्लेक्स गैप का इस्तेमाल करें"`
 
 #### components.MuiSwitch
 
-> **components.MuiSwitch**: `object`
+> **MuiSwitch**: `object`
 
 #### components.MuiSwitch.description
 
-> **components.MuiSwitch.description**: `string` = `"दो राज्यों के बीच स्विच करने के लिए टॉगल कंट्रोल"`
+> **description**: `string` = `"दो राज्यों के बीच स्विच करने के लिए टॉगल कंट्रोल"`
 
 #### components.MuiSwitch.name
 
-> **components.MuiSwitch.name**: `string` = `"स्विच"`
+> **name**: `string` = `"स्विच"`
 
 #### components.MuiSwitch.props
 
-> **components.MuiSwitch.props**: `object`
+> **props**: `object`
 
 #### components.MuiSwitch.props.defaultChecked
 
-> **components.MuiSwitch.props.defaultChecked**: `object`
+> **defaultChecked**: `object`
 
 #### components.MuiSwitch.props.defaultChecked.description
 
-> **components.MuiSwitch.props.defaultChecked.description**: `string` = `"अनियंत्रित होने पर प्रारंभिक टॉगल स्थिति"`
+> **description**: `string` = `"अनियंत्रित होने पर प्रारंभिक टॉगल स्थिति"`
 
 #### components.MuiSwitch.props.defaultChecked.name
 
-> **components.MuiSwitch.props.defaultChecked.name**: `string` = `"डिफ़ॉल्ट चेक किया गया"`
+> **name**: `string` = `"डिफ़ॉल्ट चेक किया गया"`
 
 #### components.MuiTextField
 
-> **components.MuiTextField**: `object`
+> **MuiTextField**: `object`
 
 #### components.MuiTextField.description
 
-> **components.MuiTextField.description**: `string` = `"टेक्स्ट और फ़ॉर्म डेटा के लिए इनपुट फ़ील्ड"`
+> **description**: `string` = `"टेक्स्ट और फ़ॉर्म डेटा के लिए इनपुट फ़ील्ड"`
 
 #### components.MuiTextField.name
 
-> **components.MuiTextField.name**: `string` = `"टेक्स्ट फ़ील्ड"`
+> **name**: `string` = `"टेक्स्ट फ़ील्ड"`
 
 #### components.MuiTextField.props
 
-> **components.MuiTextField.props**: `object`
+> **props**: `object`
 
 #### components.MuiTextField.props.autoFocus
 
-> **components.MuiTextField.props.autoFocus**: `object`
+> **autoFocus**: `object`
 
 #### components.MuiTextField.props.autoFocus.description
 
-> **components.MuiTextField.props.autoFocus.description**: `string` = `"फ़ील्ड को माउंट पर स्वचालित रूप से फ़ोकस करता है"`
+> **description**: `string` = `"फ़ील्ड को माउंट पर स्वचालित रूप से फ़ोकस करता है"`
 
 #### components.MuiTextField.props.autoFocus.name
 
-> **components.MuiTextField.props.autoFocus.name**: `string` = `"ऑटो फ़ोकस"`
+> **name**: `string` = `"ऑटो फ़ोकस"`
 
 #### components.MuiTextField.props.maxRows
 
-> **components.MuiTextField.props.maxRows**: `object`
+> **maxRows**: `object`
 
 #### components.MuiTextField.props.maxRows.description
 
-> **components.MuiTextField.props.maxRows.description**: `string` = `"मल्टीलाइन इनपुट के लिए दृश्यमान पंक्तियों की अधिकतम संख्या"`
+> **description**: `string` = `"मल्टीलाइन इनपुट के लिए दृश्यमान पंक्तियों की अधिकतम संख्या"`
 
 #### components.MuiTextField.props.maxRows.name
 
-> **components.MuiTextField.props.maxRows.name**: `string` = `"अधिकतम पंक्तियां"`
+> **name**: `string` = `"अधिकतम पंक्तियां"`
 
 #### components.MuiTextField.props.multiline
 
-> **components.MuiTextField.props.multiline**: `object`
+> **multiline**: `object`
 
 #### components.MuiTextField.props.multiline.description
 
-> **components.MuiTextField.props.multiline.description**: `string` = `"सिंगल-लाइन इनपुट के बजाय टेक्स्टरेरा रेंडर करता है"`
+> **description**: `string` = `"सिंगल-लाइन इनपुट के बजाय टेक्स्टरेरा रेंडर करता है"`
 
 #### components.MuiTextField.props.multiline.name
 
-> **components.MuiTextField.props.multiline.name**: `string` = `"मल्टीलाइन"`
+> **name**: `string` = `"मल्टीलाइन"`
 
 #### components.MuiTextField.props.type
 
-> **components.MuiTextField.props.type**: `object`
+> **type**: `object`
 
 #### components.MuiTextField.props.type.description
 
-> **components.MuiTextField.props.type.description**: `string` = `"HTML इनपुट प्रकार (टेक्स्ट, पासवर्ड, ईमेल, आदि)"`
+> **description**: `string` = `"HTML इनपुट प्रकार (टेक्स्ट, पासवर्ड, ईमेल, आदि)"`
 
 #### components.MuiTextField.props.type.name
 
-> **components.MuiTextField.props.type.name**: `string` = `"टाइप करें"`
+> **name**: `string` = `"टाइप करें"`
 
 #### components.MuiTooltip
 
-> **components.MuiTooltip**: `object`
+> **MuiTooltip**: `object`
 
 #### components.MuiTooltip.description
 
-> **components.MuiTooltip.description**: `string` = `"होवर, फ़ोकस या टच पर प्रासंगिक जानकारी प्रदर्शित करता है"`
+> **description**: `string` = `"होवर, फ़ोकस या टच पर प्रासंगिक जानकारी प्रदर्शित करता है"`
 
 #### components.MuiTooltip.name
 
-> **components.MuiTooltip.name**: `string` = `"टूलटिप"`
+> **name**: `string` = `"टूलटिप"`
 
 #### components.MuiTooltip.props
 
-> **components.MuiTooltip.props**: `object`
+> **props**: `object`
 
 #### components.MuiTooltip.props.arrow
 
-> **components.MuiTooltip.props.arrow**: `object`
+> **arrow**: `object`
 
 #### components.MuiTooltip.props.arrow.description
 
-> **components.MuiTooltip.props.arrow.description**: `string` = `"लक्ष्य तत्व की ओर इशारा करते हुए एक तीर प्रदर्शित करता है"`
+> **description**: `string` = `"लक्ष्य तत्व की ओर इशारा करते हुए एक तीर प्रदर्शित करता है"`
 
 #### components.MuiTooltip.props.arrow.name
 
-> **components.MuiTooltip.props.arrow.name**: `string` = `"एरो"`
+> **name**: `string` = `"एरो"`
 
 #### components.MuiTooltip.props.disableFocusListener
 
-> **components.MuiTooltip.props.disableFocusListener**: `object`
+> **disableFocusListener**: `object`
 
 #### components.MuiTooltip.props.disableFocusListener.description
 
-> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"टूलटिप को फ़ोकस पर दिखने से रोकता है"`
+> **description**: `string` = `"टूलटिप को फ़ोकस पर दिखने से रोकता है"`
 
 #### components.MuiTooltip.props.disableFocusListener.name
 
-> **components.MuiTooltip.props.disableFocusListener.name**: `string` = `"फ़ोकस श्रोता को अक्षम करें"`
+> **name**: `string` = `"फ़ोकस श्रोता को अक्षम करें"`
 
 #### components.MuiTooltip.props.disableHoverListener
 
-> **components.MuiTooltip.props.disableHoverListener**: `object`
+> **disableHoverListener**: `object`
 
 #### components.MuiTooltip.props.disableHoverListener.description
 
-> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"टूलटिप को होवर पर दिखने से रोकता है"`
+> **description**: `string` = `"टूलटिप को होवर पर दिखने से रोकता है"`
 
 #### components.MuiTooltip.props.disableHoverListener.name
 
-> **components.MuiTooltip.props.disableHoverListener.name**: `string` = `"होवर श्रोता को अक्षम करें"`
+> **name**: `string` = `"होवर श्रोता को अक्षम करें"`
 
 #### components.MuiTooltip.props.disableInteractive
 
-> **components.MuiTooltip.props.disableInteractive**: `object`
+> **disableInteractive**: `object`
 
 #### components.MuiTooltip.props.disableInteractive.description
 
-> **components.MuiTooltip.props.disableInteractive.description**: `string` = `"टूलटिप सामग्री के साथ इंटरैक्शन को अक्षम करता है"`
+> **description**: `string` = `"टूलटिप सामग्री के साथ इंटरैक्शन को अक्षम करता है"`
 
 #### components.MuiTooltip.props.disableInteractive.name
 
-> **components.MuiTooltip.props.disableInteractive.name**: `string` = `"इंटरैक्टिव अक्षम करें"`
+> **name**: `string` = `"इंटरैक्टिव अक्षम करें"`
 
 #### components.MuiTooltip.props.disableTouchListener
 
-> **components.MuiTooltip.props.disableTouchListener**: `object`
+> **disableTouchListener**: `object`
 
 #### components.MuiTooltip.props.disableTouchListener.description
 
-> **components.MuiTooltip.props.disableTouchListener.description**: `string` = `"टूलटिप को टच पर दिखने से रोकता है"`
+> **description**: `string` = `"टूलटिप को टच पर दिखने से रोकता है"`
 
 #### components.MuiTooltip.props.disableTouchListener.name
 
-> **components.MuiTooltip.props.disableTouchListener.name**: `string` = `"टच लिसनर को अक्षम करें"`
+> **name**: `string` = `"टच लिसनर को अक्षम करें"`
 
 #### components.MuiTooltip.props.enterDelay
 
-> **components.MuiTooltip.props.enterDelay**: `object`
+> **enterDelay**: `object`
 
 #### components.MuiTooltip.props.enterDelay.description
 
-> **components.MuiTooltip.props.enterDelay.description**: `string` = `"टूलटिप दिखाने से पहले मिलीसेकंड में देरी"`
+> **description**: `string` = `"टूलटिप दिखाने से पहले मिलीसेकंड में देरी"`
 
 #### components.MuiTooltip.props.enterDelay.name
 
-> **components.MuiTooltip.props.enterDelay.name**: `string` = `"विलंब दर्ज करें"`
+> **name**: `string` = `"विलंब दर्ज करें"`
 
 #### components.MuiTooltip.props.followCursor
 
-> **components.MuiTooltip.props.followCursor**: `object`
+> **followCursor**: `object`
 
 #### components.MuiTooltip.props.followCursor.description
 
-> **components.MuiTooltip.props.followCursor.description**: `string` = `"टूलटिप को कर्सर स्थिति का अनुसरण करने में मदद करता है"`
+> **description**: `string` = `"टूलटिप को कर्सर स्थिति का अनुसरण करने में मदद करता है"`
 
 #### components.MuiTooltip.props.followCursor.name
 
-> **components.MuiTooltip.props.followCursor.name**: `string` = `"कर्सर को फ़ॉलो करें"`
+> **name**: `string` = `"कर्सर को फ़ॉलो करें"`
 
 #### components.MuiTooltip.props.leaveDelay
 
-> **components.MuiTooltip.props.leaveDelay**: `object`
+> **leaveDelay**: `object`
 
 #### components.MuiTooltip.props.leaveDelay.description
 
-> **components.MuiTooltip.props.leaveDelay.description**: `string` = `"टूलटिप को छिपाने से पहले मिलीसेकंड में देरी"`
+> **description**: `string` = `"टूलटिप को छिपाने से पहले मिलीसेकंड में देरी"`
 
 #### components.MuiTooltip.props.leaveDelay.name
 
-> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"छुट्टी में देरी"`
+> **name**: `string` = `"छुट्टी में देरी"`
 
 #### components.MuiTooltip.props.title
 
-> **components.MuiTooltip.props.title**: `object`
+> **title**: `object`
 
 #### components.MuiTooltip.props.title.description
 
-> **components.MuiTooltip.props.title.description**: `string` = `"टूलटिप के अंदर प्रदर्शित पाठ सामग्री"`
+> **description**: `string` = `"टूलटिप के अंदर प्रदर्शित पाठ सामग्री"`
 
 #### components.MuiTooltip.props.title.name
 
-> **components.MuiTooltip.props.title.name**: `string` = `"टाइटल"`
+> **name**: `string` = `"टाइटल"`
 
 #### components.MuiTypography
 
-> **components.MuiTypography**: `object`
+> **MuiTypography**: `object`
 
 #### components.MuiTypography.description
 
-> **components.MuiTypography.description**: `string` = `"पूर्वनिर्धारित टाइपोग्राफी शैलियों के साथ पाठ प्रदर्शित करता है"`
+> **description**: `string` = `"पूर्वनिर्धारित टाइपोग्राफी शैलियों के साथ पाठ प्रदर्शित करता है"`
 
 #### components.MuiTypography.name
 
-> **components.MuiTypography.name**: `string` = `"टाइपोग्राफी"`
+> **name**: `string` = `"टाइपोग्राफी"`
 
 #### components.MuiTypography.props
 
-> **components.MuiTypography.props**: `object`
+> **props**: `object`
 
 #### components.MuiTypography.props.children
 
-> **components.MuiTypography.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiTypography.props.children.description
 
-> **components.MuiTypography.props.children.description**: `string` = `"टेक्स्ट कॉन्टेंट"`
+> **description**: `string` = `"टेक्स्ट कॉन्टेंट"`
 
 #### components.MuiTypography.props.children.name
 
-> **components.MuiTypography.props.children.name**: `string` = `"कॉन्टेंट"`
+> **name**: `string` = `"कॉन्टेंट"`
 
 #### components.MuiUploader
 
-> **components.MuiUploader**: `object`
+> **MuiUploader**: `object`
 
 #### components.MuiUploader.description
 
-> **components.MuiUploader.description**: `string` = `"एक या अधिक फ़ाइलों को अपलोड करने के लिए घटक"`
+> **description**: `string` = `"एक या अधिक फ़ाइलों को अपलोड करने के लिए घटक"`
 
 #### components.MuiUploader.name
 
-> **components.MuiUploader.name**: `string` = `"अपलोडर"`
+> **name**: `string` = `"अपलोडर"`
 
 #### components.MuiUploader.props
 
-> **components.MuiUploader.props**: `object`
+> **props**: `object`
 
 #### components.MuiUploader.props.accept
 
-> **components.MuiUploader.props.accept**: `object`
+> **accept**: `object`
 
 #### components.MuiUploader.props.accept.description
 
-> **components.MuiUploader.props.accept.description**: `string` = `"अनुमत फ़ाइल प्रकार (जैसे “.jpg, .png”)"`
+> **description**: `string` = `"अनुमत फ़ाइल प्रकार (जैसे “.jpg, .png”)"`
 
 #### components.MuiUploader.props.accept.name
 
-> **components.MuiUploader.props.accept.name**: `string` = `"स्वीकारें"`
+> **name**: `string` = `"स्वीकारें"`
 
 #### components.MuiUploader.props.multiple
 
-> **components.MuiUploader.props.multiple**: `object`
+> **multiple**: `object`
 
 #### components.MuiUploader.props.multiple.description
 
-> **components.MuiUploader.props.multiple.description**: `string` = `"कई फ़ाइलों को चुनने की अनुमति देता है"`
+> **description**: `string` = `"कई फ़ाइलों को चुनने की अनुमति देता है"`
 
 #### components.MuiUploader.props.multiple.name
 
-> **components.MuiUploader.props.multiple.name**: `string` = `"मल्टीपल"`
+> **name**: `string` = `"मल्टीपल"`

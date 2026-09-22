@@ -1,6 +1,6 @@
 # Function: nameAutorun()
 
-> **nameAutorun**(`owner`, `name`, `params`): `string`
+> **nameAutorun**(`owner`, `name`, `params?`): `string`
 
 Computes the autorun name based on the owner, name, and parameters. **Internal use only.**
 
@@ -18,7 +18,7 @@ the owner of the autorun.
 
 the name of the autorun.
 
-### params
+### params?
 
 `Record`\<`string`, `any`\> = `{}`
 

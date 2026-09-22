@@ -10,7 +10,7 @@ Props for the RsCard component.
 
 ### as?
 
-> `optional` **as**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **as?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
@@ -22,7 +22,7 @@ You can use a custom element for this component
 
 ### bodyFill?
 
-> `optional` **bodyFill**: `boolean`
+> `optional` **bodyFill?**: `boolean`
 
 Content area filled with containers
 
@@ -34,7 +34,7 @@ Content area filled with containers
 
 ### bodyProps?
 
-> `optional` **bodyProps**: `HTMLAttributes`\<`HTMLDivElement`\>
+> `optional` **bodyProps?**: `HTMLAttributes`\<`HTMLDivElement`\>
 
 Custom body style
 
@@ -46,7 +46,7 @@ Custom body style
 
 ### bordered?
 
-> `optional` **bordered**: `boolean`
+> `optional` **bordered?**: `boolean`
 
 Show border
 
@@ -58,7 +58,7 @@ Show border
 
 ### caretAs?
 
-> `optional` **caretAs**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **caretAs?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 The icon on the right side of the title
 
@@ -70,7 +70,7 @@ The icon on the right side of the title
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 Primary content
 
@@ -82,7 +82,7 @@ Primary content
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 Additional classes
 
@@ -94,7 +94,7 @@ Additional classes
 
 ### classPrefix?
 
-> `optional` **classPrefix**: `string`
+> `optional` **classPrefix?**: `string`
 
 The prefix of the component CSS class
 
@@ -106,7 +106,7 @@ The prefix of the component CSS class
 
 ### collapsible?
 
-> `optional` **collapsible**: `boolean`
+> `optional` **collapsible?**: `boolean`
 
 Whether it is a collapsible panel
 
@@ -118,7 +118,7 @@ Whether it is a collapsible panel
 
 ### defaultExpanded?
 
-> `optional` **defaultExpanded**: `boolean`
+> `optional` **defaultExpanded?**: `boolean`
 
 Expand then panel by default
 
@@ -130,7 +130,7 @@ Expand then panel by default
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 Whether the panel is disabled
 
@@ -142,7 +142,7 @@ Whether the panel is disabled
 
 ### eventKey?
 
-> `optional` **eventKey**: `number` \| `string`
+> `optional` **eventKey?**: `number` \| `string`
 
 The event key corresponding to the panel
 
@@ -154,7 +154,7 @@ The event key corresponding to the panel
 
 ### expanded?
 
-> `optional` **expanded**: `boolean`
+> `optional` **expanded?**: `boolean`
 
 Expand then panel
 
@@ -166,7 +166,7 @@ Expand then panel
 
 ### header?
 
-> `optional` **header**: `ReactNode`
+> `optional` **header?**: `ReactNode`
 
 The head displays information
 
@@ -178,7 +178,7 @@ The head displays information
 
 ### headerRole?
 
-> `optional` **headerRole**: `string`
+> `optional` **headerRole?**: `string`
 
 The role attribute of the header
 
@@ -198,7 +198,7 @@ Header size for the card.
 
 ### id?
 
-> `optional` **id**: `string`
+> `optional` **id?**: `string`
 
 The id attribute of the panel
 
@@ -208,9 +208,9 @@ The id attribute of the panel
 
 ***
 
-### onEnter()?
+### onEnter?
 
-> `optional` **onEnter**: (`node`) => `void`
+> `optional` **onEnter?**: (`node`) => `void`
 
 Callback fired before the Modal transitions in
 
@@ -230,9 +230,9 @@ Callback fired before the Modal transitions in
 
 ***
 
-### onEntered()?
+### onEntered?
 
-> `optional` **onEntered**: (`node`) => `void`
+> `optional` **onEntered?**: (`node`) => `void`
 
 Callback fired after the Modal finishes transitioning in
 
@@ -252,9 +252,9 @@ Callback fired after the Modal finishes transitioning in
 
 ***
 
-### onEntering()?
+### onEntering?
 
-> `optional` **onEntering**: (`node`) => `void`
+> `optional` **onEntering?**: (`node`) => `void`
 
 Callback fired as the Modal begins to transition in
 
@@ -274,9 +274,9 @@ Callback fired as the Modal begins to transition in
 
 ***
 
-### onExit()?
+### onExit?
 
-> `optional` **onExit**: (`node`) => `void`
+> `optional` **onExit?**: (`node`) => `void`
 
 Callback fired right before the Modal transitions out
 
@@ -296,9 +296,9 @@ Callback fired right before the Modal transitions out
 
 ***
 
-### onExited()?
+### onExited?
 
-> `optional` **onExited**: (`node`) => `void`
+> `optional` **onExited?**: (`node`) => `void`
 
 Callback fired after the Modal finishes transitioning out
 
@@ -318,9 +318,9 @@ Callback fired after the Modal finishes transitioning out
 
 ***
 
-### onExiting()?
+### onExiting?
 
-> `optional` **onExiting**: (`node`) => `void`
+> `optional` **onExiting?**: (`node`) => `void`
 
 Callback fired as the Modal begins to transition out
 
@@ -340,9 +340,9 @@ Callback fired as the Modal begins to transition out
 
 ***
 
-### onSelect()?
+### onSelect?
 
-> `optional` **onSelect**: (`eventKey`, `event`) => `void`
+> `optional` **onSelect?**: (`eventKey`, `event`) => `void`
 
 Called when the panel is selected
 
@@ -350,7 +350,7 @@ Called when the panel is selected
 
 ##### eventKey
 
-`number` | `string` | `undefined`
+`number` \| `string` \| `undefined`
 
 ##### event
 
@@ -368,7 +368,7 @@ Called when the panel is selected
 
 ### panelRole?
 
-> `optional` **panelRole**: `string`
+> `optional` **panelRole?**: `string`
 
 The role attribute of the panel
 
@@ -380,7 +380,7 @@ The role attribute of the panel
 
 ### scrollShadow?
 
-> `optional` **scrollShadow**: `boolean`
+> `optional` **scrollShadow?**: `boolean`
 
 The shadow of the content when scrolling
 
@@ -392,7 +392,7 @@ The shadow of the content when scrolling
 
 ### shaded?
 
-> `optional` **shaded**: `boolean`
+> `optional` **shaded?**: `boolean`
 
 Whether there is a shadow
 
@@ -404,7 +404,7 @@ Whether there is a shadow
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 Additional style
 
@@ -416,6 +416,6 @@ Additional style
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 Title for the card.

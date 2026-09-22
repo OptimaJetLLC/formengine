@@ -1,4 +1,4 @@
-# Type Alias: CssLoaderFunction()
+# Type Alias: CssLoaderFunction
 
 > **CssLoaderFunction** = () => `Promise`\<[`CssCleanupFunction`](CssCleanupFunction.md) \| `void`\>
 

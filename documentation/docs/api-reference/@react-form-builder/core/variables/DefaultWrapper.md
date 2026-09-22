@@ -6,6 +6,8 @@ The React component that wraps every component in a form.
 
 ## Param
 
+**props**
+
 the React component properties.
 
 ## Returns

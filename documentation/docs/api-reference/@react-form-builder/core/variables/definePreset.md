@@ -1,4 +1,4 @@
-# Variable: definePreset()
+# Variable: definePreset
 
 > `const` **definePreset**: (`name`, `components`) => [`Definer`](../interfaces/Definer.md)\<`object`\> = `Definer.definePreset`
 

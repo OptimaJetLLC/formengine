@@ -40,7 +40,7 @@ the human-readable property name.
 
 ### bindingType?
 
-> `readonly` `optional` **bindingType**: [`ComponentPropertyBindType`](../type-aliases/ComponentPropertyBindType.md)
+> `readonly` `optional` **bindingType?**: [`ComponentPropertyBindType`](../type-aliases/ComponentPropertyBindType.md)
 
 The component property binding type.
 
@@ -88,7 +88,7 @@ The type of component data binding.
 
 ### default?
 
-> `readonly` `optional` **default**: `any`
+> `readonly` `optional` **default?**: `any`
 
 The default property value.
 
@@ -124,7 +124,7 @@ The name of the component's property editor.
 
 ### editorProps?
 
-> `readonly` `optional` **editorProps**: `any`
+> `readonly` `optional` **editorProps?**: `any`
 
 Additional properties for the component property editor.
 
@@ -136,7 +136,7 @@ Additional properties for the component property editor.
 
 ### errorMap?
 
-> `readonly` `optional` **errorMap**: [`ErrorMap`](../type-aliases/ErrorMap.md)
+> `readonly` `optional` **errorMap?**: [`ErrorMap`](../type-aliases/ErrorMap.md)
 
 Message and/or error code for the validation function.
 
@@ -148,7 +148,7 @@ Message and/or error code for the validation function.
 
 ### hint?
 
-> `readonly` `optional` **hint**: `ReactNode`
+> `readonly` `optional` **hint?**: `ReactNode`
 
 The hint for the component property.
 
@@ -218,9 +218,9 @@ True if the component property is required, false otherwise.
 
 ***
 
-### slotConditionBuilder()?
+### slotConditionBuilder?
 
-> `readonly` `optional` **slotConditionBuilder**: (`props`) => `string`
+> `readonly` `optional` **slotConditionBuilder?**: (`props`) => `string`
 
 A function that returns a string containing the source code of the function to bind child components.
 
@@ -244,7 +244,7 @@ the properties of the component, which are available only inside Form Builder De
 
 ### type?
 
-> `readonly` `optional` **type**: keyof SchemaTypeMap
+> `readonly` `optional` **type?**: keyof SchemaTypeMap
 
 The data type for the value of the property.
 
@@ -256,7 +256,7 @@ The data type for the value of the property.
 
 ### uncontrolledValue?
 
-> `readonly` `optional` **uncontrolledValue**: `unknown`
+> `readonly` `optional` **uncontrolledValue?**: `unknown`
 
 The property value for the uncontrolled state.
 
@@ -268,7 +268,7 @@ The property value for the uncontrolled state.
 
 ### validator?
 
-> `readonly` `optional` **validator**: [`RuleValidator`](../type-aliases/RuleValidator.md)
+> `readonly` `optional` **validator?**: [`RuleValidator`](../type-aliases/RuleValidator.md)
 
 The function for validating the property value.
 

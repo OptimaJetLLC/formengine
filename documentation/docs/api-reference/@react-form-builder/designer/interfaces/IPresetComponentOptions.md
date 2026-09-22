@@ -6,7 +6,7 @@ Interface for configuring preset component options.
 
 ### components?
 
-> `optional` **components**: [`PresetComponent`](PresetComponent.md)[]
+> `optional` **components?**: [`PresetComponent`](PresetComponent.md)[]
 
 The default preset components.
 
@@ -14,7 +14,7 @@ The default preset components.
 
 ### disable?
 
-> `optional` **disable**: `boolean`
+> `optional` **disable?**: `boolean`
 
 The flag to disable the preset component feature.
 
@@ -22,7 +22,7 @@ The flag to disable the preset component feature.
 
 ### disableCreation?
 
-> `optional` **disableCreation**: `boolean`
+> `optional` **disableCreation?**: `boolean`
 
 The flag to disable the creation of preset components.
 
@@ -30,7 +30,7 @@ The flag to disable the creation of preset components.
 
 ### disableRemoving?
 
-> `optional` **disableRemoving**: `boolean`
+> `optional` **disableRemoving?**: `boolean`
 
 The flag to disable the removing of preset components.
 
@@ -38,15 +38,15 @@ The flag to disable the removing of preset components.
 
 ### localStoragePrefix?
 
-> `optional` **localStoragePrefix**: `string`
+> `optional` **localStoragePrefix?**: `string`
 
 The prefix for localStorage key.
 
 ***
 
-### onCreate()?
+### onCreate?
 
-> `optional` **onCreate**: (`preset`) => `void`
+> `optional` **onCreate?**: (`preset`) => `void`
 
 The callback function called when a new preset component is created.
 
@@ -62,9 +62,9 @@ The callback function called when a new preset component is created.
 
 ***
 
-### onRemove()?
+### onRemove?
 
-> `optional` **onRemove**: (`name`) => `void`
+> `optional` **onRemove?**: (`name`) => `void`
 
 The callback function called when a preset component is removed.
 

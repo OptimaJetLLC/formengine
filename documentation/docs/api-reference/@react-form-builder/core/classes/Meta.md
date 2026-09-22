@@ -62,9 +62,9 @@ the component metadata event listeners.
 
 ##### icon?
 
-the component icon or the icon name.
+`ComponentType` \| `string`
 
-`ComponentType` | `string`
+the component icon or the icon name.
 
 ##### insertRestriction?
 
@@ -88,7 +88,7 @@ the component's CSS metadata.
 
 ### eventListeners?
 
-> `readonly` `optional` **eventListeners**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
+> `readonly` `optional` **eventListeners?**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
 
 the component metadata event listeners.
 
@@ -96,7 +96,7 @@ the component metadata event listeners.
 
 ### icon?
 
-> `readonly` `optional` **icon**: `ComponentType` \| `string`
+> `readonly` `optional` **icon?**: `ComponentType` \| `string`
 
 the component icon or the icon name.
 
@@ -104,7 +104,7 @@ the component icon or the icon name.
 
 ### initialJson?
 
-> `readonly` `optional` **initialJson**: `string`
+> `readonly` `optional` **initialJson?**: `string`
 
 the JSON source for the component (instance of [ComponentStore](ComponentStore.md) class serialised to JSON).
 
@@ -112,7 +112,7 @@ the JSON source for the component (instance of [ComponentStore](ComponentStore.m
 
 ### insertRestriction?
 
-> `readonly` `optional` **insertRestriction**: [`InsertRestrictionFn`](../type-aliases/InsertRestrictionFn.md)
+> `readonly` `optional` **insertRestriction?**: [`InsertRestrictionFn`](../type-aliases/InsertRestrictionFn.md)
 
 the function that restricts the insertion of a component into another component.
 
@@ -144,7 +144,7 @@ the component type name.
 
 ### valuedAn?
 
-> `readonly` `optional` **valuedAn**: [`Annotation`](Annotation.md)
+> `readonly` `optional` **valuedAn?**: [`Annotation`](Annotation.md)
 
 the metadata for the component value.
 

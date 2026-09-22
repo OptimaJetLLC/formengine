@@ -1,4 +1,4 @@
-# Type Alias: DefineActionHelper()
+# Type Alias: DefineActionHelper
 
 > **DefineActionHelper** = \<`T`\>(`name`, `func`, `params?`, `description?`) => [`ActionDefinition`](../classes/ActionDefinition.md)
 

@@ -1,12 +1,12 @@
 # Function: uniqueId()
 
-> **uniqueId**(`prefix`): `string`
+> **uniqueId**(`prefix?`): `string`
 
 Create an incrementing unique id string with optional prefix.
 
 ## Parameters
 
-### prefix
+### prefix?
 
 `string` = `''`
 

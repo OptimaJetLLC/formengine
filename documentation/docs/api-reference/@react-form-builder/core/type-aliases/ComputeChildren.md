@@ -1,4 +1,4 @@
-# Type Alias: ComputeChildren()
+# Type Alias: ComputeChildren
 
 > **ComputeChildren** = (`componentData`, `componentProps`) => `Record`\<`string`, `any`\>
 

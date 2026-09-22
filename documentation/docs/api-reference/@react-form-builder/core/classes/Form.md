@@ -90,7 +90,7 @@ Properties of the component displaying the error.
 
 ### errorType?
 
-> `optional` **errorType**: `string`
+> `optional` **errorType?**: `string`
 
 The type name of the component displaying the error.
 
@@ -98,7 +98,7 @@ The type name of the component displaying the error.
 
 ### formValidator?
 
-> `optional` **formValidator**: `string`
+> `optional` **formValidator?**: `string`
 
 The form validator.
 
@@ -126,7 +126,7 @@ Localization of the form.
 
 ### modalType?
 
-> `optional` **modalType**: `string`
+> `optional` **modalType?**: `string`
 
 The type name of the component displaying the modal.
 
@@ -134,7 +134,7 @@ The type name of the component displaying the modal.
 
 ### tooltipType?
 
-> `optional` **tooltipType**: `string`
+> `optional` **tooltipType?**: `string`
 
 The type name of the component displaying the tooltip.
 

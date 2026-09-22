@@ -16,7 +16,7 @@ React component property type.
 
 ### actionsInitializer?
 
-> `readonly` `optional` **actionsInitializer**: [`ActionsInitializer`](ActionsInitializer.md)
+> `readonly` `optional` **actionsInitializer?**: [`ActionsInitializer`](ActionsInitializer.md)
 
 The function that initializes an actions on a component (for internal use only).
 
@@ -24,7 +24,7 @@ The function that initializes an actions on a component (for internal use only).
 
 ### category?
 
-> `optional` **category**: `string`
+> `optional` **category?**: `string`
 
 The component category.
 
@@ -40,7 +40,7 @@ The React component.
 
 ### cssObject?
 
-> `optional` **cssObject**: [`Annotations`](Annotations.md)\<[`CSSObject`](CSSObject.md)\>
+> `optional` **cssObject?**: [`Annotations`](Annotations.md)\<[`CSSObject`](CSSObject.md)\>
 
 The component CSS metadata.
 
@@ -48,7 +48,7 @@ The component CSS metadata.
 
 ### eventListeners?
 
-> `optional` **eventListeners**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
+> `optional` **eventListeners?**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
 
 The component metadata event listeners.
 
@@ -56,7 +56,7 @@ The component metadata event listeners.
 
 ### features?
 
-> `optional` **features**: [`ComponentFeatures`](ComponentFeatures.md)
+> `optional` **features?**: [`ComponentFeatures`](ComponentFeatures.md)
 
 The set of component features.
 
@@ -64,7 +64,7 @@ The set of component features.
 
 ### icon?
 
-> `optional` **icon**: `ComponentType` \| `string`
+> `optional` **icon?**: `ComponentType` \| `string`
 
 The component icon or the icon name.
 
@@ -72,7 +72,7 @@ The component icon or the icon name.
 
 ### initialJson?
 
-> `optional` **initialJson**: `string`
+> `optional` **initialJson?**: `string`
 
 The JSON source for the component (instance of [ComponentStore](../classes/ComponentStore.md) class serialised to JSON).
 
@@ -80,7 +80,7 @@ The JSON source for the component (instance of [ComponentStore](../classes/Compo
 
 ### insertRestriction?
 
-> `optional` **insertRestriction**: [`InsertRestrictionFn`](InsertRestrictionFn.md)
+> `optional` **insertRestriction?**: [`InsertRestrictionFn`](InsertRestrictionFn.md)
 
 The function that restricts the insertion of a component into another component.
 
@@ -88,7 +88,7 @@ The function that restricts the insertion of a component into another component.
 
 ### kind?
 
-> `optional` **kind**: [`ComponentKind`](ComponentKind.md)
+> `optional` **kind?**: [`ComponentKind`](ComponentKind.md)
 
 The component kind.
 
@@ -96,7 +96,7 @@ The component kind.
 
 ### name?
 
-> `optional` **name**: `string`
+> `optional` **name?**: `string`
 
 The component name.
 
@@ -104,7 +104,7 @@ The component name.
 
 ### properties?
 
-> `optional` **properties**: [`Annotations`](Annotations.md)\<`T`\>
+> `optional` **properties?**: [`Annotations`](Annotations.md)\<`T`\>
 
 The property metadata.
 
@@ -112,7 +112,7 @@ The property metadata.
 
 ### typeName?
 
-> `optional` **typeName**: `string`
+> `optional` **typeName?**: `string`
 
 The component type name.
 
@@ -120,6 +120,6 @@ The component type name.
 
 ### wrapperCssObject?
 
-> `optional` **wrapperCssObject**: [`Annotations`](Annotations.md)\<[`CSSObject`](CSSObject.md)\>
+> `optional` **wrapperCssObject?**: [`Annotations`](Annotations.md)\<[`CSSObject`](CSSObject.md)\>
 
 The wrapper CSS metadata.

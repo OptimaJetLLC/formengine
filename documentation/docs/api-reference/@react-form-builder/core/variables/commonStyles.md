@@ -4,7 +4,7 @@
 
 The annotations for generic CSS properties of a component.
 
-## Type declaration
+## Type Declaration
 
 ### backgroundColor
 

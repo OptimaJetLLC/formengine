@@ -16,6 +16,6 @@ The array with components metadata.
 
 ### descriptions?
 
-> `optional` **descriptions**: [`ComponentLibraryDescription`](../../core/type-aliases/ComponentLibraryDescription.md)[]
+> `optional` **descriptions?**: [`ComponentLibraryDescription`](../../core/type-aliases/ComponentLibraryDescription.md)[]
 
 The component library description.

@@ -6,7 +6,7 @@ The language to localize the form builder.
 
 ### Constructor
 
-> **new Language**(`code`, `dialect`, `name`, `description`, `bidi`): `Language`
+> **new Language**(`code`, `dialect`, `name`, `description`, `bidi?`): `Language`
 
 Creates a localization language for the form builder.
 
@@ -36,7 +36,7 @@ the name of the language, for example 'English'.
 
 the description of the language, for example 'American English'.
 
-##### bidi
+##### bidi?
 
 [`BiDi`](../enumerations/BiDi.md) = `BiDi.LTR`
 

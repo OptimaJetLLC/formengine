@@ -1,4 +1,4 @@
-# Type Alias: InsertRestrictionFn()
+# Type Alias: InsertRestrictionFn
 
 > **InsertRestrictionFn** = (`self`, `target`, `slot?`) => `boolean`
 

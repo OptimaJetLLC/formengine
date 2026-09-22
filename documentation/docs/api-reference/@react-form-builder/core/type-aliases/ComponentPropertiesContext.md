@@ -8,7 +8,7 @@ The component properties context type.
 
 ### cellInfo?
 
-> `readonly` `optional` **cellInfo**: [`CellInfo`](CellInfo.md)
+> `readonly` `optional` **cellInfo?**: [`CellInfo`](CellInfo.md)
 
 The information about the cell.
 
@@ -16,7 +16,7 @@ The information about the cell.
 
 ### eventHandlers?
 
-> `readonly` `optional` **eventHandlers**: `Record`\<[`EventName`](EventName.md), [`ActionEventHandler`](ActionEventHandler.md)\>
+> `readonly` `optional` **eventHandlers?**: `Record`\<[`EventName`](EventName.md), [`ActionEventHandler`](ActionEventHandler.md)\>
 
 The event handlers.
 
@@ -24,6 +24,6 @@ The event handlers.
 
 ### valueProperty?
 
-> `readonly` `optional` **valueProperty**: [`ReactProperty`](ReactProperty.md)
+> `readonly` `optional` **valueProperty?**: [`ReactProperty`](ReactProperty.md)
 
 The value property.

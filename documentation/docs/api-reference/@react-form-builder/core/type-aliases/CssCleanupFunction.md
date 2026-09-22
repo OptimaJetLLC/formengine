@@ -1,4 +1,4 @@
-# Type Alias: CssCleanupFunction()
+# Type Alias: CssCleanupFunction
 
 > **CssCleanupFunction** = () => `Promise`\<`void`\>
 

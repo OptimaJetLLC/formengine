@@ -57,7 +57,7 @@ Options for building an annotation.
 
 ### subType?
 
-> `optional` **subType**: keyof SchemaTypeMap
+> `optional` **subType?**: keyof SchemaTypeMap
 
 ## Accessors
 

@@ -6,7 +6,7 @@ Represents a file with upload metadata.
 
 ### blobFile?
 
-> `optional` **blobFile**: `File`
+> `optional` **blobFile?**: `File`
 
 Source file.
 
@@ -14,7 +14,7 @@ Source file.
 
 ### error?
 
-> `optional` **error**: `string`
+> `optional` **error?**: `string`
 
 Error message if upload failed.
 
@@ -22,7 +22,7 @@ Error message if upload failed.
 
 ### fileKey?
 
-> `optional` **fileKey**: `number` \| `string`
+> `optional` **fileKey?**: `number` \| `string`
 
 File unique identifier.
 
@@ -30,7 +30,7 @@ File unique identifier.
 
 ### name?
 
-> `optional` **name**: `string`
+> `optional` **name?**: `string`
 
 File name.
 
@@ -38,7 +38,7 @@ File name.
 
 ### status?
 
-> `optional` **status**: `"error"` \| `"success"`
+> `optional` **status?**: `"error"` \| `"success"`
 
 Upload status.
 
@@ -46,6 +46,6 @@ Upload status.
 
 ### url?
 
-> `optional` **url**: `string`
+> `optional` **url?**: `string`
 
 The URL of the file that can be previewed.

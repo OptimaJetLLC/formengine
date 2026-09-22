@@ -6,6 +6,8 @@ Provides the MUI theme.
 
 ## Param
 
+**props**
+
 the FormViewerWrapper props.
 
 ## Returns

@@ -6,7 +6,7 @@ Properties of a form component tree element.
 
 ### componentDataViewer?
 
-> `optional` **componentDataViewer**: `ComponentType`
+> `optional` **componentDataViewer?**: `ComponentType`
 
 The component displaying an item.
 

@@ -22,7 +22,7 @@ If true, the user can change the markers.
 
 ### allowMultipleMarkers?
 
-> `optional` **allowMultipleMarkers**: `boolean`
+> `optional` **allowMultipleMarkers?**: `boolean`
 
 Whether multiple markers can be added to the map.
 Defaults to false.
@@ -39,7 +39,7 @@ Google Maps API key used to load the map.
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 The CSS class name.
 
@@ -47,7 +47,7 @@ The CSS class name.
 
 ### collisionBehavior?
 
-> `optional` **collisionBehavior**: `CollisionBehavior`
+> `optional` **collisionBehavior?**: `CollisionBehavior`
 
 The markers collision behavior.
 
@@ -55,7 +55,7 @@ The markers collision behavior.
 
 ### colorScheme?
 
-> `optional` **colorScheme**: `"DARK"` \| `"FOLLOW_SYSTEM"` \| `"LIGHT"`
+> `optional` **colorScheme?**: `"DARK"` \| `"FOLLOW_SYSTEM"` \| `"LIGHT"`
 
 The color scheme to use for the map.
 
@@ -63,7 +63,7 @@ The color scheme to use for the map.
 
 ### gestureHandling?
 
-> `optional` **gestureHandling**: `"auto"` \| `"cooperative"` \| `"greedy"` \| `"none"`
+> `optional` **gestureHandling?**: `"auto"` \| `"cooperative"` \| `"greedy"` \| `"none"`
 
 This setting controls how the API handles gestures on the map.
 
@@ -71,7 +71,7 @@ This setting controls how the API handles gestures on the map.
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 The label of the component.
 
@@ -79,7 +79,7 @@ The label of the component.
 
 ### language?
 
-> `optional` **language**: `string`
+> `optional` **language?**: `string`
 
 Use a specific language for the map.
 Read more about localizing the Map: https://developers.google.com/maps/documentation/javascript/localization.
@@ -113,7 +113,7 @@ The position of the map control.
 
 ### mapId?
 
-> `optional` **mapId**: `string`
+> `optional` **mapId?**: `string`
 
 The map ID is an identifier that's associated with a specific map style or feature.
 
@@ -129,7 +129,7 @@ The default map type to use.
 
 ### markers?
 
-> `optional` **markers**: [`MapMarker`](../type-aliases/MapMarker.md)[]
+> `optional` **markers?**: [`MapMarker`](../type-aliases/MapMarker.md)[]
 
 Coordinates of the markers
 
@@ -143,9 +143,9 @@ The title for the marker window.
 
 ***
 
-### onMapClick()?
+### onMapClick?
 
-> `optional` **onMapClick**: (`event`) => `void`
+> `optional` **onMapClick?**: (`event`) => `void`
 
 The callback function called when the map is clicked.
 
@@ -161,9 +161,9 @@ The callback function called when the map is clicked.
 
 ***
 
-### onMarkerAdd()?
+### onMarkerAdd?
 
-> `optional` **onMarkerAdd**: (`marker`) => `void`
+> `optional` **onMarkerAdd?**: (`marker`) => `void`
 
 The callback function called when a marker is added.
 
@@ -179,9 +179,9 @@ The callback function called when a marker is added.
 
 ***
 
-### onMarkerClick()?
+### onMarkerClick?
 
-> `optional` **onMarkerClick**: (`marker`, `element`) => `void`
+> `optional` **onMarkerClick?**: (`marker`, `element`) => `void`
 
 The callback function called when a marker is clicked.
 
@@ -189,7 +189,7 @@ The callback function called when a marker is clicked.
 
 ##### marker
 
-[`MapMarker`](../type-aliases/MapMarker.md) | `null`
+[`MapMarker`](../type-aliases/MapMarker.md) \| `null`
 
 ##### element
 
@@ -201,9 +201,9 @@ The callback function called when a marker is clicked.
 
 ***
 
-### onMarkerDelete()?
+### onMarkerDelete?
 
-> `optional` **onMarkerDelete**: (`marker`) => `void`
+> `optional` **onMarkerDelete?**: (`marker`) => `void`
 
 The callback function called when a marker is deleted.
 
@@ -219,9 +219,9 @@ The callback function called when a marker is deleted.
 
 ***
 
-### onPlaceSelect()?
+### onPlaceSelect?
 
-> `optional` **onPlaceSelect**: (`place`, `address?`) => `void`
+> `optional` **onPlaceSelect?**: (`place`, `address?`) => `void`
 
 The callback function called when a place is selected.
 
@@ -247,7 +247,7 @@ the address of the selected place.
 
 ### region?
 
-> `optional` **region**: `string`
+> `optional` **region?**: `string`
 
 Sets the map to a specific region.
 Read more about localizing the Map: https://developers.google.com/maps/documentation/javascript/localization.
@@ -265,7 +265,7 @@ The caption for the remove marker button.
 
 ### searchPlaceholder?
 
-> `optional` **searchPlaceholder**: `string`
+> `optional` **searchPlaceholder?**: `string`
 
 The search input placeholder.
 

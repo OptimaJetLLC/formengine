@@ -8,7 +8,7 @@ Options for configuring the form behavior.
 
 ### defaultLanguage?
 
-> `optional` **defaultLanguage**: `string`
+> `optional` **defaultLanguage?**: `string`
 
 The default form language.
 
@@ -16,6 +16,6 @@ The default form language.
 
 ### errorType?
 
-> `optional` **errorType**: `string`
+> `optional` **errorType?**: `string`
 
 The type of component that displays validation errors.

@@ -8,13 +8,13 @@ Props for the RsWizard component.
 
 ## Indexable
 
-\[`key`: `string`\]: `any`
+> \[`key`: `string`\]: `any`
 
 ## Properties
 
 ### activeIndex?
 
-> `optional` **activeIndex**: `number`
+> `optional` **activeIndex?**: `number`
 
 Active step index.
 
@@ -22,7 +22,7 @@ Active step index.
 
 ### finishButtonLabel?
 
-> `optional` **finishButtonLabel**: `string`
+> `optional` **finishButtonLabel?**: `string`
 
 Label for finish button.
 
@@ -30,15 +30,15 @@ Label for finish button.
 
 ### nextButtonLabel?
 
-> `optional` **nextButtonLabel**: `string`
+> `optional` **nextButtonLabel?**: `string`
 
 Label for next button.
 
 ***
 
-### onChange()?
+### onChange?
 
-> `optional` **onChange**: (`activeIndex?`) => `void`
+> `optional` **onChange?**: (`activeIndex?`) => `void`
 
 Callback when step changes.
 
@@ -54,9 +54,9 @@ Callback when step changes.
 
 ***
 
-### onFinish()?
+### onFinish?
 
-> `optional` **onFinish**: (`event`) => `void`
+> `optional` **onFinish?**: (`event`) => `void`
 
 Callback when finish button is clicked.
 
@@ -72,9 +72,9 @@ Callback when finish button is clicked.
 
 ***
 
-### onNext()?
+### onNext?
 
-> `optional` **onNext**: (`event`) => `void`
+> `optional` **onNext?**: (`event`) => `void`
 
 Callback when next button is clicked.
 
@@ -90,9 +90,9 @@ Callback when next button is clicked.
 
 ***
 
-### onPrev()?
+### onPrev?
 
-> `optional` **onPrev**: (`event`) => `void`
+> `optional` **onPrev?**: (`event`) => `void`
 
 Callback when previous button is clicked.
 
@@ -110,7 +110,7 @@ Callback when previous button is clicked.
 
 ### prevButtonLabel?
 
-> `optional` **prevButtonLabel**: `string`
+> `optional` **prevButtonLabel?**: `string`
 
 Label for previous button.
 
@@ -118,7 +118,7 @@ Label for previous button.
 
 ### showSteps?
 
-> `optional` **showSteps**: `boolean`
+> `optional` **showSteps?**: `boolean`
 
 Whether to show steps.
 
@@ -126,7 +126,7 @@ Whether to show steps.
 
 ### showStepsLabels?
 
-> `optional` **showStepsLabels**: `boolean`
+> `optional` **showStepsLabels?**: `boolean`
 
 Whether to show step labels.
 
@@ -134,7 +134,7 @@ Whether to show step labels.
 
 ### stepsNavigation?
 
-> `optional` **stepsNavigation**: `"any"` \| `"disable"` \| `"onlyVisited"`
+> `optional` **stepsNavigation?**: `"any"` \| `"disable"` \| `"onlyVisited"`
 
 Navigation mode for steps.
 
@@ -142,7 +142,7 @@ Navigation mode for steps.
 
 ### validateOnFinish?
 
-> `optional` **validateOnFinish**: `boolean`
+> `optional` **validateOnFinish?**: `boolean`
 
 Whether to validate on finish.
 
@@ -150,7 +150,7 @@ Whether to validate on finish.
 
 ### validateOnNext?
 
-> `optional` **validateOnNext**: `boolean`
+> `optional` **validateOnNext?**: `boolean`
 
 Whether to validate on next.
 
@@ -158,6 +158,6 @@ Whether to validate on next.
 
 ### verticalSteps?
 
-> `optional` **verticalSteps**: `boolean`
+> `optional` **verticalSteps?**: `boolean`
 
 Whether steps are vertical.

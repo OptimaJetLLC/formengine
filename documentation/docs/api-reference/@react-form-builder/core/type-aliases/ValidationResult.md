@@ -8,7 +8,7 @@ The result of the validation.
 
 ### message?
 
-> `optional` **message**: `string`
+> `optional` **message?**: `string`
 
 The validation error message text.
 

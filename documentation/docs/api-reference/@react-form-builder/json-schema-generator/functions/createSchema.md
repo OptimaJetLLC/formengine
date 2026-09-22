@@ -20,11 +20,15 @@ the component descriptions to include in the schema.
 
 ## Returns
 
+the generated JSON Schema with definitions for each builder component.
+
+### Type Literal
+
 \{ `$comment?`: `string`; `$id?`: `string`; `$ref?`: `string`; `$schema?`: `string`; `additionalItems?`: `JSONSchema`\<`any`, `TypeValue`\>; `additionalProperties?`: `JSONSchema`\<`any`, `TypeValue`\>; `allOf?`: `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>; `anyOf?`: `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>; `const?`: `any`; `contains?`: `JSONSchema`\<`any`, `TypeValue`\>; `contentEncoding?`: `"7bit"` \| `"8bit"` \| `"base64"` \| `"binary"` \| `"ietf-token"` \| `"quoted-printable"` \| `"x-token"`; `contentMediaType?`: `string`; `default?`: `any`; `definitions?`: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\>\>; `dependencies?`: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\> \| `MaybeReadonlyArray`\<`string`\>\>; `description?`: `string`; `else?`: `JSONSchema`\<`any`, `TypeValue`\>; `enum?`: `MaybeReadonlyArray`\<`any`\>; `examples?`: `MaybeReadonlyArray`\<`any`\>; `exclusiveMaximum?`: `number`; `exclusiveMinimum?`: `number`; `format?`: `string`; `if?`: `JSONSchema`\<`any`, `TypeValue`\>; `items?`: `JSONSchema`\<`any`, `TypeValue`\> \| `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>; `maximum?`: `number`; `maxItems?`: `number`; `maxLength?`: `number`; `maxProperties?`: `number`; `minimum?`: `number`; `minItems?`: `number`; `minLength?`: `number`; `minProperties?`: `number`; `multipleOf?`: `number`; `not?`: `JSONSchema`\<`any`, `TypeValue`\>; `oneOf?`: `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>; `pattern?`: `string`; `patternProperties?`: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\>\>; `properties?`: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\>\>; `propertyNames?`: `JSONSchema`\<`any`, `TypeValue`\>; `readOnly?`: `boolean`; `required?`: `MaybeReadonlyArray`\<`string`\>; `then?`: `JSONSchema`\<`any`, `TypeValue`\>; `title?`: `string`; `type?`: `TypeValue`; `uniqueItems?`: `boolean`; `writeOnly?`: `boolean`; \}
 
-### $comment?
+#### $comment?
 
-> `optional` **$comment**: `string`
+> `optional` **$comment?**: `string`
 
 This keyword is reserved for comments from schema authors to readers or
 maintainers of the schema. The value of this keyword MUST be a string.
@@ -53,9 +57,9 @@ particular, this allows for shortening schemas when the size of deployed
 schemas is a concern. Implementations MUST NOT take any other action
 based on the presence, absence, or contents of `comment` properties.
 
-### $id?
+#### $id?
 
-> `optional` **$id**: `string`
+> `optional` **$id?**: `string`
 
 The `$id` keyword defines a URI for the schema, and the base URI that
 other URI references within the schema are resolved against. A
@@ -70,13 +74,13 @@ normalized, and SHOULD NOT be an empty fragment `#` or an empty string.
 
 [RFC3986]: https://datatracker.ietf.org/doc/html/rfc3986
 
-#### Format
+##### Format
 
 "uri-reference"
 
-### $ref?
+#### $ref?
 
-> `optional` **$ref**: `string`
+> `optional` **$ref?**: `string`
 
 The `$ref` keyword is used to reference a schema, and provides the
 ability to validate recursive structures through self-reference.
@@ -99,13 +103,13 @@ stuck in an infinite recursive loop trying to validate the instance.
 Schemas SHOULD NOT make use of infinite recursive nesting like this; the
 behavior is undefined.
 
-#### Format
+##### Format
 
 "uri-reference"
 
-### $schema?
+#### $schema?
 
-> `optional` **$schema**: `string`
+> `optional` **$schema?**: `string`
 
 The `$schema` keyword is both used as a JSON Schema version identifier
 and the location of a resource which is itself a JSON Schema, which
@@ -128,13 +132,13 @@ deemed reasonable.
 
 [RFC3986]: https://datatracker.ietf.org/doc/html/rfc3986
 
-#### Format
+##### Format
 
 "uri"
 
-### additionalItems?
+#### additionalItems?
 
-> `optional` **additionalItems**: `JSONSchema`\<`any`, `TypeValue`\>
+> `optional` **additionalItems?**: `JSONSchema`\<`any`, `TypeValue`\>
 
 The value of `additionalItems` MUST be a valid JSON Schema.
 
@@ -151,9 +155,9 @@ elements.
 
 Omitting this keyword has the same behavior as an empty schema.
 
-### additionalProperties?
+#### additionalProperties?
 
-> `optional` **additionalProperties**: `JSONSchema`\<`any`, `TypeValue`\>
+> `optional` **additionalProperties?**: `JSONSchema`\<`any`, `TypeValue`\>
 
 The value of `additionalProperties` MUST be a valid JSON Schema.
 
@@ -169,9 +173,9 @@ validates against the `additionalProperties` schema.
 
 Omitting this keyword has the same behavior as an empty schema.
 
-### allOf?
+#### allOf?
 
-> `optional` **allOf**: `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>
+> `optional` **allOf?**: `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>
 
 This keyword's value MUST be a non-empty array. Each item of the array
 MUST be a valid JSON Schema.
@@ -179,9 +183,9 @@ MUST be a valid JSON Schema.
 An instance validates successfully against this keyword if it validates
 successfully against all schemas defined by this keyword's value.
 
-### anyOf?
+#### anyOf?
 
-> `optional` **anyOf**: `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>
+> `optional` **anyOf?**: `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>
 
 This keyword's value MUST be a non-empty array. Each item of the array
 MUST be a valid JSON Schema.
@@ -190,9 +194,9 @@ An instance validates successfully against this keyword if it validates
 successfully against at least one schema defined by this keyword's
 value.
 
-### const?
+#### const?
 
-> `optional` **const**: `any`
+> `optional` **const?**: `any`
 
 An instance validates successfully against this keyword if its value is
 equal to the value of the keyword.
@@ -200,18 +204,18 @@ equal to the value of the keyword.
 Use of this keyword is functionally equivalent to the `enum` keyword
 with a single value.
 
-### contains?
+#### contains?
 
-> `optional` **contains**: `JSONSchema`\<`any`, `TypeValue`\>
+> `optional` **contains?**: `JSONSchema`\<`any`, `TypeValue`\>
 
 The value of this keyword MUST be a valid JSON Schema.
 
 An array instance is valid against `contains` if at least one of its
 elements is valid against the given schema.
 
-### contentEncoding?
+#### contentEncoding?
 
-> `optional` **contentEncoding**: `"7bit"` \| `"8bit"` \| `"base64"` \| `"binary"` \| `"ietf-token"` \| `"quoted-printable"` \| `"x-token"`
+> `optional` **contentEncoding?**: `"7bit"` \| `"8bit"` \| `"base64"` \| `"binary"` \| `"ietf-token"` \| `"quoted-printable"` \| `"x-token"`
 
 If the instance value is a string, this property defines that the
 string SHOULD be interpreted as binary data and decoded using the
@@ -223,9 +227,9 @@ is not a string.
 
 [RFC2045]: https://datatracker.ietf.org/doc/html/rfc2045#section-6.1
 
-### contentMediaType?
+#### contentMediaType?
 
-> `optional` **contentMediaType**: `string`
+> `optional` **contentMediaType?**: `string`
 
 The value of this property must be a media type, as defined by
 [RFC 2046][RFC2046]. This property defines the media type of instances
@@ -242,17 +246,17 @@ Unicode).
 
 [RFC2046]: https://datatracker.ietf.org/doc/html/rfc2046
 
-### default?
+#### default?
 
-> `optional` **default**: `any`
+> `optional` **default?**: `any`
 
 This keyword can be used to supply a default JSON value associated with
 a particular schema. It is RECOMMENDED that a `default` value be valid
 against the associated schema.
 
-### definitions?
+#### definitions?
 
-> `optional` **definitions**: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\>\>
+> `optional` **definitions?**: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\>\>
 
 The `definitions` keywords provides a standardized location for schema
 authors to inline re-usable JSON Schemas into a more general schema. The
@@ -261,9 +265,9 @@ keyword does not directly affect the validation result.
 This keyword's value MUST be an object. Each member value of this object
 MUST be a valid JSON Schema.
 
-### dependencies?
+#### dependencies?
 
-> `optional` **dependencies**: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\> \| `MaybeReadonlyArray`\<`string`\>\>
+> `optional` **dependencies?**: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\> \| `MaybeReadonlyArray`\<`string`\>\>
 
 This keyword specifies rules that are evaluated if the instance is an
 object and contains a certain property.
@@ -283,16 +287,16 @@ be a property that exists in the instance.
 
 Omitting this keyword has the same behavior as an empty object.
 
-### description?
+#### description?
 
-> `optional` **description**: `string`
+> `optional` **description?**: `string`
 
 Can be used to decorate a user interface with explanation or information
 about the data produced.
 
-### else?
+#### else?
 
-> `optional` **else**: `JSONSchema`\<`any`, `TypeValue`\>
+> `optional` **else?**: `JSONSchema`\<`any`, `TypeValue`\>
 
 This keyword's value MUST be a valid JSON Schema.
 
@@ -305,9 +309,9 @@ successfully validates against its subschema. Implementations MUST NOT
 evaluate the instance against this keyword, for either validation or
 annotation collection purposes, in such cases.
 
-### enum?
+#### enum?
 
-> `optional` **enum**: `MaybeReadonlyArray`\<`any`\>
+> `optional` **enum?**: `MaybeReadonlyArray`\<`any`\>
 
 The value of this keyword MUST be an array. This array SHOULD have at
 least one element. Elements in the array SHOULD be unique.
@@ -317,9 +321,9 @@ equal to one of the elements in this keyword's array value.
 
 Elements in the array might be of any type, including `null`.
 
-### examples?
+#### examples?
 
-> `optional` **examples**: `MaybeReadonlyArray`\<`any`\>
+> `optional` **examples?**: `MaybeReadonlyArray`\<`any`\>
 
 The value of this keyword MUST be an array. When multiple occurrences of
 this keyword are applicable to a single sub-instance, implementations
@@ -333,9 +337,9 @@ Implementations MAY use the value(s) of `default`, if present, as an
 additional example. If `examples` is absent, `default` MAY still be
 used in this manner.
 
-### exclusiveMaximum?
+#### exclusiveMaximum?
 
-> `optional` **exclusiveMaximum**: `number`
+> `optional` **exclusiveMaximum?**: `number`
 
 The value of `exclusiveMaximum` MUST be a number, representing an
 exclusive upper limit for a numeric instance.
@@ -343,9 +347,9 @@ exclusive upper limit for a numeric instance.
 If the instance is a number, then the instance is valid only if it has a
 value strictly less than (not equal to) `exclusiveMaximum`.
 
-### exclusiveMinimum?
+#### exclusiveMinimum?
 
-> `optional` **exclusiveMinimum**: `number`
+> `optional` **exclusiveMinimum?**: `number`
 
 The value of `exclusiveMinimum` MUST be a number, representing an
 exclusive lower limit for a numeric instance.
@@ -353,9 +357,9 @@ exclusive lower limit for a numeric instance.
 If the instance is a number, then the instance is valid only if it has a
 value strictly greater than (not equal to) `exclusiveMinimum`.
 
-### format?
+#### format?
 
-> `optional` **format**: `string`
+> `optional` **format?**: `string`
 
 The `format` keyword functions as both an [annotation][annotation] and
 as an [assertion][assertion]. While no special effort is required to
@@ -372,9 +376,9 @@ to support this keyword and/or custom `format` attributes.
 [annotation]: https://json-schema.org/draft-07/json-schema-validation.html#annotations
 [assertion]: https://json-schema.org/draft-07/json-schema-validation.html#assertions
 
-### if?
+#### if?
 
-> `optional` **if**: `JSONSchema`\<`any`, `TypeValue`\>
+> `optional` **if?**: `JSONSchema`\<`any`, `TypeValue`\>
 
 This keyword's value MUST be a valid JSON Schema.
 
@@ -396,9 +400,9 @@ keyword is present without either `then` or `else`.
 
 [annotations]: https://json-schema.org/draft-07/json-schema-validation.html#annotations
 
-### items?
+#### items?
 
-> `optional` **items**: `JSONSchema`\<`any`, `TypeValue`\> \| `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>
+> `optional` **items?**: `JSONSchema`\<`any`, `TypeValue`\> \| `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>
 
 The value of `items` MUST be either a valid JSON Schema or an array of
 valid JSON Schemas.
@@ -415,9 +419,9 @@ any.
 
 Omitting this keyword has the same behavior as an empty schema.
 
-### maximum?
+#### maximum?
 
-> `optional` **maximum**: `number`
+> `optional` **maximum?**: `number`
 
 The value of `maximum` MUST be a number, representing an inclusive
 upper limit for a numeric instance.
@@ -425,22 +429,22 @@ upper limit for a numeric instance.
 If the instance is a number, then this keyword validates only if the
 instance is less than or exactly equal to `maximum`.
 
-### maxItems?
+#### maxItems?
 
-> `optional` **maxItems**: `number`
+> `optional` **maxItems?**: `number`
 
 The value of this keyword MUST be a non-negative integer.
 
 An array instance is valid against `maxItems` if its size is less
 than, or equal to, the value of this keyword.
 
-#### Minimum
+##### Minimum
 
 0
 
-### maxLength?
+#### maxLength?
 
-> `optional` **maxLength**: `number`
+> `optional` **maxLength?**: `number`
 
 The value of this keyword MUST be a non-negative integer.
 
@@ -452,26 +456,26 @@ characters as defined by [RFC 7159][RFC7159].
 
 [RFC7159]: https://datatracker.ietf.org/doc/html/rfc7159
 
-#### Minimum
+##### Minimum
 
 0
 
-### maxProperties?
+#### maxProperties?
 
-> `optional` **maxProperties**: `number`
+> `optional` **maxProperties?**: `number`
 
 The value of this keyword MUST be a non-negative integer.
 
 An object instance is valid against `maxProperties` if its number of
 `properties` is less than, or equal to, the value of this keyword.
 
-#### Minimum
+##### Minimum
 
 0
 
-### minimum?
+#### minimum?
 
-> `optional` **minimum**: `number`
+> `optional` **minimum?**: `number`
 
 The value of `minimum` MUST be a number, representing an inclusive
 lower limit for a numeric instance.
@@ -479,9 +483,9 @@ lower limit for a numeric instance.
 If the instance is a number, then this keyword validates only if the
 instance is greater than or exactly equal to `minimum`.
 
-### minItems?
+#### minItems?
 
-> `optional` **minItems**: `number`
+> `optional` **minItems?**: `number`
 
 The value of this keyword MUST be a non-negative integer.
 
@@ -490,19 +494,19 @@ than, or equal to, the value of this keyword.
 
 Omitting this keyword has the same behavior as a value of `0`.
 
-#### Default
+##### Default
 
 ```ts
 0
 ```
 
-#### Minimum
+##### Minimum
 
 0
 
-### minLength?
+#### minLength?
 
-> `optional` **minLength**: `number`
+> `optional` **minLength?**: `number`
 
 The value of this keyword MUST be a non-negative integer.
 
@@ -516,19 +520,19 @@ Omitting this keyword has the same behavior as a value of `0`.
 
 [RFC7159]: https://datatracker.ietf.org/doc/html/rfc7159
 
-#### Default
+##### Default
 
 ```ts
 0
 ```
 
-#### Minimum
+##### Minimum
 
 0
 
-### minProperties?
+#### minProperties?
 
-> `optional` **minProperties**: `number`
+> `optional` **minProperties?**: `number`
 
 The value of this keyword MUST be a non-negative integer.
 
@@ -537,19 +541,19 @@ An object instance is valid against `minProperties` if its number of
 
 Omitting this keyword has the same behavior as a value of `0`.
 
-#### Default
+##### Default
 
 ```ts
 0
 ```
 
-#### Minimum
+##### Minimum
 
 0
 
-### multipleOf?
+#### multipleOf?
 
-> `optional` **multipleOf**: `number`
+> `optional` **multipleOf?**: `number`
 
 The value of `multipleOf` MUST be a number, strictly greater than
 `0`.
@@ -557,22 +561,22 @@ The value of `multipleOf` MUST be a number, strictly greater than
 A numeric instance is valid only if division by this keyword's value
 results in an integer.
 
-#### Exclusive Minimum
+##### Exclusive Minimum
 
 0
 
-### not?
+#### not?
 
-> `optional` **not**: `JSONSchema`\<`any`, `TypeValue`\>
+> `optional` **not?**: `JSONSchema`\<`any`, `TypeValue`\>
 
 This keyword's value MUST be a valid JSON Schema.
 
 An instance is valid against this keyword if it fails to validate
 successfully against the schema defined by this keyword.
 
-### oneOf?
+#### oneOf?
 
-> `optional` **oneOf**: `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>
+> `optional` **oneOf?**: `MaybeReadonlyArray`\<`JSONSchema`\<`any`, `TypeValue`\>\>
 
 This keyword's value MUST be a non-empty array. Each item of the array
 MUST be a valid JSON Schema.
@@ -580,9 +584,9 @@ MUST be a valid JSON Schema.
 An instance validates successfully against this keyword if it validates
 successfully against exactly one schema defined by this keyword's value.
 
-### pattern?
+#### pattern?
 
-> `optional` **pattern**: `string`
+> `optional` **pattern?**: `string`
 
 The value of this keyword MUST be a string. This string SHOULD be a
 valid regular expression, according to the [ECMA-262][ecma262] regular
@@ -594,13 +598,13 @@ implicitly anchored.
 
 [ecma262]: https://www.ecma-international.org/publications-and-standards/standards/ecma-262/
 
-#### Format
+##### Format
 
 "regex"
 
-### patternProperties?
+#### patternProperties?
 
-> `optional` **patternProperties**: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\>\>
+> `optional` **patternProperties?**: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\>\>
 
 The value of `patternProperties` MUST be an object. Each property name
 of this object SHOULD be a valid regular expression, according to the
@@ -620,9 +624,9 @@ Omitting this keyword has the same behavior as an empty object.
 
 [ecma262]: https://www.ecma-international.org/publications-and-standards/standards/ecma-262/
 
-### properties?
+#### properties?
 
-> `optional` **properties**: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\>\>
+> `optional` **properties?**: `Record`\<`string`, `JSONSchema`\<`any`, `TypeValue`\>\>
 
 The value of `properties` MUST be an object. Each value of this object
 MUST be a valid JSON Schema.
@@ -636,9 +640,9 @@ name successfully validates against the corresponding schema.
 
 Omitting this keyword has the same behavior as an empty object.
 
-### propertyNames?
+#### propertyNames?
 
-> `optional` **propertyNames**: `JSONSchema`\<`any`, `TypeValue`\>
+> `optional` **propertyNames?**: `JSONSchema`\<`any`, `TypeValue`\>
 
 The value of `propertyNames` MUST be a valid JSON Schema.
 
@@ -648,9 +652,9 @@ property name that the schema is testing will always be a string.
 
 Omitting this keyword has the same behavior as an empty schema.
 
-### readOnly?
+#### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 The value of this keyword MUST be a boolean. When multiple occurrences
 of this keyword are applicable to a single sub-instance, the resulting
@@ -672,15 +676,15 @@ serial number as read-only.
 This keyword can be used to assist in user interface instance
 generation.
 
-#### Default
+##### Default
 
 ```ts
 false
 ```
 
-### required?
+#### required?
 
-> `optional` **required**: `MaybeReadonlyArray`\<`string`\>
+> `optional` **required?**: `MaybeReadonlyArray`\<`string`\>
 
 The value of this keyword MUST be an array. Elements of this array, if
 any, MUST be strings, and MUST be unique.
@@ -690,9 +694,9 @@ array is the name of a property in the instance.
 
 Omitting this keyword has the same behavior as an empty array.
 
-### then?
+#### then?
 
-> `optional` **then**: `JSONSchema`\<`any`, `TypeValue`\>
+> `optional` **then?**: `JSONSchema`\<`any`, `TypeValue`\>
 
 This keyword's value MUST be a valid JSON Schema.
 
@@ -705,16 +709,16 @@ fails to validate against its subschema. Implementations MUST NOT
 evaluate the instance against this keyword, for either validation or
 annotation collection purposes, in such cases.
 
-### title?
+#### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 Can be used to decorate a user interface with a short label about the
 data produced.
 
-### type?
+#### type?
 
-> `optional` **type**: `TypeValue`
+> `optional` **type?**: `TypeValue`
 
 The value of this keyword MUST be either a string or an array. If it is
 an array, elements of the array MUST be strings and MUST be unique.
@@ -727,9 +731,9 @@ fractional part.
 An instance validates if and only if the instance is in any of the sets
 listed for this keyword.
 
-### uniqueItems?
+#### uniqueItems?
 
-> `optional` **uniqueItems**: `boolean`
+> `optional` **uniqueItems?**: `boolean`
 
 The value of this keyword MUST be a boolean.
 
@@ -739,15 +743,15 @@ successfully if all of its elements are unique.
 
 Omitting this keyword has the same behavior as a value of `false`.
 
-#### Default
+##### Default
 
 ```ts
 false
 ```
 
-### writeOnly?
+#### writeOnly?
 
-> `optional` **writeOnly**: `boolean`
+> `optional` **writeOnly?**: `boolean`
 
 The value of this keyword MUST be a boolean. When multiple occurrences
 of this keyword is applicable to a single sub-instance, the resulting
@@ -771,12 +775,12 @@ These keywords can be used to assist in user interface instance
 generation. In particular, an application MAY choose to use a widget
 that hides input values as they are typed for write-only fields.
 
-#### Default
+##### Default
 
 ```ts
 false
 ```
 
-`boolean`
+***
 
-the generated JSON Schema with definitions for each builder component.
+`boolean`

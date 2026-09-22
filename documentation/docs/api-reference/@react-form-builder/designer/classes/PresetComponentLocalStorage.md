@@ -6,13 +6,13 @@ Class for working with the preset components in the local storage.
 
 ### Constructor
 
-> **new PresetComponentLocalStorage**(`presetsKey`): `PresetComponentLocalStorage`
+> **new PresetComponentLocalStorage**(`presetsKey?`): `PresetComponentLocalStorage`
 
 Creates an instance of preset storage in local storage.
 
 #### Parameters
 
-##### presetsKey
+##### presetsKey?
 
 `string` = `'presetComponents'`
 

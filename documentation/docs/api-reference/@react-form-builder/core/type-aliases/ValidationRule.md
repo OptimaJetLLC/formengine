@@ -8,7 +8,7 @@ Validation rule metadata required to create a validation function.
 
 ### params?
 
-> `optional` **params**: [`ValidationRuleParameter`](ValidationRuleParameter.md)[]
+> `optional` **params?**: [`ValidationRuleParameter`](ValidationRuleParameter.md)[]
 
 Metadata of validation rule parameters.
 

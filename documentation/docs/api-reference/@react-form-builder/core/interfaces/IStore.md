@@ -4,7 +4,7 @@ The form viewer settings interface.
 
 ## Properties
 
-### dispose()
+### dispose
 
 > **dispose**: () => `void`
 
@@ -24,7 +24,7 @@ The displayed form.
 
 ***
 
-### reduceScreen()
+### reduceScreen
 
 > **reduceScreen**: \<`T`\>(`callback`, `initialValue`) => `T`
 

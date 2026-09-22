@@ -1,4 +1,4 @@
-# Variable: oneOfStrict()
+# Variable: oneOfStrict
 
 > `const` **oneOfStrict**: \<`U`\>(...`values`) => [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`U`\>
 

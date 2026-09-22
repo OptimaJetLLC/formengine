@@ -10,7 +10,7 @@ Props for the RsHeader component.
 
 ### alignment?
 
-> `optional` **alignment**: `string`
+> `optional` **alignment?**: `string`
 
 The text alignment.
 
@@ -22,7 +22,7 @@ The text alignment.
 
 ### backgroundColor?
 
-> `optional` **backgroundColor**: `string`
+> `optional` **backgroundColor?**: `string`
 
 The background color.
 
@@ -34,7 +34,7 @@ The background color.
 
 ### color?
 
-> `optional` **color**: `string`
+> `optional` **color?**: `string`
 
 The color.
 
@@ -46,7 +46,7 @@ The color.
 
 ### content?
 
-> `optional` **content**: `string`
+> `optional` **content?**: `string`
 
 The content of the header.
 
@@ -54,7 +54,7 @@ The content of the header.
 
 ### fontSize?
 
-> `optional` **fontSize**: `number`
+> `optional` **fontSize?**: `number`
 
 The font size.
 
@@ -66,7 +66,7 @@ The font size.
 
 ### fontWeight?
 
-> `optional` **fontWeight**: `string`
+> `optional` **fontWeight?**: `string`
 
 The font weight.
 

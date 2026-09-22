@@ -4,7 +4,7 @@ Interface for storing forms in an external storage.
 
 ## Properties
 
-### getForm()
+### getForm
 
 > **getForm**: (`formName?`, `options?`) => `Promise`\<`string`\>
 
@@ -32,7 +32,7 @@ the Promise with the form serialized in JSON.
 
 ***
 
-### getFormNames()
+### getFormNames
 
 > **getFormNames**: () => `Promise`\<`string`[]\>
 
@@ -44,7 +44,7 @@ the Promise with an array of form names.
 
 ***
 
-### removeForm()
+### removeForm
 
 > **removeForm**: (`formName`) => `Promise`\<`any`\>
 
@@ -66,7 +66,7 @@ the Promise with the result of removal.
 
 ***
 
-### saveForm()
+### saveForm
 
 > **saveForm**: (`formName`, `formValue`) => `Promise`\<`any`\>
 

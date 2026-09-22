@@ -6,7 +6,7 @@ The element with the value and the label.
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 The label.
 

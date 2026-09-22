@@ -12,9 +12,9 @@ The current language.
 
 ***
 
-### testLocalization()?
+### testLocalization?
 
-> `optional` **testLocalization**: (`localization`, `localizationStringId`, `language`, `formData`) => [`LocalizationError`](LocalizationError.md)[] \| `string`
+> `optional` **testLocalization?**: (`localization`, `localizationStringId`, `language`, `formData`) => [`LocalizationError`](LocalizationError.md)[] \| `string`
 
 Tests localization by formatting a message with given data.
 

@@ -6,7 +6,7 @@ The format for saving a form designed in Form Builder.
 
 ### actions?
 
-> `optional` **actions**: [`ActionValues`](../type-aliases/ActionValues.md)
+> `optional` **actions?**: [`ActionValues`](../type-aliases/ActionValues.md)
 
 Represents a set of action definitions.
 
@@ -14,7 +14,7 @@ Represents a set of action definitions.
 
 ### defaultLanguage?
 
-> `optional` **defaultLanguage**: `string`
+> `optional` **defaultLanguage?**: `string`
 
 The default form language.
 
@@ -22,7 +22,7 @@ The default form language.
 
 ### errorProps?
 
-> `optional` **errorProps**: `any`
+> `optional` **errorProps?**: `any`
 
 Properties of the component displaying the error.
 
@@ -30,7 +30,7 @@ Properties of the component displaying the error.
 
 ### errorType?
 
-> `optional` **errorType**: `string`
+> `optional` **errorType?**: `string`
 
 Name of the type of component displaying the error.
 
@@ -46,7 +46,7 @@ Settings for components that display the form.
 
 ### formValidator?
 
-> `optional` **formValidator**: `string`
+> `optional` **formValidator?**: `string`
 
 The form validator.
 
@@ -54,7 +54,7 @@ The form validator.
 
 ### languages?
 
-> `optional` **languages**: [`Language`](../classes/Language.md)[]
+> `optional` **languages?**: [`Language`](../classes/Language.md)[]
 
 Form languages.
 
@@ -62,7 +62,7 @@ Form languages.
 
 ### localization?
 
-> `optional` **localization**: [`LocalizationValue`](../type-aliases/LocalizationValue.md)
+> `optional` **localization?**: [`LocalizationValue`](../type-aliases/LocalizationValue.md)
 
 Localization of the form.
 
@@ -70,7 +70,7 @@ Localization of the form.
 
 ### modalType?
 
-> `optional` **modalType**: `string`
+> `optional` **modalType?**: `string`
 
 Name of the type of component that displays the modal.
 
@@ -78,7 +78,7 @@ Name of the type of component that displays the modal.
 
 ### tooltipType?
 
-> `optional` **tooltipType**: `string`
+> `optional` **tooltipType?**: `string`
 
 Name of the type of component that displays the tooltip.
 
@@ -86,6 +86,6 @@ Name of the type of component that displays the tooltip.
 
 ### version?
 
-> `optional` **version**: [`version1`](../enumerations/PersistedFormVersion.md#version1)
+> `optional` **version?**: [`version1`](../enumerations/PersistedFormVersion.md#version1)
 
 The version of the saved form.

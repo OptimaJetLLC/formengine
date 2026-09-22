@@ -1,4 +1,4 @@
-# Type Alias: LoadCallback()
+# Type Alias: LoadCallback
 
 > **LoadCallback** = (`newData`) => `void`
 

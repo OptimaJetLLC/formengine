@@ -6,7 +6,7 @@ The Fast QR component properties.
 
 ### backgroundColor?
 
-> `optional` **backgroundColor**: `string`
+> `optional` **backgroundColor?**: `string`
 
 The background color.
 
@@ -14,7 +14,7 @@ The background color.
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 The CSS class name.
 
@@ -30,7 +30,7 @@ The QR code content.
 
 ### errorCorrectionLevel?
 
-> `optional` **errorCorrectionLevel**: `number`
+> `optional` **errorCorrectionLevel?**: `number`
 
 The error correction coding level.
 
@@ -38,7 +38,7 @@ The error correction coding level.
 
 ### image?
 
-> `optional` **image**: `string`
+> `optional` **image?**: `string`
 
 The image, base64 or URL.
 
@@ -46,7 +46,7 @@ The image, base64 or URL.
 
 ### imageBackgroundColor?
 
-> `optional` **imageBackgroundColor**: `string`
+> `optional` **imageBackgroundColor?**: `string`
 
 The image background color.
 
@@ -54,7 +54,7 @@ The image background color.
 
 ### imageBackgroundShape?
 
-> `optional` **imageBackgroundShape**: `number`
+> `optional` **imageBackgroundShape?**: `number`
 
 The image background shape.
 
@@ -62,7 +62,7 @@ The image background shape.
 
 ### imageGap?
 
-> `optional` **imageGap**: `number`
+> `optional` **imageGap?**: `number`
 
 Image gap in module units.
 
@@ -70,7 +70,7 @@ Image gap in module units.
 
 ### imagePositionX?
 
-> `optional` **imagePositionX**: `number`
+> `optional` **imagePositionX?**: `number`
 
 The image X position in module units.
 
@@ -78,7 +78,7 @@ The image X position in module units.
 
 ### imagePositionY?
 
-> `optional` **imagePositionY**: `number`
+> `optional` **imagePositionY?**: `number`
 
 The image Y position in module units.
 
@@ -86,7 +86,7 @@ The image Y position in module units.
 
 ### imageSize?
 
-> `optional` **imageSize**: `number`
+> `optional` **imageSize?**: `number`
 
 Image size in module units.
 
@@ -94,7 +94,7 @@ Image size in module units.
 
 ### margin?
 
-> `optional` **margin**: `number`
+> `optional` **margin?**: `number`
 
 The margin.
 
@@ -102,7 +102,7 @@ The margin.
 
 ### moduleColor?
 
-> `optional` **moduleColor**: `string`
+> `optional` **moduleColor?**: `string`
 
 The module color.
 
@@ -110,7 +110,7 @@ The module color.
 
 ### shape?
 
-> `optional` **shape**: `number`
+> `optional` **shape?**: `number`
 
 The different possible shapes to represent modules.
 
@@ -118,7 +118,7 @@ The different possible shapes to represent modules.
 
 ### version?
 
-> `optional` **version**: `number`
+> `optional` **version?**: `number`
 
 The QR code version.
 
@@ -126,6 +126,6 @@ The QR code version.
 
 ### width?
 
-> `optional` **width**: `number`
+> `optional` **width?**: `number`
 
 The QR code width.

@@ -8,7 +8,7 @@ The validation rule settings.
 
 ### args?
 
-> `optional` **args**: `Record`\<`string`, `any`\>
+> `optional` **args?**: `Record`\<`string`, `any`\>
 
 Arguments of the validation rule.
 
@@ -24,7 +24,7 @@ The unique key of the validation rule. The key is unique within the value type.
 
 ### type?
 
-> `optional` **type**: [`ValidatorType`](ValidatorType.md)
+> `optional` **type?**: [`ValidatorType`](ValidatorType.md)
 
 The type of validator.
 
@@ -32,6 +32,6 @@ The type of validator.
 
 ### validateWhen?
 
-> `optional` **validateWhen**: [`ComponentProperty`](../interfaces/ComponentProperty.md)
+> `optional` **validateWhen?**: [`ComponentProperty`](../interfaces/ComponentProperty.md)
 
 The property that determines when validation needs to be performed.

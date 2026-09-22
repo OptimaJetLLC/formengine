@@ -8,7 +8,7 @@ The result of validating a component property in the form builder.
 
 ### code?
 
-> `optional` **code**: `string`
+> `optional` **code?**: `string`
 
 The validation code.
 
@@ -16,6 +16,6 @@ The validation code.
 
 ### message?
 
-> `optional` **message**: `string`
+> `optional` **message?**: `string`
 
 The validation message.

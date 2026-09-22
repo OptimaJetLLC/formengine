@@ -8,7 +8,7 @@ CSS styles for a device.
 
 ### object?
 
-> `optional` **object**: `any`
+> `optional` **object?**: `any`
 
 CSS styles defined in the general style settings.
 
@@ -16,6 +16,6 @@ CSS styles defined in the general style settings.
 
 ### string?
 
-> `optional` **string**: `string`
+> `optional` **string?**: `string`
 
 CSS styles defined in the style code editor.

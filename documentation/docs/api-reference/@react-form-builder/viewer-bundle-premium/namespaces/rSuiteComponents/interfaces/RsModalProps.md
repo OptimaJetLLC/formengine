@@ -10,7 +10,7 @@ Props for the RsModal component.
 
 ### animation?
 
-> `optional` **animation**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **animation?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 Set an animation effect for Modal, the default is Bounce.
 
@@ -22,7 +22,7 @@ Set an animation effect for Modal, the default is Bounce.
 
 ### animationProps?
 
-> `optional` **animationProps**: `any`
+> `optional` **animationProps?**: `any`
 
 Animation-related properties
 
@@ -34,7 +34,7 @@ Animation-related properties
 
 ### animationTimeout?
 
-> `optional` **animationTimeout**: `number`
+> `optional` **animationTimeout?**: `number`
 
 Set the duration of the animation
 
@@ -46,7 +46,7 @@ Set the duration of the animation
 
 ### aria-describedby?
 
-> `optional` **aria-describedby**: `string`
+> `optional` **aria-describedby?**: `string`
 
 Identifies the element (or elements) that describes the object.
 
@@ -56,13 +56,13 @@ aria-labelledby
 
 #### Inherited from
 
-`ModalProps.aria-describedby`
+[`RsImageProps`](RsImageProps.md).[`aria-describedby`](RsImageProps.md#aria-describedby)
 
 ***
 
 ### aria-labelledby?
 
-> `optional` **aria-labelledby**: `string`
+> `optional` **aria-labelledby?**: `string`
 
 Identifies the element (or elements) that labels the current element.
 
@@ -72,13 +72,13 @@ aria-describedby.
 
 #### Inherited from
 
-`ModalProps.aria-labelledby`
+[`RsImageProps`](RsImageProps.md).[`aria-labelledby`](RsImageProps.md#aria-labelledby)
 
 ***
 
 ### as?
 
-> `optional` **as**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **as?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
@@ -90,7 +90,7 @@ You can use a custom element for this component
 
 ### autoFocus?
 
-> `optional` **autoFocus**: `boolean`
+> `optional` **autoFocus?**: `boolean`
 
 When set to true, the Modal is opened and is automatically focused on its own,
 accessible to screen readers
@@ -103,7 +103,7 @@ accessible to screen readers
 
 ### backdrop?
 
-> `optional` **backdrop**: `boolean` \| `"static"`
+> `optional` **backdrop?**: `boolean` \| `"static"`
 
 When set to true, the Modal will display the background when it is opened.
 Clicking on the background will close the Modal. If you do not want to close the Modal,
@@ -117,7 +117,7 @@ set it to 'static'.
 
 ### backdropClassName?
 
-> `optional` **backdropClassName**: `string`
+> `optional` **backdropClassName?**: `string`
 
 Add an optional extra class name to .modal-backdrop
 It could end up looking like class="modal-backdrop foo-modal-backdrop in"
@@ -130,7 +130,7 @@ It could end up looking like class="modal-backdrop foo-modal-backdrop in"
 
 ### backdropStyle?
 
-> `optional` **backdropStyle**: `CSSProperties`
+> `optional` **backdropStyle?**: `CSSProperties`
 
 CSS style applied to backdrop DOM nodes
 
@@ -142,7 +142,7 @@ CSS style applied to backdrop DOM nodes
 
 ### backdropTransitionTimeout?
 
-> `optional` **backdropTransitionTimeout**: `number`
+> `optional` **backdropTransitionTimeout?**: `number`
 
 #### Inherited from
 
@@ -152,7 +152,7 @@ CSS style applied to backdrop DOM nodes
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 Primary content
 
@@ -164,7 +164,7 @@ Primary content
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 Additional classes
 
@@ -176,7 +176,7 @@ Additional classes
 
 ### classPrefix?
 
-> `optional` **classPrefix**: `string`
+> `optional` **classPrefix?**: `string`
 
 The prefix of the component CSS class
 
@@ -188,7 +188,7 @@ The prefix of the component CSS class
 
 ### closeButton?
 
-> `optional` **closeButton**: `ReactNode`
+> `optional` **closeButton?**: `ReactNode`
 
 Custom close button, used when rendered as a Drawer
 
@@ -200,7 +200,7 @@ Custom close button, used when rendered as a Drawer
 
 ### container?
 
-> `optional` **container**: () => `HTMLElement` \| `HTMLElement`
+> `optional` **container?**: (() => `HTMLElement`) \| `HTMLElement`
 
 #### Inherited from
 
@@ -210,7 +210,7 @@ Custom close button, used when rendered as a Drawer
 
 ### containerClassName?
 
-> `optional` **containerClassName**: `string`
+> `optional` **containerClassName?**: `string`
 
 #### Inherited from
 
@@ -220,7 +220,7 @@ Custom close button, used when rendered as a Drawer
 
 ### dialogAs?
 
-> `optional` **dialogAs**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **dialogAs?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element type for Dialog
 
@@ -232,7 +232,7 @@ You can use a custom element type for Dialog
 
 ### dialogClassName?
 
-> `optional` **dialogClassName**: `string`
+> `optional` **dialogClassName?**: `string`
 
 CSS class applied to Dialog DOM nodes
 
@@ -244,7 +244,7 @@ CSS class applied to Dialog DOM nodes
 
 ### dialogStyle?
 
-> `optional` **dialogStyle**: `CSSProperties`
+> `optional` **dialogStyle?**: `CSSProperties`
 
 CSS style applied to dialog DOM nodes
 
@@ -256,7 +256,7 @@ CSS style applied to dialog DOM nodes
 
 ### dialogTransitionTimeout?
 
-> `optional` **dialogTransitionTimeout**: `number`
+> `optional` **dialogTransitionTimeout?**: `number`
 
 #### Inherited from
 
@@ -266,7 +266,7 @@ CSS style applied to dialog DOM nodes
 
 ### enforceFocus?
 
-> `optional` **enforceFocus**: `boolean`
+> `optional` **enforceFocus?**: `boolean`
 
 When set to true, Modal will prevent the focus from leaving when opened,
 making it easier for the secondary screen reader to access
@@ -279,7 +279,7 @@ making it easier for the secondary screen reader to access
 
 ### ~~full?~~
 
-> `optional` **full**: `boolean`
+> `optional` **full?**: `boolean`
 
 Full screen
 
@@ -293,9 +293,9 @@ Use size="full" instead.
 
 ***
 
-### handleClose()?
+### handleClose?
 
-> `optional` **handleClose**: () => `void`
+> `optional` **handleClose?**: () => `void`
 
 Custom close handler function.
 
@@ -307,17 +307,17 @@ Custom close handler function.
 
 ### id?
 
-> `optional` **id**: `string`
+> `optional` **id?**: `string`
 
 #### Inherited from
 
-`ModalProps.id`
+[`RsImageProps`](RsImageProps.md).[`id`](RsImageProps.md#id)
 
 ***
 
 ### isDrawer?
 
-> `optional` **isDrawer**: `boolean`
+> `optional` **isDrawer?**: `boolean`
 
 Indicates if the component should be displayed as a drawer
 
@@ -329,7 +329,7 @@ Indicates if the component should be displayed as a drawer
 
 ### keyboard?
 
-> `optional` **keyboard**: `boolean`
+> `optional` **keyboard?**: `boolean`
 
 Close Modal when esc key is pressed
 
@@ -341,7 +341,7 @@ Close Modal when esc key is pressed
 
 ### onBackdropClick?
 
-> `optional` **onBackdropClick**: `MouseEventHandler`\<`Element`\>
+> `optional` **onBackdropClick?**: `MouseEventHandler`\<`Element`\>
 
 #### Inherited from
 
@@ -349,9 +349,9 @@ Close Modal when esc key is pressed
 
 ***
 
-### onClose()?
+### onClose?
 
-> `optional` **onClose**: (`event`) => `void`
+> `optional` **onClose?**: (`event`) => `void`
 
 Called when Modal is closed
 
@@ -371,9 +371,9 @@ Called when Modal is closed
 
 ***
 
-### onEnter()?
+### onEnter?
 
-> `optional` **onEnter**: (`node`) => `void`
+> `optional` **onEnter?**: (`node`) => `void`
 
 Callback fired before the Modal transitions in
 
@@ -393,9 +393,9 @@ Callback fired before the Modal transitions in
 
 ***
 
-### onEntered()?
+### onEntered?
 
-> `optional` **onEntered**: (`node`) => `void`
+> `optional` **onEntered?**: (`node`) => `void`
 
 Callback fired after the Modal finishes transitioning in
 
@@ -415,9 +415,9 @@ Callback fired after the Modal finishes transitioning in
 
 ***
 
-### onEntering()?
+### onEntering?
 
-> `optional` **onEntering**: (`node`) => `void`
+> `optional` **onEntering?**: (`node`) => `void`
 
 Callback fired as the Modal begins to transition in
 
@@ -439,7 +439,7 @@ Callback fired as the Modal begins to transition in
 
 ### onEsc?
 
-> `optional` **onEsc**: `KeyboardEventHandler`\<`Element`\>
+> `optional` **onEsc?**: `KeyboardEventHandler`\<`Element`\>
 
 #### Inherited from
 
@@ -447,9 +447,9 @@ Callback fired as the Modal begins to transition in
 
 ***
 
-### onExit()?
+### onExit?
 
-> `optional` **onExit**: (`node`) => `void`
+> `optional` **onExit?**: (`node`) => `void`
 
 Callback fired right before the Modal transitions out
 
@@ -469,9 +469,9 @@ Callback fired right before the Modal transitions out
 
 ***
 
-### onExited()?
+### onExited?
 
-> `optional` **onExited**: (`node`) => `void`
+> `optional` **onExited?**: (`node`) => `void`
 
 Callback fired after the Modal finishes transitioning out
 
@@ -491,9 +491,9 @@ Callback fired after the Modal finishes transitioning out
 
 ***
 
-### onExiting()?
+### onExiting?
 
-> `optional` **onExiting**: (`node`) => `void`
+> `optional` **onExiting?**: (`node`) => `void`
 
 Callback fired as the Modal begins to transition out
 
@@ -513,9 +513,9 @@ Callback fired as the Modal begins to transition out
 
 ***
 
-### onOpen()?
+### onOpen?
 
-> `optional` **onOpen**: () => `void`
+> `optional` **onOpen?**: () => `void`
 
 Called when Modal is displayed
 
@@ -531,7 +531,7 @@ Called when Modal is displayed
 
 ### open?
 
-> `optional` **open**: `boolean`
+> `optional` **open?**: `boolean`
 
 Open  modal
 
@@ -543,7 +543,7 @@ Open  modal
 
 ### overflow?
 
-> `optional` **overflow**: `boolean`
+> `optional` **overflow?**: `boolean`
 
 Automatically sets the height when the body content is too long.
 
@@ -555,17 +555,17 @@ Automatically sets the height when the body content is too long.
 
 ### role?
 
-> `optional` **role**: `AriaRole`
+> `optional` **role?**: `AriaRole`
 
 #### Inherited from
 
-`ModalProps.role`
+[`RsImageProps`](RsImageProps.md).[`role`](RsImageProps.md#role)
 
 ***
 
 ### size?
 
-> `optional` **size**: `ModalSize`
+> `optional` **size?**: `ModalSize`
 
 A modal can have different sizes
 
@@ -577,7 +577,7 @@ A modal can have different sizes
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 Additional style
 
@@ -589,7 +589,7 @@ Additional style
 
 ### transition?
 
-> `optional` **transition**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **transition?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 #### Inherited from
 

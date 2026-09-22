@@ -288,9 +288,9 @@ Applies styles to the component, optionally per device.
 
 ##### value
 
-the style string (e.g., "color: red") or object with style properties.
+`CSSProperties` \| `string`
 
-`CSSProperties` | `string`
+the style string (e.g., "color: red") or object with style properties.
 
 ##### device?
 

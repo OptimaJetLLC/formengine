@@ -8,7 +8,7 @@ The information about a cell.
 
 ### dataKey?
 
-> `optional` **dataKey**: [`DataKeyType`](DataKeyType.md)
+> `optional` **dataKey?**: [`DataKeyType`](DataKeyType.md)
 
 The data key.
 
@@ -16,7 +16,7 @@ The data key.
 
 ### rowData?
 
-> `optional` **rowData**: `Record`\<[`DataKeyType`](DataKeyType.md), `unknown`\>
+> `optional` **rowData?**: `Record`\<[`DataKeyType`](DataKeyType.md), `unknown`\>
 
 The row data.
 
@@ -24,6 +24,6 @@ The row data.
 
 ### rowIndex?
 
-> `optional` **rowIndex**: `number`
+> `optional` **rowIndex?**: `number`
 
 The row index.

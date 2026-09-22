@@ -1,4 +1,4 @@
-# Type Alias: OnError()
+# Type Alias: OnError
 
 > **OnError** = (`error`, `files?`) => `void`
 

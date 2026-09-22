@@ -32,7 +32,7 @@ the component type of the form viewer.
 
 ### children?
 
-> `optional` **children**: `ComponentStore`[]
+> `optional` **children?**: `ComponentStore`[]
 
 The array of child components.
 
@@ -40,7 +40,7 @@ The array of child components.
 
 ### css?
 
-> `optional` **css**: [`Css`](../type-aliases/Css.md)
+> `optional` **css?**: [`Css`](../type-aliases/Css.md)
 
 The component CSS styles.
 
@@ -48,7 +48,7 @@ The component CSS styles.
 
 ### dataKey?
 
-> `optional` **dataKey**: `string`
+> `optional` **dataKey?**: `string`
 
 The component data key.
 
@@ -56,7 +56,7 @@ The component data key.
 
 ### disableDataBinding?
 
-> `optional` **disableDataBinding**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`boolean`\>
+> `optional` **disableDataBinding?**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`boolean`\>
 
 Disables data binding for the component.
 
@@ -64,7 +64,7 @@ Disables data binding for the component.
 
 ### events?
 
-> `optional` **events**: `Record`\<`string`, [`ActionData`](../type-aliases/ActionData.md)[]\>
+> `optional` **events?**: `Record`\<`string`, [`ActionData`](../type-aliases/ActionData.md)[]\>
 
 The set of event handlers.
 
@@ -72,7 +72,7 @@ The set of event handlers.
 
 ### htmlAttributes?
 
-> `optional` **htmlAttributes**: [`HtmlAttribute`](../type-aliases/HtmlAttribute.md)[]
+> `optional` **htmlAttributes?**: [`HtmlAttribute`](../type-aliases/HtmlAttribute.md)[]
 
 The set of arbitrary HTML attributes added to the component.
 
@@ -88,7 +88,7 @@ The React component key.
 
 ### modal?
 
-> `optional` **modal**: [`ModalComponentStore`](../type-aliases/ModalComponentStore.md)
+> `optional` **modal?**: [`ModalComponentStore`](../type-aliases/ModalComponentStore.md)
 
 The modal settings.
 
@@ -104,7 +104,7 @@ The component properties.
 
 ### renderWhen?
 
-> `optional` **renderWhen**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>
+> `optional` **renderWhen?**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>
 
 The expression or function to conditionally render a component.
 
@@ -112,7 +112,7 @@ The expression or function to conditionally render a component.
 
 ### schema?
 
-> `optional` **schema**: [`BoundValueSchema`](../type-aliases/BoundValueSchema.md)
+> `optional` **schema?**: [`BoundValueSchema`](../type-aliases/BoundValueSchema.md)
 
 The component value validation settings.
 
@@ -120,7 +120,7 @@ The component value validation settings.
 
 ### slot?
 
-> `optional` **slot**: `string`
+> `optional` **slot?**: `string`
 
 The name of the occupied component property in the parent component.
 
@@ -128,7 +128,7 @@ The name of the occupied component property in the parent component.
 
 ### slotCondition?
 
-> `optional` **slotCondition**: `string`
+> `optional` **slotCondition?**: `string`
 
 The condition for binding a child element to a parent element.
 
@@ -136,7 +136,7 @@ The condition for binding a child element to a parent element.
 
 ### style?
 
-> `optional` **style**: [`ComponentStyle`](../type-aliases/ComponentStyle.md)
+> `optional` **style?**: [`ComponentStyle`](../type-aliases/ComponentStyle.md)
 
 The component styles for the `style` attribute.
 
@@ -144,7 +144,7 @@ The component styles for the `style` attribute.
 
 ### tooltipProps?
 
-> `optional` **tooltipProps**: `Record`\<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>\>
+> `optional` **tooltipProps?**: `Record`\<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>\>
 
 The tooltip settings.
 
@@ -160,7 +160,7 @@ The component type of the form viewer.
 
 ### wrapperCss?
 
-> `optional` **wrapperCss**: [`Css`](../type-aliases/Css.md)
+> `optional` **wrapperCss?**: [`Css`](../type-aliases/Css.md)
 
 The component wrapper CSS styles.
 
@@ -168,7 +168,7 @@ The component wrapper CSS styles.
 
 ### wrapperStyle?
 
-> `optional` **wrapperStyle**: [`ComponentStyle`](../type-aliases/ComponentStyle.md)
+> `optional` **wrapperStyle?**: [`ComponentStyle`](../type-aliases/ComponentStyle.md)
 
 The component wrapper styles for the `style` attribute.
 
@@ -208,7 +208,7 @@ the [ActionData](../type-aliases/ActionData.md).
 
 ### addValidationRule()
 
-> `static` **addValidationRule**(`store`, `key`, `type`): `void`
+> `static` **addValidationRule**(`store`, `key`, `type?`): `void`
 
 Adds a validation rule to the component.
 
@@ -226,7 +226,7 @@ the component settings.
 
 the validation key.
 
-##### type
+##### type?
 
 [`ValidatorType`](../type-aliases/ValidatorType.md) = `'internal'`
 

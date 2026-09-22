@@ -8,7 +8,7 @@ The i18n item.
 
 ### description?
 
-> `optional` **description**: `string`
+> `optional` **description?**: `string`
 
 The description of the item.
 
@@ -16,6 +16,6 @@ The description of the item.
 
 ### name?
 
-> `optional` **name**: `string`
+> `optional` **name?**: `string`
 
 The name of the item.

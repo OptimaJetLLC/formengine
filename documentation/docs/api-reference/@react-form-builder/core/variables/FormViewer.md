@@ -1,4 +1,4 @@
-# Variable: FormViewer()
+# Variable: FormViewer
 
 > `const` **FormViewer**: (`props`) => `Element`
 

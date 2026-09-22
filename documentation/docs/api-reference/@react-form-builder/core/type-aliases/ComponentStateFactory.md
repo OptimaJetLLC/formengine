@@ -1,4 +1,4 @@
-# Type Alias: ComponentStateFactory()
+# Type Alias: ComponentStateFactory
 
 > **ComponentStateFactory** = (`data`, `store`, `context?`) => [`IComponentState`](../interfaces/IComponentState.md)
 

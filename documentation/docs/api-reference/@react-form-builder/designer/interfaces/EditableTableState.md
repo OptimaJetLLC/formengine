@@ -6,7 +6,7 @@ The state of the [EditableTable](../functions/EditableTable.md) component.
 
 ### autoHeight?
 
-> `optional` **autoHeight**: `boolean`
+> `optional` **autoHeight?**: `boolean`
 
 Flag, if true, the table height will be calculated automatically, false otherwise.
 
@@ -14,6 +14,6 @@ Flag, if true, the table height will be calculated automatically, false otherwis
 
 ### maxHeight?
 
-> `optional` **maxHeight**: `number`
+> `optional` **maxHeight?**: `number`
 
 The maximum height of the table.

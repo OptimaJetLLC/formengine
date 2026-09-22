@@ -1,4 +1,4 @@
-# Type Alias: EventHandler()
+# Type Alias: EventHandler
 
 > **EventHandler** = (...`args`) => `unknown`
 

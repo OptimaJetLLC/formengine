@@ -10,7 +10,7 @@ The Rich text editor component properties.
 
 ### bounds?
 
-> `optional` **bounds**: `HTMLElement` \| `string`
+> `optional` **bounds?**: `HTMLElement` \| `string`
 
 #### Inherited from
 
@@ -20,7 +20,7 @@ The Rich text editor component properties.
 
 ### children?
 
-> `optional` **children**: `ReactElement`\<`any`, `JSXElementConstructor`\<`any`\> \| `string`\>
+> `optional` **children?**: `ReactElement`\<`any`, `JSXElementConstructor`\<`any`\> \| `string`\>
 
 #### Inherited from
 
@@ -30,7 +30,7 @@ The Rich text editor component properties.
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 The CSS class name.
 
@@ -42,7 +42,7 @@ The CSS class name.
 
 ### defaultValue?
 
-> `optional` **defaultValue**: `Value`
+> `optional` **defaultValue?**: `Value`
 
 #### Inherited from
 
@@ -52,7 +52,7 @@ The CSS class name.
 
 ### formats?
 
-> `optional` **formats**: `string`[]
+> `optional` **formats?**: `string`[]
 
 #### Inherited from
 
@@ -62,7 +62,7 @@ The CSS class name.
 
 ### id?
 
-> `optional` **id**: `string`
+> `optional` **id?**: `string`
 
 #### Inherited from
 
@@ -72,7 +72,7 @@ The CSS class name.
 
 ### initialValue?
 
-> `optional` **initialValue**: `string`
+> `optional` **initialValue?**: `string`
 
 The initial value for the editor.
 
@@ -80,7 +80,7 @@ The initial value for the editor.
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 The label for the component.
 
@@ -88,7 +88,7 @@ The label for the component.
 
 ### modules?
 
-> `optional` **modules**: `Record`\<`string`, `unknown`\>
+> `optional` **modules?**: `Record`\<`string`, `unknown`\>
 
 Allows to customize the behavior and functionality of the editor.
 
@@ -98,7 +98,7 @@ Allows to customize the behavior and functionality of the editor.
 
 ***
 
-### onChange()
+### onChange
 
 > **onChange**: (`value?`) => `void`
 
@@ -120,9 +120,9 @@ Triggered after the content changed.
 
 ***
 
-### onKeyDown()?
+### onKeyDown?
 
-> `optional` **onKeyDown**: (`event`) => `void`
+> `optional` **onKeyDown?**: (`event`) => `void`
 
 #### Parameters
 
@@ -140,9 +140,9 @@ Triggered after the content changed.
 
 ***
 
-### onKeyPress()?
+### onKeyPress?
 
-> `optional` **onKeyPress**: (`event`) => `void`
+> `optional` **onKeyPress?**: (`event`) => `void`
 
 #### Parameters
 
@@ -160,9 +160,9 @@ Triggered after the content changed.
 
 ***
 
-### onKeyUp()?
+### onKeyUp?
 
-> `optional` **onKeyUp**: (`event`) => `void`
+> `optional` **onKeyUp?**: (`event`) => `void`
 
 #### Parameters
 
@@ -182,7 +182,7 @@ Triggered after the content changed.
 
 ### placeholder?
 
-> `optional` **placeholder**: `string`
+> `optional` **placeholder?**: `string`
 
 #### Inherited from
 
@@ -192,7 +192,7 @@ Triggered after the content changed.
 
 ### preserveWhitespace?
 
-> `optional` **preserveWhitespace**: `boolean`
+> `optional` **preserveWhitespace?**: `boolean`
 
 #### Inherited from
 
@@ -202,7 +202,7 @@ Triggered after the content changed.
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 #### Inherited from
 
@@ -212,7 +212,7 @@ Triggered after the content changed.
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 #### Inherited from
 
@@ -222,7 +222,7 @@ Triggered after the content changed.
 
 ### tabIndex?
 
-> `optional` **tabIndex**: `number`
+> `optional` **tabIndex?**: `number`
 
 #### Inherited from
 
@@ -232,7 +232,7 @@ Triggered after the content changed.
 
 ### theme?
 
-> `optional` **theme**: `string`
+> `optional` **theme?**: `string`
 
 #### Inherited from
 
@@ -242,7 +242,7 @@ Triggered after the content changed.
 
 ### toolbarOptions?
 
-> `optional` **toolbarOptions**: (`"align"` \| `"block"` \| `"clean"` \| `"color"` \| `"decoration"` \| `"direction"` \| `"font"` \| `"header"` \| `"indent"` \| `"insert"` \| `"list"` \| `"script"` \| `"size"`)[]
+> `optional` **toolbarOptions?**: (`"align"` \| `"block"` \| `"clean"` \| `"color"` \| `"decoration"` \| `"direction"` \| `"font"` \| `"header"` \| `"indent"` \| `"insert"` \| `"list"` \| `"script"` \| `"size"`)[]
 
 Groups of buttons to be displayed on the toolbar.
 
@@ -250,7 +250,7 @@ Groups of buttons to be displayed on the toolbar.
 
 ### value?
 
-> `optional` **value**: `Value`
+> `optional` **value?**: `Value`
 
 #### Inherited from
 

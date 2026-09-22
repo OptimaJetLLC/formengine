@@ -1,4 +1,4 @@
-# Type Alias: ActionsInitializer()
+# Type Alias: ActionsInitializer
 
 > **ActionsInitializer** = (`props`, `def`) => `Record`\<[`EventName`](EventName.md), [`ActionDefinition`](../classes/ActionDefinition.md) \| [`ActionEventHandler`](ActionEventHandler.md)\>
 

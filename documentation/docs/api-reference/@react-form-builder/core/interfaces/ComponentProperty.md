@@ -14,7 +14,7 @@ the value type.
 
 ### computeType?
 
-> `optional` **computeType**: [`ComponentPropertyComputeType`](../type-aliases/ComponentPropertyComputeType.md)
+> `optional` **computeType?**: [`ComponentPropertyComputeType`](../type-aliases/ComponentPropertyComputeType.md)
 
 Type of the component's calculated property. If not specified - the value from value is used.
 
@@ -22,7 +22,7 @@ Type of the component's calculated property. If not specified - the value from v
 
 ### editorType?
 
-> `optional` **editorType**: `string`
+> `optional` **editorType?**: `string`
 
 The component property editor type, only used in Designer mode.
 
@@ -30,7 +30,7 @@ The component property editor type, only used in Designer mode.
 
 ### fnSource?
 
-> `optional` **fnSource**: `string`
+> `optional` **fnSource?**: `string`
 
 Source code of the function for calculating the value of a component property.
 
@@ -38,6 +38,6 @@ Source code of the function for calculating the value of a component property.
 
 ### value?
 
-> `optional` **value**: `T`
+> `optional` **value?**: `T`
 
 The simple value of a component property.

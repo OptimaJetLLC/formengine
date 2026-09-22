@@ -4,7 +4,7 @@ The form builder settings interface.
 
 ## Properties
 
-### parseForm()
+### parseForm
 
 > **parseForm**: (`text`) => `void`
 
@@ -24,7 +24,7 @@ the form serialized in JSON.
 
 ***
 
-### reloadFormList()
+### reloadFormList
 
 > **reloadFormList**: () => `void`
 

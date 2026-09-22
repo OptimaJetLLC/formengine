@@ -1,4 +1,4 @@
-# Type Alias: GetInitialDataFn()
+# Type Alias: GetInitialDataFn
 
 > **GetInitialDataFn** = () => `unknown`
 

@@ -8,7 +8,7 @@ Function argument value type.
 
 ### body?
 
-> `optional` **body**: `string`
+> `optional` **body?**: `string`
 
 The source code of the function for use in design mode.
 

@@ -10,13 +10,13 @@ Observable storage of localization. **Internal use only.**
 
 ### Constructor
 
-> **new LocalizationStore**(`value`, `engine`): `LocalizationStore`
+> **new LocalizationStore**(`value?`, `engine`): `LocalizationStore`
 
 Creates a new LocalizationStore instance.
 
 #### Parameters
 
-##### value
+##### value?
 
 [`LocalizationValue`](../type-aliases/LocalizationValue.md) = `{}`
 

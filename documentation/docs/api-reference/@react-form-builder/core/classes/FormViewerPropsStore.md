@@ -28,7 +28,7 @@ the FormViewerPropsStore.
 
 ### actions?
 
-> `optional` **actions**: [`ActionValues`](../type-aliases/ActionValues.md)
+> `optional` **actions?**: [`ActionValues`](../type-aliases/ActionValues.md)
 
 Custom actions for the form viewer.
 
@@ -36,7 +36,7 @@ Custom actions for the form viewer.
 
 ### context?
 
-> `optional` **context**: `any`
+> `optional` **context?**: `any`
 
 The arbitrary internal context.
 
@@ -44,7 +44,7 @@ The arbitrary internal context.
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 If true, the form is disabled.
 
@@ -52,7 +52,7 @@ If true, the form is disabled.
 
 ### errorWrapper?
 
-> `optional` **errorWrapper**: `ComponentType`\<[`ErrorWrapperProps`](../interfaces/ErrorWrapperProps.md)\>
+> `optional` **errorWrapper?**: `ComponentType`\<[`ErrorWrapperProps`](../interfaces/ErrorWrapperProps.md)\>
 
 The default error wrapper used when errorType is not specified in the form.
 
@@ -60,7 +60,7 @@ The default error wrapper used when errorType is not specified in the form.
 
 ### formValidators?
 
-> `optional` **formValidators**: [`FormValidators`](../type-aliases/FormValidators.md)
+> `optional` **formValidators?**: [`FormValidators`](../type-aliases/FormValidators.md)
 
 The set of functions that validate the form data.
 
@@ -84,7 +84,7 @@ The initial user-defined state.
 
 ### localizationEngine?
 
-> `optional` **localizationEngine**: [`ILocalizationEngine`](../interfaces/ILocalizationEngine.md)
+> `optional` **localizationEngine?**: [`ILocalizationEngine`](../interfaces/ILocalizationEngine.md)
 
 The localization engine provided via FormViewer props.
 
@@ -92,7 +92,7 @@ The localization engine provided via FormViewer props.
 
 ### localizer?
 
-> `optional` **localizer**: [`ComponentLocalizer`](../type-aliases/ComponentLocalizer.md)
+> `optional` **localizer?**: [`ComponentLocalizer`](../type-aliases/ComponentLocalizer.md)
 
 The function to localize the properties of a component.
 
@@ -100,7 +100,7 @@ The function to localize the properties of a component.
 
 ### propsLanguage?
 
-> `optional` **propsLanguage**: `` `${string}-${string}` ``
+> `optional` **propsLanguage?**: `` `${string}-${string}` ``
 
 The full language code passed in the FormViewer properties, e.g. 'en-US'.
 
@@ -108,7 +108,7 @@ The full language code passed in the FormViewer properties, e.g. 'en-US'.
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 If true, the form is read-only.
 
@@ -116,7 +116,7 @@ If true, the form is read-only.
 
 ### showAllValidationErrors?
 
-> `optional` **showAllValidationErrors**: `boolean`
+> `optional` **showAllValidationErrors?**: `boolean`
 
 If true, all validation errors will be displayed.
 
@@ -124,7 +124,7 @@ If true, all validation errors will be displayed.
 
 ### userContext?
 
-> `optional` **userContext**: `unknown`
+> `optional` **userContext?**: `unknown`
 
 The arbitrary user context passed via props.
 This value is not observable and is intended to be non-reactive.
@@ -133,7 +133,7 @@ This value is not observable and is intended to be non-reactive.
 
 ### validators?
 
-> `optional` **validators**: `Partial`\<`Record`\<keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md), [`CustomValidationRules`](../type-aliases/CustomValidationRules.md)\>\>
+> `optional` **validators?**: `Partial`\<`Record`\<keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md), [`CustomValidationRules`](../type-aliases/CustomValidationRules.md)\>\>
 
 The set of metadata of validation rules, grouped by the type of value being validated.
 

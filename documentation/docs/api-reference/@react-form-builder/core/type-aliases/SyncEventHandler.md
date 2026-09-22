@@ -1,4 +1,4 @@
-# Type Alias: SyncEventHandler()\<TSender, TEventArgs\>
+# Type Alias: SyncEventHandler\<TSender, TEventArgs\>
 
 > **SyncEventHandler**\<`TSender`, `TEventArgs`\> = (`source`, `eventArgs`) => `void`
 

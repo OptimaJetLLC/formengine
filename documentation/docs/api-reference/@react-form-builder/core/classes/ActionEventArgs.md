@@ -64,7 +64,7 @@ the event arguments.
 
 ### cellInfo?
 
-> `readonly` `optional` **cellInfo**: [`CellInfo`](../type-aliases/CellInfo.md)
+> `readonly` `optional` **cellInfo?**: [`CellInfo`](../type-aliases/CellInfo.md)
 
 the information about the current table cell.
 
@@ -72,7 +72,7 @@ the information about the current table cell.
 
 ### index?
 
-> `readonly` `optional` **index**: `number`
+> `readonly` `optional` **index?**: `number`
 
 The index of the component in the array, if the component is in the array.
 
@@ -80,7 +80,7 @@ The index of the component in the array, if the component is in the array.
 
 ### refValue?
 
-> `readonly` `optional` **refValue**: `any`
+> `readonly` `optional` **refValue?**: `any`
 
 The ref value, if available.
 
@@ -120,7 +120,7 @@ the event type.
 
 ### userContext?
 
-> `readonly` `optional` **userContext**: `unknown`
+> `readonly` `optional` **userContext?**: `unknown`
 
 The user-defined context passed from the form viewer props.
 

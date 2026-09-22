@@ -1,4 +1,4 @@
-# Class: `abstract` QuantifierBuilder\<T\>
+# Abstract Class: QuantifierBuilder\<T\>
 
 The abstract builder class to define the metadata property of the form builder component.
 Used for properties where the property value can be selected from predefined values.
@@ -50,7 +50,7 @@ Partial metadata for a component property.
 
 ### labels?
 
-> `optional` **labels**: `string`[]
+> `optional` **labels?**: `string`[]
 
 Labels for the possible values of the property.
 
@@ -248,9 +248,9 @@ Sets the default value for the component property.
 
 ##### value
 
-the default value, can be an array of values.
+`T`[] \| `T`
 
-`T`[] | `T`
+the default value, can be an array of values.
 
 #### Returns
 

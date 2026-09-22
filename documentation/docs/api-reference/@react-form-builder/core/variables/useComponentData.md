@@ -1,4 +1,4 @@
-# Variable: useComponentData()
+# Variable: useComponentData
 
 > **useComponentData**: () => [`ComponentData`](../classes/ComponentData.md)
 

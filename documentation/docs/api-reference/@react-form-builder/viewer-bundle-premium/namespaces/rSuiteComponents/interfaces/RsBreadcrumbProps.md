@@ -10,7 +10,7 @@ Props for the RsBreadcrumb component.
 
 ### as?
 
-> `optional` **as**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **as?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
@@ -22,7 +22,7 @@ You can use a custom element for this component
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 Primary content
 
@@ -34,7 +34,7 @@ Primary content
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 Additional classes
 
@@ -46,7 +46,7 @@ Additional classes
 
 ### classPrefix?
 
-> `optional` **classPrefix**: `string`
+> `optional` **classPrefix?**: `string`
 
 The prefix of the component CSS class
 
@@ -58,7 +58,7 @@ The prefix of the component CSS class
 
 ### ellipsis?
 
-> `optional` **ellipsis**: `ReactNode`
+> `optional` **ellipsis?**: `ReactNode`
 
 The ellipsis element.
 
@@ -78,7 +78,7 @@ Array of breadcrumb items to display.
 
 ### locale?
 
-> `optional` **locale**: `PickKeys`\<\{ `expandText`: `string`; \}\>
+> `optional` **locale?**: `PickKeys`\<\{ `expandText`: `string`; \}\>
 
 The locale of the component.
 
@@ -90,7 +90,7 @@ The locale of the component.
 
 ### maxItems?
 
-> `optional` **maxItems**: `number`
+> `optional` **maxItems?**: `number`
 
 Set the maximum number of breadcrumbs to display.
 When there are more than the maximum number,
@@ -102,9 +102,9 @@ only the first and last will be shown, with an ellipsis in between.
 
 ***
 
-### onExpand()?
+### onExpand?
 
-> `optional` **onExpand**: (`event`) => `void`
+> `optional` **onExpand?**: (`event`) => `void`
 
 Callback function for clicking the ellipsis.
 
@@ -124,7 +124,7 @@ Callback function for clicking the ellipsis.
 
 ***
 
-### onItemClick()
+### onItemClick
 
 > **onItemClick**: (`item`) => `void`
 
@@ -144,7 +144,7 @@ Callback function when a breadcrumb item is clicked.
 
 ### separator?
 
-> `optional` **separator**: `ReactNode`
+> `optional` **separator?**: `ReactNode`
 
 The separator between each breadcrumb item.
 
@@ -156,7 +156,7 @@ The separator between each breadcrumb item.
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 Additional style
 

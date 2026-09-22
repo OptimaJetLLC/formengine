@@ -6,7 +6,7 @@ The description of the table column.
 
 ### input?
 
-> `optional` **input**: `ComponentType`
+> `optional` **input?**: `ComponentType`
 
 The React component that displays the value of a column.
 
@@ -14,7 +14,7 @@ The React component that displays the value of a column.
 
 ### inputName?
 
-> `optional` **inputName**: `"ActionCell"` \| `"CheckCell"` \| `"InputCell"` \| `"SelectCell"`
+> `optional` **inputName?**: `"ActionCell"` \| `"CheckCell"` \| `"InputCell"` \| `"SelectCell"`
 
 The name of the React component that displays the value of a column.
 
@@ -22,7 +22,7 @@ The name of the React component that displays the value of a column.
 
 ### inputProps?
 
-> `optional` **inputProps**: `any`
+> `optional` **inputProps?**: `any`
 
 The properties of the React component that displays the value of the column.
 
@@ -38,6 +38,6 @@ The column name.
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 The column title.

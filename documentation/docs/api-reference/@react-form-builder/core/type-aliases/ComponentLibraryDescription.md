@@ -8,7 +8,7 @@ A component library description.
 
 ### categories?
 
-> `optional` **categories**: `Record`\<`string`, [`I18nItem`](I18nItem.md)\>
+> `optional` **categories?**: `Record`\<`string`, [`I18nItem`](I18nItem.md)\>
 
 A record mapping category names to their descriptions.
 
@@ -16,7 +16,7 @@ A record mapping category names to their descriptions.
 
 ### commonProperties?
 
-> `optional` **commonProperties**: `Record`\<`string`, [`I18nItem`](I18nItem.md)\>
+> `optional` **commonProperties?**: `Record`\<`string`, [`I18nItem`](I18nItem.md)\>
 
 A record mapping common component properties to their descriptions.
 
@@ -24,6 +24,6 @@ A record mapping common component properties to their descriptions.
 
 ### components?
 
-> `optional` **components**: `Record`\<`string`, [`ComponentDescription`](ComponentDescription.md)\>
+> `optional` **components?**: `Record`\<`string`, [`ComponentDescription`](ComponentDescription.md)\>
 
 A record mapping component names to their descriptions.

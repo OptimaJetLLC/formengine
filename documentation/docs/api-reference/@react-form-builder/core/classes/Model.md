@@ -124,7 +124,7 @@ the component features that provide additional information about component's cha
 
 ### actionsInitializer?
 
-> `readonly` `optional` **actionsInitializer**: [`ActionsInitializer`](../type-aliases/ActionsInitializer.md)
+> `readonly` `optional` **actionsInitializer?**: [`ActionsInitializer`](../type-aliases/ActionsInitializer.md)
 
 the function to initialize actions in the component.
 
@@ -140,7 +140,7 @@ The React component.
 
 ### css?
 
-> `readonly` `optional` **css**: [`Css`](../type-aliases/Css.md)
+> `readonly` `optional` **css?**: [`Css`](../type-aliases/Css.md)
 
 the component's CSS values.
 
@@ -156,7 +156,7 @@ the type of component data binding.
 
 ### defaultProps?
 
-> `readonly` `optional` **defaultProps**: `Readonly`\<`Record`\<`string`, `any`\>\>
+> `readonly` `optional` **defaultProps?**: `Readonly`\<`Record`\<`string`, `any`\>\>
 
 the component's default property values.
 
@@ -164,7 +164,7 @@ the component's default property values.
 
 ### disabled?
 
-> `readonly` `optional` **disabled**: `string`
+> `readonly` `optional` **disabled?**: `string`
 
 the name of the component property that stores the disabled flag.
 
@@ -196,7 +196,7 @@ the component property binding types.
 
 ### readOnly?
 
-> `readonly` `optional` **readOnly**: `string`
+> `readonly` `optional` **readOnly?**: `string`
 
 the name of the component property that stores the read-only flag.
 
@@ -204,7 +204,7 @@ the name of the component property that stores the read-only flag.
 
 ### typeName?
 
-> `readonly` `optional` **typeName**: `string`
+> `readonly` `optional` **typeName?**: `string`
 
 the component type name.
 
@@ -212,7 +212,7 @@ the component type name.
 
 ### uncontrolledValue?
 
-> `readonly` `optional` **uncontrolledValue**: `unknown`
+> `readonly` `optional` **uncontrolledValue?**: `unknown`
 
 the value for the uncontrolled (undefined) state.
 
@@ -220,7 +220,7 @@ the value for the uncontrolled (undefined) state.
 
 ### valued?
 
-> `readonly` `optional` **valued**: `string`
+> `readonly` `optional` **valued?**: `string`
 
 the name of the component property where the component value is stored.
 
@@ -228,7 +228,7 @@ the name of the component property where the component value is stored.
 
 ### valueType?
 
-> `readonly` `optional` **valueType**: keyof SchemaTypeMap
+> `readonly` `optional` **valueType?**: keyof SchemaTypeMap
 
 the type of the component value.
 
@@ -236,7 +236,7 @@ the type of the component value.
 
 ### wrapperCss?
 
-> `readonly` `optional` **wrapperCss**: [`Css`](../type-aliases/Css.md)
+> `readonly` `optional` **wrapperCss?**: [`Css`](../type-aliases/Css.md)
 
 the component's wrapper CSS values.
 

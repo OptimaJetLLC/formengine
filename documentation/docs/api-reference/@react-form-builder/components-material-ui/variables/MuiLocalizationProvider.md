@@ -6,6 +6,8 @@ Wrapper component for Material UI components localization.
 
 ## Param
 
+**props**
+
 the FormViewerWrapper props.
 
 ## Returns

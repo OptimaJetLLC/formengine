@@ -1,4 +1,4 @@
-# Type Alias: RuleValidator()\<T\>
+# Type Alias: RuleValidator\<T\>
 
 > **RuleValidator**\<`T`\> = (`value`, `store`, `args?`, `formData?`) => `Promise`\<[`RuleValidatorResult`](RuleValidatorResult.md)\> \| [`RuleValidatorResult`](RuleValidatorResult.md)
 

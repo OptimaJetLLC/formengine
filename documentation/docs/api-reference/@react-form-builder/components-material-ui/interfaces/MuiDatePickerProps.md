@@ -10,7 +10,7 @@ Props for the MuiDatePicker component.
 
 ### autoFocus?
 
-> `optional` **autoFocus**: `boolean`
+> `optional` **autoFocus?**: `boolean`
 
 If `true`, the main element is focused during the first mount.
 This main element is:
@@ -25,7 +25,7 @@ This main element is:
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 #### Inherited from
 
@@ -35,7 +35,7 @@ This main element is:
 
 ### closeOnSelect?
 
-> `optional` **closeOnSelect**: `boolean`
+> `optional` **closeOnSelect?**: `boolean`
 
 If `true`, the popover or modal will close after submitting the full date.
 
@@ -49,9 +49,9 @@ If `true`, the popover or modal will close after submitting the full date.
 
 ***
 
-### dayOfWeekFormatter()?
+### dayOfWeekFormatter?
 
-> `optional` **dayOfWeekFormatter**: (`date`) => `string`
+> `optional` **dayOfWeekFormatter?**: (`date`) => `string`
 
 Formats the day of week displayed in the calendar header.
 
@@ -83,7 +83,7 @@ The name to display.
 
 ### defaultValue?
 
-> `optional` **defaultValue**: `any`
+> `optional` **defaultValue?**: `any`
 
 The default value.
 Used when the component is not controlled.
@@ -96,7 +96,7 @@ Used when the component is not controlled.
 
 ### desktopModeMediaQuery?
 
-> `optional` **desktopModeMediaQuery**: `string`
+> `optional` **desktopModeMediaQuery?**: `string`
 
 CSS media query when `Mobile` mode will be changed to `Desktop`.
 
@@ -120,7 +120,7 @@ CSS media query when `Mobile` mode will be changed to `Desktop`.
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 If `true`, the picker and text field are disabled.
 
@@ -138,7 +138,7 @@ false
 
 ### disableFuture?
 
-> `optional` **disableFuture**: `boolean`
+> `optional` **disableFuture?**: `boolean`
 
 If `true`, disable values after the current date for date components, time for time components and both for date time components.
 
@@ -156,7 +156,7 @@ false
 
 ### disableHighlightToday?
 
-> `optional` **disableHighlightToday**: `boolean`
+> `optional` **disableHighlightToday?**: `boolean`
 
 If `true`, today's date is rendering without highlighting with circle.
 
@@ -174,7 +174,7 @@ false
 
 ### disableOpenPicker?
 
-> `optional` **disableOpenPicker**: `boolean`
+> `optional` **disableOpenPicker?**: `boolean`
 
 If `true`, the open picker button will not be rendered (renders only the field).
 
@@ -192,7 +192,7 @@ false
 
 ### disablePast?
 
-> `optional` **disablePast**: `boolean`
+> `optional` **disablePast?**: `boolean`
 
 If `true`, disable values before the current date for date components, time for time components and both for date time components.
 
@@ -210,7 +210,7 @@ false
 
 ### displayWeekNumber?
 
-> `optional` **displayWeekNumber**: `boolean`
+> `optional` **displayWeekNumber?**: `boolean`
 
 If `true`, the week number will be display in the calendar.
 
@@ -222,7 +222,7 @@ If `true`, the week number will be display in the calendar.
 
 ### enableAccessibleFieldDOMStructure?
 
-> `optional` **enableAccessibleFieldDOMStructure**: `any`
+> `optional` **enableAccessibleFieldDOMStructure?**: `any`
 
 #### Default
 
@@ -238,7 +238,7 @@ false
 
 ### error?
 
-> `optional` **error**: `boolean`
+> `optional` **error?**: `boolean`
 
 If `true`, the label is displayed in an error state.
 
@@ -250,13 +250,13 @@ false
 
 #### Inherited from
 
-`Pick.error`
+[`MuiFormControlProps`](MuiFormControlProps.md).[`error`](MuiFormControlProps.md#error)
 
 ***
 
 ### fixedWeekNumber?
 
-> `optional` **fixedWeekNumber**: `number`
+> `optional` **fixedWeekNumber?**: `number`
 
 The day view will show as many weeks as needed after the end of the current month to match this value.
 Put it to 6 to have a fixed number of weeks in Gregorian calendars
@@ -269,7 +269,7 @@ Put it to 6 to have a fixed number of weeks in Gregorian calendars
 
 ### format?
 
-> `optional` **format**: `string`
+> `optional` **format?**: `string`
 
 Format of the date when rendered in the input(s).
 Defaults to localized format based on the used `views`.
@@ -282,7 +282,7 @@ Defaults to localized format based on the used `views`.
 
 ### formatDensity?
 
-> `optional` **formatDensity**: `"dense"` \| `"spacious"`
+> `optional` **formatDensity?**: `"dense"` \| `"spacious"`
 
 Density of the format when rendered in the input.
 Setting `formatDensity` to `"spacious"` will add a space before and after each `/`, `-` and `.` character.
@@ -301,19 +301,19 @@ Setting `formatDensity` to `"spacious"` will add a space before and after each `
 
 ### helperText?
 
-> `optional` **helperText**: `string`
+> `optional` **helperText?**: `string`
 
 The helper text for the form control.
 
 #### Inherited from
 
-`Pick.helperText`
+[`MuiControlProps`](MuiControlProps.md).[`helperText`](MuiControlProps.md#helpertext)
 
 ***
 
 ### inputRef?
 
-> `optional` **inputRef**: `Ref`\<`HTMLInputElement`\>
+> `optional` **inputRef?**: `Ref`\<`HTMLInputElement`\>
 
 Pass a ref to the `input` element.
 
@@ -325,7 +325,7 @@ Pass a ref to the `input` element.
 
 ### label?
 
-> `optional` **label**: `ReactNode`
+> `optional` **label?**: `ReactNode`
 
 The label content.
 
@@ -337,7 +337,7 @@ The label content.
 
 ### loading?
 
-> `optional` **loading**: `boolean`
+> `optional` **loading?**: `boolean`
 
 If `true`, calls `renderLoading` instead of rendering the day calendar.
 Can be used to preload information and show it in calendar.
@@ -356,7 +356,7 @@ false
 
 ### localeText?
 
-> `optional` **localeText**: `PickersInputComponentLocaleText`\<`any`\>
+> `optional` **localeText?**: `PickersInputComponentLocaleText`\<`any`\>
 
 Locale for components texts.
 Allows overriding texts coming from `LocalizationProvider` and `theme`.
@@ -369,7 +369,7 @@ Allows overriding texts coming from `LocalizationProvider` and `theme`.
 
 ### maxDate?
 
-> `optional` **maxDate**: `any`
+> `optional` **maxDate?**: `any`
 
 Maximal selectable date.
 
@@ -387,7 +387,7 @@ Maximal selectable date.
 
 ### minDate?
 
-> `optional` **minDate**: `any`
+> `optional` **minDate?**: `any`
 
 Minimal selectable date.
 
@@ -405,7 +405,7 @@ Minimal selectable date.
 
 ### monthsPerRow?
 
-> `optional` **monthsPerRow**: `3` \| `4`
+> `optional` **monthsPerRow?**: `3` \| `4`
 
 Months rendered per row.
 
@@ -423,7 +423,7 @@ Months rendered per row.
 
 ### name?
 
-> `optional` **name**: `string`
+> `optional` **name?**: `string`
 
 Name attribute used by the `input` element in the Field.
 
@@ -433,9 +433,9 @@ Name attribute used by the `input` element in the Field.
 
 ***
 
-### onAccept()?
+### onAccept?
 
-> `optional` **onAccept**: (`value`, `context`) => `void`
+> `optional` **onAccept?**: (`value`, `context`) => `void`
 
 Callback fired when the value is accepted.
 
@@ -463,9 +463,9 @@ The context containing the validation result of the current value.
 
 ***
 
-### onChange()?
+### onChange?
 
-> `optional` **onChange**: (`value`, `context`) => `void`
+> `optional` **onChange?**: (`value`, `context`) => `void`
 
 Callback fired when the value changes.
 
@@ -493,9 +493,9 @@ The context containing the validation result of the current value.
 
 ***
 
-### onClose()?
+### onClose?
 
-> `optional` **onClose**: () => `void`
+> `optional` **onClose?**: () => `void`
 
 Callback fired when the popup requests to be closed.
 Use in controlled mode (see `open`).
@@ -510,9 +510,9 @@ Use in controlled mode (see `open`).
 
 ***
 
-### onError()?
+### onError?
 
-> `optional` **onError**: (`error`, `value`) => `void`
+> `optional` **onError?**: (`error`, `value`) => `void`
 
 Callback fired when the error associated with the current value changes.
 When a validation error is detected, the `error` parameter contains a non-null value.
@@ -542,9 +542,9 @@ The value associated with the error.
 
 ***
 
-### onMonthChange()?
+### onMonthChange?
 
-> `optional` **onMonthChange**: (`month`) => `void`
+> `optional` **onMonthChange?**: (`month`) => `void`
 
 Callback fired on month change.
 
@@ -566,9 +566,9 @@ The new month.
 
 ***
 
-### onOpen()?
+### onOpen?
 
-> `optional` **onOpen**: () => `void`
+> `optional` **onOpen?**: () => `void`
 
 Callback fired when the popup requests to be opened.
 Use in controlled mode (see `open`).
@@ -583,9 +583,9 @@ Use in controlled mode (see `open`).
 
 ***
 
-### onSelectedSectionsChange()?
+### onSelectedSectionsChange?
 
-> `optional` **onSelectedSectionsChange**: (`newValue`) => `void`
+> `optional` **onSelectedSectionsChange?**: (`newValue`) => `void`
 
 Callback fired when the selected sections change.
 
@@ -607,9 +607,9 @@ The new selected sections.
 
 ***
 
-### onViewChange()?
+### onViewChange?
 
-> `optional` **onViewChange**: (`view`) => `void`
+> `optional` **onViewChange?**: (`view`) => `void`
 
 Callback fired on view change.
 
@@ -631,9 +631,9 @@ The new view.
 
 ***
 
-### onYearChange()?
+### onYearChange?
 
-> `optional` **onYearChange**: (`year`) => `void`
+> `optional` **onYearChange?**: (`year`) => `void`
 
 Callback fired on year change.
 
@@ -657,7 +657,7 @@ The new year.
 
 ### open?
 
-> `optional` **open**: `boolean`
+> `optional` **open?**: `boolean`
 
 Control the popup or dialog open state.
 
@@ -675,7 +675,7 @@ false
 
 ### openTo?
 
-> `optional` **openTo**: `DateView`
+> `optional` **openTo?**: `DateView`
 
 The default visible view.
 Used when the component view is not controlled.
@@ -689,7 +689,7 @@ Must be a valid option from `views` list.
 
 ### orientation?
 
-> `optional` **orientation**: `"landscape"` \| `"portrait"`
+> `optional` **orientation?**: `"landscape"` \| `"portrait"`
 
 Force rendering in particular orientation.
 
@@ -701,7 +701,7 @@ Force rendering in particular orientation.
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 #### Inherited from
 
@@ -711,7 +711,7 @@ Force rendering in particular orientation.
 
 ### referenceDate?
 
-> `optional` **referenceDate**: `any`
+> `optional` **referenceDate?**: `any`
 
 The date used to generate the new value when both `value` and `defaultValue` are empty.
 
@@ -725,9 +725,9 @@ The closest valid date-time using the validation props, except callbacks like `s
 
 ***
 
-### renderLoading()?
+### renderLoading?
 
-> `optional` **renderLoading**: () => `ReactNode`
+> `optional` **renderLoading?**: () => `ReactNode`
 
 Component displaying when passed `loading` true.
 
@@ -751,7 +751,7 @@ The node to render when loading.
 
 ### required?
 
-> `optional` **required**: `boolean`
+> `optional` **required?**: `boolean`
 
 If `true`, the label will indicate that the `input` is required.
 
@@ -763,13 +763,13 @@ false
 
 #### Inherited from
 
-`Pick.required`
+[`MuiControlProps`](MuiControlProps.md).[`required`](MuiControlProps.md#required)
 
 ***
 
 ### selectedSections?
 
-> `optional` **selectedSections**: `FieldSelectedSections`
+> `optional` **selectedSections?**: `FieldSelectedSections`
 
 The currently selected sections.
 This prop accepts four formats:
@@ -785,9 +785,9 @@ If not provided, the selected sections will be handled internally.
 
 ***
 
-### shouldDisableDate()?
+### shouldDisableDate?
 
-> `optional` **shouldDisableDate**: (`day`) => `boolean`
+> `optional` **shouldDisableDate?**: (`day`) => `boolean`
 
 Disable specific date.
 
@@ -813,9 +813,9 @@ If `true` the date will be disabled.
 
 ***
 
-### shouldDisableMonth()?
+### shouldDisableMonth?
 
-> `optional` **shouldDisableMonth**: (`month`) => `boolean`
+> `optional` **shouldDisableMonth?**: (`month`) => `boolean`
 
 Disable specific month.
 
@@ -839,9 +839,9 @@ If `true`, the month will be disabled.
 
 ***
 
-### shouldDisableYear()?
+### shouldDisableYear?
 
-> `optional` **shouldDisableYear**: (`year`) => `boolean`
+> `optional` **shouldDisableYear?**: (`year`) => `boolean`
 
 Disable specific year.
 
@@ -867,7 +867,7 @@ If `true`, the year will be disabled.
 
 ### showDaysOutsideCurrentMonth?
 
-> `optional` **showDaysOutsideCurrentMonth**: `boolean`
+> `optional` **showDaysOutsideCurrentMonth?**: `boolean`
 
 If `true`, days outside the current month are rendered:
 
@@ -891,7 +891,7 @@ false
 
 ### slotProps?
 
-> `optional` **slotProps**: `DatePickerSlotProps`\<`any`, `any`\>
+> `optional` **slotProps?**: `DatePickerSlotProps`\<`any`, `any`\>
 
 The props used for each component slot.
 
@@ -909,7 +909,7 @@ The props used for each component slot.
 
 ### slots?
 
-> `optional` **slots**: `DatePickerSlots`\<`any`\>
+> `optional` **slots?**: `DatePickerSlots`\<`any`\>
 
 Overridable component slots.
 
@@ -927,7 +927,7 @@ Overridable component slots.
 
 ### sx?
 
-> `optional` **sx**: `SxProps`\<`Theme`\>
+> `optional` **sx?**: `SxProps`\<`Theme`\>
 
 The system prop that allows defining system overrides as well as additional CSS styles.
 
@@ -939,7 +939,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### timezone?
 
-> `optional` **timezone**: `string`
+> `optional` **timezone?**: `string`
 
 Choose which timezone to use for the value.
 Example: "default", "system", "UTC", "America/New_York".
@@ -961,7 +961,7 @@ The timezone of the `value` or `defaultValue` prop is defined, 'default' otherwi
 
 ### value?
 
-> `optional` **value**: `any`
+> `optional` **value?**: `any`
 
 The selected value.
 Used when the component is controlled.
@@ -974,7 +974,7 @@ Used when the component is controlled.
 
 ### view?
 
-> `optional` **view**: `DateView`
+> `optional` **view?**: `DateView`
 
 The visible view.
 Used when the component view is controlled.
@@ -988,7 +988,7 @@ Must be a valid option from `views` list.
 
 ### viewRenderers?
 
-> `optional` **viewRenderers**: `Partial`\<`DatePickerViewRenderers`\<`any`, `DateView`, \{ \}\>\>
+> `optional` **viewRenderers?**: `Partial`\<`DatePickerViewRenderers`\<`any`, `DateView`, \{ \}\>\>
 
 Define custom view renderers for each section.
 If `null`, the section will only have field editing.
@@ -1002,7 +1002,7 @@ If `undefined`, internally defined view will be used.
 
 ### views?
 
-> `optional` **views**: readonly `DateView`[]
+> `optional` **views?**: readonly `DateView`[]
 
 Available views.
 
@@ -1014,7 +1014,7 @@ Available views.
 
 ### yearsOrder?
 
-> `optional` **yearsOrder**: `"asc"` \| `"desc"`
+> `optional` **yearsOrder?**: `"asc"` \| `"desc"`
 
 Years are displayed in ascending (chronological) order by default.
 If `desc`, years are displayed in descending order.
@@ -1033,7 +1033,7 @@ If `desc`, years are displayed in descending order.
 
 ### yearsPerRow?
 
-> `optional` **yearsPerRow**: `3` \| `4`
+> `optional` **yearsPerRow?**: `3` \| `4`
 
 Years rendered per row.
 

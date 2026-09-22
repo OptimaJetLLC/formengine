@@ -1,6 +1,6 @@
 # Function: cloneDeep()
 
-> **cloneDeep**\<`T`\>(`value`, `weakMap`): `T`
+> **cloneDeep**\<`T`\>(`value`, `weakMap?`): `T`
 
 Creates a deep cloned copy of the provided value.
 - Preserves prototypes for objects and class instances.
@@ -21,7 +21,7 @@ Creates a deep cloned copy of the provided value.
 
 the value to deep-clone.
 
-### weakMap
+### weakMap?
 
 `WeakMap`\<`object`, `any`\> = `...`
 

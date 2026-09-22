@@ -6,7 +6,7 @@ Props for a single breadcrumb item.
 
 ### active?
 
-> `optional` **active**: `boolean`
+> `optional` **active?**: `boolean`
 
 Whether the breadcrumb item is active.
 
@@ -14,7 +14,7 @@ Whether the breadcrumb item is active.
 
 ### href?
 
-> `optional` **href**: `string`
+> `optional` **href?**: `string`
 
 URL for the breadcrumb item.
 
@@ -22,6 +22,6 @@ URL for the breadcrumb item.
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 Title text for the breadcrumb item.

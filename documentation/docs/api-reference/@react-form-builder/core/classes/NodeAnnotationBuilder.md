@@ -54,15 +54,15 @@ Partial metadata for a component property.
 
 ### defaultEditor?
 
-> `optional` **defaultEditor**: [`NodeEditorType`](../type-aliases/NodeEditorType.md)
+> `optional` **defaultEditor?**: [`NodeEditorType`](../type-aliases/NodeEditorType.md)
 
 The default editor.
 
 ***
 
-### insertPredicate()?
+### insertPredicate?
 
-> `optional` **insertPredicate**: (`self`, `child`) => `boolean`
+> `optional` **insertPredicate?**: (`self`, `child`) => `boolean`
 
 The function that checks whether a child component can be inserted into a parent component.
 

@@ -8,7 +8,7 @@ Value validation rules.
 
 ### autoValidate?
 
-> `optional` **autoValidate**: `boolean`
+> `optional` **autoValidate?**: `boolean`
 
 Flag, if true then automatic validation of the value works, false otherwise.
 
@@ -16,6 +16,6 @@ Flag, if true then automatic validation of the value works, false otherwise.
 
 ### validations?
 
-> `optional` **validations**: [`ValidationRuleSettings`](ValidationRuleSettings.md)[]
+> `optional` **validations?**: [`ValidationRuleSettings`](ValidationRuleSettings.md)[]
 
 The array of validation rule settings.

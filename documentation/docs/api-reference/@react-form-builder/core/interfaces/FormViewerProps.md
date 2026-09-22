@@ -6,7 +6,7 @@ Form viewer React component properties.
 
 ### actions?
 
-> `optional` **actions**: [`CustomActions`](../type-aliases/CustomActions.md)
+> `optional` **actions?**: [`CustomActions`](../type-aliases/CustomActions.md)
 
 Custom actions for the form viewer.
 
@@ -14,7 +14,7 @@ Custom actions for the form viewer.
 
 ### componentWrapper?
 
-> `optional` **componentWrapper**: `ComponentType`\<`any`\>
+> `optional` **componentWrapper?**: `ComponentType`\<`any`\>
 
 The React component that wraps every component in a form. **Internal use only.**
 
@@ -22,7 +22,7 @@ The React component that wraps every component in a form. **Internal use only.**
 
 ### context?
 
-> `optional` **context**: `any`
+> `optional` **context?**: `any`
 
 The arbitrary context used internally by the form viewer.
 
@@ -30,7 +30,7 @@ The arbitrary context used internally by the form viewer.
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 If true, the form is disabled.
 
@@ -38,7 +38,7 @@ If true, the form is disabled.
 
 ### errors?
 
-> `optional` **errors**: `Record`\<`string`, `unknown`\>
+> `optional` **errors?**: `Record`\<`string`, `unknown`\>
 
 The form validation errors.
 
@@ -46,7 +46,7 @@ The form validation errors.
 
 ### errorWrapper?
 
-> `optional` **errorWrapper**: `ComponentType`\<[`ErrorWrapperProps`](ErrorWrapperProps.md)\>
+> `optional` **errorWrapper?**: `ComponentType`\<[`ErrorWrapperProps`](ErrorWrapperProps.md)\>
 
 The default error wrapper used when errorType is not specified in the form.
 
@@ -54,7 +54,7 @@ The default error wrapper used when errorType is not specified in the form.
 
 ### formName?
 
-> `optional` **formName**: `string`
+> `optional` **formName?**: `string`
 
 The form name.
 Updating the value triggers the [FormViewerProps.getForm](#getform) function.
@@ -63,7 +63,7 @@ Updating the value triggers the [FormViewerProps.getForm](#getform) function.
 
 ### formOptions?
 
-> `optional` **formOptions**: `any`
+> `optional` **formOptions?**: `any`
 
 The form options. Used to transfer any options to the [FormViewerProps.getForm](#getform) function.
 Updating the value triggers the [FormViewerProps.getForm](#getform) function.
@@ -72,15 +72,15 @@ Updating the value triggers the [FormViewerProps.getForm](#getform) function.
 
 ### formValidators?
 
-> `optional` **formValidators**: [`FormValidators`](../type-aliases/FormValidators.md)
+> `optional` **formValidators?**: [`FormValidators`](../type-aliases/FormValidators.md)
 
 The set of functions that validate the form data.
 
 ***
 
-### getForm()?
+### getForm?
 
-> `optional` **getForm**: (`name?`, `options?`) => `Promise`\<`string`\> \| `string`
+> `optional` **getForm?**: (`name?`, `options?`) => `Promise`\<`string`\> \| `string`
 
 Loads the form.
 
@@ -108,7 +108,7 @@ the string or Promise with the form.
 
 ### initialData?
 
-> `optional` **initialData**: `Record`\<`string`, `unknown`\>
+> `optional` **initialData?**: `Record`\<`string`, `unknown`\>
 
 The initial data of the form.
 
@@ -116,7 +116,7 @@ The initial data of the form.
 
 ### initialState?
 
-> `optional` **initialState**: `Record`\<`string`, `unknown`\>
+> `optional` **initialState?**: `Record`\<`string`, `unknown`\>
 
 The initial user-defined state for the form.
 This object is set into [IFormData.state](IFormData.md#state) when the form is initialized, this property is reactive.
@@ -125,7 +125,7 @@ This object is set into [IFormData.state](IFormData.md#state) when the form is i
 
 ### language?
 
-> `optional` **language**: `` `${string}-${string}` ``
+> `optional` **language?**: `` `${string}-${string}` ``
 
 The language of the form, e.g. 'en-US'.
 
@@ -133,7 +133,7 @@ The language of the form, e.g. 'en-US'.
 
 ### localizationEngine?
 
-> `optional` **localizationEngine**: [`ILocalizationEngine`](ILocalizationEngine.md)
+> `optional` **localizationEngine?**: [`ILocalizationEngine`](ILocalizationEngine.md)
 
 The localization engine used by the viewer.
 
@@ -141,15 +141,15 @@ The localization engine used by the viewer.
 
 ### localize?
 
-> `optional` **localize**: [`ComponentLocalizer`](../type-aliases/ComponentLocalizer.md)
+> `optional` **localize?**: [`ComponentLocalizer`](../type-aliases/ComponentLocalizer.md)
 
 The function to localize the properties of a component.
 
 ***
 
-### onFormDataChange()?
+### onFormDataChange?
 
-> `optional` **onFormDataChange**: (`data`) => `void`
+> `optional` **onFormDataChange?**: (`data`) => `void`
 
 The event is called whenever a form data changes.
 
@@ -169,7 +169,7 @@ the [IFormData](IFormData.md) with all the form data.
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 If true, the form is read-only.
 
@@ -177,7 +177,7 @@ If true, the form is read-only.
 
 ### showAllValidationErrors?
 
-> `optional` **showAllValidationErrors**: `boolean`
+> `optional` **showAllValidationErrors?**: `boolean`
 
 If true, all validation errors will be displayed.
 
@@ -185,7 +185,7 @@ If true, all validation errors will be displayed.
 
 ### userContext?
 
-> `optional` **userContext**: `unknown`
+> `optional` **userContext?**: `unknown`
 
 The arbitrary context object passed to the form viewer.
 It is forwarded to custom actions as the third argument of the handler.
@@ -194,7 +194,7 @@ It is forwarded to custom actions as the third argument of the handler.
 
 ### validators?
 
-> `optional` **validators**: `Partial`\<`Record`\<keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md), [`CustomValidationRules`](../type-aliases/CustomValidationRules.md)\>\>
+> `optional` **validators?**: `Partial`\<`Record`\<keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md), [`CustomValidationRules`](../type-aliases/CustomValidationRules.md)\>\>
 
 The set of metadata of validation rules, grouped by the type of value being validated.
 
@@ -210,7 +210,7 @@ All the metadata of the components of the form viewer.
 
 ### viewerRef?
 
-> `optional` **viewerRef**: `ForwardedRef`\<[`IFormViewer`](IFormViewer.md)\>
+> `optional` **viewerRef?**: `ForwardedRef`\<[`IFormViewer`](IFormViewer.md)\>
 
 The reference to [IFormViewer](IFormViewer.md).
 
@@ -218,6 +218,6 @@ The reference to [IFormViewer](IFormViewer.md).
 
 ### viewMode?
 
-> `optional` **viewMode**: [`ViewMode`](../type-aliases/ViewMode.md)
+> `optional` **viewMode?**: [`ViewMode`](../type-aliases/ViewMode.md)
 
 Display resolution type.

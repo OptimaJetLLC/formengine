@@ -1,4 +1,4 @@
-# Type Alias: LoadDataHandler()
+# Type Alias: LoadDataHandler
 
 > **LoadDataHandler** = (`searchKeyword`, `loadCallback`, `currentDataLength`) => `void`
 

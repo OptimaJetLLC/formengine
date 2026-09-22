@@ -15,13 +15,13 @@ Represents all the metadata of the form viewer components.
 
 ### Constructor
 
-> **new View**(`models`): `View`
+> **new View**(`models?`): `View`
 
 Creates an instance of the View.
 
 #### Parameters
 
-##### models
+##### models?
 
 [`Model`](Model.md)\<`any`\>[] = `[]`
 

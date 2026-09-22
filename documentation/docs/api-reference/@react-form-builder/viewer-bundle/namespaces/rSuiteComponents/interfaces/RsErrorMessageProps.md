@@ -10,7 +10,7 @@ The properties of RsErrorMessage component.
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 The wrapped component.
 
@@ -22,7 +22,7 @@ The wrapped component.
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 The CSS class name.
 
@@ -34,7 +34,7 @@ The CSS class name.
 
 ### error?
 
-> `optional` **error**: `string`
+> `optional` **error?**: `string`
 
 The error text.
 
@@ -46,6 +46,6 @@ The error text.
 
 ### placement?
 
-> `optional` **placement**: `Placement8`
+> `optional` **placement?**: `Placement8`
 
 The placement of an error message.

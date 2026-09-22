@@ -8,6 +8,6 @@ Localization compute parameters.
 
 ### langCode?
 
-> `optional` **langCode**: [`LanguageFullCode`](../../core/type-aliases/LanguageFullCode.md)
+> `optional` **langCode?**: [`LanguageFullCode`](../../core/type-aliases/LanguageFullCode.md)
 
 The full language code.

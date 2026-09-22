@@ -126,11 +126,11 @@ the Record that contains the className property for the component.
 
 #### Get Signature
 
-> **get** **disabled**(): \{[`key`: `string`]: `any`; \} \| `undefined`
+> **get** **disabled**(): \{\[`key`: `string`\]: `any`; \} \| `undefined`
 
 ##### Returns
 
-\{[`key`: `string`]: `any`; \} \| `undefined`
+\{\[`key`: `string`\]: `any`; \} \| `undefined`
 
 the disabled property of a component if the component has a disabled flag.
 
@@ -313,11 +313,11 @@ does not contain styles additionally defined for the component.
 
 #### Get Signature
 
-> **get** **readOnly**(): \{[`key`: `string`]: `any`; \} \| `undefined`
+> **get** **readOnly**(): \{\[`key`: `string`\]: `any`; \} \| `undefined`
 
 ##### Returns
 
-\{[`key`: `string`]: `any`; \} \| `undefined`
+\{\[`key`: `string`\]: `any`; \} \| `undefined`
 
 the read-only property of a component if the component has a read-only flag.
 
@@ -355,11 +355,11 @@ the Record that contains the style property for the component.
 
 #### Get Signature
 
-> **get** **value**(): \{[`key`: `string`]: `unknown`; \} \| `undefined`
+> **get** **value**(): \{\[`key`: `string`\]: `unknown`; \} \| `undefined`
 
 ##### Returns
 
-\{[`key`: `string`]: `unknown`; \} \| `undefined`
+\{\[`key`: `string`\]: `unknown`; \} \| `undefined`
 
 the component's field value data, if the component can have a field value.
 

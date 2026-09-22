@@ -1,4 +1,4 @@
-# Type Alias: FormValidator()
+# Type Alias: FormValidator
 
 > **FormValidator** = (`data`) => `Promise`\<`Record`\<`string`, `string`\> \| `undefined`\>
 

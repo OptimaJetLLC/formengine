@@ -1,4 +1,4 @@
-# Type Alias: ComponentLocalizer()
+# Type Alias: ComponentLocalizer
 
 > **ComponentLocalizer** = (`componentStore`, `language`) => `Record`\<`string`, `any`\>
 

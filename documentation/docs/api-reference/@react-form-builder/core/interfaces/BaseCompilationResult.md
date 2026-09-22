@@ -14,6 +14,6 @@ Flag if true - compilation failed, false otherwise.
 
 ### exceptions?
 
-> `optional` **exceptions**: `Error`[]
+> `optional` **exceptions?**: `Error`[]
 
 The array of compilation errors.

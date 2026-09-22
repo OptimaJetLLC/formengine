@@ -8,6 +8,6 @@ Styles for a device.
 
 ### string?
 
-> `optional` **string**: `string`
+> `optional` **string?**: `string`
 
 The CSS string.

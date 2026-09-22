@@ -10,7 +10,7 @@ Props for the RsLink component.
 
 ### about?
 
-> `optional` **about**: `string`
+> `optional` **about?**: `string`
 
 #### Inherited from
 
@@ -20,7 +20,7 @@ Props for the RsLink component.
 
 ### accessKey?
 
-> `optional` **accessKey**: `string`
+> `optional` **accessKey?**: `string`
 
 #### Inherited from
 
@@ -30,7 +30,7 @@ Props for the RsLink component.
 
 ### alignment?
 
-> `optional` **alignment**: `string`
+> `optional` **alignment?**: `string`
 
 The text alignment.
 
@@ -42,7 +42,7 @@ The text alignment.
 
 ### aria-activedescendant?
 
-> `optional` **aria-activedescendant**: `string`
+> `optional` **aria-activedescendant?**: `string`
 
 Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application.
 
@@ -54,7 +54,7 @@ Identifies the currently active element when DOM focus is on a composite widget,
 
 ### aria-atomic?
 
-> `optional` **aria-atomic**: `Booleanish`
+> `optional` **aria-atomic?**: `Booleanish`
 
 Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute.
 
@@ -66,7 +66,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
+> `optional` **aria-autocomplete?**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -79,7 +79,7 @@ presented if they are made.
 
 ### aria-braillelabel?
 
-> `optional` **aria-braillelabel**: `string`
+> `optional` **aria-braillelabel?**: `string`
 
 Defines a string value that labels the current element, which is intended to be converted into Braille.
 
@@ -95,7 +95,7 @@ aria-label.
 
 ### aria-brailleroledescription?
 
-> `optional` **aria-brailleroledescription**: `string`
+> `optional` **aria-brailleroledescription?**: `string`
 
 Defines a human-readable, author-localized abbreviated description for the role of an element, which is intended to be converted into Braille.
 
@@ -111,7 +111,7 @@ aria-roledescription.
 
 ### aria-busy?
 
-> `optional` **aria-busy**: `Booleanish`
+> `optional` **aria-busy?**: `Booleanish`
 
 #### Inherited from
 
@@ -121,7 +121,7 @@ aria-roledescription.
 
 ### aria-checked?
 
-> `optional` **aria-checked**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
+> `optional` **aria-checked?**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
 
@@ -138,7 +138,7 @@ Indicates the current "checked" state of checkboxes, radio buttons, and other wi
 
 ### aria-colcount?
 
-> `optional` **aria-colcount**: `number`
+> `optional` **aria-colcount?**: `number`
 
 Defines the total number of columns in a table, grid, or treegrid.
 
@@ -154,7 +154,7 @@ aria-colindex.
 
 ### aria-colindex?
 
-> `optional` **aria-colindex**: `number`
+> `optional` **aria-colindex?**: `number`
 
 Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid.
 
@@ -171,7 +171,7 @@ Defines an element's column index or position with respect to the total number o
 
 ### aria-colindextext?
 
-> `optional` **aria-colindextext**: `string`
+> `optional` **aria-colindextext?**: `string`
 
 Defines a human readable text alternative of aria-colindex.
 
@@ -187,7 +187,7 @@ aria-rowindextext.
 
 ### aria-colspan?
 
-> `optional` **aria-colspan**: `number`
+> `optional` **aria-colspan?**: `number`
 
 Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid.
 
@@ -204,7 +204,7 @@ Defines the number of columns spanned by a cell or gridcell within a table, grid
 
 ### aria-controls?
 
-> `optional` **aria-controls**: `string`
+> `optional` **aria-controls?**: `string`
 
 Identifies the element (or elements) whose contents or presence are controlled by the current element.
 
@@ -220,7 +220,7 @@ aria-owns.
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
+> `optional` **aria-current?**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -232,7 +232,7 @@ Indicates the element that represents the current item within a container or set
 
 ### aria-describedby?
 
-> `optional` **aria-describedby**: `string`
+> `optional` **aria-describedby?**: `string`
 
 Identifies the element (or elements) that describes the object.
 
@@ -248,7 +248,7 @@ aria-labelledby
 
 ### aria-description?
 
-> `optional` **aria-description**: `string`
+> `optional` **aria-description?**: `string`
 
 Defines a string value that describes or annotates the current element.
 
@@ -264,7 +264,7 @@ related aria-describedby.
 
 ### aria-details?
 
-> `optional` **aria-details**: `string`
+> `optional` **aria-details?**: `string`
 
 Identifies the element that provides a detailed, extended description for the object.
 
@@ -280,7 +280,7 @@ aria-describedby.
 
 ### aria-disabled?
 
-> `optional` **aria-disabled**: `Booleanish`
+> `optional` **aria-disabled?**: `Booleanish`
 
 Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
 
@@ -297,7 +297,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"copy"` \| `"execute"` \| `"link"` \| `"move"` \| `"none"` \| `"popup"`
+> `optional` **aria-dropeffect?**: `"copy"` \| `"execute"` \| `"link"` \| `"move"` \| `"none"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -313,7 +313,7 @@ in ARIA 1.1
 
 ### aria-errormessage?
 
-> `optional` **aria-errormessage**: `string`
+> `optional` **aria-errormessage?**: `string`
 
 Identifies the element that provides an error message for the object.
 
@@ -330,7 +330,7 @@ Identifies the element that provides an error message for the object.
 
 ### aria-expanded?
 
-> `optional` **aria-expanded**: `Booleanish`
+> `optional` **aria-expanded?**: `Booleanish`
 
 Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed.
 
@@ -342,7 +342,7 @@ Indicates whether the element, or another grouping element it controls, is curre
 
 ### aria-flowto?
 
-> `optional` **aria-flowto**: `string`
+> `optional` **aria-flowto?**: `string`
 
 Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion,
 allows assistive technology to override the general default of reading in document source order.
@@ -355,7 +355,7 @@ allows assistive technology to override the general default of reading in docume
 
 ### ~~aria-grabbed?~~
 
-> `optional` **aria-grabbed**: `Booleanish`
+> `optional` **aria-grabbed?**: `Booleanish`
 
 Indicates an element's "grabbed" state in a drag-and-drop operation.
 
@@ -371,7 +371,7 @@ in ARIA 1.1
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
+> `optional` **aria-haspopup?**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -383,7 +383,7 @@ Indicates the availability and type of interactive popup element, such as menu o
 
 ### aria-hidden?
 
-> `optional` **aria-hidden**: `Booleanish`
+> `optional` **aria-hidden?**: `Booleanish`
 
 Indicates whether the element is exposed to an accessibility API.
 
@@ -399,7 +399,7 @@ aria-disabled.
 
 ### aria-invalid?
 
-> `optional` **aria-invalid**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
+> `optional` **aria-invalid?**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
 
 Indicates the entered value does not conform to the format expected by the application.
 
@@ -415,7 +415,7 @@ aria-errormessage.
 
 ### aria-keyshortcuts?
 
-> `optional` **aria-keyshortcuts**: `string`
+> `optional` **aria-keyshortcuts?**: `string`
 
 Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element.
 
@@ -427,7 +427,7 @@ Indicates keyboard shortcuts that an author has implemented to activate or give 
 
 ### aria-label?
 
-> `optional` **aria-label**: `string`
+> `optional` **aria-label?**: `string`
 
 Defines a string value that labels the current element.
 
@@ -443,7 +443,7 @@ aria-labelledby.
 
 ### aria-labelledby?
 
-> `optional` **aria-labelledby**: `string`
+> `optional` **aria-labelledby?**: `string`
 
 Identifies the element (or elements) that labels the current element.
 
@@ -459,7 +459,7 @@ aria-describedby.
 
 ### aria-level?
 
-> `optional` **aria-level**: `number`
+> `optional` **aria-level?**: `number`
 
 Defines the hierarchical level of an element within a structure.
 
@@ -471,7 +471,7 @@ Defines the hierarchical level of an element within a structure.
 
 ### aria-live?
 
-> `optional` **aria-live**: `"assertive"` \| `"off"` \| `"polite"`
+> `optional` **aria-live?**: `"assertive"` \| `"off"` \| `"polite"`
 
 Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
 
@@ -483,7 +483,7 @@ Indicates that an element will be updated, and describes the types of updates th
 
 ### aria-modal?
 
-> `optional` **aria-modal**: `Booleanish`
+> `optional` **aria-modal?**: `Booleanish`
 
 Indicates whether an element is modal when displayed.
 
@@ -495,7 +495,7 @@ Indicates whether an element is modal when displayed.
 
 ### aria-multiline?
 
-> `optional` **aria-multiline**: `Booleanish`
+> `optional` **aria-multiline?**: `Booleanish`
 
 Indicates whether a text box accepts multiple lines of input or only a single line.
 
@@ -507,7 +507,7 @@ Indicates whether a text box accepts multiple lines of input or only a single li
 
 ### aria-multiselectable?
 
-> `optional` **aria-multiselectable**: `Booleanish`
+> `optional` **aria-multiselectable?**: `Booleanish`
 
 Indicates that the user may select more than one item from the current selectable descendants.
 
@@ -519,7 +519,7 @@ Indicates that the user may select more than one item from the current selectabl
 
 ### aria-orientation?
 
-> `optional` **aria-orientation**: `"horizontal"` \| `"vertical"`
+> `optional` **aria-orientation?**: `"horizontal"` \| `"vertical"`
 
 Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
 
@@ -531,7 +531,7 @@ Indicates whether the element's orientation is horizontal, vertical, or unknown/
 
 ### aria-owns?
 
-> `optional` **aria-owns**: `string`
+> `optional` **aria-owns?**: `string`
 
 Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship
 between DOM elements where the DOM hierarchy cannot be used to represent the relationship.
@@ -548,7 +548,7 @@ aria-controls.
 
 ### aria-placeholder?
 
-> `optional` **aria-placeholder**: `string`
+> `optional` **aria-placeholder?**: `string`
 
 Defines a short hint (a word or short phrase) intended to aid the user with data entry when the control has no value.
 A hint could be a sample value or a brief description of the expected format.
@@ -561,7 +561,7 @@ A hint could be a sample value or a brief description of the expected format.
 
 ### aria-posinset?
 
-> `optional` **aria-posinset**: `number`
+> `optional` **aria-posinset?**: `number`
 
 Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
 
@@ -577,7 +577,7 @@ aria-setsize.
 
 ### aria-pressed?
 
-> `optional` **aria-pressed**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
+> `optional` **aria-pressed?**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "pressed" state of toggle buttons.
 
@@ -594,7 +594,7 @@ Indicates the current "pressed" state of toggle buttons.
 
 ### aria-readonly?
 
-> `optional` **aria-readonly**: `Booleanish`
+> `optional` **aria-readonly?**: `Booleanish`
 
 Indicates that the element is not editable, but is otherwise operable.
 
@@ -610,7 +610,7 @@ aria-disabled.
 
 ### aria-relevant?
 
-> `optional` **aria-relevant**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
+> `optional` **aria-relevant?**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
 
 Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
 
@@ -626,7 +626,7 @@ aria-atomic.
 
 ### aria-required?
 
-> `optional` **aria-required**: `Booleanish`
+> `optional` **aria-required?**: `Booleanish`
 
 Indicates that user input is required on the element before a form may be submitted.
 
@@ -638,7 +638,7 @@ Indicates that user input is required on the element before a form may be submit
 
 ### aria-roledescription?
 
-> `optional` **aria-roledescription**: `string`
+> `optional` **aria-roledescription?**: `string`
 
 Defines a human-readable, author-localized description for the role of an element.
 
@@ -650,7 +650,7 @@ Defines a human-readable, author-localized description for the role of an elemen
 
 ### aria-rowcount?
 
-> `optional` **aria-rowcount**: `number`
+> `optional` **aria-rowcount?**: `number`
 
 Defines the total number of rows in a table, grid, or treegrid.
 
@@ -666,7 +666,7 @@ aria-rowindex.
 
 ### aria-rowindex?
 
-> `optional` **aria-rowindex**: `number`
+> `optional` **aria-rowindex?**: `number`
 
 Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid.
 
@@ -683,7 +683,7 @@ Defines an element's row index or position with respect to the total number of r
 
 ### aria-rowindextext?
 
-> `optional` **aria-rowindextext**: `string`
+> `optional` **aria-rowindextext?**: `string`
 
 Defines a human readable text alternative of aria-rowindex.
 
@@ -699,7 +699,7 @@ aria-colindextext.
 
 ### aria-rowspan?
 
-> `optional` **aria-rowspan**: `number`
+> `optional` **aria-rowspan?**: `number`
 
 Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid.
 
@@ -716,7 +716,7 @@ Defines the number of rows spanned by a cell or gridcell within a table, grid, o
 
 ### aria-selected?
 
-> `optional` **aria-selected**: `Booleanish`
+> `optional` **aria-selected?**: `Booleanish`
 
 Indicates the current "selected" state of various widgets.
 
@@ -733,7 +733,7 @@ Indicates the current "selected" state of various widgets.
 
 ### aria-setsize?
 
-> `optional` **aria-setsize**: `number`
+> `optional` **aria-setsize?**: `number`
 
 Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
 
@@ -749,7 +749,7 @@ aria-posinset.
 
 ### aria-sort?
 
-> `optional` **aria-sort**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
+> `optional` **aria-sort?**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
 
 Indicates if items in a table or grid are sorted in ascending or descending order.
 
@@ -761,7 +761,7 @@ Indicates if items in a table or grid are sorted in ascending or descending orde
 
 ### aria-valuemax?
 
-> `optional` **aria-valuemax**: `number`
+> `optional` **aria-valuemax?**: `number`
 
 Defines the maximum allowed value for a range widget.
 
@@ -773,7 +773,7 @@ Defines the maximum allowed value for a range widget.
 
 ### aria-valuemin?
 
-> `optional` **aria-valuemin**: `number`
+> `optional` **aria-valuemin?**: `number`
 
 Defines the minimum allowed value for a range widget.
 
@@ -785,7 +785,7 @@ Defines the minimum allowed value for a range widget.
 
 ### aria-valuenow?
 
-> `optional` **aria-valuenow**: `number`
+> `optional` **aria-valuenow?**: `number`
 
 Defines the current value for a range widget.
 
@@ -801,7 +801,7 @@ aria-valuetext.
 
 ### aria-valuetext?
 
-> `optional` **aria-valuetext**: `string`
+> `optional` **aria-valuetext?**: `string`
 
 Defines the human readable text alternative of aria-valuenow for a range widget.
 
@@ -813,7 +813,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
+> `optional` **autoCapitalize?**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
 
 #### Inherited from
 
@@ -823,7 +823,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoCorrect?
 
-> `optional` **autoCorrect**: `string`
+> `optional` **autoCorrect?**: `string`
 
 #### Inherited from
 
@@ -833,7 +833,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoFocus?
 
-> `optional` **autoFocus**: `boolean`
+> `optional` **autoFocus?**: `boolean`
 
 #### Inherited from
 
@@ -843,7 +843,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoSave?
 
-> `optional` **autoSave**: `string`
+> `optional` **autoSave?**: `string`
 
 #### Inherited from
 
@@ -853,7 +853,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### backgroundColor?
 
-> `optional` **backgroundColor**: `string`
+> `optional` **backgroundColor?**: `string`
 
 The background color.
 
@@ -865,7 +865,7 @@ The background color.
 
 ### children?
 
-> `optional` **children**: `Iterable`\<`ReactI18NextChild`, `any`, `any`\> \| `ReactI18NextChild`
+> `optional` **children?**: `Iterable`\<`ReactI18NextChild`, `any`, `any`\> \| `ReactI18NextChild`
 
 #### Inherited from
 
@@ -875,7 +875,7 @@ The background color.
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 #### Inherited from
 
@@ -885,7 +885,7 @@ The background color.
 
 ### color?
 
-> `optional` **color**: `string`
+> `optional` **color?**: `string`
 
 #### Inherited from
 
@@ -907,7 +907,7 @@ The content type (text or custom).
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
+> `optional` **contentEditable?**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
 
 #### Inherited from
 
@@ -917,7 +917,7 @@ The content type (text or custom).
 
 ### contextMenu?
 
-> `optional` **contextMenu**: `string`
+> `optional` **contextMenu?**: `string`
 
 #### Inherited from
 
@@ -927,7 +927,7 @@ The content type (text or custom).
 
 ### dangerouslySetInnerHTML?
 
-> `optional` **dangerouslySetInnerHTML**: `object`
+> `optional` **dangerouslySetInnerHTML?**: `object`
 
 #### \_\_html
 
@@ -941,7 +941,7 @@ The content type (text or custom).
 
 ### datatype?
 
-> `optional` **datatype**: `string`
+> `optional` **datatype?**: `string`
 
 #### Inherited from
 
@@ -951,7 +951,7 @@ The content type (text or custom).
 
 ### defaultChecked?
 
-> `optional` **defaultChecked**: `boolean`
+> `optional` **defaultChecked?**: `boolean`
 
 #### Inherited from
 
@@ -961,7 +961,7 @@ The content type (text or custom).
 
 ### defaultValue?
 
-> `optional` **defaultValue**: readonly `string`[] \| `number` \| `string`
+> `optional` **defaultValue?**: readonly `string`[] \| `number` \| `string`
 
 #### Inherited from
 
@@ -971,7 +971,7 @@ The content type (text or custom).
 
 ### dir?
 
-> `optional` **dir**: `string`
+> `optional` **dir?**: `string`
 
 #### Inherited from
 
@@ -981,11 +981,11 @@ The content type (text or custom).
 
 ### download?
 
-> `optional` **download**: `any`
+> `optional` **download?**: `any`
 
 #### Inherited from
 
-`ComponentProps.download`
+`RsLinkProps`.[`download`](#download)
 
 ***
 
@@ -999,7 +999,7 @@ The filename for download when download is enabled.
 
 ### draggable?
 
-> `optional` **draggable**: `Booleanish`
+> `optional` **draggable?**: `Booleanish`
 
 #### Inherited from
 
@@ -1009,7 +1009,7 @@ The filename for download when download is enabled.
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
+> `optional` **enterKeyHint?**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
 
 #### Inherited from
 
@@ -1019,7 +1019,7 @@ The filename for download when download is enabled.
 
 ### exportparts?
 
-> `optional` **exportparts**: `string`
+> `optional` **exportparts?**: `string`
 
 #### See
 
@@ -1033,7 +1033,7 @@ The filename for download when download is enabled.
 
 ### fontSize?
 
-> `optional` **fontSize**: `number`
+> `optional` **fontSize?**: `number`
 
 The font size.
 
@@ -1045,7 +1045,7 @@ The font size.
 
 ### fontWeight?
 
-> `optional` **fontWeight**: `string`
+> `optional` **fontWeight?**: `string`
 
 The font weight.
 
@@ -1057,7 +1057,7 @@ The font weight.
 
 ### hidden?
 
-> `optional` **hidden**: `boolean`
+> `optional` **hidden?**: `boolean`
 
 #### Inherited from
 
@@ -1067,27 +1067,27 @@ The font weight.
 
 ### href?
 
-> `optional` **href**: `string`
+> `optional` **href?**: `string`
 
 #### Inherited from
 
-`ComponentProps.href`
+`RsLinkProps`.[`href`](#href)
 
 ***
 
 ### hrefLang?
 
-> `optional` **hrefLang**: `string`
+> `optional` **hrefLang?**: `string`
 
 #### Inherited from
 
-`ComponentProps.hrefLang`
+`RsLinkProps`.[`hrefLang`](#hreflang)
 
 ***
 
 ### id?
 
-> `optional` **id**: `string`
+> `optional` **id?**: `string`
 
 #### Inherited from
 
@@ -1097,7 +1097,7 @@ The font weight.
 
 ### inert?
 
-> `optional` **inert**: `boolean`
+> `optional` **inert?**: `boolean`
 
 #### See
 
@@ -1111,7 +1111,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inlist?
 
-> `optional` **inlist**: `any`
+> `optional` **inlist?**: `any`
 
 #### Inherited from
 
@@ -1121,7 +1121,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inputMode?
 
-> `optional` **inputMode**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
+> `optional` **inputMode?**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1137,7 +1137,7 @@ Hints at the type of data that might be entered by the user while editing the el
 
 ### is?
 
-> `optional` **is**: `string`
+> `optional` **is?**: `string`
 
 Specify that a standard HTML element should behave like a defined custom built-in element
 
@@ -1153,7 +1153,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### itemID?
 
-> `optional` **itemID**: `string`
+> `optional` **itemID?**: `string`
 
 #### Inherited from
 
@@ -1163,7 +1163,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### itemProp?
 
-> `optional` **itemProp**: `string`
+> `optional` **itemProp?**: `string`
 
 #### Inherited from
 
@@ -1173,7 +1173,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### itemRef?
 
-> `optional` **itemRef**: `string`
+> `optional` **itemRef?**: `string`
 
 #### Inherited from
 
@@ -1183,7 +1183,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### itemScope?
 
-> `optional` **itemScope**: `boolean`
+> `optional` **itemScope?**: `boolean`
 
 #### Inherited from
 
@@ -1193,7 +1193,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### itemType?
 
-> `optional` **itemType**: `string`
+> `optional` **itemType?**: `string`
 
 #### Inherited from
 
@@ -1203,7 +1203,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### key?
 
-> `optional` **key**: `Key` \| `null`
+> `optional` **key?**: `Key` \| `null`
 
 #### Inherited from
 
@@ -1213,7 +1213,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### lang?
 
-> `optional` **lang**: `string`
+> `optional` **lang?**: `string`
 
 #### Inherited from
 
@@ -1223,17 +1223,17 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### media?
 
-> `optional` **media**: `string`
+> `optional` **media?**: `string`
 
 #### Inherited from
 
-`ComponentProps.media`
+`RsLinkProps`.[`media`](#media)
 
 ***
 
 ### nonce?
 
-> `optional` **nonce**: `string`
+> `optional` **nonce?**: `string`
 
 #### Inherited from
 
@@ -1243,7 +1243,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAbort?
 
-> `optional` **onAbort**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onAbort?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1253,7 +1253,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAbortCapture?
 
-> `optional` **onAbortCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onAbortCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1263,7 +1263,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAnimationEnd?
 
-> `optional` **onAnimationEnd**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onAnimationEnd?**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1273,7 +1273,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAnimationEndCapture?
 
-> `optional` **onAnimationEndCapture**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onAnimationEndCapture?**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1283,7 +1283,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAnimationIteration?
 
-> `optional` **onAnimationIteration**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onAnimationIteration?**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1293,7 +1293,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAnimationIterationCapture?
 
-> `optional` **onAnimationIterationCapture**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onAnimationIterationCapture?**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1303,7 +1303,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAnimationStart?
 
-> `optional` **onAnimationStart**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onAnimationStart?**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1313,7 +1313,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAnimationStartCapture?
 
-> `optional` **onAnimationStartCapture**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onAnimationStartCapture?**: `AnimationEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1323,7 +1323,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAuxClick?
 
-> `optional` **onAuxClick**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onAuxClick?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1333,7 +1333,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAuxClickCapture?
 
-> `optional` **onAuxClickCapture**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onAuxClickCapture?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1343,7 +1343,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onBeforeInput?**: `InputEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1353,7 +1353,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1363,7 +1363,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBeforeToggle?
 
-> `optional` **onBeforeToggle**: `ToggleEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onBeforeToggle?**: `ToggleEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1373,7 +1373,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBlur?
 
-> `optional` **onBlur**: `FocusEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onBlur?**: `FocusEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1383,7 +1383,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBlurCapture?
 
-> `optional` **onBlurCapture**: `FocusEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onBlurCapture?**: `FocusEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1393,7 +1393,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCanPlay?
 
-> `optional` **onCanPlay**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCanPlay?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1403,7 +1403,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCanPlayCapture?
 
-> `optional` **onCanPlayCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCanPlayCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1413,7 +1413,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCanPlayThrough?
 
-> `optional` **onCanPlayThrough**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCanPlayThrough?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1423,7 +1423,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCanPlayThroughCapture?
 
-> `optional` **onCanPlayThroughCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCanPlayThroughCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1433,7 +1433,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onChange?
 
-> `optional` **onChange**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onChange?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1443,7 +1443,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1453,7 +1453,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onClick?
 
-> `optional` **onClick**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onClick?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1463,7 +1463,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onClickCapture?
 
-> `optional` **onClickCapture**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onClickCapture?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1473,7 +1473,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCompositionEnd?
 
-> `optional` **onCompositionEnd**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCompositionEnd?**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1483,7 +1483,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCompositionEndCapture?
 
-> `optional` **onCompositionEndCapture**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCompositionEndCapture?**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1493,7 +1493,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCompositionStart?
 
-> `optional` **onCompositionStart**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCompositionStart?**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1503,7 +1503,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCompositionStartCapture?
 
-> `optional` **onCompositionStartCapture**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCompositionStartCapture?**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1513,7 +1513,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCompositionUpdate?
 
-> `optional` **onCompositionUpdate**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCompositionUpdate?**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1523,7 +1523,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCompositionUpdateCapture?
 
-> `optional` **onCompositionUpdateCapture**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCompositionUpdateCapture?**: `CompositionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1533,7 +1533,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onContextMenu?
 
-> `optional` **onContextMenu**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onContextMenu?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1543,7 +1543,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onContextMenuCapture?
 
-> `optional` **onContextMenuCapture**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onContextMenuCapture?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1553,7 +1553,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCopy?
 
-> `optional` **onCopy**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCopy?**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1563,7 +1563,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCopyCapture?
 
-> `optional` **onCopyCapture**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCopyCapture?**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1573,7 +1573,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCut?
 
-> `optional` **onCut**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCut?**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1583,7 +1583,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onCutCapture?
 
-> `optional` **onCutCapture**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onCutCapture?**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1593,7 +1593,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDoubleClick?
 
-> `optional` **onDoubleClick**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDoubleClick?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1603,7 +1603,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDoubleClickCapture?
 
-> `optional` **onDoubleClickCapture**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDoubleClickCapture?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1613,7 +1613,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDrag?
 
-> `optional` **onDrag**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDrag?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1623,7 +1623,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragCapture?
 
-> `optional` **onDragCapture**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragCapture?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1633,7 +1633,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragEnd?
 
-> `optional` **onDragEnd**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragEnd?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1643,7 +1643,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragEndCapture?
 
-> `optional` **onDragEndCapture**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragEndCapture?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1653,7 +1653,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragEnter?
 
-> `optional` **onDragEnter**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragEnter?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1663,7 +1663,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragEnterCapture?
 
-> `optional` **onDragEnterCapture**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragEnterCapture?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1673,7 +1673,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragExit?
 
-> `optional` **onDragExit**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragExit?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1683,7 +1683,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragExitCapture?
 
-> `optional` **onDragExitCapture**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragExitCapture?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1693,7 +1693,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragLeave?
 
-> `optional` **onDragLeave**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragLeave?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1703,7 +1703,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragLeaveCapture?
 
-> `optional` **onDragLeaveCapture**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragLeaveCapture?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1713,7 +1713,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragOver?
 
-> `optional` **onDragOver**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragOver?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1723,7 +1723,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragOverCapture?
 
-> `optional` **onDragOverCapture**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragOverCapture?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1733,7 +1733,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragStart?
 
-> `optional` **onDragStart**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragStart?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1743,7 +1743,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDragStartCapture?
 
-> `optional` **onDragStartCapture**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDragStartCapture?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1753,7 +1753,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDrop?
 
-> `optional` **onDrop**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDrop?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1763,7 +1763,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDropCapture?
 
-> `optional` **onDropCapture**: `DragEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDropCapture?**: `DragEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1773,7 +1773,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDurationChange?
 
-> `optional` **onDurationChange**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDurationChange?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1783,7 +1783,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onDurationChangeCapture?
 
-> `optional` **onDurationChangeCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onDurationChangeCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1793,7 +1793,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onEmptied?
 
-> `optional` **onEmptied**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onEmptied?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1803,7 +1803,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onEmptiedCapture?
 
-> `optional` **onEmptiedCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onEmptiedCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1813,7 +1813,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onEncrypted?
 
-> `optional` **onEncrypted**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onEncrypted?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1823,7 +1823,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onEncryptedCapture?
 
-> `optional` **onEncryptedCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onEncryptedCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1833,7 +1833,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onEnded?
 
-> `optional` **onEnded**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onEnded?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1843,7 +1843,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onEndedCapture?
 
-> `optional` **onEndedCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onEndedCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1853,7 +1853,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onError?
 
-> `optional` **onError**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onError?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1863,7 +1863,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onErrorCapture?
 
-> `optional` **onErrorCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onErrorCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1873,7 +1873,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onFocus?
 
-> `optional` **onFocus**: `FocusEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onFocus?**: `FocusEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1883,7 +1883,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onFocusCapture?
 
-> `optional` **onFocusCapture**: `FocusEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onFocusCapture?**: `FocusEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1893,7 +1893,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onGotPointerCapture?
 
-> `optional` **onGotPointerCapture**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onGotPointerCapture?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1903,7 +1903,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onGotPointerCaptureCapture?
 
-> `optional` **onGotPointerCaptureCapture**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onGotPointerCaptureCapture?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1913,7 +1913,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInput?
 
-> `optional` **onInput**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onInput?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1923,7 +1923,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInputCapture?
 
-> `optional` **onInputCapture**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1933,7 +1933,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInvalid?
 
-> `optional` **onInvalid**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1943,7 +1943,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1953,7 +1953,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onKeyDown?
 
-> `optional` **onKeyDown**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onKeyDown?**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1963,7 +1963,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onKeyDownCapture?
 
-> `optional` **onKeyDownCapture**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onKeyDownCapture?**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1973,7 +1973,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### ~~onKeyPress?~~
 
-> `optional` **onKeyPress**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onKeyPress?**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Deprecated
 
@@ -1987,7 +1987,7 @@ Use `onKeyUp` or `onKeyDown` instead
 
 ### ~~onKeyPressCapture?~~
 
-> `optional` **onKeyPressCapture**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onKeyPressCapture?**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Deprecated
 
@@ -2001,7 +2001,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onKeyUp?
 
-> `optional` **onKeyUp**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onKeyUp?**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2011,7 +2011,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onKeyUpCapture?
 
-> `optional` **onKeyUpCapture**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onKeyUpCapture?**: `KeyboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2021,7 +2021,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoad?
 
-> `optional` **onLoad**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onLoad?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2031,7 +2031,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadCapture?
 
-> `optional` **onLoadCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onLoadCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2041,7 +2041,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedData?
 
-> `optional` **onLoadedData**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onLoadedData?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2051,7 +2051,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedDataCapture?
 
-> `optional` **onLoadedDataCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onLoadedDataCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2061,7 +2061,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedMetadata?
 
-> `optional` **onLoadedMetadata**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onLoadedMetadata?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2071,7 +2071,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedMetadataCapture?
 
-> `optional` **onLoadedMetadataCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onLoadedMetadataCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2081,7 +2081,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadStart?
 
-> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onLoadStart?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2091,7 +2091,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadStartCapture?
 
-> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onLoadStartCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2101,7 +2101,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLostPointerCapture?
 
-> `optional` **onLostPointerCapture**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onLostPointerCapture?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2111,7 +2111,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLostPointerCaptureCapture?
 
-> `optional` **onLostPointerCaptureCapture**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onLostPointerCaptureCapture?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2121,7 +2121,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseDown?
 
-> `optional` **onMouseDown**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseDown?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2131,7 +2131,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseDownCapture?
 
-> `optional` **onMouseDownCapture**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseDownCapture?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2141,7 +2141,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseEnter?
 
-> `optional` **onMouseEnter**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseEnter?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2151,7 +2151,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseLeave?
 
-> `optional` **onMouseLeave**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseLeave?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2161,7 +2161,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseMove?
 
-> `optional` **onMouseMove**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseMove?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2171,7 +2171,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseMoveCapture?
 
-> `optional` **onMouseMoveCapture**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseMoveCapture?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2181,7 +2181,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOut?
 
-> `optional` **onMouseOut**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseOut?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2191,7 +2191,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOutCapture?
 
-> `optional` **onMouseOutCapture**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseOutCapture?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2201,7 +2201,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOver?
 
-> `optional` **onMouseOver**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseOver?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2211,7 +2211,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOverCapture?
 
-> `optional` **onMouseOverCapture**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseOverCapture?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2221,7 +2221,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseUp?
 
-> `optional` **onMouseUp**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseUp?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2231,7 +2231,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseUpCapture?
 
-> `optional` **onMouseUpCapture**: `MouseEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onMouseUpCapture?**: `MouseEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2241,7 +2241,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPaste?
 
-> `optional` **onPaste**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPaste?**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2251,7 +2251,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPasteCapture?
 
-> `optional` **onPasteCapture**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPasteCapture?**: `ClipboardEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2261,7 +2261,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPause?
 
-> `optional` **onPause**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPause?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2271,7 +2271,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPauseCapture?
 
-> `optional` **onPauseCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPauseCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2281,7 +2281,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlay?
 
-> `optional` **onPlay**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPlay?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2291,7 +2291,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlayCapture?
 
-> `optional` **onPlayCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPlayCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2301,7 +2301,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlaying?
 
-> `optional` **onPlaying**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPlaying?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2311,7 +2311,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlayingCapture?
 
-> `optional` **onPlayingCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPlayingCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2321,7 +2321,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerCancel?
 
-> `optional` **onPointerCancel**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerCancel?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2331,7 +2331,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerCancelCapture?
 
-> `optional` **onPointerCancelCapture**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerCancelCapture?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2341,7 +2341,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerDown?
 
-> `optional` **onPointerDown**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerDown?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2351,7 +2351,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerDownCapture?
 
-> `optional` **onPointerDownCapture**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerDownCapture?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2361,7 +2361,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerEnter?
 
-> `optional` **onPointerEnter**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerEnter?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2371,7 +2371,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerLeave?
 
-> `optional` **onPointerLeave**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerLeave?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2381,7 +2381,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerMove?
 
-> `optional` **onPointerMove**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerMove?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2391,7 +2391,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerMoveCapture?
 
-> `optional` **onPointerMoveCapture**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerMoveCapture?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2401,7 +2401,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOut?
 
-> `optional` **onPointerOut**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerOut?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2411,7 +2411,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOutCapture?
 
-> `optional` **onPointerOutCapture**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerOutCapture?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2421,7 +2421,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOver?
 
-> `optional` **onPointerOver**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerOver?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2431,7 +2431,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOverCapture?
 
-> `optional` **onPointerOverCapture**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerOverCapture?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2441,7 +2441,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerUp?
 
-> `optional` **onPointerUp**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerUp?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2451,7 +2451,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerUpCapture?
 
-> `optional` **onPointerUpCapture**: `PointerEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onPointerUpCapture?**: `PointerEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2461,7 +2461,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onProgress?
 
-> `optional` **onProgress**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onProgress?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2471,7 +2471,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onProgressCapture?
 
-> `optional` **onProgressCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onProgressCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2481,7 +2481,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onRateChange?
 
-> `optional` **onRateChange**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onRateChange?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2491,7 +2491,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onRateChangeCapture?
 
-> `optional` **onRateChangeCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onRateChangeCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2501,7 +2501,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onReset?
 
-> `optional` **onReset**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onReset?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2511,7 +2511,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onResetCapture?
 
-> `optional` **onResetCapture**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2521,7 +2521,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onScroll?
 
-> `optional` **onScroll**: `UIEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onScroll?**: `UIEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2531,7 +2531,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onScrollCapture?
 
-> `optional` **onScrollCapture**: `UIEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onScrollCapture?**: `UIEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2541,7 +2541,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onScrollEnd?
 
-> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onScrollEnd?**: `UIEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2551,7 +2551,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onScrollEndCapture?
 
-> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onScrollEndCapture?**: `UIEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2561,7 +2561,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSeeked?
 
-> `optional` **onSeeked**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSeeked?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2571,7 +2571,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSeekedCapture?
 
-> `optional` **onSeekedCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSeekedCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2581,7 +2581,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSeeking?
 
-> `optional` **onSeeking**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSeeking?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2591,7 +2591,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSeekingCapture?
 
-> `optional` **onSeekingCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSeekingCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2601,7 +2601,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSelect?
 
-> `optional` **onSelect**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSelect?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2611,7 +2611,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSelectCapture?
 
-> `optional` **onSelectCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSelectCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2621,7 +2621,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onStalled?
 
-> `optional` **onStalled**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onStalled?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2631,7 +2631,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onStalledCapture?
 
-> `optional` **onStalledCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onStalledCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2641,7 +2641,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmit?
 
-> `optional` **onSubmit**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2651,7 +2651,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2661,7 +2661,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSuspend?
 
-> `optional` **onSuspend**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSuspend?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2671,7 +2671,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSuspendCapture?
 
-> `optional` **onSuspendCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSuspendCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2681,7 +2681,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTimeUpdate?
 
-> `optional` **onTimeUpdate**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTimeUpdate?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2691,7 +2691,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTimeUpdateCapture?
 
-> `optional` **onTimeUpdateCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTimeUpdateCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2701,7 +2701,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onToggle?
 
-> `optional` **onToggle**: `ToggleEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onToggle?**: `ToggleEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2711,7 +2711,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchCancel?
 
-> `optional` **onTouchCancel**: `TouchEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTouchCancel?**: `TouchEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2721,7 +2721,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchCancelCapture?
 
-> `optional` **onTouchCancelCapture**: `TouchEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTouchCancelCapture?**: `TouchEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2731,7 +2731,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchEnd?
 
-> `optional` **onTouchEnd**: `TouchEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTouchEnd?**: `TouchEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2741,7 +2741,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchEndCapture?
 
-> `optional` **onTouchEndCapture**: `TouchEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTouchEndCapture?**: `TouchEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2751,7 +2751,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchMove?
 
-> `optional` **onTouchMove**: `TouchEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTouchMove?**: `TouchEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2761,7 +2761,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchMoveCapture?
 
-> `optional` **onTouchMoveCapture**: `TouchEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTouchMoveCapture?**: `TouchEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2771,7 +2771,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchStart?
 
-> `optional` **onTouchStart**: `TouchEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTouchStart?**: `TouchEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2781,7 +2781,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchStartCapture?
 
-> `optional` **onTouchStartCapture**: `TouchEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTouchStartCapture?**: `TouchEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2791,7 +2791,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionCancel?
 
-> `optional` **onTransitionCancel**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTransitionCancel?**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2801,7 +2801,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionCancelCapture?
 
-> `optional` **onTransitionCancelCapture**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTransitionCancelCapture?**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2811,7 +2811,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionEnd?
 
-> `optional` **onTransitionEnd**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTransitionEnd?**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2821,7 +2821,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionEndCapture?
 
-> `optional` **onTransitionEndCapture**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTransitionEndCapture?**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2831,7 +2831,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionRun?
 
-> `optional` **onTransitionRun**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTransitionRun?**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2841,7 +2841,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionRunCapture?
 
-> `optional` **onTransitionRunCapture**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTransitionRunCapture?**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2851,7 +2851,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionStart?
 
-> `optional` **onTransitionStart**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTransitionStart?**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2861,7 +2861,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionStartCapture?
 
-> `optional` **onTransitionStartCapture**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onTransitionStartCapture?**: `TransitionEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2871,7 +2871,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onVolumeChange?
 
-> `optional` **onVolumeChange**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onVolumeChange?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2881,7 +2881,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onVolumeChangeCapture?
 
-> `optional` **onVolumeChangeCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onVolumeChangeCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2891,7 +2891,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onWaiting?
 
-> `optional` **onWaiting**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onWaiting?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2901,7 +2901,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onWaitingCapture?
 
-> `optional` **onWaitingCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onWaitingCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2911,7 +2911,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onWheel?
 
-> `optional` **onWheel**: `WheelEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onWheel?**: `WheelEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2921,7 +2921,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onWheelCapture?
 
-> `optional` **onWheelCapture**: `WheelEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onWheelCapture?**: `WheelEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2931,7 +2931,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### part?
 
-> `optional` **part**: `string`
+> `optional` **part?**: `string`
 
 #### See
 
@@ -2945,7 +2945,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### ping?
 
-> `optional` **ping**: `string`
+> `optional` **ping?**: `string`
 
 #### Inherited from
 
@@ -2955,7 +2955,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
+> `optional` **popover?**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
 
 #### Inherited from
 
@@ -2965,7 +2965,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### popoverTarget?
 
-> `optional` **popoverTarget**: `string`
+> `optional` **popoverTarget?**: `string`
 
 #### Inherited from
 
@@ -2975,7 +2975,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### popoverTargetAction?
 
-> `optional` **popoverTargetAction**: `"hide"` \| `"show"` \| `"toggle"`
+> `optional` **popoverTargetAction?**: `"hide"` \| `"show"` \| `"toggle"`
 
 #### Inherited from
 
@@ -2985,7 +2985,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### prefix?
 
-> `optional` **prefix**: `string`
+> `optional` **prefix?**: `string`
 
 #### Inherited from
 
@@ -2995,7 +2995,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### property?
 
-> `optional` **property**: `string`
+> `optional` **property?**: `string`
 
 #### Inherited from
 
@@ -3005,7 +3005,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### radioGroup?
 
-> `optional` **radioGroup**: `string`
+> `optional` **radioGroup?**: `string`
 
 #### Inherited from
 
@@ -3015,7 +3015,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### ref?
 
-> `optional` **ref**: `Ref`\<`HTMLAnchorElement`\>
+> `optional` **ref?**: `Ref`\<`HTMLAnchorElement`\>
 
 Allows getting a ref to the component instance.
 Once the component unmounts, React will set `ref.current` to `null`
@@ -3033,17 +3033,17 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### referrerPolicy?
 
-> `optional` **referrerPolicy**: `HTMLAttributeReferrerPolicy`
+> `optional` **referrerPolicy?**: `HTMLAttributeReferrerPolicy`
 
 #### Inherited from
 
-`ComponentProps.referrerPolicy`
+`RsLinkProps`.[`referrerPolicy`](#referrerpolicy)
 
 ***
 
 ### rel?
 
-> `optional` **rel**: `string`
+> `optional` **rel?**: `string`
 
 #### Inherited from
 
@@ -3053,7 +3053,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### resource?
 
-> `optional` **resource**: `string`
+> `optional` **resource?**: `string`
 
 #### Inherited from
 
@@ -3063,7 +3063,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### results?
 
-> `optional` **results**: `number`
+> `optional` **results?**: `number`
 
 #### Inherited from
 
@@ -3073,7 +3073,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### rev?
 
-> `optional` **rev**: `string`
+> `optional` **rev?**: `string`
 
 #### Inherited from
 
@@ -3083,7 +3083,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### role?
 
-> `optional` **role**: `AriaRole`
+> `optional` **role?**: `AriaRole`
 
 #### Inherited from
 
@@ -3093,7 +3093,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### security?
 
-> `optional` **security**: `string`
+> `optional` **security?**: `string`
 
 #### Inherited from
 
@@ -3103,7 +3103,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### slot?
 
-> `optional` **slot**: `string`
+> `optional` **slot?**: `string`
 
 #### Inherited from
 
@@ -3113,7 +3113,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### spellCheck?
 
-> `optional` **spellCheck**: `Booleanish`
+> `optional` **spellCheck?**: `Booleanish`
 
 #### Inherited from
 
@@ -3123,7 +3123,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 #### Inherited from
 
@@ -3133,7 +3133,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### suppressContentEditableWarning?
 
-> `optional` **suppressContentEditableWarning**: `boolean`
+> `optional` **suppressContentEditableWarning?**: `boolean`
 
 #### Inherited from
 
@@ -3143,7 +3143,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### suppressHydrationWarning?
 
-> `optional` **suppressHydrationWarning**: `boolean`
+> `optional` **suppressHydrationWarning?**: `boolean`
 
 #### Inherited from
 
@@ -3153,7 +3153,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### tabIndex?
 
-> `optional` **tabIndex**: `number`
+> `optional` **tabIndex?**: `number`
 
 #### Inherited from
 
@@ -3163,11 +3163,11 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ### target?
 
-> `optional` **target**: `HTMLAttributeAnchorTarget`
+> `optional` **target?**: `HTMLAttributeAnchorTarget`
 
 #### Inherited from
 
-`ComponentProps.target`
+`RsLinkProps`.[`target`](#target)
 
 ***
 
@@ -3181,7 +3181,7 @@ The link text content.
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 #### Inherited from
 
@@ -3191,7 +3191,7 @@ The link text content.
 
 ### translate?
 
-> `optional` **translate**: `"no"` \| `"yes"`
+> `optional` **translate?**: `"no"` \| `"yes"`
 
 #### Inherited from
 
@@ -3201,17 +3201,17 @@ The link text content.
 
 ### type?
 
-> `optional` **type**: `string`
+> `optional` **type?**: `string`
 
 #### Inherited from
 
-`ComponentProps.type`
+`RsLinkProps`.[`type`](#type)
 
 ***
 
 ### typeof?
 
-> `optional` **typeof**: `string`
+> `optional` **typeof?**: `string`
 
 #### Inherited from
 
@@ -3221,7 +3221,7 @@ The link text content.
 
 ### unselectable?
 
-> `optional` **unselectable**: `"off"` \| `"on"`
+> `optional` **unselectable?**: `"off"` \| `"on"`
 
 #### Inherited from
 
@@ -3231,7 +3231,7 @@ The link text content.
 
 ### vocab?
 
-> `optional` **vocab**: `string`
+> `optional` **vocab?**: `string`
 
 #### Inherited from
 

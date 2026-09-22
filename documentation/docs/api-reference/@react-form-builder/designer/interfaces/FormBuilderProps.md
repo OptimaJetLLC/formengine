@@ -10,7 +10,7 @@ Properties of the React Form builder component.
 
 ### actions?
 
-> `optional` **actions**: [`CustomActions`](../../core/type-aliases/CustomActions.md)
+> `optional` **actions?**: [`CustomActions`](../../core/type-aliases/CustomActions.md)
 
 Custom actions for the form viewer.
 
@@ -22,7 +22,7 @@ Custom actions for the form viewer.
 
 ### builderRef?
 
-> `optional` **builderRef**: `ForwardedRef`\<[`IFormBuilder`](IFormBuilder.md)\>
+> `optional` **builderRef?**: `ForwardedRef`\<[`IFormBuilder`](IFormBuilder.md)\>
 
 The reference to [IFormBuilder](IFormBuilder.md).
 
@@ -30,7 +30,7 @@ The reference to [IFormBuilder](IFormBuilder.md).
 
 ### componentWrapper?
 
-> `optional` **componentWrapper**: `ComponentType`\<`any`\>
+> `optional` **componentWrapper?**: `ComponentType`\<`any`\>
 
 The React component that wraps every component in a form. **Internal use only.**
 
@@ -42,7 +42,7 @@ The React component that wraps every component in a form. **Internal use only.**
 
 ### context?
 
-> `optional` **context**: `any`
+> `optional` **context?**: `any`
 
 The arbitrary context used internally by the form viewer.
 
@@ -54,7 +54,7 @@ The arbitrary context used internally by the form viewer.
 
 ### customization?
 
-> `optional` **customization**: `Partial`\<`Record`\<`string`, [`Options`](../type-aliases/Options.md)\>\>
+> `optional` **customization?**: `Partial`\<`Record`\<`string`, [`Options`](../type-aliases/Options.md)\>\>
 
 The map of customizations for the FormBuilder components.
 
@@ -62,7 +62,7 @@ The map of customizations for the FormBuilder components.
 
 ### defaultBuilderLanguage?
 
-> `optional` **defaultBuilderLanguage**: `` `${string}-${string}` ``
+> `optional` **defaultBuilderLanguage?**: `` `${string}-${string}` ``
 
 The builder language. When set, it selects the matching entry among [FormBuilderI18n.languages](../type-aliases/FormBuilderI18n.md#languages).
 
@@ -70,7 +70,7 @@ The builder language. When set, it selects the matching entry among [FormBuilder
 
 ### defaultViewerLanguage?
 
-> `optional` **defaultViewerLanguage**: `` `${string}-${string}` ``
+> `optional` **defaultViewerLanguage?**: `` `${string}-${string}` ``
 
 The initial language of the form viewer (form localization preview), e.g. 'en-US'.
 Unlike the removed [FormViewerProps.language](../../core/interfaces/FormViewerProps.md#language) prop, this value is only used for the initial selection and does not lock the viewer language.
@@ -79,7 +79,7 @@ Unlike the removed [FormViewerProps.language](../../core/interfaces/FormViewerPr
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 If true, the form is disabled.
 
@@ -91,7 +91,7 @@ If true, the form is disabled.
 
 ### errors?
 
-> `optional` **errors**: `Record`\<`string`, `unknown`\>
+> `optional` **errors?**: `Record`\<`string`, `unknown`\>
 
 The form validation errors.
 
@@ -103,7 +103,7 @@ The form validation errors.
 
 ### errorWrapper?
 
-> `optional` **errorWrapper**: `ComponentType`\<[`ErrorWrapperProps`](../../core/interfaces/ErrorWrapperProps.md)\>
+> `optional` **errorWrapper?**: `ComponentType`\<[`ErrorWrapperProps`](../../core/interfaces/ErrorWrapperProps.md)\>
 
 The default error wrapper used when errorType is not specified in the form.
 
@@ -115,7 +115,7 @@ The default error wrapper used when errorType is not specified in the form.
 
 ### formName?
 
-> `optional` **formName**: `string`
+> `optional` **formName?**: `string`
 
 The form name.
 Updating the value triggers the [FormViewerProps.getForm](../../core/interfaces/FormViewerProps.md#getform) function.
@@ -128,7 +128,7 @@ Updating the value triggers the [FormViewerProps.getForm](../../core/interfaces/
 
 ### formOptions?
 
-> `optional` **formOptions**: `any`
+> `optional` **formOptions?**: `any`
 
 The form options. Used to transfer any options to the [FormViewerProps.getForm](../../core/interfaces/FormViewerProps.md#getform) function.
 Updating the value triggers the [FormViewerProps.getForm](../../core/interfaces/FormViewerProps.md#getform) function.
@@ -141,7 +141,7 @@ Updating the value triggers the [FormViewerProps.getForm](../../core/interfaces/
 
 ### formStorage?
 
-> `optional` **formStorage**: [`IFormStorage`](IFormStorage.md)
+> `optional` **formStorage?**: [`IFormStorage`](IFormStorage.md)
 
 The external form storage.
 
@@ -149,7 +149,7 @@ The external form storage.
 
 ### formValidators?
 
-> `optional` **formValidators**: [`FormValidators`](../../core/type-aliases/FormValidators.md)
+> `optional` **formValidators?**: [`FormValidators`](../../core/type-aliases/FormValidators.md)
 
 The set of functions that validate the form data.
 
@@ -159,9 +159,9 @@ The set of functions that validate the form data.
 
 ***
 
-### generateJsonFormSchema()?
+### generateJsonFormSchema?
 
-> `optional` **generateJsonFormSchema**: (`options`) => `string`
+> `optional` **generateJsonFormSchema?**: (`options`) => `string`
 
 The JSON schema generator for a form.
 
@@ -181,9 +181,9 @@ the JSON schema in string format.
 
 ***
 
-### getForm()?
+### getForm?
 
-> `optional` **getForm**: (`name?`, `options?`) => `Promise`\<`string`\> \| `string`
+> `optional` **getForm?**: (`name?`, `options?`) => `Promise`\<`string`\> \| `string`
 
 Loads the form.
 
@@ -215,7 +215,7 @@ the string or Promise with the form.
 
 ### i18n?
 
-> `optional` **i18n**: [`FormBuilderI18n`](../type-aliases/FormBuilderI18n.md)
+> `optional` **i18n?**: [`FormBuilderI18n`](../type-aliases/FormBuilderI18n.md)
 
 The i18n data of the form builder.
 
@@ -223,7 +223,7 @@ The i18n data of the form builder.
 
 ### initialData?
 
-> `optional` **initialData**: `Record`\<`string`, `unknown`\>
+> `optional` **initialData?**: `Record`\<`string`, `unknown`\>
 
 The initial data of the form.
 
@@ -235,7 +235,7 @@ The initial data of the form.
 
 ### initialState?
 
-> `optional` **initialState**: `Record`\<`string`, `unknown`\>
+> `optional` **initialState?**: `Record`\<`string`, `unknown`\>
 
 The initial user-defined state for the form.
 This object is set into [IFormData.state](../../core/interfaces/IFormData.md#state) when the form is initialized, this property is reactive.
@@ -248,7 +248,7 @@ This object is set into [IFormData.state](../../core/interfaces/IFormData.md#sta
 
 ### jsonSchemaFilename?
 
-> `optional` **jsonSchemaFilename**: `string`
+> `optional` **jsonSchemaFilename?**: `string`
 
 The file name for the generated JSON schema.
 
@@ -256,7 +256,7 @@ The file name for the generated JSON schema.
 
 ### licenseKey?
 
-> `optional` **licenseKey**: `string`
+> `optional` **licenseKey?**: `string`
 
 The FormEngine license key.
 
@@ -264,7 +264,7 @@ The FormEngine license key.
 
 ### localizationEngine?
 
-> `optional` **localizationEngine**: [`ILocalizationEngine`](../../core/interfaces/ILocalizationEngine.md)
+> `optional` **localizationEngine?**: [`ILocalizationEngine`](../../core/interfaces/ILocalizationEngine.md)
 
 The localization engine used by the viewer.
 
@@ -276,7 +276,7 @@ The localization engine used by the viewer.
 
 ### localize?
 
-> `optional` **localize**: [`ComponentLocalizer`](../../core/type-aliases/ComponentLocalizer.md)
+> `optional` **localize?**: [`ComponentLocalizer`](../../core/type-aliases/ComponentLocalizer.md)
 
 The function to localize the properties of a component.
 
@@ -288,15 +288,15 @@ The function to localize the properties of a component.
 
 ### localStoragePrefix?
 
-> `optional` **localStoragePrefix**: `string`
+> `optional` **localStoragePrefix?**: `string`
 
 The prefix for localStorage keys.
 
 ***
 
-### onBuilderLanguageChange()?
+### onBuilderLanguageChange?
 
-> `optional` **onBuilderLanguageChange**: (`language`) => `void`
+> `optional` **onBuilderLanguageChange?**: (`language`) => `void`
 
 A callback invoked when the language is changed in the Builder.
 
@@ -314,9 +314,9 @@ the language.
 
 ***
 
-### onFormDataChange()?
+### onFormDataChange?
 
-> `optional` **onFormDataChange**: (`data`) => `void`
+> `optional` **onFormDataChange?**: (`data`) => `void`
 
 The event is called whenever a form data changes.
 
@@ -338,9 +338,9 @@ the [IFormData](../../core/interfaces/IFormData.md) with all the form data.
 
 ***
 
-### onFormElementAdd()?
+### onFormElementAdd?
 
-> `optional` **onFormElementAdd**: (`payload`) => `void`
+> `optional` **onFormElementAdd?**: (`payload`) => `void`
 
 Callback invoked when a component is added to the form.
 
@@ -380,9 +380,9 @@ the payload with information about the added component.
 
 ***
 
-### onFormElementRemove()?
+### onFormElementRemove?
 
-> `optional` **onFormElementRemove**: (`payload`) => `void`
+> `optional` **onFormElementRemove?**: (`payload`) => `void`
 
 Callback invoked when a component is removed from the form.
 
@@ -402,9 +402,9 @@ the payload with information about the removed component.
 
 ***
 
-### onFormSchemaChange()?
+### onFormSchemaChange?
 
-> `optional` **onFormSchemaChange**: (`formSchema`) => `void`
+> `optional` **onFormSchemaChange?**: (`formSchema`) => `void`
 
 The event is called whenever a form schema changes.
 
@@ -422,9 +422,9 @@ the current form schema serialized to JSON.
 
 ***
 
-### onViewerLanguageChange()?
+### onViewerLanguageChange?
 
-> `optional` **onViewerLanguageChange**: (`language`) => `void`
+> `optional` **onViewerLanguageChange?**: (`language`) => `void`
 
 A callback invoked when the form's language is changed.
 
@@ -444,7 +444,7 @@ the language.
 
 ### persistFormName?
 
-> `optional` **persistFormName**: `boolean`
+> `optional` **persistFormName?**: `boolean`
 
 If true, the form name will be saved to localStorage and restored when the Form builder is reopened.
 This functionality is enabled by default.
@@ -453,7 +453,7 @@ This functionality is enabled by default.
 
 ### presetComponentOptions?
 
-> `optional` **presetComponentOptions**: [`IPresetComponentOptions`](IPresetComponentOptions.md)
+> `optional` **presetComponentOptions?**: [`IPresetComponentOptions`](IPresetComponentOptions.md)
 
 The preset component options.
 
@@ -461,7 +461,7 @@ The preset component options.
 
 ### propertyEditors?
 
-> `optional` **propertyEditors**: `Record`\<`string`, `ComponentType`\<[`AnnotationEditorProps`](AnnotationEditorProps.md)\>\>
+> `optional` **propertyEditors?**: `Record`\<`string`, `ComponentType`\<[`AnnotationEditorProps`](AnnotationEditorProps.md)\>\>
 
 Custom component property editors. **Attention! Unstable API.**
 
@@ -469,7 +469,7 @@ Custom component property editors. **Attention! Unstable API.**
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 If true, the form is read-only.
 
@@ -481,7 +481,7 @@ If true, the form is read-only.
 
 ### showAllValidationErrors?
 
-> `optional` **showAllValidationErrors**: `boolean`
+> `optional` **showAllValidationErrors?**: `boolean`
 
 If true, all validation errors will be displayed.
 
@@ -493,7 +493,7 @@ If true, all validation errors will be displayed.
 
 ### stylesProvider?
 
-> `optional` **stylesProvider**: `ComponentType`\<[`StylesProviderProps`](StylesProviderProps.md)\>
+> `optional` **stylesProvider?**: `ComponentType`\<[`StylesProviderProps`](StylesProviderProps.md)\>
 
 The component that loads the CSS.
 
@@ -501,7 +501,7 @@ The component that loads the CSS.
 
 ### theme?
 
-> `optional` **theme**: [`FormBuilderTheme`](../type-aliases/FormBuilderTheme.md)
+> `optional` **theme?**: [`FormBuilderTheme`](../type-aliases/FormBuilderTheme.md)
 
 Indicates the theme preference.
 
@@ -509,7 +509,7 @@ Indicates the theme preference.
 
 ### userContext?
 
-> `optional` **userContext**: `unknown`
+> `optional` **userContext?**: `unknown`
 
 The arbitrary context object passed to the form viewer.
 It is forwarded to custom actions as the third argument of the handler.
@@ -522,7 +522,7 @@ It is forwarded to custom actions as the third argument of the handler.
 
 ### validators?
 
-> `optional` **validators**: `Partial`\<`Record`\<keyof [`SchemaTypeMap`](../../core/type-aliases/SchemaTypeMap.md), [`CustomValidationRules`](../../core/type-aliases/CustomValidationRules.md)\>\>
+> `optional` **validators?**: `Partial`\<`Record`\<keyof [`SchemaTypeMap`](../../core/type-aliases/SchemaTypeMap.md), [`CustomValidationRules`](../../core/type-aliases/CustomValidationRules.md)\>\>
 
 The set of metadata of validation rules, grouped by the type of value being validated.
 
@@ -542,7 +542,7 @@ All the metadata of the components of the form builder.
 
 ### viewerRef?
 
-> `optional` **viewerRef**: `ForwardedRef`\<[`IFormViewer`](../../core/interfaces/IFormViewer.md)\>
+> `optional` **viewerRef?**: `ForwardedRef`\<[`IFormViewer`](../../core/interfaces/IFormViewer.md)\>
 
 The reference to [IFormViewer](../../core/interfaces/IFormViewer.md).
 
@@ -554,7 +554,7 @@ The reference to [IFormViewer](../../core/interfaces/IFormViewer.md).
 
 ### viewMode?
 
-> `optional` **viewMode**: [`ViewMode`](../../core/type-aliases/ViewMode.md)
+> `optional` **viewMode?**: [`ViewMode`](../../core/type-aliases/ViewMode.md)
 
 Display resolution type.
 

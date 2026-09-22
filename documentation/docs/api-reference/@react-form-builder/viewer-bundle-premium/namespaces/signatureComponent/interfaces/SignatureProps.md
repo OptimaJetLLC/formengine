@@ -10,64 +10,64 @@ The Signature pad properties.
 
 ### about?
 
-> `optional` **about**: `string`
+> `optional` **about?**: `string`
 
 #### Inherited from
 
-`Omit.about`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`about`](../../rSuiteComponents/interfaces/RsImageProps.md#about)
 
 ***
 
 ### accessKey?
 
-> `optional` **accessKey**: `string`
+> `optional` **accessKey?**: `string`
 
 #### Inherited from
 
-`Omit.accessKey`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`accessKey`](../../rSuiteComponents/interfaces/RsImageProps.md#accesskey)
 
 ***
 
 ### aria-activedescendant?
 
-> `optional` **aria-activedescendant**: `string`
+> `optional` **aria-activedescendant?**: `string`
 
 Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application.
 
 #### Inherited from
 
-`Omit.aria-activedescendant`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-activedescendant`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-activedescendant)
 
 ***
 
 ### aria-atomic?
 
-> `optional` **aria-atomic**: `Booleanish`
+> `optional` **aria-atomic?**: `Booleanish`
 
 Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute.
 
 #### Inherited from
 
-`Omit.aria-atomic`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-atomic`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-atomic)
 
 ***
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
+> `optional` **aria-autocomplete?**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
 
 #### Inherited from
 
-`Omit.aria-autocomplete`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-autocomplete`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-autocomplete)
 
 ***
 
 ### aria-braillelabel?
 
-> `optional` **aria-braillelabel**: `string`
+> `optional` **aria-braillelabel?**: `string`
 
 Defines a string value that labels the current element, which is intended to be converted into Braille.
 
@@ -77,13 +77,13 @@ aria-label.
 
 #### Inherited from
 
-`Omit.aria-braillelabel`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-braillelabel`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-braillelabel)
 
 ***
 
 ### aria-brailleroledescription?
 
-> `optional` **aria-brailleroledescription**: `string`
+> `optional` **aria-brailleroledescription?**: `string`
 
 Defines a human-readable, author-localized abbreviated description for the role of an element, which is intended to be converted into Braille.
 
@@ -93,23 +93,23 @@ aria-roledescription.
 
 #### Inherited from
 
-`Omit.aria-brailleroledescription`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-brailleroledescription`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-brailleroledescription)
 
 ***
 
 ### aria-busy?
 
-> `optional` **aria-busy**: `Booleanish`
+> `optional` **aria-busy?**: `Booleanish`
 
 #### Inherited from
 
-`Omit.aria-busy`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-busy`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-busy)
 
 ***
 
 ### aria-checked?
 
-> `optional` **aria-checked**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
+> `optional` **aria-checked?**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
 
@@ -120,13 +120,13 @@ Indicates the current "checked" state of checkboxes, radio buttons, and other wi
 
 #### Inherited from
 
-`Omit.aria-checked`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-checked`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-checked)
 
 ***
 
 ### aria-colcount?
 
-> `optional` **aria-colcount**: `number`
+> `optional` **aria-colcount?**: `number`
 
 Defines the total number of columns in a table, grid, or treegrid.
 
@@ -136,13 +136,13 @@ aria-colindex.
 
 #### Inherited from
 
-`Omit.aria-colcount`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-colcount`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-colcount)
 
 ***
 
 ### aria-colindex?
 
-> `optional` **aria-colindex**: `number`
+> `optional` **aria-colindex?**: `number`
 
 Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid.
 
@@ -153,13 +153,13 @@ Defines an element's column index or position with respect to the total number o
 
 #### Inherited from
 
-`Omit.aria-colindex`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-colindex`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-colindex)
 
 ***
 
 ### aria-colindextext?
 
-> `optional` **aria-colindextext**: `string`
+> `optional` **aria-colindextext?**: `string`
 
 Defines a human readable text alternative of aria-colindex.
 
@@ -169,13 +169,13 @@ aria-rowindextext.
 
 #### Inherited from
 
-`Omit.aria-colindextext`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-colindextext`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-colindextext)
 
 ***
 
 ### aria-colspan?
 
-> `optional` **aria-colspan**: `number`
+> `optional` **aria-colspan?**: `number`
 
 Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid.
 
@@ -186,13 +186,13 @@ Defines the number of columns spanned by a cell or gridcell within a table, grid
 
 #### Inherited from
 
-`Omit.aria-colspan`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-colspan`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-colspan)
 
 ***
 
 ### aria-controls?
 
-> `optional` **aria-controls**: `string`
+> `optional` **aria-controls?**: `string`
 
 Identifies the element (or elements) whose contents or presence are controlled by the current element.
 
@@ -202,25 +202,25 @@ aria-owns.
 
 #### Inherited from
 
-`Omit.aria-controls`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-controls`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-controls)
 
 ***
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
+> `optional` **aria-current?**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
 #### Inherited from
 
-`Omit.aria-current`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-current`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-current)
 
 ***
 
 ### aria-describedby?
 
-> `optional` **aria-describedby**: `string`
+> `optional` **aria-describedby?**: `string`
 
 Identifies the element (or elements) that describes the object.
 
@@ -230,13 +230,13 @@ aria-labelledby
 
 #### Inherited from
 
-`Omit.aria-describedby`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-describedby`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-describedby)
 
 ***
 
 ### aria-description?
 
-> `optional` **aria-description**: `string`
+> `optional` **aria-description?**: `string`
 
 Defines a string value that describes or annotates the current element.
 
@@ -246,13 +246,13 @@ related aria-describedby.
 
 #### Inherited from
 
-`Omit.aria-description`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-description`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-description)
 
 ***
 
 ### aria-details?
 
-> `optional` **aria-details**: `string`
+> `optional` **aria-details?**: `string`
 
 Identifies the element that provides a detailed, extended description for the object.
 
@@ -262,13 +262,13 @@ aria-describedby.
 
 #### Inherited from
 
-`Omit.aria-details`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-details`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-details)
 
 ***
 
 ### aria-disabled?
 
-> `optional` **aria-disabled**: `Booleanish`
+> `optional` **aria-disabled?**: `Booleanish`
 
 Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
 
@@ -279,13 +279,13 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 #### Inherited from
 
-`Omit.aria-disabled`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-disabled`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-disabled)
 
 ***
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"copy"` \| `"execute"` \| `"link"` \| `"move"` \| `"none"` \| `"popup"`
+> `optional` **aria-dropeffect?**: `"copy"` \| `"execute"` \| `"link"` \| `"move"` \| `"none"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -295,13 +295,13 @@ in ARIA 1.1
 
 #### Inherited from
 
-`Omit.aria-dropeffect`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-dropeffect`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-dropeffect)
 
 ***
 
 ### aria-errormessage?
 
-> `optional` **aria-errormessage**: `string`
+> `optional` **aria-errormessage?**: `string`
 
 Identifies the element that provides an error message for the object.
 
@@ -312,38 +312,38 @@ Identifies the element that provides an error message for the object.
 
 #### Inherited from
 
-`Omit.aria-errormessage`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-errormessage`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-errormessage)
 
 ***
 
 ### aria-expanded?
 
-> `optional` **aria-expanded**: `Booleanish`
+> `optional` **aria-expanded?**: `Booleanish`
 
 Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed.
 
 #### Inherited from
 
-`Omit.aria-expanded`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-expanded`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-expanded)
 
 ***
 
 ### aria-flowto?
 
-> `optional` **aria-flowto**: `string`
+> `optional` **aria-flowto?**: `string`
 
 Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion,
 allows assistive technology to override the general default of reading in document source order.
 
 #### Inherited from
 
-`Omit.aria-flowto`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-flowto`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-flowto)
 
 ***
 
 ### ~~aria-grabbed?~~
 
-> `optional` **aria-grabbed**: `Booleanish`
+> `optional` **aria-grabbed?**: `Booleanish`
 
 Indicates an element's "grabbed" state in a drag-and-drop operation.
 
@@ -353,25 +353,25 @@ in ARIA 1.1
 
 #### Inherited from
 
-`Omit.aria-grabbed`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-grabbed`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-grabbed)
 
 ***
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
+> `optional` **aria-haspopup?**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
 #### Inherited from
 
-`Omit.aria-haspopup`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-haspopup`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-haspopup)
 
 ***
 
 ### aria-hidden?
 
-> `optional` **aria-hidden**: `Booleanish`
+> `optional` **aria-hidden?**: `Booleanish`
 
 Indicates whether the element is exposed to an accessibility API.
 
@@ -381,13 +381,13 @@ aria-disabled.
 
 #### Inherited from
 
-`Omit.aria-hidden`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-hidden`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-hidden)
 
 ***
 
 ### aria-invalid?
 
-> `optional` **aria-invalid**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
+> `optional` **aria-invalid?**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
 
 Indicates the entered value does not conform to the format expected by the application.
 
@@ -397,25 +397,25 @@ aria-errormessage.
 
 #### Inherited from
 
-`Omit.aria-invalid`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-invalid`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-invalid)
 
 ***
 
 ### aria-keyshortcuts?
 
-> `optional` **aria-keyshortcuts**: `string`
+> `optional` **aria-keyshortcuts?**: `string`
 
 Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element.
 
 #### Inherited from
 
-`Omit.aria-keyshortcuts`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-keyshortcuts`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-keyshortcuts)
 
 ***
 
 ### aria-label?
 
-> `optional` **aria-label**: `string`
+> `optional` **aria-label?**: `string`
 
 Defines a string value that labels the current element.
 
@@ -425,13 +425,13 @@ aria-labelledby.
 
 #### Inherited from
 
-`Omit.aria-label`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-label`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-label)
 
 ***
 
 ### aria-labelledby?
 
-> `optional` **aria-labelledby**: `string`
+> `optional` **aria-labelledby?**: `string`
 
 Identifies the element (or elements) that labels the current element.
 
@@ -441,85 +441,85 @@ aria-describedby.
 
 #### Inherited from
 
-`Omit.aria-labelledby`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-labelledby`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-labelledby)
 
 ***
 
 ### aria-level?
 
-> `optional` **aria-level**: `number`
+> `optional` **aria-level?**: `number`
 
 Defines the hierarchical level of an element within a structure.
 
 #### Inherited from
 
-`Omit.aria-level`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-level`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-level)
 
 ***
 
 ### aria-live?
 
-> `optional` **aria-live**: `"assertive"` \| `"off"` \| `"polite"`
+> `optional` **aria-live?**: `"assertive"` \| `"off"` \| `"polite"`
 
 Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
 
 #### Inherited from
 
-`Omit.aria-live`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-live`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-live)
 
 ***
 
 ### aria-modal?
 
-> `optional` **aria-modal**: `Booleanish`
+> `optional` **aria-modal?**: `Booleanish`
 
 Indicates whether an element is modal when displayed.
 
 #### Inherited from
 
-`Omit.aria-modal`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-modal`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-modal)
 
 ***
 
 ### aria-multiline?
 
-> `optional` **aria-multiline**: `Booleanish`
+> `optional` **aria-multiline?**: `Booleanish`
 
 Indicates whether a text box accepts multiple lines of input or only a single line.
 
 #### Inherited from
 
-`Omit.aria-multiline`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-multiline`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-multiline)
 
 ***
 
 ### aria-multiselectable?
 
-> `optional` **aria-multiselectable**: `Booleanish`
+> `optional` **aria-multiselectable?**: `Booleanish`
 
 Indicates that the user may select more than one item from the current selectable descendants.
 
 #### Inherited from
 
-`Omit.aria-multiselectable`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-multiselectable`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-multiselectable)
 
 ***
 
 ### aria-orientation?
 
-> `optional` **aria-orientation**: `"horizontal"` \| `"vertical"`
+> `optional` **aria-orientation?**: `"horizontal"` \| `"vertical"`
 
 Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
 
 #### Inherited from
 
-`Omit.aria-orientation`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-orientation`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-orientation)
 
 ***
 
 ### aria-owns?
 
-> `optional` **aria-owns**: `string`
+> `optional` **aria-owns?**: `string`
 
 Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship
 between DOM elements where the DOM hierarchy cannot be used to represent the relationship.
@@ -530,26 +530,26 @@ aria-controls.
 
 #### Inherited from
 
-`Omit.aria-owns`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-owns`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-owns)
 
 ***
 
 ### aria-placeholder?
 
-> `optional` **aria-placeholder**: `string`
+> `optional` **aria-placeholder?**: `string`
 
 Defines a short hint (a word or short phrase) intended to aid the user with data entry when the control has no value.
 A hint could be a sample value or a brief description of the expected format.
 
 #### Inherited from
 
-`Omit.aria-placeholder`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-placeholder`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-placeholder)
 
 ***
 
 ### aria-posinset?
 
-> `optional` **aria-posinset**: `number`
+> `optional` **aria-posinset?**: `number`
 
 Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
 
@@ -559,13 +559,13 @@ aria-setsize.
 
 #### Inherited from
 
-`Omit.aria-posinset`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-posinset`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-posinset)
 
 ***
 
 ### aria-pressed?
 
-> `optional` **aria-pressed**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
+> `optional` **aria-pressed?**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "pressed" state of toggle buttons.
 
@@ -576,13 +576,13 @@ Indicates the current "pressed" state of toggle buttons.
 
 #### Inherited from
 
-`Omit.aria-pressed`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-pressed`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-pressed)
 
 ***
 
 ### aria-readonly?
 
-> `optional` **aria-readonly**: `Booleanish`
+> `optional` **aria-readonly?**: `Booleanish`
 
 Indicates that the element is not editable, but is otherwise operable.
 
@@ -592,13 +592,13 @@ aria-disabled.
 
 #### Inherited from
 
-`Omit.aria-readonly`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-readonly`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-readonly)
 
 ***
 
 ### aria-relevant?
 
-> `optional` **aria-relevant**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
+> `optional` **aria-relevant?**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
 
 Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
 
@@ -608,37 +608,37 @@ aria-atomic.
 
 #### Inherited from
 
-`Omit.aria-relevant`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-relevant`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-relevant)
 
 ***
 
 ### aria-required?
 
-> `optional` **aria-required**: `Booleanish`
+> `optional` **aria-required?**: `Booleanish`
 
 Indicates that user input is required on the element before a form may be submitted.
 
 #### Inherited from
 
-`Omit.aria-required`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-required`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-required)
 
 ***
 
 ### aria-roledescription?
 
-> `optional` **aria-roledescription**: `string`
+> `optional` **aria-roledescription?**: `string`
 
 Defines a human-readable, author-localized description for the role of an element.
 
 #### Inherited from
 
-`Omit.aria-roledescription`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-roledescription`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-roledescription)
 
 ***
 
 ### aria-rowcount?
 
-> `optional` **aria-rowcount**: `number`
+> `optional` **aria-rowcount?**: `number`
 
 Defines the total number of rows in a table, grid, or treegrid.
 
@@ -648,13 +648,13 @@ aria-rowindex.
 
 #### Inherited from
 
-`Omit.aria-rowcount`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-rowcount`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-rowcount)
 
 ***
 
 ### aria-rowindex?
 
-> `optional` **aria-rowindex**: `number`
+> `optional` **aria-rowindex?**: `number`
 
 Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid.
 
@@ -665,13 +665,13 @@ Defines an element's row index or position with respect to the total number of r
 
 #### Inherited from
 
-`Omit.aria-rowindex`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-rowindex`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-rowindex)
 
 ***
 
 ### aria-rowindextext?
 
-> `optional` **aria-rowindextext**: `string`
+> `optional` **aria-rowindextext?**: `string`
 
 Defines a human readable text alternative of aria-rowindex.
 
@@ -681,13 +681,13 @@ aria-colindextext.
 
 #### Inherited from
 
-`Omit.aria-rowindextext`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-rowindextext`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-rowindextext)
 
 ***
 
 ### aria-rowspan?
 
-> `optional` **aria-rowspan**: `number`
+> `optional` **aria-rowspan?**: `number`
 
 Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid.
 
@@ -698,13 +698,13 @@ Defines the number of rows spanned by a cell or gridcell within a table, grid, o
 
 #### Inherited from
 
-`Omit.aria-rowspan`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-rowspan`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-rowspan)
 
 ***
 
 ### aria-selected?
 
-> `optional` **aria-selected**: `Booleanish`
+> `optional` **aria-selected?**: `Booleanish`
 
 Indicates the current "selected" state of various widgets.
 
@@ -715,13 +715,13 @@ Indicates the current "selected" state of various widgets.
 
 #### Inherited from
 
-`Omit.aria-selected`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-selected`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-selected)
 
 ***
 
 ### aria-setsize?
 
-> `optional` **aria-setsize**: `number`
+> `optional` **aria-setsize?**: `number`
 
 Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
 
@@ -731,49 +731,49 @@ aria-posinset.
 
 #### Inherited from
 
-`Omit.aria-setsize`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-setsize`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-setsize)
 
 ***
 
 ### aria-sort?
 
-> `optional` **aria-sort**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
+> `optional` **aria-sort?**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
 
 Indicates if items in a table or grid are sorted in ascending or descending order.
 
 #### Inherited from
 
-`Omit.aria-sort`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-sort`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-sort)
 
 ***
 
 ### aria-valuemax?
 
-> `optional` **aria-valuemax**: `number`
+> `optional` **aria-valuemax?**: `number`
 
 Defines the maximum allowed value for a range widget.
 
 #### Inherited from
 
-`Omit.aria-valuemax`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-valuemax`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-valuemax)
 
 ***
 
 ### aria-valuemin?
 
-> `optional` **aria-valuemin**: `number`
+> `optional` **aria-valuemin?**: `number`
 
 Defines the minimum allowed value for a range widget.
 
 #### Inherited from
 
-`Omit.aria-valuemin`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-valuemin`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-valuemin)
 
 ***
 
 ### aria-valuenow?
 
-> `optional` **aria-valuenow**: `number`
+> `optional` **aria-valuenow?**: `number`
 
 Defines the current value for a range widget.
 
@@ -783,65 +783,65 @@ aria-valuetext.
 
 #### Inherited from
 
-`Omit.aria-valuenow`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-valuenow`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-valuenow)
 
 ***
 
 ### aria-valuetext?
 
-> `optional` **aria-valuetext**: `string`
+> `optional` **aria-valuetext?**: `string`
 
 Defines the human readable text alternative of aria-valuenow for a range widget.
 
 #### Inherited from
 
-`Omit.aria-valuetext`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`aria-valuetext`](../../rSuiteComponents/interfaces/RsImageProps.md#aria-valuetext)
 
 ***
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
+> `optional` **autoCapitalize?**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
 
 #### Inherited from
 
-`Omit.autoCapitalize`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`autoCapitalize`](../../rSuiteComponents/interfaces/RsImageProps.md#autocapitalize)
 
 ***
 
 ### autoCorrect?
 
-> `optional` **autoCorrect**: `string`
+> `optional` **autoCorrect?**: `string`
 
 #### Inherited from
 
-`Omit.autoCorrect`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`autoCorrect`](../../rSuiteComponents/interfaces/RsImageProps.md#autocorrect)
 
 ***
 
 ### autoFocus?
 
-> `optional` **autoFocus**: `boolean`
+> `optional` **autoFocus?**: `boolean`
 
 #### Inherited from
 
-`Omit.autoFocus`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`autoFocus`](../../rSuiteComponents/interfaces/RsImageProps.md#autofocus)
 
 ***
 
 ### autoSave?
 
-> `optional` **autoSave**: `string`
+> `optional` **autoSave?**: `string`
 
 #### Inherited from
 
-`Omit.autoSave`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`autoSave`](../../rSuiteComponents/interfaces/RsImageProps.md#autosave)
 
 ***
 
 ### backgroundColor?
 
-> `optional` **backgroundColor**: `Fill`
+> `optional` **backgroundColor?**: `Fill`
 
 The background color.
 
@@ -849,7 +849,7 @@ The background color.
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 #### Inherited from
 
@@ -859,17 +859,17 @@ The background color.
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 #### Inherited from
 
-`Omit.className`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`className`](../../rSuiteComponents/interfaces/RsImageProps.md#classname)
 
 ***
 
 ### clearButtonText?
 
-> `optional` **clearButtonText**: `string`
+> `optional` **clearButtonText?**: `string`
 
 Clear button label.
 
@@ -877,47 +877,47 @@ Clear button label.
 
 ### color?
 
-> `optional` **color**: `string`
+> `optional` **color?**: `string`
 
 #### Inherited from
 
-`Omit.color`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`color`](../../rSuiteComponents/interfaces/RsImageProps.md#color)
 
 ***
 
 ### content?
 
-> `optional` **content**: `string`
+> `optional` **content?**: `string`
 
 #### Inherited from
 
-`Omit.content`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`content`](../../rSuiteComponents/interfaces/RsImageProps.md#content)
 
 ***
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
+> `optional` **contentEditable?**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
 
 #### Inherited from
 
-`Omit.contentEditable`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`contentEditable`](../../rSuiteComponents/interfaces/RsImageProps.md#contenteditable)
 
 ***
 
 ### contextMenu?
 
-> `optional` **contextMenu**: `string`
+> `optional` **contextMenu?**: `string`
 
 #### Inherited from
 
-`Omit.contextMenu`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`contextMenu`](../../rSuiteComponents/interfaces/RsImageProps.md#contextmenu)
 
 ***
 
 ### dangerouslySetInnerHTML?
 
-> `optional` **dangerouslySetInnerHTML**: `object`
+> `optional` **dangerouslySetInnerHTML?**: `object`
 
 #### \_\_html
 
@@ -931,67 +931,67 @@ Clear button label.
 
 ### datatype?
 
-> `optional` **datatype**: `string`
+> `optional` **datatype?**: `string`
 
 #### Inherited from
 
-`Omit.datatype`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`datatype`](../../rSuiteComponents/interfaces/RsImageProps.md#datatype)
 
 ***
 
 ### defaultChecked?
 
-> `optional` **defaultChecked**: `boolean`
+> `optional` **defaultChecked?**: `boolean`
 
 #### Inherited from
 
-`Omit.defaultChecked`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`defaultChecked`](../../rSuiteComponents/interfaces/RsImageProps.md#defaultchecked)
 
 ***
 
 ### defaultValue?
 
-> `optional` **defaultValue**: readonly `string`[] \| `number` \| `string`
+> `optional` **defaultValue?**: readonly `string`[] \| `number` \| `string`
 
 #### Inherited from
 
-`Omit.defaultValue`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`defaultValue`](../../rSuiteComponents/interfaces/RsImageProps.md#defaultvalue)
 
 ***
 
 ### dir?
 
-> `optional` **dir**: `string`
+> `optional` **dir?**: `string`
 
 #### Inherited from
 
-`Omit.dir`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`dir`](../../rSuiteComponents/interfaces/RsImageProps.md#dir)
 
 ***
 
 ### draggable?
 
-> `optional` **draggable**: `Booleanish`
+> `optional` **draggable?**: `Booleanish`
 
 #### Inherited from
 
-`Omit.draggable`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`draggable`](../../rSuiteComponents/interfaces/RsImageProps.md#draggable)
 
 ***
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
+> `optional` **enterKeyHint?**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
 
 #### Inherited from
 
-`Omit.enterKeyHint`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`enterKeyHint`](../../rSuiteComponents/interfaces/RsImageProps.md#enterkeyhint)
 
 ***
 
 ### exportparts?
 
-> `optional` **exportparts**: `string`
+> `optional` **exportparts?**: `string`
 
 #### See
 
@@ -999,13 +999,13 @@ Clear button label.
 
 #### Inherited from
 
-`Omit.exportparts`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`exportparts`](../../rSuiteComponents/interfaces/RsImageProps.md#exportparts)
 
 ***
 
 ### height?
 
-> `optional` **height**: `number`
+> `optional` **height?**: `number`
 
 The canvas height.
 
@@ -1019,27 +1019,27 @@ The canvas height.
 
 ### hidden?
 
-> `optional` **hidden**: `boolean`
+> `optional` **hidden?**: `boolean`
 
 #### Inherited from
 
-`Omit.hidden`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`hidden`](../../rSuiteComponents/interfaces/RsImageProps.md#hidden)
 
 ***
 
 ### id?
 
-> `optional` **id**: `string`
+> `optional` **id?**: `string`
 
 #### Inherited from
 
-`Omit.id`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`id`](../../rSuiteComponents/interfaces/RsImageProps.md#id)
 
 ***
 
 ### inert?
 
-> `optional` **inert**: `boolean`
+> `optional` **inert?**: `boolean`
 
 #### See
 
@@ -1047,23 +1047,23 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 #### Inherited from
 
-`Omit.inert`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`inert`](../../rSuiteComponents/interfaces/RsImageProps.md#inert)
 
 ***
 
 ### inlist?
 
-> `optional` **inlist**: `any`
+> `optional` **inlist?**: `any`
 
 #### Inherited from
 
-`Omit.inlist`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`inlist`](../../rSuiteComponents/interfaces/RsImageProps.md#inlist)
 
 ***
 
 ### inputMode?
 
-> `optional` **inputMode**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
+> `optional` **inputMode?**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1073,13 +1073,13 @@ Hints at the type of data that might be entered by the user while editing the el
 
 #### Inherited from
 
-`Omit.inputMode`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`inputMode`](../../rSuiteComponents/interfaces/RsImageProps.md#inputmode)
 
 ***
 
 ### is?
 
-> `optional` **is**: `string`
+> `optional` **is?**: `string`
 
 Specify that a standard HTML element should behave like a defined custom built-in element
 
@@ -1089,73 +1089,73 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### Inherited from
 
-`Omit.is`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`is`](../../rSuiteComponents/interfaces/RsImageProps.md#is)
 
 ***
 
 ### itemID?
 
-> `optional` **itemID**: `string`
+> `optional` **itemID?**: `string`
 
 #### Inherited from
 
-`Omit.itemID`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`itemID`](../../rSuiteComponents/interfaces/RsImageProps.md#itemid)
 
 ***
 
 ### itemProp?
 
-> `optional` **itemProp**: `string`
+> `optional` **itemProp?**: `string`
 
 #### Inherited from
 
-`Omit.itemProp`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`itemProp`](../../rSuiteComponents/interfaces/RsImageProps.md#itemprop)
 
 ***
 
 ### itemRef?
 
-> `optional` **itemRef**: `string`
+> `optional` **itemRef?**: `string`
 
 #### Inherited from
 
-`Omit.itemRef`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`itemRef`](../../rSuiteComponents/interfaces/RsImageProps.md#itemref)
 
 ***
 
 ### itemScope?
 
-> `optional` **itemScope**: `boolean`
+> `optional` **itemScope?**: `boolean`
 
 #### Inherited from
 
-`Omit.itemScope`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`itemScope`](../../rSuiteComponents/interfaces/RsImageProps.md#itemscope)
 
 ***
 
 ### itemType?
 
-> `optional` **itemType**: `string`
+> `optional` **itemType?**: `string`
 
 #### Inherited from
 
-`Omit.itemType`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`itemType`](../../rSuiteComponents/interfaces/RsImageProps.md#itemtype)
 
 ***
 
 ### key?
 
-> `optional` **key**: `Key` \| `null`
+> `optional` **key?**: `Key` \| `null`
 
 #### Inherited from
 
-`Omit.key`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`key`](../../rSuiteComponents/interfaces/RsImageProps.md#key)
 
 ***
 
 ### label?
 
-> `optional` **label**: `string`
+> `optional` **label?**: `string`
 
 The label for the component.
 
@@ -1163,17 +1163,17 @@ The label for the component.
 
 ### lang?
 
-> `optional` **lang**: `string`
+> `optional` **lang?**: `string`
 
 #### Inherited from
 
-`Omit.lang`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`lang`](../../rSuiteComponents/interfaces/RsImageProps.md#lang)
 
 ***
 
 ### lineWidth?
 
-> `optional` **lineWidth**: `number`
+> `optional` **lineWidth?**: `number`
 
 The line width.
 
@@ -1187,17 +1187,17 @@ The line width.
 
 ### nonce?
 
-> `optional` **nonce**: `string`
+> `optional` **nonce?**: `string`
 
 #### Inherited from
 
-`Omit.nonce`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`nonce`](../../rSuiteComponents/interfaces/RsImageProps.md#nonce)
 
 ***
 
 ### onAbort?
 
-> `optional` **onAbort**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onAbort?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1207,7 +1207,7 @@ The line width.
 
 ### onAbortCapture?
 
-> `optional` **onAbortCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onAbortCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1217,7 +1217,7 @@ The line width.
 
 ### onAnimationEnd?
 
-> `optional` **onAnimationEnd**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onAnimationEnd?**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1227,7 +1227,7 @@ The line width.
 
 ### onAnimationEndCapture?
 
-> `optional` **onAnimationEndCapture**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onAnimationEndCapture?**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1237,7 +1237,7 @@ The line width.
 
 ### onAnimationIteration?
 
-> `optional` **onAnimationIteration**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onAnimationIteration?**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1247,7 +1247,7 @@ The line width.
 
 ### onAnimationIterationCapture?
 
-> `optional` **onAnimationIterationCapture**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onAnimationIterationCapture?**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1257,7 +1257,7 @@ The line width.
 
 ### onAnimationStart?
 
-> `optional` **onAnimationStart**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onAnimationStart?**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1267,7 +1267,7 @@ The line width.
 
 ### onAnimationStartCapture?
 
-> `optional` **onAnimationStartCapture**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onAnimationStartCapture?**: `AnimationEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1277,7 +1277,7 @@ The line width.
 
 ### onAuxClick?
 
-> `optional` **onAuxClick**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onAuxClick?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1287,7 +1287,7 @@ The line width.
 
 ### onAuxClickCapture?
 
-> `optional` **onAuxClickCapture**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onAuxClickCapture?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1297,7 +1297,7 @@ The line width.
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onBeforeInput?**: `InputEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1307,7 +1307,7 @@ The line width.
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1317,7 +1317,7 @@ The line width.
 
 ### onBeforeToggle?
 
-> `optional` **onBeforeToggle**: `ToggleEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onBeforeToggle?**: `ToggleEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1327,7 +1327,7 @@ The line width.
 
 ### onBlur?
 
-> `optional` **onBlur**: `FocusEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onBlur?**: `FocusEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1337,7 +1337,7 @@ The line width.
 
 ### onBlurCapture?
 
-> `optional` **onBlurCapture**: `FocusEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onBlurCapture?**: `FocusEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1347,7 +1347,7 @@ The line width.
 
 ### onCanPlay?
 
-> `optional` **onCanPlay**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCanPlay?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1357,7 +1357,7 @@ The line width.
 
 ### onCanPlayCapture?
 
-> `optional` **onCanPlayCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCanPlayCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1367,7 +1367,7 @@ The line width.
 
 ### onCanPlayThrough?
 
-> `optional` **onCanPlayThrough**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCanPlayThrough?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1377,7 +1377,7 @@ The line width.
 
 ### onCanPlayThroughCapture?
 
-> `optional` **onCanPlayThroughCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCanPlayThroughCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1385,9 +1385,9 @@ The line width.
 
 ***
 
-### onChange()?
+### onChange?
 
-> `optional` **onChange**: (`value?`) => `void`
+> `optional` **onChange?**: (`value?`) => `void`
 
 Triggered after stroke update.
 
@@ -1405,7 +1405,7 @@ Triggered after stroke update.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1415,7 +1415,7 @@ Triggered after stroke update.
 
 ### onClick?
 
-> `optional` **onClick**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onClick?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1425,7 +1425,7 @@ Triggered after stroke update.
 
 ### onClickCapture?
 
-> `optional` **onClickCapture**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onClickCapture?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1435,7 +1435,7 @@ Triggered after stroke update.
 
 ### onCompositionEnd?
 
-> `optional` **onCompositionEnd**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCompositionEnd?**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1445,7 +1445,7 @@ Triggered after stroke update.
 
 ### onCompositionEndCapture?
 
-> `optional` **onCompositionEndCapture**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCompositionEndCapture?**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1455,7 +1455,7 @@ Triggered after stroke update.
 
 ### onCompositionStart?
 
-> `optional` **onCompositionStart**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCompositionStart?**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1465,7 +1465,7 @@ Triggered after stroke update.
 
 ### onCompositionStartCapture?
 
-> `optional` **onCompositionStartCapture**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCompositionStartCapture?**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1475,7 +1475,7 @@ Triggered after stroke update.
 
 ### onCompositionUpdate?
 
-> `optional` **onCompositionUpdate**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCompositionUpdate?**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1485,7 +1485,7 @@ Triggered after stroke update.
 
 ### onCompositionUpdateCapture?
 
-> `optional` **onCompositionUpdateCapture**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCompositionUpdateCapture?**: `CompositionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1495,7 +1495,7 @@ Triggered after stroke update.
 
 ### onContextMenu?
 
-> `optional` **onContextMenu**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onContextMenu?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1505,7 +1505,7 @@ Triggered after stroke update.
 
 ### onContextMenuCapture?
 
-> `optional` **onContextMenuCapture**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onContextMenuCapture?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1515,7 +1515,7 @@ Triggered after stroke update.
 
 ### onCopy?
 
-> `optional` **onCopy**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCopy?**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1525,7 +1525,7 @@ Triggered after stroke update.
 
 ### onCopyCapture?
 
-> `optional` **onCopyCapture**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCopyCapture?**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1535,7 +1535,7 @@ Triggered after stroke update.
 
 ### onCut?
 
-> `optional` **onCut**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCut?**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1545,7 +1545,7 @@ Triggered after stroke update.
 
 ### onCutCapture?
 
-> `optional` **onCutCapture**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onCutCapture?**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1555,7 +1555,7 @@ Triggered after stroke update.
 
 ### onDoubleClick?
 
-> `optional` **onDoubleClick**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDoubleClick?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1565,7 +1565,7 @@ Triggered after stroke update.
 
 ### onDoubleClickCapture?
 
-> `optional` **onDoubleClickCapture**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDoubleClickCapture?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1575,7 +1575,7 @@ Triggered after stroke update.
 
 ### onDrag?
 
-> `optional` **onDrag**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDrag?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1585,7 +1585,7 @@ Triggered after stroke update.
 
 ### onDragCapture?
 
-> `optional` **onDragCapture**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragCapture?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1595,7 +1595,7 @@ Triggered after stroke update.
 
 ### onDragEnd?
 
-> `optional` **onDragEnd**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragEnd?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1605,7 +1605,7 @@ Triggered after stroke update.
 
 ### onDragEndCapture?
 
-> `optional` **onDragEndCapture**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragEndCapture?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1615,7 +1615,7 @@ Triggered after stroke update.
 
 ### onDragEnter?
 
-> `optional` **onDragEnter**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragEnter?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1625,7 +1625,7 @@ Triggered after stroke update.
 
 ### onDragEnterCapture?
 
-> `optional` **onDragEnterCapture**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragEnterCapture?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1635,7 +1635,7 @@ Triggered after stroke update.
 
 ### onDragExit?
 
-> `optional` **onDragExit**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragExit?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1645,7 +1645,7 @@ Triggered after stroke update.
 
 ### onDragExitCapture?
 
-> `optional` **onDragExitCapture**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragExitCapture?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1655,7 +1655,7 @@ Triggered after stroke update.
 
 ### onDragLeave?
 
-> `optional` **onDragLeave**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragLeave?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1665,7 +1665,7 @@ Triggered after stroke update.
 
 ### onDragLeaveCapture?
 
-> `optional` **onDragLeaveCapture**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragLeaveCapture?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1675,7 +1675,7 @@ Triggered after stroke update.
 
 ### onDragOver?
 
-> `optional` **onDragOver**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragOver?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1685,7 +1685,7 @@ Triggered after stroke update.
 
 ### onDragOverCapture?
 
-> `optional` **onDragOverCapture**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragOverCapture?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1695,7 +1695,7 @@ Triggered after stroke update.
 
 ### onDragStart?
 
-> `optional` **onDragStart**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragStart?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1705,7 +1705,7 @@ Triggered after stroke update.
 
 ### onDragStartCapture?
 
-> `optional` **onDragStartCapture**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDragStartCapture?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1715,7 +1715,7 @@ Triggered after stroke update.
 
 ### onDrop?
 
-> `optional` **onDrop**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDrop?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1725,7 +1725,7 @@ Triggered after stroke update.
 
 ### onDropCapture?
 
-> `optional` **onDropCapture**: `DragEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDropCapture?**: `DragEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1735,7 +1735,7 @@ Triggered after stroke update.
 
 ### onDurationChange?
 
-> `optional` **onDurationChange**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDurationChange?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1745,7 +1745,7 @@ Triggered after stroke update.
 
 ### onDurationChangeCapture?
 
-> `optional` **onDurationChangeCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onDurationChangeCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1755,7 +1755,7 @@ Triggered after stroke update.
 
 ### onEmptied?
 
-> `optional` **onEmptied**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onEmptied?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1765,7 +1765,7 @@ Triggered after stroke update.
 
 ### onEmptiedCapture?
 
-> `optional` **onEmptiedCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onEmptiedCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1775,7 +1775,7 @@ Triggered after stroke update.
 
 ### onEncrypted?
 
-> `optional` **onEncrypted**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onEncrypted?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1785,7 +1785,7 @@ Triggered after stroke update.
 
 ### onEncryptedCapture?
 
-> `optional` **onEncryptedCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onEncryptedCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1795,7 +1795,7 @@ Triggered after stroke update.
 
 ### onEnded?
 
-> `optional` **onEnded**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onEnded?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1805,7 +1805,7 @@ Triggered after stroke update.
 
 ### onEndedCapture?
 
-> `optional` **onEndedCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onEndedCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1815,7 +1815,7 @@ Triggered after stroke update.
 
 ### onError?
 
-> `optional` **onError**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onError?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1825,7 +1825,7 @@ Triggered after stroke update.
 
 ### onErrorCapture?
 
-> `optional` **onErrorCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onErrorCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1835,7 +1835,7 @@ Triggered after stroke update.
 
 ### onFocus?
 
-> `optional` **onFocus**: `FocusEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onFocus?**: `FocusEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1845,7 +1845,7 @@ Triggered after stroke update.
 
 ### onFocusCapture?
 
-> `optional` **onFocusCapture**: `FocusEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onFocusCapture?**: `FocusEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1855,7 +1855,7 @@ Triggered after stroke update.
 
 ### onGotPointerCapture?
 
-> `optional` **onGotPointerCapture**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onGotPointerCapture?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1865,7 +1865,7 @@ Triggered after stroke update.
 
 ### onGotPointerCaptureCapture?
 
-> `optional` **onGotPointerCaptureCapture**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onGotPointerCaptureCapture?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1875,7 +1875,7 @@ Triggered after stroke update.
 
 ### onInput?
 
-> `optional` **onInput**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onInput?**: `FormEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1885,7 +1885,7 @@ Triggered after stroke update.
 
 ### onInputCapture?
 
-> `optional` **onInputCapture**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1895,7 +1895,7 @@ Triggered after stroke update.
 
 ### onInvalid?
 
-> `optional` **onInvalid**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1905,7 +1905,7 @@ Triggered after stroke update.
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1915,7 +1915,7 @@ Triggered after stroke update.
 
 ### onKeyDown?
 
-> `optional` **onKeyDown**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onKeyDown?**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1925,7 +1925,7 @@ Triggered after stroke update.
 
 ### onKeyDownCapture?
 
-> `optional` **onKeyDownCapture**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onKeyDownCapture?**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1935,7 +1935,7 @@ Triggered after stroke update.
 
 ### ~~onKeyPress?~~
 
-> `optional` **onKeyPress**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onKeyPress?**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Deprecated
 
@@ -1949,7 +1949,7 @@ Use `onKeyUp` or `onKeyDown` instead
 
 ### ~~onKeyPressCapture?~~
 
-> `optional` **onKeyPressCapture**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onKeyPressCapture?**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Deprecated
 
@@ -1963,7 +1963,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onKeyUp?
 
-> `optional` **onKeyUp**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onKeyUp?**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1973,7 +1973,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onKeyUpCapture?
 
-> `optional` **onKeyUpCapture**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onKeyUpCapture?**: `KeyboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1983,7 +1983,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoad?
 
-> `optional` **onLoad**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onLoad?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1993,7 +1993,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadCapture?
 
-> `optional` **onLoadCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onLoadCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2003,7 +2003,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedData?
 
-> `optional` **onLoadedData**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onLoadedData?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2013,7 +2013,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedDataCapture?
 
-> `optional` **onLoadedDataCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onLoadedDataCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2023,7 +2023,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedMetadata?
 
-> `optional` **onLoadedMetadata**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onLoadedMetadata?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2033,7 +2033,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadedMetadataCapture?
 
-> `optional` **onLoadedMetadataCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onLoadedMetadataCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2043,7 +2043,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadStart?
 
-> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onLoadStart?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2053,7 +2053,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLoadStartCapture?
 
-> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onLoadStartCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2063,7 +2063,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLostPointerCapture?
 
-> `optional` **onLostPointerCapture**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onLostPointerCapture?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2073,7 +2073,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onLostPointerCaptureCapture?
 
-> `optional` **onLostPointerCaptureCapture**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onLostPointerCaptureCapture?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2083,7 +2083,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseDown?
 
-> `optional` **onMouseDown**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseDown?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2093,7 +2093,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseDownCapture?
 
-> `optional` **onMouseDownCapture**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseDownCapture?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2103,7 +2103,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseEnter?
 
-> `optional` **onMouseEnter**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseEnter?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2113,7 +2113,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseLeave?
 
-> `optional` **onMouseLeave**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseLeave?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2123,7 +2123,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseMove?
 
-> `optional` **onMouseMove**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseMove?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2133,7 +2133,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseMoveCapture?
 
-> `optional` **onMouseMoveCapture**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseMoveCapture?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2143,7 +2143,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOut?
 
-> `optional` **onMouseOut**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseOut?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2153,7 +2153,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOutCapture?
 
-> `optional` **onMouseOutCapture**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseOutCapture?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2163,7 +2163,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOver?
 
-> `optional` **onMouseOver**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseOver?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2173,7 +2173,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseOverCapture?
 
-> `optional` **onMouseOverCapture**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseOverCapture?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2183,7 +2183,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseUp?
 
-> `optional` **onMouseUp**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseUp?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2193,7 +2193,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onMouseUpCapture?
 
-> `optional` **onMouseUpCapture**: `MouseEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onMouseUpCapture?**: `MouseEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2203,7 +2203,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPaste?
 
-> `optional` **onPaste**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPaste?**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2213,7 +2213,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPasteCapture?
 
-> `optional` **onPasteCapture**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPasteCapture?**: `ClipboardEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2223,7 +2223,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPause?
 
-> `optional` **onPause**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPause?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2233,7 +2233,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPauseCapture?
 
-> `optional` **onPauseCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPauseCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2243,7 +2243,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlay?
 
-> `optional` **onPlay**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPlay?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2253,7 +2253,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlayCapture?
 
-> `optional` **onPlayCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPlayCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2263,7 +2263,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlaying?
 
-> `optional` **onPlaying**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPlaying?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2273,7 +2273,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPlayingCapture?
 
-> `optional` **onPlayingCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPlayingCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2283,7 +2283,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerCancel?
 
-> `optional` **onPointerCancel**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerCancel?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2293,7 +2293,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerCancelCapture?
 
-> `optional` **onPointerCancelCapture**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerCancelCapture?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2303,7 +2303,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerDown?
 
-> `optional` **onPointerDown**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerDown?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2313,7 +2313,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerDownCapture?
 
-> `optional` **onPointerDownCapture**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerDownCapture?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2323,7 +2323,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerEnter?
 
-> `optional` **onPointerEnter**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerEnter?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2333,7 +2333,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerLeave?
 
-> `optional` **onPointerLeave**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerLeave?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2343,7 +2343,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerMove?
 
-> `optional` **onPointerMove**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerMove?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2353,7 +2353,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerMoveCapture?
 
-> `optional` **onPointerMoveCapture**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerMoveCapture?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2363,7 +2363,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOut?
 
-> `optional` **onPointerOut**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerOut?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2373,7 +2373,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOutCapture?
 
-> `optional` **onPointerOutCapture**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerOutCapture?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2383,7 +2383,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOver?
 
-> `optional` **onPointerOver**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerOver?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2393,7 +2393,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerOverCapture?
 
-> `optional` **onPointerOverCapture**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerOverCapture?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2403,7 +2403,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerUp?
 
-> `optional` **onPointerUp**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerUp?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2413,7 +2413,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onPointerUpCapture?
 
-> `optional` **onPointerUpCapture**: `PointerEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onPointerUpCapture?**: `PointerEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2423,7 +2423,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onProgress?
 
-> `optional` **onProgress**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onProgress?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2433,7 +2433,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onProgressCapture?
 
-> `optional` **onProgressCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onProgressCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2443,7 +2443,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onRateChange?
 
-> `optional` **onRateChange**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onRateChange?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2453,7 +2453,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onRateChangeCapture?
 
-> `optional` **onRateChangeCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onRateChangeCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2463,7 +2463,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onReset?
 
-> `optional` **onReset**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onReset?**: `FormEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2473,7 +2473,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onResetCapture?
 
-> `optional` **onResetCapture**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2483,7 +2483,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onScroll?
 
-> `optional` **onScroll**: `UIEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onScroll?**: `UIEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2493,7 +2493,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onScrollCapture?
 
-> `optional` **onScrollCapture**: `UIEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onScrollCapture?**: `UIEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2503,7 +2503,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onScrollEnd?
 
-> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onScrollEnd?**: `UIEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2513,7 +2513,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onScrollEndCapture?
 
-> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onScrollEndCapture?**: `UIEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2523,7 +2523,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSeeked?
 
-> `optional` **onSeeked**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSeeked?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2533,7 +2533,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSeekedCapture?
 
-> `optional` **onSeekedCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSeekedCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2543,7 +2543,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSeeking?
 
-> `optional` **onSeeking**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSeeking?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2553,7 +2553,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSeekingCapture?
 
-> `optional` **onSeekingCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSeekingCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2563,7 +2563,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSelect?
 
-> `optional` **onSelect**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSelect?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2573,7 +2573,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSelectCapture?
 
-> `optional` **onSelectCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSelectCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2583,7 +2583,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onStalled?
 
-> `optional` **onStalled**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onStalled?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2593,7 +2593,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onStalledCapture?
 
-> `optional` **onStalledCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onStalledCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2603,7 +2603,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmit?
 
-> `optional` **onSubmit**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2613,7 +2613,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2623,7 +2623,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSuspend?
 
-> `optional` **onSuspend**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSuspend?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2633,7 +2633,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSuspendCapture?
 
-> `optional` **onSuspendCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSuspendCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2643,7 +2643,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTimeUpdate?
 
-> `optional` **onTimeUpdate**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTimeUpdate?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2653,7 +2653,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTimeUpdateCapture?
 
-> `optional` **onTimeUpdateCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTimeUpdateCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2663,7 +2663,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onToggle?
 
-> `optional` **onToggle**: `ToggleEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onToggle?**: `ToggleEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2673,7 +2673,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchCancel?
 
-> `optional` **onTouchCancel**: `TouchEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTouchCancel?**: `TouchEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2683,7 +2683,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchCancelCapture?
 
-> `optional` **onTouchCancelCapture**: `TouchEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTouchCancelCapture?**: `TouchEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2693,7 +2693,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchEnd?
 
-> `optional` **onTouchEnd**: `TouchEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTouchEnd?**: `TouchEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2703,7 +2703,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchEndCapture?
 
-> `optional` **onTouchEndCapture**: `TouchEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTouchEndCapture?**: `TouchEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2713,7 +2713,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchMove?
 
-> `optional` **onTouchMove**: `TouchEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTouchMove?**: `TouchEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2723,7 +2723,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchMoveCapture?
 
-> `optional` **onTouchMoveCapture**: `TouchEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTouchMoveCapture?**: `TouchEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2733,7 +2733,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchStart?
 
-> `optional` **onTouchStart**: `TouchEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTouchStart?**: `TouchEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2743,7 +2743,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTouchStartCapture?
 
-> `optional` **onTouchStartCapture**: `TouchEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTouchStartCapture?**: `TouchEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2753,7 +2753,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionCancel?
 
-> `optional` **onTransitionCancel**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTransitionCancel?**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2763,7 +2763,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionCancelCapture?
 
-> `optional` **onTransitionCancelCapture**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTransitionCancelCapture?**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2773,7 +2773,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionEnd?
 
-> `optional` **onTransitionEnd**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTransitionEnd?**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2783,7 +2783,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionEndCapture?
 
-> `optional` **onTransitionEndCapture**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTransitionEndCapture?**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2793,7 +2793,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionRun?
 
-> `optional` **onTransitionRun**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTransitionRun?**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2803,7 +2803,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionRunCapture?
 
-> `optional` **onTransitionRunCapture**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTransitionRunCapture?**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2813,7 +2813,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionStart?
 
-> `optional` **onTransitionStart**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTransitionStart?**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2823,7 +2823,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTransitionStartCapture?
 
-> `optional` **onTransitionStartCapture**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onTransitionStartCapture?**: `TransitionEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2833,7 +2833,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onVolumeChange?
 
-> `optional` **onVolumeChange**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onVolumeChange?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2843,7 +2843,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onVolumeChangeCapture?
 
-> `optional` **onVolumeChangeCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onVolumeChangeCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2853,7 +2853,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onWaiting?
 
-> `optional` **onWaiting**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onWaiting?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2863,7 +2863,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onWaitingCapture?
 
-> `optional` **onWaitingCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onWaitingCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2873,7 +2873,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onWheel?
 
-> `optional` **onWheel**: `WheelEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onWheel?**: `WheelEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2883,7 +2883,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onWheelCapture?
 
-> `optional` **onWheelCapture**: `WheelEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onWheelCapture?**: `WheelEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2893,7 +2893,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### part?
 
-> `optional` **part**: `string`
+> `optional` **part?**: `string`
 
 #### See
 
@@ -2901,13 +2901,13 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 #### Inherited from
 
-`Omit.part`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`part`](../../rSuiteComponents/interfaces/RsImageProps.md#part)
 
 ***
 
 ### penColor?
 
-> `optional` **penColor**: `Fill`
+> `optional` **penColor?**: `Fill`
 
 The pen color.
 
@@ -2915,67 +2915,67 @@ The pen color.
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
+> `optional` **popover?**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
 
 #### Inherited from
 
-`Omit.popover`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`popover`](../../rSuiteComponents/interfaces/RsImageProps.md#popover)
 
 ***
 
 ### popoverTarget?
 
-> `optional` **popoverTarget**: `string`
+> `optional` **popoverTarget?**: `string`
 
 #### Inherited from
 
-`Omit.popoverTarget`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`popoverTarget`](../../rSuiteComponents/interfaces/RsImageProps.md#popovertarget)
 
 ***
 
 ### popoverTargetAction?
 
-> `optional` **popoverTargetAction**: `"hide"` \| `"show"` \| `"toggle"`
+> `optional` **popoverTargetAction?**: `"hide"` \| `"show"` \| `"toggle"`
 
 #### Inherited from
 
-`Omit.popoverTargetAction`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`popoverTargetAction`](../../rSuiteComponents/interfaces/RsImageProps.md#popovertargetaction)
 
 ***
 
 ### prefix?
 
-> `optional` **prefix**: `string`
+> `optional` **prefix?**: `string`
 
 #### Inherited from
 
-`Omit.prefix`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`prefix`](../../rSuiteComponents/interfaces/RsImageProps.md#prefix)
 
 ***
 
 ### property?
 
-> `optional` **property**: `string`
+> `optional` **property?**: `string`
 
 #### Inherited from
 
-`Omit.property`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`property`](../../rSuiteComponents/interfaces/RsImageProps.md#property)
 
 ***
 
 ### radioGroup?
 
-> `optional` **radioGroup**: `string`
+> `optional` **radioGroup?**: `string`
 
 #### Inherited from
 
-`Omit.radioGroup`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`radioGroup`](../../rSuiteComponents/interfaces/RsImageProps.md#radiogroup)
 
 ***
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 Flag, if true - the component is running in read-only mode.
 
@@ -2983,167 +2983,167 @@ Flag, if true - the component is running in read-only mode.
 
 ### rel?
 
-> `optional` **rel**: `string`
+> `optional` **rel?**: `string`
 
 #### Inherited from
 
-`Omit.rel`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`rel`](../../rSuiteComponents/interfaces/RsImageProps.md#rel)
 
 ***
 
 ### resource?
 
-> `optional` **resource**: `string`
+> `optional` **resource?**: `string`
 
 #### Inherited from
 
-`Omit.resource`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`resource`](../../rSuiteComponents/interfaces/RsImageProps.md#resource)
 
 ***
 
 ### results?
 
-> `optional` **results**: `number`
+> `optional` **results?**: `number`
 
 #### Inherited from
 
-`Omit.results`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`results`](../../rSuiteComponents/interfaces/RsImageProps.md#results)
 
 ***
 
 ### rev?
 
-> `optional` **rev**: `string`
+> `optional` **rev?**: `string`
 
 #### Inherited from
 
-`Omit.rev`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`rev`](../../rSuiteComponents/interfaces/RsImageProps.md#rev)
 
 ***
 
 ### role?
 
-> `optional` **role**: `AriaRole`
+> `optional` **role?**: `AriaRole`
 
 #### Inherited from
 
-`Omit.role`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`role`](../../rSuiteComponents/interfaces/RsImageProps.md#role)
 
 ***
 
 ### security?
 
-> `optional` **security**: `string`
+> `optional` **security?**: `string`
 
 #### Inherited from
 
-`Omit.security`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`security`](../../rSuiteComponents/interfaces/RsImageProps.md#security)
 
 ***
 
 ### slot?
 
-> `optional` **slot**: `string`
+> `optional` **slot?**: `string`
 
 #### Inherited from
 
-`Omit.slot`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`slot`](../../rSuiteComponents/interfaces/RsImageProps.md#slot)
 
 ***
 
 ### spellCheck?
 
-> `optional` **spellCheck**: `Booleanish`
+> `optional` **spellCheck?**: `Booleanish`
 
 #### Inherited from
 
-`Omit.spellCheck`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`spellCheck`](../../rSuiteComponents/interfaces/RsImageProps.md#spellcheck)
 
 ***
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 #### Inherited from
 
-`Omit.style`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`style`](../../rSuiteComponents/interfaces/RsImageProps.md#style)
 
 ***
 
 ### suppressContentEditableWarning?
 
-> `optional` **suppressContentEditableWarning**: `boolean`
+> `optional` **suppressContentEditableWarning?**: `boolean`
 
 #### Inherited from
 
-`Omit.suppressContentEditableWarning`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`suppressContentEditableWarning`](../../rSuiteComponents/interfaces/RsImageProps.md#suppresscontenteditablewarning)
 
 ***
 
 ### suppressHydrationWarning?
 
-> `optional` **suppressHydrationWarning**: `boolean`
+> `optional` **suppressHydrationWarning?**: `boolean`
 
 #### Inherited from
 
-`Omit.suppressHydrationWarning`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`suppressHydrationWarning`](../../rSuiteComponents/interfaces/RsImageProps.md#suppresshydrationwarning)
 
 ***
 
 ### tabIndex?
 
-> `optional` **tabIndex**: `number`
+> `optional` **tabIndex?**: `number`
 
 #### Inherited from
 
-`Omit.tabIndex`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`tabIndex`](../../rSuiteComponents/interfaces/RsImageProps.md#tabindex)
 
 ***
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 #### Inherited from
 
-`Omit.title`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`title`](../../rSuiteComponents/interfaces/RsImageProps.md#title)
 
 ***
 
 ### translate?
 
-> `optional` **translate**: `"no"` \| `"yes"`
+> `optional` **translate?**: `"no"` \| `"yes"`
 
 #### Inherited from
 
-`Omit.translate`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`translate`](../../rSuiteComponents/interfaces/RsImageProps.md#translate)
 
 ***
 
 ### typeof?
 
-> `optional` **typeof**: `string`
+> `optional` **typeof?**: `string`
 
 #### Inherited from
 
-`Omit.typeof`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`typeof`](../../rSuiteComponents/interfaces/RsImageProps.md#typeof)
 
 ***
 
 ### unselectable?
 
-> `optional` **unselectable**: `"off"` \| `"on"`
+> `optional` **unselectable?**: `"off"` \| `"on"`
 
 #### Inherited from
 
-`Omit.unselectable`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`unselectable`](../../rSuiteComponents/interfaces/RsImageProps.md#unselectable)
 
 ***
 
 ### value?
 
-> `optional` **value**: `string`
+> `optional` **value?**: `string`
 
 The initial data URL for drawing the signature image.
 
@@ -3151,17 +3151,17 @@ The initial data URL for drawing the signature image.
 
 ### vocab?
 
-> `optional` **vocab**: `string`
+> `optional` **vocab?**: `string`
 
 #### Inherited from
 
-`Omit.vocab`
+[`RsImageProps`](../../rSuiteComponents/interfaces/RsImageProps.md).[`vocab`](../../rSuiteComponents/interfaces/RsImageProps.md#vocab)
 
 ***
 
 ### width?
 
-> `optional` **width**: `number`
+> `optional` **width?**: `number`
 
 The canvas width.
 

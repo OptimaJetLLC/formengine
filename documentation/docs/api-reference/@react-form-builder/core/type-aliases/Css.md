@@ -8,7 +8,7 @@ The type for the CSS property of a React component.
 
 ### any?
 
-> `optional` **any**: [`DeviceStyle`](DeviceStyle.md)
+> `optional` **any?**: [`DeviceStyle`](DeviceStyle.md)
 
 CSS styles for arbitrary device.
 
@@ -16,7 +16,7 @@ CSS styles for arbitrary device.
 
 ### desktop?
 
-> `optional` **desktop**: [`DeviceStyle`](DeviceStyle.md)
+> `optional` **desktop?**: [`DeviceStyle`](DeviceStyle.md)
 
 CSS styles for desktop devices.
 
@@ -24,7 +24,7 @@ CSS styles for desktop devices.
 
 ### mobile?
 
-> `optional` **mobile**: [`DeviceStyle`](DeviceStyle.md)
+> `optional` **mobile?**: [`DeviceStyle`](DeviceStyle.md)
 
 CSS styles for mobile devices.
 
@@ -32,6 +32,6 @@ CSS styles for mobile devices.
 
 ### tablet?
 
-> `optional` **tablet**: [`DeviceStyle`](DeviceStyle.md)
+> `optional` **tablet?**: [`DeviceStyle`](DeviceStyle.md)
 
 CSS styles for tablet devices.

@@ -4,7 +4,7 @@ Represents all the metadata of the form viewer components.
 
 ## Properties
 
-### all()
+### all
 
 > **all**: () => [`Model`](../classes/Model.md)\<`any`\>[]
 
@@ -16,7 +16,7 @@ all component metadata for the form viewer.
 
 ***
 
-### define()
+### define
 
 > **define**: (`model`) => `void`
 
@@ -36,7 +36,7 @@ the component's metadata.
 
 ***
 
-### filterModels()
+### filterModels
 
 > **filterModels**: (`predicate`) => [`Model`](../classes/Model.md)\<`any`\>[]
 
@@ -58,7 +58,7 @@ the array of component metadata filtered using the predicate function.
 
 ***
 
-### find()
+### find
 
 > **find**: (`type`) => [`Model`](../classes/Model.md)\<`any`\> \| `undefined`
 
@@ -80,7 +80,7 @@ the component metadata for the form viewer for the specified type or undefined.
 
 ***
 
-### get()
+### get
 
 > **get**: (`type`) => [`Model`](../classes/Model.md)
 
@@ -102,7 +102,7 @@ the component metadata for the form viewer for the specified type.
 
 ***
 
-### getCssLoaders()
+### getCssLoaders
 
 > **getCssLoaders**: (`biDi`) => [`CssLoaderFunction`](../type-aliases/CssLoaderFunction.md)[]
 
@@ -136,7 +136,7 @@ the viewer wrappers array.
 
 ***
 
-### withCssLoader()
+### withCssLoader
 
 > **withCssLoader**: (`cssLoaderType`, `loader`) => `this`
 
@@ -165,7 +165,7 @@ the [View](../classes/View.md) instance.
 
 ***
 
-### withViewerWrapper()
+### withViewerWrapper
 
 > **withViewerWrapper**: (`wrapper`) => `this`
 

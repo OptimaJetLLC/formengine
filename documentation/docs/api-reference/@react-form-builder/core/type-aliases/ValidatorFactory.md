@@ -1,4 +1,4 @@
-# Type Alias: ValidatorFactory()\<Params\>
+# Type Alias: ValidatorFactory\<Params\>
 
 > **ValidatorFactory**\<`Params`\> = (`args`) => [`RuleValidator`](RuleValidator.md)
 

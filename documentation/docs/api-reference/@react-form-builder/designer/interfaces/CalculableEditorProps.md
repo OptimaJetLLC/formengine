@@ -8,7 +8,7 @@ Represents the props used to edit a calculable property.
 
 ## Properties
 
-### disableCompute()
+### disableCompute
 
 > **disableCompute**: () => `void`
 
@@ -20,7 +20,7 @@ Disables the ability to make the property computable.
 
 ***
 
-### getComputeCode()
+### getComputeCode
 
 > **getComputeCode**: \<`T`\>(`type`, `params?`) => `string`
 
@@ -56,7 +56,7 @@ the code of the computed property.
 
 ***
 
-### getComputeType()
+### getComputeType
 
 > **getComputeType**: () => [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md) \| `undefined`
 
@@ -68,7 +68,7 @@ Returns the type of calculation for the property.
 
 ***
 
-### hasComputeCode()
+### hasComputeCode
 
 > **hasComputeCode**: (`type`) => `boolean`
 
@@ -90,7 +90,7 @@ true if the property has a compute code for the specified type, false otherwise.
 
 ***
 
-### setComputeCode()
+### setComputeCode
 
 > **setComputeCode**: \<`T`\>(`value`, `type`, `params?`) => `void`
 

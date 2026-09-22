@@ -1,4 +1,4 @@
-# Variable: useViewerProps()
+# Variable: useViewerProps
 
 > **useViewerProps**: () => `T`
 

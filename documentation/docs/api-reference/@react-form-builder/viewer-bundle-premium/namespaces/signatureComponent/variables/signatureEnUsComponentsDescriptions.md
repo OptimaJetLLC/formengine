@@ -2,7 +2,7 @@
 
 > **signatureEnUsComponentsDescriptions**: `object`
 
-## Type declaration
+## Type Declaration
 
 ### categories
 
@@ -10,11 +10,11 @@
 
 #### categories.fields
 
-> **categories.fields**: `object`
+> **fields**: `object`
 
 #### categories.fields.name
 
-> **categories.fields.name**: `string` = `"Fields"`
+> **name**: `string` = `"Fields"`
 
 ### components
 
@@ -22,124 +22,124 @@
 
 #### components.RsSignature
 
-> **components.RsSignature**: `object`
+> **RsSignature**: `object`
 
 #### components.RsSignature.description
 
-> **components.RsSignature.description**: `string` = `"HTML5 canvas based smooth signature drawing"`
+> **description**: `string` = `"HTML5 canvas based smooth signature drawing"`
 
 #### components.RsSignature.name
 
-> **components.RsSignature.name**: `string` = `"Signature"`
+> **name**: `string` = `"Signature"`
 
 #### components.RsSignature.props
 
-> **components.RsSignature.props**: `object`
+> **props**: `object`
 
 #### components.RsSignature.props.backgroundColor
 
-> **components.RsSignature.props.backgroundColor**: `object`
+> **backgroundColor**: `object`
 
 #### components.RsSignature.props.backgroundColor.description
 
-> **components.RsSignature.props.backgroundColor.description**: `string` = `"The background color"`
+> **description**: `string` = `"The background color"`
 
 #### components.RsSignature.props.backgroundColor.name
 
-> **components.RsSignature.props.backgroundColor.name**: `string` = `"Background color"`
+> **name**: `string` = `"Background color"`
 
 #### components.RsSignature.props.clearButtonText
 
-> **components.RsSignature.props.clearButtonText**: `object`
+> **clearButtonText**: `object`
 
 #### components.RsSignature.props.clearButtonText.description
 
-> **components.RsSignature.props.clearButtonText.description**: `string` = `"Clear button label"`
+> **description**: `string` = `"Clear button label"`
 
 #### components.RsSignature.props.clearButtonText.name
 
-> **components.RsSignature.props.clearButtonText.name**: `string` = `"Clear button text"`
+> **name**: `string` = `"Clear button text"`
 
 #### components.RsSignature.props.height
 
-> **components.RsSignature.props.height**: `object`
+> **height**: `object`
 
 #### components.RsSignature.props.height.description
 
-> **components.RsSignature.props.height.description**: `string` = `"The canvas height"`
+> **description**: `string` = `"The canvas height"`
 
 #### components.RsSignature.props.height.name
 
-> **components.RsSignature.props.height.name**: `string` = `"Height"`
+> **name**: `string` = `"Height"`
 
 #### components.RsSignature.props.label
 
-> **components.RsSignature.props.label**: `object`
+> **label**: `object`
 
 #### components.RsSignature.props.label.description
 
-> **components.RsSignature.props.label.description**: `string` = `"The label for the component"`
+> **description**: `string` = `"The label for the component"`
 
 #### components.RsSignature.props.label.name
 
-> **components.RsSignature.props.label.name**: `string` = `"Label"`
+> **name**: `string` = `"Label"`
 
 #### components.RsSignature.props.lineWidth
 
-> **components.RsSignature.props.lineWidth**: `object`
+> **lineWidth**: `object`
 
 #### components.RsSignature.props.lineWidth.description
 
-> **components.RsSignature.props.lineWidth.description**: `string` = `"The line width"`
+> **description**: `string` = `"The line width"`
 
 #### components.RsSignature.props.lineWidth.name
 
-> **components.RsSignature.props.lineWidth.name**: `string` = `"Line width"`
+> **name**: `string` = `"Line width"`
 
 #### components.RsSignature.props.penColor
 
-> **components.RsSignature.props.penColor**: `object`
+> **penColor**: `object`
 
 #### components.RsSignature.props.penColor.description
 
-> **components.RsSignature.props.penColor.description**: `string` = `"The pen color"`
+> **description**: `string` = `"The pen color"`
 
 #### components.RsSignature.props.penColor.name
 
-> **components.RsSignature.props.penColor.name**: `string` = `"Pen color"`
+> **name**: `string` = `"Pen color"`
 
 #### components.RsSignature.props.readOnly
 
-> **components.RsSignature.props.readOnly**: `object`
+> **readOnly**: `object`
 
 #### components.RsSignature.props.readOnly.description
 
-> **components.RsSignature.props.readOnly.description**: `string` = `"Read-only flag"`
+> **description**: `string` = `"Read-only flag"`
 
 #### components.RsSignature.props.readOnly.name
 
-> **components.RsSignature.props.readOnly.name**: `string` = `"Read only"`
+> **name**: `string` = `"Read only"`
 
 #### components.RsSignature.props.value
 
-> **components.RsSignature.props.value**: `object`
+> **value**: `object`
 
 #### components.RsSignature.props.value.description
 
-> **components.RsSignature.props.value.description**: `string` = `"The initial data URL for drawing the signature image"`
+> **description**: `string` = `"The initial data URL for drawing the signature image"`
 
 #### components.RsSignature.props.value.name
 
-> **components.RsSignature.props.value.name**: `string` = `"Value"`
+> **name**: `string` = `"Value"`
 
 #### components.RsSignature.props.width
 
-> **components.RsSignature.props.width**: `object`
+> **width**: `object`
 
 #### components.RsSignature.props.width.description
 
-> **components.RsSignature.props.width.description**: `string` = `"The canvas width"`
+> **description**: `string` = `"The canvas width"`
 
 #### components.RsSignature.props.width.name
 
-> **components.RsSignature.props.width.name**: `string` = `"Width"`
+> **name**: `string` = `"Width"`

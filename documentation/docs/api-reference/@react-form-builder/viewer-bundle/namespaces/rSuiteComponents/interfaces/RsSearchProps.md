@@ -10,7 +10,7 @@ Props for the RsSearch component.
 
 ### appearance?
 
-> `optional` **appearance**: `PickerAppearance`
+> `optional` **appearance?**: `PickerAppearance`
 
 A picker can have different appearances.
 
@@ -22,7 +22,7 @@ A picker can have different appearances.
 
 ### as?
 
-> `optional` **as**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **as?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
@@ -34,7 +34,7 @@ You can use a custom element for this component
 
 ### block?
 
-> `optional` **block**: `boolean`
+> `optional` **block?**: `boolean`
 
 Format picker to appear inside a content block
 
@@ -46,7 +46,7 @@ Format picker to appear inside a content block
 
 ### cacheData?
 
-> `optional` **cacheData**: `InputItemDataType`\<`any`\>[]
+> `optional` **cacheData?**: `InputItemDataType`\<`any`\>[]
 
 Option to cache value when searching asynchronously
 
@@ -58,7 +58,7 @@ Option to cache value when searching asynchronously
 
 ### caretAs?
 
-> `optional` **caretAs**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **caretAs?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 Custom caret component
 
@@ -70,7 +70,7 @@ Custom caret component
 
 ### children?
 
-> `optional` **children**: `ReactNode`
+> `optional` **children?**: `ReactNode`
 
 Primary content
 
@@ -82,7 +82,7 @@ Primary content
 
 ### childrenKey?
 
-> `optional` **childrenKey**: `string`
+> `optional` **childrenKey?**: `string`
 
 The key to use for setting the children in the data.
 
@@ -100,7 +100,7 @@ children
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 Additional classes
 
@@ -112,7 +112,7 @@ Additional classes
 
 ### classPrefix?
 
-> `optional` **classPrefix**: `string`
+> `optional` **classPrefix?**: `string`
 
 The prefix of the component CSS class
 
@@ -124,7 +124,7 @@ The prefix of the component CSS class
 
 ### cleanable?
 
-> `optional` **cleanable**: `boolean`
+> `optional` **cleanable?**: `boolean`
 
 A picker that can clear values
 
@@ -136,7 +136,7 @@ A picker that can clear values
 
 ### container?
 
-> `optional` **container**: () => `HTMLElement` \| `HTMLElement`
+> `optional` **container?**: (() => `HTMLElement`) \| `HTMLElement`
 
 Sets the rendering container
 
@@ -148,7 +148,7 @@ Sets the rendering container
 
 ### containerPadding?
 
-> `optional` **containerPadding**: `number`
+> `optional` **containerPadding?**: `number`
 
 Set the padding of the container.
 
@@ -160,13 +160,13 @@ Set the padding of the container.
 
 ### creatable?
 
-> `optional` **creatable**: `boolean`
+> `optional` **creatable?**: `boolean`
 
 Settings can create new options
 
 #### Inherited from
 
-`InputPickerProps.creatable`
+`RsSearchProps`.[`creatable`](#creatable)
 
 ***
 
@@ -184,7 +184,7 @@ The data of the component.
 
 ### defaultOpen?
 
-> `optional` **defaultOpen**: `boolean`
+> `optional` **defaultOpen?**: `boolean`
 
 Initial open menu
 
@@ -196,7 +196,7 @@ Initial open menu
 
 ### defaultValue?
 
-> `optional` **defaultValue**: `any`
+> `optional` **defaultValue?**: `any`
 
 Initial value
 
@@ -208,7 +208,7 @@ Initial value
 
 ### disabled?
 
-> `optional` **disabled**: `boolean`
+> `optional` **disabled?**: `boolean`
 
 A picker can show it is currently unable to be interacted with
 
@@ -220,7 +220,7 @@ A picker can show it is currently unable to be interacted with
 
 ### disabledItemValues?
 
-> `optional` **disabledItemValues**: `any`
+> `optional` **disabledItemValues?**: `any`
 
 Disabled items
 
@@ -232,7 +232,7 @@ Disabled items
 
 ### disableVirtualized?
 
-> `optional` **disableVirtualized**: `boolean`
+> `optional` **disableVirtualized?**: `boolean`
 
 Flag, if true, the virtualized will be disabled, false otherwise.
 
@@ -244,7 +244,7 @@ Flag, if true, the virtualized will be disabled, false otherwise.
 
 ### groupBy?
 
-> `optional` **groupBy**: `string`
+> `optional` **groupBy?**: `string`
 
 Set group condition key in data
 
@@ -256,7 +256,7 @@ Set group condition key in data
 
 ### id?
 
-> `optional` **id**: `string`
+> `optional` **id?**: `string`
 
 #### Inherited from
 
@@ -274,7 +274,7 @@ The label for the search input.
 
 ### labelKey?
 
-> `optional` **labelKey**: `string`
+> `optional` **labelKey?**: `string`
 
 The key to use for displaying the options in the data.
 
@@ -292,7 +292,7 @@ label
 
 ### listProps?
 
-> `optional` **listProps**: `Partial`\<`ListProps`\<`any`\>\>
+> `optional` **listProps?**: `Partial`\<`ListProps`\<`any`\>\>
 
 Virtualized List Props
 
@@ -304,7 +304,7 @@ Virtualized List Props
 
 ### loading?
 
-> `optional` **loading**: `boolean`
+> `optional` **loading?**: `boolean`
 
 Whether to display an loading indicator on toggle button
 
@@ -316,7 +316,7 @@ Whether to display an loading indicator on toggle button
 
 ### locale?
 
-> `optional` **locale**: `Partial`\<`InputPickerLocale`\>
+> `optional` **locale?**: `Partial`\<`InputPickerLocale`\>
 
 Custom locale
 
@@ -328,7 +328,7 @@ Custom locale
 
 ### menuAutoWidth?
 
-> `optional` **menuAutoWidth**: `boolean`
+> `optional` **menuAutoWidth?**: `boolean`
 
 Picker menu auto width
 
@@ -340,7 +340,7 @@ Picker menu auto width
 
 ### menuClassName?
 
-> `optional` **menuClassName**: `string`
+> `optional` **menuClassName?**: `string`
 
 A CSS class to apply to the Menu DOM node.
 
@@ -352,7 +352,7 @@ A CSS class to apply to the Menu DOM node.
 
 ### menuMaxHeight?
 
-> `optional` **menuMaxHeight**: `number`
+> `optional` **menuMaxHeight?**: `number`
 
 Picker menu max Height
 
@@ -364,7 +364,7 @@ Picker menu max Height
 
 ### menuStyle?
 
-> `optional` **menuStyle**: `CSSProperties`
+> `optional` **menuStyle?**: `CSSProperties`
 
 A style to apply to the Menu DOM node.
 
@@ -376,7 +376,7 @@ A style to apply to the Menu DOM node.
 
 ### name?
 
-> `optional` **name**: `string`
+> `optional` **name?**: `string`
 
 Name of the form field
 
@@ -388,19 +388,19 @@ Name of the form field
 
 ### onBlur?
 
-> `optional` **onBlur**: `FocusEventHandler`\<`Element`\>
+> `optional` **onBlur?**: `FocusEventHandler`\<`Element`\>
 
 The `onBlur` attribute for the `input` element.
 
 #### Inherited from
 
-`InputPickerProps.onBlur`
+`RsSearchProps`.[`onBlur`](#onblur)
 
 ***
 
-### onChange()?
+### onChange?
 
-> `optional` **onChange**: (`value`) => `void`
+> `optional` **onChange?**: (`value`) => `void`
 
 Called after the value has been changed.
 
@@ -422,9 +422,9 @@ the value.
 
 ***
 
-### onClean()?
+### onClean?
 
-> `optional` **onClean**: (`event`) => `void`
+> `optional` **onClean?**: (`event`) => `void`
 
 Called when clean
 
@@ -444,9 +444,9 @@ Called when clean
 
 ***
 
-### onClose()?
+### onClose?
 
-> `optional` **onClose**: () => `void`
+> `optional` **onClose?**: () => `void`
 
 Called when Modal is closed
 
@@ -460,9 +460,9 @@ Called when Modal is closed
 
 ***
 
-### onCreate()?
+### onCreate?
 
-> `optional` **onCreate**: (`value`, `item`, `event`) => `void`
+> `optional` **onCreate?**: (`value`, `item`, `event`) => `void`
 
 Called when the option is created
 
@@ -490,9 +490,9 @@ Called when the option is created
 
 ***
 
-### onEnter()?
+### onEnter?
 
-> `optional` **onEnter**: (`node`) => `void`
+> `optional` **onEnter?**: (`node`) => `void`
 
 Callback fired before the Modal transitions in
 
@@ -512,9 +512,9 @@ Callback fired before the Modal transitions in
 
 ***
 
-### onEntered()?
+### onEntered?
 
-> `optional` **onEntered**: (`node`) => `void`
+> `optional` **onEntered?**: (`node`) => `void`
 
 Callback fired after the Modal finishes transitioning in
 
@@ -534,9 +534,9 @@ Callback fired after the Modal finishes transitioning in
 
 ***
 
-### onEntering()?
+### onEntering?
 
-> `optional` **onEntering**: (`node`) => `void`
+> `optional` **onEntering?**: (`node`) => `void`
 
 Callback fired as the Modal begins to transition in
 
@@ -556,9 +556,9 @@ Callback fired as the Modal begins to transition in
 
 ***
 
-### onExit()?
+### onExit?
 
-> `optional` **onExit**: (`node`) => `void`
+> `optional` **onExit?**: (`node`) => `void`
 
 Callback fired right before the Modal transitions out
 
@@ -578,9 +578,9 @@ Callback fired right before the Modal transitions out
 
 ***
 
-### onExited()?
+### onExited?
 
-> `optional` **onExited**: (`node`) => `void`
+> `optional` **onExited?**: (`node`) => `void`
 
 Callback fired after the Modal finishes transitioning out
 
@@ -600,9 +600,9 @@ Callback fired after the Modal finishes transitioning out
 
 ***
 
-### onExiting()?
+### onExiting?
 
-> `optional` **onExiting**: (`node`) => `void`
+> `optional` **onExiting?**: (`node`) => `void`
 
 Callback fired as the Modal begins to transition out
 
@@ -624,19 +624,19 @@ Callback fired as the Modal begins to transition out
 
 ### onFocus?
 
-> `optional` **onFocus**: `FocusEventHandler`\<`Element`\>
+> `optional` **onFocus?**: `FocusEventHandler`\<`Element`\>
 
 The `onFocus` attribute for the `input` element.
 
 #### Inherited from
 
-`InputPickerProps.onFocus`
+`RsSearchProps`.[`onFocus`](#onfocus)
 
 ***
 
-### onGroupTitleClick()?
+### onGroupTitleClick?
 
-> `optional` **onGroupTitleClick**: (`event`) => `void`
+> `optional` **onGroupTitleClick?**: (`event`) => `void`
 
 Called after clicking the group title
 
@@ -658,7 +658,7 @@ Called after clicking the group title
 
 ### onLoadData?
 
-> `optional` **onLoadData**: [`LoadDataHandler`](../type-aliases/LoadDataHandler.md)
+> `optional` **onLoadData?**: [`LoadDataHandler`](../type-aliases/LoadDataHandler.md)
 
 The callback function called when data should be load.
 
@@ -668,9 +668,9 @@ The callback function called when data should be load.
 
 ***
 
-### onOpen()?
+### onOpen?
 
-> `optional` **onOpen**: () => `void`
+> `optional` **onOpen?**: () => `void`
 
 Called when Modal is displayed
 
@@ -684,9 +684,9 @@ Called when Modal is displayed
 
 ***
 
-### onSearch()?
+### onSearch?
 
-> `optional` **onSearch**: (`searchKeyword`, `event?`) => `void`
+> `optional` **onSearch?**: (`searchKeyword`, `event?`) => `void`
 
 Called when searching
 
@@ -710,9 +710,9 @@ Called when searching
 
 ***
 
-### onSelect()?
+### onSelect?
 
-> `optional` **onSelect**: (`value`, `item`, `event`) => `void`
+> `optional` **onSelect?**: (`value`, `item`, `event`) => `void`
 
 Called when the option is selected
 
@@ -742,7 +742,7 @@ Called when the option is selected
 
 ### open?
 
-> `optional` **open**: `boolean`
+> `optional` **open?**: `boolean`
 
 Open the menu and control it
 
@@ -754,7 +754,7 @@ Open the menu and control it
 
 ### placeholder?
 
-> `optional` **placeholder**: `ReactNode`
+> `optional` **placeholder?**: `ReactNode`
 
 Placeholder text
 
@@ -766,7 +766,7 @@ Placeholder text
 
 ### placement?
 
-> `optional` **placement**: `Placement`
+> `optional` **placement?**: `Placement`
 
 The placement of picker
 
@@ -778,7 +778,7 @@ The placement of picker
 
 ### plaintext?
 
-> `optional` **plaintext**: `boolean`
+> `optional` **plaintext?**: `boolean`
 
 Render the control as plain text
 
@@ -790,7 +790,7 @@ Render the control as plain text
 
 ### preload?
 
-> `optional` **preload**: `boolean`
+> `optional` **preload?**: `boolean`
 
 Flag, if true, the data will be loaded in advance, before opening the dropdown, false otherwise.
 
@@ -802,7 +802,7 @@ Flag, if true, the data will be loaded in advance, before opening the dropdown, 
 
 ### preventOverflow?
 
-> `optional` **preventOverflow**: `boolean`
+> `optional` **preventOverflow?**: `boolean`
 
 Prevent floating element overflow
 
@@ -814,7 +814,7 @@ Prevent floating element overflow
 
 ### readOnly?
 
-> `optional` **readOnly**: `boolean`
+> `optional` **readOnly?**: `boolean`
 
 Make the control readonly
 
@@ -824,9 +824,9 @@ Make the control readonly
 
 ***
 
-### renderExtraFooter()?
+### renderExtraFooter?
 
-> `optional` **renderExtraFooter**: () => `ReactNode`
+> `optional` **renderExtraFooter?**: () => `ReactNode`
 
 Custom render extra footer
 
@@ -840,9 +840,9 @@ Custom render extra footer
 
 ***
 
-### renderMenu()?
+### renderMenu?
 
-> `optional` **renderMenu**: (`menu`) => `ReactNode`
+> `optional` **renderMenu?**: (`menu`) => `ReactNode`
 
 Customizing the Rendering Menu list
 
@@ -862,9 +862,9 @@ Customizing the Rendering Menu list
 
 ***
 
-### renderMenuGroup()?
+### renderMenuGroup?
 
-> `optional` **renderMenuGroup**: (`title`, `item`) => `ReactNode`
+> `optional` **renderMenuGroup?**: (`title`, `item`) => `ReactNode`
 
 Custom render menu group
 
@@ -888,9 +888,9 @@ Custom render menu group
 
 ***
 
-### renderMenuItem()?
+### renderMenuItem?
 
-> `optional` **renderMenuItem**: (`label`, `item`) => `ReactNode`
+> `optional` **renderMenuItem?**: (`label`, `item`) => `ReactNode`
 
 Custom render menuItems
 
@@ -914,9 +914,9 @@ Custom render menuItems
 
 ***
 
-### renderValue()?
+### renderValue?
 
-> `optional` **renderValue**: (`value`, `item`, `selectedElement`) => `ReactNode`
+> `optional` **renderValue?**: (`value`, `item`, `selectedElement`) => `ReactNode`
 
 #### Parameters
 
@@ -944,7 +944,7 @@ Custom render menuItems
 
 ### searchable?
 
-> `optional` **searchable**: `boolean`
+> `optional` **searchable?**: `boolean`
 
 Whether dispaly search input box
 
@@ -954,9 +954,9 @@ Whether dispaly search input box
 
 ***
 
-### searchBy()?
+### searchBy?
 
-> `optional` **searchBy**: (`keyword`, `label`, `item`) => `boolean`
+> `optional` **searchBy?**: (`keyword`, `label`, `item`) => `boolean`
 
 Custom search rules.
 
@@ -984,9 +984,9 @@ Custom search rules.
 
 ***
 
-### shouldDisplayCreateOption()?
+### shouldDisplayCreateOption?
 
-> `optional` **shouldDisplayCreateOption**: (`searchKeyword`, `filteredData`) => `boolean`
+> `optional` **shouldDisplayCreateOption?**: (`searchKeyword`, `filteredData`) => `boolean`
 
 Customize whether to display "Create option" action with given textbox value
 
@@ -1018,7 +1018,7 @@ The items filtered by the searchKeyword
 
 ### size?
 
-> `optional` **size**: `Size`
+> `optional` **size?**: `Size`
 
 A picker can have different sizes
 
@@ -1028,9 +1028,9 @@ A picker can have different sizes
 
 ***
 
-### sort()?
+### sort?
 
-> `optional` **sort**: (`isGroup`) => (`a`, `b`) => `number`
+> `optional` **sort?**: (`isGroup`) => (`a`, `b`) => `number`
 
 Sort options
 
@@ -1042,21 +1042,7 @@ Sort options
 
 #### Returns
 
-> (`a`, `b`): `number`
-
-##### Parameters
-
-###### a
-
-`any`
-
-###### b
-
-`any`
-
-##### Returns
-
-`number`
+(`a`, `b`) => `number`
 
 #### Inherited from
 
@@ -1066,7 +1052,7 @@ Sort options
 
 ### style?
 
-> `optional` **style**: `CSSProperties`
+> `optional` **style?**: `CSSProperties`
 
 Additional style
 
@@ -1078,17 +1064,17 @@ Additional style
 
 ### tabIndex?
 
-> `optional` **tabIndex**: `number`
+> `optional` **tabIndex?**: `number`
 
 #### Inherited from
 
-`InputPickerProps.tabIndex`
+`RsSearchProps`.[`tabIndex`](#tabindex)
 
 ***
 
 ### toggleAs?
 
-> `optional` **toggleAs**: `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **toggleAs?**: `ElementType`\<`any`, keyof IntrinsicElements\>
 
 You can use a custom element for this component
 
@@ -1100,7 +1086,7 @@ You can use a custom element for this component
 
 ### value?
 
-> `optional` **value**: `any`
+> `optional` **value?**: `any`
 
 Current value of the component. Creates a controlled component
 
@@ -1112,7 +1098,7 @@ Current value of the component. Creates a controlled component
 
 ### valueKey?
 
-> `optional` **valueKey**: `string`
+> `optional` **valueKey?**: `string`
 
 The key to use for setting the option value in the data.
 
@@ -1130,7 +1116,7 @@ value
 
 ### virtualized?
 
-> `optional` **virtualized**: `boolean`
+> `optional` **virtualized?**: `boolean`
 
 Whether using virtualized list
 

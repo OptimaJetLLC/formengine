@@ -1,4 +1,4 @@
-# Variable: someOf()
+# Variable: someOf
 
 > `const` **someOf**: \<`U`\>(...`values`) => [`SomeOfBuilder`](../classes/SomeOfBuilder.md)\<`U`\>
 

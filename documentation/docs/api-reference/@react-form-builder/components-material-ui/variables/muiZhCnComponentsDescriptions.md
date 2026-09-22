@@ -2,7 +2,7 @@
 
 > **muiZhCnComponentsDescriptions**: `object`
 
-## Type declaration
+## Type Declaration
 
 ### categories
 
@@ -10,59 +10,59 @@
 
 #### categories.dataDisplay
 
-> **categories.dataDisplay**: `object`
+> **dataDisplay**: `object`
 
 #### categories.dataDisplay.name
 
-> **categories.dataDisplay.name**: `string` = `"数据显示"`
+> **name**: `string` = `"数据显示"`
 
 #### categories.feedback
 
-> **categories.feedback**: `object`
+> **feedback**: `object`
 
 #### categories.feedback.name
 
-> **categories.feedback.name**: `string` = `"反馈"`
+> **name**: `string` = `"反馈"`
 
 #### categories.form
 
-> **categories.form**: `object`
+> **form**: `object`
 
 #### categories.form.name
 
-> **categories.form.name**: `string` = `"表格"`
+> **name**: `string` = `"表格"`
 
 #### categories.inputs
 
-> **categories.inputs**: `object`
+> **inputs**: `object`
 
 #### categories.inputs.name
 
-> **categories.inputs.name**: `string` = `"输入"`
+> **name**: `string` = `"输入"`
 
 #### categories.layout
 
-> **categories.layout**: `object`
+> **layout**: `object`
 
 #### categories.layout.name
 
-> **categories.layout.name**: `string` = `"布局"`
+> **name**: `string` = `"布局"`
 
 #### categories.navigation
 
-> **categories.navigation**: `object`
+> **navigation**: `object`
 
 #### categories.navigation.name
 
-> **categories.navigation.name**: `string` = `"导航"`
+> **name**: `string` = `"导航"`
 
 #### categories.surfaces
 
-> **categories.surfaces**: `object`
+> **surfaces**: `object`
 
 #### categories.surfaces.name
 
-> **categories.surfaces.name**: `string` = `"表面"`
+> **name**: `string` = `"表面"`
 
 ### commonProperties
 
@@ -70,267 +70,267 @@
 
 #### commonProperties.checked
 
-> **commonProperties.checked**: `object`
+> **checked**: `object`
 
 #### commonProperties.checked.description
 
-> **commonProperties.checked.description**: `string` = `"如果为 true，则检查该组件"`
+> **description**: `string` = `"如果为 true，则检查该组件"`
 
 #### commonProperties.checked.name
 
-> **commonProperties.checked.name**: `string` = `"已勾选"`
+> **name**: `string` = `"已勾选"`
 
 #### commonProperties.children
 
-> **commonProperties.children**: `object`
+> **children**: `object`
 
 #### commonProperties.children.description
 
-> **commonProperties.children.description**: `string` = `"组件的内容"`
+> **description**: `string` = `"组件的内容"`
 
 #### commonProperties.children.name
 
-> **commonProperties.children.name**: `string` = `"孩子们"`
+> **name**: `string` = `"孩子们"`
 
 #### commonProperties.color
 
-> **commonProperties.color**: `object`
+> **color**: `object`
 
 #### commonProperties.color.description
 
-> **commonProperties.color.description**: `string` = `"组件的颜色"`
+> **description**: `string` = `"组件的颜色"`
 
 #### commonProperties.color.name
 
-> **commonProperties.color.name**: `string` = `"颜色"`
+> **name**: `string` = `"颜色"`
 
 #### commonProperties.defaultValue
 
-> **commonProperties.defaultValue**: `object`
+> **defaultValue**: `object`
 
 #### commonProperties.defaultValue.description
 
-> **commonProperties.defaultValue.description**: `string` = `"默认值。在组件不受控制时使用"`
+> **description**: `string` = `"默认值。在组件不受控制时使用"`
 
 #### commonProperties.defaultValue.name
 
-> **commonProperties.defaultValue.name**: `string` = `"默认值"`
+> **name**: `string` = `"默认值"`
 
 #### commonProperties.dense
 
-> **commonProperties.dense**: `object`
+> **dense**: `object`
 
 #### commonProperties.dense.description
 
-> **commonProperties.dense.description**: `string` = `"如果为 true，则减少垂直边距"`
+> **description**: `string` = `"如果为 true，则减少垂直边距"`
 
 #### commonProperties.dense.name
 
-> **commonProperties.dense.name**: `string` = `"密集"`
+> **name**: `string` = `"密集"`
 
 #### commonProperties.disabled
 
-> **commonProperties.disabled**: `object`
+> **disabled**: `object`
 
 #### commonProperties.disabled.description
 
-> **commonProperties.disabled.description**: `string` = `"如果为 true，则禁用该组件"`
+> **description**: `string` = `"如果为 true，则禁用该组件"`
 
 #### commonProperties.disabled.name
 
-> **commonProperties.disabled.name**: `string` = `"已禁用"`
+> **name**: `string` = `"已禁用"`
 
 #### commonProperties.disableGutters
 
-> **commonProperties.disableGutters**: `object`
+> **disableGutters**: `object`
 
 #### commonProperties.disableGutters.description
 
-> **commonProperties.disableGutters.description**: `string` = `"如果为 true，则禁用左右边距"`
+> **description**: `string` = `"如果为 true，则禁用左右边距"`
 
 #### commonProperties.disableGutters.name
 
-> **commonProperties.disableGutters.name**: `string` = `"禁用排水沟"`
+> **name**: `string` = `"禁用排水沟"`
 
 #### commonProperties.disablePadding
 
-> **commonProperties.disablePadding**: `object`
+> **disablePadding**: `object`
 
 #### commonProperties.disablePadding.description
 
-> **commonProperties.disablePadding.description**: `string` = `"如果为 true，则禁用默认填充"`
+> **description**: `string` = `"如果为 true，则禁用默认填充"`
 
 #### commonProperties.disablePadding.name
 
-> **commonProperties.disablePadding.name**: `string` = `"禁用填充"`
+> **name**: `string` = `"禁用填充"`
 
 #### commonProperties.error
 
-> **commonProperties.error**: `object`
+> **error**: `object`
 
 #### commonProperties.error.description
 
-> **commonProperties.error.description**: `string` = `"如果为 true，则组件显示为错误状态"`
+> **description**: `string` = `"如果为 true，则组件显示为错误状态"`
 
 #### commonProperties.error.name
 
-> **commonProperties.error.name**: `string` = `"错误"`
+> **name**: `string` = `"错误"`
 
 #### commonProperties.fullWidth
 
-> **commonProperties.fullWidth**: `object`
+> **fullWidth**: `object`
 
 #### commonProperties.fullWidth.description
 
-> **commonProperties.fullWidth.description**: `string` = `"如果为 true，则该组件占用其容器的全部宽度"`
+> **description**: `string` = `"如果为 true，则该组件占用其容器的全部宽度"`
 
 #### commonProperties.fullWidth.name
 
-> **commonProperties.fullWidth.name**: `string` = `"全宽"`
+> **name**: `string` = `"全宽"`
 
 #### commonProperties.gutterBottom
 
-> **commonProperties.gutterBottom**: `object`
+> **gutterBottom**: `object`
 
 #### commonProperties.gutterBottom.description
 
-> **commonProperties.gutterBottom.description**: `string` = `"如果为 true，则文本将有底部边距"`
+> **description**: `string` = `"如果为 true，则文本将有底部边距"`
 
 #### commonProperties.gutterBottom.name
 
-> **commonProperties.gutterBottom.name**: `string` = `"排水沟底部"`
+> **name**: `string` = `"排水沟底部"`
 
 #### commonProperties.helperText
 
-> **commonProperties.helperText**: `object`
+> **helperText**: `object`
 
 #### commonProperties.helperText.description
 
-> **commonProperties.helperText.description**: `string` = `"助手文本内容"`
+> **description**: `string` = `"助手文本内容"`
 
 #### commonProperties.helperText.name
 
-> **commonProperties.helperText.name**: `string` = `"帮助文本"`
+> **name**: `string` = `"帮助文本"`
 
 #### commonProperties.margin
 
-> **commonProperties.margin**: `object`
+> **margin**: `object`
 
 #### commonProperties.margin.description
 
-> **commonProperties.margin.description**: `string` = `"定义应用于组件的边距"`
+> **description**: `string` = `"定义应用于组件的边距"`
 
 #### commonProperties.margin.name
 
-> **commonProperties.margin.name**: `string` = `"保证金"`
+> **name**: `string` = `"保证金"`
 
 #### commonProperties.noWrap
 
-> **commonProperties.noWrap**: `object`
+> **noWrap**: `object`
 
 #### commonProperties.noWrap.description
 
-> **commonProperties.noWrap.description**: `string` = `"如果为 true，则文本不会换行，而是使用文本溢出省略号截断"`
+> **description**: `string` = `"如果为 true，则文本不会换行，而是使用文本溢出省略号截断"`
 
 #### commonProperties.noWrap.name
 
-> **commonProperties.noWrap.name**: `string` = `"不包装"`
+> **name**: `string` = `"不包装"`
 
 #### commonProperties.onChange
 
-> **commonProperties.onChange**: `object`
+> **onChange**: `object`
 
 #### commonProperties.onChange.description
 
-> **commonProperties.onChange.description**: `string` = `"值更改时触发回调"`
+> **description**: `string` = `"值更改时触发回调"`
 
 #### commonProperties.onChange.name
 
-> **commonProperties.onChange.name**: `string` = `"onChange"`
+> **name**: `string` = `"onChange"`
 
 #### commonProperties.onClick
 
-> **commonProperties.onClick**: `object`
+> **onClick**: `object`
 
 #### commonProperties.onClick.description
 
-> **commonProperties.onClick.description**: `string` = `"点击组件时触发回调"`
+> **description**: `string` = `"点击组件时触发回调"`
 
 #### commonProperties.onClick.name
 
-> **commonProperties.onClick.name**: `string` = `"onClick"`
+> **name**: `string` = `"onClick"`
 
 #### commonProperties.required
 
-> **commonProperties.required**: `object`
+> **required**: `object`
 
 #### commonProperties.required.description
 
-> **commonProperties.required.description**: `string` = `"如果为 true，则需要输入元素"`
+> **description**: `string` = `"如果为 true，则需要输入元素"`
 
 #### commonProperties.required.name
 
-> **commonProperties.required.name**: `string` = `"必填项"`
+> **name**: `string` = `"必填项"`
 
 #### commonProperties.size
 
-> **commonProperties.size**: `object`
+> **size**: `object`
 
 #### commonProperties.size.description
 
-> **commonProperties.size.description**: `string` = `"组件的大小"`
+> **description**: `string` = `"组件的大小"`
 
 #### commonProperties.size.name
 
-> **commonProperties.size.name**: `string` = `"大小"`
+> **name**: `string` = `"大小"`
 
 #### commonProperties.sx
 
-> **commonProperties.sx**: `object`
+> **sx**: `object`
 
 #### commonProperties.sx.description
 
-> **commonProperties.sx.description**: `string` = `"允许定义系统替代以及其他 CSS 样式的系统道具"`
+> **description**: `string` = `"允许定义系统替代以及其他 CSS 样式的系统道具"`
 
 #### commonProperties.sx.name
 
-> **commonProperties.sx.name**: `string` = `"Sx"`
+> **name**: `string` = `"Sx"`
 
 #### commonProperties.textAlign
 
-> **commonProperties.textAlign**: `object`
+> **textAlign**: `object`
 
 #### commonProperties.textAlign.description
 
-> **commonProperties.textAlign.description**: `string` = `"文字对齐"`
+> **description**: `string` = `"文字对齐"`
 
 #### commonProperties.textAlign.name
 
-> **commonProperties.textAlign.name**: `string` = `"对齐"`
+> **name**: `string` = `"对齐"`
 
 #### commonProperties.value
 
-> **commonProperties.value**: `object`
+> **value**: `object`
 
 #### commonProperties.value.description
 
-> **commonProperties.value.description**: `string` = `"组件的价值"`
+> **description**: `string` = `"组件的价值"`
 
 #### commonProperties.value.name
 
-> **commonProperties.value.name**: `string` = `"价值"`
+> **name**: `string` = `"价值"`
 
 #### commonProperties.variant
 
-> **commonProperties.variant**: `object`
+> **variant**: `object`
 
 #### commonProperties.variant.description
 
-> **commonProperties.variant.description**: `string` = `"要使用的变体"`
+> **description**: `string` = `"要使用的变体"`
 
 #### commonProperties.variant.name
 
-> **commonProperties.variant.name**: `string` = `"变体"`
+> **name**: `string` = `"变体"`
 
 ### components
 
@@ -338,1760 +338,1760 @@
 
 #### components.MuiBox
 
-> **components.MuiBox**: `object`
+> **MuiBox**: `object`
 
 #### components.MuiBox.description
 
-> **components.MuiBox.description**: `string` = `"支持系统样式的通用布局容器"`
+> **description**: `string` = `"支持系统样式的通用布局容器"`
 
 #### components.MuiBox.name
 
-> **components.MuiBox.name**: `string` = `"盒子"`
+> **name**: `string` = `"盒子"`
 
 #### components.MuiBreadcrumbs
 
-> **components.MuiBreadcrumbs**: `object`
+> **MuiBreadcrumbs**: `object`
 
 #### components.MuiBreadcrumbs.description
 
-> **components.MuiBreadcrumbs.description**: `string` = `"显示层次结构中的当前页面位置"`
+> **description**: `string` = `"显示层次结构中的当前页面位置"`
 
 #### components.MuiBreadcrumbs.name
 
-> **components.MuiBreadcrumbs.name**: `string` = `"面包屑"`
+> **name**: `string` = `"面包屑"`
 
 #### components.MuiBreadcrumbs.props
 
-> **components.MuiBreadcrumbs.props**: `object`
+> **props**: `object`
 
 #### components.MuiBreadcrumbs.props.items
 
-> **components.MuiBreadcrumbs.props.items**: `object`
+> **items**: `object`
 
 #### components.MuiBreadcrumbs.props.items.description
 
-> **components.MuiBreadcrumbs.props.items.description**: `string` = `"要显示的面包屑项目"`
+> **description**: `string` = `"要显示的面包屑项目"`
 
 #### components.MuiBreadcrumbs.props.items.name
 
-> **components.MuiBreadcrumbs.props.items.name**: `string` = `"物品"`
+> **name**: `string` = `"物品"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse**: `object`
+> **itemsAfterCollapse**: `object`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.description**: `string` = `"如果超过最大项目数，则省略号后要显示的项目数"`
+> **description**: `string` = `"如果超过最大项目数，则省略号后要显示的项目数"`
 
 #### components.MuiBreadcrumbs.props.itemsAfterCollapse.name
 
-> **components.MuiBreadcrumbs.props.itemsAfterCollapse.name**: `string` = `"折叠后的物品"`
+> **name**: `string` = `"折叠后的物品"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse**: `object`
+> **itemsBeforeCollapse**: `object`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.description
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.description**: `string` = `"如果超过最大项目数，则省略号之前要显示的项目数"`
+> **description**: `string` = `"如果超过最大项目数，则省略号之前要显示的项目数"`
 
 #### components.MuiBreadcrumbs.props.itemsBeforeCollapse.name
 
-> **components.MuiBreadcrumbs.props.itemsBeforeCollapse.name**: `string` = `"折叠前的物品"`
+> **name**: `string` = `"折叠前的物品"`
 
 #### components.MuiBreadcrumbs.props.maxItems
 
-> **components.MuiBreadcrumbs.props.maxItems**: `object`
+> **maxItems**: `object`
 
 #### components.MuiBreadcrumbs.props.maxItems.description
 
-> **components.MuiBreadcrumbs.props.maxItems.description**: `string` = `"指定要显示的最大痕迹数"`
+> **description**: `string` = `"指定要显示的最大痕迹数"`
 
 #### components.MuiBreadcrumbs.props.maxItems.name
 
-> **components.MuiBreadcrumbs.props.maxItems.name**: `string` = `"最大物品数"`
+> **name**: `string` = `"最大物品数"`
 
 #### components.MuiBreadcrumbs.props.separator
 
-> **components.MuiBreadcrumbs.props.separator**: `object`
+> **separator**: `object`
 
 #### components.MuiBreadcrumbs.props.separator.description
 
-> **components.MuiBreadcrumbs.props.separator.description**: `string` = `"用于分隔面包屑项目的元素"`
+> **description**: `string` = `"用于分隔面包屑项目的元素"`
 
 #### components.MuiBreadcrumbs.props.separator.name
 
-> **components.MuiBreadcrumbs.props.separator.name**: `string` = `"分隔符"`
+> **name**: `string` = `"分隔符"`
 
 #### components.MuiButton
 
-> **components.MuiButton**: `object`
+> **MuiButton**: `object`
 
 #### components.MuiButton.description
 
-> **components.MuiButton.description**: `string` = `"用于触发动作或事件的按钮组件"`
+> **description**: `string` = `"用于触发动作或事件的按钮组件"`
 
 #### components.MuiButton.name
 
-> **components.MuiButton.name**: `string` = `"按钮"`
+> **name**: `string` = `"按钮"`
 
 #### components.MuiButton.props
 
-> **components.MuiButton.props**: `object`
+> **props**: `object`
 
 #### components.MuiButton.props.children
 
-> **components.MuiButton.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiButton.props.children.description
 
-> **components.MuiButton.props.children.description**: `string` = `"标题"`
+> **description**: `string` = `"标题"`
 
 #### components.MuiButton.props.children.name
 
-> **components.MuiButton.props.children.name**: `string` = `"内容"`
+> **name**: `string` = `"内容"`
 
 #### components.MuiButton.props.disableElevation
 
-> **components.MuiButton.props.disableElevation**: `object`
+> **disableElevation**: `object`
 
 #### components.MuiButton.props.disableElevation.description
 
-> **components.MuiButton.props.disableElevation.description**: `string` = `"设置为 true 时移除按钮阴影"`
+> **description**: `string` = `"设置为 true 时移除按钮阴影"`
 
 #### components.MuiButton.props.disableElevation.name
 
-> **components.MuiButton.props.disableElevation.name**: `string` = `"禁用高程"`
+> **name**: `string` = `"禁用高程"`
 
 #### components.MuiButton.props.loading
 
-> **components.MuiButton.props.loading**: `object`
+> **loading**: `object`
 
 #### components.MuiButton.props.loading.description
 
-> **components.MuiButton.props.loading.description**: `string` = `"显示加载指示器并禁用交互"`
+> **description**: `string` = `"显示加载指示器并禁用交互"`
 
 #### components.MuiButton.props.loading.name
 
-> **components.MuiButton.props.loading.name**: `string` = `"加载中"`
+> **name**: `string` = `"加载中"`
 
 #### components.MuiButtonGroup
 
-> **components.MuiButtonGroup**: `object`
+> **MuiButtonGroup**: `object`
 
 #### components.MuiButtonGroup.description
 
-> **components.MuiButtonGroup.description**: `string` = `"将相关按钮分组在一起"`
+> **description**: `string` = `"将相关按钮分组在一起"`
 
 #### components.MuiButtonGroup.name
 
-> **components.MuiButtonGroup.name**: `string` = `"按钮组"`
+> **name**: `string` = `"按钮组"`
 
 #### components.MuiButtonGroup.props
 
-> **components.MuiButtonGroup.props**: `object`
+> **props**: `object`
 
 #### components.MuiButtonGroup.props.fullWidth
 
-> **components.MuiButtonGroup.props.fullWidth**: `object`
+> **fullWidth**: `object`
 
 #### components.MuiButtonGroup.props.fullWidth.description
 
-> **components.MuiButtonGroup.props.fullWidth.description**: `string` = `"使按钮组跨越整个容器宽度"`
+> **description**: `string` = `"使按钮组跨越整个容器宽度"`
 
 #### components.MuiButtonGroup.props.fullWidth.name
 
-> **components.MuiButtonGroup.props.fullWidth.name**: `string` = `"全宽"`
+> **name**: `string` = `"全宽"`
 
 #### components.MuiButtonGroup.props.orientation
 
-> **components.MuiButtonGroup.props.orientation**: `object`
+> **orientation**: `object`
 
 #### components.MuiButtonGroup.props.orientation.description
 
-> **components.MuiButtonGroup.props.orientation.description**: `string` = `"设置按钮的布局方向"`
+> **description**: `string` = `"设置按钮的布局方向"`
 
 #### components.MuiButtonGroup.props.orientation.name
 
-> **components.MuiButtonGroup.props.orientation.name**: `string` = `"方向"`
+> **name**: `string` = `"方向"`
 
 #### components.MuiCard
 
-> **components.MuiCard**: `object`
+> **MuiCard**: `object`
 
 #### components.MuiCard.description
 
-> **components.MuiCard.description**: `string` = `"用于对相关内容进行分组的表面组件"`
+> **description**: `string` = `"用于对相关内容进行分组的表面组件"`
 
 #### components.MuiCard.name
 
-> **components.MuiCard.name**: `string` = `"卡片"`
+> **name**: `string` = `"卡片"`
 
 #### components.MuiCard.props
 
-> **components.MuiCard.props**: `object`
+> **props**: `object`
 
 #### components.MuiCard.props.actions
 
-> **components.MuiCard.props.actions**: `object`
+> **actions**: `object`
 
 #### components.MuiCard.props.actions.description
 
-> **components.MuiCard.props.actions.description**: `string` = `"卡片的操作按钮或控件"`
+> **description**: `string` = `"卡片的操作按钮或控件"`
 
 #### components.MuiCard.props.actions.name
 
-> **components.MuiCard.props.actions.name**: `string` = `"行动"`
+> **name**: `string` = `"行动"`
 
 #### components.MuiCard.props.header
 
-> **components.MuiCard.props.header**: `object`
+> **header**: `object`
 
 #### components.MuiCard.props.header.description
 
-> **components.MuiCard.props.header.description**: `string` = `"在卡片标题中呈现的内容"`
+> **description**: `string` = `"在卡片标题中呈现的内容"`
 
 #### components.MuiCard.props.header.name
 
-> **components.MuiCard.props.header.name**: `string` = `"标题"`
+> **name**: `string` = `"标题"`
 
 #### components.MuiCard.props.headerAction
 
-> **components.MuiCard.props.headerAction**: `object`
+> **headerAction**: `object`
 
 #### components.MuiCard.props.headerAction.description
 
-> **components.MuiCard.props.headerAction.description**: `string` = `"标题中显示的操作元素"`
+> **description**: `string` = `"标题中显示的操作元素"`
 
 #### components.MuiCard.props.headerAction.name
 
-> **components.MuiCard.props.headerAction.name**: `string` = `"标题动作"`
+> **name**: `string` = `"标题动作"`
 
 #### components.MuiCard.props.headerAvatar
 
-> **components.MuiCard.props.headerAvatar**: `object`
+> **headerAvatar**: `object`
 
 #### components.MuiCard.props.headerAvatar.description
 
-> **components.MuiCard.props.headerAvatar.description**: `string` = `"标题中显示的头像元素"`
+> **description**: `string` = `"标题中显示的头像元素"`
 
 #### components.MuiCard.props.headerAvatar.name
 
-> **components.MuiCard.props.headerAvatar.name**: `string` = `"标题头像"`
+> **name**: `string` = `"标题头像"`
 
 #### components.MuiCard.props.media
 
-> **components.MuiCard.props.media**: `object`
+> **media**: `object`
 
 #### components.MuiCard.props.media.description
 
-> **components.MuiCard.props.media.description**: `string` = `"媒体内容，例如图像或视频"`
+> **description**: `string` = `"媒体内容，例如图像或视频"`
 
 #### components.MuiCard.props.media.name
 
-> **components.MuiCard.props.media.name**: `string` = `"媒体"`
+> **name**: `string` = `"媒体"`
 
 #### components.MuiCard.props.onSelect
 
-> **components.MuiCard.props.onSelect**: `object`
+> **onSelect**: `object`
 
 #### components.MuiCard.props.onSelect.description
 
-> **components.MuiCard.props.onSelect.description**: `string` = `"选择卡片时触发回调"`
+> **description**: `string` = `"选择卡片时触发回调"`
 
 #### components.MuiCard.props.onSelect.name
 
-> **components.MuiCard.props.onSelect.name**: `string` = `"onSelect"`
+> **name**: `string` = `"onSelect"`
 
 #### components.MuiCard.props.subHeader
 
-> **components.MuiCard.props.subHeader**: `object`
+> **subHeader**: `object`
 
 #### components.MuiCard.props.subHeader.description
 
-> **components.MuiCard.props.subHeader.description**: `string` = `"标题下方显示的辅助文本"`
+> **description**: `string` = `"标题下方显示的辅助文本"`
 
 #### components.MuiCard.props.subHeader.name
 
-> **components.MuiCard.props.subHeader.name**: `string` = `"子标题"`
+> **name**: `string` = `"子标题"`
 
 #### components.MuiCard.props.useActions
 
-> **components.MuiCard.props.useActions**: `object`
+> **useActions**: `object`
 
 #### components.MuiCard.props.useActions.description
 
-> **components.MuiCard.props.useActions.description**: `string` = `"在底部显示操作部分"`
+> **description**: `string` = `"在底部显示操作部分"`
 
 #### components.MuiCard.props.useActions.name
 
-> **components.MuiCard.props.useActions.name**: `string` = `"使用动作"`
+> **name**: `string` = `"使用动作"`
 
 #### components.MuiCard.props.useCardActionArea
 
-> **components.MuiCard.props.useCardActionArea**: `object`
+> **useCardActionArea**: `object`
 
 #### components.MuiCard.props.useCardActionArea.description
 
-> **components.MuiCard.props.useCardActionArea.description**: `string` = `"使用可点击的操作区域包装内容"`
+> **description**: `string` = `"使用可点击的操作区域包装内容"`
 
 #### components.MuiCard.props.useCardActionArea.name
 
-> **components.MuiCard.props.useCardActionArea.name**: `string` = `"使用卡牌操作区域"`
+> **name**: `string` = `"使用卡牌操作区域"`
 
 #### components.MuiCard.props.useHeader
 
-> **components.MuiCard.props.useHeader**: `object`
+> **useHeader**: `object`
 
 #### components.MuiCard.props.useHeader.description
 
-> **components.MuiCard.props.useHeader.description**: `string` = `"启用卡片标题部分"`
+> **description**: `string` = `"启用卡片标题部分"`
 
 #### components.MuiCard.props.useHeader.name
 
-> **components.MuiCard.props.useHeader.name**: `string` = `"使用标题"`
+> **name**: `string` = `"使用标题"`
 
 #### components.MuiCard.props.useHeaderAction
 
-> **components.MuiCard.props.useHeaderAction**: `object`
+> **useHeaderAction**: `object`
 
 #### components.MuiCard.props.useHeaderAction.description
 
-> **components.MuiCard.props.useHeaderAction.description**: `string` = `"启用标题内的操作区域"`
+> **description**: `string` = `"启用标题内的操作区域"`
 
 #### components.MuiCard.props.useHeaderAction.name
 
-> **components.MuiCard.props.useHeaderAction.name**: `string` = `"使用标题动作"`
+> **name**: `string` = `"使用标题动作"`
 
 #### components.MuiCard.props.useHeaderAvatar
 
-> **components.MuiCard.props.useHeaderAvatar**: `object`
+> **useHeaderAvatar**: `object`
 
 #### components.MuiCard.props.useHeaderAvatar.description
 
-> **components.MuiCard.props.useHeaderAvatar.description**: `string` = `"在标题内显示头像"`
+> **description**: `string` = `"在标题内显示头像"`
 
 #### components.MuiCard.props.useHeaderAvatar.name
 
-> **components.MuiCard.props.useHeaderAvatar.name**: `string` = `"使用标题头像"`
+> **name**: `string` = `"使用标题头像"`
 
 #### components.MuiCard.props.useMedia
 
-> **components.MuiCard.props.useMedia**: `object`
+> **useMedia**: `object`
 
 #### components.MuiCard.props.useMedia.description
 
-> **components.MuiCard.props.useMedia.description**: `string` = `"在卡内启用媒体部分"`
+> **description**: `string` = `"在卡内启用媒体部分"`
 
 #### components.MuiCard.props.useMedia.name
 
-> **components.MuiCard.props.useMedia.name**: `string` = `"使用媒体"`
+> **name**: `string` = `"使用媒体"`
 
 #### components.MuiCard.props.useSubheader
 
-> **components.MuiCard.props.useSubheader**: `object`
+> **useSubheader**: `object`
 
 #### components.MuiCard.props.useSubheader.description
 
-> **components.MuiCard.props.useSubheader.description**: `string` = `"在主标题下方显示副标题"`
+> **description**: `string` = `"在主标题下方显示副标题"`
 
 #### components.MuiCard.props.useSubheader.name
 
-> **components.MuiCard.props.useSubheader.name**: `string` = `"使用副标题"`
+> **name**: `string` = `"使用副标题"`
 
 #### components.MuiCheckbox
 
-> **components.MuiCheckbox**: `object`
+> **MuiCheckbox**: `object`
 
 #### components.MuiCheckbox.description
 
-> **components.MuiCheckbox.description**: `string` = `"允许选择一个或多个选项"`
+> **description**: `string` = `"允许选择一个或多个选项"`
 
 #### components.MuiCheckbox.name
 
-> **components.MuiCheckbox.name**: `string` = `"复选框"`
+> **name**: `string` = `"复选框"`
 
 #### components.MuiCheckbox.props
 
-> **components.MuiCheckbox.props**: `object`
+> **props**: `object`
 
 #### components.MuiCheckbox.props.defaultChecked
 
-> **components.MuiCheckbox.props.defaultChecked**: `object`
+> **defaultChecked**: `object`
 
 #### components.MuiCheckbox.props.defaultChecked.description
 
-> **components.MuiCheckbox.props.defaultChecked.description**: `string` = `"不受控制时的初始检查状态"`
+> **description**: `string` = `"不受控制时的初始检查状态"`
 
 #### components.MuiCheckbox.props.defaultChecked.name
 
-> **components.MuiCheckbox.props.defaultChecked.name**: `string` = `"默认选中"`
+> **name**: `string` = `"默认选中"`
 
 #### components.MuiCircularProgress
 
-> **components.MuiCircularProgress**: `object`
+> **MuiCircularProgress**: `object`
 
 #### components.MuiCircularProgress.description
 
-> **components.MuiCircularProgress.description**: `string` = `"以循环形式表示加载或进度"`
+> **description**: `string` = `"以循环形式表示加载或进度"`
 
 #### components.MuiCircularProgress.name
 
-> **components.MuiCircularProgress.name**: `string` = `"循环进展"`
+> **name**: `string` = `"循环进展"`
 
 #### components.MuiCircularProgress.props
 
-> **components.MuiCircularProgress.props**: `object`
+> **props**: `object`
 
 #### components.MuiCircularProgress.props.disableShrink
 
-> **components.MuiCircularProgress.props.disableShrink**: `object`
+> **disableShrink**: `object`
 
 #### components.MuiCircularProgress.props.disableShrink.description
 
-> **components.MuiCircularProgress.props.disableShrink.description**: `string` = `"禁用缩小动画"`
+> **description**: `string` = `"禁用缩小动画"`
 
 #### components.MuiCircularProgress.props.disableShrink.name
 
-> **components.MuiCircularProgress.props.disableShrink.name**: `string` = `"禁用收缩"`
+> **name**: `string` = `"禁用收缩"`
 
 #### components.MuiCircularProgress.props.thickness
 
-> **components.MuiCircularProgress.props.thickness**: `object`
+> **thickness**: `object`
 
 #### components.MuiCircularProgress.props.thickness.description
 
-> **components.MuiCircularProgress.props.thickness.description**: `string` = `"控制圆圈的笔触宽度"`
+> **description**: `string` = `"控制圆圈的笔触宽度"`
 
 #### components.MuiCircularProgress.props.thickness.name
 
-> **components.MuiCircularProgress.props.thickness.name**: `string` = `"厚度"`
+> **name**: `string` = `"厚度"`
 
 #### components.MuiContainer
 
-> **components.MuiContainer**: `object`
+> **MuiContainer**: `object`
 
 #### components.MuiContainer.description
 
-> **components.MuiContainer.description**: `string` = `"水平居中和约束内容"`
+> **description**: `string` = `"水平居中和约束内容"`
 
 #### components.MuiContainer.name
 
-> **components.MuiContainer.name**: `string` = `"容器"`
+> **name**: `string` = `"容器"`
 
 #### components.MuiContainer.props
 
-> **components.MuiContainer.props**: `object`
+> **props**: `object`
 
 #### components.MuiContainer.props.fixed
 
-> **components.MuiContainer.props.fixed**: `object`
+> **fixed**: `object`
 
 #### components.MuiContainer.props.fixed.description
 
-> **components.MuiContainer.props.fixed.description**: `string` = `"设置固定的最大宽度，而不是流体宽度"`
+> **description**: `string` = `"设置固定的最大宽度，而不是流体宽度"`
 
 #### components.MuiContainer.props.fixed.name
 
-> **components.MuiContainer.props.fixed.name**: `string` = `"已修复"`
+> **name**: `string` = `"已修复"`
 
 #### components.MuiContainer.props.maxWidth
 
-> **components.MuiContainer.props.maxWidth**: `object`
+> **maxWidth**: `object`
 
 #### components.MuiContainer.props.maxWidth.description
 
-> **components.MuiContainer.props.maxWidth.description**: `string` = `"定义容器的最大宽度"`
+> **description**: `string` = `"定义容器的最大宽度"`
 
 #### components.MuiContainer.props.maxWidth.name
 
-> **components.MuiContainer.props.maxWidth.name**: `string` = `"最大宽度"`
+> **name**: `string` = `"最大宽度"`
 
 #### components.MuiDatePicker
 
-> **components.MuiDatePicker**: `object`
+> **MuiDatePicker**: `object`
 
 #### components.MuiDatePicker.description
 
-> **components.MuiDatePicker.description**: `string` = `"用于选择日期的组件"`
+> **description**: `string` = `"用于选择日期的组件"`
 
 #### components.MuiDatePicker.name
 
-> **components.MuiDatePicker.name**: `string` = `"日期选择器"`
+> **name**: `string` = `"日期选择器"`
 
 #### components.MuiDatePicker.props
 
-> **components.MuiDatePicker.props**: `object`
+> **props**: `object`
 
 #### components.MuiDatePicker.props.autoFocus
 
-> **components.MuiDatePicker.props.autoFocus**: `object`
+> **autoFocus**: `object`
 
 #### components.MuiDatePicker.props.autoFocus.description
 
-> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"如果为 true，则在安装组件时自动聚焦日期选择器"`
+> **description**: `string` = `"如果为 true，则在安装组件时自动聚焦日期选择器"`
 
 #### components.MuiDatePicker.props.autoFocus.name
 
-> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"自动对焦"`
+> **name**: `string` = `"自动对焦"`
 
 #### components.MuiDatePicker.props.closeOnSelect
 
-> **components.MuiDatePicker.props.closeOnSelect**: `object`
+> **closeOnSelect**: `object`
 
 #### components.MuiDatePicker.props.closeOnSelect.description
 
-> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"选择日期后自动关闭日期选择器对话框"`
+> **description**: `string` = `"选择日期后自动关闭日期选择器对话框"`
 
 #### components.MuiDatePicker.props.closeOnSelect.name
 
-> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"选择时关闭"`
+> **name**: `string` = `"选择时关闭"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery**: `object`
+> **desktopModeMediaQuery**: `object`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.description
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"用于确定何时切换到桌面模式布局的 CSS 媒体查询字符串"`
+> **description**: `string` = `"用于确定何时切换到桌面模式布局的 CSS 媒体查询字符串"`
 
 #### components.MuiDatePicker.props.desktopModeMediaQuery.name
 
-> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"桌面模式媒体查询"`
+> **name**: `string` = `"桌面模式媒体查询"`
 
 #### components.MuiDatePicker.props.disableFuture
 
-> **components.MuiDatePicker.props.disableFuture**: `object`
+> **disableFuture**: `object`
 
 #### components.MuiDatePicker.props.disableFuture.description
 
-> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"如果为 true，则禁止选择当前日期之后的日期"`
+> **description**: `string` = `"如果为 true，则禁止选择当前日期之后的日期"`
 
 #### components.MuiDatePicker.props.disableFuture.name
 
-> **components.MuiDatePicker.props.disableFuture.name**: `string` = `"禁用未来"`
+> **name**: `string` = `"禁用未来"`
 
 #### components.MuiDatePicker.props.disableHighlightToday
 
-> **components.MuiDatePicker.props.disableHighlightToday**: `object`
+> **disableHighlightToday**: `object`
 
 #### components.MuiDatePicker.props.disableHighlightToday.description
 
-> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"如果为 true，则禁用日历中当前日期的视觉突出显示"`
+> **description**: `string` = `"如果为 true，则禁用日历中当前日期的视觉突出显示"`
 
 #### components.MuiDatePicker.props.disableHighlightToday.name
 
-> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"今天禁用突出显示"`
+> **name**: `string` = `"今天禁用突出显示"`
 
 #### components.MuiDatePicker.props.disableOpenPicker
 
-> **components.MuiDatePicker.props.disableOpenPicker**: `object`
+> **disableOpenPicker**: `object`
 
 #### components.MuiDatePicker.props.disableOpenPicker.description
 
-> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"如果为 true，则禁止打开选择器对话框（对只读显示很有用）"`
+> **description**: `string` = `"如果为 true，则禁止打开选择器对话框（对只读显示很有用）"`
 
 #### components.MuiDatePicker.props.disableOpenPicker.name
 
-> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"禁用打开选择器"`
+> **name**: `string` = `"禁用打开选择器"`
 
 #### components.MuiDatePicker.props.disablePast
 
-> **components.MuiDatePicker.props.disablePast**: `object`
+> **disablePast**: `object`
 
 #### components.MuiDatePicker.props.disablePast.description
 
-> **components.MuiDatePicker.props.disablePast.description**: `string` = `"如果为 true，则禁止选择当前日期之前的日期"`
+> **description**: `string` = `"如果为 true，则禁止选择当前日期之前的日期"`
 
 #### components.MuiDatePicker.props.disablePast.name
 
-> **components.MuiDatePicker.props.disablePast.name**: `string` = `"禁用过去"`
+> **name**: `string` = `"禁用过去"`
 
 #### components.MuiDatePicker.props.displayWeekNumber
 
-> **components.MuiDatePicker.props.displayWeekNumber**: `object`
+> **displayWeekNumber**: `object`
 
 #### components.MuiDatePicker.props.displayWeekNumber.description
 
-> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"在日历视图中显示周数"`
+> **description**: `string` = `"在日历视图中显示周数"`
 
 #### components.MuiDatePicker.props.displayWeekNumber.name
 
-> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"显示周数"`
+> **name**: `string` = `"显示周数"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber
 
-> **components.MuiDatePicker.props.fixedWeekNumber**: `object`
+> **fixedWeekNumber**: `object`
 
 #### components.MuiDatePicker.props.fixedWeekNumber.description
 
-> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"固定显示周数（强制日历高度保持一致）"`
+> **description**: `string` = `"固定显示周数（强制日历高度保持一致）"`
 
 #### components.MuiDatePicker.props.fixedWeekNumber.name
 
-> **components.MuiDatePicker.props.fixedWeekNumber.name**: `string` = `"固定的周数"`
+> **name**: `string` = `"固定的周数"`
 
 #### components.MuiDatePicker.props.format
 
-> **components.MuiDatePicker.props.format**: `object`
+> **format**: `object`
 
 #### components.MuiDatePicker.props.format.description
 
-> **components.MuiDatePicker.props.format.description**: `string` = `"用于显示和解析的日期格式字符串（例如，'yyyy-mm-dd'、'mm/dd/yyyy'）"`
+> **description**: `string` = `"用于显示和解析的日期格式字符串（例如，'yyyy-mm-dd'、'mm/dd/yyyy'）"`
 
 #### components.MuiDatePicker.props.format.name
 
-> **components.MuiDatePicker.props.format.name**: `string` = `"格式"`
+> **name**: `string` = `"格式"`
 
 #### components.MuiDatePicker.props.formatDensity
 
-> **components.MuiDatePicker.props.formatDensity**: `object`
+> **formatDensity**: `object`
 
 #### components.MuiDatePicker.props.formatDensity.description
 
-> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"控制日期格式中的间距：密集（紧凑）或宽敞（更大的间距）"`
+> **description**: `string` = `"控制日期格式中的间距：密集（紧凑）或宽敞（更大的间距）"`
 
 #### components.MuiDatePicker.props.formatDensity.name
 
-> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"格式密度"`
+> **name**: `string` = `"格式密度"`
 
 #### components.MuiDatePicker.props.loading
 
-> **components.MuiDatePicker.props.loading**: `object`
+> **loading**: `object`
 
 #### components.MuiDatePicker.props.loading.description
 
-> **components.MuiDatePicker.props.loading.description**: `string` = `"如果为 true，则显示一个加载微调器，指示正在加载数据"`
+> **description**: `string` = `"如果为 true，则显示一个加载微调器，指示正在加载数据"`
 
 #### components.MuiDatePicker.props.loading.name
 
-> **components.MuiDatePicker.props.loading.name**: `string` = `"加载中"`
+> **name**: `string` = `"加载中"`
 
 #### components.MuiDatePicker.props.maxDate
 
-> **components.MuiDatePicker.props.maxDate**: `object`
+> **maxDate**: `object`
 
 #### components.MuiDatePicker.props.maxDate.description
 
-> **components.MuiDatePicker.props.maxDate.description**: `string` = `"可以选择的最新日期（包括在内）"`
+> **description**: `string` = `"可以选择的最新日期（包括在内）"`
 
 #### components.MuiDatePicker.props.maxDate.name
 
-> **components.MuiDatePicker.props.maxDate.name**: `string` = `"最大日期"`
+> **name**: `string` = `"最大日期"`
 
 #### components.MuiDatePicker.props.minDate
 
-> **components.MuiDatePicker.props.minDate**: `object`
+> **minDate**: `object`
 
 #### components.MuiDatePicker.props.minDate.description
 
-> **components.MuiDatePicker.props.minDate.description**: `string` = `"可以选择的最早日期（包括在内）"`
+> **description**: `string` = `"可以选择的最早日期（包括在内）"`
 
 #### components.MuiDatePicker.props.minDate.name
 
-> **components.MuiDatePicker.props.minDate.name**: `string` = `"最小日期"`
+> **name**: `string` = `"最小日期"`
 
 #### components.MuiDatePicker.props.monthsPerRow
 
-> **components.MuiDatePicker.props.monthsPerRow**: `object`
+> **monthsPerRow**: `object`
 
 #### components.MuiDatePicker.props.monthsPerRow.description
 
-> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"要在月/年视图中每行显示的月日历数"`
+> **description**: `string` = `"要在月/年视图中每行显示的月日历数"`
 
 #### components.MuiDatePicker.props.monthsPerRow.name
 
-> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"每行月数"`
+> **name**: `string` = `"每行月数"`
 
 #### components.MuiDatePicker.props.name
 
-> **components.MuiDatePicker.props.name**: `object`
+> **name**: `object`
 
 #### components.MuiDatePicker.props.name.description
 
-> **components.MuiDatePicker.props.name.description**: `string` = `"表单字段的名称属性，在提交表单时使用"`
+> **description**: `string` = `"表单字段的名称属性，在提交表单时使用"`
 
 #### components.MuiDatePicker.props.name.name
 
-> **components.MuiDatePicker.props.name.name**: `string` = `"姓名"`
+> **name**: `string` = `"姓名"`
 
 #### components.MuiDatePicker.props.onAccept
 
-> **components.MuiDatePicker.props.onAccept**: `object`
+> **onAccept**: `object`
 
 #### components.MuiDatePicker.props.onAccept.description
 
-> **components.MuiDatePicker.props.onAccept.description**: `string` = `"接受该值时会触发回调"`
+> **description**: `string` = `"接受该值时会触发回调"`
 
 #### components.MuiDatePicker.props.onAccept.name
 
-> **components.MuiDatePicker.props.onAccept.name**: `string` = `"开启接受"`
+> **name**: `string` = `"开启接受"`
 
 #### components.MuiDatePicker.props.onClose
 
-> **components.MuiDatePicker.props.onClose**: `object`
+> **onClose**: `object`
 
 #### components.MuiDatePicker.props.onClose.description
 
-> **components.MuiDatePicker.props.onClose.description**: `string` = `"当弹出窗口请求关闭时触发回调"`
+> **description**: `string` = `"当弹出窗口请求关闭时触发回调"`
 
 #### components.MuiDatePicker.props.onClose.name
 
-> **components.MuiDatePicker.props.onClose.name**: `string` = `"onClose"`
+> **name**: `string` = `"onClose"`
 
 #### components.MuiDatePicker.props.onError
 
-> **components.MuiDatePicker.props.onError**: `object`
+> **onError**: `object`
 
 #### components.MuiDatePicker.props.onError.description
 
-> **components.MuiDatePicker.props.onError.description**: `string` = `"当与当前值相关的错误发生变化时触发回调"`
+> **description**: `string` = `"当与当前值相关的错误发生变化时触发回调"`
 
 #### components.MuiDatePicker.props.onError.name
 
-> **components.MuiDatePicker.props.onError.name**: `string` = `"onError"`
+> **name**: `string` = `"onError"`
 
 #### components.MuiDatePicker.props.onMonthChange
 
-> **components.MuiDatePicker.props.onMonthChange**: `object`
+> **onMonthChange**: `object`
 
 #### components.MuiDatePicker.props.onMonthChange.description
 
-> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"月份变更时触发回调"`
+> **description**: `string` = `"月份变更时触发回调"`
 
 #### components.MuiDatePicker.props.onMonthChange.name
 
-> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"onMonthChange"`
+> **name**: `string` = `"onMonthChange"`
 
 #### components.MuiDatePicker.props.onOpen
 
-> **components.MuiDatePicker.props.onOpen**: `object`
+> **onOpen**: `object`
 
 #### components.MuiDatePicker.props.onOpen.description
 
-> **components.MuiDatePicker.props.onOpen.description**: `string` = `"当弹出窗口请求打开时触发回调"`
+> **description**: `string` = `"当弹出窗口请求打开时触发回调"`
 
 #### components.MuiDatePicker.props.onOpen.name
 
-> **components.MuiDatePicker.props.onOpen.name**: `string` = `"onOpen"`
+> **name**: `string` = `"onOpen"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange**: `object`
+> **onSelectedSectionsChange**: `object`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.description
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"当所选部分发生变化时会触发回调"`
+> **description**: `string` = `"当所选部分发生变化时会触发回调"`
 
 #### components.MuiDatePicker.props.onSelectedSectionsChange.name
 
-> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"在选定部分上更改"`
+> **name**: `string` = `"在选定部分上更改"`
 
 #### components.MuiDatePicker.props.onViewChange
 
-> **components.MuiDatePicker.props.onViewChange**: `object`
+> **onViewChange**: `object`
 
 #### components.MuiDatePicker.props.onViewChange.description
 
-> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"视图更改时触发回调"`
+> **description**: `string` = `"视图更改时触发回调"`
 
 #### components.MuiDatePicker.props.onViewChange.name
 
-> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"onViewChange"`
+> **name**: `string` = `"onViewChange"`
 
 #### components.MuiDatePicker.props.onYearChange
 
-> **components.MuiDatePicker.props.onYearChange**: `object`
+> **onYearChange**: `object`
 
 #### components.MuiDatePicker.props.onYearChange.description
 
-> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"年份变更时触发回调"`
+> **description**: `string` = `"年份变更时触发回调"`
 
 #### components.MuiDatePicker.props.onYearChange.name
 
-> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"onYearChange"`
+> **name**: `string` = `"onYearChange"`
 
 #### components.MuiDatePicker.props.open
 
-> **components.MuiDatePicker.props.open**: `object`
+> **open**: `object`
 
 #### components.MuiDatePicker.props.open.description
 
-> **components.MuiDatePicker.props.open.description**: `string` = `"如果为 true，则日期选择器对话框处于打开状态；可用于受控状态管理"`
+> **description**: `string` = `"如果为 true，则日期选择器对话框处于打开状态；可用于受控状态管理"`
 
 #### components.MuiDatePicker.props.open.name
 
-> **components.MuiDatePicker.props.open.name**: `string` = `"打开"`
+> **name**: `string` = `"打开"`
 
 #### components.MuiDatePicker.props.openTo
 
-> **components.MuiDatePicker.props.openTo**: `object`
+> **openTo**: `object`
 
 #### components.MuiDatePicker.props.openTo.description
 
-> **components.MuiDatePicker.props.openTo.description**: `string` = `"选择器激活时要打开的视图"`
+> **description**: `string` = `"选择器激活时要打开的视图"`
 
 #### components.MuiDatePicker.props.openTo.name
 
-> **components.MuiDatePicker.props.openTo.name**: `string` = `"向... 开放"`
+> **name**: `string` = `"向... 开放"`
 
 #### components.MuiDatePicker.props.referenceDate
 
-> **components.MuiDatePicker.props.referenceDate**: `object`
+> **referenceDate**: `object`
 
 #### components.MuiDatePicker.props.referenceDate.description
 
-> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"未选择任何值时用于生成初始日历视图的日期"`
+> **description**: `string` = `"未选择任何值时用于生成初始日历视图的日期"`
 
 #### components.MuiDatePicker.props.referenceDate.name
 
-> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"参考日期"`
+> **name**: `string` = `"参考日期"`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth**: `object`
+> **showDaysOutsideCurrentMonth**: `object`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"在当前月视图中显示上个月和下个月的天数"`
+> **description**: `string` = `"在当前月视图中显示上个月和下个月的天数"`
 
 #### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
 
-> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"显示当月以外的天数"`
+> **name**: `string` = `"显示当月以外的天数"`
 
 #### components.MuiDatePicker.props.view
 
-> **components.MuiDatePicker.props.view**: `object`
+> **view**: `object`
 
 #### components.MuiDatePicker.props.view.description
 
-> **components.MuiDatePicker.props.view.description**: `string` = `"要显示的初始视图（日、月或年日历）"`
+> **description**: `string` = `"要显示的初始视图（日、月或年日历）"`
 
 #### components.MuiDatePicker.props.view.name
 
-> **components.MuiDatePicker.props.view.name**: `string` = `"查看"`
+> **name**: `string` = `"查看"`
 
 #### components.MuiDatePicker.props.views
 
-> **components.MuiDatePicker.props.views**: `object`
+> **views**: `object`
 
 #### components.MuiDatePicker.props.views.description
 
-> **components.MuiDatePicker.props.views.description**: `string` = `"可用视图（日、月和年日历）"`
+> **description**: `string` = `"可用视图（日、月和年日历）"`
 
 #### components.MuiDatePicker.props.views.name
 
-> **components.MuiDatePicker.props.views.name**: `string` = `"观点"`
+> **name**: `string` = `"观点"`
 
 #### components.MuiDatePicker.props.yearsOrder
 
-> **components.MuiDatePicker.props.yearsOrder**: `object`
+> **yearsOrder**: `object`
 
 #### components.MuiDatePicker.props.yearsOrder.description
 
-> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"年份排序顺序：升序（最旧的优先）或降序（最新的优先）"`
+> **description**: `string` = `"年份排序顺序：升序（最旧的优先）或降序（最新的优先）"`
 
 #### components.MuiDatePicker.props.yearsOrder.name
 
-> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"年度订单"`
+> **name**: `string` = `"年度订单"`
 
 #### components.MuiDatePicker.props.yearsPerRow
 
-> **components.MuiDatePicker.props.yearsPerRow**: `object`
+> **yearsPerRow**: `object`
 
 #### components.MuiDatePicker.props.yearsPerRow.description
 
-> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"年视图中每行显示的年份项目数"`
+> **description**: `string` = `"年视图中每行显示的年份项目数"`
 
 #### components.MuiDatePicker.props.yearsPerRow.name
 
-> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"每行年数"`
+> **name**: `string` = `"每行年数"`
 
 #### components.MuiDialog
 
-> **components.MuiDialog**: `object`
+> **MuiDialog**: `object`
 
 #### components.MuiDialog.description
 
-> **components.MuiDialog.description**: `string` = `"在叠加层中显示内容的模态对话框组件"`
+> **description**: `string` = `"在叠加层中显示内容的模态对话框组件"`
 
 #### components.MuiDialog.name
 
-> **components.MuiDialog.name**: `string` = `"对话框"`
+> **name**: `string` = `"对话框"`
 
 #### components.MuiDialog.props
 
-> **components.MuiDialog.props**: `object`
+> **props**: `object`
 
 #### components.MuiDialog.props.disableEscapeKeyDown
 
-> **components.MuiDialog.props.disableEscapeKeyDown**: `object`
+> **disableEscapeKeyDown**: `object`
 
 #### components.MuiDialog.props.disableEscapeKeyDown.description
 
-> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"如果为 true，则按退出键不会关闭对话框"`
+> **description**: `string` = `"如果为 true，则按退出键不会关闭对话框"`
 
 #### components.MuiDialog.props.disableEscapeKeyDown.name
 
-> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"禁用向下退出键"`
+> **name**: `string` = `"禁用向下退出键"`
 
 #### components.MuiDialog.props.fullScreen
 
-> **components.MuiDialog.props.fullScreen**: `object`
+> **fullScreen**: `object`
 
 #### components.MuiDialog.props.fullScreen.description
 
-> **components.MuiDialog.props.fullScreen.description**: `string` = `"如果为 true，则对话框将全屏显示"`
+> **description**: `string` = `"如果为 true，则对话框将全屏显示"`
 
 #### components.MuiDialog.props.fullScreen.name
 
-> **components.MuiDialog.props.fullScreen.name**: `string` = `"全屏"`
+> **name**: `string` = `"全屏"`
 
 #### components.MuiDialog.props.fullWidth
 
-> **components.MuiDialog.props.fullWidth**: `object`
+> **fullWidth**: `object`
 
 #### components.MuiDialog.props.fullWidth.description
 
-> **components.MuiDialog.props.fullWidth.description**: `string` = `"如果为 true，则对话框将延伸到 maxWidth"`
+> **description**: `string` = `"如果为 true，则对话框将延伸到 maxWidth"`
 
 #### components.MuiDialog.props.fullWidth.name
 
-> **components.MuiDialog.props.fullWidth.name**: `string` = `"全宽"`
+> **name**: `string` = `"全宽"`
 
 #### components.MuiDialog.props.maxWidth
 
-> **components.MuiDialog.props.maxWidth**: `object`
+> **maxWidth**: `object`
 
 #### components.MuiDialog.props.maxWidth.description
 
-> **components.MuiDialog.props.maxWidth.description**: `string` = `"对话框的最大宽度（xs、sm、md、lg、xl）"`
+> **description**: `string` = `"对话框的最大宽度（xs、sm、md、lg、xl）"`
 
 #### components.MuiDialog.props.maxWidth.name
 
-> **components.MuiDialog.props.maxWidth.name**: `string` = `"最大宽度"`
+> **name**: `string` = `"最大宽度"`
 
 #### components.MuiDialog.props.onClose
 
-> **components.MuiDialog.props.onClose**: `object`
+> **onClose**: `object`
 
 #### components.MuiDialog.props.onClose.description
 
-> **components.MuiDialog.props.onClose.description**: `string` = `"对话框关闭时触发回调"`
+> **description**: `string` = `"对话框关闭时触发回调"`
 
 #### components.MuiDialog.props.onClose.name
 
-> **components.MuiDialog.props.onClose.name**: `string` = `"onClose"`
+> **name**: `string` = `"onClose"`
 
 #### components.MuiDialog.props.open
 
-> **components.MuiDialog.props.open**: `object`
+> **open**: `object`
 
 #### components.MuiDialog.props.open.description
 
-> **components.MuiDialog.props.open.description**: `string` = `"如果为 true，则对话框处于打开状态"`
+> **description**: `string` = `"如果为 true，则对话框处于打开状态"`
 
 #### components.MuiDialog.props.open.name
 
-> **components.MuiDialog.props.open.name**: `string` = `"打开"`
+> **name**: `string` = `"打开"`
 
 #### components.MuiDialog.props.scroll
 
-> **components.MuiDialog.props.scroll**: `object`
+> **scroll**: `object`
 
 #### components.MuiDialog.props.scroll.description
 
-> **components.MuiDialog.props.scroll.description**: `string` = `"确定滚动对话框的容器（纸张或正文）"`
+> **description**: `string` = `"确定滚动对话框的容器（纸张或正文）"`
 
 #### components.MuiDialog.props.scroll.name
 
-> **components.MuiDialog.props.scroll.name**: `string` = `"滚动"`
+> **name**: `string` = `"滚动"`
 
 #### components.MuiDialogActions
 
-> **components.MuiDialogActions**: `object`
+> **MuiDialogActions**: `object`
 
 #### components.MuiDialogActions.description
 
-> **components.MuiDialogActions.description**: `string` = `"对话框操作按钮的容器"`
+> **description**: `string` = `"对话框操作按钮的容器"`
 
 #### components.MuiDialogActions.name
 
-> **components.MuiDialogActions.name**: `string` = `"对话框动作"`
+> **name**: `string` = `"对话框动作"`
 
 #### components.MuiDialogActions.props
 
-> **components.MuiDialogActions.props**: `object`
+> **props**: `object`
 
 #### components.MuiDialogActions.props.children
 
-> **components.MuiDialogActions.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiDialogActions.props.children.description
 
-> **components.MuiDialogActions.props.children.description**: `string` = `"组件的内容"`
+> **description**: `string` = `"组件的内容"`
 
 #### components.MuiDialogActions.props.children.name
 
-> **components.MuiDialogActions.props.children.name**: `string` = `"孩子们"`
+> **name**: `string` = `"孩子们"`
 
 #### components.MuiDialogActions.props.disableSpacing
 
-> **components.MuiDialogActions.props.disableSpacing**: `object`
+> **disableSpacing**: `object`
 
 #### components.MuiDialogActions.props.disableSpacing.description
 
-> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"如果为 true，则操作没有额外的边距"`
+> **description**: `string` = `"如果为 true，则操作没有额外的边距"`
 
 #### components.MuiDialogActions.props.disableSpacing.name
 
-> **components.MuiDialogActions.props.disableSpacing.name**: `string` = `"禁用间距"`
+> **name**: `string` = `"禁用间距"`
 
 #### components.MuiDialogContent
 
-> **components.MuiDialogContent**: `object`
+> **MuiDialogContent**: `object`
 
 #### components.MuiDialogContent.description
 
-> **components.MuiDialogContent.description**: `string` = `"对话框的主要内容区域"`
+> **description**: `string` = `"对话框的主要内容区域"`
 
 #### components.MuiDialogContent.name
 
-> **components.MuiDialogContent.name**: `string` = `"对话框内容"`
+> **name**: `string` = `"对话框内容"`
 
 #### components.MuiDialogContent.props
 
-> **components.MuiDialogContent.props**: `object`
+> **props**: `object`
 
 #### components.MuiDialogContent.props.children
 
-> **components.MuiDialogContent.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiDialogContent.props.children.description
 
-> **components.MuiDialogContent.props.children.description**: `string` = `"组件的内容"`
+> **description**: `string` = `"组件的内容"`
 
 #### components.MuiDialogContent.props.children.name
 
-> **components.MuiDialogContent.props.children.name**: `string` = `"孩子们"`
+> **name**: `string` = `"孩子们"`
 
 #### components.MuiDialogContent.props.dividers
 
-> **components.MuiDialogContent.props.dividers**: `object`
+> **dividers**: `object`
 
 #### components.MuiDialogContent.props.dividers.description
 
-> **components.MuiDialogContent.props.dividers.description**: `string` = `"如果为 true，则将边框添加到对话框内容的顶部和底部"`
+> **description**: `string` = `"如果为 true，则将边框添加到对话框内容的顶部和底部"`
 
 #### components.MuiDialogContent.props.dividers.name
 
-> **components.MuiDialogContent.props.dividers.name**: `string` = `"分隔器"`
+> **name**: `string` = `"分隔器"`
 
 #### components.MuiDialogContentText
 
-> **components.MuiDialogContentText**: `object`
+> **MuiDialogContentText**: `object`
 
 #### components.MuiDialogContentText.description
 
-> **components.MuiDialogContentText.description**: `string` = `"对话框中的文本内容"`
+> **description**: `string` = `"对话框中的文本内容"`
 
 #### components.MuiDialogContentText.name
 
-> **components.MuiDialogContentText.name**: `string` = `"对话框内容文本"`
+> **name**: `string` = `"对话框内容文本"`
 
 #### components.MuiDialogContentText.props
 
-> **components.MuiDialogContentText.props**: `object`
+> **props**: `object`
 
 #### components.MuiDialogContentText.props.children
 
-> **components.MuiDialogContentText.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiDialogContentText.props.children.description
 
-> **components.MuiDialogContentText.props.children.description**: `string` = `"文字内容"`
+> **description**: `string` = `"文字内容"`
 
 #### components.MuiDialogContentText.props.children.name
 
-> **components.MuiDialogContentText.props.children.name**: `string` = `"内容"`
+> **name**: `string` = `"内容"`
 
 #### components.MuiDialogLayout
 
-> **components.MuiDialogLayout**: `object`
+> **MuiDialogLayout**: `object`
 
 #### components.MuiDialogLayout.description
 
-> **components.MuiDialogLayout.description**: `string` = `"带有标题、内容和操作按钮的预设对话框布局"`
+> **description**: `string` = `"带有标题、内容和操作按钮的预设对话框布局"`
 
 #### components.MuiDialogLayout.name
 
-> **components.MuiDialogLayout.name**: `string` = `"对话框布局"`
+> **name**: `string` = `"对话框布局"`
 
 #### components.MuiDialogTitle
 
-> **components.MuiDialogTitle**: `object`
+> **MuiDialogTitle**: `object`
 
 #### components.MuiDialogTitle.description
 
-> **components.MuiDialogTitle.description**: `string` = `"对话框的标题"`
+> **description**: `string` = `"对话框的标题"`
 
 #### components.MuiDialogTitle.name
 
-> **components.MuiDialogTitle.name**: `string` = `"对话框标题"`
+> **name**: `string` = `"对话框标题"`
 
 #### components.MuiDialogTitle.props
 
-> **components.MuiDialogTitle.props**: `object`
+> **props**: `object`
 
 #### components.MuiDialogTitle.props.children
 
-> **components.MuiDialogTitle.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiDialogTitle.props.children.description
 
-> **components.MuiDialogTitle.props.children.description**: `string` = `"标题文本"`
+> **description**: `string` = `"标题文本"`
 
 #### components.MuiDialogTitle.props.children.name
 
-> **components.MuiDialogTitle.props.children.name**: `string` = `"内容"`
+> **name**: `string` = `"内容"`
 
 #### components.MuiErrorWrapper
 
-> **components.MuiErrorWrapper**: `object`
+> **MuiErrorWrapper**: `object`
 
 #### components.MuiErrorWrapper.description
 
-> **components.MuiErrorWrapper.description**: `string` = `"包装内容并显示错误状态或消息"`
+> **description**: `string` = `"包装内容并显示错误状态或消息"`
 
 #### components.MuiErrorWrapper.name
 
-> **components.MuiErrorWrapper.name**: `string` = `"错误包装器"`
+> **name**: `string` = `"错误包装器"`
 
 #### components.MuiFormControlLabel
 
-> **components.MuiFormControlLabel**: `object`
+> **MuiFormControlLabel**: `object`
 
 #### components.MuiFormControlLabel.description
 
-> **components.MuiFormControlLabel.description**: `string` = `"将标签与表单控件相关联"`
+> **description**: `string` = `"将标签与表单控件相关联"`
 
 #### components.MuiFormControlLabel.name
 
-> **components.MuiFormControlLabel.name**: `string` = `"表单控件标签"`
+> **name**: `string` = `"表单控件标签"`
 
 #### components.MuiFormControlLabel.props
 
-> **components.MuiFormControlLabel.props**: `object`
+> **props**: `object`
 
 #### components.MuiFormControlLabel.props.control
 
-> **components.MuiFormControlLabel.props.control**: `object`
+> **control**: `object`
 
 #### components.MuiFormControlLabel.props.control.description
 
-> **components.MuiFormControlLabel.props.control.description**: `string` = `"表单控制元素（复选框、单选框、开关）"`
+> **description**: `string` = `"表单控制元素（复选框、单选框、开关）"`
 
 #### components.MuiFormControlLabel.props.control.name
 
-> **components.MuiFormControlLabel.props.control.name**: `string` = `"控制"`
+> **name**: `string` = `"控制"`
 
 #### components.MuiFormControlLabel.props.labelPlacement
 
-> **components.MuiFormControlLabel.props.labelPlacement**: `object`
+> **labelPlacement**: `object`
 
 #### components.MuiFormControlLabel.props.labelPlacement.description
 
-> **components.MuiFormControlLabel.props.labelPlacement.description**: `string` = `"标签相对于控件的位置"`
+> **description**: `string` = `"标签相对于控件的位置"`
 
 #### components.MuiFormControlLabel.props.labelPlacement.name
 
-> **components.MuiFormControlLabel.props.labelPlacement.name**: `string` = `"标签放置"`
+> **name**: `string` = `"标签放置"`
 
 #### components.MuiFormLabel
 
-> **components.MuiFormLabel**: `object`
+> **MuiFormLabel**: `object`
 
 #### components.MuiFormLabel.description
 
-> **components.MuiFormLabel.description**: `string` = `"用于对表单字段进行分组或描述的标签"`
+> **description**: `string` = `"用于对表单字段进行分组或描述的标签"`
 
 #### components.MuiFormLabel.name
 
-> **components.MuiFormLabel.name**: `string` = `"表单标签"`
+> **name**: `string` = `"表单标签"`
 
 #### components.MuiFormLabel.props
 
-> **components.MuiFormLabel.props**: `object`
+> **props**: `object`
 
 #### components.MuiFormLabel.props.filled
 
-> **components.MuiFormLabel.props.filled**: `object`
+> **filled**: `object`
 
 #### components.MuiFormLabel.props.filled.description
 
-> **components.MuiFormLabel.props.filled.description**: `string` = `"应用填充状态样式"`
+> **description**: `string` = `"应用填充状态样式"`
 
 #### components.MuiFormLabel.props.filled.name
 
-> **components.MuiFormLabel.props.filled.name**: `string` = `"已填充"`
+> **name**: `string` = `"已填充"`
 
 #### components.MuiLinearProgress
 
-> **components.MuiLinearProgress**: `object`
+> **MuiLinearProgress**: `object`
 
 #### components.MuiLinearProgress.description
 
-> **components.MuiLinearProgress.description**: `string` = `"显示线性栏中的加载或进度"`
+> **description**: `string` = `"显示线性栏中的加载或进度"`
 
 #### components.MuiLinearProgress.name
 
-> **components.MuiLinearProgress.name**: `string` = `"线性进展"`
+> **name**: `string` = `"线性进展"`
 
 #### components.MuiLinearProgress.props
 
-> **components.MuiLinearProgress.props**: `object`
+> **props**: `object`
 
 #### components.MuiLinearProgress.props.valueBuffer
 
-> **components.MuiLinearProgress.props.valueBuffer**: `object`
+> **valueBuffer**: `object`
 
 #### components.MuiLinearProgress.props.valueBuffer.description
 
-> **components.MuiLinearProgress.props.valueBuffer.description**: `string` = `"缓冲进度模式的辅助缓冲值"`
+> **description**: `string` = `"缓冲进度模式的辅助缓冲值"`
 
 #### components.MuiLinearProgress.props.valueBuffer.name
 
-> **components.MuiLinearProgress.props.valueBuffer.name**: `string` = `"值缓冲区"`
+> **name**: `string` = `"值缓冲区"`
 
 #### components.MuiLink
 
-> **components.MuiLink**: `object`
+> **MuiLink**: `object`
 
 #### components.MuiLink.description
 
-> **components.MuiLink.description**: `string` = `"用于导航或操作的可点击元素"`
+> **description**: `string` = `"用于导航或操作的可点击元素"`
 
 #### components.MuiLink.name
 
-> **components.MuiLink.name**: `string` = `"链接"`
+> **name**: `string` = `"链接"`
 
 #### components.MuiLink.props
 
-> **components.MuiLink.props**: `object`
+> **props**: `object`
 
 #### components.MuiLink.props.href
 
-> **components.MuiLink.props.href**: `object`
+> **href**: `object`
 
 #### components.MuiLink.props.href.description
 
-> **components.MuiLink.props.href.description**: `string` = `"目标网址"`
+> **description**: `string` = `"目标网址"`
 
 #### components.MuiLink.props.href.name
 
-> **components.MuiLink.props.href.name**: `string` = `"Href"`
+> **name**: `string` = `"Href"`
 
 #### components.MuiList
 
-> **components.MuiList**: `object`
+> **MuiList**: `object`
 
 #### components.MuiList.description
 
-> **components.MuiList.description**: `string` = `"显示项目的垂直列表"`
+> **description**: `string` = `"显示项目的垂直列表"`
 
 #### components.MuiList.name
 
-> **components.MuiList.name**: `string` = `"清单"`
+> **name**: `string` = `"清单"`
 
 #### components.MuiListItem
 
-> **components.MuiListItem**: `object`
+> **MuiListItem**: `object`
 
 #### components.MuiListItem.description
 
-> **components.MuiListItem.description**: `string` = `"代表列表中的单个项目"`
+> **description**: `string` = `"代表列表中的单个项目"`
 
 #### components.MuiListItem.name
 
-> **components.MuiListItem.name**: `string` = `"清单项目"`
+> **name**: `string` = `"清单项目"`
 
 #### components.MuiListItem.props
 
-> **components.MuiListItem.props**: `object`
+> **props**: `object`
 
 #### components.MuiListItem.props.divider
 
-> **components.MuiListItem.props.divider**: `object`
+> **divider**: `object`
 
 #### components.MuiListItem.props.divider.description
 
-> **components.MuiListItem.props.divider.description**: `string` = `"在列表项下方显示分隔线"`
+> **description**: `string` = `"在列表项下方显示分隔线"`
 
 #### components.MuiListItem.props.divider.name
 
-> **components.MuiListItem.props.divider.name**: `string` = `"分隔器"`
+> **name**: `string` = `"分隔器"`
 
 #### components.MuiRadioGroup
 
-> **components.MuiRadioGroup**: `object`
+> **MuiRadioGroup**: `object`
 
 #### components.MuiRadioGroup.description
 
-> **components.MuiRadioGroup.description**: `string` = `"允许从集合中选择一个选项"`
+> **description**: `string` = `"允许从集合中选择一个选项"`
 
 #### components.MuiRadioGroup.name
 
-> **components.MuiRadioGroup.name**: `string` = `"电台组"`
+> **name**: `string` = `"电台组"`
 
 #### components.MuiRadioGroup.props
 
-> **components.MuiRadioGroup.props**: `object`
+> **props**: `object`
 
 #### components.MuiRadioGroup.props.name
 
-> **components.MuiRadioGroup.props.name**: `object`
+> **name**: `object`
 
 #### components.MuiRadioGroup.props.name.description
 
-> **components.MuiRadioGroup.props.name.description**: `string` = `"用于对单选按钮进行分组的名称属性"`
+> **description**: `string` = `"用于对单选按钮进行分组的名称属性"`
 
 #### components.MuiRadioGroup.props.name.name
 
-> **components.MuiRadioGroup.props.name.name**: `string` = `"姓名"`
+> **name**: `string` = `"姓名"`
 
 #### components.MuiRadioGroup.props.row
 
-> **components.MuiRadioGroup.props.row**: `object`
+> **row**: `object`
 
 #### components.MuiRadioGroup.props.row.description
 
-> **components.MuiRadioGroup.props.row.description**: `string` = `"水平显示单选按钮"`
+> **description**: `string` = `"水平显示单选按钮"`
 
 #### components.MuiRadioGroup.props.row.name
 
-> **components.MuiRadioGroup.props.row.name**: `string` = `"行"`
+> **name**: `string` = `"行"`
 
 #### components.MuiRadioItem
 
-> **components.MuiRadioItem**: `object`
+> **MuiRadioItem**: `object`
 
 #### components.MuiRadioItem.description
 
-> **components.MuiRadioItem.description**: `string` = `"在单选组中使用的单选按钮"`
+> **description**: `string` = `"在单选组中使用的单选按钮"`
 
 #### components.MuiRadioItem.name
 
-> **components.MuiRadioItem.name**: `string` = `"电台物品"`
+> **name**: `string` = `"电台物品"`
 
 #### components.MuiSelect
 
-> **components.MuiSelect**: `object`
+> **MuiSelect**: `object`
 
 #### components.MuiSelect.description
 
-> **components.MuiSelect.description**: `string` = `"用于选择选项的下拉组件"`
+> **description**: `string` = `"用于选择选项的下拉组件"`
 
 #### components.MuiSelect.name
 
-> **components.MuiSelect.name**: `string` = `"选择"`
+> **name**: `string` = `"选择"`
 
 #### components.MuiSelect.props
 
-> **components.MuiSelect.props**: `object`
+> **props**: `object`
 
 #### components.MuiSelect.props.autoFocus
 
-> **components.MuiSelect.props.autoFocus**: `object`
+> **autoFocus**: `object`
 
 #### components.MuiSelect.props.autoFocus.description
 
-> **components.MuiSelect.props.autoFocus.description**: `string` = `"坐骑时自动聚焦场地"`
+> **description**: `string` = `"坐骑时自动聚焦场地"`
 
 #### components.MuiSelect.props.autoFocus.name
 
-> **components.MuiSelect.props.autoFocus.name**: `string` = `"自动对焦"`
+> **name**: `string` = `"自动对焦"`
 
 #### components.MuiSelect.props.multiple
 
-> **components.MuiSelect.props.multiple**: `object`
+> **multiple**: `object`
 
 #### components.MuiSelect.props.multiple.description
 
-> **components.MuiSelect.props.multiple.description**: `string` = `"允许选择多个选项"`
+> **description**: `string` = `"允许选择多个选项"`
 
 #### components.MuiSelect.props.multiple.name
 
-> **components.MuiSelect.props.multiple.name**: `string` = `"多个"`
+> **name**: `string` = `"多个"`
 
 #### components.MuiStack
 
-> **components.MuiStack**: `object`
+> **MuiStack**: `object`
 
 #### components.MuiStack.description
 
-> **components.MuiStack.description**: `string` = `"在一维堆栈中布局子节点"`
+> **description**: `string` = `"在一维堆栈中布局子节点"`
 
 #### components.MuiStack.name
 
-> **components.MuiStack.name**: `string` = `"堆栈"`
+> **name**: `string` = `"堆栈"`
 
 #### components.MuiStack.props
 
-> **components.MuiStack.props**: `object`
+> **props**: `object`
 
 #### components.MuiStack.props.alignItems
 
-> **components.MuiStack.props.alignItems**: `object`
+> **alignItems**: `object`
 
 #### components.MuiStack.props.alignItems.description
 
-> **components.MuiStack.props.alignItems.description**: `string` = `"控制横轴对齐"`
+> **description**: `string` = `"控制横轴对齐"`
 
 #### components.MuiStack.props.alignItems.name
 
-> **components.MuiStack.props.alignItems.name**: `string` = `"对齐项目"`
+> **name**: `string` = `"对齐项目"`
 
 #### components.MuiStack.props.direction
 
-> **components.MuiStack.props.direction**: `object`
+> **direction**: `object`
 
 #### components.MuiStack.props.direction.description
 
-> **components.MuiStack.props.direction.description**: `string` = `"定义项目是堆叠在行还是列中"`
+> **description**: `string` = `"定义项目是堆叠在行还是列中"`
 
 #### components.MuiStack.props.direction.name
 
-> **components.MuiStack.props.direction.name**: `string` = `"方向"`
+> **name**: `string` = `"方向"`
 
 #### components.MuiStack.props.flexWrap
 
-> **components.MuiStack.props.flexWrap**: `object`
+> **flexWrap**: `object`
 
 #### components.MuiStack.props.flexWrap.description
 
-> **components.MuiStack.props.flexWrap.description**: `string` = `"控制项目是否换行到多行"`
+> **description**: `string` = `"控制项目是否换行到多行"`
 
 #### components.MuiStack.props.flexWrap.name
 
-> **components.MuiStack.props.flexWrap.name**: `string` = `"弹性包装"`
+> **name**: `string` = `"弹性包装"`
 
 #### components.MuiStack.props.justifyContent
 
-> **components.MuiStack.props.justifyContent**: `object`
+> **justifyContent**: `object`
 
 #### components.MuiStack.props.justifyContent.description
 
-> **components.MuiStack.props.justifyContent.description**: `string` = `"控制主轴对齐"`
+> **description**: `string` = `"控制主轴对齐"`
 
 #### components.MuiStack.props.justifyContent.name
 
-> **components.MuiStack.props.justifyContent.name**: `string` = `"证明内容的合理性"`
+> **name**: `string` = `"证明内容的合理性"`
 
 #### components.MuiStack.props.spacing
 
-> **components.MuiStack.props.spacing**: `object`
+> **spacing**: `object`
 
 #### components.MuiStack.props.spacing.description
 
-> **components.MuiStack.props.spacing.description**: `string` = `"堆叠物品之间的间距"`
+> **description**: `string` = `"堆叠物品之间的间距"`
 
 #### components.MuiStack.props.spacing.name
 
-> **components.MuiStack.props.spacing.name**: `string` = `"间距"`
+> **name**: `string` = `"间距"`
 
 #### components.MuiStack.props.useFlexGap
 
-> **components.MuiStack.props.useFlexGap**: `object`
+> **useFlexGap**: `object`
 
 #### components.MuiStack.props.useFlexGap.description
 
-> **components.MuiStack.props.useFlexGap.description**: `string` = `"使用 CSS 间距代替边距作为间距"`
+> **description**: `string` = `"使用 CSS 间距代替边距作为间距"`
 
 #### components.MuiStack.props.useFlexGap.name
 
-> **components.MuiStack.props.useFlexGap.name**: `string` = `"使用弹性间隙"`
+> **name**: `string` = `"使用弹性间隙"`
 
 #### components.MuiSwitch
 
-> **components.MuiSwitch**: `object`
+> **MuiSwitch**: `object`
 
 #### components.MuiSwitch.description
 
-> **components.MuiSwitch.description**: `string` = `"切换控制以在两种状态之间切换"`
+> **description**: `string` = `"切换控制以在两种状态之间切换"`
 
 #### components.MuiSwitch.name
 
-> **components.MuiSwitch.name**: `string` = `"开关"`
+> **name**: `string` = `"开关"`
 
 #### components.MuiSwitch.props
 
-> **components.MuiSwitch.props**: `object`
+> **props**: `object`
 
 #### components.MuiSwitch.props.defaultChecked
 
-> **components.MuiSwitch.props.defaultChecked**: `object`
+> **defaultChecked**: `object`
 
 #### components.MuiSwitch.props.defaultChecked.description
 
-> **components.MuiSwitch.props.defaultChecked.description**: `string` = `"不受控制时的初始切换状态"`
+> **description**: `string` = `"不受控制时的初始切换状态"`
 
 #### components.MuiSwitch.props.defaultChecked.name
 
-> **components.MuiSwitch.props.defaultChecked.name**: `string` = `"默认选中"`
+> **name**: `string` = `"默认选中"`
 
 #### components.MuiTextField
 
-> **components.MuiTextField**: `object`
+> **MuiTextField**: `object`
 
 #### components.MuiTextField.description
 
-> **components.MuiTextField.description**: `string` = `"文本和表单数据的输入字段"`
+> **description**: `string` = `"文本和表单数据的输入字段"`
 
 #### components.MuiTextField.name
 
-> **components.MuiTextField.name**: `string` = `"文本字段"`
+> **name**: `string` = `"文本字段"`
 
 #### components.MuiTextField.props
 
-> **components.MuiTextField.props**: `object`
+> **props**: `object`
 
 #### components.MuiTextField.props.autoFocus
 
-> **components.MuiTextField.props.autoFocus**: `object`
+> **autoFocus**: `object`
 
 #### components.MuiTextField.props.autoFocus.description
 
-> **components.MuiTextField.props.autoFocus.description**: `string` = `"坐骑时自动聚焦场地"`
+> **description**: `string` = `"坐骑时自动聚焦场地"`
 
 #### components.MuiTextField.props.autoFocus.name
 
-> **components.MuiTextField.props.autoFocus.name**: `string` = `"自动对焦"`
+> **name**: `string` = `"自动对焦"`
 
 #### components.MuiTextField.props.maxRows
 
-> **components.MuiTextField.props.maxRows**: `object`
+> **maxRows**: `object`
 
 #### components.MuiTextField.props.maxRows.description
 
-> **components.MuiTextField.props.maxRows.description**: `string` = `"多行输入的最大可见行数"`
+> **description**: `string` = `"多行输入的最大可见行数"`
 
 #### components.MuiTextField.props.maxRows.name
 
-> **components.MuiTextField.props.maxRows.name**: `string` = `"最大行数"`
+> **name**: `string` = `"最大行数"`
 
 #### components.MuiTextField.props.multiline
 
-> **components.MuiTextField.props.multiline**: `object`
+> **multiline**: `object`
 
 #### components.MuiTextField.props.multiline.description
 
-> **components.MuiTextField.props.multiline.description**: `string` = `"渲染文本区域而不是单行输入"`
+> **description**: `string` = `"渲染文本区域而不是单行输入"`
 
 #### components.MuiTextField.props.multiline.name
 
-> **components.MuiTextField.props.multiline.name**: `string` = `"多行"`
+> **name**: `string` = `"多行"`
 
 #### components.MuiTextField.props.type
 
-> **components.MuiTextField.props.type**: `object`
+> **type**: `object`
 
 #### components.MuiTextField.props.type.description
 
-> **components.MuiTextField.props.type.description**: `string` = `"HTML 输入类型（文本、密码、电子邮件等）"`
+> **description**: `string` = `"HTML 输入类型（文本、密码、电子邮件等）"`
 
 #### components.MuiTextField.props.type.name
 
-> **components.MuiTextField.props.type.name**: `string` = `"类型"`
+> **name**: `string` = `"类型"`
 
 #### components.MuiTooltip
 
-> **components.MuiTooltip**: `object`
+> **MuiTooltip**: `object`
 
 #### components.MuiTooltip.description
 
-> **components.MuiTooltip.description**: `string` = `"在悬停、对焦或触摸时显示上下文信息"`
+> **description**: `string` = `"在悬停、对焦或触摸时显示上下文信息"`
 
 #### components.MuiTooltip.name
 
-> **components.MuiTooltip.name**: `string` = `"工具提示"`
+> **name**: `string` = `"工具提示"`
 
 #### components.MuiTooltip.props
 
-> **components.MuiTooltip.props**: `object`
+> **props**: `object`
 
 #### components.MuiTooltip.props.arrow
 
-> **components.MuiTooltip.props.arrow**: `object`
+> **arrow**: `object`
 
 #### components.MuiTooltip.props.arrow.description
 
-> **components.MuiTooltip.props.arrow.description**: `string` = `"显示指向目标元素的箭头"`
+> **description**: `string` = `"显示指向目标元素的箭头"`
 
 #### components.MuiTooltip.props.arrow.name
 
-> **components.MuiTooltip.props.arrow.name**: `string` = `"《箭》"`
+> **name**: `string` = `"《箭》"`
 
 #### components.MuiTooltip.props.disableFocusListener
 
-> **components.MuiTooltip.props.disableFocusListener**: `object`
+> **disableFocusListener**: `object`
 
 #### components.MuiTooltip.props.disableFocusListener.description
 
-> **components.MuiTooltip.props.disableFocusListener.description**: `string` = `"防止工具提示出现在焦点上"`
+> **description**: `string` = `"防止工具提示出现在焦点上"`
 
 #### components.MuiTooltip.props.disableFocusListener.name
 
-> **components.MuiTooltip.props.disableFocusListener.name**: `string` = `"禁用焦点侦听器"`
+> **name**: `string` = `"禁用焦点侦听器"`
 
 #### components.MuiTooltip.props.disableHoverListener
 
-> **components.MuiTooltip.props.disableHoverListener**: `object`
+> **disableHoverListener**: `object`
 
 #### components.MuiTooltip.props.disableHoverListener.description
 
-> **components.MuiTooltip.props.disableHoverListener.description**: `string` = `"防止工具提示在悬停时出现"`
+> **description**: `string` = `"防止工具提示在悬停时出现"`
 
 #### components.MuiTooltip.props.disableHoverListener.name
 
-> **components.MuiTooltip.props.disableHoverListener.name**: `string` = `"禁用悬停侦听器"`
+> **name**: `string` = `"禁用悬停侦听器"`
 
 #### components.MuiTooltip.props.disableInteractive
 
-> **components.MuiTooltip.props.disableInteractive**: `object`
+> **disableInteractive**: `object`
 
 #### components.MuiTooltip.props.disableInteractive.description
 
-> **components.MuiTooltip.props.disableInteractive.description**: `string` = `"禁用与工具提示内容的交互"`
+> **description**: `string` = `"禁用与工具提示内容的交互"`
 
 #### components.MuiTooltip.props.disableInteractive.name
 
-> **components.MuiTooltip.props.disableInteractive.name**: `string` = `"禁用交互式"`
+> **name**: `string` = `"禁用交互式"`
 
 #### components.MuiTooltip.props.disableTouchListener
 
-> **components.MuiTooltip.props.disableTouchListener**: `object`
+> **disableTouchListener**: `object`
 
 #### components.MuiTooltip.props.disableTouchListener.description
 
-> **components.MuiTooltip.props.disableTouchListener.description**: `string` = `"防止工具提示在触摸时出现"`
+> **description**: `string` = `"防止工具提示在触摸时出现"`
 
 #### components.MuiTooltip.props.disableTouchListener.name
 
-> **components.MuiTooltip.props.disableTouchListener.name**: `string` = `"禁用触摸监听器"`
+> **name**: `string` = `"禁用触摸监听器"`
 
 #### components.MuiTooltip.props.enterDelay
 
-> **components.MuiTooltip.props.enterDelay**: `object`
+> **enterDelay**: `object`
 
 #### components.MuiTooltip.props.enterDelay.description
 
-> **components.MuiTooltip.props.enterDelay.description**: `string` = `"显示工具提示之前的延迟（以毫秒为单位）"`
+> **description**: `string` = `"显示工具提示之前的延迟（以毫秒为单位）"`
 
 #### components.MuiTooltip.props.enterDelay.name
 
-> **components.MuiTooltip.props.enterDelay.name**: `string` = `"输入延迟"`
+> **name**: `string` = `"输入延迟"`
 
 #### components.MuiTooltip.props.followCursor
 
-> **components.MuiTooltip.props.followCursor**: `object`
+> **followCursor**: `object`
 
 #### components.MuiTooltip.props.followCursor.description
 
-> **components.MuiTooltip.props.followCursor.description**: `string` = `"使工具提示跟随光标位置"`
+> **description**: `string` = `"使工具提示跟随光标位置"`
 
 #### components.MuiTooltip.props.followCursor.name
 
-> **components.MuiTooltip.props.followCursor.name**: `string` = `"跟随光标"`
+> **name**: `string` = `"跟随光标"`
 
 #### components.MuiTooltip.props.leaveDelay
 
-> **components.MuiTooltip.props.leaveDelay**: `object`
+> **leaveDelay**: `object`
 
 #### components.MuiTooltip.props.leaveDelay.description
 
-> **components.MuiTooltip.props.leaveDelay.description**: `string` = `"隐藏工具提示之前的延迟（以毫秒为单位）"`
+> **description**: `string` = `"隐藏工具提示之前的延迟（以毫秒为单位）"`
 
 #### components.MuiTooltip.props.leaveDelay.name
 
-> **components.MuiTooltip.props.leaveDelay.name**: `string` = `"延迟离开"`
+> **name**: `string` = `"延迟离开"`
 
 #### components.MuiTooltip.props.title
 
-> **components.MuiTooltip.props.title**: `object`
+> **title**: `object`
 
 #### components.MuiTooltip.props.title.description
 
-> **components.MuiTooltip.props.title.description**: `string` = `"工具提示内显示的文本内容"`
+> **description**: `string` = `"工具提示内显示的文本内容"`
 
 #### components.MuiTooltip.props.title.name
 
-> **components.MuiTooltip.props.title.name**: `string` = `"标题"`
+> **name**: `string` = `"标题"`
 
 #### components.MuiTypography
 
-> **components.MuiTypography**: `object`
+> **MuiTypography**: `object`
 
 #### components.MuiTypography.description
 
-> **components.MuiTypography.description**: `string` = `"显示具有预定义排版样式的文本"`
+> **description**: `string` = `"显示具有预定义排版样式的文本"`
 
 #### components.MuiTypography.name
 
-> **components.MuiTypography.name**: `string` = `"排版"`
+> **name**: `string` = `"排版"`
 
 #### components.MuiTypography.props
 
-> **components.MuiTypography.props**: `object`
+> **props**: `object`
 
 #### components.MuiTypography.props.children
 
-> **components.MuiTypography.props.children**: `object`
+> **children**: `object`
 
 #### components.MuiTypography.props.children.description
 
-> **components.MuiTypography.props.children.description**: `string` = `"文字内容"`
+> **description**: `string` = `"文字内容"`
 
 #### components.MuiTypography.props.children.name
 
-> **components.MuiTypography.props.children.name**: `string` = `"内容"`
+> **name**: `string` = `"内容"`
 
 #### components.MuiUploader
 
-> **components.MuiUploader**: `object`
+> **MuiUploader**: `object`
 
 #### components.MuiUploader.description
 
-> **components.MuiUploader.description**: `string` = `"用于上传一个或多个文件的组件"`
+> **description**: `string` = `"用于上传一个或多个文件的组件"`
 
 #### components.MuiUploader.name
 
-> **components.MuiUploader.name**: `string` = `"上传者"`
+> **name**: `string` = `"上传者"`
 
 #### components.MuiUploader.props
 
-> **components.MuiUploader.props**: `object`
+> **props**: `object`
 
 #### components.MuiUploader.props.accept
 
-> **components.MuiUploader.props.accept**: `object`
+> **accept**: `object`
 
 #### components.MuiUploader.props.accept.description
 
-> **components.MuiUploader.props.accept.description**: `string` = `"允许的文件类型（例如 “.jpg、.png”）"`
+> **description**: `string` = `"允许的文件类型（例如 “.jpg、.png”）"`
 
 #### components.MuiUploader.props.accept.name
 
-> **components.MuiUploader.props.accept.name**: `string` = `"接受"`
+> **name**: `string` = `"接受"`
 
 #### components.MuiUploader.props.multiple
 
-> **components.MuiUploader.props.multiple**: `object`
+> **multiple**: `object`
 
 #### components.MuiUploader.props.multiple.description
 
-> **components.MuiUploader.props.multiple.description**: `string` = `"允许选择多个文件"`
+> **description**: `string` = `"允许选择多个文件"`
 
 #### components.MuiUploader.props.multiple.name
 
-> **components.MuiUploader.props.multiple.name**: `string` = `"多个"`
+> **name**: `string` = `"多个"`

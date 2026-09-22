@@ -1,4 +1,4 @@
-# Variable: FormViewerLite()
+# Variable: FormViewerLite
 
 > `const` **FormViewerLite**: (`props`) => `Element`
 

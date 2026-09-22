@@ -10,7 +10,7 @@ Props for a single breadcrumb item component.
 
 ### active?
 
-> `optional` **active**: `boolean`
+> `optional` **active?**: `boolean`
 
 Whether the breadcrumb item is active.
 
@@ -22,7 +22,7 @@ Whether the breadcrumb item is active.
 
 ### href?
 
-> `optional` **href**: `string`
+> `optional` **href?**: `string`
 
 URL for the breadcrumb item.
 
@@ -32,9 +32,9 @@ URL for the breadcrumb item.
 
 ***
 
-### onClick()?
+### onClick?
 
-> `optional` **onClick**: (`item`) => `void`
+> `optional` **onClick?**: (`item`) => `void`
 
 Callback function when the breadcrumb item is clicked.
 
@@ -52,7 +52,7 @@ Callback function when the breadcrumb item is clicked.
 
 ### title?
 
-> `optional` **title**: `string`
+> `optional` **title?**: `string`
 
 Title text for the breadcrumb item.
 
