@@ -1,6 +1,6 @@
 # Type Alias: ActionEventHandler
 
-> **ActionEventHandler** = (`e`, `args?`) => `Promise`\<`void`\> \| `void`
+> **ActionEventHandler** = (`e`, `args?`) => [`ActionResult`](ActionResult.md) \| `Promise`\<[`ActionResult`](ActionResult.md)\>
 
 Event handler function type.
 
@@ -20,4 +20,4 @@ the action parameters.
 
 ## Returns
 
-`Promise`\<`void`\> \| `void`
+[`ActionResult`](ActionResult.md) \| `Promise`\<[`ActionResult`](ActionResult.md)\>

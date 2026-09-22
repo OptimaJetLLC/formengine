@@ -1,5 +1,5 @@
 import type {ActionDefinition} from '../ActionDefinition'
-import type {ParameterType} from '../types'
+import type {ActionResult, ParameterType} from '../types'
 import type {ActionEventArgs} from './ActionEventArgs'
 
 /**
@@ -31,4 +31,4 @@ export type PropertyKey<T> = keyof T & string
  * @param params the action parameters arguments.
  * @template T the type of action parameters.
  */
-export type ActionHandler<T> = (e: ActionEventArgs, params: { [k in keyof T]: any }) => void | Promise<void>
+export type ActionHandler<T> = (e: ActionEventArgs, params: { [k in keyof T]: any }) => ActionResult | Promise<ActionResult>

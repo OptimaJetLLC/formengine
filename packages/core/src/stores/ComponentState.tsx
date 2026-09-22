@@ -73,8 +73,9 @@ function createActionHandlersChain(store: Store, actionDataList: ActionData[]) {
       for (const {func, args} of actions) {
         const withBoundFnArgs = bindFunctionsInArgs(e, args)
         const result = func(e, withBoundFnArgs)
+        const resolved = isPromise(result) ? await result : result
 
-        if (isPromise(result)) await result
+        if (resolved === false) return
       }
     } catch (e) {
       // eslint-disable-next-line no-console

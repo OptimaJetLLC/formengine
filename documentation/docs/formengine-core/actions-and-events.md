@@ -19,6 +19,7 @@ In this guide, you'll learn:
 - How events and actions work together
 - How to bind actions to events, including the correct syntax for code actions
 - The order in which actions execute
+- How to interrupt an action chain without throwing an error
 - Practical examples from simple to complex
 
 ## Understanding the Basics
@@ -180,9 +181,231 @@ Actions execute **sequentially** in the order they appear in the array. This is 
 
 Execution flow:
 
-1. `validate` – Validates the form, throws error if validation fails
+1. `validate` – Validates the form; with `failOnError: true`, stops the chain if validation fails
 2. `calculateTotal` – Only runs if validation passes, calculates total amount
-3. `saveToServer` – Only runs if previous actions succeed, sends data to server
+3. `saveToServer` – Only runs if previous actions complete, sends data to server
+
+### Interrupting the Action Chain
+
+By default, FormEngine runs every action in the sequence. An action can stop the remaining actions in two ways:
+
+- **Return `false`** – a controlled stop with no error logging
+- **Throw an error** – also stops the chain, and FormEngine logs the error
+
+Use `return false` when the stop is expected. Use a thrown error for unexpected failures.
+
+This works in **code** actions stored in form JSON (no imports) and in **custom** actions in application code.
+
+The built-in `validate` action with `failOnError: true` already returns `false` when the form has errors, so later actions do not run.
+
+#### Example: Require consent before submit
+
+Here a code action blocks submit unless the user checked the agreement box. Try Submit with the box unchecked, then check it and submit again.
+
+```json lines {3-6,47-61}
+{
+  "actions": {
+    "requireConsent": {
+      "body": "  if (e.data.accepted !== true) {\n    alert('Please accept the terms to continue')\n    return false\n  }",
+      "params": {}
+    }
+  },
+  "errorType": "MuiErrorWrapper",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "email",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "value": "Email"
+          }
+        },
+        "schema": {
+          "validations": [
+            {"key": "required"},
+            {"key": "email"}
+          ]
+        }
+      },
+      {
+        "key": "accepted",
+        "type": "MuiCheckbox",
+        "props": {
+          "label": {
+            "value": "I agree to the terms"
+          }
+        }
+      },
+      {
+        "key": "submitButton",
+        "type": "MuiButton",
+        "props": {
+          "children": {
+            "value": "Submit"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "validate",
+              "type": "common",
+              "args": {
+                "failOnError": true
+              }
+            },
+            {
+              "name": "requireConsent",
+              "type": "code"
+            },
+            {
+              "name": "submitSignup",
+              "type": "custom"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+##### Live example
+
+```jsx live
+function App() {
+  const form = {
+    "actions": {
+      "requireConsent": {
+        "body": "  if (e.data.accepted !== true) {\n    alert('Please accept the terms to continue')\n    return false\n  }",
+        "params": {}
+      }
+    },
+    "errorType": "MuiErrorWrapper",
+    "form": {
+      "key": "Screen",
+      "type": "Screen",
+      "children": [
+        {
+          "key": "email",
+          "type": "MuiTextField",
+          "props": {
+            "label": {
+              "value": "Email"
+            }
+          },
+          "schema": {
+            "validations": [
+              {"key": "required"},
+              {"key": "email"}
+            ]
+          }
+        },
+        {
+          "key": "accepted",
+          "type": "MuiCheckbox",
+          "props": {
+            "label": {
+              "value": "I agree to the terms"
+            }
+          }
+        },
+        {
+          "key": "submitButton",
+          "type": "MuiButton",
+          "props": {
+            "children": {
+              "value": "Submit"
+            }
+          },
+          "events": {
+            "onClick": [
+              {
+                "name": "validate",
+                "type": "common",
+                "args": {
+                  "failOnError": true
+                }
+              },
+              {
+                "name": "requireConsent",
+                "type": "code"
+              },
+              {
+                "name": "submitSignup",
+                "type": "custom"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+
+  const getForm = useCallback(() => JSON.stringify(form), [form])
+
+  const actions = {
+    submitSignup: ({data}) => {
+      alert(`Signed up: ${JSON.stringify(data)}`)
+    }
+  }
+
+  return <FormViewer
+    view={muiView}
+    getForm={getForm}
+    actions={actions}
+  />
+}
+```
+
+#### Example: Skip work when the form is already submitted
+
+Stop a second Save or Submit if the record is already in a terminal state:
+
+```js
+if (e.data.status === 'submitted') {
+  return false
+}
+```
+
+```json
+{
+  "events": {
+    "onClick": [
+      {"name": "skipIfAlreadySubmitted", "type": "code"},
+      {"name": "saveDraft", "type": "custom"}
+    ]
+  }
+}
+```
+
+#### Example: Business rule in application code
+
+When the rule lives in the host app (limits, roles, feature flags), return `false` from a custom action:
+
+```tsx
+import {type FormViewerProps} from '@react-form-builder/core'
+
+const actions: FormViewerProps['actions'] = {
+  assertTransferAllowed: (e) => {
+    const amount = Number(e.data.amount || 0)
+    if (amount > 10000) {
+      alert('Amount needs manager approval')
+      return false
+    }
+  },
+  submitTransfer: async (e) => {
+    await fetch('/api/transfer', {
+      method: 'POST',
+      body: JSON.stringify(e.data)
+    })
+  }
+}
+```
+
+Wire them in order: `validate` → `assertTransferAllowed` → `submitTransfer`. If the amount is too high, submit never runs and the console stays clean.
 
 ### Handling Async Actions
 
@@ -650,7 +873,7 @@ Validates the entire form or specific fields.
 
 **Parameters:**
 
-- `failOnError` (boolean) – Throw error if validation fails (default: `false`)
+- `failOnError` (boolean) – Stop the remaining actions if validation fails (default: `false`). Returns `false` instead of throwing.
 
 ```json
 {
@@ -982,7 +1205,8 @@ function App() {
       } catch (error) {
         // Handle error
         e.data.submissionError = (error as Error).message
-        // Re-throw to stop subsequent actions
+        // Re-throw to stop subsequent actions (logs the error).
+        // Prefer return false when the stop is expected.
         throw error
       } finally {
         e.data.isSubmitting = false
@@ -1145,7 +1369,7 @@ Actions and events in FormEngine Core provide a powerful, flexible system for cr
    - **Common actions**: Built-in functionality (validation, logging, etc.)
    - **Code actions**: Inline JavaScript defined in form JSON
    - **Custom actions**: Application functions passed to FormViewer
-3. **Execution order** is sequential and respects async operations
+3. **Execution order** is sequential and respects async operations; return `false` to stop later actions without an error
 4. **Form context** is available through the `e` parameter in all actions
 
 By mastering actions and events, you can create complex, interactive forms with validation, data transformation, API integration, and

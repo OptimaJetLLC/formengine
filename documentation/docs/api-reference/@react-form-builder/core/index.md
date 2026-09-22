@@ -87,6 +87,7 @@
 - [ActionEventHandler](type-aliases/ActionEventHandler.md)
 - [ActionHandler](type-aliases/ActionHandler.md)
 - [ActionParameters](type-aliases/ActionParameters.md)
+- [ActionResult](type-aliases/ActionResult.md)
 - [ActionsInitializer](type-aliases/ActionsInitializer.md)
 - [ActionType](type-aliases/ActionType.md)
 - [ActionValues](type-aliases/ActionValues.md)

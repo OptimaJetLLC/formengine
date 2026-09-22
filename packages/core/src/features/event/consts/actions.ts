@@ -10,7 +10,7 @@ export const commonActions: ActionValues = {
     const componentData = e.store.form.componentTree
     await componentData.validate()
     if (args.failOnError === true && componentData.hasErrors) {
-      throw componentData.errors
+      return false
     }
   }, {
     failOnError: 'boolean',

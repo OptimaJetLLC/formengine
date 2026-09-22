@@ -1,6 +1,6 @@
 # Type Alias: ActionHandler\<T\>
 
-> **ActionHandler**\<`T`\> = (`e`, `params`) => `Promise`\<`void`\> \| `void`
+> **ActionHandler**\<`T`\> = (`e`, `params`) => [`ActionResult`](ActionResult.md) \| `Promise`\<[`ActionResult`](ActionResult.md)\>
 
 Action function type.
 
@@ -28,4 +28,4 @@ the action parameters arguments.
 
 ## Returns
 
-`Promise`\<`void`\> \| `void`
+[`ActionResult`](ActionResult.md) \| `Promise`\<[`ActionResult`](ActionResult.md)\>

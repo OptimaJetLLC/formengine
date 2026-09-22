@@ -1,8 +1,8 @@
 # Type Alias: Func
 
-> **Func** = (...`arg`) => `Promise`\<`void`\> \| `void`
+> **Func** = (...`arg`) => [`ActionResult`](ActionResult.md) \| `Promise`\<[`ActionResult`](ActionResult.md)\>
 
-The type of arbitrary function that returns void or Promise&lt;void&gt;.
+The type of arbitrary function that returns void, `false`, or a Promise of either.
 
 ## Parameters
 
@@ -12,4 +12,4 @@ The type of arbitrary function that returns void or Promise&lt;void&gt;.
 
 ## Returns
 
-`Promise`\<`void`\> \| `void`
+[`ActionResult`](ActionResult.md) \| `Promise`\<[`ActionResult`](ActionResult.md)\>

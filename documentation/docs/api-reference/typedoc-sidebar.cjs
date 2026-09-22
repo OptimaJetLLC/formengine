@@ -1582,6 +1582,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ActionResult",
+              label: "ActionResult"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/ActionsInitializer",
               label: "ActionsInitializer"
             },

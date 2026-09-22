@@ -30,6 +30,7 @@ export {ActionEventArgs} from './features/event/utils/ActionEventArgs'
 export type {
   ActionData,
   ActionParameters,
+  ActionResult,
   ActionType,
   ArgumentValue,
   Arguments,
