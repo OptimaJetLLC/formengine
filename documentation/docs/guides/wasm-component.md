@@ -124,7 +124,7 @@ return a line containing the SVG with the QR code. Let's make a React component 
 with the following content:
 
 ```typescript jsx title='src/QrCode.tsx' showLineNumbers {1,5,17-25,27,42}
-import init, {qr_svg, Shape, SvgOptions} from 'fast_qr'
+import init, {qr_svg, Shape, SvgOptions} from 'fast_qr/fast_qr.js'
 import {RefObject, useEffect, useRef} from 'react'
 import {define} from '@react-form-builder/core'
 
@@ -214,7 +214,7 @@ Two things are evident here:
 
 Judging from the stack trace, the problem occurred in `QrCode.tsx:28`. And this is nothing more than calling the `init` function, which
 internally calls the `__wbg_init` function, which in turn calls the `__wbg_load` function. If you click on the links from the console, you
-can see the code of these functions. At the moment of writing this article we are using the library version `0.12.5`, in your case the code
+can see the code of these functions. At the moment of writing this article we are using the library version `0.13.0`, in your case the code
 may be different.
 
 Below is the code of these functions, the lines we are interested in are highlighted.
@@ -306,7 +306,7 @@ In this article, we will load the path to the module, and pass this path to the 
 the `src/QrCode.tsx` file (changed lines are highlighted):
 
 ```typescript jsx title='src/QrCode.tsx' {2,29}
-import init, {qr_svg, Shape, SvgOptions} from 'fast_qr'
+import init, {qr_svg, Shape, SvgOptions} from 'fast_qr/fast_qr.js'
 import module from 'fast_qr/fast_qr_bg.wasm?url'
 import {RefObject, useEffect, useRef} from 'react'
 import {define} from '@react-form-builder/core'
@@ -787,7 +787,7 @@ is passed by the designer property editor, to the hex format used by the compone
 <summary>src/QrCode.tsx</summary>
 
 ```typescript jsx title='src/QrCode.tsx'
-import init, {qr_svg, SvgOptions} from 'fast_qr'
+import init, {qr_svg, SvgOptions} from 'fast_qr/fast_qr.js'
 import module from 'fast_qr/fast_qr_bg.wasm?url'
 import {RefObject, useEffect, useRef} from 'react'
 import {color, define, number, oneOf, string} from '@react-form-builder/core'

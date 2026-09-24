@@ -26,7 +26,7 @@
     "create-archive": "node ./config/pack.ts"
   },
   "dependencies": {
-    "fast_qr": "^0.12.5"
+    "fast_qr": "^0.13.0"
   },
   "peerDependencies": {
     "@react-form-builder/core": "10.3.0",

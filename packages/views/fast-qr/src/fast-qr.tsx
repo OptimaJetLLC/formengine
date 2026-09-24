@@ -1,5 +1,5 @@
 import {color, define, isUndefined, number, oneOf, string, useBuilderValue} from '@react-form-builder/core'
-import init, {qr_svg, SvgOptions} from 'fast_qr'
+import init, {qr_svg, SvgOptions} from 'fast_qr/fast_qr.js'
 import module from 'fast_qr/fast_qr_bg.wasm?url'
 import type {RefObject} from 'react'
 import {useEffect, useMemo, useRef} from 'react'
@@ -113,7 +113,7 @@ const rgbaColorToHex = (color?: string) => {
 type RenderQrProps = Omit<FastQrProps, 'width' | 'className'>
 
 const renderQr = async (props: RenderQrProps, ref: RefObject<HTMLDivElement | null>) => {
-  await init(module)
+  await init({module_or_path: module})
 
   if (!ref.current) return
 
@@ -133,8 +133,11 @@ const renderQr = async (props: RenderQrProps, ref: RefObject<HTMLDivElement | nu
   if (imageBackgroundColor) svgOptions = svgOptions.image_background_color(imageBackgroundColor)
 
   if (props.imageBackgroundShape) svgOptions = svgOptions.image_background_shape(props.imageBackgroundShape)
-  if (!isUndefined(props.imageSize) && !isUndefined(props.imageGap)) {
-    svgOptions = svgOptions.image_size(props.imageSize, props.imageGap)
+  if (!isUndefined(props.imageSize)) {
+    svgOptions = svgOptions.image_size(props.imageSize)
+  }
+  if (!isUndefined(props.imageGap)) {
+    svgOptions = svgOptions.image_gap(props.imageGap)
   }
   if (props.imagePositionX && props.imagePositionY) {
     const position = new Float64Array([props.imagePositionX, props.imagePositionY])
