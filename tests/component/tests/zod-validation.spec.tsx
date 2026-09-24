@@ -57,7 +57,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'length', args: {length: 3}},
-    expected: {zodInput: 'Too small: expected string to have >=3 characters'}
+    expected: {zodInput: 'Too small: expected string to have exactly 3 characters'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 't34'},
@@ -67,7 +67,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'incorrect filled data',
     initialData: {zodInput: 't344'},
     validation: {key: 'length', args: {length: 3}},
-    expected: {zodInput: 'Too big: expected string to have <=3 characters'}
+    expected: {zodInput: 'Too big: expected string to have exactly 3 characters'}
   }],
 
   min: [{
@@ -780,7 +780,7 @@ const arrayValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'FakeArrayComponent',
     skipInputValueCheck: true,
     validation: {key: 'length', args: {length: 2}},
-    expected: {zodInput: 'Too small: expected array to have >=2 items'}
+    expected: {zodInput: 'Too small: expected array to have exactly 2 items'}
   }, {
     name: 'filled data',
     initialData: {zodInput: ['a', 'b']},
