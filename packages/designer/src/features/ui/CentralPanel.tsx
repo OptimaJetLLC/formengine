@@ -9,7 +9,9 @@ import {EditableWrapper} from '../dnd/components/Editable/Editable'
 import {TrialMessage} from '../license/TrialMessage'
 import styles from './CentralPanel.module.css'
 import {ErrorFormWrapper} from './ErrorFormWrapper'
+import {usePrintWhenViewerReady} from './Header/components/printForm'
 import {Header} from './Header/Header'
+import {NonVisualBar} from './NonVisualBar/NonVisualBar'
 import {PanelContainer} from './Panel'
 
 const FormContainer = (props: ComponentProps<typeof PanelContainer>) => (
@@ -24,6 +26,7 @@ const RawCentralPanel = (props: ComponentProps<'div'>) => {
   const {viewMode, landscapeMode, builderMode, theme, formStorageEnabled} = builderStore
   const viewerProps = useViewerProps()
   const componentWrapper = builderMode === 'builder' ? EditableWrapper : undefined
+  usePrintWhenViewerReady(builderMode)
 
   const getForm = useMemo(() => {
     if (formStorageEnabled) {
@@ -43,6 +46,7 @@ const RawCentralPanel = (props: ComponentProps<'div'>) => {
               <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode}
                           formName={builderStore.activeFormName} getForm={getForm}/>
             </ErrorFormWrapper>
+            {builderMode === 'builder' && <NonVisualBar/>}
           </SFormContainer>
         </BuilderThemeProvider>
       </BuilderModeProvider>

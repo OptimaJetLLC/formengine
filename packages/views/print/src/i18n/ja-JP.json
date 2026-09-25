@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "構造"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "画面上では非表示です。印刷時に改ページを挿入します。",
+      "name": "改ページ",
+      "props": {
+        "breakAfter": {
+          "description": "印刷時の CSS break-after 規則",
+          "name": "後で改ページ"
+        },
+        "breakBefore": {
+          "description": "印刷時の CSS break-before 規則",
+          "name": "前で改ページ"
+        },
+        "breakInside": {
+          "description": "印刷時の CSS break-inside 規則",
+          "name": "内側の改ページ"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "画面上では非表示です。印刷ヘッダー、フッター、任意のページ番号を追加します。",
+      "name": "印刷ヘッダー/フッター",
+      "props": {
+        "footer": {
+          "description": "印刷フッター。ページ番号には {page} と {pages} を使用します",
+          "name": "フッター"
+        },
+        "footerAlign": {
+          "description": "余白内のフッター位置",
+          "name": "フッターの配置"
+        },
+        "header": {
+          "description": "印刷ヘッダー。ページ番号には {page} と {pages} を使用します",
+          "name": "ヘッダー"
+        },
+        "headerAlign": {
+          "description": "余白内のヘッダー位置",
+          "name": "ヘッダーの配置"
+        }
+      }
+    }
+  }
+}

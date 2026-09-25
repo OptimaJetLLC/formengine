@@ -93,6 +93,15 @@ A mode that lets authors interact with the form from a user's perspective. The h
 
 **Related:** [Preview your first form](/your-first-form/preview-your-first-form)
 
+## Print
+
+**Menu** → **Print** (or <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>P</kbd></span> /
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>P</kbd></span>) opens the browser print dialog. Designer shows the form without the editing
+tools first. Use **Page break** and **Print settings** for printed pages. **Print settings** is non-visual (bottom bar and Tree) and
+allows only one instance. In **Header** and **Footer**, `{page}` is the current page and `{pages}` is the total.
+
+**Related:** [Print your form](/preview-and-handoff/print-your-form), [Special components](/components-by-task/special-components)
+
 ## Properties panel
 
 Right-hand panel with **Main**, **Style**, **Actions**, and **Rules** for the selected component.

@@ -7,6 +7,7 @@ import {
   designerComponents,
   fastQrComponentsDescriptions,
   googleMapComponentsDescriptions,
+  printComponentsDescriptions,
   richTextEditorComponentsDescriptions,
   rSuiteComponentsDescriptions,
   rSuiteTableComponentsDescriptions,
@@ -22,6 +23,7 @@ const view = new BuilderView(designerComponents)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
+  .withComponentLibraryDescription(printComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 

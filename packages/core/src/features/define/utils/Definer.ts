@@ -22,6 +22,7 @@ import {
   cfComponentRole,
   cfDisableActionEditors,
   cfDisableComponentRemove,
+  cfDisableStyleProperties,
   cfDisableStyles,
   cfDisableStylesForClassNameEditor,
   cfDisableTooltipProperties,
@@ -29,11 +30,14 @@ import {
   cfEnableInlineStylesEditor,
   cfEventHandlers,
   cfHideFromComponentPalette,
+  cfNonVisual,
   cfRequiredProperties,
+  cfSingleton,
   cfSkipChildrenDuringFieldCollection
 } from './integratedComponentFeatures'
 import {Meta} from './Meta'
 import {Model} from './Model'
+import {createSingletonInsertRestriction} from './singletonInsertRestriction'
 
 /**
  * CSS rules declaration map.
@@ -286,6 +290,34 @@ export class Definer<T extends object> {
   }
 
   /**
+   * Marks the component as a singleton. At most one instance of this type may exist on a form.
+   * @param value true to allow only one instance, false otherwise.
+   * @returns the modified Definer class instance.
+   */
+  singleton(value = true) {
+    return this.addFeature(cfSingleton, value)
+  }
+
+  /**
+   * Marks the component as non-visual. Instances are kept under the form root and shown in the designer bar only.
+   * The designer hides Additional properties for non-visual components.
+   * @param value true to mark as non-visual, false otherwise.
+   * @returns the modified Definer class instance.
+   */
+  nonVisual(value = true) {
+    return this.addFeature(cfNonVisual, value)
+  }
+
+  /**
+   * Hides the properties editor on the styles tab.
+   * @param value true to hide the properties editor, false otherwise.
+   * @returns the modified Definer class instance.
+   */
+  hideStyleProperties(value = true) {
+    return this.addFeature(cfDisableStyleProperties, value)
+  }
+
+  /**
    * Disables the styling of the component.
    * @param value true to disable the styling of the component.
    * @returns the modified Definer class instance.
@@ -417,6 +449,10 @@ export class Definer<T extends object> {
       features,
     ).withDateProperties(dateProperties)
 
+    const insertRestriction = model.isFeatureEnabled(cfSingleton)
+      ? createSingletonInsertRestriction(this.data.insertRestriction)
+      : this.data.insertRestriction
+
     const meta = new Meta(
       this.getType(),
       propAns,
@@ -427,7 +463,7 @@ export class Definer<T extends object> {
       this.data.initialJson,
       this.data.eventListeners,
       this.data.icon,
-      this.data.insertRestriction
+      insertRestriction
     )
 
     return {model, meta, category: this.data.category} as const

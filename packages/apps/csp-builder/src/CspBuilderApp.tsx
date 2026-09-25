@@ -1,6 +1,7 @@
 import {antdComponents, antI18nComponentsDescriptions} from '@react-form-builder/components-antd'
 import {fastQrComponent, fastQrComponentsDescriptions} from '@react-form-builder/components-fast-qr'
 import {googleMapComponent, googleMapComponentsDescriptions} from '@react-form-builder/components-google-map'
+import {printComponents, printComponentsDescriptions} from '@react-form-builder/components-print'
 import {richTextComponent, richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
 import {RsViewWrapper, rSuiteComponents, rSuiteComponentsDescriptions} from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
@@ -19,6 +20,7 @@ const components = [
   richTextComponent,
   googleMapComponent,
   signatureComponent,
+  ...printComponents,
   ...rSuiteTableComponents,
 ].map(definer => definer.build())
 
@@ -29,6 +31,7 @@ const view = new BuilderView(components)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
+  .withComponentLibraryDescription(printComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 

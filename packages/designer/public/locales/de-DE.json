@@ -904,7 +904,8 @@
       "static": "Statisch",
       "structure": "Struktur",
       "templates": "Vorlagen"
-    }
+    },
+    "singletonAlreadyOnForm": "Nur eine Instanz dieser Komponente ist auf dem Formular erlaubt."
   },
   "componentsModal": {
     "clickToAdd": "Klicken Sie hier, um ein Steuerelement hinzuzufügen"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "Alles zusammenklappen",
-    "expand": "Alles erweitern"
+    "expand": "Alles erweitern",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "Eine Validierungsregel hinzufügen",

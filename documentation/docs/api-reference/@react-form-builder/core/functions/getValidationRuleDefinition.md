@@ -1,6 +1,6 @@
 # Function: getValidationRuleDefinition()
 
-> **getValidationRuleDefinition**(`rules`, `settings`): `ResolvedValidationRuleDefinition` \| `undefined`
+> **getValidationRuleDefinition**(`rules`, `settings`): [`ResolvedValidationRuleDefinition`](../type-aliases/ResolvedValidationRuleDefinition.md) \| `undefined`
 
 Returns the validation rule definition for the persisted rule settings.
 
@@ -20,6 +20,6 @@ the persisted validation rule settings.
 
 ## Returns
 
-`ResolvedValidationRuleDefinition` \| `undefined`
+[`ResolvedValidationRuleDefinition`](../type-aliases/ResolvedValidationRuleDefinition.md) \| `undefined`
 
 the rule definition when found, otherwise undefined.

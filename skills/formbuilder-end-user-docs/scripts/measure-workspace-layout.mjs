@@ -331,7 +331,7 @@ export async function measurePanelCollapseZones(page) {
 /**
  * Builds a highlight rectangle for a header menu dropdown item.
  * @param {import('playwright').Page} page
- * @param {'save' | 'saveAs' | 'exportForms' | 'importForms' | 'clear' | 'download' | 'upload' | 'addNewForm'} item
+ * @param {'save' | 'saveAs' | 'exportForms' | 'importForms' | 'clear' | 'print' | 'download' | 'upload' | 'addNewForm'} item
  */
 export async function measureHeaderMenuItem(page, item) {
   const selectors = {
@@ -340,6 +340,7 @@ export async function measureHeaderMenuItem(page, item) {
     exportForms: '.FE_MainMenu_Item_ExportForms',
     importForms: '.FE_MainMenu_Item_ImportForms',
     clear: '.FE_MainMenu_Item_Clear, [data-testid="main-menu-clear"]',
+    print: '.FE_MainMenu_Item_Print, [data-testid="main-menu-print"]',
     download: '.FE_MainMenu_Item_Download',
     upload: '.FE_MainMenu_Item_Upload',
     addNewForm: '.FE_MainMenu_Item_AddNewForm',
@@ -455,7 +456,9 @@ export async function annotateHeaderMenuItemHighlights(page, theme, menuPlainPat
     exportForms: 'highlight-header-menu-export-forms',
     importForms: 'highlight-header-menu-import-forms',
     clear: 'highlight-header-menu-clear',
+    print: 'highlight-header-menu-print',
     download: 'highlight-header-menu-download',
+    upload: 'highlight-header-menu-upload',
     addNewForm: 'highlight-header-menu-add-new-form',
   };
 
@@ -473,7 +476,7 @@ export async function annotateHeaderMenuItemHighlights(page, theme, menuPlainPat
  * @param {import('playwright').Page} page
  * @param {'light' | 'dark'} theme
  * @param {string} menuPlainPath
- * @param {'save' | 'saveAs' | 'exportForms' | 'importForms' | 'clear' | 'download' | 'upload' | 'addNewForm'} item
+ * @param {'save' | 'saveAs' | 'exportForms' | 'importForms' | 'clear' | 'print' | 'download' | 'upload' | 'addNewForm'} item
  */
 export async function annotateSingleHeaderMenuItem(page, theme, menuPlainPath, item) {
   const highlight = await measureHeaderMenuItem(page, item);
@@ -483,6 +486,7 @@ export async function annotateSingleHeaderMenuItem(page, theme, menuPlainPath, i
     exportForms: 'highlight-header-menu-export-forms',
     importForms: 'highlight-header-menu-import-forms',
     clear: 'highlight-header-menu-clear',
+    print: 'highlight-header-menu-print',
     download: 'highlight-header-menu-download',
     upload: 'highlight-header-menu-upload',
     addNewForm: 'highlight-header-menu-add-new-form',

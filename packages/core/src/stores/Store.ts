@@ -35,6 +35,7 @@ import {typedValidatorsResolver} from '../features/validation/utils/validatorsRe
 import type {Setter, ViewMode} from '../types'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import type {IFormData} from '../utils/IFormData'
+import {warnMisplacedNonVisualComponents} from '../utils/isNonVisual'
 import {isRecord} from '../utils/isRecord'
 import {nameObservable} from '../utils/observableNaming'
 import {isUndefined} from '../utils/tools'
@@ -395,6 +396,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
 
     // here we need to make the keys unique, because no reactions will be triggered during the action
     this.form.componentTree.unifyTree()
+    warnMisplacedNonVisualComponents(this.form.componentTree)
     // here we initialize the fields after the form is created, since the calculated field values are depends on 'this.form'
     this.form.initFields()
     oldForm.dispose()

@@ -93,6 +93,7 @@ export type {CustomValidationRuleSettings} from './features/validation/types/Cus
 export type {ValidationRuleParameter} from './features/validation/types/ValidationRuleParameter'
 export {coerceIfDate} from './features/validation/utils/coerceIfDate'
 export {getValidationRuleDefinition} from './features/validation/utils/getValidationRuleDefinition'
+export type {ResolvedValidationRuleDefinition} from './features/validation/utils/getValidationRuleDefinition'
 export type {ValidatorType} from './features/validation/types/ValidatorType'
 export type {Validators} from './features/validation/types/CustomValidationRules'
 export {isFunctionalProperty, isLocalizedProperty} from './stores/ComponentStore'
@@ -225,6 +226,7 @@ export type {IComponentDataFactory} from './features/validation/utils/IComponent
 export type {ComponentStoreLocalizer} from './stores/ComponentStoreLocalizer'
 export {forwardRef} from './utils/forwardRefShim'
 export type {InsertRestrictionFn} from './features/define/utils/InsertRestrictionFn'
+export {hasOtherInstanceOfType} from './features/define/utils/singletonInsertRestriction'
 export type {IComponentState} from './stores/IComponentState'
 export type {ComponentStateFactory} from './stores/Store'
 export {getChildren} from './utils/getChildren'
@@ -248,7 +250,9 @@ export {
   cfDisableActionEditors,
   cfDisableStyles,
   cfDisableWrapperStyles,
-  cfDisableComponentRemove
+  cfDisableComponentRemove,
+  cfSingleton,
+  cfNonVisual
 } from './features/define/utils/integratedComponentFeatures'
 export type {ComponentFeature, ComponentFeatures} from './features/define/utils/ComponentFeature'
 export type {ComponentRole} from './features/define/utils/ComponentRole'
@@ -258,6 +262,12 @@ export {useBuilderValue} from './utils/useBuilderValue'
 export {CellInfoContextProvider} from './features/table/CellInfoContext'
 export type {DataKeyType, CellInfo} from './features/table/CellInfo'
 export {needRender} from './utils/needRender'
+export {
+  getNonVisualChildren,
+  getVisualChildren,
+  isNonVisual,
+  warnMisplacedNonVisualComponents
+} from './utils/isNonVisual'
 export {useBuilderComponent} from './utils/useBuilderComponent'
 export {
   debounce,

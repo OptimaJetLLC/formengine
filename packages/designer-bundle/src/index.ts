@@ -2,10 +2,12 @@ import * as fastQrComponent from '@react-form-builder/components-fast-qr'
 import {fastQrComponentsDescriptions} from '@react-form-builder/components-fast-qr'
 import * as googleMapComponent from '@react-form-builder/components-google-map'
 import {googleMapComponentsDescriptions} from '@react-form-builder/components-google-map'
+import * as printComponent from '@react-form-builder/components-print'
+import {printComponentsDescriptions} from '@react-form-builder/components-print'
 import * as richTextComponent from '@react-form-builder/components-rich-text'
 import {richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
 import * as rSuiteComponents from '@react-form-builder/components-rsuite'
-import {ltrCssLoader, RsViewWrapper, rSuiteComponentsDescriptions, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, rSuiteComponentsDescriptions, RsViewWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import * as rSuiteTableComponents from '@react-form-builder/components-rsuite-table'
 import {rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import * as signatureComponent from '@react-form-builder/components-signature'
@@ -24,6 +26,7 @@ const components = [
   signatureComponent.signatureComponent,
   fastQrComponent.fastQrComponent,
   googleMapComponent.googleMapComponent,
+  ...printComponent.printComponents,
   ...rSuiteTableComponents.rSuiteTableComponents,
 ].map(definer => definer.build())
 
@@ -35,6 +38,7 @@ const defaultView = new BuilderView(components)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
+  .withComponentLibraryDescription(printComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
@@ -44,6 +48,7 @@ const noCssView = new BuilderView(components)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
+  .withComponentLibraryDescription(printComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
@@ -88,6 +93,6 @@ export function renderFormBuilder(elementId: string, props: Partial<FormBuilderP
   return renderFormBuilderTo(container, props)
 }
 
-export {rSuiteComponents, richTextComponent, signatureComponent, fastQrComponent, googleMapComponent, rSuiteTableComponents}
+export {rSuiteComponents, richTextComponent, signatureComponent, fastQrComponent, googleMapComponent, printComponent, rSuiteTableComponents}
 export {ActionDefinition, buildForm, Language} from '@react-form-builder/core'
 export {noCssView, defaultView}

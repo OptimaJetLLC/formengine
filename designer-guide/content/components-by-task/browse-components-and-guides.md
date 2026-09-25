@@ -35,7 +35,13 @@ the [Components library](docs:components-library).
 
 - [Form structure and containers](/form-structure-and-layout/form-structure-and-containers)
 - [Tabs and multi-step layouts](/form-structure-and-layout/tabs-and-multi-step-layouts)
+- [Special components](/components-by-task/special-components)
 - Library: Stack, Grid, Container, Tabs, Modal
+
+## Print
+
+- [Print your form](/preview-and-handoff/print-your-form)
+- Library: Page break, Print settings
 
 ## Actions and display
 

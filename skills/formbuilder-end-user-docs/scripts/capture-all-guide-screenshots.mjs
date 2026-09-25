@@ -23,6 +23,7 @@ const SCRIPTS = [
   'capture-wizard-and-steps-screenshots.mjs',
   'capture-preset-components-screenshots.mjs',
   'capture-tables-and-repeaters-screenshots.mjs',
+  'capture-special-components-screenshots.mjs',
   'capture-add-fields-screenshots.mjs',
   'capture-preview-your-first-form-screenshots.mjs',
   'capture-add-validation-on-your-first-form-screenshots.mjs',

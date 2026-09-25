@@ -97,6 +97,7 @@ function reannotateHeaderMenu() {
     exportForms: 'manage-forms/highlight-header-menu-export-forms',
     importForms: 'manage-forms/highlight-header-menu-import-forms',
     clear: 'manage-forms/highlight-header-menu-clear',
+    print: 'manage-forms/highlight-header-menu-print',
     download: 'manage-forms/highlight-header-menu-download',
     upload: 'manage-forms/highlight-header-menu-upload',
     addNewForm: 'manage-forms/highlight-header-menu-add-new-form',

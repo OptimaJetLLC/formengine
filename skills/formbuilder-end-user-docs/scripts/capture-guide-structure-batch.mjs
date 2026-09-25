@@ -651,6 +651,8 @@ async function captureMenuHighlights(page, theme) {
     {item: 'importForms', basename: 'header-menu-import-forms'},
     {item: 'upload', basename: 'header-menu-upload'},
     {item: 'saveAs', basename: 'header-menu-save-as'},
+    {item: 'clear', basename: 'header-menu-clear'},
+    {item: 'print', basename: 'header-menu-print'},
   ];
   for (const {item, basename} of menuItems) {
     await openMainMenu(page);

@@ -912,7 +912,8 @@
       "static": "Static",
       "structure": "Structure",
       "templates": "Templates"
-    }
+    },
+    "singletonAlreadyOnForm": "Only one instance of this component is allowed on the form."
   },
   "componentToolbar": {
     "add": "Add new element",
@@ -989,7 +990,8 @@
   },
   "tree": {
     "expand": "Expand all",
-    "collapse": "Collapse all"
+    "collapse": "Collapse all",
+    "nonVisual": "Non-visual"
   },
   "style": {
     "header": {

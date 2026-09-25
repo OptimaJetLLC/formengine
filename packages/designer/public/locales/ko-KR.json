@@ -904,7 +904,8 @@
       "static": "스태틱",
       "structure": "구조",
       "templates": "템플릿"
-    }
+    },
+    "singletonAlreadyOnForm": "이 컴포넌트는 양식에 하나만 추가할 수 있습니다."
   },
   "componentsModal": {
     "clickToAdd": "컨트롤을 추가하려면 클릭"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "모두 축소",
-    "expand": "모두 확장"
+    "expand": "모두 확장",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "검증 규칙 추가",

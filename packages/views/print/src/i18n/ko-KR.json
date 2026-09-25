@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "구조"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "화면에서는 숨겨집니다. 인쇄 시 페이지를 나눕니다.",
+      "name": "페이지 나누기",
+      "props": {
+        "breakAfter": {
+          "description": "인쇄 시 CSS break-after 규칙",
+          "name": "뒤에서 나누기"
+        },
+        "breakBefore": {
+          "description": "인쇄 시 CSS break-before 규칙",
+          "name": "앞에서 나누기"
+        },
+        "breakInside": {
+          "description": "인쇄 시 CSS break-inside 규칙",
+          "name": "내부 나누기"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "화면에서는 숨겨집니다. 인쇄 머리글, 바닥글, 선택적 페이지 번호를 추가합니다.",
+      "name": "인쇄 머리글/바닥글",
+      "props": {
+        "footer": {
+          "description": "인쇄 바닥글. 페이지 번호는 {page}와 {pages}를 사용합니다",
+          "name": "바닥글"
+        },
+        "footerAlign": {
+          "description": "여백에서 바닥글 위치",
+          "name": "바닥글 정렬"
+        },
+        "header": {
+          "description": "인쇄 머리글. 페이지 번호는 {page}와 {pages}를 사용합니다",
+          "name": "머리글"
+        },
+        "headerAlign": {
+          "description": "여백에서 머리글 위치",
+          "name": "머리글 정렬"
+        }
+      }
+    }
+  }
+}

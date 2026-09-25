@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "الهيكل"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "مخفي على الشاشة. يدرج فاصل صفحات عند الطباعة.",
+      "name": "فاصل صفحات",
+      "props": {
+        "breakAfter": {
+          "description": "قاعدة CSS break-after عند الطباعة",
+          "name": "فاصل بعد"
+        },
+        "breakBefore": {
+          "description": "قاعدة CSS break-before عند الطباعة",
+          "name": "فاصل قبل"
+        },
+        "breakInside": {
+          "description": "قاعدة CSS break-inside عند الطباعة",
+          "name": "فاصل داخلي"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "مخفي على الشاشة. يضيف ترويسة وتذييلًا وأرقام صفحات اختيارية.",
+      "name": "ترويسة/تذييل الطباعة",
+      "props": {
+        "footer": {
+          "description": "تذييل الطباعة. استخدم {page} و {pages} لأرقام الصفحات",
+          "name": "التذييل"
+        },
+        "footerAlign": {
+          "description": "موضع التذييل في هامش الصفحة",
+          "name": "محاذاة التذييل"
+        },
+        "header": {
+          "description": "ترويسة الطباعة. استخدم {page} و {pages} لأرقام الصفحات",
+          "name": "الترويسة"
+        },
+        "headerAlign": {
+          "description": "موضع الترويسة في هامش الصفحة",
+          "name": "محاذاة الترويسة"
+        }
+      }
+    }
+  }
+}

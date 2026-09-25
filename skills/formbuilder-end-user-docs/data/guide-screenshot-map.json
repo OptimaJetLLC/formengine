@@ -582,6 +582,10 @@
       "src": "/assets/guide/manage-forms/highlight-header-menu-clear.png",
       "alt": "Header menu open with Clear highlighted."
     },
+    "print": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-print.png",
+      "alt": "Header menu open with Print highlighted and keyboard shortcut shown."
+    },
     "add a new form": {
       "src": "/assets/guide/manage-forms/highlight-header-menu-add-new-form.png",
       "alt": "Header menu open with Add a new form highlighted."
@@ -651,6 +655,34 @@
     "clear": {
       "src": "/assets/guide/manage-forms/highlight-header-menu-clear.png",
       "alt": "Header menu open with Clear highlighted."
+    },
+    "print": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-print.png",
+      "alt": "Header menu open with Print highlighted."
+    }
+  },
+  "preview-and-handoff/print-your-form.md": {
+    "print from the menu": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-print.png",
+      "alt": "Header menu open with Print highlighted and Ctrl+P shortcut shown."
+    },
+    "page break and print settings": {
+      "src": "/assets/guide/preview-and-handoff/print-page-break-and-settings.png",
+      "alt": "Form with a Page break on the canvas and Print settings selected in the non-visual bar."
+    }
+  },
+  "components-by-task/special-components.md": {
+    "singleton palette disabled": {
+      "src": "/assets/guide/components-by-task/special-singleton-palette-disabled.png",
+      "alt": "Components palette with Print settings disabled after one instance is already on the form."
+    },
+    "non-visual bar": {
+      "src": "/assets/guide/components-by-task/special-non-visual-bar.png",
+      "alt": "Canvas bottom bar with a Print settings chip selected."
+    },
+    "non-visual tree": {
+      "src": "/assets/guide/components-by-task/special-non-visual-tree.png",
+      "alt": "Tree tab showing Screen, then a Non-visual section with Print settings listed below."
     }
   },
   "preview-and-handoff/use-preview-mode-tools-data-validate-reset.md": {
@@ -909,8 +941,12 @@
   },
   "help/faq-for-form-authors.md": {
     "how do i get the form json for my developer?": {
-      "src": "/assets/guide/manage-forms/highlight-header-menu-export-forms.png",
-      "alt": "Header menu open with Export forms highlighted."
+      "src": "/assets/guide/manage-forms/highlight-header-menu-download.png",
+      "alt": "Header menu open with Download highlighted."
+    },
+    "how do i print or save a pdf?": {
+      "src": "/assets/guide/manage-forms/highlight-header-menu-print.png",
+      "alt": "Header menu open with Print highlighted."
     },
     "why does preview look different from edit?": {
       "src": "/assets/guide/help/faq-preview-mode-plain.png",

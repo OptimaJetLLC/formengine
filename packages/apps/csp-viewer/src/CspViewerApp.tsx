@@ -1,6 +1,7 @@
 import {antdComponents} from '@react-form-builder/components-antd'
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
 import {googleMapComponent} from '@react-form-builder/components-google-map'
+import {printComponents} from '@react-form-builder/components-print'
 import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {RsLocalizationWrapper, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table'
@@ -15,6 +16,7 @@ const components = [
   richTextComponent,
   googleMapComponent,
   signatureComponent,
+  ...printComponents,
   ...rSuiteTableComponents,
 ].map(definer => definer.build().model)
 

@@ -1,6 +1,62 @@
 .treeContainer {
   display: flex;
+  flex-direction: column;
   overflow: auto;
+}
+
+.nonVisualGroup {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.nonVisualGroupTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 8px 8px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.nonVisualGroupTitle::before,
+.nonVisualGroupTitle::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rs-border-primary, #e5e5ea);
+}
+
+.nonVisualList {
+  display: flex;
+  flex-direction: column;
+}
+
+.listItem {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: start;
+  flex-direction: row;
+  padding-block: 8px;
+  padding-inline: 8px;
+  cursor: pointer;
+}
+
+.listItem label {
+  opacity: 0.4;
+  margin-inline-start: 6px;
+}
+
+.listItemHovered,
+.listItemSelected {
+  background-color: var(--rs-listbox-option-selected-bg);
+}
+
+.listItemSelected {
+  color: var(--rs-listbox-option-selected-text);
 }
 
 .subtleIconButton {

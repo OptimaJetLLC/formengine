@@ -3,6 +3,7 @@ import {
   checkSlotCondition,
   ComponentTree,
   DefaultWrapper,
+  getVisualChildren,
   groupBy,
   isContainer,
   namedObserver,
@@ -50,7 +51,7 @@ function getSlot(componentStore: ComponentStore) {
  * @returns the {@link Record} with all child components.
  */
 export function getBuilderChildren(builderStore: BuilderStore, componentData: ComponentData, componentProps: Record<string, any>) {
-  const containers = componentData.children
+  const visualChildren = getVisualChildren(componentData)
   const currentProps: Record<string, any> = {}
   const meta = builderStore.getComponentMetadata(componentData.model.type)
 
@@ -62,12 +63,12 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   const templateSlots = getTemplateSlots(componentData)
   availableSlots.push(...templateSlots)
 
-  const closedSlots = componentData.store
-    .children?.filter(componentStore => checkSlotCondition(componentStore, componentProps))
-    .map(getSlot) ?? []
+  const closedSlots = visualChildren
+    .filter(child => checkSlotCondition(child.store, componentProps))
+    .map(child => getSlot(child.store))
   const openSlots = availableSlots.filter(an => !closedSlots.includes(an.key))
 
-  const groups = groupBy(containers, value => getSlot(value.store))
+  const groups = groupBy(visualChildren, value => getSlot(value.store))
   const isSlotConditionSatisfied = (child: ComponentData) => checkSlotCondition(child.store, componentProps)
 
   for (const [key, children] of Object.entries(groups)) {

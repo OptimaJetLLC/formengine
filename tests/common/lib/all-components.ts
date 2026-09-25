@@ -1,6 +1,7 @@
 import {antdComponents} from '@react-form-builder/components-antd'
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
 import {googleMapComponent} from '@react-form-builder/components-google-map'
+import {printComponents} from '@react-form-builder/components-print'
 import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {signatureComponent} from '@react-form-builder/components-signature'
@@ -17,7 +18,8 @@ const presets = initialPresets.map(preset => {
 })
 
 let allComponents = [...rSuiteComponents, ...antdComponents, ...presets,
-  throwErrorComponent, styledBoxComponent, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent]
+  throwErrorComponent, styledBoxComponent, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent,
+  ...printComponents]
 
 export const allComponentsBuilder = allComponents.map(definer => definer.build())
 

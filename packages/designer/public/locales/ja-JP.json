@@ -904,7 +904,8 @@
       "static": "静的",
       "structure": "構造",
       "templates": "[テンプレート]"
-    }
+    },
+    "singletonAlreadyOnForm": "このコンポーネントはフォーム上に1つだけ配置できます。"
   },
   "componentsModal": {
     "clickToAdd": "クリックしてコントロールを追加"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "すべて折りたたむ",
-    "expand": "すべて拡大"
+    "expand": "すべて拡大",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "検証ルールを追加する",

@@ -29,7 +29,7 @@ components in Preview. The **canvas** is the center of the screen. The **header*
 
 | #   | Control                       | Purpose                                                                                                                    |
 | --- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Menu (hamburger)              | **Add a new form**, **Download**, **Upload**, **Translation**, **Save**, **Save as...**, export/import, **Clear**, version |
+| 1   | Menu (hamburger)              | **Add a new form**, **Download**, **Upload**, **Translation**, **Save**, **Save as...**, export/import, **Clear**, **Print**, version |
 | 2   | Undo / Redo                   | Reverse recent layout edits                                                                                                |
 | 3   | **Component library**         | Switch UI kit (for example Material UI, RSuite UI). **Demo only.**                                                                         |
 | 4   | **Preview**                   | Test the form. Becomes **Edit** in Preview mode                                                                            |
@@ -44,7 +44,7 @@ The two language controls are separate. The header picker switches the form's lo
 | **Edit**                                               | **Preview**                                      |
 | ------------------------------------------------------ | ------------------------------------------------ |
 | Authoring panels stay open (library, tree, properties) | The form runs like an end-user screen            |
-| You can drag components and use undo/redo              | Authoring chrome is reduced or hidden            |
+| You can drag components and use undo/redo              | Editing tools are reduced or hidden              |
 | Selection outlines show what you are editing           | You focus on values, errors, and button behavior |
 
 ### Preview your layout
@@ -58,6 +58,15 @@ The two language controls are separate. The header picker switches the form's lo
 
 Run **Preview** before you hand the form off. Going live is still a separate step in your app. See
 [Save and share](/meet-the-designer/save-and-share).
+
+## Print a draft
+
+1. Open **Menu** → **Print**, or press <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>P</kbd></span> /
+   <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>P</kbd></span>.
+2. Glance at the browser print preview for clipped fields or bad page breaks.
+3. Print or **Save as PDF**, then close the dialog to get back to Designer.
+
+More detail: [Print your form](/preview-and-handoff/print-your-form).
 
 ## Check the result
 
@@ -73,3 +82,4 @@ Use the canvas to lay out the form. Use **Preview** to try it. **Edit** brings t
 - [Save and share](/meet-the-designer/save-and-share)
 - [Preview your first form](/your-first-form/preview-your-first-form)
 - [Preview mode tools](/preview-and-handoff/use-preview-mode-tools-data-validate-reset)
+- [Print your form](/preview-and-handoff/print-your-form)

@@ -12,6 +12,36 @@
       "color": "#F59E0B",
       "showLabel": false
     },
+    "saveAs": {
+      "rect": [
+        305,
+        231,
+        202,
+        36
+      ],
+      "color": "#F59E0B",
+      "showLabel": false
+    },
+    "download": {
+      "rect": [
+        305,
+        83,
+        202,
+        36
+      ],
+      "color": "#F59E0B",
+      "showLabel": false
+    },
+    "upload": {
+      "rect": [
+        305,
+        119,
+        202,
+        36
+      ],
+      "color": "#F59E0B",
+      "showLabel": false
+    },
     "exportForms": {
       "rect": [
         305,
@@ -36,6 +66,26 @@
       "rect": [
         305,
         339,
+        202,
+        36
+      ],
+      "color": "#F59E0B",
+      "showLabel": false
+    },
+    "print": {
+      "rect": [
+        305,
+        375,
+        202,
+        38
+      ],
+      "color": "#F59E0B",
+      "showLabel": false
+    },
+    "addNewForm": {
+      "rect": [
+        305,
+        47,
         202,
         36
       ],

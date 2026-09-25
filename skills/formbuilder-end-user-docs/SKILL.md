@@ -55,6 +55,8 @@ If `designer-guide/content/` scaffolding is missing:
 ### Voice, structure, and headings
 
 - Clear, friendly, user-focused English; address the reader as **you** / **your**. Lead with what the reader will do, then the steps.
+- Avoid developer jargon that form authors do not use. Especially do not call the Designer UI **chrome**; say **editing tools**, **panels**,
+  **menus**, or name the control (see **Language** below).
 - Single **H1** that matches the page `title`; no bold, italic, or inline code inside headings.
 - **H2** for major topics, **H3** for subsections; use **H4** only for small subdivisions.
 - Match sibling pages under `designer-guide/content/` (short leads, numbered steps, bold UI labels). Prefer that voice over Docusaurus developer-doc templates.
@@ -122,6 +124,9 @@ Canonical examples from the `uncertain wording` guide pass:
 ## Language
 
 - All user-facing documentation text: **English only** (repository-wide rule in root `AGENTS.md`).
+- Do **not** use **chrome** to mean the Designer UI frame (toolbars, panels, menus). Form authors do not use that term. Prefer concrete
+  words: **editing tools**, **panels**, **menus**, **header**, **Designer interface**, or name the control. Keep `CHROME_PATH` and
+  Google Chrome references for capture tooling only.
 
 ## Before writing: discover the UI
 
@@ -165,7 +170,7 @@ Use overlays when a full screenshot is busy or the reader must map prose (“lef
 | Mode | When to use | Visual |
 |------|-------------|--------|
 | **Zones** | First tour of the workspace; explain layout | Up to 4 numbered rectangles + short labels; fixed color per zone |
-| **Highlight** | One step in a procedure (“click **Preview**”) | Single rectangle flush with visible UI chrome; legend **outside** the box |
+| **Highlight** | One step in a procedure (“click **Preview**”) | Single rectangle flush with the visible control; legend **outside** the box |
 
 **Zone color palette (keep consistent across guides)**
 
@@ -280,9 +285,9 @@ When the user names a new feature or release area:
 
 - Long JSON or TypeScript in primary flows (optional “Technical note” collapsible or link to `formengine-designer` instead).
 - Marketing superlatives; keep claims factual and testable in the UI.
-- Screenshots of entire un cropped desktops; crop to the builder chrome unless context requires the window.
+- Screenshots of entire un cropped desktops; crop to the Designer window unless context requires the full desktop.
 - Per-step availability hedges (`when available`, `if available`, `when supported`, `in some builds`) for stock
-  Designer chrome. See **Typical Designer** above.
+  Designer controls. See **Typical Designer** above.
 - Splitting `**bold**` or other emphasis across a line wrap. Wrap at 140 characters, but keep a marked-up phrase
   on one line.
 - Wrapping demo `<a>...</a>` Try it links to satisfy Biome's 140-character lineWidth. MDX
@@ -377,7 +382,7 @@ Demo URL params (`packages/apps/common-designer`): `form=empty`, `formBody=<base
 openMainMenu() → plain screenshot → annotateSingleHeaderMenuItem(page, theme, plainPath, item)
 ```
 
-Menu item keys in `measure-workspace-layout.mjs`: `save`, `saveAs`, `download`, `upload`, `exportForms`, `importForms`, `clear`, `addNewForm`. Output: `highlight-header-menu-{name}.png` (theme pairs `.light` / `.dark`).
+Menu item keys in `measure-workspace-layout.mjs`: `save`, `saveAs`, `download`, `upload`, `exportForms`, `importForms`, `clear`, `print`, `addNewForm`. Output: `highlight-header-menu-{name}.png` (theme pairs `.light` / `.dark`).
 
 ### Forms tab highlights (hard-won rules)
 
@@ -503,7 +508,7 @@ The guide uses Astro **ClientRouter** (SPA-style navigation). Any head-only or o
 
 ### Framework choice (Starlight)
 
-Stay on the **custom Astro** layout (branded chrome, theme-aware screenshots, Algolia DocSearch, `_meta.js` nav, ClientRouter). Do not migrate to Starlight unless requirements change materially - high regression risk for modest gain.
+Stay on the **custom Astro** layout (branded shell, theme-aware screenshots, Algolia DocSearch, `_meta.js` nav, ClientRouter). Do not migrate to Starlight unless requirements change materially - high regression risk for modest gain.
 
 ### Validating after guide or proxy changes
 

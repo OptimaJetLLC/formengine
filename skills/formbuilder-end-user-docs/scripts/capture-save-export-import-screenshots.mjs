@@ -8,7 +8,7 @@ import {mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createGuideCapturePage} from './capture-env.mjs';
-import {annotateSingleHeaderMenuItem} from './measure-workspace-layout.mjs';
+import {annotateHeaderMenuItemHighlights} from './measure-workspace-layout.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '../../..');
@@ -29,6 +29,7 @@ const MENU_ITEMS = [
   {item: 'exportForms', basename: 'header-menu-export-forms'},
   {item: 'importForms', basename: 'header-menu-import-forms'},
   {item: 'clear', basename: 'header-menu-clear'},
+  {item: 'print', basename: 'header-menu-print'},
   {item: 'addNewForm', basename: 'header-menu-add-new-form'},
 ];
 
@@ -87,13 +88,18 @@ async function closeMainMenu(page) {
  * @param {'light' | 'dark'} theme
  */
 async function captureSaveExportImportMenus(page, theme) {
-  for (const {item, basename} of MENU_ITEMS) {
-    await openMainMenu(page);
-    const plainPath = await shot(page, 'manage-forms', `${basename}-plain`, theme);
-    await annotateSingleHeaderMenuItem(page, theme, plainPath, item);
+  await openMainMenu(page);
+  const plainPath = await shot(page, 'manage-forms', 'header-menu-plain', theme);
+  await annotateHeaderMenuItemHighlights(
+    page,
+    theme,
+    plainPath,
+    MENU_ITEMS.map(({item}) => item),
+  );
+  for (const {item} of MENU_ITEMS) {
     console.log(`  highlight-header-menu: ${item}`);
-    await closeMainMenu(page);
   }
+  await closeMainMenu(page);
 }
 
 async function main() {

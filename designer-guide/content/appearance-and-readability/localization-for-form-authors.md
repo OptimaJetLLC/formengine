@@ -84,7 +84,7 @@ The header dropdown changes the language of the **form content**. It does not ch
 3. Switch every language on the canvas and in **Preview**; verify labels, hints, options, and validation messages.
 4. Export or save the form when your process requires a handoff to translators or developers.
 
-Developers: Full localization setup is in [Localization](docs:formengine-designer/features/localization). Designer chrome language is
+Developers: Full localization setup is in [Localization](docs:formengine-designer/features/localization). Designer interface language is
 in [Designer localization](docs:formengine-designer/features/designer-localization).
 
 ## Summary

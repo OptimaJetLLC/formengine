@@ -13,6 +13,7 @@ import {DownloadButton} from './menu-items/DownloadButton'
 import {ExportFormsButton} from './menu-items/ExportFormsButton'
 import {ExportJsonFormSchemaButton} from './menu-items/ExportJsonFormSchemaButton'
 import {ImportFormsButton} from './menu-items/ImportFormsButton'
+import {PrintButton} from './menu-items/PrintButton'
 import {SaveAsButton} from './menu-items/SaveAsButton'
 import {SaveButton} from './menu-items/SaveButton'
 import {UploadButton} from './menu-items/UploadButton'
@@ -47,6 +48,7 @@ const RawMenuItems = () => {
       <ImportFormsButton/>
     </>}
     <ClearButton/>
+    <PrintButton/>
     <ExportJsonFormSchemaButton/>
   </>
 }

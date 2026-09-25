@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Struktura"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "Skriveno na ekranu. Umeće prelom stranice pri štampi.",
+      "name": "Prelom stranice",
+      "props": {
+        "breakAfter": {
+          "description": "CSS pravilo break-after pri štampi",
+          "name": "Prelom posle"
+        },
+        "breakBefore": {
+          "description": "CSS pravilo break-before pri štampi",
+          "name": "Prelom pre"
+        },
+        "breakInside": {
+          "description": "CSS pravilo break-inside pri štampi",
+          "name": "Unutrašnji prelom"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "Skriveno na ekranu. Dodaje zaglavlje, podnožje i opcione brojeve stranica.",
+      "name": "Zaglavlje/podnožje štampe",
+      "props": {
+        "footer": {
+          "description": "Odštampano podnožje. Koristite {page} i {pages} za brojeve stranica",
+          "name": "Podnožje"
+        },
+        "footerAlign": {
+          "description": "Položaj podnožja u margini stranice",
+          "name": "Poravnanje podnožja"
+        },
+        "header": {
+          "description": "Odštampano zaglavlje. Koristite {page} i {pages} za brojeve stranica",
+          "name": "Zaglavlje"
+        },
+        "headerAlign": {
+          "description": "Položaj zaglavlja u margini stranice",
+          "name": "Poravnanje zaglavlja"
+        }
+      }
+    }
+  }
+}

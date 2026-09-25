@@ -15,6 +15,7 @@ export const CustomizableZone: Set<string> = new Set([
   'MainMenu_Item_ExportForms',
   'MainMenu_Item_ImportForms',
   'MainMenu_Item_Clear',
+  'MainMenu_Item_Print',
   // eslint-disable-next-line no-secrets/no-secrets
   'MainMenu_Item_ExportJsonFormSchema',
   'MainMenu_Item_LanguageSwitch',

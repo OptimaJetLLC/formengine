@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "结构"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "屏幕上隐藏。打印时插入分页符。",
+      "name": "分页符",
+      "props": {
+        "breakAfter": {
+          "description": "打印时的 CSS break-after 规则",
+          "name": "之后分页"
+        },
+        "breakBefore": {
+          "description": "打印时的 CSS break-before 规则",
+          "name": "之前分页"
+        },
+        "breakInside": {
+          "description": "打印时的 CSS break-inside 规则",
+          "name": "内部分页"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "屏幕上隐藏。添加打印页眉、页脚和可选页码。",
+      "name": "打印页眉/页脚",
+      "props": {
+        "footer": {
+          "description": "打印页脚。使用 {page} 和 {pages} 表示页码",
+          "name": "页脚"
+        },
+        "footerAlign": {
+          "description": "页边距中的页脚位置",
+          "name": "页脚对齐"
+        },
+        "header": {
+          "description": "打印页眉。使用 {page} 和 {pages} 表示页码",
+          "name": "页眉"
+        },
+        "headerAlign": {
+          "description": "页边距中的页眉位置",
+          "name": "页眉对齐"
+        }
+      }
+    }
+  }
+}

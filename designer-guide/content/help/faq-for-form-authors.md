@@ -16,6 +16,14 @@ Use **Download** from the header menu to save the current form as `form.json`. S
 See [Export and share your form](/preview-and-handoff/export-and-share-your-form)
 and [Forms JSON (developers)](docs:formengine-designer/features/forms-json).
 
+## How do I print or save a PDF?
+
+<img src="/assets/guide/manage-forms/highlight-header-menu-print.png" alt="Header menu open with Print highlighted." />
+
+Open **Menu** → **Print**, or press <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>P</kbd></span> /
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>P</kbd></span>. Pick a printer or **Save as PDF** in the browser dialog.
+See [Print your form](/preview-and-handoff/print-your-form).
+
 ## Why does Preview look different from Edit?
 
 <img src="/assets/guide/help/faq-preview-mode-plain.png" alt="Preview mode with the Edit button and Data and Validate tools." />
@@ -25,7 +33,9 @@ See [Preview and Edit](/meet-the-designer/preview-and-edit).
 
 ## Why won't a field delete, and why don't shortcuts work?
 
-Shortcuts work when focus is on the page background, not inside a text box. Click the canvas margin first.
+Most shortcuts need focus on the page background, not inside a text box. Click the canvas margin first.
+**Print** (<span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>P</kbd></span> /
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>P</kbd></span>) still works inside a field.
 See [Keyboard shortcuts](/help/keyboard-shortcuts).
 
 ## Validation does not run on the canvas

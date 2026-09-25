@@ -1,5 +1,6 @@
 import {useCallback, useMemo} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
+import {printForm} from '../ui/Header/components/printForm'
 import {useSaveForm} from '../ui/Header/components/useSaveForm'
 
 /**
@@ -14,6 +15,7 @@ const stopEvent = (event: KeyboardEvent) => {
 type HotkeyAction = 'deleteSelectedAction'
   | 'cloneOneSelectedAction'
   | 'saveFormAction'
+  | 'printFormAction'
   | 'undoAction'
   | 'redoAction'
 
@@ -29,11 +31,17 @@ type Hotkey = {
 
 type HotkeyHandler = () => void
 
+/**
+ * Hotkeys that must run even when focus is inside an input or other control.
+ */
+const alwaysActiveActions = new Set<HotkeyAction>(['printFormAction'])
+
 const hotKeys: Record<OS, Array<[Hotkey, HotkeyAction]>> = {
   default: [
     [{key: 'Delete'}, 'deleteSelectedAction'],
     [{key: 'd', ctrl: true}, 'cloneOneSelectedAction'],
     [{key: 's', ctrl: true}, 'saveFormAction'],
+    [{key: 'p', ctrl: true}, 'printFormAction'],
     [{key: 'z', ctrl: true}, 'undoAction'],
     [{key: 'z', ctrl: true, shift: true}, 'redoAction'],
     [{key: 'y', ctrl: true}, 'redoAction'],
@@ -42,6 +50,7 @@ const hotKeys: Record<OS, Array<[Hotkey, HotkeyAction]>> = {
     [{key: 'Delete'}, 'deleteSelectedAction'],
     [{key: 'd', meta: true}, 'cloneOneSelectedAction'],
     [{key: 's', meta: true}, 'saveFormAction'],
+    [{key: 'p', meta: true}, 'printFormAction'],
     [{key: 'z', meta: true, shift: true}, 'redoAction'],
     [{key: 'z', meta: true}, 'undoAction'],
   ],
@@ -85,6 +94,9 @@ const useHotkeyHandlers = (): Record<HotkeyAction, HotkeyHandler> => {
     saveFormAction: () => {
       onSave()
     },
+    printFormAction: () => {
+      printForm(builderStore)
+    },
     undoAction: () => {
       builderStore.undoer.undo()
     },
@@ -101,15 +113,14 @@ export const useHotkeys = () => {
   const handlers = useHotkeyHandlers()
 
   return useCallback((event: KeyboardEvent) => {
-    if (document.activeElement !== document.body) return
-
     const action = findHotkeyAction(event)
-    if (action) {
-      const handler = handlers[action]
-      if (handler) {
-        stopEvent(event)
-        handler()
-      }
+    if (!action) return
+    if (!alwaysActiveActions.has(action) && document.activeElement !== document.body) return
+
+    const handler = handlers[action]
+    if (handler) {
+      stopEvent(event)
+      handler()
     }
   }, [handlers])
 }

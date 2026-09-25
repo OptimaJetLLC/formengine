@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Structure"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "name": "Page break",
+      "description": "Hidden on screen. Inserts a page break when the form is printed.",
+      "props": {
+        "breakBefore": {
+          "name": "Break before",
+          "description": "The CSS break-before rule used when printing"
+        },
+        "breakAfter": {
+          "name": "Break after",
+          "description": "The CSS break-after rule used when printing"
+        },
+        "breakInside": {
+          "name": "Break inside",
+          "description": "The CSS break-inside rule used when printing"
+        }
+      }
+    },
+    "PrintSettings": {
+      "name": "Print settings",
+      "description": "Hidden on screen. Adds a print header, footer, and optional page numbers.",
+      "props": {
+        "header": {
+          "name": "Header",
+          "description": "The printed header. Use {page} and {pages} for page numbers"
+        },
+        "footer": {
+          "name": "Footer",
+          "description": "The printed footer. Use {page} and {pages} for page numbers"
+        },
+        "headerAlign": {
+          "name": "Header align",
+          "description": "The header position in the page margin"
+        },
+        "footerAlign": {
+          "name": "Footer align",
+          "description": "The footer position in the page margin"
+        }
+      }
+    }
+  }
+}

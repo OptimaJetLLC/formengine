@@ -904,7 +904,8 @@
       "static": "Statički",
       "structure": "Struktura",
       "templates": "Šabloni"
-    }
+    },
+    "singletonAlreadyOnForm": "Na obrascu je dozvoljena samo jedna instanca ove komponente."
   },
   "componentsModal": {
     "clickToAdd": "Kliknite da biste dodali kontrolu"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "Srušite sve",
-    "expand": "Proširi sve"
+    "expand": "Proširi sve",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "Dodajte pravilo validacije",

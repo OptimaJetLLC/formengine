@@ -7,7 +7,7 @@ import type {ValidatorType} from '../types/ValidatorType'
 /**
  * The validation rule definition resolved from {@link FormViewerValidationRules}.
  */
-type ResolvedValidationRuleDefinition =
+export type ResolvedValidationRuleDefinition =
   | { type: 'internal', definition: ValidationRule }
   | { type: 'custom', definition: CustomValidationRuleSettings }
 

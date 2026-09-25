@@ -514,6 +514,79 @@ const typedocSidebar = {
     },
     {
       type: "category",
+      label: "@react-form-builder/components-print",
+      items: [
+        {
+          type: "category",
+          label: "Interfaces",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-print/interfaces/PageBreakProps",
+              label: "PageBreakProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-print/interfaces/PrintSettingsProps",
+              label: "PrintSettingsProps"
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Type Aliases",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-print/type-aliases/PageBreakRule",
+              label: "PageBreakRule"
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Variables",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-print/variables/pageBreak",
+              label: "pageBreak"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-print/variables/printComponents",
+              label: "printComponents"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-print/variables/printComponentsDescriptions",
+              label: "printComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-print/variables/printEnUsComponentsDescriptions",
+              label: "printEnUsComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-print/variables/printModels",
+              label: "printModels"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-print/variables/printSettings",
+              label: "printSettings"
+            }
+          ]
+        }
+      ],
+      link: {
+        type: "doc",
+        id: "api-reference/@react-form-builder/components-print/index"
+      }
+    },
+    {
+      type: "category",
       label: "@react-form-builder/components-rich-text",
       items: [
         {
@@ -2012,6 +2085,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ResolvedValidationRuleDefinition",
+              label: "ResolvedValidationRuleDefinition"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/ResolvedValidator",
               label: "ResolvedValidator"
             },
@@ -2215,6 +2293,16 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/variables/cfHideFromComponentPalette",
               label: "cfHideFromComponentPalette"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfNonVisual",
+              label: "cfNonVisual"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfSingleton",
+              label: "cfSingleton"
             },
             {
               type: "doc",
@@ -2629,6 +2717,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/getNonVisualChildren",
+              label: "getNonVisualChildren"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/getTemplateName",
               label: "getTemplateName"
             },
@@ -2644,8 +2737,18 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/getVisualChildren",
+              label: "getVisualChildren"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/groupBy",
               label: "groupBy"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/hasOtherInstanceOfType",
+              label: "hasOtherInstanceOfType"
             },
             {
               type: "doc",
@@ -2686,6 +2789,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/isLocalizedProperty",
               label: "isLocalizedProperty"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isNonVisual",
+              label: "isNonVisual"
             },
             {
               type: "doc",
@@ -2876,6 +2984,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/useTooltipType",
               label: "useTooltipType"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/warnMisplacedNonVisualComponents",
+              label: "warnMisplacedNonVisualComponents"
             }
           ]
         }
@@ -3243,6 +3356,79 @@ const typedocSidebar = {
               link: {
                 type: "doc",
                 id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/index"
+              }
+            },
+            {
+              type: "category",
+              label: "printComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/printComponent/interfaces/PageBreakProps",
+                      label: "PageBreakProps"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/printComponent/interfaces/PrintSettingsProps",
+                      label: "PrintSettingsProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Type Aliases",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/printComponent/type-aliases/PageBreakRule",
+                      label: "PageBreakRule"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/printComponent/variables/pageBreak",
+                      label: "pageBreak"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/printComponent/variables/printComponents",
+                      label: "printComponents"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/printComponent/variables/printComponentsDescriptions",
+                      label: "printComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/printComponent/variables/printEnUsComponentsDescriptions",
+                      label: "printEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/printComponent/variables/printModels",
+                      label: "printModels"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/printComponent/variables/printSettings",
+                      label: "printSettings"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/designer-bundle/namespaces/printComponent/index"
               }
             },
             {
@@ -4581,6 +4767,79 @@ const typedocSidebar = {
               link: {
                 type: "doc",
                 id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/index"
+              }
+            },
+            {
+              type: "category",
+              label: "printComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/printComponent/interfaces/PageBreakProps",
+                      label: "PageBreakProps"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/printComponent/interfaces/PrintSettingsProps",
+                      label: "PrintSettingsProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Type Aliases",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/printComponent/type-aliases/PageBreakRule",
+                      label: "PageBreakRule"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/printComponent/variables/pageBreak",
+                      label: "pageBreak"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/printComponent/variables/printComponents",
+                      label: "printComponents"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/printComponent/variables/printComponentsDescriptions",
+                      label: "printComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/printComponent/variables/printEnUsComponentsDescriptions",
+                      label: "printEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/printComponent/variables/printModels",
+                      label: "printModels"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/printComponent/variables/printSettings",
+                      label: "printSettings"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/printComponent/index"
               }
             },
             {

@@ -1,5 +1,6 @@
 import * as fastQrComponent from '@react-form-builder/components-fast-qr'
 import * as googleMapComponent from '@react-form-builder/components-google-map'
+import * as printComponent from '@react-form-builder/components-print'
 import * as richTextComponent from '@react-form-builder/components-rich-text'
 import * as rSuiteComponents from '@react-form-builder/components-rsuite'
 import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
@@ -17,6 +18,7 @@ const models = [
   signatureComponent.signatureModel,
   fastQrComponent.fastQrModel,
   googleMapComponent.googleMapModel,
+  ...printComponent.printModels,
   ...rSuiteTableComponents.tableModels,
 ]
 
@@ -55,5 +57,5 @@ export function renderFormViewer(elementId: string, props: Partial<FormViewerPro
   return renderFormViewerTo(container, props)
 }
 
-export {rSuiteComponents, richTextComponent, signatureComponent, fastQrComponent, googleMapComponent, rSuiteTableComponents}
+export {rSuiteComponents, richTextComponent, signatureComponent, fastQrComponent, googleMapComponent, printComponent, rSuiteTableComponents}
 export {ActionDefinition, buildForm, Language, createView} from '@react-form-builder/core'

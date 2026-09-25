@@ -904,7 +904,8 @@
       "static": "Statique",
       "structure": "Structure",
       "templates": "Modèles"
-    }
+    },
+    "singletonAlreadyOnForm": "Une seule instance de ce composant est autorisée sur le formulaire."
   },
   "componentsModal": {
     "clickToAdd": "Cliquez pour ajouter un contrôle"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "Tout réduire",
-    "expand": "Tout développer"
+    "expand": "Tout développer",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "Ajouter une règle de validation",

@@ -1,0 +1,113 @@
+---
+sidebar_position: 115
+title: Page break
+description: Hidden on screen. Inserts a page break when the form is printed.
+slug: /components-library/structure-components/page-break
+---
+
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+# Page break
+
+<ComponentInfo
+  packageName="@react-form-builder/components-print"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-print"
+/>
+
+## Introduction
+
+`PageBreak` starts a new page when the form is printed. The viewer leaves it off screen. In the designer you get a placeholder on the
+canvas, which is how you drop a break between two sections.
+
+**Print** in the main menu, or Ctrl/Cmd+P, switches to the viewer and calls `window.print()`. Add the print components to the view when
+the form JSON contains `PageBreak`.
+
+## Installation
+
+```bash
+npm install @react-form-builder/components-print
+```
+
+## Connection to FormBuilder component
+
+Register the print components next to RSuite so Page break shows up in the component panel:
+
+```typescript jsx {2,6-7,10-11}
+import {rSuiteComponents, rSuiteComponentsDescriptions} from '@react-form-builder/components-rsuite'
+import {printComponents, printComponentsDescriptions} from '@react-form-builder/components-print'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+
+const components = [
+  ...rSuiteComponents.map((c) => c.build()),
+  ...printComponents.map((c) => c.build()),
+]
+const builderView = new BuilderView(components)
+  .withComponentLibraryDescription(rSuiteComponentsDescriptions)
+  .withComponentLibraryDescription(printComponentsDescriptions)
+
+function App() {
+  return <FormBuilder view={builderView}/>
+}
+```
+
+## Connect to FormViewer component
+
+Pass `printModels` into `createView`. Call `window.print()`, or use **Print** in the designer:
+
+```typescript jsx showLineNumbers {1,5,13-19}
+import {printModels} from '@react-form-builder/components-print'
+import {models} from '@react-form-builder/components-rsuite'
+import {createView, FormViewer} from '@react-form-builder/core'
+
+const view = createView([...models, ...printModels])
+
+const form = `{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "pageBreak",
+        "type": "PageBreak",
+        "props": {
+          "breakBefore": { "value": "page" }
+        }
+      }
+    ]
+  }
+}`
+
+function App() {
+  return <FormViewer view={view} getForm={() => form}/>
+}
+```
+
+## Properties
+
+| Name         | Type                        | Description                         |
+|:-------------|:----------------------------|:------------------------------------|
+| Break before | `auto` \| `avoid` \| `page` | CSS `break-before` (default `page`) |
+| Break after  | `auto` \| `avoid` \| `page` | CSS `break-after` (default `auto`)  |
+| Break inside | `auto` \| `avoid`           | CSS `break-inside` (default `auto`) |
+
+## Bundles
+
+The [designer bundle](/formengine-designer/getting-started/installation#using-designer-bundle) and the
+[viewer premium bundle](/formengine-designer/getting-started/installation#using-viewer-premium-bundle) already include this package. In a
+CDN embed where you assemble the component set yourself, read `printComponent` from the bundle global:
+
+```javascript
+const {
+  renderFormViewer,
+  createView,
+  rSuiteComponents,
+  printComponent,
+} = window.FormEngineViewerBundle
+
+const models = [
+  ...rSuiteComponents.models,
+  ...printComponent.printModels,
+]
+const view = createView(models)
+```

@@ -159,6 +159,7 @@ const zoneAccessConfig: Partial<Record<CustomizableKey, ZoneAccess>> = {
     'MainMenu_Item_Download',
     'MainMenu_Item_Upload',
     'MainMenu_Item_Clear',
+    'MainMenu_Item_Print',
     'MainMenu_Item_LanguageSwitch',
   ], openMainMenuAccess),
 

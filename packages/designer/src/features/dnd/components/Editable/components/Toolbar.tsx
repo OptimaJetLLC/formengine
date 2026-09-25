@@ -1,7 +1,7 @@
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faClone from '@fortawesome/free-regular-svg-icons/faClone.js'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
-import {cfDisableComponentRemove, useComponentData} from '@react-form-builder/core'
+import {cfDisableComponentRemove, cfSingleton, useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
 import type {MouseEventHandler, ReactNode} from 'react'
 import {useCallback, useEffect, useMemo, useRef} from 'react'
@@ -116,6 +116,7 @@ const RawToolbar = ({compact, className}: ToolbarProps) => {
   const disablePresetCreation = builderStore.presetComponentOptions.disableCreation
   const storeKey = store.key
   const storeType = store.type
+  const singleton = model.isFeatureEnabled(cfSingleton)
 
   const toolbarClassname = useMemo(() => {
     const parentType = parent ? `parent-type-${parent?.model.type}` : ''
@@ -155,7 +156,7 @@ const RawToolbar = ({compact, className}: ToolbarProps) => {
     <ToolbarItems {...customizationProps}>
       <ToolbarTitle {...customizationProps}/>
       <ToolbarAddButton {...customizationProps}/>
-      {!isRoot && <>
+      {!isRoot && !singleton && <>
         <ToolbarCloneButton {...customizationProps}/>
         {!disablePresetCreation && <ToolbarPresetButton {...customizationProps}/>}
       </>}

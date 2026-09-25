@@ -904,7 +904,8 @@
       "static": "استاتیک",
       "structure": "ساختار",
       "templates": "قالبها"
-    }
+    },
+    "singletonAlreadyOnForm": "فقط یک نمونه از این مؤلفه در فرم مجاز است."
   },
   "componentsModal": {
     "clickToAdd": "برای افزودن کنترل کلیک کنید"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "فروپاشی همه",
-    "expand": "همه را گسترش دهید"
+    "expand": "همه را گسترش دهید",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "یک قانون اعتبار سنجی اضافه کنید",

@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Estructura"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "Oculto en pantalla. Inserta un salto de página al imprimir.",
+      "name": "Salto de página",
+      "props": {
+        "breakAfter": {
+          "description": "La regla CSS break-after al imprimir",
+          "name": "Salto después"
+        },
+        "breakBefore": {
+          "description": "La regla CSS break-before al imprimir",
+          "name": "Salto antes"
+        },
+        "breakInside": {
+          "description": "La regla CSS break-inside al imprimir",
+          "name": "Salto interior"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "Oculto en pantalla. Añade encabezado, pie y números de página opcionales.",
+      "name": "Encabezado/pie de impresión",
+      "props": {
+        "footer": {
+          "description": "El pie impreso. Use {page} y {pages} para los números de página",
+          "name": "Pie"
+        },
+        "footerAlign": {
+          "description": "La posición del pie en el margen",
+          "name": "Alineación del pie"
+        },
+        "header": {
+          "description": "El encabezado impreso. Use {page} y {pages} para los números de página",
+          "name": "Encabezado"
+        },
+        "headerAlign": {
+          "description": "La posición del encabezado en el margen",
+          "name": "Alineación del encabezado"
+        }
+      }
+    }
+  }
+}

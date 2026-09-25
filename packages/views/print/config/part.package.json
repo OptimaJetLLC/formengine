@@ -1,0 +1,14 @@
+{
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    },
+    "./schemas/print-components.schema.json": "./dist/schemas/print-components.schema.json",
+    "./assets/styles.css": "./dist/assets/styles.css"
+  }
+}

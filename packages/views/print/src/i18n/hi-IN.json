@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "स्ट्रक्चर"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "स्क्रीन पर छिपा रहता है। प्रिंट करते समय पेज ब्रेक डालता है।",
+      "name": "पेज ब्रेक",
+      "props": {
+        "breakAfter": {
+          "description": "प्रिंट करते समय CSS break-after नियम",
+          "name": "बाद में ब्रेक"
+        },
+        "breakBefore": {
+          "description": "प्रिंट करते समय CSS break-before नियम",
+          "name": "पहले ब्रेक"
+        },
+        "breakInside": {
+          "description": "प्रिंट करते समय CSS break-inside नियम",
+          "name": "अंदर ब्रेक"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "स्क्रीन पर छिपा रहता है। प्रिंट हेडर, फुटर और वैकल्पिक पेज नंबर जोड़ता है।",
+      "name": "प्रिंट हेडर/फुटर",
+      "props": {
+        "footer": {
+          "description": "प्रिंट फुटर। पेज नंबर के लिए {page} और {pages} का उपयोग करें",
+          "name": "फुटर"
+        },
+        "footerAlign": {
+          "description": "पेज मार्जिन में फुटर की स्थिति",
+          "name": "फुटर संरेखण"
+        },
+        "header": {
+          "description": "प्रिंट हेडर। पेज नंबर के लिए {page} और {pages} का उपयोग करें",
+          "name": "हेडर"
+        },
+        "headerAlign": {
+          "description": "पेज मार्जिन में हेडर की स्थिति",
+          "name": "हेडर संरेखण"
+        }
+      }
+    }
+  }
+}

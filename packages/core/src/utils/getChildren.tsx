@@ -3,6 +3,7 @@ import type {ComponentTreeProps} from '../ComponentTreeProps'
 import type {ComponentStore} from '../stores/ComponentStore'
 import type {ComponentData, IComponentDataProvider} from './contexts/ComponentDataContext'
 import {groupBy} from './groupBy'
+import {getVisualChildren} from './isNonVisual'
 import {needRender} from './needRender'
 
 type SlotConditionFn = (parentProps: Record<string, unknown>) => boolean
@@ -53,7 +54,7 @@ export function getChildren(
 ) {
   const containers = data.field?.fieldType === 'repeater'
     ? (data.field as unknown as IComponentDataProvider).componentData
-    : data.children
+    : getVisualChildren(data)
   const ComponentTree = componentTreeItem
   const currentProps: Record<string, any> = {}
 

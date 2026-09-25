@@ -1,7 +1,7 @@
 {
   "version": 1,
   "description": "Canonical map of Form Author Guide screenshots, guide-forms fixtures, articles, and capture scripts. Use each screenshot.regenerationPrompt with the formbuilder-end-user-docs skill to retake or create a similar image.",
-  "updatedAt": "2026-08-28",
+  "updatedAt": "2026-09-24",
   "paths": {
     "assetsDir": "designer-guide/public/assets/guide",
     "contentDir": "designer-guide/content",
@@ -17,9 +17,9 @@
     "rebuildCatalog": "node skills/formbuilder-end-user-docs/scripts/build-guide-screenshot-catalog.mjs"
   },
   "stats": {
-    "screenshots": 308,
-    "forms": 32,
-    "articles": 69
+    "screenshots": 318,
+    "forms": 33,
+    "articles": 71
   },
   "forms": {
     "account-registration": {
@@ -486,6 +486,29 @@
         "manage-forms/preset-toolbar-button-plain"
       ]
     },
+    "print-settings-demo": {
+      "file": "skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json",
+      "description": "Guide form fixture `print-settings-demo` used by Form Author Guide screenshots and Try it demo links.",
+      "usedByArticles": [
+        "components-by-task/special-components",
+        "help/faq-for-form-authors",
+        "manage-forms/save-export-and-import-forms",
+        "preview-and-handoff/export-and-share-your-form",
+        "preview-and-handoff/print-your-form"
+      ],
+      "usedByScreenshots": [
+        "components-by-task/special-non-visual-bar",
+        "components-by-task/special-non-visual-bar-plain",
+        "components-by-task/special-non-visual-tree",
+        "components-by-task/special-non-visual-tree-plain",
+        "components-by-task/special-singleton-palette-disabled",
+        "components-by-task/special-singleton-palette-disabled-plain",
+        "manage-forms/header-menu-print-plain",
+        "manage-forms/highlight-header-menu-print",
+        "preview-and-handoff/print-page-break-and-settings",
+        "preview-and-handoff/print-page-break-and-settings-plain"
+      ]
+    },
     "shipping-columns": {
       "file": "skills/formbuilder-end-user-docs/data/guide-forms/shipping-columns.json",
       "description": "Guide form fixture `shipping-columns` used by Form Author Guide screenshots and Try it demo links.",
@@ -799,6 +822,31 @@
       "captureScripts": [
         "skills/formbuilder-end-user-docs/scripts/capture-modals-for-authors-screenshots.mjs"
       ]
+    },
+    "components-by-task/special-components": {
+      "content": "designer-guide/content/components-by-task/special-components.md",
+      "screenshots": [
+        "components-by-task/special-non-visual-bar",
+        "components-by-task/special-non-visual-tree",
+        "components-by-task/special-singleton-palette-disabled"
+      ],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "captureScripts": [
+        "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs"
+      ],
+      "demo": {
+        "start": {
+          "form": "empty",
+          "view": "rsuite-inject-css"
+        },
+        "end": {
+          "formFile": "print-settings-demo.json",
+          "view": "rsuite-inject-css",
+          "label": "Open print settings demo in demo"
+        }
+      }
     },
     "simple-data-driven-screens/calculated-fields-overview": {
       "content": "designer-guide/content/simple-data-driven-screens/calculated-fields-overview.md",
@@ -1176,17 +1224,19 @@
         "help/faq-preview-mode-plain",
         "help/highlight-component-library",
         "manage-forms/header-menu-download-plain",
-        "manage-forms/header-menu-export-forms-plain",
+        "manage-forms/header-menu-print-plain",
         "manage-forms/highlight-header-menu-download",
-        "manage-forms/highlight-header-menu-export-forms"
+        "manage-forms/highlight-header-menu-print"
       ],
       "forms": [
-        "event-registration"
+        "event-registration",
+        "print-settings-demo"
       ],
       "captureScripts": [
         "skills/formbuilder-end-user-docs/scripts/capture-faq-for-form-authors-screenshots.mjs",
         "skills/formbuilder-end-user-docs/scripts/capture-guide-screenshots.mjs",
-        "skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs"
+        "skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs",
+        "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs"
       ]
     },
     "behavior-and-validation/common-validation-patterns": {
@@ -1326,6 +1376,7 @@
         "manage-forms/header-menu-download-plain",
         "manage-forms/header-menu-export-forms-plain",
         "manage-forms/header-menu-import-forms-plain",
+        "manage-forms/header-menu-print-plain",
         "manage-forms/header-menu-save-as-plain",
         "manage-forms/header-menu-save-plain",
         "manage-forms/header-menu-upload-plain",
@@ -1334,13 +1385,17 @@
         "manage-forms/highlight-header-menu-download",
         "manage-forms/highlight-header-menu-export-forms",
         "manage-forms/highlight-header-menu-import-forms",
+        "manage-forms/highlight-header-menu-print",
         "manage-forms/highlight-header-menu-save",
         "manage-forms/highlight-header-menu-save-as",
         "manage-forms/highlight-header-menu-upload"
       ],
-      "forms": [],
+      "forms": [
+        "print-settings-demo"
+      ],
       "captureScripts": [
-        "skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs"
+        "skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs",
+        "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs"
       ]
     },
     "preview-and-handoff/export-and-share-your-form": {
@@ -1350,18 +1405,23 @@
         "manage-forms/header-menu-download-plain",
         "manage-forms/header-menu-export-forms-plain",
         "manage-forms/header-menu-import-forms-plain",
+        "manage-forms/header-menu-print-plain",
         "manage-forms/header-menu-save-plain",
         "manage-forms/header-menu-upload-plain",
         "manage-forms/highlight-header-menu-clear",
         "manage-forms/highlight-header-menu-download",
         "manage-forms/highlight-header-menu-export-forms",
         "manage-forms/highlight-header-menu-import-forms",
+        "manage-forms/highlight-header-menu-print",
         "manage-forms/highlight-header-menu-save",
         "manage-forms/highlight-header-menu-upload"
       ],
-      "forms": [],
+      "forms": [
+        "print-settings-demo"
+      ],
       "captureScripts": [
-        "skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs"
+        "skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs",
+        "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs"
       ]
     },
     "manage-forms/duplicate-and-rename-forms": {
@@ -1403,6 +1463,31 @@
           "formFile": "event-registration.json",
           "view": "mui",
           "label": "Open Event registration in demo"
+        }
+      }
+    },
+    "preview-and-handoff/print-your-form": {
+      "content": "designer-guide/content/preview-and-handoff/print-your-form.md",
+      "screenshots": [
+        "manage-forms/header-menu-print-plain",
+        "manage-forms/highlight-header-menu-print",
+        "preview-and-handoff/print-page-break-and-settings"
+      ],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "captureScripts": [
+        "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs"
+      ],
+      "demo": {
+        "start": {
+          "form": "empty",
+          "view": "rsuite-inject-css"
+        },
+        "end": {
+          "formFile": "print-settings-demo.json",
+          "view": "rsuite-inject-css",
+          "label": "Open print settings demo in demo"
         }
       }
     },
@@ -3699,6 +3784,156 @@
       "annotatedBy": [
         "behavior/highlight-onclick-actions-menu"
       ]
+    },
+    "components-by-task/special-non-visual-bar-plain": {
+      "id": "components-by-task/special-non-visual-bar-plain",
+      "section": "components-by-task",
+      "basename": "special-non-visual-bar-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/components-by-task/special-non-visual-bar-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/components-by-task/special-non-visual-bar-plain.dark.png"
+      },
+      "articles": [],
+      "altTexts": [],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs",
+      "description": "Plain (unannotated) capture of special non visual bar for annotation source and reuse.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `components-by-task/special-non-visual-bar-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain (unannotated) capture of special non visual bar for annotation source and reuse.\n\nArticle(s): (plain/source asset - not embedded directly; used by annotated sibling)\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/components-by-task/special-non-visual-bar-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "components-by-task/special-non-visual-bar": {
+      "id": "components-by-task/special-non-visual-bar",
+      "section": "components-by-task",
+      "basename": "special-non-visual-bar",
+      "kind": "screenshot",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/components-by-task/special-non-visual-bar.light.png",
+        "dark": "designer-guide/public/assets/guide/components-by-task/special-non-visual-bar.dark.png"
+      },
+      "articles": [
+        "components-by-task/special-components"
+      ],
+      "altTexts": [
+        "Canvas bottom bar with a Print settings chip selected."
+      ],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs",
+      "description": "Canvas bottom bar with a Print settings chip selected.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `components-by-task/special-non-visual-bar` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Canvas bottom bar with a Print settings chip selected.\n\nArticle(s): designer-guide/content/components-by-task/special-components.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/components-by-task/special-non-visual-bar.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture the screenshot at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "components-by-task/special-non-visual-tree-plain": {
+      "id": "components-by-task/special-non-visual-tree-plain",
+      "section": "components-by-task",
+      "basename": "special-non-visual-tree-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/components-by-task/special-non-visual-tree-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/components-by-task/special-non-visual-tree-plain.dark.png"
+      },
+      "articles": [],
+      "altTexts": [],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs",
+      "description": "Plain (unannotated) capture of special non visual tree for annotation source and reuse.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `components-by-task/special-non-visual-tree-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain (unannotated) capture of special non visual tree for annotation source and reuse.\n\nArticle(s): (plain/source asset - not embedded directly; used by annotated sibling)\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/components-by-task/special-non-visual-tree-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "components-by-task/special-non-visual-tree": {
+      "id": "components-by-task/special-non-visual-tree",
+      "section": "components-by-task",
+      "basename": "special-non-visual-tree",
+      "kind": "screenshot",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/components-by-task/special-non-visual-tree.light.png",
+        "dark": "designer-guide/public/assets/guide/components-by-task/special-non-visual-tree.dark.png"
+      },
+      "articles": [
+        "components-by-task/special-components"
+      ],
+      "altTexts": [
+        "Tree tab showing Screen, then a Non-visual section with Print settings listed below."
+      ],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs",
+      "description": "Tree tab showing Screen, then a Non-visual section with Print settings listed below.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `components-by-task/special-non-visual-tree` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Tree tab showing Screen, then a Non-visual section with Print settings listed below.\n\nArticle(s): designer-guide/content/components-by-task/special-components.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/components-by-task/special-non-visual-tree.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture the screenshot at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "components-by-task/special-singleton-palette-disabled-plain": {
+      "id": "components-by-task/special-singleton-palette-disabled-plain",
+      "section": "components-by-task",
+      "basename": "special-singleton-palette-disabled-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/components-by-task/special-singleton-palette-disabled-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/components-by-task/special-singleton-palette-disabled-plain.dark.png"
+      },
+      "articles": [],
+      "altTexts": [],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs",
+      "description": "Plain (unannotated) capture of special singleton palette disabled for annotation source and reuse.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `components-by-task/special-singleton-palette-disabled-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain (unannotated) capture of special singleton palette disabled for annotation source and reuse.\n\nArticle(s): (plain/source asset - not embedded directly; used by annotated sibling)\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/components-by-task/special-singleton-palette-disabled-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "components-by-task/special-singleton-palette-disabled": {
+      "id": "components-by-task/special-singleton-palette-disabled",
+      "section": "components-by-task",
+      "basename": "special-singleton-palette-disabled",
+      "kind": "screenshot",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/components-by-task/special-singleton-palette-disabled.light.png",
+        "dark": "designer-guide/public/assets/guide/components-by-task/special-singleton-palette-disabled.dark.png"
+      },
+      "articles": [
+        "components-by-task/special-components"
+      ],
+      "altTexts": [
+        "Components palette with Print settings disabled after one instance is already on the form."
+      ],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs",
+      "description": "Components palette with Print settings disabled after one instance is already on the form.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `components-by-task/special-singleton-palette-disabled` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Components palette with Print settings disabled after one instance is already on the form.\n\nArticle(s): designer-guide/content/components-by-task/special-components.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/components-by-task/special-singleton-palette-disabled.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture the screenshot at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
     },
     "data-driven/calculated-full-name-preview-plain": {
       "id": "data-driven/calculated-full-name-preview-plain",
@@ -6501,7 +6736,6 @@
         "dark": "designer-guide/public/assets/guide/manage-forms/header-menu-export-forms-plain.dark.png"
       },
       "articles": [
-        "help/faq-for-form-authors",
         "manage-forms/save-export-and-import-forms",
         "preview-and-handoff/export-and-share-your-form"
       ],
@@ -6512,7 +6746,7 @@
       "view": "mui",
       "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs",
       "description": "Plain source for: Header menu open with Export forms highlighted.",
-      "regenerationPrompt": "Regenerate Form Author Guide screenshot `manage-forms/header-menu-export-forms-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain source for: Header menu open with Export forms highlighted.\n\nArticle(s): designer-guide/content/help/faq-for-form-authors.md, designer-guide/content/manage-forms/save-export-and-import-forms.md, designer-guide/content/preview-and-handoff/export-and-share-your-form.md\nForm fixture(s): empty Screen (or default builder form)\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/manage-forms/header-menu-export-forms-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `manage-forms/header-menu-export-forms-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain source for: Header menu open with Export forms highlighted.\n\nArticle(s): designer-guide/content/manage-forms/save-export-and-import-forms.md, designer-guide/content/preview-and-handoff/export-and-share-your-form.md\nForm fixture(s): empty Screen (or default builder form)\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/manage-forms/header-menu-export-forms-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change.",
       "annotatedBy": [
         "manage-forms/highlight-header-menu-export-forms"
       ]
@@ -6593,6 +6827,41 @@
       "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs",
       "description": "Header menu open with Save, Download, and Export forms.",
       "regenerationPrompt": "Regenerate Form Author Guide screenshot `manage-forms/header-menu-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Header menu open with Save, Download, and Export forms.\n\nArticle(s): designer-guide/content/help/hand-off-to-your-technical-team.md, designer-guide/content/meet-the-designer/save-and-share.md\nForm fixture(s): empty Screen (or default builder form)\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/manage-forms/header-menu-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "manage-forms/header-menu-print-plain": {
+      "id": "manage-forms/header-menu-print-plain",
+      "section": "manage-forms",
+      "basename": "header-menu-print-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/manage-forms/header-menu-print-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/manage-forms/header-menu-print-plain.dark.png"
+      },
+      "articles": [
+        "help/faq-for-form-authors",
+        "manage-forms/save-export-and-import-forms",
+        "preview-and-handoff/export-and-share-your-form",
+        "preview-and-handoff/print-your-form"
+      ],
+      "altTexts": [
+        "Plain source for: Header menu open with Print highlighted.",
+        "Plain source for: Header menu open with Print highlighted and keyboard shortcut shown.",
+        "Plain source for: Header menu open with Print highlighted and Ctrl+P shortcut shown."
+      ],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs",
+      "description": "Plain source for: Header menu open with Print highlighted.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `manage-forms/header-menu-print-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain source for: Header menu open with Print highlighted.\n\nArticle(s): designer-guide/content/help/faq-for-form-authors.md, designer-guide/content/manage-forms/save-export-and-import-forms.md, designer-guide/content/preview-and-handoff/export-and-share-your-form.md, designer-guide/content/preview-and-handoff/print-your-form.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/manage-forms/header-menu-print-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change.",
+      "annotatedBy": [
+        "manage-forms/highlight-header-menu-print"
+      ]
     },
     "manage-forms/header-menu-save-as-plain": {
       "id": "manage-forms/header-menu-save-as-plain",
@@ -6910,7 +7179,6 @@
       },
       "plainSource": "manage-forms/header-menu-export-forms-plain",
       "articles": [
-        "help/faq-for-form-authors",
         "manage-forms/save-export-and-import-forms",
         "preview-and-handoff/export-and-share-your-form"
       ],
@@ -6921,7 +7189,7 @@
       "view": "mui",
       "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs",
       "description": "Header menu open with Export forms highlighted.",
-      "regenerationPrompt": "Regenerate Form Author Guide screenshot `manage-forms/highlight-header-menu-export-forms` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Header menu open with Export forms highlighted.\n\nArticle(s): designer-guide/content/help/faq-for-form-authors.md, designer-guide/content/manage-forms/save-export-and-import-forms.md, designer-guide/content/preview-and-handoff/export-and-share-your-form.md\nForm fixture(s): empty Screen (or default builder form)\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/manage-forms/highlight-header-menu-export-forms.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: manage-forms/header-menu-export-forms-plain\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `manage-forms/highlight-header-menu-export-forms` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Header menu open with Export forms highlighted.\n\nArticle(s): designer-guide/content/manage-forms/save-export-and-import-forms.md, designer-guide/content/preview-and-handoff/export-and-share-your-form.md\nForm fixture(s): empty Screen (or default builder form)\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/manage-forms/highlight-header-menu-export-forms.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: manage-forms/header-menu-export-forms-plain\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
     },
     "manage-forms/highlight-header-menu-import-forms": {
       "id": "manage-forms/highlight-header-menu-import-forms",
@@ -6949,6 +7217,39 @@
       "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs",
       "description": "Header menu open with Import forms highlighted.",
       "regenerationPrompt": "Regenerate Form Author Guide screenshot `manage-forms/highlight-header-menu-import-forms` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Header menu open with Import forms highlighted.\n\nArticle(s): designer-guide/content/manage-forms/save-export-and-import-forms.md, designer-guide/content/preview-and-handoff/export-and-share-your-form.md\nForm fixture(s): empty Screen (or default builder form)\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-save-export-import-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/manage-forms/highlight-header-menu-import-forms.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: manage-forms/header-menu-import-forms-plain\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "manage-forms/highlight-header-menu-print": {
+      "id": "manage-forms/highlight-header-menu-print",
+      "section": "manage-forms",
+      "basename": "highlight-header-menu-print",
+      "kind": "highlight",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/manage-forms/highlight-header-menu-print.light.png",
+        "dark": "designer-guide/public/assets/guide/manage-forms/highlight-header-menu-print.dark.png"
+      },
+      "plainSource": "manage-forms/header-menu-print-plain",
+      "articles": [
+        "help/faq-for-form-authors",
+        "manage-forms/save-export-and-import-forms",
+        "preview-and-handoff/export-and-share-your-form",
+        "preview-and-handoff/print-your-form"
+      ],
+      "altTexts": [
+        "Header menu open with Print highlighted.",
+        "Header menu open with Print highlighted and keyboard shortcut shown.",
+        "Header menu open with Print highlighted and Ctrl+P shortcut shown."
+      ],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs",
+      "description": "Header menu open with Print highlighted.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `manage-forms/highlight-header-menu-print` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Header menu open with Print highlighted.\n\nArticle(s): designer-guide/content/help/faq-for-form-authors.md, designer-guide/content/manage-forms/save-export-and-import-forms.md, designer-guide/content/preview-and-handoff/export-and-share-your-form.md, designer-guide/content/preview-and-handoff/print-your-form.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/manage-forms/highlight-header-menu-print.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: manage-forms/header-menu-print-plain\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
     },
     "manage-forms/highlight-header-menu-save-as": {
       "id": "manage-forms/highlight-header-menu-save-as",
@@ -7845,6 +8146,56 @@
       "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-audit-screenshots.mjs",
       "description": "Preview Errors panel after clicking Validate.",
       "regenerationPrompt": "Regenerate Form Author Guide screenshot `preview-and-handoff/preview-validate-errors-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Preview Errors panel after clicking Validate.\n\nArticle(s): designer-guide/content/preview-and-handoff/use-preview-mode-tools-data-validate-reset.md\nForm fixture(s): empty Screen (or default builder form)\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-audit-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/preview-and-handoff/preview-validate-errors-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "preview-and-handoff/print-page-break-and-settings-plain": {
+      "id": "preview-and-handoff/print-page-break-and-settings-plain",
+      "section": "preview-and-handoff",
+      "basename": "print-page-break-and-settings-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/preview-and-handoff/print-page-break-and-settings-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/preview-and-handoff/print-page-break-and-settings-plain.dark.png"
+      },
+      "articles": [],
+      "altTexts": [],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs",
+      "description": "Plain (unannotated) capture of print page break and settings for annotation source and reuse.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `preview-and-handoff/print-page-break-and-settings-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain (unannotated) capture of print page break and settings for annotation source and reuse.\n\nArticle(s): (plain/source asset - not embedded directly; used by annotated sibling)\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/preview-and-handoff/print-page-break-and-settings-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "preview-and-handoff/print-page-break-and-settings": {
+      "id": "preview-and-handoff/print-page-break-and-settings",
+      "section": "preview-and-handoff",
+      "basename": "print-page-break-and-settings",
+      "kind": "screenshot",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/preview-and-handoff/print-page-break-and-settings.light.png",
+        "dark": "designer-guide/public/assets/guide/preview-and-handoff/print-page-break-and-settings.dark.png"
+      },
+      "articles": [
+        "preview-and-handoff/print-your-form"
+      ],
+      "altTexts": [
+        "Form with a Page break on the canvas and Print settings selected in the non-visual bar."
+      ],
+      "forms": [
+        "print-settings-demo"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs",
+      "description": "Form with a Page break on the canvas and Print settings selected in the non-visual bar.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `preview-and-handoff/print-page-break-and-settings` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Form with a Page break on the canvas and Print settings selected in the non-visual bar.\n\nArticle(s): designer-guide/content/preview-and-handoff/print-your-form.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/print-settings-demo.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-special-components-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/preview-and-handoff/print-page-break-and-settings.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture the screenshot at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
     },
     "structure/containers-canvas-plain": {
       "id": "structure/containers-canvas-plain",

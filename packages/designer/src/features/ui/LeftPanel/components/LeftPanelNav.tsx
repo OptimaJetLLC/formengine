@@ -7,6 +7,7 @@ import {namedObserver} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
 import {useCallback, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
+import {CanAddComponentProvider} from '../../../../utils/AddComponentContext'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {isDesignerLocalStorageEnabled} from '../../../../utils/isDesignerLocalStorageEnabled'
 import {Rows} from '../../../components/Containers'
@@ -29,6 +30,11 @@ const Components = customizable('Components_Tab_Content', ComponentBar)
 const ComponentsTab = (props: DraggableProps) => {
   const builderStore = useBuilderStore()
 
+  const canAdd = useCallback((componentData: ComponentData) => {
+    const root = builderStore.viewer.form.componentTree
+    return builderStore.getAddComponentResult(componentData, root, 'inner')
+  }, [builderStore])
+
   const handleDoubleClick = useCallback((source: ComponentData) => {
     const root = builderStore.viewer.form.componentTree
     const target = builderStore.selected.values().next().value ?? root
@@ -36,7 +42,11 @@ const ComponentsTab = (props: DraggableProps) => {
     builderStore.add(source, target, insertPosition)
   }, [builderStore])
 
-  return <Components {...props} draggable={true} onDoubleClick={handleDoubleClick}/>
+  return (
+    <CanAddComponentProvider value={canAdd}>
+      <Components {...props} draggable={true} onDoubleClick={handleDoubleClick}/>
+    </CanAddComponentProvider>
+  )
 }
 
 const tabsProps: Record<LeftPanelSection, [content: ReactNode, key: CustomizableKey, icon: any, className: string]> = {

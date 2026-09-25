@@ -5,7 +5,7 @@ description: "Toggle the Designer theme in the header and check your form in bot
 
 # Light and dark theme
 
-Designer supports **light** and **dark** chrome (and may follow system theme). Toggle theme to see whether your form remains readable.
+Designer supports **light** and **dark** themes (and may follow system theme). Toggle theme to see whether your form remains readable.
 
 ## Toggle theme
 
@@ -16,7 +16,7 @@ Designer supports **light** and **dark** chrome (and may follow system theme). T
 
 ## What theme affects
 
-- Designer panels, menus, and chrome colors
+- Designer panels, menus, and theme colors
 - May affect default field appearance on the canvas depending on component library
 
 End-user theme in production is controlled by your host application, not only this toggle.

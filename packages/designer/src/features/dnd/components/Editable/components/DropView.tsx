@@ -19,9 +19,7 @@ const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: strin
   const handleClick = useCallback(() => {
     builderStore.showComponentsModal(source => {
       builderStore.add(source, target, 'inner', slot, slotCondition)
-    }, componentData => {
-      return builderStore.canAddComponent(componentData, target, 'inner', slot)
-    })
+    }, componentData => builderStore.getAddComponentResult(componentData, target, 'inner', slot))
   }, [builderStore, target, slot, slotCondition])
 
   const plusIcon = useMemo(() => <PlusIcon/>, [])

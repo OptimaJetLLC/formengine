@@ -2,11 +2,13 @@ import {cfComponentIsPreset, getTemplateName, isTemplateType, namedObserver, sta
 import cx from 'clsx'
 import type {FunctionComponent, MouseEventHandler, ReactNode, SVGProps} from 'react'
 import {useCallback, useMemo} from 'react'
+import {Tooltip, Whisper} from 'rsuite'
 import {icons} from '../../../icons/icons'
 import {getIcon} from '../../../icons/utils'
-import {useCanAddComponent} from '../../../utils/AddComponentContext'
+import {resolveCanAddComponentResult, useCanAddComponent} from '../../../utils/AddComponentContext'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
+import {useTranslationPart} from '../../localization/hooks'
 import {PresetIcon} from '../../preset-component/PresetIcon'
 import type {DraggableProps} from '../../ui/ComponentBar/DraggableProps'
 import {useComponentLibraryDescription} from '../../ui/ComponentBar/useComponentLibraryDescription'
@@ -18,6 +20,8 @@ import {PresetToolbar} from './PresetToolbar'
 import {useHovered} from './useHovered'
 
 type IconComponent = FunctionComponent<SVGProps<SVGSVGElement>>
+
+const tooltipContainer = () => document.body
 
 const Draggable = ({children}: { children: ReactNode }) => {
   const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
@@ -38,6 +42,7 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
   const data = useComponentData()
   const {name = '', type} = data.model
   const builderStore = useBuilderStore()
+  const t = useTranslationPart('componentsList')
 
   const Icon = useMemo((): IconComponent => {
     const iconName = startCase(name).replaceAll(' ', '')
@@ -59,7 +64,9 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
   }, [data.store.type, getLibraryDescription, name, type])
 
   const canAddComponent = useCanAddComponent()
-  const disabled = useMemo(() => !canAddComponent(data), [canAddComponent, data])
+  const {canAdd, disableHintKey} = resolveCanAddComponentResult(canAddComponent(data))
+  const disabled = !canAdd
+  const disableHint = disableHintKey ? t(disableHintKey) : undefined
   const cls = useMemo(() => cx([
     styles.container,
     disabled ? 'disabled' : '',
@@ -85,6 +92,10 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
     return <PresetToolbar/>
   }, [data.model, hovered])
 
+  const disableHintSpeaker = useMemo(() => (
+    disableHint ? <Tooltip>{disableHint}</Tooltip> : null
+  ), [disableHint])
+
   const element = (
     <div
       {...hoveredProps}
@@ -99,9 +110,22 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
     </div>
   )
 
-  return draggable
-    ? <Draggable>{element}</Draggable>
+  const withHint = disableHintSpeaker
+    ? (
+      <Whisper
+        speaker={disableHintSpeaker}
+        trigger="hover"
+        container={tooltipContainer}
+        preventOverflow
+      >
+        {element}
+      </Whisper>
+    )
     : element
+
+  return draggable && !disabled
+    ? <Draggable>{withHint}</Draggable>
+    : withHint
 }
 
 export const AddedComponent = namedObserver('AddedComponent', RawAddedComponent)

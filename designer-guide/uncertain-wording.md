@@ -3,7 +3,7 @@
 Rescan of `designer-guide/content/` after the `uncertain wording` pass (`da2be4ec8`).
 Line numbers are 1-based in the current files.
 
-Policy now: describe a typical Designer. Do not hedge stock chrome with `when available`,
+Policy now: describe a typical Designer. Do not hedge stock Designer controls with `when available`,
 `if available`, or `when supported`. Config and license live once on
 `meet-the-designer/what-is-formengine-designer.md`. Hedge a step only when the product has a
 real toggle (form storage, preset license).

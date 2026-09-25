@@ -22,6 +22,7 @@ const docusaurusPluginTypedocConfig = [
       '../../packages/views/fast-qr',
       '../../packages/views/google-map',
       '../../packages/views/material-ui',
+      '../../packages/views/print',
       '../../packages/views/rich-text',
       '../../packages/views/rsuite',
       '../../packages/views/rsuite-table',

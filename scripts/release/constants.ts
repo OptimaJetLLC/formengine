@@ -27,6 +27,7 @@ export const NPM_PACKAGE_PATHS = [
   'packages/views/rsuite-table',
   'packages/views/rich-text',
   'packages/views/signature',
+  'packages/views/print',
   'packages/views/uploader',
 ] as const
 
@@ -52,6 +53,7 @@ export const FORMENGINE_SUPPORT_PACKAGE_PATHS = [
   'packages/views/material-ui',
   'packages/views/rsuite-table',
   'packages/views/signature',
+  'packages/views/print',
   'packages/views/fast-qr',
   'packages/views/rich-text',
   'packages/views/google-map',

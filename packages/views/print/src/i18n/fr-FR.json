@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Structure"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "Masqué à l’écran. Insère un saut de page à l’impression.",
+      "name": "Saut de page",
+      "props": {
+        "breakAfter": {
+          "description": "La règle CSS break-after à l’impression",
+          "name": "Saut après"
+        },
+        "breakBefore": {
+          "description": "La règle CSS break-before à l’impression",
+          "name": "Saut avant"
+        },
+        "breakInside": {
+          "description": "La règle CSS break-inside à l’impression",
+          "name": "Saut intérieur"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "Masqué à l’écran. Ajoute un en-tête, un pied de page et des numéros de page facultatifs.",
+      "name": "En-tête/pied d’impression",
+      "props": {
+        "footer": {
+          "description": "Le pied de page imprimé. Utilisez {page} et {pages} pour les numéros",
+          "name": "Pied de page"
+        },
+        "footerAlign": {
+          "description": "La position du pied de page dans la marge",
+          "name": "Alignement du pied"
+        },
+        "header": {
+          "description": "L’en-tête imprimé. Utilisez {page} et {pages} pour les numéros",
+          "name": "En-tête"
+        },
+        "headerAlign": {
+          "description": "La position de l’en-tête dans la marge",
+          "name": "Alignement de l’en-tête"
+        }
+      }
+    }
+  }
+}

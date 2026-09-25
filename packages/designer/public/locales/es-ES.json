@@ -904,7 +904,8 @@
       "static": "Estática",
       "structure": "Estructura",
       "templates": "Plantillas"
-    }
+    },
+    "singletonAlreadyOnForm": "Solo se permite una instancia de este componente en el formulario."
   },
   "componentsModal": {
     "clickToAdd": "Haga clic para agregar un control"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "Colapsar todo",
-    "expand": "Expandir todo"
+    "expand": "Expandir todo",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "Agregar una regla de validación",

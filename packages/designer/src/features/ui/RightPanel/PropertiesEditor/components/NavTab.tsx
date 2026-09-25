@@ -2,7 +2,7 @@ import * as faBolt from '@fortawesome/free-solid-svg-icons/faBolt.js'
 import * as faCircle from '@fortawesome/free-solid-svg-icons/faCircle.js'
 import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush.js'
 import * as faSpellCheck from '@fortawesome/free-solid-svg-icons/faSpellCheck.js'
-import {cfDisableStyles, cfDisableWrapperStyles} from '@react-form-builder/core'
+import {cfDisableStyleProperties, cfDisableStyles, cfDisableWrapperStyles} from '@react-form-builder/core'
 import {useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useIsSelectedComponentFeatureEnabled} from '../../../../../utils/useIsSelectedComponentFeatureEnabled'
@@ -34,9 +34,10 @@ const Tab = ({section, ...rest}: Record<string, unknown> & { section: Section })
 }
 
 const RawNavTab = ({activeTab, setActiveTab, ...props}: NavProps) => {
+  const disableStyleProperties = useIsSelectedComponentFeatureEnabled(cfDisableStyleProperties)
   const disableStyles = useIsSelectedComponentFeatureEnabled(cfDisableStyles)
   const disableWrapperStyles = useIsSelectedComponentFeatureEnabled(cfDisableWrapperStyles)
-  const disableStylesTab = disableStyles && disableWrapperStyles
+  const disableStylesTab = disableStyleProperties || (disableStyles && disableWrapperStyles)
 
   return <SNav activeKey={activeTab} onSelect={setActiveTab} appearance="subtle" {...props}>
     <Tab section={Section.Main}/>

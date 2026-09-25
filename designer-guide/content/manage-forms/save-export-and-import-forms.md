@@ -5,7 +5,7 @@ description: "Save forms to storage, transfer one form as JSON, or move all stor
 
 # Save, export, and import forms
 
-The header **Menu** (hamburger) groups file operations: save to storage, download a single JSON, bulk ZIP export/import, and **Clear** to wipe the canvas.
+The header **Menu** (hamburger) holds save, download, ZIP export/import, **Print**, and **Clear**.
 
 For a short overview, see also [Export and share your form](/preview-and-handoff/export-and-share-your-form).
 
@@ -70,6 +70,14 @@ After import, open **Forms** or reload and run the [testing checklist](/preview-
 
 **Clear** removes every component from the active form. Use only when you intend to start over. Export first if the form has work you might need later.
 
+## Print
+
+<img src="/assets/guide/manage-forms/highlight-header-menu-print.png" alt="Header menu open with Print highlighted and keyboard shortcut shown." />
+
+**Print** opens the browser print dialog (paper or PDF). Shortcut:
+<span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>P</kbd></span> (Windows/Linux) or
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>P</kbd></span> (macOS). Steps: [Print your form](/preview-and-handoff/print-your-form).
+
 ## Add a new form (menu)
 
 <img src="/assets/guide/manage-forms/highlight-header-menu-add-new-form.png" alt="Header menu open with Add a new form highlighted." />
@@ -78,11 +86,12 @@ After import, open **Forms** or reload and run the [testing checklist](/preview-
 
 ## Summary
 
-Use **Save** / **Save as...** for stored forms, **Download** / **Upload** for one JSON file, and **Export forms** / **Import forms** for
-bulk ZIP transfers. **Clear** removes the canvas contents, so export before using it.
+**Save** and **Save as...** write to storage. **Download** / **Upload** move one JSON file. **Export forms** / **Import forms** handle a ZIP.
+**Print** is for paper or PDF. Export before **Clear** if you might need the canvas again.
 
 ## See also
 
 - [Work with multiple forms](/manage-forms/work-with-multiple-forms)
+- [Print your form](/preview-and-handoff/print-your-form)
 - [Forms JSON (developers)](docs:formengine-designer/features/forms-json)
 - [Keyboard shortcuts](/help/keyboard-shortcuts)

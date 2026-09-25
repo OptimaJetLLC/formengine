@@ -23,7 +23,6 @@ import {
   getTemplateName,
   isContainer,
   isTemplateType,
-  isUndefined,
   namedObserver,
   nameObservable,
   PersistedFormVersion,
@@ -47,7 +46,9 @@ import type {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
 import type {FormBuilderProps} from '../FormBuilderProps'
 import {determineTheme} from '../utils/determineTheme'
+import {getAddComponentResult} from '../utils/getAddComponentResult'
 import {getSystemTheme} from '../utils/getSystemTheme'
+import {getPlacementParent, resolveComponentPlacement} from '../utils/resolveComponentPlacement'
 import {sortByPositionInTree} from '../utils/sortByPositionInTree'
 import type {IFormBuilder, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
@@ -111,9 +112,23 @@ export class EditableProperty implements CalculableEditorProps {
 type OnSelectCallback = (source: ComponentData) => void
 
 /**
+ * The result of a palette "can add" check.
+ */
+export type CanAddComponentResult = boolean | {
+  /**
+   * True when the component can be added, false otherwise.
+   */
+  canAdd: boolean
+  /**
+   * Optional i18n key under `componentsList` explaining why the component cannot be added.
+   */
+  disableHintKey?: string
+}
+
+/**
  * The function that checks if the component can be added.
  */
-export type CanAddComponentFunction = (componentData: ComponentData) => boolean
+export type CanAddComponentFunction = (componentData: ComponentData) => CanAddComponentResult
 
 /**
  * The editable custom validation code.
@@ -641,23 +656,32 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @param insertPosition the insertion position relative to the new parent component.
    * @param slot the property name of the parent component where the new component will be added.
    * @param slotCondition the source code of the function that checks if the component can be bound to parent.
-   * @returns void
    */
   move(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string, slotCondition?: string): void {
     if (source === target || source === this.viewer.form.componentTree) return
 
-    source.store.slot = slot
-    source.store.slotCondition = slotCondition
+    const placement = resolveComponentPlacement(source, target, insertPosition, slot, slotCondition)
+    source.store.slot = placement.slot
+    source.store.slotCondition = placement.slotCondition
 
-    if (!this.canAddComponent(source, target, insertPosition, slot)) {
+    if (!this.canAddComponent(source, placement.target, placement.insertPosition, placement.slot)) {
       throw new Error('Can\'t add component')
     }
 
-    if (insertPosition === 'inner' || target.isRoot) return source.setParent(target)
-    if (insertPosition === 'before') return target.insertBeforeMe(source)
-    if (insertPosition === 'after') return target.insertAfterMe(source)
+    if (placement.insertPosition === 'inner' || placement.target.isRoot) {
+      source.setParent(placement.target)
+      return
+    }
+    if (placement.insertPosition === 'before') {
+      placement.target.insertBeforeMe(source)
+      return
+    }
+    if (placement.insertPosition === 'after') {
+      placement.target.insertAfterMe(source)
+      return
+    }
 
-    throw new Error(`Unknown insert position ${insertPosition}`)
+    throw new Error(`Unknown insert position ${placement.insertPosition}`)
   }
 
   /**
@@ -805,8 +829,25 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @returns true, if component can be added, false otherwise.
    */
   canAddComponent(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string) {
-    const parentComponent = insertPosition === 'inner' ? target : (target.parent ?? target.root)
-    return this.canContainComponent(parentComponent, source, slot)
+    const placement = resolveComponentPlacement(source, target, insertPosition, slot)
+    return this.canContainComponent(getPlacementParent(placement), source, placement.slot)
+  }
+
+  /**
+   * Checks whether a component can be added and returns an optional palette disable hint.
+   * @param source the component to add.
+   * @param target the requested insertion target.
+   * @param insertPosition the requested insertion position.
+   * @param slot the requested parent slot name.
+   * @returns whether the component can be added, with a hint when blocked by the singleton rule.
+   */
+  getAddComponentResult(
+    source: ComponentData,
+    target: ComponentData,
+    insertPosition: InsertPosition = 'after',
+    slot?: string
+  ): CanAddComponentResult {
+    return getAddComponentResult(this, source, target, insertPosition, slot)
   }
 
   /**
@@ -818,24 +859,22 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @returns true, if component can be added, false otherwise.
    */
   canMoveComponents(source: Set<ComponentData>, target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string) {
-    const parentComponent = insertPosition === 'inner' ? target : (target.parent ?? target.root)
-
     const selectedComponents = [...source]
       .filter(component => component !== this.viewer.form.componentTree)
 
-    if (selectedComponents.indexOf(parentComponent) >= 0) return false
-
-    const parentRoots = [parentComponent.parent]
-    while (!isUndefined(parentRoots[parentRoots.length - 1])) {
-      parentRoots.push(parentRoots[parentRoots.length - 1]?.parent)
-    }
-
-    for (const component of parentRoots) {
-      if (component && selectedComponents.indexOf(component) >= 0) return false
-    }
-
     for (const component of selectedComponents) {
-      if (!this.canContainComponent(parentComponent, component, slot)) return false
+      const placement = resolveComponentPlacement(component, target, insertPosition, slot)
+      const parentComponent = getPlacementParent(placement)
+
+      if (selectedComponents.includes(parentComponent)) return false
+
+      let ancestor = parentComponent.parent
+      while (ancestor) {
+        if (selectedComponents.includes(ancestor)) return false
+        ancestor = ancestor.parent
+      }
+
+      if (!this.canContainComponent(parentComponent, component, placement.slot)) return false
     }
     return true
   }

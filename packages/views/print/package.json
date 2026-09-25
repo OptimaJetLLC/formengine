@@ -1,0 +1,46 @@
+{
+  "name": "@react-form-builder/components-print",
+  "version": "10.3.0",
+  "private": false,
+  "main": "src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./schemas/print-components.schema.json": "./public/schemas/print-components.schema.json"
+  },
+  "description": "OptimaJet Form Builder Components - Print",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
+  "license": "MIT",
+  "bugs": {
+    "email": "support@optimajet.com"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "vite build",
+    "clean": "rimraf dist temp",
+    "create-json-schema": "vite-node ./config/json-schema-generator.ts",
+    "pack": "npm-run-all -l clean build create-json-schema create-archive",
+    "create-archive": "node ./config/pack.ts"
+  },
+  "peerDependencies": {
+    "@react-form-builder/core": "10.3.0",
+    "react": ">=17.0.2 || ^18 || ^19"
+  },
+  "peerDependenciesMeta": {
+    "@react-form-builder/core": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "@react-form-builder/cli-lib": "*",
+    "@react-form-builder/json-schema-generator": "^10.3.0",
+    "vite-node": "^5.2.0"
+  },
+  "files": [
+    "dist/*",
+    "README.md"
+  ]
+}

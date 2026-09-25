@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Struttura"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "Nascosto sullo schermo. Inserisce un’interruzione di pagina in stampa.",
+      "name": "Interruzione di pagina",
+      "props": {
+        "breakAfter": {
+          "description": "La regola CSS break-after in stampa",
+          "name": "Interruzione dopo"
+        },
+        "breakBefore": {
+          "description": "La regola CSS break-before in stampa",
+          "name": "Interruzione prima"
+        },
+        "breakInside": {
+          "description": "La regola CSS break-inside in stampa",
+          "name": "Interruzione interna"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "Nascosto sullo schermo. Aggiunge intestazione, piè di pagina e numeri di pagina opzionali.",
+      "name": "Intestazione/piè di stampa",
+      "props": {
+        "footer": {
+          "description": "Il piè di pagina stampato. Usa {page} e {pages} per i numeri",
+          "name": "Piè di pagina"
+        },
+        "footerAlign": {
+          "description": "La posizione del piè di pagina nel margine",
+          "name": "Allineamento piè di pagina"
+        },
+        "header": {
+          "description": "L’intestazione stampata. Usa {page} e {pages} per i numeri",
+          "name": "Intestazione"
+        },
+        "headerAlign": {
+          "description": "La posizione dell’intestazione nel margine",
+          "name": "Allineamento intestazione"
+        }
+      }
+    }
+  }
+}

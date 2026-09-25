@@ -904,7 +904,8 @@
       "static": "静态",
       "structure": "结构",
       "templates": "模板"
-    }
+    },
+    "singletonAlreadyOnForm": "表单上仅允许添加一个该组件实例。"
   },
   "componentsModal": {
     "clickToAdd": "点击添加控件"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "全部折叠",
-    "expand": "全部展开"
+    "expand": "全部展开",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "添加验证规则",

@@ -248,6 +248,28 @@ the modified Definer class instance.
 
 ***
 
+### hideStyleProperties()
+
+> **hideStyleProperties**(`value?`): `Definer`\<`T`\>
+
+Hides the properties editor on the styles tab.
+
+#### Parameters
+
+##### value?
+
+`boolean` = `true`
+
+true to hide the properties editor, false otherwise.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### hideTooltipEditor()
 
 > **hideTooltipEditor**(`value?`): `Definer`\<`T`\>
@@ -380,6 +402,29 @@ the modified Definer class instance.
 
 ***
 
+### nonVisual()
+
+> **nonVisual**(`value?`): `Definer`\<`T`\>
+
+Marks the component as non-visual. Instances are kept under the form root and shown in the designer bar only.
+The designer hides Additional properties for non-visual components.
+
+#### Parameters
+
+##### value?
+
+`boolean` = `true`
+
+true to mark as non-visual, false otherwise.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### overrideEventHandlers()
 
 > **overrideEventHandlers**(`eventHandlers`): `Definer`\<`T`\>
@@ -459,6 +504,28 @@ Show or hide 'Inline styles' properties editor.
 `boolean`
 
 if the value is `true` or `undefined`, the editor will be displayed.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
+### singleton()
+
+> **singleton**(`value?`): `Definer`\<`T`\>
+
+Marks the component as a singleton. At most one instance of this type may exist on a form.
+
+#### Parameters
+
+##### value?
+
+`boolean` = `true`
+
+true to allow only one instance, false otherwise.
 
 #### Returns
 

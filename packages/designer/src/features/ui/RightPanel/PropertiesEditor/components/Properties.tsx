@@ -5,6 +5,7 @@ import {
   cfDisableMainComponentProperties,
   cfDisableStyleProperties,
   cfDisableTooltipProperties,
+  cfNonVisual,
   ComponentDataProvider,
   key,
   useTooltipType
@@ -75,7 +76,9 @@ const SectionExtras = ({annotations}: { annotations: SectionAnnotations }) => {
   const {model, data, additionalProperties, tooltipProps, showTooltipProps} = annotations
 
   const showTooltip = showTooltipProps && !model.isFeatureEnabled(cfDisableTooltipProperties)
-  const showAdditional = !!additionalProperties?.length && !model.isFeatureEnabled(cfDisableAdditionalProperties)
+  const showAdditional = !!additionalProperties?.length
+    && !model.isFeatureEnabled(cfDisableAdditionalProperties)
+    && !model.isFeatureEnabled(cfNonVisual)
 
   if (!showTooltip && !showAdditional) return null
 

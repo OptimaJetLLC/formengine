@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Struktur"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "Auf dem Bildschirm ausgeblendet. Fügt beim Drucken einen Seitenumbruch ein.",
+      "name": "Seitenumbruch",
+      "props": {
+        "breakAfter": {
+          "description": "Die CSS-Regel break-after beim Drucken",
+          "name": "Umbruch danach"
+        },
+        "breakBefore": {
+          "description": "Die CSS-Regel break-before beim Drucken",
+          "name": "Umbruch davor"
+        },
+        "breakInside": {
+          "description": "Die CSS-Regel break-inside beim Drucken",
+          "name": "Umbruch innen"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "Auf dem Bildschirm ausgeblendet. Fügt Kopfzeile, Fußzeile und optionale Seitenzahlen hinzu.",
+      "name": "Druckkopf/-fuß",
+      "props": {
+        "footer": {
+          "description": "Die gedruckte Fußzeile. {page} und {pages} für Seitenzahlen",
+          "name": "Fußzeile"
+        },
+        "footerAlign": {
+          "description": "Die Position der Fußzeile im Seitenrand",
+          "name": "Fußzeile ausrichten"
+        },
+        "header": {
+          "description": "Die gedruckte Kopfzeile. {page} und {pages} für Seitenzahlen",
+          "name": "Kopfzeile"
+        },
+        "headerAlign": {
+          "description": "Die Position der Kopfzeile im Seitenrand",
+          "name": "Kopfzeile ausrichten"
+        }
+      }
+    }
+  }
+}

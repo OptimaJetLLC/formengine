@@ -1,0 +1,29 @@
+.root[data-print-hidden="true"] {
+  display: none !important;
+}
+
+@media print {
+  .root[data-print-hidden="true"] {
+    display: block !important;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .placeholder {
+    display: none !important;
+  }
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 4px 8px;
+  border: 1px dashed #9ca3af;
+  color: #6b7280;
+  font-size: 12px;
+}

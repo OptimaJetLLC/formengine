@@ -5,6 +5,7 @@
 - [@react-form-builder/components-fast-qr](@react-form-builder/components-fast-qr/index.md)
 - [@react-form-builder/components-google-map](@react-form-builder/components-google-map/index.md)
 - [@react-form-builder/components-material-ui](@react-form-builder/components-material-ui/index.md)
+- [@react-form-builder/components-print](@react-form-builder/components-print/index.md)
 - [@react-form-builder/components-rich-text](@react-form-builder/components-rich-text/index.md)
 - [@react-form-builder/components-rsuite](@react-form-builder/components-rsuite/index.md)
 - [@react-form-builder/components-rsuite-table](@react-form-builder/components-rsuite-table/index.md)

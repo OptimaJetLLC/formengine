@@ -53,6 +53,7 @@ const PACKAGE_SOURCE: Record<string, string> = {
   '@react-form-builder/components-mantine': 'packages/views/mantine',
   '@react-form-builder/components-fast-qr': 'packages/views/fast-qr',
   '@react-form-builder/components-google-map': 'packages/views/google-map',
+  '@react-form-builder/components-print': 'packages/views/print',
   '@react-form-builder/components-rich-text': 'packages/views/rich-text',
   '@react-form-builder/components-rsuite-table': 'packages/views/rsuite-table',
   '@react-form-builder/components-signature': 'packages/views/signature',

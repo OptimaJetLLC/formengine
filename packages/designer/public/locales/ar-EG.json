@@ -904,7 +904,8 @@
       "static": "ثابت",
       "structure": "الهيكل",
       "templates": "قوالب"
-    }
+    },
+    "singletonAlreadyOnForm": "يُسمح بمثيل واحد فقط من هذا المكون في النموذج."
   },
   "componentsModal": {
     "clickToAdd": "انقر لإضافة عنصر تحكم"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "طي الكل",
-    "expand": "قم بتوسيع الكل"
+    "expand": "قم بتوسيع الكل",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "إضافة قاعدة التحقق",

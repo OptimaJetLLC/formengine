@@ -89,6 +89,10 @@ const CAPTURE_SCRIPT_BY_PREFIX = {
   'manage-forms/highlight-forms': 'capture-work-with-multiple-forms-screenshots.mjs',
   'manage-forms/preset': 'capture-preset-components-screenshots.mjs',
   'manage-forms/highlight-preset': 'capture-preset-components-screenshots.mjs',
+  'manage-forms/header-menu-print': 'capture-special-components-screenshots.mjs',
+  'manage-forms/highlight-header-menu-print': 'capture-special-components-screenshots.mjs',
+  'components-by-task/special': 'capture-special-components-screenshots.mjs',
+  'preview-and-handoff/print-page-break': 'capture-special-components-screenshots.mjs',
   'preview-and-handoff/': 'capture-audit-screenshots.mjs',
   'workspace/': 'capture-guide-screenshots.mjs',
   'help/faq-preview-mode': 'capture-faq-for-form-authors-screenshots.mjs',
@@ -201,6 +205,7 @@ const FORM_HINTS = [
   {match: /action-order-reorder/, forms: ['action-order-reorder']},
   {match: /components-search-modal|modals-forms|modals-confirm|modals-close|modals-settings|modals-template|modals-open|modals-preview/, forms: ['confirm-dialog', 'main-with-modal']},
   {match: /faq-preview-mode|component-library|highlight-component-library/, forms: ['event-registration']},
+  {match: /special-singleton|special-non-visual|print-page-break|header-menu-print/, forms: ['print-settings-demo']},
   {match: /json-view-open|json-view-close/, forms: ['event-registration']},
   {match: /undo-redo/, forms: ['event-registration']},
   {match: /theme-toggle/, forms: ['event-registration']},
@@ -491,7 +496,7 @@ function viewForArticles(id, articles, usageArticles) {
       return view
     }
   }
-  if (/rsuite|wizard|tabs-sections|tables-repeaters/.test(id)) {
+  if (/rsuite|wizard|tabs-sections|tables-repeaters|special-|print-page-break|header-menu-print/.test(id)) {
     return 'rsuite-inject-css'
   }
   return 'mui'

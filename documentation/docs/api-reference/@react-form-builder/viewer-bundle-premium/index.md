@@ -4,6 +4,7 @@
 
 - [fastQrComponent](namespaces/fastQrComponent/index.md)
 - [googleMapComponent](namespaces/googleMapComponent/index.md)
+- [printComponent](namespaces/printComponent/index.md)
 - [richTextComponent](namespaces/richTextComponent/index.md)
 - [rSuiteComponents](namespaces/rSuiteComponents/index.md)
 - [rSuiteTableComponents](namespaces/rSuiteTableComponents/index.md)

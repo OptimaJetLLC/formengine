@@ -8,6 +8,7 @@ import {globalDefaultLanguage} from '../../localization/default'
 import {ComponentTree} from '../../ui/ComponentTree'
 import {buildInternalErrorStore} from '../../ui/internalErrorModel'
 import type {FormViewerProps} from '../types'
+import {NonVisualHost} from './NonVisualHost'
 import {useViewerProps} from './ViewerPropsContext'
 
 const getViewMode = (): ViewMode => {
@@ -98,7 +99,12 @@ const RawViewer = () => {
 
   return formLoadError
     ? <div className={'form-error'}>{formLoadError}</div>
-    : <ComponentTree data={data}/>
+    : (
+      <>
+        <ComponentTree data={data}/>
+        <NonVisualHost/>
+      </>
+    )
 }
 
 export const Viewer = namedObserver('Viewer', RawViewer)

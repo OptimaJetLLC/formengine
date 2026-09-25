@@ -904,7 +904,8 @@
       "static": "स्टेटिक",
       "structure": "स्ट्रक्चर",
       "templates": "टेम्प्लेट्स"
-    }
+    },
+    "singletonAlreadyOnForm": "फ़ॉर्म पर इस घटक का केवल एक इंस्टेंस अनुमत है।"
   },
   "componentsModal": {
     "clickToAdd": "नियंत्रण जोड़ने के लिए क्लिक करें"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "सभी को संकुचित करें",
-    "expand": "सभी का विस्तार करें"
+    "expand": "सभी का विस्तार करें",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "सत्यापन नियम जोड़ें",

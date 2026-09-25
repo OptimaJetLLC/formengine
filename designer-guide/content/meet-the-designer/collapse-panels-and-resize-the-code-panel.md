@@ -39,7 +39,7 @@ Height may be remembered during your session.
 
 ## Summary
 
-Side panel chevrons collapse the **left** and **right** chrome. The bottom panel appears for code or JSON; drag its top edge to resize it.
+Side panel chevrons collapse the **left** and **right** panels. The bottom panel appears for code or JSON; drag its top edge to resize it.
 Expand the side panels again before changing properties.
 
 ## See also

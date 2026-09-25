@@ -104,3 +104,18 @@ registerComponentFeature({
   name: cfRequiredProperties,
   allowMultiple: true
 })
+
+/**
+ * Enabling this component feature allows at most one instance of the component type on a form.
+ * The designer disables the palette item once an instance is present.
+ */
+export const cfSingleton = 'singleton'
+registerBooleanComponentFeature(cfSingleton)
+
+/**
+ * Enabling this component feature marks the component as non-visual.
+ * Non-visual instances live under the form root, stay off the canvas layout, and appear in the designer non-visual bar.
+ * The designer also hides the Additional properties block for these components.
+ */
+export const cfNonVisual = 'non-visual'
+registerBooleanComponentFeature(cfNonVisual)

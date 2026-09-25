@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "structure": {
+      "name": "ساختار"
+    }
+  },
+  "components": {
+    "PageBreak": {
+      "description": "در صفحه نمایش پنهان است. هنگام چاپ یک شکست صفحه درج می‌کند.",
+      "name": "شکست صفحه",
+      "props": {
+        "breakAfter": {
+          "description": "قاعده CSS break-after هنگام چاپ",
+          "name": "شکست بعد"
+        },
+        "breakBefore": {
+          "description": "قاعده CSS break-before هنگام چاپ",
+          "name": "شکست قبل"
+        },
+        "breakInside": {
+          "description": "قاعده CSS break-inside هنگام چاپ",
+          "name": "شکست داخلی"
+        }
+      }
+    },
+    "PrintSettings": {
+      "description": "در صفحه نمایش پنهان است. سرصفحه، پاصفحه و شماره صفحه اختیاری اضافه می‌کند.",
+      "name": "سرصفحه/پاصفحه چاپ",
+      "props": {
+        "footer": {
+          "description": "پاصفحه چاپی. برای شماره صفحه از {page} و {pages} استفاده کنید",
+          "name": "پاصفحه"
+        },
+        "footerAlign": {
+          "description": "موقعیت پاصفحه در حاشیه صفحه",
+          "name": "تراز پاصفحه"
+        },
+        "header": {
+          "description": "سرصفحه چاپی. برای شماره صفحه از {page} و {pages} استفاده کنید",
+          "name": "سرصفحه"
+        },
+        "headerAlign": {
+          "description": "موقعیت سرصفحه در حاشیه صفحه",
+          "name": "تراز سرصفحه"
+        }
+      }
+    }
+  }
+}

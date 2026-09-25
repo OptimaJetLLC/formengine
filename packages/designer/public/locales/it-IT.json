@@ -904,7 +904,8 @@
       "static": "Statico",
       "structure": "Struttura",
       "templates": "Modelli"
-    }
+    },
+    "singletonAlreadyOnForm": "È consentita una sola istanza di questo componente nel modulo."
   },
   "componentsModal": {
     "clickToAdd": "Fai clic per aggiungere il controllo"
@@ -1095,7 +1096,8 @@
   },
   "tree": {
     "collapse": "Comprimi tutto",
-    "expand": "Espandi tutto"
+    "expand": "Espandi tutto",
+    "nonVisual": "Non-visual"
   },
   "validation": {
     "addRule": "Aggiungere una regola di convalida",

@@ -141,6 +141,28 @@
         "label": "Open Team directory table in demo"
       }
     },
+    "components-by-task/special-components": {
+      "start": {
+        "form": "empty",
+        "view": "rsuite-inject-css"
+      },
+      "end": {
+        "formFile": "print-settings-demo.json",
+        "view": "rsuite-inject-css",
+        "label": "Open print settings demo in demo"
+      }
+    },
+    "preview-and-handoff/print-your-form": {
+      "start": {
+        "form": "empty",
+        "view": "rsuite-inject-css"
+      },
+      "end": {
+        "formFile": "print-settings-demo.json",
+        "view": "rsuite-inject-css",
+        "label": "Open print settings demo in demo"
+      }
+    },
     "fields-and-data/labels-and-help-text": {
       "start": {
         "form": "empty",

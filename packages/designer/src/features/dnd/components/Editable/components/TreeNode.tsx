@@ -1,4 +1,4 @@
-import {ComponentTree, findTreeElementDepth, namedObserver, useComponentData} from '@react-form-builder/core'
+import {ComponentTree, findTreeElementDepth, getVisualChildren, namedObserver, useComponentData} from '@react-form-builder/core'
 import {ArrowDownLine as ArrowDownLineIcon, ArrowRightLine as ArrowRightLineIcon, Icon} from '@rsuite/icons'
 import cx from 'clsx'
 import type {ComponentType, CSSProperties} from 'react'
@@ -54,7 +54,8 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
     }
   }, [selected])
 
-  const withChildren = (componentData.store.children?.length ?? 0) > 0
+  const visualChildren = getVisualChildren(componentData)
+  const withChildren = visualChildren.length > 0
   const iconAs = expanded ? ArrowDownLineIcon : ArrowRightLineIcon
   const indentWidth = 14 * (depth + 1) + 14
   const indentStyle = useMemo(() => ({'--tree-node-indent-width': `${indentWidth}px`} as CSSProperties), [indentWidth])
@@ -74,7 +75,7 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
         <label>{componentData.model.name}</label>
         {hovered && <Toolbar compact/>}
       </div>
-      {expanded && componentData.children && <ComponentTree data={componentData.children} componentDataViewer={componentDataViewer}/>}
+      {expanded && withChildren && <ComponentTree data={visualChildren} componentDataViewer={componentDataViewer}/>}
     </>
   )
 }

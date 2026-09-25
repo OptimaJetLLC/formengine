@@ -334,7 +334,8 @@ window.onload = function () {
     richTextComponent,
     signatureComponent,
     fastQrComponent,
-    googleMapComponent
+    googleMapComponent,
+    printComponent
   } = window.FormEngineDesignerBundle
 
   const {
@@ -354,7 +355,8 @@ window.onload = function () {
     richTextComponent.richTextComponent,
     signatureComponent.signatureComponent,
     fastQrComponent.fastQrComponent,
-    googleMapComponent.googleMapComponent
+    googleMapComponent.googleMapComponent,
+    ...printComponent.printComponents
   ].map(component => component.build())
 
   const view = createBuilderView(myComponentsSet)
@@ -609,7 +611,8 @@ window.onload = function () {
     richTextComponent,
     signatureComponent,
     fastQrComponent,
-    googleMapComponent
+    googleMapComponent,
+    printComponent
   } = window.FormEngineViewerBundle
 
   const {
@@ -627,7 +630,8 @@ window.onload = function () {
     richTextComponent.richTextComponent,
     signatureComponent.signatureComponent,
     fastQrComponent.fastQrComponent,
-    googleMapComponent.googleMapComponent
+    googleMapComponent.googleMapComponent,
+    ...printComponent.printComponents,
   ].map(component => component.build().model)
 
   const view = createView(myComponentsSet)

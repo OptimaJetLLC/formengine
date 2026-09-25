@@ -186,6 +186,24 @@
       }
     },
     {
+      "id": "views-print",
+      "dir": "packages/views/print/src/i18n",
+      "source": "en-US",
+      "locales": {
+        "de": "de-DE",
+        "ar": "ar-EG",
+        "it": "it-IT",
+        "fr": "fr-FR",
+        "es": "es-ES",
+        "zh": "zh-CN",
+        "fa": "fa-IR",
+        "hi": "hi-IN",
+        "sr": "sr-RS",
+        "ko": "ko-KR",
+        "ja": "ja-JP"
+      }
+    },
+    {
       "id": "views-signature",
       "dir": "packages/views/signature/src/i18n",
       "source": "en-US",

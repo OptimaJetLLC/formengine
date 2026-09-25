@@ -12,6 +12,9 @@ Use this list before you ask developers to embed the form or before you publish 
 - All labels and help text read correctly in your target language.
 - Tab order feels natural in **Preview** (keyboard Tab through fields).
 - Required fields show a clear indicator.
+- Run **Menu** → **Print** (or <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>P</kbd></span> /
+  <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>P</kbd></span>) and check the browser preview for clipped fields. Fix page breaks or headers
+  if you added them. See [Print your form](/preview-and-handoff/print-your-form).
 
 ## Accessibility
 
@@ -63,3 +66,4 @@ Run this checklist in Preview each time before handoff.
 
 - [Preview your first form](/your-first-form/preview-your-first-form)
 - [Export and share your form](/preview-and-handoff/export-and-share-your-form)
+- [Print your form](/preview-and-handoff/print-your-form)

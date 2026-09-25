@@ -18,6 +18,7 @@
       "!**/formengine-rsuite.css",
       "packages/apps/**/*.{ts,tsx}",
       "packages/designer-bundle/**/*.{ts,tsx}",
+      "packages/views/print/**/*.{ts,tsx}",
       "packages/indexed-db-form-storage/**/*.{ts,tsx}",
       "packages/viewer-bundle/**/*.{ts,tsx}",
       "packages/viewer-bundle-premium/**/*.{ts,tsx}",

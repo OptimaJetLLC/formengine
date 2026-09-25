@@ -1,0 +1,79 @@
+{
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "printSettings",
+        "type": "PrintSettings",
+        "props": {
+          "header": {
+            "value": "Inspection report"
+          },
+          "footer": {
+            "value": "Page {page} of {pages}"
+          },
+          "headerAlign": {
+            "value": "center"
+          },
+          "footerAlign": {
+            "value": "end"
+          }
+        }
+      },
+      {
+        "key": "formTitle",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "value": "Site inspection"
+          },
+          "headerSize": {
+            "value": "h4"
+          }
+        }
+      },
+      {
+        "key": "siteName",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Site name"
+          }
+        }
+      },
+      {
+        "key": "inspectorNotes",
+        "type": "RsTextArea",
+        "props": {
+          "label": {
+            "value": "Inspector notes"
+          },
+          "rows": {
+            "value": 4
+          }
+        }
+      },
+      {
+        "key": "pageBreak",
+        "type": "PageBreak",
+        "props": {
+          "breakBefore": {
+            "value": "page"
+          }
+        }
+      },
+      {
+        "key": "followUp",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Follow-up actions"
+          }
+        }
+      }
+    ]
+  }
+}
