@@ -1,8 +1,10 @@
+import type {Definer, Model} from '@react-form-builder/core'
 import {googleMap} from './GoogleMap'
+import type {GoogleMapProps} from './GoogleMapProps'
 import googleMapEnUsComponentsDescriptions from './i18n/en-US.json'
 
-export const googleMapComponent = googleMap
-export const googleMapModel = googleMap.build().model
+export const googleMapComponent: Definer<GoogleMapProps> = googleMap
+export const googleMapModel: Model = googleMap.build().model
 export type {GoogleMapProps} from './GoogleMapProps'
 export type {MapMarker} from './MapMarker'
 export type {Address} from './Address'

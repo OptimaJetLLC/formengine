@@ -1,8 +1,10 @@
+import type {Definer, Model} from '@react-form-builder/core'
 import richTextEditorEnUsComponentsDescriptions from './i18n/en-US.json'
-import {richTextEditor} from './RichTextEditor'
+import {richTextEditor } from './RichTextEditor'
+import type {RichTextEditorProps} from './RichTextEditor';
 
-export const richTextComponent = richTextEditor
-export const richTextModel = richTextEditor.build().model
+export const richTextComponent: Definer<RichTextEditorProps> = richTextEditor
+export const richTextModel: Model = richTextEditor.build().model
 export type {RichTextEditorProps} from './RichTextEditor'
 
 export {richTextEditorEnUsComponentsDescriptions}

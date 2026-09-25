@@ -1,5 +1,5 @@
 import {uploaderComponent} from '@react-form-builder/components-uploader'
-import type {Definer} from '@react-form-builder/core'
+import type {BuilderComponent, Definer} from '@react-form-builder/core'
 import {muiBox} from './components/MuiBox'
 import {muiBreadcrumbs} from './components/MuiBreadcrumbs'
 import {muiButton} from './components/MuiButton'
@@ -88,4 +88,4 @@ muiComponents.push(
   muiUploader
 )
 
-export const muiBuilderComponents = muiComponents.map(def => def.build())
+export const muiBuilderComponents: BuilderComponent[] = muiComponents.map(def => def.build())
