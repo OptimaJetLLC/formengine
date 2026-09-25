@@ -1,6 +1,6 @@
 import type {Definer, Model} from '@react-form-builder/core'
-import {fastQr} from './fast-qr'
 import type {FastQrProps} from './fast-qr'
+import {fastQr} from './fast-qr'
 import fastQrEnUsComponentsDescriptions from './i18n/en-US.json'
 
 export const fastQrComponent: Definer<FastQrProps> = fastQr

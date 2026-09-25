@@ -1,6 +1,6 @@
+import enhancedResolve from 'enhanced-resolve'
 import fs, {existsSync, readdirSync, readFileSync} from 'node:fs'
 import {dirname, join, relative, resolve} from 'node:path'
-import enhancedResolve from 'enhanced-resolve'
 
 import {readPackageJson} from './view-pack-tools.ts'
 
