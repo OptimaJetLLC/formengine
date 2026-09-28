@@ -10,7 +10,14 @@ import styles from './PresetIcon.module.css'
  * @returns the React element.
  */
 export const PresetIcon = (props: any) => {
-  return <FaIcon icon={faBookmark as unknown as IconDefinition} {...props}
-                 viewBox="0 0 384 512" width={18} height={14}
-                 className={cx(styles.icon, props.className)}/>
+  return (
+    <FaIcon
+      icon={faBookmark as unknown as IconDefinition}
+      {...props}
+      viewBox="0 0 384 512"
+      width={18}
+      height={14}
+      className={cx(styles.icon, props.className)}
+    />
+  )
 }

@@ -7,7 +7,7 @@ import {useTranslationPart} from '../../../../../localization/hooks'
 import type {ActionsMenuProps} from '../types'
 import styles from './CodeActionsList.module.css'
 
-const addButtonIcon = <PlusIcon/>
+const addButtonIcon = <PlusIcon />
 
 /**
  * React form builder component that displays the list of code actions.
@@ -33,23 +33,30 @@ const RawCodeActionsList = (props: ActionsMenuProps) => {
 
   const handleSelect = useCallback((name: string) => () => onSelect({name, type: 'code'}), [onSelect])
 
-  const renderAction = useCallback((name: string) => (
-    <Dropdown.Item key={name} onClick={handleSelect(name)} className={styles.item}>
-      <span className={styles.name}>{name}</span>
-    </Dropdown.Item>
-  ), [handleSelect])
+  const renderAction = useCallback(
+    (name: string) => (
+      <Dropdown.Item key={name} onClick={handleSelect(name)} className={styles.item}>
+        <span className={styles.name}>{name}</span>
+      </Dropdown.Item>
+    ),
+    [handleSelect]
+  )
 
-  return <Dropdown.Menu title={t('code')} eventKey="code" data-testid={'dropdown-menu-code-actions'}>
-    {actionNames?.map(renderAction)}
+  return (
+    <Dropdown.Menu title={t('code')} eventKey="code" data-testid={'dropdown-menu-code-actions'}>
+      {actionNames?.map(renderAction)}
 
-    {!!actionNames?.length && <Dropdown.Item disabled>
-      <Divider className={styles.divider}/>
-    </Dropdown.Item>}
+      {!!actionNames?.length && (
+        <Dropdown.Item disabled>
+          <Divider className={styles.divider} />
+        </Dropdown.Item>
+      )}
 
-    <Dropdown.Item icon={addButtonIcon} onClick={addAction} data-testid={'dropdown-item-add-code-action'}>
-      {t('addCodeAction')}
-    </Dropdown.Item>
-  </Dropdown.Menu>
+      <Dropdown.Item icon={addButtonIcon} onClick={addAction} data-testid={'dropdown-item-add-code-action'}>
+        {t('addCodeAction')}
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  )
 }
 
 export const CodeActionsList = namedObserver('CodeActionsList', RawCodeActionsList)

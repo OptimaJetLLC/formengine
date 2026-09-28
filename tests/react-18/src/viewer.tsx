@@ -10,6 +10,8 @@ if (!element) {
 
 const root = createRoot(element)
 
-root.render(<React.StrictMode>
-  <Viewer/>
-</React.StrictMode>)
+root.render(
+  <React.StrictMode>
+    <Viewer />
+  </React.StrictMode>
+)

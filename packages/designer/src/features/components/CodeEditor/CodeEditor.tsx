@@ -7,7 +7,11 @@ import {ConstrainedCodeEditor} from './ConstrainedCodeEditor'
 import {UnconstrainedCodeEditor} from './UnconstrainedCodeEditor'
 
 const LtrDiv = ({children}: WrapperProps) => {
-  return <div dir="ltr" className={styles.ltr}>{children}</div>
+  return (
+    <div dir="ltr" className={styles.ltr}>
+      {children}
+    </div>
+  )
 }
 
 const RawCodeEditor = (props: CodeEditorProps) => {
@@ -16,7 +20,7 @@ const RawCodeEditor = (props: CodeEditorProps) => {
   const theme = props.theme ?? themeFromBuilder
 
   const codeEditorProps = {...props, theme}
-  let editor = <ConstrainedCodeEditor {...codeEditorProps}/>
+  let editor = <ConstrainedCodeEditor {...codeEditorProps} />
 
   if (!props.beginContextLine && !props.endContextLine) {
     const unconstrainedProps = {...codeEditorProps}
@@ -24,7 +28,7 @@ const RawCodeEditor = (props: CodeEditorProps) => {
     delete unconstrainedProps.beginContextLine
     delete unconstrainedProps.endContextLine
     delete unconstrainedProps.canEditBeginContextLine
-    editor = <UnconstrainedCodeEditor {...unconstrainedProps}/>
+    editor = <UnconstrainedCodeEditor {...unconstrainedProps} />
   }
 
   return <LtrDiv>{editor}</LtrDiv>

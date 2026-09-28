@@ -30,7 +30,7 @@ const rSuiteLocales: Record<string, any> = {
   'ja-JP': jaJP,
   'ko-KR': koKR,
   'sr-RS': srRS,
-  'zh-CN': zhCN
+  'zh-CN': zhCN,
 }
 
 export const dateFnsLocales: Record<string, any> = {
@@ -45,14 +45,14 @@ export const dateFnsLocales: Record<string, any> = {
   'ja-JP': dfJA,
   'ko-KR': dfKO,
   'sr-RS': dfSR,
-  'zh-CN': dfCN
+  'zh-CN': dfCN,
 }
 
 export const defaultComponentsLocale = enUS
 
 const defaultData: FormBuilderI18nData = {
   data: enUsTranslation,
-  componentsLocale: defaultComponentsLocale
+  componentsLocale: defaultComponentsLocale,
 }
 
 export const builtInLanguages: FormBuilderI18n = {
@@ -68,16 +68,16 @@ export const builtInLanguages: FormBuilderI18n = {
     new Language('ja', 'JP', '日本語', 'Japanese'),
     new Language('ko', 'KR', '한국어', 'Korean'),
     new Language('sr', 'RS', 'Српски', 'Serbian'),
-    new Language('zh', 'CN', '中文', 'Chinese')
+    new Language('zh', 'CN', '中文', 'Chinese'),
   ],
 
   getData: async languageFullCode => {
     const data = await import(`../../../public/locales/${languageFullCode}.json`)
     return {
       data: data,
-      componentsLocale: rSuiteLocales[languageFullCode]
+      componentsLocale: rSuiteLocales[languageFullCode],
     }
-  }
+  },
 }
 
 const loadLanguage = async (i18n: FormBuilderI18n, language: LanguageFullCode) => {
@@ -98,7 +98,7 @@ const loadLanguage = async (i18n: FormBuilderI18n, language: LanguageFullCode) =
  */
 export function resolveBuilderUiLanguage(
   builderLanguage: LanguageFullCode | undefined,
-  availableLanguages: Language[],
+  availableLanguages: Language[]
 ): Language | undefined {
   if (!builderLanguage) return undefined
   return availableLanguages.find(l => l.fullCode === builderLanguage)
@@ -110,8 +110,7 @@ export function resolveBuilderUiLanguage(
  * @param language the language code.
  * @returns the translation data.
  */
-export const loadTranslation = async (i18n: FormBuilderI18n,
-                                      language: LanguageFullCode): Promise<FormBuilderI18nData> => {
+export const loadTranslation = async (i18n: FormBuilderI18n, language: LanguageFullCode): Promise<FormBuilderI18nData> => {
   const found = [defaultData]
 
   if (i18n !== builtInLanguages && findLanguage(builtInLanguages.languages, language)) {

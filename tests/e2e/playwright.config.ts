@@ -1,7 +1,7 @@
-import {defineConfig, devices} from '@playwright/test'
 import {dirname, resolve} from 'node:path'
 import {chdir} from 'node:process'
 import {fileURLToPath} from 'node:url'
+import {defineConfig, devices} from '@playwright/test'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -26,11 +26,7 @@ const testDir = `./tests/${testSuite}`
 const reportsDir = resolve(`${workspaceRoot}/tests/e2e/reports`)
 const blobReportsDir = resolve(`${reportsDir}/blob`)
 const ctrfReportsDir = resolve(`${reportsDir}/ctrf`)
-const testName = [testSuite, projectRoot]
-  .join('-')
-  .replaceAll(' ', '_')
-  .replaceAll(':', '-')
-  .replaceAll('/', '_')
+const testName = [testSuite, projectRoot].join('-').replaceAll(' ', '_').replaceAll(':', '-').replaceAll('/', '_')
 
 // Official Playwright Docker images ship Chromium, not system Google Chrome at /opt/google/chrome.
 const useSystemChromeChannel = !env.PLAYWRIGHT_DOCKER
@@ -51,20 +47,29 @@ export default defineConfig({
   workers: env.CI ? 2 : undefined,
   reporter: [
     env.CI ? ['dot'] : ['list'],
-    ['html', {
-      open: 'never',
-      outputFolder: `${reportsDir}/report-html`
-      // attachmentsBaseURL: 'https://external-storage.com/' }
-    }],
+    [
+      'html',
+      {
+        open: 'never',
+        outputFolder: `${reportsDir}/report-html`,
+        // attachmentsBaseURL: 'https://external-storage.com/' }
+      },
+    ],
     ['blob', {outputFile: `${blobReportsDir}/report-${testName}.zip`}],
-    ['monocart-reporter', {
-      name: testName,
-      outputFile: `${reportsDir}/monocart/index.html`
-    }],
-    ['playwright-ctrf-json-reporter', {
-      outputFile: `ctrf-report-${env['TEST_TEMPLATE']}.json`,
-      outputDir: ctrfReportsDir
-    }],
+    [
+      'monocart-reporter',
+      {
+        name: testName,
+        outputFile: `${reportsDir}/monocart/index.html`,
+      },
+    ],
+    [
+      'playwright-ctrf-json-reporter',
+      {
+        outputFile: `ctrf-report-${env['TEST_TEMPLATE']}.json`,
+        outputDir: ctrfReportsDir,
+      },
+    ],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -74,7 +79,7 @@ export default defineConfig({
     video: 'off',
     viewport: {width: 1920, height: 1080},
     actionTimeout: 5000,
-    locale: 'en-US'
+    locale: 'en-US',
   },
   /* Configure projects for major browsers */
   projects: [
@@ -110,12 +115,14 @@ export default defineConfig({
       },
     },
   ],
-  webServer: [{
-    command,
-    url: baseURL,
-    timeout: 5000,
-    // reuseExistingServer: true,
-    reuseExistingServer: !env.CI,
-    cwd,
-  }],
+  webServer: [
+    {
+      command,
+      url: baseURL,
+      timeout: 5000,
+      // reuseExistingServer: true,
+      reuseExistingServer: !env.CI,
+      cwd,
+    },
+  ],
 })

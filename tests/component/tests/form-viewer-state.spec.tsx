@@ -10,10 +10,10 @@ const persistedForm = {
       {
         key: 'rsNumberFormat1',
         type: 'RsNumberFormat',
-        htmlAttributes: [{name: 'data-testid', value: 'number-format'}]
-      }
-    ]
-  }
+        htmlAttributes: [{name: 'data-testid', value: 'number-format'}],
+      },
+    ],
+  },
 }
 
 describe('FormViewerState tests', () => {

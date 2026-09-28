@@ -14,13 +14,13 @@ export class EditableFunction {
    * @param beginContextLine the context line before the source code.
    * @param endContextLine the context line after the source code.
    */
-  constructor(public header: string,
-              public onSave: (value: string) => void,
-              public onClose: () => void,
-              public onCompile: (sourceCode: string) => BaseCompilationResult,
-              public source: string,
-              public beginContextLine: string,
-              public endContextLine: string,
-  ) {
-  }
+  constructor(
+    public header: string,
+    public onSave: (value: string) => void,
+    public onClose: () => void,
+    public onCompile: (sourceCode: string) => BaseCompilationResult,
+    public source: string,
+    public beginContextLine: string,
+    public endContextLine: string
+  ) {}
 }

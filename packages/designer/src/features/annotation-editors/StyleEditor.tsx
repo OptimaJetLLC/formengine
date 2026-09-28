@@ -32,7 +32,7 @@ interface StyleEditorProps {
   defaultActiveTab?: StylePart
 }
 
-type Item = { value: StylePart, label: string }
+type Item = {value: StylePart; label: string}
 
 const StyleEditorBody = ({device, useWrapperStyles, defaultActiveTab}: StyleEditorProps) => {
   const t = useTranslationPart('styleEditor')
@@ -42,28 +42,26 @@ const StyleEditorBody = ({device, useWrapperStyles, defaultActiveTab}: StyleEdit
     setActiveTab(value as StylePart)
   }, [])
 
-  const items: Item[] = useMemo(() => [
-    {value: 'style', label: t('componentTab.name'), hint: t('componentTab.hint')},
-    {value: 'wrapperStyle', label: t('wrapperTab.name'), hint: t('wrapperTab.hint')}
-  ], [t])
+  const items: Item[] = useMemo(
+    () => [
+      {value: 'style', label: t('componentTab.name'), hint: t('componentTab.hint')},
+      {value: 'wrapperStyle', label: t('wrapperTab.name'), hint: t('wrapperTab.hint')},
+    ],
+    [t]
+  )
 
   return (
     <Rows data-testid="style-editor">
-      <PropertyBlockHeader header={t('header.name')} hint={t('header.hint')}/>
-      {useWrapperStyles && <RadioButtons className={styles.tabs} value={activeTab} onChange={handleSelect} items={items}/>}
-      <StyleCodeField
-        part={activeTab}
-        device={device}
-        beginContextLine={`${activeTab} {`}
-        cleanButtonTestId="style-editor-clean-button"
-      />
+      <PropertyBlockHeader header={t('header.name')} hint={t('header.hint')} />
+      {useWrapperStyles && <RadioButtons className={styles.tabs} value={activeTab} onChange={handleSelect} items={items} />}
+      <StyleCodeField part={activeTab} device={device} beginContextLine={`${activeTab} {`} cleanButtonTestId="style-editor-clean-button" />
     </Rows>
   )
 }
 
 const RawStyleEditor = (props: StyleEditorProps) => {
   const {store} = useComponentData()
-  return <StyleEditorBody key={store.key} {...props}/>
+  return <StyleEditorBody key={store.key} {...props} />
 }
 
 export const StyleEditor = namedObserver('StyleEditor', RawStyleEditor)

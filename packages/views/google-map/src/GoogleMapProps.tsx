@@ -94,14 +94,14 @@ export interface GoogleMapProps {
    * Read more about localizing the Map: https://developers.google.com/maps/documentation/javascript/localization.
    * Part of: https://developers.google.com/maps/documentation/javascript/url-params.
    */
-  region?: string;
+  region?: string
 
   /**
    * Use a specific language for the map.
    * Read more about localizing the Map: https://developers.google.com/maps/documentation/javascript/localization.
    * Part of: https://developers.google.com/maps/documentation/javascript/url-params.
    */
-  language?: string;
+  language?: string
 
   /**
    * The color scheme to use for the map.

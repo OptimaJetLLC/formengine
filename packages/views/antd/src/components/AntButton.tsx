@@ -24,5 +24,5 @@ export const antButton = define(AntButton, 'AntButton')
     size: oneOf('large', 'middle', 'small').default('middle'),
     target: string,
     type: oneOf('primary', 'ghost', 'dashed', 'link', 'text', 'default').default('default'),
-    onClick: event
+    onClick: event,
   })

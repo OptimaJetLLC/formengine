@@ -21,30 +21,31 @@ const RawTooltipPropertiesEditor = () => {
   const hasTooltipProps = !!tooltipProps
   const selectedTooltipType = useTooltipType()
 
-  const tooltipAnnotations = selectedTooltipType
-    ? store.view.getMeta(selectedTooltipType)?.properties
-    : null
+  const tooltipAnnotations = selectedTooltipType ? store.view.getMeta(selectedTooltipType)?.properties : null
 
-  const handleToggle = useCallback((_: unknown, checked: boolean) => {
-    if (selectedComponentStore) {
-      // eslint-disable-next-line react-hooks/immutability
-      selectedComponentStore.tooltipProps = checked ? {} : undefined
-    }
-  }, [selectedComponentStore])
+  const handleToggle = useCallback(
+    (_: unknown, checked: boolean) => {
+      if (selectedComponentStore) {
+        // eslint-disable-next-line react-hooks/immutability
+        selectedComponentStore.tooltipProps = checked ? {} : undefined
+      }
+    },
+    [selectedComponentStore]
+  )
 
   if (!selectedTooltipType || !tooltipAnnotations) return null
 
-  return <>
-    <LabeledInput>
-      <HintedLabel hint={<>{t('hint')}</>} htmlFor={id}>
-        <h6>{t('tooltip')}</h6>
-      </HintedLabel>
-      <SCheckbox checked={hasTooltipProps} onChange={handleToggle} id={id} data-testid="enable-tooltip-checkbox"></SCheckbox>
-    </LabeledInput>
-    {hasTooltipProps &&
-      <PropertyBlock propertyBlockType={'tooltip'} annotations={tooltipAnnotations} context={tooltipProps}/>
-    }
-  </>
+  return (
+    <>
+      <LabeledInput>
+        <HintedLabel hint={<>{t('hint')}</>} htmlFor={id}>
+          <h6>{t('tooltip')}</h6>
+        </HintedLabel>
+        <SCheckbox checked={hasTooltipProps} onChange={handleToggle} id={id} data-testid="enable-tooltip-checkbox"></SCheckbox>
+      </LabeledInput>
+      {hasTooltipProps && <PropertyBlock propertyBlockType={'tooltip'} annotations={tooltipAnnotations} context={tooltipProps} />}
+    </>
+  )
 }
 
 export const TooltipPropertiesEditor = namedObserver('TooltipPropertiesEditor', RawTooltipPropertiesEditor)

@@ -6,7 +6,7 @@ const [
    * The hook to get the form builder settings.
    */
   useFormBuilder,
-  FormBuilderProvider
+  FormBuilderProvider,
 ] = createNonNullableContext<IFormBuilder>('BuildManagerContext')
 
 export {useFormBuilder, FormBuilderProvider}

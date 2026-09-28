@@ -26,9 +26,12 @@ export interface CalculableCodeEditorProps {
  * @returns the React element.
  */
 export const CalculableCodeEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
-  const saveCode = useCallback((sourceCode: string) => {
-    editableProperty.setComputeCode(sourceCode, 'function')
-  }, [editableProperty])
+  const saveCode = useCallback(
+    (sourceCode: string) => {
+      editableProperty.setComputeCode(sourceCode, 'function')
+    },
+    [editableProperty]
+  )
 
   const functionHeader = `/**
  * @param {IFormData} form
@@ -40,12 +43,15 @@ function Calculation (form) {`
     return calculatePropertyValue({fnSource: sourceCode}, formData)
   }, [])
 
-  return <GenericCodeEditor key={editableProperty.annotation.key}
-                            beginContextLine={functionHeader}
-                            endContextLine="}"
-                            source={editableProperty.getComputeCode('function')}
-                            onSave={saveCode}
-                            onClose={onClose}
-                            onCompile={onCompile}
-  />
+  return (
+    <GenericCodeEditor
+      key={editableProperty.annotation.key}
+      beginContextLine={functionHeader}
+      endContextLine="}"
+      source={editableProperty.getComputeCode('function')}
+      onSave={saveCode}
+      onClose={onClose}
+      onCompile={onCompile}
+    />
+  )
 }

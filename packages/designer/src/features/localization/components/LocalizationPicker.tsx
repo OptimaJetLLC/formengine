@@ -47,33 +47,47 @@ const RawLocalizationPicker = ({value, onSelect, className, ...props}: Localizat
   const {availableLanguages} = useBuilderStore()
 
   const langData = useMemo(() => {
-    return availableLanguages.reduce((result, language) => {
-      result[language.fullCode] = language
-      return result
-    }, {} as Record<string, Language>)
+    return availableLanguages.reduce(
+      (result, language) => {
+        result[language.fullCode] = language
+        return result
+      },
+      {} as Record<string, Language>
+    )
   }, [availableLanguages])
 
-  const data = useMemo(() => Object.entries(langData).map(([key, {code}]) => {
-    return ({value: key, label: toUpper(code)} as ItemDataType<string>)
-  }), [langData])
+  const data = useMemo(
+    () =>
+      Object.entries(langData).map(([key, {code}]) => {
+        return {value: key, label: toUpper(code)} as ItemDataType<string>
+      }),
+    [langData]
+  )
 
   const handleSelect = useCallback((code: string) => onSelect(langData[code]), [langData, onSelect])
 
-  const renderMenuItem: SelectProps<string>['renderMenuItem'] = useCallback((_: ReactNode, {value}: ItemDataType) => {
-    return !!value && renderLanguageItem(langData[value])
-  }, [langData])
+  const renderMenuItem: SelectProps<string>['renderMenuItem'] = useCallback(
+    (_: ReactNode, {value}: ItemDataType) => {
+      return !!value && renderLanguageItem(langData[value])
+    },
+    [langData]
+  )
 
-  return <FixedSelectPicker {...props}
-                            value={value}
-                            data={data}
-                            onSelect={handleSelect}
-                            cleanable={false}
-                            placement={'autoVerticalEnd'}
-                            size={'sm'}
-                            searchable={false}
-                            width={62}
-                            renderMenuItem={renderMenuItem}
-                            className={cx('subtle-style', className)}/>
+  return (
+    <FixedSelectPicker
+      {...props}
+      value={value}
+      data={data}
+      onSelect={handleSelect}
+      cleanable={false}
+      placement={'autoVerticalEnd'}
+      size={'sm'}
+      searchable={false}
+      width={62}
+      renderMenuItem={renderMenuItem}
+      className={cx('subtle-style', className)}
+    />
+  )
 }
 
 export const LocalizationPicker = namedObserver('LocalizationPicker', RawLocalizationPicker)

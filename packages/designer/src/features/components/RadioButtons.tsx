@@ -51,15 +51,14 @@ export const RadioButtons = ({label, items, className, ...props}: RadioButtonsPr
   return (
     <div className={cx(styles.container, className)}>
       {!!label && <label>{label}</label>}
-      <RRadioGroup {...props as any} size={'xs'} inline appearance={'picker'}>
+      <RRadioGroup {...(props as any)} size={'xs'} inline appearance={'picker'}>
         {items?.map(({value, label, hint}, i) => (
           <Radio value={value} key={i}>
             <Hinted hint={hint} placement={'autoHorizontal'}>
               {label ?? value}
             </Hinted>
           </Radio>
-        ))
-        }
+        ))}
       </RRadioGroup>
     </div>
   )

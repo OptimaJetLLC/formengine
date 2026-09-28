@@ -4,8 +4,7 @@ import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderForm'
 import form from './forms/mantine-error-display-form.json'
 
-const findFieldByDataKey = (formData: ComponentData, dataKey: string) =>
-  formData.allComponentFields?.find((f) => f.dataKey === dataKey)
+const findFieldByDataKey = (formData: ComponentData, dataKey: string) => formData.allComponentFields?.find(f => f.dataKey === dataKey)
 
 /**
  * Tests error display for two different mechanics: MtDatePickerInput (no native error prop,

@@ -102,7 +102,7 @@ registerBooleanComponentFeature(cfDisableActionEditors)
 export const cfRequiredProperties = 'required-properties'
 registerComponentFeature({
   name: cfRequiredProperties,
-  allowMultiple: true
+  allowMultiple: true,
 })
 
 /**

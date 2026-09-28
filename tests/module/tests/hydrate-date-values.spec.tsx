@@ -5,20 +5,20 @@ const isoDate = '2025-05-23T21:00:00.000Z'
 const isoFrom = '2025-05-09T21:00:00.000Z'
 const isoTo = '2025-05-30T21:00:00.000Z'
 
-const customDateComponent = define(() => <div/>, 'CustomDateField')
+const customDateComponent = define(() => <div />, 'CustomDateField')
   .name('Custom date')
   .props({
     label: string,
     calendarDefaultDate: date,
     defaultValue: date,
-    value: date.valued
+    value: date.valued,
   })
   .build()
 
-const customStringComponent = define(() => <div/>, 'CustomStringField')
+const customStringComponent = define(() => <div />, 'CustomStringField')
   .name('Custom string')
   .props({
-    value: string.valued
+    value: string.valued,
   })
   .build()
 
@@ -29,18 +29,18 @@ const customValidators: Validators = {
         {key: 'value', type: 'date', required: false},
         {key: 'from', type: 'date', required: false},
         {key: 'to', type: 'date', required: false},
-        {key: 'number', type: 'number', required: false}
+        {key: 'number', type: 'number', required: false},
       ],
-      validate: () => true
+      validate: () => true,
     },
     testCustomString: {
       params: [
         {key: 'value', type: 'string', required: false},
-        {key: 'number', type: 'number', required: false}
+        {key: 'number', type: 'number', required: false},
       ],
-      validate: () => true
-    }
-  }
+      validate: () => true,
+    },
+  },
 }
 
 const persistedForm = {
@@ -56,7 +56,7 @@ const persistedForm = {
           label: {value: 'Date'},
           calendarDefaultDate: {value: isoFrom},
           defaultValue: {value: isoDate},
-          value: {value: isoTo}
+          value: {value: isoTo},
         },
         schema: {
           validations: [
@@ -65,25 +65,25 @@ const persistedForm = {
             {
               key: 'testCustomDate',
               type: 'custom',
-              args: {value: isoDate, from: isoFrom, to: isoTo, number: 10}
+              args: {value: isoDate, from: isoFrom, to: isoTo, number: 10},
             },
             {
               key: 'testCustomString',
               type: 'custom',
-              args: {value: isoDate, number: 5}
-            }
-          ]
-        }
+              args: {value: isoDate, number: 5},
+            },
+          ],
+        },
       },
       {
         key: 'customString',
         type: 'CustomStringField',
         props: {
-          value: {value: isoDate}
-        }
-      }
-    ]
-  }
+          value: {value: isoDate},
+        },
+      },
+    ],
+  },
 }
 
 const expectDate = (value: unknown, expectedIso: string) => {
@@ -93,9 +93,7 @@ const expectDate = (value: unknown, expectedIso: string) => {
 
 const createStore = (useBuilderView: boolean) => {
   const components = [customDateComponent, customStringComponent]
-  const view = useBuilderView
-    ? new BuilderView(components)
-    : createView(components.map(({model}) => model))
+  const view = useBuilderView ? new BuilderView(components) : createView(components.map(({model}) => model))
   return createViewerStore({view, validators: customValidators})
 }
 
@@ -161,7 +159,7 @@ describe('Date values are hydrated from metadata after JSON deserialize', () => 
 
   it('unions the valued date property with dateProperties', () => {
     const model = new Model(
-      () => <div/>,
+      () => <div />,
       'PartialDateField',
       undefined,
       'value',
@@ -179,21 +177,25 @@ describe('Date values are hydrated from metadata after JSON deserialize', () => 
       {}
     ).withDateProperties(['defaultValue'])
     const store = createViewerStore({view: createView([model])})
-    store.applyStringForm(JSON.stringify({
-      form: {
-        key: 'Screen',
-        type: 'Screen',
-        props: {},
-        children: [{
-          key: 'partialDate',
-          type: 'PartialDateField',
-          props: {
-            defaultValue: {value: isoDate},
-            value: {value: isoTo}
-          }
-        }]
-      }
-    }))
+    store.applyStringForm(
+      JSON.stringify({
+        form: {
+          key: 'Screen',
+          type: 'Screen',
+          props: {},
+          children: [
+            {
+              key: 'partialDate',
+              type: 'PartialDateField',
+              props: {
+                defaultValue: {value: isoDate},
+                value: {value: isoTo},
+              },
+            },
+          ],
+        },
+      })
+    )
 
     const dateField = store.form.componentTree.findByKey('partialDate')
     expectDate(dateField?.store.props.defaultValue?.value, isoDate)
@@ -203,28 +205,32 @@ describe('Date values are hydrated from metadata after JSON deserialize', () => 
   it('leaves invalid date strings unchanged when hydrating a form', () => {
     const garbage = 'not-a-date'
     const store = createStore(true)
-    store.applyStringForm(JSON.stringify({
-      form: {
-        key: 'Screen',
-        type: 'Screen',
-        props: {},
-        children: [{
-          key: 'customDate',
-          type: 'CustomDateField',
-          props: {
-            calendarDefaultDate: {value: garbage},
-            defaultValue: {value: garbage},
-            value: {value: isoTo}
-          },
-          schema: {
-            validations: [
-              {key: 'min', args: {value: garbage}},
-              {key: 'max', args: {value: isoTo}}
-            ]
-          }
-        }]
-      }
-    }))
+    store.applyStringForm(
+      JSON.stringify({
+        form: {
+          key: 'Screen',
+          type: 'Screen',
+          props: {},
+          children: [
+            {
+              key: 'customDate',
+              type: 'CustomDateField',
+              props: {
+                calendarDefaultDate: {value: garbage},
+                defaultValue: {value: garbage},
+                value: {value: isoTo},
+              },
+              schema: {
+                validations: [
+                  {key: 'min', args: {value: garbage}},
+                  {key: 'max', args: {value: isoTo}},
+                ],
+              },
+            },
+          ],
+        },
+      })
+    )
 
     expect(store.formLoadError).toBeUndefined()
     const dateField = store.form.componentTree.findByKey('customDate')

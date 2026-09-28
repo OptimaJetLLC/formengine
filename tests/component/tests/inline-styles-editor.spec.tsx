@@ -22,7 +22,7 @@ for (const kind of kinds) {
           kind,
           enableInlineStyles,
           disableStyles,
-          disableWrapperStyles
+          disableWrapperStyles,
         })
       }
     }
@@ -36,7 +36,7 @@ const createTestComponent = (id: number, combination: FeatureCombination) => {
   const dataTestId = `${name}_testId`
 
   const Component = () => {
-    return <div data-testid={dataTestId}/>
+    return <div data-testid={dataTestId} />
   }
 
   let def = define(Component, name)
@@ -78,15 +78,12 @@ const form = buildForm()
   })
   .json()
 
-const view = new BuilderView([
-  ...allComponentsBuilder,
-  ...builtComponents.map(({component}) => component)
-])
+const view = new BuilderView([...allComponentsBuilder, ...builtComponents.map(({component}) => component)])
 
 describe('Inline styles editor visibility', () => {
   it('should show or hide Inline styles section according to model.kind and features', async () => {
     const getForm = () => form
-    const {findByTestId, queryByText} = render(<FormBuilder view={view} getForm={getForm}/>)
+    const {findByTestId, queryByText} = render(<FormBuilder view={view} getForm={getForm} />)
     const stylesTab = await findByTestId('Style_Tab')
 
     for (let index = 0; index < builtComponents.length; index += 1) {
@@ -122,4 +119,3 @@ describe('Inline styles editor visibility', () => {
     }
   })
 })
-

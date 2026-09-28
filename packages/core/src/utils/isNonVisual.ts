@@ -38,8 +38,6 @@ export function warnMisplacedNonVisualComponents(root: ComponentData): void {
   treeForEach(root, node => {
     if (node === root || !isNonVisual(node)) return
     if (node.parent === root) return
-    console.warn(
-      `Non-visual component "${node.key}" (${node.model.type}) must be a direct child of the root.`
-    )
+    console.warn(`Non-visual component "${node.key}" (${node.model.type}) must be a direct child of the root.`)
   })
 }

@@ -13,30 +13,35 @@ interface TableRowProps {
 const TableRow = (props: TableRowProps) => {
   const {cellChild, rowData, rowIndex, onRowClick} = props
 
-  const handleRowClick = useCallback((e: MouseEvent<HTMLDivElement>) => {
-    onRowClick?.(e, rowData, rowIndex)
-  }, [rowIndex, onRowClick, rowData])
+  const handleRowClick = useCallback(
+    (e: MouseEvent<HTMLDivElement>) => {
+      onRowClick?.(e, rowData, rowIndex)
+    },
+    [rowIndex, onRowClick, rowData]
+  )
 
   const cells = useMemo(() => {
     return Object.entries(rowData).map(([dataKey]) => {
       const contextValue: CellInfo = {dataKey, rowIndex, rowData} as const
-      return <CellInfoContextProvider key={dataKey} value={contextValue}>
-        <div data-testid={`cell-${rowIndex}-${dataKey}`}>
-          {cellChild}
-        </div>
-      </CellInfoContextProvider>
+      return (
+        <CellInfoContextProvider key={dataKey} value={contextValue}>
+          <div data-testid={`cell-${rowIndex}-${dataKey}`}>{cellChild}</div>
+        </CellInfoContextProvider>
+      )
     })
   }, [rowData, rowIndex, cellChild])
 
   const rowContext = useMemo(() => {
-    return ({rowIndex, rowData} as const)
+    return {rowIndex, rowData} as const
   }, [rowData, rowIndex])
 
-  return <CellInfoContextProvider value={rowContext}>
-    <div data-testid={`row-${rowIndex}`} onClick={handleRowClick}>
-      {cells}
-    </div>
-  </CellInfoContextProvider>
+  return (
+    <CellInfoContextProvider value={rowContext}>
+      <div data-testid={`row-${rowIndex}`} onClick={handleRowClick}>
+        {cells}
+      </div>
+    </CellInfoContextProvider>
+  )
 }
 
 interface TestTableProps {
@@ -51,18 +56,12 @@ const TestTable = (props: TestTableProps) => {
   const rows = useMemo(() => data ?? [], [data])
 
   const children = useMemo(() => {
-    return rows.map(((rowData, rowIndex) => {
-      return <TableRow key={rowIndex}
-                       cellChild={cellChild}
-                       rowData={rowData}
-                       rowIndex={rowIndex}
-                       onRowClick={onRowClick}/>
-    }))
+    return rows.map((rowData, rowIndex) => {
+      return <TableRow key={rowIndex} cellChild={cellChild} rowData={rowData} rowIndex={rowIndex} onRowClick={onRowClick} />
+    })
   }, [rows, cellChild, onRowClick])
 
-  return <div {...otherProps}>
-    {children}
-  </div>
+  return <div {...otherProps}>{children}</div>
 }
 
 export const testTable = define(TestTable, 'TestTable')
@@ -87,9 +86,7 @@ const SimpleCell = ({children, onClick}: SimpleCellProps) => {
   return <span onClick={onClick}>{data}</span>
 }
 
-export const simpleCell = define(SimpleCell, 'SimpleCell')
-  .name('SimpleCell')
-  .props({
-    children: string.dataBound,
-    onClick: event,
-  })
+export const simpleCell = define(SimpleCell, 'SimpleCell').name('SimpleCell').props({
+  children: string.dataBound,
+  onClick: event,
+})

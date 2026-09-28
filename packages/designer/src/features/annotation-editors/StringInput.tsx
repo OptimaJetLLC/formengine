@@ -36,9 +36,17 @@ export const ResizableStringInput = (props: ResizableStringInputProps) => {
 
   return (
     <div ref={containerRef} className={styles.sizer} data-contents={value} data-testid={testId}>
-      <Input ref={inputRef} rows={1} name={annotation.key} value={value} onChange={onChange} size="xs" as="textarea"
-             {...props.annotation.editorProps}/>
-      <CleanButton onClick={onClean}/>
+      <Input
+        ref={inputRef}
+        rows={1}
+        name={annotation.key}
+        value={value}
+        onChange={onChange}
+        size="xs"
+        as="textarea"
+        {...props.annotation.editorProps}
+      />
+      <CleanButton onClick={onClean} />
     </div>
   )
 }
@@ -49,7 +57,9 @@ export const ResizableStringInput = (props: ResizableStringInputProps) => {
  * @returns the React element.
  */
 export const StringInput = (props: AnnotationEditorProps) => {
-  return <LabeledProperty {...props} >
-    <ResizableStringInput {...props} />
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <ResizableStringInput {...props} />
+    </LabeledProperty>
+  )
 }

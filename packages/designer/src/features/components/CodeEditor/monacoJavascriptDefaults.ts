@@ -4,7 +4,6 @@ import {ActionEventArgsDeclaration, IFormDataDeclaration} from '@react-form-buil
  * The additional source file to the language service.
  */
 type MonacoExtraLib = {
-
   /**
    * The file content.
    */
@@ -18,5 +17,5 @@ type MonacoExtraLib = {
 
 export const monacoJavascriptDefaults: MonacoExtraLib[] = [
   {content: ActionEventArgsDeclaration, filePath: 'ActionEventArgs'},
-  {content: IFormDataDeclaration, filePath: 'Form'}
+  {content: IFormDataDeclaration, filePath: 'Form'},
 ]

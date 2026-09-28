@@ -9,7 +9,7 @@ import {
   Store,
   StoreProvider,
   useDisposable,
-  ViewerPropsProvider
+  ViewerPropsProvider,
 } from '@react-form-builder/core'
 import {makeObservable, observable} from 'mobx'
 import type {ReactNode} from 'react'
@@ -38,9 +38,8 @@ class BuilderProviderData {
     public readonly store: Store,
     public readonly builderStore: BuilderStore,
     public readonly localStorageSynchronizer?: LocalStorageSynchronizer,
-    private readonly extraDisposers: Array<() => void> = [],
-  ) {
-  }
+    private readonly extraDisposers: Array<() => void> = []
+  ) {}
 
   dispose() {
     this.extraDisposers.forEach(dispose => dispose())
@@ -64,9 +63,13 @@ class BuilderComponentStateFactory {
   builderStore?: BuilderStore
 
   constructor() {
-    makeObservable(this, {
-      builderStore: observable.ref,
-    }, {name: nameObservable(`BuilderComponentStateFactory`)})
+    makeObservable(
+      this,
+      {
+        builderStore: observable.ref,
+      },
+      {name: nameObservable(`BuilderComponentStateFactory`)}
+    )
   }
 
   createComponentState(data: ComponentData, store: Store, context?: ComponentPropertiesContext) {
@@ -85,35 +88,33 @@ class BuilderComponentStateFactory {
   }
 }
 
-const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
-  const {builderRef, ...viewerProps} = props
+const useBuilderProviderData = (props: FormBuilderProps) =>
+  useCallback(() => {
+    const {builderRef, ...viewerProps} = props
 
-  const stateFactory = new BuilderComponentStateFactory()
-  const componentStateFactory = (data: ComponentData, store: Store, context?: ComponentPropertiesContext) => {
-    return stateFactory.createComponentState(data, store, context)
-  }
-  const store = new Store(new FormViewerPropsStore(viewerProps), componentStateFactory)
-
-  const builderStore = new BuilderStore(store, props)
-  builderStore.changeBuilderMode('builder')
-  stateFactory.builderStore = builderStore
-
-  const localStorageSynchronizer = isDesignerLocalStorageEnabled()
-    ? new LocalStorageSynchronizer(builderStore, props)
-    : undefined
-
-  const extraDisposers: Array<() => void> = []
-  if (!localStorageSynchronizer) {
-    const lang = resolveBuilderUiLanguage(props.defaultBuilderLanguage, builderStore.availableLanguages)
-      ?? builderStore.defaultLanguage
-    void builderStore.changeLanguage(lang)
-    if (props.defaultViewerLanguage) {
-      extraDisposers.push(subscribeViewerLanguageWhenFormReady(builderStore, undefined, props.defaultViewerLanguage))
+    const stateFactory = new BuilderComponentStateFactory()
+    const componentStateFactory = (data: ComponentData, store: Store, context?: ComponentPropertiesContext) => {
+      return stateFactory.createComponentState(data, store, context)
     }
-  }
+    const store = new Store(new FormViewerPropsStore(viewerProps), componentStateFactory)
 
-  return new BuilderProviderData(store, builderStore, localStorageSynchronizer, extraDisposers)
-}, [props])
+    const builderStore = new BuilderStore(store, props)
+    builderStore.changeBuilderMode('builder')
+    stateFactory.builderStore = builderStore
+
+    const localStorageSynchronizer = isDesignerLocalStorageEnabled() ? new LocalStorageSynchronizer(builderStore, props) : undefined
+
+    const extraDisposers: Array<() => void> = []
+    if (!localStorageSynchronizer) {
+      const lang = resolveBuilderUiLanguage(props.defaultBuilderLanguage, builderStore.availableLanguages) ?? builderStore.defaultLanguage
+      void builderStore.changeLanguage(lang)
+      if (props.defaultViewerLanguage) {
+        extraDisposers.push(subscribeViewerLanguageWhenFormReady(builderStore, undefined, props.defaultViewerLanguage))
+      }
+    }
+
+    return new BuilderProviderData(store, builderStore, localStorageSynchronizer, extraDisposers)
+  }, [props])
 
 /**
  * React component encapsulating MobX storage for the form builder.
@@ -140,8 +141,20 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
     store.formViewerPropsStore.applyProps(viewerProps)
     store.form.componentTree.state = store.formViewerPropsStore.initialState
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.initialData, props.initialState, props.view, props.validators, props.formValidators, props.localize,
-    props.actions, props.errorWrapper, props.readOnly, props.disabled, props.componentWrapper, props.userContext])
+  }, [
+    props.initialData,
+    props.initialState,
+    props.view,
+    props.validators,
+    props.formValidators,
+    props.localize,
+    props.actions,
+    props.errorWrapper,
+    props.readOnly,
+    props.disabled,
+    props.componentWrapper,
+    props.userContext,
+  ])
 
   useEffect(() => {
     props.onFormSchemaChange?.(builderStore.formAsString)
@@ -171,7 +184,7 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
                     <TooltipPlacementProvider value={'auto'}>
                       <DndProvider backend={HTML5Backend}>
                         {children}
-                        <CustomDragLayer/>
+                        <CustomDragLayer />
                       </DndProvider>
                     </TooltipPlacementProvider>
                   </StylesProvider>
@@ -201,6 +214,6 @@ const RawBuilderProviders = (props: RawBuilderProvidersProps) => {
 
   if (!builderStore || !store) return null
 
-  return <Providers {...props} builderStore={builderStore} store={store}/>
+  return <Providers {...props} builderStore={builderStore} store={store} />
 }
 export const BuilderProviders = namedObserver('BuilderProviders', RawBuilderProviders)

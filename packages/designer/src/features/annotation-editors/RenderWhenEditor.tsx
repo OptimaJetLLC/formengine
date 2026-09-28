@@ -13,26 +13,35 @@ import type {AnnotationEditorProps, CalculableEditorProps} from './AnnotationEdi
 const RawRenderWhenEditor = (props: AnnotationEditorProps) => {
   const componentStore = props.componentData.store
 
-  const onChange = useCallback((value: string) => {
-    if (!componentStore.renderWhen) {
-      componentStore.renderWhen = {value}
-      return
-    }
-    componentStore.renderWhen.value = value
-  }, [componentStore])
+  const onChange = useCallback(
+    (value: string) => {
+      if (!componentStore.renderWhen) {
+        componentStore.renderWhen = {value}
+        return
+      }
+      componentStore.renderWhen.value = value
+    },
+    [componentStore]
+  )
 
   const getComputeCode = useCallback(() => componentStore.renderWhen?.fnSource ?? '', [componentStore])
   const getComputeType = useCallback(() => componentStore.renderWhen?.computeType, [componentStore])
-  const hasComputeCode = useCallback<CalculableEditorProps['hasComputeCode']>(type => {
-    if (type === 'function') return !!getComputeCode()
-    return false
-  }, [getComputeCode])
+  const hasComputeCode = useCallback<CalculableEditorProps['hasComputeCode']>(
+    type => {
+      if (type === 'function') return !!getComputeCode()
+      return false
+    },
+    [getComputeCode]
+  )
 
-  const setComputeCode = useCallback((code: string) => {
-    componentStore.renderWhen ??= {}
-    componentStore.renderWhen.fnSource = code
-    componentStore.renderWhen.computeType = 'function'
-  }, [componentStore])
+  const setComputeCode = useCallback(
+    (code: string) => {
+      componentStore.renderWhen ??= {}
+      componentStore.renderWhen.fnSource = code
+      componentStore.renderWhen.computeType = 'function'
+    },
+    [componentStore]
+  )
 
   const disableCompute = useCallback(() => {
     if (componentStore.renderWhen) componentStore.renderWhen.computeType = undefined
@@ -49,8 +58,8 @@ const RawRenderWhenEditor = (props: AnnotationEditorProps) => {
   }
 
   return (
-    <LabeledProperty {...renderWhenProperties} >
-      <Input value={componentStore.renderWhen?.value ?? ''} onChange={onChange} size={'xs'}/>
+    <LabeledProperty {...renderWhenProperties}>
+      <Input value={componentStore.renderWhen?.value ?? ''} onChange={onChange} size={'xs'} />
     </LabeledProperty>
   )
 }

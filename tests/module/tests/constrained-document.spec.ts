@@ -51,12 +51,7 @@ describe('constrainedDocument', () => {
         testCase.canEditBeginContextLine,
         testCase.endContextLine
       )
-      const extracted = extractEditableBody(
-        doc,
-        testCase.beginContextLine,
-        testCase.canEditBeginContextLine,
-        testCase.endContextLine
-      )
+      const extracted = extractEditableBody(doc, testCase.beginContextLine, testCase.canEditBeginContextLine, testCase.endContextLine)
       expect(extracted, JSON.stringify(testCase)).toBe(testCase.body)
     }
   })
@@ -70,4 +65,3 @@ describe('constrainedDocument', () => {
     expect(extractEditableBody(docValue, beginContextLine, true, endContextLine)).toBe(body)
   })
 })
-

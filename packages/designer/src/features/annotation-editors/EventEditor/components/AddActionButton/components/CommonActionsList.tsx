@@ -16,11 +16,15 @@ export const CommonActionsList = ({onSelect}: ActionsMenuProps) => {
 
   const handleSelect = useCallback((name: string) => () => onSelect({name, type: 'common'}), [onSelect])
 
-  const items = useMemo(() => Object.keys(store.commonActions).map(name => (
-    <Dropdown.Item key={name} onClick={handleSelect(name)}>
-      {name}
-    </Dropdown.Item>
-  )), [handleSelect, store.commonActions])
+  const items = useMemo(
+    () =>
+      Object.keys(store.commonActions).map(name => (
+        <Dropdown.Item key={name} onClick={handleSelect(name)}>
+          {name}
+        </Dropdown.Item>
+      )),
+    [handleSelect, store.commonActions]
+  )
 
   return (
     <Dropdown.Menu title={t('common')} eventKey="common">

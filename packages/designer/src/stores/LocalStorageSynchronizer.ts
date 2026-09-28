@@ -2,8 +2,8 @@ import type {BuilderTheme, LanguageFullCode, ViewMode} from '@react-form-builder
 import {findLanguage, isUndefined, nameAutorun} from '@react-form-builder/core'
 import type {IReactionDisposer} from 'mobx'
 import {autorun, reaction} from 'mobx'
-import {resolveBuilderUiLanguage} from '../features/localization/languageUtils'
 import type {FormBuilderProps} from '../FormBuilderProps'
+import {resolveBuilderUiLanguage} from '../features/localization/languageUtils'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {parseJson} from '../utils/parseJson'
 import type {BuilderStore} from './BuilderStore'
@@ -22,12 +22,12 @@ const viewerLanguageReactionName = nameAutorun('LocalStorageSynchronizer', 'vwLa
 export function subscribeViewerLanguageWhenFormReady(
   builderStore: BuilderStore,
   viewerLanguageCodeFromStorage: string | undefined,
-  defaultViewerLanguageCode: LanguageFullCode | undefined,
+  defaultViewerLanguageCode: LanguageFullCode | undefined
 ): IReactionDisposer {
   let appliedOnce = false
   return reaction(
     () => builderStore.viewer.form.languages,
-    (formLanguages) => {
+    formLanguages => {
       const languagesLength = formLanguages.length
 
       if (appliedOnce || languagesLength === 0) return
@@ -39,15 +39,13 @@ export function subscribeViewerLanguageWhenFormReady(
         ? findLanguage(languages, viewerLanguageCodeFromStorage as LanguageFullCode)
         : undefined
 
-      const viewerFromProp = defaultViewerLanguageCode
-        ? findLanguage(languages, defaultViewerLanguageCode)
-        : undefined
+      const viewerFromProp = defaultViewerLanguageCode ? findLanguage(languages, defaultViewerLanguageCode) : undefined
 
       const finalViewerLanguage = viewerFromStorage ?? viewerFromProp ?? builderStore.viewer.form.defaultLanguage
       builderStore.viewer.selectedLanguage = finalViewerLanguage
       builderStore.localizationLanguage = finalViewerLanguage
     },
-    {fireImmediately: true, name: viewerLanguageReactionName},
+    {fireImmediately: true, name: viewerLanguageReactionName}
   )
 }
 
@@ -93,9 +91,7 @@ export class LocalStorageSynchronizer {
 
     const builderLanguageKey = withPrefix('builderLanguage')
     const builderLanguage = this.getItem<string>(builderLanguageKey)
-    const fromStorage = builderLanguage
-      ? builderStore.availableLanguages.find(l => l.fullCode === builderLanguage)
-      : undefined
+    const fromStorage = builderLanguage ? builderStore.availableLanguages.find(l => l.fullCode === builderLanguage) : undefined
     const fromProp = resolveBuilderUiLanguage(builderProps.defaultBuilderLanguage, builderStore.availableLanguages)
     const lang = fromStorage ?? fromProp ?? builderStore.defaultLanguage
 
@@ -107,26 +103,17 @@ export class LocalStorageSynchronizer {
 
     this.#disposers = [
       subscribeViewerLanguageWhenFormReady(builderStore, viewerLanguageCode, defaultViewerLanguageCode),
-      autorun(
-        () => this.updateItem(resolutionKey, builderStore.viewMode),
-        {name: nameAutorun(className, 'saveResolution')}
-      ),
-      autorun(
-        () => this.updateItem(openedPanelsKey, JSON.stringify(builderStore.openedPanels)),
-        {name: nameAutorun(className, 'saveOpenedPanels')}
-      ),
-      autorun(
-        () => this.updateItem(bottomPanelHeightKey, builderStore.bottomPanelHeight),
-        {name: nameAutorun(className, 'saveBottomPanelHeight')}
-      ),
-      autorun(
-        () => this.updateItem(themeKey, builderStore.theme),
-        {name: nameAutorun(className, 'saveTheme')}
-      ),
-      autorun(
-        () => this.updateItem(testingAutorunKey, builderStore.testingAutorun),
-        {name: nameAutorun(className, 'saveTestingAutorunSetting')}
-      ),
+      autorun(() => this.updateItem(resolutionKey, builderStore.viewMode), {name: nameAutorun(className, 'saveResolution')}),
+      autorun(() => this.updateItem(openedPanelsKey, JSON.stringify(builderStore.openedPanels)), {
+        name: nameAutorun(className, 'saveOpenedPanels'),
+      }),
+      autorun(() => this.updateItem(bottomPanelHeightKey, builderStore.bottomPanelHeight), {
+        name: nameAutorun(className, 'saveBottomPanelHeight'),
+      }),
+      autorun(() => this.updateItem(themeKey, builderStore.theme), {name: nameAutorun(className, 'saveTheme')}),
+      autorun(() => this.updateItem(testingAutorunKey, builderStore.testingAutorun), {
+        name: nameAutorun(className, 'saveTestingAutorunSetting'),
+      }),
       reaction(
         () => builderStore.formBuilderLanguage.fullCode,
         code => this.updateItem(builderLanguageKey, code),
@@ -136,14 +123,13 @@ export class LocalStorageSynchronizer {
         () => builderStore.localizationLanguage.fullCode,
         code => this.updateItem(viewerLanguageKey, code),
         {name: nameAutorun(className, 'saveViewerLng')}
-      )
+      ),
     ]
 
     if (builderProps.persistFormName !== false) {
-      this.#disposers.push(autorun(
-        () => this.updateItem(formNameKey, builderStore.activeFormName),
-        {name: nameAutorun(className, 'saveFormName')}
-      ))
+      this.#disposers.push(
+        autorun(() => this.updateItem(formNameKey, builderStore.activeFormName), {name: nameAutorun(className, 'saveFormName')})
+      )
     }
   }
 

@@ -26,6 +26,6 @@ export function importPublicKey(pem: string) {
       namedCurve: 'P-384',
     },
     true,
-    ['verify'],
+    ['verify']
   )
 }

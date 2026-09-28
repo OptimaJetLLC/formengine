@@ -8,9 +8,7 @@ const HideTooltipComponent = (props: any) => {
   return <div {...props}></div>
 }
 
-const hideTooltipComponent = define(HideTooltipComponent, 'HideTooltipComponent')
-  .hideTooltipEditor()
-  .build()
+const hideTooltipComponent = define(HideTooltipComponent, 'HideTooltipComponent').hideTooltipEditor().build()
 
 describe('Hide tooltip editor test', () => {
   it('hideTooltipEditor should hide the tooltip editor in Designer', async () => {

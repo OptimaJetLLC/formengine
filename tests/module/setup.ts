@@ -2,7 +2,7 @@ import {beforeAll} from 'vitest'
 import failOnConsole from 'vitest-fail-on-console'
 
 failOnConsole({
-  shouldFailOnWarn: false
+  shouldFailOnWarn: false,
 })
 
 beforeAll(() => {

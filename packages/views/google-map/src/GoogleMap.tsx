@@ -9,46 +9,52 @@ import {Labeled} from './Labeled'
 
 const errorLabels: Record<BuilderMode, string> = {
   builder: 'Google Maps API key is required. Insert the key, save the form and reload the page.',
-  viewer: 'Google Maps API key is required.'
+  viewer: 'Google Maps API key is required.',
 }
 
 const NoApiKey = (props: ComponentProps<any>) => {
   const builderMode = useBuilderMode()
-  return <div {...props}>
-    <p>{errorLabels[builderMode]}</p>
-  </div>
+  return (
+    <div {...props}>
+      <p>{errorLabels[builderMode]}</p>
+    </div>
+  )
 }
 
 const GoogleMapLoader = ({apiKey, region, language, label, className, ...props}: GoogleMapProps) => {
   // div wrapper is needed because the Labeled wrapper applies attributes to the child, but the GoogleMapRenderer component does not accept this props.
-  const content = <div>
-    <APIProvider apiKey={apiKey} region={region} language={language}>
-      <GoogleMapRenderer {...props}/>
-    </APIProvider>
-  </div>
+  const content = (
+    <div>
+      <APIProvider apiKey={apiKey} region={region} language={language}>
+        <GoogleMapRenderer {...props} />
+      </APIProvider>
+    </div>
+  )
 
   // GoogleMapRenderer does not display the data-testid attribute
   const dataTestId = (props as any)?.['data-testid']
 
-  return <Labeled label={label} className={className} data-testid={dataTestId}>
-    {apiKey ? content : <NoApiKey className={className}/>}
-  </Labeled>
+  return (
+    <Labeled label={label} className={className} data-testid={dataTestId}>
+      {apiKey ? content : <NoApiKey className={className} />}
+    </Labeled>
+  )
 }
 
 const controlPositions: Record<string, number> = {
   'Top left': 1,
-  'Top': 2,
+  Top: 2,
   'Top right': 3,
   'Left center': 4,
-  'Left': 5,
+  Left: 5,
   'Left bottom': 6,
-  'Right': 7,
+  Right: 7,
   'Right center': 8,
   'Right bottom': 9,
   'Bottom left': 10,
-  'Bottom': 11,
+  Bottom: 11,
   'Bottom right': 12,
-  'Center': 13,
+  Center: 13,
   'Block start inline start': 14,
   'Block start inline center': 15,
   'Block start inline end': 16,
@@ -60,7 +66,7 @@ const controlPositions: Record<string, number> = {
   'Inline end block end': 22,
   'Block end inline start': 23,
   'Block end inline center': 24,
-  'Block end inline end': 25
+  'Block end inline end': 25,
 }
 
 export const googleMap = define(GoogleMapLoader, 'GoogleMap')
@@ -76,12 +82,9 @@ export const googleMap = define(GoogleMapLoader, 'GoogleMap')
     mapId: string.withEditorProps({placeholder: 'DEMO_MAP_ID'}),
     language: string,
     region: string,
-    colorScheme: oneOf('DARK', 'LIGHT', 'FOLLOW_SYSTEM')
-      .withEditorProps({creatable: false}),
-    mapTypeId: oneOf('roadmap', 'satellite', 'hybrid', 'terrain').default('roadmap')
-      .withEditorProps({creatable: false}),
-    gestureHandling: oneOf('auto', 'cooperative', 'greedy', 'none')
-      .withEditorProps({creatable: false}),
+    colorScheme: oneOf('DARK', 'LIGHT', 'FOLLOW_SYSTEM').withEditorProps({creatable: false}),
+    mapTypeId: oneOf('roadmap', 'satellite', 'hybrid', 'terrain').default('roadmap').withEditorProps({creatable: false}),
+    gestureHandling: oneOf('auto', 'cooperative', 'greedy', 'none').withEditorProps({creatable: false}),
     showMapControl: boolean.default(true),
     mapControlPosition: oneOf(...Object.keys(controlPositions).map(key => controlPositions[key]))
       .labeled(...Object.keys(controlPositions))
@@ -91,8 +94,9 @@ export const googleMap = define(GoogleMapLoader, 'GoogleMap')
     addMarkerOnSearch: boolean.default(false),
     allowMultipleMarkers: boolean.default(false),
     allowChangingMarkers: boolean.default(false),
-    collisionBehavior: oneOf('REQUIRED', 'REQUIRED_AND_HIDES_OPTIONAL', 'OPTIONAL_AND_HIDES_LOWER_PRIORITY')
-      .withEditorProps({creatable: false}),
+    collisionBehavior: oneOf('REQUIRED', 'REQUIRED_AND_HIDES_OPTIONAL', 'OPTIONAL_AND_HIDES_LOWER_PRIORITY').withEditorProps({
+      creatable: false,
+    }),
     markers: array.valued.setup({editor: 'object'}),
     markerWindowTitle: string.default('Marker'),
     removeMarkerCaption: string.default('Delete marker'),

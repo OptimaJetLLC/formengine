@@ -1,14 +1,14 @@
 import type {Annotation, ComponentData, Meta, Model} from '@react-form-builder/core'
 import {
+  ComponentDataProvider,
   cfDisableActionEditors,
   cfDisableAdditionalProperties,
   cfDisableMainComponentProperties,
   cfDisableStyleProperties,
   cfDisableTooltipProperties,
   cfNonVisual,
-  ComponentDataProvider,
   key,
-  useTooltipType
+  useTooltipType,
 } from '@react-form-builder/core'
 import cx from 'clsx'
 import type {HTMLAttributes, ReactNode} from 'react'
@@ -71,26 +71,22 @@ const useSectionAnnotations = (section: Section): SectionAnnotations | undefined
   return {data, meta, model, properties, additionalProperties, tooltipProps, showTooltipProps}
 }
 
-const SectionExtras = ({annotations}: { annotations: SectionAnnotations }) => {
+const SectionExtras = ({annotations}: {annotations: SectionAnnotations}) => {
   const getLabel = useTranslationPart('propertiesEditor')
   const {model, data, additionalProperties, tooltipProps, showTooltipProps} = annotations
 
   const showTooltip = showTooltipProps && !model.isFeatureEnabled(cfDisableTooltipProperties)
-  const showAdditional = !!additionalProperties?.length
-    && !model.isFeatureEnabled(cfDisableAdditionalProperties)
-    && !model.isFeatureEnabled(cfNonVisual)
+  const showAdditional =
+    !!additionalProperties?.length && !model.isFeatureEnabled(cfDisableAdditionalProperties) && !model.isFeatureEnabled(cfNonVisual)
 
   if (!showTooltip && !showAdditional) return null
 
   return (
     <div className={styles.sectionExtras}>
-      {showTooltip &&
-        <PropertyBlock annotations={tooltipProps} context={data.store.props}/>
-      }
-      {showAdditional &&
-        <PropertyBlock annotations={additionalProperties} context={data.store.props}
-                       header={getLabel('subSection.additionalProperties')}/>
-      }
+      {showTooltip && <PropertyBlock annotations={tooltipProps} context={data.store.props} />}
+      {showAdditional && (
+        <PropertyBlock annotations={additionalProperties} context={data.store.props} header={getLabel('subSection.additionalProperties')} />
+      )}
     </div>
   )
 }
@@ -108,7 +104,7 @@ const createSectionTabContent = (
     return (
       <div {...props} className={className}>
         {renderBody(annotations)}
-        {section === Section.Main && <SectionExtras annotations={annotations}/>}
+        {section === Section.Main && <SectionExtras annotations={annotations} />}
       </div>
     )
   }
@@ -118,55 +114,51 @@ const createSectionTabContent = (
 
 const MainTabContent = createSectionTabContent(Section.Main, 'Main_Tab_Content', ({data, model, properties}) => (
   <>
-    <PropertyEditorWrapper annotation={key} context={data.store}/>
-    {!model.isFeatureEnabled(cfDisableMainComponentProperties) && <>
-      {data.model.dataBindingType === 'oneWay' && <>
-        <PropertyEditorWrapper annotation={disableDataBinding} context={data.store}/>
-        {data.store.disableDataBinding?.value !== true &&
-          <PropertyEditorWrapper annotation={dataKey} context={data.store}/>
-        }
-      </>}
-      {data.model.dataBindingType === 'twoWay' &&
-        <PropertyEditorWrapper annotation={dataKey} context={data.store}/>
-      }
-      <PropertyBlock annotations={properties} context={data.store.props}/>
-    </>}
+    <PropertyEditorWrapper annotation={key} context={data.store} />
+    {!model.isFeatureEnabled(cfDisableMainComponentProperties) && (
+      <>
+        {data.model.dataBindingType === 'oneWay' && (
+          <>
+            <PropertyEditorWrapper annotation={disableDataBinding} context={data.store} />
+            {data.store.disableDataBinding?.value !== true && <PropertyEditorWrapper annotation={dataKey} context={data.store} />}
+          </>
+        )}
+        {data.model.dataBindingType === 'twoWay' && <PropertyEditorWrapper annotation={dataKey} context={data.store} />}
+        <PropertyBlock annotations={properties} context={data.store.props} />
+      </>
+    )}
   </>
 ))
 
-const StyleTabContent = createSectionTabContent(Section.Style, 'Style_Tab_Content', ({data, meta, model}) => (
-  !model.isFeatureEnabled(cfDisableStyleProperties)
-    ? <Styles meta={meta} store={data.store}/>
-    : null
-))
+const StyleTabContent = createSectionTabContent(Section.Style, 'Style_Tab_Content', ({data, meta, model}) =>
+  !model.isFeatureEnabled(cfDisableStyleProperties) ? <Styles meta={meta} store={data.store} /> : null
+)
 
 const ActionsTabContent = createSectionTabContent(Section.Actions, 'Actions_Tab_Content', ({data, meta, model, properties}) => (
   <>
-    {!model.isFeatureEnabled(cfDisableMainComponentProperties) && !model.isFeatureEnabled(cfDisableActionEditors) &&
-      <PropertyBlock annotations={properties} context={data.store.props}/>
-    }
-    {data.model.type === 'Modal' &&
-      <PropertyBlock annotations={meta.modules} context={data.store.props} displayedSection={Section.Actions}/>
-    }
+    {!model.isFeatureEnabled(cfDisableMainComponentProperties) && !model.isFeatureEnabled(cfDisableActionEditors) && (
+      <PropertyBlock annotations={properties} context={data.store.props} />
+    )}
+    {data.model.type === 'Modal' && (
+      <PropertyBlock annotations={meta.modules} context={data.store.props} displayedSection={Section.Actions} />
+    )}
   </>
 ))
 
-const RulesTabContent = createSectionTabContent(Section.Rules, 'Rules_Tab_Content', ({data, model, properties}) => (
-  !model.isFeatureEnabled(cfDisableMainComponentProperties)
-    ? <PropertyBlock annotations={properties} context={data.store.props}/>
-    : null
-))
+const RulesTabContent = createSectionTabContent(Section.Rules, 'Rules_Tab_Content', ({data, model, properties}) =>
+  !model.isFeatureEnabled(cfDisableMainComponentProperties) ? <PropertyBlock annotations={properties} context={data.store.props} /> : null
+)
 
 const renderActiveTabContent = (activeTab: Section): ReactNode => {
   switch (activeTab) {
     case Section.Main:
-      return <MainTabContent/>
+      return <MainTabContent />
     case Section.Style:
-      return <StyleTabContent/>
+      return <StyleTabContent />
     case Section.Actions:
-      return <ActionsTabContent/>
+      return <ActionsTabContent />
     case Section.Rules:
-      return <RulesTabContent/>
+      return <RulesTabContent />
     default:
       return activeTab satisfies never
   }
@@ -193,9 +185,7 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
   return (
     <ComponentDataProvider value={data}>
       <div {...props} className={cx(styles.container, props.className)}>
-        <div className={styles.propertiesList}>
-          {renderActiveTabContent(activeTab)}
-        </div>
+        <div className={styles.propertiesList}>{renderActiveTabContent(activeTab)}</div>
       </div>
     </ComponentDataProvider>
   )

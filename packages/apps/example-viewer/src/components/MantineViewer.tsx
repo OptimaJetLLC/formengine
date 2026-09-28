@@ -1,6 +1,6 @@
 // import RawMantineForm from '@react-form-builder/apps-common/forms/MantineForm-all.json'
 import RawMantineForm from '@react-form-builder/apps-common/forms/MantineForm.json'
-import {models, MtViewerWrapper} from '@react-form-builder/components-mantine'
+import {MtViewerWrapper, models} from '@react-form-builder/components-mantine'
 import {printModels} from '@react-form-builder/components-print'
 import {createView, FormViewer} from '@react-form-builder/core'
 

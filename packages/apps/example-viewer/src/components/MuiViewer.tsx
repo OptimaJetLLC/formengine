@@ -1,6 +1,6 @@
 import RawMuiForm from '@react-form-builder/apps-common/forms/MuiForm.json'
 import '../utils/muiLocalizations'
-import {models, MuiLocalizationProvider, MuiViewerWrapper} from '@react-form-builder/components-material-ui'
+import {MuiLocalizationProvider, MuiViewerWrapper, models} from '@react-form-builder/components-material-ui'
 import {printModels} from '@react-form-builder/components-print'
 import {createView, FormViewer} from '@react-form-builder/core'
 

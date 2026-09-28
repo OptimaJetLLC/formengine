@@ -11,17 +11,9 @@ import type {PanelPlacement} from './PanelPlacement'
 /**
  * Container div for panel layout. Uses CSS variable --panel-collapsed-size.
  */
-export const PanelContainer = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({className, ...props}, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cx(styles.container, className)}
-        {...props}
-      />
-    )
-  }
-)
+export const PanelContainer = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({className, ...props}, ref) => {
+  return <div ref={ref} className={cx(styles.container, className)} {...props} />
+})
 PanelContainer.displayName = 'PanelContainer'
 
 /**
@@ -42,14 +34,7 @@ export interface PanelProps extends PropsWithChildren<any> {
   onCollapse?: () => void
 }
 
-const RawPanel = ({
-                    children,
-                    placement = 'left',
-                    hideCollapsed = true,
-                    className,
-                    onCollapse,
-                    ...props
-                  }: PanelProps) => {
+const RawPanel = ({children, placement = 'left', hideCollapsed = true, className, onCollapse, ...props}: PanelProps) => {
   const store = useBuilderStore()
   const visible = !!store.openedPanels?.includes(placement)
   const collapsed = !visible
@@ -62,7 +47,7 @@ const RawPanel = ({
         <div className={cx(styles.contentContainer, {collapsed, hideCollapsed})}>{children}</div>
       </TooltipPlacementProvider>
       <div className={cx(styles.hideButton, placement, {collapsed})} onClick={handleCollapse}>
-        <ArrowDownLine className="icon"/>
+        <ArrowDownLine className="icon" />
       </div>
     </div>
   )

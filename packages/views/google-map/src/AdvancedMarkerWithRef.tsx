@@ -25,7 +25,9 @@ export const AdvancedMarkerWithRef = (props: AdvancedMarkerWithRefProps) => {
     if (marker) onMarkerClick(marker)
   }, [marker, onMarkerClick])
 
-  return <AdvancedMarker {...advancedMarkerProps} onClick={handleClick} ref={markerRef}>
-    {children}
-  </AdvancedMarker>
+  return (
+    <AdvancedMarker {...advancedMarkerProps} onClick={handleClick} ref={markerRef}>
+      {children}
+    </AdvancedMarker>
+  )
 }

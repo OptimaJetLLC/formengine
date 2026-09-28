@@ -8,18 +8,15 @@ type LicenseContext = {
   /**
    * Indicates whether the license key is valid (excluding feature checks).
    */
-  valid: boolean,
+  valid: boolean
   /**
    * Array of violation messages.
    */
-  missing: Violations,
+  missing: Violations
   /**
    * Function to check license restriction.
    */
-  checkLicense: (features: Array<LicenseFeatureDescription>, ...args: any) => void,
+  checkLicense: (features: Array<LicenseFeatureDescription>, ...args: any) => void
 }
 
-export const [
-  useLicense,
-  LicenseProvider
-] = createNonNullableContext<LicenseContext>('LicenseContext')
+export const [useLicense, LicenseProvider] = createNonNullableContext<LicenseContext>('LicenseContext')

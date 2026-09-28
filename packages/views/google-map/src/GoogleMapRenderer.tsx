@@ -77,61 +77,71 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
   const {field} = useComponentData()
 
   const markers = useMemo(() => toMarkers(initialMarkers), [initialMarkers])
-  const setMarkers = useCallback((value: Array<object>) => {
-    field?.setValue?.(value)
-  }, [field])
+  const setMarkers = useCallback(
+    (value: Array<object>) => {
+      field?.setValue?.(value)
+    },
+    [field]
+  )
 
-  if (
-    initialSnapshot.lat !== initialLatitude
-    || initialSnapshot.lng !== initialLongitude
-    || initialSnapshot.zoom !== initialZoom
-  ) {
+  if (initialSnapshot.lat !== initialLatitude || initialSnapshot.lng !== initialLongitude || initialSnapshot.zoom !== initialZoom) {
     setInitialSnapshot({lat: initialLatitude, lng: initialLongitude, zoom: initialZoom})
     setCenter({lat: initialLatitude, lng: initialLongitude})
     setZoom(initialZoom)
   }
 
-  const handleMarkerClick = useCallback((id: string | null, marker?: google.maps.marker.AdvancedMarkerElement) => {
-    if (marker) {
-      const mapMarker = markers.find(item => item.id === id) ?? null
-      onMarkerClick?.(mapMarker, marker)
-    }
-    setSelectedId(id)
-    setSelectedMarker(marker ?? null)
-    setInfoWindowShown(id !== selectedId ? true : !infoWindowShown)
-  }, [selectedId, infoWindowShown, onMarkerClick, markers])
+  const handleMarkerClick = useCallback(
+    (id: string | null, marker?: google.maps.marker.AdvancedMarkerElement) => {
+      if (marker) {
+        const mapMarker = markers.find(item => item.id === id) ?? null
+        onMarkerClick?.(mapMarker, marker)
+      }
+      setSelectedId(id)
+      setSelectedMarker(marker ?? null)
+      setInfoWindowShown(id !== selectedId ? true : !infoWindowShown)
+    },
+    [selectedId, infoWindowShown, onMarkerClick, markers]
+  )
 
-  const addMarker = useCallback((position: google.maps.LatLngLiteral, address?: Address) => {
-    const newMarker = {
-      id: generateMarkerId(),
-      position,
-      zIndex: 1,
-      address: address ?? undefined
-    }
+  const addMarker = useCallback(
+    (position: google.maps.LatLngLiteral, address?: Address) => {
+      const newMarker = {
+        id: generateMarkerId(),
+        position,
+        zIndex: 1,
+        address: address ?? undefined,
+      }
 
-    if (!allowChangingMarkers) return
+      if (!allowChangingMarkers) return
 
-    if (allowMultipleMarkers) {
-      setMarkers([...markers, newMarker])
-    } else {
-      setMarkers([newMarker])
-    }
-    onMarkerAdd?.(newMarker)
-  }, [allowMultipleMarkers, markers, setMarkers, onMarkerAdd, allowChangingMarkers])
+      if (allowMultipleMarkers) {
+        setMarkers([...markers, newMarker])
+      } else {
+        setMarkers([newMarker])
+      }
+      onMarkerAdd?.(newMarker)
+    },
+    [allowMultipleMarkers, markers, setMarkers, onMarkerAdd, allowChangingMarkers]
+  )
 
   const geocoding = useGeocoding()
 
-  const handleMapClick = useCallback((event: MapMouseEvent) => {
-    onMapClick?.(event)
-    if (event.detail.latLng) {
-      const latLng = event.detail.latLng
-      geocoding(latLng).then(response => {
-        addMarker(latLng, response?.address)
-      }).catch(() => {
-        addMarker(latLng)
-      })
-    }
-  }, [addMarker, geocoding, onMapClick])
+  const handleMapClick = useCallback(
+    (event: MapMouseEvent) => {
+      onMapClick?.(event)
+      if (event.detail.latLng) {
+        const latLng = event.detail.latLng
+        geocoding(latLng)
+          .then(response => {
+            addMarker(latLng, response?.address)
+          })
+          .catch(() => {
+            addMarker(latLng)
+          })
+      }
+    },
+    [addMarker, geocoding, onMapClick]
+  )
 
   const closeMarkerInfoWindow = useCallback(() => {
     setInfoWindowShown(false)
@@ -153,16 +163,19 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
     setCenter(event.detail.center)
   }, [])
 
-  const handlePlaceSelect = useCallback((place: google.maps.places.PlaceResult) => {
-    const address = place.address_components ? toAddress(place.address_components) : undefined
-    if (onPlaceSelect) {
-      onPlaceSelect(place, address)
-    }
-    if (addMarkerOnSearch) {
-      const position = place.geometry?.location?.toJSON()
-      if (position) addMarker(position, address)
-    }
-  }, [addMarker, onPlaceSelect, addMarkerOnSearch])
+  const handlePlaceSelect = useCallback(
+    (place: google.maps.places.PlaceResult) => {
+      const address = place.address_components ? toAddress(place.address_components) : undefined
+      if (onPlaceSelect) {
+        onPlaceSelect(place, address)
+      }
+      if (addMarkerOnSearch) {
+        const position = place.geometry?.location?.toJSON()
+        if (position) addMarker(position, address)
+      }
+    },
+    [addMarker, onPlaceSelect, addMarkerOnSearch]
+  )
 
   const id = useUniqueId()
 
@@ -173,19 +186,34 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
   }, [field?.value, selectedId, markers])
 
   return (
-    <Map id={id} mapId={mapId} zoom={zoom} center={center}
-         onClick={handleMapClick} onZoomChanged={onZoomChanged} onCameraChanged={onCameraChanged}
-         colorScheme={colorScheme} gestureHandling={gestureHandling} mapTypeId={mapTypeId}
-         className={styles.map}>
-      <Markers markers={markers} collisionBehavior={collisionBehavior} onMarkerClick={handleMarkerClick}/>
-      {infoWindowShown && selectedMarker &&
-        <MarkerInfo marker={selectedMarker} markerData={markerData} allowChangingMarkers={allowChangingMarkers}
-                    title={markerWindowTitle} removeMarkerCaption={removeMarkerCaption}
-                    onClose={closeMarkerInfoWindow} onDelete={handleMarkerDelete}/>
-      }
-      {showMapControl && <CustomMapControl controlPosition={mapControlPosition} onPlaceSelect={handlePlaceSelect}
-                                           placeholder={searchPlaceholder}
-      />}
+    <Map
+      id={id}
+      mapId={mapId}
+      zoom={zoom}
+      center={center}
+      onClick={handleMapClick}
+      onZoomChanged={onZoomChanged}
+      onCameraChanged={onCameraChanged}
+      colorScheme={colorScheme}
+      gestureHandling={gestureHandling}
+      mapTypeId={mapTypeId}
+      className={styles.map}
+    >
+      <Markers markers={markers} collisionBehavior={collisionBehavior} onMarkerClick={handleMarkerClick} />
+      {infoWindowShown && selectedMarker && (
+        <MarkerInfo
+          marker={selectedMarker}
+          markerData={markerData}
+          allowChangingMarkers={allowChangingMarkers}
+          title={markerWindowTitle}
+          removeMarkerCaption={removeMarkerCaption}
+          onClose={closeMarkerInfoWindow}
+          onDelete={handleMarkerDelete}
+        />
+      )}
+      {showMapControl && (
+        <CustomMapControl controlPosition={mapControlPosition} onPlaceSelect={handlePlaceSelect} placeholder={searchPlaceholder} />
+      )}
     </Map>
   )
 }

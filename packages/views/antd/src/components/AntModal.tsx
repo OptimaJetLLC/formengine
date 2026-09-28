@@ -10,17 +10,23 @@ interface AntModalProps extends ModalProps {
 const AntModal = (props: AntModalProps) => {
   const {handleClose, onOk, onCancel, ...otherProps} = props
 
-  const handleOnOk = useCallback((e: any) => {
-    onOk?.(e)
-    handleClose?.()
-  }, [handleClose, onOk])
+  const handleOnOk = useCallback(
+    (e: any) => {
+      onOk?.(e)
+      handleClose?.()
+    },
+    [handleClose, onOk]
+  )
 
-  const handleOnCancel = useCallback((e: any) => {
-    onCancel?.(e)
-    handleClose?.()
-  }, [handleClose, onCancel])
+  const handleOnCancel = useCallback(
+    (e: any) => {
+      onCancel?.(e)
+      handleClose?.()
+    },
+    [handleClose, onCancel]
+  )
 
-  return <Modal {...otherProps} onOk={handleOnOk} onCancel={handleOnCancel}/>
+  return <Modal {...otherProps} onOk={handleOnOk} onCancel={handleOnCancel} />
 }
 
 export const antModal = define(AntModal, 'AntModal')

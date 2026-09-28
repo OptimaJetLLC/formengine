@@ -24,7 +24,7 @@ const RawAddedComponents = ({availableComponents, ...componentProps}: AddedCompo
       {availableComponents.map(componentData => {
         return (
           <ComponentDataProvider key={componentData.id} value={componentData}>
-            <AddedComponent {...componentProps}/>
+            <AddedComponent {...componentProps} />
           </ComponentDataProvider>
         )
       })}
@@ -45,15 +45,19 @@ const RawControlGroups = (props: ControlGroupsProps) => {
   const getLibraryDescription = useComponentLibraryDescription()
   const {filter, ...componentProps} = props
 
-  const getCategoryName = useCallback((category: string) => {
-    return getLibraryDescription(libraryDescription => libraryDescription?.categories?.[category]?.name)
-      || t(category)
-      || category
-  }, [getLibraryDescription, t])
+  const getCategoryName = useCallback(
+    (category: string) => {
+      return getLibraryDescription(libraryDescription => libraryDescription?.categories?.[category]?.name) || t(category) || category
+    },
+    [getLibraryDescription, t]
+  )
 
-  const isMatch = useCallback((el: Model) => {
-    return filter ? el.name.toLowerCase().includes(filter.toLowerCase()) : true
-  }, [filter])
+  const isMatch = useCallback(
+    (el: Model) => {
+      return filter ? el.name.toLowerCase().includes(filter.toLowerCase()) : true
+    },
+    [filter]
+  )
 
   const filteredComponents = useMemo(() => {
     const result: Record<string, ComponentData[]> = {}
@@ -82,10 +86,13 @@ const RawControlGroups = (props: ControlGroupsProps) => {
     const header = noCategory ? null : <label className={styles.subheader}>{getCategoryName(category)}</label>
     const className = noCategory ? 'top' : category
     result.push(
-      <div key={category} className={cx([componentGroupStaticClassname, transformComponentNameToCssClass(className)])}
-           data-testid={`${category}-palette-category`}>
+      <div
+        key={category}
+        className={cx([componentGroupStaticClassname, transformComponentNameToCssClass(className)])}
+        data-testid={`${category}-palette-category`}
+      >
         {header}
-        <AddedComponents availableComponents={filteredComponents[category]} {...componentProps}/>
+        <AddedComponents availableComponents={filteredComponents[category]} {...componentProps} />
       </div>
     )
   }
@@ -121,9 +128,9 @@ export const ComponentBar = (props: ComponentBarProps) => {
   return (
     <div className={cx(styles.componentBar, className)}>
       <div className={styles.header}>
-        <SearchForm onChange={setFiltered} className={styles.search}/>
+        <SearchForm onChange={setFiltered} className={styles.search} />
       </div>
-      <ControlGroups {...componentProps} filter={filtered}/>
+      <ControlGroups {...componentProps} filter={filtered} />
     </div>
   )
 }

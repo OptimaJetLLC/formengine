@@ -9,7 +9,7 @@ const RawDraggableTreeNode = () => {
   return (
     <Draggable {...selectionHandlers} isTree={true} className={styles.draggableTreeNode}>
       {/* eslint-disable-next-line @typescript-eslint/no-use-before-define */}
-      <TreeNode className={selectionClassName} componentDataViewer={DraggableTreeNode}/>
+      <TreeNode className={selectionClassName} componentDataViewer={DraggableTreeNode} />
     </Draggable>
   )
 }

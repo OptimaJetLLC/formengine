@@ -16,36 +16,39 @@ interface BlockProps extends ComponentProps<any> {
   label: string
 }
 
-const Block = ({label, children}: BlockProps) =>
+const Block = ({label, children}: BlockProps) => (
   <div>
     <h6 className={styles.blockTitle}>{label}</h6>
     {children}
   </div>
+)
 
 const RawFormSettings = (props: HTMLAttributes<HTMLDivElement>) => {
   const t = useTranslationPart('leftPanel.formSettings')
-  return <TooltipPlacementProvider value={'autoVerticalStart'}>
-    <Rows {...props} className={cx(styles.rows, props.className)}>
-      <Block label={t('actions')}>
-        <ActionList/>
-      </Block>
-      <Block label={t('formValidator')}>
-        <FormValidator/>
-      </Block>
-      <Block label={t('error')}>
-        <ErrorSettings/>
-      </Block>
-      <Block label={t('tooltip')}>
-        <TooltipSettings/>
-      </Block>
-      <Block label={t('modal')}>
-        <ModalSettings/>
-      </Block>
-      <Block label={t('language')}>
-        <FormLanguageSettings/>
-      </Block>
-    </Rows>
-  </TooltipPlacementProvider>
+  return (
+    <TooltipPlacementProvider value={'autoVerticalStart'}>
+      <Rows {...props} className={cx(styles.rows, props.className)}>
+        <Block label={t('actions')}>
+          <ActionList />
+        </Block>
+        <Block label={t('formValidator')}>
+          <FormValidator />
+        </Block>
+        <Block label={t('error')}>
+          <ErrorSettings />
+        </Block>
+        <Block label={t('tooltip')}>
+          <TooltipSettings />
+        </Block>
+        <Block label={t('modal')}>
+          <ModalSettings />
+        </Block>
+        <Block label={t('language')}>
+          <FormLanguageSettings />
+        </Block>
+      </Rows>
+    </TooltipPlacementProvider>
+  )
 }
 
 export const FormSettings = customizableObserver('Settings_Tab_Content', RawFormSettings)

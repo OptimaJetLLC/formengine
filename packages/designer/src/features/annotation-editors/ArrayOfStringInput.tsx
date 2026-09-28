@@ -14,9 +14,17 @@ export const ArrayOfStringInput = (props: AnnotationEditorProps) => {
   const {value, onChange, onClean} = props
   const t = useTranslationPart('propertiesEditor')
 
-  return <LabeledProperty {...props}>
-    <TagInput value={value ?? ''} onChange={onChange} onClean={onClean} block
-              size={'xs'} className={styles.tag} placeholder={t('setInputHint')}
-    />
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <TagInput
+        value={value ?? ''}
+        onChange={onChange}
+        onClean={onClean}
+        block
+        size={'xs'}
+        className={styles.tag}
+        placeholder={t('setInputHint')}
+      />
+    </LabeledProperty>
+  )
 }

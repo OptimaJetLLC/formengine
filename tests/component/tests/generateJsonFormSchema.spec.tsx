@@ -5,37 +5,37 @@ import {renderBuilder} from '../util/renderBuilder'
 
 // Mock form for testing
 const testForm = {
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'children': [
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    children: [
       {
-        'key': 'testField',
-        'type': 'RsInput',
-        'props': {
-          'label': 'Test Field'
-        }
-      }
-    ]
+        key: 'testField',
+        type: 'RsInput',
+        props: {
+          label: 'Test Field',
+        },
+      },
+    ],
   },
-  'localization': {},
-  'languages': [
+  localization: {},
+  languages: [
     {
-      'code': 'fr',
-      'dialect': 'FR',
-      'name': 'French',
-      'description': 'Français',
-      'bidi': 'ltr'
+      code: 'fr',
+      dialect: 'FR',
+      name: 'French',
+      description: 'Français',
+      bidi: 'ltr',
     },
     {
-      'code': 'de',
-      'dialect': 'DE',
-      'name': 'German',
-      'description': 'Deutsch',
-      'bidi': 'ltr'
-    }
+      code: 'de',
+      dialect: 'DE',
+      name: 'German',
+      description: 'Deutsch',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'fr-FR'
+  defaultLanguage: 'fr-FR',
 }
 
 // Custom i18n configuration with English as first language
@@ -43,33 +43,33 @@ const customI18nEnFirst: FormBuilderI18n = {
   languages: [
     new Language('en', 'US', 'English', 'American English'),
     new Language('fr', 'FR', 'French', 'Français'),
-    new Language('de', 'DE', 'German', 'Deutsch')
+    new Language('de', 'DE', 'German', 'Deutsch'),
   ],
-  getData: async (languageFullCode) => {
+  getData: async languageFullCode => {
     const data: FormBuilderI18nData = {
       data: {},
-      componentsLocale: {}
+      componentsLocale: {},
     }
 
     if (languageFullCode === 'en-US') {
       data.data = {
         leftMenu: {menu: 'Menu'},
-        leftPanel: {sectionName: {components: 'Components'}}
+        leftPanel: {sectionName: {components: 'Components'}},
       }
     } else if (languageFullCode === 'fr-FR') {
       data.data = {
         leftMenu: {menu: 'Menu'},
-        leftPanel: {sectionName: {components: 'Composants'}}
+        leftPanel: {sectionName: {components: 'Composants'}},
       }
     }
 
     return data
-  }
+  },
 }
 
 // Helper to get builder store from renderBuilder result
 const getBuilderStore = (getFormBuilder: () => unknown) => {
-  const builder = getFormBuilder() as { builderStore: any }
+  const builder = getFormBuilder() as {builderStore: any}
   return builder.builderStore
 }
 
@@ -78,65 +78,65 @@ const customI18nFrFirst: FormBuilderI18n = {
   languages: [
     new Language('fr', 'FR', 'French', 'Français'),
     new Language('en', 'US', 'English', 'American English'),
-    new Language('de', 'DE', 'German', 'Deutsch')
+    new Language('de', 'DE', 'German', 'Deutsch'),
   ],
-  getData: async (languageFullCode) => {
+  getData: async languageFullCode => {
     const data: FormBuilderI18nData = {
       data: {},
-      componentsLocale: {}
+      componentsLocale: {},
     }
 
     // Provide different translations for each language
     if (languageFullCode === 'fr-FR') {
       data.data = {
         leftMenu: {menu: 'Menu'},
-        leftPanel: {sectionName: {components: 'Composants'}}
+        leftPanel: {sectionName: {components: 'Composants'}},
       }
     } else if (languageFullCode === 'de-DE') {
       data.data = {
         leftMenu: {menu: 'Menü'},
-        leftPanel: {sectionName: {components: 'Komponenten'}}
+        leftPanel: {sectionName: {components: 'Komponenten'}},
       }
     }
 
     return data
-  }
+  },
 }
 
 // Form with English as default language (for comparison)
 const testFormEnDefault = {
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'props': {},
-    'children': [
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    children: [
       {
-        'key': 'testField',
-        'type': 'RsInput',
-        'props': {
-          'label': 'Test Field'
-        }
-      }
-    ]
+        key: 'testField',
+        type: 'RsInput',
+        props: {
+          label: 'Test Field',
+        },
+      },
+    ],
   },
-  'localization': {},
-  'languages': [
+  localization: {},
+  languages: [
     {
-      'code': 'en',
-      'dialect': 'US',
-      'name': 'English',
-      'description': 'American English',
-      'bidi': 'ltr'
+      code: 'en',
+      dialect: 'US',
+      name: 'English',
+      description: 'American English',
+      bidi: 'ltr',
     },
     {
-      'code': 'de',
-      'dialect': 'DE',
-      'name': 'German',
-      'description': 'Deutsch',
-      'bidi': 'ltr'
-    }
+      code: 'de',
+      dialect: 'DE',
+      name: 'German',
+      description: 'Deutsch',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'en-US'
+  defaultLanguage: 'en-US',
 }
 
 describe('generateJsonFormSchema language test', () => {
@@ -149,14 +149,14 @@ describe('generateJsonFormSchema language test', () => {
   const enDescriptions = {
     categories: {},
     components: {
-      TestComponent: {}
-    }
+      TestComponent: {},
+    },
   }
 
   const frDescriptions = {
     components: {
-      TestComponent: {}
-    }
+      TestComponent: {},
+    },
   }
 
   // Create a BuilderView with i18n descriptions
@@ -177,7 +177,7 @@ describe('generateJsonFormSchema language test', () => {
     const {getFormBuilder, unmount} = await renderBuilder(testForm, {
       i18n: customI18nFrFirst,
       generateJsonFormSchema: mockSchemaGenerator,
-      view: viewWithDescriptions
+      view: viewWithDescriptions,
     })
 
     await flushPendingLinkLoads()
@@ -189,7 +189,7 @@ describe('generateJsonFormSchema language test', () => {
 
     expect(mockSchemaGenerator).toHaveBeenCalledWith({
       components: expect.any(Array),
-      descriptions: [frDescriptions]
+      descriptions: [frDescriptions],
     })
 
     unmount()
@@ -200,13 +200,13 @@ describe('generateJsonFormSchema language test', () => {
     const view = new BuilderView([testComponent])
     view.withComponentLibraryDescription({
       'en-US': {},
-      'de-DE': {}
+      'de-DE': {},
     })
 
     const {getFormBuilder, unmount} = await renderBuilder(testForm, {
       i18n: customI18nFrFirst,
       generateJsonFormSchema: mockSchemaGenerator,
-      view
+      view,
     })
 
     await flushPendingLinkLoads()
@@ -229,7 +229,7 @@ describe('generateJsonFormSchema language test', () => {
     const {getFormBuilder, unmount} = await renderBuilder(testFormEnDefault, {
       i18n: customI18nEnFirst,
       generateJsonFormSchema: mockSchemaGenerator,
-      view: viewWithDescriptions
+      view: viewWithDescriptions,
     })
 
     await flushPendingLinkLoads()
@@ -239,7 +239,7 @@ describe('generateJsonFormSchema language test', () => {
 
     expect(mockSchemaGenerator).toHaveBeenCalledWith({
       components: expect.any(Array),
-      descriptions: [enDescriptions]
+      descriptions: [enDescriptions],
     })
 
     unmount()
@@ -249,7 +249,7 @@ describe('generateJsonFormSchema language test', () => {
     const viewWithDescriptions = createViewWithDescriptions()
     const {getFormBuilder, unmount} = await renderBuilder(testForm, {
       i18n: customI18nFrFirst,
-      view: viewWithDescriptions
+      view: viewWithDescriptions,
     })
 
     await flushPendingLinkLoads()
@@ -269,7 +269,7 @@ describe('generateJsonFormSchema language test', () => {
     const {getFormBuilder, unmount} = await renderBuilder(testForm, {
       i18n: customI18nFrFirst,
       generateJsonFormSchema: mockSchemaGenerator,
-      view: viewWithDescriptions
+      view: viewWithDescriptions,
     })
 
     await flushPendingLinkLoads()

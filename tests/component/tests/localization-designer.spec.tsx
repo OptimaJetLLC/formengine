@@ -11,13 +11,7 @@ import {getBuilderFormLocalization} from './localizationTestUtils'
 const textareaTestId = 'localization-empty-save-textarea'
 
 type FormLocalization = {
-  setLocalization: (
-    languageFullCode: string,
-    componentKey: string,
-    propertyName: string,
-    type: string,
-    value: string,
-  ) => void
+  setLocalization: (languageFullCode: string, componentKey: string, propertyName: string, type: string, value: string) => void
   hasLocalization: (componentKey: string, propertyName: string, type: string) => boolean
 }
 

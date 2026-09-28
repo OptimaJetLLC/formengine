@@ -51,7 +51,7 @@ describe('stringifyLocalizationDefault', () => {
   })
 
   it('returns an empty string when JSON.stringify throws', () => {
-    const circular: { self?: unknown } = {}
+    const circular: {self?: unknown} = {}
     circular.self = circular
     expect(stringifyLocalizationDefault(circular)).toBe('')
   })
@@ -181,24 +181,30 @@ describe('resolveValidateBeforeSave', () => {
 
 describe('resolveGenericCodeEditorSave', () => {
   it('skips testing when validateBeforeSave returns skip-test', () => {
-    expect(resolveGenericCodeEditorSave('   ', {
-      validateBeforeSave: resolveValidateBeforeSave,
-      testResult: CalculableResult.error([new Error('failed')]),
-    })).toBe('save')
+    expect(
+      resolveGenericCodeEditorSave('   ', {
+        validateBeforeSave: resolveValidateBeforeSave,
+        testResult: CalculableResult.error([new Error('failed')]),
+      })
+    ).toBe('save')
   })
 
   it('aborts save when validation fails for non-whitespace values', () => {
-    expect(resolveGenericCodeEditorSave('Hello', {
-      validateBeforeSave: resolveValidateBeforeSave,
-      testResult: CalculableResult.error([new Error('failed')]),
-    })).toBe('abort')
+    expect(
+      resolveGenericCodeEditorSave('Hello', {
+        validateBeforeSave: resolveValidateBeforeSave,
+        testResult: CalculableResult.error([new Error('failed')]),
+      })
+    ).toBe('abort')
   })
 
   it('saves when validation succeeds for non-whitespace values', () => {
-    expect(resolveGenericCodeEditorSave('Hello', {
-      validateBeforeSave: resolveValidateBeforeSave,
-      testResult: CalculableResult.success('Hello'),
-    })).toBe('save')
+    expect(
+      resolveGenericCodeEditorSave('Hello', {
+        validateBeforeSave: resolveValidateBeforeSave,
+        testResult: CalculableResult.success('Hello'),
+      })
+    ).toBe('save')
   })
 })
 

@@ -20,28 +20,34 @@ const RawFormValidatorCodeEditor = (props: EditableFormValidator) => {
   const handleClose = useCallback(() => {
     builderStore.closeCurrentEditable()
   }, [builderStore])
-  const handleCompile = useCallback((value: string) => {
-    const source = `${beginContextLine}\n${value}\n${endContextLine}`
-    try {
-      AsyncFunction(source)
-      return CalculableResult.success(t('testingEditor.compilationOk'))
-    } catch (e) {
-      return CalculableResult.error([e as Error])
-    }
-  }, [t])
+  const handleCompile = useCallback(
+    (value: string) => {
+      const source = `${beginContextLine}\n${value}\n${endContextLine}`
+      try {
+        AsyncFunction(source)
+        return CalculableResult.success(t('testingEditor.compilationOk'))
+      } catch (e) {
+        return CalculableResult.error([e as Error])
+      }
+    },
+    [t]
+  )
 
-  return <>
-    <Header>{t('validation.editFormValidatorCode')}</Header>
-    <GenericCodeEditor key={props.editorKey}
-                       beginContextLine={beginContextLine}
-                       endContextLine={endContextLine}
-                       source={props.code}
-                       onSave={props.onSave}
-                       onClose={handleClose}
-                       onCompile={handleCompile}
-                       compact
-    />
-  </>
+  return (
+    <>
+      <Header>{t('validation.editFormValidatorCode')}</Header>
+      <GenericCodeEditor
+        key={props.editorKey}
+        beginContextLine={beginContextLine}
+        endContextLine={endContextLine}
+        source={props.code}
+        onSave={props.onSave}
+        onClose={handleClose}
+        onCompile={handleCompile}
+        compact
+      />
+    </>
+  )
 }
 
 export const FormValidatorCodeEditor = namedObserver('FormValidatorCodeEditor', RawFormValidatorCodeEditor)

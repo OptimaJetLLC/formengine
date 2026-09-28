@@ -15,13 +15,11 @@ const TestComponent = (props: TestComponentProps) => {
 
 const testComponent = define(TestComponent, 'TestComponent')
   .props({
-    template: string.setup({editor: 'templateTypePicker'})
+    template: string.setup({editor: 'templateTypePicker'}),
   })
   .build()
 
-const form = buildForm()
-  .component('testComponent1', 'TestComponent')
-  .json()
+const form = buildForm().component('testComponent1', 'TestComponent').json()
 
 const formStorage: IFormStorage = {
   getForm() {
@@ -35,7 +33,7 @@ const formStorage: IFormStorage = {
   },
   saveForm() {
     return Promise.resolve(undefined)
-  }
+  },
 }
 
 const view = new BuilderView([...allComponentsBuilder, testComponent])
@@ -43,12 +41,7 @@ const view = new BuilderView([...allComponentsBuilder, testComponent])
 describe('TemplateTypePicker test', () => {
   it('TemplateTypePicker should display templates', async () => {
     const getForm = () => form
-    const renderResult = render(<FormBuilder
-      view={view}
-      getForm={getForm}
-      formName="test"
-      formStorage={formStorage}/>
-    )
+    const renderResult = render(<FormBuilder view={view} getForm={getForm} formName="test" formStorage={formStorage} />)
     const {findByTestId} = renderResult
 
     const testComponent = await findByTestId('test-component-template')

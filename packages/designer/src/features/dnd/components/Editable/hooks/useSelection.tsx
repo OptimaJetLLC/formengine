@@ -53,16 +53,19 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
   const data = useComponentData()
 
   const {isDragging} = useDragLayer(monitor => ({
-    isDragging: monitor.isDragging()
+    isDragging: monitor.isDragging(),
   }))
 
   const selected = store.selected.has(data)
   const [hovered, setHovered] = useState(false)
 
-  const onClick = useCallback((event: MouseEvent) => {
-    stopEvent(event)
-    store.selectNode(data, event.ctrlKey || event.shiftKey)
-  }, [data, store])
+  const onClick = useCallback(
+    (event: MouseEvent) => {
+      stopEvent(event)
+      store.selectNode(data, event.ctrlKey || event.shiftKey)
+    },
+    [data, store]
+  )
 
   const onMouseOver = useCallback((event: MouseEvent) => {
     stopEvent(event)
@@ -75,14 +78,14 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
 
   const finalHovered = hovered && !isDragging
 
-  const className = useMemo(() => cx({
-    hovered: finalHovered && !selected,
-    selected: selected && !isDragging,
-  }), [finalHovered, selected, isDragging])
+  const className = useMemo(
+    () =>
+      cx({
+        hovered: finalHovered && !selected,
+        selected: selected && !isDragging,
+      }),
+    [finalHovered, selected, isDragging]
+  )
 
-  return [
-    {hovered: finalHovered, selected},
-    {onClick, onMouseOver, onMouseOut},
-    className,
-  ]
+  return [{hovered: finalHovered, selected}, {onClick, onMouseOver, onMouseOut}, className]
 }

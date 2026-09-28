@@ -77,4 +77,3 @@ export function getEditablePositionRange(
 
   return {startPosition, endPosition}
 }
-

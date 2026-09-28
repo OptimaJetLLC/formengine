@@ -11,10 +11,12 @@ interface TestComponentProps {
 
 const TestComponent = (props: TestComponentProps) => {
   const {screen, button} = props
-  return <div data-testid="test-component">
-    <p data-testid="test-component-screen">{screen}</p>
-    <p data-testid="test-component-button">{button}</p>
-  </div>
+  return (
+    <div data-testid="test-component">
+      <p data-testid="test-component-screen">{screen}</p>
+      <p data-testid="test-component-button">{button}</p>
+    </div>
+  )
 }
 
 const testComponent = define(TestComponent, 'TestComponent')
@@ -23,7 +25,7 @@ const testComponent = define(TestComponent, 'TestComponent')
     button: string.setup({editor: 'formComponent'}).withEditorProps({
       filter: (componentData: ComponentData) => {
         return componentData.model.type === 'RsButton'
-      }
+      },
     }),
   })
   .build()
@@ -39,7 +41,7 @@ const view = new BuilderView([...allComponentsBuilder, testComponent])
 describe('FormComponentPicker test', () => {
   it('FormComponentPicker should display filtered value', async () => {
     const getForm = () => form
-    const renderResult = render(<FormBuilder view={view} getForm={getForm}/>)
+    const renderResult = render(<FormBuilder view={view} getForm={getForm} />)
     const {findByTestId} = renderResult
 
     const testComponent = await findByTestId('test-component')

@@ -34,15 +34,13 @@ const RawActionItem = ({action, onRemove, eventName}: ActionItemProps) => {
   return (
     <ActionDataProvider value={action}>
       <Columns className={styles.columns}>
-        <b className={styles.name}>
-          {`${name || 'Action'}`}
-        </b>
+        <b className={styles.name}>{`${name || 'Action'}`}</b>
         <ButtonGroup size={'xs'}>
-          {isCodeAction && <EditButton onClick={edit} data-testid={`edit-action-${eventName}-${action.type}-${action.name}`}/>}
-          <RemoveButton onClick={onRemove} data-testid={`remove-action-${eventName}-${action.type}-${action.name}`}/>
+          {isCodeAction && <EditButton onClick={edit} data-testid={`edit-action-${eventName}-${action.type}-${action.name}`} />}
+          <RemoveButton onClick={onRemove} data-testid={`remove-action-${eventName}-${action.type}-${action.name}`} />
         </ButtonGroup>
       </Columns>
-      <ArgumentList/>
+      <ArgumentList />
     </ActionDataProvider>
   )
 }

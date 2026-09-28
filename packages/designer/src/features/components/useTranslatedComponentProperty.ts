@@ -29,9 +29,12 @@ const useComponentPropertyDescription = (componentType: string, annotation: Anno
     const result = getLibraryDescription(libraryDescription => {
       return libraryDescription?.components?.[componentType]?.props?.[propertyKey]?.name
     })
-    return result ?? getLibraryDescription(libraryDescription => {
-      return libraryDescription?.commonProperties?.[propertyKey]?.name
-    })
+    return (
+      result ??
+      getLibraryDescription(libraryDescription => {
+        return libraryDescription?.commonProperties?.[propertyKey]?.name
+      })
+    )
   }, [annotation, componentType, getLibraryDescription, propertyKey])
 
   const description = useMemo(() => {
@@ -40,9 +43,12 @@ const useComponentPropertyDescription = (componentType: string, annotation: Anno
     const result = getLibraryDescription(libraryDescription => {
       return libraryDescription?.components?.[componentType]?.props?.[propertyKey]?.description
     })
-    return result ?? getLibraryDescription(libraryDescription => {
-      return libraryDescription?.commonProperties?.[propertyKey]?.description
-    })
+    return (
+      result ??
+      getLibraryDescription(libraryDescription => {
+        return libraryDescription?.commonProperties?.[propertyKey]?.description
+      })
+    )
   }, [annotation, componentType, getLibraryDescription, propertyKey])
 
   return useMemo(() => ({name, description}), [description, name])
@@ -54,16 +60,18 @@ const useComponentPropertyDescription = (componentType: string, annotation: Anno
  * @param componentType the React component type.
  * @returns the translated component property.
  */
-export const useTranslatedComponentProperty = (annotation: Annotation,
-                                               componentType: string): TranslatedComponentProperty => {
+export const useTranslatedComponentProperty = (annotation: Annotation, componentType: string): TranslatedComponentProperty => {
   const commonLabels = useTranslationPart(`annotation.${annotation.key}`)
   const componentLabels = useTranslationPart(`${componentType}.${annotation.key}`)
 
   const propertyDescription = useComponentPropertyDescription(componentType, annotation)
 
-  const getLabel = useCallback((key: string) => {
-    return componentLabels(key) || commonLabels(key)
-  }, [commonLabels, componentLabels])
+  const getLabel = useCallback(
+    (key: string) => {
+      return componentLabels(key) || commonLabels(key)
+    },
+    [commonLabels, componentLabels]
+  )
 
   const hint = useMemo(() => {
     return propertyDescription?.description ?? annotation.hint ?? getLabel('hint')
@@ -73,8 +81,11 @@ export const useTranslatedComponentProperty = (annotation: Annotation,
     return propertyDescription?.name || getLabel('name') || annotation.name
   }, [annotation.name, getLabel, propertyDescription?.name])
 
-  return useMemo(() => ({
-    hint,
-    label,
-  }), [hint, label])
+  return useMemo(
+    () => ({
+      hint,
+      label,
+    }),
+    [hint, label]
+  )
 }

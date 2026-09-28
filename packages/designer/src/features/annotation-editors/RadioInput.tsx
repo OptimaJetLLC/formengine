@@ -12,7 +12,7 @@ export const RadioInput = (props: AnnotationEditorProps) => {
   const {value, onChange, annotation} = props
   return (
     <LabeledProperty {...props}>
-      <RadioButtons items={(annotation as PropertyAnnotation).data} onChange={onChange} value={value}/>
+      <RadioButtons items={(annotation as PropertyAnnotation).data} onChange={onChange} value={value} />
     </LabeledProperty>
   )
 }

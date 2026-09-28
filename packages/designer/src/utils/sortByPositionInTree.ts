@@ -4,7 +4,7 @@
  * @param nodesArray the array of nodes to sort.
  * @returns the sorted array of nodes.
  */
-export function sortByPositionInTree<T extends { children?: T[] }>(tree: T, nodesArray: T[]): T[] {
+export function sortByPositionInTree<T extends {children?: T[]}>(tree: T, nodesArray: T[]): T[] {
   const result: T[] = []
   const allNodesSorted = () => nodesArray.length === result.length
 

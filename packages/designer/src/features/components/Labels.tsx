@@ -8,5 +8,5 @@ import styles from './Labels.module.css'
  * @returns React component.
  */
 export const CenteredLabel = (props: HTMLAttributes<HTMLLabelElement>) => (
-  <label {...props} className={cx(styles.centeredLabel, props.className)}/>
+  <label {...props} className={cx(styles.centeredLabel, props.className)} />
 )

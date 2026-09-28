@@ -11,54 +11,66 @@ import {useConnectAsRef} from '../hooks/useConnectAsRef'
 import {DropView, InnerDropView} from './DropView'
 import styles from './DropZone.module.css'
 
-const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCondition?: string): [DropState, RefCallback<HTMLDivElement>] => {
+const useDropZone = (
+  isAfter?: boolean,
+  isInner?: boolean,
+  slot?: string,
+  slotCondition?: string
+): [DropState, RefCallback<HTMLDivElement>] => {
   const store = useBuilderStore()
   const target = useComponentData()
-  const insertPosition = isInner
-    ? 'inner'
-    : isAfter ? 'after' : 'before'
+  const insertPosition = isInner ? 'inner' : isAfter ? 'after' : 'before'
 
-  const handleDrop = useCallback((source: ComponentData, monitor: DropTargetMonitor) => {
-    const type = monitor.getItemType() as ItemType
-    switch (type) {
-      case ItemType.AddedComponent:
-        store.add(source, target, insertPosition, slot, slotCondition)
-        break
-      case ItemType.Component:
-        if (store.selected.size > 1) {
-          store.multipleMove(target, insertPosition, slot, slotCondition)
-        } else {
-          store.move(source, target, insertPosition, slot, slotCondition)
-        }
-        break
-    }
-  }, [store, target, insertPosition, slot, slotCondition])
+  const handleDrop = useCallback(
+    (source: ComponentData, monitor: DropTargetMonitor) => {
+      const type = monitor.getItemType() as ItemType
+      switch (type) {
+        case ItemType.AddedComponent:
+          store.add(source, target, insertPosition, slot, slotCondition)
+          break
+        case ItemType.Component:
+          if (store.selected.size > 1) {
+            store.multipleMove(target, insertPosition, slot, slotCondition)
+          } else {
+            store.move(source, target, insertPosition, slot, slotCondition)
+          }
+          break
+      }
+    },
+    [store, target, insertPosition, slot, slotCondition]
+  )
 
-  const handleCanDrop = useCallback((item: ComponentData, monitor: DropTargetMonitor) => {
-    const type = monitor.getItemType() as ItemType
-    switch (type) {
-      case ItemType.AddedComponent:
-        return store.canAddComponent(item, target, insertPosition, slot)
-      case ItemType.Component:
-        if (store.selected.size > 1) {
-          return store.canMoveComponents(store.selected, target, insertPosition, slot)
-        }
-        return store.canMoveComponents(new Set([item]), target, insertPosition, slot)
-    }
-    return false
-  }, [store, target, insertPosition, slot])
+  const handleCanDrop = useCallback(
+    (item: ComponentData, monitor: DropTargetMonitor) => {
+      const type = monitor.getItemType() as ItemType
+      switch (type) {
+        case ItemType.AddedComponent:
+          return store.canAddComponent(item, target, insertPosition, slot)
+        case ItemType.Component:
+          if (store.selected.size > 1) {
+            return store.canMoveComponents(store.selected, target, insertPosition, slot)
+          }
+          return store.canMoveComponents(new Set([item]), target, insertPosition, slot)
+      }
+      return false
+    },
+    [store, target, insertPosition, slot]
+  )
 
-  const [{isActive, isOver, isDragging, canDrop}, drop] = useDrop({
-    accept: AcceptDrop,
-    drop: handleDrop,
-    canDrop: handleCanDrop,
-    collect: (monitor) => ({
-      isOver: monitor.isOver(),
-      isActive: monitor.isOver() && monitor.canDrop(),
-      isDragging: !isNull(monitor.getItemType()),
-      canDrop: monitor.canDrop(),
-    })
-  }, [store, target, insertPosition, slot, slotCondition])
+  const [{isActive, isOver, isDragging, canDrop}, drop] = useDrop(
+    {
+      accept: AcceptDrop,
+      drop: handleDrop,
+      canDrop: handleCanDrop,
+      collect: monitor => ({
+        isOver: monitor.isOver(),
+        isActive: monitor.isOver() && monitor.canDrop(),
+        isDragging: !isNull(monitor.getItemType()),
+        canDrop: monitor.canDrop(),
+      }),
+    },
+    [store, target, insertPosition, slot, slotCondition]
+  )
 
   const setDropRef = useConnectAsRef<HTMLDivElement>(drop)
 
@@ -83,20 +95,21 @@ const RawDropZone = ({isAfter, isInner, slot, slotCondition}: DropZoneProps) => 
 
   return (
     <>
-      {inner
-        ? <InnerDropView ref={drop} className={className} slot={slot} slotCondition={slotCondition}/>
-        : <div ref={drop} className={cx(styles.container, className)} data-testid="dropzone"/>
-      }
-      {!inner && <DropView className={className}/>}
+      {inner ? (
+        <InnerDropView ref={drop} className={className} slot={slot} slotCondition={slotCondition} />
+      ) : (
+        <div ref={drop} className={cx(styles.container, className)} data-testid="dropzone" />
+      )}
+      {!inner && <DropView className={className} />}
     </>
   )
 }
 
 interface DropState {
-  isActive: boolean,
-  isOver: boolean,
-  isDragging: boolean,
-  canDrop: boolean,
+  isActive: boolean
+  isOver: boolean
+  isDragging: boolean
+  canDrop: boolean
 }
 
 export const DropZone = namedObserver('DropZone', RawDropZone)

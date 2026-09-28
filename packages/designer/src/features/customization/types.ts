@@ -65,4 +65,4 @@ export const CustomizableZone: Set<string> = new Set([
 /**
  * The available keys of the customizable components.
  */
-export type CustomizableKey = typeof CustomizableZone extends Set<infer U> ? U : never;
+export type CustomizableKey = typeof CustomizableZone extends Set<infer U> ? U : never

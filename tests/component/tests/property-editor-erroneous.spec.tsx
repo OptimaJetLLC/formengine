@@ -4,24 +4,24 @@ import {asyncAct} from '../../common/lib/asyncAct'
 import {getPropertyInput} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'
 
-const TestComponent = define(() => <div data-testid="test-component"/>, 'TestComponent')
+const TestComponent = define(() => <div data-testid="test-component" />, 'TestComponent')
   .props({
     myText: string.valued.uncontrolledValue('').required,
   })
   .build()
 
 const slowValidator: RuleValidator = async (value: string) => {
-  await new Promise<void>((resolve) => setTimeout(resolve, 300))
+  await new Promise<void>(resolve => setTimeout(resolve, 300))
   return value !== 'bad'
 }
 
-const DelayValidated = define(() => <div data-testid="delayed-validation"/>, 'DelayValidated')
+const DelayValidated = define(() => <div data-testid="delayed-validation" />, 'DelayValidated')
   .props({
     flagged: string.valued.uncontrolledValue('').validated(slowValidator, {message: 'must not be bad'}),
   })
   .build()
 
-const Input = (props: { value?: string }) => {
+const Input = (props: {value?: string}) => {
   return <input {...props} />
 }
 
@@ -132,7 +132,7 @@ describe('Property editor Erroneous (designer)', () => {
     fireEvent.click(await findByTestId('plain-test-input'))
 
     await asyncAct(async () => {
-      await new Promise<void>((resolve) => setTimeout(resolve, 500))
+      await new Promise<void>(resolve => setTimeout(resolve, 500))
     })
 
     expect(await findByTestId('plain-test-input')).toBeInTheDocument()

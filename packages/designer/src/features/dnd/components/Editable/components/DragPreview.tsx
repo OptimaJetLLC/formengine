@@ -10,7 +10,5 @@ const getDragPreview = () => document.getElementById('fb-drag-preview') || docum
  * @param props the React component properties.
  * @returns the React element.
  */
-export const DragPreview = (props: ComponentProps<any>) => createPortal(
-  <div {...props} className={cx(styles.container, props.className)}/>,
-  getDragPreview()
-)
+export const DragPreview = (props: ComponentProps<any>) =>
+  createPortal(<div {...props} className={cx(styles.container, props.className)} />, getDragPreview())

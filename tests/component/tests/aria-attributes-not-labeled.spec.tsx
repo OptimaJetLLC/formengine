@@ -41,19 +41,16 @@ const componentTypes = [
   'GoogleMap',
   'RsDropdown',
   'RsDatePicker',
-  'RsCalendar'
+  'RsCalendar',
 ]
 
 describe('ARIA attributes for components without labels', () => {
-  it.each(componentTypes)(
-    '%s should not have aria-label attribute when label is empty',
-    async (componentType: string) => {
-      const {container} = renderForm(getForm(componentType))
-      const targetElement = await waitFor(() => container.querySelector(`[id^=${componentType}]`))
-      expect(container.querySelector(`label[id^="${componentType}"]`)).toBeNull()
-      expect(targetElement).not.toBeNull()
-      expect(targetElement!.getAttribute('aria-label')).toBeNull()
-      expect(targetElement!.getAttribute('aria-errormessage')).not.toBeNull()
-    }
-  )
+  it.each(componentTypes)('%s should not have aria-label attribute when label is empty', async (componentType: string) => {
+    const {container} = renderForm(getForm(componentType))
+    const targetElement = await waitFor(() => container.querySelector(`[id^=${componentType}]`))
+    expect(container.querySelector(`label[id^="${componentType}"]`)).toBeNull()
+    expect(targetElement).not.toBeNull()
+    expect(targetElement!.getAttribute('aria-label')).toBeNull()
+    expect(targetElement!.getAttribute('aria-errormessage')).not.toBeNull()
+  })
 })

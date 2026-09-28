@@ -24,7 +24,7 @@ const saveActiveTab = (tabName: Section) => {
 const getActiveTab = () => {
   const defaultTab = Section.Main
   const value = isDesignerLocalStorageEnabled()
-    ? localStorage.getItem(localStoragePropertiesActiveTabKey) as Section ?? defaultTab
+    ? ((localStorage.getItem(localStoragePropertiesActiveTabKey) as Section) ?? defaultTab)
     : defaultTab
   return tabs[value] ? value : defaultTab
 }
@@ -39,8 +39,8 @@ const RawPropertiesEditor = () => {
 
   return (
     <div className={styles.container}>
-      <NavTab activeTab={activeTab} setActiveTab={handleTabChange}/>
-      <Properties activeTab={activeTab}/>
+      <NavTab activeTab={activeTab} setActiveTab={handleTabChange} />
+      <Properties activeTab={activeTab} />
     </div>
   )
 }

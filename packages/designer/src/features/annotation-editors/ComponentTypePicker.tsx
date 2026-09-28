@@ -21,8 +21,19 @@ export const ComponentTypePicker = (props: AnnotationEditorProps) => {
       .map(cd => ({value: cd.model.type, label: cd.model.name}))
   }, [availableComponents, filter])
 
-  return <LabeledProperty {...props}>
-    <SInputPicker value={value ?? annotation.default ?? ''} data={labelChildren} onChange={onChange} onClean={onClean}
-                  block cleanable size={'xs'} {...editorProps} placement={'autoVerticalEnd'}/>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <SInputPicker
+        value={value ?? annotation.default ?? ''}
+        data={labelChildren}
+        onChange={onChange}
+        onClean={onClean}
+        block
+        cleanable
+        size={'xs'}
+        {...editorProps}
+        placement={'autoVerticalEnd'}
+      />
+    </LabeledProperty>
+  )
 }

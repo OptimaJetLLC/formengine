@@ -19,10 +19,10 @@ import styles from './ViewModes.module.css'
 const resolutions: [ViewMode, any][] = [
   ['desktop', faDesktop],
   ['mobile', faMobile],
-  ['tablet', faTablet]
+  ['tablet', faTablet],
 ]
 
-const getColor = (active?: boolean) => active ? 'var(--rs-navs-selected)' : undefined
+const getColor = (active?: boolean) => (active ? 'var(--rs-navs-selected)' : undefined)
 
 interface ResolutionButtonProps {
   value: ViewMode
@@ -37,14 +37,16 @@ const RawResolutionButton = ({value, icon}: ResolutionButtonProps) => {
 
   const t = useTranslationPart('rightMenu.modes')
   // eslint-disable-next-line react-hooks/immutability
-  const handleClick = useCallback(() => store.viewMode = value, [store, value])
+  const handleClick = useCallback(() => (store.viewMode = value), [store, value])
   const tooltipContent = useMemo(() => <Tooltip>{t(value)}</Tooltip>, [t, value])
   const color = useMemo(() => getColor(isActive), [isActive])
-  const faIcon = useMemo(() => <FaIcon icon={icon} color={color}/>, [icon, color])
+  const faIcon = useMemo(() => <FaIcon icon={icon} color={color} />, [icon, color])
 
-  return <Whisper speaker={tooltipContent} placement={'bottom'}>
-    <IconButton onClick={handleClick} icon={faIcon}/>
-  </Whisper>
+  return (
+    <Whisper speaker={tooltipContent} placement={'bottom'}>
+      <IconButton onClick={handleClick} icon={faIcon} />
+    </Whisper>
+  )
 }
 
 const ResolutionButton = namedObserver('ResolutionButton', RawResolutionButton)
@@ -53,26 +55,30 @@ const RawViewModes = (props: ComponentProps<'div'>) => {
   const store = useBuilderStore()
   const {viewMode, landscapeMode} = store
   // eslint-disable-next-line react-hooks/immutability
-  const toggleOrientation = useCallback(() => store.landscapeMode = !landscapeMode, [store, landscapeMode])
+  const toggleOrientation = useCallback(() => (store.landscapeMode = !landscapeMode), [store, landscapeMode])
 
-  const orientationIcon = useMemo(() => <Icon as={OrientationIcon} color={getColor(landscapeMode)}/>, [landscapeMode])
+  const orientationIcon = useMemo(() => <Icon as={OrientationIcon} color={getColor(landscapeMode)} />, [landscapeMode])
 
-  const resolutionButtons = useMemo(() => resolutions.map(([value, icon], index) => {
-    return <ResolutionButton key={index} value={value} icon={icon}/>
-  }), [])
+  const resolutionButtons = useMemo(
+    () =>
+      resolutions.map(([value, icon], index) => {
+        return <ResolutionButton key={index} value={value} icon={icon} />
+      }),
+    []
+  )
   const t = useTranslationPart('rightMenu.modes')
   const tooltipContent = useMemo(() => <Tooltip>{t('orientation')}</Tooltip>, [t])
 
   return (
     <div {...props} className={cx(styles.root, props.className)}>
-      {(viewMode === 'mobile' || viewMode === 'tablet') &&
+      {(viewMode === 'mobile' || viewMode === 'tablet') && (
         <Whisper speaker={tooltipContent} placement={'bottom'}>
-          <IconButton onClick={toggleOrientation} icon={orientationIcon} size={'sm'}/>
+          <IconButton onClick={toggleOrientation} icon={orientationIcon} size={'sm'} />
         </Whisper>
-      }
+      )}
       <ButtonGroup size={'sm'}>
         {resolutionButtons}
-        <JsonViewButton/>
+        <JsonViewButton />
       </ButtonGroup>
     </div>
   )

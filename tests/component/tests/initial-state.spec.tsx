@@ -32,7 +32,7 @@ describe('initialState in viewer', () => {
     const initialState = {foo: 'bar', count: 1}
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
-    render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} initialState={initialState}/>)
+    render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} initialState={initialState} />)
 
     await waitFor(() => {
       expect(viewerRef.current).not.toBeNull()
@@ -45,28 +45,14 @@ describe('initialState in viewer', () => {
     const firstState = {foo: 'one'}
     const secondState = {foo: 'two', bar: 42}
 
-    const {rerender} = render(
-      <FormViewer
-        view={view}
-        getForm={getForm}
-        viewerRef={viewerRef}
-        initialState={firstState}
-      />
-    )
+    const {rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} initialState={firstState} />)
 
     await waitFor(() => {
       expect(viewerRef.current).not.toBeNull()
       expect(viewerRef.current?.formData.state.foo).toBe('one')
     })
 
-    rerender(
-      <FormViewer
-        view={view}
-        getForm={getForm}
-        viewerRef={viewerRef}
-        initialState={secondState}
-      />
-    )
+    rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} initialState={secondState} />)
 
     await waitFor(() => {
       expect(viewerRef.current?.formData.state.foo).toBe('two')
@@ -80,14 +66,7 @@ describe('initialState in builder viewer', () => {
     const initialState = {foo: 'bar'}
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
-    render(
-      <FormBuilder
-        view={builderViewWithCss}
-        getForm={getForm}
-        viewerRef={viewerRef}
-        initialState={initialState}
-      />
-    )
+    render(<FormBuilder view={builderViewWithCss} getForm={getForm} viewerRef={viewerRef} initialState={initialState} />)
 
     await waitFor(() => {
       expect(viewerRef.current).not.toBeNull()
@@ -100,28 +79,14 @@ describe('initialState in builder viewer', () => {
     const firstState = {foo: 'one'}
     const secondState = {foo: 'two', bar: 42}
 
-    const {rerender} = render(
-      <FormBuilder
-        view={builderViewWithCss}
-        getForm={getForm}
-        viewerRef={viewerRef}
-        initialState={firstState}
-      />
-    )
+    const {rerender} = render(<FormBuilder view={builderViewWithCss} getForm={getForm} viewerRef={viewerRef} initialState={firstState} />)
 
     await waitFor(() => {
       expect(viewerRef.current).not.toBeNull()
       expect(viewerRef.current?.formData.state.foo).toBe('one')
     })
 
-    rerender(
-      <FormBuilder
-        view={builderViewWithCss}
-        getForm={getForm}
-        viewerRef={viewerRef}
-        initialState={secondState}
-      />
-    )
+    rerender(<FormBuilder view={builderViewWithCss} getForm={getForm} viewerRef={viewerRef} initialState={secondState} />)
 
     await waitFor(() => {
       expect(viewerRef.current?.formData.state.foo).toBe('two')
@@ -141,9 +106,9 @@ describe('initialState in builder viewer', () => {
             type: 'RsButton',
             htmlAttributes: [
               {
-                'name': 'data-testid',
-                'value': 'test-button'
-              }
+                name: 'data-testid',
+                value: 'test-button',
+              },
             ],
             events: {
               onClick: [
@@ -161,48 +126,48 @@ describe('initialState in builder viewer', () => {
           body:
             'debugger \n' +
             'if (e.store.formData.state && e.store.formData.state.rootFlag) {\n' +
-            '  console.error(\'initialState present in nested form\')\n' +
-            '}'
+            "  console.error('initialState present in nested form')\n" +
+            '}',
         },
       },
     }
 
     const rootForm = {
-      'version': '1',
-      'tooltipType': 'RsTooltip',
-      'modalType': 'RsModal',
-      'form': {
-        'key': 'Screen',
-        'type': 'Screen',
-        'props': {},
-        'children': [
+      version: '1',
+      tooltipType: 'RsTooltip',
+      modalType: 'RsModal',
+      form: {
+        key: 'Screen',
+        type: 'Screen',
+        props: {},
+        children: [
           {
-            'key': 'rsHeader1',
-            'type': 'RsHeader',
-            'props': {}
+            key: 'rsHeader1',
+            type: 'RsHeader',
+            props: {},
           },
           {
-            'key': 'embeddedForm1',
-            'type': 'EmbeddedForm',
-            'props': {
-              'formName': {
-                'value': 'nested-form'
-              }
-            }
-          }
-        ]
+            key: 'embeddedForm1',
+            type: 'EmbeddedForm',
+            props: {
+              formName: {
+                value: 'nested-form',
+              },
+            },
+          },
+        ],
       },
-      'localization': {},
-      'languages': [
+      localization: {},
+      languages: [
         {
-          'code': 'en',
-          'dialect': 'US',
-          'name': 'English',
-          'description': 'American English',
-          'bidi': 'ltr'
-        }
+          code: 'en',
+          dialect: 'US',
+          name: 'English',
+          description: 'American English',
+          bidi: 'ltr',
+        },
       ],
-      'defaultLanguage': 'en-US'
+      defaultLanguage: 'en-US',
     }
 
     const getFormByName = (name?: string) => {
@@ -228,4 +193,3 @@ describe('initialState in builder viewer', () => {
     fireEvent.click(button)
   })
 })
-

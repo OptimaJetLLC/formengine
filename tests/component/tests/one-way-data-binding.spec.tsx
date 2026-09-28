@@ -13,20 +13,24 @@ import '../config/toAllHaveInnerHtml'
 
 const excludedComponentTypes = [
   // excluded components
-  'ThrowErrorComponent', 'RsErrorMessage', 'RsModal', 'AntModal',
+  'ThrowErrorComponent',
+  'RsErrorMessage',
+  'RsModal',
+  'AntModal',
   // excluded presets
   'Login and password',
   // excluded container components
-  'RsContainer', 'RsWizardStep'
+  'RsContainer',
+  'RsWizardStep',
 ]
 
 const componentsInitialData: Record<string, FormViewerProps['initialData']> = {
   RsHeader: {
-    none: ''
+    none: '',
   },
   RsStaticContent: {
-    none: '   '
-  }
+    none: '   ',
+  },
 }
 
 const componentsToTest = allComponentsBuilder
@@ -60,8 +64,8 @@ describe('One-way data binding', () => {
     const initialData = {
       repeater: [
         {input: 'data 1', templateData: {input: 'template 1'}},
-        {input: 'data 2', templateData: {input: 'template 2'}}
-      ]
+        {input: 'data 2', templateData: {input: 'template 2'}},
+      ],
     }
 
     const getForm = (name?: string) => {
@@ -69,39 +73,47 @@ describe('One-way data binding', () => {
       return JSON.stringify(oneWaySimpleForm)
     }
 
-    const {findAllByTestId} = render(<FormViewer view={viewWithCss} getForm={getForm} initialData={initialData}/>)
+    const {findAllByTestId} = render(<FormViewer view={viewWithCss} getForm={getForm} initialData={initialData} />)
 
-    expect(await findAllByTestId('test-static-bound'))
-      .toAllHaveInnerHtml(['data 1', 'template 1', 'data 2', 'template 2'])
+    expect(await findAllByTestId('test-static-bound')).toAllHaveInnerHtml(['data 1', 'template 1', 'data 2', 'template 2'])
 
-    expect(await findAllByTestId('test-static-unbound-no-data-key'))
-      .toAllHaveInnerHtml(['no dataKey', 'no dataKey', 'no dataKey', 'no dataKey'])
+    expect(await findAllByTestId('test-static-unbound-no-data-key')).toAllHaveInnerHtml([
+      'no dataKey',
+      'no dataKey',
+      'no dataKey',
+      'no dataKey',
+    ])
 
-    expect(await findAllByTestId('test-static-unbound-binding-is-disabled'))
-      .toAllHaveInnerHtml(['binding is disabled', 'binding is disabled', 'binding is disabled', 'binding is disabled'])
+    expect(await findAllByTestId('test-static-unbound-binding-is-disabled')).toAllHaveInnerHtml([
+      'binding is disabled',
+      'binding is disabled',
+      'binding is disabled',
+      'binding is disabled',
+    ])
   })
 
   if (isBrowserMode()) {
-    it.each(generateVisibleTestData())('The component "%s" without data should be visible in the desinger',
-      async (type: string, initialData: FormViewerProps['initialData']) => {
-        const persistedForm: PersistedForm = JSON.parse(buildForm().json())
-        const store = new ComponentStore(type, type)
-        store.dataKey = 'none'
-        store.htmlAttributes = [{name: 'data-testid', value: type}]
-        persistedForm.form.children = [store]
+    it.each(
+      generateVisibleTestData()
+    )('The component "%s" without data should be visible in the desinger', async (type: string, initialData: FormViewerProps['initialData']) => {
+      const persistedForm: PersistedForm = JSON.parse(buildForm().json())
+      const store = new ComponentStore(type, type)
+      store.dataKey = 'none'
+      store.htmlAttributes = [{name: 'data-testid', value: type}]
+      persistedForm.form.children = [store]
 
-        const props: FormBuilderProps = {view: new BuilderView(allComponentsBuilder), initialData}
-        const {findByTestId, container} = await renderBuilder(persistedForm, props)
+      const props: FormBuilderProps = {view: new BuilderView(allComponentsBuilder), initialData}
+      const {findByTestId, container} = await renderBuilder(persistedForm, props)
 
-        expect(await findByTestId(type)).toBeInTheDocument()
+      expect(await findByTestId(type)).toBeInTheDocument()
 
-        const dndWrapper = container.querySelector(`.type-${type}`)
-        if (!(dndWrapper instanceof HTMLElement)) {
-          throw new Error(`Unable to find HTMLElement for a component with type: "${type}"`)
-        }
+      const dndWrapper = container.querySelector(`.type-${type}`)
+      if (!(dndWrapper instanceof HTMLElement)) {
+        throw new Error(`Unable to find HTMLElement for a component with type: "${type}"`)
+      }
 
-        await waitFor(() => expect(typeof dndWrapper.offsetHeight).toEqual('number'))
-        await waitFor(() => expect(dndWrapper.offsetHeight).toBeGreaterThan(16))
-      })
+      await waitFor(() => expect(typeof dndWrapper.offsetHeight).toEqual('number'))
+      await waitFor(() => expect(dndWrapper.offsetHeight).toBeGreaterThan(16))
+    })
   }
 })

@@ -125,14 +125,7 @@ const buildNextValue = (type: string, dataKey: string) => {
 describe('should display all Mantine components and reflect data changes', () => {
   it('should update data for all component fields in preview mode', async () => {
     const viewerRef: ForwardedRef<IFormViewer> = {current: null}
-    const renderResult = render(
-      <FormBuilder
-        view={builderView}
-        getForm={getForm}
-        viewerRef={viewerRef}
-        licenseKey={generatedLicenseKey}
-      />
-    )
+    const renderResult = render(<FormBuilder view={builderView} getForm={getForm} viewerRef={viewerRef} licenseKey={generatedLicenseKey} />)
 
     await togglePreview(renderResult)
 
@@ -146,7 +139,7 @@ describe('should display all Mantine components and reflect data changes', () =>
     const keyToTypeMap = buildKeyToTypeMap()
     const previousValues = new Map<string, unknown>()
     await asyncAct(async () => {
-      formData.allComponentFields.forEach(({dataKey, field}: { dataKey: string, field: { setValue: (value: unknown) => void } }) => {
+      formData.allComponentFields.forEach(({dataKey, field}: {dataKey: string; field: {setValue: (value: unknown) => void}}) => {
         const type = keyToTypeMap.get(dataKey)
         if (!type) return
         previousValues.set(dataKey, formData.data[dataKey])
@@ -187,13 +180,7 @@ describe('should display all Mantine components and reflect data changes', () =>
 
     const viewerRef: ForwardedRef<IFormViewer> = {current: null}
     const renderResult = render(
-      <FormBuilder
-        view={builderView}
-        getForm={getForm}
-        viewerRef={viewerRef}
-        initialData={initialData}
-        licenseKey={generatedLicenseKey}
-      />
+      <FormBuilder view={builderView} getForm={getForm} viewerRef={viewerRef} initialData={initialData} licenseKey={generatedLicenseKey} />
     )
 
     await togglePreview(renderResult)

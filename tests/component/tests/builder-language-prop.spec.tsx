@@ -39,14 +39,14 @@ describe('FormBuilder builderLanguage prop', () => {
   const originalLsFlag = (globalThis as any).FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE
 
   beforeAll(() => {
-    (globalThis as any).FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE = 'true'
+    ;(globalThis as any).FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE = 'true'
   })
 
   afterAll(() => {
     if (originalLsFlag === undefined) {
       delete (globalThis as any).FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE
     } else {
-      (globalThis as any).FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE = originalLsFlag
+      ;(globalThis as any).FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE = originalLsFlag
     }
   })
 
@@ -84,12 +84,12 @@ describe('FormBuilder builderLanguage prop', () => {
           <button data-testid="set-de" type="button" onClick={() => setLang('de-DE')}>
             use-de
           </button>
-          <FormBuilder defaultBuilderLanguage={lang} getForm={getForm} view={builderViewWithCss}/>
+          <FormBuilder defaultBuilderLanguage={lang} getForm={getForm} view={builderViewWithCss} />
         </>
       )
     }
 
-    const {container, findByTestId} = render(<ToggleTest/>)
+    const {container, findByTestId} = render(<ToggleTest />)
 
     expect(await findByTestId('test-button')).toBeInTheDocument()
 

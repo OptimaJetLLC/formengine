@@ -1,84 +1,84 @@
-import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponentsDescriptions, rtlCssLoader,} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponentsDescriptions, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, BuilderView} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {testLicense} from '@react-form-builder/tests-common/license/vaild'
-import {fireEvent, render, RenderResult, waitFor, within} from '@testing-library/react'
+import {fireEvent, RenderResult, render, waitFor, within} from '@testing-library/react'
 import {expect} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 
 const testForm = {
-  'version': '1',
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'props': {},
-    'children': [],
-    'htmlAttributes': [
+  version: '1',
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    children: [],
+    htmlAttributes: [
       {
-        'name': 'data-testid',
-        'value': 'mainScreen'
-      }
+        name: 'data-testid',
+        value: 'mainScreen',
+      },
     ],
   },
-  'localization': {},
-  'languages': [
+  localization: {},
+  languages: [
     {
-      'code': 'en',
-      'dialect': 'US',
-      'name': 'English',
-      'description': 'American English',
-      'bidi': 'ltr'
-    }
+      code: 'en',
+      dialect: 'US',
+      name: 'English',
+      description: 'American English',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'en-US'
+  defaultLanguage: 'en-US',
 }
 
 const savedForm = {
-  'version': '1',
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'props': {},
-    'htmlAttributes': [
+  version: '1',
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    htmlAttributes: [
       {
-        'name': 'data-testid',
-        'value': 'mainScreen'
-      }
+        name: 'data-testid',
+        value: 'mainScreen',
+      },
     ],
-    'children': [
+    children: [
       {
-        'key': 'rsContainer1',
-        'type': 'RsContainer',
-        'props': {},
-        'children': [
+        key: 'rsContainer1',
+        type: 'RsContainer',
+        props: {},
+        children: [
           {
-            'key': 'rsContainer2',
-            'type': 'RsContainer',
-            'props': {},
-            'children': [
+            key: 'rsContainer2',
+            type: 'RsContainer',
+            props: {},
+            children: [
               {
-                'key': 'rsLabel1',
-                'type': 'RsLabel',
-                'props': {}
-              }
-            ]
-          }
-        ]
-      }
-    ]
+                key: 'rsLabel1',
+                type: 'RsLabel',
+                props: {},
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
-  'localization': {},
-  'languages': [
+  localization: {},
+  languages: [
     {
-      'code': 'en',
-      'dialect': 'US',
-      'name': 'English',
-      'description': 'American English',
-      'bidi': 'ltr'
-    }
+      code: 'en',
+      dialect: 'US',
+      name: 'English',
+      description: 'American English',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'en-US'
+  defaultLanguage: 'en-US',
 }
 
 const getForm = () => JSON.stringify(testForm)
@@ -91,8 +91,9 @@ const view = new BuilderView(allComponentsBuilder)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
-const TestApp = ({getForm}: { getForm: () => string }) => <FormBuilder view={view} getForm={getForm} formName={'foo'}
-                                                                       licenseKey={testLicense}/>
+const TestApp = ({getForm}: {getForm: () => string}) => (
+  <FormBuilder view={view} getForm={getForm} formName={'foo'} licenseKey={testLicense} />
+)
 
 const expandTreeNode = async (rendered: RenderResult, testId: string) => {
   const target = await rendered.findByTestId(testId)
@@ -101,7 +102,7 @@ const expandTreeNode = async (rendered: RenderResult, testId: string) => {
   await asyncAct(async () => {
     if (!target.previousElementSibling) throw new Error('Not Found: target.previousElementSibling')
     try {
-      (target.previousElementSibling.children[0] as HTMLElement).click()
+      ;(target.previousElementSibling.children[0] as HTMLElement).click()
     } catch (e) {
       console.error(e)
     }
@@ -112,7 +113,7 @@ const expandTreeNode = async (rendered: RenderResult, testId: string) => {
 
 describe('FE-1306: After container clone inner components should have unique key in the tree', function () {
   it('Labels should be unique after container clone, created from scratch', async () => {
-    const app = render(<TestApp getForm={getForm}/>)
+    const app = render(<TestApp getForm={getForm} />)
     const {container, findByText, findByTestId, findByRole} = app
 
     const treeBtn = await findByText('Tree')
@@ -151,7 +152,7 @@ describe('FE-1306: After container clone inner components should have unique key
   })
 
   it('Labels should be unique after container clone, preloaded form', async () => {
-    const app = render(<TestApp getForm={getSavedForm}/>)
+    const app = render(<TestApp getForm={getSavedForm} />)
     const {container, findByText, findByTestId} = app
 
     const treeBtn = await findByText('Tree')

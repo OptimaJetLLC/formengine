@@ -16,20 +16,15 @@ const options = {
   script: [{script: 'super'}, {script: 'sub'}],
   block: ['blockquote', 'code-block'],
   list: [{list: 'ordered'}, {list: 'bullet'}],
-  indent: [{'indent': '-1'}, {'indent': '+1'}],
+  indent: [{indent: '-1'}, {indent: '+1'}],
   insert: ['link', 'image', 'video'],
   size: [{size: ['small', false, 'large', 'huge']}],
-  clean: ['clean']
+  clean: ['clean'],
 }
 
 type ToolbarOption = keyof typeof options
 
-const defaultOptions: ToolbarOption[] = [
-  'header',
-  'decoration',
-  'align',
-  'insert'
-]
+const defaultOptions: ToolbarOption[] = ['header', 'decoration', 'align', 'insert']
 
 /**
  * The Rich text editor component properties.
@@ -64,23 +59,23 @@ export interface RichTextEditorProps extends ReactQuill.ReactQuillProps {
 const editorStyle: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
-  flex: 1
+  flex: 1,
 }
 
 const QUILL_EMPTY_VALUE = '<p><br></p>'
 
 const RichTextEditor = ({
-                          value,
-                          initialValue,
-                          label,
-                          style,
-                          toolbarOptions,
-                          placeholder,
-                          className,
-                          modules: customModules,
-                          onChange,
-                          ...props
-                        }: RichTextEditorProps) => {
+  value,
+  initialValue,
+  label,
+  style,
+  toolbarOptions,
+  placeholder,
+  className,
+  modules: customModules,
+  onChange,
+  ...props
+}: RichTextEditorProps) => {
   const [key, setKey] = useState(uniqueId())
   const valueRef = useRef(value)
   const quillRef = useRef<ReactQuill>(null)
@@ -98,17 +93,21 @@ const RichTextEditor = ({
     setKey(uniqueId())
   }, [placeholder, toolbarOptions, customModules, initialValue])
 
-  const modules = useMemo(() => ({
-    toolbar: toolbarOptions?.map(option => options[option]),
-    ...customModules
-  }), [customModules, toolbarOptions])
+  const modules = useMemo(
+    () => ({
+      toolbar: toolbarOptions?.map(option => options[option]),
+      ...customModules,
+    }),
+    [customModules, toolbarOptions]
+  )
 
   const mergedStyle = useMemo(() => ({...editorStyle, ...style}), [style])
 
   // ReactQuill does not display the data-testid attribute
   const dataTestId = (props as any)?.['data-testid']
 
-  const handleChange = useCallback((value: string, _delta: any, _source: string, _editor: any) => {
+  const handleChange = useCallback(
+    (value: string, _delta: any, _source: string, _editor: any) => {
       const adjustedValue = value === QUILL_EMPTY_VALUE ? undefined : value
 
       valueRef.current = adjustedValue
@@ -124,19 +123,22 @@ const RichTextEditor = ({
   }, [value])
 
   // div wrapper is needed because the Labeled wrapper applies attributes to the child, but the ReactQuill component does not accept this props.
-  return <Labeled label={label} style={style} className={className} data-testid={dataTestId}>
-    <div>
-      <ReactQuill key={key}
-                  ref={quillRef}
-                  defaultValue={plainInitialValue}
-                  modules={modules}
-                  placeholder={placeholder}
-                  style={mergedStyle}
-                  onChange={handleChange}
-                  {...props}
-      />
-    </div>
-  </Labeled>
+  return (
+    <Labeled label={label} style={style} className={className} data-testid={dataTestId}>
+      <div>
+        <ReactQuill
+          key={key}
+          ref={quillRef}
+          defaultValue={plainInitialValue}
+          modules={modules}
+          placeholder={placeholder}
+          style={mergedStyle}
+          onChange={handleChange}
+          {...props}
+        />
+      </div>
+    </Labeled>
+  )
 }
 
 export const richTextEditor = define(RichTextEditor, 'RichTextEditor')
@@ -148,9 +150,11 @@ export const richTextEditor = define(RichTextEditor, 'RichTextEditor')
     label: string.default('Rich text editor'),
     placeholder: string,
     readOnly: readOnly.default(false),
-    toolbarOptions: someOf(...Object.keys(options)).withEditorProps({
-      creatable: false
-    }).default(defaultOptions),
+    toolbarOptions: someOf(...Object.keys(options))
+      .withEditorProps({
+        creatable: false,
+      })
+      .default(defaultOptions),
     modules: object,
-    onChange: event
+    onChange: event,
   })

@@ -70,14 +70,14 @@ describe('Initial data test', () => {
     expect(formData.data).toStrictEqual({
       counter: 1,
       firstNameInput: 'Hello',
-      lastNameInput: 'last name for: Hello'
+      lastNameInput: 'last name for: Hello',
     })
 
     fireEvent.click(appendDataButton)
     expect(formData.data).toStrictEqual({
       counter: 2,
       firstNameInput: 'Hello',
-      lastNameInput: 'last name for: Hello'
+      lastNameInput: 'last name for: Hello',
     })
   })
 
@@ -99,8 +99,8 @@ describe('Initial data test', () => {
       template1: {
         counter: 1,
         firstNameInput: 'Hello',
-        lastNameInput: 'last name for: Hello'
-      }
+        lastNameInput: 'last name for: Hello',
+      },
     })
 
     fireEvent.click(appendDataButton)
@@ -108,8 +108,8 @@ describe('Initial data test', () => {
       template1: {
         counter: 2,
         firstNameInput: 'Hello',
-        lastNameInput: 'last name for: Hello'
-      }
+        lastNameInput: 'last name for: Hello',
+      },
     })
   })
 
@@ -117,16 +117,16 @@ describe('Initial data test', () => {
     const initialData = {
       templateInitialDataParentNotStore1: {
         template1: {
-          firstNameInput: 'Mark'
-        }
+          firstNameInput: 'Mark',
+        },
       },
       template1: {
-        firstNameInput: 'Sylvia'
+        firstNameInput: 'Sylvia',
       },
       templateInitialDataParentStore2: {
-        firstNameInput: 'Jack'
+        firstNameInput: 'Jack',
       },
-      firstNameInput: 'Dolly'
+      firstNameInput: 'Dolly',
     }
 
     const getForm = (name?: string) => {
@@ -149,22 +149,22 @@ describe('Initial data test', () => {
         template1: {
           counter: 1,
           firstNameInput: 'Mark',
-          lastNameInput: 'last name for: Mark'
-        }
+          lastNameInput: 'last name for: Mark',
+        },
       },
       template1: {
         counter: 1,
         firstNameInput: 'Sylvia',
-        lastNameInput: 'last name for: Sylvia'
+        lastNameInput: 'last name for: Sylvia',
       },
       templateInitialDataParentStore2: {
         counter: 1,
         firstNameInput: 'Jack',
-        lastNameInput: 'last name for: Jack'
+        lastNameInput: 'last name for: Jack',
       },
       counter: 1,
       firstNameInput: 'Dolly',
-      lastNameInput: 'last name for: Dolly'
+      lastNameInput: 'last name for: Dolly',
     })
 
     const elements = await findAllByTestId('firstNameInput')
@@ -179,22 +179,22 @@ describe('Initial data test', () => {
         template1: {
           counter: 1,
           firstNameInput: 'updated value: "Mark"',
-          lastNameInput: 'last name for: Mark'
-        }
+          lastNameInput: 'last name for: Mark',
+        },
       },
       template1: {
         counter: 1,
         firstNameInput: 'updated value: "Sylvia"',
-        lastNameInput: 'last name for: Sylvia'
+        lastNameInput: 'last name for: Sylvia',
       },
       templateInitialDataParentStore2: {
         counter: 1,
         firstNameInput: 'updated value: "Jack"',
-        lastNameInput: 'last name for: Jack'
+        lastNameInput: 'last name for: Jack',
       },
       counter: 1,
       firstNameInput: 'updated value: "Dolly"',
-      lastNameInput: 'last name for: Dolly'
+      lastNameInput: 'last name for: Dolly',
     })
 
     buttons.forEach(button => {
@@ -206,22 +206,22 @@ describe('Initial data test', () => {
         template1: {
           counter: 2,
           firstNameInput: 'updated value: "Mark"',
-          lastNameInput: 'last name for: updated value: "Mark"'
-        }
+          lastNameInput: 'last name for: updated value: "Mark"',
+        },
       },
       template1: {
         counter: 2,
         firstNameInput: 'updated value: "Sylvia"',
-        lastNameInput: 'last name for: updated value: "Sylvia"'
+        lastNameInput: 'last name for: updated value: "Sylvia"',
       },
       templateInitialDataParentStore2: {
         counter: 2,
         firstNameInput: 'updated value: "Jack"',
-        lastNameInput: 'last name for: updated value: "Jack"'
+        lastNameInput: 'last name for: updated value: "Jack"',
       },
       counter: 2,
       firstNameInput: 'updated value: "Dolly"',
-      lastNameInput: 'last name for: updated value: "Dolly"'
+      lastNameInput: 'last name for: updated value: "Dolly"',
     })
   })
 
@@ -232,14 +232,15 @@ describe('Initial data test', () => {
 
     expect(formData.data).toStrictEqual({
       guten: 'Morgen',
-      rootRepeater: [{
-        parentRepeater: [{
-          childRepeater: [
-            {testInput: undefined},
-            {testInput: undefined}
-          ]
-        }]
-      }]
+      rootRepeater: [
+        {
+          parentRepeater: [
+            {
+              childRepeater: [{testInput: undefined}, {testInput: undefined}],
+            },
+          ],
+        },
+      ],
     })
 
     const testInputs = await findAllByTestId('test-input')
@@ -253,15 +254,16 @@ describe('Initial data test', () => {
     expect(formData.data).toStrictEqual({
       guten: 'Morgen',
       rootCounter: 1,
-      rootRepeater: [{
-        parentRepeater: [{
-          childRepeater: [
-            {testInput: 'Oh', childKey: 'some data: Oh', childCounter: 1},
-            {testInput: undefined}
+      rootRepeater: [
+        {
+          parentRepeater: [
+            {
+              childRepeater: [{testInput: 'Oh', childKey: 'some data: Oh', childCounter: 1}, {testInput: undefined}],
+              parentCounter: 1,
+            },
           ],
-          parentCounter: 1
-        }]
-      }],
+        },
+      ],
     })
 
     fireEvent.change(testInputs[0], {target: {value: 'Oh ho ho'}})
@@ -271,30 +273,38 @@ describe('Initial data test', () => {
     expect(formData.data).toStrictEqual({
       guten: 'Morgen',
       rootCounter: 2,
-      rootRepeater: [{
-        parentRepeater: [{
-          childRepeater: [
-            {testInput: 'Oh ho ho', childKey: 'some data: Oh', childCounter: 1},
-            {testInput: 'Whooo!', childKey: 'some data: Whooo!', childCounter: 1}
+      rootRepeater: [
+        {
+          parentRepeater: [
+            {
+              childRepeater: [
+                {testInput: 'Oh ho ho', childKey: 'some data: Oh', childCounter: 1},
+                {testInput: 'Whooo!', childKey: 'some data: Whooo!', childCounter: 1},
+              ],
+              parentCounter: 2,
+            },
           ],
-          parentCounter: 2
-        }]
-      }],
+        },
+      ],
     })
 
     fireEvent.click(testButtons[0])
     expect(formData.data).toStrictEqual({
       guten: 'Morgen',
       rootCounter: 3,
-      rootRepeater: [{
-        parentRepeater: [{
-          childRepeater: [
-            {testInput: 'Oh ho ho', childKey: 'some data: Oh ho ho', childCounter: 2},
-            {testInput: 'Whooo!', childKey: 'some data: Whooo!', childCounter: 1}
+      rootRepeater: [
+        {
+          parentRepeater: [
+            {
+              childRepeater: [
+                {testInput: 'Oh ho ho', childKey: 'some data: Oh ho ho', childCounter: 2},
+                {testInput: 'Whooo!', childKey: 'some data: Whooo!', childCounter: 1},
+              ],
+              parentCounter: 3,
+            },
           ],
-          parentCounter: 3
-        }]
-      }],
+        },
+      ],
     })
   })
 
@@ -322,19 +332,19 @@ describe('Initial data test', () => {
     expect(formData.data).toStrictEqual({rsInput1: secondInputValue})
   })
 
-  it('Form manager\'s Header template should work without hidden fields', async () => {
+  it("Form manager's Header template should work without hidden fields", async () => {
     const getForm = () => JSON.stringify(formManagerHeaderForm)
-    const {findByTestId, rerender} = render(<FormViewer view={viewWithCss} getForm={getForm}/>)
+    const {findByTestId, rerender} = render(<FormViewer view={viewWithCss} getForm={getForm} />)
 
     const header = await findByTestId('rsHeader1')
     expect(header).toHaveTextContent('Weekly Employee Report : unnamed : state?')
 
     const initialData = {stateName: 'Started', name: 'Henry'}
-    rerender(<FormViewer view={viewWithCss} getForm={getForm} initialData={initialData}/>)
+    rerender(<FormViewer view={viewWithCss} getForm={getForm} initialData={initialData} />)
     expect(header).toHaveTextContent('Weekly Employee Report : Henry : Started')
   })
 
-  it('Form manager\'s View form should work without hidden fields', async () => {
+  it("Form manager's View form should work without hidden fields", async () => {
     const formManagerForms: Record<string, any> = {
       'T:Header': formManagerHeaderForm,
       'T:EmployeeFields': formManagerEmployeeFieldsForm,
@@ -346,18 +356,14 @@ describe('Initial data test', () => {
       return JSON.stringify(form)
     }
     const initialData = {stateName: 'Finished', name: 'Jimmy'}
-    const {findByTestId} = render(<FormViewer view={viewWithCss} getForm={getForm} initialData={initialData}/>)
+    const {findByTestId} = render(<FormViewer view={viewWithCss} getForm={getForm} initialData={initialData} />)
 
     const header = await findByTestId('rsHeader1')
     expect(header).toHaveTextContent('Weekly Employee Report : Jimmy : Finished')
   })
 
   it('Null values should be saved from the initial data', async () => {
-    const jsonForm = buildForm()
-      .component('id', 'RsInput')
-      .component('submittedBy', 'RsInput')
-      .component('reviewedBy', 'RsInput')
-      .json()
+    const jsonForm = buildForm().component('id', 'RsInput').component('submittedBy', 'RsInput').component('reviewedBy', 'RsInput').json()
     const form = JSON.parse(jsonForm)
     const initialData = {
       id: 'cfae1452-e523-42e0-8c07-084ffe4ff1ef',
@@ -367,7 +373,7 @@ describe('Initial data test', () => {
       reviewedBy: null,
       testedBy: null,
       version: 0,
-      stateName: 'Created'
+      stateName: 'Created',
     }
 
     const {formData} = renderForm(form, {initialData})
@@ -379,7 +385,7 @@ describe('Initial data test', () => {
       reviewedBy: undefined,
       testedBy: null,
       version: 0,
-      stateName: 'Created'
+      stateName: 'Created',
     })
   })
 })

@@ -14,18 +14,20 @@ const COLUMNS = makeColumns([
   {
     name: 'name',
     input: SelectCell as any,
-    inputProps: {options: toLabeledValues(Attributes, false)}
+    inputProps: {options: toLabeledValues(Attributes, false)},
   },
-  {name: 'value'}
+  {name: 'value'},
 ])
 
-const confirmButtonIcon = <Check/>
-const ConfirmButton = ({confirm}: { confirm: () => void }) => {
+const confirmButtonIcon = <Check />
+const ConfirmButton = ({confirm}: {confirm: () => void}) => {
   const getLabel = useTranslationPart('common')
 
-  return <IconButton icon={confirmButtonIcon} onClick={confirm} color="green" appearance={'primary'} size={'xs'}>
-    {getLabel('apply')}
-  </IconButton>
+  return (
+    <IconButton icon={confirmButtonIcon} onClick={confirm} color="green" appearance={'primary'} size={'xs'}>
+      {getLabel('apply')}
+    </IconButton>
+  )
 }
 
 /**
@@ -36,10 +38,7 @@ const ConfirmButton = ({confirm}: { confirm: () => void }) => {
 const RawAttributesInput = (props: AnnotationEditorProps) => {
   const {store} = props.componentData
   const calculated = !!props.getComputeType()
-  const initialState = useMemo(
-    () => store.htmlAttributes ? [...store.htmlAttributes] : store.htmlAttributes,
-    [store.htmlAttributes],
-  )
+  const initialState = useMemo(() => (store.htmlAttributes ? [...store.htmlAttributes] : store.htmlAttributes), [store.htmlAttributes])
   const [value, setValue] = useState(initialState)
   const [changed, setChanged] = useState(false)
 
@@ -63,10 +62,8 @@ const RawAttributesInput = (props: AnnotationEditorProps) => {
 
   return (
     <>
-      <LabeledProperty {...props}>
-        {changed && <ConfirmButton confirm={confirm}/>}
-      </LabeledProperty>
-      {!calculated && <EditableTable data={tableData} onChange={handleChange} columns={COLUMNS}/>}
+      <LabeledProperty {...props}>{changed && <ConfirmButton confirm={confirm} />}</LabeledProperty>
+      {!calculated && <EditableTable data={tableData} onChange={handleChange} columns={COLUMNS} />}
     </>
   )
 }

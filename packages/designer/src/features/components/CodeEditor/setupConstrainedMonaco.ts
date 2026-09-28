@@ -9,8 +9,7 @@ type TPosition = {
   column: number
 }
 
-const samePosition = (a: TPosition, b: TPosition) =>
-  a.lineNumber === b.lineNumber && a.column === b.column
+const samePosition = (a: TPosition, b: TPosition) => a.lineNumber === b.lineNumber && a.column === b.column
 
 type ConstrainedEditorContext = {
   beginContextLine?: string
@@ -43,7 +42,7 @@ type ModelState = {
   suppressContentValidation: boolean
 }
 
-const contextByModel = new WeakMap<editor.ITextModel, { current: ConstrainedEditorContext }>()
+const contextByModel = new WeakMap<editor.ITextModel, {current: ConstrainedEditorContext}>()
 const monacoByModel = new WeakMap<editor.ITextModel, Monaco>()
 const stateByModel = new WeakMap<editor.ITextModel, ModelState>()
 
@@ -51,16 +50,8 @@ function getContext(model: editor.ITextModel): ConstrainedEditorContext {
   return contextByModel.get(model)?.current ?? {}
 }
 
-function getEditableMonacoRange(
-  model: editor.ITextModel,
-  monaco: Monaco,
-  context: ConstrainedEditorContext
-): MonacoRange {
-  const {endExclusiveOffset, hasEndContextLine} = getEditableRangeParams(
-    model,
-    context.canEditBeginContextLine,
-    context.endContextLine
-  )
+function getEditableMonacoRange(model: editor.ITextModel, monaco: Monaco, context: ConstrainedEditorContext): MonacoRange {
+  const {endExclusiveOffset, hasEndContextLine} = getEditableRangeParams(model, context.canEditBeginContextLine, context.endContextLine)
   const {startPosition, endPosition} = getEditablePositionRange(
     model,
     context.beginContextLine,
@@ -68,12 +59,7 @@ function getEditableMonacoRange(
     hasEndContextLine,
     endExclusiveOffset
   )
-  return new monaco.Range(
-    startPosition.lineNumber,
-    startPosition.column,
-    endPosition.lineNumber,
-    endPosition.column
-  )
+  return new monaco.Range(startPosition.lineNumber, startPosition.column, endPosition.lineNumber, endPosition.column)
 }
 
 function refreshEditableRange(model: editor.ITextModel, context: ConstrainedEditorContext): void {
@@ -86,11 +72,7 @@ function refreshEditableRange(model: editor.ITextModel, context: ConstrainedEdit
 }
 
 function getEditableSelectionRange(model: editor.ITextModel, context: ConstrainedEditorContext) {
-  const {endExclusiveOffset, hasEndContextLine} = getEditableRangeParams(
-    model,
-    context.canEditBeginContextLine,
-    context.endContextLine
-  )
+  const {endExclusiveOffset, hasEndContextLine} = getEditableRangeParams(model, context.canEditBeginContextLine, context.endContextLine)
   const {startPosition, endPosition} = getEditablePositionRange(
     model,
     context.beginContextLine,
@@ -102,24 +84,16 @@ function getEditableSelectionRange(model: editor.ITextModel, context: Constraine
     startLineNumber: startPosition.lineNumber,
     startColumn: startPosition.column,
     endLineNumber: endPosition.lineNumber,
-    endColumn: endPosition.column
+    endColumn: endPosition.column,
   }
 }
 
-function selectEditableBody(
-  editor: editor.IStandaloneCodeEditor,
-  model: editor.ITextModel,
-  context: ConstrainedEditorContext
-): void {
+function selectEditableBody(editor: editor.IStandaloneCodeEditor, model: editor.ITextModel, context: ConstrainedEditorContext): void {
   editor.setSelection(getEditableSelectionRange(model, context))
   editor.focus()
 }
 
-function registerSelectEditableBodyCommand(
-  editor: editor.IStandaloneCodeEditor,
-  monaco: Monaco,
-  model: editor.ITextModel
-): void {
+function registerSelectEditableBodyCommand(editor: editor.IStandaloneCodeEditor, monaco: Monaco, model: editor.ITextModel): void {
   editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyA, () => {
     if (editor.getModel() !== model) {
       return
@@ -136,11 +110,7 @@ function getEditableRange(model: editor.ITextModel) {
   const context = getContext(model)
 
   try {
-    const {endExclusiveOffset, hasEndContextLine} = getEditableRangeParams(
-      model,
-      context.canEditBeginContextLine,
-      context.endContextLine
-    )
+    const {endExclusiveOffset, hasEndContextLine} = getEditableRangeParams(model, context.canEditBeginContextLine, context.endContextLine)
     const {startPosition} = getEditablePositionRange(
       model,
       context.beginContextLine,
@@ -157,7 +127,7 @@ function getEditableRange(model: editor.ITextModel) {
 function clampCursorToEditableRange(
   editor: editor.IStandaloneCodeEditor,
   model: editor.ITextModel,
-  isApplyingRef: { current: boolean }
+  isApplyingRef: {current: boolean}
 ): IDisposable {
   return editor.onDidChangeCursorPosition(({position, source}) => {
     if (isApplyingRef.current) {
@@ -178,15 +148,16 @@ function clampCursorToEditableRange(
 
     const startOffset = model.getOffsetAt({
       lineNumber: editableRange.startPosition.lineNumber,
-      column: editableRange.startPosition.column
+      column: editableRange.startPosition.column,
     })
     const offset = model.getOffsetAt(position)
 
-    const target = offset < startOffset
-      ? {lineNumber: editableRange.startPosition.lineNumber, column: editableRange.startPosition.column}
-      : offset > editableRange.endExclusiveOffset
-        ? model.getPositionAt(editableRange.endExclusiveOffset)
-        : null
+    const target =
+      offset < startOffset
+        ? {lineNumber: editableRange.startPosition.lineNumber, column: editableRange.startPosition.column}
+        : offset > editableRange.endExclusiveOffset
+          ? model.getPositionAt(editableRange.endExclusiveOffset)
+          : null
 
     if (!target || samePosition(position, target)) {
       return
@@ -201,10 +172,7 @@ function clampCursorToEditableRange(
   })
 }
 
-function registerBoundaryDeleteGuards(
-  editor: editor.IStandaloneCodeEditor,
-  model: editor.ITextModel
-): IDisposable {
+function registerBoundaryDeleteGuards(editor: editor.IStandaloneCodeEditor, model: editor.ITextModel): IDisposable {
   return editor.onKeyDown((e: IKeyboardEvent) => {
     const key = e.browserEvent?.key
     if (key !== 'Backspace' && key !== 'Delete') {
@@ -252,18 +220,15 @@ function registerBoundaryDeleteGuards(
   })
 }
 
-function attachContentRestrictions(
-  model: editor.ITextModel,
-  onBodyChange: (body: string) => void
-): void {
-  model.onDidChangeContent((event) => {
+function attachContentRestrictions(model: editor.ITextModel, onBodyChange: (body: string) => void): void {
+  model.onDidChangeContent(event => {
     const state = stateByModel.get(model)
     if (!state || state.suppressContentValidation) {
       return
     }
 
     const editableRange = state.lastEditableRange
-    const allValid = event.changes.every((change) => editableRange.containsRange(change.range))
+    const allValid = event.changes.every(change => editableRange.containsRange(change.range))
     if (!allValid) {
       state.suppressContentValidation = true
       try {
@@ -278,12 +243,9 @@ function attachContentRestrictions(
     refreshEditableRange(model, getContext(model))
     const activeContext = getContext(model)
     const body = model.getValueInRange(state.lastEditableRange)
-    onBodyChange(extractEditableBody(
-      body,
-      activeContext.beginContextLine,
-      activeContext.canEditBeginContextLine,
-      activeContext.endContextLine
-    ))
+    onBodyChange(
+      extractEditableBody(body, activeContext.beginContextLine, activeContext.canEditBeginContextLine, activeContext.endContextLine)
+    )
   })
 }
 
@@ -292,10 +254,7 @@ function attachContentRestrictions(
  * @param model restricted Monaco model.
  * @param callback callback to run.
  */
-export function withSuppressedConstrainedValidation(
-  model: ConstrainedMonacoEditorModel,
-  callback: () => void
-): void {
+export function withSuppressedConstrainedValidation(model: ConstrainedMonacoEditorModel, callback: () => void): void {
   const state = stateByModel.get(model)
   if (!state) {
     callback()
@@ -332,7 +291,7 @@ export function setupConstrainedMonaco(
   monacoByModel.set(model, monaco)
   stateByModel.set(model, {
     lastEditableRange: getEditableMonacoRange(model, monaco, context),
-    suppressContentValidation: false
+    suppressContentValidation: false,
   })
 
   registerSelectEditableBodyCommand(editor, monaco, model)
@@ -357,6 +316,6 @@ export function setupConstrainedMonaco(
     updateRestrictions(nextContext: ConstrainedEditorContext) {
       contextByModel.set(model, {current: nextContext})
       refreshEditableRange(model, nextContext)
-    }
+    },
   })
 }

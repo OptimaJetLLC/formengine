@@ -17,43 +17,43 @@ const wizardForm = {
             type: 'RsWizardStep',
             props: {
               label: {
-                value: 'Step 1'
-              }
-            }
+                value: 'Step 1',
+              },
+            },
           },
           {
             key: 'rsWizardStep2',
             type: 'RsWizardStep',
             props: {
               label: {
-                value: 'Step 2'
-              }
-            }
-          }
+                value: 'Step 2',
+              },
+            },
+          },
         ],
         events: {
           onNext: [
             {
               name: 'onButtonClick',
-              type: 'custom'
-            }
+              type: 'custom',
+            },
           ],
           onPrev: [
             {
               name: 'onButtonClick',
-              type: 'custom'
-            }
+              type: 'custom',
+            },
           ],
           onFinish: [
             {
               name: 'onButtonClick',
-              type: 'custom'
-            }
-          ]
+              type: 'custom',
+            },
+          ],
         },
-      }
-    ]
-  }
+      },
+    ],
+  },
 }
 
 describe('RsWizard tests', () => {
@@ -61,12 +61,12 @@ describe('RsWizard tests', () => {
     const elements: HTMLButtonElement[] = []
 
     const actions: FormViewerProps['actions'] = {
-      onButtonClick: (e) => {
+      onButtonClick: e => {
         const {args} = e
         elements.push(args[0].target)
-      }
+      },
     }
-    const {findByText,formData} = renderForm(wizardForm, {actions})
+    const {findByText, formData} = renderForm(wizardForm, {actions})
 
     fireEvent.click(await findByText('Next'))
     fireEvent.click(await findByText('Previous'))
@@ -77,12 +77,12 @@ describe('RsWizard tests', () => {
       expect(elements).toHaveLength(4)
     })
 
-    elements.forEach((element) => {
+    elements.forEach(element => {
       expect(element).toBeInstanceOf(HTMLButtonElement)
     })
 
     // FE-1562
-    const wizardFieldItem = (formData as unknown as ComponentData).allComponentFields?.find((f) => f.dataKey === 'wizard')
+    const wizardFieldItem = (formData as unknown as ComponentData).allComponentFields?.find(f => f.dataKey === 'wizard')
     expect(wizardFieldItem).toBeDefined()
     expect(typeof wizardFieldItem?.field?.value).toBe('number')
   })

@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import {allVersionTargetPaths} from '@react-form-builder/cli-lib/workspace-package-paths'
 import {execSync} from 'node:child_process'
 import {readFileSync, writeFileSync} from 'node:fs'
 import {dirname, join} from 'node:path'
 import {fileURLToPath, pathToFileURL} from 'node:url'
+import {allVersionTargetPaths} from '@react-form-builder/cli-lib/workspace-package-paths'
 import {syncDistributionPackageJsons} from './sync-distribution-package-json.ts'
 
 const __filename = fileURLToPath(import.meta.url)

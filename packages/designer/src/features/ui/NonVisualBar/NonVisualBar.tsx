@@ -42,7 +42,7 @@ const NonVisualChip = ({componentKey, name, type, selected}: NonVisualChipProps)
         aria-pressed={selected}
         onClick={onClick}
       >
-        <Icon width={16} height={16} viewBox="0 0 24 24" className={styles.icon}/>
+        <Icon width={16} height={16} viewBox="0 0 24 24" className={styles.icon} />
       </button>
     </Whisper>
   )

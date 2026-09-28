@@ -27,13 +27,27 @@ export const TimeInput = (props: AnnotationEditorProps) => {
   const editorProps = useMemo(() => annotation.editorProps ?? {}, [annotation])
   const parsedValue = useMemo(() => parseTimeValue(value, timeFormat), [value])
 
-  const handleChange = useCallback((value: Date) => {
-    const formatted = value ? formatDate(value, timeFormat) : value
-    onChange?.(formatted)
-  }, [onChange])
+  const handleChange = useCallback(
+    (value: Date) => {
+      const formatted = value ? formatDate(value, timeFormat) : value
+      onChange?.(formatted)
+    },
+    [onChange]
+  )
 
-  return <LabeledProperty {...props}>
-    <DatePicker editable={false} cleanable={true} placement={'auto'}
-                value={parsedValue ?? null} onChange={handleChange} onClean={onClean} {...editorProps} format={timeFormat} size={'xs'}/>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <DatePicker
+        editable={false}
+        cleanable={true}
+        placement={'auto'}
+        value={parsedValue ?? null}
+        onChange={handleChange}
+        onClean={onClean}
+        {...editorProps}
+        format={timeFormat}
+        size={'xs'}
+      />
+    </LabeledProperty>
+  )
 }

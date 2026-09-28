@@ -18,19 +18,19 @@ function createForm(failOnError: boolean): PersistedForm {
             {
               name: 'data-testid',
               value: 'input',
-            }
+            },
           ],
           schema: {
             validations: [
               {
                 key: 'min',
                 args: {
-                  limit: 3
-                }
-              }
+                  limit: 3,
+                },
+              },
             ],
-            autoValidate: false
-          }
+            autoValidate: false,
+          },
         },
         {
           key: 'validateButton',
@@ -40,22 +40,22 @@ function createForm(failOnError: boolean): PersistedForm {
             {
               name: 'data-testid',
               value: 'validateButton',
-            }
+            },
           ],
           events: {
             onClick: [
               {
                 name: 'validate',
-                type: 'common'
+                type: 'common',
               },
               {
                 name: 'testAction',
-                type: 'custom'
-              }
-            ]
-          }
-        }
-      ]
+                type: 'custom',
+              },
+            ],
+          },
+        },
+      ],
     },
     localization: {},
     languages: [],
@@ -72,7 +72,7 @@ function createForm(failOnError: boolean): PersistedForm {
   return persistedForm
 }
 
-function createGateForm(firstAction: ActionData, formActions?: Record<string, {body: string, params: Record<string, never>}>) {
+function createGateForm(firstAction: ActionData, formActions?: Record<string, {body: string; params: Record<string, never>}>) {
   const form = createForm(false)
   const children = form.form.children
   if (!children) throw new Error('Form children are not defined')
@@ -91,11 +91,10 @@ describe('Validation action', () => {
     const actions: FormViewerProps['actions'] = {
       testAction: () => {
         testActionExecuteCount++
-      }
+      },
     }
 
-    const {findByTestId, rerender} = render(<FormViewer view={view} getForm={getForm}
-                                                        viewerRef={viewerRef} actions={actions}/>)
+    const {findByTestId, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} actions={actions} />)
 
     const validateButton = await findByTestId('validateButton')
     expect(validateButton).toBeInTheDocument()
@@ -113,8 +112,7 @@ describe('Validation action', () => {
     const expectedErrors = JSON.stringify({input: 'Required'})
     expect(JSON.stringify(formViewer.formData.errors)).toEqual(expectedErrors)
 
-    rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}
-                         actions={actions} initialData={{input: '123'}}/>)
+    rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} actions={actions} initialData={{input: '123'}} />)
 
     fireEvent.click(await findByTestId('validateButton'))
 
@@ -134,10 +132,10 @@ describe('Validation action', () => {
     const actions: FormViewerProps['actions'] = {
       testAction: () => {
         testActionExecuteCount++
-      }
+      },
     }
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} actions={actions}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} actions={actions} />)
 
     const validateButton = await findByTestId('validateButton')
     expect(validateButton).toBeInTheDocument()
@@ -172,20 +170,17 @@ describe('Validation action', () => {
 
 describe('Action chain interrupt', () => {
   it('A code action can interrupt the chain by returning false', async () => {
-    const form = createGateForm(
-      {name: 'gate', type: 'code'},
-      {gate: {body: 'return false', params: {}}}
-    )
+    const form = createGateForm({name: 'gate', type: 'code'}, {gate: {body: 'return false', params: {}}})
     const getForm = () => JSON.stringify(form)
 
     let testActionExecuteCount = 0
     const actions: FormViewerProps['actions'] = {
       testAction: () => {
         testActionExecuteCount++
-      }
+      },
     }
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions} />)
 
     await asyncAct(async () => fireEvent.click(await findByTestId('validateButton')))
 
@@ -201,10 +196,10 @@ describe('Action chain interrupt', () => {
       gate: () => false,
       testAction: () => {
         testActionExecuteCount++
-      }
+      },
     }
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions} />)
 
     await asyncAct(async () => fireEvent.click(await findByTestId('validateButton')))
 
@@ -220,10 +215,10 @@ describe('Action chain interrupt', () => {
       gate: async (): Promise<false> => false,
       testAction: () => {
         testActionExecuteCount++
-      }
+      },
     }
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions} />)
 
     await asyncAct(async () => fireEvent.click(await findByTestId('validateButton')))
 
@@ -242,10 +237,10 @@ describe('Action chain interrupt', () => {
       },
       testAction: () => {
         testActionExecuteCount++
-      }
+      },
     }
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions} />)
 
     await asyncAct(async () => fireEvent.click(await findByTestId('validateButton')))
 

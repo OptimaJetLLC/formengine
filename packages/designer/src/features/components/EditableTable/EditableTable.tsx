@@ -19,7 +19,7 @@ export interface EditableTableProps extends TableProps<any, any> {
   /**
    * The table data.
    */
-  data: RowDataType[];
+  data: RowDataType[]
   /**
    * Maximum number of rows to be displayed.
    */
@@ -72,7 +72,7 @@ export interface EditableTableState {
   maxHeight?: number
 }
 
-const removeCellIcon = <Close/>
+const removeCellIcon = <Close />
 
 /**
  * The React component that displays the table with editable cells. **Internal use only.**
@@ -98,7 +98,7 @@ export const EditableTable = (props: EditableTableProps) => {
   } = props
   const {autoHeight, maxHeight} = state
 
-  const headerHeight = hideHeader ? 0 : props.headerHeight ?? 40
+  const headerHeight = hideHeader ? 0 : (props.headerHeight ?? 40)
   const rowHeight = (props.rowHeight as number) ?? 46
   const maxRows = props.maxRows ?? 5
   const shorterMax = data.length <= maxRows
@@ -106,18 +106,21 @@ export const EditableTable = (props: EditableTableProps) => {
   const totalMaxHeight = headerHeight + rowHeight * maxRows
   const adjustedHeight = data.length > maxRows ? totalMaxHeight : emptyHeight
 
-  const handleChange = useCallback((data: any) => {
-    if (autoAdd) {
-      const lastItem = data[data.length - 1]
-      if (!lastItem || Object.values(lastItem).some(val => val)) data.push({})
-    }
-    onChange?.(data)
-  }, [autoAdd, onChange])
+  const handleChange = useCallback(
+    (data: any) => {
+      if (autoAdd) {
+        const lastItem = data[data.length - 1]
+        if (!lastItem || Object.values(lastItem).some(val => val)) data.push({})
+      }
+      onChange?.(data)
+    },
+    [autoAdd, onChange]
+  )
 
   const updateHeight = useCallback(() => {
     setState({
       autoHeight: shorterMax,
-      maxHeight: adjustedHeight
+      maxHeight: adjustedHeight,
     })
   }, [adjustedHeight, shorterMax])
 
@@ -128,21 +131,25 @@ export const EditableTable = (props: EditableTableProps) => {
     onAdd?.(data.length)
   }, [data, handleChange, updateHeight, onAdd])
 
-  const onRemoveColumn = useCallback((index: any) => {
-    data.splice(index, 1)
-    handleChange?.(data)
-    updateHeight()
-    onRemove?.(index)
-  }, [data, handleChange, updateHeight, onRemove])
+  const onRemoveColumn = useCallback(
+    (index: any) => {
+      data.splice(index, 1)
+      handleChange?.(data)
+      updateHeight()
+      onRemove?.(index)
+    },
+    [data, handleChange, updateHeight, onRemove]
+  )
 
   const columnChangeHandler = useCallback(() => handleChange?.([...data] as any), [handleChange, data])
 
-  const prepareColumns = useCallback(() => columns?.map(col =>
-    cloneElement(col, {onChange: columnChangeHandler})
-  ), [columns, columnChangeHandler])
+  const prepareColumns = useCallback(
+    () => columns?.map(col => cloneElement(col, {onChange: columnChangeHandler})),
+    [columns, columnChangeHandler]
+  )
 
   const shouldUpdateScroll = useCallback(() => {
-    const scrollPos: { y?: number } = {}
+    const scrollPos: {y?: number} = {}
     if (shouldScroll) {
       scrollPos.y = Number.MAX_SAFE_INTEGER
       setShouldScroll(false)
@@ -153,33 +160,37 @@ export const EditableTable = (props: EditableTableProps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(updateHeight, [])
 
-  return (<div>
-    {!!label && <label>{label}</label>}
-    <Table
-      data={data}
-      headerHeight={headerHeight}
-      rowHeight={rowHeight}
-      height={maxHeight}
-      autoHeight={autoHeight}
-      shouldUpdateScroll={shouldUpdateScroll}
-      {...tableProps}
-      className={cx(styles.table, {hideHeader}, tableProps.className)}
-    >
-      {prepareColumns()}
-      <Column width={34}>
-        <HeaderCell>
-          <div/>
-        </HeaderCell>
-        <ActionCell onAction={onRemoveColumn} icon={removeCellIcon}/>
-      </Column>
-    </Table>
-    {!!errorMessage && <ErrorMessage show={!!errorMessage} placement="bottomStart">
-      {errorMessage}
-    </ErrorMessage>}
-    {!autoAdd &&
-      <Button appearance="default" size="sm" onClick={onAddColumn} className={styles.button} block>
-        <Plus/>
-      </Button>
-    }
-  </div>)
+  return (
+    <div>
+      {!!label && <label>{label}</label>}
+      <Table
+        data={data}
+        headerHeight={headerHeight}
+        rowHeight={rowHeight}
+        height={maxHeight}
+        autoHeight={autoHeight}
+        shouldUpdateScroll={shouldUpdateScroll}
+        {...tableProps}
+        className={cx(styles.table, {hideHeader}, tableProps.className)}
+      >
+        {prepareColumns()}
+        <Column width={34}>
+          <HeaderCell>
+            <div />
+          </HeaderCell>
+          <ActionCell onAction={onRemoveColumn} icon={removeCellIcon} />
+        </Column>
+      </Table>
+      {!!errorMessage && (
+        <ErrorMessage show={!!errorMessage} placement="bottomStart">
+          {errorMessage}
+        </ErrorMessage>
+      )}
+      {!autoAdd && (
+        <Button appearance="default" size="sm" onClick={onAddColumn} className={styles.button} block>
+          <Plus />
+        </Button>
+      )}
+    </div>
+  )
 }

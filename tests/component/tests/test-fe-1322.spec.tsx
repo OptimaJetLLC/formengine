@@ -8,7 +8,7 @@ describe('FE-1322 Not all keys are unique after form load', () => {
     const getForm = () => JSON.stringify(form)
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} />)
 
     expect(await findByTestId('rsInput1')).toHaveValue('three')
 

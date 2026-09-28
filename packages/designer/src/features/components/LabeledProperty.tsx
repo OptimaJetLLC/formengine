@@ -73,53 +73,44 @@ interface CodeButtonProps extends CalculableEditorProps {
 type ButtonType = 'disabled' | 'calculation' | 'localization' | 'localizable' | 'calculable' | 'calculableAndLocalizable'
 
 type ButtonAppearance = {
-  hint: string,
-  color?: string,
-  icon: IconDefinition,
+  hint: string
+  color?: string
+  icon: IconDefinition
 }
 
 const ButtonAppearance: Record<ButtonType, ButtonAppearance> = {
-  'disabled': {
+  disabled: {
     hint: 'neitherCalculableNorLocalizable',
     icon: faEdit as unknown as IconDefinition,
-    color: 'var(--rs-btn-default-disabled-bg)'
+    color: 'var(--rs-btn-default-disabled-bg)',
   },
-  'calculation': {
+  calculation: {
     hint: 'editCalculable',
     color: 'var(--rs-btn-primary-bg)',
     icon: faCode as unknown as IconDefinition,
   },
-  'localization': {
+  localization: {
     hint: 'editLocalizable',
     color: 'var(--rs-btn-primary-bg)',
     icon: faGlobe as unknown as IconDefinition,
   },
-  'calculable': {
+  calculable: {
     hint: 'hintCalculable',
     icon: faEdit as unknown as IconDefinition,
   },
-  'localizable': {
+  localizable: {
     hint: 'hintLocalizable',
     icon: faEdit as unknown as IconDefinition,
   },
-  'calculableAndLocalizable': {
+  calculableAndLocalizable: {
     hint: 'hintCalculableAndLocalizable',
     icon: faEdit as unknown as IconDefinition,
-  }
+  },
 }
 
 const RawCodeButton = (props: CodeButtonProps) => {
-  const {
-    annotation,
-    getComputeCode,
-    setComputeCode,
-    disableCompute,
-    getComputeType,
-    hasComputeCode,
-    componentData,
-    value,
-    className
-  } = props
+  const {annotation, getComputeCode, setComputeCode, disableCompute, getComputeType, hasComputeCode, componentData, value, className} =
+    props
   const store = useBuilderStore()
   const disabled = !annotation.calculable && !annotation.localizable
   const getLabel = useTranslationPart('propertiesEditor.codeButton')
@@ -133,7 +124,7 @@ const RawCodeButton = (props: CodeButtonProps) => {
     if (disabled) return 'disabled'
     if (calculation) return 'calculation'
     if (localization) return 'localization'
-    if (annotation.calculable && (localizationAvailable && annotation.localizable)) return 'calculableAndLocalizable'
+    if (annotation.calculable && localizationAvailable && annotation.localizable) return 'calculableAndLocalizable'
     if (annotation.calculable) return 'calculable'
     if (annotation.localizable) return 'localizable'
 
@@ -147,11 +138,19 @@ const RawCodeButton = (props: CodeButtonProps) => {
 
   const handleClick = useCallback(() => {
     // eslint-disable-next-line react-hooks/immutability
-    store.currentEditable = new EditableProperty(disableCompute, setComputeCode,
-      getComputeCode, getComputeType, hasComputeCode, annotation, componentData.key, value)
+    store.currentEditable = new EditableProperty(
+      disableCompute,
+      setComputeCode,
+      getComputeCode,
+      getComputeType,
+      hasComputeCode,
+      annotation,
+      componentData.key,
+      value
+    )
   }, [annotation, componentData.key, disableCompute, getComputeCode, getComputeType, hasComputeCode, setComputeCode, store, value])
 
-  const icon = useMemo(() => <FaIcon icon={buttonStyle.icon} color={buttonStyle.color}/>, [buttonStyle.icon, buttonStyle.color])
+  const icon = useMemo(() => <FaIcon icon={buttonStyle.icon} color={buttonStyle.color} />, [buttonStyle.icon, buttonStyle.color])
 
   return (
     <Hinted hint={buttonStyle.hint}>
@@ -172,7 +171,7 @@ const CodeButton = customizableObserver('PropertyCodeButton', RawCodeButton)
 const CustomizedLabel = customizable('PropertyLabel', HintedLabel)
 
 const RawCustomizedInput = (props: HTMLAttributes<HTMLDivElement>) => {
-  return <div {...props} className={cx(styles.customizedInput, props.className)}/>
+  return <div {...props} className={cx(styles.customizedInput, props.className)} />
 }
 
 const CustomizedInput = customizable('PropertyInput', RawCustomizedInput)
@@ -199,14 +198,12 @@ export const LabeledWrapper = (props: LabeledWrapperProps) => {
   return (
     <LabeledInput style={style} className={className} data-testid={dataTestId}>
       <Columns className={styles.columns}>
-        {leftButton ?? <div className={styles.leftButtonPlaceholder}/>}
+        {leftButton ?? <div className={styles.leftButtonPlaceholder} />}
         <CustomizedLabel htmlFor={id} hint={hint} className={labelClassName}>
           <>{label}</>
         </CustomizedLabel>
       </Columns>
-      {!!children && <CustomizedInput>
-        {cloneElement(children, {id, 'data-testid': inputTestId})}
-      </CustomizedInput>}
+      {!!children && <CustomizedInput>{cloneElement(children, {id, 'data-testid': inputTestId})}</CustomizedInput>}
     </LabeledInput>
   )
 }
@@ -218,7 +215,7 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
 
   const leftButton = useMemo(() => {
     const needCodeButton = annotation.calculable || annotation.localizable
-    return needCodeButton ? <CodeButton {...codeButtonProps} value={value}/> : undefined
+    return needCodeButton ? <CodeButton {...codeButtonProps} value={value} /> : undefined
   }, [annotation.calculable, annotation.localizable, codeButtonProps, value])
 
   const {hint, label} = useTranslatedComponentProperty(annotation, componentType)
@@ -226,16 +223,20 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
   const valueModified = !isEqual(value, annotation.default)
   const adjustedClassName = [className, valueModified ? 'valueModified' : ''].filter(v => !!v).join(' ')
 
-  return <LabeledWrapper style={style}
-                         className={adjustedClassName}
-                         required={annotation.required}
-                         hint={hint}
-                         label={label}
-                         leftButton={leftButton}
-                         dataTestId={`${annotation.key}-labeled-wrapper`}
-                         inputTestId={`${annotation.key}-property-input`}>
-    {children}
-  </LabeledWrapper>
+  return (
+    <LabeledWrapper
+      style={style}
+      className={adjustedClassName}
+      required={annotation.required}
+      hint={hint}
+      label={label}
+      leftButton={leftButton}
+      dataTestId={`${annotation.key}-labeled-wrapper`}
+      inputTestId={`${annotation.key}-property-input`}
+    >
+      {children}
+    </LabeledWrapper>
+  )
 }
 
 /**

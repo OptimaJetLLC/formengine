@@ -13,14 +13,14 @@ type CreateLocalizedFormOptions = {
 type CreateButtonLocalizationFormOptions = {
   testId: string
   defaultLanguage: `${string}-${string}`
-  languages: Array<{ code: string; dialect: string; name: string; description: string; bidi?: 'ltr' | 'rtl' }>
+  languages: Array<{code: string; dialect: string; name: string; description: string; bidi?: 'ltr' | 'rtl'}>
   localization: PersistedForm['localization']
 }
 
 type CreateLocalizedScreenFormOptions = {
   children?: Array<Record<string, unknown>>
   localization?: PersistedForm['localization']
-  languages: Array<{ code: string; dialect: string; name: string; description: string; bidi?: 'ltr' | 'rtl' }>
+  languages: Array<{code: string; dialect: string; name: string; description: string; bidi?: 'ltr' | 'rtl'}>
   defaultLanguage: `${string}-${string}`
 }
 
@@ -45,17 +45,14 @@ export const createLocalizedForm = (options: CreateLocalizedFormOptions) => {
   const [requestedCode, requestedDialect] = requestedLanguage.split('-')
 
   const componentStore = new ComponentStore(componentKey, componentType)
-  componentStore.props[propertyKey] = propValue === undefined
-    ? {computeType: 'localization'}
-    : {value: propValue, computeType: 'localization'}
+  componentStore.props[propertyKey] =
+    propValue === undefined ? {computeType: 'localization'} : {value: propValue, computeType: 'localization'}
   componentStore.htmlAttributes = [{name: 'data-testid', value: 'localized-target'}]
 
   const screen = new ComponentStore('Screen', 'Screen')
   screen.children = [componentStore]
 
-  const languages = [
-    new Language(defaultCode, defaultDialect, defaultLanguage, defaultLanguage, BiDi.LTR),
-  ]
+  const languages = [new Language(defaultCode, defaultDialect, defaultLanguage, defaultLanguage, BiDi.LTR)]
   if (requestedLanguage !== defaultLanguage) {
     languages.push(new Language(requestedCode, requestedDialect, requestedLanguage, requestedLanguage, BiDi.LTR))
   }
@@ -133,7 +130,7 @@ export const createLocalizedScreenForm = (options: CreateLocalizedScreenFormOpti
  * @returns typed builder store.
  */
 export const getBuilderStore = <T>(getFormBuilder: FormBuilderGetter): T => {
-  const builder = getFormBuilder() as { builderStore: T }
+  const builder = getFormBuilder() as {builderStore: T}
   return builder.builderStore
 }
 
@@ -143,6 +140,6 @@ export const getBuilderStore = <T>(getFormBuilder: FormBuilderGetter): T => {
  * @returns typed localization store.
  */
 export const getBuilderFormLocalization = <T>(getFormBuilder: FormBuilderGetter): T => {
-  const builderStore = getBuilderStore<{ viewer: { form: { localization: T } } }>(getFormBuilder)
+  const builderStore = getBuilderStore<{viewer: {form: {localization: T}}}>(getFormBuilder)
   return builderStore.viewer.form.localization
 }

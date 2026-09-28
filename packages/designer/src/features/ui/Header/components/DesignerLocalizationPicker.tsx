@@ -10,13 +10,21 @@ type DesignerLocalizationPickerProps = Omit<ComponentProps<typeof LocalizationPi
 const RawDesignerLocalizationPicker = (props: DesignerLocalizationPickerProps) => {
   const builderStore = useBuilderStore()
 
-  const handleSelect = useCallback((language: Language) => {
-    builderStore.applyDesignerLanguageSelection(language)
-  }, [builderStore])
+  const handleSelect = useCallback(
+    (language: Language) => {
+      builderStore.applyDesignerLanguageSelection(language)
+    },
+    [builderStore]
+  )
 
-  return <LocalizationPicker {...props} data-testid={'designer-form-language'}
-                             value={builderStore.viewer.selectedLanguage?.fullCode}
-                             onSelect={handleSelect}/>
+  return (
+    <LocalizationPicker
+      {...props}
+      data-testid={'designer-form-language'}
+      value={builderStore.viewer.selectedLanguage?.fullCode}
+      onSelect={handleSelect}
+    />
+  )
 }
 
 export const DesignerLocalizationPicker = customizableObserver('LocalizationSelect', RawDesignerLocalizationPicker)

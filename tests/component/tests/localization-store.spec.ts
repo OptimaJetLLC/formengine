@@ -6,7 +6,7 @@ function createIdentityEngine(overrides: Partial<ILocalizationEngine> = {}): ILo
   return {
     language: 'en-US',
     addMessages: () => [],
-    getCompatibleId: (rawId) => rawId,
+    getCompatibleId: rawId => rawId,
     localizeProperties: () => ({}),
     localizeErrorMessage: () => undefined,
     ...overrides,
@@ -28,7 +28,7 @@ describe('localization store behavior', () => {
             },
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
       store.setLocalization('en-US', 'c1', 'p1', 'component', '')
       expect(store.value).toStrictEqual({})
@@ -43,7 +43,7 @@ describe('localization store behavior', () => {
             },
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
       store.setLocalization('en-US', 'c1', 'p1', 'component', ' \t\n ')
       expect(store.getLocalization('en-US', 'c1', 'p1', 'component')).toBe(' \t\n ')
@@ -70,7 +70,7 @@ describe('localization store behavior', () => {
             },
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
       store.setLocalization('en-US', 'c1', 'p1', 'component', '')
       expect(store.value).toStrictEqual({
@@ -83,10 +83,13 @@ describe('localization store behavior', () => {
     })
 
     it('normalizes ids consistently for read and write operations', () => {
-      const store = new LocalizationStore({}, {
-        ...createIdentityEngine(),
-        getCompatibleId: (rawId: string) => rawId.toLowerCase().replaceAll(' ', '_'),
-      })
+      const store = new LocalizationStore(
+        {},
+        {
+          ...createIdentityEngine(),
+          getCompatibleId: (rawId: string) => rawId.toLowerCase().replaceAll(' ', '_'),
+        }
+      )
 
       store.setLocalization('en-US', 'Comp Key', 'Prop Name', 'component', 'value')
 
@@ -121,7 +124,7 @@ describe('localization store behavior', () => {
             },
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
       expect(store.getLocalization('en-US', 'c1', 'p1', 'component')).toBe('colour')
     })
@@ -140,7 +143,7 @@ describe('localization store behavior', () => {
             },
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       expect(store.getLocalization('en-US', 'c1', 'p1', 'component')).toBe('color')
@@ -156,7 +159,7 @@ describe('localization store behavior', () => {
             },
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       expect(store.findLocalizationKey('en-US')).toBe('en-GB')
@@ -173,7 +176,7 @@ describe('localization store behavior', () => {
             c1: {component: {p1: 'gb'}},
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       expect(store.findLocalizationKey('en-US')).toBe('en-US')
@@ -189,7 +192,7 @@ describe('localization store behavior', () => {
         {
           'de-DE': {},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       expect(store.findLocalizationKey('de-AT')).toBe('de-DE')
@@ -200,7 +203,7 @@ describe('localization store behavior', () => {
         {
           'en-US': {},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       expect(store.value).toStrictEqual({})
@@ -219,7 +222,7 @@ describe('localization store behavior', () => {
             c1: {component: {p1: 'x'}},
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       expect(store.hasLanguage('en-US')).toBe(true)
@@ -230,7 +233,7 @@ describe('localization store behavior', () => {
         {
           'de-DE': {},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       expect(store.hasLanguage('de-AT')).toBe(true)
@@ -244,7 +247,7 @@ describe('localization store behavior', () => {
             c1: {component: {p1: 'x'}},
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       store.setLocalization('fr-FR', 'c2', 'p1', 'component', 'y')
@@ -286,7 +289,7 @@ describe('localization store behavior', () => {
             },
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
       store.setLocalization('en-US', 'c1', 'p1', 'component', '')
       expect(store.value).toStrictEqual({
@@ -309,7 +312,7 @@ describe('localization store behavior', () => {
             },
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       store.removeLocalization('c1')
@@ -325,7 +328,7 @@ describe('localization store behavior', () => {
             c2: {component: {p1: 'b'}},
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       store.removeLocalization('c1')
@@ -343,7 +346,7 @@ describe('localization store behavior', () => {
           'en-US': {c1: {component: {p1: 'us'}}},
           'de-DE': {c1: {component: {p1: 'de'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       store.removeLocalization('c1')
@@ -357,7 +360,7 @@ describe('localization store behavior', () => {
           'en-US': {c1: {component: {p1: 'us'}}},
           'de-DE': {c2: {component: {p1: 'de'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       store.removeLocalization('c1')
@@ -373,7 +376,7 @@ describe('localization store behavior', () => {
           'en-US': {},
           'de-DE': {c1: {component: {p1: 'de'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       store.removeLocalization('c1')
@@ -392,7 +395,7 @@ describe('localization store behavior', () => {
             },
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       store.removeLocalizationForType('c1', 'component')
@@ -411,7 +414,7 @@ describe('localization store behavior', () => {
             },
           },
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       store.removeLocalizationForType('c1', 'component')
@@ -431,7 +434,7 @@ describe('localization store behavior', () => {
           'en-US': {c1: {component: {p1: 'us'}}},
           'de-DE': {c2: {component: {p1: 'de'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       store.removeLocalizationForType('c1', 'component')
@@ -449,7 +452,7 @@ describe('localization store behavior', () => {
           'en-US': {oldKey: {component: {p1: 'us'}}},
           'de-DE': {oldKey: {component: {p1: 'de'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       store.changeComponentKey('oldKey', 'newKey')
@@ -467,7 +470,7 @@ describe('localization store behavior', () => {
         {
           'en-US': {old_key: {component: {p1: 'v'}}},
         },
-        createIdentityEngine({getCompatibleId: normalize}),
+        createIdentityEngine({getCompatibleId: normalize})
       )
 
       store.changeComponentKey('Old Key', 'New Key')
@@ -480,7 +483,7 @@ describe('localization store behavior', () => {
         {
           'en-US': {c1: {component: {p1: 'v'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
       const before = JSON.parse(JSON.stringify(store.value)) as typeof store.value
 
@@ -494,7 +497,7 @@ describe('localization store behavior', () => {
         {
           'en-US': {oldKey: {component: {p1: 'us'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
       store.setLocalization('de-DE', 'other', 'p1', 'component', 'de')
 
@@ -512,7 +515,7 @@ describe('localization store behavior', () => {
           'en-US': {storedKey: {component: {p1: 'us'}}},
           'de-DE': {storedKey: {component: {p1: 'de'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       expect(store.getLocalizationForComponent('storedKey')).toStrictEqual({
@@ -526,7 +529,7 @@ describe('localization store behavior', () => {
         {
           'en-US': {c1: {component: {p1: 'x'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       expect(store.getLocalizationForComponent('missing')).toStrictEqual({})
@@ -538,7 +541,7 @@ describe('localization store behavior', () => {
           'en-US': {c1: {component: {p1: 'us'}}},
           'de-DE': {c2: {component: {p1: 'de'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
 
       expect(store.getLocalizationForComponent('c1')).toStrictEqual({
@@ -582,7 +585,7 @@ describe('localization store behavior', () => {
         {
           'de-DE': {existing: {component: {p1: 'de'}}},
         },
-        createIdentityEngine(),
+        createIdentityEngine()
       )
       const source = {
         'en-US': {oldKey: {component: {p1: 'us'}}},
@@ -613,7 +616,7 @@ describe('localization store behavior', () => {
         createIdentityEngine({
           getCompatibleId: (rawId: string) => rawId.toLowerCase(),
           addMessages,
-        }),
+        })
       )
 
       expect(store.getItems('en-US')).toStrictEqual({
@@ -650,7 +653,7 @@ describe('localization store behavior', () => {
             error.name = 'ParserError'
             return [error]
           },
-        }),
+        })
       )
 
       expect(store.getItems('en-US')).toBeNull()
@@ -663,7 +666,7 @@ describe('localization store behavior', () => {
         {
           'en-GB': {c1: {component: {p1: 'colour'}}},
         },
-        createIdentityEngine({addMessages}),
+        createIdentityEngine({addMessages})
       )
 
       expect(store.getItems('en-US')).toStrictEqual({c1_component_p1: 'colour'})
@@ -676,7 +679,7 @@ describe('localization store behavior', () => {
         {
           'en-US': {c1: {component: {p1: 'a'}}},
         },
-        createIdentityEngine({addMessages}),
+        createIdentityEngine({addMessages})
       )
 
       const first = store.getItems('en-US')

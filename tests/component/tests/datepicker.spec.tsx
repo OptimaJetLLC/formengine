@@ -34,7 +34,7 @@ describe('DatePicker component test', () => {
   it('Should clean value', async () => {
     const stringDate = '2025-09-02T12:29:42.016Z'
     const initialData = {
-      datepicker_cleanable: stringDate
+      datepicker_cleanable: stringDate,
     }
     const {findByTestId} = renderForm(form, {initialData})
     const datePicker = await findByTestId('cleanable')
@@ -57,7 +57,7 @@ describe('DatePicker component test', () => {
   it('Should set value with format', async () => {
     const stringDate = '2025-09-02T12:29:42.016Z'
     const initialData = {
-      datepicker_format: stringDate
+      datepicker_format: stringDate,
     }
     const {findByTestId} = renderForm(form, {initialData})
     const datePicker = await findByTestId('format')
@@ -113,7 +113,7 @@ describe('DatePicker component test', () => {
       key: '1',
       code: 'Digit1',
       keyCode: 49,
-      charCode: 49
+      charCode: 49,
     })
     expect(input.value).toBe('')
   })
@@ -152,13 +152,13 @@ describe('DatePicker component test', () => {
   it('Should show week numbers', async () => {
     const stringDate = '2025-09-02T12:29:42.016Z'
     const initialData = {
-      datepicker_weeknumbers: stringDate
+      datepicker_weeknumbers: stringDate,
     }
     const {findByTestId, getAllByRole} = renderForm(visualForm, {initialData})
     const datePicker = await findByTestId('weeknumbers')
     fireEvent.click(datePicker)
 
-    const dialog = (getAllByRole('dialog'))[0]
+    const dialog = getAllByRole('dialog')[0]
     const expectedNumbers = [36, 37, 38, 39, 40, 41]
     const weekNumbers = Array.from(dialog.querySelectorAll('.rs-calendar-table-cell-week-number')).map(i => i.textContent)
     weekNumbers.forEach((weekNumber, index) => {
@@ -189,7 +189,7 @@ describe('DatePicker component test', () => {
   it('Should show meridiem', async () => {
     const stringDate = '2025-09-02T14:29:42.016Z'
     const initialData = {
-      datepicker_showmeridiem: stringDate
+      datepicker_showmeridiem: stringDate,
     }
     const {findByTestId, getAllByRole} = renderForm(visualForm, {initialData})
     const datePicker = await findByTestId('showmeridiem')

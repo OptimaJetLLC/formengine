@@ -1,14 +1,14 @@
 import mantinePackageJsonRaw from '../../../packages/views/mantine/package.json'
 
 interface PackageJsonExports {
-  [key: string]: string | { import?: string; require?: string }
+  [key: string]: string | {import?: string; require?: string}
 }
 
 const mantinePackageJson = mantinePackageJsonRaw as {exports?: PackageJsonExports}
 
 const EXCLUDED_COMPONENT_TYPES = new Set(['MtViewerWrapper'])
 
-function getWrappedMantineComponentTypes(packageJson: { exports?: PackageJsonExports } = mantinePackageJson): Set<string> {
+function getWrappedMantineComponentTypes(packageJson: {exports?: PackageJsonExports} = mantinePackageJson): Set<string> {
   const exports = packageJson.exports
   if (!exports || typeof exports !== 'object') {
     throw new Error('Mantine package.json has no exports field')
@@ -21,7 +21,7 @@ function getWrappedMantineComponentTypes(packageJson: { exports?: PackageJsonExp
       continue
     }
 
-    const importPath = typeof value === 'string' ? value : value.import ?? value.require
+    const importPath = typeof value === 'string' ? value : (value.import ?? value.require)
     if (!importPath || !importPath.startsWith('./src/components/') || !importPath.endsWith('.tsx')) {
       continue
     }
@@ -45,9 +45,7 @@ function getWrappedMantineComponentTypes(packageJson: { exports?: PackageJsonExp
  * @param packageJson mantine package.json object (defaults to imported package.json)
  * @returns sorted list of component type names
  */
-function getMantineComponentTypes(
-  packageJson: { exports?: PackageJsonExports } = mantinePackageJson
-): string[] {
+function getMantineComponentTypes(packageJson: {exports?: PackageJsonExports} = mantinePackageJson): string[] {
   const wrappedComponentTypes = getWrappedMantineComponentTypes(packageJson)
 
   const exports = packageJson.exports
@@ -78,9 +76,7 @@ function getMantineComponentTypes(
  */
 function componentTypeToLabel(type: string): string {
   const withoutPrefix = type.replace(/^Mt/, '')
-  return withoutPrefix
-    .replace(/([A-Z])/g, (_m, _p1, offset) => (offset ? ' ' : '') + _m)
-    .trim()
+  return withoutPrefix.replace(/([A-Z])/g, (_m, _p1, offset) => (offset ? ' ' : '') + _m).trim()
 }
 
 /**
@@ -89,7 +85,7 @@ function componentTypeToLabel(type: string): string {
  * @param type component type name
  * @returns props object with the proper text prop key
  */
-function buildDefaultTextProps(type: string): Record<string, { value: string }> {
+function buildDefaultTextProps(type: string): Record<string, {value: string}> {
   const label = componentTypeToLabel(type)
 
   if (type === 'MtTypography') {

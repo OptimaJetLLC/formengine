@@ -91,8 +91,10 @@ export interface FastQrProps {
 }
 
 const colorPartToHex = (color: number) => {
-  if (color % 1 === 0) return (color | 1 << 8).toString(16).slice(1)
-  return Math.trunc((color * 255) | 1 << 8).toString(16).slice(1)
+  if (color % 1 === 0) return (color | (1 << 8)).toString(16).slice(1)
+  return Math.trunc((color * 255) | (1 << 8))
+    .toString(16)
+    .slice(1)
 }
 
 const rgbaColorToHex = (color?: string) => {
@@ -100,7 +102,8 @@ const rgbaColorToHex = (color?: string) => {
 
   const index = color.indexOf(')')
   if (color.startsWith('rgba(') && index >= 0) {
-    const colors = color.substring(5, index)
+    const colors = color
+      .substring(5, index)
       .split(',')
       .map(s => s.trim())
       .map(s => Number(s))
@@ -153,25 +156,24 @@ const renderQr = async (props: RenderQrProps, ref: RefObject<HTMLDivElement | nu
 const defaultContent = 'https://formengine.io'
 
 const FastQr = ({
-                  backgroundColor,
-                  className,
-                  content,
-                  errorCorrectionLevel,
-                  image,
-                  imageBackgroundColor,
-                  imageBackgroundShape,
-                  imageGap,
-                  imagePositionX,
-                  imagePositionY,
-                  imageSize,
-                  margin,
-                  moduleColor,
-                  shape,
-                  version,
-                  width,
-                  ...rest
-                }: FastQrProps) => {
-
+  backgroundColor,
+  className,
+  content,
+  errorCorrectionLevel,
+  image,
+  imageBackgroundColor,
+  imageBackgroundShape,
+  imageGap,
+  imagePositionX,
+  imagePositionY,
+  imageSize,
+  margin,
+  moduleColor,
+  shape,
+  version,
+  width,
+  ...rest
+}: FastQrProps) => {
   const ref = useRef<HTMLDivElement>(null)
 
   const data = useBuilderValue(content, defaultContent)
@@ -192,16 +194,30 @@ const FastQr = ({
       margin,
       moduleColor,
       shape,
-      version
+      version,
     }
 
     if (!data) return
 
     renderQr(qrProps, ref).catch(console.error)
-  }, [backgroundColor, data, errorCorrectionLevel, image, imageBackgroundColor, imageBackgroundShape, imageGap,
-    imagePositionX, imagePositionY, imageSize, margin, moduleColor, shape, version])
+  }, [
+    backgroundColor,
+    data,
+    errorCorrectionLevel,
+    image,
+    imageBackgroundColor,
+    imageBackgroundShape,
+    imageGap,
+    imagePositionX,
+    imagePositionY,
+    imageSize,
+    margin,
+    moduleColor,
+    shape,
+    version,
+  ])
 
-  const divStyle = useMemo(() => ({width} as const), [width])
+  const divStyle = useMemo(() => ({width}) as const, [width])
 
   if (!data) return null
 
@@ -218,16 +234,16 @@ export const fastQr = define(FastQr, 'FastQR')
     width: nonNegNumber.default(300),
     content: string.default(defaultContent).dataBound,
     moduleColor: color,
-    shape: oneOf(0, 1, 2, 3, 4, 5).default(0)
+    shape: oneOf(0, 1, 2, 3, 4, 5)
+      .default(0)
       .labeled('Square', 'Circle', 'RoundedSquare', 'Vertical', 'Horizontal', 'Diamond')
       .withEditorProps({creatable: false}),
-    errorCorrectionLevel: oneOf(0, 1, 2, 3).default(0)
+    errorCorrectionLevel: oneOf(0, 1, 2, 3)
+      .default(0)
       .labeled('Low, 7%', 'Medium, 15%', 'Quartile, 25%', 'High, 30%')
       .withEditorProps({creatable: false}),
     version: number.withEditorProps({min: 0, max: 39}),
     image: string,
     imageBackgroundColor: color,
-    imageBackgroundShape: oneOf(0, 1, 2).default(0)
-      .labeled('Square', 'Circle', 'RoundedSquare')
-      .withEditorProps({creatable: false}),
+    imageBackgroundShape: oneOf(0, 1, 2).default(0).labeled('Square', 'Circle', 'RoundedSquare').withEditorProps({creatable: false}),
   })

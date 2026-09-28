@@ -11,7 +11,7 @@ import {
   PersistedForm,
   string,
   useComponentData,
-  View
+  View,
 } from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
 import {useEffect, useState} from 'react'
@@ -34,25 +34,21 @@ interface SimpleFieldAppProps {
 }
 
 const SimpleFieldApp = ({formJson, view, initialData, language}: SimpleFieldAppProps) => {
-  return <FormViewer
-    initialData={initialData}
-    language={language}
-    view={view ?? componentsView}
-    getForm={() => JSON.stringify(formJson)}
-  />
+  return <FormViewer initialData={initialData} language={language} view={view ?? componentsView} getForm={() => JSON.stringify(formJson)} />
 }
 
 const dataTestId = 'test-input'
 const testComponentType = 'RsInput'
 const defaultLanguageCode = 'en-US'
 
-function createTestForm(modify?: (input: ComponentStore) => void,
-                        modifyForm?: (form: PersistedForm) => void) {
+function createTestForm(modify?: (input: ComponentStore) => void, modifyForm?: (form: PersistedForm) => void) {
   const componentStore = new ComponentStore('name', testComponentType)
-  componentStore.htmlAttributes = [{
-    'name': 'data-testid',
-    'value': dataTestId
-  }]
+  componentStore.htmlAttributes = [
+    {
+      name: 'data-testid',
+      value: dataTestId,
+    },
+  ]
   modify?.(componentStore)
 
   const screen = new ComponentStore('Screen', 'Screen')
@@ -63,7 +59,7 @@ function createTestForm(modify?: (input: ComponentStore) => void,
     form: screen,
     localization: {},
     languages: [language],
-    defaultLanguage: defaultLanguageCode
+    defaultLanguage: defaultLanguageCode,
   } satisfies PersistedForm
 
   modifyForm?.(form)
@@ -80,7 +76,7 @@ function getModelWithDefaultValue(defaultValue: string) {
   const defaultProps = model.defaultProps ?? {}
   Object.assign(model, {
     ...model,
-    defaultProps: {...defaultProps, value: defaultValue}
+    defaultProps: {...defaultProps, value: defaultValue},
   })
   return model
 }
@@ -88,17 +84,17 @@ function getModelWithDefaultValue(defaultValue: string) {
 describe(`SimpleField test`, function () {
   it('Input should have an empty value', async () => {
     const form = createTestForm()
-    const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} />)
     expect(await findByTestId(dataTestId)).toHaveValue('')
   })
 
   it('Input should have a default value', async () => {
     const defaultValue = randomString('defaultValue')
-    const form = createTestForm((input) => {
+    const form = createTestForm(input => {
       input.props.value = {value: defaultValue}
     })
 
-    const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} />)
     expect(await findByTestId(dataTestId)).toHaveValue(defaultValue)
   })
 
@@ -108,7 +104,7 @@ describe(`SimpleField test`, function () {
     const view = createView([model])
     const form = createTestForm()
 
-    const {findByTestId} = render(<SimpleFieldApp formJson={form} view={view}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} view={view} />)
     expect(await findByTestId(dataTestId)).toHaveValue(defaultValue)
   })
 
@@ -116,11 +112,11 @@ describe(`SimpleField test`, function () {
     const model = getModelWithDefaultValue('a default model value')
     const view = createView([model])
     const defaultValue = randomString('defaultValue')
-    const form = createTestForm((input) => {
+    const form = createTestForm(input => {
       input.props.value = {value: defaultValue}
     })
 
-    const {findByTestId} = render(<SimpleFieldApp formJson={form} view={view}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} view={view} />)
     expect(await findByTestId(dataTestId)).toHaveValue(defaultValue)
   })
 
@@ -129,7 +125,7 @@ describe(`SimpleField test`, function () {
     const initialData = {name: defaultValue}
     const form = createTestForm()
 
-    const {findByTestId} = render(<SimpleFieldApp formJson={form} initialData={initialData}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} initialData={initialData} />)
     expect(await findByTestId(dataTestId)).toHaveValue(defaultValue)
   })
 
@@ -140,18 +136,18 @@ describe(`SimpleField test`, function () {
     const initialData = {name: defaultValue}
     const form = createTestForm()
 
-    const {findByTestId} = render(<SimpleFieldApp formJson={form} view={view} initialData={initialData}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} view={view} initialData={initialData} />)
     expect(await findByTestId(dataTestId)).toHaveValue(defaultValue)
   })
 
   it('The initial data should override the value of component', async () => {
     const defaultValue = randomString('defaultValue')
     const initialData = {name: defaultValue}
-    const form = createTestForm((input) => {
+    const form = createTestForm(input => {
       input.props.value = {value: 'defaultValue'}
     })
 
-    const {findByTestId} = render(<SimpleFieldApp formJson={form} initialData={initialData}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} initialData={initialData} />)
     expect(await findByTestId(dataTestId)).toHaveValue(defaultValue)
   })
 
@@ -160,81 +156,92 @@ describe(`SimpleField test`, function () {
     const view = createView([model])
     const defaultValue = randomString('defaultValue')
     const initialData = {name: defaultValue}
-    const form = createTestForm((input) => {
+    const form = createTestForm(input => {
       input.props.value = {value: 'defaultValue'}
     })
 
-    const {findByTestId} = render(<SimpleFieldApp formJson={form} view={view} initialData={initialData}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} view={view} initialData={initialData} />)
     expect(await findByTestId(dataTestId)).toHaveValue(defaultValue)
   })
 
   it('Input should have a function value', async () => {
     const fnValue = randomString('fnValue')
-    const form = createTestForm((input) => {
+    const form = createTestForm(input => {
       input.props.value = {value: 'defaultValue', computeType: 'function', fnSource: `return '${fnValue}'`}
     })
 
-    const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} />)
     expect(await findByTestId(dataTestId)).toHaveValue(fnValue)
   })
 
   it('Input should have a localization value', async () => {
     const localeValue = randomString('localeValue')
-    const form = createTestForm((input) => {
+    const form = createTestForm(
+      input => {
         input.props.value = {value: 'defaultValue', computeType: 'localization'}
-      }, (form) => {
+      },
+      form => {
         form.localization ??= {}
         form.localization[defaultLanguageCode] = {
-          name: {component: {value: localeValue}}
+          name: {component: {value: localeValue}},
         }
       }
     )
 
-    const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} />)
     expect(await findByTestId(dataTestId)).toHaveValue(localeValue)
   })
 
   it('Should resolve localized value when component key has spaces (compatible ids)', async () => {
     const localeValue = randomString('localeValue')
-    const form = createTestForm((input) => {
-      input.key = 'my field'
-      input.props.value = {value: 'defaultValue', computeType: 'localization'}
-    }, (form) => {
-      form.localization ??= {}
-      form.localization[defaultLanguageCode] = {
-        my_field: {component: {value: localeValue}}
+    const form = createTestForm(
+      input => {
+        input.key = 'my field'
+        input.props.value = {value: 'defaultValue', computeType: 'localization'}
+      },
+      form => {
+        form.localization ??= {}
+        form.localization[defaultLanguageCode] = {
+          my_field: {component: {value: localeValue}},
+        }
       }
-    })
+    )
 
-    const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} />)
     expect(await findByTestId(dataTestId)).toHaveValue(localeValue)
   })
 
   it('Input should have a function value from initialData', async () => {
-    const form = createTestForm((input) => {
-      input.props.value = {value: 'defaultValue', computeType: 'function', fnSource: 'return `last name: ${form.data.surname}`'}
-    }, ({form}) => {
-      form.children?.push(new ComponentStore('surname', testComponentType))
-    })
+    const form = createTestForm(
+      input => {
+        input.props.value = {value: 'defaultValue', computeType: 'function', fnSource: 'return `last name: ${form.data.surname}`'}
+      },
+      ({form}) => {
+        form.children?.push(new ComponentStore('surname', testComponentType))
+      }
+    )
 
     const initialData = {name: 'name value', surname: randomString('surname')}
-    const {findByTestId} = render(<SimpleFieldApp formJson={form} initialData={initialData}/>)
+    const {findByTestId} = render(<SimpleFieldApp formJson={form} initialData={initialData} />)
     expect(await findByTestId(dataTestId)).toHaveValue(`last name: ${initialData.surname}`)
   })
 
   it('Input should have a function value from an updated initialData', async () => {
-    const form = createTestForm((input) => {
-      input.props.value = {value: 'defaultValue', computeType: 'function', fnSource: 'return `last name: ${form.data.surname}`'}
-    }, ({form}) => {
-      form.children?.push(new ComponentStore('surname', testComponentType))
-    })
+    const form = createTestForm(
+      input => {
+        input.props.value = {value: 'defaultValue', computeType: 'function', fnSource: 'return `last name: ${form.data.surname}`'}
+      },
+      ({form}) => {
+        form.children?.push(new ComponentStore('surname', testComponentType))
+      }
+    )
 
     const initialData = {name: 'name value', surname: randomString('surname')}
-    const {findByTestId, findByDisplayValue, rerender} = render(<SimpleFieldApp formJson={form} initialData={initialData}/>)
+    const {findByTestId, findByDisplayValue, rerender} = render(<SimpleFieldApp formJson={form} initialData={initialData} />)
     expect(await findByTestId(dataTestId)).toHaveValue(`last name: ${initialData.surname}`)
 
     const newData = {name: 'new name', surname: randomString('updated surname')}
-    rerender(<SimpleFieldApp formJson={form} initialData={newData}/>)
+    rerender(<SimpleFieldApp formJson={form} initialData={newData} />)
     expect(await findByDisplayValue(newData.surname)).toHaveValue(newData.surname)
   })
 
@@ -242,11 +249,11 @@ describe(`SimpleField test`, function () {
     const form = createTestForm()
 
     const initialData = {name: randomString('first render')}
-    const {findByTestId, findByDisplayValue, rerender} = render(<SimpleFieldApp formJson={form} initialData={initialData}/>)
+    const {findByTestId, findByDisplayValue, rerender} = render(<SimpleFieldApp formJson={form} initialData={initialData} />)
     expect(await findByTestId(dataTestId)).toHaveValue(initialData.name)
 
     const newData = {name: randomString('second render')}
-    rerender(<SimpleFieldApp formJson={form} initialData={newData}/>)
+    rerender(<SimpleFieldApp formJson={form} initialData={newData} />)
     expect(await findByDisplayValue(newData.name)).toHaveValue(newData.name)
   })
 
@@ -264,10 +271,10 @@ describe(`SimpleField test`, function () {
         return () => clearTimeout(timeoutId)
       }, [initialData])
 
-      return <SimpleFieldApp formJson={form} initialData={initialData}/>
+      return <SimpleFieldApp formJson={form} initialData={initialData} />
     }
 
-    const {findByTestId, findByDisplayValue} = render(<TestComponent/>)
+    const {findByTestId, findByDisplayValue} = render(<TestComponent />)
     expect(await findByTestId(dataTestId)).toHaveValue('')
 
     expect(await findByDisplayValue(secondRenderValue)).toHaveValue(secondRenderValue)
@@ -276,17 +283,20 @@ describe(`SimpleField test`, function () {
 
   it('Input should have a default value after reset', async () => {
     const defaultValue = randomString('default-')
-    const form = createTestForm((input) => {
-      input.props.value = {value: defaultValue}
-    }, ({form}) => {
-      const resetButton = new ComponentStore('reset', 'RsButton')
-      resetButton.props.children = {value: 'Reset'}
-      resetButton.events = {'onClick': [{'name': 'reset', 'type': 'common'}]}
-      form.children?.push(resetButton)
-    })
+    const form = createTestForm(
+      input => {
+        input.props.value = {value: defaultValue}
+      },
+      ({form}) => {
+        const resetButton = new ComponentStore('reset', 'RsButton')
+        resetButton.props.children = {value: 'Reset'}
+        resetButton.events = {onClick: [{name: 'reset', type: 'common'}]}
+        form.children?.push(resetButton)
+      }
+    )
 
     const initialData = {name: `first render`}
-    const {findByTestId, findByText} = render(<SimpleFieldApp formJson={form} initialData={initialData}/>)
+    const {findByTestId, findByText} = render(<SimpleFieldApp formJson={form} initialData={initialData} />)
     expect(await findByTestId(dataTestId)).toHaveValue(initialData.name)
 
     const resetButton = await findByText('Reset')
@@ -297,21 +307,24 @@ describe(`SimpleField test`, function () {
 
   it('Input should have an empty string value after clear', async () => {
     const defaultValue = randomString('default-')
-    const form = createTestForm((input) => {
-      input.props.value = {value: defaultValue}
-    }, ({form}) => {
-      const clearButton = new ComponentStore('clear', 'RsButton')
-      clearButton.props.children = {value: 'Clear'}
-      clearButton.events = {'onClick': [{'name': 'clear', 'type': 'common'}]}
-      form.children?.push(clearButton)
-    })
+    const form = createTestForm(
+      input => {
+        input.props.value = {value: defaultValue}
+      },
+      ({form}) => {
+        const clearButton = new ComponentStore('clear', 'RsButton')
+        clearButton.props.children = {value: 'Clear'}
+        clearButton.events = {onClick: [{name: 'clear', type: 'common'}]}
+        form.children?.push(clearButton)
+      }
+    )
 
     const defaultModelValue = randomString('model-default-')
     const model = getModelWithDefaultValue(defaultModelValue)
     const view = createView([...componentsMetadata.filter(model => model.typeName !== testComponentType), model])
     const initialData = {name: `first render`}
 
-    const {findByTestId, findByText} = render(<SimpleFieldApp formJson={form} initialData={initialData} view={view}/>)
+    const {findByTestId, findByText} = render(<SimpleFieldApp formJson={form} initialData={initialData} view={view} />)
     expect(await findByTestId(dataTestId)).toHaveValue(initialData.name)
 
     const clearButton = await findByText('Clear')
@@ -323,7 +336,7 @@ describe(`SimpleField test`, function () {
   it('The value entered should override the default value', async () => {
     const form = createTestForm()
 
-    const {findByTestId, findByDisplayValue} = render(<SimpleFieldApp formJson={form}/>)
+    const {findByTestId, findByDisplayValue} = render(<SimpleFieldApp formJson={form} />)
     const nameInput = await findByTestId(dataTestId)
     expect(nameInput).toHaveValue('')
 
@@ -333,14 +346,17 @@ describe(`SimpleField test`, function () {
   })
 
   it('The value entered should override the computed value', async () => {
-    const form = createTestForm((input) => {
-      input.props.value = {value: 'defaultValue', computeType: 'function', fnSource: 'return `ginger-${form.data.middleName}`'}
-    }, ({form}) => {
-      form.children?.push(new ComponentStore('middleName', testComponentType))
-    })
+    const form = createTestForm(
+      input => {
+        input.props.value = {value: 'defaultValue', computeType: 'function', fnSource: 'return `ginger-${form.data.middleName}`'}
+      },
+      ({form}) => {
+        form.children?.push(new ComponentStore('middleName', testComponentType))
+      }
+    )
 
     const initialData = {name: 'name value', middleName: randomString('middle name value')}
-    const {findByTestId, findByDisplayValue} = render(<SimpleFieldApp formJson={form} initialData={initialData}/>)
+    const {findByTestId, findByDisplayValue} = render(<SimpleFieldApp formJson={form} initialData={initialData} />)
     const nameInput = await findByTestId(dataTestId)
     expect(nameInput).toHaveValue(`ginger-${initialData.middleName}`)
 
@@ -354,19 +370,13 @@ describe(`SimpleField test`, function () {
     const TestComponent = ({value}: any) => {
       const componentData = useComponentData()
       const fieldValue = componentData?.field?.value
-      const text = isUndefined(fieldValue)
-        ? 'Value is undefined'
-        : `Current value '${fieldValue}'`
+      const text = isUndefined(fieldValue) ? 'Value is undefined' : `Current value '${fieldValue}'`
       return <span data-testid="test-component">{text}</span>
     }
 
-    const testComponent = define(TestComponent, 'TestComponent')
-      .props({value: string.valued})
-      .build()
+    const testComponent = define(TestComponent, 'TestComponent').props({value: string.valued}).build()
 
-    const form = buildForm()
-      .component('testComponent', 'TestComponent')
-      .json()
+    const form = buildForm().component('testComponent', 'TestComponent').json()
 
     const view = createView([testComponent.model])
 

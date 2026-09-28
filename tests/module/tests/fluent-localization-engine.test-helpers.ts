@@ -6,7 +6,7 @@ import type {
   IFormData,
   LanguageFullCode,
   LocalizationType,
-  LocalizationValue
+  LocalizationValue,
 } from '@react-form-builder/core'
 import {BiDi, ComponentStore, Language, LocalizationStore} from '@react-form-builder/core'
 
@@ -36,9 +36,8 @@ export const fluentMessageId = (
   engine: FluentLocalizationEngine,
   componentKey: string,
   propertyName: string,
-  type: LocalizationType = 'component',
-): string =>
-  `${engine.getCompatibleId(componentKey)}_${type}_${engine.getCompatibleId(propertyName)}`
+  type: LocalizationType = 'component'
+): string => `${engine.getCompatibleId(componentKey)}_${type}_${engine.getCompatibleId(propertyName)}`
 
 type FluentEngineTestContext = {
   engine: FluentLocalizationEngine
@@ -56,8 +55,8 @@ type CreateFluentEngineTestContextOptions = {
   componentType?: string
   propertyKey?: string
   propValue?: unknown
-  extraLocalizedProps?: Record<string, { value?: unknown }>
-  nonLocalizedProps?: Record<string, { value?: unknown }>
+  extraLocalizedProps?: Record<string, {value?: unknown}>
+  nonLocalizedProps?: Record<string, {value?: unknown}>
   defaultProps?: Record<string, unknown>
 }
 
@@ -69,7 +68,7 @@ type CreateFluentEngineTestContextOptions = {
  */
 export const createFluentEngineTestContext = (
   FluentLocalizationEngineCtor: new (locale?: LanguageFullCode) => FluentLocalizationEngine,
-  options: CreateFluentEngineTestContextOptions = {},
+  options: CreateFluentEngineTestContextOptions = {}
 ): FluentEngineTestContext => {
   const {
     localization = {},
@@ -88,9 +87,8 @@ export const createFluentEngineTestContext = (
   const localizationStore = new LocalizationStore(localization, engine)
 
   const componentStore = new ComponentStore(componentKey, componentType)
-  componentStore.props[propertyKey] = propValue === undefined
-    ? {computeType: 'localization'}
-    : {value: propValue, computeType: 'localization'}
+  componentStore.props[propertyKey] =
+    propValue === undefined ? {computeType: 'localization'} : {value: propValue, computeType: 'localization'}
 
   for (const [key, prop] of Object.entries(extraLocalizedProps)) {
     componentStore.props[key] = {value: prop.value, computeType: 'localization'}
@@ -106,14 +104,10 @@ export const createFluentEngineTestContext = (
     ...(defaultProps === undefined
       ? {}
       : {
-        componentTree: {
-          findByKey: (key: string) => (
-            key === componentKey
-              ? {model: {defaultProps}}
-              : undefined
-          ),
-        } as ComponentData,
-      }),
+          componentTree: {
+            findByKey: (key: string) => (key === componentKey ? {model: {defaultProps}} : undefined),
+          } as ComponentData,
+        }),
   } as Form
 
   return {
@@ -135,12 +129,6 @@ export const createFluentEngineTestContext = (
 export const localizeDefaultProperty = (
   ctx: FluentEngineTestContext,
   type: LocalizationType = 'component',
-  formData?: IFormData,
+  formData?: IFormData
 ): Record<string, unknown> =>
-  ctx.engine.localizeProperties(
-    ctx.form,
-    formData ?? ctx.formData,
-    ctx.requestedLanguage,
-    ctx.componentStore,
-    type,
-  )
+  ctx.engine.localizeProperties(ctx.form, formData ?? ctx.formData, ctx.requestedLanguage, ctx.componentStore, type)

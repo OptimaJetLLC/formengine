@@ -28,19 +28,23 @@ type GetAddressFn = (location: google.maps.LatLngLiteral) => Promise<AddressResp
 export const useGeocoding = (): GetAddressFn => {
   const geocoding = useMapsLibrary('geocoding')
 
-  return useCallback((location: google.maps.LatLngLiteral) => {
-    return new Promise((resolve, reject) => {
-      if (!geocoding) return resolve(undefined)
+  return useCallback(
+    (location: google.maps.LatLngLiteral) => {
+      return new Promise((resolve, reject) => {
+        if (!geocoding) return resolve(undefined)
 
-      const geocoder = new geocoding.Geocoder()
-      geocoder.geocode({location})
-        .then(geocoderResponse => {
-          const address = geocoderResponse?.results?.[0]?.address_components
-            ? toAddress(geocoderResponse.results[0].address_components)
-            : undefined
-          resolve({address, geocoderResponse})
-        })
-        .catch(reject)
-    })
-  }, [geocoding])
+        const geocoder = new geocoding.Geocoder()
+        geocoder
+          .geocode({location})
+          .then(geocoderResponse => {
+            const address = geocoderResponse?.results?.[0]?.address_components
+              ? toAddress(geocoderResponse.results[0].address_components)
+              : undefined
+            resolve({address, geocoderResponse})
+          })
+          .catch(reject)
+      })
+    },
+    [geocoding]
+  )
 }

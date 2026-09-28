@@ -6,41 +6,39 @@ import {renderBuilder} from '../util/renderBuilder'
 import {switchToViewerMode} from './designerUtils'
 
 const form = {
-  'version': '1',
-  'tooltipType': 'RsTooltip',
-  'modalType': 'RsModal',
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'props': {},
-    'children': [
+  version: '1',
+  tooltipType: 'RsTooltip',
+  modalType: 'RsModal',
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    children: [
       {
-        'key': 'fastQr1',
-        'type': 'FastQR',
-        'props': {},
-        'dataKey': 'aaaaaaaaaa',
-        'htmlAttributes': [
-          {name: 'data-testid', value: 'test-qr'},
-        ]
-      }
-    ]
+        key: 'fastQr1',
+        type: 'FastQR',
+        props: {},
+        dataKey: 'aaaaaaaaaa',
+        htmlAttributes: [{name: 'data-testid', value: 'test-qr'}],
+      },
+    ],
   },
-  'localization': {},
-  'languages': [
+  localization: {},
+  languages: [
     {
-      'code': 'en',
-      'dialect': 'US',
-      'name': 'English',
-      'description': 'American English',
-      'bidi': 'ltr'
-    }
+      code: 'en',
+      dialect: 'US',
+      name: 'English',
+      description: 'American English',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'en-US'
+  defaultLanguage: 'en-US',
 }
 
 const view = new BuilderView([fastQrComponent.build()])
 
-describe('FE-1659 FastQr: TypeError: Cannot read properties of undefined (reading \'length\')', () => {
+describe("FE-1659 FastQr: TypeError: Cannot read properties of undefined (reading 'length')", () => {
   it('Should not render QR', async () => {
     if (!isBrowserMode()) {
       return

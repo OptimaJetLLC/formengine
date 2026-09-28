@@ -57,7 +57,5 @@ export function resolveComponentPlacement(
  * @returns the parent component for containment checks.
  */
 export function getPlacementParent(placement: ComponentPlacement): ComponentData {
-  return placement.insertPosition === 'inner'
-    ? placement.target
-    : (placement.target.parent ?? placement.target.root)
+  return placement.insertPosition === 'inner' ? placement.target : (placement.target.parent ?? placement.target.root)
 }

@@ -1,4 +1,4 @@
-import {array, createView, define, fn, FormViewer, string} from '@react-form-builder/core'
+import {array, createView, define, FormViewer, fn, string} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 import {ComponentProps, useEffect} from 'react'
 import fnPropsForm from './forms/fn-props-form.json'
@@ -11,9 +11,7 @@ interface TestComponentProps extends ComponentProps<any> {
 
 const TestComponent = ({data, filter, value, onChange, ...props}: TestComponentProps) => {
   const items = data ?? []
-  const filteredValue = filter
-    ? items.filter(filter).join(',')
-    : items.join(',')
+  const filteredValue = filter ? items.filter(filter).join(',') : items.join(',')
 
   useEffect(() => {
     if (filteredValue !== value) {
@@ -21,7 +19,7 @@ const TestComponent = ({data, filter, value, onChange, ...props}: TestComponentP
     }
   }, [filteredValue, onChange, props, value])
 
-  return <input {...props} value={value} onChange={onChange} readOnly={true}/>
+  return <input {...props} value={value} onChange={onChange} readOnly={true} />
 }
 
 const fnDescriptionBegin = `/**
@@ -46,7 +44,7 @@ describe('Functional properties test', () => {
     const getForm = () => JSON.stringify(fnPropsForm)
     const view = createView([testComponent.build().model])
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} />)
 
     expect(await findByTestId('testComponent1')).toHaveValue('Two')
     expect(await findByTestId('testComponent2')).toHaveValue('One')

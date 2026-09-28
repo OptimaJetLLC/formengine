@@ -13,24 +13,24 @@ const form = {
       dialect: 'US',
       name: 'English',
       description: 'American English',
-      bidi: 'ltr'
+      bidi: 'ltr',
     },
     {
       code: 'ar',
       dialect: 'EG',
       name: 'عرب',
       description: 'Arabic (Egypt)',
-      bidi: 'rtl'
-    }
+      bidi: 'rtl',
+    },
   ],
-  defaultLanguage: 'en-US'
+  defaultLanguage: 'en-US',
 }
 
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
 
 describe('CSS loaders tests', () => {
   it('CSS loaders have to be executed sequentially', async () => {
-    const order: string [] = []
+    const order: string[] = []
 
     const ltrLoader = async () => {
       order.push('ltr start')
@@ -44,9 +44,7 @@ describe('CSS loaders tests', () => {
       order.push('rtl end')
     }
 
-    const view = createView([])
-      .withCssLoader(BiDi.LTR, ltrLoader)
-      .withCssLoader(BiDi.RTL, rtlLoader)
+    const view = createView([]).withCssLoader(BiDi.LTR, ltrLoader).withCssLoader(BiDi.RTL, rtlLoader)
 
     renderForm(form, {view, language: 'ar-EG'})
 
@@ -55,7 +53,7 @@ describe('CSS loaders tests', () => {
   })
 
   it('The CSS loader should be unloaded on unmount', async () => {
-    const order: string [] = []
+    const order: string[] = []
 
     const ltrLoader = async () => {
       order.push('ltr loaded')
@@ -67,8 +65,7 @@ describe('CSS loaders tests', () => {
       }
     }
 
-    const view = createView([])
-      .withCssLoader(BiDi.LTR, ltrLoader)
+    const view = createView([]).withCssLoader(BiDi.LTR, ltrLoader)
 
     const {unmount} = renderForm(form, {view, language: 'ar-EG'})
 

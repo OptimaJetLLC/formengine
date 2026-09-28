@@ -33,7 +33,7 @@ const form = {
 describe('form without localization, languages, or defaultLanguage', () => {
   it('loads and renders the form viewer', async () => {
     const getForm = () => JSON.stringify(form)
-    const {findByTestId, findByLabelText} = render(<FormViewer view={view} getForm={getForm}/>)
+    const {findByTestId, findByLabelText} = render(<FormViewer view={view} getForm={getForm} />)
 
     const input = await findByTestId('input123')
     expect(input).toBeInTheDocument()

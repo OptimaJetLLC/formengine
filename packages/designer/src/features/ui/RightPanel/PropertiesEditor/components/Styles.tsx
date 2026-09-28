@@ -6,7 +6,7 @@ import {
   cfEnableInlineStylesEditor,
   className,
   namedObserver,
-  useStore
+  useStore,
 } from '@react-form-builder/core'
 import {useCallback, useState} from 'react'
 import type {Device} from '../../../../../utils/types'
@@ -42,9 +42,13 @@ const RawStyleBlock = ({meta, store, device, cssPart, header, headerHint}: Style
   const isComponent = model.kind === 'component' || model.kind === 'repeater'
 
   return (
-    <PropertyBlock header={isComponent ? header : undefined}
-                   headerHint={isComponent ? headerHint : undefined}
-                   annotations={meta[cssPart]} context={context} initContext={initContext}/>
+    <PropertyBlock
+      header={isComponent ? header : undefined}
+      headerHint={isComponent ? headerHint : undefined}
+      annotations={meta[cssPart]}
+      context={context}
+      initContext={initContext}
+    />
   )
 }
 
@@ -94,14 +98,14 @@ const getDefaultActiveStyleTab = (model: Model) => {
   return 'style'
 }
 
-const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
+const RawStyles = ({meta, store}: {meta: Meta; store: ComponentStore}) => {
   const t = useTranslationPart('style')
   const [device, setDevice] = useState<Device>('any')
   const viewerStore = useStore()
   const model = viewerStore.getModel(meta.type)
   const isComponent = model.kind === 'component'
   const isTemplate = model.kind === 'template'
-  const classNameEditor = <PropertyEditorWrapper annotation={className} context={store.props}/>
+  const classNameEditor = <PropertyEditorWrapper annotation={className} context={store.props} />
 
   const cssEditorHidden = isCssEditorHidden(model)
   const stylesEditorVisible = isStylesEditorVisible(model)
@@ -116,25 +120,23 @@ const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
 
   if (disableStyles && disableWrapperStyles) return null
 
-  return <>
-    <DevicePicker value={device} onChange={setDevice}/>
-    {!isTemplate && !disableStyles &&
-      <StyleBlock meta={meta} store={store} device={device} cssPart={'css'} header={t('component')} headerHint={t('componentHint')}/>
-    }
-    {isComponent && !disableStyles && classNameEditor}
-    {!disableWrapperStyles &&
-      <StyleBlock meta={meta} store={store} device={device} cssPart={'wrapperCss'} header={t('wrapper')} headerHint={t('wrapperHint')}/>
-    }
-    {!isComponent && !disableWrapperStyles && classNameEditor}
+  return (
+    <>
+      <DevicePicker value={device} onChange={setDevice} />
+      {!isTemplate && !disableStyles && (
+        <StyleBlock meta={meta} store={store} device={device} cssPart={'css'} header={t('component')} headerHint={t('componentHint')} />
+      )}
+      {isComponent && !disableStyles && classNameEditor}
+      {!disableWrapperStyles && (
+        <StyleBlock meta={meta} store={store} device={device} cssPart={'wrapperCss'} header={t('wrapper')} headerHint={t('wrapperHint')} />
+      )}
+      {!isComponent && !disableWrapperStyles && classNameEditor}
 
-    {!cssEditorHidden &&
-      <CSSEditor device={device} useWrapperStyles={useWrapperStyles} defaultActiveTab={activeCssTab}/>
-    }
+      {!cssEditorHidden && <CSSEditor device={device} useWrapperStyles={useWrapperStyles} defaultActiveTab={activeCssTab} />}
 
-    {stylesEditorVisible &&
-      <StyleEditor device={device} useWrapperStyles={useWrapperStyles} defaultActiveTab={activeStyleTab}/>
-    }
-  </>
+      {stylesEditorVisible && <StyleEditor device={device} useWrapperStyles={useWrapperStyles} defaultActiveTab={activeStyleTab} />}
+    </>
+  )
 }
 
 /**

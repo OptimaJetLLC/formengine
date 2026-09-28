@@ -10,7 +10,6 @@ import {PresetIcon} from './PresetIcon'
  * Class for configuring preset component options.
  */
 export class BuilderPresetComponentOptions implements IPresetComponentOptions {
-
   private readonly storage: PresetComponentLocalStorage
   public presets: BuilderComponent[] = []
 
@@ -21,10 +20,12 @@ export class BuilderPresetComponentOptions implements IPresetComponentOptions {
    * @param options the parent preset component options.
    * @param localStoragePrefix the prefix for localStorage key.
    */
-  constructor(readonly afterRemove: (name: string) => void,
-              readonly afterAdd: (builderComponent: BuilderComponent) => void,
-              readonly options?: IPresetComponentOptions,
-              localStoragePrefix?: string) {
+  constructor(
+    readonly afterRemove: (name: string) => void,
+    readonly afterAdd: (builderComponent: BuilderComponent) => void,
+    readonly options?: IPresetComponentOptions,
+    localStoragePrefix?: string
+  ) {
     const localStorageKey = localStoragePrefix ? `${localStoragePrefix}-presetComponents` : 'presetComponents'
     this.storage = new PresetComponentLocalStorage(localStorageKey)
     const items = this.components ?? []

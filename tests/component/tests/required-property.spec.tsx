@@ -6,7 +6,7 @@ import {
   PersistedForm,
   required,
   string,
-  type ValidatorType
+  type ValidatorType,
 } from '@react-form-builder/core'
 import {IFormBuilder} from '@react-form-builder/designer'
 import {fireEvent, RenderResult} from '@testing-library/react'
@@ -23,10 +23,12 @@ interface MyCustomRequiredComponentProps extends HTMLAttributes<HTMLDivElement> 
 
 const MyCustomRequiredComponent = (props: MyCustomRequiredComponentProps) => {
   const {requiredOne, requiredTwo, ...rest} = props
-  return <div {...rest}>
-    <span data-testid="required-one">requiredOne: {`${requiredOne}`}</span>
-    <span data-testid="required-two">requiredTwo: {`${requiredTwo}`}</span>
-  </div>
+  return (
+    <div {...rest}>
+      <span data-testid="required-one">requiredOne: {`${requiredOne}`}</span>
+      <span data-testid="required-two">requiredTwo: {`${requiredTwo}`}</span>
+    </div>
+  )
 }
 
 const myCustomRequiredComponent = define(MyCustomRequiredComponent, 'MyCustomRequiredComponent')
@@ -43,24 +45,21 @@ const MyInput = (props: any) => {
 const myInput = define(MyInput, 'MyInput')
   .props({
     required: required,
-    value: string.valued.uncontrolledValue('')
+    value: string.valued.uncontrolledValue(''),
   })
   .build()
 
 const fieldKey = 'test-input'
 
 const hasRequiredRule = (componentStore: ComponentStore) => {
-  return componentStore.schema
-    ?.validations
-    ?.some(({key}) => key === 'required')
+  return componentStore.schema?.validations?.some(({key}) => key === 'required')
 }
 
 const getRequiredPropertyInput = async (findByTestId: RenderResult['findByTestId']) => {
   return await getPropertyInput(findByTestId, fieldKey, 'required', 'Main')
 }
 
-const addValidationRule = async (findByTestId: RenderResult['findByTestId'],
-                                 ruleKey: string, ruleType: ValidatorType = 'internal') => {
+const addValidationRule = async (findByTestId: RenderResult['findByTestId'], ruleKey: string, ruleType: ValidatorType = 'internal') => {
   fireEvent.click(await findByTestId(`Rules_Tab`))
   fireEvent.click(await findByTestId('add-rule-button'))
   fireEvent.click(await findByTestId(`rule-menu-item-${ruleType}-${ruleKey}`))
@@ -68,8 +67,7 @@ const addValidationRule = async (findByTestId: RenderResult['findByTestId'],
   expect(await findByTestId(`existing-rule-${ruleType}-${ruleKey}`)).toBeInTheDocument()
 }
 
-const removeValidationRule = async (findByTestId: RenderResult['findByTestId'],
-                                    ruleKey: string, ruleType: ValidatorType = 'internal') => {
+const removeValidationRule = async (findByTestId: RenderResult['findByTestId'], ruleKey: string, ruleType: ValidatorType = 'internal') => {
   fireEvent.click(await findByTestId(`Rules_Tab`))
   fireEvent.click(await findByTestId(`validator-${ruleKey}-remove-button`))
 
@@ -140,11 +138,11 @@ describe('The required property tests', () => {
             key: 'testComponent',
             type: 'MyCustomRequiredComponent',
             schema: {
-              validations: [{key: 'required'}]
-            }
-          }
-        ]
-      }
+              validations: [{key: 'required'}],
+            },
+          },
+        ],
+      },
     }
 
     const view = createView([myCustomRequiredComponent.model])
@@ -162,10 +160,10 @@ describe('The required property tests', () => {
         children: [
           {
             key: 'testComponent',
-            type: 'MyCustomRequiredComponent'
-          }
-        ]
-      }
+            type: 'MyCustomRequiredComponent',
+          },
+        ],
+      },
     }
 
     const view = createView([myCustomRequiredComponent.model])

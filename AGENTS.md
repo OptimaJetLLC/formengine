@@ -66,6 +66,7 @@ includes:
 - Unused exports (`check:unused-exports`)
 - ESLint errors (`check:eslint`)
 - Formatting issues (`check:format`)
+- Biome lint (`check:format`)
 
 If errors are pre-existing and unrelated to your changes, document this in your commit message.
 
@@ -155,13 +156,13 @@ function getUser(id: any): any {
 }
 ```
 
-In `switch` statements over discriminated unions or enums, unhandled variants must fail at compile time. Prefer handling
-every variant and using the last remaining member as the final return. A new variant then fails type-checking without a
+In `switch` statements over discriminated unions or enums, unhandled variants must fail at compile time. Prefer handling every variant and
+using the last remaining member as the final return. A new variant then fails type-checking without a
 `default` branch.
 
-When the function must not return the unmatched value (it returns a fallback such as `undefined`), type the unused
-argument as `never` and return the fallback. Do not `return value satisfies never` unless `never` is a valid result. Do
-not assign the unmatched value to a `never` variable.
+When the function must not return the unmatched value (it returns a fallback such as `undefined`), type the unused argument as `never` and
+return the fallback. Do not `return value satisfies never` unless `never` is a valid result. Do not assign the unmatched value to a `never`
+variable.
 
 ```typescript
 // Preferred when all variants are handled
@@ -198,11 +199,11 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
-export const Button: React.FC<ButtonProps> = ({ onClick, children }) => {
+export const Button: React.FC<ButtonProps> = ({onClick, children}) => {
   return <button onClick={onClick}>{children}</button>;
 };
 
-export type { ButtonProps };
+export type {ButtonProps};
 ```
 
 ### File Naming
@@ -214,7 +215,9 @@ export type { ButtonProps };
 
 ### Scripts
 
-Prefer TypeScript (`.ts`) for new Node scripts, including `scripts/`, `documentation/website/scripts/`, and `designer-guide/scripts/`. Match neighboring `.ts` scripts (run with `node path/to/script.ts`, import local files with a `.ts` extension). Use `.mjs` or `.js` only when TypeScript cannot run in that context (for example an existing toolchain that does not load `.ts`).
+Prefer TypeScript (`.ts`) for new Node scripts, including `scripts/`, `documentation/website/scripts/`, and `designer-guide/scripts/`. Match
+neighboring `.ts` scripts (run with `node path/to/script.ts`, import local files with a `.ts` extension). Use `.mjs` or `.js` only when
+TypeScript cannot run in that context (for example an existing toolchain that does not load `.ts`).
 
 ### Imports and Exports
 
@@ -226,8 +229,8 @@ Prefer TypeScript (`.ts`) for new Node scripts, including `scripts/`, `documenta
 
 ```typescript
 // ✅ Correct
-import { Button } from "@react-form-builder/core";
-import type { FormConfig } from "@react-form-builder/types";
+import {Button} from "@react-form-builder/core";
+import type {FormConfig} from "@react-form-builder/types";
 
 // ❌ Incorrect
 import Button from "@react-form-builder/core/Button";
@@ -237,25 +240,27 @@ import Button from "@react-form-builder/core/Button";
 
 ### Code Formatting with BiomeJS
 
-The project uses BiomeJS for code formatting and linting. BiomeJS is configured to match the existing code style and has been tested to ensure it doesn't change the current formatting:
+The project uses BiomeJS for code formatting and linting. BiomeJS is configured to match the existing code style and has been tested to
+ensure it doesn't change the current formatting:
 
 - **Indentation**: 2 spaces
 - **Line width**: 140 characters
 - **Maximum line length**: Keep code and documentation lines at or under 140 characters.
 - **Quotes**: Single quotes for JavaScript, double quotes for JSX
-- **Semicolons**: Always
+- **Semicolons**: Only where needed (`asNeeded`), with a leading `;` before statements starting with `(` or `[` to protect against ASI
 - **Trailing commas**: ES5 style
-- **Arrow function parentheses**: Always
+- **Arrow function parentheses**: Only where needed (`asNeeded`)
 
 #### Configuration Details
 
 BiomeJS is configured with the following settings that match the project's existing style:
+
 - **Indentation**: 2 spaces (matching current codebase)
-- **Line width**: 140 characters (matching current codebase)  
+- **Line width**: 140 characters (matching current codebase)
 - **Quotes**: Single quotes for JavaScript, double quotes for JSX (matching current codebase)
-- **Semicolons**: Always (matching current codebase)
+- **Semicolons**: Only where needed (`asNeeded`), with a leading `;` before statements starting with `(` or `[` (matching current codebase)
 - **Trailing commas**: ES5 style (matching current codebase)
-- **Arrow function parentheses**: Always (matching current codebase)
+- **Arrow function parentheses**: Only where needed (`asNeeded`) (matching current codebase)
 
 #### Formatting Commands
 
@@ -349,15 +354,18 @@ All automated tests live under `tests/`, and each suite is an isolated package w
 
 - `tests/common` contains shared helpers, fixtures, and license validation logic consumed by other suites.
 - `tests/component` uses React Testing Library to exercise packaged widgets against fixture JSON located in `components/` and `tests/`.
-- `tests/module` runs Vitest-driven integration checks that import the published modules (`@react-form-builder/core`, designer, indexed-db storage, etc.) through their real entry points.
-- `tests/e2e` hosts the Playwright harness. It spins up a sample designer/viewer app and drives cross-browser scenarios, producing reports under `tests/e2e/reports`.
-- `tests/react-17`, `tests/react-18`, and `tests/react-19` are lightweight host apps used by the test suite to verify backwards compatibility with multiple React majors.
+- `tests/module` runs Vitest-driven integration checks that import the published modules (`@react-form-builder/core`, designer, indexed-db
+  storage, etc.) through their real entry points.
+- `tests/e2e` hosts the Playwright harness. It spins up a sample designer/viewer app and drives cross-browser scenarios, producing reports
+  under `tests/e2e/reports`.
+- `tests/react-17`, `tests/react-18`, and `tests/react-19` are lightweight host apps used by the test suite to verify backwards
+  compatibility with multiple React majors.
 
 ### Writing Tests
 
 ```tsx
-import { render, screen } from '@testing-library/react';
-import { Button } from './Button';
+import {render, screen} from '@testing-library/react';
+import {Button} from './Button';
 
 describe('Button', () => {
   it('should render button with text', () => {
@@ -387,7 +395,9 @@ npm run test:e2e        # Starts the Playwright harness in tests/e2e
 npm run test:browser    # Additional browser-focused checks when needed
 ```
 
-When developing E2E scenarios, start the desired React host (`npm run start:designer` or `npm run start:viewer` from the relevant `tests/react-*` directory) before invoking Playwright, or override the `TEST_*` environment variables described in `tests/e2e/playwright.config.ts`.
+When developing E2E scenarios, start the desired React host (`npm run start:designer` or `npm run start:viewer` from the relevant
+`tests/react-*` directory) before invoking Playwright, or override the `TEST_*` environment variables described in
+`tests/e2e/playwright.config.ts`.
 
 ## Development Process
 
@@ -428,7 +438,8 @@ The project has several types of ESLint errors:
 1. **Console statements**: Remove or comment out `console.log` in production code
 2. **JSDoc comments**: Add JSDoc for all public functions
 3. **TODO comments**: Handle or remove TODO, WTF and FIXME comments
-4. **Wrong imports**: Scoped imports that reach into a package `src/` tree are disallowed (`no-restricted-imports`); use the package public API instead
+4. **Wrong imports**: Scoped imports that reach into a package `src/` tree are disallowed (`no-restricted-imports`); use the package public
+   API instead
 
 ### TypeScript Issues
 
@@ -509,4 +520,5 @@ const logger = {
 
 For documentation work under `documentation/docs`, follow `documentation/AGENTS.md`.
 
-When writing **any** markdown in this repository (docs, reports, plans, README tables), **format tables with aligned columns**: pad each cell so pipes line up vertically in the source. See the table formatting rules and examples in `documentation/AGENTS.md`.
+When writing **any** markdown in this repository (docs, reports, plans, README tables), **format tables with aligned columns**: pad each
+cell so pipes line up vertically in the source. See the table formatting rules and examples in `documentation/AGENTS.md`.

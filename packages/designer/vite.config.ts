@@ -7,9 +7,8 @@ import type {Plugin, ResolvedConfig} from 'vite'
 import {defineConfig, mergeConfig} from 'vite'
 import {inlineCssPlugin} from 'vite-inline-css-plugin'
 import svgr from 'vite-plugin-svgr'
-import {libDts} from '../../vite-plugin-api-extractor.ts'
-
 import base from '../../vite.config'
+import {libDts} from '../../vite-plugin-api-extractor.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -26,7 +25,7 @@ const composeCss = async (outputPath: string, parts: string[]) => {
   const result = await postcss([]).process(composedCss, {
     from: outputPath,
     to: outputPath,
-    map: false
+    map: false,
   })
 
   await writeFile(outputPath, result.css, 'utf8')
@@ -51,7 +50,7 @@ export {
 const replaceGeneratedCssUrlModule = async (outDir: string, direction: 'ltr' | 'rtl', href: string) => {
   const fileNames = await readdir(outDir)
   const pattern = cssModuleFilePatterns[direction]
-  const moduleFileName = fileNames.find((fileName) => pattern.test(fileName))
+  const moduleFileName = fileNames.find(fileName => pattern.test(fileName))
 
   if (!moduleFileName) {
     throw new Error(`Could not find generated ${direction.toUpperCase()} CSS URL module in ${outDir}`)
@@ -100,31 +99,31 @@ const composeDesignerDistCssPlugin = (): Plugin => {
 
       await unlink(join(cssDir, 'designer.ltr.css'))
       await unlink(join(cssDir, 'designer.rtl.css'))
-    }
+    },
   }
 }
 
-export default defineConfig((env) => mergeConfig(base(env), {
-  plugins: [
-    libDts(),
-    svgr({
-      include: '**/*.svg',
-    }),
-    inlineCssPlugin(),
-    composeDesignerDistCssPlugin(),
-  ],
-  build: {
-    sourcemap: true,
-    lib: {
-      entry: resolve(__dirname, './index.ts'),
-      formats: ['es'],
-      fileName: 'index',
-      cssFileName: 'assets/styles',
+export default defineConfig(env =>
+  mergeConfig(base(env), {
+    plugins: [
+      libDts(),
+      svgr({
+        include: '**/*.svg',
+      }),
+      inlineCssPlugin(),
+      composeDesignerDistCssPlugin(),
+    ],
+    build: {
+      sourcemap: true,
+      lib: {
+        entry: resolve(__dirname, './index.ts'),
+        formats: ['es'],
+        fileName: 'index',
+        cssFileName: 'assets/styles',
+      },
+      rollupOptions: {
+        plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],
+      },
     },
-    rollupOptions: {
-      plugins: [
-        excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})
-      ]
-    }
-  },
-}))
+  })
+)

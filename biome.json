@@ -10,19 +10,12 @@
     "ignoreUnknown": false,
     "includes": [
       "**/*.{js,jsx,json,css,md}",
-      "packages/views/rsuite/config/**/*",
-      "packages/views/rsuite/vite.config.ts",
-      "packages/views/material-ui/config/*",
-      "packages/views/material-ui/vite.config.ts",
+      "packages/**/*.{ts,tsx,mjs,json,md}",
+      "examples/**/*.{ts,tsx,mjs,json,md}",
+      "tests/**/*.{ts,tsx,mjs,json,md}",
       "!**/rsuite-no-reset*.css",
       "!**/formengine-rsuite.css",
-      "packages/apps/**/*.{ts,tsx}",
-      "packages/designer-bundle/**/*.{ts,tsx}",
-      "packages/views/print/**/*.{ts,tsx}",
-      "packages/indexed-db-form-storage/**/*.{ts,tsx}",
-      "packages/viewer-bundle/**/*.{ts,tsx}",
-      "packages/viewer-bundle-premium/**/*.{ts,tsx}",
-      "scripts/**/*.ts",
+      "scripts/**/*.{ts,mjs,json,md}",
       "!documentation/website/static"
     ]
   },
@@ -37,7 +30,13 @@
     "bracketSameLine": false
   },
   "linter": {
-    "enabled": false
+    "enabled": true,
+    "rules": {
+      "recommended": false,
+      "correctness": {
+        "useSingleJsDocAsterisk": "error"
+      }
+    }
   },
   "css": {
     "parser": {
@@ -69,5 +68,19 @@
     "parser": {
       "unsafeParameterDecoratorsEnabled": true
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": [
+        "packages/core/src/features/annotation/fnAnnotation.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useSingleJsDocAsterisk": "off"
+          }
+        }
+      }
+    }
+  ]
 }

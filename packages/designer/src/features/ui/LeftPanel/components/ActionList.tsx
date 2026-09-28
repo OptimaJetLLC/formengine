@@ -25,9 +25,9 @@ const RawActionItem = ({name, action}: ActionItemProps) => {
     <ListItem>
       <span>{name}</span>
       <ButtonGroup>
-        <EditButton onClick={handleEdit} data-testid={`edit-action-${name}`}/>
-        <CloneButton onClick={handleClone}/>
-        <RemoveButton onClick={handleRemove} data-testid={`remove-action-${name}`}/>
+        <EditButton onClick={handleEdit} data-testid={`edit-action-${name}`} />
+        <CloneButton onClick={handleClone} />
+        <RemoveButton onClick={handleRemove} data-testid={`remove-action-${name}`} />
       </ButtonGroup>
     </ListItem>
   )
@@ -42,17 +42,18 @@ const RawActionList = () => {
 
   const handleAddCodeAction = useCallback(() => builderStore.addCodeAction(), [builderStore])
 
-  const items = Object.entries(viewerStore.form.actions)
-    .map(([name, action]) => {
-      return <ActionItem key={name} name={name} action={action}/>
-    })
+  const items = Object.entries(viewerStore.form.actions).map(([name, action]) => {
+    return <ActionItem key={name} name={name} action={action} />
+  })
 
-  return <Rows>
-    <Button block onClick={handleAddCodeAction}>{t('actions.addCodeAction')}</Button>
-    <List>
-      {items}
-    </List>
-  </Rows>
+  return (
+    <Rows>
+      <Button block onClick={handleAddCodeAction}>
+        {t('actions.addCodeAction')}
+      </Button>
+      <List>{items}</List>
+    </Rows>
+  )
 }
 
 export const ActionList = namedObserver('ActionList', RawActionList)

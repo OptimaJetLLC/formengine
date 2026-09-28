@@ -10,16 +10,12 @@ const form = buildForm().json()
 const getFormFn = () => form
 
 const App = () => {
-  return <FormBuilder
-    licenseKey={generatedLicenseKey}
-    getForm={getFormFn}
-    view={builderViewWithCss}
-  />
+  return <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} />
 }
 
 describe(`Component: ${App.name}`, function () {
   it('should apply classes to components group', async () => {
-    const {container, findByText} = render(<App/>)
+    const {container, findByText} = render(<App />)
 
     // check that the component is rendered
     expect(await findByText('Preview')).toBeInTheDocument()
@@ -27,7 +23,7 @@ describe(`Component: ${App.name}`, function () {
   })
 
   it('should apply classes to single component', async () => {
-    const {container, findByText} = render(<App/>)
+    const {container, findByText} = render(<App />)
 
     // check that the component is rendered
     expect(await findByText('Preview')).toBeInTheDocument()

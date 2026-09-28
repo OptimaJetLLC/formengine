@@ -16,25 +16,27 @@ const RawArgumentItem = ({data: [name, type]}: ActionArgumentProps) => {
 
   switch (type) {
     case 'string':
-      input = <InputString name={name}/>
+      input = <InputString name={name} />
       break
     case 'number':
-      input = <InputNumber name={name}/>
+      input = <InputNumber name={name} />
       break
     case 'boolean':
-      input = <InputBoolean name={name}/>
+      input = <InputBoolean name={name} />
       break
     case 'function':
-      input = <InputFunction name={name}/>
+      input = <InputFunction name={name} />
       break
     default:
       break
   }
 
-  return <Rows>
-    <label>{name}</label>
-    {input}
-  </Rows>
+  return (
+    <Rows>
+      <label>{name}</label>
+      {input}
+    </Rows>
+  )
 }
 
 export const ArgumentItem = namedObserver('ArgumentItem', RawArgumentItem)

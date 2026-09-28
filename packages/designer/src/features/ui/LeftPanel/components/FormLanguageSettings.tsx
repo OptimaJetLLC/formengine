@@ -19,24 +19,27 @@ const RawFormLanguageSettings = () => {
   const defaultFormLanguage = useMemo(() => {
     const values = languages.map(l => l.fullCode)
     const labels = languages.map(l => l.name)
-    return oneOf(...values).labeled(...labels)
+    return oneOf(...values)
+      .labeled(...labels)
       .default(builderStore.defaultLanguage.fullCode)
       .notLocalize.calculable(false)
       .withEditorProps({
-        placement: 'auto'
+        placement: 'auto',
       })
       .build('defaultLanguage')
   }, [languages, builderStore.defaultLanguage])
 
-  const onChange = useCallback((value: string) => {
-    const found = languages.find(l => l.fullCode === value)
-    // eslint-disable-next-line react-hooks/immutability
-    if (found) viewerStore.form.defaultLanguage = found
-  }, [languages, viewerStore.form])
+  const onChange = useCallback(
+    (value: string) => {
+      const found = languages.find(l => l.fullCode === value)
+      // eslint-disable-next-line react-hooks/immutability
+      if (found) viewerStore.form.defaultLanguage = found
+    },
+    [languages, viewerStore.form]
+  )
 
   // eslint-disable-next-line react-hooks/immutability
-  const onClean = useCallback(() => viewerStore.form.defaultLanguage = builderStore.defaultLanguage,
-    [viewerStore, builderStore])
+  const onClean = useCallback(() => (viewerStore.form.defaultLanguage = builderStore.defaultLanguage), [viewerStore, builderStore])
 
   const annotationEditorProps: AnnotationEditorProps = {
     onChange,
@@ -53,7 +56,7 @@ const RawFormLanguageSettings = () => {
 
   return (
     <ComponentDataProvider value={builderStore.viewer.form.componentTree}>
-      <Picker {...annotationEditorProps}/>
+      <Picker {...annotationEditorProps} />
     </ComponentDataProvider>
   )
 }

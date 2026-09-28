@@ -8,8 +8,8 @@ import type {ValidatorType} from '../types/ValidatorType'
  * The validation rule definition resolved from {@link FormViewerValidationRules}.
  */
 export type ResolvedValidationRuleDefinition =
-  | { type: 'internal', definition: ValidationRule }
-  | { type: 'custom', definition: CustomValidationRuleSettings }
+  | {type: 'internal'; definition: ValidationRule}
+  | {type: 'custom'; definition: CustomValidationRuleSettings}
 
 const unhandledValidatorType = (_type: never): undefined => undefined
 

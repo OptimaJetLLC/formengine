@@ -31,7 +31,7 @@ const RawArgumentList = () => {
   const action = useComputed(getAction)
   const [show, toggleShow] = useReducer(state => !state, false)
   const ExpandIcon = show ? ArrowUpLine : ArrowDownLine
-  const preventClick = useCallback<MouseEventHandler<HTMLDivElement>>((e) => e.stopPropagation(), [])
+  const preventClick = useCallback<MouseEventHandler<HTMLDivElement>>(e => e.stopPropagation(), [])
 
   useClearableArguments()
 
@@ -41,14 +41,15 @@ const RawArgumentList = () => {
     <div onMouseDown={preventClick}>
       <Animation.Collapse in={show} unmountOnExit>
         <Rows className={styles.rows}>
-          {Object.entries(action.params).map((arg, index) =>
-            <ArgumentItem key={index} data={arg}/>)}
+          {Object.entries(action.params).map((arg, index) => (
+            <ArgumentItem key={index} data={arg} />
+          ))}
         </Rows>
       </Animation.Collapse>
       <Button block className={styles.expandButton} onClick={toggleShow}>
         <>
           {t('actions.arguments')}
-          <ExpandIcon className={styles.expand}/>
+          <ExpandIcon className={styles.expand} />
         </>
       </Button>
     </div>

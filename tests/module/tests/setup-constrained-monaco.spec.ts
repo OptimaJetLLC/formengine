@@ -1,14 +1,10 @@
-import {describe, expect, it, vi} from 'vitest'
-
 import {buildConstrainedDocument} from '@react-form-builder/designer/src/features/components/CodeEditor/constrainedDocument'
-import {
-  getEditablePositionRange,
-  getEditableRangeParams,
-} from '@react-form-builder/designer/src/features/components/CodeEditor/ranges'
+import {getEditablePositionRange, getEditableRangeParams} from '@react-form-builder/designer/src/features/components/CodeEditor/ranges'
 import {
   setupConstrainedMonaco,
   withSuppressedConstrainedValidation,
 } from '@react-form-builder/designer/src/features/components/CodeEditor/setupConstrainedMonaco'
+import {describe, expect, it, vi} from 'vitest'
 import {createFakeEditor, createFakeModel, createFakeMonaco} from './helpers/monacoFakes'
 
 describe('setupConstrainedMonaco (minimal restriction engine)', () => {
@@ -34,7 +30,7 @@ describe('setupConstrainedMonaco (minimal restriction engine)', () => {
       startColumn: startPosition.column,
       endLine: endPosition.lineNumber,
       endColumn: endPosition.column,
-      endExclusiveOffset: params.endExclusiveOffset
+      endExclusiveOffset: params.endExclusiveOffset,
     }
   }
 
@@ -52,7 +48,12 @@ describe('setupConstrainedMonaco (minimal restriction engine)', () => {
 
     // Step 1: valid selection delete in the body (remove "BC").
     model.applyChangeInRange(
-      {startLineNumber: editable.startLine, startColumn: editable.startColumn + 1, endLineNumber: editable.startLine, endColumn: editable.startColumn + 3},
+      {
+        startLineNumber: editable.startLine,
+        startColumn: editable.startColumn + 1,
+        endLineNumber: editable.startLine,
+        endColumn: editable.startColumn + 3,
+      },
       ''
     )
     expect(model.getValue()).toBe(buildConstrainedDocument('A', beginContextLine, false, endContextLine))
@@ -132,7 +133,12 @@ describe('setupConstrainedMonaco (minimal restriction engine)', () => {
 
     const editable = getEditableRangeForTest(model as any, beginContextLine, false, endContextLine)
     model.applyChangeInRange(
-      {startLineNumber: editable.startLine, startColumn: editable.startColumn, endLineNumber: editable.startLine, endColumn: editable.startColumn},
+      {
+        startLineNumber: editable.startLine,
+        startColumn: editable.startColumn,
+        endLineNumber: editable.startLine,
+        endColumn: editable.startColumn,
+      },
       'X'
     )
 
@@ -151,7 +157,12 @@ describe('setupConstrainedMonaco (minimal restriction engine)', () => {
     const editor = createFakeEditor(model)
 
     const onBodyChange = vi.fn()
-    const constrainedModel = setupConstrainedMonaco(editor as any, monaco, {beginContextLine, canEditBeginContextLine: false, endContextLine}, onBodyChange)
+    const constrainedModel = setupConstrainedMonaco(
+      editor as any,
+      monaco,
+      {beginContextLine, canEditBeginContextLine: false, endContextLine},
+      onBodyChange
+    )
 
     withSuppressedConstrainedValidation(constrainedModel, () => {
       constrainedModel.setValue(doc2)
@@ -225,11 +236,15 @@ describe('setupConstrainedMonaco (minimal restriction engine)', () => {
 
     const editable = getEditableRangeForTest(model as any, beginContextLine, false, endContextLine)
     model.applyChangeInRange(
-      {startLineNumber: editable.startLine, startColumn: editable.startColumn, endLineNumber: editable.startLine, endColumn: editable.startColumn},
+      {
+        startLineNumber: editable.startLine,
+        startColumn: editable.startColumn,
+        endLineNumber: editable.startLine,
+        endColumn: editable.startColumn,
+      },
       'Y'
     )
 
     expect(onBodyChange).toHaveBeenCalledWith('Yx')
   })
 })
-

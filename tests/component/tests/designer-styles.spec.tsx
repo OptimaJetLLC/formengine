@@ -9,14 +9,14 @@ const form = {
     htmlAttributes: [
       {
         name: 'data-testid',
-        value: 'test-screen'
-      }
-    ]
-  }
+        value: 'test-screen',
+      },
+    ],
+  },
 }
 
 describe('Designer styles tests', () => {
-  it('The designer\'s styles should be unloaded when unmounted', async () => {
+  it("The designer's styles should be unloaded when unmounted", async () => {
     const {container, findByTestId, unmount} = await renderBuilder(form, {defaultViewerLanguage: 'en-US'})
 
     expect(await findByTestId('test-screen')).toBeInTheDocument()

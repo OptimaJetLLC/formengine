@@ -1,5 +1,5 @@
 import {buildConstrainedDocument} from '@react-form-builder/designer/src/features/components/CodeEditor/constrainedDocument'
-import {getEditablePositionRange, getEditableRangeParams,} from '@react-form-builder/designer/src/features/components/CodeEditor/ranges'
+import {getEditablePositionRange, getEditableRangeParams} from '@react-form-builder/designer/src/features/components/CodeEditor/ranges'
 import type {editor} from 'monaco-editor'
 import {describe, expect, it} from 'vitest'
 import {getOffsetAtFromText, getPositionAtFromText} from './helpers/monacoFakes'
@@ -10,12 +10,12 @@ function createMockModel(text: string): editor.ITextModel {
     getLineCount: () => lines.length,
     getFullModelRange: () => ({
       endLineNumber: lines.length,
-      endColumn: lines[lines.length - 1].length + 1
+      endColumn: lines[lines.length - 1].length + 1,
     }),
     getValue: () => text,
     getValueLength: () => text.length,
     getPositionAt: (offset: number) => getPositionAtFromText(text, offset),
-    getOffsetAt: (position: { lineNumber: number; column: number }) => getOffsetAtFromText(text, position)
+    getOffsetAt: (position: {lineNumber: number; column: number}) => getOffsetAtFromText(text, position),
   } as editor.ITextModel
 }
 
@@ -61,7 +61,7 @@ function getEditableRangeForTest(
     startColumn: startPosition.column,
     endLine: endPosition.lineNumber,
     endColumn: endPosition.column,
-    ...params
+    ...params,
   }
 }
 
@@ -75,7 +75,7 @@ describe('getEditableRange', () => {
       startLine: 2,
       startColumn: 1,
       endLine: 12,
-      endColumn: 4
+      endColumn: 4,
     })
   })
 
@@ -89,7 +89,7 @@ describe('getEditableRange', () => {
       startLine: 2,
       startColumn: 1,
       endLine: 4,
-      endColumn: 2
+      endColumn: 2,
     })
   })
 
@@ -103,7 +103,7 @@ describe('getEditableRange', () => {
       startLine: 4,
       startColumn: 1,
       endLine: 5,
-      endColumn: 5
+      endColumn: 5,
     })
   })
 
@@ -117,7 +117,7 @@ describe('getEditableRange', () => {
       startLine: 1,
       startColumn: 17,
       endLine: 1,
-      endColumn: 25
+      endColumn: 25,
     })
   })
 
@@ -131,12 +131,12 @@ describe('getEditableRange', () => {
       startLine: 2,
       startColumn: 1,
       endLine: 4,
-      endColumn: 2
+      endColumn: 2,
     })
     expect(getEditableRangeParams(model, undefined, '}')).toMatchObject({
       endExclusiveOffset: text.length - postfix.length,
       hasEndContextLine: true,
-      isBeginContextEditable: false
+      isBeginContextEditable: false,
     })
   })
 
@@ -151,12 +151,12 @@ describe('getEditableRange', () => {
       startLine: 2,
       startColumn: 1,
       endLine: 4,
-      endColumn: 2
+      endColumn: 2,
     })
     expect(getEditableRangeParams(model, undefined, endContextLine)).toMatchObject({
       endExclusiveOffset: text.length - postfix.length,
       hasEndContextLine: true,
-      isBeginContextEditable: false
+      isBeginContextEditable: false,
     })
   })
 
@@ -172,12 +172,12 @@ describe('getEditableRange', () => {
       startLine: 3,
       startColumn: 1,
       endLine: 17,
-      endColumn: 3
+      endColumn: 3,
     })
     expect(getEditableRangeParams(model, false, endContextLine)).toMatchObject({
       endExclusiveOffset: text.length - postfix.length,
       hasEndContextLine: true,
-      isBeginContextEditable: false
+      isBeginContextEditable: false,
     })
   })
 
@@ -248,7 +248,7 @@ describe('getEditableRange', () => {
     expect(params).toMatchObject({
       hasEndContextLine: true,
       isBeginContextEditable: true,
-      endExclusiveOffset: text.length - postfix.length
+      endExclusiveOffset: text.length - postfix.length,
     })
     expect(text.slice(params.endExclusiveOffset)).toBe(postfix)
     expect(range.endLine).toBeGreaterThan(0)
@@ -260,7 +260,7 @@ describe('getEditableRange', () => {
       [undefined, undefined, 'a\nb\nc', '}'],
       ['fn(){', false, 'return null', '}'],
       ['fn(){', true, 'x', '};'],
-      ['/**\nx\n*/', false, 'y', '}']
+      ['/**\nx\n*/', false, 'y', '}'],
     ]
     for (const [begin, canEdit, body, end] of cases) {
       const text = buildDoc(begin, canEdit, body, end)

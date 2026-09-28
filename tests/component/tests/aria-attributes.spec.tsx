@@ -18,7 +18,7 @@ const componentTypes = [
   'GoogleMap',
   'RsDropdown',
   'RsDatePicker',
-  'RsCalendar'
+  'RsCalendar',
 ]
 
 describe('All valued components', () => {

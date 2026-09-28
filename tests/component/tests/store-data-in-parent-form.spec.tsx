@@ -3,8 +3,8 @@ import {BuilderView, FormBuilder, FormBuilderProps} from '@react-form-builder/de
 import {fireEvent, render} from '@testing-library/react'
 import {expect} from 'vitest'
 import {switchToDesignerMode, switchToViewerMode} from './designerUtils'
-import appTemplateForm from './forms/store-data-in-parent-form-template.json'
 import appForm from './forms/store-data-in-parent-form.json'
+import appTemplateForm from './forms/store-data-in-parent-form-template.json'
 
 const appGetForm = (name?: string) => {
   if (name === 'template') return JSON.stringify(appTemplateForm)
@@ -20,93 +20,93 @@ const appData = {
 const appView = builderViewWithCss.withTemplates(['template'])
 
 const App = () => {
-  return <FormBuilder view={appView} getForm={appGetForm} initialData={appData}/>
+  return <FormBuilder view={appView} getForm={appGetForm} initialData={appData} />
 }
 
 const childForm = {
-  'version': '1',
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'props': {},
-    'children': [
+  version: '1',
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    children: [
       {
-        'key': 'firstName',
-        'type': 'RsInput',
-        'props': {
-          'label': {
-            'value': 'First name'
+        key: 'firstName',
+        type: 'RsInput',
+        props: {
+          label: {
+            value: 'First name',
           },
-          'value': {
-            'value': 'Paul'
-          }
-        }
+          value: {
+            value: 'Paul',
+          },
+        },
       },
       {
-        'key': 'lastName',
-        'type': 'Slot',
-        'props': {}
-      }
-    ]
+        key: 'lastName',
+        type: 'Slot',
+        props: {},
+      },
+    ],
   },
-  'localization': {},
-  'languages': [
+  localization: {},
+  languages: [
     {
-      'code': 'en',
-      'dialect': 'US',
-      'name': 'English',
-      'description': 'American English',
-      'bidi': 'ltr'
-    }
+      code: 'en',
+      dialect: 'US',
+      name: 'English',
+      description: 'American English',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'en-US'
+  defaultLanguage: 'en-US',
 }
 
 const parentForm = {
-  'version': '1',
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'props': {},
-    'children': [
+  version: '1',
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    children: [
       {
-        'key': 'templateChild1',
-        'type': 'Template:child',
-        'props': {},
-        'children': [
+        key: 'templateChild1',
+        type: 'Template:child',
+        props: {},
+        children: [
           {
-            'key': 'lastName',
-            'type': 'RsInput',
-            'props': {
-              'label': {
-                'value': 'Last name'
+            key: 'lastName',
+            type: 'RsInput',
+            props: {
+              label: {
+                value: 'Last name',
               },
-              'value': {
-                'value': 'Dyson'
-              }
+              value: {
+                value: 'Dyson',
+              },
             },
-            'slot': 'lastName'
-          }
-        ]
-      }
-    ]
+            slot: 'lastName',
+          },
+        ],
+      },
+    ],
   },
-  'localization': {},
-  'languages': [
+  localization: {},
+  languages: [
     {
-      'code': 'en',
-      'dialect': 'US',
-      'name': 'English',
-      'description': 'American English',
-      'bidi': 'ltr'
-    }
+      code: 'en',
+      dialect: 'US',
+      name: 'English',
+      description: 'American English',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'en-US'
+  defaultLanguage: 'en-US',
 }
 
 describe(`storeDataInParentForm test`, function () {
   it('Data should be updated when `storeDataInParentForm` setting is changed', async () => {
-    const {findByText, findByTestId} = render(<App/>)
+    const {findByText, findByTestId} = render(<App />)
 
     fireEvent.click(await findByText('Preview'))
 
@@ -139,11 +139,11 @@ describe(`storeDataInParentForm test`, function () {
     }
 
     const BuilderApp = (props: Partial<FormBuilderProps>) => {
-      return <FormBuilder {...props} view={view} getForm={getForm}/>
+      return <FormBuilder {...props} view={view} getForm={getForm} />
     }
 
     const viewerRef: FormBuilderProps['viewerRef'] = {current: null}
-    const {findByText, findByDisplayValue} = render(<BuilderApp viewerRef={viewerRef}/>)
+    const {findByText, findByDisplayValue} = render(<BuilderApp viewerRef={viewerRef} />)
 
     await switchToViewerMode(findByText)
     expect(viewerRef.current).not.toBeNull()

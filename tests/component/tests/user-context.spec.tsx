@@ -20,24 +20,24 @@ const form = {
           onDidMount: [
             {
               name: 'logEvent',
-              type: 'custom'
-            }
+              type: 'custom',
+            },
           ],
           onClick: [
             {
               name: 'logClick',
-              type: 'custom'
-            }
-          ]
+              type: 'custom',
+            },
+          ],
         },
         htmlAttributes: [
           {
             name: 'data-testid',
-            value: 'test-button'
-          }
-        ]
-      }
-    ]
+            value: 'test-button',
+          },
+        ],
+      },
+    ],
   },
   localization: {},
   languages: [
@@ -46,10 +46,10 @@ const form = {
       dialect: 'US',
       name: 'English',
       description: 'American English',
-      bidi: 'ltr'
-    }
+      bidi: 'ltr',
+    },
   ],
-  defaultLanguage: 'en-US'
+  defaultLanguage: 'en-US',
 } as const
 
 describe('userContext in viewer actions', () => {
@@ -58,19 +58,17 @@ describe('userContext in viewer actions', () => {
     const receivedContexts: unknown[] = []
 
     const actions: FormViewerProps['actions'] = {
-      logEvent: (e) => {
+      logEvent: e => {
         receivedContexts.push(e.userContext)
       },
-      logClick: (e) => {
+      logClick: e => {
         receivedContexts.push(e.userContext)
-      }
+      },
     }
 
     const getForm = () => JSON.stringify(lifecycleEventsForm)
 
-    const {findByTestId} = render(
-      <FormViewer view={view} getForm={getForm} actions={actions} userContext={userContext}/>
-    )
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions} userContext={userContext} />)
 
     const button = await findByTestId('rsButton1')
 
@@ -88,18 +86,16 @@ describe('userContext in viewer actions', () => {
     const receivedContexts: unknown[] = []
 
     const actions: FormViewerProps['actions'] = {
-      logEvent: (e) => {
+      logEvent: e => {
         receivedContexts.push(e.userContext)
       },
-      logClick: (e) => {
+      logClick: e => {
         receivedContexts.push(e.userContext)
-      }
+      },
     }
     const getForm = () => JSON.stringify(form)
 
-    const {findByTestId} = render(
-      <FormViewer view={view} getForm={getForm} actions={actions} userContext={userContext}/>
-    )
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions} userContext={userContext} />)
 
     const button = await findByTestId('test-button')
     fireEvent.click(button)
@@ -117,18 +113,15 @@ describe('userContext in viewer actions', () => {
     const receivedContexts: unknown[] = []
 
     const actions: FormViewerProps['actions'] = {
-      logEvent: () => {
-      },
-      logClick: (e) => {
+      logEvent: () => {},
+      logClick: e => {
         receivedContexts.push(e.userContext)
-      }
+      },
     }
 
     const getForm = () => JSON.stringify(form)
 
-    const {findByTestId, rerender} = render(
-      <FormViewer view={view} getForm={getForm} actions={actions} userContext={contextA}/>
-    )
+    const {findByTestId, rerender} = render(<FormViewer view={view} getForm={getForm} actions={actions} userContext={contextA} />)
 
     const button = await findByTestId('test-button')
     fireEvent.click(button)
@@ -140,9 +133,7 @@ describe('userContext in viewer actions', () => {
 
     const countAfterFirstClick = receivedContexts.length
 
-    rerender(
-      <FormViewer view={view} getForm={getForm} actions={actions} userContext={contextB}/>
-    )
+    rerender(<FormViewer view={view} getForm={getForm} actions={actions} userContext={contextB} />)
 
     fireEvent.click(button)
 
@@ -159,18 +150,18 @@ describe('userContext in builder viewer actions', () => {
     const receivedContexts: unknown[] = []
 
     const actions: FormViewerProps['actions'] = {
-      logEvent: (e) => {
+      logEvent: e => {
         receivedContexts.push(e.userContext)
       },
-      logClick: (e) => {
+      logClick: e => {
         receivedContexts.push(e.userContext)
-      }
+      },
     }
 
     const getForm = () => JSON.stringify(form)
 
     const {findByTestId, findByText} = render(
-      <FormBuilder view={builderViewWithCss} getForm={getForm} actions={actions} userContext={userContext}/>
+      <FormBuilder view={builderViewWithCss} getForm={getForm} actions={actions} userContext={userContext} />
     )
 
     await switchToViewerMode(findByText)
@@ -185,4 +176,3 @@ describe('userContext in builder viewer actions', () => {
     })
   })
 })
-

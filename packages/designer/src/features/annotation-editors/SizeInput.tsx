@@ -6,7 +6,7 @@ import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import styles from './SizeInput.module.css'
 
-type InputValue = string | number | null;
+type InputValue = string | number | null
 const OtherUnit = 'other'
 const SizeUnits = ['px', '%', 'em', 'vw', 'vh']
 const SizeKeywords = ['max-content', 'min-content', 'fit-content', 'auto']
@@ -22,9 +22,7 @@ function parseCSSValue(cssValue?: string) {
 
   const value = parseFloat(match[1])
   const unit = match[2]
-  return SizeUnits.includes(unit)
-    ? {value, unit}
-    : {value: `${value}${unit}`, unit: OtherUnit}
+  return SizeUnits.includes(unit) ? {value, unit} : {value: `${value}${unit}`, unit: OtherUnit}
 }
 
 const isNeedValue = (unit?: string) => !isUndefined(unit) && !SizeKeywords.includes(unit)
@@ -58,17 +56,26 @@ const SizeInput = (props: AnnotationEditorProps) => {
   const {value: CSSValue, onChange, onClean} = props
   const {value, unit} = parseCSSValue(CSSValue)
 
-  const handleValueChange = useCallback((value: InputValue) => {
-    onChange(makeCSSValue(value, unit))
-  }, [onChange, unit])
+  const handleValueChange = useCallback(
+    (value: InputValue) => {
+      onChange(makeCSSValue(value, unit))
+    },
+    [onChange, unit]
+  )
 
-  const handleUnitChange = useCallback((unit: string) => {
-    return unit && onChange(makeCSSValue(value ?? 10, unit))
-  }, [onChange, value])
+  const handleUnitChange = useCallback(
+    (unit: string) => {
+      return unit && onChange(makeCSSValue(value ?? 10, unit))
+    },
+    [onChange, value]
+  )
 
-  const input = unit === OtherUnit
-    ? <Input value={value} size={'xs'} onChange={handleValueChange}/>
-    : <InputNumber value={value} size={'xs'} onChange={handleValueChange}/>
+  const input =
+    unit === OtherUnit ? (
+      <Input value={value} size={'xs'} onChange={handleValueChange} />
+    ) : (
+      <InputNumber value={value} size={'xs'} onChange={handleValueChange} />
+    )
 
   return (
     <LabeledProperty {...props}>

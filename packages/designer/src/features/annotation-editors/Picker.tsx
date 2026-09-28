@@ -23,7 +23,7 @@ const addCustomValue = ({data}: PropertyAnnotation, value: string) => {
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-const RawPicker = (props: AnnotationEditorProps & { 'data-testid'?: string }) => {
+const RawPicker = (props: AnnotationEditorProps & {'data-testid'?: string}) => {
   const {['data-testid']: testId, value, onChange, onClean, componentData, annotation} = props
   const calculatedEditorProps = useCalculatedEditorProps(annotation, componentData)
 
@@ -31,11 +31,23 @@ const RawPicker = (props: AnnotationEditorProps & { 'data-testid'?: string }) =>
     return addCustomValue(annotation as PropertyAnnotation, value)
   }, [annotation, value])
 
-  return <LabeledProperty {...props}>
-    <SInputPicker value={value ?? props.annotation.default ?? ''} data={data} onChange={onChange} onClean={onClean}
-                  block cleanable creatable size={'xs'} placement={'autoVerticalEnd'} {...calculatedEditorProps}
-                  data-testid={testId}/>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <SInputPicker
+        value={value ?? props.annotation.default ?? ''}
+        data={data}
+        onChange={onChange}
+        onClean={onClean}
+        block
+        cleanable
+        creatable
+        size={'xs'}
+        placement={'autoVerticalEnd'}
+        {...calculatedEditorProps}
+        data-testid={testId}
+      />
+    </LabeledProperty>
+  )
 }
 
 export const Picker = namedObserver('Picker', RawPicker)

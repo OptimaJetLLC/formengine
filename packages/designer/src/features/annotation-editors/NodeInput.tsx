@@ -17,8 +17,7 @@ function getEditorType(annotation: Annotation, componentData: ComponentData) {
   return isContainer(annotation) ? annotation.getNodeEditorType(property) : 'node'
 }
 
-const useDropzoneLabelProps = (props: AnnotationEditorProps,
-                               editorType: NodeEditorType): AnnotationEditorProps => {
+const useDropzoneLabelProps = (props: AnnotationEditorProps, editorType: NodeEditorType): AnnotationEditorProps => {
   const {annotation, componentData} = props
   const {label} = useTranslatedComponentProperty(annotation, componentData.model.type)
   const t = useTranslationPart('annotation.useDropzone')
@@ -27,7 +26,8 @@ const useDropzoneLabelProps = (props: AnnotationEditorProps,
   const defaultEditor = annotationEditor ?? 'string'
 
   return useMemo(() => {
-    const annotation = boolean.calculable(false)
+    const annotation = boolean
+      .calculable(false)
       .default(defaultEditor === 'node')
       .hinted(hint)
       .build('useDropzone')
@@ -47,28 +47,33 @@ const RawUseDropzoneInput = (props: AnnotationEditorProps) => {
   const value = editorType === 'node'
   const builderStore = useBuilderStore()
 
-  const onChange = useCallback((_: any, checked: boolean) => {
-    const newEditorType = checked ? 'node' : 'string'
-    // eslint-disable-next-line react-hooks/immutability
-    componentStore.props[annotation.key] = {editorType: newEditorType}
+  const onChange = useCallback(
+    (_: any, checked: boolean) => {
+      const newEditorType = checked ? 'node' : 'string'
+      // eslint-disable-next-line react-hooks/immutability
+      componentStore.props[annotation.key] = {editorType: newEditorType}
 
-    if (!checked && componentStore.children) {
-      componentStore.children.forEach(child => {
-        const key = annotation.key
-        const viewerStore = builderStore.viewer
+      if (!checked && componentStore.children) {
+        componentStore.children.forEach(child => {
+          const key = annotation.key
+          const viewerStore = builderStore.viewer
 
-        if (!(child.slot === key || (key === 'children' && !child.slot))) return
-        const found = viewerStore.form.componentTree.findByKey(child.key)
-        if (found) builderStore.remove(found)
-      })
-    }
-  }, [annotation.key, builderStore, componentStore.children, componentStore.props])
+          if (!(child.slot === key || (key === 'children' && !child.slot))) return
+          const found = viewerStore.form.componentTree.findByKey(child.key)
+          if (found) builderStore.remove(found)
+        })
+      }
+    },
+    [annotation.key, builderStore, componentStore.children, componentStore.props]
+  )
 
   const labelProps = useDropzoneLabelProps(props, editorType)
 
-  return <LabeledProperty {...labelProps}>
-    <SCheckbox checked={value} onChange={onChange}/>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...labelProps}>
+      <SCheckbox checked={value} onChange={onChange} />
+    </LabeledProperty>
+  )
 }
 
 const UseDropzoneInput = namedObserver('UseDropzoneInput', RawUseDropzoneInput)
@@ -78,11 +83,14 @@ const RawStringNodeEditor = (props: AnnotationEditorProps) => {
   const componentStore = componentData.store
   const editorType = getEditorType(annotation, componentData)
 
-  const handleChange = useCallback((value: any) => {
-    componentStore.props[annotation.key] ??= {}
-    componentStore.props[annotation.key].value = value
-    componentStore.props[annotation.key].editorType = editorType
-  }, [annotation.key, componentStore.props, editorType])
+  const handleChange = useCallback(
+    (value: any) => {
+      componentStore.props[annotation.key] ??= {}
+      componentStore.props[annotation.key].value = value
+      componentStore.props[annotation.key].editorType = editorType
+    },
+    [annotation.key, componentStore.props, editorType]
+  )
 
   const handleClean = useCallback(() => {
     onClean()
@@ -92,9 +100,11 @@ const RawStringNodeEditor = (props: AnnotationEditorProps) => {
   const value = componentStore.props[annotation.key]?.value
   const editorProps = {...props, onChange: handleChange, onClean: handleClean, value}
 
-  return <LabeledProperty {...editorProps}>
-    <ResizableStringInput {...editorProps}/>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...editorProps}>
+      <ResizableStringInput {...editorProps} />
+    </LabeledProperty>
+  )
 }
 
 const StringNodeEditor = namedObserver('StringNodeEditor', RawStringNodeEditor)
@@ -111,8 +121,10 @@ export const NodeInput = (props: AnnotationEditorProps) => {
 
   if (!show) return null
 
-  return <Rows className={styles.rows}>
-    <UseDropzoneInput {...props} />
-    {editorType === 'string' && <StringNodeEditor {...props} />}
-  </Rows>
+  return (
+    <Rows className={styles.rows}>
+      <UseDropzoneInput {...props} />
+      {editorType === 'string' && <StringNodeEditor {...props} />}
+    </Rows>
+  )
 }

@@ -2,7 +2,6 @@
  * A simple asynchronous queue that executes asynchronous tasks in a specified order.
  */
 export class AsyncQueue {
-
   queue = Promise.resolve()
 
   /**

@@ -10,23 +10,23 @@ interface PropertyBlockProps {
   /**
    * The array of metadata properties of a React component.
    */
-  annotations: Annotation[],
+  annotations: Annotation[]
   /**
    * The context containing the property data.
    */
-  context?: object,
+  context?: object
   /**
    * The function for creating an editing context, used if no context is specified.
    */
-  initContext?: () => Record<string, any>,
+  initContext?: () => Record<string, any>
   /**
    * The title of the component's property block.
    */
-  header?: string,
+  header?: string
   /**
    * The hint for header.
    */
-  headerHint?: string,
+  headerHint?: string
   /**
    * The property block type.
    */
@@ -50,25 +50,33 @@ interface PropertyBlockProps {
  * @returns the React element.
  */
 export const PropertyBlock = ({
-                                annotations,
-                                context,
-                                initContext,
-                                displayedSection,
-                                header,
-                                headerHint,
-                                propertyBlockType = 'component'
-                              }: PropertyBlockProps) => {
+  annotations,
+  context,
+  initContext,
+  displayedSection,
+  header,
+  headerHint,
+  propertyBlockType = 'component',
+}: PropertyBlockProps) => {
   if (!context) return null
 
-  return <>
-    {!!header && <Hinted hint={headerHint}><h6>{header}</h6></Hinted>}
-    {annotations.map(annotation => <PropertyEditorWrapper
-      key={annotation.key}
-      propertyBlockType={propertyBlockType}
-      annotation={annotation}
-      context={context}
-      initContext={initContext}
-      displayedSection={displayedSection}
-    />)}
-  </>
+  return (
+    <>
+      {!!header && (
+        <Hinted hint={headerHint}>
+          <h6>{header}</h6>
+        </Hinted>
+      )}
+      {annotations.map(annotation => (
+        <PropertyEditorWrapper
+          key={annotation.key}
+          propertyBlockType={propertyBlockType}
+          annotation={annotation}
+          context={context}
+          initContext={initContext}
+          displayedSection={displayedSection}
+        />
+      ))}
+    </>
+  )
 }

@@ -11,7 +11,7 @@ import styles from './DevicePicker.module.css'
  * @param props.onChange onChange event of the picker.
  * @returns the React element.
  */
-export const DevicePicker = ({value, onChange}: { value: Device, onChange: (value: Device) => void }) => {
+export const DevicePicker = ({value, onChange}: {value: Device; onChange: (value: Device) => void}) => {
   const t = useTranslationPart('style')
   const devices: Device[] = ['any', 'desktop', 'mobile', 'tablet']
   const translatedItems = devices.map(value => ({value, label: t(value)}))

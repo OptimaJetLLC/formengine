@@ -9,7 +9,9 @@ const RawTrialMessage = () => {
   const {t} = useTranslation()
   const {displayedLanguage} = useStore()
   const messages = useMemo(() => {
-    return Object.entries(missing).map(([k, v]) => t(`license.${k}`, v as any)).sort()
+    return Object.entries(missing)
+      .map(([k, v]) => t(`license.${k}`, v as any))
+      .sort()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [t, missing, displayedLanguage])
   const hide = messages.length === 0
@@ -20,14 +22,16 @@ const RawTrialMessage = () => {
 
   return (
     <div className={styles.container}>
-      <div>
-        {t('license.mismatchMessage')}
-      </div>
+      <div>{t('license.mismatchMessage')}</div>
       <ul className={styles.list}>
-        {messages.map((lm) => <li key={lm}>{lm}</li>)}
+        {messages.map(lm => (
+          <li key={lm}>{lm}</li>
+        ))}
       </ul>
       <div className={styles.link}>
-        <a target="_blank" href={'https://formengine.io/pricing'} rel="noreferrer">https://formengine.io/pricing</a>
+        <a target="_blank" href={'https://formengine.io/pricing'} rel="noreferrer">
+          https://formengine.io/pricing
+        </a>
       </div>
     </div>
   )

@@ -1,11 +1,6 @@
 export type CiFailureReportSuite = 'module' | 'component' | 'e2e'
 
-export type CiFailureReportCaseKind =
-  | 'assertion'
-  | 'thrown-error'
-  | 'async-rejection'
-  | 'console-on-failure'
-  | 'console-warn'
+export type CiFailureReportCaseKind = 'assertion' | 'thrown-error' | 'async-rejection' | 'console-on-failure' | 'console-warn'
 
 interface CiFailureReportCase {
   kind: CiFailureReportCaseKind
@@ -46,5 +41,5 @@ const CI_FAILURE_REPORT_CASES: readonly CiFailureReportCase[] = [
  * @param suite test suite identifier
  */
 export function getCiFailureReportCasesForSuite(suite: CiFailureReportSuite): CiFailureReportCase[] {
-  return CI_FAILURE_REPORT_CASES.filter((testCase) => testCase.suites.includes(suite))
+  return CI_FAILURE_REPORT_CASES.filter(testCase => testCase.suites.includes(suite))
 }

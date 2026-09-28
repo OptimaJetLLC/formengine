@@ -18,9 +18,9 @@ const RawTooltipSettings = () => {
   const builderStore = useBuilderStore()
 
   // eslint-disable-next-line react-hooks/immutability
-  const onChange = useCallback((value: string) => builderStore.viewer.form.tooltipType = value, [builderStore])
+  const onChange = useCallback((value: string) => (builderStore.viewer.form.tooltipType = value), [builderStore])
   // eslint-disable-next-line react-hooks/immutability
-  const onClean = useCallback(() => builderStore.viewer.form.tooltipType = undefined, [builderStore])
+  const onClean = useCallback(() => (builderStore.viewer.form.tooltipType = undefined), [builderStore])
 
   const annotationEditorProps: AnnotationEditorProps = {
     onChange,
@@ -38,7 +38,7 @@ const RawTooltipSettings = () => {
   return (
     <div>
       <ComponentDataProvider value={builderStore.viewer.form.componentTree}>
-        <TooltipTypePicker {...annotationEditorProps}/>
+        <TooltipTypePicker {...annotationEditorProps} />
       </ComponentDataProvider>
     </div>
   )

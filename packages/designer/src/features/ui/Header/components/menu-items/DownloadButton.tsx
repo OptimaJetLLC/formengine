@@ -6,7 +6,7 @@ import {customizable} from '../../../../customization/customizable'
 import {useTranslationPart} from '../../../../localization/hooks'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const downloadIcon = <FileDownloadIcon/>
+const downloadIcon = <FileDownloadIcon />
 
 const RawDownloadButton = ({className}: CustomizableMenuItemProps) => {
   const builderStore = useBuilderStore()

@@ -27,20 +27,26 @@ export const ArrayOfObjectInput = (props: AnnotationEditorProps) => {
 
   const items: unknown[] = useMemo(() => value ?? [], [value])
 
-  const handleOnChange = useCallback((value: any, index: number) => {
-    const data = [...items]
-    data[index] = value
-    onChange(data)
-  }, [onChange, items])
+  const handleOnChange = useCallback(
+    (value: any, index: number) => {
+      const data = [...items]
+      data[index] = value
+      onChange(data)
+    },
+    [onChange, items]
+  )
 
   const onAdd = useCallback(() => {
     onChange?.([...items, {}])
   }, [onChange, items])
 
-  const onRemove = useCallback((index: number) => {
-    items.splice(index, 1)
-    onChange?.([...items])
-  }, [onChange, items])
+  const onRemove = useCallback(
+    (index: number) => {
+      items.splice(index, 1)
+      onChange?.([...items])
+    },
+    [onChange, items]
+  )
 
   const changeHandlers = useMemo(() => items.map((_, idx) => (value: any) => handleOnChange(value, idx)), [items, handleOnChange])
   const cleanHandlers = useMemo(() => items.map((_, idx) => () => handleOnChange({}, idx)), [items, handleOnChange])
@@ -58,7 +64,7 @@ export const ArrayOfObjectInput = (props: AnnotationEditorProps) => {
           onClean={cleanHandlers[index]}
           onValidate={valueIsObject}
         />
-        <CrossButton onClick={removeHandlers[index]} hint={t('removeRow')} className={styles.crossButton}/>
+        <CrossButton onClick={removeHandlers[index]} hint={t('removeRow')} className={styles.crossButton} />
       </div>
     )
   })
@@ -67,14 +73,12 @@ export const ArrayOfObjectInput = (props: AnnotationEditorProps) => {
     <>
       <LabeledProperty {...props}>
         <div className={styles.cleanDiv}>
-          <CleanButton onClick={onClean} className={styles.crossButton}/>
+          <CleanButton onClick={onClean} className={styles.crossButton} />
         </div>
       </LabeledProperty>
-      <Rows className={styles.inputRows}>
-        {inputs}
-      </Rows>
+      <Rows className={styles.inputRows}>{inputs}</Rows>
       <Button appearance="default" size="sm" onClick={onAdd} className={styles.button} block>
-        <Plus/>
+        <Plus />
       </Button>
     </>
   )

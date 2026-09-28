@@ -22,8 +22,19 @@ export const TemplateTypePicker = (props: AnnotationEditorProps) => {
       .map(cd => ({value: cd.store.type, label: getTemplateName(cd.store.type)}))
   }, [availableComponents])
 
-  return <LabeledProperty {...props}>
-    <SInputPicker value={value ?? annotation.default ?? ''} data={labelChildren} onChange={onChange} onClean={onClean}
-                  block cleanable size={'xs'} {...editorProps} placement={'autoVerticalEnd'}/>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <SInputPicker
+        value={value ?? annotation.default ?? ''}
+        data={labelChildren}
+        onChange={onChange}
+        onClean={onClean}
+        block
+        cleanable
+        size={'xs'}
+        {...editorProps}
+        placement={'autoVerticalEnd'}
+      />
+    </LabeledProperty>
+  )
 }

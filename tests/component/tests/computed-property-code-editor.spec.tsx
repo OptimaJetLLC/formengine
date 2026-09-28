@@ -2,13 +2,10 @@ import {fireEvent, waitFor, within} from '@testing-library/react'
 import {describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 import functionForm from './forms/computed-property-function.json'
-import localizationMultilineForm from './forms/computed-property-localization-multiline.json'
 import localizationForm from './forms/computed-property-localization.json'
+import localizationMultilineForm from './forms/computed-property-localization-multiline.json'
 
-async function openContentPropertyCodeEditor(
-  findByTestId: (id: string) => Promise<HTMLElement>,
-  componentTestId: string
-) {
+async function openContentPropertyCodeEditor(findByTestId: (id: string) => Promise<HTMLElement>, componentTestId: string) {
   fireEvent.click(await findByTestId(componentTestId))
   fireEvent.click(await findByTestId('Main_Tab'))
 

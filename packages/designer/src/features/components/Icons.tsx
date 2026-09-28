@@ -18,27 +18,25 @@ const extractFaIconData = (faIcon: any) => {
  * @param props.size the size of the icon.
  * @returns the React element.
  */
-const FaSvgIcon = forwardRef(({faIcon, size, ...rest}: { faIcon: any, size?: number },
-                              ref: Ref<SVGSVGElement>) => {
+const FaSvgIcon = forwardRef(({faIcon, size, ...rest}: {faIcon: any; size?: number}, ref: Ref<SVGSVGElement>) => {
   const {width, height, svgPathData} = extractFaIconData(faIcon)
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} width={`${size ?? 1}em`} height={`${size ?? 1}em`}
-         fill="currentColor" {...rest} ref={ref}>
-      <path d={svgPathData}/>
+    <svg viewBox={`0 0 ${width} ${height}`} width={`${size ?? 1}em`} height={`${size ?? 1}em`} fill="currentColor" {...rest} ref={ref}>
+      <path d={svgPathData} />
     </svg>
   )
 })
 
 interface FaIconProps {
-  icon: IconDefinition,
-  size?: number,
-  color?: string,
-  props?: any,
-  viewBox?: string,
-  width?: string,
-  height?: string,
-  onClick?: any,
-  className?: string,
+  icon: IconDefinition
+  size?: number
+  color?: string
+  props?: any
+  viewBox?: string
+  width?: string
+  height?: string
+  onClick?: any
+  className?: string
 }
 
 /**
@@ -50,5 +48,5 @@ interface FaIconProps {
  * @returns the React element.
  */
 export const FaIcon = forwardRef(({icon, size, ...props}: FaIconProps, ref: Ref<SVGElement>) => (
-  <Icon as={FaSvgIcon} ref={ref} {...{faIcon: icon, size, ...props}}/>
+  <Icon as={FaSvgIcon} ref={ref} {...{faIcon: icon, size, ...props}} />
 ))

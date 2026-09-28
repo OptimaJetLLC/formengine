@@ -28,14 +28,7 @@ const RawCustomValidatorEditor = (props: AnnotationEditorProps) => {
 
   return (
     <LabeledProperty {...props}>
-      <Button
-        name={annotation.key}
-        onClick={handleEdit}
-        size="xs"
-        appearance="ghost"
-        block
-        className={styles.button}
-      >
+      <Button name={annotation.key} onClick={handleEdit} size="xs" appearance="ghost" block className={styles.button}>
         {label}
       </Button>
     </LabeledProperty>

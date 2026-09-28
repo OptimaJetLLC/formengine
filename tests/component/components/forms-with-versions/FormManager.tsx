@@ -36,15 +36,17 @@ export const FormManager = (props: FormManagerProps) => {
     return new FormStorage(onLoadForm)
   }, [props])
 
-  return <FormsContext.Provider value={{formName, formVersion, formStorage, setFormVersion}}>
-    <FormBuilder
-      view={builderViewWithCss}
-      formName={formName}
-      getForm={formStorage.getForm}
-      formStorage={formStorage}
-      customization={customization}
-      formOptions={formOptions}
-      licenseKey={licenseKey}
-    />
-  </FormsContext.Provider>
+  return (
+    <FormsContext.Provider value={{formName, formVersion, formStorage, setFormVersion}}>
+      <FormBuilder
+        view={builderViewWithCss}
+        formName={formName}
+        getForm={formStorage.getForm}
+        formStorage={formStorage}
+        customization={customization}
+        formOptions={formOptions}
+        licenseKey={licenseKey}
+      />
+    </FormsContext.Provider>
+  )
 }

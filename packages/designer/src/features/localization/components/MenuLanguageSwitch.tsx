@@ -23,7 +23,7 @@ const LanguageItem = ({language, className}: LanguageItemProps) => {
   return (
     <div className={cx(styles.row, className)}>
       {renderLanguageItem(language)}
-      {!isEnglish && <AiIcon/>}
+      {!isEnglish && <AiIcon />}
     </div>
   )
 }
@@ -32,43 +32,51 @@ const customizableLanguageCode = (language: Language) => {
   return language.fullCode.replace('-', '_')
 }
 
-const RawMenuLanguageSwitch = ({className}: { className?: string }) => {
+const RawMenuLanguageSwitch = ({className}: {className?: string}) => {
   const {t} = useTranslation()
   const builderStore = useBuilderStore()
   const currentLanguageCode = builderStore.formBuilderLanguage.fullCode
 
-  const handleLanguageSelect = useCallback((language: any) => {
-    return () => {
-      builderStore.changeLanguage(language).then(() => {
-        builderStore.props.onBuilderLanguageChange?.(language)
-      })
-    }
-  }, [builderStore])
+  const handleLanguageSelect = useCallback(
+    (language: any) => {
+      return () => {
+        builderStore.changeLanguage(language).then(() => {
+          builderStore.props.onBuilderLanguageChange?.(language)
+        })
+      }
+    },
+    [builderStore]
+  )
 
-  const globeIcon = useMemo(() => <FaIcon icon={faGlobe}/>, [])
+  const globeIcon = useMemo(() => <FaIcon icon={faGlobe} />, [])
 
-  const children = useMemo(() => builderStore.availableLanguages
-      .map(language => {
+  const children = useMemo(
+    () =>
+      builderStore.availableLanguages.map(language => {
         const code = customizableLanguageCode(language)
-        const LangItemComponent = customizable(
-          `MainMenu_Item_LanguageItem_${code}`,
-          function item(itemProps: LanguageItemProps) {
-            return <LanguageItem className={itemProps.className} language={language}/>
-          }
+        const LangItemComponent = customizable(`MainMenu_Item_LanguageItem_${code}`, function item(itemProps: LanguageItemProps) {
+          return <LanguageItem className={itemProps.className} language={language} />
+        })
+
+        return (
+          <Dropdown.Item
+            key={language.fullCode}
+            eventKey={language.fullCode}
+            active={currentLanguageCode === language.fullCode}
+            onSelect={handleLanguageSelect(language)}
+          >
+            <LangItemComponent />
+          </Dropdown.Item>
         )
+      }),
+    [builderStore.availableLanguages, currentLanguageCode, handleLanguageSelect]
+  )
 
-        return <Dropdown.Item key={language.fullCode}
-                              eventKey={language.fullCode}
-                              active={currentLanguageCode === language.fullCode}
-                              onSelect={handleLanguageSelect(language)}>
-          <LangItemComponent/>
-        </Dropdown.Item>
-      })
-    , [builderStore.availableLanguages, currentLanguageCode, handleLanguageSelect])
-
-  return <Dropdown.Menu title={t('leftMenu.translation')} icon={globeIcon} className={className}>
-    {children}
-  </Dropdown.Menu>
+  return (
+    <Dropdown.Menu title={t('leftMenu.translation')} icon={globeIcon} className={className}>
+      {children}
+    </Dropdown.Menu>
+  )
 }
 
 export const MenuLanguageSwitch = customizableObserver('MainMenu_Item_LanguageSwitch', RawMenuLanguageSwitch)

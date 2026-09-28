@@ -23,13 +23,7 @@ const formWithSettings = {
   },
 }
 
-const App = ({form}: { form: object }) => (
-  <FormBuilder
-    licenseKey={generatedLicenseKey}
-    getForm={() => JSON.stringify(form)}
-    view={view}
-  />
-)
+const App = ({form}: {form: object}) => <FormBuilder licenseKey={generatedLicenseKey} getForm={() => JSON.stringify(form)} view={view} />
 
 describe('Singleton palette component', () => {
   it('marks PrintSettings with the singleton feature', () => {
@@ -37,7 +31,7 @@ describe('Singleton palette component', () => {
   })
 
   it('disables the palette item with a hint once an instance is on the form', async () => {
-    const {findByTestId, unmount} = render(<App form={emptyForm}/>)
+    const {findByTestId, unmount} = render(<App form={emptyForm} />)
     fireEvent.click(await findByTestId('Components_Tab'))
 
     const enabled = await findByTestId('PrintSettings-palette-component')
@@ -45,20 +39,18 @@ describe('Singleton palette component', () => {
     expect(enabled).not.toHaveAttribute('title')
     unmount()
 
-    const next = render(<App form={formWithSettings}/>)
+    const next = render(<App form={formWithSettings} />)
     expect(await next.findByTestId('PrintSettings-non-visual-chip')).toBeInTheDocument()
     fireEvent.click(await next.findByTestId('Components_Tab'))
 
     const disabled = await next.findByTestId('PrintSettings-palette-component')
     expect(disabled).toHaveClass('disabled')
     fireEvent.mouseOver(disabled)
-    expect(await next.findByRole('tooltip')).toHaveTextContent(
-      'Only one instance of this component is allowed on the form.'
-    )
+    expect(await next.findByRole('tooltip')).toHaveTextContent('Only one instance of this component is allowed on the form.')
   })
 
   it('shows the singleton hint in the components modal', async () => {
-    const {findByTestId, findByRole, findByText} = render(<App form={formWithSettings}/>)
+    const {findByTestId, findByRole, findByText} = render(<App form={formWithSettings} />)
     fireEvent.click(await findByTestId('add-button'))
 
     const modalTitle = await findByText('Click to add control')
@@ -66,9 +58,7 @@ describe('Singleton palette component', () => {
     const disabled = await within(modal).findByTestId('PrintSettings-palette-component')
     expect(disabled).toHaveClass('disabled')
     fireEvent.mouseOver(disabled)
-    expect(await findByRole('tooltip')).toHaveTextContent(
-      'Only one instance of this component is allowed on the form.'
-    )
+    expect(await findByRole('tooltip')).toHaveTextContent('Only one instance of this component is allowed on the form.')
   })
 })
 
@@ -78,7 +68,7 @@ describe('Non-visual components', () => {
   })
 
   it('shows non-visual instances in the bottom bar and tree group, not on the canvas', async () => {
-    const {findByTestId, queryByTestId} = render(<App form={formWithSettings}/>)
+    const {findByTestId, queryByTestId} = render(<App form={formWithSettings} />)
 
     expect(await findByTestId('non-visual-bar')).toBeInTheDocument()
     expect(await findByTestId('PrintSettings-non-visual-chip')).toBeInTheDocument()

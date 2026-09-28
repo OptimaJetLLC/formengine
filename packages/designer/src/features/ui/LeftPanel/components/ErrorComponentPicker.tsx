@@ -15,14 +15,12 @@ const RawErrorComponentPicker = () => {
   const builderStore = useBuilderStore()
 
   // eslint-disable-next-line react-hooks/immutability
-  const onChange = useCallback((value?: string) => viewerStore.form.errorType = value, [viewerStore])
+  const onChange = useCallback((value?: string) => (viewerStore.form.errorType = value), [viewerStore])
   // eslint-disable-next-line react-hooks/immutability
-  const onClean = useCallback(() => viewerStore.form.errorType = undefined, [viewerStore])
+  const onClean = useCallback(() => (viewerStore.form.errorType = undefined), [viewerStore])
 
   const values = useMemo(() => {
-    const names = builderStore.view
-      .filterModels(model => model.hasComponentRole('error-message'))
-      .map(model => model.type)
+    const names = builderStore.view.filterModels(model => model.hasComponentRole('error-message')).map(model => model.type)
     return [...new Set(names)]
   }, [builderStore.view])
 
@@ -31,9 +29,8 @@ const RawErrorComponentPicker = () => {
   const annotation = oneOf(...values)
     .default(defaultValue)
     .calculable(false)
-    .notLocalize
-    .withEditorProps({
-      creatable: false
+    .notLocalize.withEditorProps({
+      creatable: false,
     })
     .build('errorType')
 
@@ -50,7 +47,7 @@ const RawErrorComponentPicker = () => {
     hasComputeCode,
   }
 
-  return <Picker {...props}/>
+  return <Picker {...props} />
 }
 
 export const ErrorComponentPicker = namedObserver('ErrorComponentPicker', RawErrorComponentPicker)

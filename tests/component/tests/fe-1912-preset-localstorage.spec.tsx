@@ -33,7 +33,7 @@ describe('FE-1912 preset from local storage', () => {
 
   it('renders the preset on the palette with its type, not InternalError', async () => {
     const {findByTestId, queryByTestId} = render(
-      <FormBuilder getForm={getForm} licenseKey={generatedLicenseKey} view={builderViewWithCss}/>,
+      <FormBuilder getForm={getForm} licenseKey={generatedLicenseKey} view={builderViewWithCss} />
     )
 
     fireEvent.click(await findByTestId('Components_Tab'))

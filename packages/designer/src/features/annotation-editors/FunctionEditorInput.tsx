@@ -33,27 +33,36 @@ export const FunctionEditorInput = (props: AnnotationEditorProps) => {
     builderStore.closeCurrentEditable()
   }, [builderStore])
 
-  const getFunctionSource = useCallback((source: string) => {
-    return `return (${beginContextLine}${source}${endContextLine})`
-  }, [beginContextLine, endContextLine])
+  const getFunctionSource = useCallback(
+    (source: string) => {
+      return `return (${beginContextLine}${source}${endContextLine})`
+    },
+    [beginContextLine, endContextLine]
+  )
 
-  const saveCode = useCallback((source: string) => {
-    const src = getFunctionSource(source)
-    // we keep the full function code and the code without the non-editable parts separate.
-    setComputeCode(src, 'function')
-    onChange(source)
-  }, [getFunctionSource, onChange, setComputeCode])
-
-  const onCompile = useCallback((source: string) => {
-    try {
+  const saveCode = useCallback(
+    (source: string) => {
       const src = getFunctionSource(source)
-      const compiled = new Function('form', src)
-      const result = compiled()
-      return {error: false, result}
-    } catch (e) {
-      return {error: true, exceptions: [e as Error]}
-    }
-  }, [getFunctionSource])
+      // we keep the full function code and the code without the non-editable parts separate.
+      setComputeCode(src, 'function')
+      onChange(source)
+    },
+    [getFunctionSource, onChange, setComputeCode]
+  )
+
+  const onCompile = useCallback(
+    (source: string) => {
+      try {
+        const src = getFunctionSource(source)
+        const compiled = new Function('form', src)
+        const result = compiled()
+        return {error: false, result}
+      } catch (e) {
+        return {error: true, exceptions: [e as Error]}
+      }
+    },
+    [getFunctionSource]
+  )
 
   const handleEdit = useCallback(() => {
     const editableFunction = new EditableFunction(
@@ -63,7 +72,7 @@ export const FunctionEditorInput = (props: AnnotationEditorProps) => {
       onCompile,
       value,
       `${fnPrologue}\n${beginContextLine}`,
-      endContextLine,
+      endContextLine
     )
     builderStore.editFunction(editableFunction)
   }, [beginContextLine, builderStore, endContextLine, saveCode, onClose, onCompile, title, value])
@@ -71,16 +80,10 @@ export const FunctionEditorInput = (props: AnnotationEditorProps) => {
   return (
     <LabeledProperty {...props}>
       <Columns>
-        <Button
-          onClick={handleEdit}
-          size="xs"
-          appearance="ghost"
-          block
-          className={styles.button}
-        >
+        <Button onClick={handleEdit} size="xs" appearance="ghost" block className={styles.button}>
           {t('annotation.code.hint')}
         </Button>
-        {!!value && <RemoveButton onClick={onClean} hintPlacement="auto"/>}
+        {!!value && <RemoveButton onClick={onClean} hintPlacement="auto" />}
       </Columns>
     </LabeledProperty>
   )

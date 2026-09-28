@@ -1,8 +1,6 @@
 import {number, oneOf, readOnly as readOnlyProp} from '@react-form-builder/core'
 
-export const alignItems = oneOf('start', 'center', 'end')
-  .default('start')
-  .radio()
+export const alignItems = oneOf('start', 'center', 'end').default('start').radio()
 
 export const nonNegNumber = number.withEditorProps({min: 0})
 

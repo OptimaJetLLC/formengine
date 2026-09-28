@@ -11,9 +11,9 @@ const renderFormWithValidator = (form: object, validator: RuleValidator, initial
   const validators: Validators = {
     string: {
       testValidator: {
-        validate: validator
-      }
-    }
+        validate: validator,
+      },
+    },
   }
 
   return renderForm(form, {validators, initialData})
@@ -48,14 +48,12 @@ describe('Custom validators', () => {
       return field === expectedValue ? true : 'Invalid'
     }
     const {findByTestId, formData} = renderFormWithValidator(formWithRepeater, validator, {
-      repeater1: [{}]
+      repeater1: [{}],
     })
 
     let returnedErrors = await asyncAct(async () => await formData.validate())
     const expectedErrors = {
-      repeater1: [
-        {repeaterInput2: 'Invalid'}
-      ]
+      repeater1: [{repeaterInput2: 'Invalid'}],
     }
     expect(returnedErrors).toStrictEqual(expectedErrors)
     expect(formData.errors).toStrictEqual(expectedErrors)
@@ -76,14 +74,12 @@ describe('Custom validators', () => {
       return field === expectedValue ? true : 'Invalid'
     }
     const {findByTestId, formData} = renderFormWithValidator(formWithRepeater, validator, {
-      repeater1: [{}]
+      repeater1: [{}],
     })
 
     let returnedErrors = await asyncAct(async () => await formData.validate())
     const expectedErrors = {
-      repeater1: [
-        {repeaterInput2: 'Invalid'}
-      ]
+      repeater1: [{repeaterInput2: 'Invalid'}],
     }
     expect(returnedErrors).toStrictEqual(expectedErrors)
     expect(formData.errors).toStrictEqual(expectedErrors)

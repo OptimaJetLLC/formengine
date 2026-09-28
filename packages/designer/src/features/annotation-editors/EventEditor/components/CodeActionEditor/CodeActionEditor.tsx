@@ -15,9 +15,7 @@ import {ParameterList, toParameterListItem} from './components/ParameterList'
 const makeFunctionHeader = (params?: ParameterListItem[]) => {
   let types = '@param {} args - the action parameters arguments.'
   if (params?.length) {
-    const names: string[] = params
-      .map(item => item.parameter)
-      .map(([name, type]) => `${name}: ${type}`)
+    const names: string[] = params.map(item => item.parameter).map(([name, type]) => `${name}: ${type}`)
     types = `@param {{${names.join(', ')}}} args - the action parameters arguments.`
   }
 
@@ -46,20 +44,17 @@ export type CodeActionEditorData = {
   params?: ActionParameters
 }
 
-type FormModel = CodeActionEditorData & { actionParameters?: ParameterListItem[] }
+type FormModel = CodeActionEditorData & {actionParameters?: ParameterListItem[]}
 
 const paramsToParameterListItems = (params?: ActionParameters): ParameterListItem[] | undefined => {
   if (!params) return
-  return Object.entries(params)
-    .map(([name, type]) => toParameterListItem([name, type]))
+  return Object.entries(params).map(([name, type]) => toParameterListItem([name, type]))
 }
 
 const parameterListItemsToParams = (params?: ParameterListItem[]): ActionParameters | undefined => {
   if (!params) return
   const result: ActionParameters = {}
-  params
-    .map(item => item.parameter)
-    .forEach(([name, type]) => result[name] = type)
+  params.map(item => item.parameter).forEach(([name, type]) => (result[name] = type))
   return result
 }
 
@@ -89,10 +84,13 @@ export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) =>
   const {t} = useTranslation()
   const store = useStore()
   const builderStore = useBuilderStore()
-  const initialFormModel: FormModel = useMemo(() => ({
-    ...codeAction,
-    actionParameters: paramsToParameterListItems(codeAction.params)
-  }), [codeAction])
+  const initialFormModel: FormModel = useMemo(
+    () => ({
+      ...codeAction,
+      actionParameters: paramsToParameterListItems(codeAction.params),
+    }),
+    [codeAction]
+  )
   const [formState, setFormState] = useState<FormModel>(initialFormModel)
   const [initialBody, setInitialBody] = useState(codeAction.body)
   const formRef = useRef<FormInstance>(null)
@@ -109,7 +107,7 @@ export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) =>
       .isRequired(t('codeActionEditor.nameIsRequired'))
       .addRule(name => {
         return codeAction.name === formState.name || !store.form.actions[name]
-      }, t('codeActionEditor.actionNameExists'))
+      }, t('codeActionEditor.actionNameExists')),
   })
 
   const updateFormState = useCallback((delta: Partial<FormModel>) => {
@@ -120,43 +118,52 @@ export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) =>
     builderStore.closeCurrentEditable()
   }, [builderStore])
 
-  const save = useCallback((source: string) => {
-    if (!formRef.current?.check()) return
-    const actionDefinition = ActionDefinition.sourceAction(source, parameterListItemsToParams(formState.actionParameters))
-    const namedAction: NamedActionDefinition = {name: formState.name, actionDefinition}
-    onSave?.(namedAction)
-  }, [formState.actionParameters, formState.name, onSave])
+  const save = useCallback(
+    (source: string) => {
+      if (!formRef.current?.check()) return
+      const actionDefinition = ActionDefinition.sourceAction(source, parameterListItemsToParams(formState.actionParameters))
+      const namedAction: NamedActionDefinition = {name: formState.name, actionDefinition}
+      onSave?.(namedAction)
+    },
+    [formState.actionParameters, formState.name, onSave]
+  )
 
-  const compile = useCallback((source: string): CalculableResult => {
-    AsyncFunction(source)
-    return CalculableResult.success(t('testingEditor.compilationOk'))
-  }, [t])
+  const compile = useCallback(
+    (source: string): CalculableResult => {
+      AsyncFunction(source)
+      return CalculableResult.success(t('testingEditor.compilationOk'))
+    },
+    [t]
+  )
 
   const handleNameChange = useCallback((data: any) => updateFormState({name: data.name}), [updateFormState])
 
-  const handleParametersChange = useCallback((value?: ParameterListItem[]) => {
-    updateFormState({actionParameters: value})
-  }, [updateFormState])
+  const handleParametersChange = useCallback(
+    (value?: ParameterListItem[]) => {
+      updateFormState({actionParameters: value})
+    },
+    [updateFormState]
+  )
 
   return (
     <>
-      <Header>
-        {t('bottomPanel.editCodeAction')}
-      </Header>
+      <Header>{t('bottomPanel.editCodeAction')}</Header>
       <Columns className={styles.container}>
         <Rows className={styles.rows}>
-          <Form model={model} checkTrigger={'change'} formValue={formState} ref={formRef}
-                onChange={handleNameChange}>
-            <Form.Control name={'name'} className={styles.control}/>
+          <Form model={model} checkTrigger={'change'} formValue={formState} ref={formRef} onChange={handleNameChange}>
+            <Form.Control name={'name'} className={styles.control} />
           </Form>
-          <GenericCodeEditor beginContextLine={functionHeader}
-                             endContextLine="}" source={initialBody ?? ''}
-                             onSave={save} onClose={close}
-                             onCompile={compile} compact
+          <GenericCodeEditor
+            beginContextLine={functionHeader}
+            endContextLine="}"
+            source={initialBody ?? ''}
+            onSave={save}
+            onClose={close}
+            onCompile={compile}
+            compact
           />
         </Rows>
-        <ParameterList value={formState.actionParameters}
-                       onChange={handleParametersChange}/>
+        <ParameterList value={formState.actionParameters} onChange={handleParametersChange} />
       </Columns>
     </>
   )

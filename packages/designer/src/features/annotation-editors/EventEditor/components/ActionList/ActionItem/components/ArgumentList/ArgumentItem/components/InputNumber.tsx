@@ -9,15 +9,18 @@ const RawInputNumber = ({name}: InputProps) => {
   const data = useActionData()
   const value = !isUndefined(data.args?.[name]) ? Number(data.args[name]) : ''
 
-  const handleChange = useCallback((value: string | number | null) => {
-    const newArgs = Object.assign({}, data.args)
-    delete newArgs[name]
-    if (typeof value === 'string' || isNumber(value)) {
-      newArgs[name] = Number(value)
-    }
-    // eslint-disable-next-line react-hooks/immutability
-    data.args = newArgs
-  }, [data, name])
+  const handleChange = useCallback(
+    (value: string | number | null) => {
+      const newArgs = Object.assign({}, data.args)
+      delete newArgs[name]
+      if (typeof value === 'string' || isNumber(value)) {
+        newArgs[name] = Number(value)
+      }
+      // eslint-disable-next-line react-hooks/immutability
+      data.args = newArgs
+    },
+    [data, name]
+  )
 
   const handleReset = useCallback(() => {
     handleChange(null)
@@ -25,9 +28,9 @@ const RawInputNumber = ({name}: InputProps) => {
 
   return (
     <InputGroup size={'sm'}>
-      <RInputNumber value={value} onChange={handleChange} onReset={handleReset} size={'sm'}/>
+      <RInputNumber value={value} onChange={handleChange} onReset={handleReset} size={'sm'} />
       <InputGroup.Button onClick={handleReset}>
-        <Close/>
+        <Close />
       </InputGroup.Button>
     </InputGroup>
   )

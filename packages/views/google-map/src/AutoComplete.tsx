@@ -53,7 +53,7 @@ export const PlaceAutocompleteClassic = ({onPlaceSelect, placeholder}: PlaceAuto
 
   return (
     <div className={cx(styles.container, 'autocomplete-container')}>
-      <input ref={inputRef} placeholder={placeholder} className={styles.input}/>
+      <input ref={inputRef} placeholder={placeholder} className={styles.input} />
     </div>
   )
 }

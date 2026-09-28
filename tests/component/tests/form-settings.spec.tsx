@@ -10,7 +10,7 @@ const builderView = new BuilderView(allComponentsBuilder)
 
 describe('Form settings test', () => {
   it('The tooltip dropdown should contain the tooltip components', async () => {
-    const renderResult = render(<FormBuilder view={builderView}/>)
+    const renderResult = render(<FormBuilder view={builderView} />)
     const {findByTestId} = renderResult
 
     const settingsTabButton = await findByTestId('Settings_Tab')
@@ -27,7 +27,7 @@ describe('Form settings test', () => {
   })
 
   it('The error dropdown should contain the error components', async () => {
-    const renderResult = render(<FormBuilder view={builderView}/>)
+    const renderResult = render(<FormBuilder view={builderView} />)
     const {findByTestId} = renderResult
 
     const settingsTabButton = await findByTestId('Settings_Tab')
@@ -95,15 +95,18 @@ describe('Form settings test', () => {
     const formStorage: IFormStorage = {
       getForm(formName?: string) {
         return Promise.resolve(forms[formName ?? 'default'])
-      }, getFormNames() {
+      },
+      getFormNames() {
         return Promise.resolve(formNames)
-      }, removeForm(formName: string) {
+      },
+      removeForm(formName: string) {
         delete forms[formName]
         return Promise.resolve()
-      }, saveForm(formName: string, formValue: string) {
+      },
+      saveForm(formName: string, formValue: string) {
         forms[formName] = formValue
         return Promise.resolve()
-      }
+      },
     }
 
     const emptyForm = JSON.parse(buildForm().json())

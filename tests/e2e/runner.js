@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import spawn from 'cross-spawn'
 import {dirname, join, resolve} from 'node:path'
-import {fileURLToPath} from 'node:url'
 import {cwd} from 'node:process'
+import {fileURLToPath} from 'node:url'
+import spawn from 'cross-spawn'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

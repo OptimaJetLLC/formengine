@@ -1,33 +1,33 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {createView, CustomActions, FormViewer} from '@react-form-builder/core'
+import {CustomActions, createView, FormViewer} from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
 import {useMemo, useState} from 'react'
 
 const formJson = JSON.stringify({
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'props': {},
-    'children': [
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    children: [
       {
-        'key': 'rsButton1',
-        'type': 'RsButton',
-        'props': {
-          'children': {
-            'value': 'Click me'
-          }
+        key: 'rsButton1',
+        type: 'RsButton',
+        props: {
+          children: {
+            value: 'Click me',
+          },
         },
-        'events': {
-          'onClick': [
+        events: {
+          onClick: [
             {
-              'name': 'logCounter',
-              'type': 'custom'
-            }
-          ]
-        }
-      }
-    ]
-  }
+              name: 'logCounter',
+              type: 'custom',
+            },
+          ],
+        },
+      },
+    ],
+  },
 })
 
 const componentsMetadata = rSuiteComponents.map(definer => definer.build().model)
@@ -36,21 +36,26 @@ const view = createView(componentsMetadata)
 const App = () => {
   const [counter, setCounter] = useState(0)
 
-  const actions = useMemo<CustomActions>(() => ({
-    logCounter: () => {
-      document.title = `Counter: ${counter}`
-    }
-  }), [counter])
+  const actions = useMemo<CustomActions>(
+    () => ({
+      logCounter: () => {
+        document.title = `Counter: ${counter}`
+      },
+    }),
+    [counter]
+  )
 
-  return <>
-    <button onClick={() => setCounter(counter + 1)}>Increment counter</button>
-    <FormViewer view={view} getForm={() => formJson} actions={actions}/>
-  </>
+  return (
+    <>
+      <button onClick={() => setCounter(counter + 1)}>Increment counter</button>
+      <FormViewer view={view} getForm={() => formJson} actions={actions} />
+    </>
+  )
 }
 
 describe(`Should recreate actions on props change`, function () {
   it('Should recreate actions on props change', async () => {
-    const {findByText} = render(<App/>)
+    const {findByText} = render(<App />)
 
     const button = await findByText('Increment counter')
     fireEvent.click(button)

@@ -9,5 +9,5 @@ import styles from './Button.module.css'
  */
 export const Button = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
   const {className, ...rest} = props
-  return <button  {...rest} className={cx('rs-btn', 'rs-btn-primary', styles.button, className)}/>
+  return <button {...rest} className={cx('rs-btn', 'rs-btn-primary', styles.button, className)} />
 }

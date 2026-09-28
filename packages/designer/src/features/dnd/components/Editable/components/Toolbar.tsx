@@ -44,60 +44,61 @@ interface ToolbarItemProps extends ToolbarProps {
 }
 
 const RawToolbarTitle = ({compact, storeKey, storeType, className}: ToolbarItemProps) => {
-  return compact ? null : <label className={cx(styles.title, className)}>
-    {storeKey}
-    <label>{` (${storeType})`}</label>
-  </label>
+  return compact ? null : (
+    <label className={cx(styles.title, className)}>
+      {storeKey}
+      <label>{` (${storeType})`}</label>
+    </label>
+  )
 }
 
 const ToolbarTitle = customizableObserver('Component_Toolbar_Title', RawToolbarTitle)
 
 const RawToolbarAddButton = ({className}: ToolbarItemProps) => {
-  return <span className={className}>
-    <AddButton/>
-  </span>
+  return (
+    <span className={className}>
+      <AddButton />
+    </span>
+  )
 }
 
 const ToolbarAddButton = customizableObserver('Component_Toolbar_AddButton', RawToolbarAddButton)
 
 const RawToolbarCloneButton = ({onClone, closeHint, className}: ToolbarItemProps) => {
-  return <span className={className}>
-    <Hinted hint={closeHint} placement={'autoVertical'}>
-      <FaIcon
-        data-testid="tree-clone-button"
-        onClick={onClone}
-        icon={faClone as unknown as IconDefinition}
-        className={'clone-button'}
-      />
-    </Hinted>
-  </span>
+  return (
+    <span className={className}>
+      <Hinted hint={closeHint} placement={'autoVertical'}>
+        <FaIcon data-testid="tree-clone-button" onClick={onClone} icon={faClone as unknown as IconDefinition} className={'clone-button'} />
+      </Hinted>
+    </span>
+  )
 }
 
 const ToolbarCloneButton = customizableObserver('Component_Toolbar_CloneButton', RawToolbarCloneButton)
 
 const RawToolbarPresetButton = ({className}: ToolbarItemProps) => {
-  return <span className={className}>
-    <PresetComponentButton/>
-  </span>
+  return (
+    <span className={className}>
+      <PresetComponentButton />
+    </span>
+  )
 }
 
 const ToolbarPresetButton = customizableObserver('Component_Toolbar_PresetComponentButton', RawToolbarPresetButton)
 
 const RawToolbarRemoveButton = ({onRemove, removeHint, className}: ToolbarItemProps) => {
-  return <span className={className}>
-    <Hinted hint={removeHint} placement={'autoVertical'}>
-      <FaIcon
-        onClick={onRemove}
-        icon={faTrash as unknown as IconDefinition}
-        className={'remove-button'}
-      />
-    </Hinted>
-  </span>
+  return (
+    <span className={className}>
+      <Hinted hint={removeHint} placement={'autoVertical'}>
+        <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition} className={'remove-button'} />
+      </Hinted>
+    </span>
+  )
 }
 
 const ToolbarRemoveButton = customizableObserver('Component_Toolbar_RemoveButton', RawToolbarRemoveButton)
 
-const RawToolbarItems = ({children, className}: ToolbarItemProps & { children: ReactNode }) => {
+const RawToolbarItems = ({children, className}: ToolbarItemProps & {children: ReactNode}) => {
   return <div className={cx(styles.items, className)}>{children}</div>
 }
 
@@ -124,27 +125,36 @@ const RawToolbar = ({compact, className}: ToolbarProps) => {
     return cx({compact: compact}, 'Toolbar', parentType, type)
   }, [compact, model.type, parent])
 
-  const onClone: MouseEventHandler = useCallback(e => {
-    stopEvent(e)
-    builderStore.clone(data)
-  }, [data, builderStore])
+  const onClone: MouseEventHandler = useCallback(
+    e => {
+      stopEvent(e)
+      builderStore.clone(data)
+    },
+    [data, builderStore]
+  )
 
-  const onRemove: MouseEventHandler = useCallback(e => {
-    stopEvent(e)
-    builderStore.remove(data)
-  }, [data, builderStore])
+  const onRemove: MouseEventHandler = useCallback(
+    e => {
+      stopEvent(e)
+      builderStore.remove(data)
+    },
+    [data, builderStore]
+  )
 
-  const customizationProps: ToolbarItemProps = useMemo(() => ({
-    removeHint,
-    selected,
-    closeHint,
-    onClone,
-    compact,
-    onRemove,
-    storeKey,
-    storeType,
-    toolbarClassname
-  }), [closeHint, compact, onClone, onRemove, removeHint, selected, storeKey, storeType, toolbarClassname])
+  const customizationProps: ToolbarItemProps = useMemo(
+    () => ({
+      removeHint,
+      selected,
+      closeHint,
+      onClone,
+      compact,
+      onRemove,
+      storeKey,
+      storeType,
+      toolbarClassname,
+    }),
+    [closeHint, compact, onClone, onRemove, removeHint, selected, storeKey, storeType, toolbarClassname]
+  )
 
   useEffect(() => {
     if (!compact && selected && ref.current) {
@@ -152,17 +162,21 @@ const RawToolbar = ({compact, className}: ToolbarProps) => {
     }
   }, [selected, compact])
 
-  return <div ref={ref} className={cx(styles.container, toolbarClassname, className)}>
-    <ToolbarItems {...customizationProps}>
-      <ToolbarTitle {...customizationProps}/>
-      <ToolbarAddButton {...customizationProps}/>
-      {!isRoot && !singleton && <>
-        <ToolbarCloneButton {...customizationProps}/>
-        {!disablePresetCreation && <ToolbarPresetButton {...customizationProps}/>}
-      </>}
-      {!disableRemove && <ToolbarRemoveButton {...customizationProps}/>}
-    </ToolbarItems>
-  </div>
+  return (
+    <div ref={ref} className={cx(styles.container, toolbarClassname, className)}>
+      <ToolbarItems {...customizationProps}>
+        <ToolbarTitle {...customizationProps} />
+        <ToolbarAddButton {...customizationProps} />
+        {!isRoot && !singleton && (
+          <>
+            <ToolbarCloneButton {...customizationProps} />
+            {!disablePresetCreation && <ToolbarPresetButton {...customizationProps} />}
+          </>
+        )}
+        {!disableRemove && <ToolbarRemoveButton {...customizationProps} />}
+      </ToolbarItems>
+    </div>
+  )
 }
 
 export const Toolbar = customizableObserver('Component_Toolbar', RawToolbar)

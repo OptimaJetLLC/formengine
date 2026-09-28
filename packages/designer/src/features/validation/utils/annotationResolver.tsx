@@ -8,16 +8,18 @@ import {isDate, isEmpty, isNumber, isPromise} from '@react-form-builder/core'
  * @param data.store the form viewer settings.
  * @returns the validation function.
  */
-export const annotationResolver = ({annotation, store}: { annotation: Annotation, store: Store }): ResolvedValidator => {
+export const annotationResolver = ({annotation, store}: {annotation: Annotation; store: Store}): ResolvedValidator => {
   const checkRequired = (value: any) => {
     if (annotation.required) {
       if (isNumber(value)) return
       if (isDate(value) || !isEmpty(value)) return
-      return [{
-        settings: {key: 'required_property'},
-        message: 'This property is required!',
-        annotation: annotation
-      }]
+      return [
+        {
+          settings: {key: 'required_property'},
+          message: 'This property is required!',
+          annotation: annotation,
+        },
+      ]
     }
   }
 
@@ -25,13 +27,15 @@ export const annotationResolver = ({annotation, store}: { annotation: Annotation
     const result = annotation.validator?.(value, store)
     const success = isPromise(result) ? await result : result
     if (success === false) {
-      return [{
-        settings: {key: 'property_validator'},
-        message: annotation.errorMap?.message,
-        annotation: annotation
-      }]
+      return [
+        {
+          settings: {key: 'property_validator'},
+          message: annotation.errorMap?.message,
+          annotation: annotation,
+        },
+      ]
     }
   }
 
-  return async value => checkRequired(value) ?? await checkValidator(value)
+  return async value => checkRequired(value) ?? (await checkValidator(value))
 }

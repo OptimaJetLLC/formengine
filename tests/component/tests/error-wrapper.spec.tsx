@@ -1,16 +1,16 @@
 import {buildForm, type ErrorWrapperProps} from '@react-form-builder/core'
 import {renderForm} from '../util/renderForm'
 
-const form = buildForm()
-  .component('testComponent', 'NoSuchComponent')
-  .json()
+const form = buildForm().component('testComponent', 'NoSuchComponent').json()
 
 const customErrorWrapper = (props: ErrorWrapperProps) => {
   const {error, children, className} = props
-  return <div data-testid="custom-error-wrapper" className={className}>
-    {error && <div data-testid="custom-error-message">{error}</div>}
-    {children}
-  </div>
+  return (
+    <div data-testid="custom-error-wrapper" className={className}>
+      {error && <div data-testid="custom-error-message">{error}</div>}
+      {children}
+    </div>
+  )
 }
 
 describe('FormViewerProps.errorWrapper tests', () => {

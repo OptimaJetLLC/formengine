@@ -32,8 +32,10 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
   const [{selected}] = useSelection()
   const ref = useRef<HTMLDivElement>(null)
 
-  const findDepth = useCallback(() => findTreeElementDepth(viewer.form.componentTree, componentData) || 0,
-    [componentData, viewer.form.componentTree])
+  const findDepth = useCallback(
+    () => findTreeElementDepth(viewer.form.componentTree, componentData) || 0,
+    [componentData, viewer.form.componentTree]
+  )
   const depth = useComputed(findDepth)
 
   const expanded = expandedNodes.has(componentData)
@@ -58,7 +60,7 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
   const withChildren = visualChildren.length > 0
   const iconAs = expanded ? ArrowDownLineIcon : ArrowRightLineIcon
   const indentWidth = 14 * (depth + 1) + 14
-  const indentStyle = useMemo(() => ({'--tree-node-indent-width': `${indentWidth}px`} as CSSProperties), [indentWidth])
+  const indentStyle = useMemo(() => ({'--tree-node-indent-width': `${indentWidth}px`}) as CSSProperties, [indentWidth])
 
   return (
     <>
@@ -69,13 +71,13 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
         onMouseLeave={onMouseLeave}
       >
         <div className={styles.indent} style={indentStyle}>
-          {withChildren && <Icon onClick={toggleExpand} as={iconAs} className={styles.icon}/>}
+          {withChildren && <Icon onClick={toggleExpand} as={iconAs} className={styles.icon} />}
         </div>
         <div data-testid={componentData.key}>{componentData.key}</div>
         <label>{componentData.model.name}</label>
-        {hovered && <Toolbar compact/>}
+        {hovered && <Toolbar compact />}
       </div>
-      {expanded && withChildren && <ComponentTree data={visualChildren} componentDataViewer={componentDataViewer}/>}
+      {expanded && withChildren && <ComponentTree data={visualChildren} componentDataViewer={componentDataViewer} />}
     </>
   )
 }

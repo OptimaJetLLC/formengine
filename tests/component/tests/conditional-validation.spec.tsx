@@ -10,8 +10,8 @@ describe('Conditional validation', () => {
 
     const returnedErrors = await asyncAct(async () => await formData.validate())
     const expectedErrors = {
-      'email': 'Email is required',
-      'address': 'Address is required'
+      email: 'Email is required',
+      address: 'Address is required',
     }
     expect(returnedErrors).toStrictEqual(expectedErrors)
     expect(formData.errors).toStrictEqual(expectedErrors)
@@ -29,11 +29,8 @@ describe('Conditional validation', () => {
   it('should have access to row data in repeater field', async () => {
     const {formData, getAllByText} = renderForm(withRepeater, {
       initialData: {
-        repeater1: [
-          {},
-          {address: 'address'}
-        ]
-      }
+        repeater1: [{}, {address: 'address'}],
+      },
     })
 
     let returnedErrors = await asyncAct(async () => await formData.validate())
@@ -43,10 +40,7 @@ describe('Conditional validation', () => {
     fireEvent.click(getAllByText('Turn on validation in repeater')[0])
     returnedErrors = await asyncAct(async () => await formData.validate())
     const expectedErrors = {
-      repeater1: [
-        {address: 'Address is required'},
-        {}
-      ]
+      repeater1: [{address: 'Address is required'}, {}],
     }
     expect(returnedErrors).toStrictEqual(expectedErrors)
     expect(formData.errors).toStrictEqual(expectedErrors)
@@ -55,8 +49,8 @@ describe('Conditional validation', () => {
   it('should have access to form data in repeater field', async () => {
     const {formData, findByText} = renderForm(withRepeater, {
       initialData: {
-        repeater1: [{}]
-      }
+        repeater1: [{}],
+      },
     })
 
     let returnedErrors = await asyncAct(async () => await formData.validate())
@@ -66,9 +60,7 @@ describe('Conditional validation', () => {
     fireEvent.click(await findByText('Turn on validation'))
     returnedErrors = await asyncAct(async () => await formData.validate())
     const expectedErrors = {
-      repeater1: [
-        {email: 'Email is required'}
-      ]
+      repeater1: [{email: 'Email is required'}],
     }
     expect(returnedErrors).toStrictEqual(expectedErrors)
     expect(formData.errors).toStrictEqual(expectedErrors)

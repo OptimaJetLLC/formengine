@@ -30,12 +30,12 @@ export const customizable = <T = any>(key: CustomizableKey, component: Component
       }
     }, [styleSheet])
 
-    if (!settings) return <CustomizableComponent {...props} className={cx(customizationStaticClassName, props.className)}/>
+    if (!settings) return <CustomizableComponent {...props} className={cx(customizationStaticClassName, props.className)} />
     if (settings.hidden) return null
 
     const {customRenderer} = settings
     const className = cx(customizationStaticClassName, props?.className, settings.className, styleSheet.className, key)
-    const result = <CustomizableComponent {...props} className={className}/>
+    const result = <CustomizableComponent {...props} className={className} />
 
     return customRenderer ? customRenderer(result, component, props) : result
   }

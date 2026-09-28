@@ -3,14 +3,13 @@ import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render} from '@testing-library/react'
 
-const view = new BuilderView([...allComponentsBuilder])
-  .withPaletteFilter(({category, model}) => {
-    return !(category === 'structure' || model.type === 'RsAutoComplete')
-  })
+const view = new BuilderView([...allComponentsBuilder]).withPaletteFilter(({category, model}) => {
+  return !(category === 'structure' || model.type === 'RsAutoComplete')
+})
 
 describe('Hide components test', () => {
   it('Should not display hidden components', async () => {
-    const {findByTestId, queryByTestId} = render(<FormBuilder view={view}/>)
+    const {findByTestId, queryByTestId} = render(<FormBuilder view={view} />)
 
     const componentsTabButton = await findByTestId('Components_Tab')
     fireEvent.click(componentsTabButton)

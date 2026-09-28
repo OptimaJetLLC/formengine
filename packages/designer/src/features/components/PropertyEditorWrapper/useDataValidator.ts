@@ -12,9 +12,16 @@ import {useMemo} from 'react'
  * @param localizer the function that localizes validation error messages.
  * @returns the DataValidator instance.
  */
-export function useDataValidator<T>(store: IStore, resolver: SchemaResolver<T>, args: T,
-                                    setter: Setter<string | undefined>, localizer?: ErrorMessageLocalizer) {
+export function useDataValidator<T>(
+  store: IStore,
+  resolver: SchemaResolver<T>,
+  args: T,
+  setter: Setter<string | undefined>,
+  localizer?: ErrorMessageLocalizer
+) {
   const componentData = useComponentData()
-  return useMemo(() => DataValidator.create(store, () => componentData.dataRoot, resolver, args, setter, localizer),
-    [store, resolver, args, setter, localizer, componentData])
+  return useMemo(
+    () => DataValidator.create(store, () => componentData.dataRoot, resolver, args, setter, localizer),
+    [store, resolver, args, setter, localizer, componentData]
+  )
 }

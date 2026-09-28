@@ -36,7 +36,7 @@ const expectedFormData = {
           templateDestination: 8,
           parentSlotSource: 13,
           parentSlotDestination: 56,
-          childRepeaterInputs: 98
+          childRepeaterInputs: 98,
         },
         {
           childRepeaterInput: 126,
@@ -46,7 +46,7 @@ const expectedFormData = {
           templateDestination: 8,
           parentSlotSource: 13,
           parentSlotDestination: 56,
-          childRepeaterInputs: 99
+          childRepeaterInputs: 99,
         },
         {
           childRepeaterInput: 127,
@@ -56,9 +56,9 @@ const expectedFormData = {
           templateDestination: 8,
           parentSlotSource: 13,
           parentSlotDestination: 56,
-          childRepeaterInputs: 100
-        }
-      ]
+          childRepeaterInputs: 100,
+        },
+      ],
     },
     {
       rootRepeaterInput: 32,
@@ -79,7 +79,7 @@ const expectedFormData = {
           templateDestination: 8,
           parentSlotSource: 13,
           parentSlotDestination: 56,
-          childRepeaterInputs: 98
+          childRepeaterInputs: 98,
         },
         {
           childRepeaterInput: 127,
@@ -89,7 +89,7 @@ const expectedFormData = {
           templateDestination: 8,
           parentSlotSource: 13,
           parentSlotDestination: 56,
-          childRepeaterInputs: 99
+          childRepeaterInputs: 99,
         },
         {
           childRepeaterInput: 128,
@@ -99,139 +99,140 @@ const expectedFormData = {
           templateDestination: 8,
           parentSlotSource: 13,
           parentSlotDestination: 56,
-          childRepeaterInputs: 100
-        }
-      ]
-    }
-  ]
+          childRepeaterInputs: 100,
+        },
+      ],
+    },
+  ],
 }
 
 const expectedFormErrors = {
-  'parentSource': 'min 100, real: 7',
-  'parentDestination': 'min 100, real: 18',
-  'templateSource': 'max 1, real: 3',
-  'templateDestination': 'max 2, real: 8',
-  'parentSlotSource': 'min 100, real: 13',
-  'parentSlotDestination': 'min 100, real: 56',
-  'rootRepeater': [
+  parentSource: 'min 100, real: 7',
+  parentDestination: 'min 100, real: 18',
+  templateSource: 'max 1, real: 3',
+  templateDestination: 'max 2, real: 8',
+  parentSlotSource: 'min 100, real: 13',
+  parentSlotDestination: 'min 100, real: 56',
+  rootRepeater: [
     {
-      'parentSource': 'min 100, real: 7',
-      'parentDestination': 'min 100, real: 18',
-      'templateSource': 'max 1, real: 3',
-      'templateDestination': 'max 2, real: 8',
-      'parentSlotSource': 'min 100, real: 13',
-      'parentSlotDestination': 'min 100, real: 56',
-      'childRepeater': [
+      parentSource: 'min 100, real: 7',
+      parentDestination: 'min 100, real: 18',
+      templateSource: 'max 1, real: 3',
+      templateDestination: 'max 2, real: 8',
+      parentSlotSource: 'min 100, real: 13',
+      parentSlotDestination: 'min 100, real: 56',
+      childRepeater: [
         {
-          'parentSource': 'min 100, real: 7',
-          'parentDestination': 'min 100, real: 18',
-          'templateSource': 'max 1, real: 3',
-          'templateDestination': 'max 2, real: 8',
-          'parentSlotSource': 'min 100, real: 13',
-          'parentSlotDestination': 'min 100, real: 56'
+          parentSource: 'min 100, real: 7',
+          parentDestination: 'min 100, real: 18',
+          templateSource: 'max 1, real: 3',
+          templateDestination: 'max 2, real: 8',
+          parentSlotSource: 'min 100, real: 13',
+          parentSlotDestination: 'min 100, real: 56',
         },
         {
-          'parentSource': 'min 100, real: 7',
-          'parentDestination': 'min 100, real: 18',
-          'templateSource': 'max 1, real: 3',
-          'templateDestination': 'max 2, real: 8',
-          'parentSlotSource': 'min 100, real: 13',
-          'parentSlotDestination': 'min 100, real: 56'
+          parentSource: 'min 100, real: 7',
+          parentDestination: 'min 100, real: 18',
+          templateSource: 'max 1, real: 3',
+          templateDestination: 'max 2, real: 8',
+          parentSlotSource: 'min 100, real: 13',
+          parentSlotDestination: 'min 100, real: 56',
         },
         {
-          'parentSource': 'min 100, real: 7',
-          'parentDestination': 'min 100, real: 18',
-          'templateSource': 'max 1, real: 3',
-          'templateDestination': 'max 2, real: 8',
-          'parentSlotSource': 'min 100, real: 13',
-          'parentSlotDestination': 'min 100, real: 56'
-        }
-      ]
+          parentSource: 'min 100, real: 7',
+          parentDestination: 'min 100, real: 18',
+          templateSource: 'max 1, real: 3',
+          templateDestination: 'max 2, real: 8',
+          parentSlotSource: 'min 100, real: 13',
+          parentSlotDestination: 'min 100, real: 56',
+        },
+      ],
     },
     {
-      'parentSource': 'min 100, real: 7',
-      'parentDestination': 'min 100, real: 18',
-      'templateSource': 'max 1, real: 3',
-      'templateDestination': 'max 2, real: 8',
-      'parentSlotSource': 'min 100, real: 13',
-      'parentSlotDestination': 'min 100, real: 56',
-      'childRepeater': [
+      parentSource: 'min 100, real: 7',
+      parentDestination: 'min 100, real: 18',
+      templateSource: 'max 1, real: 3',
+      templateDestination: 'max 2, real: 8',
+      parentSlotSource: 'min 100, real: 13',
+      parentSlotDestination: 'min 100, real: 56',
+      childRepeater: [
         {
-          'parentSource': 'min 100, real: 7',
-          'parentDestination': 'min 100, real: 18',
-          'templateSource': 'max 1, real: 3',
-          'templateDestination': 'max 2, real: 8',
-          'parentSlotSource': 'min 100, real: 13',
-          'parentSlotDestination': 'min 100, real: 56'
+          parentSource: 'min 100, real: 7',
+          parentDestination: 'min 100, real: 18',
+          templateSource: 'max 1, real: 3',
+          templateDestination: 'max 2, real: 8',
+          parentSlotSource: 'min 100, real: 13',
+          parentSlotDestination: 'min 100, real: 56',
         },
         {
-          'parentSource': 'min 100, real: 7',
-          'parentDestination': 'min 100, real: 18',
-          'templateSource': 'max 1, real: 3',
-          'templateDestination': 'max 2, real: 8',
-          'parentSlotSource': 'min 100, real: 13',
-          'parentSlotDestination': 'min 100, real: 56'
+          parentSource: 'min 100, real: 7',
+          parentDestination: 'min 100, real: 18',
+          templateSource: 'max 1, real: 3',
+          templateDestination: 'max 2, real: 8',
+          parentSlotSource: 'min 100, real: 13',
+          parentSlotDestination: 'min 100, real: 56',
         },
         {
-          'parentSource': 'min 100, real: 7',
-          'parentDestination': 'min 100, real: 18',
-          'templateSource': 'max 1, real: 3',
-          'templateDestination': 'max 2, real: 8',
-          'parentSlotSource': 'min 100, real: 13',
-          'parentSlotDestination': 'min 100, real: 56'
-        }
-      ]
-    }
-  ]
+          parentSource: 'min 100, real: 7',
+          parentDestination: 'min 100, real: 18',
+          templateSource: 'max 1, real: 3',
+          templateDestination: 'max 2, real: 8',
+          parentSlotSource: 'min 100, real: 13',
+          parentSlotDestination: 'min 100, real: 56',
+        },
+      ],
+    },
+  ],
 }
 
 // Repeater does not fully calculate its fields during the test, the data in the real form will be different
 const expectedLocalizedFormData = {
-  'repeater1': [
+  repeater1: [
     {
-      'c0': 'c0',
-      'c1': 'level 1 (c0)',
-      'repeater2': [
+      c0: 'c0',
+      c1: 'level 1 (c0)',
+      repeater2: [
         {
-          'b0': 'b0',
-          'b1': 'level 2 (b0)',
-          'repeater3': [
-            {'a0': 'a0', 'a1': 'level 3 (a0)'},
-            {'a0': 'a0', 'a1': 'level 3 (a0)'}
-          ]
+          b0: 'b0',
+          b1: 'level 2 (b0)',
+          repeater3: [
+            {a0: 'a0', a1: 'level 3 (a0)'},
+            {a0: 'a0', a1: 'level 3 (a0)'},
+          ],
         },
         {
-          'b0': 'b0',
-          'b1': 'level 2 (b0)',
-          'repeater3': [
-            {'a0': 'a0', 'a1': 'level 3 (a0)'},
-            {'a0': 'a0', 'a1': 'level 3 (a0)'}
-          ]
-        }
-      ]
-    }, {
-      'c0': 'c0',
-      'c1': 'level 1 (c0)',
-      'repeater2': [
+          b0: 'b0',
+          b1: 'level 2 (b0)',
+          repeater3: [
+            {a0: 'a0', a1: 'level 3 (a0)'},
+            {a0: 'a0', a1: 'level 3 (a0)'},
+          ],
+        },
+      ],
+    },
+    {
+      c0: 'c0',
+      c1: 'level 1 (c0)',
+      repeater2: [
         {
-          'b0': 'b0',
-          'b1': 'level 2 (b0)',
-          'repeater3': [
-            {'a0': 'a0', 'a1': 'level 3 (a0)'},
-            {'a0': 'a0', 'a1': 'level 3 (a0)'}
-          ]
+          b0: 'b0',
+          b1: 'level 2 (b0)',
+          repeater3: [
+            {a0: 'a0', a1: 'level 3 (a0)'},
+            {a0: 'a0', a1: 'level 3 (a0)'},
+          ],
         },
         {
-          'b0': 'b0',
-          'b1': 'level 2 (b0)',
-          'repeater3': [
-            {'a0': 'a0', 'a1': 'level 3 (a0)'},
-            {'a0': 'a0', 'a1': 'level 3 (a0)'}
-          ]
-        }
-      ]
-    }
-  ]
+          b0: 'b0',
+          b1: 'level 2 (b0)',
+          repeater3: [
+            {a0: 'a0', a1: 'level 3 (a0)'},
+            {a0: 'a0', a1: 'level 3 (a0)'},
+          ],
+        },
+      ],
+    },
+  ],
 }
 
 // Repeater does not fully calculate its fields during the test, some fields are disabled!
@@ -260,7 +261,7 @@ describe('Complex computed properties test', () => {
       return JSON.stringify(form)
     }
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
-    const {findAllByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findAllByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} />)
 
     expect(await findAllByTestId('childRepeaterInput')).toHaveLength(6)
 
@@ -284,7 +285,7 @@ describe('Complex computed properties test', () => {
       return JSON.stringify(repeaterLocalizationForm)
     }
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
-    const {findAllByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findAllByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} />)
 
     // ensure that the form is rendered
     expect(await findAllByTestId('a1')).toHaveLength(8)

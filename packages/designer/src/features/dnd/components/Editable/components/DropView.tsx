@@ -13,19 +13,23 @@ interface DropViewProps {
   slotCondition?: string
 }
 
-const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: string }) => {
+const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string}) => {
   const builderStore = useBuilderStore()
   const target = useComponentData()
   const handleClick = useCallback(() => {
-    builderStore.showComponentsModal(source => {
-      builderStore.add(source, target, 'inner', slot, slotCondition)
-    }, componentData => builderStore.getAddComponentResult(componentData, target, 'inner', slot))
+    builderStore.showComponentsModal(
+      source => {
+        builderStore.add(source, target, 'inner', slot, slotCondition)
+      },
+      componentData => builderStore.getAddComponentResult(componentData, target, 'inner', slot)
+    )
   }, [builderStore, target, slot, slotCondition])
 
-  const plusIcon = useMemo(() => <PlusIcon/>, [])
+  const plusIcon = useMemo(() => <PlusIcon />, [])
 
-  return <IconButton onClick={handleClick} icon={plusIcon} color="green" data-testid="add-button" appearance={'primary'} circle
-                     size={'xs'}/>
+  return (
+    <IconButton onClick={handleClick} icon={plusIcon} color="green" data-testid="add-button" appearance={'primary'} circle size={'xs'} />
+  )
 }
 
 /**
@@ -35,12 +39,8 @@ const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: strin
  */
 export const InnerDropView = forwardRef<HTMLDivElement, DropViewProps>(({slot, slotCondition, className}, ref) => {
   return (
-    <div
-      ref={ref}
-      className={cx(styles.innerContainer, className)}
-      data-testid="inner-dropzone"
-    >
-      <AddButton slot={slot} slotCondition={slotCondition}/>
+    <div ref={ref} className={cx(styles.innerContainer, className)} data-testid="inner-dropzone">
+      <AddButton slot={slot} slotCondition={slotCondition} />
     </div>
   )
 })
@@ -51,9 +51,7 @@ InnerDropView.displayName = 'InnerDropView'
  * @param props the React component properties.
  * @returns the React element.
  */
-export const DropView = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({className, ...props}, ref) => {
-    return <div {...props} ref={ref} className={cx(styles.dropView, className)}/>
-  }
-)
+export const DropView = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({className, ...props}, ref) => {
+  return <div {...props} ref={ref} className={cx(styles.dropView, className)} />
+})
 DropView.displayName = 'DropView'

@@ -21,26 +21,34 @@ export const UnconstrainedCodeEditor = (props: UnconstrainedCodeEditorProps) => 
     editor.setValue(props.initialValue)
   }, [props.initialValue])
 
-  const handleMount: OnMount = useCallback((editor, monaco) => {
-    editor.onDidChangeModelContent(() => onChange(editor.getValue()))
-    editorRef.current = editor
+  const handleMount: OnMount = useCallback(
+    (editor, monaco) => {
+      editor.onDidChangeModelContent(() => onChange(editor.getValue()))
+      editorRef.current = editor
 
-    onMount?.(editor, monaco)
-  }, [onChange, onMount])
+      onMount?.(editor, monaco)
+    },
+    [onChange, onMount]
+  )
 
-  const options: editor.IStandaloneEditorConstructionOptions = useMemo(() => ({
-    wordWrap: 'on',
-    ...props.options
-  }), [props.options])
+  const options: editor.IStandaloneEditorConstructionOptions = useMemo(
+    () => ({
+      wordWrap: 'on',
+      ...props.options,
+    }),
+    [props.options]
+  )
 
-  return <MonacoCodeEditor
-    onMount={handleMount}
-    className={props.className}
-    defaultValue={props.initialValue}
-    height={props.height ?? '100%'}
-    width={props.width ?? '100%'}
-    language={props.language ?? 'javascript'}
-    options={options}
-    theme={props.theme}
-  />
+  return (
+    <MonacoCodeEditor
+      onMount={handleMount}
+      className={props.className}
+      defaultValue={props.initialValue}
+      height={props.height ?? '100%'}
+      width={props.width ?? '100%'}
+      language={props.language ?? 'javascript'}
+      options={options}
+      theme={props.theme}
+    />
+  )
 }

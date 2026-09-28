@@ -5,7 +5,7 @@ import form from './forms/number-field.json'
 describe('Field with type number', () => {
   it('should have an empty value after the user has entered the value and erased it', async () => {
     const {findByTestId, formData} = renderForm(form, {
-      initialData: {numberField: 100}
+      initialData: {numberField: 100},
     })
 
     const numberInput = await findByTestId('numberField')

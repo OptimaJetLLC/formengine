@@ -13,7 +13,7 @@ export type CurrentFormOptions = {
   /**
    * Name of the currently open form.
    */
-  formName: string,
+  formName: string
   /**
    * Version of the currently open form.
    */
@@ -41,23 +41,23 @@ export class FormStorage implements IFormStorage {
    */
   constructor(private onLoadForm: (options?: CurrentFormOptions) => void) {
     this.forms = {
-      'a': {
+      a: {
         versions: {
-          1: createForm('a1')
-        }
+          1: createForm('a1'),
+        },
       },
-      'b': {
+      b: {
         versions: {
           1: createForm('b1'),
           2: createForm('b2'),
-        }
+        },
       },
-      'c': {
+      c: {
         versions: {
           1: createForm('c1'),
           2: createForm('c2'),
-        }
-      }
+        },
+      },
     }
   }
 
@@ -97,7 +97,7 @@ export class FormStorage implements IFormStorage {
    */
   saveForm(formName: string, formValue: string) {
     this.forms[formName] ??= {versions: {}}
-    const version= this.currentFormOptions?.formVersion ?? 1
+    const version = this.currentFormOptions?.formVersion ?? 1
     this.forms[formName].versions[version] = formValue
     this.currentFormOptions = toFormOptions(formName, version)
 

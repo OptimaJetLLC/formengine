@@ -87,99 +87,52 @@ describe('FluentLocalizationEngine', () => {
     const engine = new FluentLocalizationEngine('en-US')
 
     it('resolves {$user.name} from nested form data', () => {
-      const result = engine.testLocalization(
-        'Hello {$user.name}!',
-        'test_msg',
-        enUS,
-        minimalFormData({user: {name: 'Ann'}}),
-      )
+      const result = engine.testLocalization('Hello {$user.name}!', 'test_msg', enUS, minimalFormData({user: {name: 'Ann'}}))
       expect(result).toBe('Hello Ann!')
     })
 
     it('resolves {$a.b.c} from deeply nested form data', () => {
-      const result = engine.testLocalization(
-        'Value: {$a.b.c}',
-        'test_msg_deep',
-        enUS,
-        minimalFormData({a: {b: {c: 'deep'}}}),
-      )
+      const result = engine.testLocalization('Value: {$a.b.c}', 'test_msg_deep', enUS, minimalFormData({a: {b: {c: 'deep'}}}))
       expect(result).toBe('Value: deep')
     })
 
     it('preserves literal dots in prose alongside nested placeholders', () => {
-      const result = engine.testLocalization(
-        'Ver 1.2 for {$user.name}',
-        'test_msg_literal',
-        enUS,
-        minimalFormData({user: {name: 'Bob'}}),
-      )
+      const result = engine.testLocalization('Ver 1.2 for {$user.name}', 'test_msg_literal', enUS, minimalFormData({user: {name: 'Bob'}}))
       expect(result).toBe('Ver 1.2 for Bob')
     })
 
     it('replaces missing variables with empty string', () => {
-      const warn = vi.spyOn(console, 'warn').mockImplementation(() => {
-      })
-      const result = engine.testLocalization(
-        'Hello {$missing}!',
-        'test_missing',
-        enUS,
-        minimalFormData({}),
-      )
+      const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+      const result = engine.testLocalization('Hello {$missing}!', 'test_missing', enUS, minimalFormData({}))
       expect(result).toBe('Hello !')
       warn.mockRestore()
     })
 
     it('coerces boolean form data to fluent true/false strings', () => {
-      const result = engine.testLocalization(
-        'Flag: {$enabled}',
-        'test_bool',
-        enUS,
-        minimalFormData({enabled: true}),
-      )
+      const result = engine.testLocalization('Flag: {$enabled}', 'test_bool', enUS, minimalFormData({enabled: true}))
       expect(result).toBe('Flag: true')
     })
 
     it('interpolates numeric form data', () => {
-      const result = engine.testLocalization(
-        'Count: {$count}',
-        'test_number',
-        enUS,
-        minimalFormData({count: 42}),
-      )
+      const result = engine.testLocalization('Count: {$count}', 'test_number', enUS, minimalFormData({count: 42}))
       expect(result).toBe('Count: 42')
     })
 
     it('returns a string result for a literal brace-only localization value', () => {
-      const result = engine.testLocalization(
-        '{',
-        'brace_only_msg',
-        enUS,
-        minimalFormData({}),
-      )
+      const result = engine.testLocalization('{', 'brace_only_msg', enUS, minimalFormData({}))
       expect(typeof result).toBe('string')
       expect(result).toBe('')
     })
 
     it('interpolates Date values from form data', () => {
       const date = new Date('2020-01-15T00:00:00.000Z')
-      const result = engine.testLocalization(
-        'Due: {$due}',
-        'test_date',
-        enUS,
-        minimalFormData({due: date}),
-      )
+      const result = engine.testLocalization('Due: {$due}', 'test_date', enUS, minimalFormData({due: date}))
       expect(result).toContain('2020')
     })
 
     it('logs missing properties when logMissing is enabled', () => {
-      const warn = vi.spyOn(console, 'warn').mockImplementation(() => {
-      })
-      engine.testLocalization(
-        '{$absent}',
-        'test_log_missing',
-        enUS,
-        minimalFormData({}),
-      )
+      const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+      engine.testLocalization('{$absent}', 'test_log_missing', enUS, minimalFormData({}))
       expect(warn).toHaveBeenCalled()
       warn.mockRestore()
     })
@@ -307,14 +260,14 @@ describe('FluentLocalizationEngine', () => {
     ]
 
     it.each(cases)('$name', ({
-                               requestedLanguage,
-                               defaultLanguage = enUS,
-                               propValue,
-                               defaultProps,
-                               componentType,
-                               localization,
-                               expected,
-                             }) => {
+      requestedLanguage,
+      defaultLanguage = enUS,
+      propValue,
+      defaultProps,
+      componentType,
+      localization,
+      expected,
+    }) => {
       const ctx = createFluentEngineTestContext(FluentLocalizationEngine, {
         localization,
         defaultLanguage,
@@ -373,13 +326,7 @@ describe('FluentLocalizationEngine', () => {
         },
       })
       ctx.componentStore.props['my label'] = {computeType: 'localization'}
-      const result = ctx.engine.localizeProperties(
-        ctx.form,
-        ctx.formData,
-        enUS,
-        ctx.componentStore,
-        'component',
-      )
+      const result = ctx.engine.localizeProperties(ctx.form, ctx.formData, enUS, ctx.componentStore, 'component')
       expect(result['my label']).toBe('Spaced keys work')
     })
 
@@ -508,11 +455,7 @@ describe('FluentLocalizationEngine', () => {
         },
         propertyKey: 'config',
       })
-      const result = localizeDefaultProperty(
-        ctx,
-        'component',
-        minimalFormData({suffix: 'end', prefix: 'pre'}),
-      )
+      const result = localizeDefaultProperty(ctx, 'component', minimalFormData({suffix: 'end', prefix: 'pre'}))
       expect(result.config).toEqual({'key-end': {nested: 'pre-value'}})
     })
 
@@ -549,9 +492,7 @@ describe('FluentLocalizationEngine', () => {
           'en-US': {
             target: {
               component: {
-                items: [
-                  {value: '{$code}', label: 'Item {$code}'},
-                ],
+                items: [{value: '{$code}', label: 'Item {$code}'}],
               },
             },
           },
@@ -641,7 +582,7 @@ describe('FluentLocalizationEngine', () => {
         minimalFormData({name: 'Email'}) as never,
         enUS,
         ctx.componentStore,
-        'required',
+        'required'
       )
       expect(result).toBe('Required: Email')
     })
@@ -660,13 +601,7 @@ describe('FluentLocalizationEngine', () => {
         },
         requestedLanguage: frFR,
       })
-      const result = ctx.engine.localizeErrorMessage(
-        ctx.form,
-        minimalFormData({value: '5'}) as never,
-        frFR,
-        ctx.componentStore,
-        'min',
-      )
+      const result = ctx.engine.localizeErrorMessage(ctx.form, minimalFormData({value: '5'}) as never, frFR, ctx.componentStore, 'min')
       expect(result).toBe('EN min 5')
     })
 
@@ -682,13 +617,7 @@ describe('FluentLocalizationEngine', () => {
           },
         },
       })
-      const result = ctx.engine.localizeErrorMessage(
-        ctx.form,
-        minimalFormData({}) as never,
-        enUS,
-        ctx.componentStore,
-        'required',
-      )
+      const result = ctx.engine.localizeErrorMessage(ctx.form, minimalFormData({}) as never, enUS, ctx.componentStore, 'required')
       expect(result).toBe('')
     })
 
@@ -696,13 +625,7 @@ describe('FluentLocalizationEngine', () => {
       const ctx = createFluentEngineTestContext(FluentLocalizationEngine, {
         localization: {'en-US': {}},
       })
-      const result = ctx.engine.localizeErrorMessage(
-        ctx.form,
-        minimalFormData({}) as never,
-        enUS,
-        ctx.componentStore,
-        'missing-rule',
-      )
+      const result = ctx.engine.localizeErrorMessage(ctx.form, minimalFormData({}) as never, enUS, ctx.componentStore, 'missing-rule')
       expect(result).toBeUndefined()
     })
 
@@ -723,13 +646,7 @@ describe('FluentLocalizationEngine', () => {
       })
       const messageId = fluentMessageId(engine, 'my field', 'message', 'validator-custom')
       expect(messageId).toBe('my_field_validator-custom_message')
-      const result = ctx.engine.localizeErrorMessage(
-        ctx.form,
-        minimalFormData({}) as never,
-        enUS,
-        ctx.componentStore,
-        'custom',
-      )
+      const result = ctx.engine.localizeErrorMessage(ctx.form, minimalFormData({}) as never, enUS, ctx.componentStore, 'custom')
       expect(result).toBe('Invalid')
     })
   })

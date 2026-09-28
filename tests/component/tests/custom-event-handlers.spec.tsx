@@ -7,10 +7,13 @@ import form from './forms/custom-event-handlers-form.json'
 
 const createHtmlInputComponent = () => {
   return function Render({onChange, ...props}: any) {
-    const handleChange = useCallback((e: any) => {
-      onChange?.(e.target.value)
-    }, [onChange])
-    return <input {...props} onChange={handleChange}/>
+    const handleChange = useCallback(
+      (e: any) => {
+        onChange?.(e.target.value)
+      },
+      [onChange]
+    )
+    return <input {...props} onChange={handleChange} />
   }
 }
 
@@ -27,7 +30,7 @@ const inputWithoutDefaultEventHandlers = define(createHtmlInputComponent(), 'Inp
   .overrideEventHandlers({})
   .build()
 
-const InputWithCustomEventHandlers = (props: any) => <input {...props}/>
+const InputWithCustomEventHandlers = (props: any) => <input {...props} />
 
 const inputWithCustomEventHandlers = define(InputWithCustomEventHandlers, 'InputWithCustomEventHandlers')
   .props({

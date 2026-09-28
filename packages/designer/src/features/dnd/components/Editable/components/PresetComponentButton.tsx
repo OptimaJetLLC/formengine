@@ -24,29 +24,29 @@ export const PresetComponentButton = () => {
       if (builderStore.view.findMeta(name)) return {name: t('nameExists')}
     }
 
-    const categoriesArray = builderStore.builderComponents
-      .map(({category}) => category ?? '')
-      .filter(value => !!value)
+    const categoriesArray = builderStore.builderComponents.map(({category}) => category ?? '').filter(value => !!value)
     const categories = new Set(categoriesArray)
     const props = {
-      data: [...categories.values()].map((value) => ({label: value, value})),
+      data: [...categories.values()].map(value => ({label: value, value})),
       block: true,
       creatable: true,
-      'data-testid': 'preset-category-picker'
+      'data-testid': 'preset-category-picker',
     }
 
     builderStore.showPromptModal({
       fields: [
         {name: 'name', label: t('name'), placeholder: t('namePlaceholder')},
-        {name: 'category', label: t('category'), component: InputPicker, props}
+        {name: 'category', label: t('category'), component: InputPicker, props},
       ],
       onOk: ({name, category}) => builderStore.createPresetComponentFromSelected(name, category),
       title: t('enterPresetName'),
-      validate
+      validate,
     })
   }, [builderStore, t])
 
-  return <Hinted hint={t('createPreset')} placement={'autoVertical'}>
-    <FaIcon onClick={onPreset} icon={faBookmark as unknown as IconDefinition} className={'create-preset-button'}/>
-  </Hinted>
+  return (
+    <Hinted hint={t('createPreset')} placement={'autoVertical'}>
+      <FaIcon onClick={onPreset} icon={faBookmark as unknown as IconDefinition} className={'create-preset-button'} />
+    </Hinted>
+  )
 }

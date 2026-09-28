@@ -11,7 +11,7 @@ if (!element) {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Viewer/>
+    <Viewer />
   </React.StrictMode>,
   element
 )

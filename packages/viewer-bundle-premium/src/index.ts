@@ -58,4 +58,4 @@ export function renderFormViewer(elementId: string, props: Partial<FormViewerPro
 }
 
 export {rSuiteComponents, richTextComponent, signatureComponent, fastQrComponent, googleMapComponent, printComponent, rSuiteTableComponents}
-export {ActionDefinition, buildForm, Language, createView} from '@react-form-builder/core'
+export {ActionDefinition, buildForm, createView, Language} from '@react-form-builder/core'

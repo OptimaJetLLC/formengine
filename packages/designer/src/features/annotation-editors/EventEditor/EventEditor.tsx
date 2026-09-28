@@ -13,8 +13,8 @@ export const EventEditor = (props: AnnotationEditorProps) => {
   return (
     <div className={styles.root}>
       <h6 className={styles.heading}>{eventName}</h6>
-      <ActionList {...props}/>
-      <AddActionButton {...props}/>
+      <ActionList {...props} />
+      <AddActionButton {...props} />
     </div>
   )
 }

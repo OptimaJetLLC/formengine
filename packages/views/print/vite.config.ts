@@ -2,9 +2,8 @@ import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
 import {defineConfig, mergeConfig} from 'vite'
-import {libDts} from '../../../vite-plugin-api-extractor.ts'
-
 import base from '../../../vite.config'
+import {libDts} from '../../../vite-plugin-api-extractor.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

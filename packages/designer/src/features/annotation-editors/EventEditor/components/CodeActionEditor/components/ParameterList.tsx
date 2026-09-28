@@ -33,7 +33,6 @@ export type ParameterListItem = {
  * The React {@link ParameterList} component properties.
  */
 interface ParameterPanelProps {
-
   /**
    * The array of action parameters.
    */
@@ -54,7 +53,7 @@ interface ParameterPanelProps {
 export const toParameterListItem = (parameter: Parameter): ParameterListItem => {
   return {
     key: generateUniqueId(),
-    parameter
+    parameter,
   }
 }
 
@@ -69,9 +68,12 @@ export const ParameterList = ({value, onChange}: ParameterPanelProps) => {
   const t = useTranslationPart('actions')
   const params = value
 
-  const changeParams = useCallback((value?: ParameterListItem[]) => {
-    onChange(value)
-  }, [onChange])
+  const changeParams = useCallback(
+    (value?: ParameterListItem[]) => {
+      onChange(value)
+    },
+    [onChange]
+  )
 
   const handleCreateParam = useCallback(() => {
     const names = params?.map(value => value.parameter[0]) ?? []
@@ -82,25 +84,37 @@ export const ParameterList = ({value, onChange}: ParameterPanelProps) => {
     changeParams(paramArray)
   }, [params, changeParams])
 
-  const handleRemoveParam = useCallback((index: number) => {
-    const paramArray = params ? [...params] : []
-    paramArray?.splice(index, 1)
-    changeParams(paramArray)
-  }, [params, changeParams])
+  const handleRemoveParam = useCallback(
+    (index: number) => {
+      const paramArray = params ? [...params] : []
+      paramArray?.splice(index, 1)
+      changeParams(paramArray)
+    },
+    [params, changeParams]
+  )
 
-  const handleChangeParam = useCallback((value: Parameter, index: number) => {
-    const paramArray = params ? [...params] : []
-    paramArray[index].parameter = value
-    changeParams(paramArray)
-  }, [params, changeParams])
+  const handleChangeParam = useCallback(
+    (value: Parameter, index: number) => {
+      const paramArray = params ? [...params] : []
+      paramArray[index].parameter = value
+      changeParams(paramArray)
+    },
+    [params, changeParams]
+  )
 
-  const createRemoveHandler = useCallback((index: number) => {
-    return () => handleRemoveParam(index)
-  }, [handleRemoveParam])
+  const createRemoveHandler = useCallback(
+    (index: number) => {
+      return () => handleRemoveParam(index)
+    },
+    [handleRemoveParam]
+  )
 
-  const createChangeHandler = useCallback((index: number) => {
-    return (value: Parameter) => handleChangeParam(value, index)
-  }, [handleChangeParam])
+  const createChangeHandler = useCallback(
+    (index: number) => {
+      return (value: Parameter) => handleChangeParam(value, index)
+    },
+    [handleChangeParam]
+  )
 
   const createIsParameterNameExistsHandler = useCallback(() => {
     return (name: string) => {
@@ -108,10 +122,20 @@ export const ParameterList = ({value, onChange}: ParameterPanelProps) => {
     }
   }, [params])
 
-  const toParameterItem = useCallback((item: ParameterListItem, index: number) => {
-    return <ParameterItem key={item.key} value={item.parameter} onRemove={createRemoveHandler(index)}
-                          onChange={createChangeHandler(index)} isParameterNameExists={createIsParameterNameExistsHandler()}/>
-  }, [createChangeHandler, createIsParameterNameExistsHandler, createRemoveHandler])
+  const toParameterItem = useCallback(
+    (item: ParameterListItem, index: number) => {
+      return (
+        <ParameterItem
+          key={item.key}
+          value={item.parameter}
+          onRemove={createRemoveHandler(index)}
+          onChange={createChangeHandler(index)}
+          isParameterNameExists={createIsParameterNameExistsHandler()}
+        />
+      )
+    },
+    [createChangeHandler, createIsParameterNameExistsHandler, createRemoveHandler]
+  )
 
   const items = useArrayMapMemo(params, toParameterItem)
 
@@ -124,9 +148,7 @@ export const ParameterList = ({value, onChange}: ParameterPanelProps) => {
         </Button>
       </Columns>
 
-      <Rows className={styles.items}>
-        {items}
-      </Rows>
+      <Rows className={styles.items}>{items}</Rows>
     </Rows>
   )
 }

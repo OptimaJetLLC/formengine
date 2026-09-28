@@ -17,22 +17,18 @@ const MyCustomComponent = (props: MyCustomComponentProps) => {
   return <div {...otherProps}>{children}</div>
 }
 
-const myCustomComponent = define(MyCustomComponent, 'MyCustomComponent')
-  .category('test')
-  .name('My custom component')
-  .props({
-    children: stringNode,
-  })
+const myCustomComponent = define(MyCustomComponent, 'MyCustomComponent').category('test').name('My custom component').props({
+  children: stringNode,
+})
 
-const components = [...rSuiteComponents, myCustomComponent]
-  .map(d => d.build())
+const components = [...rSuiteComponents, myCustomComponent].map(d => d.build())
 
 const view = new BuilderView(components)
 
 describe('string-node annotation test', () => {
   it('should display dropzone', async () => {
     const getForm = () => JSON.stringify(withDropzone)
-    const {findByTestId} = render(<FormBuilder view={view} getForm={getForm}/>)
+    const {findByTestId} = render(<FormBuilder view={view} getForm={getForm} />)
 
     const testDivider = await findByTestId('test-component')
     expect(testDivider).toBeInTheDocument()
@@ -41,7 +37,7 @@ describe('string-node annotation test', () => {
 
   it('should not display dropzone', async () => {
     const getForm = () => JSON.stringify(withoutDropzone)
-    const {findByTestId} = render(<FormBuilder view={view} getForm={getForm}/>)
+    const {findByTestId} = render(<FormBuilder view={view} getForm={getForm} />)
 
     const testDivider = await findByTestId('test-component')
     expect(testDivider).toBeInTheDocument()
@@ -50,7 +46,7 @@ describe('string-node annotation test', () => {
 
   it('should display text', async () => {
     const getForm = () => JSON.stringify(withText)
-    const {findByTestId} = render(<FormBuilder view={view} getForm={getForm}/>)
+    const {findByTestId} = render(<FormBuilder view={view} getForm={getForm} />)
 
     const testDivider = await findByTestId('test-component')
     expect(testDivider).toBeInTheDocument()
@@ -59,7 +55,7 @@ describe('string-node annotation test', () => {
 
   it('should display child', async () => {
     const getForm = () => JSON.stringify(withChild)
-    const {findByTestId} = render(<FormBuilder view={view} getForm={getForm}/>)
+    const {findByTestId} = render(<FormBuilder view={view} getForm={getForm} />)
 
     const testDivider = await findByTestId('test-component')
     expect(testDivider).toBeInTheDocument()
@@ -69,7 +65,7 @@ describe('string-node annotation test', () => {
 
   it('should switch editor type', async () => {
     const getForm = () => JSON.stringify(withoutDropzone)
-    const {findByTestId} = render(<FormBuilder view={view} getForm={getForm}/>)
+    const {findByTestId} = render(<FormBuilder view={view} getForm={getForm} />)
 
     const testDivider = await findByTestId('test-component')
     expect(testDivider).toBeInTheDocument()

@@ -38,24 +38,31 @@ export const ColorInput = (props: AnnotationEditorProps) => {
   const color = useMemo(() => rgbFromString(value ?? 'rgba(255, 255, 255, 0)'), [value])
   const handleChange = useCallback((rgba: RgbaColor) => onChange(rgbToString(rgba)), [onChange])
 
-  const speaker = useMemo(() => (
-    <Popover>
-      <RgbaColorPicker color={color} onChange={handleChange}/>
-    </Popover>
-  ), [color, handleChange])
+  const speaker = useMemo(
+    () => (
+      <Popover>
+        <RgbaColorPicker color={color} onChange={handleChange} />
+      </Popover>
+    ),
+    [color, handleChange]
+  )
 
-  const style = useMemo(() => ({
-    backgroundColor: value,
-  } as const), [value])
+  const style = useMemo(
+    () =>
+      ({
+        backgroundColor: value,
+      }) as const,
+    [value]
+  )
 
   return (
     <LabeledProperty {...props}>
       <InputGroup inside className={styles.fullWidth} size={'xs'}>
         <Whisper placement="auto" trigger="hover" speaker={speaker} enterable>
-          <Input className={styles.input} style={style} readOnly/>
+          <Input className={styles.input} style={style} readOnly />
         </Whisper>
         <InputGroup.Button className={styles.button} onClick={onClean}>
-          <Close/>
+          <Close />
         </InputGroup.Button>
       </InputGroup>
     </LabeledProperty>

@@ -24,7 +24,7 @@ let mockBuilderStore: {
   }
 }
 
-let mockFormData: { data: Record<string, unknown> }
+let mockFormData: {data: Record<string, unknown>}
 let storedValues: Record<string, string>
 let setComputeCode: EditableProperty['setComputeCode']
 let getComputeCode: EditableProperty['getComputeCode']
@@ -33,7 +33,7 @@ vi.mock('../../../packages/designer/src/utils/BuilderStoreContext', () => ({
   useBuilderStore: () => mockBuilderStore,
 }))
 
-vi.mock('@react-form-builder/core', async (importOriginal) => {
+vi.mock('@react-form-builder/core', async importOriginal => {
   const actual = await importOriginal<typeof import('@react-form-builder/core')>()
   return {
     ...actual,
@@ -50,19 +50,19 @@ const createEditableProperty = (currentValue: unknown = 'Default label') => {
     vi.fn(),
     {key: 'placeholder', name: 'placeholder'} as EditableProperty['annotation'],
     'locText',
-    currentValue,
+    currentValue
   )
 }
 
 describe('useLocalizationEditor', () => {
   beforeEach(() => {
     storedValues = {}
-    setComputeCode = vi.fn((value: string, type: string, opts?: { langCode?: string }) => {
+    setComputeCode = vi.fn((value: string, type: string, opts?: {langCode?: string}) => {
       if (type === 'localization' && opts?.langCode) {
         storedValues[opts.langCode] = value
       }
     }) as EditableProperty['setComputeCode']
-    getComputeCode = vi.fn((type: string, opts?: { langCode?: string }) => {
+    getComputeCode = vi.fn((type: string, opts?: {langCode?: string}) => {
       if (type === 'localization' && opts?.langCode) {
         return storedValues[opts.langCode] ?? ''
       }
@@ -205,7 +205,7 @@ describe('useLocalizationEditor', () => {
       'Hello {$name}',
       'locText.placeholder',
       enUS,
-      {data: {name: 'Ada'}},
+      {data: {name: 'Ada'}}
     )
     expect(compileResult.error).toBeFalsy()
     expect((compileResult as CalculableResult).result).toBe('Hello')

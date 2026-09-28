@@ -13,13 +13,10 @@ type AvailableRule = {
   type: ValidatorType
 }
 
-function getAvailableRules(
-  validationRules: FormViewerValidationRules,
-  validations: ValidationRuleSettings[] | undefined,
-): AvailableRule[] {
+function getAvailableRules(validationRules: FormViewerValidationRules, validations: ValidationRuleSettings[] | undefined): AvailableRule[] {
   const isNotApplied = (key: string, validatorType: ValidatorType) => {
     return !validations?.find(ruleSettings => {
-      const sameType = validatorType === 'internal' && !ruleSettings.type || ruleSettings.type === validatorType
+      const sameType = (validatorType === 'internal' && !ruleSettings.type) || ruleSettings.type === validatorType
       return ruleSettings.key === key && sameType
     })
   }
@@ -43,7 +40,7 @@ function getAvailableRules(
   return result
 }
 
-const RawRulesList = ({type}: { type: SchemaType }) => {
+const RawRulesList = ({type}: {type: SchemaType}) => {
   const {store} = useComponentData()
   const {t} = useTranslation()
   const viewerStore = useStore()
@@ -54,15 +51,21 @@ const RawRulesList = ({type}: { type: SchemaType }) => {
 
   const onSelect = useCallback((key: string, type: ValidatorType) => ComponentStore.addValidationRule(store, key, type), [store])
 
-  const createSelectHandler = useCallback((key: string, type: ValidatorType) => () => {
-    onSelect(key, type)
-  }, [onSelect])
+  const createSelectHandler = useCallback(
+    (key: string, type: ValidatorType) => () => {
+      onSelect(key, type)
+    },
+    [onSelect]
+  )
 
-  const toDropdownItem = useCallback((key: string, type: ValidatorType, name: string) => (
-    <Dropdown.Item key={key} eventKey={key} onSelect={createSelectHandler(key, type)} data-testid={`rule-menu-item-${type}-${key}`}>
-      {name}
-    </Dropdown.Item>
-  ), [createSelectHandler])
+  const toDropdownItem = useCallback(
+    (key: string, type: ValidatorType, name: string) => (
+      <Dropdown.Item key={key} eventKey={key} onSelect={createSelectHandler(key, type)} data-testid={`rule-menu-item-${type}-${key}`}>
+        {name}
+      </Dropdown.Item>
+    ),
+    [createSelectHandler]
+  )
 
   if (!availableRules.length) return null
 
@@ -75,7 +78,7 @@ const RawRulesList = ({type}: { type: SchemaType }) => {
     .map(({key}) => toDropdownItem(key, 'custom', t(`validation.rule.${key}`, key)))
 
   if (customRules.length && items.length) {
-    items.push(<Dropdown.Separator key={'separator'}/>)
+    items.push(<Dropdown.Separator key={'separator'} />)
   }
   items.push(...customRules)
 
@@ -92,11 +95,14 @@ const RawAddRuleButton = () => {
   const type = meta?.valuedAn?.type
   const viewerStore = useStore()
 
-  const renderToggle: DropdownProps['renderToggle'] = useCallback((props: WithAsProps, ref: Ref<any>) => (
-    <Button {...props} ref={ref} block data-testid={'add-rule-button'}>
-      {t('validation.addRule')}
-    </Button>
-  ), [t])
+  const renderToggle: DropdownProps['renderToggle'] = useCallback(
+    (props: WithAsProps, ref: Ref<any>) => (
+      <Button {...props} ref={ref} block data-testid={'add-rule-button'}>
+        {t('validation.addRule')}
+      </Button>
+    ),
+    [t]
+  )
 
   if (!type) return null
   const validationRules = viewerStore.getValidationRules(type)
@@ -105,7 +111,7 @@ const RawAddRuleButton = () => {
 
   return (
     <Dropdown renderToggle={renderToggle} disabled={!hasItems}>
-      <RulesList type={type}/>
+      <RulesList type={type} />
     </Dropdown>
   )
 }

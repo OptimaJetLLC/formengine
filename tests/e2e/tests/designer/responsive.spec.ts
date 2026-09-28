@@ -1,6 +1,6 @@
-import {test} from '@playwright/test'
 import {dirname, resolve} from 'node:path'
 import {fileURLToPath} from 'node:url'
+import {test} from '@playwright/test'
 import {testResponsive} from '../../../common/lib/screenshot'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -8,8 +8,12 @@ const __dirname = dirname(__filename)
 
 const localFolder = resolve(__dirname, '../../reports/screenshots/designer')
 
-test('check responsive layout', {
-  tag: ['@designer', '@responsive', `@${process.env['TEST_TEMPLATE']}`]
-}, async ({page}) => {
-  await testResponsive(localFolder, page)
-})
+test(
+  'check responsive layout',
+  {
+    tag: ['@designer', '@responsive', `@${process.env['TEST_TEMPLATE']}`],
+  },
+  async ({page}) => {
+    await testResponsive(localFolder, page)
+  }
+)

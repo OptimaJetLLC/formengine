@@ -17,12 +17,12 @@ const form = {
         htmlAttributes: [
           {
             name: 'data-testid',
-            value: 'test-button'
-          }
-        ]
-      }
-    ]
-  }
+            value: 'test-button',
+          },
+        ],
+      },
+    ],
+  },
 }
 
 const getForm = () => JSON.stringify(form)
@@ -31,17 +31,12 @@ describe('Language switch customization', () => {
   it('should apply customization to the entire language switch menu', async () => {
     const customization: FormBuilderProps['customization'] = {
       MainMenu_Item_LanguageSwitch: {
-        className: 'custom-language-switch-menu'
-      }
+        className: 'custom-language-switch-menu',
+      },
     }
 
     const {container, findByTestId} = render(
-      <FormBuilder
-        view={view}
-        getForm={getForm}
-        licenseKey={generatedLicenseKey}
-        customization={customization}
-      />
+      <FormBuilder view={view} getForm={getForm} licenseKey={generatedLicenseKey} customization={customization} />
     )
 
     // Wait for the form to load
@@ -64,28 +59,15 @@ describe('Language switch customization', () => {
   it('should customize individual language items', async () => {
     const customization: FormBuilderProps['customization'] = {
       MainMenu_Item_LanguageItem_en_US: {
-        customRenderer: () => (
-          <div data-testid="custom-english-item">
-            🇺🇸 Custom English
-          </div>
-        )
+        customRenderer: () => <div data-testid="custom-english-item">🇺🇸 Custom English</div>,
       },
       MainMenu_Item_LanguageItem_de_DE: {
-        customRenderer: () => (
-          <div data-testid="custom-german-item">
-            🇩🇪 Custom German
-          </div>
-        )
-      }
+        customRenderer: () => <div data-testid="custom-german-item">🇩🇪 Custom German</div>,
+      },
     }
 
     const {findByTestId, queryByTestId} = render(
-      <FormBuilder
-        view={view}
-        getForm={getForm}
-        licenseKey={generatedLicenseKey}
-        customization={customization}
-      />
+      <FormBuilder view={view} getForm={getForm} licenseKey={generatedLicenseKey} customization={customization} />
     )
 
     await findByTestId('test-button')
@@ -100,20 +82,15 @@ describe('Language switch customization', () => {
   it('should apply className customization to language items', async () => {
     const customization: FormBuilderProps['customization'] = {
       MainMenu_Item_LanguageItem_en_US: {
-        className: 'custom-english-item-class'
+        className: 'custom-english-item-class',
       },
       MainMenu_Item_LanguageItem_de_DE: {
-        className: 'custom-german-item-class'
-      }
+        className: 'custom-german-item-class',
+      },
     }
 
     const {container, findByTestId} = render(
-      <FormBuilder
-        view={view}
-        getForm={getForm}
-        licenseKey={generatedLicenseKey}
-        customization={customization}
-      />
+      <FormBuilder view={view} getForm={getForm} licenseKey={generatedLicenseKey} customization={customization} />
     )
 
     await findByTestId('test-button')
@@ -137,17 +114,12 @@ describe('Language switch customization', () => {
   it('should hide entire language switch menu when configured', async () => {
     const customization: FormBuilderProps['customization'] = {
       MainMenu_Item_LanguageSwitch: {
-        hidden: true
-      }
+        hidden: true,
+      },
     }
 
     const {container, findByTestId} = render(
-      <FormBuilder
-        view={view}
-        getForm={getForm}
-        licenseKey={generatedLicenseKey}
-        customization={customization}
-      />
+      <FormBuilder view={view} getForm={getForm} licenseKey={generatedLicenseKey} customization={customization} />
     )
 
     await findByTestId('test-button')

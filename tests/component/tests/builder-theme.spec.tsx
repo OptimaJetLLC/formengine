@@ -10,7 +10,11 @@ const testId = 'test-theme-component'
 
 const TestThemeComponent = (props: ComponentProps<any>) => {
   const theme = useBuilderTheme()
-  return <div {...props} data-testid={testId}>{theme}</div>
+  return (
+    <div {...props} data-testid={testId}>
+      {theme}
+    </div>
+  )
 }
 
 const testThemeComponent = define(TestThemeComponent, 'TestThemeComponent')

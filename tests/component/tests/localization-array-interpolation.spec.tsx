@@ -10,7 +10,7 @@ import {
   PersistedForm,
   PersistedFormVersion,
   string,
-  toLabeledValues
+  toLabeledValues,
 } from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 
@@ -20,14 +20,16 @@ interface ItemListProps {
 }
 
 const ItemList = ({items, label}: ItemListProps) => {
-  return <div data-testid="item-list">
-    {label && <span data-testid="item-label">{label}</span>}
-    <ul>
-      {items?.map(({value, label}, i) => (
-        <li data-testid="item" key={i}>{`${label ?? ''}|${value ?? ''}`}</li>
-      ))}
-    </ul>
-  </div>
+  return (
+    <div data-testid="item-list">
+      {label && <span data-testid="item-label">{label}</span>}
+      <ul>
+        {items?.map(({value, label}, i) => (
+          <li data-testid="item" key={i}>{`${label ?? ''}|${value ?? ''}`}</li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 const itemList = define(ItemList, 'ItemList')
@@ -53,8 +55,7 @@ const deepData = define(DeepData, 'DeepData')
 
 const view = createView([itemList.model, deepData.model])
 
-const makeLanguage = (code: string, dialect: string) =>
-  new Language(code, dialect, `${code}-${dialect}`, `${code}-${dialect}`, BiDi.LTR)
+const makeLanguage = (code: string, dialect: string) => new Language(code, dialect, `${code}-${dialect}`, `${code}-${dialect}`, BiDi.LTR)
 
 const buildForm = (opts: {
   componentType?: string
@@ -100,19 +101,8 @@ const getItemTexts = (container: HTMLElement) => {
   return Array.from(container.querySelectorAll('[data-testid="item"]')).map(el => el.textContent)
 }
 
-const renderWithData = async (
-  form: PersistedForm,
-  initialData: Record<string, unknown>,
-  language: `${string}-${string}` = 'en-US'
-) => {
-  const result = render(
-    <FormViewer
-      view={view}
-      getForm={() => JSON.stringify(form)}
-      language={language}
-      initialData={initialData}
-    />
-  )
+const renderWithData = async (form: PersistedForm, initialData: Record<string, unknown>, language: `${string}-${string}` = 'en-US') => {
+  const result = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language={language} initialData={initialData} />)
   await result.findByTestId('item-list')
   return result
 }
@@ -120,9 +110,7 @@ const renderWithData = async (
 describe('Array data interpolation', () => {
   describe('basic variable substitution', () => {
     it('interpolates a single variable in array item labels', async () => {
-      const items: LabeledValue[] = [
-        {value: 'greeting', label: 'Hello {$name}'},
-      ]
+      const items: LabeledValue[] = [{value: 'greeting', label: 'Hello {$name}'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -134,9 +122,7 @@ describe('Array data interpolation', () => {
     })
 
     it('interpolates multiple variables in a single label', async () => {
-      const items: LabeledValue[] = [
-        {value: 'full', label: '{$first} {$last}'},
-      ]
+      const items: LabeledValue[] = [{value: 'full', label: '{$first} {$last}'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -148,9 +134,7 @@ describe('Array data interpolation', () => {
     })
 
     it('interpolates variables in array item values', async () => {
-      const items: LabeledValue[] = [
-        {value: 'opt-{$optionId}', label: 'Option'},
-      ]
+      const items: LabeledValue[] = [{value: 'opt-{$optionId}', label: 'Option'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -162,9 +146,7 @@ describe('Array data interpolation', () => {
     })
 
     it('interpolates variables in both labels and values simultaneously', async () => {
-      const items: LabeledValue[] = [
-        {value: '{$code}-item', label: 'Item for {$userName}'},
-      ]
+      const items: LabeledValue[] = [{value: '{$code}-item', label: 'Item for {$userName}'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -178,9 +160,7 @@ describe('Array data interpolation', () => {
 
   describe('strings without placeholders', () => {
     it('returns plain strings unchanged', async () => {
-      const items: LabeledValue[] = [
-        {value: 'plain', label: 'No placeholders here'},
-      ]
+      const items: LabeledValue[] = [{value: 'plain', label: 'No placeholders here'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -192,9 +172,7 @@ describe('Array data interpolation', () => {
     })
 
     it('handles empty string values', async () => {
-      const items: LabeledValue[] = [
-        {value: '', label: ''},
-      ]
+      const items: LabeledValue[] = [{value: '', label: ''}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -208,9 +186,7 @@ describe('Array data interpolation', () => {
 
   describe('missing variables', () => {
     it('replaces missing variables with empty string', async () => {
-      const items: LabeledValue[] = [
-        {value: 'v', label: 'Hello {$missing}'},
-      ]
+      const items: LabeledValue[] = [{value: 'v', label: 'Hello {$missing}'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -222,9 +198,7 @@ describe('Array data interpolation', () => {
     })
 
     it('interpolates present variables while leaving missing ones empty', async () => {
-      const items: LabeledValue[] = [
-        {value: 'v', label: '{$present} and {$absent}'},
-      ]
+      const items: LabeledValue[] = [{value: 'v', label: '{$present} and {$absent}'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -291,12 +265,7 @@ describe('Array data interpolation', () => {
       }
 
       const {findByTestId} = render(
-        <FormViewer
-          view={view}
-          getForm={() => JSON.stringify(form)}
-          language="en-US"
-          initialData={{name: 'World', level: '3'}}
-        />
+        <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" initialData={{name: 'World', level: '3'}} />
       )
 
       const el = await findByTestId('deep-data')
@@ -336,12 +305,7 @@ describe('Array data interpolation', () => {
       }
 
       const {findByTestId} = render(
-        <FormViewer
-          view={view}
-          getForm={() => JSON.stringify(form)}
-          language="en-US"
-          initialData={{name: 'Alice', count: '5'}}
-        />
+        <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" initialData={{name: 'Alice', count: '5'}} />
       )
 
       const el = await findByTestId('deep-data')
@@ -383,12 +347,7 @@ describe('Array data interpolation', () => {
       }
 
       const {findByTestId} = render(
-        <FormViewer
-          view={view}
-          getForm={() => JSON.stringify(form)}
-          language="en-US"
-          initialData={{name: 'Test', val: 'ok'}}
-        />
+        <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" initialData={{name: 'Test', val: 'ok'}} />
       )
 
       const el = await findByTestId('deep-data')
@@ -442,12 +401,7 @@ describe('Array data interpolation', () => {
       }
 
       const {findByTestId} = render(
-        <FormViewer
-          view={view}
-          getForm={() => JSON.stringify(form)}
-          language="en-US"
-          initialData={{name: 'Alice'}}
-        />
+        <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" initialData={{name: 'Alice'}} />
       )
 
       const el = await findByTestId('deep-data')
@@ -457,9 +411,7 @@ describe('Array data interpolation', () => {
 
   describe('special characters', () => {
     it('preserves dots in interpolated text', async () => {
-      const items: LabeledValue[] = [
-        {value: 'v', label: 'Hello {$name}. Goodbye.'},
-      ]
+      const items: LabeledValue[] = [{value: 'v', label: 'Hello {$name}. Goodbye.'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -471,9 +423,7 @@ describe('Array data interpolation', () => {
     })
 
     it('handles ampersands and angle brackets in static text', async () => {
-      const items: LabeledValue[] = [
-        {value: 'v', label: 'A & B < C for {$name}'},
-      ]
+      const items: LabeledValue[] = [{value: 'v', label: 'A & B < C for {$name}'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -485,9 +435,7 @@ describe('Array data interpolation', () => {
     })
 
     it('handles unicode characters alongside placeholders', async () => {
-      const items: LabeledValue[] = [
-        {value: 'v', label: '价格: {$price}€'},
-      ]
+      const items: LabeledValue[] = [{value: 'v', label: '价格: {$price}€'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -501,9 +449,7 @@ describe('Array data interpolation', () => {
 
   describe('numeric form data', () => {
     it('interpolates numeric form data values', async () => {
-      const items: LabeledValue[] = [
-        {value: 'v', label: 'Count: {$count}'},
-      ]
+      const items: LabeledValue[] = [{value: 'v', label: 'Count: {$count}'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -517,9 +463,7 @@ describe('Array data interpolation', () => {
 
   describe('nested form data (dot notation)', () => {
     it('interpolates nested form data using dot notation', async () => {
-      const items: LabeledValue[] = [
-        {value: 'v', label: 'Hello {$user.name}'},
-      ]
+      const items: LabeledValue[] = [{value: 'v', label: 'Hello {$user.name}'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -531,9 +475,7 @@ describe('Array data interpolation', () => {
     })
 
     it('interpolates deeply nested form data', async () => {
-      const items: LabeledValue[] = [
-        {value: 'v', label: '{$a.b.c}'},
-      ]
+      const items: LabeledValue[] = [{value: 'v', label: '{$a.b.c}'}]
       const form = buildForm({
         localization: {
           'en-US': {target: {component: {label: 'Test', items}}},
@@ -559,11 +501,7 @@ describe('Array data interpolation', () => {
       })
 
       const {container} = await renderWithData(form, {name: 'Shared'})
-      expect(getItemTexts(container)).toEqual([
-        'First: Shared|a',
-        'Second: Shared|b',
-        'Third: Shared|c',
-      ])
+      expect(getItemTexts(container)).toEqual(['First: Shared|a', 'Second: Shared|b', 'Third: Shared|c'])
     })
 
     it('interpolates different variables in different array items', async () => {
@@ -578,10 +516,7 @@ describe('Array data interpolation', () => {
       })
 
       const {container} = await renderWithData(form, {name: 'Eve', age: '30'})
-      expect(getItemTexts(container)).toEqual([
-        'Name: Eve|a',
-        'Age: 30|b',
-      ])
+      expect(getItemTexts(container)).toEqual(['Name: Eve|a', 'Age: 30|b'])
     })
   })
 
@@ -601,13 +536,11 @@ describe('Array data interpolation', () => {
       const data = {name: 'World'}
       const getForm = () => JSON.stringify(form)
 
-      const {findByTestId, container, rerender} = render(
-        <FormViewer view={view} getForm={getForm} language="en-US" initialData={data}/>
-      )
+      const {findByTestId, container, rerender} = render(<FormViewer view={view} getForm={getForm} language="en-US" initialData={data} />)
       await findByTestId('item-list')
       expect(getItemTexts(container)).toEqual(['Hello World|g'])
 
-      rerender(<FormViewer view={view} getForm={getForm} language="de-DE" initialData={data}/>)
+      rerender(<FormViewer view={view} getForm={getForm} language="de-DE" initialData={data} />)
       await findByTestId('item-list')
       expect(getItemTexts(container)).toEqual(['Hallo World|g'])
     })
@@ -626,7 +559,7 @@ describe('Array data interpolation', () => {
       })
 
       const {findByTestId, container} = render(
-        <FormViewer view={view} getForm={() => JSON.stringify(form)} language="de-DE" initialData={{name: 'Welt'}}/>
+        <FormViewer view={view} getForm={() => JSON.stringify(form)} language="de-DE" initialData={{name: 'Welt'}} />
       )
       await findByTestId('item-list')
       expect(getItemTexts(container)).toEqual(['Hi Welt|g'])
@@ -647,11 +580,7 @@ describe('Array data interpolation', () => {
       })
 
       const {container} = await renderWithData(form, {x: 'value'})
-      expect(getItemTexts(container)).toEqual([
-        'Static label|a',
-        'Dynamic value|b',
-        'Another static|c',
-      ])
+      expect(getItemTexts(container)).toEqual(['Static label|a', 'Dynamic value|b', 'Another static|c'])
     })
   })
 
@@ -684,12 +613,7 @@ describe('Array data interpolation', () => {
       }
 
       const {findByTestId} = render(
-        <FormViewer
-          view={view}
-          getForm={() => JSON.stringify(form)}
-          language="en-US"
-          initialData={{name: 'World', count: '3'}}
-        />
+        <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" initialData={{name: 'World', count: '3'}} />
       )
 
       const el = await findByTestId('deep-data')
@@ -725,12 +649,7 @@ describe('Array data interpolation', () => {
       }
 
       const {findByTestId} = render(
-        <FormViewer
-          view={view}
-          getForm={() => JSON.stringify(form)}
-          language="en-US"
-          initialData={{x: 'val'}}
-        />
+        <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" initialData={{x: 'val'}} />
       )
 
       const el = await findByTestId('deep-data')

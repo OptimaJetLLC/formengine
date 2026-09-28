@@ -8,9 +8,9 @@ import {rsColumnTypeName} from './typeNames'
 
 const ColumnIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-    <rect x="8" y="3" width="8" height="18" stroke="currentColor" strokeWidth="1.5" rx="1"/>
-    <line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" strokeWidth="0.8"/>
-    <line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" strokeWidth="0.8"/>
+    <rect x="8" y="3" width="8" height="18" stroke="currentColor" strokeWidth="1.5" rx="1" />
+    <line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" strokeWidth="0.8" />
+    <line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" strokeWidth="0.8" />
   </svg>
 )
 
@@ -38,8 +38,7 @@ export const rsColumn = define(RsColumn, rsColumnTypeName)
   .icon(ColumnIcon)
   .initialJson(initialJson)
   .props({
-    align: oneOf('left', 'center', 'right')
-      .withEditorProps({creatable: false}),
+    align: oneOf('left', 'center', 'right').withEditorProps({creatable: false}),
     colSpan: number,
     fixed: boolean,
     flexGrow: number,

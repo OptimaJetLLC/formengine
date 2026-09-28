@@ -25,8 +25,7 @@ export const PresetToolbar = () => {
 
   return (
     <span {...hoveredProps} className={styles.toolbar}>
-      <RemoveButton onClick={handleClick} hintPlacement={'autoHorizontal'}
-                    className="remove-preset-button show"/>
+      <RemoveButton onClick={handleClick} hintPlacement={'autoHorizontal'} className="remove-preset-button show" />
     </span>
   )
 }

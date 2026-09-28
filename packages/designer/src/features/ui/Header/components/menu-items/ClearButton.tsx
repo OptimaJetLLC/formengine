@@ -8,7 +8,7 @@ import {customizable} from '../../../../customization/customizable'
 import {useTranslationPart} from '../../../../localization/hooks'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const trashIcon = <FaIcon icon={faTrash as unknown as IconDefinition}/>
+const trashIcon = <FaIcon icon={faTrash as unknown as IconDefinition} />
 
 const RawClearButton = ({className}: CustomizableMenuItemProps) => {
   const builderStore = useBuilderStore()

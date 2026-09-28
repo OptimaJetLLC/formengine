@@ -7,7 +7,7 @@ import {customizable} from '../../../../customization/customizable'
 import {useTranslationPart} from '../../../../localization/hooks'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const plusIcon = <PlusIcon/>
+const plusIcon = <PlusIcon />
 
 const RawAddNewFormButton = ({className}: CustomizableMenuItemProps) => {
   const builderStore = useBuilderStore()
@@ -21,9 +21,7 @@ const RawAddNewFormButton = ({className}: CustomizableMenuItemProps) => {
   if (!builderStore.formStorageEnabled) return null
 
   return (
-    <Dropdown.Item onSelect={handleAddNewForm} icon={plusIcon}
-                   className={className}
-                   data-testid="menu-add-new-form-button">
+    <Dropdown.Item onSelect={handleAddNewForm} icon={plusIcon} className={className} data-testid="menu-add-new-form-button">
       {t('addNewForm')}
     </Dropdown.Item>
   )

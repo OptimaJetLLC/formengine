@@ -1,11 +1,7 @@
 import {FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 
-export const renderViewerForm = (
-  view: FormViewerProps['view'],
-  form: object | string,
-  props?: Partial<FormViewerProps>,
-) => {
+export const renderViewerForm = (view: FormViewerProps['view'], form: object | string, props?: Partial<FormViewerProps>) => {
   const getForm = () => {
     return typeof form === 'string' ? form : JSON.stringify(form)
   }

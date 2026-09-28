@@ -1,7 +1,11 @@
 import {define} from '@react-form-builder/core'
 
 const StyledBox = () => {
-  return <div data-testid="styled-box" style={{minHeight: 40, minWidth: 120}}>StyledBox</div>
+  return (
+    <div data-testid="styled-box" style={{minHeight: 40, minWidth: 120}}>
+      StyledBox
+    </div>
+  )
 }
 
 export const styledBoxComponent = define(StyledBox, 'StyledBox')

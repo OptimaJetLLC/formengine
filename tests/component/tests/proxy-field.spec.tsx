@@ -8,17 +8,10 @@ import {testTable} from './TestTable'
 
 describe('ProxyField test', () => {
   it('The proxy field should change the parent data', async () => {
-    const models = [
-      ...allComponentsBuilder,
-      testTable.build(),
-    ].map(c => c.model)
+    const models = [...allComponentsBuilder, testTable.build()].map(c => c.model)
     const view = createView(models)
 
-    const tableData = [
-      {value: 'Red'},
-      {value: 'Green'},
-      {value: 'Blue'},
-    ] as const
+    const tableData = [{value: 'Red'}, {value: 'Green'}, {value: 'Blue'}] as const
 
     const initialData = {tableData}
 
@@ -33,11 +26,7 @@ describe('ProxyField test', () => {
     })
 
     expect(formData.data).toStrictEqual({
-      tableData: [
-        {value: 'Red-0'},
-        {value: 'Green-1'},
-        {value: 'Blue-2'},
-      ]
+      tableData: [{value: 'Red-0'}, {value: 'Green-1'}, {value: 'Blue-2'}],
     })
   })
 })

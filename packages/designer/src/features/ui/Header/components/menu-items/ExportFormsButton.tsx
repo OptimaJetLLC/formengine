@@ -8,7 +8,7 @@ import {useShowMessage} from '../../../../toast/toast'
 import {exportForms} from '../formUtils'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const exportIcon = <ExportIcon/>
+const exportIcon = <ExportIcon />
 
 const RawExportFormsButton = ({className}: CustomizableMenuItemProps) => {
   const store = useBuilderStore()

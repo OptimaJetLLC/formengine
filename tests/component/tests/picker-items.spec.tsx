@@ -34,12 +34,12 @@ const variantView = new BuilderView([firstVariantComponent, secondVariantCompone
 describe('Picker property items', () => {
   it('must be updated when switching between components', async () => {
     const getForm = () => variantForm
-    const renderResult = render(<FormBuilder view={variantView} getForm={getForm}/>)
+    const renderResult = render(<FormBuilder view={variantView} getForm={getForm} />)
     const {findByTestId} = renderResult
 
     const firstComponent = await findByTestId('first-variant-component')
     const secondComponent = await findByTestId('second-variant-component')
-    
+
     fireEvent.click(firstComponent)
     let variantWrapper = await findByTestId('variant-property-input')
     fireEvent.click(variantWrapper)

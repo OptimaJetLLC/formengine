@@ -86,6 +86,6 @@ export function rewriteDeepImports(): Plugin {
 
       // Return the resolved absolute path
       return filePath
-    }
+    },
   }
 }

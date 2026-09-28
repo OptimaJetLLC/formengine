@@ -6,14 +6,13 @@ import type {ComponentStore} from '@react-form-builder/core'
  * @param key the key to find.
  * @param callback the callback function.
  */
-export function eachComponentStore(componentStore: ComponentStore, key: string,
-                                   callback: (componentStore: ComponentStore) => void) {
+export function eachComponentStore(componentStore: ComponentStore, key: string, callback: (componentStore: ComponentStore) => void) {
   if (componentStore.key === key) {
     callback(componentStore)
     return
   }
 
-  componentStore.children?.forEach((child) => {
+  componentStore.children?.forEach(child => {
     if (child.key === key) {
       callback(child)
       return

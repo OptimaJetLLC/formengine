@@ -8,11 +8,7 @@ const builderClassName = 'optimajet-formbuilder'
 
 const RawStylesProvider = (props: ComponentProps<any>) => {
   const {theme} = useBuilderStore()
-  return (
-    <div className={cx(styles.root, builderClassName, theme)}>
-      {props.children}
-    </div>
-  )
+  return <div className={cx(styles.root, builderClassName, theme)}>{props.children}</div>
 }
 
 export const StylesProvider = namedObserver('StylesProvider', RawStylesProvider)

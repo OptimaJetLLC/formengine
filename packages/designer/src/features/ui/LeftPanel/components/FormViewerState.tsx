@@ -28,18 +28,16 @@ const RawFormViewerState = () => {
       <div className={styles.root}>
         <h6>{t('data')}</h6>
         <div className={styles.toolbar}>
-          <Button
-            onClick={validate}
-            size="sm"
-            appearance="ghost"
-            className={styles.button}
-            data-testid="viewer-validate-button"
-          >
-            <FaIcon icon={faSpellCheck as unknown as IconDefinition}/>
+          <Button onClick={validate} size="sm" appearance="ghost" className={styles.button} data-testid="viewer-validate-button">
+            <FaIcon icon={faSpellCheck as unknown as IconDefinition} />
             {t('validate')}
           </Button>
-          <Button onClick={reset} size={'sm'} appearance={'ghost'} data-testid={'viewer-reset-button'}>{t('reset')}</Button>
-          <Button onClick={clear} size={'sm'} appearance={'ghost'} data-testid={'viewer-clear-button'}>{t('clear')}</Button>
+          <Button onClick={reset} size={'sm'} appearance={'ghost'} data-testid={'viewer-reset-button'}>
+            {t('reset')}
+          </Button>
+          <Button onClick={clear} size={'sm'} appearance={'ghost'} data-testid={'viewer-clear-button'}>
+            {t('clear')}
+          </Button>
         </div>
         {prettyPrint(form.data, 'form-viewer-state-json-data')}
       </div>

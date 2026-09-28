@@ -20,16 +20,28 @@ const RawModalTypePicker = (props: AnnotationEditorProps) => {
     return builderStore.view
       .filterModels(model => model.hasComponentRole('modal'))
       .map(model => model.typeName)
-      .map((name): ItemDataType => ({
-        value: name,
-        label: startCase(String(name))
-      }))
+      .map(
+        (name): ItemDataType => ({
+          value: name,
+          label: startCase(String(name)),
+        })
+      )
   }, [builderStore.view])
 
-  return <LabeledProperty {...props}>
-    <SInputPicker value={value ?? modalType ?? ''} data={data} onChange={onChange}
-                  onClean={onClean} block cleanable size={'xs'} placement={'auto'}/>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <SInputPicker
+        value={value ?? modalType ?? ''}
+        data={data}
+        onChange={onChange}
+        onClean={onClean}
+        block
+        cleanable
+        size={'xs'}
+        placement={'auto'}
+      />
+    </LabeledProperty>
+  )
 }
 
 export const ModalTypePicker = namedObserver('ModalTypePicker', RawModalTypePicker)

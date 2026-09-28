@@ -10,13 +10,12 @@ interface HtmlInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
 }
 
-const HtmlInput = ({label, ...props}: HtmlInputProps) =>
-  (
-    <div>
-      {label ? <label>{label}</label> : null}
-      <input type={'text'} {...props} />
-    </div>
-  )
+const HtmlInput = ({label, ...props}: HtmlInputProps) => (
+  <div>
+    {label ? <label>{label}</label> : null}
+    <input type={'text'} {...props} />
+  </div>
+)
 
 const htmlInput = define(HtmlInput, 'HtmlInput')
   .name('HTML Input')
@@ -29,27 +28,28 @@ const htmlInput = define(HtmlInput, 'HtmlInput')
 const componentsMetadata = [htmlInput].map(definer => definer.build().model)
 const view = createView(componentsMetadata)
 
-const App = () => <FormViewer view={view} getForm={getForm}/>
+const App = () => <FormViewer view={view} getForm={getForm} />
 
 const createMatchMedia = (scheme: 'dark' | 'light') => {
   const expectedQuery = `(prefers-color-scheme: ${scheme})`
-  return (query: string) => ({
-    matches: query === expectedQuery,
-    media: query,
-    onchange: null,
-    addListener: vi.fn(),
-    removeListener: vi.fn(),
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
-  }) as MediaQueryList
+  return (query: string) =>
+    ({
+      matches: query === expectedQuery,
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    }) as MediaQueryList
 }
 
 const setColorScheme = async (scheme: 'dark' | 'light') => {
   if (isBrowserMode()) {
     const {cdp} = await import('vitest/browser')
     const session = await cdp()
-    await (session).send('Emulation.setEmulatedMedia', {
+    await session.send('Emulation.setEmulatedMedia', {
       features: [{name: 'prefers-color-scheme', value: scheme}],
     })
     return
@@ -82,10 +82,7 @@ const setViewportWidth = (width: number) => {
   globalThis.dispatchEvent(new Event('resize'))
 }
 
-const getWrapperElementByTestId = (
-  element: Element,
-  getAllByTestId: (id: string) => HTMLElement[]
-) => {
+const getWrapperElementByTestId = (element: Element, getAllByTestId: (id: string) => HTMLElement[]) => {
   const wrappers = getAllByTestId('default-wrapper')
   return wrappers.find(wrapper => wrapper.contains(element)) ?? null
 }
@@ -97,7 +94,9 @@ const getStylesForElement = (element: Element) => {
   const styleText = adoptedSheets
     .map(sheet => {
       try {
-        return Array.from(sheet.cssRules).map(rule => rule.cssText).join('\n')
+        return Array.from(sheet.cssRules)
+          .map(rule => rule.cssText)
+          .join('\n')
       } catch {
         return ''
       }
@@ -113,9 +112,13 @@ const getStylesForElement = (element: Element) => {
 
 const hexToRgbString = (value: string) => {
   const normalized = value.replace('#', '').toLowerCase()
-  const expanded = normalized.length === 3
-    ? normalized.split('').map(channel => `${channel}${channel}`).join('')
-    : normalized
+  const expanded =
+    normalized.length === 3
+      ? normalized
+          .split('')
+          .map(channel => `${channel}${channel}`)
+          .join('')
+      : normalized
   if (expanded.length !== 6) return value
   const r = Number.parseInt(expanded.slice(0, 2), 16)
   const g = Number.parseInt(expanded.slice(2, 4), 16)
@@ -125,7 +128,7 @@ const hexToRgbString = (value: string) => {
 
 const normalizeColorValue = (value: string) => value.replace(/\s+/g, '').toLowerCase()
 
-const expectComputedColors = (element: Element, colors: { background: string; color: string; border: string }) => {
+const expectComputedColors = (element: Element, colors: {background: string; color: string; border: string}) => {
   const styles = window.getComputedStyle(element)
   expect(normalizeColorValue(styles.backgroundColor)).toBe(normalizeColorValue(hexToRgbString(colors.background)))
   expect(normalizeColorValue(styles.color)).toBe(normalizeColorValue(hexToRgbString(colors.color)))
@@ -134,7 +137,7 @@ const expectComputedColors = (element: Element, colors: { background: string; co
 
 const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
-const expectStyleTextColors = (styleText: string, colors: { background: string; color: string; border: string }) => {
+const expectStyleTextColors = (styleText: string, colors: {background: string; color: string; border: string}) => {
   const expected = {
     background: hexToRgbString(colors.background),
     color: hexToRgbString(colors.color),
@@ -145,7 +148,7 @@ const expectStyleTextColors = (styleText: string, colors: { background: string; 
   expect(styleText).toMatch(new RegExp(`border-color:\\s*${escapeRegex(expected.border)}`, 'i'))
 }
 
-const expectColors = (element: Element, styleText: string, colors: { background: string; color: string; border: string }) => {
+const expectColors = (element: Element, styleText: string, colors: {background: string; color: string; border: string}) => {
   if (!isBrowserMode()) {
     expectStyleTextColors(styleText, colors)
     return
@@ -159,14 +162,14 @@ const expectColors = (element: Element, styleText: string, colors: { background:
   const expectedColor = normalizeColorValue(hexToRgbString(colors.color))
   const expectedBorder = normalizeColorValue(hexToRgbString(colors.border))
 
-  const matchesComputed = normalizedBackground === expectedBackground
-    && normalizedColor === expectedColor
-    && normalizedBorder === expectedBorder
+  const matchesComputed =
+    normalizedBackground === expectedBackground && normalizedColor === expectedColor && normalizedBorder === expectedBorder
 
-  const hasTransparentFallback = normalizedBackground === 'transparent'
-    || normalizedBackground === 'rgba(0,0,0,0)'
-    || normalizedBorder === 'transparent'
-    || normalizedBorder === 'rgba(0,0,0,0)'
+  const hasTransparentFallback =
+    normalizedBackground === 'transparent' ||
+    normalizedBackground === 'rgba(0,0,0,0)' ||
+    normalizedBorder === 'transparent' ||
+    normalizedBorder === 'rgba(0,0,0,0)'
 
   if (matchesComputed) return
   if (hasTransparentFallback) {
@@ -181,7 +184,7 @@ describe('Should apply custom styling for component', () => {
   it('should include dark mode media rules in browser dark mode', async () => {
     await setColorScheme('dark')
     expectColorSchemeApplied('dark')
-    const {getAllByTestId, getByTestId} = render(<App/>)
+    const {getAllByTestId, getByTestId} = render(<App />)
 
     const styledElement = getByTestId('styled-element')
     expect(styledElement).not.toBeNull()
@@ -208,7 +211,7 @@ describe('Should apply custom styling for component', () => {
   it('should include light mode media rules in browser light mode', async () => {
     await setColorScheme('light')
     expectColorSchemeApplied('light')
-    const {getAllByTestId, getByTestId} = render(<App/>)
+    const {getAllByTestId, getByTestId} = render(<App />)
 
     const styledElement = getByTestId('styled-element')
     expect(styledElement).not.toBeNull()
@@ -235,7 +238,7 @@ describe('Should apply custom styling for component', () => {
     await setColorScheme('light')
     expectColorSchemeApplied('light')
 
-    const {getAllByTestId, getByTestId} = render(<App/>)
+    const {getAllByTestId, getByTestId} = render(<App />)
 
     await act(async () => {
       setViewportWidth(580)
@@ -261,7 +264,7 @@ describe('Should apply custom styling for component', () => {
     await setColorScheme('dark')
     expectColorSchemeApplied('dark')
 
-    const {getAllByTestId, getByTestId} = render(<App/>)
+    const {getAllByTestId, getByTestId} = render(<App />)
 
     await act(async () => {
       setViewportWidth(580)

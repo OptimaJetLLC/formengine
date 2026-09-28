@@ -38,10 +38,7 @@ const createColumn = (key: string, header: string | undefined, dataKey: string, 
   ],
 })
 
-const defaultColumns = [
-  createColumn('name', 'Name', 'name'),
-  createColumn('department', 'Department', 'department'),
-]
+const defaultColumns = [createColumn('name', 'Name', 'name'), createColumn('department', 'Department', 'department')]
 
 const assignedBadge = [
   {
@@ -59,9 +56,7 @@ const createForm = (showDataInDesigner = false, columns = defaultColumns) => ({
     key: 'Screen',
     type: 'Screen',
     props: {},
-    htmlAttributes: [
-      {name: 'data-testid', value: 'mainScreen'},
-    ],
+    htmlAttributes: [{name: 'data-testid', value: 'mainScreen'}],
     children: [
       {
         key: 'teamTable',
@@ -84,7 +79,7 @@ const renderDesigner = (showDataInDesigner = false, columns = defaultColumns) =>
       licenseKey={generatedLicenseKey}
       view={builderView}
       getForm={() => JSON.stringify(createForm(showDataInDesigner, columns))}
-    />,
+    />
   )
 }
 
@@ -150,12 +145,7 @@ describe('RsTable show data in designer', () => {
   })
 
   it('renders the same cell values in viewer mode', async () => {
-    const {findByText} = render(
-      <FormViewer
-        view={viewerView}
-        getForm={() => JSON.stringify(createForm())}
-      />,
-    )
+    const {findByText} = render(<FormViewer view={viewerView} getForm={() => JSON.stringify(createForm())} />)
 
     expect(await findByText('Alex Morgan')).toBeInTheDocument()
     expect(await findByText('Engineering')).toBeInTheDocument()

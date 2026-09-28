@@ -7,28 +7,32 @@ import {ChangeEvent, useCallback, useMemo, useState} from 'react'
 const App = () => {
   const [filter, setFilter] = useState('RsButton')
 
-  const paletteFilter = useCallback(({model}: BuilderComponent) => {
-    return model.type === filter
-  }, [filter])
+  const paletteFilter = useCallback(
+    ({model}: BuilderComponent) => {
+      return model.type === filter
+    },
+    [filter]
+  )
 
   const view = useMemo(() => {
-    return new BuilderView(allComponentsBuilder)
-      .withPaletteFilter(paletteFilter)
+    return new BuilderView(allComponentsBuilder).withPaletteFilter(paletteFilter)
   }, [paletteFilter])
 
   const onInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setFilter(e.target.value)
   }, [])
 
-  return <div>
-    <input value={filter} onChange={onInputChange} data-testid="test-filter-input"/>
-    <FormBuilder view={view}/>
-  </div>
+  return (
+    <div>
+      <input value={filter} onChange={onInputChange} data-testid="test-filter-input" />
+      <FormBuilder view={view} />
+    </div>
+  )
 }
 
 describe('BuilderView.paletteFilter test', () => {
   it('paletteFilter should be applied reactively', async () => {
-    const {findByTestId, queryByTestId} = render(<App/>)
+    const {findByTestId, queryByTestId} = render(<App />)
 
     const componentsTabButton = await findByTestId('Components_Tab')
     fireEvent.click(componentsTabButton)

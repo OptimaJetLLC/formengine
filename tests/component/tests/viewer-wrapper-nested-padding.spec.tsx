@@ -5,15 +5,9 @@ import {expect} from 'vitest'
 import {isBrowserMode} from '../config/isBrowserMode'
 import {renderForm} from '../util/renderForm'
 
-const nestedForm = buildForm()
-  .component('header', 'RsHeader')
-  .prop('content', 'Nested header')
-  .json()
+const nestedForm = buildForm().component('header', 'RsHeader').prop('content', 'Nested header').json()
 
-const rootForm = buildForm()
-  .component('embeddedForm', 'EmbeddedForm')
-  .prop('formName', 'nested-form')
-  .json()
+const rootForm = buildForm().component('embeddedForm', 'EmbeddedForm').prop('formName', 'nested-form').json()
 
 const getForm = (name?: string) => {
   if (!name) return rootForm
@@ -40,7 +34,7 @@ describe('ViewerWrapper root padding in nested forms', () => {
   it('should apply padding only to the root viewer wrapper - ViewerLite', async () => {
     if (!isBrowserMode()) return
 
-    const {getAllByTestId} = render(<ViewerLite getForm={getForm} formName={'nested-form'}/>)
+    const {getAllByTestId} = render(<ViewerLite getForm={getForm} formName={'nested-form'} />)
 
     const wrappers = getAllByTestId('viewer-wrapper')
     const wrappersWithPadding = wrappers.filter(element => {

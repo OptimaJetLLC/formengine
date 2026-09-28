@@ -32,10 +32,13 @@ export const VersionsList = (props: PropsWithChildren<any>) => {
     formStorage?.addVersion()
   }, [formStorage])
 
-  const deleteVersion = useCallback((version: number) => {
-    formStorage?.deleteVersion(version)
-    reloadVersionsList()
-  }, [formStorage, reloadVersionsList])
+  const deleteVersion = useCallback(
+    (version: number) => {
+      formStorage?.deleteVersion(version)
+      reloadVersionsList()
+    },
+    [formStorage, reloadVersionsList]
+  )
 
   if (!formName || !setFormVersion) return null
 
@@ -49,13 +52,7 @@ export const VersionsList = (props: PropsWithChildren<any>) => {
             {t('addVersion')}
           </Button>
           {versionsList?.map((version, index) => (
-            <ListItem
-              key={index}
-              version={version}
-              active={version === formVersion}
-              onSelect={setFormVersion}
-              onDelete={deleteVersion}
-            />
+            <ListItem key={index} version={version} active={version === formVersion} onSelect={setFormVersion} onDelete={deleteVersion} />
           ))}
         </div>
       </div>

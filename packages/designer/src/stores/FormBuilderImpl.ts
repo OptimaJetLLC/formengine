@@ -8,7 +8,6 @@ import type {BuilderStore} from './BuilderStore'
  * Form builder settings.
  */
 export class FormBuilderImpl implements IFormBuilder {
-
   /**
    * Creates a new instance of the FormBuilderImpl.
    * @param builderStore the builder store.

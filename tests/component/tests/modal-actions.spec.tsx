@@ -5,7 +5,7 @@ import {switchToViewerMode} from './designerUtils'
 const codeActionsForm = {
   modalType: 'RsModal',
   actions: {
-    myAction: {body: ''}
+    myAction: {body: ''},
   },
   form: {
     key: 'Screen',
@@ -15,8 +15,8 @@ const codeActionsForm = {
         key: 'button',
         type: 'RsButton',
         events: {
-          onClick: [{name: 'myAction', type: 'code'}]
-        }
+          onClick: [{name: 'myAction', type: 'code'}],
+        },
       },
       {
         key: 'modal',
@@ -24,16 +24,16 @@ const codeActionsForm = {
         modal: {
           events: {
             onOpen: [{name: 'myAction', type: 'code'}],
-            onClose: [{name: 'myAction', type: 'code'}]
-          }
+            onClose: [{name: 'myAction', type: 'code'}],
+          },
         },
       },
-    ]
-  }
+    ],
+  },
 }
 
 describe('Modal actions test', () => {
-  it('The renamed action with the code should be re-attached to the component\'s event list', async () => {
+  it("The renamed action with the code should be re-attached to the component's event list", async () => {
     const {findByTestId} = await renderBuilder(codeActionsForm)
     const modal = await findByTestId('modal-template-not-specified')
     fireEvent.click(modal)
@@ -61,7 +61,7 @@ describe('Modal actions test', () => {
     expect(await findByTestId('edit-action-onClose-code-myAction2')).toBeInTheDocument()
   })
 
-  it('The renamed action from the settings tab should be re-attached to the component\'s event list', async () => {
+  it("The renamed action from the settings tab should be re-attached to the component's event list", async () => {
     const {findByTestId} = await renderBuilder(codeActionsForm)
 
     fireEvent.click(await findByTestId('Settings_Tab'))

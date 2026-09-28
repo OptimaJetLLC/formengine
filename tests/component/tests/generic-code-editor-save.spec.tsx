@@ -11,7 +11,7 @@ vi.mock('react-i18next', () => ({
   }),
 }))
 
-vi.mock('@react-form-builder/core', async (importOriginal) => {
+vi.mock('@react-form-builder/core', async importOriginal => {
   const actual = await importOriginal<typeof import('@react-form-builder/core')>()
   return {
     ...actual,
@@ -22,23 +22,31 @@ vi.mock('@react-form-builder/core', async (importOriginal) => {
 const testSpy = vi.fn()
 
 vi.mock('../../../packages/designer/src/features/ui/BottomPanel/TestingEditor', () => {
-  const MockTestingEditor = forwardRef(({testingFunction}: { testingFunction: (data: unknown) => CalculableResult }, ref) => {
-    useImperativeHandle(ref, () => ({
-      test: () => {
-        testSpy()
-        return testingFunction({data: {name: 'Ada'}})
-      },
-    }), [testingFunction])
+  const MockTestingEditor = forwardRef(({testingFunction}: {testingFunction: (data: unknown) => CalculableResult}, ref) => {
+    useImperativeHandle(
+      ref,
+      () => ({
+        test: () => {
+          testSpy()
+          return testingFunction({data: {name: 'Ada'}})
+        },
+      }),
+      [testingFunction]
+    )
 
     return null
   })
 
-  const MockTestRunner = forwardRef(({testingFunction}: { testingFunction: (data: unknown) => CalculableResult }, ref) => {
-    useImperativeHandle(ref, () => ({
-      test: () => {
-        return testingFunction({data: {name: 'Ada'}})
-      },
-    }), [testingFunction])
+  const MockTestRunner = forwardRef(({testingFunction}: {testingFunction: (data: unknown) => CalculableResult}, ref) => {
+    useImperativeHandle(
+      ref,
+      () => ({
+        test: () => {
+          return testingFunction({data: {name: 'Ada'}})
+        },
+      }),
+      [testingFunction]
+    )
 
     return null
   })
@@ -50,12 +58,12 @@ vi.mock('../../../packages/designer/src/features/ui/BottomPanel/TestingEditor', 
 })
 
 vi.mock('../../../packages/designer/src/features/components/CodeEditor/CodeEditor', () => ({
-  CodeEditor: ({onChange, initialValue}: { onChange: (value: string) => void, initialValue: string }) => {
+  CodeEditor: ({onChange, initialValue}: {onChange: (value: string) => void; initialValue: string}) => {
     useEffect(() => {
       onChange(initialValue)
     }, [initialValue, onChange])
 
-    return <textarea data-testid="mock-code-editor" defaultValue={initialValue}/>
+    return <textarea data-testid="mock-code-editor" defaultValue={initialValue} />
   },
 }))
 
@@ -67,11 +75,15 @@ describe('GenericCodeEditor save behavior', () => {
 
   it('persists the current source when validation succeeds', () => {
     const onSave = vi.fn()
-    render(<GenericCodeEditor source="Hello"
-                              onSave={onSave}
-                              onClose={vi.fn()}
-                              onCompile={() => CalculableResult.success('Hello')}
-                              compact={false}/>)
+    render(
+      <GenericCodeEditor
+        source="Hello"
+        onSave={onSave}
+        onClose={vi.fn()}
+        onCompile={() => CalculableResult.success('Hello')}
+        compact={false}
+      />
+    )
 
     fireEvent.click(screen.getByTestId('save-code-action-button'))
 
@@ -82,11 +94,15 @@ describe('GenericCodeEditor save behavior', () => {
   it('does not persist when validation fails', () => {
     testSpy.mockReturnValue(CalculableResult.error([new Error('invalid syntax')]))
     const onSave = vi.fn()
-    render(<GenericCodeEditor source="broken {"
-                              onSave={onSave}
-                              onClose={vi.fn()}
-                              onCompile={() => CalculableResult.error([new Error('invalid syntax')])}
-                              compact={false}/>)
+    render(
+      <GenericCodeEditor
+        source="broken {"
+        onSave={onSave}
+        onClose={vi.fn()}
+        onCompile={() => CalculableResult.error([new Error('invalid syntax')])}
+        compact={false}
+      />
+    )
 
     fireEvent.click(screen.getByTestId('save-code-action-button'))
 
@@ -96,12 +112,16 @@ describe('GenericCodeEditor save behavior', () => {
 
   it('skips validation when validateBeforeSave returns skip-test', () => {
     const onSave = vi.fn()
-    render(<GenericCodeEditor source="   "
-                              validateBeforeSave={resolveValidateBeforeSave}
-                              onSave={onSave}
-                              onClose={vi.fn()}
-                              onCompile={() => CalculableResult.error([new Error('invalid syntax')])}
-                              compact={false}/>)
+    render(
+      <GenericCodeEditor
+        source="   "
+        validateBeforeSave={resolveValidateBeforeSave}
+        onSave={onSave}
+        onClose={vi.fn()}
+        onCompile={() => CalculableResult.error([new Error('invalid syntax')])}
+        compact={false}
+      />
+    )
 
     fireEvent.click(screen.getByTestId('save-code-action-button'))
 
@@ -111,13 +131,17 @@ describe('GenericCodeEditor save behavior', () => {
 
   it('uses getSourceForSave when resolving the value to persist', () => {
     const onSave = vi.fn()
-    render(<GenericCodeEditor source="ignored"
-                              getSourceForSave={() => 'Persisted'}
-                              validateBeforeSave={resolveValidateBeforeSave}
-                              onSave={onSave}
-                              onClose={vi.fn()}
-                              onCompile={() => CalculableResult.success('Persisted')}
-                              compact/>)
+    render(
+      <GenericCodeEditor
+        source="ignored"
+        getSourceForSave={() => 'Persisted'}
+        validateBeforeSave={resolveValidateBeforeSave}
+        onSave={onSave}
+        onClose={vi.fn()}
+        onCompile={() => CalculableResult.success('Persisted')}
+        compact
+      />
+    )
 
     fireEvent.click(screen.getByTestId('save-code-action-button'))
 
@@ -126,11 +150,15 @@ describe('GenericCodeEditor save behavior', () => {
   })
 
   it('renders toolbarExtra content', () => {
-    render(<GenericCodeEditor source="Hello"
-                              onSave={vi.fn()}
-                              onClose={vi.fn()}
-                              onCompile={() => CalculableResult.success('Hello')}
-                              toolbarExtra={<button data-testid="extra-toolbar-action">Extra</button>}/>)
+    render(
+      <GenericCodeEditor
+        source="Hello"
+        onSave={vi.fn()}
+        onClose={vi.fn()}
+        onCompile={() => CalculableResult.success('Hello')}
+        toolbarExtra={<button data-testid="extra-toolbar-action">Extra</button>}
+      />
+    )
 
     expect(screen.getByTestId('extra-toolbar-action')).toBeTruthy()
   })

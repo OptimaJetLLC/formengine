@@ -1,16 +1,5 @@
-import {
-  RsLocalizationWrapper,
-  RsThemeWrapper,
-  RsViewWrapper
-} from '@react-form-builder/components-rsuite'
-import {
-  BiDi,
-  BuilderThemeProvider,
-  Language,
-  createView,
-  define,
-  FormViewer
-} from '@react-form-builder/core'
+import {RsLocalizationWrapper, RsThemeWrapper, RsViewWrapper} from '@react-form-builder/components-rsuite'
+import {BiDi, BuilderThemeProvider, createView, define, FormViewer, Language} from '@react-form-builder/core'
 import {cleanup, render, waitFor} from '@testing-library/react'
 import {useContext} from 'react'
 import {CustomContext} from 'rsuite/esm/CustomProvider/CustomContext.js'
@@ -47,7 +36,7 @@ describe('RSuite viewer wrappers', () => {
     it('applies RSuite locale for the language', async () => {
       const {findByTestId} = render(
         <RsLocalizationWrapper language={enUS}>
-          <RsuiteContextProbe/>
+          <RsuiteContextProbe />
         </RsLocalizationWrapper>
       )
 
@@ -58,7 +47,7 @@ describe('RSuite viewer wrappers', () => {
     it('updates RSuite locale when the language changes', async () => {
       const {findByTestId, rerender} = render(
         <RsLocalizationWrapper language={enUS}>
-          <RsuiteContextProbe/>
+          <RsuiteContextProbe />
         </RsLocalizationWrapper>
       )
 
@@ -66,7 +55,7 @@ describe('RSuite viewer wrappers', () => {
 
       rerender(
         <RsLocalizationWrapper language={deDE}>
-          <RsuiteContextProbe/>
+          <RsuiteContextProbe />
         </RsLocalizationWrapper>
       )
 
@@ -76,7 +65,7 @@ describe('RSuite viewer wrappers', () => {
     it('enables RTL for RTL languages', async () => {
       const {findByTestId} = render(
         <RsLocalizationWrapper language={arEG}>
-          <RsuiteContextProbe/>
+          <RsuiteContextProbe />
         </RsLocalizationWrapper>
       )
 
@@ -89,7 +78,7 @@ describe('RSuite viewer wrappers', () => {
       const {findByTestId, container} = render(
         <BuilderThemeProvider value="light">
           <RsThemeWrapper language={enUS}>
-            <RsuiteContextProbe/>
+            <RsuiteContextProbe />
           </RsThemeWrapper>
         </BuilderThemeProvider>
       )
@@ -105,7 +94,7 @@ describe('RSuite viewer wrappers', () => {
       const {findByTestId, rerender} = render(
         <BuilderThemeProvider value="light">
           <RsThemeWrapper language={enUS}>
-            <RsuiteContextProbe/>
+            <RsuiteContextProbe />
           </RsThemeWrapper>
         </BuilderThemeProvider>
       )
@@ -118,7 +107,7 @@ describe('RSuite viewer wrappers', () => {
       rerender(
         <BuilderThemeProvider value="dark">
           <RsThemeWrapper language={enUS}>
-            <RsuiteContextProbe/>
+            <RsuiteContextProbe />
           </RsThemeWrapper>
         </BuilderThemeProvider>
       )
@@ -136,7 +125,7 @@ describe('RSuite viewer wrappers', () => {
       const {findByTestId, container} = render(
         <BuilderThemeProvider value="dark">
           <RsViewWrapper language={deDE}>
-            <RsuiteContextProbe/>
+            <RsuiteContextProbe />
           </RsViewWrapper>
         </BuilderThemeProvider>
       )
@@ -154,7 +143,7 @@ describe('RSuite viewer wrappers', () => {
       const {findByTestId, rerender} = render(
         <BuilderThemeProvider value="light">
           <RsViewWrapper language={enUS}>
-            <RsuiteContextProbe/>
+            <RsuiteContextProbe />
           </RsViewWrapper>
         </BuilderThemeProvider>
       )
@@ -165,7 +154,7 @@ describe('RSuite viewer wrappers', () => {
       rerender(
         <BuilderThemeProvider value="dark">
           <RsViewWrapper language={deDE}>
-            <RsuiteContextProbe/>
+            <RsuiteContextProbe />
           </RsViewWrapper>
         </BuilderThemeProvider>
       )
@@ -181,7 +170,7 @@ describe('RSuite viewer wrappers', () => {
       const {findByTestId, rerender} = render(
         <BuilderThemeProvider value="dark">
           <RsViewWrapper language={enUS}>
-            <RsuiteContextProbe/>
+            <RsuiteContextProbe />
           </RsViewWrapper>
         </BuilderThemeProvider>
       )
@@ -191,7 +180,7 @@ describe('RSuite viewer wrappers', () => {
       rerender(
         <BuilderThemeProvider value="dark">
           <RsViewWrapper language={arEG}>
-            <RsuiteContextProbe/>
+            <RsuiteContextProbe />
           </RsViewWrapper>
         </BuilderThemeProvider>
       )
@@ -207,23 +196,24 @@ describe('RSuite viewer wrappers', () => {
   describe('RsViewWrapper with FormViewer', () => {
     const probeComponent = define(RsuiteContextProbe, 'RsuiteContextProbe')
     const view = createView([probeComponent.build().model]).withViewerWrapper(RsViewWrapper)
-    const getForm = () => JSON.stringify({
-      form: {
-        key: 'Screen',
-        type: 'Screen',
-        children: [{key: 'probe', type: 'RsuiteContextProbe'}]
-      },
-      languages: [
-        {code: 'en', dialect: 'US', name: 'English', description: 'American English', bidi: 'ltr'},
-        {code: 'de', dialect: 'DE', name: 'German', description: 'German', bidi: 'ltr'}
-      ],
-      defaultLanguage: 'en-US'
-    })
+    const getForm = () =>
+      JSON.stringify({
+        form: {
+          key: 'Screen',
+          type: 'Screen',
+          children: [{key: 'probe', type: 'RsuiteContextProbe'}],
+        },
+        languages: [
+          {code: 'en', dialect: 'US', name: 'English', description: 'American English', bidi: 'ltr'},
+          {code: 'de', dialect: 'DE', name: 'German', description: 'German', bidi: 'ltr'},
+        ],
+        defaultLanguage: 'en-US',
+      })
 
     it('applies locale and theme through FormViewer', async () => {
       const {findByTestId, container, rerender} = render(
         <BuilderThemeProvider value="light">
-          <FormViewer view={view} getForm={getForm} language="en-US"/>
+          <FormViewer view={view} getForm={getForm} language="en-US" />
         </BuilderThemeProvider>
       )
 
@@ -233,7 +223,7 @@ describe('RSuite viewer wrappers', () => {
 
       rerender(
         <BuilderThemeProvider value="dark">
-          <FormViewer view={view} getForm={getForm} language="de-DE"/>
+          <FormViewer view={view} getForm={getForm} language="de-DE" />
         </BuilderThemeProvider>
       )
 

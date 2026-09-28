@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import {packAndInstallLocalPackage, removeDependencyFromPackageJson} from '@react-form-builder/cli-lib/install-local-package'
 import {existsSync} from 'node:fs'
 import {dirname, join, resolve} from 'node:path'
 import {fileURLToPath} from 'node:url'
+import {packAndInstallLocalPackage, removeDependencyFromPackageJson} from '@react-form-builder/cli-lib/install-local-package'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

@@ -15,39 +15,48 @@ const RawJsonCodeEditor = (props: JsonCode) => {
     builderStore.closeCurrentEditable()
   }, [builderStore])
 
-  const handleCompile = useCallback((value: string) => {
-    try {
-      if (onValidate) {
-        onValidate(value)
-      } else {
-        JSON.parse(value)
+  const handleCompile = useCallback(
+    (value: string) => {
+      try {
+        if (onValidate) {
+          onValidate(value)
+        } else {
+          JSON.parse(value)
+        }
+        return CalculableResult.success(t('testingEditor.compilationOk'))
+      } catch (e) {
+        return CalculableResult.error([e as Error])
       }
-      return CalculableResult.success(t('testingEditor.compilationOk'))
-    } catch (e) {
-      return CalculableResult.error([e as Error])
-    }
-  }, [t, onValidate])
+    },
+    [t, onValidate]
+  )
 
-  const handleSave = useCallback((code: string) => {
-    try {
-      const object = JSON.parse(code)
-      onSave(object)
-    } catch (e) {
-      // do nothing
-    }
-  }, [onSave])
+  const handleSave = useCallback(
+    (code: string) => {
+      try {
+        const object = JSON.parse(code)
+        onSave(object)
+      } catch (e) {
+        // do nothing
+      }
+    },
+    [onSave]
+  )
 
-  return <>
-    <Header>{`${t('codeEditor.generic.json.title')} '${editorTitle}'`}</Header>
-    <GenericCodeEditor key={editorKey}
-                       source={json}
-                       onSave={handleSave}
-                       onClose={handleClose}
-                       onCompile={handleCompile}
-                       language="json"
-                       compact
-    />
-  </>
+  return (
+    <>
+      <Header>{`${t('codeEditor.generic.json.title')} '${editorTitle}'`}</Header>
+      <GenericCodeEditor
+        key={editorKey}
+        source={json}
+        onSave={handleSave}
+        onClose={handleClose}
+        onCompile={handleCompile}
+        language="json"
+        compact
+      />
+    </>
+  )
 }
 
 export const JsonCodeEditor = namedObserver('JsonCodeEditor', RawJsonCodeEditor)

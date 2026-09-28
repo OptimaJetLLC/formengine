@@ -12,18 +12,16 @@ expect.extend({
 
     if (pass) {
       return {
-        message: () =>
-          `expected ${this.utils.printReceived(actualValues)} to have values ${this.utils.printExpected(expected)}`,
+        message: () => `expected ${this.utils.printReceived(actualValues)} to have values ${this.utils.printExpected(expected)}`,
         pass: true,
       }
     }
 
     return {
-      message: () =>
-        `expected ${this.utils.printReceived(actualValues)} to have only values ${this.utils.printExpected(expected)}`,
+      message: () => `expected ${this.utils.printReceived(actualValues)} to have only values ${this.utils.printExpected(expected)}`,
       pass: false,
     }
-  }
+  },
 })
 
 declare module 'vitest' {

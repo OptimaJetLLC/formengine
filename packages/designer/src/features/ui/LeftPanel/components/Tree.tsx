@@ -30,23 +30,23 @@ const RawTree = (props: ComponentProps<typeof Rows>) => {
     <Rows {...props} className={cx(styles.root, props.className)}>
       <Columns>
         <Button className={styles.subtleIconButton} onClick={expandAll} size={'sm'} appearance={'subtle'}>
-          <ExpandOutline/>
+          <ExpandOutline />
           {t('tree.expand')}
         </Button>
         <Button className={styles.subtleIconButton} onClick={collapseAll} size={'sm'} appearance={'subtle'}>
-          <CollaspedOutline/>
+          <CollaspedOutline />
           {t('tree.collapse')}
         </Button>
       </Columns>
       <div className={styles.treeContainer}>
-        <ComponentTree data={screenTree} componentDataViewer={DraggableTreeNode}/>
+        <ComponentTree data={screenTree} componentDataViewer={DraggableTreeNode} />
         {nonVisual.length > 0 && (
           <div className={styles.nonVisualGroup} data-testid="non-visual-tree-group">
             <div className={styles.nonVisualGroupTitle}>{t('tree.nonVisual')}</div>
             <div className={styles.nonVisualList}>
               {nonVisual.map(component => (
                 <ComponentDataProvider key={component.id} value={component}>
-                  <NonVisualListItem/>
+                  <NonVisualListItem />
                 </ComponentDataProvider>
               ))}
             </div>

@@ -22,7 +22,11 @@ const RawLabeled = ({label, children, className, ...props}: LabeledProps) => {
 
   return (
     <div {...props} className={cx(styles.container, className)} role="group">
-      {label && <label id={aria['aria-labelledby']} htmlFor={id} className={styles.label}>{label}</label>}
+      {label && (
+        <label id={aria['aria-labelledby']} htmlFor={id} className={styles.label}>
+          {label}
+        </label>
+      )}
       {cloneElement(children, {id, ...aria})}
     </div>
   )

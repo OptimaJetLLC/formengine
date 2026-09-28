@@ -15,7 +15,7 @@ describe('Template options test', () => {
   }
 
   it('Should show the correct template by version number', async () => {
-    const {findByTestId} = render(<FormViewer getForm={getForm} view={viewWithCss}/>)
+    const {findByTestId} = render(<FormViewer getForm={getForm} view={viewWithCss} />)
     expect(await findByTestId('header-version-1')).toBeInTheDocument()
     expect(await findByTestId('header-version-2')).toBeInTheDocument()
   })

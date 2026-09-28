@@ -20,22 +20,37 @@ const RawArrayInput = (props: AnnotationEditorProps) => {
   const computeType = useMemo(() => props.getComputeType(), [props])
   const showItem = typeof computeType === 'undefined'
 
-  const handleAdd = useCallback((index: number) => {
-    onAdd?.(index, componentData, viewerStore)
-  }, [viewerStore, componentData, onAdd])
+  const handleAdd = useCallback(
+    (index: number) => {
+      onAdd?.(index, componentData, viewerStore)
+    },
+    [viewerStore, componentData, onAdd]
+  )
 
-  const handleRemove = useCallback((index: number) => {
-    onRemove?.(index, componentData, viewerStore)
-  }, [viewerStore, componentData, onRemove])
+  const handleRemove = useCallback(
+    (index: number) => {
+      onRemove?.(index, componentData, viewerStore)
+    },
+    [viewerStore, componentData, onRemove]
+  )
 
   const calculatedProps = calculateEditorProps?.(componentData, onChange) ?? {}
 
-  return <>
-    <LabeledProperty {...props}/>
-    {showItem && <EditableTable data={value} onChange={onChange} columns={preparedColumns}
-                                onRemove={handleRemove} onAdd={handleAdd} {...calculatedProps}
-    />}
-  </>
+  return (
+    <>
+      <LabeledProperty {...props} />
+      {showItem && (
+        <EditableTable
+          data={value}
+          onChange={onChange}
+          columns={preparedColumns}
+          onRemove={handleRemove}
+          onAdd={handleAdd}
+          {...calculatedProps}
+        />
+      )}
+    </>
+  )
 }
 
 export const ArrayInput = namedObserver('ArrayInput', RawArrayInput)

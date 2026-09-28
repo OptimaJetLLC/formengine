@@ -19,8 +19,7 @@ describe('The form action', function () {
     const formStorage = new MockFormStorage({onLoadForm, onSaveForm, formNames: [defaultFormName, secondFormName]})
 
     const {findByTestId} = render(
-      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage}
-                   getForm={formStorage.getForm} persistFormName={false}/>
+      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage} getForm={formStorage.getForm} persistFormName={false} />
     )
     await waitFor(() => expect(onLoadForm).toHaveBeenLastCalledWith(defaultFormName))
 
@@ -43,8 +42,7 @@ describe('The form action', function () {
     const formStorage = new MockFormStorage({onLoadForm, onSaveForm, formNames: [defaultFormName]})
 
     const {findByTestId, container} = render(
-      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage}
-                   getForm={formStorage.getForm} persistFormName={false}/>
+      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage} getForm={formStorage.getForm} persistFormName={false} />
     )
     await waitFor(() => expect(onLoadForm).toHaveBeenLastCalledWith(defaultFormName))
 
@@ -68,8 +66,7 @@ describe('The form action', function () {
     const formStorage = new MockFormStorage({onLoadForm, onSaveForm, formNames: [defaultFormName]})
 
     const {findByTestId} = render(
-      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage}
-                   getForm={formStorage.getForm} persistFormName={false}/>
+      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage} getForm={formStorage.getForm} persistFormName={false} />
     )
     await waitFor(() => expect(onLoadForm).toHaveBeenLastCalledWith(defaultFormName))
 

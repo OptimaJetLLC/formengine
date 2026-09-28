@@ -10,25 +10,20 @@ import {customizableObserver} from '../../../customization/customizableObserver'
 import {useTranslationPart} from '../../../localization/hooks'
 import styles from './ToggleModeButton.module.css'
 
-const Modes: Record<BuilderMode, { icon: any, toggleTo: BuilderMode }> = {
+const Modes: Record<BuilderMode, {icon: any; toggleTo: BuilderMode}> = {
   viewer: {icon: faPaintBrush, toggleTo: 'builder'},
-  builder: {icon: faPlay, toggleTo: 'viewer'}
+  builder: {icon: faPlay, toggleTo: 'viewer'},
 }
 
-const RawToggleModeButton = ({className}: { className?: string }) => {
+const RawToggleModeButton = ({className}: {className?: string}) => {
   const store = useBuilderStore()
   const {icon, toggleTo} = Modes[store.builderMode]
   const t = useTranslationPart('rightMenu.modes')
   const onClick = useCallback(() => store.changeBuilderMode(toggleTo), [store, toggleTo])
 
   return (
-    <Button
-      onClick={onClick}
-      appearance="primary"
-      className={cx(styles.animatedButton, store.builderMode, className)}
-      size="sm"
-    >
-      <FaIcon icon={icon} color="white"/>
+    <Button onClick={onClick} appearance="primary" className={cx(styles.animatedButton, store.builderMode, className)} size="sm">
+      <FaIcon icon={icon} color="white" />
       {t(store.builderMode)}
     </Button>
   )

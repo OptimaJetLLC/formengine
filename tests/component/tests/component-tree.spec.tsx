@@ -12,10 +12,12 @@ const getForm = (name?: string) => {
 
 const CustomErrorMessage = ({error, children}: ErrorWrapperProps) => {
   const item = error ? <span data-testid="error-message">{error}</span> : null
-  return <div>
-    {children}
-    {item}
-  </div>
+  return (
+    <div>
+      {children}
+      {item}
+    </div>
+  )
 }
 
 const customErrorMessage = define(CustomErrorMessage, 'CustomErrorMessage').category('test')
@@ -36,18 +38,18 @@ describe('ComponentTree tests', () => {
               onDidMount: [
                 {
                   name: 'logOnDidMount',
-                  type: 'custom'
-                }
-              ]
+                  type: 'custom',
+                },
+              ],
             },
             htmlAttributes: [
               {
                 name: 'data-testid',
-                value: 'test-dropdown'
-              }
-            ]
-          }
-        ]
+                value: 'test-dropdown',
+              },
+            ],
+          },
+        ],
       },
       localization: {},
       languages: [],
@@ -59,7 +61,7 @@ describe('ComponentTree tests', () => {
     const actions = {
       logOnDidMount: () => {
         onMountCount++
-      }
+      },
     }
 
     const components = rSuiteComponents.map(d => d.build())
@@ -67,19 +69,14 @@ describe('ComponentTree tests', () => {
     const getForm = () => JSON.stringify(persistedForm)
     const customization: FormBuilderProps['customization'] = {
       Components_Tab_Content: {
-        customRenderer: defaultElement => <div data-testid="test-components">
-          {defaultElement}
-        </div>
+        customRenderer: defaultElement => <div data-testid="test-components">{defaultElement}</div>,
       },
       Tree_Tab_Content: {
-        customRenderer: defaultElement => <div data-testid="test-tree">
-          {defaultElement}
-        </div>
-      }
+        customRenderer: defaultElement => <div data-testid="test-tree">{defaultElement}</div>,
+      },
     }
 
-    const {findByTestId, findByText} = render(<FormBuilder view={view} getForm={getForm} actions={actions}
-                                                           customization={customization}/>)
+    const {findByTestId, findByText} = render(<FormBuilder view={view} getForm={getForm} actions={actions} customization={customization} />)
 
     expect(await findByTestId('test-dropdown')).toBeInTheDocument()
     expect(onMountCount).toEqual(1)
@@ -100,19 +97,24 @@ describe('ComponentTree tests', () => {
       buttonClickAction: e => {
         const root = e.sender.root
         root.clear()
-      }
+      },
     }
 
     let formData = ''
 
     const initialValue = 'no name'
     const initialData = {name: initialValue, one: 'Magic'}
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions}
-                                              initialData={initialData}
-                                              onFormDataChange={iFormData => {
-                                                formData = JSON.stringify(iFormData.data)
-                                              }}
-    />)
+    const {findByTestId} = render(
+      <FormViewer
+        view={view}
+        getForm={getForm}
+        actions={actions}
+        initialData={initialData}
+        onFormDataChange={iFormData => {
+          formData = JSON.stringify(iFormData.data)
+        }}
+      />
+    )
 
     expect(await findByTestId('input1')).toHaveValue(initialValue)
     expect(await findByTestId('input2')).toHaveValue(initialValue)
@@ -122,10 +124,10 @@ describe('ComponentTree tests', () => {
       rsInput3: 'Karl',
       repeaterOne: [
         {name: 'number one', rsInput6: 'Karl'},
-        {name: 'number two', rsInput6: 'Karl'}
+        {name: 'number two', rsInput6: 'Karl'},
       ],
       one: 'Magic',
-      three: 'three'
+      three: 'three',
     }
     expect(formData).toEqual(JSON.stringify(expectedData))
 
@@ -143,7 +145,7 @@ describe('ComponentTree tests', () => {
       buttonClickAction: e => {
         const root = e.sender.root
         root.reset()
-      }
+      },
     }
 
     let formData = ''
@@ -153,18 +155,23 @@ describe('ComponentTree tests', () => {
       rsInput3: 'Mann',
       repeaterOne: [
         {name: 'Stan', rsInput6: 'Gem'},
-        {name: 'Kenny', rsInput6: 'Ten'}
+        {name: 'Kenny', rsInput6: 'Ten'},
       ],
       one: 'Vans',
-      three: 'Goldie'
+      three: 'Goldie',
     }
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions}
-                                              initialData={initialData}
-                                              onFormDataChange={iFormData => {
-                                                formData = JSON.stringify(iFormData.data)
-                                              }}
-    />)
+    const {findByTestId} = render(
+      <FormViewer
+        view={view}
+        getForm={getForm}
+        actions={actions}
+        initialData={initialData}
+        onFormDataChange={iFormData => {
+          formData = JSON.stringify(iFormData.data)
+        }}
+      />
+    )
 
     expect(await findByTestId('two')).toHaveValue('Vans')
     expect(formData).toEqual(JSON.stringify(initialData))
@@ -176,8 +183,9 @@ describe('ComponentTree tests', () => {
       rsInput3: 'Karl',
       repeaterOne: [
         {name: 'number one', rsInput6: 'Karl'},
-        {name: 'number two', rsInput6: 'Karl'}],
-      three: 'three'
+        {name: 'number two', rsInput6: 'Karl'},
+      ],
+      three: 'three',
     }
     expect(formData).toEqual(JSON.stringify(expectedData))
   })
@@ -187,7 +195,7 @@ describe('ComponentTree tests', () => {
       buttonClickAction: async e => {
         const root = e.sender.root
         await root.validate()
-      }
+      },
     }
 
     const errors = {
@@ -195,35 +203,37 @@ describe('ComponentTree tests', () => {
       rsInput3: 'rsInput3 error',
       repeaterOne: [
         {name: 'first name error', rsInput6: 'first input error'},
-        {name: 'second name error', rsInput6: 'second input error'}
+        {name: 'second name error', rsInput6: 'second input error'},
       ],
       one: 'one error',
       three: 'three error',
     }
 
-    const formValidators: FormViewerProps['formValidators'] = [
-      () => Promise.resolve(errors as unknown as Record<string, string>)
-    ]
+    const formValidators: FormViewerProps['formValidators'] = [() => Promise.resolve(errors as unknown as Record<string, string>)]
 
     let formErrors = ''
 
     const components = [...models, customErrorMessage.build().model]
     const customView = createView(components)
 
-    const {findByTestId, findAllByTestId} = render(<FormViewer view={customView} getForm={getForm} actions={actions}
-                                                               formValidators={formValidators}
-                                                               onFormDataChange={iFormData => {
-                                                                 formErrors = JSON.stringify(iFormData.errors)
-                                                               }}
-    />)
+    const {findByTestId, findAllByTestId} = render(
+      <FormViewer
+        view={customView}
+        getForm={getForm}
+        actions={actions}
+        formValidators={formValidators}
+        onFormDataChange={iFormData => {
+          formErrors = JSON.stringify(iFormData.errors)
+        }}
+      />
+    )
 
     expect(await findByTestId('two')).toHaveValue('')
 
     fireEvent.click(await findByTestId('actionButton'))
 
     await waitFor(async () => expect(await findAllByTestId('error-message')).toHaveLength(12))
-    const errorMessages = (await findAllByTestId('error-message'))
-      .map(element => element.innerHTML)
+    const errorMessages = (await findAllByTestId('error-message')).map(element => element.innerHTML)
     expect(errorMessages).toEqual([
       'name error',
       'name error',

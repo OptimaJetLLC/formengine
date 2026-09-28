@@ -62,10 +62,12 @@ export const clickItemInMainMenu = async (container: HTMLElement, itemName: stri
   fireEvent.mouseDown(document)
 }
 
-export const getPropertyInput = async (findByTestId: RenderResult['findByTestId'],
-                                       fieldKey: string,
-                                       propertyKey: string,
-                                       tabName = 'Main') => {
+export const getPropertyInput = async (
+  findByTestId: RenderResult['findByTestId'],
+  fieldKey: string,
+  propertyKey: string,
+  tabName = 'Main'
+) => {
   fireEvent.click(await findByTestId(fieldKey))
   fireEvent.click(await findByTestId(`${tabName}_Tab`))
   const property = await findByTestId(`${propertyKey}-labeled-wrapper`)

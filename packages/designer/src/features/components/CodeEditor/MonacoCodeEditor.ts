@@ -9,24 +9,24 @@ const vsExtendedTheme = {
   rules: [
     {
       token: 'string.fluent',
-      foreground: '008000'
+      foreground: '008000',
     },
     {
       token: 'variable.fluent',
-      foreground: '1d087a'
+      foreground: '1d087a',
     },
     {
       token: 'regexp.fluent',
-      foreground: '1d087a'
+      foreground: '1d087a',
     },
     {
       token: 'constant.fluent',
-      foreground: '4978ad'
+      foreground: '4978ad',
     },
   ],
   colors: {
-    'editor.background': '#f7f7fa'
-  }
+    'editor.background': '#f7f7fa',
+  },
 }
 
 if (!import.meta.env.PROD) {
@@ -54,7 +54,7 @@ if (!import.meta.env.PROD) {
     getWorker: (_, label) => {
       const workerUrl = toWorkerUrl(label)
       return new Worker(workerUrl, {name: label, type: 'module'})
-    }
+    },
   }
 
   loader.config({monaco})
@@ -94,7 +94,7 @@ loader.init().then(() => {
     tokenizer: {
       root: [
         [`^-?${identifier}${spaces}=`, 'constant', '@value'],
-        [/.*/, 'invalid']
+        [/.*/, 'invalid'],
       ],
       value: [
         //https://projectfluent.org/fluent/guide/variables.html
@@ -110,7 +110,7 @@ loader.init().then(() => {
         [`^${string}`, 'invalid'],
         //first line string
         [`${spaces}${string}`, 'string'],
-        [/.*/, 'invalid']
+        [/.*/, 'invalid'],
       ],
       function: [
         //https://projectfluent.org/fluent/guide/variables.html
@@ -124,9 +124,9 @@ loader.init().then(() => {
         [`${spaces}${category}`, 'regexp'],
         [`${spaces}${string}`, 'string'],
         [`${spaces}}`, 'regexp', '@pop'],
-        [/.*/, 'invalid']
+        [/.*/, 'invalid'],
       ],
-    }
+    },
   })
   monaco.editor.defineTheme('vs-extended', vsExtendedTheme as any)
 })

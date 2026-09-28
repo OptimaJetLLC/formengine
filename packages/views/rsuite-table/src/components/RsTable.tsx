@@ -1,8 +1,8 @@
 import type {ComponentData} from '@react-form-builder/core'
 import {
   array,
-  boolean,
   BuilderModeProvider,
+  boolean,
   define,
   event,
   isNull,
@@ -13,7 +13,7 @@ import {
   oneOf,
   string,
   useBuilderComponent,
-  useComponentData
+  useComponentData,
 } from '@react-form-builder/core'
 import {makeAutoObservable} from 'mobx'
 import type {ComponentProps, ReactNode} from 'react'
@@ -26,11 +26,11 @@ import {rsCellTypeName, rsColumnGroupTypeName, rsColumnTypeName, rsHeaderCellTyp
 
 const TableIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-    <rect x="3" y="3" width="18" height="18" stroke="currentColor" strokeWidth="1.5" rx="1"/>
-    <line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" strokeWidth="1.5"/>
-    <line x1="3" y1="15" x2="21" y2="15" stroke="currentColor" strokeWidth="0.8"/>
-    <line x1="9" y1="3" x2="9" y2="21" stroke="currentColor" strokeWidth="0.8"/>
-    <line x1="15" y1="3" x2="15" y2="21" stroke="currentColor" strokeWidth="0.8"/>
+    <rect x="3" y="3" width="18" height="18" stroke="currentColor" strokeWidth="1.5" rx="1" />
+    <line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" strokeWidth="1.5" />
+    <line x1="3" y1="15" x2="21" y2="15" stroke="currentColor" strokeWidth="0.8" />
+    <line x1="9" y1="3" x2="9" y2="21" stroke="currentColor" strokeWidth="0.8" />
+    <line x1="15" y1="3" x2="15" y2="21" stroke="currentColor" strokeWidth="0.8" />
   </svg>
 )
 
@@ -51,7 +51,7 @@ const getColumnChildren = (componentData: ComponentData) => {
   // Column must have exactly 2 children
   const result = {
     headerCell: <HeaderCell>Header</HeaderCell>,
-    cell: <Cell dataKey={`new Date().getTime()`}/>,
+    cell: <Cell dataKey={`new Date().getTime()`} />,
   }
 
   componentData.children.forEach(item => {
@@ -81,11 +81,12 @@ class TableColumns {
         const typeName = item.model.typeName
         return typeName === rsColumnGroupTypeName || typeName === rsColumnTypeName
       })
-      .map((item) => {
+      .map(item => {
         if (!needRender(item.store, item.dataRoot)) return null
         if (item.model.typeName === rsColumnGroupTypeName) return this.getColumnGroupElement(item)
         return this.getColumnElement(item)
-      }).filter(item => !isNull(item))
+      })
+      .filter(item => !isNull(item))
   }
 
   private getColumnGroupElement(item: ComponentData) {
@@ -96,9 +97,11 @@ class TableColumns {
 
     if (!children) return null
 
-    return <ColumnGroup key={key} {...otherProps}>
-      {children}
-    </ColumnGroup>
+    return (
+      <ColumnGroup key={key} {...otherProps}>
+        {children}
+      </ColumnGroup>
+    )
   }
 
   private getColumnElement(item: ComponentData) {
@@ -115,7 +118,7 @@ class TableColumns {
 }
 
 const rsBuilderTableStyle = {
-  display: 'flex'
+  display: 'flex',
 }
 
 const RsBuilderTable = (props: RsTableProps) => {
@@ -124,7 +127,7 @@ const RsBuilderTable = (props: RsTableProps) => {
 
 const RsViewerTable = (props: RsTableProps) => {
   const componentData = useComponentData()
-  const columns = useMemo(() => (new TableColumns(componentData)), [componentData])
+  const columns = useMemo(() => new TableColumns(componentData), [componentData])
 
   const {children, showDataInDesigner, ...otherProps} = props
 
@@ -136,20 +139,12 @@ const RsViewerTable = (props: RsTableProps) => {
 }
 
 const RsTable = (props: RsTableProps) => {
-  return useBuilderComponent(
-    props.showDataInDesigner ? RsViewerTable : RsBuilderTable,
-    RsViewerTable,
-    props,
-  )
+  return useBuilderComponent(props.showDataInDesigner ? RsViewerTable : RsBuilderTable, RsViewerTable, props)
 }
 
 const getRsTableComponentStore = () => {
   const result = createComponentStore(rsTableTypeName, '1')
-  result.children = [
-    getRsColumnComponentStore('1'),
-    getRsColumnComponentStore('2'),
-    getRsColumnComponentStore('3'),
-  ]
+  result.children = [getRsColumnComponentStore('1'), getRsColumnComponentStore('2'), getRsColumnComponentStore('3')]
   return result
 }
 

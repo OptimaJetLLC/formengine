@@ -8,6 +8,4 @@ import styles from './SInputPicker.module.css'
  * @param props {@link InputPickerProps}.
  * @returns React component.
  */
-export const SInputPicker = (props: InputPickerProps) => (
-  <InputPicker {...props} className={cx(styles.root, props.className)}/>
-)
+export const SInputPicker = (props: InputPickerProps) => <InputPicker {...props} className={cx(styles.root, props.className)} />

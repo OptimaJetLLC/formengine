@@ -2,13 +2,13 @@ import * as RTL from '@testing-library/react'
 import {createElement} from 'react'
 
 type RenderHookResult<T> = {
-  result: { current: T }
+  result: {current: T}
   rerender: () => void
   unmount: () => void
 }
 
 const createRenderHook = (): (<T>(callback: () => T) => RenderHookResult<T>) => {
-  return <T, >(callback: () => T): RenderHookResult<T> => {
+  return <T>(callback: () => T): RenderHookResult<T> => {
     const result = {current: undefined as T}
     const Wrapper = () => {
       result.current = callback()

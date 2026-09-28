@@ -2,7 +2,7 @@ import {createView, define, FormViewer, string} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 import {createLocalizedForm} from './localizationTestUtils'
 
-const CustomWithDefault = ({children}: { children?: string }) => {
+const CustomWithDefault = ({children}: {children?: string}) => {
   return <span data-testid="localized-target">{children}</span>
 }
 
@@ -12,7 +12,7 @@ const customWithDefault = define(CustomWithDefault, 'CustomWithDefault')
   })
   .build()
 
-const CustomNoDefault = ({children}: { children?: string }) => {
+const CustomNoDefault = ({children}: {children?: string}) => {
   return <span data-testid="localized-target">{children}</span>
 }
 
@@ -22,7 +22,7 @@ const customNoDefault = define(CustomNoDefault, 'CustomNoDefault')
   })
   .build()
 
-const CustomEmptyDefault = ({children}: { children?: string }) => {
+const CustomEmptyDefault = ({children}: {children?: string}) => {
   return <span data-testid="localized-target">{children}</span>
 }
 
@@ -173,7 +173,7 @@ describe('Localization fallback matrix', () => {
       localization,
     })
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language={requestedLanguage}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language={requestedLanguage} />)
     const target = await findByTestId(testId)
     expect(target.textContent ?? '').toBe(expectedText)
   })

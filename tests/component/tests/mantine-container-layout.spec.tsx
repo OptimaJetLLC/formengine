@@ -20,9 +20,7 @@ const form = {
         key: 'mtTextInput1',
         type: 'MtTextInput',
         props: {},
-        htmlAttributes: [
-          {name: 'data-testid', value: 'mtTextInput1'},
-        ],
+        htmlAttributes: [{name: 'data-testid', value: 'mtTextInput1'}],
       },
       {
         key: 'mtContainer1',
@@ -37,17 +35,13 @@ const form = {
             key: 'mtTextInput2',
             type: 'MtTextInput',
             props: {},
-            htmlAttributes: [
-              {name: 'data-testid', value: 'mtTextInput2'},
-            ],
+            htmlAttributes: [{name: 'data-testid', value: 'mtTextInput2'}],
           },
           {
             key: 'mtTextInput3',
             type: 'MtTextInput',
             props: {},
-            htmlAttributes: [
-              {name: 'data-testid', value: 'mtTextInput3'},
-            ],
+            htmlAttributes: [{name: 'data-testid', value: 'mtTextInput3'}],
           },
         ],
         css: {
@@ -57,9 +51,7 @@ const form = {
             },
           },
         },
-        htmlAttributes: [
-          {name: 'data-testid', value: 'mtContainer1'},
-        ],
+        htmlAttributes: [{name: 'data-testid', value: 'mtContainer1'}],
       },
     ],
   },
@@ -96,14 +88,8 @@ const expectInputToFillParentWidth = (input: HTMLElement) => {
 }
 
 describe('MtContainer layout with nested MtTextInput components', () => {
-
   it('should render nested text inputs that fill their container width in designer mode', async () => {
-    const renderResult = render(
-      <MantineBuilder
-        getForm={getForm}
-        licenseKey={generatedLicenseKey}
-      />
-    )
+    const renderResult = render(<MantineBuilder getForm={getForm} licenseKey={generatedLicenseKey} />)
 
     const firstInput = await renderResult.findByTestId('mtTextInput2')
     const secondInput = await renderResult.findByTestId('mtTextInput3')
@@ -113,12 +99,7 @@ describe('MtContainer layout with nested MtTextInput components', () => {
   })
 
   it('should render nested text inputs that fill their container width in viewer mode', async () => {
-    const renderResult = render(
-      <MantineBuilder
-        getForm={getForm}
-        licenseKey={generatedLicenseKey}
-      />
-    )
+    const renderResult = render(<MantineBuilder getForm={getForm} licenseKey={generatedLicenseKey} />)
 
     await togglePreview(renderResult)
 

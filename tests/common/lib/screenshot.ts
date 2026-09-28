@@ -1,5 +1,5 @@
-import type {Page} from '@playwright/test'
 import {promises as fs} from 'node:fs'
+import type {Page} from '@playwright/test'
 
 const {writeFile, mkdir} = fs
 
@@ -9,19 +9,21 @@ export const viewportSizes = [
   [1366, 768],
   [1920, 1080],
   [2560, 1024],
-  [5120, 1440]
+  [5120, 1440],
 ]
 
 export type ScreenshotImageInfo = {
-  name: string,
+  name: string
   path: string
 }
 
 const renderResponsiveReport = (images: Array<ScreenshotImageInfo>): string => {
-  const screenshots = images.map(({name, path}) => `<figure>
+  const screenshots = images.map(
+    ({name, path}) => `<figure>
         <img src="${path}" alt="${name}" title="${name}" />
         <figcaption>${name}</figcaption>
-    </figure>`)
+    </figure>`
+  )
 
   return `<!DOCTYPE html>
     <html lang="en">
@@ -70,7 +72,7 @@ export const testResponsive = async (folder: string, page: Page) => {
     await page.screenshot({path: `${folder}/${path}`})
     images.push({
       name: dim,
-      path
+      path,
     })
   }
 

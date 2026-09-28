@@ -8,7 +8,7 @@ const FakeArrayComponent = (props: any) => {
 
 const fakeArray = define(FakeArrayComponent, 'FakeArrayComponent')
   .props({
-    value: array.valued
+    value: array.valued,
   })
   .build()
 
@@ -19,7 +19,7 @@ const FakeBooleanComponent = (props: any) => {
 
 const fakeBoolean = define(FakeBooleanComponent, 'FakeBooleanComponent')
   .props({
-    value: boolean.valued
+    value: boolean.valued,
   })
   .build()
 
@@ -30,7 +30,7 @@ const FakeDateComponent = (props: any) => {
 
 const fakeDate = define(FakeDateComponent, 'FakeDateComponent')
   .props({
-    value: date.valued
+    value: date.valued,
   })
   .build()
 
@@ -41,7 +41,7 @@ const FakeInputComponent = (props: any) => {
 
 const fakeInput = define(FakeInputComponent, 'FakeInputComponent')
   .props({
-    value: string.valued
+    value: string.valued,
   })
   .build()
 
@@ -52,7 +52,7 @@ const FakeObjectComponent = (props: any) => {
 
 const fakeObject = define(FakeObjectComponent, 'FakeObjectComponent')
   .props({
-    value: object.valued
+    value: object.valued,
   })
   .build()
 
@@ -62,22 +62,21 @@ const fakeObject = define(FakeObjectComponent, 'FakeObjectComponent')
  * @param componentType the component type key.
  * @returns a persisted-form-shaped test fixture.
  */
-export const generateTestForm = (
-  validations: ValidationRuleSettings | ValidationRuleSettings[],
-  componentType = 'RsInput',
-) => ({
+export const generateTestForm = (validations: ValidationRuleSettings | ValidationRuleSettings[], componentType = 'RsInput') => ({
   form: {
     key: 'Screen',
     type: 'Screen',
-    children: [{
-      key: 'zodInput',
-      type: componentType,
-      schema: {
-        validations: Array.isArray(validations) ? validations : [validations],
-        autoValidate: false,
+    children: [
+      {
+        key: 'zodInput',
+        type: componentType,
+        schema: {
+          validations: Array.isArray(validations) ? validations : [validations],
+          autoValidate: false,
+        },
+        htmlAttributes: [{name: 'data-testid', value: 'zodInput'}],
       },
-      htmlAttributes: [{name: 'data-testid', value: 'zodInput'}],
-    }],
+    ],
   },
 })
 

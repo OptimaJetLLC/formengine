@@ -12,7 +12,7 @@ import {
   PersistedFormVersion,
   string,
   useComponentData,
-  View
+  View,
 } from '@react-form-builder/core'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
@@ -41,7 +41,6 @@ const repeaterForms = [
 ]
 
 describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
-
   const RepeaterFieldApp = ({view, initialData, modifyForm, viewerRef}: RepeaterFieldAppProps) => {
     const wrappedGetForm = useCallback(() => {
       const form = JSON.parse(testForm)
@@ -50,28 +49,23 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
       return JSON.stringify(form)
     }, [modifyForm])
 
-    return <FormViewer
-      initialData={initialData}
-      view={view ?? componentsView}
-      getForm={wrappedGetForm}
-      viewerRef={viewerRef}
-    />
+    return <FormViewer initialData={initialData} view={view ?? componentsView} getForm={wrappedGetForm} viewerRef={viewerRef} />
   }
 
   it('Only the field with the booking date input is available', async () => {
-    const {findByTestId, queryByTestId} = render(<RepeaterFieldApp/>)
+    const {findByTestId, queryByTestId} = render(<RepeaterFieldApp />)
     expect(await findByTestId('bookingDate')).not.toHaveValue()
     expect(queryByTestId('roomType')).not.toBeInTheDocument()
   })
 
   it('Repeater should have a default value', async () => {
     const modifyForm = ({form}: PersistedForm) => {
-      eachComponentStore(form, 'rooms', (componentStore) => {
+      eachComponentStore(form, 'rooms', componentStore => {
         componentStore.props.value = {value: [{}]}
       })
     }
 
-    const {findByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm}/>)
+    const {findByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} />)
     expect(await findByTestId('firstName')).toHaveValue('')
     expect(await findByTestId('lastName')).toHaveValue('')
     expect(await findByTestId('adults')).toHaveValue('1')
@@ -82,28 +76,28 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
   it('Repeater should have an initial data value', async () => {
     const initialData = {
       date: new Date(),
-      rooms: [{
-        roomType: 'standard',
-        adults: 2,
-        children: 1,
-        childrenAges: [{childAge: '3'}],
-        names: [
-          {firstName: 'James', lastName: 'Stark'},
-          {firstName: 'Monica', lastName: 'Cassel'}
-        ]
-      }, {
-        roomType: 'luxe',
-        adults: 1,
-        children: 2,
-        childrenAges: [
-          {childAge: '11'},
-          {childAge: '1'}
-        ],
-        names: [{firstName: 'Mark', lastName: 'Ronson'}]
-      }]
+      rooms: [
+        {
+          roomType: 'standard',
+          adults: 2,
+          children: 1,
+          childrenAges: [{childAge: '3'}],
+          names: [
+            {firstName: 'James', lastName: 'Stark'},
+            {firstName: 'Monica', lastName: 'Cassel'},
+          ],
+        },
+        {
+          roomType: 'luxe',
+          adults: 1,
+          children: 2,
+          childrenAges: [{childAge: '11'}, {childAge: '1'}],
+          names: [{firstName: 'Mark', lastName: 'Ronson'}],
+        },
+      ],
     }
 
-    const {findAllByTestId} = render(<RepeaterFieldApp initialData={initialData}/>)
+    const {findAllByTestId} = render(<RepeaterFieldApp initialData={initialData} />)
 
     await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['standard', 'luxe'])
     expect(await findAllByTestId('firstName')).toHaveExactValues(['James', 'Monica', 'Mark'])
@@ -115,9 +109,12 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
   it('Repeater should have a function value', async () => {
     const modifyForm = ({form}: PersistedForm) => {
-      eachComponentStore(form, 'rooms', (componentStore) => {
+      eachComponentStore(form, 'rooms', componentStore => {
         componentStore.props.value = {
-          value: [{}], computeType: 'function', fnSource: 'return [{\n' +
+          value: [{}],
+          computeType: 'function',
+          fnSource:
+            'return [{\n' +
             '      roomType: "luxe",\n' +
             '      adults: 1,\n' +
             '      children: 2,\n' +
@@ -126,12 +123,12 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
             '        {childAge: "1"}\n' +
             '      ],\n' +
             '      names: [{firstName: "Mark", lastName: "Ronson"}]\n' +
-            '    }]'
+            '    }]',
         }
       })
     }
 
-    const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm}/>)
+    const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} />)
 
     await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['luxe'])
     expect(await findAllByTestId('firstName')).toHaveExactValues(['Mark'])
@@ -143,10 +140,10 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
   it('repeater should render localized values for repeated items', async () => {
     const initialData = {
-      rooms: [{roomType: 'standard'}, {}, {roomType: 'luxe'}]
+      rooms: [{roomType: 'standard'}, {}, {roomType: 'luxe'}],
     }
 
-    const {findAllByTestId} = render(<RepeaterFieldApp initialData={initialData}/>)
+    const {findAllByTestId} = render(<RepeaterFieldApp initialData={initialData} />)
     expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['Room standard', 'Room ', 'Room luxe'])
   })
 
@@ -156,10 +153,10 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
       delete form.localization!['de-DE']['rsStaticContent1']
     }
     const initialData = {
-      rooms: [{roomType: 'luxe'}]
+      rooms: [{roomType: 'luxe'}],
     }
 
-    const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
+    const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData} />)
     expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['Text...'])
   })
 
@@ -170,21 +167,21 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
       form.defaultLanguage = 'de-DE'
     }
     const initialData = {
-      rooms: [{roomType: 'standard'}]
+      rooms: [{roomType: 'standard'}],
     }
 
-    const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
+    const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData} />)
     expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['Zimmer standard'])
   })
 
   it('Repeater should have a function value from initialData', async () => {
     const modifyForm = ({form}: PersistedForm) => {
-      eachComponentStore(form, 'rooms', (componentStore) => {
+      eachComponentStore(form, 'rooms', componentStore => {
         componentStore.props.value = {value: [], computeType: 'function', fnSource: 'return [{}, {}]'}
       })
     }
 
-    const {findByText} = render(<RepeaterFieldApp modifyForm={modifyForm}/>)
+    const {findByText} = render(<RepeaterFieldApp modifyForm={modifyForm} />)
     expect(await findByText('Remove room #2')).toBeInTheDocument()
   })
 
@@ -192,32 +189,32 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     const modifyForm = ({form}: PersistedForm) => {
       const roomsData = new ComponentStore('roomsData', 'RsInput')
       form.children?.push(roomsData)
-      eachComponentStore(form, 'rooms', (componentStore) => {
+      eachComponentStore(form, 'rooms', componentStore => {
         componentStore.props.value = {
           value: [],
           computeType: 'function',
-          fnSource: 'return JSON.parse(form.data.roomsData ?? "[]")'
+          fnSource: 'return JSON.parse(form.data.roomsData ?? "[]")',
         }
       })
     }
 
     const initialData = {roomsData: '[{"roomType": "standard"}, {"roomType": "luxe"}]', rooms: []}
-    const {findAllByTestId, findByText, rerender} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
+    const {findAllByTestId, findByText, rerender} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData} />)
     expect(await findByText('Remove room #2')).toBeInTheDocument()
     await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['standard', 'luxe'])
 
     const newData = {roomsData: '[{"roomType": "luxe"}, {"roomType": "standard"}, {"roomType": "standard"}]', rooms: []}
-    rerender(<RepeaterFieldApp modifyForm={modifyForm} initialData={newData}/>)
+    rerender(<RepeaterFieldApp modifyForm={modifyForm} initialData={newData} />)
     await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['luxe', 'standard', 'standard'])
   })
 
   it('Repeater should have an updated initialData', async () => {
     const initialData = {rooms: [{roomType: 'standard'}]}
-    const {findAllByTestId, rerender} = render(<RepeaterFieldApp initialData={initialData}/>)
+    const {findAllByTestId, rerender} = render(<RepeaterFieldApp initialData={initialData} />)
     await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['standard'])
 
     const newData = {rooms: [{roomType: 'luxe'}]}
-    rerender(<RepeaterFieldApp initialData={newData}/>)
+    rerender(<RepeaterFieldApp initialData={newData} />)
     await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['luxe'])
   })
 
@@ -225,15 +222,15 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     const modifyForm = ({form}: PersistedForm) => {
       const resetButton = new ComponentStore('reset', 'RsButton')
       resetButton.props.children = {value: 'Reset'}
-      resetButton.events = {'onClick': [{'name': 'reset', 'type': 'common'}]}
+      resetButton.events = {onClick: [{name: 'reset', type: 'common'}]}
       form.children?.push(resetButton)
-      eachComponentStore(form, 'rooms', (componentStore) => {
-        componentStore.props.value = {value: [{'roomType': 'luxe'}]}
+      eachComponentStore(form, 'rooms', componentStore => {
+        componentStore.props.value = {value: [{roomType: 'luxe'}]}
       })
     }
 
     const initialData = {rooms: [{roomType: 'standard'}, {roomType: 'standard'}]}
-    const {findAllByTestId, findByText} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
+    const {findAllByTestId, findByText} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData} />)
     await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['standard', 'standard'])
 
     const resetButton = await findByText('Reset')
@@ -248,16 +245,16 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     const modifyForm = ({form}: PersistedForm) => {
       const clearButton = new ComponentStore('clear', 'RsButton')
       clearButton.props.children = {value: 'Clear'}
-      clearButton.events = {'onClick': [{'name': 'clear', 'type': 'common'}]}
+      clearButton.events = {onClick: [{name: 'clear', type: 'common'}]}
       form.children?.push(clearButton)
 
-      eachComponentStore(form, 'rooms', (componentStore) => {
-        componentStore.props.value = {value: [{'adults': '2'}, {'adults': '3'}]}
+      eachComponentStore(form, 'rooms', componentStore => {
+        componentStore.props.value = {value: [{adults: '2'}, {adults: '3'}]}
       })
     }
 
     const initialData = {rooms: [{adults: 5}]}
-    const {findByTestId, findByText, queryByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
+    const {findByTestId, findByText, queryByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData} />)
     expect(await findByTestId('adults')).toHaveValue('5')
 
     const clearButton = await findByText('Clear')
@@ -268,12 +265,12 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
   it('The value entered should override the default value', async () => {
     const modifyForm = ({form}: PersistedForm) => {
-      eachComponentStore(form, 'rooms', (componentStore) => {
+      eachComponentStore(form, 'rooms', componentStore => {
         componentStore.props.value = {value: [{}]}
       })
     }
 
-    const {findByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm}/>)
+    const {findByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} />)
     const adults = await findByTestId('adults')
     expect(adults).toHaveValue('1')
 
@@ -284,12 +281,12 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
   it('The value entered should override the computed value', async () => {
     const modifyForm = ({form}: PersistedForm) => {
-      eachComponentStore(form, 'rooms', (componentStore) => {
+      eachComponentStore(form, 'rooms', componentStore => {
         componentStore.props.value = {value: [{}], computeType: 'function', fnSource: 'return []'}
       })
     }
 
-    const {queryByTestId, getByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm}/>)
+    const {queryByTestId, getByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} />)
     expect(queryByTestId('adults')).not.toBeInTheDocument()
 
     const bookButton = getByTestId('bookButton')
@@ -305,14 +302,16 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
       const {value, ...otherProps} = props
       const componentData = useComponentData()
       componentDataSet.add(componentData)
-      return <span {...otherProps}>${componentData.id} {value ?? ''}</span>
+      return (
+        <span {...otherProps}>
+          ${componentData.id} {value ?? ''}
+        </span>
+      )
     }
 
-    const simpleComponent = define(SimpleComponent, 'SimpleComponent')
-      .category('test')
-      .props({
-        value: string.valued
-      })
+    const simpleComponent = define(SimpleComponent, 'SimpleComponent').category('test').props({
+      value: string.valued,
+    })
 
     const form: PersistedForm = {
       version: PersistedFormVersion.version1,
@@ -331,26 +330,26 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
                 key: 'name',
                 type: 'SimpleComponent',
                 props: {},
-                htmlAttributes: [{name: 'data-testid', value: 'test-component'}]
-              }
-            ]
-          }
-        ]
+                htmlAttributes: [{name: 'data-testid', value: 'test-component'}],
+              },
+            ],
+          },
+        ],
       },
       localization: {},
       languages: [],
-      defaultLanguage: ''
+      defaultLanguage: '',
     }
 
     const appView = createView([simpleComponent.build().model])
     const getForm = () => JSON.stringify(form)
 
     const App = ({initialData}: Partial<FormViewerProps>) => {
-      return <FormViewer view={appView} initialData={initialData} getForm={getForm}/>
+      return <FormViewer view={appView} initialData={initialData} getForm={getForm} />
     }
 
     const initialData = {testRepeater: [{name: 'test-1'}, {name: 'test-2'}]}
-    const {rerender, findAllByTestId} = render(<App initialData={initialData}/>)
+    const {rerender, findAllByTestId} = render(<App initialData={initialData} />)
 
     // here we check that the current ComponentData fields contain data from initialData
     const componentDataArray = Array.from(componentDataSet)
@@ -366,13 +365,12 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     expect(firstRenderComponents[1].innerHTML).contains('test-2')
 
     const newData = {testRepeater: [{name: 'test-3'}, {name: 'test-4'}, {name: 'test-5'}]}
-    rerender(<App initialData={newData}/>)
+    rerender(<App initialData={newData} />)
 
     // now we check that the current ComponentData fields contain the updated data from initialData,
     // including the new element
     expect(componentDataSet.size).toBe(5)
-    const newComponentDataArray = Array.from(componentDataSet)
-      .filter(cd => componentDataArray.indexOf(cd) === -1)
+    const newComponentDataArray = Array.from(componentDataSet).filter(cd => componentDataArray.indexOf(cd) === -1)
     const newFieldValues = newComponentDataArray.map(data => data.field?.value)
     expect(newComponentDataArray.length).toBe(3)
     expect(newFieldValues).contains('test-3')
@@ -400,7 +398,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
   it('The test form for Repeater should work correctly', async () => {
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
-    const rendered = render(<RepeaterFieldApp viewerRef={viewerRef}/>)
+    const rendered = render(<RepeaterFieldApp viewerRef={viewerRef} />)
     const {findByTestId, findAllByTestId, findByRole} = rendered
     const targetChildAge = ['12', '14', '15']
 
@@ -451,12 +449,14 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     expect(viewerRef.current).not.toBeNull()
     const actualFormData = JSON.stringify(viewerRef.current?.formData.data)
     const expectedData = {
-      rooms: [{
-        adults: 2,
-        children: 3,
-        childrenAges: [{childAge: targetChildAge[0]}, {childAge: targetChildAge[1]}, {childAge: targetChildAge[2]}],
-        names: [{firstName: 'Isra', lastName: 'Black'}, {}]
-      }]
+      rooms: [
+        {
+          adults: 2,
+          children: 3,
+          childrenAges: [{childAge: targetChildAge[0]}, {childAge: targetChildAge[1]}, {childAge: targetChildAge[2]}],
+          names: [{firstName: 'Isra', lastName: 'Black'}, {}],
+        },
+      ],
     }
     expect(actualFormData).toBe(JSON.stringify(expectedData))
 
@@ -481,22 +481,29 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
     const actualFormData2 = JSON.stringify(viewerRef.current?.formData.data)
     const expectedData2 = {
-      rooms: [{
-        adults: 2,
-        children: 2,
-        childrenAges: [{childAge: targetChildAge[0]}, {childAge: targetChildAge[1]}],
-        names: [{firstName: 'Isra', lastName: 'Black'}, {firstName: 'Vidomina', lastName: 'White'}]
-      }, {
-        adults: 1,
-        children: 1,
-        childrenAges: [{childAge: 'none'}],
-        names: [{firstName: 'Dessa', lastName: 'Green'}]
-      }, {
-        adults: 1,
-        children: 0,
-        childrenAges: [],
-        names: [{}],
-      }]
+      rooms: [
+        {
+          adults: 2,
+          children: 2,
+          childrenAges: [{childAge: targetChildAge[0]}, {childAge: targetChildAge[1]}],
+          names: [
+            {firstName: 'Isra', lastName: 'Black'},
+            {firstName: 'Vidomina', lastName: 'White'},
+          ],
+        },
+        {
+          adults: 1,
+          children: 1,
+          childrenAges: [{childAge: 'none'}],
+          names: [{firstName: 'Dessa', lastName: 'Green'}],
+        },
+        {
+          adults: 1,
+          children: 0,
+          childrenAges: [],
+          names: [{}],
+        },
+      ],
     }
     expect(actualFormData2).toBe(JSON.stringify(expectedData2))
 
@@ -505,17 +512,23 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
     const actualFormData3 = JSON.stringify(viewerRef.current?.formData.data)
     const expectedData3 = {
-      rooms: [{
-        adults: 2,
-        children: 2,
-        childrenAges: [{childAge: targetChildAge[0]}, {childAge: targetChildAge[1]}],
-        names: [{firstName: 'Isra', lastName: 'Black'}, {firstName: 'Vidomina', lastName: 'White'}]
-      }, {
-        adults: 1,
-        children: 0,
-        childrenAges: [],
-        names: [{}],
-      }]
+      rooms: [
+        {
+          adults: 2,
+          children: 2,
+          childrenAges: [{childAge: targetChildAge[0]}, {childAge: targetChildAge[1]}],
+          names: [
+            {firstName: 'Isra', lastName: 'Black'},
+            {firstName: 'Vidomina', lastName: 'White'},
+          ],
+        },
+        {
+          adults: 1,
+          children: 0,
+          childrenAges: [],
+          names: [{}],
+        },
+      ],
     }
     expect(actualFormData3).toBe(JSON.stringify(expectedData3))
 

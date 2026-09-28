@@ -8,8 +8,8 @@ import {fluentLanguageId} from './consts'
 import {
   buildLocalizationEditorKey,
   createLocalizationTestingFunction,
-  resolveValidateBeforeSave,
   resolveLocalizationStoreValue,
+  resolveValidateBeforeSave,
 } from './localizationEditorUtils'
 
 /**
@@ -43,26 +43,33 @@ export const useLocalizationEditor = ({editableProperty}: UseLocalizationEditorP
   const beginContextLine = `${localizationStringId} = `
   const editorKey = buildLocalizationEditorKey(editableProperty.annotation.key, language.fullCode)
 
-  const applyLocalization = useCallback((next: string) => {
-    editableProperty.setComputeCode(next, 'localization', {langCode: language.fullCode})
-  }, [editableProperty, language.fullCode])
+  const applyLocalization = useCallback(
+    (next: string) => {
+      editableProperty.setComputeCode(next, 'localization', {langCode: language.fullCode})
+    },
+    [editableProperty, language.fullCode]
+  )
 
-  const handleLanguageSelect = useCallback((selectedLanguage: Language) => {
-    builderStore.applyDesignerLanguageSelection(selectedLanguage)
-  }, [builderStore])
+  const handleLanguageSelect = useCallback(
+    (selectedLanguage: Language) => {
+      builderStore.applyDesignerLanguageSelection(selectedLanguage)
+    },
+    [builderStore]
+  )
 
   const handleClear = useCallback(() => {
     applyLocalization('')
   }, [applyLocalization])
 
   const onCompile = useCallback(
-    (sourceCode: string, formData: IFormData) => createLocalizationTestingFunction({
-      testLocalization: locEngine.testLocalization?.bind(locEngine),
-      getEditorValueForSave: () => sourceCode,
-      localizationStringId,
-      language,
-    })(formData),
-    [language, locEngine, localizationStringId],
+    (sourceCode: string, formData: IFormData) =>
+      createLocalizationTestingFunction({
+        testLocalization: locEngine.testLocalization?.bind(locEngine),
+        getEditorValueForSave: () => sourceCode,
+        localizationStringId,
+        language,
+      })(formData),
+    [language, locEngine, localizationStringId]
   )
 
   const genericCodeEditorProps: LocalizationGenericCodeEditorProps = {

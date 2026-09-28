@@ -30,7 +30,7 @@ export interface GenericCodeEditorProps {
   /**
    * Language mode.
    */
-  language?: CodeEditorLanguage;
+  language?: CodeEditorLanguage
   /**
    * The source code.
    */
@@ -106,15 +106,16 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
   const showTestingEditor = !props.compact
   const testFormData = props.initialTestData ?? formData.data
 
-  const resolveSourceForSave = useCallback((fallbackSource: string) => {
-    return getSourceForSave?.(fallbackSource) ?? fallbackSource
-  }, [getSourceForSave])
+  const resolveSourceForSave = useCallback(
+    (fallbackSource: string) => {
+      return getSourceForSave?.(fallbackSource) ?? fallbackSource
+    },
+    [getSourceForSave]
+  )
 
   const handleSave = useCallback(() => {
     const valueToSave = resolveSourceForSave(sourceCode)
-    const testResult = validateBeforeSave?.(valueToSave) === 'skip-test'
-      ? undefined
-      : testingEditor.current.test?.()
+    const testResult = validateBeforeSave?.(valueToSave) === 'skip-test' ? undefined : testingEditor.current.test?.()
     if (resolveGenericCodeEditorSave(valueToSave, {validateBeforeSave, testResult}) === 'abort') return
 
     action(() => onSave(valueToSave))()
@@ -129,7 +130,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
 
   const testingFunction = useCallback(
     (formData: IFormData) => onCompile(resolveSourceForSave(sourceCode), formData),
-    [onCompile, resolveSourceForSave, sourceCode],
+    [onCompile, resolveSourceForSave, sourceCode]
   )
 
   const handleClose = useCallback(() => props.onClose(), [props])
@@ -137,28 +138,30 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
   return (
     <Columns className={styles.columns}>
       <Rows className={styles.rows}>
-        <CodeEditor key={props.editorKey}
-                    beginContextLine={props.beginContextLine}
-                    endContextLine={props.endContextLine}
-                    canEditBeginContextLine={props.canEditBeginContextLine}
-                    initialValue={initialValue}
-                    language={props.language}
-                    onMount={props.onEditorMount}
-                    onChange={setSourceCode}/>
+        <CodeEditor
+          key={props.editorKey}
+          beginContextLine={props.beginContextLine}
+          endContextLine={props.endContextLine}
+          canEditBeginContextLine={props.canEditBeginContextLine}
+          initialValue={initialValue}
+          language={props.language}
+          onMount={props.onEditorMount}
+          onChange={setSourceCode}
+        />
         <div className={styles.toolbar}>
           <ButtonGroup size={'sm'}>
-            <Button appearance="primary" onClick={handleSave} data-testid={'save-code-action-button'}>{t('common.save')}</Button>
-            <Button appearance="ghost" onClick={handleClose}>{t('common.close')}</Button>
+            <Button appearance="primary" onClick={handleSave} data-testid={'save-code-action-button'}>
+              {t('common.save')}
+            </Button>
+            <Button appearance="ghost" onClick={handleClose}>
+              {t('common.close')}
+            </Button>
           </ButtonGroup>
-          <div className={styles.extra}>
-            {props.toolbarExtra}
-          </div>
-          {props.compact && <TestRunner testingFunction={testingFunction} ref={testingEditor} compact/>}
+          <div className={styles.extra}>{props.toolbarExtra}</div>
+          {props.compact && <TestRunner testingFunction={testingFunction} ref={testingEditor} compact />}
         </div>
       </Rows>
-      {showTestingEditor &&
-        <TestingEditor initialData={testFormData} testingFunction={testingFunction} ref={testingEditor}/>
-      }
+      {showTestingEditor && <TestingEditor initialData={testFormData} testingFunction={testingFunction} ref={testingEditor} />}
     </Columns>
   )
 }

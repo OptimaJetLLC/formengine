@@ -3,8 +3,7 @@ import type {ComponentPropsWithoutRef, CSSProperties} from 'react'
 /**
  * The Signature pad properties.
  */
-export interface SignatureProps
-  extends Omit<ComponentPropsWithoutRef<'canvas'>, 'width' | 'height' | 'onChange'> {
+export interface SignatureProps extends Omit<ComponentPropsWithoutRef<'canvas'>, 'width' | 'height' | 'onChange'> {
   /**
    * The initial data URL for drawing the signature image.
    */

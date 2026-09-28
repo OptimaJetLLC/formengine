@@ -14,28 +14,34 @@ const RawCustomValidationCodeEditor = (props: CustomValidationCode) => {
   const endContextLine = '}'
 
   const handleClose = useCallback(() => builderStore.closeCurrentEditable(), [builderStore])
-  const handleCompile = useCallback((value: string) => {
-    const source = `${beginContextLine}\n${value}\n${endContextLine}`
-    try {
-      AsyncFunction(source)
-      return CalculableResult.success(t('testingEditor.compilationOk'))
-    } catch (e) {
-      return CalculableResult.error([e as Error])
-    }
-  }, [beginContextLine, endContextLine, t])
+  const handleCompile = useCallback(
+    (value: string) => {
+      const source = `${beginContextLine}\n${value}\n${endContextLine}`
+      try {
+        AsyncFunction(source)
+        return CalculableResult.success(t('testingEditor.compilationOk'))
+      } catch (e) {
+        return CalculableResult.error([e as Error])
+      }
+    },
+    [beginContextLine, endContextLine, t]
+  )
 
-  return <>
-    <Header>{`${t('validation.editCustomValidationCode')} '${props.editorKey}'`}</Header>
-    <GenericCodeEditor key={props.editorKey}
-                       beginContextLine={beginContextLine}
-                       endContextLine={endContextLine}
-                       source={props.code}
-                       onSave={props.onSave}
-                       onClose={handleClose}
-                       onCompile={handleCompile}
-                       compact
-    />
-  </>
+  return (
+    <>
+      <Header>{`${t('validation.editCustomValidationCode')} '${props.editorKey}'`}</Header>
+      <GenericCodeEditor
+        key={props.editorKey}
+        beginContextLine={beginContextLine}
+        endContextLine={endContextLine}
+        source={props.code}
+        onSave={props.onSave}
+        onClose={handleClose}
+        onCompile={handleCompile}
+        compact
+      />
+    </>
+  )
 }
 
 export const CustomValidationCodeEditor = namedObserver('CustomValidationCodeEditor', RawCustomValidationCodeEditor)

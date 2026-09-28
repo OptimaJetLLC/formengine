@@ -4,7 +4,7 @@ import type {IconProps} from '@rsuite/icons/Icon'
 import cx from 'clsx'
 import type {ReactElement} from 'react'
 import {useCallback} from 'react'
-import {Checkbox, IconButton, Input as RsInput, InputNumber, InputPicker, Table} from 'rsuite'
+import {Checkbox, IconButton, InputNumber, InputPicker, Input as RsInput, Table} from 'rsuite'
 import type {RowDataType} from 'rsuite-table/lib'
 import type {InnerCellProps} from 'rsuite-table/lib/Cell.js'
 import styles from './CustomCells.module.css'
@@ -16,7 +16,7 @@ const setRowDataField = (rowData: RowDataType, dataKey: string | number, value: 
 }
 
 const SCell = (props: InnerCellProps<RowDataType, string | number>) => (
-  <Cell<RowDataType, string | number> {...props} className={cx(styles.cell, props.className)}/>
+  <Cell<RowDataType, string | number> {...props} className={cx(styles.cell, props.className)} />
 )
 
 /**
@@ -34,14 +34,17 @@ export const InputCell = ({rowData, dataKey, rowIndex, onChange, type, ...props}
   const value = rowData[dataKey] ?? ''
   const Input = isNumber(type) ? InputNumber : RsInput
 
-  const handleChange = useCallback((newValue: any) => {
-    setRowDataField(rowData, dataKey, newValue)
-    onChange?.(newValue, dataKey, rowIndex)
-  }, [dataKey, onChange, rowData, rowIndex])
+  const handleChange = useCallback(
+    (newValue: any) => {
+      setRowDataField(rowData, dataKey, newValue)
+      onChange?.(newValue, dataKey, rowIndex)
+    },
+    [dataKey, onChange, rowData, rowIndex]
+  )
 
   return (
     <SCell {...props}>
-      <Input value={value} onChange={handleChange} size="sm"/>
+      <Input value={value} onChange={handleChange} size="sm" />
     </SCell>
   )
 }
@@ -59,14 +62,17 @@ export const InputCell = ({rowData, dataKey, rowIndex, onChange, type, ...props}
 export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellProps) => {
   const checked = rowData[dataKey] ?? false
 
-  const handleChange = useCallback((_: any, checked: boolean) => {
-    setRowDataField(rowData, dataKey, checked)
-    onChange?.(checked, dataKey, rowIndex)
-  }, [dataKey, onChange, rowData, rowIndex])
+  const handleChange = useCallback(
+    (_: any, checked: boolean) => {
+      setRowDataField(rowData, dataKey, checked)
+      onChange?.(checked, dataKey, rowIndex)
+    },
+    [dataKey, onChange, rowData, rowIndex]
+  )
 
   return (
     <SCell {...props}>
-      <Checkbox className={styles.checkbox} inline checked={checked} onChange={handleChange}/>
+      <Checkbox className={styles.checkbox} inline checked={checked} onChange={handleChange} />
     </SCell>
   )
 }
@@ -85,20 +91,25 @@ export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: Inpu
 export const SelectCell = ({rowData, dataKey, rowIndex, options, onChange, ...props}: SelectCellProps) => {
   const value = rowData[dataKey] ?? ''
 
-  const handleChange = useCallback((value: any) => {
-    setRowDataField(rowData, dataKey, value)
-    onChange?.(value, dataKey, rowIndex)
-  }, [dataKey, onChange, rowData, rowIndex])
+  const handleChange = useCallback(
+    (value: any) => {
+      setRowDataField(rowData, dataKey, value)
+      onChange?.(value, dataKey, rowIndex)
+    },
+    [dataKey, onChange, rowData, rowIndex]
+  )
 
   return (
     <SCell {...props}>
-      <InputPicker value={value}
-                   data={options}
-                   onChange={handleChange}
-                   cleanable={false}
-                   creatable={true}
-                   block size="sm"
-                   placement="auto"
+      <InputPicker
+        value={value}
+        data={options}
+        onChange={handleChange}
+        cleanable={false}
+        creatable={true}
+        block
+        size="sm"
+        placement="auto"
       />
     </SCell>
   )
@@ -119,11 +130,7 @@ export const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: Action
 
   return (
     <SCell {...props}>
-      <IconButton
-        appearance="subtle" size="sm"
-        onClick={onClick}
-        icon={icon}
-      />
+      <IconButton appearance="subtle" size="sm" onClick={onClick} icon={icon} />
     </SCell>
   )
 }

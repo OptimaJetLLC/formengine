@@ -7,36 +7,36 @@ import {renderBuilder} from '../util/renderBuilder'
 const view = new BuilderView(rSuiteComponents.map(c => c.build()))
 
 const form = {
-  'version': '1',
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'props': {},
-    'children': [
+  version: '1',
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    children: [
       {
-        'key': 'rsButton1',
-        'type': 'RsButton',
-        'props': {},
-        'htmlAttributes': [
+        key: 'rsButton1',
+        type: 'RsButton',
+        props: {},
+        htmlAttributes: [
           {
-            'name': 'data-testid',
-            'value': 'test-button'
-          }
-        ]
-      }
-    ]
+            name: 'data-testid',
+            value: 'test-button',
+          },
+        ],
+      },
+    ],
   },
-  'localization': {},
-  'languages': [
+  localization: {},
+  languages: [
     {
-      'code': 'en',
-      'dialect': 'US',
-      'name': 'English',
-      'description': 'American English',
-      'bidi': 'ltr'
-    }
+      code: 'en',
+      dialect: 'US',
+      name: 'English',
+      description: 'American English',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'en-US'
+  defaultLanguage: 'en-US',
 }
 
 const getForm = () => JSON.stringify(form)
@@ -57,10 +57,9 @@ const enUSLang = {
   bidi: 'ltr',
 }
 
-
 describe(`Changing the designer's language`, function () {
-  it('Changing the designer\'s language should switch the interface language and component language', async () => {
-    const {findByTestId, findAllByTestId, findByText, container} = render(<FormBuilder view={view} getForm={getForm}/>)
+  it("Changing the designer's language should switch the interface language and component language", async () => {
+    const {findByTestId, findAllByTestId, findByText, container} = render(<FormBuilder view={view} getForm={getForm} />)
 
     // ok, the form is rendered
     expect(await findByTestId('test-button')).toBeInTheDocument()
@@ -98,7 +97,7 @@ describe(`Changing the designer's language`, function () {
   })
 
   it('Current language is set as active', async () => {
-    const {findByTestId, container} = render(<FormBuilder view={view} getForm={getForm}/>)
+    const {findByTestId, container} = render(<FormBuilder view={view} getForm={getForm} />)
 
     const htmlElement = container.parentElement?.parentElement
     const currentLang = htmlElement?.getAttribute('lang') ?? 'en-US'
@@ -130,7 +129,7 @@ describe(`Changing the designer's language`, function () {
     await waitFor(() => expect(nextLangItem).toHaveAttribute('aria-checked', 'true'))
   })
 
-  it('Changing the designer\'s language should trigger onBuilderLanguageChange', async () => {
+  it("Changing the designer's language should trigger onBuilderLanguageChange", async () => {
     const onBuilderLanguageChange = vi.fn()
     const {findByTestId, container} = await renderBuilder(form, {onBuilderLanguageChange})
 
@@ -162,7 +161,7 @@ describe(`Changing the designer's language`, function () {
     expect(language).toEqual(expectedLanguage)
   })
 
-  it('Changing the forms\'s language should trigger onViewerLanguageChange', async () => {
+  it("Changing the forms's language should trigger onViewerLanguageChange", async () => {
     const onViewerLanguageChange = vi.fn()
     const {findByTestId} = await renderBuilder(form, {onViewerLanguageChange})
 

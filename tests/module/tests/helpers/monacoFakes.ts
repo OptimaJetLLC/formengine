@@ -1,8 +1,8 @@
 import type {Monaco} from '@monaco-editor/react'
 import {vi} from 'vitest'
 
-type Position = { lineNumber: number; column: number }
-type CursorChange = { position: Position; source?: string }
+type Position = {lineNumber: number; column: number}
+type CursorChange = {position: Position; source?: string}
 
 export function getPositionAtFromText(text: string, offset: number): Position {
   const before = text.slice(0, offset)
@@ -42,17 +42,15 @@ class FakeRange {
     return a.column - b.column
   }
 
-  public containsRange(other: { startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number }): boolean {
+  public containsRange(other: {startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number}): boolean {
     const startOk =
       this.compare(
         {lineNumber: other.startLineNumber, column: other.startColumn},
         {lineNumber: this.startLineNumber, column: this.startColumn}
       ) >= 0
     const endOk =
-      this.compare(
-        {lineNumber: other.endLineNumber, column: other.endColumn},
-        {lineNumber: this.endLineNumber, column: this.endColumn}
-      ) <= 0
+      this.compare({lineNumber: other.endLineNumber, column: other.endColumn}, {lineNumber: this.endLineNumber, column: this.endColumn}) <=
+      0
     return startOk && endOk
   }
 }
@@ -65,12 +63,12 @@ export function createFakeMonaco(): Monaco {
   } as unknown as Monaco
 }
 
-type ContentChange = { range: { startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number } }
+type ContentChange = {range: {startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number}}
 
 export function createFakeModel(initialText: string) {
   let text = initialText
   const undoStack: string[] = []
-  const contentListeners: Array<(event: { changes: ContentChange[] }) => void> = []
+  const contentListeners: Array<(event: {changes: ContentChange[]}) => void> = []
   const undoSpy = vi.fn()
 
   return {
@@ -78,15 +76,12 @@ export function createFakeModel(initialText: string) {
     setValue: (next: string) => {
       undoStack.push(text)
       text = next
-      contentListeners.forEach((fn) =>
-        fn({changes: [{range: {startLineNumber: 1, startColumn: 1, endLineNumber: 1, endColumn: 1}}]})
-      )
+      contentListeners.forEach(fn => fn({changes: [{range: {startLineNumber: 1, startColumn: 1, endLineNumber: 1, endColumn: 1}}]}))
     },
-    onDidChangeContent: (listener: (event: { changes: ContentChange[] }) => void) => {
+    onDidChangeContent: (listener: (event: {changes: ContentChange[]}) => void) => {
       contentListeners.push(listener)
       return {
-        dispose: () => {
-        }
+        dispose: () => {},
       }
     },
     undo: () => {
@@ -105,22 +100,25 @@ export function createFakeModel(initialText: string) {
         endColumn: (lines[lines.length - 1]?.length ?? 0) + 1,
       }
     },
-    getValueInRange: (range: { startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number }) => {
+    getValueInRange: (range: {startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number}) => {
       const startOffset = getOffsetAtFromText(text, {lineNumber: range.startLineNumber, column: range.startColumn})
       const endOffset = getOffsetAtFromText(text, {lineNumber: range.endLineNumber, column: range.endColumn})
       return text.slice(startOffset, endOffset)
     },
-    applyChangeInRange: (range: {
-      startLineNumber: number;
-      startColumn: number;
-      endLineNumber: number;
-      endColumn: number
-    }, insertedText: string) => {
+    applyChangeInRange: (
+      range: {
+        startLineNumber: number
+        startColumn: number
+        endLineNumber: number
+        endColumn: number
+      },
+      insertedText: string
+    ) => {
       undoStack.push(text)
       const startOffset = getOffsetAtFromText(text, {lineNumber: range.startLineNumber, column: range.startColumn})
       const endOffset = getOffsetAtFromText(text, {lineNumber: range.endLineNumber, column: range.endColumn})
       text = text.slice(0, startOffset) + insertedText + text.slice(endOffset)
-      contentListeners.forEach((fn) => fn({changes: [{range}]}))
+      contentListeners.forEach(fn => fn({changes: [{range}]}))
     },
     __undoSpy: undoSpy,
   }
@@ -132,8 +130,8 @@ export function createFakeEditor(model: any) {
   const keyDownListeners: Array<(e: any) => void> = []
   let selection:
     | null
-    | { isEmpty: () => boolean }
-    | { startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number; isEmpty: () => boolean } = null
+    | {isEmpty: () => boolean}
+    | {startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number; isEmpty: () => boolean} = null
   let position: Position | null = null
 
   return {
@@ -148,15 +146,13 @@ export function createFakeEditor(model: any) {
     onDidChangeCursorPosition: (listener: (e: CursorChange) => void) => {
       cursorListeners.push(listener)
       return {
-        dispose: () => {
-        }
+        dispose: () => {},
       }
     },
     onKeyDown: (listener: (e: any) => void) => {
       keyDownListeners.push(listener)
       return {
-        dispose: () => {
-        }
+        dispose: () => {},
       }
     },
     setPosition: (pos: Position) => {
@@ -164,9 +160,9 @@ export function createFakeEditor(model: any) {
     },
     getPosition: () => position,
     emitCursor: (pos: Position) => {
-      cursorListeners.forEach((fn) => fn({position: pos, source: 'test'}))
+      cursorListeners.forEach(fn => fn({position: pos, source: 'test'}))
     },
-    setSelection: (next: { startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number }) => {
+    setSelection: (next: {startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number}) => {
       selection = {
         ...next,
         isEmpty: () => next.startLineNumber === next.endLineNumber && next.startColumn === next.endColumn,
@@ -175,9 +171,8 @@ export function createFakeEditor(model: any) {
     getSelection: () => selection as any,
     getSelections: () => [],
     emitKeyDown: (event: any) => {
-      keyDownListeners.forEach((fn) => fn(event))
+      keyDownListeners.forEach(fn => fn(event))
     },
     focus: vi.fn(),
   }
 }
-

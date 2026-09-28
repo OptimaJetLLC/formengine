@@ -7,7 +7,7 @@ import type {ItemType} from '../../../consts'
 import {useConnectAsRef} from './useConnectAsRef'
 
 interface DragState {
-  isDragging: boolean,
+  isDragging: boolean
 }
 
 /**
@@ -17,10 +17,14 @@ interface DragState {
  */
 export const useDragWithPreview = (type: ItemType): [DragState, RefCallback<HTMLElement>] => {
   const item = useComponentData()
-  const [state, drag, preview] = useDrag(() => ({
-    type, item,
-    collect: (monitor) => ({isDragging: monitor.isDragging()}),
-  }), [])
+  const [state, drag, preview] = useDrag(
+    () => ({
+      type,
+      item,
+      collect: monitor => ({isDragging: monitor.isDragging()}),
+    }),
+    []
+  )
 
   useEffect(() => {
     preview(getEmptyImage())

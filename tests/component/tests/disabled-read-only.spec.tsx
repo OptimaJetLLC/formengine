@@ -21,56 +21,56 @@ const getPatchedForm = (path?: (form: PersistedForm, name?: string) => void) => 
 const getForm = getPatchedForm()
 
 const App = (props: Partial<FormViewerProps>) => {
-  return <FormViewer view={viewWithCss} getForm={getForm} {...props}/>
+  return <FormViewer view={viewWithCss} getForm={getForm} {...props} />
 }
 
 describe('Tests for read-only and disabled properties', () => {
-  it('All inputs should have a read-only state if the FormViewer\'s readOnly property is enabled', async () => {
-    const {findAllByTestId, rerender} = render(<App readOnly={true}/>)
+  it("All inputs should have a read-only state if the FormViewer's readOnly property is enabled", async () => {
+    const {findAllByTestId, rerender} = render(<App readOnly={true} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs).toAllHaveExactAttributes('readonly', ['', '', '', '', ''])
 
-    rerender(<App/>)
+    rerender(<App />)
 
     expect(inputs).toAllHaveExactAttributes('readonly', [null, null, null, null, null])
   })
 
-  it('All inputs should have a disabled state if the FormViewer\'s disabled property is enabled', async () => {
-    const {findAllByTestId, rerender} = render(<App disabled={true}/>)
+  it("All inputs should have a disabled state if the FormViewer's disabled property is enabled", async () => {
+    const {findAllByTestId, rerender} = render(<App disabled={true} />)
 
     const inputs = await findAllByTestId('test-input')
 
     expect(inputs).toAllHaveExactAttributes('disabled', ['', '', '', '', ''])
 
-    rerender(<App disabled={false}/>)
+    rerender(<App disabled={false} />)
 
     expect(inputs).toAllHaveExactAttributes('disabled', [null, null, null, null, null])
   })
 
-  it('All inputs should have a read-only state if the Screen\'s readOnly property is enabled', async () => {
+  it("All inputs should have a read-only state if the Screen's readOnly property is enabled", async () => {
     const getForm = getPatchedForm(({form}, name) => {
       if (!name) form.props.readOnly = {value: true}
     })
 
-    const {findAllByTestId} = render(<App getForm={getForm}/>)
+    const {findAllByTestId} = render(<App getForm={getForm} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs).toAllHaveExactAttributes('readonly', ['', '', '', '', ''])
   })
 
-  it('All inputs should have a disabled state if the Screen\'s disabled property is enabled', async () => {
+  it("All inputs should have a disabled state if the Screen's disabled property is enabled", async () => {
     const getForm = getPatchedForm(({form}, name) => {
       if (!name) form.props.disabled = {value: true}
     })
 
-    const {findAllByTestId} = render(<App getForm={getForm}/>)
+    const {findAllByTestId} = render(<App getForm={getForm} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs).toAllHaveExactAttributes('disabled', ['', '', '', '', ''])
   })
 
-  it('Input should have a read-only state if the container\'s readOnly property is enabled', async () => {
+  it("Input should have a read-only state if the container's readOnly property is enabled", async () => {
     const getForm = getPatchedForm(({form}, name) => {
       if (name) return
       form.children?.forEach(child => {
@@ -78,14 +78,14 @@ describe('Tests for read-only and disabled properties', () => {
       })
     })
 
-    const {findAllByTestId} = render(<App getForm={getForm}/>)
+    const {findAllByTestId} = render(<App getForm={getForm} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs[3]).toHaveAttribute('data-testkey', 'rsInput1')
     expect(inputs).toAllHaveExactAttributes('readonly', [null, null, null, '', null])
   })
 
-  it('Input should have a disabled state if the container\'s disabled property is enabled', async () => {
+  it("Input should have a disabled state if the container's disabled property is enabled", async () => {
     const getForm = getPatchedForm(({form}, name) => {
       if (name) return
       form.children?.forEach(child => {
@@ -93,14 +93,14 @@ describe('Tests for read-only and disabled properties', () => {
       })
     })
 
-    const {findAllByTestId} = render(<App getForm={getForm}/>)
+    const {findAllByTestId} = render(<App getForm={getForm} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs[3]).toHaveAttribute('data-testkey', 'rsInput1')
     expect(inputs).toAllHaveExactAttributes('disabled', [null, null, null, '', null])
   })
 
-  it('Template\'s inputs should have a read-only state if the template\'s readOnly property is enabled', async () => {
+  it("Template's inputs should have a read-only state if the template's readOnly property is enabled", async () => {
     const getForm = getPatchedForm(({form}, name) => {
       if (name) return
       form.children?.forEach(child => {
@@ -108,7 +108,7 @@ describe('Tests for read-only and disabled properties', () => {
       })
     })
 
-    const {findAllByTestId} = render(<App getForm={getForm}/>)
+    const {findAllByTestId} = render(<App getForm={getForm} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs[0]).toHaveAttribute('data-testkey', 'inputInSlot')
@@ -117,7 +117,7 @@ describe('Tests for read-only and disabled properties', () => {
     expect(inputs).toAllHaveExactAttributes('readonly', ['', '', '', null, null])
   })
 
-  it('Template\'s inputs should have a disabled state if the template\'s disabled property is enabled', async () => {
+  it("Template's inputs should have a disabled state if the template's disabled property is enabled", async () => {
     const getForm = getPatchedForm(({form}, name) => {
       if (name) return
       form.children?.forEach(child => {
@@ -125,7 +125,7 @@ describe('Tests for read-only and disabled properties', () => {
       })
     })
 
-    const {findAllByTestId} = render(<App getForm={getForm}/>)
+    const {findAllByTestId} = render(<App getForm={getForm} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs[0]).toHaveAttribute('data-testkey', 'inputInSlot')
@@ -139,7 +139,7 @@ describe('Tests for read-only and disabled properties', () => {
       if (!name) form.props.readOnly = {value: false}
     })
 
-    const {findAllByTestId} = render(<App getForm={getForm} readOnly={true}/>)
+    const {findAllByTestId} = render(<App getForm={getForm} readOnly={true} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs).toAllHaveExactAttributes('readonly', ['', '', '', '', ''])
@@ -150,7 +150,7 @@ describe('Tests for read-only and disabled properties', () => {
       if (!name) form.props.disabled = {value: false}
     })
 
-    const {findAllByTestId} = render(<App getForm={getForm} disabled={true}/>)
+    const {findAllByTestId} = render(<App getForm={getForm} disabled={true} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs).toAllHaveExactAttributes('disabled', ['', '', '', '', ''])
@@ -169,7 +169,7 @@ describe('Tests for read-only and disabled properties', () => {
       })
     })
 
-    const {findAllByTestId} = render(<App getForm={getForm}/>)
+    const {findAllByTestId} = render(<App getForm={getForm} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs[3]).toHaveAttribute('data-testkey', 'rsInput1')
@@ -189,7 +189,7 @@ describe('Tests for read-only and disabled properties', () => {
       })
     })
 
-    const {findAllByTestId} = render(<App getForm={getForm}/>)
+    const {findAllByTestId} = render(<App getForm={getForm} />)
 
     const inputs = await findAllByTestId('test-input')
     expect(inputs[3]).toHaveAttribute('data-testkey', 'rsInput1')

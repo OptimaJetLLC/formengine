@@ -5,7 +5,7 @@ import {HintedIconButton} from '../annotation-editors/Hinted'
 import {useTranslationPart} from '../localization/hooks'
 import {FaIcon} from './Icons'
 
-const editButtonIcon = <FaIcon icon={faMarker}/>
+const editButtonIcon = <FaIcon icon={faMarker} />
 
 /**
  * The React form builder component that displays a button with a tooltip and a edit icon.
@@ -16,10 +16,10 @@ const editButtonIcon = <FaIcon icon={faMarker}/>
 export const EditButton = (props: ComponentProps<any>) => {
   const t = useTranslationPart('common')
 
-  return <HintedIconButton hint={t('edit')} icon={editButtonIcon} {...props}/>
+  return <HintedIconButton hint={t('edit')} icon={editButtonIcon} {...props} />
 }
 
-const cloneButtonIcon = <Copy/>
+const cloneButtonIcon = <Copy />
 
 /**
  * The React form builder component that displays a button with a tooltip and a clone icon.
@@ -30,10 +30,10 @@ const cloneButtonIcon = <Copy/>
 export const CloneButton = (props: ComponentProps<any>) => {
   const t = useTranslationPart('common')
 
-  return <HintedIconButton hint={t('clone')} icon={cloneButtonIcon} {...props}/>
+  return <HintedIconButton hint={t('clone')} icon={cloneButtonIcon} {...props} />
 }
 
-const removeButtonIcon = <Close/>
+const removeButtonIcon = <Close />
 
 /**
  * The React form builder component that displays a button with a tooltip and a delete icon.
@@ -44,5 +44,5 @@ const removeButtonIcon = <Close/>
 export const RemoveButton = (props: ComponentProps<any>) => {
   const t = useTranslationPart('common')
 
-  return <HintedIconButton hint={t('remove')} icon={removeButtonIcon} {...props}/>
+  return <HintedIconButton hint={t('remove')} icon={removeButtonIcon} {...props} />
 }

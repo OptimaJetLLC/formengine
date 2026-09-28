@@ -32,7 +32,7 @@ async function verify(data: string, signature: Uint8Array<ArrayBuffer>, publicKe
   return await globalThis.crypto.subtle.verify(
     {
       name: 'ECDSA',
-      hash: {name: 'SHA-384'}
+      hash: {name: 'SHA-384'},
     },
     publicKey,
     signature,
@@ -114,10 +114,8 @@ export async function extractLicenseKey(licenseKey: string): Promise<LicenseData
     const parsedData = JSON.parse(extractedData) as LicenseData
 
     // v1 - legacy license, StrictCheck only
-    parsedData.version = (
-      Object.keys(parsedData.restrictions).length === 1
-      && !isUndefined(parsedData.restrictions.StrictCheck)
-    ) ? 'v1' : 'v2'
+    parsedData.version =
+      Object.keys(parsedData.restrictions).length === 1 && !isUndefined(parsedData.restrictions.StrictCheck) ? 'v1' : 'v2'
 
     const {licenseEndDate, companyName} = parsedData
     const dateParts = licenseEndDate.split('.')

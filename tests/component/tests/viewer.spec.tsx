@@ -4,7 +4,7 @@ import {Viewer} from '../../common/lib/viewer/Viewer'
 
 describe('Component Viewer', function () {
   it('should render', async () => {
-    const {container, findByTestId} = render(<Viewer/>)
+    const {container, findByTestId} = render(<Viewer />)
 
     // ensure that the form is rendered
     expect(await findByTestId('password')).toBeInTheDocument()

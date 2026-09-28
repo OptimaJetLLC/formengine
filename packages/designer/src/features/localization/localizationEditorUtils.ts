@@ -72,7 +72,7 @@ export const buildConstrainedLocalizationDocument = (beginContextLine: string, f
 export const getLocalizationEditorSaveValue = (
   modelValue: string | undefined | null,
   fallbackValue: string,
-  beginContextLine: string,
+  beginContextLine: string
 ): string => {
   if (typeof modelValue !== 'string') return fallbackValue
   return normalizeLocalizationEditorValue(modelValue, beginContextLine)
@@ -116,7 +116,7 @@ export type ValidateBeforeSaveResult = 'skip-test' | 'continue'
  */
 export const resolveCodeEditorSaveAction = (
   extractedBody: string,
-  testResult?: Pick<CalculableResult, 'error' | 'exceptions'>,
+  testResult?: Pick<CalculableResult, 'error' | 'exceptions'>
 ): CodeEditorSaveAction => {
   if (isWhitespaceOnlyLocalizationValue(extractedBody)) return 'save'
   if (testResult?.error || testResult?.exceptions) return 'abort'
@@ -145,7 +145,7 @@ export const resolveGenericCodeEditorSave = (
   options?: {
     validateBeforeSave?: (value: string) => ValidateBeforeSaveResult
     testResult?: Pick<CalculableResult, 'error' | 'exceptions'>
-  },
+  }
 ): CodeEditorSaveAction => {
   const skipTest = options?.validateBeforeSave?.(valueToSave) === 'skip-test'
   const testResult = skipTest ? undefined : options?.testResult
@@ -172,12 +172,7 @@ export const createLocalizationTestingFunction = (params: {
       return CalculableResultFactory.success('Localization testing function is missing')
     }
 
-    const result = params.testLocalization(
-      params.getEditorValueForSave(),
-      params.localizationStringId,
-      params.language,
-      formData,
-    )
+    const result = params.testLocalization(params.getEditorValueForSave(), params.localizationStringId, params.language, formData)
 
     return toLocalizationTestCalculableResult(result)
   }

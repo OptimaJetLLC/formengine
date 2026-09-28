@@ -15,7 +15,7 @@ export function useCalculatedEditorProps(annotation: Annotation, componentData: 
     const {calculateEditorProps, ...editorProps} = annotation.editorProps ?? {}
     return {
       ...editorProps,
-      ...calculateEditorProps?.(calculatedComponentProps)
+      ...calculateEditorProps?.(calculatedComponentProps),
     }
   }, [annotation.editorProps, calculatedComponentProps])
 }

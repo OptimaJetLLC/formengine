@@ -17,8 +17,12 @@ export const SimpleValueEditor = ({editableProperty, onClose}: CalculableCodeEdi
     <Rows>
       <div className={styles.placeholder}>{t('bottomPanel.simpleValueHint')}</div>
       <ButtonGroup size={'sm'}>
-        <Button appearance="ghost" onClick={editableProperty.disableCompute}>{t('common.save')}</Button>
-        <Button appearance="ghost" onClick={onClose}>{t('common.close')}</Button>
+        <Button appearance="ghost" onClick={editableProperty.disableCompute}>
+          {t('common.save')}
+        </Button>
+        <Button appearance="ghost" onClick={onClose}>
+          {t('common.close')}
+        </Button>
       </ButtonGroup>
     </Rows>
   )

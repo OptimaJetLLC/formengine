@@ -11,7 +11,7 @@ if (!element) {
 
 ReactDOM.render(
   <React.StrictMode>
-    <TestDesignerApp/>
+    <TestDesignerApp />
   </React.StrictMode>,
   element
 )

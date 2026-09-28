@@ -28,7 +28,7 @@ interface CSSEditorProps {
   defaultActiveTab?: CssPart
 }
 
-type Item = { value: CssPart, label: string, hint?: string }
+type Item = {value: CssPart; label: string; hint?: string}
 
 const CSSEditorBody = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorProps) => {
   const t = useTranslationPart('style')
@@ -36,28 +36,26 @@ const CSSEditorBody = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorPr
 
   const handleSelect: RadioButtonsProps['onChange'] = useCallback(value => setActiveTab(value as CssPart), [setActiveTab])
 
-  const items: Item[] = useMemo(() => ([
-    {value: 'css', label: t('component'), hint: t('componentTab.hint')},
-    {value: 'wrapperCss', label: t('wrapper'), hint: t('wrapperTab.hint')}
-  ]), [t])
+  const items: Item[] = useMemo(
+    () => [
+      {value: 'css', label: t('component'), hint: t('componentTab.hint')},
+      {value: 'wrapperCss', label: t('wrapper'), hint: t('wrapperTab.hint')},
+    ],
+    [t]
+  )
 
   return (
     <Rows data-testid="css-editor">
-      <PropertyBlockHeader header={t('header.name')} hint={t('header.hint')}/>
-      {useWrapperStyles && <RadioButtons className={styles.tabs} value={activeTab} onChange={handleSelect} items={items}/>}
-      <StyleCodeField
-        part={activeTab}
-        device={device}
-        beginContextLine="element.style {"
-        cleanButtonTestId="css-editor-clean-button"
-      />
+      <PropertyBlockHeader header={t('header.name')} hint={t('header.hint')} />
+      {useWrapperStyles && <RadioButtons className={styles.tabs} value={activeTab} onChange={handleSelect} items={items} />}
+      <StyleCodeField part={activeTab} device={device} beginContextLine="element.style {" cleanButtonTestId="css-editor-clean-button" />
     </Rows>
   )
 }
 
 const RawCSSEditor = (props: CSSEditorProps) => {
   const {store} = useComponentData()
-  return <CSSEditorBody key={store.key} {...props}/>
+  return <CSSEditorBody key={store.key} {...props} />
 }
 
 export const CSSEditor = namedObserver('CSSEditor', RawCSSEditor)

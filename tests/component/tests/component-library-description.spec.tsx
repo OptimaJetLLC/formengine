@@ -12,10 +12,12 @@ interface MyComponentProps {
 
 const MyComponent = (props: MyComponentProps) => {
   const {prop1, prop2, ...rest} = props
-  return <div {...rest}>
-    <span>{prop1 ?? 'PROP1'}</span>
-    {prop2 ?? 'PROP2'}
-  </div>
+  return (
+    <div {...rest}>
+      <span>{prop1 ?? 'PROP1'}</span>
+      {prop2 ?? 'PROP2'}
+    </div>
+  )
 }
 
 const myComponent = define(MyComponent, 'MyComponent')
@@ -30,7 +32,7 @@ const description: Record<LanguageFullCode, ComponentLibraryDescription> = {
     categories: {
       myCategory: {
         name: 'My category EN',
-      }
+      },
     },
     components: {
       MyComponent: {
@@ -38,16 +40,16 @@ const description: Record<LanguageFullCode, ComponentLibraryDescription> = {
         props: {
           prop2: {
             name: 'My prop2 EN',
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   },
   'de-DE': {
     categories: {
       myCategory: {
         name: 'My category DE',
-      }
+      },
     },
     components: {
       MyComponent: {
@@ -58,15 +60,14 @@ const description: Record<LanguageFullCode, ComponentLibraryDescription> = {
           },
           prop2: {
             name: 'My prop2 DE',
-          }
-        }
-      }
-    }
-  }
+          },
+        },
+      },
+    },
+  },
 }
 
-const view = new BuilderView([myComponent.build()])
-  .withComponentLibraryDescription(description)
+const view = new BuilderView([myComponent.build()]).withComponentLibraryDescription(description)
 
 describe('Component library description test', () => {
   it('The component should have a localized name and category', async () => {

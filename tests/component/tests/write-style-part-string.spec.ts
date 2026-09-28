@@ -6,7 +6,7 @@ describe('writeStylePartString', () => {
     const store = new ComponentStore('box', 'StyledBox')
     store.css = {
       any: {string: 'color: red;', object: {width: '100%'}},
-      desktop: {string: 'color: green;'}
+      desktop: {string: 'color: green;'},
     }
     store.wrapperCss = {any: {string: 'background: blue;'}}
 

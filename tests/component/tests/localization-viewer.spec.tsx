@@ -1,7 +1,7 @@
 import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, createView, FormViewer, LanguageFullCode} from '@react-form-builder/core'
 import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
-import {render, RenderResult} from '@testing-library/react'
+import {RenderResult, render} from '@testing-library/react'
 import {expect} from 'vitest'
 import {default as formJson} from './forms/localization-viewer.json'
 
@@ -9,7 +9,7 @@ const enUS = 'en-US'
 const deDE = 'de-DE'
 
 const initialData = {
-  someData: 'foobar'
+  someData: 'foobar',
 }
 
 const contentEN = formJson.localization[enUS].rsStaticContent1.component.content
@@ -29,13 +29,13 @@ const viewerView = createView(allComponentsViewer)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 
-const Viewer = ({language}: { language?: LanguageFullCode }) => {
-  return <FormViewer view={viewerView} getForm={getForm} language={language} initialData={initialData}/>
+const Viewer = ({language}: {language?: LanguageFullCode}) => {
+  return <FormViewer view={viewerView} getForm={getForm} language={language} initialData={initialData} />
 }
 
 describe('viewer localization language behavior', function () {
   it('applies provided language', async () => {
-    const app = render(<Viewer language={enUS}/>)
+    const app = render(<Viewer language={enUS} />)
 
     await viewerReady(app)
 
@@ -45,18 +45,17 @@ describe('viewer localization language behavior', function () {
   })
 
   it('applies language changes on the fly', async () => {
-    const app = render(<Viewer language={enUS}/>)
+    const app = render(<Viewer language={enUS} />)
 
     await viewerReady(app)
 
     let content = await app.findByTestId('staticContent')
     expect(content).toHaveTextContent(expectedEN)
 
-    app.rerender(<Viewer language={deDE}/>)
+    app.rerender(<Viewer language={deDE} />)
 
     content = await app.findByTestId('staticContent')
 
     expect(content).toHaveTextContent(expectedDE)
   })
-
 })

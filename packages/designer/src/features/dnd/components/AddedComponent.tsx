@@ -23,7 +23,7 @@ type IconComponent = FunctionComponent<SVGProps<SVGSVGElement>>
 
 const tooltipContainer = () => document.body
 
-const Draggable = ({children}: { children: ReactNode }) => {
+const Draggable = ({children}: {children: ReactNode}) => {
   const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
 
   return (
@@ -59,42 +59,49 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
     if (isTemplateType(data.store.type)) {
       return getTemplateName(data.store.type)
     }
-    return getLibraryDescription(libraryDescription => libraryDescription?.components?.[type]?.name)
-      || name || type
+    return getLibraryDescription(libraryDescription => libraryDescription?.components?.[type]?.name) || name || type
   }, [data.store.type, getLibraryDescription, name, type])
 
   const canAddComponent = useCanAddComponent()
   const {canAdd, disableHintKey} = resolveCanAddComponentResult(canAddComponent(data))
   const disabled = !canAdd
   const disableHint = disableHintKey ? t(disableHintKey) : undefined
-  const cls = useMemo(() => cx([
-    styles.container,
-    disabled ? 'disabled' : '',
-    componentStaticClassname,
-    transformComponentNameToCssClass(data.model.typeName),
-    transformComponentNameToCssClass(data.model.name),
-  ]), [data.model.name, data.model.typeName, disabled])
+  const cls = useMemo(
+    () =>
+      cx([
+        styles.container,
+        disabled ? 'disabled' : '',
+        componentStaticClassname,
+        transformComponentNameToCssClass(data.model.typeName),
+        transformComponentNameToCssClass(data.model.name),
+      ]),
+    [data.model.name, data.model.typeName, disabled]
+  )
 
-  const onClick: MouseEventHandler = useCallback(e => {
-    if (disabled) return
-    e.stopPropagation()
-    onAdd?.(data)
-  }, [data, disabled, onAdd])
+  const onClick: MouseEventHandler = useCallback(
+    e => {
+      if (disabled) return
+      e.stopPropagation()
+      onAdd?.(data)
+    },
+    [data, disabled, onAdd]
+  )
 
-  const handleDoubleClick: MouseEventHandler = useCallback(e => {
-    if (disabled) return
-    e.stopPropagation()
-    onDoubleClick?.(data)
-  }, [disabled, onDoubleClick, data])
+  const handleDoubleClick: MouseEventHandler = useCallback(
+    e => {
+      if (disabled) return
+      e.stopPropagation()
+      onDoubleClick?.(data)
+    },
+    [disabled, onDoubleClick, data]
+  )
 
   const elementToolbar = useMemo(() => {
     if (!hovered || !data.model.isFeatureEnabled(cfComponentIsPreset)) return null
-    return <PresetToolbar/>
+    return <PresetToolbar />
   }, [data.model, hovered])
 
-  const disableHintSpeaker = useMemo(() => (
-    disableHint ? <Tooltip>{disableHint}</Tooltip> : null
-  ), [disableHint])
+  const disableHintSpeaker = useMemo(() => (disableHint ? <Tooltip>{disableHint}</Tooltip> : null), [disableHint])
 
   const element = (
     <div
@@ -104,28 +111,21 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
       onClick={onClick}
       onDoubleClick={handleDoubleClick}
     >
-      <Icon width={18} height={18} viewBox="0 0 24 24" className={styles.componentIcon}/>
+      <Icon width={18} height={18} viewBox="0 0 24 24" className={styles.componentIcon} />
       <label>{componentName}</label>
       {elementToolbar}
     </div>
   )
 
-  const withHint = disableHintSpeaker
-    ? (
-      <Whisper
-        speaker={disableHintSpeaker}
-        trigger="hover"
-        container={tooltipContainer}
-        preventOverflow
-      >
-        {element}
-      </Whisper>
-    )
-    : element
+  const withHint = disableHintSpeaker ? (
+    <Whisper speaker={disableHintSpeaker} trigger="hover" container={tooltipContainer} preventOverflow>
+      {element}
+    </Whisper>
+  ) : (
+    element
+  )
 
-  return draggable && !disabled
-    ? <Draggable>{withHint}</Draggable>
-    : withHint
+  return draggable && !disabled ? <Draggable>{withHint}</Draggable> : withHint
 }
 
 export const AddedComponent = namedObserver('AddedComponent', RawAddedComponent)

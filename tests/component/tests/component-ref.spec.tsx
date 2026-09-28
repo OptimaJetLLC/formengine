@@ -1,6 +1,6 @@
 import {createView, define, event, FormViewerProps} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
-import {forwardRef, Fragment, useImperativeHandle} from 'react'
+import {Fragment, forwardRef, useImperativeHandle} from 'react'
 import {renderForm} from '../util/renderForm'
 
 describe('Component ref tests', () => {
@@ -9,15 +9,12 @@ describe('Component ref tests', () => {
 
     const ImperativeForRefShape = forwardRef<any, any>((props, ref) => {
       useImperativeHandle(ref, () => ({
-        focus: () => {
-        }
+        focus: () => {},
       }))
       return <button {...props}>RefShape</button>
     })
 
-    const imperativeModel = define(ImperativeForRefShape, 'ImperativeForRefShapeTest')
-      .props({onClick: event})
-      .build()
+    const imperativeModel = define(ImperativeForRefShape, 'ImperativeForRefShapeTest').props({onClick: event}).build()
 
     const view = createView([imperativeModel.model])
     const form = {
@@ -28,16 +25,16 @@ describe('Component ref tests', () => {
           {
             key: 'btn',
             type: 'ImperativeForRefShapeTest',
-            events: {onClick: [{name: 'onClick', type: 'custom'}]}
-          }
-        ]
-      }
+            events: {onClick: [{name: 'onClick', type: 'custom'}]},
+          },
+        ],
+      },
     }
 
     const actions: FormViewerProps['actions'] = {
-      onClick: (e) => {
+      onClick: e => {
         receivedValues.push(e.refValue)
-      }
+      },
     }
 
     const {findByText} = renderForm(form, {view, actions})
@@ -54,7 +51,11 @@ describe('Component ref tests', () => {
     let clicks = 0
     let receivedComponent: any
 
-    const GenericWithRef = forwardRef<any, any>((props: any, ref) => <button ref={ref} {...props}>WithRef</button>)
+    const GenericWithRef = forwardRef<any, any>((props: any, ref) => (
+      <button ref={ref} {...props}>
+        WithRef
+      </button>
+    ))
 
     const genericWithRef = define(GenericWithRef, 'GenericComponentWithRef')
       .props({
@@ -76,20 +77,20 @@ describe('Component ref tests', () => {
               onClick: [
                 {
                   name: 'onWithRefClick',
-                  type: 'custom'
-                }
-              ]
-            }
-          }
-        ]
-      }
+                  type: 'custom',
+                },
+              ],
+            },
+          },
+        ],
+      },
     }
 
     const actions: FormViewerProps['actions'] = {
-      onWithRefClick: (e) => {
+      onWithRefClick: e => {
         clicks++
         receivedComponent = e.refValue
-      }
+      },
     }
 
     const {findByText} = renderForm(form, {view, actions})
@@ -115,7 +116,7 @@ describe('Component ref tests', () => {
       useImperativeHandle(ref, () => ({
         api: () => {
           apiCalled++
-        }
+        },
       }))
       return <button {...props}>Imperative</button>
     })
@@ -140,21 +141,21 @@ describe('Component ref tests', () => {
               onClick: [
                 {
                   name: 'onImperativeClick',
-                  type: 'custom'
-                }
-              ]
-            }
-          }
-        ]
-      }
+                  type: 'custom',
+                },
+              ],
+            },
+          },
+        ],
+      },
     }
 
     const actions: FormViewerProps['actions'] = {
-      onImperativeClick: (e) => {
+      onImperativeClick: e => {
         clicks++
         receivedRef = e.refValue
         receivedRef.api()
-      }
+      },
     }
 
     const {findByText} = renderForm(form, {view, actions})
@@ -176,7 +177,9 @@ describe('Component ref tests', () => {
 
     const FragmentRootComponent = forwardRef<any, any>((props: any, ref) => (
       <Fragment>
-        <button ref={ref} {...props}>Fragment</button>
+        <button ref={ref} {...props}>
+          Fragment
+        </button>
       </Fragment>
     ))
 
@@ -200,20 +203,20 @@ describe('Component ref tests', () => {
               onClick: [
                 {
                   name: 'onFragmentClick',
-                  type: 'custom'
-                }
-              ]
-            }
-          }
-        ]
-      }
+                  type: 'custom',
+                },
+              ],
+            },
+          },
+        ],
+      },
     }
 
     const actions: FormViewerProps['actions'] = {
-      onFragmentClick: (e) => {
+      onFragmentClick: e => {
         clicks++
         receivedRef = e.refValue
-      }
+      },
     }
 
     const {findByText} = renderForm(form, {view, actions})
@@ -227,8 +230,7 @@ describe('Component ref tests', () => {
   })
 
   it('When componentWrapper is React.Fragment and component returns Fragment, refValue must be null', async () => {
-    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {
-    })
+    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
 
     let clicks = 0
     let receivedRef: any
@@ -260,20 +262,20 @@ describe('Component ref tests', () => {
               onClick: [
                 {
                   name: 'onSimpleClick',
-                  type: 'custom'
-                }
-              ]
-            }
-          }
-        ]
-      }
+                  type: 'custom',
+                },
+              ],
+            },
+          },
+        ],
+      },
     }
 
     const actions: FormViewerProps['actions'] = {
-      onSimpleClick: (e) => {
+      onSimpleClick: e => {
         clicks++
         receivedRef = e.refValue
-      }
+      },
     }
 
     const {findByText} = renderForm(form, {view, actions, componentWrapper: Fragment})
@@ -289,13 +291,16 @@ describe('Component ref tests', () => {
   })
 
   it('When wrapper returns Fragment and component is html element refValue must point to the underlying element', async () => {
-    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {
-    })
+    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
 
     let clicks = 0
     let receivedRef: any
 
-    const SimpleComponent = forwardRef<any, any>((props: any, ref) => <button ref={ref} {...props}>SimpleWithCustomWrapper</button>)
+    const SimpleComponent = forwardRef<any, any>((props: any, ref) => (
+      <button ref={ref} {...props}>
+        SimpleWithCustomWrapper
+      </button>
+    ))
 
     const simpleComponent = define(SimpleComponent, 'SimpleComponentWithCustomFragmentWrapper')
       .props({
@@ -317,23 +322,23 @@ describe('Component ref tests', () => {
               onClick: [
                 {
                   name: 'onSimpleClick',
-                  type: 'custom'
-                }
-              ]
-            }
-          }
-        ]
-      }
+                  type: 'custom',
+                },
+              ],
+            },
+          },
+        ],
+      },
     }
 
     const actions: FormViewerProps['actions'] = {
-      onSimpleClick: (e) => {
+      onSimpleClick: e => {
         clicks++
         receivedRef = e.refValue
-      }
+      },
     }
 
-    const componentWrapper = ({children}: { children: any }) => <>{children}</>
+    const componentWrapper = ({children}: {children: any}) => <>{children}</>
 
     const {findByText} = renderForm(form, {view, actions, componentWrapper})
 

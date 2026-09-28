@@ -28,13 +28,13 @@ const providedFormDefinition = createLocalizedScreenForm({
 
 describe('localization languages seeding', () => {
   it('seeds viewer localization.langCodes from persisted languages when localization is empty', async () => {
-    const viewerRef: { current: IFormViewer | null } = {current: null}
+    const viewerRef: {current: IFormViewer | null} = {current: null}
     const getForm = () => JSON.stringify(providedFormDefinition)
-    render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} />)
 
     await waitFor(() => expect(viewerRef.current).toBeTruthy())
 
-    const viewerStore = viewerRef.current as IFormViewer & { form: { localization: { langCodes: string[] } } }
+    const viewerStore = viewerRef.current as IFormViewer & {form: {localization: {langCodes: string[]}}}
     expect(viewerStore.form.localization.langCodes).toStrictEqual(['en-US', 'de-DE'])
   })
 
@@ -42,7 +42,7 @@ describe('localization languages seeding', () => {
     const {getFormBuilder} = await renderBuilder(providedFormDefinition)
     await waitFor(() => expect(getFormBuilder()).toBeTruthy())
 
-    const builderStore = getBuilderStore<{ formAvailableLanguages: Array<{ fullCode: string }> }>(getFormBuilder)
+    const builderStore = getBuilderStore<{formAvailableLanguages: Array<{fullCode: string}>}>(getFormBuilder)
     await waitFor(() => {
       expect(builderStore.formAvailableLanguages.map(language => language.fullCode)).toStrictEqual(['en-US', 'de-DE'])
     })

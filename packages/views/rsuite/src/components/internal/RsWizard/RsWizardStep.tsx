@@ -27,7 +27,7 @@ export interface RsWizardStepProps extends PropsWithChildren<any> {
  * @returns the React element.
  */
 const RsWizardStep = ({className, ...props}: RsWizardStepProps) => {
-  return <div {...props} className={cx(styles.step, className)}/>
+  return <div {...props} className={cx(styles.step, className)} />
 }
 
 const {flexDirection, gap} = containerStyles
@@ -41,11 +41,11 @@ export const rsWizardStep = define(RsWizardStep, RsWizardStepComponentType)
   .icon(WizardStepIcon)
   .props({
     label: string.default('Step'),
-    children: node
+    children: node,
   })
   .css({
     ...containerStyles,
     flexDirection: flexDirection.default('column'),
-    gap: gap.default('10px')
+    gap: gap.default('10px'),
   })
   .insertRestriction((_, parent) => parent.model.type === 'RsWizard')

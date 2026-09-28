@@ -9,21 +9,16 @@ import {action, observable, reaction} from 'mobx'
  * @param maxStackSize the maximum length of the undo/redo stack.
  * @returns the undoer instance.
  */
-export function trackUndo<T>(
-  readObservable: () => T,
-  setObservable: (value: T) => void,
-  maxStackSize?: number,
-) {
+export function trackUndo<T>(readObservable: () => T, setObservable: (value: T) => void, maxStackSize?: number) {
   let isDisposed = false
 
   const undoStack: T[] = [readObservable()]
   // Always points to the current value
   const undoPointer = observable.box(undoStack.length - 1)
 
-  let stopTrackingChanges: () => void = () => {
-  }
+  let stopTrackingChanges: () => void = () => {}
   const trackChanges = () => {
-    stopTrackingChanges = reaction(readObservable, (newValue) => {
+    stopTrackingChanges = reaction(readObservable, newValue => {
       if (isDisposed) throw new Error('Undo already disposed')
 
       undoPointer.set(undoPointer.get() + 1)
@@ -41,39 +36,38 @@ export function trackUndo<T>(
   trackChanges()
 
   return observable({
-      undo: action(() => {
-        if (isDisposed) throw new Error('Undo already disposed')
-        // No undos available
-        if (undoPointer.get() === 0) return
+    undo: action(() => {
+      if (isDisposed) throw new Error('Undo already disposed')
+      // No undos available
+      if (undoPointer.get() === 0) return
 
-        undoPointer.set(undoPointer.get() - 1)
+      undoPointer.set(undoPointer.get() - 1)
 
-        // We have to make this change without our undo stack including it, but
-        // whilst still letting other external viewers observe this as normal.
-        stopTrackingChanges()
-        setObservable(undoStack[undoPointer.get()])
-        trackChanges()
-      }),
-      redo: action(() => {
-        if (isDisposed) throw new Error('Undo already disposed')
-        // No redos available
-        if (undoPointer.get() >= undoStack.length - 1) return
-        undoPointer.set(undoPointer.get() + 1)
+      // We have to make this change without our undo stack including it, but
+      // whilst still letting other external viewers observe this as normal.
+      stopTrackingChanges()
+      setObservable(undoStack[undoPointer.get()])
+      trackChanges()
+    }),
+    redo: action(() => {
+      if (isDisposed) throw new Error('Undo already disposed')
+      // No redos available
+      if (undoPointer.get() >= undoStack.length - 1) return
+      undoPointer.set(undoPointer.get() + 1)
 
-        stopTrackingChanges()
-        setObservable(undoStack[undoPointer.get()])
-        trackChanges()
-      }),
-      get hasUndo() {
-        return undoPointer.get() !== 0
-      },
-      get hasRedo() {
-        return undoPointer.get() < undoStack.length - 1
-      },
-      dispose: () => {
-        stopTrackingChanges()
-        isDisposed = true
-      }
-    }
-  )
+      stopTrackingChanges()
+      setObservable(undoStack[undoPointer.get()])
+      trackChanges()
+    }),
+    get hasUndo() {
+      return undoPointer.get() !== 0
+    },
+    get hasRedo() {
+      return undoPointer.get() < undoStack.length - 1
+    },
+    dispose: () => {
+      stopTrackingChanges()
+      isDisposed = true
+    },
+  })
 }

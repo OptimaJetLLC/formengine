@@ -3,6 +3,8 @@ import cx from 'clsx'
 import type {ComponentProps, ReactNode} from 'react'
 import {Suspense, useEffect, useMemo} from 'react'
 import {Loader} from 'rsuite'
+import styles from './FormBuilder.module.css'
+import type {FormBuilderProps} from './FormBuilderProps'
 import {customizableObserver} from './features/customization/customizableObserver'
 import {useHotkeys} from './features/hotkeys/useHotKeys'
 import {useLicense} from './features/license/LicenseContext'
@@ -13,12 +15,9 @@ import {ComponentsModal} from './features/ui/ComponentBar/ComponentsModal'
 import {LeftPanel} from './features/ui/LeftPanel/LeftPanel'
 import {PromptDialog} from './features/ui/PromptDialog'
 import {RightPanel} from './features/ui/RightPanel/RightPanel'
-
-import styles from './FormBuilder.module.css'
-import type {FormBuilderProps} from './FormBuilderProps'
 import {useBuilderStore} from './utils/BuilderStoreContext'
 
-const GlobalHotkeys = ({children}: { children: ReactNode }) => {
+const GlobalHotkeys = ({children}: {children: ReactNode}) => {
   const handleKeyDown = useHotkeys()
 
   // we need this effect to be inside Suspense
@@ -30,7 +29,7 @@ const GlobalHotkeys = ({children}: { children: ReactNode }) => {
   return <div className={styles.container}>{children}</div>
 }
 
-const loaderFallbackElement = <Loader center content="loading"/>
+const loaderFallbackElement = <Loader center content="loading" />
 
 const RawFormBuilderView = (props: ComponentProps<'div'>) => {
   const builderStore = useBuilderStore()
@@ -53,13 +52,13 @@ const RawFormBuilderView = (props: ComponentProps<'div'>) => {
       <Suspense fallback={loaderFallbackElement}>
         <GlobalHotkeys>
           <div {...props} className={cx(styles.content, props.className)}>
-            <LeftPanel/>
-            <CentralPanel/>
-            <RightPanel/>
-            <ComponentsModal/>
-            <PromptDialog/>
+            <LeftPanel />
+            <CentralPanel />
+            <RightPanel />
+            <ComponentsModal />
+            <PromptDialog />
           </div>
-          <BottomPanel/>
+          <BottomPanel />
         </GlobalHotkeys>
       </Suspense>
     </SuppressResizeObserverErrors>
@@ -77,14 +76,17 @@ const RawFormBuilder = (props: FormBuilderProps) => {
   useMobxConfig()
 
   const localizationEngine = useMemo(() => props.localizationEngine ?? new FluentLocalizationEngine(), [props.localizationEngine])
-  const finalProps = useMemo(() => ({
-    ...props,
-    localizationEngine
-  }), [localizationEngine, props])
+  const finalProps = useMemo(
+    () => ({
+      ...props,
+      localizationEngine,
+    }),
+    [localizationEngine, props]
+  )
 
   return (
     <BuilderProviders props={finalProps}>
-      <FormBuilderView/>
+      <FormBuilderView />
     </BuilderProviders>
   )
 }

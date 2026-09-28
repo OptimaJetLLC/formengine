@@ -10,13 +10,13 @@ import styles from './LeftPanel.module.css'
 
 const ViewerContent = () => (
   <Rows className={styles.viewerRows}>
-    <FormViewerState/>
+    <FormViewerState />
   </Rows>
 )
 
 const leftPanelViews: Record<BuilderMode, ReactElement> = {
-  'builder': <LeftPanelNav/>,
-  'viewer': <ViewerContent/>
+  builder: <LeftPanelNav />,
+  viewer: <ViewerContent />,
 }
 
 type LeftPanelProps = Omit<ComponentProps<typeof Panel>, 'placement'>

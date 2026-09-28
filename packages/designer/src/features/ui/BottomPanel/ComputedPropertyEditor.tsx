@@ -13,13 +13,12 @@ import styles from './ComputedPropertyEditor.module.css'
 import {Header} from './Header'
 import {SimpleValueEditor} from './SimpleValueEditor'
 
-const getToggleItems = (calculable: boolean,
-                        localizable: boolean,
-                        translate: (key: string) => string) => [
-  ...calculable ? ['function'] : [],
-  ...localizable ? ['localization'] : [],
-  ...calculable || localizable ? ['simpleValue'] : []
-].map(value => ({label: translate(`bottomPanel.${value}`), value}))
+const getToggleItems = (calculable: boolean, localizable: boolean, translate: (key: string) => string) =>
+  [
+    ...(calculable ? ['function'] : []),
+    ...(localizable ? ['localization'] : []),
+    ...(calculable || localizable ? ['simpleValue'] : []),
+  ].map(value => ({label: translate(`bottomPanel.${value}`), value}))
 
 type ComputeType = ComponentPropertyComputeType | 'simpleValue'
 
@@ -29,10 +28,7 @@ const NoopLocalizationStub = () => {
   return <h4>{t('localizationNotSet')}</h4>
 }
 
-const ComputedPropertyEditorBody = ({computeType, property}: {
-  computeType: ComputeType
-  property: EditableProperty
-}) => {
+const ComputedPropertyEditorBody = ({computeType, property}: {computeType: ComputeType; property: EditableProperty}) => {
   const builderStore = useBuilderStore()
   const handleClose = useCallback(() => {
     builderStore.closeCurrentEditable()
@@ -40,13 +36,15 @@ const ComputedPropertyEditorBody = ({computeType, property}: {
 
   switch (computeType) {
     case 'simpleValue':
-      return <SimpleValueEditor editableProperty={property} onClose={handleClose}/>
+      return <SimpleValueEditor editableProperty={property} onClose={handleClose} />
     case 'localization':
-      return withLocalization(builderStore)
-        ? <LocalizationEditor editableProperty={property} onClose={handleClose}/>
-        : <NoopLocalizationStub/>
+      return withLocalization(builderStore) ? (
+        <LocalizationEditor editableProperty={property} onClose={handleClose} />
+      ) : (
+        <NoopLocalizationStub />
+      )
     case 'function':
-      return <CalculableCodeEditor editableProperty={property} onClose={handleClose}/>
+      return <CalculableCodeEditor editableProperty={property} onClose={handleClose} />
   }
 }
 
@@ -74,24 +72,23 @@ const RawComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
     setComputeType(value as ComputeType)
   }, [])
 
-  return <>
-    <Header>
-      {`${t('bottomPanel.editProperty')}: ${componentKey}.${annotation.name}`}
-      {withItems && (
-        <RadioButtons
-          value={computeType}
-          label={'Use'}
-          items={toggleItems}
-          className={styles.buttons}
-          onChange={handleComputeTypeChange}
-        />
-      )}
-    </Header>
-    <ComputedPropertyEditorBody
-      computeType={computeType}
-      property={property}
-    />
-  </>
+  return (
+    <>
+      <Header>
+        {`${t('bottomPanel.editProperty')}: ${componentKey}.${annotation.name}`}
+        {withItems && (
+          <RadioButtons
+            value={computeType}
+            label={'Use'}
+            items={toggleItems}
+            className={styles.buttons}
+            onChange={handleComputeTypeChange}
+          />
+        )}
+      </Header>
+      <ComputedPropertyEditorBody computeType={computeType} property={property} />
+    </>
+  )
 }
 
 export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', RawComputedPropertyEditor)

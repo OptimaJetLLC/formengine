@@ -14,16 +14,18 @@ export const useComponentLibraryDescription = () => {
   const {i18nDescriptions} = view
   const defaultLanguageCode = defaultLanguage.fullCode
 
-  return useCallback((selector: (libraryDescription?: ComponentLibraryDescription) => string | undefined) => {
-    if (!i18nDescriptions) return
+  return useCallback(
+    (selector: (libraryDescription?: ComponentLibraryDescription) => string | undefined) => {
+      if (!i18nDescriptions) return
 
-    for (let i = 0; i < i18nDescriptions.length; i++) {
-      const item = i18nDescriptions[i]
-      const result = selector(item[currentLanguageCode]) ?? selector(item[defaultLanguageCode])
-      if (result) return result
-    }
+      for (let i = 0; i < i18nDescriptions.length; i++) {
+        const item = i18nDescriptions[i]
+        const result = selector(item[currentLanguageCode]) ?? selector(item[defaultLanguageCode])
+        if (result) return result
+      }
 
-    return selector(coreComponentsDescriptions[currentLanguageCode])
-      ?? selector(coreComponentsDescriptions[defaultLanguageCode])
-  }, [currentLanguageCode, defaultLanguageCode, i18nDescriptions])
+      return selector(coreComponentsDescriptions[currentLanguageCode]) ?? selector(coreComponentsDescriptions[defaultLanguageCode])
+    },
+    [currentLanguageCode, defaultLanguageCode, i18nDescriptions]
+  )
 }

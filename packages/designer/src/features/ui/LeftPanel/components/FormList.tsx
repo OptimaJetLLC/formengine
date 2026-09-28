@@ -12,10 +12,15 @@ import {useShowMessage} from '../../../toast/toast'
 import {SearchForm} from '../../ComponentBar/components/SearchForm'
 import styles from './FormList.module.css'
 
-function FormListItem({active, onLoadForm, onRemoveForm, name}: {
-  active: boolean,
-  name: string,
-  onLoadForm: (name: string) => void,
+function FormListItem({
+  active,
+  onLoadForm,
+  onRemoveForm,
+  name,
+}: {
+  active: boolean
+  name: string
+  onLoadForm: (name: string) => void
   onRemoveForm: (name: string) => void
 }) {
   const handleLoad = useCallback(() => {
@@ -28,12 +33,10 @@ function FormListItem({active, onLoadForm, onRemoveForm, name}: {
 
   return (
     <ListItem data-testid={`form-list-item-${name}`} data-active={active}>
-      <span className={cx(active ? styles.activeForm : styles.inactiveForm)}>
-        {name}
-      </span>
+      <span className={cx(active ? styles.activeForm : styles.inactiveForm)}>{name}</span>
       <ButtonGroup>
-        <EditButton onClick={handleLoad} data-testid={`form-list-open-item-${name}`}/>
-        <RemoveButton onClick={handleRemove}/>
+        <EditButton onClick={handleLoad} data-testid={`form-list-open-item-${name}`} />
+        <RemoveButton onClick={handleRemove} />
       </ButtonGroup>
     </ListItem>
   )
@@ -47,22 +50,31 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
   const showMessage = useShowMessage()
   const {className, ...listProps} = props
 
-  const onError = useCallback((err: any) => {
-    console.error(err)
-    showMessage({type: 'error', message: err})
-  }, [showMessage])
+  const onError = useCallback(
+    (err: any) => {
+      console.error(err)
+      showMessage({type: 'error', message: err})
+    },
+    [showMessage]
+  )
 
   const reloadForms = useCallback(() => {
     builderStore.getFormKeys().then(setFormList)
   }, [builderStore])
 
-  const loadForm = useCallback((name: string) => {
-    builderStore.loadForm(name, reloadForms, onError)
-  }, [builderStore, onError, reloadForms])
+  const loadForm = useCallback(
+    (name: string) => {
+      builderStore.loadForm(name, reloadForms, onError)
+    },
+    [builderStore, onError, reloadForms]
+  )
 
-  const removeForm = useCallback((name: string) => {
-    builderStore.removeForm(name, reloadForms)
-  }, [builderStore, reloadForms])
+  const removeForm = useCallback(
+    (name: string) => {
+      builderStore.removeForm(name, reloadForms)
+    },
+    [builderStore, reloadForms]
+  )
 
   const showPromptDialog = useCreateForm(reloadForms)
 
@@ -75,17 +87,23 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
     [formList, searchValue]
   )
 
-  return <Rows className={cx(styles.container, className)}>
-    <SearchForm onChange={setSearchValue} className={styles.search}/>
-    <Button block onClick={showPromptDialog} data-testid={'add-new-form-button'}>{t('formsList.addNewForm')}</Button>
-    <List {...listProps}>
-      {filteredFormList.length
-        ? filteredFormList.map((name, index) =>
-          <FormListItem key={index} active={name === builderStore.formName} name={name} onLoadForm={loadForm} onRemoveForm={removeForm}/>)
-        : <ListItem>{t('formsList.noFormsInFormStorage')}</ListItem>
-      }
-    </List>
-  </Rows>
+  return (
+    <Rows className={cx(styles.container, className)}>
+      <SearchForm onChange={setSearchValue} className={styles.search} />
+      <Button block onClick={showPromptDialog} data-testid={'add-new-form-button'}>
+        {t('formsList.addNewForm')}
+      </Button>
+      <List {...listProps}>
+        {filteredFormList.length ? (
+          filteredFormList.map((name, index) => (
+            <FormListItem key={index} active={name === builderStore.formName} name={name} onLoadForm={loadForm} onRemoveForm={removeForm} />
+          ))
+        ) : (
+          <ListItem>{t('formsList.noFormsInFormStorage')}</ListItem>
+        )}
+      </List>
+    </Rows>
+  )
 }
 
 export const FormList = customizableObserver('Forms_Tab_Content', RawFormList)

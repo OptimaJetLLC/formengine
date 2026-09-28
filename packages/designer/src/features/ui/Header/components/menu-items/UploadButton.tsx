@@ -6,7 +6,7 @@ import {customizable} from '../../../../customization/customizable'
 import {useTranslationPart} from '../../../../localization/hooks'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const uploadIcon = <FileUploadIcon/>
+const uploadIcon = <FileUploadIcon />
 
 const RawUploadButton = ({className}: CustomizableMenuItemProps) => {
   const builderStore = useBuilderStore()

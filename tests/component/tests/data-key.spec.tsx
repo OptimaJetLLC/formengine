@@ -31,12 +31,13 @@ describe('DataKey test', function () {
         {radio: 'b', input: 'small'},
         {radio: 'c', input: 'thin'},
       ],
-      toggle: false
+      toggle: false,
     }
 
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
-    const {findByTestId, findAllByTestId} = render(<FormViewer view={view} getForm={getForm}
-                                                               initialData={initialData} viewerRef={viewerRef}/>)
+    const {findByTestId, findAllByTestId} = render(
+      <FormViewer view={view} getForm={getForm} initialData={initialData} viewerRef={viewerRef} />
+    )
 
     expect(await findByTestId('parent-rsToggle')).toBeInTheDocument()
 
@@ -62,12 +63,9 @@ describe('DataKey test', function () {
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
     const initialData = {
-      myRepeater: [
-        {}, {}
-      ]
+      myRepeater: [{}, {}],
     }
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm}
-                                              initialData={initialData} viewerRef={viewerRef}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} initialData={initialData} viewerRef={viewerRef} />)
 
     expect(await findByTestId('parent-rsToggle')).toBeInTheDocument()
 
@@ -82,12 +80,9 @@ describe('DataKey test', function () {
       childTagPicker: 'Required',
       subForm: {
         childInput: 'Required',
-        childTagPicker: 'Required'
+        childTagPicker: 'Required',
       },
-      myRepeater: [
-        {input: 'Required'},
-        {input: 'Required'}
-      ]
+      myRepeater: [{input: 'Required'}, {input: 'Required'}],
     }
     expect(JSON.stringify(messages)).toEqual(JSON.stringify(expectedErrors))
   })

@@ -26,7 +26,7 @@ const createFilePreview = ({lastModified, name, type, webkitRelativePath, size}:
   name,
   type,
   webkitRelativePath,
-  size: humanizeFileSize(size)
+  size: humanizeFileSize(size),
 })
 
 /**
@@ -36,9 +36,12 @@ const createFilePreview = ({lastModified, name, type, webkitRelativePath, size}:
  * @param options.previewNativeObjects create human-readable value for non-serializable objects
  * @returns the object prepared for JSON.stringify.
  */
-export const prepareForJson = (data: any, options?: {
-  previewNativeObjects: boolean
-}) => {
+export const prepareForJson = (
+  data: any,
+  options?: {
+    previewNativeObjects: boolean
+  }
+) => {
   if (!isObject(data) || isNull(data)) return data
 
   const {previewNativeObjects} = options || {}
@@ -52,7 +55,7 @@ export const prepareForJson = (data: any, options?: {
       return
     }
 
-    if (previewNativeObjects && (value instanceof File)) {
+    if (previewNativeObjects && value instanceof File) {
       filtered[key] = createFilePreview(value)
       return
     }

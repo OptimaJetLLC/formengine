@@ -15,13 +15,7 @@ import {FunctionEditor} from './FunctionEditor'
 import {JsonCodeEditor} from './JsonCodeEditor'
 
 const getBottomPanelEditorKey = (
-  editable:
-    | EditableAction
-    | EditableProperty
-    | CustomValidationCode
-    | JsonCode
-    | EditableFormValidator
-    | EditableFunction,
+  editable: EditableAction | EditableProperty | CustomValidationCode | JsonCode | EditableFormValidator | EditableFunction
 ): string => {
   switch (true) {
     case editable instanceof EditableAction:
@@ -49,38 +43,41 @@ const RawBottomPanel = () => {
 
   let editor = null
   if (currentEditable instanceof EditableAction) {
-    editor = <CodeActionEditor {...currentEditable}/>
+    editor = <CodeActionEditor {...currentEditable} />
   }
 
   if (currentEditable instanceof EditableProperty) {
-    editor = <ComputedPropertyEditor property={currentEditable}/>
+    editor = <ComputedPropertyEditor property={currentEditable} />
   }
 
   if (currentEditable instanceof CustomValidationCode) {
-    editor = <CustomValidationCodeEditor {...currentEditable}/>
+    editor = <CustomValidationCodeEditor {...currentEditable} />
   }
 
   if (currentEditable instanceof JsonCode) {
-    editor = <JsonCodeEditor {...currentEditable}/>
+    editor = <JsonCodeEditor {...currentEditable} />
   }
 
   if (currentEditable instanceof EditableFormValidator) {
-    editor = <FormValidatorCodeEditor {...currentEditable}/>
+    editor = <FormValidatorCodeEditor {...currentEditable} />
   }
 
   if (currentEditable instanceof EditableFunction) {
-    editor = <FunctionEditor {...currentEditable}/>
+    editor = <FunctionEditor {...currentEditable} />
   }
 
-  const resizableProps: ResizableProps = useMemo(() => ({
-    className: styles.resizable,
-    enable: {top: true},
-    // eslint-disable-next-line react-hooks/immutability
-    onResizeStop: (e, direction, ref, delta) => store.bottomPanelHeight += delta.height,
-    defaultSize: {width: 'initial', height: bottomPanelHeight},
-    minHeight: 250,
-    maxHeight: '92vh'
-  }), [bottomPanelHeight, store])
+  const resizableProps: ResizableProps = useMemo(
+    () => ({
+      className: styles.resizable,
+      enable: {top: true},
+      // eslint-disable-next-line react-hooks/immutability
+      onResizeStop: (e, direction, ref, delta) => (store.bottomPanelHeight += delta.height),
+      defaultSize: {width: 'initial', height: bottomPanelHeight},
+      minHeight: 250,
+      maxHeight: '92vh',
+    }),
+    [bottomPanelHeight, store]
+  )
 
   if (!editor || !currentEditable) return null
 

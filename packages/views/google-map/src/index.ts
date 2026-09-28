@@ -5,9 +5,9 @@ import googleMapEnUsComponentsDescriptions from './i18n/en-US.json'
 
 export const googleMapComponent: Definer<GoogleMapProps> = googleMap
 export const googleMapModel: Model = googleMap.build().model
+export type {Address} from './Address'
 export type {GoogleMapProps} from './GoogleMapProps'
 export type {MapMarker} from './MapMarker'
-export type {Address} from './Address'
 export {toAddress} from './toAddress'
 
 export {googleMapEnUsComponentsDescriptions}

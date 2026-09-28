@@ -4,8 +4,8 @@ import {expect, test} from '@playwright/test'
 
 declare global {
   interface Window {
-    __formBuilderAddCalls?: Array<{ sourceType?: string; targetKey?: string }>
-    __formBuilderRemoveCalls?: Array<{ sourceKey?: string }>
+    __formBuilderAddCalls?: Array<{sourceType?: string; targetKey?: string}>
+    __formBuilderRemoveCalls?: Array<{sourceKey?: string}>
   }
 }
 
@@ -25,56 +25,83 @@ const clearForm = async (page: Page) => {
   await page.getByText('Clear').first().click({force: true})
 }
 
-test.describe('onFormElementAdd and onFormElementRemove callbacks', {
-  tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`]
-}, () => {
-  test.beforeEach(async ({page}) => {
-    await page.goto('/')
-  })
+test.describe(
+  'onFormElementAdd and onFormElementRemove callbacks',
+  {
+    tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
+  },
+  () => {
+    test.beforeEach(async ({page}) => {
+      await page.goto('/')
+    })
 
-  test('onFormElementAdd is called when adding a component via ComponentsModal', async ({page}) => {
-    await clearForm(page)
-    await clearRecordedCalls(page)
+    test('onFormElementAdd is called when adding a component via ComponentsModal', async ({page}) => {
+      await clearForm(page)
+      await clearRecordedCalls(page)
 
-    await page.locator('.isRoot.isInner button').first().click({force: true})
-    await page.locator('.rs-modal-wrapper').locator('div').filter({hasText: /^Calendar$/}).first().click({force: true})
+      await page.locator('.isRoot.isInner button').first().click({force: true})
+      await page
+        .locator('.rs-modal-wrapper')
+        .locator('div')
+        .filter({hasText: /^Calendar$/})
+        .first()
+        .click({force: true})
 
-    await expect(page.getByText('rsCalendar1 (RsCalendar)').first()).toBeVisible()
+      await expect(page.getByText('rsCalendar1 (RsCalendar)').first()).toBeVisible()
 
-    const addCalls = await page.evaluate(() => window.__formBuilderAddCalls ?? [])
-    expect(addCalls.length).toBeGreaterThanOrEqual(1)
-    expect(addCalls.some(c => c.sourceType === 'RsCalendar')).toBe(true)
-  })
+      const addCalls = await page.evaluate(() => window.__formBuilderAddCalls ?? [])
+      expect(addCalls.length).toBeGreaterThanOrEqual(1)
+      expect(addCalls.some(c => c.sourceType === 'RsCalendar')).toBe(true)
+    })
 
-  test('onFormElementAdd is called when adding a component via drag and drop', async ({page}) => {
-    await clearRecordedCalls(page)
+    test('onFormElementAdd is called when adding a component via drag and drop', async ({page}) => {
+      await clearRecordedCalls(page)
 
-    await page.locator('div').filter({hasText: /^Calendar$/}).nth(1).hover()
-    await page.mouse.down()
-    await page.locator('div').filter({hasText: /^one\/two\/three$/}).locator('div').first().hover()
-    await page.mouse.up()
+      await page
+        .locator('div')
+        .filter({hasText: /^Calendar$/})
+        .nth(1)
+        .hover()
+      await page.mouse.down()
+      await page
+        .locator('div')
+        .filter({hasText: /^one\/two\/three$/})
+        .locator('div')
+        .first()
+        .hover()
+      await page.mouse.up()
 
-    const addCalls = await page.evaluate(() => window.__formBuilderAddCalls ?? [])
-    expect(addCalls.length).toBeGreaterThanOrEqual(1)
-    expect(addCalls.some(c => c.sourceType === 'RsCalendar')).toBe(true)
-  })
+      const addCalls = await page.evaluate(() => window.__formBuilderAddCalls ?? [])
+      expect(addCalls.length).toBeGreaterThanOrEqual(1)
+      expect(addCalls.some(c => c.sourceType === 'RsCalendar')).toBe(true)
+    })
 
-  test('onFormElementRemove is called when removing a component', async ({page}) => {
-    await clearRecordedCalls(page)
+    test('onFormElementRemove is called when removing a component', async ({page}) => {
+      await clearRecordedCalls(page)
 
-    await page.locator('div').filter({hasText: /^Calendar$/}).nth(1).hover()
-    await page.mouse.down()
-    await page.locator('div').filter({hasText: /^one\/two\/three$/}).locator('div').first().hover()
-    await page.mouse.up()
+      await page
+        .locator('div')
+        .filter({hasText: /^Calendar$/})
+        .nth(1)
+        .hover()
+      await page.mouse.down()
+      await page
+        .locator('div')
+        .filter({hasText: /^one\/two\/three$/})
+        .locator('div')
+        .first()
+        .hover()
+      await page.mouse.up()
 
-    await expect(page.getByText('rsCalendar1 (RsCalendar)').first()).toBeVisible()
+      await expect(page.getByText('rsCalendar1 (RsCalendar)').first()).toBeVisible()
 
-    await page.getByText('rsCalendar1 (RsCalendar)').first().hover()
-    await expect(page.locator('.Toolbar .remove-button').first()).toBeVisible()
-    await page.locator('.Toolbar .remove-button').first().click({force: true})
+      await page.getByText('rsCalendar1 (RsCalendar)').first().hover()
+      await expect(page.locator('.Toolbar .remove-button').first()).toBeVisible()
+      await page.locator('.Toolbar .remove-button').first().click({force: true})
 
-    const removeCalls = await page.evaluate(() => window.__formBuilderRemoveCalls ?? [])
-    expect(removeCalls.length).toBeGreaterThanOrEqual(1)
-    expect(removeCalls.some(c => c.sourceKey === 'rsCalendar1')).toBe(true)
-  })
-})
+      const removeCalls = await page.evaluate(() => window.__formBuilderRemoveCalls ?? [])
+      expect(removeCalls.length).toBeGreaterThanOrEqual(1)
+      expect(removeCalls.some(c => c.sourceKey === 'rsCalendar1')).toBe(true)
+    })
+  }
+)

@@ -16,8 +16,10 @@ export class TestFormData implements IFormData {
    * @param data the test form data.
    * @param errors the test form errors.
    */
-  constructor(public data = {}, public errors = {}) {
-  }
+  constructor(
+    public data = {},
+    public errors = {}
+  ) {}
 
   /** @inheritDoc */
   clear() {
@@ -30,12 +32,10 @@ export class TestFormData implements IFormData {
   }
 
   /** @inheritDoc */
-  reset() {
-  }
+  reset() {}
 
   /** @inheritDoc */
-  setAllErrors() {
-  }
+  setAllErrors() {}
 
   /** @inheritDoc */
   getValidationResult() {

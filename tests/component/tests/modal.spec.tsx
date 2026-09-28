@@ -14,24 +14,24 @@ const modalTestViews = [
   {
     name: 'rsuite' as ModalLibraryName,
     viewerView: viewWithCss,
-    builderView: builderViewWithCss
+    builderView: builderViewWithCss,
   },
   {
     name: 'mantine' as ModalLibraryName,
     viewerView: mantineView,
-    builderView: mantineBuilderView
+    builderView: mantineBuilderView,
   },
   {
     name: 'material-ui' as ModalLibraryName,
     viewerView: materialUiView,
-    builderView: materialUiBuilderView
-  }
+    builderView: materialUiBuilderView,
+  },
 ] as const
 
 const modalTypeByLibrary: Record<ModalLibraryName, string> = {
   rsuite: 'RsModal',
   mantine: 'MtDialog',
-  'material-ui': 'MuiDialog'
+  'material-ui': 'MuiDialog',
 }
 
 const compilationOkText = enUS.testingEditor.compilationOk
@@ -39,25 +39,25 @@ const compilationOkText = enUS.testingEditor.compilationOk
 const buttonTypeByLibrary: Record<ModalLibraryName, string> = {
   rsuite: 'RsButton',
   mantine: 'MtButton',
-  'material-ui': 'MuiButton'
+  'material-ui': 'MuiButton',
 }
 
 const inputTypeByLibrary: Record<ModalLibraryName, string> = {
   rsuite: 'RsInput',
   mantine: 'MtTextInput',
-  'material-ui': 'MuiTextField'
+  'material-ui': 'MuiTextField',
 }
 
 const containerTypeByLibrary: Record<ModalLibraryName, string> = {
   rsuite: 'RsContainer',
   mantine: 'MtContainer',
-  'material-ui': 'MuiBox'
+  'material-ui': 'MuiBox',
 }
 
 const headerTypeByLibrary: Record<ModalLibraryName, string> = {
   rsuite: 'RsHeader',
   mantine: 'MtTitle',
-  'material-ui': 'MuiTypography'
+  'material-ui': 'MuiTypography',
 }
 
 const defaultLanguages = [
@@ -66,8 +66,8 @@ const defaultLanguages = [
     dialect: 'US',
     name: 'English',
     description: 'American English',
-    bidi: 'ltr'
-  }
+    bidi: 'ltr',
+  },
 ]
 
 const createFormWithMeta = (library: ModalLibraryName, form: any, withModalType: boolean) => {
@@ -76,7 +76,7 @@ const createFormWithMeta = (library: ModalLibraryName, form: any, withModalType:
     form,
     localization: {},
     languages: defaultLanguages,
-    defaultLanguage: 'en-US'
+    defaultLanguage: 'en-US',
   }
 
   if (withModalType) {
@@ -87,15 +87,13 @@ const createFormWithMeta = (library: ModalLibraryName, form: any, withModalType:
 }
 
 const createShowModalButtonProps = (library: ModalLibraryName) =>
-  library === 'rsuite'
-    ? {appearance: {value: 'link'}, children: {value: 'Show modal'}}
-    : {children: {value: 'Show modal'}}
+  library === 'rsuite' ? {appearance: {value: 'link'}, children: {value: 'Show modal'}} : {children: {value: 'Show modal'}}
 
 const createModalChild = (modalKey: string, modalTemplate: string) => ({
   key: modalKey,
   type: 'Modal',
   props: {modalTemplate: {value: `Template:${modalTemplate}`}},
-  modal: {props: {}, events: {}}
+  modal: {props: {}, events: {}},
 })
 
 const createShowModalButton = (library: ModalLibraryName, openModalArgs: Record<string, unknown>) => ({
@@ -103,41 +101,36 @@ const createShowModalButton = (library: ModalLibraryName, openModalArgs: Record<
   type: buttonTypeByLibrary[library],
   props: createShowModalButtonProps(library),
   events: {
-    onClick: [{name: 'openModal', type: 'common', args: {modalKey: 'modal1', ...openModalArgs}}]
+    onClick: [{name: 'openModal', type: 'common', args: {modalKey: 'modal1', ...openModalArgs}}],
   },
-  htmlAttributes: [{name: 'data-testid', value: 'showModalButton'}]
+  htmlAttributes: [{name: 'data-testid', value: 'showModalButton'}],
 })
 
 const createFormModalInputChild = (library: ModalLibraryName) => ({
   key: 'modalInput',
   type: inputTypeByLibrary[library],
   props: {},
-  htmlAttributes: [{name: 'data-testid', value: 'formModalInput'}]
+  htmlAttributes: [{name: 'data-testid', value: 'formModalInput'}],
 })
 
-const buildShowModalForm = (
-  library: ModalLibraryName,
-  openModalArgs: Record<string, unknown>,
-  options?: { includeFormInput?: boolean }
-) => {
+const buildShowModalForm = (library: ModalLibraryName, openModalArgs: Record<string, unknown>, options?: {includeFormInput?: boolean}) => {
   const children = [
     createModalChild('modal1', 'modal-layout'),
     ...(options?.includeFormInput ? [createFormModalInputChild(library)] : []),
-    createShowModalButton(library, openModalArgs)
+    createShowModalButton(library, openModalArgs),
   ]
 
   const form = {
     key: 'Screen',
     type: 'Screen',
     props: {},
-    children
+    children,
   }
 
   return createFormWithMeta(library, form, true)
 }
 
-const buildSimpleShowModalForm = (library: ModalLibraryName) =>
-  buildShowModalForm(library, {}, {includeFormInput: false})
+const buildSimpleShowModalForm = (library: ModalLibraryName) => buildShowModalForm(library, {}, {includeFormInput: false})
 
 const buildUseFormDataShowModalForm = (library: ModalLibraryName) =>
   buildShowModalForm(
@@ -146,8 +139,8 @@ const buildUseFormDataShowModalForm = (library: ModalLibraryName) =>
       useFormData: true,
       beforeShow: {
         type: 'fn',
-        body: '  if (e.data.modalInput === \'no\') return false\n  return {modalInput: "modal input data from beforeShow"}'
-      }
+        body: '  if (e.data.modalInput === \'no\') return false\n  return {modalInput: "modal input data from beforeShow"}',
+      },
     },
     {includeFormInput: true}
   )
@@ -158,8 +151,8 @@ const buildBeforeShowShowModalForm = (library: ModalLibraryName) =>
     {
       beforeShow: {
         type: 'fn',
-        body: '  if (e.data.modalInput === \'no\') return false\n  return {modalInput: "modal input data from beforeShow"}'
-      }
+        body: '  if (e.data.modalInput === \'no\') return false\n  return {modalInput: "modal input data from beforeShow"}',
+      },
     },
     {includeFormInput: true}
   )
@@ -171,13 +164,13 @@ const buildBeforeHideDataShowModalForm = (library: ModalLibraryName) =>
       beforeShow: {type: 'fn'},
       beforeHide: {
         type: 'fn',
-        body: '  if (args.result === \'ok\') return e.data'
-      }
+        body: "  if (args.result === 'ok') return e.data",
+      },
     },
     {includeFormInput: true}
   )
 
-const createModalHeader = (library: ModalLibraryName, text: string, options?: { key?: string }) => {
+const createModalHeader = (library: ModalLibraryName, text: string, options?: {key?: string}) => {
   const headerType = headerTypeByLibrary[library]
   const props =
     library === 'rsuite'
@@ -189,26 +182,26 @@ const createModalHeader = (library: ModalLibraryName, text: string, options?: { 
     key: options?.key ?? 'modalHeader',
     type: headerType,
     props,
-    ...(library === 'rsuite' && {slot: 'headerTitle'})
+    ...(library === 'rsuite' && {slot: 'headerTitle'}),
   }
 }
 
 const createModalInputWithTestId = (
   library: ModalLibraryName,
   testId: string,
-  options?: { slot?: string; disabled?: boolean; readOnly?: boolean }
+  options?: {slot?: string; disabled?: boolean; readOnly?: boolean}
 ) => ({
   key: 'modalInput',
   type: inputTypeByLibrary[library],
   props:
     options?.disabled !== undefined || options?.readOnly !== undefined
       ? {
-        disabled: {value: options?.disabled ?? false},
-        readOnly: {value: options?.readOnly ?? false}
-      }
+          disabled: {value: options?.disabled ?? false},
+          readOnly: {value: options?.readOnly ?? false},
+        }
       : {},
   htmlAttributes: [{name: 'data-testid', value: testId}],
-  ...(library === 'rsuite' && options?.slot && {slot: options.slot})
+  ...(library === 'rsuite' && options?.slot && {slot: options.slot}),
 })
 
 interface ModalButtonOptions {
@@ -217,13 +210,13 @@ interface ModalButtonOptions {
 
 type ModalButtonEvent =
   | {
-  type: 'close'
-  result: string
-}
+      type: 'close'
+      result: string
+    }
   | {
-  type: 'open'
-  args: Record<string, unknown>
-}
+      type: 'open'
+      args: Record<string, unknown>
+    }
 
 const createModalButton = (
   library: ModalLibraryName,
@@ -243,11 +236,11 @@ const createModalButton = (
     type: buttonTypeByLibrary[library],
     props: {
       children: {value: label},
-      ...(options?.appearance && library === 'rsuite' && {appearance: {value: options.appearance}})
+      ...(options?.appearance && library === 'rsuite' && {appearance: {value: options.appearance}}),
     },
     wrapperCss: {any: {object: {width: 'fit-content'}}},
     events: {onClick: [action]},
-    htmlAttributes: [{name: 'data-testid', value: testId}]
+    htmlAttributes: [{name: 'data-testid', value: testId}],
   }
 }
 
@@ -258,8 +251,7 @@ const createCloseModalButton = (
   result: string,
   testId: string,
   options?: ModalButtonOptions
-) =>
-  createModalButton(library, key, label, testId, {type: 'close', result}, options)
+) => createModalButton(library, key, label, testId, {type: 'close', result}, options)
 
 const createOpenModalButton = (
   library: ModalLibraryName,
@@ -268,31 +260,32 @@ const createOpenModalButton = (
   openModalArgs: Record<string, unknown>,
   testId: string,
   options?: ModalButtonOptions
-) =>
-  createModalButton(library, key, label, testId, {type: 'open', args: openModalArgs}, options)
+) => createModalButton(library, key, label, testId, {type: 'open', args: openModalArgs}, options)
 
 const createModalLayoutButtonsContainer = (
   library: ModalLibraryName,
   children: any[],
-  options?: { slot?: string; containerProps?: Record<string, unknown> }
+  options?: {slot?: string; containerProps?: Record<string, unknown>}
 ) => ({
   key: 'buttonsContainer',
   type: containerTypeByLibrary[library],
-  props:
-    options?.containerProps ??
-    (library === 'rsuite' ? {disabled: {value: false}, readOnly: {value: false}} : {}),
+  props: options?.containerProps ?? (library === 'rsuite' ? {disabled: {value: false}, readOnly: {value: false}} : {}),
   css: {any: {object: {flexDirection: 'row', justifyContent: 'end'}}},
   children,
-  ...(library === 'rsuite' && options?.slot && {slot: options.slot})
+  ...(library === 'rsuite' && options?.slot && {slot: options.slot}),
 })
 
 const buildModalLayoutForm = (library: ModalLibraryName) => {
   const modalHeader = createModalHeader(library, 'Modal window')
   const modalInput = createModalInputWithTestId(library, 'modalInput', {slot: 'body'})
-  const buttonsContainer = createModalLayoutButtonsContainer(library, [
-    createCloseModalButton(library, 'okButton', 'Ok', 'ok', 'okButton', {appearance: 'primary'}),
-    createCloseModalButton(library, 'cancelButton', 'Cancel', 'cancel', 'cancelButton')
-  ], {slot: 'footer'})
+  const buttonsContainer = createModalLayoutButtonsContainer(
+    library,
+    [
+      createCloseModalButton(library, 'okButton', 'Ok', 'ok', 'okButton', {appearance: 'primary'}),
+      createCloseModalButton(library, 'cancelButton', 'Cancel', 'cancel', 'cancelButton'),
+    ],
+    {slot: 'footer'}
+  )
 
   const form = {
     key: 'Screen',
@@ -301,14 +294,14 @@ const buildModalLayoutForm = (library: ModalLibraryName) => {
     children:
       library === 'rsuite'
         ? [
-          {
-            key: 'rsModalLayout',
-            type: 'RsModalLayout',
-            props: {},
-            children: [modalHeader, modalInput, buttonsContainer]
-          }
-        ]
-        : [modalHeader, modalInput, buttonsContainer]
+            {
+              key: 'rsModalLayout',
+              type: 'RsModalLayout',
+              props: {},
+              children: [modalHeader, modalInput, buttonsContainer],
+            },
+          ]
+        : [modalHeader, modalInput, buttonsContainer],
   }
 
   return createFormWithMeta(library, form, false)
@@ -322,21 +315,16 @@ const buildModalLayoutWithConfirmationForm = (library: ModalLibraryName) => {
     type: 'Modal',
     props: {modalTemplate: {value: 'Template:confirmation-modal'}},
     modal: {props: {}, events: {}},
-    ...(library === 'rsuite' && {slot: 'footer'})
+    ...(library === 'rsuite' && {slot: 'footer'}),
   }
   const buttonsContainer = createModalLayoutButtonsContainer(
     library,
     [
-      createOpenModalButton(
-        library,
-        'okButton',
-        'Ok',
-        {modalKey: 'confirmationModal', useFormData: true},
-        'okButton',
-        {appearance: 'primary'}
-      ),
+      createOpenModalButton(library, 'okButton', 'Ok', {modalKey: 'confirmationModal', useFormData: true}, 'okButton', {
+        appearance: 'primary',
+      }),
       createCloseModalButton(library, 'cancelButton', 'Cancel', 'cancel', 'cancelButton'),
-      confirmationModal
+      confirmationModal,
     ],
     {slot: 'footer'}
   )
@@ -348,21 +336,21 @@ const buildModalLayoutWithConfirmationForm = (library: ModalLibraryName) => {
     children:
       library === 'rsuite'
         ? [
-          {
-            key: 'rsModalLayout',
-            type: 'RsModalLayout',
-            props: {},
-            children: [modalHeader, modalInput, buttonsContainer]
-          }
-        ]
+            {
+              key: 'rsModalLayout',
+              type: 'RsModalLayout',
+              props: {},
+              children: [modalHeader, modalInput, buttonsContainer],
+            },
+          ]
         : [
-          {
-            key: 'modalLayout',
-            type: containerTypeByLibrary[library],
-            props: {},
-            children: [modalHeader, modalInput, buttonsContainer]
-          }
-        ]
+            {
+              key: 'modalLayout',
+              type: containerTypeByLibrary[library],
+              props: {},
+              children: [modalHeader, modalInput, buttonsContainer],
+            },
+          ],
   }
 
   return createFormWithMeta(library, form, true)
@@ -374,7 +362,7 @@ const buildConfirmationModalForm = (library: ModalLibraryName) => {
     library,
     [
       createCloseModalButton(library, 'okButton', 'Ok', 'ok', 'confirmOk'),
-      createCloseModalButton(library, 'cancelButton', 'Cancel', 'cancel', 'confirmCancel')
+      createCloseModalButton(library, 'cancelButton', 'Cancel', 'cancel', 'confirmCancel'),
     ],
     {containerProps: {}}
   )
@@ -382,7 +370,7 @@ const buildConfirmationModalForm = (library: ModalLibraryName) => {
   const confirmationModalInput = createModalInputWithTestId(library, 'confirmationModalInput', {
     slot: 'body',
     disabled: true,
-    readOnly: true
+    readOnly: true,
   })
 
   const form = {
@@ -394,26 +382,24 @@ const buildConfirmationModalForm = (library: ModalLibraryName) => {
         key: 'confirmationLayout',
         type: containerTypeByLibrary[library],
         props: {},
-        children: [header, confirmationModalInput, buttonsContainer]
-      }
-    ]
+        children: [header, confirmationModalInput, buttonsContainer],
+      },
+    ],
   }
 
   return createFormWithMeta(library, form, false)
 }
 
-const makeGetForm =
-  (library: ModalLibraryName, buildDefault: (lib: ModalLibraryName) => any) =>
-    (formName?: string) => {
-      const form = formName === 'modal-layout' ? buildModalLayoutForm(library) : buildDefault(library)
-      return JSON.stringify(form)
-    }
+const makeGetForm = (library: ModalLibraryName, buildDefault: (lib: ModalLibraryName) => any) => (formName?: string) => {
+  const form = formName === 'modal-layout' ? buildModalLayoutForm(library) : buildDefault(library)
+  return JSON.stringify(form)
+}
 
 describe('Modal tests', () => {
   it.each(modalTestViews)('Should display a modal window only with the modalKey argument ($name)', async ({name, viewerView}) => {
     const getForm = makeGetForm(name, buildSimpleShowModalForm)
 
-    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewerView}/>)
+    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewerView} />)
 
     const showModalButton = await findByTestId('showModalButton')
     fireEvent.click(showModalButton)
@@ -436,7 +422,7 @@ describe('Modal tests', () => {
   it.each(modalTestViews)('The ModalLayout close button closes the modal window ($name)', async ({name, viewerView}) => {
     const getForm = makeGetForm(name, buildSimpleShowModalForm)
 
-    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewerView}/>)
+    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewerView} />)
 
     const showModalButton = await findByTestId('showModalButton')
     fireEvent.click(showModalButton)
@@ -458,12 +444,12 @@ describe('Modal tests', () => {
       onCloseEventHandler: () => {
         eventHandlersData.onClose ??= []
         eventHandlersData.onClose.push(new Date())
-      }
+      },
     }
 
     const getForm = makeGetForm(name, buildSimpleShowModalForm)
 
-    const renderResult = render(<FormBuilder view={builderView} getForm={getForm} actions={customActions}/>)
+    const renderResult = render(<FormBuilder view={builderView} getForm={getForm} actions={customActions} />)
     const {findByTestId} = renderResult
 
     fireEvent.click(await findByTestId('Tree_Tab'))
@@ -492,20 +478,20 @@ describe('Modal tests', () => {
   })
 
   it.each(modalTestViews)('onClose event handlers should be called when closeModal action is fired ($name)', async ({
-                                                                                                                      name,
-                                                                                                                      builderView
-                                                                                                                    }) => {
+    name,
+    builderView,
+  }) => {
     const eventHandlersData: Record<string, any> = {}
     const customActions = {
       onCloseEventHandler: () => {
         eventHandlersData.onClose ??= []
         eventHandlersData.onClose.push(new Date())
-      }
+      },
     }
 
     const getForm = makeGetForm(name, buildSimpleShowModalForm)
 
-    const renderResult = render(<FormBuilder view={builderView} getForm={getForm} actions={customActions}/>)
+    const renderResult = render(<FormBuilder view={builderView} getForm={getForm} actions={customActions} />)
     const {findByTestId} = renderResult
 
     fireEvent.click(await findByTestId('Tree_Tab'))
@@ -527,7 +513,7 @@ describe('Modal tests', () => {
   it.each(modalTestViews)('openModal.useFormData should pass form data ($name)', async ({name, viewerView}) => {
     const getForm = makeGetForm(name, buildUseFormDataShowModalForm)
 
-    const {findByTestId} = render(<FormViewer getForm={getForm} view={viewerView}/>)
+    const {findByTestId} = render(<FormViewer getForm={getForm} view={viewerView} />)
 
     const formInput = getInputElement(await findByTestId('formModalInput'))
     const randomString = `${new Date().getTime()}`
@@ -537,17 +523,17 @@ describe('Modal tests', () => {
     const showModalButton = await findByTestId('showModalButton')
     fireEvent.click(showModalButton)
 
-    const modalInput = getInputElement((await findByTestId('modalInput')))
+    const modalInput = getInputElement(await findByTestId('modalInput'))
     expect(modalInput).toHaveValue(randomString)
   })
 
   it.each(modalTestViews)('openModal.beforeShow returning false should prevent opening the modal window ($name)', async ({
-                                                                                                                           name,
-                                                                                                                           viewerView
-                                                                                                                         }) => {
+    name,
+    viewerView,
+  }) => {
     const getForm = makeGetForm(name, buildUseFormDataShowModalForm)
 
-    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewerView}/>)
+    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewerView} />)
 
     const formInput = getInputElement(await findByTestId('formModalInput'))
     fireEvent.change(formInput, {target: {value: 'no'}})
@@ -566,7 +552,7 @@ describe('Modal tests', () => {
   it.each(modalTestViews)('openModal.beforeShow should pass form data ($name)', async ({name, viewerView}) => {
     const getForm = makeGetForm(name, buildBeforeShowShowModalForm)
 
-    const {findByTestId} = render(<FormViewer getForm={getForm} view={viewerView}/>)
+    const {findByTestId} = render(<FormViewer getForm={getForm} view={viewerView} />)
 
     const formInput = getInputElement(await findByTestId('formModalInput'))
     fireEvent.change(formInput, {target: {value: 'some data'}})
@@ -582,7 +568,7 @@ describe('Modal tests', () => {
     const getForm = makeGetForm(name, buildBeforeHideDataShowModalForm)
 
     const initialData = {modalInput: 'one'}
-    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewerView} initialData={initialData}/>)
+    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewerView} initialData={initialData} />)
 
     const formInput = getInputElement(await findByTestId('formModalInput'))
     expect(formInput).toHaveValue('one')
@@ -616,7 +602,7 @@ describe('Modal tests', () => {
   it.each(modalTestViews)('openModal.beforeHide test result should match returned value ($name)', async ({name, builderView}) => {
     const getForm = makeGetForm(name, buildBeforeHideDataShowModalForm)
 
-    const renderResult = render(<FormBuilder view={builderView} getForm={getForm}/>)
+    const renderResult = render(<FormBuilder view={builderView} getForm={getForm} />)
     const {container, findByTestId} = renderResult
 
     fireEvent.click(await findByTestId('Tree_Tab'))
@@ -651,7 +637,7 @@ describe('Modal tests', () => {
       return JSON.stringify(form)
     }
 
-    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewWithCss}/>)
+    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewWithCss} />)
 
     const showModalButton = await findByTestId('showModalButton')
     fireEvent.click(showModalButton)
@@ -674,56 +660,62 @@ describe('Modal tests', () => {
   })
 
   it.each(modalTestViews)('Should show a warning when modalTemplate is missing ($name)', async ({name, viewerView}) => {
-    const form = createFormWithMeta(name, {
-      key: 'Screen',
-      type: 'Screen',
-      props: {},
-      children: [
-        {
-          key: 'marker',
-          type: buttonTypeByLibrary[name],
-          props: {children: {value: 'Ready'}},
-          htmlAttributes: [{name: 'data-testid', value: 'readyMarker'}]
-        },
-        {
-          key: 'modal1',
-          type: 'Modal',
-          props: {},
-          modal: {props: {}, events: {}}
-        }
-      ]
-    }, true)
+    const form = createFormWithMeta(
+      name,
+      {
+        key: 'Screen',
+        type: 'Screen',
+        props: {},
+        children: [
+          {
+            key: 'marker',
+            type: buttonTypeByLibrary[name],
+            props: {children: {value: 'Ready'}},
+            htmlAttributes: [{name: 'data-testid', value: 'readyMarker'}],
+          },
+          {
+            key: 'modal1',
+            type: 'Modal',
+            props: {},
+            modal: {props: {}, events: {}},
+          },
+        ],
+      },
+      true
+    )
 
-    const {findByTestId} = render(<FormViewer getForm={() => JSON.stringify(form)} view={viewerView}/>)
+    const {findByTestId} = render(<FormViewer getForm={() => JSON.stringify(form)} view={viewerView} />)
 
     expect(await findByTestId('readyMarker')).toBeInTheDocument()
     expect(await findByTestId('modal-template-not-specified')).toBeInTheDocument()
   })
 
-  const rsModalLayoutWithUnconfiguredModalForm = createFormWithMeta('rsuite', {
-    key: 'Screen',
-    type: 'Screen',
-    props: {},
-    children: [
-      {
-        key: 'rsModalLayout1',
-        type: 'RsModalLayout',
-        props: {},
-        htmlAttributes: [{name: 'data-testid', value: 'rsModalLayout1'}]
-      },
-      {
-        key: 'modal1',
-        type: 'Modal',
-        props: {},
-        modal: {props: {}, events: {}}
-      }
-    ]
-  }, true)
+  const rsModalLayoutWithUnconfiguredModalForm = createFormWithMeta(
+    'rsuite',
+    {
+      key: 'Screen',
+      type: 'Screen',
+      props: {},
+      children: [
+        {
+          key: 'rsModalLayout1',
+          type: 'RsModalLayout',
+          props: {},
+          htmlAttributes: [{name: 'data-testid', value: 'rsModalLayout1'}],
+        },
+        {
+          key: 'modal1',
+          type: 'Modal',
+          props: {},
+          modal: {props: {}, events: {}},
+        },
+      ],
+    },
+    true
+  )
 
   it('Should render RsModalLayout next to Modal without modalTemplate', async () => {
-    const {findByTestId} = render(
-      <FormViewer getForm={() => JSON.stringify(rsModalLayoutWithUnconfiguredModalForm)} view={viewWithCss}/>
-    )
+    const {findByTestId} = render(<FormViewer getForm={() => JSON.stringify(rsModalLayoutWithUnconfiguredModalForm)} view={viewWithCss} />)
 
     expect(await findByTestId('rsModalLayout1')).toBeInTheDocument()
     expect(await findByTestId('modal-template-not-specified')).toBeInTheDocument()
@@ -731,7 +723,7 @@ describe('Modal tests', () => {
 
   it('Should show a warning in preview when RsModalLayout is a sibling of Modal without modalTemplate', async () => {
     const renderResult = render(
-      <FormBuilder view={builderViewWithCss} getForm={() => JSON.stringify(rsModalLayoutWithUnconfiguredModalForm)}/>
+      <FormBuilder view={builderViewWithCss} getForm={() => JSON.stringify(rsModalLayoutWithUnconfiguredModalForm)} />
     )
 
     expect(await renderResult.findByTestId('modal-template-not-specified')).toBeInTheDocument()

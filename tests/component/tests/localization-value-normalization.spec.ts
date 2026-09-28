@@ -1,7 +1,5 @@
 import {describe, expect, it} from 'vitest'
-import {
-  normalizeLocalizationValueForSave
-} from '../../../packages/designer/src/features/components/PropertyEditorWrapper/PropertyEditorWrapper'
+import {normalizeLocalizationValueForSave} from '../../../packages/designer/src/features/components/PropertyEditorWrapper/PropertyEditorWrapper'
 
 describe('Localization value normalization for save', () => {
   it('removes leading spaces when value contains non-whitespace characters', () => {

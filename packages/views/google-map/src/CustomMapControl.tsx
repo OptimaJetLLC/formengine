@@ -32,10 +32,13 @@ export const CustomMapControl = (props: CustomAutocompleteControlProps) => {
   const [selectedPlace, setSelectedPlace] = useState<google.maps.places.PlaceResult | null>(null)
   const map = useMap()
 
-  const handlePlaceSelect = useCallback((place: google.maps.places.PlaceResult | null) => {
-    setSelectedPlace(place)
-    if (place) onPlaceSelect?.(place)
-  }, [onPlaceSelect])
+  const handlePlaceSelect = useCallback(
+    (place: google.maps.places.PlaceResult | null) => {
+      setSelectedPlace(place)
+      if (place) onPlaceSelect?.(place)
+    },
+    [onPlaceSelect]
+  )
 
   useEffect(() => {
     if (map && selectedPlace?.geometry?.viewport) {
@@ -43,9 +46,11 @@ export const CustomMapControl = (props: CustomAutocompleteControlProps) => {
     }
   }, [map, selectedPlace])
 
-  return <MapControl position={controlPosition}>
-    <div className="autocomplete-control">
-      <PlaceAutocompleteClassic onPlaceSelect={handlePlaceSelect} placeholder={placeholder}/>
-    </div>
-  </MapControl>
+  return (
+    <MapControl position={controlPosition}>
+      <div className="autocomplete-control">
+        <PlaceAutocompleteClassic onPlaceSelect={handlePlaceSelect} placeholder={placeholder} />
+      </div>
+    </MapControl>
+  )
 }

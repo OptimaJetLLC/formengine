@@ -12,12 +12,7 @@ const stopEvent = (event: KeyboardEvent) => {
   event.stopPropagation()
 }
 
-type HotkeyAction = 'deleteSelectedAction'
-  | 'cloneOneSelectedAction'
-  | 'saveFormAction'
-  | 'printFormAction'
-  | 'undoAction'
-  | 'redoAction'
+type HotkeyAction = 'deleteSelectedAction' | 'cloneOneSelectedAction' | 'saveFormAction' | 'printFormAction' | 'undoAction' | 'redoAction'
 
 type OS = 'macos' | 'default'
 
@@ -68,11 +63,13 @@ const findHotkeyAction = (event: KeyboardEvent) => {
 
   const keys = hotKeys[os]
   const item = keys.find(([hotkey]) => {
-    return !(hotkey.key.toLowerCase() !== event.key.toLowerCase()
-      || !!hotkey.alt !== event.altKey
-      || !!hotkey.shift !== event.shiftKey
-      || !!hotkey.ctrl !== event.ctrlKey
-      || !!hotkey.meta !== event.metaKey)
+    return !(
+      hotkey.key.toLowerCase() !== event.key.toLowerCase() ||
+      !!hotkey.alt !== event.altKey ||
+      !!hotkey.shift !== event.shiftKey ||
+      !!hotkey.ctrl !== event.ctrlKey ||
+      !!hotkey.meta !== event.metaKey
+    )
   })
   return item?.[1]
 }
@@ -81,29 +78,32 @@ const useHotkeyHandlers = (): Record<HotkeyAction, HotkeyHandler> => {
   const builderStore = useBuilderStore()
   const onSave = useSaveForm()
 
-  return useMemo(() => ({
-    deleteSelectedAction: () => {
-      builderStore.deleteSelectedComponents()
-    },
-    cloneOneSelectedAction: () => {
-      const oneSelected = builderStore.oneSelected
-      if (oneSelected) {
-        builderStore.clone(oneSelected)
-      }
-    },
-    saveFormAction: () => {
-      onSave()
-    },
-    printFormAction: () => {
-      printForm(builderStore)
-    },
-    undoAction: () => {
-      builderStore.undoer.undo()
-    },
-    redoAction: () => {
-      builderStore.undoer.redo()
-    },
-  }), [builderStore, onSave])
+  return useMemo(
+    () => ({
+      deleteSelectedAction: () => {
+        builderStore.deleteSelectedComponents()
+      },
+      cloneOneSelectedAction: () => {
+        const oneSelected = builderStore.oneSelected
+        if (oneSelected) {
+          builderStore.clone(oneSelected)
+        }
+      },
+      saveFormAction: () => {
+        onSave()
+      },
+      printFormAction: () => {
+        printForm(builderStore)
+      },
+      undoAction: () => {
+        builderStore.undoer.undo()
+      },
+      redoAction: () => {
+        builderStore.undoer.redo()
+      },
+    }),
+    [builderStore, onSave]
+  )
 }
 
 /**
@@ -112,15 +112,18 @@ const useHotkeyHandlers = (): Record<HotkeyAction, HotkeyHandler> => {
 export const useHotkeys = () => {
   const handlers = useHotkeyHandlers()
 
-  return useCallback((event: KeyboardEvent) => {
-    const action = findHotkeyAction(event)
-    if (!action) return
-    if (!alwaysActiveActions.has(action) && document.activeElement !== document.body) return
+  return useCallback(
+    (event: KeyboardEvent) => {
+      const action = findHotkeyAction(event)
+      if (!action) return
+      if (!alwaysActiveActions.has(action) && document.activeElement !== document.body) return
 
-    const handler = handlers[action]
-    if (handler) {
-      stopEvent(event)
-      handler()
-    }
-  }, [handlers])
+      const handler = handlers[action]
+      if (handler) {
+        stopEvent(event)
+        handler()
+      }
+    },
+    [handlers]
+  )
 }

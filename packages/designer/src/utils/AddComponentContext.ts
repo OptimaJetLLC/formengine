@@ -24,6 +24,7 @@ const [
   /**
    * **Internal use only.**
    */
-  CanAddComponentProvider] = createNonNullableContext<CanAddComponentFunction>('CanAddComponentContext', () => true)
+  CanAddComponentProvider,
+] = createNonNullableContext<CanAddComponentFunction>('CanAddComponentContext', () => true)
 
 export {useCanAddComponent, CanAddComponentProvider}

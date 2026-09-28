@@ -5,51 +5,55 @@ import {
   type Store,
   string,
   type ValidationRuleSettings,
-  type ValidatorType
+  type ValidatorType,
 } from '@react-form-builder/core'
 import {createViewerStore} from '../common/createMockBuilderStore'
 
 const internalRequired = {
   params: [{key: 'message', type: 'string' as const, required: false}],
-  validatorFactory: () => () => true
+  validatorFactory: () => () => true,
 }
 
 const customRule = {
   params: [{key: 'message', type: 'string' as const, required: false}],
-  validate: () => true
+  validate: () => true,
 }
 
 const rules = {
   internal: {
-    required: internalRequired
+    required: internalRequired,
   },
   custom: {
-    customRule
-  }
+    customRule,
+  },
 }
 
 const unsupportedType = 'unsupported' as ValidatorType
 
-const stringField = define(() => <div/>, 'StringField')
+const stringField = define(() => <div />, 'StringField')
   .name('String field')
   .props({
-    value: string.valued
+    value: string.valued,
   })
   .build()
 
 const createStore = (validations: ValidationRuleSettings[]) => {
   const store = createViewerStore({view: createView([stringField.model])})
-  store.applyStringForm(JSON.stringify({
-    form: {
-      key: 'Screen',
-      type: 'Screen',
-      children: [{
-        key: 'field',
-        type: 'StringField',
-        schema: {validations}
-      }]
-    }
-  }))
+  store.applyStringForm(
+    JSON.stringify({
+      form: {
+        key: 'Screen',
+        type: 'Screen',
+        children: [
+          {
+            key: 'field',
+            type: 'StringField',
+            schema: {validations},
+          },
+        ],
+      },
+    })
+  )
   return store
 }
 
@@ -64,21 +68,21 @@ describe('getValidationRuleDefinition', () => {
   it('resolves an internal rule when type is omitted', () => {
     expect(getValidationRuleDefinition(rules, {key: 'required'})).toEqual({
       type: 'internal',
-      definition: internalRequired
+      definition: internalRequired,
     })
   })
 
   it('resolves an internal rule when type is internal', () => {
     expect(getValidationRuleDefinition(rules, {key: 'required', type: 'internal'})).toEqual({
       type: 'internal',
-      definition: internalRequired
+      definition: internalRequired,
     })
   })
 
   it('resolves a custom rule', () => {
     expect(getValidationRuleDefinition(rules, {key: 'customRule', type: 'custom'})).toEqual({
       type: 'custom',
-      definition: customRule
+      definition: customRule,
     })
   })
 
@@ -108,7 +112,7 @@ describe('Unresolved validation rules are no-ops', () => {
     const field = await validateField(store)
 
     expect(field.error).toBeUndefined()
-    expect(warn).toHaveBeenCalledWith('Cannot find rule, key: \'required\', type: \'unsupported\'')
+    expect(warn).toHaveBeenCalledWith("Cannot find rule, key: 'required', type: 'unsupported'")
   })
 
   it('does not fail validation for a missing internal rule', async () => {
@@ -116,7 +120,7 @@ describe('Unresolved validation rules are no-ops', () => {
     const field = await validateField(createStore([{key: 'missingInternal'}]))
 
     expect(field.error).toBeUndefined()
-    expect(warn).toHaveBeenCalledWith('Cannot find \'internal\' rule, key: \'missingInternal\'')
+    expect(warn).toHaveBeenCalledWith("Cannot find 'internal' rule, key: 'missingInternal'")
   })
 
   it('does not fail validation for a missing custom rule', async () => {
@@ -124,15 +128,12 @@ describe('Unresolved validation rules are no-ops', () => {
     const field = await validateField(createStore([{key: 'missingCustom', type: 'custom'}]))
 
     expect(field.error).toBeUndefined()
-    expect(warn).toHaveBeenCalledWith('Cannot find rule, key: \'missingCustom\', type: \'custom\'')
+    expect(warn).toHaveBeenCalledWith("Cannot find rule, key: 'missingCustom', type: 'custom'")
   })
 
   it('still runs resolved rules when an unsupported type is present', async () => {
     vi.spyOn(console, 'warn').mockImplementation(() => undefined)
-    const field = await validateField(createStore([
-      {key: 'required', type: unsupportedType},
-      {key: 'required'}
-    ]))
+    const field = await validateField(createStore([{key: 'required', type: unsupportedType}, {key: 'required'}]))
 
     expect(field.error).toBe('Required')
   })

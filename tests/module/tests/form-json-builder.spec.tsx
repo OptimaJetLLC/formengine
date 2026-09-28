@@ -1,7 +1,7 @@
 import {buildForm} from '@react-form-builder/core'
 import actionWithArgs from '../data/form-json-builder/action-with-args.json'
-import chainChildren from '../data/form-json-builder/chain-children.json'
 import chain from '../data/form-json-builder/chain.json'
+import chainChildren from '../data/form-json-builder/chain-children.json'
 import complexForm from '../data/form-json-builder/complex-form.json'
 import computedAfterEvent from '../data/form-json-builder/computed-after-event.json'
 import computedAfterValidation from '../data/form-json-builder/computed-after-validation.json'
@@ -19,11 +19,11 @@ describe(`Should build correctly`, function () {
     const actualForm = buildForm({errorType: 'RsErrorMessage'})
       .component('container', 'RsContainer')
       .style('background-color: red')
-      .children((builder) =>
+      .children(builder =>
         builder
           .component('container1', 'RsContainer')
           .style({flexDirection: 'row'})
-          .children((builder) =>
+          .children(builder =>
             builder
               .component('name', 'RsInput')
               .prop('placeholder', 'Enter your name')
@@ -40,7 +40,8 @@ describe(`Should build correctly`, function () {
           .prop('color', 'blue')
           .prop('appearance', 'primary')
           .event('onClick')
-          .commonAction('validate').args({failOnError: true})
+          .commonAction('validate')
+          .args({failOnError: true})
           .customAction('onSubmit')
       )
 
@@ -53,14 +54,16 @@ describe(`Should build correctly`, function () {
       .style('background-color: red')
       .validation('required')
       .event('onClick')
-      .commonAction('validate').args({failOnError: true})
+      .commonAction('validate')
+      .args({failOnError: true})
       .customAction('onSubmit')
       .prop('prop', 'My prop')
       .computedProp('computed', 'return 1')
       .localizedProp('locProps', 'en-US', 'English')
       .localizedProp('locProps', 'de-DE', 'Deutsch')
-      .children((builder) =>
-        builder.component('container1', 'RsContainer')
+      .children(builder =>
+        builder
+          .component('container1', 'RsContainer')
           .localizedProp('locProps', 'es-ES', 'El gata')
           .localizedProp('locProps', 'en-US', 'EN')
           .computedProp('computed', 'return 23')
@@ -73,12 +76,11 @@ describe(`Should build correctly`, function () {
     const actualForm = buildForm({errorType: 'RsErrorMessage'})
       .component('container', 'RsContainer')
       .style('background-color: red')
-      .children((builder) =>
-        builder.component('container1', 'RsContainer')
-      )
+      .children(builder => builder.component('container1', 'RsContainer'))
       .validation('required')
       .event('onClick')
-      .commonAction('validate').args({failOnError: true})
+      .commonAction('validate')
+      .args({failOnError: true})
       .customAction('onSubmit')
       .prop('prop', 'My prop')
 
@@ -88,12 +90,11 @@ describe(`Should build correctly`, function () {
   it('setup chain that is completed using the style method', async () => {
     const actualForm = buildForm({errorType: 'RsErrorMessage'})
       .component('container', 'RsContainer')
-      .children((builder) =>
-        builder.component('container1', 'RsContainer')
-      )
+      .children(builder => builder.component('container1', 'RsContainer'))
       .validation('required')
       .event('onClick')
-      .commonAction('validate').args({failOnError: true})
+      .commonAction('validate')
+      .args({failOnError: true})
       .customAction('onSubmit')
       .prop('prop', 'My prop')
       .style('background-color: red')
@@ -105,12 +106,11 @@ describe(`Should build correctly`, function () {
     const actualForm = buildForm({errorType: 'RsErrorMessage'})
       .component('container', 'RsContainer')
       .style('background-color: red')
-      .children((builder) =>
-        builder.component('container1', 'RsContainer')
-      )
+      .children(builder => builder.component('container1', 'RsContainer'))
       .prop('prop', 'My prop')
       .event('onClick')
-      .commonAction('validate').args({failOnError: true})
+      .commonAction('validate')
+      .args({failOnError: true})
       .customAction('onSubmit')
       .validation('required')
 
@@ -121,13 +121,12 @@ describe(`Should build correctly`, function () {
     const actualForm = buildForm({errorType: 'RsErrorMessage'})
       .component('container', 'RsContainer')
       .style('background-color: red')
-      .children((builder) =>
-        builder.component('container1', 'RsContainer')
-      )
+      .children(builder => builder.component('container1', 'RsContainer'))
       .validation('required')
       .prop('prop', 'My prop')
       .event('onClick')
-      .commonAction('validate').args({failOnError: true})
+      .commonAction('validate')
+      .args({failOnError: true})
       .customAction('onSubmit')
 
     expect(JSON.parse(actualForm.json())).toMatchObject(chain)
@@ -137,13 +136,12 @@ describe(`Should build correctly`, function () {
     const actualForm = buildForm({errorType: 'RsErrorMessage'})
       .component('container', 'RsContainer')
       .style('background-color: red')
-      .children((builder) =>
-        builder.component('container1', 'RsContainer')
-      )
+      .children(builder => builder.component('container1', 'RsContainer'))
       .validation('required')
       .prop('prop', 'My prop')
       .event('onClick')
-      .commonAction('validate').args({failOnError: true})
+      .commonAction('validate')
+      .args({failOnError: true})
 
     expect(JSON.parse(actualForm.json())).toMatchObject(actionWithArgs)
   })
@@ -152,13 +150,12 @@ describe(`Should build correctly`, function () {
     const actualForm = buildForm({errorType: 'RsErrorMessage'})
       .component('container', 'RsContainer')
       .style('background-color: red')
-      .children((builder) =>
-        builder.component('container1', 'RsContainer')
-      )
+      .children(builder => builder.component('container1', 'RsContainer'))
       .validation('required')
       .prop('prop', 'My prop')
       .event('onClick')
-      .commonAction('validate').args({failOnError: true})
+      .commonAction('validate')
+      .args({failOnError: true})
       .customAction('onSubmit')
 
     actualForm.json()

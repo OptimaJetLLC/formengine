@@ -8,16 +8,11 @@ const ActionsDisabled = (props: any) => {
   return <div {...props} />
 }
 
-const actionsDisabled = define(ActionsDisabled, 'ActionsDisabled')
-  .hideActionEditors()
-  .build()
+const actionsDisabled = define(ActionsDisabled, 'ActionsDisabled').hideActionEditors().build()
 
 describe('DisableActionEditors feature test', () => {
   it('The editors on the Actions tab should be hidden.', async () => {
-    const view = new BuilderView([
-      ...allComponentsBuilder,
-      actionsDisabled
-    ])
+    const view = new BuilderView([...allComponentsBuilder, actionsDisabled])
     const {findByTestId, queryByTestId} = await renderBuilder(form, {view})
 
     const testInput = await findByTestId('testInput')

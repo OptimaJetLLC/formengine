@@ -14,23 +14,23 @@ import styles from './NumberInput.module.css'
  */
 export const NumberInput = (props: AnnotationEditorProps) => {
   const {value, onChange, onClean, annotation, componentData} = props
-  const handleChange = useCallback((value: any) => {
-    if (typeof value === 'string') {
-      value = Number(value)
-      value = isNaN(value) ? 0 : value
-    }
-    onChange(value)
-  }, [onChange])
+  const handleChange = useCallback(
+    (value: any) => {
+      if (typeof value === 'string') {
+        value = Number(value)
+        value = isNaN(value) ? 0 : value
+      }
+      onChange(value)
+    },
+    [onChange]
+  )
   const {calculateEditorProps, ...editorProps} = annotation.editorProps ?? {}
   const inputNumberProps = {
     ...editorProps,
     ...calculateEditorProps?.(componentData),
     value: isNumber(value) ? value : null,
   }
-  const closeButton = useMemo(
-    () => <Close onClick={onClean} className={styles.closeButton}/>,
-    [onClean],
-  )
+  const closeButton = useMemo(() => <Close onClick={onClean} className={styles.closeButton} />, [onClean])
 
   return (
     <LabeledProperty {...props}>

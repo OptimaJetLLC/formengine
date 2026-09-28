@@ -16,17 +16,17 @@ describe('FE-1740 AlwaysRejectFormStorage.ts:8 Uncaught (in promise) Error: Not 
               {
                 name: 'data-testid',
                 value: 'test-button',
-              }
-            ]
+              },
+            ],
           },
-        ]
-      }
+        ],
+      },
     }
     const getForm = () => JSON.stringify(emptyForm)
 
     localStorage.setItem('leftPanelActiveTab', 'forms')
 
-    const {findByTestId} = render(<FormBuilder view={builderViewWithCss} getForm={getForm}/>)
+    const {findByTestId} = render(<FormBuilder view={builderViewWithCss} getForm={getForm} />)
 
     expect(await findByTestId('test-button')).toBeInTheDocument()
   })

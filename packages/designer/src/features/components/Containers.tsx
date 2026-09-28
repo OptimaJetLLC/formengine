@@ -11,17 +11,9 @@ import styles from './Containers.module.css'
  * @param props.gap the gap between rows.
  * @returns the React element.
  */
-export const Rows = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({className, ...props}, ref) => {
-    return (
-      <div
-        {...props}
-        ref={ref}
-        className={cx(styles.rows, className)}
-      />
-    )
-  },
-)
+export const Rows = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({className, ...props}, ref) => {
+  return <div {...props} ref={ref} className={cx(styles.rows, className)} />
+})
 Rows.displayName = 'Rows'
 
 interface ColumnsProps extends HTMLAttributes<HTMLDivElement> {
@@ -45,22 +37,15 @@ interface ColumnsProps extends HTMLAttributes<HTMLDivElement> {
  * @param props.className wrapper css class name.
  * @returns React component.
  */
-export const Columns = forwardRef<HTMLDivElement, ColumnsProps>(
-  ({stretchElements, spaceBetween, className, ...props}, ref) => {
-    return (
-      <div
-        {...props}
-        ref={ref}
-        className={cx(
-          styles.columns,
-          className,
-          stretchElements && styles.columnsStretch,
-          spaceBetween && styles.columnsSpaceBetween,
-        )}
-      />
-    )
-  },
-)
+export const Columns = forwardRef<HTMLDivElement, ColumnsProps>(({stretchElements, spaceBetween, className, ...props}, ref) => {
+  return (
+    <div
+      {...props}
+      ref={ref}
+      className={cx(styles.columns, className, stretchElements && styles.columnsStretch, spaceBetween && styles.columnsSpaceBetween)}
+    />
+  )
+})
 Columns.displayName = 'Columns'
 
 /**
@@ -69,15 +54,9 @@ Columns.displayName = 'Columns'
  * @param props.className css class name.
  * @returns React component.
  */
-export const LabeledInput = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({className, ...props}, ref) => (
-    <div
-      {...props}
-      ref={ref}
-      className={cx(styles.labeledInput, className)}
-    />
-  ),
-)
+export const LabeledInput = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({className, ...props}, ref) => (
+  <div {...props} ref={ref} className={cx(styles.labeledInput, className)} />
+))
 LabeledInput.displayName = 'LabeledInput'
 
 /**
@@ -86,15 +65,9 @@ LabeledInput.displayName = 'LabeledInput'
  * @param props.className css class name.
  * @returns React component.
  */
-export const ListItem = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({className, ...props}, ref) => (
-    <div
-      {...props}
-      ref={ref}
-      className={cx(styles.listItem, className)}
-    />
-  ),
-)
+export const ListItem = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({className, ...props}, ref) => (
+  <div {...props} ref={ref} className={cx(styles.listItem, className)} />
+))
 ListItem.displayName = 'ListItem'
 
 /**
@@ -104,13 +77,9 @@ ListItem.displayName = 'ListItem'
  * @param props.clickable flag, if true then the list is clickable, false otherwise.
  * @returns the React element.
  */
-export const List = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { clickable?: boolean }>(
+export const List = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & {clickable?: boolean}>(
   ({clickable = false, className, ...props}, ref) => (
-    <div
-      {...props}
-      ref={ref}
-      className={cx(styles.list, className, clickable && styles.listClickable)}
-    />
-  ),
+    <div {...props} ref={ref} className={cx(styles.list, className, clickable && styles.listClickable)} />
+  )
 )
 List.displayName = 'List'

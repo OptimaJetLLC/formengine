@@ -14,15 +14,21 @@ const RawAddButton = () => {
   const t = useTranslationPart('componentToolbar')
   const whisperRef = useRef<WhisperInstance>(null)
 
-  const handleClick = useCallback((position: InsertPosition) => {
-    whisperRef.current?.close()
-    builderStore.showComponentsModal(source => {
-      builderStore.add(source, target, position)
-    }, componentData => builderStore.getAddComponentResult(componentData, target, position))
-  }, [builderStore, target])
+  const handleClick = useCallback(
+    (position: InsertPosition) => {
+      whisperRef.current?.close()
+      builderStore.showComponentsModal(
+        source => {
+          builderStore.add(source, target, position)
+        },
+        componentData => builderStore.getAddComponentResult(componentData, target, position)
+      )
+    },
+    [builderStore, target]
+  )
 
-  const sortUpIcon = useMemo(() => <SortUp/>, [])
-  const sortDownIcon = useMemo(() => <SortDown/>, [])
+  const sortUpIcon = useMemo(() => <SortUp />, [])
+  const sortDownIcon = useMemo(() => <SortDown />, [])
 
   const handleClickBefore = useCallback(() => handleClick('before'), [handleClick])
   const handleClickAfter = useCallback(() => handleClick('after'), [handleClick])
@@ -33,21 +39,25 @@ const RawAddButton = () => {
         <div className={styles.container}>
           <p className={styles.label}>{t('add')}</p>
           <ButtonGroup vertical>
-            <IconButton onClick={handleClickBefore} icon={sortUpIcon} size={'xs'}
-                        appearance={'primary'}>{t('before')}</IconButton>
-            <IconButton onClick={handleClickAfter} icon={sortDownIcon} size={'xs'}
-                        appearance={'primary'}>{t('after')}</IconButton>
+            <IconButton onClick={handleClickBefore} icon={sortUpIcon} size={'xs'} appearance={'primary'}>
+              {t('before')}
+            </IconButton>
+            <IconButton onClick={handleClickAfter} icon={sortDownIcon} size={'xs'} appearance={'primary'}>
+              {t('after')}
+            </IconButton>
           </ButtonGroup>
         </div>
       </Popover>
     )
   }, [t, handleClickBefore, handleClickAfter, sortUpIcon, sortDownIcon])
 
-  return <>
-    <Whisper placement={builderStore.isRTL ? 'right' : 'left'} speaker={popover} ref={whisperRef} enterable trigger="hover">
-      <PlusIcon className={'add-button'}/>
-    </Whisper>
-  </>
+  return (
+    <>
+      <Whisper placement={builderStore.isRTL ? 'right' : 'left'} speaker={popover} ref={whisperRef} enterable trigger="hover">
+        <PlusIcon className={'add-button'} />
+      </Whisper>
+    </>
+  )
 }
 
 export const AddButton = namedObserver('AddButton', RawAddButton)

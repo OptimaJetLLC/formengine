@@ -80,5 +80,4 @@ export interface ConstrainedProps {
 /**
  * The properties of the CodeEditor React component.
  */
-export interface CodeEditorProps extends UnconstrainedCodeEditorProps, ConstrainedProps {
-}
+export interface CodeEditorProps extends UnconstrainedCodeEditorProps, ConstrainedProps {}

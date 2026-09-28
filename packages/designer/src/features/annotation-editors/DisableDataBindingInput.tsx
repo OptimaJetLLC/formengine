@@ -11,15 +11,18 @@ export const DisableDataBindingInput = (props: AnnotationEditorProps) => {
   const {store} = props.componentData
   const value = store.disableDataBinding?.value
 
-  const onChange = useCallback((value: boolean) => {
-    // eslint-disable-next-line react-hooks/immutability
-    store.disableDataBinding = {value}
-  }, [store])
+  const onChange = useCallback(
+    (value: boolean) => {
+      // eslint-disable-next-line react-hooks/immutability
+      store.disableDataBinding = {value}
+    },
+    [store]
+  )
 
   const onClean = useCallback(() => {
     // eslint-disable-next-line react-hooks/immutability
     store.disableDataBinding = undefined
   }, [store])
 
-  return <BooleanInput {...props} value={value} onChange={onChange} onClean={onClean}/>
+  return <BooleanInput {...props} value={value} onChange={onChange} onClean={onClean} />
 }

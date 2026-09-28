@@ -1,5 +1,11 @@
 import type {Annotation, ValidationRuleSettings} from '@react-form-builder/core'
-import {getValidationRuleDefinition, getValidatorPropertyBlockType, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
+import {
+  getValidationRuleDefinition,
+  getValidatorPropertyBlockType,
+  namedObserver,
+  useComponentData,
+  useStore,
+} from '@react-form-builder/core'
 import {RemindFill} from '@rsuite/icons'
 import type {ComponentProps} from 'react'
 import {useCallback, useMemo} from 'react'
@@ -12,12 +18,12 @@ import {convertValidationRuleParametersToAnnotations, validateWhen} from '../../
 import {HintedIconButton} from '../../Hinted'
 import styles from './ValidationRuleEditor.module.css'
 
-const warningButtonIcon = <RemindFill color="#f5a623"/>
+const warningButtonIcon = <RemindFill color="#f5a623" />
 
 const WarningButton = (props: ComponentProps<any>) => {
   const t = useTranslationPart('validation')
 
-  return <HintedIconButton hint={t('ruleNotFound')} icon={warningButtonIcon} {...props}/>
+  return <HintedIconButton hint={t('ruleNotFound')} icon={warningButtonIcon} {...props} />
 }
 
 /**
@@ -69,19 +75,24 @@ const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) =>
     <Rows data-testid={`existing-rule-${rule.type ?? 'internal'}-${rule.key}`}>
       <Columns spaceBetween>
         <div>
-          {!annotations &&
-            <WarningButton hintPlacement={'autoHorizontal'} disabled={true}/>
-          }
+          {!annotations && <WarningButton hintPlacement={'autoHorizontal'} disabled={true} />}
           <span className={styles.ruleName}>{t(`validation.rule.${rule.key}`, rule.key)}</span>
         </div>
-        <RemoveButton onClick={handleRemove} hintPlacement={'autoHorizontal'} data-testid={`${propertyBlockType}-remove-button`}/>
+        <RemoveButton onClick={handleRemove} hintPlacement={'autoHorizontal'} data-testid={`${propertyBlockType}-remove-button`} />
       </Columns>
-      {annotations &&
-        <PropertyBlock annotations={annotations} propertyBlockType={propertyBlockType} context={contextValue}
-                       initContext={initValidatorArgs}/>
-      }
-      <PropertyBlock annotations={validateWhenAnnotations} propertyBlockType={getValidatorPropertyBlockType('validateWhen')}
-                     context={rule}/>
+      {annotations && (
+        <PropertyBlock
+          annotations={annotations}
+          propertyBlockType={propertyBlockType}
+          context={contextValue}
+          initContext={initValidatorArgs}
+        />
+      )}
+      <PropertyBlock
+        annotations={validateWhenAnnotations}
+        propertyBlockType={getValidatorPropertyBlockType('validateWhen')}
+        context={rule}
+      />
     </Rows>
   )
 }

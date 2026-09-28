@@ -57,17 +57,17 @@ export const JsonInput = (props: JsonInputProps) => {
   }, [value])
 
   const valuePreview = useMemo(() => {
-    return value ? stringify(value)?.substring(0, 50) ?? 'Error' : ''
+    return value ? (stringify(value)?.substring(0, 50) ?? 'Error') : ''
   }, [value])
 
   const editJson = useCallback(() => {
     builderStore.editJsonCode(editorKey, editorTitle, strVal, onChange, onValidate)
   }, [builderStore, editorKey, editorTitle, onChange, strVal, onValidate])
 
-  return <InputGroup inside size="xs">
-    <Input value={valuePreview} onClick={editJson} readOnly color={'var(--rs-btn-ghost-text)'}/>
-    <InputGroup.Button onClick={value ? onClean : editJson}>
-      {value ? <Close/> : <Code/>}
-    </InputGroup.Button>
-  </InputGroup>
+  return (
+    <InputGroup inside size="xs">
+      <Input value={valuePreview} onClick={editJson} readOnly color={'var(--rs-btn-ghost-text)'} />
+      <InputGroup.Button onClick={value ? onClean : editJson}>{value ? <Close /> : <Code />}</InputGroup.Button>
+    </InputGroup>
+  )
 }

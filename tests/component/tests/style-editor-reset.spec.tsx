@@ -9,25 +9,18 @@ import {renderBuilder} from '../util/renderBuilder'
  * Avoid @monaco-editor/react async ready setState (act warnings).
  */
 vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCodeEditor', () => ({
-  MonacoCodeEditor: ({className}: { className?: string }) => (
-    <div className={['monaco-editor', className].filter(Boolean).join(' ')}/>
-  )
+  MonacoCodeEditor: ({className}: {className?: string}) => <div className={['monaco-editor', className].filter(Boolean).join(' ')} />,
 }))
 
 const fieldKey = 'box'
 
 const StyledBox = () => {
-  return <div data-testid="styled-box"/>
+  return <div data-testid="styled-box" />
 }
 
-const styledBox = define(StyledBox, 'StyledBox')
-  .showInlineStylesEditor(true)
-  .build()
+const styledBox = define(StyledBox, 'StyledBox').showInlineStylesEditor(true).build()
 
-const view = new BuilderView([
-  ...allComponentsBuilder,
-  styledBox
-])
+const view = new BuilderView([...allComponentsBuilder, styledBox])
 
 const form = {
   form: {
@@ -36,8 +29,8 @@ const form = {
     htmlAttributes: [
       {
         name: 'data-testid',
-        value: 'test-screen'
-      }
+        value: 'test-screen',
+      },
     ],
     children: [
       {
@@ -46,33 +39,33 @@ const form = {
         htmlAttributes: [
           {
             name: 'data-testid',
-            value: 'styled-box'
-          }
+            value: 'styled-box',
+          },
         ],
         css: {
           any: {
             string: 'color: red;',
-            object: {width: '100%'}
-          }
+            object: {width: '100%'},
+          },
         },
         wrapperCss: {
           any: {
-            string: 'background: blue;'
-          }
+            string: 'background: blue;',
+          },
         },
         style: {
           any: {
-            string: 'font-size: 20px;'
-          }
+            string: 'font-size: 20px;',
+          },
         },
         wrapperStyle: {
           any: {
-            string: 'padding: 8px;'
-          }
-        }
-      }
-    ]
-  }
+            string: 'padding: 8px;',
+          },
+        },
+      },
+    ],
+  },
 }
 
 const getComponentStore = (builder: IFormBuilder) => {

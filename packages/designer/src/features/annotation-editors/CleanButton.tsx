@@ -34,11 +34,13 @@ interface CrossButtonProps {
 export const CrossButton = (props: CrossButtonProps) => {
   const {onClick, hint, className, ['data-testid']: testId} = props
 
-  return <Hinted hint={hint}>
-    <button className={cx(['rs-picker-clean', 'rs-btn-close', className])} onClick={onClick} data-testid={testId}>
-      <Close/>
-    </button>
-  </Hinted>
+  return (
+    <Hinted hint={hint}>
+      <button className={cx(['rs-picker-clean', 'rs-btn-close', className])} onClick={onClick} data-testid={testId}>
+        <Close />
+      </button>
+    </Hinted>
+  )
 }
 
 /**
@@ -69,5 +71,5 @@ export const CleanButton = (props: CleanButtonProps) => {
   const getLabel = useTranslationPart('propertiesEditor')
   const cleanLabel = useMemo(() => getLabel('clean'), [getLabel])
 
-  return <CrossButton hint={cleanLabel} onClick={onClick} className={className} data-testid={testId}/>
+  return <CrossButton hint={cleanLabel} onClick={onClick} className={className} data-testid={testId} />
 }

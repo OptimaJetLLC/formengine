@@ -17,9 +17,18 @@ const presets = initialPresets.map(preset => {
   return definePreset(preset.name, components).category('Presets')
 })
 
-let allComponents = [...rSuiteComponents, ...antdComponents, ...presets,
-  throwErrorComponent, styledBoxComponent, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent,
-  ...printComponents]
+let allComponents = [
+  ...rSuiteComponents,
+  ...antdComponents,
+  ...presets,
+  throwErrorComponent,
+  styledBoxComponent,
+  fastQrComponent,
+  richTextComponent,
+  googleMapComponent,
+  signatureComponent,
+  ...printComponents,
+]
 
 export const allComponentsBuilder = allComponents.map(definer => definer.build())
 

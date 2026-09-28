@@ -4,7 +4,6 @@ import type {Language} from '@react-form-builder/core'
  * Data required to translate the form builder interface.
  */
 export type FormBuilderI18nData = {
-
   /**
    * The JSON with translation.
    */
@@ -20,7 +19,6 @@ export type FormBuilderI18nData = {
  * The i18n data of the form builder.
  */
 export type FormBuilderI18n = {
-
   /**
    * The languages.
    */

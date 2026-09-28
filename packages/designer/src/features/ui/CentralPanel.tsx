@@ -15,7 +15,7 @@ import {NonVisualBar} from './NonVisualBar/NonVisualBar'
 import {PanelContainer} from './Panel'
 
 const FormContainer = (props: ComponentProps<typeof PanelContainer>) => (
-  <PanelContainer {...props} className={cx(styles.formContainer, props.className)}/>
+  <PanelContainer {...props} className={cx(styles.formContainer, props.className)} />
 )
 
 const SFormContainer = customizable('FormContainer', FormContainer)
@@ -37,16 +37,21 @@ const RawCentralPanel = (props: ComponentProps<'div'>) => {
 
   return (
     <div {...props} className={cx(styles.container, props.className)}>
-      <Header/>
+      <Header />
       <BuilderModeProvider value={builderMode}>
         <BuilderThemeProvider value={theme}>
           <SFormContainer className={cx(viewMode, builderMode, {landscapeMode, withForm: !formLoadError})}>
-            <TrialMessage/>
+            <TrialMessage />
             <ErrorFormWrapper>
-              <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode}
-                          formName={builderStore.activeFormName} getForm={getForm}/>
+              <FormViewer
+                {...viewerProps}
+                componentWrapper={componentWrapper}
+                viewMode={viewMode}
+                formName={builderStore.activeFormName}
+                getForm={getForm}
+              />
             </ErrorFormWrapper>
-            {builderMode === 'builder' && <NonVisualBar/>}
+            {builderMode === 'builder' && <NonVisualBar />}
           </SFormContainer>
         </BuilderThemeProvider>
       </BuilderModeProvider>

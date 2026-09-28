@@ -34,37 +34,58 @@ export const Markers = (props: MarkersProps) => {
   const [hoverId, setHoverId] = useState<string | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
 
-  const onMarkerClick = useCallback((id: string | null, marker?: google.maps.marker.AdvancedMarkerElement) => {
-    setSelectedId(id)
-    props.onMarkerClick?.(id, marker)
-  }, [props])
+  const onMarkerClick = useCallback(
+    (id: string | null, marker?: google.maps.marker.AdvancedMarkerElement) => {
+      setSelectedId(id)
+      props.onMarkerClick?.(id, marker)
+    },
+    [props]
+  )
 
   const zIndexSelected = markers.length
   const zIndexHover = markers.length + 1
 
-  const clickHandlers = useMemo(() => markers.map(({id}) => {
-    return (marker?: google.maps.marker.AdvancedMarkerElement) => onMarkerClick(id, marker)
-  }), [markers, onMarkerClick])
+  const clickHandlers = useMemo(
+    () =>
+      markers.map(({id}) => {
+        return (marker?: google.maps.marker.AdvancedMarkerElement) => onMarkerClick(id, marker)
+      }),
+    [markers, onMarkerClick]
+  )
 
-  const mouseEnterHandlers = useMemo(() => markers.map(({id}) => () => setHoverId(id)), [markers])
+  const mouseEnterHandlers = useMemo(
+    () =>
+      markers.map(
+        ({id}) =>
+          () =>
+            setHoverId(id)
+      ),
+    [markers]
+  )
   const mouseLeaveHandlers = useMemo(() => markers.map(() => () => setHoverId(null)), [markers])
 
-  const children = useMemo(() => markers.map(({id, zIndex: zIndexDefault, position, title}, index) => {
-    let zIndex = zIndexDefault
-    if (hoverId === id) zIndex = zIndexHover
-    if (selectedId === id) zIndex = zIndexSelected
+  const children = useMemo(
+    () =>
+      markers.map(({id, zIndex: zIndexDefault, position, title}, index) => {
+        let zIndex = zIndexDefault
+        if (hoverId === id) zIndex = zIndexHover
+        if (selectedId === id) zIndex = zIndexSelected
 
-    return <AdvancedMarkerWithRef
-      key={index}
-      onMarkerClick={clickHandlers[index]}
-      onMouseEnter={mouseEnterHandlers[index]}
-      onMouseLeave={mouseLeaveHandlers[index]}
-      zIndex={zIndex}
-      position={position}
-      collisionBehavior={collisionBehavior}
-      title={title}
-    />
-  }), [clickHandlers, collisionBehavior, hoverId, markers, mouseEnterHandlers, mouseLeaveHandlers, selectedId, zIndexHover, zIndexSelected])
+        return (
+          <AdvancedMarkerWithRef
+            key={index}
+            onMarkerClick={clickHandlers[index]}
+            onMouseEnter={mouseEnterHandlers[index]}
+            onMouseLeave={mouseLeaveHandlers[index]}
+            zIndex={zIndex}
+            position={position}
+            collisionBehavior={collisionBehavior}
+            title={title}
+          />
+        )
+      }),
+    [clickHandlers, collisionBehavior, hoverId, markers, mouseEnterHandlers, mouseLeaveHandlers, selectedId, zIndexHover, zIndexSelected]
+  )
 
   return <>{children}</>
 }

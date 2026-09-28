@@ -19,18 +19,16 @@ interface SimpleFieldAppProps {
 }
 
 const SimpleFieldApp = ({view, initialData, modifyForm}: SimpleFieldAppProps) => {
-  const wrappedGetForm = useCallback((name?: string) => {
-    const form = getForm(name)
-    modifyForm?.(form, name)
-    return JSON.stringify(form)
-  }, [modifyForm])
+  const wrappedGetForm = useCallback(
+    (name?: string) => {
+      const form = getForm(name)
+      modifyForm?.(form, name)
+      return JSON.stringify(form)
+    },
+    [modifyForm]
+  )
 
-  return <FormViewer
-    formName="root"
-    initialData={initialData}
-    view={view ?? componentsView}
-    getForm={wrappedGetForm}
-  />
+  return <FormViewer formName="root" initialData={initialData} view={view ?? componentsView} getForm={wrappedGetForm} />
 }
 
 const testComponentType = 'RsInput'
@@ -38,10 +36,12 @@ const slotComponentType = 'Slot'
 const defaultLanguageCode = 'en-US'
 
 function addTestDataId(componentStore: ComponentStore, value: string) {
-  componentStore.htmlAttributes = [{
-    'name': 'data-testid',
-    'value': value
-  }]
+  componentStore.htmlAttributes = [
+    {
+      name: 'data-testid',
+      value: value,
+    },
+  ]
 }
 
 const sonInputTestId = 'sonInputTestId'
@@ -68,7 +68,7 @@ function screenToPersistedForm(screen: ComponentStore) {
     form: screen,
     localization: {},
     languages: [],
-    defaultLanguage: defaultLanguageCode
+    defaultLanguage: defaultLanguageCode,
   } satisfies PersistedForm
 }
 
@@ -145,7 +145,7 @@ function getModelWithDefaultValue(defaultValue: string) {
   const defaultProps = model.defaultProps ?? {}
   Object.assign(model, {
     ...model,
-    defaultProps: {...defaultProps, value: defaultValue}
+    defaultProps: {...defaultProps, value: defaultValue},
   })
   return model
 }
@@ -180,7 +180,7 @@ function getForm(name?: string) {
 
 describe(`TemplateField test`, function () {
   it('All input fields should have an empty value', async () => {
-    const {findByTestId} = render(<SimpleFieldApp/>)
+    const {findByTestId} = render(<SimpleFieldApp />)
 
     for (const inputTestId of allInputTestIds) {
       expect(await findByTestId(inputTestId)).toHaveValue('')
@@ -189,19 +189,19 @@ describe(`TemplateField test`, function () {
 
   it('All input fields should have a default value', async () => {
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
     const modifyForm = ({form}: PersistedForm) => {
       for (const inputKey of allInputKeys) {
-        eachComponentStore(form, inputKey, (componentStore) => {
+        eachComponentStore(form, inputKey, componentStore => {
           componentStore.props.value = {value: defaultValues[inputKey]}
         })
       }
     }
 
-    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm}/>)
+    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -213,7 +213,7 @@ describe(`TemplateField test`, function () {
     const model = getModelWithDefaultValue(defaultValue)
     const view = createView([model])
 
-    const {findByTestId} = render(<SimpleFieldApp view={view}/>)
+    const {findByTestId} = render(<SimpleFieldApp view={view} />)
     for (const inputTestId of allInputTestIds) {
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValue)
     }
@@ -224,19 +224,19 @@ describe(`TemplateField test`, function () {
     const view = createView([model])
 
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
     const modifyForm = ({form}: PersistedForm) => {
       for (const inputKey of allInputKeys) {
-        eachComponentStore(form, inputKey, (componentStore) => {
+        eachComponentStore(form, inputKey, componentStore => {
           componentStore.props.value = {value: defaultValues[inputKey]}
         })
       }
     }
 
-    const {findByTestId} = render(<SimpleFieldApp view={view} modifyForm={modifyForm}/>)
+    const {findByTestId} = render(<SimpleFieldApp view={view} modifyForm={modifyForm} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -245,7 +245,7 @@ describe(`TemplateField test`, function () {
 
   it('All input fields should have an initial data value', async () => {
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
@@ -254,13 +254,13 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInput: defaultValues.fatherInput,
         sonInput: defaultValues.sonInput,
-        fatherInSlot: defaultValues.fatherInSlot
+        fatherInSlot: defaultValues.fatherInSlot,
       },
       grandfatherInSlot: defaultValues.grandfatherInSlot,
-      rootInput: defaultValues.rootInput
+      rootInput: defaultValues.rootInput,
     }
 
-    const {findByTestId} = render(<SimpleFieldApp initialData={initialData}/>)
+    const {findByTestId} = render(<SimpleFieldApp initialData={initialData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -272,7 +272,7 @@ describe(`TemplateField test`, function () {
     const view = createView([model])
 
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
@@ -281,13 +281,13 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInput: defaultValues.fatherInput,
         sonInput: defaultValues.sonInput,
-        fatherInSlot: defaultValues.fatherInSlot
+        fatherInSlot: defaultValues.fatherInSlot,
       },
       grandfatherInSlot: defaultValues.grandfatherInSlot,
-      rootInput: defaultValues.rootInput
+      rootInput: defaultValues.rootInput,
     }
 
-    const {findByTestId} = render(<SimpleFieldApp view={view} initialData={initialData}/>)
+    const {findByTestId} = render(<SimpleFieldApp view={view} initialData={initialData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -297,14 +297,14 @@ describe(`TemplateField test`, function () {
   it('The initial data should override the value of component', async () => {
     const modifyForm = ({form}: PersistedForm) => {
       for (const inputKey of allInputKeys) {
-        eachComponentStore(form, inputKey, (componentStore) => {
+        eachComponentStore(form, inputKey, componentStore => {
           componentStore.props.value = {value: inputKey}
         })
       }
     }
 
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
@@ -313,13 +313,13 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInput: defaultValues.fatherInput,
         sonInput: defaultValues.sonInput,
-        fatherInSlot: defaultValues.fatherInSlot
+        fatherInSlot: defaultValues.fatherInSlot,
       },
       grandfatherInSlot: defaultValues.grandfatherInSlot,
-      rootInput: defaultValues.rootInput
+      rootInput: defaultValues.rootInput,
     }
 
-    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm} initialData={initialData}/>)
+    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm} initialData={initialData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -332,14 +332,14 @@ describe(`TemplateField test`, function () {
 
     const modifyForm = ({form}: PersistedForm) => {
       for (const inputKey of allInputKeys) {
-        eachComponentStore(form, inputKey, (componentStore) => {
+        eachComponentStore(form, inputKey, componentStore => {
           componentStore.props.value = {value: inputKey}
         })
       }
     }
 
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
@@ -348,13 +348,13 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInput: defaultValues.fatherInput,
         sonInput: defaultValues.sonInput,
-        fatherInSlot: defaultValues.fatherInSlot
+        fatherInSlot: defaultValues.fatherInSlot,
       },
       grandfatherInSlot: defaultValues.grandfatherInSlot,
-      rootInput: defaultValues.rootInput
+      rootInput: defaultValues.rootInput,
     }
 
-    const {findByTestId} = render(<SimpleFieldApp view={view} modifyForm={modifyForm} initialData={initialData}/>)
+    const {findByTestId} = render(<SimpleFieldApp view={view} modifyForm={modifyForm} initialData={initialData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -363,24 +363,24 @@ describe(`TemplateField test`, function () {
 
   it('All input fields should have a function value', async () => {
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
     const modifyForm = ({form}: PersistedForm) => {
       for (const inputKey of allInputKeys) {
-        eachComponentStore(form, inputKey, (componentStore) => {
+        eachComponentStore(form, inputKey, componentStore => {
           const fnValue = defaultValues[inputKey]
           componentStore.props.value = {
             value: 'defaultValue',
             computeType: 'function',
-            fnSource: `return '${fnValue}'`
+            fnSource: `return '${fnValue}'`,
           }
         })
       }
     }
 
-    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm}/>)
+    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -389,7 +389,7 @@ describe(`TemplateField test`, function () {
 
   it('All input fields should have a localization value', async () => {
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
@@ -399,14 +399,14 @@ describe(`TemplateField test`, function () {
       const localization = persistedForm.localization[defaultLanguageCode]
 
       for (const inputKey of allInputKeys) {
-        eachComponentStore(persistedForm.form, inputKey, (componentStore) => {
+        eachComponentStore(persistedForm.form, inputKey, componentStore => {
           componentStore.props.value = {value: 'defaultValue', computeType: 'localization'}
           localization[inputKey] ??= {component: {value: defaultValues[inputKey]}}
         })
       }
     }
 
-    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm}/>)
+    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -415,7 +415,7 @@ describe(`TemplateField test`, function () {
 
   it('All input fields should have a localized value (de-DE default lang)', async () => {
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
@@ -429,14 +429,14 @@ describe(`TemplateField test`, function () {
       const localization = persistedForm.localization[lang]
 
       for (const inputKey of allInputKeys) {
-        eachComponentStore(persistedForm.form, inputKey, (componentStore) => {
+        eachComponentStore(persistedForm.form, inputKey, componentStore => {
           componentStore.props.value = {value: 'defaultValue', computeType: 'localization'}
           localization[inputKey] ??= {component: {value: defaultValues[inputKey]}}
         })
       }
     }
 
-    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm}/>)
+    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -446,20 +446,20 @@ describe(`TemplateField test`, function () {
   it('All input fields should have a function value from initialData', async () => {
     const modifyForm = ({form}: PersistedForm) => {
       for (const inputKey of allInputKeys) {
-        eachComponentStore(form, inputKey, (componentStore) => {
+        eachComponentStore(form, inputKey, componentStore => {
           const key = `${inputKey}Surname`
           form.children?.push(new ComponentStore(key, testComponentType))
           componentStore.props.value = {
             value: 'defaultValue',
             computeType: 'function',
-            fnSource: 'return `last name: ${form.data.' + key + '}`'
+            fnSource: 'return `last name: ${form.data.' + key + '}`',
           }
         })
       }
     }
 
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(`${key}Surname`)
     })
 
@@ -468,13 +468,13 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInputSurname: defaultValues.fatherInput,
         sonInputSurname: defaultValues.sonInput,
-        fatherInSlotSurname: defaultValues.fatherInSlot
+        fatherInSlotSurname: defaultValues.fatherInSlot,
       },
       grandfatherInSlotSurname: defaultValues.grandfatherInSlot,
-      rootInputSurname: defaultValues.rootInput
+      rootInputSurname: defaultValues.rootInput,
     }
 
-    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm} initialData={initialData}/>)
+    const {findByTestId} = render(<SimpleFieldApp modifyForm={modifyForm} initialData={initialData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(`last name: ${defaultValues[key]}`)
@@ -484,20 +484,20 @@ describe(`TemplateField test`, function () {
   it('All input fields should have a function value from an updated initialData', async () => {
     const modifyForm = ({form}: PersistedForm) => {
       for (const inputKey of allInputKeys) {
-        eachComponentStore(form, inputKey, (componentStore) => {
+        eachComponentStore(form, inputKey, componentStore => {
           const key = `${inputKey}Surname`
           form.children?.push(new ComponentStore(key, testComponentType))
           componentStore.props.value = {
             value: 'defaultValue',
             computeType: 'function',
-            fnSource: 'return `last name: ${form.data.' + key + '}`'
+            fnSource: 'return `last name: ${form.data.' + key + '}`',
           }
         })
       }
     }
 
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(`${key}Surname`)
     })
 
@@ -506,20 +506,20 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInputSurname: defaultValues.fatherInput,
         sonInputSurname: defaultValues.sonInput,
-        fatherInSlotSurname: defaultValues.fatherInSlot
+        fatherInSlotSurname: defaultValues.fatherInSlot,
       },
       grandfatherInSlotSurname: defaultValues.grandfatherInSlot,
-      rootInputSurname: defaultValues.rootInput
+      rootInputSurname: defaultValues.rootInput,
     }
 
-    const {findByTestId, findByDisplayValue, rerender} = render(<SimpleFieldApp modifyForm={modifyForm} initialData={initialData}/>)
+    const {findByTestId, findByDisplayValue, rerender} = render(<SimpleFieldApp modifyForm={modifyForm} initialData={initialData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(`last name: ${defaultValues[key]}`)
     }
 
     const updatedValues: Record<string, string> = {...allTestInputs}
-    Object.keys(updatedValues).forEach((key) => {
+    Object.keys(updatedValues).forEach(key => {
       updatedValues[key] = randomString(`${key}UpdatedSurname`)
     })
 
@@ -528,13 +528,13 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInputSurname: updatedValues.fatherInput,
         sonInputSurname: updatedValues.sonInput,
-        fatherInSlotSurname: updatedValues.fatherInSlot
+        fatherInSlotSurname: updatedValues.fatherInSlot,
       },
       grandfatherInSlotSurname: updatedValues.grandfatherInSlot,
-      rootInputSurname: updatedValues.rootInput
+      rootInputSurname: updatedValues.rootInput,
     }
 
-    rerender(<SimpleFieldApp modifyForm={modifyForm} initialData={updatedData}/>)
+    rerender(<SimpleFieldApp modifyForm={modifyForm} initialData={updatedData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       const expectedValue = `last name: ${updatedValues[key]}`
@@ -546,7 +546,7 @@ describe(`TemplateField test`, function () {
 
   it('All input fields should have an updated initialData', async () => {
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
@@ -555,20 +555,20 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInput: defaultValues.fatherInput,
         sonInput: defaultValues.sonInput,
-        fatherInSlot: defaultValues.fatherInSlot
+        fatherInSlot: defaultValues.fatherInSlot,
       },
       grandfatherInSlot: defaultValues.grandfatherInSlot,
-      rootInput: defaultValues.rootInput
+      rootInput: defaultValues.rootInput,
     }
 
-    const {findByTestId, findByDisplayValue, rerender} = render(<SimpleFieldApp initialData={initialData}/>)
+    const {findByTestId, findByDisplayValue, rerender} = render(<SimpleFieldApp initialData={initialData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
     }
 
     const updatedValues: Record<string, string> = {...allTestInputs}
-    Object.keys(updatedValues).forEach((key) => {
+    Object.keys(updatedValues).forEach(key => {
       updatedValues[key] = randomString(`${key}UpdatedData`)
     })
 
@@ -577,13 +577,13 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInput: updatedValues.fatherInput,
         sonInput: updatedValues.sonInput,
-        fatherInSlot: updatedValues.fatherInSlot
+        fatherInSlot: updatedValues.fatherInSlot,
       },
       grandfatherInSlot: updatedValues.grandfatherInSlot,
-      rootInput: updatedValues.rootInput
+      rootInput: updatedValues.rootInput,
     }
 
-    rerender(<SimpleFieldApp initialData={updatedData}/>)
+    rerender(<SimpleFieldApp initialData={updatedData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByDisplayValue(updatedValues[key])).toBeInTheDocument()
@@ -597,19 +597,19 @@ describe(`TemplateField test`, function () {
       if (name === 'root') {
         const resetButton = new ComponentStore('reset', 'RsButton')
         resetButton.props.children = {value: 'Reset'}
-        resetButton.events = {'onClick': [{'name': 'reset', 'type': 'common'}]}
+        resetButton.events = {onClick: [{name: 'reset', type: 'common'}]}
         form.children?.push(resetButton)
       }
 
       for (const inputKey of allInputKeys) {
-        eachComponentStore(form, inputKey, (componentStore) => {
+        eachComponentStore(form, inputKey, componentStore => {
           componentStore.props.value = {value: inputKey}
         })
       }
     }
 
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
@@ -618,13 +618,13 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInput: defaultValues.fatherInput,
         sonInput: defaultValues.sonInput,
-        fatherInSlot: defaultValues.fatherInSlot
+        fatherInSlot: defaultValues.fatherInSlot,
       },
       grandfatherInSlot: defaultValues.grandfatherInSlot,
-      rootInput: defaultValues.rootInput
+      rootInput: defaultValues.rootInput,
     }
 
-    const {findByTestId, findByText} = render(<SimpleFieldApp modifyForm={modifyForm} initialData={initialData}/>)
+    const {findByTestId, findByText} = render(<SimpleFieldApp modifyForm={modifyForm} initialData={initialData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -648,19 +648,19 @@ describe(`TemplateField test`, function () {
       if (name === 'root') {
         const clearButton = new ComponentStore('clear', 'RsButton')
         clearButton.props.children = {value: 'Clear'}
-        clearButton.events = {'onClick': [{'name': 'clear', 'type': 'common'}]}
+        clearButton.events = {onClick: [{name: 'clear', type: 'common'}]}
         form.children?.push(clearButton)
       }
 
       for (const inputKey of allInputKeys) {
-        eachComponentStore(form, inputKey, (componentStore) => {
+        eachComponentStore(form, inputKey, componentStore => {
           componentStore.props.value = {value: inputKey}
         })
       }
     }
 
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(key)
     })
 
@@ -669,13 +669,13 @@ describe(`TemplateField test`, function () {
       templateFather: {
         fatherInput: defaultValues.fatherInput,
         sonInput: defaultValues.sonInput,
-        fatherInSlot: defaultValues.fatherInSlot
+        fatherInSlot: defaultValues.fatherInSlot,
       },
       grandfatherInSlot: defaultValues.grandfatherInSlot,
-      rootInput: defaultValues.rootInput
+      rootInput: defaultValues.rootInput,
     }
 
-    const {findByTestId, findByText} = render(<SimpleFieldApp view={view} modifyForm={modifyForm} initialData={initialData}/>)
+    const {findByTestId, findByText} = render(<SimpleFieldApp view={view} modifyForm={modifyForm} initialData={initialData} />)
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
       expect(await findByTestId(inputTestId)).toHaveValue(defaultValues[key])
@@ -691,7 +691,7 @@ describe(`TemplateField test`, function () {
   })
 
   it('The value entered should override the default value', async () => {
-    const {findByTestId, findByDisplayValue} = render(<SimpleFieldApp/>)
+    const {findByTestId, findByDisplayValue} = render(<SimpleFieldApp />)
 
     for (const inputTestId of allInputTestIds) {
       const input = await findByTestId(inputTestId)
@@ -708,20 +708,20 @@ describe(`TemplateField test`, function () {
   it('The value entered should override the computed value', async () => {
     const modifyForm = ({form}: PersistedForm) => {
       for (const inputKey of allInputKeys) {
-        eachComponentStore(form, inputKey, (componentStore) => {
+        eachComponentStore(form, inputKey, componentStore => {
           const key = `${inputKey}MiddleName`
           form.children?.push(new ComponentStore(key, testComponentType))
           componentStore.props.value = {
             value: 'defaultValue',
             computeType: 'function',
-            fnSource: 'return `ginger-${form.data.' + key + '}`'
+            fnSource: 'return `ginger-${form.data.' + key + '}`',
           }
         })
       }
     }
 
     const defaultValues: Record<string, string> = {...allTestInputs}
-    Object.keys(defaultValues).forEach((key) => {
+    Object.keys(defaultValues).forEach(key => {
       defaultValues[key] = randomString(`${key}Surname`)
       defaultValues[`${key}MiddleName`] = randomString(`${key}MiddleName`)
     })
@@ -735,15 +735,15 @@ describe(`TemplateField test`, function () {
         sonInput: defaultValues.sonInput,
         sonInputMiddleName: defaultValues.sonInputMiddleName,
         fatherInSlot: defaultValues.fatherInSlot,
-        fatherInSlotMiddleName: defaultValues.fatherInSlotMiddleName
+        fatherInSlotMiddleName: defaultValues.fatherInSlotMiddleName,
       },
       grandfatherInSlot: defaultValues.grandfatherInSlot,
       grandfatherInSlotMiddleName: defaultValues.grandfatherInSlotMiddleName,
       rootInput: defaultValues.rootInput,
-      rootInputMiddleName: defaultValues.rootInputMiddleName
+      rootInputMiddleName: defaultValues.rootInputMiddleName,
     }
 
-    const {findByTestId, findByDisplayValue} = render(<SimpleFieldApp modifyForm={modifyForm} initialData={initialData}/>)
+    const {findByTestId, findByDisplayValue} = render(<SimpleFieldApp modifyForm={modifyForm} initialData={initialData} />)
 
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]

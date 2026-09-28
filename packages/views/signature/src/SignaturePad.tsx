@@ -31,22 +31,12 @@ const withDefaultProps = ({lineWidth = 1.5, ...props}: SignatureProps) => {
     throttle: 16,
     penColor: 'black',
     backgroundColor: 'transparent',
-    ...props
+    ...props,
   }
 }
 
 export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((props, ref) => {
-  const {
-    value,
-    width = 300,
-    height = 150,
-    className,
-    onChange,
-    backgroundColor,
-    readOnly,
-    ariaAttributes,
-    ...padProps
-  } = props
+  const {value, width = 300, height = 150, className, onChange, backgroundColor, readOnly, ariaAttributes, ...padProps} = props
 
   const initialValue = useRef(value)
   const initialPadProps = useRef(padProps)
@@ -92,9 +82,9 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
     }
   }, [clear, value])
 
-  const canvasStyle = useMemo(() => ({borderRadius: 6, backgroundColor}),
-    [backgroundColor])
+  const canvasStyle = useMemo(() => ({borderRadius: 6, backgroundColor}), [backgroundColor])
 
-  return <canvas ref={canvasRef} className={className} width={width} height={height} style={canvasStyle}
-                 id={padProps.id} {...ariaAttributes}/>
+  return (
+    <canvas ref={canvasRef} className={className} width={width} height={height} style={canvasStyle} id={padProps.id} {...ariaAttributes} />
+  )
 })

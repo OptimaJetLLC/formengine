@@ -13,7 +13,6 @@ export type TranslationResolver = (language: LanguageFullCode) => Promise<any>
  * I18n for the Form Builder.
  */
 export class BuilderI18n {
-
   /**
    * Creates i18n for the form builder.
    * @param initialLanguage the initial UI language.
@@ -21,17 +20,20 @@ export class BuilderI18n {
    */
   constructor(initialLanguage: Language, translationResolver: TranslationResolver) {
     i18next
-      .use(resourcesToBackend((language, _ns, callback) => {
-        translationResolver(<LanguageFullCode>language)
-          .then(resources => callback(null, resources))
-          .catch(error => {
-            console.error(error)
-            callback(error, null)
-          })
-      }) as any)
+      .use(
+        resourcesToBackend((language, _ns, callback) => {
+          translationResolver(<LanguageFullCode>language)
+            .then(resources => callback(null, resources))
+            .catch(error => {
+              console.error(error)
+              callback(error, null)
+            })
+        }) as any
+      )
       .use(LanguageDetector)
       .use(initReactI18next)
-      .init({
+      .init(
+        {
           lng: initialLanguage.fullCode,
           fallbackLng: [initialLanguage.fullCode],
           load: 'currentOnly',

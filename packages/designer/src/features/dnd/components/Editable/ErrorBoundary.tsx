@@ -10,17 +10,20 @@ interface ComponentRenderErrorProps {
 
 const RawComponentRenderError = (props: ComponentRenderErrorProps) => {
   const componentData = useComponentData()
-  return <div>
-    <p>Component <code>{componentData.key}</code> render error: </p>
-    <p>
-      <strong>{props.error?.message}:</strong>
-      <pre className={styles.pre}>{props.error?.stack}</pre>
-    </p>
-    <p>
-      <strong>Component stack</strong>:
-      <pre className={styles.pre}>{props.info?.componentStack}</pre>
-    </p>
-  </div>
+  return (
+    <div>
+      <p>
+        Component <code>{componentData.key}</code> render error:{' '}
+      </p>
+      <p>
+        <strong>{props.error?.message}:</strong>
+        <pre className={styles.pre}>{props.error?.stack}</pre>
+      </p>
+      <p>
+        <strong>Component stack</strong>:<pre className={styles.pre}>{props.info?.componentStack}</pre>
+      </p>
+    </div>
+  )
 }
 
 const ComponentRenderError = namedObserver('ComponentRenderError', RawComponentRenderError)
@@ -29,7 +32,6 @@ const ComponentRenderError = namedObserver('ComponentRenderError', RawComponentR
  * The ErrorBoundary component state.
  */
 interface ErrorBoundaryState {
-
   /**
    * Flag, if true, a rendering error occurred.
    */
@@ -60,7 +62,6 @@ interface ErrorBoundaryProps {
  * The component for showing rendering errors.
  */
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-
   state: ErrorBoundaryState = {hasError: false}
 
   /**
@@ -84,7 +85,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
    */
   render() {
     if (this.state.hasError) {
-      return <ComponentRenderError error={this.state.error} info={this.state.info}/>
+      return <ComponentRenderError error={this.state.error} info={this.state.info} />
     }
 
     return this.props.children

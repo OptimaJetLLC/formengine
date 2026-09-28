@@ -28,10 +28,7 @@ function runVitestCase(kind: CiFailureReportCaseKind, suite: CiFailureReportSuit
  * @param describeFn vitest describe function
  * @param suite test suite identifier
  */
-export function registerVitestCiFailureReportDemo(
-  describeFn: typeof import('vitest').describe,
-  suite: CiFailureReportSuite,
-): void {
+export function registerVitestCiFailureReportDemo(describeFn: typeof import('vitest').describe, suite: CiFailureReportSuite): void {
   const demoSuite = whenCiFailureReportDemoEnabled(describeFn, describeFn.skip)
 
   demoSuite(`CI failure report demo (${suite})`, () => {

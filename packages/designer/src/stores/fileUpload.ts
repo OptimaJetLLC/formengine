@@ -9,7 +9,7 @@ function readAsString(file: File, onRead: (content: string) => void) {
   reader.readAsText(file, 'UTF-8')
 
   reader.onload = readerEvent => {
-    const content: string = readerEvent.target?.result as string ?? ''
+    const content: string = (readerEvent.target?.result as string) ?? ''
     onRead(content)
   }
 }

@@ -26,7 +26,7 @@ const RawNonVisualListItem = () => {
     >
       <span>{componentData.key}</span>
       <label>{componentData.model.name}</label>
-      {hovered && <Toolbar compact/>}
+      {hovered && <Toolbar compact />}
     </div>
   )
 }

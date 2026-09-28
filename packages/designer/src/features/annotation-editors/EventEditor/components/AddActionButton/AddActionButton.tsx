@@ -14,14 +14,14 @@ import type {ActionsMenuProps} from './types'
 const MenuPopover = forwardRef(({onSelect, annotation, componentData, ...props}: ActionsMenuProps, ref: any) => (
   <Popover ref={ref} {...props} full>
     <Dropdown.Menu>
-      <CommonActionsList onSelect={onSelect} annotation={annotation} componentData={componentData}/>
-      <CodeActionsList onSelect={onSelect} annotation={annotation} componentData={componentData}/>
-      <CustomActionList onSelect={onSelect} annotation={annotation} componentData={componentData}/>
+      <CommonActionsList onSelect={onSelect} annotation={annotation} componentData={componentData} />
+      <CodeActionsList onSelect={onSelect} annotation={annotation} componentData={componentData} />
+      <CustomActionList onSelect={onSelect} annotation={annotation} componentData={componentData} />
     </Dropdown.Menu>
   </Popover>
 ))
 
-const addButtonIcon = <PlusIcon/>
+const addButtonIcon = <PlusIcon />
 
 const RawAddActionButton = (props: AnnotationEditorProps) => {
   const t = useTranslationPart('actions')
@@ -30,19 +30,26 @@ const RawAddActionButton = (props: AnnotationEditorProps) => {
   const eventName = annotation.key
   const ref = useRef<OverlayTriggerHandle>(null)
 
-  const handleSelect = useCallback((action?: ActionData) => {
-    ref.current?.close()
-    if (!action) return
-    ComponentStore.addEventHandler(store, eventName, action)
-  }, [ref, store, eventName])
+  const handleSelect = useCallback(
+    (action?: ActionData) => {
+      ref.current?.close()
+      if (!action) return
+      ComponentStore.addEventHandler(store, eventName, action)
+    },
+    [ref, store, eventName]
+  )
 
   const speaker = useMemo(() => {
-    return <MenuPopover onSelect={handleSelect} annotation={annotation} componentData={componentData}/>
+    return <MenuPopover onSelect={handleSelect} annotation={annotation} componentData={componentData} />
   }, [handleSelect, annotation, componentData])
 
-  return <Whisper placement="leftStart" ref={ref} trigger="click" speaker={speaker}>
-    <IconButton icon={addButtonIcon} size="sm" data-testid={`${eventName}-add-button`}>{t('addAction')}</IconButton>
-  </Whisper>
+  return (
+    <Whisper placement="leftStart" ref={ref} trigger="click" speaker={speaker}>
+      <IconButton icon={addButtonIcon} size="sm" data-testid={`${eventName}-add-button`}>
+        {t('addAction')}
+      </IconButton>
+    </Whisper>
+  )
 }
 
 export const AddActionButton = namedObserver('AddActionButton', RawAddActionButton)

@@ -29,9 +29,10 @@ const RawErrorSettings = () => {
   }, [message, store.viewer.form.componentTree])
 
   const errorModel = useErrorModel()
-  const properties = store.view.getMeta(errorModel.type)?.properties?.map(property => {
-    return Object.assign(property, {localizable: false, calculable: false} as Annotation)
-  }) ?? []
+  const properties =
+    store.view.getMeta(errorModel.type)?.properties?.map(property => {
+      return Object.assign(property, {localizable: false, calculable: false} as Annotation)
+    }) ?? []
   const context = store.viewer.form.errorProps
   const label = t('annotation.errorConfig.show')
 
@@ -42,12 +43,12 @@ const RawErrorSettings = () => {
   return (
     <Rows className={styles.rows}>
       <LabeledWrapper label={label}>
-        <SCheckbox onChange={handleCheckboxChange} checked={errorVisible}/>
+        <SCheckbox onChange={handleCheckboxChange} checked={errorVisible} />
       </LabeledWrapper>
-      {errorVisible && <Input className={styles.input} onChange={setErrorMessage} value={errorMessage}/>}
-      <ErrorComponentPicker/>
+      {errorVisible && <Input className={styles.input} onChange={setErrorMessage} value={errorMessage} />}
+      <ErrorComponentPicker />
       <ComponentDataProvider value={store.viewer.form.componentTree}>
-        <PropertyBlock annotations={properties} context={context}/>
+        <PropertyBlock annotations={properties} context={context} />
       </ComponentDataProvider>
     </Rows>
   )

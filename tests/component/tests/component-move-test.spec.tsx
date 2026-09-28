@@ -9,7 +9,7 @@ describe('Component move test', () => {
     const storeRef: ForwardedRef<Store> = {current: null}
 
     // we use a special component to get the store
-    const StoreStaticContext = ({content}: { content: string }) => {
+    const StoreStaticContext = ({content}: {content: string}) => {
       const store = useStore()
 
       useEffect(() => {
@@ -27,7 +27,7 @@ describe('Component move test', () => {
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
     const getForm = () => JSON.stringify(form)
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} />)
 
     // ensure that the form is rendered
     expect(await findByTestId('testInput')).toBeInTheDocument()

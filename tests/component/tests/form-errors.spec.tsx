@@ -16,17 +16,17 @@ const externalErrors = {
   repeater1: [
     {
       repeaterFirstName: 'repeater first name external validation error',
-      repeaterLastName: 'repeater last name external validation error'
-    }
+      repeaterLastName: 'repeater last name external validation error',
+    },
   ],
   templateTemplate1: {
     templateFirstName: 'template first name external validation error',
-    templateLastName: 'template last name external validation error'
-  }
+    templateLastName: 'template last name external validation error',
+  },
 }
 
 const initialErrors = {
-  firstName: 'error'
+  firstName: 'error',
 }
 
 const renderFormWithErrorsProp = async () => {
@@ -36,13 +36,23 @@ const renderFormWithErrorsProp = async () => {
   const App = () => {
     const [errors, setErrors] = useState<FormViewerProps['errors']>(initialErrors)
     const externalValidate = () => setErrors(externalErrors)
-    return <>
-      <FormViewer view={view} getForm={getForm} viewerRef={viewerRef} formName={'testForm'}
-                  errors={errors} initialData={{repeater1: [{}]}}/>
-      <button data-testid="externalValidate" onClick={externalValidate}>External validate</button>
-    </>
+    return (
+      <>
+        <FormViewer
+          view={view}
+          getForm={getForm}
+          viewerRef={viewerRef}
+          formName={'testForm'}
+          errors={errors}
+          initialData={{repeater1: [{}]}}
+        />
+        <button data-testid="externalValidate" onClick={externalValidate}>
+          External validate
+        </button>
+      </>
+    )
   }
-  const {findByTestId} = render(<App/>)
+  const {findByTestId} = render(<App />)
 
   // make sure the form is rendered
   expect(await findByTestId('externalValidate')).toBeInTheDocument()
@@ -58,10 +68,12 @@ const renderFormWithErrorsProp = async () => {
 const ErrorComponent = (props: ErrorWrapperProps) => {
   const {error, children} = props
   const errorMessage = error ? <div data-testid="errorComponent">{error}</div> : null
-  return <div>
-    {children}
-    {errorMessage}
-  </div>
+  return (
+    <div>
+      {children}
+      {errorMessage}
+    </div>
+  )
 }
 
 const errorComponent = define(ErrorComponent, 'ErrorComponent').category('test')
@@ -91,8 +103,8 @@ describe('Form errors prop', () => {
       repeater1: externalErrors.repeater1,
       templateTemplate1: {
         templateFirstName: 'Required',
-        templateLastName: externalErrors.templateTemplate1.templateLastName
-      }
+        templateLastName: externalErrors.templateTemplate1.templateLastName,
+      },
     }
 
     await waitFor(() => expect(formData.errors).toStrictEqual(expectedErrors))
@@ -106,7 +118,7 @@ describe('Form errors prop', () => {
     const expectedErrors = {
       firstName: 'Required',
       repeater1: [{repeaterFirstName: 'Required'}],
-      templateTemplate1: {templateFirstName: 'Required'}
+      templateTemplate1: {templateFirstName: 'Required'},
     }
 
     expect(returnedErrors).toStrictEqual(expectedErrors)
@@ -118,18 +130,18 @@ describe('Form errors prop', () => {
     const testView = createView(models)
     const getForm = () => JSON.stringify(sameDataKeyForm)
 
-    const {findAllByTestId, queryAllByTestId, rerender} = render(<FormViewer view={testView} getForm={getForm}/>)
+    const {findAllByTestId, queryAllByTestId, rerender} = render(<FormViewer view={testView} getForm={getForm} />)
 
     expect(await findAllByTestId('firstName')).toHaveLength(2)
     expect(queryAllByTestId('errorComponent')).toHaveLength(0)
 
     const errors = {firstName: `${new Date()}`}
-    rerender(<FormViewer view={testView} getForm={getForm} errors={errors}/>)
+    rerender(<FormViewer view={testView} getForm={getForm} errors={errors} />)
 
     expect(await findAllByTestId('errorComponent')).toHaveLength(2)
 
     const newErrors = {noField: `${new Date()}`}
-    rerender(<FormViewer view={testView} getForm={getForm} errors={newErrors}/>)
+    rerender(<FormViewer view={testView} getForm={getForm} errors={newErrors} />)
 
     expect(queryAllByTestId('errorComponent')).toHaveLength(0)
   })
@@ -140,14 +152,15 @@ describe('Form errors prop', () => {
     const getForm = () => JSON.stringify(sameDataKeyForm)
     const errorMessage = `${new Date()}`
 
-    const {findAllByTestId, queryAllByTestId, rerender} = render(<FormViewer view={testView} getForm={getForm}
-                                                                             errors={{firstName: errorMessage}}/>)
+    const {findAllByTestId, queryAllByTestId, rerender} = render(
+      <FormViewer view={testView} getForm={getForm} errors={{firstName: errorMessage}} />
+    )
     expect(await findAllByTestId('errorComponent')).toAllHaveTextContent([errorMessage, errorMessage])
 
-    rerender(<FormViewer view={testView} getForm={getForm} errors={{firstName: 'ohohoh'}}/>)
+    rerender(<FormViewer view={testView} getForm={getForm} errors={{firstName: 'ohohoh'}} />)
     expect(await findAllByTestId('errorComponent')).toAllHaveTextContent(['ohohoh', 'ohohoh'])
 
-    rerender(<FormViewer view={testView} getForm={getForm} errors={undefined}/>)
+    rerender(<FormViewer view={testView} getForm={getForm} errors={undefined} />)
     expect(queryAllByTestId('errorComponent')).toHaveLength(0)
   })
 })

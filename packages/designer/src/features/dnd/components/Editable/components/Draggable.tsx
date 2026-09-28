@@ -13,38 +13,44 @@ import {DragPreview} from './DragPreview'
 import {DropZone} from './DropZone'
 
 const DefaultContainer = forwardRef<HTMLDivElement, ComponentProps<'div'>>((props, ref) => (
-  <div ref={ref} {...props} className={cx(styles.defaultContainer, props.className)}/>
+  <div ref={ref} {...props} className={cx(styles.defaultContainer, props.className)} />
 ))
 DefaultContainer.displayName = 'DefaultContainer'
 
 interface DndState {
-  isDragging: boolean,
-  isActive: boolean,
-  isOver: boolean,
-  canDrop: boolean,
+  isDragging: boolean
+  isActive: boolean
+  isOver: boolean
+  canDrop: boolean
 }
 
 const useDnd = (isRoot?: boolean): [DndState, RefCallback<HTMLElement>] => {
   const data = useComponentData()
 
-  const [dropProps, drop] = useDrop({
-    accept: AcceptDrop,
-    canDrop: (item: ComponentData) => data.store.key !== item.store.key,
-    collect: (monitor) => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
-      isActive: monitor.isOver() && monitor.canDrop(),
-    }),
-  }, [])
+  const [dropProps, drop] = useDrop(
+    {
+      accept: AcceptDrop,
+      canDrop: (item: ComponentData) => data.store.key !== item.store.key,
+      collect: monitor => ({
+        isOver: monitor.isOver(),
+        canDrop: monitor.canDrop(),
+        isActive: monitor.isOver() && monitor.canDrop(),
+      }),
+    },
+    []
+  )
 
   const [dragState, drag] = useDragWithPreview(ItemType.Component)
   const state: DndState = useMemo(() => ({...dropProps, ...dragState}), [dropProps, dragState])
   const setDropRef = useConnectAsRef<HTMLElement>(drop)
 
-  const setDndRef = useCallback<RefCallback<HTMLElement>>((node) => {
-    if (!isRoot) drag(node)
-    setDropRef(node)
-  }, [drag, setDropRef, isRoot])
+  const setDndRef = useCallback<RefCallback<HTMLElement>>(
+    node => {
+      if (!isRoot) drag(node)
+      setDropRef(node)
+    },
+    [drag, setDropRef, isRoot]
+  )
 
   return [state, setDndRef]
 }
@@ -76,16 +82,22 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
   const clsName = useMemo(() => {
     const parentType = parent ? `parent-type-${parent?.model.type}` : ''
     const type = `type-${model.type}`
-    return cx(styles.container, className, {
-      isActive,
-      isContainer,
-      isRoot,
-      isInner,
-      isDragging,
-      isDraggingCurrent,
-      horizontal,
-      isTree
-    }, parentType, type)
+    return cx(
+      styles.container,
+      className,
+      {
+        isActive,
+        isContainer,
+        isRoot,
+        isInner,
+        isDragging,
+        isDraggingCurrent,
+        horizontal,
+        isTree,
+      },
+      parentType,
+      type
+    )
   }, [className, horizontal, isActive, isContainer, isDragging, isDraggingCurrent, isInner, isRoot, isTree, model.type, parent])
 
   return (
@@ -93,10 +105,10 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
       {isDraggingCurrent && <DragPreview className={styles.dragPreview}>{key}</DragPreview>}
       <Container ref={dnd} className={clsName} {...props}>
         {showContainerHint && <label className={styles.containerLabel}>{key}</label>}
-        {!isTree && <div className={styles.draggableBody}/>}
-        {beforeChildren && <DropZone/>}
+        {!isTree && <div className={styles.draggableBody} />}
+        {beforeChildren && <DropZone />}
         {children}
-        {afterChildren && <DropZone isAfter={!isInner && true} isInner={isInner}/>}
+        {afterChildren && <DropZone isAfter={!isInner && true} isInner={isInner} />}
       </Container>
     </>
   )

@@ -22,6 +22,7 @@ const [
   /**
    * **Internal use only.**
    */
-  EventHandlerItemProvider] = createNonNullableContext<EventHandlerItem>('EventHandlerItemContext')
+  EventHandlerItemProvider,
+] = createNonNullableContext<EventHandlerItem>('EventHandlerItemContext')
 
 export {useEventHandlerItem, EventHandlerItemProvider}

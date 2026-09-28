@@ -8,30 +8,30 @@ const form = {
     type: 'Screen',
     css: {
       any: {
-        string: 'background-color: rgba(0, 255, 255); min-width: 100px; min-height: 100px;'
-      }
+        string: 'background-color: rgba(0, 255, 255); min-width: 100px; min-height: 100px;',
+      },
     },
     htmlAttributes: [
       {
         name: 'data-testid',
-        value: 'screen'
-      }
+        value: 'screen',
+      },
     ],
     events: {
       onDidMount: [
         {
           name: 'handleOnDidMount',
-          type: 'custom'
-        }
+          type: 'custom',
+        },
       ],
       onWillUnmount: [
         {
           name: 'handleOnWillUnmount',
-          type: 'custom'
-        }
-      ]
+          type: 'custom',
+        },
+      ],
     },
-  }
+  },
 }
 
 describe('Component styles tests', () => {
@@ -45,15 +45,15 @@ describe('Component styles tests', () => {
 
     const events: string[] = []
     const actions: FormViewerProps['actions'] = {
-      handleOnDidMount: (e) => {
+      handleOnDidMount: e => {
         events.push('mount')
       },
-      handleOnWillUnmount: (e) => {
+      handleOnWillUnmount: e => {
         events.push('unmount')
-      }
+      },
     }
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions}/>, {
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} actions={actions} />, {
       reactStrictMode: true,
     })
 

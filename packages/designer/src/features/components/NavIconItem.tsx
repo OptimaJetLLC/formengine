@@ -9,12 +9,7 @@ import {FaIcon} from './Icons'
 import styles from './NavIconItem.module.css'
 
 const SNavItem = ({color, className, style, ...props}: NavItemProps) => {
-  return (
-    <Nav.Item
-      {...props}
-      className={cx(styles.navItem, className)}
-    />
-  )
+  return <Nav.Item {...props} className={cx(styles.navItem, className)} />
 }
 
 /**
@@ -27,26 +22,25 @@ const SNavItem = ({color, className, style, ...props}: NavItemProps) => {
  * @param props.props the props for the navigation.
  * @returns the React element.
  */
-export const CustomizableTab = ({eventKey, customizableKey, title, icon, props}: {
-  eventKey: string,
-  customizableKey: CustomizableKey,
-  title?: string,
-  icon?: any,
+export const CustomizableTab = ({
+  eventKey,
+  customizableKey,
+  title,
+  icon,
+  props,
+}: {
+  eventKey: string
+  customizableKey: CustomizableKey
+  title?: string
+  icon?: any
   props?: any
 }) => {
   const NavItem = useMemo(() => customizable(customizableKey, SNavItem), [customizableKey])
 
   return (
     // eslint-disable-next-line react-hooks/static-components
-    <NavItem
-      eventKey={eventKey}
-      role="tab"
-      as="button"
-      type="button"
-      data-testid={customizableKey}
-      {...props}
-    >
-      {icon && <FaIcon icon={icon} {...{size: 1.2, ...props, color: undefined}} tabIndex={-1}/>}
+    <NavItem eventKey={eventKey} role="tab" as="button" type="button" data-testid={customizableKey} {...props}>
+      {icon && <FaIcon icon={icon} {...{size: 1.2, ...props, color: undefined}} tabIndex={-1} />}
       <span>{title}</span>
     </NavItem>
   )
@@ -58,6 +52,4 @@ export const CustomizableTab = ({eventKey, customizableKey, title, icon, props}:
  * @param props.className css class name.
  * @returns React component.
  */
-export const SNav = ({className, ...props}: NavProps) => (
-  <Nav {...props} className={cx(styles.nav, className)}/>
-)
+export const SNav = ({className, ...props}: NavProps) => <Nav {...props} className={cx(styles.nav, className)} />

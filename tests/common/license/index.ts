@@ -27,14 +27,44 @@ import {licenseLegacyTrialStrict2024} from './legacy/trial-strict-2024'
 
 export const licenseLegacyNotExpired = [licenseLegacyCompany2030, licenseLegacyCompanyStrict2030]
 
-export const licenseExpired = [licenseBusiness2024AnyDomain, licenseEnterprise2024NoDomain, licenseLegacyTrial2024, licenseEnterprise2024AnyDomain, licenseEnterpriseStrict2024AnyDomain, licenseBusiness2024MultipleDomains, licenseBusiness2024NoDomain, licenseBusiness2024AnyDomain, licenseEnterprise2024MultipleDomains]
+export const licenseExpired = [
+  licenseBusiness2024AnyDomain,
+  licenseEnterprise2024NoDomain,
+  licenseLegacyTrial2024,
+  licenseEnterprise2024AnyDomain,
+  licenseEnterpriseStrict2024AnyDomain,
+  licenseBusiness2024MultipleDomains,
+  licenseBusiness2024NoDomain,
+  licenseBusiness2024AnyDomain,
+  licenseEnterprise2024MultipleDomains,
+]
 
-export const licenseExpiredStrict = [licenseEnterpriseStrict2024MultipleDomains, licenseEnterpriseStrict2024NoDomain, licenseLegacyTrialStrict2024, licenseBusinessStrict2024MultipleDomains, licenseBusinessStrict2030AnyDomain, licenseBusinessStrict2024AnyDomain]
+export const licenseExpiredStrict = [
+  licenseEnterpriseStrict2024MultipleDomains,
+  licenseEnterpriseStrict2024NoDomain,
+  licenseLegacyTrialStrict2024,
+  licenseBusinessStrict2024MultipleDomains,
+  licenseBusinessStrict2030AnyDomain,
+  licenseBusinessStrict2024AnyDomain,
+]
 
-export const licenseNoDomain = [licenseLegacyCompany2030, licenseLegacyCompanyStrict2030, licenseBusiness2030NoDomain, licenseBusinessStrict2030NoDomain, licenseEnterprise2030NoDomain, licenseBusinessStrict2024NoDomain]
+export const licenseNoDomain = [
+  licenseLegacyCompany2030,
+  licenseLegacyCompanyStrict2030,
+  licenseBusiness2030NoDomain,
+  licenseBusinessStrict2030NoDomain,
+  licenseEnterprise2030NoDomain,
+  licenseBusinessStrict2024NoDomain,
+]
 
 export const licenseInvalid = [invalidLicenseKey]
 
-export const license2030Enterprise = [licenseEnterprise2030AnyDomain, licenseEnterprise2030MultipleDomains, licenseEnterprise2030NoDomain, licenseEnterpriseStrict2030MultipleDomains, licenseEnterpriseStrict2030AnyDomain]
+export const license2030Enterprise = [
+  licenseEnterprise2030AnyDomain,
+  licenseEnterprise2030MultipleDomains,
+  licenseEnterprise2030NoDomain,
+  licenseEnterpriseStrict2030MultipleDomains,
+  licenseEnterpriseStrict2030AnyDomain,
+]
 
 export const licenseBusiness = [licenseBusiness2030AnyDomain, licenseBusinessStrict2030AnyDomain]

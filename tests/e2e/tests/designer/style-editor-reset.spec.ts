@@ -14,13 +14,13 @@ type StyleCodeEditorKind = {
 const cssEditorKind: StyleCodeEditorKind = {
   testId: 'css-editor',
   cleanButtonTestId: 'css-editor-clean-button',
-  contextLine: 'element.style'
+  contextLine: 'element.style',
 }
 
 const styleEditorKind: StyleCodeEditorKind = {
   testId: 'style-editor',
   cleanButtonTestId: 'style-editor-clean-button',
-  contextLine: 'style {'
+  contextLine: 'style {',
 }
 
 const openStyleCodeEditor = async (page: Page, selectComponent: () => Promise<void>, kind: StyleCodeEditorKind) => {
@@ -37,8 +37,7 @@ const openStyleCodeEditor = async (page: Page, selectComponent: () => Promise<vo
 
 const monacoLines = (editor: Locator) => editor.locator('.monaco-editor .view-lines').first()
 
-const editorTab = (editor: Locator, name: 'Component' | 'Wrapper') =>
-  editor.getByRole('radiogroup').getByText(name, {exact: true})
+const editorTab = (editor: Locator, name: 'Component' | 'Wrapper') => editor.getByRole('radiogroup').getByText(name, {exact: true})
 
 const typeCssInMonaco = async (editor: Locator, page: Page, css: string) => {
   await editor.locator('.monaco-editor').first().click()
@@ -53,32 +52,30 @@ const selectTitleInput = async (page: Page) => {
 
 const selectStyledBox = async (page: Page) => {
   await page.getByPlaceholder('Search...').fill('StyledBox')
-  await page.locator('div').filter({hasText: /^StyledBox$/}).last().hover()
+  await page
+    .locator('div')
+    .filter({hasText: /^StyledBox$/})
+    .last()
+    .hover()
   await page.mouse.down()
-  await page.locator('div').filter({hasText: /^one\/two\/three$/}).locator('div').first().hover()
+  await page
+    .locator('div')
+    .filter({hasText: /^one\/two\/three$/})
+    .locator('div')
+    .first()
+    .hover()
   await page.mouse.up()
   await page.getByText(/ \(StyledBox\)$/).click({force: true})
 }
 
-const expectResetClearsCurrentTab = async (
-  page: Page,
-  editor: Locator,
-  kind: StyleCodeEditorKind,
-  css: string,
-  contextLine: string
-) => {
+const expectResetClearsCurrentTab = async (page: Page, editor: Locator, kind: StyleCodeEditorKind, css: string, contextLine: string) => {
   await typeCssInMonaco(editor, page, css)
   await page.getByTestId(kind.cleanButtonTestId).click({force: true})
   await expect(monacoLines(editor)).not.toContainText(css)
   await expect(monacoLines(editor)).toContainText(contextLine)
 }
 
-const expectResetKeepsOtherTab = async (
-  page: Page,
-  editor: Locator,
-  kind: StyleCodeEditorKind,
-  wrapperContextLine: string
-) => {
+const expectResetKeepsOtherTab = async (page: Page, editor: Locator, kind: StyleCodeEditorKind, wrapperContextLine: string) => {
   await typeCssInMonaco(editor, page, componentCss)
   await editorTab(editor, 'Wrapper').click()
   await expect(monacoLines(editor)).not.toContainText(componentCss)
@@ -94,30 +91,34 @@ const expectResetKeepsOtherTab = async (
   await expect(monacoLines(editor)).not.toContainText(wrapperCss)
 }
 
-test.describe('Style code editor reset', {
-  tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`]
-}, () => {
-  test('clears CSS monaco content immediately when reset is clicked', async ({page}) => {
-    await page.goto('/')
-    const editor = await openStyleCodeEditor(page, () => selectTitleInput(page), cssEditorKind)
-    await expectResetClearsCurrentTab(page, editor, cssEditorKind, componentCss, 'element.style')
-  })
+test.describe(
+  'Style code editor reset',
+  {
+    tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
+  },
+  () => {
+    test('clears CSS monaco content immediately when reset is clicked', async ({page}) => {
+      await page.goto('/')
+      const editor = await openStyleCodeEditor(page, () => selectTitleInput(page), cssEditorKind)
+      await expectResetClearsCurrentTab(page, editor, cssEditorKind, componentCss, 'element.style')
+    })
 
-  test('resets only the current CSS tab in monaco', async ({page}) => {
-    await page.goto('/')
-    const editor = await openStyleCodeEditor(page, () => selectTitleInput(page), cssEditorKind)
-    await expectResetKeepsOtherTab(page, editor, cssEditorKind, 'element.style')
-  })
+    test('resets only the current CSS tab in monaco', async ({page}) => {
+      await page.goto('/')
+      const editor = await openStyleCodeEditor(page, () => selectTitleInput(page), cssEditorKind)
+      await expectResetKeepsOtherTab(page, editor, cssEditorKind, 'element.style')
+    })
 
-  test('clears inline style monaco content immediately when reset is clicked', async ({page}) => {
-    await page.goto('/')
-    const editor = await openStyleCodeEditor(page, () => selectStyledBox(page), styleEditorKind)
-    await expectResetClearsCurrentTab(page, editor, styleEditorKind, componentCss, 'style {')
-  })
+    test('clears inline style monaco content immediately when reset is clicked', async ({page}) => {
+      await page.goto('/')
+      const editor = await openStyleCodeEditor(page, () => selectStyledBox(page), styleEditorKind)
+      await expectResetClearsCurrentTab(page, editor, styleEditorKind, componentCss, 'style {')
+    })
 
-  test('resets only the current inline style tab in monaco', async ({page}) => {
-    await page.goto('/')
-    const editor = await openStyleCodeEditor(page, () => selectStyledBox(page), styleEditorKind)
-    await expectResetKeepsOtherTab(page, editor, styleEditorKind, 'wrapperStyle {')
-  })
-})
+    test('resets only the current inline style tab in monaco', async ({page}) => {
+      await page.goto('/')
+      const editor = await openStyleCodeEditor(page, () => selectStyledBox(page), styleEditorKind)
+      await expectResetKeepsOtherTab(page, editor, styleEditorKind, 'wrapperStyle {')
+    })
+  }
+)

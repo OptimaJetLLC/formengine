@@ -54,7 +54,7 @@ export interface CalculableEditorProps {
    * @template T the component property value type.
    * @returns the code of the computed property.
    */
-  getComputeCode: <T extends ComponentPropertyComputeType>(type: T, params?: ComputeTypeParams<T>) => string,
+  getComputeCode: <T extends ComponentPropertyComputeType>(type: T, params?: ComputeTypeParams<T>) => string
   /**
    * Returns the type of calculation for the property.
    */

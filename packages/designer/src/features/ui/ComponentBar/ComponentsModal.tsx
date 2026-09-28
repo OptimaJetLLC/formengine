@@ -21,19 +21,24 @@ const RawComponentsModal = () => {
     componentsModalState.opened = false
   }, [componentsModalState])
 
-  const onAdd = useCallback((source: ComponentData) => {
-    if (componentsModalState.opened) {
-      closeModal()
-      componentsModalState.onSelect(source)
-    }
-  }, [closeModal, componentsModalState])
+  const onAdd = useCallback(
+    (source: ComponentData) => {
+      if (componentsModalState.opened) {
+        closeModal()
+        componentsModalState.onSelect(source)
+      }
+    },
+    [closeModal, componentsModalState]
+  )
 
   return (
     <Modal className={styles.modal} open={componentsModalState.opened} onClose={closeModal} size={'lg'}>
-      <Modal.Header><h5>{t('clickToAdd')}</h5></Modal.Header>
+      <Modal.Header>
+        <h5>{t('clickToAdd')}</h5>
+      </Modal.Header>
       <Modal.Body>
         <CanAddComponentProvider value={componentsModalState.canAdd}>
-          <ComponentBar draggable={false} onAdd={onAdd}/>
+          <ComponentBar draggable={false} onAdd={onAdd} />
         </CanAddComponentProvider>
       </Modal.Body>
     </Modal>

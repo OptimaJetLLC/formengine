@@ -8,6 +8,4 @@ import styles from './Header.module.css'
  * @param props.className css class name.
  * @returns React component.
  */
-export const Header = ({className, ...props}: HTMLAttributes<HTMLDivElement>) => (
-  <div {...props} className={cx(styles.header, className)}/>
-)
+export const Header = ({className, ...props}: HTMLAttributes<HTMLDivElement>) => <div {...props} className={cx(styles.header, className)} />

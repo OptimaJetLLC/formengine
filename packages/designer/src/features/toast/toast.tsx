@@ -32,11 +32,19 @@ interface ToastSettings {
 export const useShowMessage = () => {
   const toaster = useToaster()
 
-  return useCallback((settings: ToastSettings) => {
-    const placement = settings.placement || 'bottomEnd'
-    const type = settings.type || 'info'
-    toaster.push(<Message type={type} title={settings.title}>{settings.message}</Message>, {
-      placement: placement
-    })
-  }, [toaster])
+  return useCallback(
+    (settings: ToastSettings) => {
+      const placement = settings.placement || 'bottomEnd'
+      const type = settings.type || 'info'
+      toaster.push(
+        <Message type={type} title={settings.title}>
+          {settings.message}
+        </Message>,
+        {
+          placement: placement,
+        }
+      )
+    },
+    [toaster]
+  )
 }

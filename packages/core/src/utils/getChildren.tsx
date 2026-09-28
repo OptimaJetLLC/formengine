@@ -52,9 +52,8 @@ export function getChildren(
   componentTreeItem: ComponentType<ComponentTreeProps>,
   componentProps: Record<string, any>
 ) {
-  const containers = data.field?.fieldType === 'repeater'
-    ? (data.field as unknown as IComponentDataProvider).componentData
-    : getVisualChildren(data)
+  const containers =
+    data.field?.fieldType === 'repeater' ? (data.field as unknown as IComponentDataProvider).componentData : getVisualChildren(data)
   const ComponentTree = componentTreeItem
   const currentProps: Record<string, any> = {}
 
@@ -63,15 +62,15 @@ export function getChildren(
   const isNeedRender = (child: ComponentData) => needRender(child.store, data.dataRoot)
 
   for (const [key, children] of Object.entries(groups)) {
-    const filteredChildren = children
-      .filter(isSlotConditionSatisfied)
-      .filter(isNeedRender)
+    const filteredChildren = children.filter(isSlotConditionSatisfied).filter(isNeedRender)
 
     if (filteredChildren.length) {
-      currentProps[key] = data.model.propsBindingTypes[key] === 'array'
-        ? filteredChildren.map(item => [item])
-          .map((data, index) => <ComponentTree key={index} data={data}/>)
-        : <ComponentTree data={filteredChildren}/>
+      currentProps[key] =
+        data.model.propsBindingTypes[key] === 'array' ? (
+          filteredChildren.map(item => [item]).map((data, index) => <ComponentTree key={index} data={data} />)
+        ) : (
+          <ComponentTree data={filteredChildren} />
+        )
     }
   }
 

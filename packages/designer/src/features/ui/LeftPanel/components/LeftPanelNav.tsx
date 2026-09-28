@@ -30,39 +30,45 @@ const Components = customizable('Components_Tab_Content', ComponentBar)
 const ComponentsTab = (props: DraggableProps) => {
   const builderStore = useBuilderStore()
 
-  const canAdd = useCallback((componentData: ComponentData) => {
-    const root = builderStore.viewer.form.componentTree
-    return builderStore.getAddComponentResult(componentData, root, 'inner')
-  }, [builderStore])
+  const canAdd = useCallback(
+    (componentData: ComponentData) => {
+      const root = builderStore.viewer.form.componentTree
+      return builderStore.getAddComponentResult(componentData, root, 'inner')
+    },
+    [builderStore]
+  )
 
-  const handleDoubleClick = useCallback((source: ComponentData) => {
-    const root = builderStore.viewer.form.componentTree
-    const target = builderStore.selected.values().next().value ?? root
-    const insertPosition = root === target ? 'inner' : 'after'
-    builderStore.add(source, target, insertPosition)
-  }, [builderStore])
+  const handleDoubleClick = useCallback(
+    (source: ComponentData) => {
+      const root = builderStore.viewer.form.componentTree
+      const target = builderStore.selected.values().next().value ?? root
+      const insertPosition = root === target ? 'inner' : 'after'
+      builderStore.add(source, target, insertPosition)
+    },
+    [builderStore]
+  )
 
   return (
     <CanAddComponentProvider value={canAdd}>
-      <Components {...props} draggable={true} onDoubleClick={handleDoubleClick}/>
+      <Components {...props} draggable={true} onDoubleClick={handleDoubleClick} />
     </CanAddComponentProvider>
   )
 }
 
 const tabsProps: Record<LeftPanelSection, [content: ReactNode, key: CustomizableKey, icon: any, className: string]> = {
-  components: [<ComponentsTab key={'components'}/>, 'Components_Tab', faPlusCircle, styles.componentsTab],
-  tree: [<Tree key={'tree'}/>, 'Tree_Tab', faSitemap, styles.treeTab],
-  settings: [<FormSettings key={'settings'}/>, 'Settings_Tab', faSliders, styles.settingsTab],
-  forms: [<FormList key={'forms'}/>, 'Forms_Tab', faList, styles.formsTab]
+  components: [<ComponentsTab key={'components'} />, 'Components_Tab', faPlusCircle, styles.componentsTab],
+  tree: [<Tree key={'tree'} />, 'Tree_Tab', faSitemap, styles.treeTab],
+  settings: [<FormSettings key={'settings'} />, 'Settings_Tab', faSliders, styles.settingsTab],
+  forms: [<FormList key={'forms'} />, 'Forms_Tab', faList, styles.formsTab],
 }
 
-const Tab = ({section, ...rest}: Record<string, unknown> & { section: keyof typeof tabsProps }) => {
+const Tab = ({section, ...rest}: Record<string, unknown> & {section: keyof typeof tabsProps}) => {
   const {t} = useTranslation()
   const title = t('leftPanel.sectionName.' + section)
   const [_, key, icon, className] = tabsProps[section]
   const props = useMemo(() => ({className, ...rest}), [className, rest])
 
-  return <CustomizableTab eventKey={section} customizableKey={key} title={title} icon={icon} props={props}/>
+  return <CustomizableTab eventKey={section} customizableKey={key} title={title} icon={icon} props={props} />
 }
 
 const localStorageLeftPanelActiveTabKey = 'leftPanelActiveTab'
@@ -77,7 +83,7 @@ const defaultTab = 'components'
 
 const getActiveTab = () => {
   const value = isDesignerLocalStorageEnabled()
-    ? localStorage.getItem(localStorageLeftPanelActiveTabKey) as LeftPanelSection ?? defaultTab
+    ? ((localStorage.getItem(localStorageLeftPanelActiveTabKey) as LeftPanelSection) ?? defaultTab)
     : defaultTab
   return tabsProps[value] ? value : defaultTab
 }
@@ -92,17 +98,17 @@ const RawLeftPanelNav = () => {
     saveActiveTab(tab)
   }, [])
 
-  return <>
-    <Nav appearance="subtle" activeKey={activeKey} onSelect={handleTabChange}>
-      <Tab section="components"/>
-      <Tab section="tree"/>
-      <Tab section="settings"/>
-      {formStorageEnabled && <Tab section="forms"/>}
-    </Nav>
-    <NavContent className={styles.navContent}>
-      {tabsProps[activeKey][0]}
-    </NavContent>
-  </>
+  return (
+    <>
+      <Nav appearance="subtle" activeKey={activeKey} onSelect={handleTabChange}>
+        <Tab section="components" />
+        <Tab section="tree" />
+        <Tab section="settings" />
+        {formStorageEnabled && <Tab section="forms" />}
+      </Nav>
+      <NavContent className={styles.navContent}>{tabsProps[activeKey][0]}</NavContent>
+    </>
+  )
 }
 
 export const LeftPanelNav = namedObserver('LeftPanelNav', RawLeftPanelNav)

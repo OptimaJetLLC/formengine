@@ -29,10 +29,10 @@ const RawSelectedModalPropertiesEditor = (props: InnerModalPropertiesEditor) => 
 
   const selectedModalComponentData = useModalComponentData(componentData, builderComponent.model.type)
 
-  const initContext = useCallback((() => {
+  const initContext = useCallback(() => {
     selectedComponentStore.modal ??= {props: {}}
     return selectedComponentStore?.modal.props
-  }), [selectedComponentStore])
+  }, [selectedComponentStore])
 
   useEffect(() => {
     // workaround, we need the selectedModalComponentData.store.events and selectedComponentStore.modal.events objects to be identical
@@ -42,18 +42,20 @@ const RawSelectedModalPropertiesEditor = (props: InnerModalPropertiesEditor) => 
     selectedComponentStore.modal.events ??= {}
   }, [selectedComponentStore, selectedComponentStore.modal])
 
-  return <>
-    {!inActions && (<HintedLabel hint={<>{t('modalComponentPropertiesHint')}</>}>
-      <h6>{t('modalComponentProperties')}</h6>
-    </HintedLabel>)}
-    <ComponentDataProvider value={selectedModalComponentData}>
-      <div className={styles.root}>
-        <PropertyBlock propertyBlockType={'modal'} annotations={modalAnnotations} context={modalProps}
-                       initContext={initContext}
-        />
-      </div>
-    </ComponentDataProvider>
-  </>
+  return (
+    <>
+      {!inActions && (
+        <HintedLabel hint={<>{t('modalComponentPropertiesHint')}</>}>
+          <h6>{t('modalComponentProperties')}</h6>
+        </HintedLabel>
+      )}
+      <ComponentDataProvider value={selectedModalComponentData}>
+        <div className={styles.root}>
+          <PropertyBlock propertyBlockType={'modal'} annotations={modalAnnotations} context={modalProps} initContext={initContext} />
+        </div>
+      </ComponentDataProvider>
+    </>
+  )
 }
 
 const SelectedModalPropertiesEditor = namedObserver('SelectedModalPropertiesEditor', RawSelectedModalPropertiesEditor)
@@ -77,12 +79,14 @@ const RawModalPropertiesEditor = (props: AnnotationEditorProps) => {
   }, [selectedModalType, builderStore.view])
 
   if (!builderComponent) {
-    return <HintedLabel hint={<>{t('noModalComponentHint')}</>}>
-      <h6>{t('noModalComponent')}</h6>
-    </HintedLabel>
+    return (
+      <HintedLabel hint={<>{t('noModalComponentHint')}</>}>
+        <h6>{t('noModalComponent')}</h6>
+      </HintedLabel>
+    )
   }
 
-  return <SelectedModalPropertiesEditor {...props} builderComponent={builderComponent}/>
+  return <SelectedModalPropertiesEditor {...props} builderComponent={builderComponent} />
 }
 
 export const ModalPropertiesEditor = namedObserver('ModalPropertiesEditor', RawModalPropertiesEditor)

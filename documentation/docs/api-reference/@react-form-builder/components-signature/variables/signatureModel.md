@@ -1,3 +1,3 @@
 # Variable: signatureModel
 
-> `const` **signatureModel**: [`Model`](../../core/classes/Model.md)\<`any`\>
+> `const` **signatureModel**: [`Model`](../../core/classes/Model.md)

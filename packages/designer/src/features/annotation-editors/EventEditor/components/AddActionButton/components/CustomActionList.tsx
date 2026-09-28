@@ -15,13 +15,22 @@ export const CustomActionList = ({onSelect}: ActionsMenuProps) => {
   const t = useTranslationPart('actions')
   const {actions} = store.formViewerPropsStore
 
-  const handleSelect = useCallback((name: string) => {
-    return () => onSelect({name, type: 'custom'})
-  }, [onSelect])
+  const handleSelect = useCallback(
+    (name: string) => {
+      return () => onSelect({name, type: 'custom'})
+    },
+    [onSelect]
+  )
 
-  const items = useMemo(() => Object.keys(actions ?? []).map(name => (
-    <Dropdown.Item key={name} eventKey={`custom-${name}`} onClick={handleSelect(name)}>{name}</Dropdown.Item>
-  )), [actions, handleSelect])
+  const items = useMemo(
+    () =>
+      Object.keys(actions ?? []).map(name => (
+        <Dropdown.Item key={name} eventKey={`custom-${name}`} onClick={handleSelect(name)}>
+          {name}
+        </Dropdown.Item>
+      )),
+    [actions, handleSelect]
+  )
 
   if (!actions) return null
 

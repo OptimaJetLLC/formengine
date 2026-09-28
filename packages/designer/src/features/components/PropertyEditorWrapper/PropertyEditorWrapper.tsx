@@ -35,12 +35,12 @@ const tryParseJson = (value: string): unknown => {
 }
 
 const RawPropertyEditorWrapper = ({
-                                    annotation,
-                                    context,
-                                    initContext,
-                                    propertyBlockType = 'component',
-                                    displayedSection
-                                  }: PropertyEditorWrapperProps) => {
+  annotation,
+  context,
+  initContext,
+  propertyBlockType = 'component',
+  displayedSection,
+}: PropertyEditorWrapperProps) => {
   const store = useBuilderStore()
   const componentData = useComponentData()
   const builtinPropertyEditors = useBuiltinPropertyEditors()
@@ -54,75 +54,95 @@ const RawPropertyEditorWrapper = ({
 
   const value = (isProperty(annotation) ? context[annotation.key]?.value : context[annotation.key]) ?? annotation.default
 
-  const onChange = useCallback((value: any) => {
-    let propertyContext = context
-    if (!contextInitialized) {
-      setContextInitialized(true)
-      propertyContext = initContext?.() ?? context
-    }
-    if (isProperty(annotation)) {
-      propertyContext[annotation.key] ??= {}
-      propertyContext[annotation.key].value = value
-      return
-    }
-    propertyContext[annotation.key] = value
-  }, [context, initContext, annotation, contextInitialized])
+  const onChange = useCallback(
+    (value: any) => {
+      let propertyContext = context
+      if (!contextInitialized) {
+        setContextInitialized(true)
+        propertyContext = initContext?.() ?? context
+      }
+      if (isProperty(annotation)) {
+        propertyContext[annotation.key] ??= {}
+        propertyContext[annotation.key].value = value
+        return
+      }
+      propertyContext[annotation.key] = value
+    },
+    [context, initContext, annotation, contextInitialized]
+  )
 
   const onClean = useCallback(() => delete context[annotation.key], [context, annotation])
 
-  const patchProperty = useCallback((patch: ComponentProperty) => {
-    context[annotation.key] = Object.assign(context[annotation.key] ?? {}, patch)
-  }, [context, annotation.key])
+  const patchProperty = useCallback(
+    (patch: ComponentProperty) => {
+      context[annotation.key] = Object.assign(context[annotation.key] ?? {}, patch)
+    },
+    [context, annotation.key]
+  )
 
-  const setComputedFunction = useCallback((value: string) => {
-    patchProperty({computeType: 'function', fnSource: value})
-  }, [patchProperty])
+  const setComputedFunction = useCallback(
+    (value: string) => {
+      patchProperty({computeType: 'function', fnSource: value})
+    },
+    [patchProperty]
+  )
 
-  const setComputedLocalization = useCallback((value: string, langCode?: LanguageFullCode) => {
-    if (!langCode) return
-    const normalizedValue = normalizeLocalizationValueForSave(value)
-    const loc = store.viewer.form.localization
-    const parsed = tryParseJson(normalizedValue)
-    const finalValue = !isUndefined(parsed) ? parsed : normalizedValue
-    loc.setLocalization(langCode, componentData.key, annotation.key, propertyBlockType, finalValue)
-    if (isValidatorPropertyBlockType(propertyBlockType)) return
+  const setComputedLocalization = useCallback(
+    (value: string, langCode?: LanguageFullCode) => {
+      if (!langCode) return
+      const normalizedValue = normalizeLocalizationValueForSave(value)
+      const loc = store.viewer.form.localization
+      const parsed = tryParseJson(normalizedValue)
+      const finalValue = !isUndefined(parsed) ? parsed : normalizedValue
+      loc.setLocalization(langCode, componentData.key, annotation.key, propertyBlockType, finalValue)
+      if (isValidatorPropertyBlockType(propertyBlockType)) return
 
-    patchProperty({computeType: 'localization'})
-  }, [store.viewer.form.localization, annotation.key, componentData.key, propertyBlockType, patchProperty])
+      patchProperty({computeType: 'localization'})
+    },
+    [store.viewer.form.localization, annotation.key, componentData.key, propertyBlockType, patchProperty]
+  )
 
-  const setComputeCode = useCallback<CalculableEditorProps['setComputeCode']>((value, type, params) => {
-    switch (type) {
-      case 'function':
-        return setComputedFunction(value)
-      case 'localization':
-        return setComputedLocalization(value, params?.langCode)
-    }
-  }, [setComputedFunction, setComputedLocalization])
+  const setComputeCode = useCallback<CalculableEditorProps['setComputeCode']>(
+    (value, type, params) => {
+      switch (type) {
+        case 'function':
+          return setComputedFunction(value)
+        case 'localization':
+          return setComputedLocalization(value, params?.langCode)
+      }
+    },
+    [setComputedFunction, setComputedLocalization]
+  )
 
   const getComputedFunction = useCallback(() => {
     return context[annotation.key]?.fnSource
   }, [context, annotation])
 
-  const getComputedLocalization = useCallback((langCode: LanguageFullCode) => {
-    const localization = store.viewer.form.localization
-      .getLocalization(langCode, componentData.key, annotation.key, propertyBlockType)
-    if (isUndefined(localization) || localization === null) return ''
-    if (typeof localization === 'string') return localization
-    try {
-      return JSON.stringify(localization, null, 2)
-    } catch {
-      return JSON.stringify({value: localization})
-    }
-  }, [store, componentData, annotation, propertyBlockType])
+  const getComputedLocalization = useCallback(
+    (langCode: LanguageFullCode) => {
+      const localization = store.viewer.form.localization.getLocalization(langCode, componentData.key, annotation.key, propertyBlockType)
+      if (isUndefined(localization) || localization === null) return ''
+      if (typeof localization === 'string') return localization
+      try {
+        return JSON.stringify(localization, null, 2)
+      } catch {
+        return JSON.stringify({value: localization})
+      }
+    },
+    [store, componentData, annotation, propertyBlockType]
+  )
 
-  const getComputeCode = useCallback<CalculableEditorProps['getComputeCode']>((type, params) => {
-    switch (type) {
-      case 'function':
-        return getComputedFunction()
-      case 'localization':
-        return params?.langCode ? getComputedLocalization(params?.langCode) : ''
-    }
-  }, [getComputedFunction, getComputedLocalization])
+  const getComputeCode = useCallback<CalculableEditorProps['getComputeCode']>(
+    (type, params) => {
+      switch (type) {
+        case 'function':
+          return getComputedFunction()
+        case 'localization':
+          return params?.langCode ? getComputedLocalization(params?.langCode) : ''
+      }
+    },
+    [getComputedFunction, getComputedLocalization]
+  )
 
   const disableCompute = useCallback(() => {
     if (isValidatorPropertyBlockType(propertyBlockType)) {
@@ -142,10 +162,13 @@ const RawPropertyEditorWrapper = ({
     return componentProperty?.computeType
   }, [propertyBlockType, hasLocalization, context, annotation.key])
 
-  const hasComputeCode = useCallback<CalculableEditorProps['hasComputeCode']>(type => {
-    if (type === 'function') return !!getComputeCode('function')
-    return getComputeType() === 'localization' || hasLocalization()
-  }, [getComputeCode, getComputeType, hasLocalization])
+  const hasComputeCode = useCallback<CalculableEditorProps['hasComputeCode']>(
+    type => {
+      if (type === 'function') return !!getComputeCode('function')
+      return getComputeType() === 'localization' || hasLocalization()
+    },
+    [getComputeCode, getComputeType, hasLocalization]
+  )
 
   const annotationEditorProps: AnnotationEditorProps = {
     value,
@@ -159,7 +182,7 @@ const RawPropertyEditorWrapper = ({
     disableCompute,
     getComputeType,
     hasComputeCode,
-    displayedSection
+    displayedSection,
   }
 
   useEffect(() => {
@@ -170,10 +193,12 @@ const RawPropertyEditorWrapper = ({
     setError(undefined)
   }, [context])
 
-  return !!annotationEditor && (
-    <Erroneous {...annotationEditorProps} error={error}>
-      {createElement(annotationEditor, annotationEditorProps)}
-    </Erroneous>
+  return (
+    !!annotationEditor && (
+      <Erroneous {...annotationEditorProps} error={error}>
+        {createElement(annotationEditor, annotationEditorProps)}
+      </Erroneous>
+    )
   )
 }
 

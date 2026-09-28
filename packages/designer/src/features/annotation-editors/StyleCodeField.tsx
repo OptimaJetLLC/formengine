@@ -38,16 +38,19 @@ const options: editor.IStandaloneEditorConstructionOptions = {
   folding: false,
   lineDecorationsWidth: 0,
   lineNumbersMinChars: 0,
-  autoIndent: 'full'
+  autoIndent: 'full',
 }
 
 const RawStyleCodeField = ({part, device, beginContextLine, cleanButtonTestId}: StyleCodeFieldProps) => {
   const {store} = useComponentData()
   const initialValue = store[part]?.[device]?.string ?? ''
 
-  const onChange = useCallback((value: string) => {
-    writeStylePartString(store, part, device, value)
-  }, [store, part, device])
+  const onChange = useCallback(
+    (value: string) => {
+      writeStylePartString(store, part, device, value)
+    },
+    [store, part, device]
+  )
 
   const handleClean = useCallback(() => {
     writeStylePartString(store, part, device)
@@ -66,7 +69,7 @@ const RawStyleCodeField = ({part, device, beginContextLine, cleanButtonTestId}: 
         height={'20vh'}
         options={options}
       />
-      <CleanButton onClick={handleClean} className={styles.cleanButton} data-testid={cleanButtonTestId}/>
+      <CleanButton onClick={handleClean} className={styles.cleanButton} data-testid={cleanButtonTestId} />
     </div>
   )
 }

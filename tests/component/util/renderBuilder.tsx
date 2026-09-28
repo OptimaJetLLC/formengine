@@ -11,8 +11,9 @@ export const renderBuilder = async (form: object | string, props?: Partial<FormB
   const viewerRef: FormViewerProps['viewerRef'] = {current: null}
   const builderRef: FormBuilderProps['builderRef'] = {current: null}
 
-  const result = render(<FormBuilder view={builderViewWithCss} getForm={getForm}
-                                     viewerRef={viewerRef} builderRef={builderRef} {...props}/>)
+  const result = render(
+    <FormBuilder view={builderViewWithCss} getForm={getForm} viewerRef={viewerRef} builderRef={builderRef} {...props} />
+  )
   const getFormData = () => viewerRef.current?.formData
   const getFormBuilder = () => builderRef.current
 

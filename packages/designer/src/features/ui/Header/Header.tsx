@@ -28,35 +28,31 @@ const RawHeader = (props: ComponentProps<'div'>) => {
   const handleUndo = useCallback(() => undoer.undo(), [undoer])
   const handleRedo = useCallback(() => undoer.redo(), [undoer])
 
-  const saveIcon = useMemo(() => <FaIcon icon={faSave as unknown as IconDefinition}/>, [])
-  const undoIcon = useMemo(() => <FaIcon icon={faUndo as unknown as IconDefinition}/>, [])
-  const redoIcon = useMemo(() => <FaIcon icon={faRedo as unknown as IconDefinition}/>, [])
+  const saveIcon = useMemo(() => <FaIcon icon={faSave as unknown as IconDefinition} />, [])
+  const undoIcon = useMemo(() => <FaIcon icon={faUndo as unknown as IconDefinition} />, [])
+  const redoIcon = useMemo(() => <FaIcon icon={faRedo as unknown as IconDefinition} />, [])
 
   return (
     <div {...props} className={cx(styles.container, props.className)}>
       <div className={styles.leftPart}>
-        <Menu/>
+        <Menu />
         <Toolbar size={'sm'} className={styles.toolbar}>
-          {builderStore.formStorageEnabled &&
-            <IconButton onClick={handleSave} data-testid={'header-save-form-button'}
-                        icon={saveIcon} size={'sm'}/>
-          }
-          <IconButton onClick={handleUndo} disabled={!undoer.hasUndo}
-                      icon={undoIcon} size={'sm'}/>
-          <IconButton onClick={handleRedo} disabled={!undoer.hasRedo}
-                      icon={redoIcon} size={'sm'}/>
-
+          {builderStore.formStorageEnabled && (
+            <IconButton onClick={handleSave} data-testid={'header-save-form-button'} icon={saveIcon} size={'sm'} />
+          )}
+          <IconButton onClick={handleUndo} disabled={!undoer.hasUndo} icon={undoIcon} size={'sm'} />
+          <IconButton onClick={handleRedo} disabled={!undoer.hasRedo} icon={redoIcon} size={'sm'} />
         </Toolbar>
       </div>
 
       <div className={styles.centerPart}>
-        <ToggleModeButton/>
+        <ToggleModeButton />
       </div>
 
       <div className={styles.rightPart}>
-        <ViewModes/>
-        <DesignerLocalizationPicker/>
-        <ToggleTheme/>
+        <ViewModes />
+        <DesignerLocalizationPicker />
+        <ToggleTheme />
       </div>
     </div>
   )

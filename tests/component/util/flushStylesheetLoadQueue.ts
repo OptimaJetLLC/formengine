@@ -23,8 +23,8 @@ import {act} from '@testing-library/react'
 export const flushPendingLinkLoads = async () => {
   for (let i = 0; i < 5; i++) {
     await act(async () => {
-      await new Promise((r) => setTimeout(r, 0))
-      document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]').forEach((link) => {
+      await new Promise(r => setTimeout(r, 0))
+      document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]').forEach(link => {
         link.onload?.(new Event('load'))
       })
     })

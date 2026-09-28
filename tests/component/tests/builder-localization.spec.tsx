@@ -42,29 +42,29 @@ const customI18nFrFirst: FormBuilderI18n = {
   languages: [
     new Language('fr', 'FR', 'French', 'Français'),
     new Language('en', 'US', 'English', 'American English'),
-    new Language('de', 'DE', 'German', 'Deutsch')
+    new Language('de', 'DE', 'German', 'Deutsch'),
   ],
-  getData: async (languageFullCode) => {
+  getData: async languageFullCode => {
     const data: FormBuilderI18nData = {
       data: {},
-      componentsLocale: {}
+      componentsLocale: {},
     }
 
     // Provide different translations for each language
     if (languageFullCode === 'fr-FR') {
       data.data = {
         leftMenu: {menu: 'Menu'},
-        leftPanel: {sectionName: {components: 'Composants'}}
+        leftPanel: {sectionName: {components: 'Composants'}},
       }
     } else if (languageFullCode === 'de-DE') {
       data.data = {
         leftMenu: {menu: 'Menü'},
-        leftPanel: {sectionName: {components: 'Komponenten'}}
+        leftPanel: {sectionName: {components: 'Komponenten'}},
       }
     }
 
     return data
-  }
+  },
 }
 
 // Custom i18n configuration with German as first language
@@ -72,35 +72,35 @@ const customI18nDeFirst: FormBuilderI18n = {
   languages: [
     new Language('de', 'DE', 'German', 'Deutsch'),
     new Language('en', 'US', 'English', 'American English'),
-    new Language('fr', 'FR', 'French', 'Français')
+    new Language('fr', 'FR', 'French', 'Français'),
   ],
-  getData: async (languageFullCode) => {
+  getData: async languageFullCode => {
     const data: FormBuilderI18nData = {
       data: {},
-      componentsLocale: {}
+      componentsLocale: {},
     }
 
     if (languageFullCode === 'de-DE') {
       data.data = {
         leftMenu: {menu: 'Menü'},
-        leftPanel: {sectionName: {components: 'Komponenten'}}
+        leftPanel: {sectionName: {components: 'Komponenten'}},
       }
     } else if (languageFullCode === 'fr-FR') {
       data.data = {
         leftMenu: {menu: 'Menu'},
-        leftPanel: {sectionName: {components: 'Composants'}}
+        leftPanel: {sectionName: {components: 'Composants'}},
       }
     }
 
     return data
-  }
+  },
 }
 
 type BuilderStoreLike = {
-  defaultLanguage: { fullCode: string; bidi?: string }
-  availableLanguages: Array<{ fullCode: string }>
-  formBuilderLanguage: { fullCode: string }
-  formAvailableLanguages: Array<{ fullCode: string }>
+  defaultLanguage: {fullCode: string; bidi?: string}
+  availableLanguages: Array<{fullCode: string}>
+  formBuilderLanguage: {fullCode: string}
+  formAvailableLanguages: Array<{fullCode: string}>
   isRTL: boolean
 }
 
@@ -127,11 +127,11 @@ describe('builder i18n fallback language behavior', () => {
 
   it('uses first language from i18n configuration as fallback', async () => {
     const formNoLanguages = {
-      'form': {
-        'key': 'Screen',
-        'type': 'Screen',
+      form: {
+        key: 'Screen',
+        type: 'Screen',
       },
-      'localization': {}
+      localization: {},
     }
 
     const {getFormBuilder, unmount} = await renderBuilder(formNoLanguages, {i18n: customI18nDeFirst})
@@ -168,24 +168,21 @@ describe('builder i18n fallback language behavior', () => {
 
   it('falls back to default language when translation is missing for current language', async () => {
     const i18nFrenchOnly: FormBuilderI18n = {
-      languages: [
-        new Language('fr', 'FR', 'French', 'Français'),
-        new Language('it', 'IT', 'Italian', 'Italiano')
-      ],
-      getData: async (languageFullCode) => {
+      languages: [new Language('fr', 'FR', 'French', 'Français'), new Language('it', 'IT', 'Italian', 'Italiano')],
+      getData: async languageFullCode => {
         const data: FormBuilderI18nData = {
           data: {},
-          componentsLocale: {}
+          componentsLocale: {},
         }
 
         if (languageFullCode === 'fr-FR') {
           data.data = {
-            leftPanel: {sectionName: {components: 'Composants'}}
+            leftPanel: {sectionName: {components: 'Composants'}},
           }
         }
 
         return data
-      }
+      },
     }
 
     const {container, unmount} = await renderBuilder(testForm, {i18n: i18nFrenchOnly})
@@ -211,7 +208,7 @@ describe('builder i18n fallback language behavior', () => {
   it('handles empty i18n configuration', async () => {
     const emptyI18n: FormBuilderI18n = {
       languages: [],
-      getData: async () => ({data: {}, componentsLocale: {}})
+      getData: async () => ({data: {}, componentsLocale: {}}),
     }
 
     const {getFormBuilder, unmount} = await renderBuilder(testForm, {i18n: emptyI18n})
@@ -233,23 +230,23 @@ describe('builder i18n fallback language behavior', () => {
         'fr-FR': {
           testField: {
             component: {
-              label: 'Champ de test'
-            }
-          }
+              label: 'Champ de test',
+            },
+          },
         },
         'de-DE': {
           testField: {
             component: {
-              label: 'Testfeld'
-            }
-          }
-        }
-      }
+              label: 'Testfeld',
+            },
+          },
+        },
+      },
     }
 
     const singleLangI18n: FormBuilderI18n = {
       languages: [new Language('it', 'IT', 'Italian', 'Italiano')],
-      getData: async () => ({data: {}, componentsLocale: {}})
+      getData: async () => ({data: {}, componentsLocale: {}}),
     }
 
     const {getFormBuilder, unmount} = await renderBuilder(formWithLocalization, {i18n: singleLangI18n})
@@ -286,7 +283,7 @@ describe('builder i18n fallback language behavior', () => {
 
     const rtlI18n: FormBuilderI18n = {
       languages: [new Language('ar', 'SA', 'Arabic', 'العربية', BiDi.RTL)],
-      getData: async () => ({data: {}, componentsLocale: {}})
+      getData: async () => ({data: {}, componentsLocale: {}}),
     }
 
     const {getFormBuilder, unmount} = await renderBuilder(rtlForm, {i18n: rtlI18n})

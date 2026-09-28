@@ -5,14 +5,14 @@ import {renderForm} from '../util/renderForm'
 import form from './forms/entire-form-validator.json'
 
 const expectedValues = {
-  'input0': 'input0',
-  'input1': 'input1',
-  'input2': 'input2'
+  input0: 'input0',
+  input1: 'input1',
+  input2: 'input2',
 }
 
 const formValidatorErrors = {
   input0: 'invalid input0',
-  input2: 'invalid input2'
+  input2: 'invalid input2',
 }
 
 describe('Form validator', () => {
@@ -41,7 +41,7 @@ describe('Form validator', () => {
     const externalValidatorErrors = {
       input0: 'external validator input0',
       input1: 'external validator input1',
-      input2: 'external validator input0'
+      input2: 'external validator input0',
     }
     const validator: FormValidator = async () => externalValidatorErrors
 
@@ -50,7 +50,7 @@ describe('Form validator', () => {
     const returnedErrors = await asyncAct(async () => await formData.validate())
     const expectedErrors = {
       ...externalValidatorErrors,
-      ...formValidatorErrors
+      ...formValidatorErrors,
     }
     expect(returnedErrors).toStrictEqual(expectedErrors)
     expect(formData.errors).toStrictEqual(expectedErrors)

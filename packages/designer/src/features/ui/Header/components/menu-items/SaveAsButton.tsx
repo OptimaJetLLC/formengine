@@ -10,16 +10,19 @@ import {useSaveFormDialog} from '../../../dialogs/useSaveFormDialog'
 import {useSaveForm} from '../useSaveForm'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const saveAsIcon = <FaIcon icon={faSave as unknown as IconDefinition}/>
+const saveAsIcon = <FaIcon icon={faSave as unknown as IconDefinition} />
 
 const RawSaveAsButton = ({className}: CustomizableMenuItemProps) => {
   const builderStore = useBuilderStore()
   const t = useTranslationPart('leftMenu')
   const onSave = useSaveForm()
 
-  const handleSaveAs = useCallback((value: string) => {
-    if (value) onSave(value)
-  }, [onSave])
+  const handleSaveAs = useCallback(
+    (value: string) => {
+      if (value) onSave(value)
+    },
+    [onSave]
+  )
 
   const onSaveAs = useSaveFormDialog(handleSaveAs)
 

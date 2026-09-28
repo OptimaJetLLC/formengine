@@ -15,10 +15,13 @@ const Signature = ({value, style, className, label, clearButtonText, readOnly, .
   const aria = useAriaAttributes({labeled: !!label})
   const onChange = useTouchOnEvent(props, 'onChange')
 
-  const clearButtonStyle = useMemo(() => ({
-    width: props.width,
-    marginTop: 6,
-  }), [props.width])
+  const clearButtonStyle = useMemo(
+    () => ({
+      width: props.width,
+      marginTop: 6,
+    }),
+    [props.width]
+  )
 
   // SignaturePad does not display the data-testid attribute
   const dataTestId = (props as any)?.['data-testid']
@@ -29,24 +32,20 @@ const Signature = ({value, style, className, label, clearButtonText, readOnly, .
   }, [onChange])
 
   return (
-    <div
-      style={style}
-      className={cx(styles.container, className)}
-      data-testid={dataTestId}
-    >
+    <div style={style} className={cx(styles.container, className)} data-testid={dataTestId}>
       <div className={styles.rows}>
         {label && (
           <label id={aria['aria-labelledby']} htmlFor={id} className={styles.label}>
             {label}
           </label>
         )}
-        <SignaturePad {...props} id={id} readOnly={readOnly} value={value} ref={padRef} ariaAttributes={aria} onChange={onChange}/>
+        <SignaturePad {...props} id={id} readOnly={readOnly} value={value} ref={padRef} ariaAttributes={aria} onChange={onChange} />
       </div>
-      {!readOnly &&
+      {!readOnly && (
         <Button onClick={clear} disabled={!value} style={clearButtonStyle}>
           {clearButtonText}
         </Button>
-      }
+      )}
     </div>
   )
 }
@@ -64,6 +63,6 @@ export const signature = define(Signature, 'RsSignature')
     penColor: color.default('rgba(0, 0, 0, 1)'),
     backgroundColor: color.default('rgba(167, 167, 167, 0.1)'),
     readOnly,
-    onChange: event
+    onChange: event,
   })
   .css({alignItems})

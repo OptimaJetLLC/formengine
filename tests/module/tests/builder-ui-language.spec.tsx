@@ -15,7 +15,7 @@ import {LocalStorageSynchronizer} from '@react-form-builder/designer/src/stores/
 import {expect} from 'vitest'
 import {createMockStore} from '../common/createMockBuilderStore'
 
-const mockComponent = define(() => <div/>, 'MockField')
+const mockComponent = define(() => <div />, 'MockField')
   .name('Mock')
   .category('fields')
   .build()
@@ -39,10 +39,7 @@ const persistedFormWithLanguages = (languages: Language[], defaultLanguage: Lang
 })
 
 const customTwoLangI18n: FormBuilderI18n = {
-  languages: [
-    new Language('fr', 'FR', 'French', 'Français'),
-    new Language('tr', 'TR', 'Turkish', 'Türkçe'),
-  ],
+  languages: [new Language('fr', 'FR', 'French', 'Français'), new Language('tr', 'TR', 'Turkish', 'Türkçe')],
   getData: async () => ({data: {}, componentsLocale: {}}),
 }
 

@@ -4,7 +4,7 @@ import {ViewerLite} from '../../common/lib/viewer/ViewerLite'
 
 describe('Component ViewerLite', function () {
   it('should render without localization', async () => {
-    const {container, findByTestId, findByRole} = render(<ViewerLite/>)
+    const {container, findByTestId, findByRole} = render(<ViewerLite />)
 
     expect(await findByTestId('password')).toBeInTheDocument()
     expect(container.firstChild?.firstChild).toHaveClass('optimajet-formviewer')
@@ -14,7 +14,7 @@ describe('Component ViewerLite', function () {
   })
 
   it('should render with localizer', async () => {
-    const {container, findByTestId, findByRole} = render(<ViewerLite withLocalizer/>)
+    const {container, findByTestId, findByRole} = render(<ViewerLite withLocalizer />)
 
     expect(await findByTestId('password')).toBeInTheDocument()
     expect(container.firstChild?.firstChild).toHaveClass('optimajet-formviewer')
@@ -23,5 +23,3 @@ describe('Component ViewerLite', function () {
     expect(button).toBeInTheDocument()
   })
 })
-
-

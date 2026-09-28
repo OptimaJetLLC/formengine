@@ -8,24 +8,28 @@ import {EventHandlerItemProvider} from './ActionItem/contexts/EventHandlerItemCo
 import styles from './ActionList.module.css'
 
 interface ActionListItemProps {
-  index: number,
-  action: ActionData,
-  onRemove: (index: number) => ActionData[] | undefined,
+  index: number
+  action: ActionData
+  onRemove: (index: number) => ActionData[] | undefined
   eventName: string
 }
 
 const RawActionListItem = ({action, index, onRemove, eventName}: ActionListItemProps) => {
   const handleRemove = useCallback(() => onRemove(index), [index, onRemove])
-  const value = useMemo(() => ({
-    index, eventName
-  }), [eventName, index])
+  const value = useMemo(
+    () => ({
+      index,
+      eventName,
+    }),
+    [eventName, index]
+  )
 
   const dataTestId = `bound-action-${eventName}-${action.type}-${action.name}`
 
   return (
     <EventHandlerItemProvider value={value}>
       <List.Item index={index} className={styles.listItem} data-testid={dataTestId}>
-        <ActionItem action={action} onRemove={handleRemove} eventName={eventName}/>
+        <ActionItem action={action} onRemove={handleRemove} eventName={eventName} />
       </List.Item>
     </EventHandlerItemProvider>
   )
@@ -39,20 +43,23 @@ const RawActionList = (props: AnnotationEditorProps) => {
 
   const onRemove = useCallback((index: number) => actions?.splice(index, 1), [actions])
 
-  const handleSortEnd = useCallback((info?: MovedInfo) => {
-    if (!actions || !(info?.oldIndex || info?.newIndex)) return
+  const handleSortEnd = useCallback(
+    (info?: MovedInfo) => {
+      if (!actions || !(info?.oldIndex || info?.newIndex)) return
 
-    const movingElement = actions[info.oldIndex]
-    actions.splice(info.oldIndex, 1)
-    actions.splice(info.newIndex, 0, movingElement)
-  }, [actions])
+      const movingElement = actions[info.oldIndex]
+      actions.splice(info.oldIndex, 1)
+      actions.splice(info.newIndex, 0, movingElement)
+    },
+    [actions]
+  )
 
   if (!actions?.length) return null
 
   return (
     <List className={styles.list} sortable onSort={handleSortEnd}>
       {actions.map((action, index) => (
-        <ActionListItem key={action[KeySymbol]} index={index} action={action} onRemove={onRemove} eventName={eventName}/>
+        <ActionListItem key={action[KeySymbol]} index={index} action={action} onRemove={onRemove} eventName={eventName} />
       ))}
     </List>
   )

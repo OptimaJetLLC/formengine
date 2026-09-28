@@ -3,7 +3,7 @@
 import {readdirSync, readFileSync, statSync} from 'node:fs'
 import {join, resolve} from 'node:path'
 
-import {parseArchivesDir, requireGhToken, githubRepository} from './env.ts'
+import {githubRepository, parseArchivesDir, requireGhToken} from './env.ts'
 import {ensureDraftArtifactRelease, uploadReleaseAsset} from './github-api.ts'
 
 function listArchiveFilenames(archivesDir: string): string[] {

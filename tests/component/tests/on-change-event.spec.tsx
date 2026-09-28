@@ -3,54 +3,54 @@ import {FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {fireEvent, render, waitFor, within} from '@testing-library/react'
 
 const testForm = {
-  'version': '1',
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'props': {},
-    'children': [
+  version: '1',
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    children: [
       {
-        'key': 'input',
-        'type': 'RsInput',
-        'props': {},
-        'htmlAttributes': [
+        key: 'input',
+        type: 'RsInput',
+        props: {},
+        htmlAttributes: [
           {
-            'name': 'data-testid',
-            'value': 'input'
-          }
-        ]
+            name: 'data-testid',
+            value: 'input',
+          },
+        ],
       },
       {
-        'key': 'checkbox',
-        'type': 'RsCheckbox',
-        'props': {},
-        'htmlAttributes': [
+        key: 'checkbox',
+        type: 'RsCheckbox',
+        props: {},
+        htmlAttributes: [
           {
-            'name': 'data-testid',
-            'value': 'checkbox'
-          }
-        ]
-      }
-    ]
+            name: 'data-testid',
+            value: 'checkbox',
+          },
+        ],
+      },
+    ],
   },
-  'localization': {},
-  'languages': [
+  localization: {},
+  languages: [
     {
-      'code': 'en',
-      'dialect': 'US',
-      'name': 'English',
-      'description': 'American English',
-      'bidi': 'ltr'
-    }
+      code: 'en',
+      dialect: 'US',
+      name: 'English',
+      description: 'American English',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'en-US'
+  defaultLanguage: 'en-US',
 }
 
 describe('OnChange Event', () => {
   it('Should modify the data correctly', async () => {
     const getForm = () => JSON.stringify(testForm)
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
-    const {findByTestId} = render(<FormViewer getForm={getForm} view={view} viewerRef={viewerRef} initialData={{checkbox: true}}/>)
+    const {findByTestId} = render(<FormViewer getForm={getForm} view={view} viewerRef={viewerRef} initialData={{checkbox: true}} />)
 
     const checkbox = await findByTestId('checkbox')
     expect(checkbox).toBeInTheDocument()

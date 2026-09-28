@@ -16,24 +16,21 @@ const TestComponent = (props: TestComponentProps) => {
 const testComponent = define(TestComponent, 'TestComponent')
   .props({
     template: string.setup({editor: 'componentType'}).withEditorProps({
-      filter: (componentData: ComponentData) => componentData.model.type.startsWith('Template:')
+      filter: (componentData: ComponentData) => componentData.model.type.startsWith('Template:'),
     }),
   })
   .build()
 
-const form = buildForm()
-  .component('testComponent1', 'TestComponent')
-  .json()
+const form = buildForm().component('testComponent1', 'TestComponent').json()
 
 const templateArray = ['template one', 'template two']
 
-const view = new BuilderView([...allComponentsBuilder, testComponent])
-  .withTemplates(templateArray)
+const view = new BuilderView([...allComponentsBuilder, testComponent]).withTemplates(templateArray)
 
 describe('ComponentTypePicker test', () => {
   it('ComponentTypePicker should display filtered value', async () => {
     const getForm = () => form
-    const renderResult = render(<FormBuilder view={view} getForm={getForm}/>)
+    const renderResult = render(<FormBuilder view={view} getForm={getForm} />)
     const {findByTestId} = renderResult
 
     const testComponent = await findByTestId('test-component-template')

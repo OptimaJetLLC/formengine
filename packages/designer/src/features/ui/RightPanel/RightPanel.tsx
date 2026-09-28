@@ -5,8 +5,8 @@ import {Panel} from '../Panel'
 import {PropertiesEditor} from './PropertiesEditor/PropertiesEditor'
 
 const rightPanelViews = {
-  'builder': <PropertiesEditor/>,
-  'viewer': null
+  builder: <PropertiesEditor />,
+  viewer: null,
 }
 
 type RightPanelProps = Omit<PanelProps, 'placement'>

@@ -11,9 +11,9 @@ import {
   licenseExpiredStrict,
   licenseInvalid,
   licenseLegacyNotExpired,
-  licenseNoDomain
+  licenseNoDomain,
 } from '@react-form-builder/tests-common/license'
-import {render, RenderResult} from '@testing-library/react'
+import {RenderResult, render} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
 import {clickItemInMainMenu} from '../util/controls'
@@ -47,10 +47,10 @@ const viewerView = createView(allComponentsViewer)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 
-const Viewer = ({language, formName}: { language?: string, formName?: string }) => {
+const Viewer = ({language, formName}: {language?: string; formName?: string}) => {
   const lng: LanguageFullCode | undefined = language ? `${language.toLowerCase()}-${language.toUpperCase()}` : undefined
 
-  return <FormViewer view={viewerView} getForm={getForm} language={lng} formName={formName}/>
+  return <FormViewer view={viewerView} getForm={getForm} language={lng} formName={formName} />
 }
 Viewer.displayName = 'Viewer'
 
@@ -74,14 +74,14 @@ export const simpleCustomization: CustomizationMap = {
       #menuitem-\\:r5\\: {
         display: none;
       }
-    `
-  }
+    `,
+  },
 }
 
-type DesignerProps = { license: string, customization?: CustomizationMap, view?: BuilderView, formName?: string }
+type DesignerProps = {license: string; customization?: CustomizationMap; view?: BuilderView; formName?: string}
 const Designer = ({license, customization, view = viewAllComponents, formName}: DesignerProps) => {
   const formGet = useCallback((name?: string) => getForm(name ?? formName), [formName])
-  return <FormBuilder view={view} getForm={formGet} licenseKey={license} customization={customization}/>
+  return <FormBuilder view={view} getForm={formGet} licenseKey={license} customization={customization} />
 }
 Designer.displayName = 'Designer'
 
@@ -119,7 +119,7 @@ const allComponentMessagesPresent = async ({findByText}: RenderResult, mode: Tes
 describe(`License test`, function () {
   for (const Component of components) {
     it(`${Component.displayName} should render`, async () => {
-      const app = render(<Component license=""/>)
+      const app = render(<Component license="" />)
 
       await ready(app, Component.displayName as TestComponent)
     })
@@ -127,7 +127,7 @@ describe(`License test`, function () {
 
   for (const l of licenseExpired) {
     it(`Designer expired license should produce trial message`, async () => {
-      const app = render(<Designer license={l}/>)
+      const app = render(<Designer license={l} />)
 
       await designerReady(app)
 
@@ -142,7 +142,7 @@ describe(`License test`, function () {
 
   for (const l of licenseBusiness) {
     it(`Designer should show locale count`, async () => {
-      const app = render(<Designer license={l}/>)
+      const app = render(<Designer license={l} />)
 
       await designerReady(app)
 
@@ -157,7 +157,7 @@ describe(`License test`, function () {
 
   for (const l of licenseExpiredStrict) {
     it(`Designer expired strict license should produce trial message`, async () => {
-      const app = render(<Designer license={l}/>)
+      const app = render(<Designer license={l} />)
 
       await designerReady(app)
 
@@ -172,7 +172,7 @@ describe(`License test`, function () {
 
   for (const l of licenseLegacyNotExpired) {
     it(`Designer not expired legacy license should not produce trial message`, async () => {
-      const app = render(<Designer license={l}/>)
+      const app = render(<Designer license={l} />)
 
       await designerReady(app)
 
@@ -187,7 +187,7 @@ describe(`License test`, function () {
 
   for (const l of licenseNoDomain) {
     it(`Designer license with no domain should not produce domain violation message`, async () => {
-      const app = render(<Designer license={l}/>)
+      const app = render(<Designer license={l} />)
 
       await designerReady(app)
 
@@ -202,7 +202,7 @@ describe(`License test`, function () {
 
   for (const l of license2030Enterprise) {
     it(`Designer license with ftLocaleCount=-1 should not produce locale message`, async () => {
-      const app = render(<Designer license={l}/>)
+      const app = render(<Designer license={l} />)
 
       await designerReady(app)
 
@@ -211,7 +211,7 @@ describe(`License test`, function () {
   }
 
   it(`Designer invalid license should produce trial message`, async () => {
-    const app = render(<Designer license={licenseInvalid[0]} customization={simpleCustomization}/>)
+    const app = render(<Designer license={licenseInvalid[0]} customization={simpleCustomization} />)
 
     await designerReady(app)
 
@@ -221,7 +221,7 @@ describe(`License test`, function () {
   })
 
   it('Designer should translate license related messages', async () => {
-    const app = render(<Designer license={''} customization={simpleCustomization}/>)
+    const app = render(<Designer license={''} customization={simpleCustomization} />)
 
     await designerReady(app)
     await clickItemInMainMenu(app.container, 'Translation', 'DE')
@@ -230,7 +230,7 @@ describe(`License test`, function () {
   })
 
   it(`Designer should show descriptive message, if no key is provided`, async () => {
-    const app = render(<Designer license=""/>)
+    const app = render(<Designer license="" />)
 
     await designerReady(app)
 
@@ -239,7 +239,7 @@ describe(`License test`, function () {
   })
 
   it(`Designer should not show descriptive message, if restricted component not in the palette`, async () => {
-    const app = render(<Designer license="" view={viewNoComponents} formName={'empty'}/>)
+    const app = render(<Designer license="" view={viewNoComponents} formName={'empty'} />)
 
     await designerReady(app)
 
@@ -247,41 +247,27 @@ describe(`License test`, function () {
   })
 
   it('should check domain list', async () => {
-    const domain = [
-      'testnet.local',
-      'foo.testnet.local',
-      'bar.foo.testnet.local',
-      '*.testnet.local',
-      '*.foo.testnet.local',
-    ]
+    const domain = ['testnet.local', 'foo.testnet.local', 'bar.foo.testnet.local', '*.testnet.local', '*.foo.testnet.local']
     expect(verifyDomain(domain, 'testnet.local')).toBeTruthy()
     expect(verifyDomain(domain, 'baz.testnet.local')).toBeTruthy()
     expect(verifyDomain(domain, 'baz.testnet1.local')).toBeFalsy()
     expect(verifyDomain(domain, 'localhost')).toBeFalsy()
 
-    const domainExact = [
-      'testnet.local',
-    ]
+    const domainExact = ['testnet.local']
     expect(verifyDomain(domainExact, 'testnet.local')).toBeTruthy()
     expect(verifyDomain(domainExact, 'foo.testnet.local')).toBeFalsy()
     expect(verifyDomain(domainExact, 'example.com')).toBeFalsy()
 
-    const domainWildcardOnly = [
-      '*.testnet.local'
-    ]
+    const domainWildcardOnly = ['*.testnet.local']
     expect(verifyDomain(domainWildcardOnly, 'testnet.local')).toBeFalsy()
     expect(verifyDomain(domainWildcardOnly, 'foo.testnet.local')).toBeTruthy()
 
-    const domainWildcardOnlySubdomain = [
-      '*.foo.testnet.local'
-    ]
+    const domainWildcardOnlySubdomain = ['*.foo.testnet.local']
     expect(verifyDomain(domainWildcardOnlySubdomain, 'foo.testnet.local')).toBeFalsy()
     expect(verifyDomain(domainWildcardOnlySubdomain, 'bar.foo.testnet.local')).toBeTruthy()
     expect(verifyDomain(domainWildcardOnlySubdomain, 'testnet.local')).toBeFalsy()
 
-    const domainWildcardAny = [
-      '*'
-    ]
+    const domainWildcardAny = ['*']
     expect(verifyDomain(domainWildcardAny, 'example.com')).toBeTruthy()
     expect(verifyDomain(domainWildcardAny, 'bar.foo.testnet.local')).toBeTruthy()
   })

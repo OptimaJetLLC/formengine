@@ -20,8 +20,8 @@ interface FixedSelectPickerProps<T> extends SelectPickerProps<T> {
  * @param props.width the width of the picker.
  * @returns the RSuite select picker.
  */
-export const FixedSelectPicker = <T, >({width, ...props}: FixedSelectPickerProps<T>) => {
+export const FixedSelectPicker = <T,>({width, ...props}: FixedSelectPickerProps<T>) => {
   const style = useMemo(() => ({width}), [width])
 
-  return <SelectPicker {...props} style={style}/>
+  return <SelectPicker {...props} style={style} />
 }

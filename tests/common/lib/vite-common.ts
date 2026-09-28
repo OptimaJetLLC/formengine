@@ -10,16 +10,14 @@ import type {Plugin, UserConfig} from 'vite'
  */
 export const indexPlugin = (replacement: string): Plugin => ({
   name: 'indexReplacementPlugin',
-  configureServer: (server) => {
-    server.middlewares.use(
-      (req, _res, next) => {
-        if (req.url === '/') {
-          req.url = replacement
-        }
-        next()
+  configureServer: server => {
+    server.middlewares.use((req, _res, next) => {
+      if (req.url === '/') {
+        req.url = replacement
       }
-    )
-  }
+      next()
+    })
+  },
 })
 
 /**

@@ -9,7 +9,7 @@ import {useTranslationPart} from '../../../../localization/hooks'
 import {useSaveForm} from '../useSaveForm'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const saveIcon = <FaIcon icon={faSave as unknown as IconDefinition}/>
+const saveIcon = <FaIcon icon={faSave as unknown as IconDefinition} />
 
 const RawSaveButton = ({className}: CustomizableMenuItemProps) => {
   const builderStore = useBuilderStore()

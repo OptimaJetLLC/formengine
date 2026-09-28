@@ -7,9 +7,9 @@ describe('RenderWhen test', () => {
   it('should render when renderWhen/itemRenderWhen condition is true', async () => {
     const getForm = () => JSON.stringify(renderWhenForm)
     const initialData = {
-      'repeater': [{visible: true}, {visible: true}, {visible: true, 'repeaterInput': '2'}]
+      repeater: [{visible: true}, {visible: true}, {visible: true, repeaterInput: '2'}],
     }
-    const {findByTestId, queryByTestId} = render(<FormViewer view={view} getForm={getForm} initialData={initialData}/>)
+    const {findByTestId, queryByTestId} = render(<FormViewer view={view} getForm={getForm} initialData={initialData} />)
 
     expect(await findByTestId('visibleWhenAll')).toHaveValue('Simple render when')
     // we should see only one element in the repeater

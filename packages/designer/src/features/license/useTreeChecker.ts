@@ -21,7 +21,7 @@ const viewerFeatureList = new Set<LicenseFeatureDescription['name']>([
   'ftComponentTemplates',
   'ftLocaleCount',
   'ftComponentQrCode',
-  'ftComponentSignature'
+  'ftComponentSignature',
 ])
 
 /**
@@ -61,10 +61,10 @@ export const useTreeChecker = (): [Features, typeof viewerFeatureList] => {
 
           return restrictionCount >= actualCount
         },
-        actualCount: viewer.form.languages.length
+        actualCount: viewer.form.languages.length,
       })
 
-      setFeatures((prev) => {
+      setFeatures(prev => {
         if (equalFeatureSet(prev, rules)) return prev
         return rules
       })

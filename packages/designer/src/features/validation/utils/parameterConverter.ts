@@ -4,10 +4,7 @@ import {coerceIfDate, createAnnotation, createProperty} from '@react-form-builde
 /**
  * The annotation that defines the validateWhen parameter.
  */
-export const validateWhen = createProperty('string')
-  .typed('boolean')
-  .calculable(true)
-  .build('validateWhen')
+export const validateWhen = createProperty('string').typed('boolean').calculable(true).build('validateWhen')
 
 /**
  * Converts a ValidationRuleParameter to an annotation.
@@ -34,11 +31,9 @@ function convertValidationRuleParameterToAnnotation(parameter: ValidationRulePar
  * @returns the array of annotations generated from the conversion.
  */
 export function convertValidationRuleParametersToAnnotations(parameters: ValidationRuleParameter[]) {
-  return parameters
-    .map(convertValidationRuleParameterToAnnotation)
-    .sort((a, b) => {
-      if (a.required === b.required || a.required) return -1
-      if (a.key === 'message') return 1
-      return 0
-    })
+  return parameters.map(convertValidationRuleParameterToAnnotation).sort((a, b) => {
+    if (a.required === b.required || a.required) return -1
+    if (a.key === 'message') return 1
+    return 0
+  })
 }

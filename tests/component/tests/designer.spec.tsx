@@ -1,7 +1,7 @@
 import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
-import {render, RenderResult} from '@testing-library/react'
+import {RenderResult, render} from '@testing-library/react'
 import React from 'react'
 import {expect} from 'vitest'
 import form from './forms/designer-form.json'
@@ -13,19 +13,16 @@ const designerReady = async ({findByTestId}: RenderResult) => {
 }
 
 const App = () => {
-  return <FormBuilder
-    initialData={{title: 'Hello! Hello!'}}
-    licenseKey={generatedLicenseKey}
-    getForm={getFormFn}
-    view={builderViewWithCss}
-  />
+  return (
+    <FormBuilder initialData={{title: 'Hello! Hello!'}} licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} />
+  )
 }
 
 console.log('REACT VERSION IN TEST:', React.version)
 
 describe(`Component: ${App.name}`, function () {
   it('should render', async () => {
-    const app = render(<App/>)
+    const app = render(<App />)
     const {findByText} = app
 
     await designerReady(app)
@@ -35,7 +32,7 @@ describe(`Component: ${App.name}`, function () {
   })
 
   it('should support pass data', async () => {
-    const app = render(<App/>)
+    const app = render(<App />)
     const {getByDisplayValue, findByTestId} = app
 
     await designerReady(app)
@@ -46,7 +43,7 @@ describe(`Component: ${App.name}`, function () {
   })
 
   it('should support custom actions execution on did mount', async () => {
-    const app = render(<App/>)
+    const app = render(<App />)
     const {findByRole, findByText} = app
 
     await designerReady(app)

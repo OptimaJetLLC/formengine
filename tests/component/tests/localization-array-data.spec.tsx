@@ -10,7 +10,7 @@ import {
   PersistedForm,
   PersistedFormVersion,
   string,
-  toLabeledValues
+  toLabeledValues,
 } from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 
@@ -20,14 +20,18 @@ interface ItemListProps {
 }
 
 const ItemList = ({items, label}: ItemListProps) => {
-  return <div data-testid="item-list">
-    {label && <span data-testid="item-label">{label}</span>}
-    <ul>
-      {items?.map(({value, label}, i) => (
-        <li data-testid="item" key={i}>{label ?? value}</li>
-      ))}
-    </ul>
-  </div>
+  return (
+    <div data-testid="item-list">
+      {label && <span data-testid="item-label">{label}</span>}
+      <ul>
+        {items?.map(({value, label}, i) => (
+          <li data-testid="item" key={i}>
+            {label ?? value}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 const itemList = define(ItemList, 'ItemList')
@@ -51,8 +55,7 @@ const deItems: LabeledValue[] = [
   {value: 'large', label: 'Groß'},
 ]
 
-const makeLanguage = (code: string, dialect: string) =>
-  new Language(code, dialect, `${code}-${dialect}`, `${code}-${dialect}`, BiDi.LTR)
+const makeLanguage = (code: string, dialect: string) => new Language(code, dialect, `${code}-${dialect}`, `${code}-${dialect}`, BiDi.LTR)
 
 const buildForm = (opts: {
   localization?: PersistedForm['localization']
@@ -60,12 +63,7 @@ const buildForm = (opts: {
   defaultLanguage?: `${string}-${string}`
   languages?: Language[]
 }): PersistedForm => {
-  const {
-    localization = {},
-    propValue,
-    defaultLanguage = 'en-US',
-    languages = [makeLanguage('en', 'US'), makeLanguage('de', 'DE')],
-  } = opts
+  const {localization = {}, propValue, defaultLanguage = 'en-US', languages = [makeLanguage('en', 'US'), makeLanguage('de', 'DE')]} = opts
 
   const comp = new ComponentStore('target', 'ItemList')
   comp.props.label = {computeType: 'localization'}
@@ -103,9 +101,7 @@ describe('Array data localization', () => {
       },
     })
 
-    const {findByTestId, container} = render(
-      <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US"/>
-    )
+    const {findByTestId, container} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" />)
 
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['Small', 'Medium', 'Large'])
@@ -120,14 +116,12 @@ describe('Array data localization', () => {
     })
 
     const getForm = () => JSON.stringify(form)
-    const {findByTestId, container, rerender} = render(
-      <FormViewer view={view} getForm={getForm} language="en-US"/>
-    )
+    const {findByTestId, container, rerender} = render(<FormViewer view={view} getForm={getForm} language="en-US" />)
 
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['Small', 'Medium', 'Large'])
 
-    rerender(<FormViewer view={view} getForm={getForm} language="de-DE"/>)
+    rerender(<FormViewer view={view} getForm={getForm} language="de-DE" />)
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['Klein', 'Mittel', 'Groß'])
   })
@@ -140,16 +134,17 @@ describe('Array data localization', () => {
       },
     })
 
-    const {findByTestId, container} = render(
-      <FormViewer view={view} getForm={() => JSON.stringify(form)} language="de-DE"/>
-    )
+    const {findByTestId, container} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language="de-DE" />)
 
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['Small', 'Medium', 'Large'])
   })
 
   it('uses prop value as fallback when no localization exists for array', async () => {
-    const propItems: LabeledValue[] = [{value: 'x', label: 'Prop X'}, {value: 'y', label: 'Prop Y'}]
+    const propItems: LabeledValue[] = [
+      {value: 'x', label: 'Prop X'},
+      {value: 'y', label: 'Prop Y'},
+    ]
     const form = buildForm({
       propValue: propItems,
       localization: {
@@ -158,9 +153,7 @@ describe('Array data localization', () => {
       languages: [makeLanguage('en', 'US')],
     })
 
-    const {findByTestId, container} = render(
-      <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US"/>
-    )
+    const {findByTestId, container} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" />)
 
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['Prop X', 'Prop Y'])
@@ -172,9 +165,7 @@ describe('Array data localization', () => {
       languages: [makeLanguage('en', 'US')],
     })
 
-    const {findByTestId, container} = render(
-      <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US"/>
-    )
+    const {findByTestId, container} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" />)
 
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['A', 'B', 'C'])
@@ -188,19 +179,14 @@ describe('Array data localization', () => {
       languages: [makeLanguage('en', 'US')],
     })
 
-    const {findByTestId, container} = render(
-      <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US"/>
-    )
+    const {findByTestId, container} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" />)
 
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual([])
   })
 
   it('handles array items with missing labels (uses value as fallback)', async () => {
-    const noLabelItems: LabeledValue[] = [
-      {value: 'one'},
-      {value: 'two', label: 'Zwei'},
-    ]
+    const noLabelItems: LabeledValue[] = [{value: 'one'}, {value: 'two', label: 'Zwei'}]
     const form = buildForm({
       localization: {
         'en-US': {target: {component: {label: 'Mix', items: noLabelItems}}},
@@ -208,9 +194,7 @@ describe('Array data localization', () => {
       languages: [makeLanguage('en', 'US')],
     })
 
-    const {findByTestId, container} = render(
-      <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US"/>
-    )
+    const {findByTestId, container} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" />)
 
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['one', 'Zwei'])
@@ -226,15 +210,13 @@ describe('Array data localization', () => {
 
     const getForm = () => JSON.stringify(form)
 
-    const {findByTestId, container, rerender} = render(
-      <FormViewer view={view} getForm={getForm} language="en-US"/>
-    )
+    const {findByTestId, container, rerender} = render(<FormViewer view={view} getForm={getForm} language="en-US" />)
     await findByTestId('item-list')
     const enLabel = await findByTestId('item-label')
     expect(enLabel).toHaveTextContent('English Label')
     expect(getItemTexts(container)).toEqual(['Small', 'Medium', 'Large'])
 
-    rerender(<FormViewer view={view} getForm={getForm} language="de-DE"/>)
+    rerender(<FormViewer view={view} getForm={getForm} language="de-DE" />)
     await findByTestId('item-list')
     const deLabel = await findByTestId('item-label')
     expect(deLabel).toHaveTextContent('Deutsches Label')
@@ -250,9 +232,7 @@ describe('Array data localization', () => {
       languages: [makeLanguage('en', 'US')],
     })
 
-    const {findByTestId, container} = render(
-      <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US"/>
-    )
+    const {findByTestId, container} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" />)
 
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['Only One'])
@@ -270,9 +250,7 @@ describe('Array data localization', () => {
       languages: [makeLanguage('en', 'US')],
     })
 
-    const {findByTestId, container} = render(
-      <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US"/>
-    )
+    const {findByTestId, container} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" />)
 
     await findByTestId('item-list')
     const texts = getItemTexts(container)
@@ -294,9 +272,7 @@ describe('Array data localization', () => {
       languages: [makeLanguage('en', 'US')],
     })
 
-    const {findByTestId, container} = render(
-      <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US"/>
-    )
+    const {findByTestId, container} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" />)
 
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['Größe & Farbe', 'Preis < 100€', '"Zitat"'])
@@ -314,9 +290,7 @@ describe('Array data localization', () => {
       languages: [makeLanguage('en', 'US')],
     })
 
-    const {findByTestId, container} = render(
-      <FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US"/>
-    )
+    const {findByTestId, container} = render(<FormViewer view={view} getForm={() => JSON.stringify(form)} language="en-US" />)
 
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['One', 'Two'])
@@ -342,13 +316,11 @@ describe('Array data localization', () => {
 
     const getForm = () => JSON.stringify(form)
 
-    const {findByTestId, container, rerender} = render(
-      <FormViewer view={view} getForm={getForm} language="en-US"/>
-    )
+    const {findByTestId, container, rerender} = render(<FormViewer view={view} getForm={getForm} language="en-US" />)
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['First', 'Second', 'Third'])
 
-    rerender(<FormViewer view={view} getForm={getForm} language="de-DE"/>)
+    rerender(<FormViewer view={view} getForm={getForm} language="de-DE" />)
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['Dritte', 'Erste', 'Zweite'])
   })
@@ -369,13 +341,11 @@ describe('Array data localization', () => {
 
     const getForm = () => JSON.stringify(form)
 
-    const {findByTestId, container, rerender} = render(
-      <FormViewer view={view} getForm={getForm} language="fr-FR"/>
-    )
+    const {findByTestId, container, rerender} = render(<FormViewer view={view} getForm={getForm} language="fr-FR" />)
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['Petit', 'Grand'])
 
-    rerender(<FormViewer view={view} getForm={getForm} language="de-DE"/>)
+    rerender(<FormViewer view={view} getForm={getForm} language="de-DE" />)
     await findByTestId('item-list')
     expect(getItemTexts(container)).toEqual(['Small', 'Medium', 'Large'])
   })

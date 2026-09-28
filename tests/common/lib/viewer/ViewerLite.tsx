@@ -1,4 +1,4 @@
-import {ltrCssLoader, rSuiteComponents, RsViewWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsViewWrapper, rSuiteComponents, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentLocalizer, createView, FormViewerLite} from '@react-form-builder/core'
 import formObj from './user.form.json'
 
@@ -23,8 +23,8 @@ const actions = {
   assertArgs: ActionDefinition.functionalAction((e, args) => console.log(e, args), {
     p1: 'string',
     p2: 'boolean',
-    p3: 'number'
-  })
+    p3: 'number',
+  }),
 }
 
 const onFormDataChange = ({data, errors}: any) => {
@@ -32,25 +32,25 @@ const onFormDataChange = ({data, errors}: any) => {
 }
 
 const localizeFn: ComponentLocalizer = (componentStore, language) => {
-  return componentStore.key === 'submit' && language.code === 'en'
-    ? {'children': `Submit`}
-    : {}
+  return componentStore.key === 'submit' && language.code === 'en' ? {children: `Submit`} : {}
 }
 
-export const ViewerLite = ((
-  {withLocalizer, getForm, formName: formNameProps}: {
-    withLocalizer?: boolean, getForm?: (name?: string) => string, formName?: string
-  }) =>
-  (
-    <FormViewerLite
-      view={view}
-      getForm={getForm ?? getFormFn}
-      formName={formNameProps ?? formName}
-      localize={withLocalizer ? localizeFn : undefined}
-      initialData={{}}
-      onFormDataChange={onFormDataChange}
-      actions={actions}
-    />
-  ))
-
-
+export const ViewerLite = ({
+  withLocalizer,
+  getForm,
+  formName: formNameProps,
+}: {
+  withLocalizer?: boolean
+  getForm?: (name?: string) => string
+  formName?: string
+}) => (
+  <FormViewerLite
+    view={view}
+    getForm={getForm ?? getFormFn}
+    formName={formNameProps ?? formName}
+    localize={withLocalizer ? localizeFn : undefined}
+    initialData={{}}
+    onFormDataChange={onFormDataChange}
+    actions={actions}
+  />
+)

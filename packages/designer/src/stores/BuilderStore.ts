@@ -8,16 +8,16 @@ import type {
   NamedActionDefinition,
   PersistedForm,
   Store,
-  ViewMode
+  ViewMode,
 } from '@react-form-builder/core'
 import {
   ActionDefinition,
   BiDi,
   BuilderView,
+  ComponentStore,
   cfComponentIsPreset,
   cfDisableComponentRemove,
   cfHideFromComponentPalette,
-  ComponentStore,
   debounce,
   embeddedFormModel,
   getTemplateName,
@@ -27,14 +27,15 @@ import {
   nameObservable,
   PersistedFormVersion,
   screenModel,
-  treeForEach
+  treeForEach,
 } from '@react-form-builder/core'
 import type {IReactionDisposer} from 'mobx'
 import {action, makeAutoObservable, observable, reaction, runInAction} from 'mobx'
+import type {FormBuilderProps} from '../FormBuilderProps'
 import type {CalculableEditorProps} from '../features/annotation-editors/AnnotationEditorProps'
 import type {
   CodeActionEditorData,
-  CodeActionEditorProps
+  CodeActionEditorProps,
 } from '../features/annotation-editors/EventEditor/components/CodeActionEditor/CodeActionEditor'
 import type {TranslationResolver} from '../features/localization/BuilderI18n'
 import {BuilderI18n} from '../features/localization/BuilderI18n'
@@ -44,7 +45,6 @@ import {BuilderPresetComponentOptions} from '../features/preset-component/Builde
 import {removePresetLocalization} from '../features/preset-component/removePresetLocalization'
 import type {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
-import type {FormBuilderProps} from '../FormBuilderProps'
 import {determineTheme} from '../utils/determineTheme'
 import {getAddComponentResult} from '../utils/getAddComponentResult'
 import {getSystemTheme} from '../utils/getSystemTheme'
@@ -102,8 +102,7 @@ export class EditableProperty implements CalculableEditorProps {
     readonly annotation: Annotation,
     readonly componentKey: string,
     readonly currentValue?: unknown
-  ) {
-  }
+  ) {}
 }
 
 /**
@@ -114,16 +113,18 @@ type OnSelectCallback = (source: ComponentData) => void
 /**
  * The result of a palette "can add" check.
  */
-export type CanAddComponentResult = boolean | {
-  /**
-   * True when the component can be added, false otherwise.
-   */
-  canAdd: boolean
-  /**
-   * Optional i18n key under `componentsList` explaining why the component cannot be added.
-   */
-  disableHintKey?: string
-}
+export type CanAddComponentResult =
+  | boolean
+  | {
+      /**
+       * True when the component can be added, false otherwise.
+       */
+      canAdd: boolean
+      /**
+       * Optional i18n key under `componentsList` explaining why the component cannot be added.
+       */
+      disableHintKey?: string
+    }
 
 /**
  * The function that checks if the component can be added.
@@ -134,7 +135,6 @@ export type CanAddComponentFunction = (componentData: ComponentData) => CanAddCo
  * The editable custom validation code.
  */
 export class CustomValidationCode {
-
   /**
    * Creates the editable custom validation code.
    * @param editorKey the unique code editor key.
@@ -142,18 +142,18 @@ export class CustomValidationCode {
    * @param functionSignature the function signature.
    * @param onSave the callback function called when data should be saved.
    */
-  constructor(readonly editorKey: string,
-              readonly code: string,
-              readonly functionSignature: string,
-              readonly onSave: (value: string) => void) {
-  }
+  constructor(
+    readonly editorKey: string,
+    readonly code: string,
+    readonly functionSignature: string,
+    readonly onSave: (value: string) => void
+  ) {}
 }
 
 /**
  * The editable json value.
  */
 export class JsonCode {
-
   /**
    * Creates an editor for JSON.
    * @param editorKey the unique code editor key.
@@ -162,12 +162,13 @@ export class JsonCode {
    * @param onSave the callback function called when data should be saved.
    * @param onValidate the optional callback function called when data should be validated.
    */
-  constructor(readonly editorKey: string,
-              readonly editorTitle: string,
-              readonly json: string,
-              readonly onSave: (value: string) => void,
-              readonly onValidate?: (value: string) => void) {
-  }
+  constructor(
+    readonly editorKey: string,
+    readonly editorTitle: string,
+    readonly json: string,
+    readonly onSave: (value: string) => void,
+    readonly onValidate?: (value: string) => void
+  ) {}
 }
 
 /**
@@ -181,13 +182,15 @@ export class EditableAction implements CodeActionEditorProps {
    * @param namedAction the named custom action.
    * @param onSave the callback function called when data should be saved.
    */
-  constructor(readonly namedAction: NamedActionDefinition,
-              readonly onSave: (namedAction: NamedActionDefinition) => void) {
+  constructor(
+    readonly namedAction: NamedActionDefinition,
+    readonly onSave: (namedAction: NamedActionDefinition) => void
+  ) {
     const clone = JSON.parse(JSON.stringify(namedAction.actionDefinition))
     this.codeAction = {
       name: namedAction.name,
       body: clone.body ?? '',
-      params: clone.params
+      params: clone.params,
     }
   }
 }
@@ -232,7 +235,11 @@ class BuilderUndoer {
   readonly undoer
   #disposer: IReactionDisposer
 
-  constructor(readonly builderStore: BuilderStore, maxStackSize?: number, debounceInterval = 1000) {
+  constructor(
+    readonly builderStore: BuilderStore,
+    maxStackSize?: number,
+    debounceInterval = 1000
+  ) {
     makeAutoObservable(this, undefined, {name: nameObservable('BuilderUndoer')})
 
     let lastFormAsString = this.builderStore.formAsString
@@ -295,8 +302,7 @@ const initialModalState = {
   opened: false,
   title: '',
   value: {},
-  onOk: () => {
-  }
+  onOk: () => {},
 } satisfies PromptModalState
 
 /**
@@ -355,8 +361,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   formListLastReloadTime = new Date()
   readonly componentsModalState: ComponentsModalState = {
     opened: false,
-    onSelect: () => {
-    },
+    onSelect: () => {},
     canAdd: () => true,
   }
   readonly promptModalState: PromptModalState = initialModalState
@@ -379,9 +384,11 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   constructor(
     readonly viewer: Store,
-    readonly props: Readonly<FormBuilderProps>,
+    readonly props: Readonly<FormBuilderProps>
   ) {
-    makeAutoObservable(this, {
+    makeAutoObservable(
+      this,
+      {
         selected: observable,
         formBuilderLanguage: observable.ref,
         localizationLanguage: observable.ref,
@@ -391,8 +398,9 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
         viewMode: true,
         openedPanels: true,
         changeBuilderMode: action,
-      }
-      , {name: nameObservable('BuilderStore')})
+      },
+      {name: nameObservable('BuilderStore')}
+    )
     this.formStorageEnabled = !!props.formStorage
     this.formStorage = new CachedFormStorage(props.formStorage ?? new AlwaysRejectFormStorage())
     if (this.formStorageEnabled) {
@@ -404,8 +412,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
 
     this.view = props.view
     this.activeFormName = props.formName
-    this.formBuilderLanguage = resolveBuilderUiLanguage(props.defaultBuilderLanguage, this.availableLanguages)
-      ?? this.defaultLanguage
+    this.formBuilderLanguage = resolveBuilderUiLanguage(props.defaultBuilderLanguage, this.availableLanguages) ?? this.defaultLanguage
     const viewerLanguage = this.viewer.form.defaultLanguage
     this.viewer.selectedLanguage = viewerLanguage
     this.localizationLanguage = viewerLanguage
@@ -422,7 +429,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       view => {
         this.presetComponentOptions.registerPresetsOnView(view)
       },
-      {fireImmediately: true},
+      {fireImmediately: true}
     )
 
     const translationResolver: TranslationResolver = async language => {
@@ -459,8 +466,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @param namedAction the named action name.
    * @param afterEdit callback function called after data editing.
    */
-  editCodeAction(namedAction: NamedActionDefinition,
-                 afterEdit?: (namedAction: NamedActionDefinition) => void) {
+  editCodeAction(namedAction: NamedActionDefinition, afterEdit?: (namedAction: NamedActionDefinition) => void) {
     this.currentEditable = new EditableAction(namedAction, action => {
       this.viewer.form.updateOrAddAction(namedAction.name, action)
       afterEdit?.(action)
@@ -476,8 +482,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @param functionSignature the function signature.
    * @param onChange the callback function called when data should be saved.
    */
-  editCustomValidationCode(componentKey: string, code: string, functionSignature: string,
-                           onChange: (value: string) => void) {
+  editCustomValidationCode(componentKey: string, code: string, functionSignature: string, onChange: (value: string) => void) {
     this.currentEditable = new CustomValidationCode(componentKey, code, functionSignature, onChange)
   }
 
@@ -486,11 +491,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   editFormValidator() {
     const form = this.viewer.form
-    this.currentEditable = new EditableFormValidator(
-      'form-validator',
-      form.formValidator ?? '',
-      code => form.formValidator = code
-    )
+    this.currentEditable = new EditableFormValidator('form-validator', form.formValidator ?? '', code => (form.formValidator = code))
   }
 
   /**
@@ -501,8 +502,13 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @param onChange the callback function called when data should be saved.
    * @param onValidate the optional callback function called when data should be validated.
    */
-  editJsonCode(componentKey: string, editorTitle: string, json: string, onChange: (value: string) => void,
-               onValidate?: (value: string) => void) {
+  editJsonCode(
+    componentKey: string,
+    editorTitle: string,
+    json: string,
+    onChange: (value: string) => void,
+    onValidate?: (value: string) => void
+  ) {
     this.currentEditable = new JsonCode(componentKey, editorTitle, json, onChange, onValidate)
   }
 
@@ -523,7 +529,8 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     if (language.fullCode === this.formBuilderLanguage.fullCode) {
       return language
     }
-    return this.builderI18n.changeWebDocumentLanguage(language)
+    return this.builderI18n
+      .changeWebDocumentLanguage(language)
       .then(() => {
         runInAction(() => {
           this.formBuilderLanguage = language
@@ -539,9 +546,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   get i18n() {
     const propsI18N = this.#props.i18n
 
-    return propsI18N && propsI18N.languages.length > 0
-      ? propsI18N
-      : builtInLanguages
+    return propsI18N && propsI18N.languages.length > 0 ? propsI18N : builtInLanguages
   }
 
   /**
@@ -657,7 +662,13 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @param slot the property name of the parent component where the new component will be added.
    * @param slotCondition the source code of the function that checks if the component can be bound to parent.
    */
-  move(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string, slotCondition?: string): void {
+  move(
+    source: ComponentData,
+    target: ComponentData,
+    insertPosition: InsertPosition = 'after',
+    slot?: string,
+    slotCondition?: string
+  ): void {
     if (source === target || source === this.viewer.form.componentTree) return
 
     const placement = resolveComponentPlacement(source, target, insertPosition, slot, slotCondition)
@@ -665,7 +676,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     source.store.slotCondition = placement.slotCondition
 
     if (!this.canAddComponent(source, placement.target, placement.insertPosition, placement.slot)) {
-      throw new Error('Can\'t add component')
+      throw new Error("Can't add component")
     }
 
     if (placement.insertPosition === 'inner' || placement.target.isRoot) {
@@ -694,7 +705,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   multipleMove(target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string, slotCondition?: string) {
     const stores: ComponentData[] = []
 
-    this.orderedSelected.forEach((store) => {
+    this.orderedSelected.forEach(store => {
       const sourceComponentData = this.viewer.form.componentTree.findByKey(store.key)
       if (!sourceComponentData) throw Error(`Component with key ${store.key} not found`)
       if (this.canAddComponent(sourceComponentData, target, insertPosition, slot)) {
@@ -707,7 +718,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
 
     if (insertPosition === 'after') stores.reverse()
 
-    stores.forEach((sourceComponentData) => {
+    stores.forEach(sourceComponentData => {
       this.move(sourceComponentData, target, insertPosition, slot, slotCondition)
     })
   }
@@ -724,7 +735,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     const preset = {
       name,
       category,
-      components: removePresetLocalization(components)
+      components: removePresetLocalization(components),
     }
     this.presetComponentOptions.addPresetComponent(preset)
     this.presetComponentOptions.onCreate?.(preset)
@@ -739,13 +750,10 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @param slotCondition the source code of the function that checks if the component can be bound to parent.
    * @returns the new added component or array of components.
    */
-  add(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after',
-      slot?: string, slotCondition?: string) {
+  add(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string, slotCondition?: string) {
     if (source.model.isFeatureEnabled(cfComponentIsPreset)) {
       const result: ComponentStore[] = []
-      const orderedChildren = insertPosition === 'after'
-        ? [...source.children].reverse()
-        : source.children
+      const orderedChildren = insertPosition === 'after' ? [...source.children].reverse() : source.children
 
       const presetName = source.model.name
       orderedChildren.forEach((componentData, i) => {
@@ -787,7 +795,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     const {source, target, insertPosition, slot, slotCondition, selectAfterInsert} = options
 
     if (!this.canAddComponent(source, target, insertPosition, slot)) {
-      throw new Error('Can\'t add component')
+      throw new Error("Can't add component")
     }
 
     const clone = ComponentStore.clone(source.store)
@@ -859,8 +867,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @returns true, if component can be added, false otherwise.
    */
   canMoveComponents(source: Set<ComponentData>, target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string) {
-    const selectedComponents = [...source]
-      .filter(component => component !== this.viewer.form.componentTree)
+    const selectedComponents = [...source].filter(component => component !== this.viewer.form.componentTree)
 
     for (const component of selectedComponents) {
       const placement = resolveComponentPlacement(component, target, insertPosition, slot)
@@ -942,7 +949,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       form: this.viewer.form.componentTree.store,
       localization: this.viewer.form.localization.value,
       languages: this.formAvailableLanguages,
-      defaultLanguage: this.viewer.form.defaultLanguage.fullCode
+      defaultLanguage: this.viewer.form.defaultLanguage.fullCode,
     })
     return toPrettyJsonString(serializedObject)
   }
@@ -952,8 +959,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   get formAvailableLanguages() {
     return this.availableLanguages.filter(l => {
-      return l.fullCode === this.defaultLanguage.fullCode
-        || this.viewer.form.localization.hasLanguage(l.fullCode)
+      return l.fullCode === this.defaultLanguage.fullCode || this.viewer.form.localization.hasLanguage(l.fullCode)
     })
   }
 
@@ -1062,10 +1068,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   setPanelVisible(placement: PanelPlacement, visible: boolean) {
     const filtered = this.openedPanels?.filter(key => key !== placement) ?? []
-    this.openedPanels = [
-      ...filtered,
-      ...visible ? [placement] : []
-    ]
+    this.openedPanels = [...filtered, ...(visible ? [placement] : [])]
   }
 
   /**
@@ -1115,9 +1118,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @returns the component metadata for the specified component type name.
    */
   getComponentMetadata(type: string) {
-    return this.view.findMeta(type)
-      ?? this.builderComponents.find(value => value.model.type === type)?.meta
-      ?? this.view.getMeta(type)
+    return this.view.findMeta(type) ?? this.builderComponents.find(value => value.model.type === type)?.meta ?? this.view.getMeta(type)
   }
 
   /**
@@ -1144,14 +1145,13 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     const types = result.map(value => value.model.type)
     const typeSet = new Set<string>(types)
     const currentFormComponent = BuilderView.createTemplateComponent(this.formName)
-    const externalForms = this.formsMetadata
-      .filter(value => !typeSet.has(value.model.type) && currentFormComponent.model.type !== value.model.type)
+    const externalForms = this.formsMetadata.filter(
+      value => !typeSet.has(value.model.type) && currentFormComponent.model.type !== value.model.type
+    )
     result.push(...externalForms)
 
     const paletteFilter = this.view.paletteFilter ?? (() => true)
-    return result
-      .filter(({model}) => !model.isFeatureEnabled(cfHideFromComponentPalette))
-      .filter(paletteFilter)
+    return result.filter(({model}) => !model.isFeatureEnabled(cfHideFromComponentPalette)).filter(paletteFilter)
   }
 
   /**
@@ -1174,10 +1174,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @returns the selected components sorted by position in the component tree.
    */
   get orderedSelected() {
-    return sortByPositionInTree(
-      this.viewer.form.componentTree,
-      [...this.selected.values()]
-    )
+    return sortByPositionInTree(this.viewer.form.componentTree, [...this.selected.values()])
   }
 
   /**
@@ -1262,7 +1259,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       current = current.parent
     }
 
-    selectedComponents.forEach((component) => {
+    selectedComponents.forEach(component => {
       if (component !== root) {
         if (!this.remove(component)) {
           resultArray.unshift(component)
@@ -1270,7 +1267,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       }
     })
 
-    const nextComponent = resultArray.find((component) => !!root.findByKey(component.key))
+    const nextComponent = resultArray.find(component => !!root.findByKey(component.key))
     if (nextComponent) {
       this.selectNode(nextComponent)
     }
@@ -1283,15 +1280,15 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     const generator = this.props.generateJsonFormSchema
     if (!generator) return
 
-    const descriptions = this.view.i18nDescriptions?.map(item => {
-      return item[this.defaultLanguage.fullCode]
-    }) ?? []
+    const descriptions =
+      this.view.i18nDescriptions?.map(item => {
+        return item[this.defaultLanguage.fullCode]
+      }) ?? []
 
-    const components = this.view.builderComponents
-      .filter(item => {
-        const {model} = item
-        return !isTemplateType(model.type) && !model.isFeatureEnabled(cfComponentIsPreset)
-      })
+    const components = this.view.builderComponents.filter(item => {
+      const {model} = item
+      return !isTemplateType(model.type) && !model.isFeatureEnabled(cfComponentIsPreset)
+    })
 
     return generator({
       components,

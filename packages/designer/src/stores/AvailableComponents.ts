@@ -24,9 +24,11 @@ const createComponentData = (store: Store, componentStore: ComponentStore): Comp
  * @returns component data.
  * @ignore
  */
-export const createAddedComponentData = (model: Model,
-                                         componentMetadataProvider: IComponentMetadataProvider,
-                                         store: Store): ComponentData => {
+export const createAddedComponentData = (
+  model: Model,
+  componentMetadataProvider: IComponentMetadataProvider,
+  store: Store
+): ComponentData => {
   const componentStore = new ComponentStore(`${model.type} ${getKey()}`, model.type)
   const componentMetadata = componentMetadataProvider.getComponentMetadata(model.type)
 
@@ -61,8 +63,7 @@ export class AvailableComponents implements IDisposable {
         const components = this.byCategory[category] ?? []
         const componentData = createAddedComponentData(component.model, componentMetadataProvider, store)
         components.push(componentData)
-        this.byCategory[category] = components
-          .sort((a, b) => a.model.name.localeCompare(b.model.name))
+        this.byCategory[category] = components.sort((a, b) => a.model.name.localeCompare(b.model.name))
       })
     })
   }

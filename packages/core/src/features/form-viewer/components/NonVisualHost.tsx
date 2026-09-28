@@ -17,7 +17,7 @@ const RawNonVisualHost = () => {
 
   return (
     <div aria-hidden="true" data-testid="non-visual-host" style={hiddenHostStyle}>
-      <ComponentTree data={nonVisual}/>
+      <ComponentTree data={nonVisual} />
     </div>
   )
 }

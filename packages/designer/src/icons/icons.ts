@@ -87,5 +87,5 @@ export const icons = {
   Toggle,
   Tooltip,
   TreePicker,
-  Uploader
+  Uploader,
 }

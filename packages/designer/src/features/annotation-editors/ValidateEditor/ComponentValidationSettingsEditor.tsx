@@ -4,9 +4,9 @@ import {useCallback} from 'react'
 import {List, ListItem, Rows} from '../../components/Containers'
 import {PropertyEditorWrapper} from '../../components/PropertyEditorWrapper/PropertyEditorWrapper'
 import type {AnnotationEditorProps} from '../AnnotationEditorProps'
+import styles from './ComponentValidationSettingsEditor.module.css'
 import {AddRuleButton} from './components/AddRuleButton'
 import {ValidationRuleEditor} from './components/ValidationRuleEditor'
-import styles from './ComponentValidationSettingsEditor.module.css'
 
 interface RuleItemProps {
   rule: ValidationRuleSettings
@@ -19,9 +19,11 @@ const RawRuleItem = ({rule, index, onRemove}: RuleItemProps) => {
     onRemove(index)
   }, [index, onRemove])
 
-  return <ListItem>
-    <ValidationRuleEditor rule={rule} onRemove={handleRemove}/>
-  </ListItem>
+  return (
+    <ListItem>
+      <ValidationRuleEditor rule={rule} onRemove={handleRemove} />
+    </ListItem>
+  )
 }
 
 const RuleItem = namedObserver('RuleItem', RawRuleItem)
@@ -34,14 +36,13 @@ interface RulesListProps {
 const RawRulesList = ({validations, onRemove}: RulesListProps) => {
   if (!validations) return null
 
-  return <List>
-    {validations.map((rule, index) => {
-      return <RuleItem key={`${rule.key}-${rule.type ?? 'internal'}`}
-                       rule={rule}
-                       index={index}
-                       onRemove={onRemove}/>
-    })}
-  </List>
+  return (
+    <List>
+      {validations.map((rule, index) => {
+        return <RuleItem key={`${rule.key}-${rule.type ?? 'internal'}`} rule={rule} index={index} onRemove={onRemove} />
+      })}
+    </List>
+  )
 }
 
 const RulesList = namedObserver('RulesList', RawRulesList)
@@ -75,11 +76,10 @@ const RawComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
   return (
     <Rows>
       <div className={styles.wrapper}>
-        <PropertyEditorWrapper annotation={autoValidate} context={schema}
-                               initContext={initValidationContext}/>
+        <PropertyEditorWrapper annotation={autoValidate} context={schema} initContext={initValidationContext} />
       </div>
-      <AddRuleButton/>
-      <RulesList validations={validations} onRemove={handleRemove}/>
+      <AddRuleButton />
+      <RulesList validations={validations} onRemove={handleRemove} />
     </Rows>
   )
 }

@@ -4,7 +4,6 @@ import type {PresetComponent} from './PresetComponent'
  * Interface for configuring preset component options.
  */
 export interface IPresetComponentOptions {
-
   /**
    * The default preset components.
    */

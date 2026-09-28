@@ -9,13 +9,7 @@ import rSuiteTableEnUsComponentsDescriptions from './i18n/en-US.json'
 /**
  * An array of rSuite table component metadata factories.
  */
-export const rSuiteTableComponents: Definer<any>[] = [
-  rsColumn,
-  rsColumnGroup,
-  rsTable,
-  rsHeaderCell,
-  rsCell,
-]
+export const rSuiteTableComponents: Definer<any>[] = [rsColumn, rsColumnGroup, rsTable, rsHeaderCell, rsCell]
 
 /**
  * An array of rSuite tables components metadata for use in FormBuilder.

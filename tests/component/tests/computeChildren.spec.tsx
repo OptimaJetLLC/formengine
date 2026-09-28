@@ -6,58 +6,62 @@ import {expect} from 'vitest'
 import '../config/toHaveExactValues'
 
 const form = {
-  'version': '1',
-  'form': {
-    'key': 'Screen',
-    'type': 'Screen',
-    'props': {},
-    'children': [
+  version: '1',
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    props: {},
+    children: [
       {
-        'key': 'rsButton1',
-        'type': 'RsButton',
-        'props': {},
-        'events': {
-          'onClick': [
+        key: 'rsButton1',
+        type: 'RsButton',
+        props: {},
+        events: {
+          onClick: [
             {
-              'name': 'changeData',
-              'type': 'custom'
-            }
-          ]
+              name: 'changeData',
+              type: 'custom',
+            },
+          ],
         },
-        'htmlAttributes': [{
-          'name': 'data-testid',
-          'value': 'test-button'
-        }]
+        htmlAttributes: [
+          {
+            name: 'data-testid',
+            value: 'test-button',
+          },
+        ],
       },
       {
-        'key': 'testRepeater',
-        'type': 'Repeater',
-        'props': {},
-        'children': [
+        key: 'testRepeater',
+        type: 'Repeater',
+        props: {},
+        children: [
           {
-            'key': 'name',
-            'type': 'RsInput',
-            'props': {},
-            'htmlAttributes': [{
-              'name': 'data-testid',
-              'value': 'test-input'
-            }]
-          }
-        ]
-      }
-    ]
+            key: 'name',
+            type: 'RsInput',
+            props: {},
+            htmlAttributes: [
+              {
+                name: 'data-testid',
+                value: 'test-input',
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
-  'localization': {},
-  'languages': [
+  localization: {},
+  languages: [
     {
-      'code': 'en',
-      'dialect': 'US',
-      'name': 'English',
-      'description': 'American English',
-      'bidi': 'ltr'
-    }
+      code: 'en',
+      dialect: 'US',
+      name: 'English',
+      description: 'American English',
+      bidi: 'ltr',
+    },
   ],
-  'defaultLanguage': 'en-US'
+  defaultLanguage: 'en-US',
 }
 
 const components = rSuiteComponents.map(d => d.build())
@@ -68,19 +72,21 @@ describe(`FormBuilder compute children`, function () {
     const App = () => {
       const [initialData, setInitialData] = useState({testRepeater: [{name: 'one'}, {name: 'two'}]})
 
-      return <FormBuilder
-        view={view}
-        getForm={() => JSON.stringify(form)}
-        initialData={initialData}
-        actions={{
-          changeData: _ => {
-            setInitialData({testRepeater: [{name: 'three'}, {name: 'four'}, {name: 'five'}]})
-          }
-        }}
-      />
+      return (
+        <FormBuilder
+          view={view}
+          getForm={() => JSON.stringify(form)}
+          initialData={initialData}
+          actions={{
+            changeData: _ => {
+              setInitialData({testRepeater: [{name: 'three'}, {name: 'four'}, {name: 'five'}]})
+            },
+          }}
+        />
+      )
     }
 
-    const {findByRole, findAllByTestId, findByTestId} = render(<App/>)
+    const {findByRole, findAllByTestId, findByTestId} = render(<App />)
     const previewButton = await findByRole('button', {name: 'Preview'})
     fireEvent.click(previewButton)
 

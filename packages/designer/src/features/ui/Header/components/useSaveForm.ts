@@ -10,7 +10,8 @@ export const useSaveForm = () => {
   const {t} = useTranslation()
   const showMessage = useShowMessage()
   return (formName?: string) => {
-    builderStore.save(formName)
+    builderStore
+      .save(formName)
       .then(() => showMessage({type: 'success', message: t('leftMenu.formSaved')}))
       .catch(err => {
         console.error(err)

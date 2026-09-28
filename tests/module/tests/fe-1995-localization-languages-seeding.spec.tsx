@@ -49,7 +49,7 @@ describe('Localization languages seeding FE-1995', () => {
 
     builderStore.parseForm(JSON.stringify(providedFormDefinition))
 
-    expect(builderStore.formAvailableLanguages.map((language) => language.fullCode)).toStrictEqual(['en-US', 'de-DE'])
+    expect(builderStore.formAvailableLanguages.map(language => language.fullCode)).toStrictEqual(['en-US', 'de-DE'])
   })
 
   it('stores custom default language in new form languages when using custom i18n', async () => {
@@ -65,10 +65,7 @@ describe('Localization languages seeding FE-1995', () => {
     }
 
     const customI18n: FormBuilderI18n = {
-      languages: [
-        new Language('fr', 'FR', 'French', 'Français'),
-        new Language('tr', 'TR', 'Turkish', 'Türkçe')
-      ],
+      languages: [new Language('fr', 'FR', 'French', 'Français'), new Language('tr', 'TR', 'Turkish', 'Türkçe')],
       getData: async () => ({data: {}, componentsLocale: {}}),
     }
 
@@ -82,7 +79,7 @@ describe('Localization languages seeding FE-1995', () => {
     await builderStore.createForm('CustomLangForm')
 
     const createdForm = JSON.parse(savedForm) as {
-      languages: Array<{ code: string; dialect: string }>
+      languages: Array<{code: string; dialect: string}>
       defaultLanguage: string
     }
     expect(createdForm.defaultLanguage).toBe('fr-FR')
@@ -110,10 +107,7 @@ describe('Localization languages seeding FE-1995', () => {
     }
 
     const customI18n: FormBuilderI18n = {
-      languages: [
-        new Language('fr', 'FR', 'French', 'Français'),
-        new Language('tr', 'TR', 'Turkish', 'Türkçe')
-      ],
+      languages: [new Language('fr', 'FR', 'French', 'Français'), new Language('tr', 'TR', 'Turkish', 'Türkçe')],
       getData: async () => ({data: {}, componentsLocale: {}}),
     }
 
@@ -127,7 +121,7 @@ describe('Localization languages seeding FE-1995', () => {
     await builderStore.createForm('CustomLangFormWithSecondary')
 
     const createdForm = JSON.parse(savedForm) as {
-      languages: Array<{ code: string; dialect: string }>
+      languages: Array<{code: string; dialect: string}>
     }
     expect(createdForm.languages.map(language => `${language.code}-${language.dialect}`)).toStrictEqual(['fr-FR'])
   })

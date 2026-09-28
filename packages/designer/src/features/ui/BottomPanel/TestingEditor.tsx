@@ -49,24 +49,23 @@ const init = (data: Record<string, any>) => {
   return stringify({data, errors: {}})
 }
 
-const ResultMessage = ({result}: { result: CalculableResult }) => {
+const ResultMessage = ({result}: {result: CalculableResult}) => {
   const t = useTranslationPart('testingEditor')
 
-  return <div data-testid={'test-result'}>
-    {!isUndefined(result.result)
-      ? stringify(result?.result)
-      : result.exceptions?.map(e => e.message) ?? t('hasNotReturnedValue')
-    }
-  </div>
+  return (
+    <div data-testid={'test-result'}>
+      {!isUndefined(result.result) ? stringify(result?.result) : (result.exceptions?.map(e => e.message) ?? t('hasNotReturnedValue'))}
+    </div>
+  )
 }
 
-const TestingResult = ({result, onClose, compact}: { result: CalculableResult, onClose: () => void, compact?: boolean }) => {
+const TestingResult = ({result, onClose, compact}: {result: CalculableResult; onClose: () => void; compact?: boolean}) => {
   const type = getType(result)
 
   const formattedContent = (
     <div className={styles.resultContent}>
       <pre className={styles.resultPre}>
-        <ResultMessage result={result}/>
+        <ResultMessage result={result} />
       </pre>
     </div>
   )
@@ -78,7 +77,7 @@ const TestingResult = ({result, onClose, compact}: { result: CalculableResult, o
       onClose={onClose}
       showIcon
     >
-      {compact ? <ResultMessage result={result}/> : formattedContent}
+      {compact ? <ResultMessage result={result} /> : formattedContent}
     </Message>
   )
 }
@@ -100,7 +99,7 @@ const editorOptions: editor.IStandaloneEditorConstructionOptions = {
   folding: false,
   lineDecorationsWidth: 0,
   lineNumbersMinChars: 0,
-  autoIndent: 'full'
+  autoIndent: 'full',
 }
 
 /**
@@ -114,14 +113,14 @@ export type TestingEditorRef = {
   test?: () => CalculableResult
 }
 type TestingFunction = (data: IFormData) => CalculableResult
-type TestingEditorProps = { testingFunction: TestingFunction, initialData: Record<string, any> }
-type TestRunnerProps = { data?: string, testingFunction: TestingFunction, compact?: boolean }
+type TestingEditorProps = {testingFunction: TestingFunction; initialData: Record<string, any>}
+type TestRunnerProps = {data?: string; testingFunction: TestingFunction; compact?: boolean}
 
 const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerProps, ref) => {
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
   const [result, setResult] = useState<CalculableResult>()
-  const lastRunRef = useRef<{ data: string, fn: TestingFunction } | null>(null)
+  const lastRunRef = useRef<{data: string; fn: TestingFunction} | null>(null)
   const columnsClassName = cx(styles.columnsStyle, compact ? styles.compact : undefined)
 
   const test = useCallback(() => {
@@ -140,37 +139,38 @@ const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerPr
     return undefined
   }, [builderStore.testingAutorun, result, data, testingFunction])
 
-  const handleAutorunChecked: CheckboxProps['onChange'] = useCallback((_: ValueType | undefined, checked: boolean) => {
-    if (!checked) {
-      lastRunRef.current = null
-      setResult(undefined)
-    }
-    // eslint-disable-next-line react-hooks/immutability
-    builderStore.testingAutorun = checked
-  }, [builderStore])
+  const handleAutorunChecked: CheckboxProps['onChange'] = useCallback(
+    (_: ValueType | undefined, checked: boolean) => {
+      if (!checked) {
+        lastRunRef.current = null
+        setResult(undefined)
+      }
+      // eslint-disable-next-line react-hooks/immutability
+      builderStore.testingAutorun = checked
+    },
+    [builderStore]
+  )
 
   const handleCloseResult = useCallback(() => {
     lastRunRef.current = null
     setResult(undefined)
   }, [])
 
-  const buttons = <Columns className={columnsClassName}>
-    {compact && displayResult && <TestingResult compact result={displayResult} onClose={handleCloseResult}/>}
-    <Button onClick={test} size={'sm'} appearance={'ghost'} className={styles.buttons}>
-      <FaIcon icon={faPlay as unknown as IconDefinition}/> {t('run')}
-    </Button>
-    <Checkbox
-      checked={builderStore.testingAutorun}
-      onChange={handleAutorunChecked}
-      className={styles.checkbox}
-    >
-      {t('autorun')}
-    </Checkbox>
-  </Columns>
+  const buttons = (
+    <Columns className={columnsClassName}>
+      {compact && displayResult && <TestingResult compact result={displayResult} onClose={handleCloseResult} />}
+      <Button onClick={test} size={'sm'} appearance={'ghost'} className={styles.buttons}>
+        <FaIcon icon={faPlay as unknown as IconDefinition} /> {t('run')}
+      </Button>
+      <Checkbox checked={builderStore.testingAutorun} onChange={handleAutorunChecked} className={styles.checkbox}>
+        {t('autorun')}
+      </Checkbox>
+    </Columns>
+  )
 
   useEffect(() => {
     if (ref && typeof ref === 'object') {
-      ((ref as RefObject<TestingEditorRef>).current ?? {}).test = test
+      ;((ref as RefObject<TestingEditorRef>).current ?? {}).test = test
     }
 
     if (builderStore.testingAutorun) {
@@ -178,14 +178,14 @@ const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerPr
     }
   }, [test, builderStore.testingAutorun, ref])
 
-  return compact
-    ? buttons
-    : (
-      <Rows className={styles.borderedRows}>
-        {displayResult && <TestingResult result={displayResult} onClose={handleCloseResult}/>}
-        {buttons}
-      </Rows>
-    )
+  return compact ? (
+    buttons
+  ) : (
+    <Rows className={styles.borderedRows}>
+      {displayResult && <TestingResult result={displayResult} onClose={handleCloseResult} />}
+      {buttons}
+    </Rows>
+  )
 })
 
 export const TestRunner = namedObserver('TestRunner', RawTestRunner)
@@ -196,17 +196,20 @@ const RawTestingEditor = forwardRef(({testingFunction, initialData}: TestingEdit
   const [data, setData] = useState(builderStore.testingData ?? init(initialData))
   const [editorInitialData] = useState(data)
 
-  useEffect(() => () => {
-    builderStore.testingData = data
-  }, [builderStore, data])
+  useEffect(
+    () => () => {
+      builderStore.testingData = data
+    },
+    [builderStore, data]
+  )
 
   return (
     <Rows className={styles.rows}>
       <span className={styles.formData}>{t('testFormData')}</span>
       <div className={styles.editorWrapper}>
-        <CodeEditor language="json" initialValue={editorInitialData} onChange={setData} options={editorOptions}/>
+        <CodeEditor language="json" initialValue={editorInitialData} onChange={setData} options={editorOptions} />
       </div>
-      <TestRunner data={data} testingFunction={testingFunction} ref={ref}/>
+      <TestRunner data={data} testingFunction={testingFunction} ref={ref} />
     </Rows>
   )
 })

@@ -13,5 +13,5 @@ export enum Section {
  */
 export enum SubSection {
   Additional = 'additional',
-  Tooltip = 'tooltip'
+  Tooltip = 'tooltip',
 }

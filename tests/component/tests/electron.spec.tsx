@@ -4,8 +4,8 @@ import {BiDi, BuilderView} from '@react-form-builder/core'
 import {CustomizationMap, FormBuilder, isElectron} from '@react-form-builder/designer'
 import enEN from '@react-form-builder/designer/locales/en-US.json'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
-import {license2030Enterprise, licenseBusiness,} from '@react-form-builder/tests-common/license'
-import {render, RenderResult, waitFor} from '@testing-library/react'
+import {license2030Enterprise, licenseBusiness} from '@react-form-builder/tests-common/license'
+import {RenderResult, render, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
 import agreementForm from './forms/agreement-form.json'
@@ -29,10 +29,10 @@ const viewAllComponents = new BuilderView(allComponentsBuilder)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 
-type DesignerProps = { license: string, customization?: CustomizationMap, view?: BuilderView, formName?: string }
+type DesignerProps = {license: string; customization?: CustomizationMap; view?: BuilderView; formName?: string}
 const Designer = ({license, customization, view = viewAllComponents, formName}: DesignerProps) => {
   const formGet = useCallback((name?: string) => getForm(name ?? formName), [formName])
-  return <FormBuilder view={view} getForm={formGet} licenseKey={license} customization={customization}/>
+  return <FormBuilder view={view} getForm={formGet} licenseKey={license} customization={customization} />
 }
 
 const trialMessage = `${enEN.license.mismatchMessage}`
@@ -142,7 +142,7 @@ describe(`License test`, function () {
     it('Should show message in Electron for business license', async () => {
       try {
         await runInElectronRenderer(async () => {
-          const app = render(<Designer license={l}/>)
+          const app = render(<Designer license={l} />)
 
           await designerReady(app)
 
@@ -160,7 +160,7 @@ describe(`License test`, function () {
     it('Should not show message in Electron for enterprise license', async () => {
       try {
         await runInElectronRenderer(async () => {
-          const app = render(<Designer license={l}/>)
+          const app = render(<Designer license={l} />)
 
           await designerReady(app)
 

@@ -3,7 +3,7 @@ import type {TableProps} from 'antd'
 import {Table} from 'antd'
 
 const AntTable = (props: TableProps) => {
-  return <Table {...props}/>
+  return <Table {...props} />
 }
 
 export const antTable = define(AntTable, 'AntTable')

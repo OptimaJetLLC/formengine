@@ -42,11 +42,7 @@ function removeStyleTag(style?: HTMLStyleElement) {
  * @returns created {@link CSSStyleSheet}.
  */
 function createAdoptedStyleSheet(rule: string) {
-  if (
-    typeof document === 'undefined'
-    || typeof CSSStyleSheet === 'undefined'
-    || !('adoptedStyleSheets' in document)
-  ) {
+  if (typeof document === 'undefined' || typeof CSSStyleSheet === 'undefined' || !('adoptedStyleSheets' in document)) {
     console.warn('Adopted stylesheets not supported')
     return
   }
@@ -73,8 +69,7 @@ function addAdoptedStyleSheet(sheet?: CSSStyleSheet) {
 function removeAdoptedStyleSheet(sheet?: CSSStyleSheet) {
   if (!sheet) return
 
-  document.adoptedStyleSheets = document.adoptedStyleSheets
-    .filter(existing => existing !== sheet)
+  document.adoptedStyleSheets = document.adoptedStyleSheets.filter(existing => existing !== sheet)
 }
 
 let customStyleCounter = 0
@@ -89,17 +84,13 @@ let customStyleCounter = 0
 function styleToRule(className: string, style?: CSSProperties | string) {
   if (!style) return
 
-  const cssText = typeof style === 'string'
-    ? style
-    : reactStylesToCss(style as Record<string, string | number>)
+  const cssText = typeof style === 'string' ? style : reactStylesToCss(style as Record<string, string | number>)
 
   const trimmed = cssText.trim()
   if (!trimmed) return
 
   const hasNesting = trimmed.includes('{')
-  return hasNesting
-    ? trimmed.replace(/&/g, `.${className}`)
-    : `.${className} { ${trimmed} }`
+  return hasNesting ? trimmed.replace(/&/g, `.${className}`) : `.${className} { ${trimmed} }`
 }
 
 /**

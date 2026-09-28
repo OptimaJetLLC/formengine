@@ -17,24 +17,32 @@ const RawTooltipTypePicker = (props: AnnotationEditorProps) => {
   const tooltipType = useTooltipType()
 
   const data = useMemo(() => {
-    const names = builderStore.view
-      .filterModels(model => model.hasComponentRole('tooltip'))
-      .map(model => model.type)
+    const names = builderStore.view.filterModels(model => model.hasComponentRole('tooltip')).map(model => model.type)
 
     const uniqueNames = [...new Set(names)]
 
     return uniqueNames.map(name => {
       return {
         value: name,
-        label: startCase(name)
+        label: startCase(name),
       } as ItemDataType
     })
   }, [builderStore.view])
 
-  return <LabeledProperty {...props}>
-    <SInputPicker value={value ?? tooltipType ?? ''} data={data} onChange={onChange}
-                  onClean={onClean} block cleanable size={'xs'} placement={'auto'}/>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <SInputPicker
+        value={value ?? tooltipType ?? ''}
+        data={data}
+        onChange={onChange}
+        onClean={onClean}
+        block
+        cleanable
+        size={'xs'}
+        placement={'auto'}
+      />
+    </LabeledProperty>
+  )
 }
 
 export const TooltipTypePicker = namedObserver('TooltipTypePicker', RawTooltipTypePicker)

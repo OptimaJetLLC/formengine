@@ -15,7 +15,9 @@ export const ErrorFormWrapper = namedObserver('ErrorFormPlaceholder', function (
       <Message className={styles.message} type={'info'} showIcon>
         {children}
       </Message>
-      <Button onClick={createForm} block appearance={'primary'}>{t('addNewForm')}</Button>
+      <Button onClick={createForm} block appearance={'primary'}>
+        {t('addNewForm')}
+      </Button>
     </div>
   )
 

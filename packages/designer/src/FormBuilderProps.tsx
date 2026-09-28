@@ -6,15 +6,15 @@ import type {
   EditorType,
   FormViewerProps,
   Language,
-  LanguageFullCode
+  LanguageFullCode,
 } from '@react-form-builder/core'
 import type {ComponentType, ForwardedRef} from 'react'
+import type {FormBuilderTheme} from './FormBuilderTheme'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
 import type {CustomizationMap} from './features/customization/CustomizationMap'
 import type {StylesProviderProps} from './features/localization/components/StylesProviderProps'
 import type {FormBuilderI18n} from './features/localization/FormBuilderLanguage'
 import type {IPresetComponentOptions} from './features/preset-component/IPresetComponentOptions'
-import type {FormBuilderTheme} from './FormBuilderTheme'
 import type {IFormStorage} from './stores/IFormStorage'
 import type {IFormBuilder, InsertPosition} from './utils/types'
 
@@ -36,7 +36,6 @@ export type GenerateJsonFormSchemaOptions = {
  * Properties of the React Form builder component.
  */
 export interface FormBuilderProps extends Omit<FormViewerProps, 'view' | 'language'> {
-
   /**
    * All the metadata of the components of the form builder.
    */
@@ -99,19 +98,19 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view' | 'langua
    * @param payload the payload with information about the added component.
    */
   onFormElementAdd?: (payload: {
-    source: ComponentData;
-    target: ComponentData;
-    insertPosition?: InsertPosition;
-    slot?: string;
-    slotCondition?: string;
-    presetName?: string;
+    source: ComponentData
+    target: ComponentData
+    insertPosition?: InsertPosition
+    slot?: string
+    slotCondition?: string
+    presetName?: string
   }) => void
 
   /**
    * Callback invoked when a component is removed from the form.
    * @param payload the payload with information about the removed component.
    */
-  onFormElementRemove?: (payload: { source: ComponentData }) => void
+  onFormElementRemove?: (payload: {source: ComponentData}) => void
 
   /**
    * A callback invoked when the language is changed in the Builder.

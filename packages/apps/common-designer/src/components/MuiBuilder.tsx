@@ -2,9 +2,9 @@ import {getFormFromJson, MuiForm} from '@react-form-builder/apps-common'
 import '../utils/muiLocalizations'
 import {
   components,
-  materialUiComponentsDescriptions,
   MuiLocalizationProvider,
   MuiViewerWrapper,
+  materialUiComponentsDescriptions,
 } from '@react-form-builder/components-material-ui'
 import {BuilderView, namedObserver} from '@react-form-builder/core'
 import type {IFormBuilder} from '@react-form-builder/designer'

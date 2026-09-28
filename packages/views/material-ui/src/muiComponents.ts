@@ -72,7 +72,7 @@ export const muiComponents: Definer<any>[] = [
   muiLink,
   // form
   muiFormControlLabel,
-  muiFormLabel
+  muiFormLabel,
 ]
 
 const prefix = 'Mui'
@@ -83,9 +83,6 @@ muiComponents.forEach(c => {
   }
 })
 
-muiComponents.push(
-  uploaderComponent.hideFromComponentPalette(true),
-  muiUploader
-)
+muiComponents.push(uploaderComponent.hideFromComponentPalette(true), muiUploader)
 
 export const muiBuilderComponents: BuilderComponent[] = muiComponents.map(def => def.build())

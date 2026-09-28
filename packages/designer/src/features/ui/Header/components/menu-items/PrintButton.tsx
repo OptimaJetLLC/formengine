@@ -9,11 +9,9 @@ import {useTranslationPart} from '../../../../localization/hooks'
 import {printForm} from '../printForm'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const printIcon = <FaIcon icon={faPrint as unknown as IconDefinition}/>
+const printIcon = <FaIcon icon={faPrint as unknown as IconDefinition} />
 
-const printShortcut = typeof navigator !== 'undefined' && navigator.userAgent.includes('Mac')
-  ? '⌘P'
-  : 'Ctrl+P'
+const printShortcut = typeof navigator !== 'undefined' && navigator.userAgent.includes('Mac') ? '⌘P' : 'Ctrl+P'
 
 const RawPrintButton = ({className}: CustomizableMenuItemProps) => {
   const store = useBuilderStore()
@@ -21,13 +19,7 @@ const RawPrintButton = ({className}: CustomizableMenuItemProps) => {
   const onSelect = useCallback(() => printForm(store), [store])
 
   return (
-    <Dropdown.Item
-      onSelect={onSelect}
-      icon={printIcon}
-      className={className}
-      shortcut={printShortcut}
-      data-testid="main-menu-print"
-    >
+    <Dropdown.Item onSelect={onSelect} icon={printIcon} className={className} shortcut={printShortcut} data-testid="main-menu-print">
       {t('print')}
     </Dropdown.Item>
   )

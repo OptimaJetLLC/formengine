@@ -5,15 +5,28 @@ import {expect, test} from '@playwright/test'
 // https://stackoverflow.com/questions/64718915/playwright-drag-and-drop
 // https://playwright.dev/docs/input#drag-and-drop
 
-test('can drop component', {
-  tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`]
-}, async ({page}) => {
-  await page.goto('/')
+test(
+  'can drop component',
+  {
+    tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
+  },
+  async ({page}) => {
+    await page.goto('/')
 
-  await page.locator('div').filter({hasText: /^Calendar$/}).nth(1).hover()
-  await page.mouse.down()
-  await page.locator('div').filter({hasText: /^one\/two\/three$/}).locator('div').first().hover()
-  await page.mouse.up()
+    await page
+      .locator('div')
+      .filter({hasText: /^Calendar$/})
+      .nth(1)
+      .hover()
+    await page.mouse.down()
+    await page
+      .locator('div')
+      .filter({hasText: /^one\/two\/three$/})
+      .locator('div')
+      .first()
+      .hover()
+    await page.mouse.up()
 
-  await expect(page.locator('.FE_Component_Toolbar').filter({hasText: /^rsCalendar1 \(RsCalendar\)$/})).toBeVisible()
-})
+    await expect(page.locator('.FE_Component_Toolbar').filter({hasText: /^rsCalendar1 \(RsCalendar\)$/})).toBeVisible()
+  }
+)

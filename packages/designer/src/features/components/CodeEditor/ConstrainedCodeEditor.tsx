@@ -42,19 +42,17 @@ const applyConstrainedEditorValue = (
  * @returns the React element.
  */
 export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
-  const context = useMemo(() => ({
-    beginContextLine: props.beginContextLine,
-    canEditBeginContextLine: props.canEditBeginContextLine,
-    endContextLine: props.endContextLine
-  }), [props.beginContextLine, props.canEditBeginContextLine, props.endContextLine])
+  const context = useMemo(
+    () => ({
+      beginContextLine: props.beginContextLine,
+      canEditBeginContextLine: props.canEditBeginContextLine,
+      endContextLine: props.endContextLine,
+    }),
+    [props.beginContextLine, props.canEditBeginContextLine, props.endContextLine]
+  )
 
   const documentValue = useMemo(
-    () => buildConstrainedDocument(
-      props.initialValue,
-      context.beginContextLine,
-      context.canEditBeginContextLine,
-      context.endContextLine
-    ),
+    () => buildConstrainedDocument(props.initialValue, context.beginContextLine, context.canEditBeginContextLine, context.endContextLine),
     [context, props.initialValue]
   )
 
@@ -66,25 +64,34 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
   }, [context, documentValue])
 
   const {onChange, onMount} = props
-  const handleMount: OnMount = useCallback((editor, monaco) => {
-    onMount?.(editor, monaco)
-    editorRef.current = editor
-    constrainedModelRef.current = setupConstrainedMonaco(editor, monaco, context, onChange)
-  }, [context, onChange, onMount])
+  const handleMount: OnMount = useCallback(
+    (editor, monaco) => {
+      onMount?.(editor, monaco)
+      editorRef.current = editor
+      constrainedModelRef.current = setupConstrainedMonaco(editor, monaco, context, onChange)
+    },
+    [context, onChange, onMount]
+  )
 
-  const options = useMemo(() => ({
-    wordWrap: 'on',
-    ...props.options
-  } satisfies editor.IStandaloneEditorConstructionOptions), [props.options])
+  const options = useMemo(
+    () =>
+      ({
+        wordWrap: 'on',
+        ...props.options,
+      }) satisfies editor.IStandaloneEditorConstructionOptions,
+    [props.options]
+  )
 
-  return <MonacoCodeEditor
-    onMount={handleMount}
-    className={props.className}
-    defaultValue={documentValue}
-    height={props.height ?? '100%'}
-    width={props.width ?? '100%'}
-    language={props.language ?? 'javascript'}
-    options={options}
-    theme={props.theme}
-  />
+  return (
+    <MonacoCodeEditor
+      onMount={handleMount}
+      className={props.className}
+      defaultValue={documentValue}
+      height={props.height ?? '100%'}
+      width={props.width ?? '100%'}
+      language={props.language ?? 'javascript'}
+      options={options}
+      theme={props.theme}
+    />
+  )
 }

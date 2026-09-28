@@ -25,8 +25,10 @@ interface FunctionEditorProps extends Omit<GenericCodeEditorProps, 'compact' | '
 export const FunctionEditor = (props: FunctionEditorProps) => {
   const {header, ...codeEditorProps} = props
 
-  return <>
-    <Header>{header}</Header>
-    <GenericCodeEditor {...codeEditorProps} compact/>
-  </>
+  return (
+    <>
+      <Header>{header}</Header>
+      <GenericCodeEditor {...codeEditorProps} compact />
+    </>
+  )
 }

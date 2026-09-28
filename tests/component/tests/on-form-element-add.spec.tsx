@@ -31,7 +31,7 @@ describe('FormBuilder onFormElementAdd', () => {
         view={builderViewWithCss}
         presetComponentOptions={presetComponentOptions}
         onFormElementAdd={onFormElementAdd}
-      />,
+      />
     )
 
     await findByTestId('mainScreen')
@@ -53,12 +53,7 @@ describe('FormBuilder onFormElementAdd', () => {
     const getForm = () => JSON.stringify(emptyForm)
 
     const {findByRole, findByTestId} = render(
-      <FormBuilder
-        licenseKey={generatedLicenseKey}
-        getForm={getForm}
-        view={builderViewWithCss}
-        onFormElementAdd={onFormElementAdd}
-      />,
+      <FormBuilder licenseKey={generatedLicenseKey} getForm={getForm} view={builderViewWithCss} onFormElementAdd={onFormElementAdd} />
     )
 
     await findByTestId('mainScreen')

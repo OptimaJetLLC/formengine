@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import {readJson, writeJson} from '@react-form-builder/cli-lib/json-fs'
 import {dirname, join} from 'node:path'
 import {fileURLToPath} from 'node:url'
+import {readJson, writeJson} from '@react-form-builder/cli-lib/json-fs'
 
 interface CommonDesignerConfig {
   releaseDate?: number

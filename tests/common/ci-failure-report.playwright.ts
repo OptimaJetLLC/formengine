@@ -6,11 +6,7 @@ import {getCiFailureReportCasesForSuite} from './ci-failure-report.cases'
 type PlaywrightExpect = typeof import('@playwright/test').expect
 type PlaywrightTest = typeof import('@playwright/test').test
 
-async function runPlaywrightCase(
-  kind: CiFailureReportCaseKind,
-  expect: PlaywrightExpect,
-  page: Page,
-): Promise<void> {
+async function runPlaywrightCase(kind: CiFailureReportCaseKind, expect: PlaywrightExpect, page: Page): Promise<void> {
   switch (kind) {
     case 'assertion':
       await page.goto('/')

@@ -28,23 +28,27 @@ const KeyInputGroup = (props: KeyInputProps) => {
     setCanApply(false)
   }
 
-  const validateUniqueKey = useCallback((key: string) =>
-    0 === viewerStore.reduceScreen((acc: number, cd) => cd.key === key ? acc + 1 : acc, 0)
-    && key.length > 0, [viewerStore])
+  const validateUniqueKey = useCallback(
+    (key: string) => 0 === viewerStore.reduceScreen((acc: number, cd) => (cd.key === key ? acc + 1 : acc), 0) && key.length > 0,
+    [viewerStore]
+  )
 
-  const inputOnChange = useCallback((inputValue: string) => {
-    const isValid = validateUniqueKey(inputValue)
-    let error = undefined
+  const inputOnChange = useCallback(
+    (inputValue: string) => {
+      const isValid = validateUniqueKey(inputValue)
+      let error = undefined
 
-    if (!isValid && inputValue !== value) {
-      const label = inputValue.length > 0 ? 'keyMustBeUnique' : 'keyMustNotBeEmpty'
-      error = getLabel(label)
-    }
+      if (!isValid && inputValue !== value) {
+        const label = inputValue.length > 0 ? 'keyMustBeUnique' : 'keyMustNotBeEmpty'
+        error = getLabel(label)
+      }
 
-    showError?.(error)
-    setCanApply(isValid)
-    setValueToApply(inputValue)
-  }, [value, getLabel, showError, validateUniqueKey])
+      showError?.(error)
+      setCanApply(isValid)
+      setValueToApply(inputValue)
+    },
+    [value, getLabel, showError, validateUniqueKey]
+  )
 
   const buttonOnClick = useCallback(() => {
     if (canApply) {
@@ -53,21 +57,23 @@ const KeyInputGroup = (props: KeyInputProps) => {
     }
   }, [canApply, onChange, valueToApply])
 
-  const handleKeyDown = useCallback((event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter' && canApply) {
-      buttonOnClick()
-    }
-  }, [canApply, buttonOnClick])
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter' && canApply) {
+        buttonOnClick()
+      }
+    },
+    [canApply, buttonOnClick]
+  )
 
   const applyKeyLabel = useMemo(() => getLabel('applyKey'), [getLabel])
 
   return (
     <InputGroup size={'xs'}>
-      <Input id={id} value={valueToApply} onChange={inputOnChange} onKeyDown={handleKeyDown}/>
+      <Input id={id} value={valueToApply} onChange={inputOnChange} onKeyDown={handleKeyDown} />
       <Hinted hint={applyKeyLabel}>
         <InputGroup.Button disabled={!canApply} onClick={buttonOnClick}>
-          <FaIcon icon={faCheck as unknown as IconDefinition}
-                  color={canApply ? 'green' : undefined}/>
+          <FaIcon icon={faCheck as unknown as IconDefinition} color={canApply ? 'green' : undefined} />
         </InputGroup.Button>
       </Hinted>
     </InputGroup>
@@ -81,7 +87,7 @@ const KeyInputGroup = (props: KeyInputProps) => {
  */
 const RawKeyInput = (props: AnnotationEditorProps) => (
   <LabeledProperty {...props}>
-    <KeyInputGroup {...props}/>
+    <KeyInputGroup {...props} />
   </LabeledProperty>
 )
 

@@ -9,7 +9,7 @@ import {
   FormViewerProps,
   IFormViewer,
   PersistedForm,
-  string
+  string,
 } from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 import {createElement, ForwardedRef, useCallback, useMemo} from 'react'
@@ -22,7 +22,7 @@ const SimpleHtmlInput = (props: any) => {
 const simpleHtmlInput = define(SimpleHtmlInput, 'SimpleHtmlInput')
   .category('test')
   .props({
-    value: string.valued.uncontrolledValue('')
+    value: string.valued.uncontrolledValue(''),
   })
 
 const findUnderlyingComponent = (type: string) => {
@@ -41,11 +41,9 @@ const WrappedCalendar = (props: any) => {
   return createElement(RealComponent, {...rest, value: dateValue})
 }
 
-const wrappedCalendar = define(WrappedCalendar, 'WrappedCalendar')
-  .category('test')
-  .props({
-    value: date.valued
-  })
+const wrappedCalendar = define(WrappedCalendar, 'WrappedCalendar').category('test').props({
+  value: date.valued,
+})
 
 const WrappedTagPicker = (props: any) => {
   const RealComponent = useMemo(() => {
@@ -60,11 +58,9 @@ const WrappedTagPicker = (props: any) => {
   return createElement(RealComponent, {...rest, value: arrayValue})
 }
 
-const wrappedTagPicker = define(WrappedTagPicker, 'WrappedTagPicker')
-  .category('test')
-  .props({
-    value: array.valued
-  })
+const wrappedTagPicker = define(WrappedTagPicker, 'WrappedTagPicker').category('test').props({
+  value: array.valued,
+})
 
 const WrappedUploader = (props: any) => {
   const RealComponent = useMemo(() => {
@@ -79,19 +75,11 @@ const WrappedUploader = (props: any) => {
   return createElement(RealComponent, {...rest, value: arrayValue, action: '/'})
 }
 
-const wrappedUploader = define(WrappedUploader, 'WrappedUploader')
-  .category('test')
-  .props({
-    fileList: array.valued
-  })
+const wrappedUploader = define(WrappedUploader, 'WrappedUploader').category('test').props({
+  fileList: array.valued,
+})
 
-const definers = [
-  ...rSuiteComponents,
-  simpleHtmlInput,
-  wrappedCalendar,
-  wrappedTagPicker,
-  wrappedUploader
-]
+const definers = [...rSuiteComponents, simpleHtmlInput, wrappedCalendar, wrappedTagPicker, wrappedUploader]
 
 // Here we filter out components that don't have a value property and components that are specially wrapped for this test
 const wrappedComponents = new Set(['RsCalendar', 'RsTagPicker', 'RsUploader'])
@@ -109,11 +97,13 @@ const createForm = (): PersistedForm => {
       key: 'Screen',
       type: 'Screen',
       props: {},
-      children: [{
-        key: 'testData',
-        type: 'RsInput',
-        props: {}
-      }],
+      children: [
+        {
+          key: 'testData',
+          type: 'RsInput',
+          props: {},
+        },
+      ],
     },
     localization: {},
     languages: [],
@@ -130,7 +120,7 @@ const TestApplication = ({form, ...props}: TestApplicationProps) => {
     return JSON.stringify(form)
   }, [form])
 
-  return <FormViewer {...props} view={componentsView} getForm={getForm}/>
+  return <FormViewer {...props} view={componentsView} getForm={getForm} />
 }
 
 type TestComponentSettings = {
@@ -171,7 +161,8 @@ const expectedSettings: Record<string, TestComponentSettings> = {
     controlledValue: 'keyword',
   },
   RsSignature: {
-    controlledValue: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAD0lEQVQIW2NkwAIYaSAIAAGkAAbQmcMRAAAAAElFTkSuQmCC',
+    controlledValue:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAD0lEQVQIW2NkwAIYaSAIAAGkAAbQmcMRAAAAAElFTkSuQmCC',
   },
   WrappedTagPicker: {
     controlledValue: '["warp", "speed"]',
@@ -220,21 +211,23 @@ describe.each(componentsMetadata)(`Uncontrolled state test`, function (model) {
       [propName]: {
         value: undefined,
         computeType: 'function',
-        fnSource: 'return typeof form.data.testData === "undefined" ? undefined : ' + definedValue
-      }
+        fnSource: 'return typeof form.data.testData === "undefined" ? undefined : ' + definedValue,
+      },
     }
 
     const testId = `${model.type}-test-id`
-    component.htmlAttributes = [{
-      name: 'data-testid',
-      value: testId
-    }]
+    component.htmlAttributes = [
+      {
+        name: 'data-testid',
+        value: testId,
+      },
+    ]
 
     const persistedForm = createForm()
     persistedForm.form.children?.push(component)
 
     const viewerRef: ForwardedRef<IFormViewer> = {current: null}
-    const {rerender, findByTestId} = render(<TestApplication form={persistedForm} viewerRef={viewerRef}/>)
+    const {rerender, findByTestId} = render(<TestApplication form={persistedForm} viewerRef={viewerRef} />)
 
     expect(await findByTestId(testId)).toBeInTheDocument()
 
@@ -242,7 +235,7 @@ describe.each(componentsMetadata)(`Uncontrolled state test`, function (model) {
     expect(data).toBeDefined()
     expect(data?.testedComponent).toBeUndefined()
 
-    rerender(<TestApplication form={persistedForm} viewerRef={viewerRef} initialData={{testData: ''}}/>)
+    rerender(<TestApplication form={persistedForm} viewerRef={viewerRef} initialData={{testData: ''}} />)
 
     const rerenderedData = viewerRef.current?.formData.data
     expect(rerenderedData?.testedComponent).toEqual(settings.controlledValue)

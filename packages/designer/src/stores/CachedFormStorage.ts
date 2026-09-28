@@ -7,8 +7,7 @@ import type {IFormStorage} from './IFormStorage'
  * An implementation of the IFormStorage interface that stores forms metadata in a cache.
  */
 export class CachedFormStorage implements IFormStorage {
-
-  private readonly cache = new Map<string, BuilderComponent>
+  private readonly cache = new Map<string, BuilderComponent>()
 
   /**
    * Constructor.

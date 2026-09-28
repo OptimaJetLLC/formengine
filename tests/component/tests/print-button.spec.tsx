@@ -8,13 +8,7 @@ import form from './forms/designer-form.json'
 
 const getFormFn = () => JSON.stringify(form)
 
-const App = () => (
-  <FormBuilder
-    licenseKey={generatedLicenseKey}
-    getForm={getFormFn}
-    view={builderViewWithCss}
-  />
-)
+const App = () => <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} />
 
 describe('Designer print', () => {
   afterEach(() => {
@@ -23,7 +17,7 @@ describe('Designer print', () => {
 
   it('is available in the main menu and prints the viewer', async () => {
     const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
-    const {container, findByText} = render(<App/>)
+    const {container, findByText} = render(<App />)
 
     expect(await findByText('Preview')).toBeInTheDocument()
     await clickItemInMainMenu(container, 'Print')
@@ -36,7 +30,7 @@ describe('Designer print', () => {
   })
 
   it('shows the print hotkey hint in the main menu', async () => {
-    const {container, findByText} = render(<App/>)
+    const {container, findByText} = render(<App />)
     const isMac = navigator.userAgent.includes('Mac')
 
     expect(await findByText('Preview')).toBeInTheDocument()
@@ -50,7 +44,7 @@ describe('Designer print', () => {
 
   it('intercepts Ctrl/Cmd+P and prints through viewer mode', async () => {
     const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
-    const {findByText} = render(<App/>)
+    const {findByText} = render(<App />)
 
     expect(await findByText('Preview')).toBeInTheDocument()
 

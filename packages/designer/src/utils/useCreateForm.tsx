@@ -13,39 +13,52 @@ export function useCreateForm(onSuccess?: () => void) {
   const {t} = useTranslation()
   const showMessage = useShowMessage()
 
-  const onError = useCallback((err: any) => {
-    console.error(err)
-    showMessage({type: 'error', message: err})
-  }, [showMessage])
+  const onError = useCallback(
+    (err: any) => {
+      console.error(err)
+      showMessage({type: 'error', message: err})
+    },
+    [showMessage]
+  )
 
-  const loadForm = useCallback((name: string) => {
-    builderStore.loadForm(name, onSuccess, onError)
-  }, [builderStore, onError, onSuccess])
+  const loadForm = useCallback(
+    (name: string) => {
+      builderStore.loadForm(name, onSuccess, onError)
+    },
+    [builderStore, onError, onSuccess]
+  )
 
-  const handleAddForm = useCallback((name: string) => {
-    if (name) {
-      builderStore.createForm(name)
-        .then(onSuccess)
-        .then(() => loadForm(name))
-    }
-  }, [builderStore, loadForm, onSuccess])
-
-  const validate = useCallback(async ({name}: Record<string, any>) => {
-    const formKeys = await builderStore.getFormKeys()
-    if (formKeys.includes(name)) {
-      return {
-        name: t('formsList.formWithNameExists')
+  const handleAddForm = useCallback(
+    (name: string) => {
+      if (name) {
+        builderStore
+          .createForm(name)
+          .then(onSuccess)
+          .then(() => loadForm(name))
       }
-    }
-  }, [builderStore, t])
+    },
+    [builderStore, loadForm, onSuccess]
+  )
+
+  const validate = useCallback(
+    async ({name}: Record<string, any>) => {
+      const formKeys = await builderStore.getFormKeys()
+      if (formKeys.includes(name)) {
+        return {
+          name: t('formsList.formWithNameExists'),
+        }
+      }
+    },
+    [builderStore, t]
+  )
 
   return useCallback(() => {
     builderStore.showPromptModal({
       fields: [{name: 'name'}],
-      onOk: (({name}) => handleAddForm(name)),
+      onOk: ({name}) => handleAddForm(name),
       title: t('leftMenu.enterFormName'),
       placeholder: t('leftMenu.formNamePlaceholder'),
-      validate
+      validate,
     })
   }, [builderStore, handleAddForm, t, validate])
 }

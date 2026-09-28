@@ -11,11 +11,14 @@ interface AntInputProps extends InputProps {
 const AntInput = (props: AntInputProps) => {
   const {onChange, ...otherProps} = props
 
-  const onChangeHandler = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(event.target.value)
-  }, [onChange])
+  const onChangeHandler = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      onChange?.(event.target.value)
+    },
+    [onChange]
+  )
 
-  return <Input {...otherProps} onChange={onChangeHandler}/>
+  return <Input {...otherProps} onChange={onChangeHandler} />
 }
 
 export const antInput = define(AntInput, 'AntInput')

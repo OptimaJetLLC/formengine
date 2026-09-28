@@ -9,8 +9,7 @@ describe(`The order of the multiple moved components,
 should match their previous position in the form, not the order of selection`, function () {
   let builderStore: BuilderStore
   const componentTree = () => builderStore.viewer.form.componentTree
-  const childrenOrder = (parentKey = 'Screen') => (componentTree().findByKey(parentKey)?.children ?? [])
-    .map(({key}) => key)
+  const childrenOrder = (parentKey = 'Screen') => (componentTree().findByKey(parentKey)?.children ?? []).map(({key}) => key)
   const dropTarget = () => componentTree().findByKey('drop')
   const select = (order: string[]) => {
     builderStore.selected.clear()

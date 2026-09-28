@@ -1,7 +1,4 @@
-function getContentDelimiter(
-  beginContextLine: string | undefined,
-  canEditBeginContextLine: boolean | undefined
-): string {
+function getContentDelimiter(beginContextLine: string | undefined, canEditBeginContextLine: boolean | undefined): string {
   return beginContextLine && canEditBeginContextLine ? '' : '\n'
 }
 
@@ -11,10 +8,7 @@ function getContentDelimiter(
  * @param canEditBeginContextLine when true, the prefix is part of the editable range.
  * @returns prefix string placed before the body in the Monaco document.
  */
-export function getPrefixBeforeBody(
-  beginContextLine: string | undefined,
-  canEditBeginContextLine: boolean | undefined
-): string {
+export function getPrefixBeforeBody(beginContextLine: string | undefined, canEditBeginContextLine: boolean | undefined): string {
   const prefix = beginContextLine ?? ''
   const delimiter = getContentDelimiter(beginContextLine, canEditBeginContextLine)
   if (!beginContextLine) {

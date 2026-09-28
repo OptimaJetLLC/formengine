@@ -5,7 +5,7 @@ import {Input, InputGroup} from 'rsuite'
 import styles from './SearchForm.module.css'
 
 interface SearchFormProps {
-  onChange: (value: string) => void;
+  onChange: (value: string) => void
   className?: string
 }
 
@@ -27,14 +27,9 @@ export const SearchForm = ({className, onChange}: SearchFormProps) => {
 
   return (
     <InputGroup className={className} inside size="sm">
-      <Input
-        onChange={setValue}
-        placeholder={t('searchForm.search')}
-        value={value}
-        autoFocus
-      />
+      <Input onChange={setValue} placeholder={t('searchForm.search')} value={value} autoFocus />
       <InputGroup.Addon className={styles.addon} onClick={clear}>
-        <Icon/>
+        <Icon />
       </InputGroup.Addon>
     </InputGroup>
   )

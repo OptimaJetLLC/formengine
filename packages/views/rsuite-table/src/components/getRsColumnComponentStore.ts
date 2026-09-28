@@ -4,7 +4,7 @@ import {rsCellTypeName, rsColumnTypeName, rsHeaderCellTypeName} from './typeName
 const getRsHeaderCellComponentStore = (componentKeyPostfix = '1') => {
   const componentStore = createComponentStore(rsHeaderCellTypeName, componentKeyPostfix)
   componentStore.props = {
-    children: {value: 'Header'}
+    children: {value: 'Header'},
   }
   return componentStore
 }
@@ -16,9 +16,6 @@ const getRsHeaderCellComponentStore = (componentKeyPostfix = '1') => {
  */
 export const getRsColumnComponentStore = (componentKeyPostfix = '1') => {
   const result = createComponentStore(rsColumnTypeName, componentKeyPostfix)
-  result.children = [
-    getRsHeaderCellComponentStore(componentKeyPostfix),
-    createComponentStore(rsCellTypeName, componentKeyPostfix),
-  ]
+  result.children = [getRsHeaderCellComponentStore(componentKeyPostfix), createComponentStore(rsCellTypeName, componentKeyPostfix)]
   return result
 }

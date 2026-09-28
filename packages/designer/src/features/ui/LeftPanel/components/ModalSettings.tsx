@@ -23,10 +23,13 @@ const RawModalSettings = () => {
   const builderStore = useBuilderStore()
   const form = builderStore.viewer.form
 
-  const onChange = useCallback((value?: string) => {
-    // eslint-disable-next-line react-hooks/immutability
-    form.modalType = value
-  }, [form])
+  const onChange = useCallback(
+    (value?: string) => {
+      // eslint-disable-next-line react-hooks/immutability
+      form.modalType = value
+    },
+    [form]
+  )
 
   const onClean = useCallback(() => onChange(), [onChange])
 
@@ -43,11 +46,13 @@ const RawModalSettings = () => {
     hasComputeCode,
   }
 
-  return <div>
-    <ComponentDataProvider value={form.componentTree}>
-      <ModalTypePicker {...annotationEditorProps}/>
-    </ComponentDataProvider>
-  </div>
+  return (
+    <div>
+      <ComponentDataProvider value={form.componentTree}>
+        <ModalTypePicker {...annotationEditorProps} />
+      </ComponentDataProvider>
+    </div>
+  )
 }
 
 export const ModalSettings = namedObserver('ModalSettings', RawModalSettings)

@@ -33,7 +33,7 @@ import {
   cfNonVisual,
   cfRequiredProperties,
   cfSingleton,
-  cfSkipChildrenDuringFieldCollection
+  cfSkipChildrenDuringFieldCollection,
 } from './integratedComponentFeatures'
 import {Meta} from './Meta'
 import {Model} from './Model'
@@ -52,19 +52,19 @@ export type DefinerData<T extends object> = {
   /**
    * The React component.
    */
-  readonly component: ComponentType<T>,
+  readonly component: ComponentType<T>
   /**
    * The component name.
    */
-  name?: string,
+  name?: string
   /**
    * The component type name.
    */
-  typeName?: string,
+  typeName?: string
   /**
    * The component kind.
    */
-  kind?: ComponentKind,
+  kind?: ComponentKind
   /**
    * The set of component features.
    */
@@ -72,27 +72,27 @@ export type DefinerData<T extends object> = {
   /**
    * The component category.
    */
-  category?: string,
+  category?: string
   /**
    * The component CSS metadata.
    */
-  cssObject?: Annotations<CSSObject>,
+  cssObject?: Annotations<CSSObject>
   /**
    * The wrapper CSS metadata.
    */
-  wrapperCssObject?: Annotations<CSSObject>,
+  wrapperCssObject?: Annotations<CSSObject>
   /**
    * The component icon or the icon name.
    */
-  icon?: ComponentType | string,
+  icon?: ComponentType | string
   /**
    * The function that initializes an actions on a component (for internal use only).
    */
-  readonly actionsInitializer?: ActionsInitializer,
+  readonly actionsInitializer?: ActionsInitializer
   /**
    * The property metadata.
    */
-  properties?: Annotations<T>,
+  properties?: Annotations<T>
   /**
    * The JSON source for the component (instance of {@link ComponentStore} class serialised to JSON).
    */
@@ -141,10 +141,7 @@ export class Definer<T extends object> {
   static definePreset(name: string, components: ComponentStore[]) {
     if (!name) throw Error('Anonymous components are not allowed!')
     const PresetComponent = () => null
-    const definer = new Definer(PresetComponent)
-      .addFeature(cfComponentIsPreset, true)
-      .type(name)
-      .name(name)
+    const definer = new Definer(PresetComponent).addFeature(cfComponentIsPreset, true).type(name).name(name)
 
     const source = new ComponentStore('', name)
     source.children = components
@@ -399,36 +396,37 @@ export class Definer<T extends object> {
     const cssAns = toStyleProperties(this.data.cssObject)
     const cssWrapperAns = toStyleProperties({
       ...commonStyles,
-      ...this.data.wrapperCssObject
+      ...this.data.wrapperCssObject,
     })
     const valuedAnnotations = propAns.filter(an => an.valued === true)
     const firstValuedAn = valuedAnnotations[0]
     if (valuedAnnotations.length > 1) {
-      console.warn('Several annotations with the "valued" property were found.' +
-        ' There should be only one "valued" property in the component description!' +
-        ` The annotation with the key "${valuedAnnotations[0].key}" will be used.`)
+      console.warn(
+        'Several annotations with the "valued" property were found.' +
+          ' There should be only one "valued" property in the component description!' +
+          ` The annotation with the key "${valuedAnnotations[0].key}" will be used.`
+      )
     }
     const valuedAn = firstValuedAn ?? propAns.find(an => an.name === 'value')
     const readOnlyAn = propAns.find(an => an.readOnly)
     const disabledAn = propAns.find(an => an.disabled)
-    const propsBindingTypes = propAns.reduce((props, an) => {
-      if (an.bindingType) props[an.key] = an.bindingType
-      return props
-    }, {} as Record<string, ComponentPropertyBindType>)
+    const propsBindingTypes = propAns.reduce(
+      (props, an) => {
+        if (an.bindingType) props[an.key] = an.bindingType
+        return props
+      },
+      {} as Record<string, ComponentPropertyBindType>
+    )
 
     const features = {...this.data.features}
 
-    const requiredProps = propAns
-      .filter(an => an.controlsRequiredProp)
-      .map(an => an.key)
+    const requiredProps = propAns.filter(an => an.controlsRequiredProp).map(an => an.key)
 
     if (requiredProps.length > 0) {
       features[cfRequiredProperties] = requiredProps
     }
 
-    const dateProperties = propAns
-      .filter(annotation => annotation.type === 'date')
-      .map(annotation => annotation.key)
+    const dateProperties = propAns.filter(annotation => annotation.type === 'date').map(annotation => annotation.key)
 
     const model = new Model(
       this.data.component,
@@ -446,7 +444,7 @@ export class Definer<T extends object> {
       valuedAn?.uncontrolledValue,
       disabledAn?.key,
       valuedAn?.dataBindingType,
-      features,
+      features
     ).withDateProperties(dateProperties)
 
     const insertRestriction = model.isFeatureEnabled(cfSingleton)

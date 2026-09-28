@@ -14,13 +14,22 @@ export const FormComponentPicker = (props: AnnotationEditorProps) => {
   const {filter = undefined, ...editorProps} = {...props.annotation.editorProps}
 
   const labelChildren = useMemo(() => {
-    return root.allChildren
-      .filter(cd => filter?.(cd) ?? true)
-      .map(cd => ({value: cd.key, label: cd.key}))
+    return root.allChildren.filter(cd => filter?.(cd) ?? true).map(cd => ({value: cd.key, label: cd.key}))
   }, [root.allChildren, filter])
 
-  return <LabeledProperty {...props}>
-    <SInputPicker value={value ?? annotation.default ?? ''} data={labelChildren} onChange={onChange} onClean={onClean}
-                  block cleanable size={'xs'} {...editorProps} placement={'autoVerticalEnd'}/>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <SInputPicker
+        value={value ?? annotation.default ?? ''}
+        data={labelChildren}
+        onChange={onChange}
+        onClean={onClean}
+        block
+        cleanable
+        size={'xs'}
+        {...editorProps}
+        placement={'autoVerticalEnd'}
+      />
+    </LabeledProperty>
+  )
 }

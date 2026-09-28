@@ -59,9 +59,11 @@ export const Hinted = ({hint, children, ...props}: HintedProps) => {
 
   if (!hint) return <>{children}</>
 
-  return <Whisper speaker={speaker} placement={placement} trigger={'hover'}>
-    {children}
-  </Whisper>
+  return (
+    <Whisper speaker={speaker} placement={placement} trigger={'hover'}>
+      {children}
+    </Whisper>
+  )
 }
 
 /**
@@ -75,10 +77,17 @@ export const Hinted = ({hint, children, ...props}: HintedProps) => {
  */
 export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) => {
   const labelClassName = cx(styles.label, labelProps.className, hint && styles.hinted)
-  if (!hint) return <label {...labelProps} className={labelClassName}>{children}</label>
+  if (!hint)
+    return (
+      <label {...labelProps} className={labelClassName}>
+        {children}
+      </label>
+    )
   return (
     <Hinted hint={hint}>
-      <label {...labelProps} className={labelClassName}>{children}</label>
+      <label {...labelProps} className={labelClassName}>
+        {children}
+      </label>
     </Hinted>
   )
 }
@@ -115,7 +124,9 @@ interface HintedIconButtonProps {
  * @internal
  */
 export const HintedIconButton = ({hint, hintPlacement, ...props}: HintedIconButtonProps) => {
-  return <Hinted hint={hint} placement={hintPlacement ?? 'bottom'}>
-    <IconButton {...props} size="xs"/>
-  </Hinted>
+  return (
+    <Hinted hint={hint} placement={hintPlacement ?? 'bottom'}>
+      <IconButton {...props} size="xs" />
+    </Hinted>
+  )
 }

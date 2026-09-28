@@ -19,6 +19,4 @@ const ThrowErrorComponent = () => {
   return <div onClick={clickError}>I'm fine!</div>
 }
 
-export const throwErrorComponent = define(ThrowErrorComponent, 'ThrowErrorComponent')
-  .name('ThrowErrorComponent')
-  .category('Error')
+export const throwErrorComponent = define(ThrowErrorComponent, 'ThrowErrorComponent').name('ThrowErrorComponent').category('Error')

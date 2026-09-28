@@ -31,7 +31,7 @@ function useAutoViewMode() {
       return
     }
 
-    const onResize = () => store.viewMode = getViewMode()
+    const onResize = () => (store.viewMode = getViewMode())
     globalThis.addEventListener('resize', onResize)
     return () => globalThis.removeEventListener('resize', onResize)
   }, [props.viewMode, store])
@@ -49,12 +49,11 @@ const onFormLoadError = (store: Store, e: any) => {
     form: componentStore,
     localization: {},
     defaultLanguage: globalDefaultLanguage.fullCode,
-    languages: []
+    languages: [],
   })
 }
 
-const applyForm = async (store: Store, getForm: FormViewerProps['getForm'], formName?: string,
-                         options?: any) => {
+const applyForm = async (store: Store, getForm: FormViewerProps['getForm'], formName?: string, options?: any) => {
   if (!getForm) return
 
   try {
@@ -97,14 +96,14 @@ const RawViewer = () => {
       .catch(console.error)
   }, [store, props.getForm, props.formName, props.formOptions])
 
-  return formLoadError
-    ? <div className={'form-error'}>{formLoadError}</div>
-    : (
-      <>
-        <ComponentTree data={data}/>
-        <NonVisualHost/>
-      </>
-    )
+  return formLoadError ? (
+    <div className={'form-error'}>{formLoadError}</div>
+  ) : (
+    <>
+      <ComponentTree data={data} />
+      <NonVisualHost />
+    </>
+  )
 }
 
 export const Viewer = namedObserver('Viewer', RawViewer)

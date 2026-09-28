@@ -1,3 +1,3 @@
 # Variable: richTextModel
 
-> `const` **richTextModel**: [`Model`](../../core/classes/Model.md)\<`any`\>
+> `const` **richTextModel**: [`Model`](../../core/classes/Model.md)

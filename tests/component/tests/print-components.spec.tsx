@@ -53,13 +53,11 @@ const quotedSettingsForm = {
 }
 
 const renderForm = (form: object, wrapper?: (children: ReactNode) => ReactNode) => {
-  const ui = <FormViewer view={view} getForm={() => JSON.stringify(form)}/>
+  const ui = <FormViewer view={view} getForm={() => JSON.stringify(form)} />
   return render(wrapper ? wrapper(ui) : ui)
 }
 
-const printCss = () => [...document.head.querySelectorAll('style')]
-  .map(style => style.textContent ?? '')
-  .join('\n')
+const printCss = () => [...document.head.querySelectorAll('style')].map(style => style.textContent ?? '').join('\n')
 
 describe('PageBreak and PrintSettings', () => {
   afterEach(() => {
@@ -81,14 +79,16 @@ describe('PageBreak and PrintSettings', () => {
       <FormBuilder
         licenseKey={generatedLicenseKey}
         view={designerView}
-        getForm={() => JSON.stringify({
-          form: {
-            key: 'Screen',
-            type: 'Screen',
-            children: [{key: 'printSettings', type: 'PrintSettings'}],
-          },
-        })}
-      />,
+        getForm={() =>
+          JSON.stringify({
+            form: {
+              key: 'Screen',
+              type: 'Screen',
+              children: [{key: 'printSettings', type: 'PrintSettings'}],
+            },
+          })
+        }
+      />
     )
 
     fireEvent.click(await findByTestId('PrintSettings-non-visual-chip'))
@@ -116,9 +116,7 @@ describe('PageBreak and PrintSettings', () => {
   })
 
   it('shows the PageBreak placeholder in builder mode', async () => {
-    renderForm(printForm, children => (
-      <BuilderModeProvider value="builder">{children}</BuilderModeProvider>
-    ))
+    renderForm(printForm, children => <BuilderModeProvider value="builder">{children}</BuilderModeProvider>)
 
     expect(await screen.findByTestId('page-break-placeholder')).toBeVisible()
     expect(screen.queryByTestId('print-settings-placeholder')).not.toBeInTheDocument()

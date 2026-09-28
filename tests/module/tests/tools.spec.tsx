@@ -12,7 +12,7 @@ import {
   startCase,
   toUpper,
   uniqueId,
-  upperFirst
+  upperFirst,
 } from '@react-form-builder/core'
 import {describe, expect, it} from 'vitest'
 
@@ -225,5 +225,3 @@ describe('Core utility helpers', () => {
     })
   })
 })
-
-

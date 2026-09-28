@@ -6,9 +6,9 @@ import {printComponents, printComponentsDescriptions} from '@react-form-builder/
 import {richTextComponent, richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
 import {
   ltrCssLoader,
+  RsViewWrapper,
   rSuiteComponents,
   rSuiteComponentsDescriptions,
-  RsViewWrapper,
   rtlCssLoader,
 } from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'

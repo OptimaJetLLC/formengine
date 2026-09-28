@@ -4,9 +4,7 @@ import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import styles from './CustomDragLayer.module.css'
 
-function getItemStyles(
-  initialOffset: XYCoord | null,
-  currentOffset: XYCoord | null) {
+function getItemStyles(initialOffset: XYCoord | null, currentOffset: XYCoord | null) {
   if (!initialOffset || !currentOffset) {
     return {display: 'none'}
   }
@@ -16,7 +14,7 @@ function getItemStyles(
   const transform = `translate(${x}px, ${y}px)`
   return {
     transform,
-    WebkitTransform: transform
+    WebkitTransform: transform,
   }
 }
 
@@ -26,20 +24,23 @@ function getItemStyles(
  */
 export const CustomDragLayer = () => {
   const isMultiSelection = useBuilderStore().selected.size > 1
-  const {isDragging, initialOffset, currentOffset} =
-    useDragLayer((monitor) => ({
-      item: monitor.getItem(),
-      initialOffset: monitor.getInitialSourceClientOffset(),
-      currentOffset: monitor.getClientOffset(),
-      isDragging: monitor.isDragging(),
-    }))
+  const {isDragging, initialOffset, currentOffset} = useDragLayer(monitor => ({
+    item: monitor.getItem(),
+    initialOffset: monitor.getInitialSourceClientOffset(),
+    currentOffset: monitor.getClientOffset(),
+    isDragging: monitor.isDragging(),
+  }))
 
   if (!isDragging) {
     return null
   }
   return (
     <div className={styles.layer}>
-      <div className={cx(styles.container, {isMultiSelection})} style={getItemStyles(initialOffset, currentOffset)} id={'fb-drag-preview'}/>
+      <div
+        className={cx(styles.container, {isMultiSelection})}
+        style={getItemStyles(initialOffset, currentOffset)}
+        id={'fb-drag-preview'}
+      />
     </div>
   )
 }

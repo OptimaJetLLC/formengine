@@ -13,15 +13,12 @@ const formNames = [defaultFormName, secondFormName]
 const view = new BuilderView(allComponentsBuilder)
 
 describe('The persistFormName prop in FormBuilder', function () {
-  beforeAll(() => globalThis.FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE = 'false')
+  beforeAll(() => (globalThis.FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE = 'false'))
 
   it('when enabled, should save the form name between sessions', async () => {
     const onLoadForm = vi.fn()
     const formStorage = new MockFormStorage({onLoadForm, formNames})
-    const builderComponent = (
-      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage}
-                   getForm={formStorage.getForm}/>
-    )
+    const builderComponent = <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage} getForm={formStorage.getForm} />
 
     const {findByTestId, unmount} = render(builderComponent)
     await waitFor(() => expect(onLoadForm).toHaveBeenLastCalledWith(defaultFormName))
@@ -42,8 +39,7 @@ describe('The persistFormName prop in FormBuilder', function () {
     const onLoadForm = vi.fn()
     const formStorage = new MockFormStorage({onLoadForm, formNames})
     const builderComponent = (
-      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage}
-                   getForm={formStorage.getForm} persistFormName={false}/>
+      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage} getForm={formStorage.getForm} persistFormName={false} />
     )
 
     const {findByTestId, unmount} = render(builderComponent)

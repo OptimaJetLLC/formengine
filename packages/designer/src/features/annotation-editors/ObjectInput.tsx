@@ -22,7 +22,7 @@ const RawObjectInput = (props: AnnotationEditorProps) => {
   }, [value])
 
   const valuePreview = useMemo(() => {
-    return value ? stringify(value)?.substring(0, 50) ?? 'Error' : ''
+    return value ? (stringify(value)?.substring(0, 50) ?? 'Error') : ''
   }, [value])
 
   const editJson = useCallback(() => {
@@ -30,14 +30,14 @@ const RawObjectInput = (props: AnnotationEditorProps) => {
     builderStore.editJsonCode(annotation.key, title, strVal, onChange)
   }, [annotation.key, annotation.name, builderStore, onChange, props.componentData.key, strVal])
 
-  return <LabeledProperty {...props}>
-    <InputGroup inside size="xs">
-      <Input value={valuePreview} onClick={editJson} readOnly color={'var(--rs-btn-ghost-text)'}/>
-      <InputGroup.Button onClick={value ? onClean : editJson}>
-        {value ? <Close/> : <Code/>}
-      </InputGroup.Button>
-    </InputGroup>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <InputGroup inside size="xs">
+        <Input value={valuePreview} onClick={editJson} readOnly color={'var(--rs-btn-ghost-text)'} />
+        <InputGroup.Button onClick={value ? onClean : editJson}>{value ? <Close /> : <Code />}</InputGroup.Button>
+      </InputGroup>
+    </LabeledProperty>
+  )
 }
 
 /**

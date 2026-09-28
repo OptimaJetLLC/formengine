@@ -7,15 +7,18 @@ const createFakeFormStorage = (forms: Record<string, string>): IFormStorage => {
   return {
     getForm(formName?: string) {
       return Promise.resolve(forms[formName ?? 'empty'])
-    }, getFormNames() {
+    },
+    getFormNames() {
       return Promise.resolve(Object.keys(forms))
-    }, removeForm(formName: string) {
+    },
+    removeForm(formName: string) {
       delete forms[formName]
       return Promise.resolve()
-    }, saveForm(formName: string, formValue: string) {
+    },
+    saveForm(formName: string, formValue: string) {
       forms[formName] = formValue
       return Promise.resolve()
-    }
+    },
   }
 }
 
@@ -51,14 +54,14 @@ describe('Menu tests', () => {
     // Hide the Clear button via customization
     const customization = {
       MainMenu_Item_SaveAs: {
-        hidden: true
-      }
+        hidden: true,
+      },
     }
 
     const {findByTestId, queryByTestId} = await renderBuilder(emptyForm, {
       formStorage: fakeFormStorage,
       formName: 'empty',
-      customization
+      customization,
     })
 
     expect(await findByTestId('main-menu-clear')).toBeInTheDocument()

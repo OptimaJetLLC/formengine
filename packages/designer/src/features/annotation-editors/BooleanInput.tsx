@@ -12,9 +12,7 @@ import {CleanButton} from './CleanButton'
  * @param props {@link CheckboxProps}
  * @returns the React component.
  */
-export const SCheckbox = (props: CheckboxProps) => (
-  <Checkbox {...props} className={cx(styles.checkbox, props.className)}/>
-)
+export const SCheckbox = (props: CheckboxProps) => <Checkbox {...props} className={cx(styles.checkbox, props.className)} />
 
 interface BooleanCheckboxProps extends AnnotationEditorProps {
   id?: string
@@ -22,14 +20,17 @@ interface BooleanCheckboxProps extends AnnotationEditorProps {
 
 const BooleanCheckbox = (props: BooleanCheckboxProps) => {
   const {id, value, onChange, onClean} = props
-  const handleChange: CheckboxProps['onChange'] = useCallback((_: ValueType | undefined, checked: boolean) => {
-    onChange(checked)
-  }, [onChange])
+  const handleChange: CheckboxProps['onChange'] = useCallback(
+    (_: ValueType | undefined, checked: boolean) => {
+      onChange(checked)
+    },
+    [onChange]
+  )
 
   return (
     <div className={styles.row}>
-      <SCheckbox id={id} checked={!!value} onChange={handleChange}/>
-      <CleanButton onClick={onClean}/>
+      <SCheckbox id={id} checked={!!value} onChange={handleChange} />
+      <CleanButton onClick={onClean} />
     </div>
   )
 }
@@ -39,7 +40,8 @@ const BooleanCheckbox = (props: BooleanCheckboxProps) => {
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const BooleanInput = (props: AnnotationEditorProps) =>
+export const BooleanInput = (props: AnnotationEditorProps) => (
   <LabeledProperty {...props}>
-    <BooleanCheckbox {...props}/>
+    <BooleanCheckbox {...props} />
   </LabeledProperty>
+)

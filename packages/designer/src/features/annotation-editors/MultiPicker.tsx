@@ -11,7 +11,7 @@ const prepareData = ({data}: PropertyAnnotation, values: string[]) => {
   const preparedData = data.map(di => {
     return {
       value: di.value,
-      label: di.label
+      label: di.label,
     } as ItemDataType
   })
 

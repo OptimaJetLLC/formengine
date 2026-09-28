@@ -44,7 +44,7 @@ export interface PromptDialogProps {
    * Clicking on the background will close the Modal.
    * If you do not want to close the Modal, set it to 'static'.
    */
-  backdrop?: boolean | 'static';
+  backdrop?: boolean | 'static'
   /**
    * The title.
    */

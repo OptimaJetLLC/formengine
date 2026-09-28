@@ -2,7 +2,6 @@
  * Interface for storing forms in an external storage.
  */
 export interface IFormStorage {
-
   /**
    * @returns the Promise with an array of form names.
    */

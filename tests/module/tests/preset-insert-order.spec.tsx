@@ -14,8 +14,7 @@ should match their previous position in the form, not the order of selection`, f
 
   const getComponentTree = () => builderStore.viewer.form.componentTree
 
-  const getChildrenOrder = (parentKey = 'Screen') => (getComponentTree().findByKey(parentKey)?.children ?? [])
-    .map(({model}) => model.type)
+  const getChildrenOrder = (parentKey = 'Screen') => (getComponentTree().findByKey(parentKey)?.children ?? []).map(({model}) => model.type)
 
   const find = (key: string) => {
     const node = getComponentTree().findByKey(key)
@@ -30,8 +29,7 @@ should match their previous position in the form, not the order of selection`, f
 
   const select = (order: string[]) => {
     builderStore.selected.clear()
-    order.map(find)
-      .forEach(node => builderStore.selectNode(node, true))
+    order.map(find).forEach(node => builderStore.selectNode(node, true))
   }
 
   beforeAll(() => {
@@ -43,8 +41,7 @@ should match their previous position in the form, not the order of selection`, f
     select(['3', '1', '2'])
     builderStore.createPresetComponentFromSelected('TestPreset', 'fields')
 
-    const model = builderStore.builderComponents
-      .find(({model}) => model.name === 'TestPreset')?.model
+    const model = builderStore.builderComponents.find(({model}) => model.name === 'TestPreset')?.model
 
     if (!model) throw new Error('Preset not found')
     componentData = createAddedComponentData(model, builderStore, store)

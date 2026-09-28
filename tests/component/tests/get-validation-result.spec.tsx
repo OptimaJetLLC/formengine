@@ -10,60 +10,60 @@ import validationLocalizationChildForm from './forms/validation-localization-chi
 import validationLocalizationParentForm from './forms/validation-localization-parent-form.json'
 
 const enErrors = {
-  'child': {
-    'input': ['Input is invalid bad'],
-    'checkbox': ['Checkbox is invalid true'],
-    'date': ['Date is invalid true bad']
+  child: {
+    input: ['Input is invalid bad'],
+    checkbox: ['Checkbox is invalid true'],
+    date: ['Date is invalid true bad'],
   },
-  'repeater': [
+  repeater: [
     {
-      'justInput': ['Min 10 good#0'],
-      'input': ['Input is invalid bad'],
-      'checkbox': ['Checkbox is invalid true'],
-      'date': ['Date is invalid true bad']
+      justInput: ['Min 10 good#0'],
+      input: ['Input is invalid bad'],
+      checkbox: ['Checkbox is invalid true'],
+      date: ['Date is invalid true bad'],
     },
     {
-      'justInput': ['Min 10 good#1'],
-      'input': ['Input is invalid bad'],
-      'checkbox': ['Checkbox is invalid true'],
-      'date': ['Date is invalid true bad']
+      justInput: ['Min 10 good#1'],
+      input: ['Input is invalid bad'],
+      checkbox: ['Checkbox is invalid true'],
+      date: ['Date is invalid true bad'],
     },
     {
-      'justInput': ['Min 10 good#2'],
-      'input': ['Input is invalid bad'],
-      'checkbox': ['Checkbox is invalid true'],
-      'date': ['Date is invalid true bad']
-    }
-  ]
+      justInput: ['Min 10 good#2'],
+      input: ['Input is invalid bad'],
+      checkbox: ['Checkbox is invalid true'],
+      date: ['Date is invalid true bad'],
+    },
+  ],
 }
 
 // The localizer adds Unicode characters (FSI, PDI)
 const deErrors = {
-  'child': {
-    'input': ['Eingabe ist ungültig bad'],
-    'checkbox': ['Kontrollkästchen ist ungültig true'],
-    'date': ['Das Datum ist ungültig true bad']
+  child: {
+    input: ['Eingabe ist ungültig bad'],
+    checkbox: ['Kontrollkästchen ist ungültig true'],
+    date: ['Das Datum ist ungültig true bad'],
   },
-  'repeater': [
+  repeater: [
     {
-      'justInput': ['DE Min 10 good#0'],
-      'input': ['Eingabe ist ungültig bad'],
-      'checkbox': ['Kontrollkästchen ist ungültig true'],
-      'date': ['Das Datum ist ungültig true bad']
+      justInput: ['DE Min 10 good#0'],
+      input: ['Eingabe ist ungültig bad'],
+      checkbox: ['Kontrollkästchen ist ungültig true'],
+      date: ['Das Datum ist ungültig true bad'],
     },
     {
-      'justInput': ['DE Min 10 good#1'],
-      'input': ['Eingabe ist ungültig bad'],
-      'checkbox': ['Kontrollkästchen ist ungültig true'],
-      'date': ['Das Datum ist ungültig true bad']
+      justInput: ['DE Min 10 good#1'],
+      input: ['Eingabe ist ungültig bad'],
+      checkbox: ['Kontrollkästchen ist ungültig true'],
+      date: ['Das Datum ist ungültig true bad'],
     },
     {
-      'justInput': ['DE Min 10 good#2'],
-      'input': ['Eingabe ist ungültig bad'],
-      'checkbox': ['Kontrollkästchen ist ungültig true'],
-      'date': ['Das Datum ist ungültig true bad']
-    }
-  ]
+      justInput: ['DE Min 10 good#2'],
+      input: ['Eingabe ist ungültig bad'],
+      checkbox: ['Kontrollkästchen ist ungültig true'],
+      date: ['Das Datum ist ungültig true bad'],
+    },
+  ],
 }
 
 describe('getValidationResult function test', () => {
@@ -81,7 +81,7 @@ describe('getValidationResult function test', () => {
     const getForm = () => JSON.stringify(validationLocalizationChildForm)
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
-    const {findByTestId, findByLabelText, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findByTestId, findByLabelText, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} />)
 
     expect(await findByTestId('child-date')).toBeInTheDocument()
     const formData = viewerRef.current?.formData
@@ -92,20 +92,20 @@ describe('getValidationResult function test', () => {
     const returnedErrors = await asyncAct(async () => await formData.getValidationResult())
 
     const expectedErrors = {
-      'input': ['Input is invalid bad'],
-      'checkbox': ['Checkbox is invalid true'],
-      'date': ['Date is invalid true bad']
+      input: ['Input is invalid bad'],
+      checkbox: ['Checkbox is invalid true'],
+      date: ['Date is invalid true bad'],
     }
     await waitFor(() => expect(returnedErrors).toStrictEqual(expectedErrors))
 
-    rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} language="de-DE"/>)
+    rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} language="de-DE" />)
     expect(await findByLabelText('Current_lang_DE')).toBeInTheDocument()
 
     const returnedDeErrors = await asyncAct(async () => await formData.getValidationResult())
     const expectedDeErrors = {
-      'input': ['Eingabe ist ungültig bad'],
-      'checkbox': ['Kontrollkästchen ist ungültig true'],
-      'date': ['Das Datum ist ungültig true bad']
+      input: ['Eingabe ist ungültig bad'],
+      checkbox: ['Kontrollkästchen ist ungültig true'],
+      date: ['Das Datum ist ungültig true bad'],
     }
     await waitFor(() => expect(returnedDeErrors).toStrictEqual(expectedDeErrors))
   })
@@ -117,7 +117,7 @@ describe('getValidationResult function test', () => {
     }
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
-    const {findAllByTestId, findAllByLabelText, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findAllByTestId, findAllByLabelText, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} />)
 
     expect(await findAllByTestId('child-date')).toHaveLength(4)
 
@@ -130,7 +130,7 @@ describe('getValidationResult function test', () => {
 
     await waitFor(() => expect(returnedErrors).toStrictEqual(enErrors))
 
-    rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} language="de-DE"/>)
+    rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} language="de-DE" />)
     expect(await findAllByLabelText('Current_lang_DE')).not.toHaveLength(0)
 
     const returnedDeErrors = await asyncAct(async () => await formData.getValidationResult())
@@ -153,12 +153,12 @@ describe('getValidationResult function test', () => {
     const validators: FormViewerProps['validators'] = {
       string: {
         customPasswordValidator: {
-          validate: () => false
+          validate: () => false,
         },
         anotherCustomValidator: {
-          validate: () => 'another error'
-        }
-      }
+          validate: () => 'another error',
+        },
+      },
     }
     const initialData = {login: 'l', password: 'p'}
     const {formData} = renderForm(validationCustomLocalizationForm, {initialData, validators})
@@ -169,7 +169,7 @@ describe('getValidationResult function test', () => {
     const returnedErrors = await asyncAct(async () => await formData.getValidationResult())
     expect(returnedErrors).toStrictEqual({
       login: ['Too small: expected string to have >=3 characters', 'Should include 2'],
-      password: [false, 'another error']
+      password: [false, 'another error'],
     })
     await waitFor(() => expect(formData.errors).toStrictEqual({}))
   })

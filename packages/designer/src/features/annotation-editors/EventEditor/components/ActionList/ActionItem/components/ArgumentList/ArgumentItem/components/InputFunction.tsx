@@ -26,10 +26,13 @@ const useFnArgument = (name: string): [string | undefined, (src?: string) => voi
   const arg = data?.args?.[name] as FunctionArgumentValue
   const fnBody = arg?.body
 
-  const setFnBody = useCallback((src?: string) => {
-    data.args ??= {}
-    data.args[name] = {type: 'fn', body: src}
-  }, [data, name])
+  const setFnBody = useCallback(
+    (src?: string) => {
+      data.args ??= {}
+      data.args[name] = {type: 'fn', body: src}
+    },
+    [data, name]
+  )
 
   return useMemo(() => [fnBody, setFnBody], [setFnBody, fnBody])
 }
@@ -52,40 +55,29 @@ const RawInputFunction = ({name}: InputProps) => {
     builderStore.closeCurrentEditable()
   }, [builderStore])
 
-  const onCompile = useCallback((source: string) => {
-    try {
-      new Function('e', 'args', '...userArgs', getFunctionSource(source))
-      return {error: false, result: t('testingEditor.compilationOk')}
-    } catch (e) {
-      return {error: true, exceptions: [e as Error]}
-    }
-  }, [t])
+  const onCompile = useCallback(
+    (source: string) => {
+      try {
+        new Function('e', 'args', '...userArgs', getFunctionSource(source))
+        return {error: false, result: t('testingEditor.compilationOk')}
+      } catch (e) {
+        return {error: true, exceptions: [e as Error]}
+      }
+    },
+    [t]
+  )
 
   const handleEdit = useCallback(() => {
-    const editableFunction = new EditableFunction(
-      title,
-      setFn,
-      onClose,
-      onCompile,
-      value || '',
-      beginContextLine,
-      endContextLine,
-    )
+    const editableFunction = new EditableFunction(title, setFn, onClose, onCompile, value || '', beginContextLine, endContextLine)
     builderStore.editFunction(editableFunction)
   }, [builderStore, onClose, onCompile, setFn, title, value])
 
   return (
     <Columns>
-      <Button
-        onClick={handleEdit}
-        size="xs"
-        appearance="ghost"
-        block
-        className={styles.button}
-      >
+      <Button onClick={handleEdit} size="xs" appearance="ghost" block className={styles.button}>
         {t('annotation.code.hint')}
       </Button>
-      {!!value && <RemoveButton onClick={clear}/>}
+      {!!value && <RemoveButton onClick={clear} />}
     </Columns>
   )
 }

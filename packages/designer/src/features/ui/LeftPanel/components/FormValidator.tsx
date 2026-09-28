@@ -14,21 +14,15 @@ const RawFormValidator = () => {
   const handleEdit = useCallback(() => builderStore.editFormValidator(), [builderStore])
   const t = useTranslationPart('annotation.code')
   // eslint-disable-next-line react-hooks/immutability
-  const remove = useCallback(() => form.formValidator = undefined, [form])
+  const remove = useCallback(() => (form.formValidator = undefined), [form])
 
   return (
     <LabeledWrapper label={t('name')} hint={t('hint')}>
       <Columns>
-        <Button
-          onClick={handleEdit}
-          size="xs"
-          appearance="ghost"
-          block
-          className={styles.button}
-        >
+        <Button onClick={handleEdit} size="xs" appearance="ghost" block className={styles.button}>
           {t('hint')}
         </Button>
-        {!!form.formValidator && <RemoveButton onClick={remove}/>}
+        {!!form.formValidator && <RemoveButton onClick={remove} />}
       </Columns>
     </LabeledWrapper>
   )
