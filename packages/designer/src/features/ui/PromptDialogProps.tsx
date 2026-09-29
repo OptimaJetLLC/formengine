@@ -3,7 +3,7 @@ import type {Component, ForwardedRef} from 'react'
 /**
  * The type of the input field.
  */
-export interface PromptField {
+interface PromptField {
   /**
    * The name of the field.
    */
@@ -33,7 +33,7 @@ export interface PromptField {
 /**
  * The result of the validation of the prompt dialog fields.
  */
-export type PromptValidationResult = Record<string, string | undefined> | undefined
+type PromptValidationResult = Record<string, string | undefined> | undefined
 
 /**
  * Properties of the modal dialog for data entry.

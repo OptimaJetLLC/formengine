@@ -54,7 +54,7 @@ export interface UnconstrainedCodeEditorProps {
 /**
  * Properties for adding constraints to the code editor.
  */
-export interface ConstrainedProps {
+interface ConstrainedProps {
   /**
    * Context line before the source code. Automatically adds the "}" symbol to the end.
    * Especially useful to add jsdoc for typing before.

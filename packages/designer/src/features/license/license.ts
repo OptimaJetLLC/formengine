@@ -1,7 +1,7 @@
 /**
  * The basic restrictions.
  */
-export type RestrictionsBase = {
+type RestrictionsBase = {
   /**
    * The list of allowed domains.
    */
@@ -15,7 +15,7 @@ export type RestrictionsBase = {
 /**
  * License-restricted feature names.
  */
-export type LicenseFeatureName =
+type LicenseFeatureName =
   // allowed count of viewer translations, -1 for unlimited
   | 'ftLocaleCount'
   // designer customization
@@ -38,7 +38,7 @@ export type LicenseFeatureName =
 /**
  * Feature description metadata.
  */
-export type LicenseFeatureDescriptionMeta = Record<string, any>
+type LicenseFeatureDescriptionMeta = Record<string, any>
 
 /**
  * Feature description.

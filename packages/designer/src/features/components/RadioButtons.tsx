@@ -8,7 +8,7 @@ import styles from './RadioButtons.module.css'
 /**
  * The radio button group element.
  */
-export interface RadioButtonItem extends LabeledValue {
+interface RadioButtonItem extends LabeledValue {
   /**
    * The radio button hint.
    */
