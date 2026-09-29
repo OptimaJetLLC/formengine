@@ -44,7 +44,7 @@ const docusaurusPluginTypedocConfig = [
 
 const config: Config = {
   future: {
-    experimental_faster: true,
+    faster: true,
     v4: true
   },
   title: 'Documentation | FormEngine',
@@ -65,7 +65,6 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
-  onBrokenMarkdownLinks: 'throw',
 
   customFields: {
     designerGuideBaseUrl: getDesignerGuideBase(),
@@ -76,7 +75,15 @@ const config: Config = {
   ],
 
   markdown: {
-    mermaid: true
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+    // future.v4 turns the MDX1 compatibility features off by default, but the docs use the
+    // `{#custom-id}` heading syntax, which requires mdx1Compat.headingIds.
+    mdx1Compat: {
+      headingIds: true,
+    },
   },
   themes: [
     '@docusaurus/theme-mermaid',
