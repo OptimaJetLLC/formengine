@@ -1,8 +1,13 @@
 ---
 sidebar_position: 110
 title: Signature
-description: A field that allows users to create and capture their handwritten signatures digitally.
+description: Digital signature pad for FormEngine forms. Install the package, register it in FormBuilder and FormViewer, and configure size, pen, and colors.
 slug: /formengine-designer/components/signature
+tags:
+  - signature
+  - components
+  - form builder
+  - commercial
 ---
 
 import StyleBlock from '../../components-library/_style-props.mdx';
@@ -16,35 +21,143 @@ import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
 
 ## Introduction
 
-The [Signature](https://www.npmjs.com/package/signature_pad) component is a digital signature field that enables users to create and capture
-handwritten signatures digitally. It provides a drawing area where users can sign their names using a mouse, touchpad, or other input devices.
-This feature is particularly useful for signing documents, forms, contracts, and more.
+The [Signature](https://www.npmjs.com/package/signature_pad) component is a drawing pad where users sign with a mouse, touchpad, or touch
+screen. Typical uses include consent forms and contracts.
 
-This component is available as a standalone package,
+It lives in a separate package,
 [@react-form-builder/components-signature](https://www.npmjs.com/package/@react-form-builder/components-signature),
-under a commercial license. For commercial use, please contact our sales team at [sales@optimajet.com](mailto:sales@optimajet.com).
+under a commercial license. For commercial use, contact [sales@optimajet.com](mailto:sales@optimajet.com).
 
-The signature component offers various customization properties such as options to adjust the thickness or color of the signature, select
-canvas color, and more. The following introduces and describes available properties and options of this component.
+![Signature field on the Designer canvas with Main properties open.](/assets/formengine-designer/components/signature/signature-01.png "Signature in the Designer")
+
+The pad value is a PNG data URL string. On the Main tab you can set the label, canvas size, pen color and thickness, background color, and
+Clear button text.
+
+## Installation
+
+```bash
+npm install @react-form-builder/components-signature
+```
+
+You also need `@react-form-builder/core` and, for the designer, `@react-form-builder/designer`. The examples below assume you already use
+[@react-form-builder/components-rsuite](/components-library/) and add Signature next to those components.
+
+## Connection to FormBuilder
+
+Register `signatureComponent` in a `BuilderView` so **Signature** appears in the palette:
+
+```typescript jsx {3,6}
+import {rSuiteComponents} from '@react-form-builder/components-rsuite'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+import {signatureComponent} from '@react-form-builder/components-signature'
+
+const components = rSuiteComponents.map(c => c.build())
+const builderView = new BuilderView([...components, signatureComponent.build()])
+
+function App() {
+  return <FormBuilder view={builderView} />
+}
+```
+
+You can pass `signatureComponentsDescriptions` (or a localized map) with `.withComponentLibraryDescription(...)` so Designer property labels
+match your UI language. See the [API reference](/api-reference/@react-form-builder/components-signature/).
+
+![Signature selected in the component palette under Fields.](/assets/formengine-designer/components/signature/signature-02.png "Signature in the palette")
+
+## Connection to FormViewer
+
+Register `signatureModel` on a `View` (or use `signatureComponent.build().model`):
+
+```typescript jsx showLineNumbers {1,7,17-25}
+import {signatureModel} from '@react-form-builder/components-signature'
+import {rSuiteComponents} from '@react-form-builder/components-rsuite'
+import {FormViewer, View} from '@react-form-builder/core'
+
+const components = [
+  ...rSuiteComponents.map(c => c.build().model),
+  signatureModel,
+]
+const view = new View(components)
+
+const form = `{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "signature",
+        "type": "RsSignature",
+        "props": {
+          "label": { "value": "Sign here" },
+          "width": { "value": 370 },
+          "height": { "value": 200 }
+        }
+      }
+    ]
+  }
+}`
+
+function App() {
+  return <FormViewer view={view} getForm={() => form} />
+}
+```
+
+In form JSON the type is `RsSignature`. The valued property is `value` (data URL). An `onChange` handler receives the new data URL after
+each stroke or when the user clears the pad.
+
+![Signature pad in Preview after the user draws a signature.](/assets/formengine-designer/components/signature/signature-03.png "Signature in Preview")
+
+## Sample form JSON
+
+Example with common Main-tab settings:
+
+```json
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "signature",
+        "type": "RsSignature",
+        "props": {
+          "label": { "value": "Authorized signature" },
+          "clearButtonText": { "value": "Clear" },
+          "width": { "value": 370 },
+          "height": { "value": 200 },
+          "lineWidth": { "value": 1.5 },
+          "penColor": { "value": "rgba(0, 0, 0, 1)" },
+          "backgroundColor": { "value": "rgba(167, 167, 167, 0.1)" },
+          "readOnly": { "value": false }
+        }
+      }
+    ]
+  }
+}
+```
 
 ## Main properties
 
 The following general properties are available within the _Main_ tab:
 
-| Name              | Type      | Description                                                 |
-|:------------------|:----------|:------------------------------------------------------------|
-| Value             | `string`  | Enter value for the component                               |
-| Label             | `string`  | Text that is displayed for the component                    |
-| Clear Button Text | `string`  | Customize the text for clear button if necessary            |
-| Width             | `number`  | The width of the signature component in pixels              |
-| Height            | `number`  | The height of the signature component in pixels             |
-| Line Width        | `number`  | The thickness of the pen stroke when drawing the signature  |
-| Pen color         | `color`   | The color of the pen stroke when drawing the signature      |
-| Background color  | `color`   | The canvas (drawing area) color of the signature component  |
-| Read Only         | `boolean` | If set to _true_, makes the component unavailable for users |
+| Name              | Type      | Description                                              |
+|:------------------|:----------|:---------------------------------------------------------|
+| Value             | `string`  | Initial data URL for the signature image                 |
+| Label             | `string`  | Text displayed above the pad                             |
+| Clear Button Text | `string`  | Label for the Clear button                               |
+| Width             | `number`  | Canvas width in pixels                                   |
+| Height            | `number`  | Canvas height in pixels                                  |
+| Line Width        | `number`  | Pen stroke thickness                                     |
+| Pen color         | `color`   | Pen stroke color                                         |
+| Background color  | `color`   | Canvas background color                                  |
+| Read Only         | `boolean` | When _true_, disables drawing and hides the Clear button |
 
 <AdditionalOptions/>
 
 ## Style properties
 
 <StyleBlock/>
+
+For more information, see the [API reference for components-signature](/api-reference/@react-form-builder/components-signature/).
