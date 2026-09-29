@@ -232,11 +232,11 @@ const configuration: webpack.Configuration = {
     client: `webpack-dev-server/client?http://localhost:${port}/dist`,
     devServer: 'webpack/hot/only-dev-server',
     renderer: path.join(webpackPaths.srcRendererPath, 'index.tsx'),
-    'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
-    'json.worker': 'monaco-editor/esm/vs/language/json/json.worker',
-    'css.worker': 'monaco-editor/esm/vs/language/css/css.worker',
-    'html.worker': 'monaco-editor/esm/vs/language/html/html.worker',
-    'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker',
+    'editor.worker': 'monaco-editor/editor/editor.worker.js',
+    'json.worker': 'monaco-editor/language/json/json.worker',
+    'css.worker': 'monaco-editor/language/css/css.worker',
+    'html.worker': 'monaco-editor/language/html/html.worker',
+    'ts.worker': 'monaco-editor/language/typescript/ts.worker',
   },
 
   output: {
@@ -258,11 +258,11 @@ const configuration: webpack.Configuration = {
   //...
   entry: {
     renderer: path.join(webpackPaths.srcRendererPath, 'index.tsx'),
-    'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
-    'json.worker': 'monaco-editor/esm/vs/language/json/json.worker',
-    'css.worker': 'monaco-editor/esm/vs/language/css/css.worker',
-    'html.worker': 'monaco-editor/esm/vs/language/html/html.worker',
-    'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker',
+    'editor.worker': 'monaco-editor/editor/editor.worker.js',
+    'json.worker': 'monaco-editor/language/json/json.worker',
+    'css.worker': 'monaco-editor/language/css/css.worker',
+    'html.worker': 'monaco-editor/language/html/html.worker',
+    'ts.worker': 'monaco-editor/language/typescript/ts.worker',
   },
 
   output: {

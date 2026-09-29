@@ -1,6 +1,5 @@
 import type {Monaco} from '@monaco-editor/react'
-import type {editor} from 'monaco-editor'
-import type {IDisposable, IKeyboardEvent} from 'monaco-editor/esm/vs/editor/editor.api'
+import type {editor, IDisposable, IKeyboardEvent} from 'monaco-editor'
 import {extractEditableBody} from './constrainedDocument'
 import {getEditablePositionRange, getEditableRangeParams} from './ranges'
 

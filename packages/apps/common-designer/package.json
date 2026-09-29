@@ -29,7 +29,7 @@
     "@react-form-builder/json-schema-generator": "^10.3.0",
     "dayjs": "^1.11.23",
     "mobx-react": "^9.2.0",
-    "monaco-editor": "^0.55.1",
+    "monaco-editor": "^0.57.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rsuite": "5.83.4"
