@@ -14,7 +14,7 @@ const RawInputString = ({name}: InputProps) => {
       const next = Object.assign({}, data.args)
       next[name] = value
       // eslint-disable-next-line react-hooks/immutability
-      data.args = next as any
+      data.args = next
     },
     [data, name]
   )

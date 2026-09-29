@@ -1,4 +1,3 @@
-import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import {faSitemap} from '@fortawesome/free-solid-svg-icons'
 import {useCallback} from 'react'
 import {Dropdown} from 'rsuite'
@@ -8,7 +7,7 @@ import {customizable} from '../../../../customization/customizable'
 import {useTranslationPart} from '../../../../localization/hooks'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const sitemapIcon = <FaIcon icon={faSitemap as unknown as IconDefinition} />
+const sitemapIcon = <FaIcon icon={faSitemap} />
 
 const RawExportJsonFormSchemaButton = ({className}: CustomizableMenuItemProps) => {
   const builderStore = useBuilderStore()

@@ -168,7 +168,7 @@ async function getFormFn(name?: string) {
  */
 export const Designer = () => {
   const ref = useRef<IFormViewer>(null)
-  const initialEmptyData = useMemo(() => ({}) as Record<string, unknown>, [])
+  const initialEmptyData = useMemo<Record<string, unknown>>(() => ({}), [])
 
   const setRef = useCallback((viewer: IFormViewer | null) => {
     if (viewer) {

@@ -59,7 +59,7 @@ const RawLocalizationPicker = ({value, onSelect, className, ...props}: Localizat
   const data = useMemo(
     () =>
       Object.entries(langData).map(([key, {code}]) => {
-        return {value: key, label: toUpper(code)} as ItemDataType<string>
+        return {value: key, label: toUpper(code)}
       }),
     [langData]
   )

@@ -1,6 +1,5 @@
 import {namedObserver, startCase, useTooltipType} from '@react-form-builder/core'
 import {useMemo} from 'react'
-import type {ItemDataType} from 'rsuite/esm/internals/types'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
@@ -25,7 +24,7 @@ const RawTooltipTypePicker = (props: AnnotationEditorProps) => {
       return {
         value: name,
         label: startCase(name),
-      } as ItemDataType
+      }
     })
   }, [builderStore.view])
 

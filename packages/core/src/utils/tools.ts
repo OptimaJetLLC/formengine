@@ -302,8 +302,8 @@ export function cloneDeep<T>(value: T, weakMap = new WeakMap()): T {
   }
 
   // Handle circular references
-  if (weakMap.has(value as object)) {
-    return weakMap.get(value as object)
+  if (weakMap.has(value)) {
+    return weakMap.get(value)
   }
 
   // Handle Date

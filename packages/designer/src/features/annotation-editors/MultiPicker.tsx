@@ -2,7 +2,6 @@ import type {PropertyAnnotation} from '@react-form-builder/core'
 import {startCase} from '@react-form-builder/core'
 import {useMemo} from 'react'
 import {TagPicker} from 'rsuite'
-import type {ItemDataType} from 'rsuite/esm/internals/types'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import styles from './MultiPicker.module.css'
@@ -12,7 +11,7 @@ const prepareData = ({data}: PropertyAnnotation, values: string[]) => {
     return {
       value: di.value,
       label: di.label,
-    } as ItemDataType
+    }
   })
 
   values?.forEach(v => {
