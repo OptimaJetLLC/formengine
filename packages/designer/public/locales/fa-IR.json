@@ -1089,10 +1089,13 @@
   },
   "toolbar": {
     "cloneComponent": "مولفه کلون",
+    "openActions": "باز کردن کنش‌ها",
+    "nearbyTree": "نمایش اجزای نزدیک",
     "elements": "عناصر",
     "notFound": "یافت نشد",
     "removeComponent": "حذف جزء",
-    "reset": "تنظیم مجدد"
+    "reset": "تنظیم مجدد",
+    "revealInTree": "نمایش در درخت"
   },
   "tree": {
     "collapse": "فروپاشی همه",

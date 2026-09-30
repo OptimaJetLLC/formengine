@@ -1,8 +1,8 @@
 import type {ComponentData} from '@react-form-builder/core'
-import {namedObserver, useComponentData} from '@react-form-builder/core'
+import {cfUncoverOverflowScrollbar, namedObserver, useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
-import type {ComponentProps, HTMLAttributes, RefCallback} from 'react'
-import {forwardRef, useCallback, useMemo} from 'react'
+import type {ComponentProps, CSSProperties, HTMLAttributes, RefCallback} from 'react'
+import {forwardRef, useCallback, useMemo, useState} from 'react'
 import {useDragLayer, useDrop} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AcceptDrop, ItemType} from '../../../consts'
@@ -11,6 +11,8 @@ import {useDragWithPreview} from '../hooks/useDragWithPreview'
 import styles from './Draggable.module.css'
 import {DragPreview} from './DragPreview'
 import {DropZone} from './DropZone'
+import {dragOverlayAttr, uncoverInsetPx, uncoverInsetVar, uncoverOverflowAttr} from './overlayRoot'
+import {Toolbar} from './Toolbar'
 
 const DefaultContainer = forwardRef<HTMLDivElement, ComponentProps<'div'>>((props, ref) => (
   <div ref={ref} {...props} className={cx(styles.defaultContainer, props.className)} />
@@ -58,6 +60,7 @@ const useDnd = (isRoot?: boolean): [DndState, RefCallback<HTMLElement>] => {
 interface DraggableProps extends HTMLAttributes<HTMLDivElement> {
   isInner?: boolean
   isTree?: boolean
+  showToolbar?: boolean
 }
 
 const useDirection = () => {
@@ -67,7 +70,7 @@ const useDirection = () => {
   return ['row', 'row-reverse', 'initial'].includes(direction as string)
 }
 
-const RawDraggable = ({children, isInner, className, isTree, ...props}: DraggableProps) => {
+const RawDraggable = ({children, isInner, className, isTree, showToolbar, ...props}: DraggableProps) => {
   const {key, isRoot, model, parent} = useComponentData()
   const isContainer = model.kind === 'container'
   const direction = useDirection()
@@ -77,7 +80,13 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
   const afterChildren = isDragging && !isRoot
   const beforeChildren = isDragging && !isRoot && !isInner
   const showContainerHint = isContainer && isDragging && !isRoot && !isTree
+  const uncoverOverflow = model.isFeatureEnabled(cfUncoverOverflowScrollbar)
   const Container = isContainer && !isTree ? model.component : DefaultContainer
+
+  const [overlay, setOverlay] = useState<HTMLDivElement | null>(null)
+  const setOverlayRef = useCallback((node: HTMLDivElement | null) => {
+    setOverlay(node)
+  }, [])
 
   const clsName = useMemo(() => {
     const parentType = parent ? `parent-type-${parent?.model.type}` : ''
@@ -94,22 +103,49 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
         isDraggingCurrent,
         horizontal,
         isTree,
+        [styles.uncoverOverflow]: uncoverOverflow,
       },
       parentType,
       type
     )
-  }, [className, horizontal, isActive, isContainer, isDragging, isDraggingCurrent, isInner, isRoot, isTree, model.type, parent])
+  }, [
+    className,
+    horizontal,
+    isActive,
+    isContainer,
+    isDragging,
+    isDraggingCurrent,
+    isInner,
+    isRoot,
+    isTree,
+    model.type,
+    parent,
+    uncoverOverflow,
+  ])
+
+  const uncoverStyle = useMemo(
+    () => (uncoverOverflow ? ({[uncoverInsetVar]: `${uncoverInsetPx}px`} as CSSProperties) : undefined),
+    [uncoverOverflow]
+  )
+  const containerStyle = useMemo(() => {
+    const base = typeof props.style === 'object' && props.style ? props.style : undefined
+    if (!base && !uncoverStyle) return undefined
+    return {...base, ...uncoverStyle}
+  }, [props.style, uncoverStyle])
+  const uncoverAttrs = useMemo(() => (uncoverOverflow ? {[uncoverOverflowAttr]: ''} : undefined), [uncoverOverflow])
+  const overlayAttrs = useMemo(() => ({[dragOverlayAttr]: ''}), [])
 
   return (
     <>
       {isDraggingCurrent && <DragPreview className={styles.dragPreview}>{key}</DragPreview>}
-      <Container ref={dnd} className={clsName} {...props}>
+      <Container className={clsName} {...props} {...uncoverAttrs} style={containerStyle} ref={dnd}>
         {showContainerHint && <label className={styles.containerLabel}>{key}</label>}
-        {!isTree && <div className={styles.draggableBody} />}
+        {!isTree && <div ref={setOverlayRef} className={styles.draggableBody} {...overlayAttrs} />}
         {beforeChildren && <DropZone />}
         {children}
         {afterChildren && <DropZone isAfter={!isInner && true} isInner={isInner} />}
       </Container>
+      {showToolbar && overlay && <Toolbar anchor={overlay} />}
     </>
   )
 }

@@ -1089,10 +1089,13 @@
   },
   "toolbar": {
     "cloneComponent": "Klonska komponenta",
+    "openActions": "Otvori radnje",
+    "nearbyTree": "Prikaži obližnje komponente",
     "elements": "Elementi",
     "notFound": "Nije pronađeno",
     "removeComponent": "Uklonite komponentu",
-    "reset": "Resetovanje"
+    "reset": "Resetovanje",
+    "revealInTree": "Prikaži u stablu"
   },
   "tree": {
     "collapse": "Srušite sve",

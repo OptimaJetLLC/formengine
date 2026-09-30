@@ -43,5 +43,8 @@
   "files": [
     "dist/*",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "clsx": "^2.1.1"
+  }
 }

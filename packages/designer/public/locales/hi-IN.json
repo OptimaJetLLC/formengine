@@ -1089,10 +1089,13 @@
   },
   "toolbar": {
     "cloneComponent": "क्लोन घटक",
+    "openActions": "क्रियाएँ खोलें",
+    "nearbyTree": "आस-पास के घटक दिखाएँ",
     "elements": "एलिमेंट्स",
     "notFound": "नहीं मिला",
     "removeComponent": "कॉम्पोनेन्ट हटाएं",
-    "reset": "रीसेट करें"
+    "reset": "रीसेट करें",
+    "revealInTree": "ट्री में दिखाएँ"
   },
   "tree": {
     "collapse": "सभी को संकुचित करें",

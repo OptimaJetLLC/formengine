@@ -1089,10 +1089,13 @@
   },
   "toolbar": {
     "cloneComponent": "克隆组件",
+    "openActions": "打开操作",
+    "nearbyTree": "显示附近的组件",
     "elements": "元素",
     "notFound": "未找到",
     "removeComponent": "移除组件",
-    "reset": "重置"
+    "reset": "重置",
+    "revealInTree": "在树中显示"
   },
   "tree": {
     "collapse": "全部折叠",

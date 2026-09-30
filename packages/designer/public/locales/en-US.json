@@ -968,7 +968,10 @@
     "notFound": "Not found",
     "reset": "Reset",
     "cloneComponent": "Clone component",
-    "removeComponent": "Remove component"
+    "nearbyTree": "Show nearby components",
+    "openActions": "Open actions",
+    "removeComponent": "Remove component",
+    "revealInTree": "Reveal in tree"
   },
   "presetComponent": {
     "name": "Name",

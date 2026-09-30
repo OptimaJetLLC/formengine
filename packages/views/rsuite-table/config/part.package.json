@@ -8,6 +8,7 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.js"
     },
-    "./schemas/rsuite-table-components.schema.json": "./dist/schemas/rsuite-table-components.schema.json"
+    "./schemas/rsuite-table-components.schema.json": "./dist/schemas/rsuite-table-components.schema.json",
+    "./assets/styles.css": "./dist/assets/styles.css"
   }
 }

@@ -90,12 +90,14 @@ export {
   cfDisableStyleProperties,
   cfDisableStyles,
   cfDisableStylesForClassNameEditor,
+  cfDisableToolbarAdd,
   cfDisableTooltipProperties,
   cfDisableWrapperStyles,
   cfEnableInlineStylesEditor,
   cfHideFromComponentPalette,
   cfNonVisual,
   cfSingleton,
+  cfUncoverOverflowScrollbar,
 } from './features/define/utils/integratedComponentFeatures'
 export {Meta} from './features/define/utils/Meta'
 export {Model} from './features/define/utils/Model'

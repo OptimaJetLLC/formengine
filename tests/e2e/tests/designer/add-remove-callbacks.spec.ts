@@ -47,7 +47,8 @@ test.describe(
         .first()
         .click({force: true})
 
-      await expect(page.getByText('rsCalendar1 (RsCalendar)').first()).toBeVisible()
+      await expect(page.getByTestId('rsCalendar1-editable-wrapper')).toBeVisible()
+      await expect(page.locator('[data-fe-toolbar-ready]').getByText('rsCalendar1')).toBeVisible()
 
       const addCalls = await page.evaluate(() => window.__formBuilderAddCalls ?? [])
       expect(addCalls.length).toBeGreaterThanOrEqual(1)
@@ -93,11 +94,16 @@ test.describe(
         .hover()
       await page.mouse.up()
 
-      await expect(page.getByText('rsCalendar1 (RsCalendar)').first()).toBeVisible()
+      await expect(page.getByTestId('rsCalendar1-editable-wrapper')).toBeVisible()
 
-      await page.getByText('rsCalendar1 (RsCalendar)').first().hover()
-      await expect(page.locator('.Toolbar .remove-button').first()).toBeVisible()
-      await page.locator('.Toolbar .remove-button').first().click({force: true})
+      await page.getByTestId('rsCalendar1-editable-wrapper').click({force: true})
+      const toolbar = page.locator('[data-fe-toolbar]')
+      await expect(toolbar).toHaveAttribute('data-fe-toolbar-ready', '')
+      const actionsButton = toolbar.getByTestId('toolbar-actions-button')
+      if ((await actionsButton.count()) > 0) await actionsButton.hover()
+      const removeButton = toolbar.getByTestId('toolbar-remove-button')
+      await expect(removeButton).toBeVisible()
+      await removeButton.dispatchEvent('click')
 
       const removeCalls = await page.evaluate(() => window.__formBuilderRemoveCalls ?? [])
       expect(removeCalls.length).toBeGreaterThanOrEqual(1)

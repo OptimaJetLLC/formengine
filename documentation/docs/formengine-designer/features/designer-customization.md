@@ -153,14 +153,16 @@ const FormBuilderApp = () => {
 | 15 | Component_Toolbar_Items                 | FE_Component_Toolbar_Items                 |
 | 16 | Component_Toolbar_Title                 | FE_Component_Toolbar_Title                 |
 | 17 | Component_Toolbar_AddButton             | FE_Component_Toolbar_AddButton             |
-| 18 | Component_Toolbar_CloneButton           | FE_Component_Toolbar_CloneButton           |
-| 19 | Component_Toolbar_PresetComponentButton | FE_Component_Toolbar_PresetComponentButton |
-| 20 | Component_Toolbar_RemoveButton          | FE_Component_Toolbar_RemoveButton          |
-| 21 | ToggleModeButton                        | FE_ToggleModeButton                        |
-| 22 | ResolutionSelect                        | FE_ResolutionSelect                        |
-| 23 | LocalizationSelect                      | FE_LocalizationSelect                      |
-| 24 | JsonViewButton                          | FE_JsonViewButton                          |
-| 25 | ToggleThemeButton                       | FE_ToggleThemeButton                       |
+| 18 | Component_Toolbar_NearbyTreeButton      | FE_Component_Toolbar_NearbyTreeButton      |
+| 19 | Component_Toolbar_CloneButton           | FE_Component_Toolbar_CloneButton           |
+| 20 | Component_Toolbar_PresetComponentButton | FE_Component_Toolbar_PresetComponentButton |
+| 21 | Component_Toolbar_RemoveButton          | FE_Component_Toolbar_RemoveButton          |
+| 22 | Component_Toolbar_RevealInTreeButton    | FE_Component_Toolbar_RevealInTreeButton    |
+| 23 | ToggleModeButton                        | FE_ToggleModeButton                        |
+| 24 | ResolutionSelect                        | FE_ResolutionSelect                        |
+| 25 | LocalizationSelect                      | FE_LocalizationSelect                      |
+| 26 | JsonViewButton                          | FE_JsonViewButton                          |
+| 27 | ToggleThemeButton                       | FE_ToggleThemeButton                       |
 
 ![Customization 02](/assets/customization/customization-02.png)
 

@@ -1,8 +1,9 @@
 import {ComponentTree, findTreeElementDepth, getVisualChildren, namedObserver, useComponentData} from '@react-form-builder/core'
 import {ArrowDownLine as ArrowDownLineIcon, ArrowRightLine as ArrowRightLineIcon, Icon} from '@rsuite/icons'
 import cx from 'clsx'
-import type {ComponentType, CSSProperties} from 'react'
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
+import type {ComponentType, CSSProperties, MouseEvent} from 'react'
+import {useCallback, useEffect, useMemo, useState} from 'react'
+import {useDragLayer} from 'react-dnd'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {useComputed} from '../../../../../utils/useComputed'
@@ -27,10 +28,12 @@ interface TreeNodeProps {
 
 const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
   const componentData = useComponentData()
-  const {expanded: expandedNodes, viewer} = useBuilderStore()
-  const [hovered, setHovered] = useState(false)
+  const {expanded: expandedNodes, viewer, leftPanel} = useBuilderStore()
+  const {treeReveal} = leftPanel
   const [{selected}] = useSelection()
-  const ref = useRef<HTMLDivElement>(null)
+  const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
+  const [hovered, setHovered] = useState(false)
+  const [row, setRow] = useState<HTMLDivElement | null>(null)
 
   const findDepth = useCallback(
     () => findTreeElementDepth(viewer.form.componentTree, componentData) || 0,
@@ -47,14 +50,19 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
     }
   }, [componentData, expandedNodes])
 
-  const onMouseEnter = useCallback(() => setHovered(true), [])
-  const onMouseLeave = useCallback(() => setHovered(false), [])
-
   useEffect(() => {
-    if (selected && ref.current) {
-      scrollIntoView(ref.current, {scrollMode: 'if-needed'})
+    if (treeReveal?.key !== componentData.key || !row) {
+      return
     }
-  }, [selected])
+    scrollIntoView(row, {scrollMode: 'if-needed'})
+    leftPanel.clearTreeReveal(treeReveal.id)
+  }, [componentData.key, leftPanel, row, treeReveal])
+
+  const showToolbar = useCallback(() => setHovered(true), [])
+  const hideToolbar = useCallback((event: MouseEvent<HTMLDivElement>) => {
+    if (event.relatedTarget instanceof Node && event.currentTarget.contains(event.relatedTarget)) return
+    setHovered(false)
+  }, [])
 
   const visualChildren = getVisualChildren(componentData)
   const withChildren = visualChildren.length > 0
@@ -65,17 +73,18 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
   return (
     <>
       <div
-        ref={ref}
-        className={cx(styles.nodeItem, className, hovered && styles.hovered, selected && styles.selected)}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+        ref={setRow}
+        className={cx(styles.nodeItem, className, selected && styles.selected)}
+        onMouseEnter={showToolbar}
+        onMouseMove={showToolbar}
+        onMouseLeave={hideToolbar}
       >
         <div className={styles.indent} style={indentStyle}>
           {withChildren && <Icon onClick={toggleExpand} as={iconAs} className={styles.icon} />}
         </div>
         <div data-testid={componentData.key}>{componentData.key}</div>
         <label>{componentData.model.name}</label>
-        {hovered && <Toolbar compact />}
+        {hovered && !isDragging && row && <Toolbar compact anchor={row} />}
       </div>
       {expanded && withChildren && <ComponentTree data={visualChildren} componentDataViewer={componentDataViewer} />}
     </>

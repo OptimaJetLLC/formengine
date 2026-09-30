@@ -1,8 +1,38 @@
 .draggableBody {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 7;
+}
+
+.uncoverOverflow {
+  z-index: 8;
+  isolation: isolate;
+}
+
+.uncoverOverflow > .draggableBody {
+  z-index: 8;
+  inset-block: 0 var(--fe-uncover-inset, 16px);
+  inset-inline: 0;
+}
+
+.uncoverOverflow .container > .draggableBody {
+  z-index: 9;
+}
+
+/* Cell chrome stays above the column. A component inside the cell stays above that chrome. */
+.uncoverOverflow :global(.type-RsCell) > .draggableBody,
+.uncoverOverflow :global(.type-RsHeaderCell) > .draggableBody {
+  z-index: 11;
+}
+
+.uncoverOverflow :global(.type-RsCell) .container > .draggableBody,
+.uncoverOverflow :global(.type-RsHeaderCell) .container > .draggableBody {
+  z-index: 13;
+}
+
+.uncoverOverflow .container .container:global(.hovered),
+.uncoverOverflow .container .container:global(.selected) {
+  z-index: 12;
 }
 
 .dragPreview {
@@ -43,14 +73,35 @@
   opacity: 0.4;
 }
 
+.container:global(.hovered),
+.container:global(.selected) {
+  outline: none !important;
+}
+
 .container:global(.hovered) {
-  outline: 2px dashed #3498ff !important;
   cursor: pointer !important;
 }
 
 .container:global(.selected) {
-  outline: 2px solid #3498ff !important;
   cursor: move !important;
+}
+
+.container:global(.hovered)::after,
+.container:global(.selected)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 11;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.container:global(.hovered)::after {
+  border: 2px dashed #3498ff;
+}
+
+.container:global(.selected)::after {
+  border: 2px solid #3498ff;
 }
 
 .container:not(:global(.isRoot)):not(:global(.isTree)):global(.isActive):global(.isContainer) {

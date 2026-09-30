@@ -5,23 +5,22 @@ import * as faSliders from '@fortawesome/free-solid-svg-icons/faSlidersH.js'
 import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
-import {useCallback, useMemo, useState} from 'react'
+import {useCallback, useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {CanAddComponentProvider} from '../../../../utils/AddComponentContext'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
-import {isDesignerLocalStorageEnabled} from '../../../../utils/isDesignerLocalStorageEnabled'
 import {Rows} from '../../../components/Containers'
 import {CustomizableTab, SNav} from '../../../components/NavIconItem'
 import {customizable} from '../../../customization/customizable'
 import type {CustomizableKey} from '../../../customization/types'
 import {ComponentBar} from '../../ComponentBar/ComponentBar'
 import type {DraggableProps} from '../../ComponentBar/DraggableProps'
+import type {LeftPanelSection} from '../leftPanelTab'
+import {defaultLeftPanelTab} from '../leftPanelTab'
 import {FormList} from './FormList'
 import {FormSettings} from './FormSettings'
 import styles from './LeftPanelNav.module.css'
 import {Tree} from './Tree'
-
-type LeftPanelSection = 'tree' | 'forms' | 'components' | 'settings'
 
 const Nav = customizable('LeftPanel_Nav', SNav)
 const NavContent = customizable('LeftPanel_Content', Rows)
@@ -71,32 +70,17 @@ const Tab = ({section, ...rest}: Record<string, unknown> & {section: keyof typeo
   return <CustomizableTab eventKey={section} customizableKey={key} title={title} icon={icon} props={props} />
 }
 
-const localStorageLeftPanelActiveTabKey = 'leftPanelActiveTab'
-
-const saveActiveTab = (tabName: LeftPanelSection) => {
-  if (isDesignerLocalStorageEnabled()) {
-    localStorage.setItem(localStorageLeftPanelActiveTabKey, tabName)
-  }
-}
-
-const defaultTab = 'components'
-
-const getActiveTab = () => {
-  const value = isDesignerLocalStorageEnabled()
-    ? ((localStorage.getItem(localStorageLeftPanelActiveTabKey) as LeftPanelSection) ?? defaultTab)
-    : defaultTab
-  return tabsProps[value] ? value : defaultTab
-}
-
 const RawLeftPanelNav = () => {
-  const {formStorageEnabled} = useBuilderStore()
-  const [activeTab, setActiveTab] = useState<LeftPanelSection>(getActiveTab())
-  const activeKey = activeTab === 'forms' && !formStorageEnabled ? defaultTab : activeTab
+  const builderStore = useBuilderStore()
+  const {formStorageEnabled, leftPanel} = builderStore
+  const activeKey = leftPanel.activeTab === 'forms' && !formStorageEnabled ? defaultLeftPanelTab : leftPanel.activeTab
 
-  const handleTabChange = useCallback((tab: LeftPanelSection) => {
-    setActiveTab(tab)
-    saveActiveTab(tab)
-  }, [])
+  const handleTabChange = useCallback(
+    (tab: LeftPanelSection) => {
+      builderStore.leftPanel.setActiveTab(tab)
+    },
+    [builderStore]
+  )
 
   return (
     <>

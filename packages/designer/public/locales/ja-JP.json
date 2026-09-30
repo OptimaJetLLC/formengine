@@ -1089,10 +1089,13 @@
   },
   "toolbar": {
     "cloneComponent": "クローン・コンポーネント",
+    "openActions": "操作を開く",
+    "nearbyTree": "近くのコンポーネントを表示",
     "elements": "エレメント",
     "notFound": "見つかりません",
     "removeComponent": "コンポーネントを削除",
-    "reset": "リセット"
+    "reset": "リセット",
+    "revealInTree": "ツリーで表示"
   },
   "tree": {
     "collapse": "すべて折りたたむ",

@@ -1,5 +1,6 @@
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faBookmark from '@fortawesome/free-regular-svg-icons/faBookmark.js'
+import cx from 'clsx'
 import type {MouseEventHandler} from 'react'
 import {useCallback} from 'react'
 import {InputPicker} from 'rsuite'
@@ -8,6 +9,7 @@ import {Hinted} from '../../../../annotation-editors/Hinted'
 import {FaIcon} from '../../../../components/Icons'
 import {useTranslationPart} from '../../../../localization/hooks'
 import type {PromptDialogProps} from '../../../../ui/PromptDialogProps'
+import toolbarStyles from './Toolbar.module.css'
 
 /**
  * Button for create the preset components.
@@ -46,7 +48,15 @@ export const PresetComponentButton = () => {
 
   return (
     <Hinted hint={t('createPreset')} placement={'autoVertical'}>
-      <FaIcon onClick={onPreset} icon={faBookmark as unknown as IconDefinition} className={'create-preset-button'} />
+      <button
+        type="button"
+        className={cx(toolbarStyles.actionButton, 'create-preset-button')}
+        data-testid="toolbar-create-preset-button"
+        aria-label={t('createPreset')}
+        onClick={onPreset}
+      >
+        <FaIcon icon={faBookmark as unknown as IconDefinition} className={'create-preset-button'} />
+      </button>
     </Hinted>
   )
 }

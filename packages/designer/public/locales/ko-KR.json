@@ -1089,10 +1089,13 @@
   },
   "toolbar": {
     "cloneComponent": "클론 구성 요소",
+    "openActions": "작업 열기",
+    "nearbyTree": "주변 구성 요소 표시",
     "elements": "엘리먼트",
     "notFound": "찾을 수 없음",
     "removeComponent": "구성 요소 제거",
-    "reset": "초기화"
+    "reset": "초기화",
+    "revealInTree": "트리에 표시"
   },
   "tree": {
     "collapse": "모두 축소",

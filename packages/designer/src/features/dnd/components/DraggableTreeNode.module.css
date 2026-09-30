@@ -1,3 +1,11 @@
 .draggableTreeNode {
-  width: 100%;
+  min-width: 100%;
+  width: max-content;
+}
+
+.row {
+  box-sizing: border-box;
+  min-width: 100%;
+  width: max-content;
+  white-space: nowrap;
 }

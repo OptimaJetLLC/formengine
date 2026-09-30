@@ -26,6 +26,102 @@ The table consists of several types of components:
 - _Header cell_ is used to display the header of a table cell.
 - _Cell_ displays the contents of the column.
 
+## Installation
+
+Use the following command to install the package:
+
+```bash
+npm install @react-form-builder/components-rsuite-table
+```
+
+Then import the stylesheet. This package does not load CSS automatically:
+
+```typescript
+import '@react-form-builder/components-rsuite-table/assets/styles.css'
+```
+
+## Connection to FormBuilder component
+
+The example below assumes that you also have the components from the [@react-form-builder/components-rsuite](/components-library/) package
+installed and the table components are additionally attached:
+
+```tsx {3,5,9}
+import {rSuiteComponents} from '@react-form-builder/components-rsuite'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table'
+
+import '@react-form-builder/components-rsuite-table/assets/styles.css'
+
+const components = [
+  ...rSuiteComponents,
+  ...rSuiteTableComponents,
+].map((c) => c.build())
+const builderView = new BuilderView(components)
+
+function App() {
+  return <FormBuilder view={builderView}/>
+}
+```
+
+## Connect to FormViewer component
+
+The example below shows how to connect the table components along with the [@react-form-builder/components-rsuite](/components-library/)
+components:
+
+```tsx {1,5,9}
+import {tableModels} from '@react-form-builder/components-rsuite-table'
+import {rSuiteComponents} from '@react-form-builder/components-rsuite'
+import {FormViewer, View} from '@react-form-builder/core'
+
+import '@react-form-builder/components-rsuite-table/assets/styles.css'
+
+const view = new View([
+  ...rSuiteComponents.map((c) => c.build().model),
+  ...tableModels,
+])
+
+const form = `{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "table",
+        "type": "RsTable",
+        "props": {
+          "height": {"value": 200},
+          "data": {"value": [{"name": "Alex"}]}
+        },
+        "children": [
+          {
+            "key": "nameColumn",
+            "type": "RsColumn",
+            "props": {"width": {"value": 180}},
+            "children": [
+              {
+                "key": "nameHeader",
+                "type": "RsHeaderCell",
+                "props": {"content": {"value": "Name"}}
+              },
+              {
+                "key": "nameCell",
+                "type": "RsCell",
+                "props": {"dataKey": {"value": "name"}}
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}`
+
+function App() {
+  return <FormViewer view={view} getForm={() => form}/>
+}
+```
+
 ## Using Table component
 
 The table component differs from many other components in that it has an array of objects as a value. By default, the column headings and

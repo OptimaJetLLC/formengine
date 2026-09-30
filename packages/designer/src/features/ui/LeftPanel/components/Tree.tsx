@@ -39,7 +39,9 @@ const RawTree = (props: ComponentProps<typeof Rows>) => {
         </Button>
       </Columns>
       <div className={styles.treeContainer}>
-        <ComponentTree data={screenTree} componentDataViewer={DraggableTreeNode} />
+        <div className={styles.tree}>
+          <ComponentTree data={screenTree} componentDataViewer={DraggableTreeNode} />
+        </div>
         {nonVisual.length > 0 && (
           <div className={styles.nonVisualGroup} data-testid="non-visual-tree-group">
             <div className={styles.nonVisualGroupTitle}>{t('tree.nonVisual')}</div>

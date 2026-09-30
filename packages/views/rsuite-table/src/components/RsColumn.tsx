@@ -3,6 +3,7 @@ import type {ColumnProps} from 'rsuite'
 import {Table} from 'rsuite'
 import {nonNegNumber} from './commonProperties'
 import {getRsColumnComponentStore} from './getRsColumnComponentStore'
+import style from './Table.module.css'
 import {tableComponentsCategory} from './tableComponentsCategory'
 import {rsColumnTypeName} from './typeNames'
 
@@ -17,7 +18,7 @@ const ColumnIcon = () => (
 const {Column} = Table
 
 const RsBuilderColumn = (props: ColumnProps<any>) => {
-  return <div>{props.children}</div>
+  return <div className={style.column}>{props.children}</div>
 }
 
 const RsColumn = (props: ColumnProps<any>) => {

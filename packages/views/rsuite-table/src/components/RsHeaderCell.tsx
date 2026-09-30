@@ -1,6 +1,8 @@
 import {define, stringNode, useBuilderComponent} from '@react-form-builder/core'
+import cx from 'clsx'
 import {Table} from 'rsuite'
 import type {HeaderCellProps, RowDataType, RowKeyType} from 'rsuite/esm/Table'
+import style from './Table.module.css'
 import {tableComponentsCategory} from './tableComponentsCategory'
 import {rsHeaderCellTypeName} from './typeNames'
 
@@ -26,7 +28,7 @@ const HeaderCellIcon = () => (
 const {HeaderCell} = Table
 
 const RsBuilderHeaderCell = (props: HeaderCellProps<RowDataType, RowKeyType>) => {
-  return <div className={props.className}>{props.children}</div>
+  return <div className={cx(props.className, style.header)}>{props.children}</div>
 }
 
 const RsViewerHeaderCell = (props: HeaderCellProps<RowDataType, RowKeyType>) => {

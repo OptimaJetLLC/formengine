@@ -5,14 +5,18 @@ import type {WhisperInstance} from 'rsuite'
 import {ButtonGroup, IconButton, Popover, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import type {InsertPosition} from '../../../../../utils/types'
+import {Hinted} from '../../../../annotation-editors/Hinted'
 import {useTranslationPart} from '../../../../localization/hooks'
 import styles from './AddButton.module.css'
+import {overlayRoot} from './overlayRoot'
 
 const RawAddButton = () => {
   const builderStore = useBuilderStore()
   const target = useComponentData()
   const t = useTranslationPart('componentToolbar')
   const whisperRef = useRef<WhisperInstance>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const hint = t('add')
 
   const handleClick = useCallback(
     (position: InsertPosition) => {
@@ -33,6 +37,8 @@ const RawAddButton = () => {
   const handleClickBefore = useCallback(() => handleClick('before'), [handleClick])
   const handleClickAfter = useCallback(() => handleClick('after'), [handleClick])
 
+  const getRoot = useCallback(() => overlayRoot(triggerRef.current), [])
+
   const popover = useMemo(() => {
     return (
       <Popover className={styles.popover} arrow={false}>
@@ -52,11 +58,13 @@ const RawAddButton = () => {
   }, [t, handleClickBefore, handleClickAfter, sortUpIcon, sortDownIcon])
 
   return (
-    <>
-      <Whisper placement={builderStore.isRTL ? 'right' : 'left'} speaker={popover} ref={whisperRef} enterable trigger="hover">
-        <PlusIcon className={'add-button'} />
-      </Whisper>
-    </>
+    <Whisper placement={builderStore.isRTL ? 'right' : 'left'} speaker={popover} ref={whisperRef} trigger="click" container={getRoot}>
+      <button type="button" ref={triggerRef} className={styles.trigger} aria-label={hint}>
+        <Hinted hint={hint} placement={'autoVertical'}>
+          <PlusIcon className={'add-button'} />
+        </Hinted>
+      </button>
+    </Whisper>
   )
 }
 

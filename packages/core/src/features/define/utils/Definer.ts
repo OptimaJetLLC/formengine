@@ -25,6 +25,7 @@ import {
   cfDisableStyleProperties,
   cfDisableStyles,
   cfDisableStylesForClassNameEditor,
+  cfDisableToolbarAdd,
   cfDisableTooltipProperties,
   cfDisableWrapperStyles,
   cfEnableInlineStylesEditor,
@@ -34,6 +35,7 @@ import {
   cfRequiredProperties,
   cfSingleton,
   cfSkipChildrenDuringFieldCollection,
+  cfUncoverOverflowScrollbar,
 } from './integratedComponentFeatures'
 import {Meta} from './Meta'
 import {Model} from './Model'
@@ -269,6 +271,17 @@ export class Definer<T extends object> {
   }
 
   /**
+   * Keeps the designer drag overlay off the component overflow scrollbar.
+   * Sets `--fe-uncover-inset` (default 16px) on the editable host for the overlay gap; matching view
+   * padding should use the same CSS variable.
+   * @param value true to leave the scrollbar uncovered, false otherwise.
+   * @returns the modified Definer class instance.
+   */
+  uncoverOverflowScrollbar(value = true) {
+    return this.addFeature(cfUncoverOverflowScrollbar, value)
+  }
+
+  /**
    * Hides a component from the component palette.
    * @param value true to hide the component, false otherwise.
    * @returns the modified Definer class instance.
@@ -284,6 +297,15 @@ export class Definer<T extends object> {
    */
   disableRemove(value = true) {
     return this.addFeature(cfDisableComponentRemove, value)
+  }
+
+  /**
+   * Hides the add button on the designer component toolbar.
+   * @param value true to hide the add button, false otherwise.
+   * @returns the modified Definer class instance.
+   */
+  disableToolbarAdd(value = true) {
+    return this.addFeature(cfDisableToolbarAdd, value)
   }
 
   /**

@@ -1,0 +1,82 @@
+.table {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* Match designer --fe-uncover-inset so the table overlay leaves the scrollbar free. */
+  padding-block-start: var(--fe-uncover-inset, 16px);
+  padding-block-end: var(--fe-uncover-inset, 16px);
+}
+
+.row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(8rem, 1fr);
+  align-items: stretch;
+  inline-size: max-content;
+  min-inline-size: 100%;
+  border: 1px solid var(--rs-border-primary);
+  border-inline-end: none;
+}
+
+.row > :global(.type-RsColumn),
+.row > :global(.type-RsColumnGroup) {
+  min-inline-size: 8rem;
+  min-block-size: 0;
+}
+
+:global([data-fe-uncover-overflow] .type-RsColumn > [data-fe-drag-overlay]),
+:global([data-fe-uncover-overflow] .type-RsColumnGroup > [data-fe-drag-overlay]) {
+  z-index: 10;
+}
+
+.nestedRow {
+  border: none;
+  min-inline-size: 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+
+.column > :global(.type-RsHeaderCell) {
+  flex: 0 0 auto;
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  background-color: var(--rs-bg-well);
+  border-block-end: 1px solid var(--rs-border-primary);
+  white-space: normal;
+}
+
+.column > :global(.type-RsCell) {
+  flex: 0 0 auto;
+  min-inline-size: 0;
+  min-block-size: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border-inline-end: 1px solid var(--rs-border-primary);
+}
+
+.column > :global(.type-RsColumn) {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  border-block-start: 1px solid var(--rs-border-primary);
+}
+
+.cell,
+.nested,
+.header {
+  min-inline-size: 0;
+  white-space: normal;
+}
+
+.cell {
+  display: block;
+  inline-size: 100%;
+}
+
+.cellPopover {
+  color: var(--rs-text-primary);
+}

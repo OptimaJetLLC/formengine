@@ -21,7 +21,7 @@
   margin-inline-start: 6px;
 }
 
-.nodeItem.hovered {
+.nodeItem:hover {
   background-color: var(--rs-listbox-option-selected-bg);
   cursor: pointer !important;
 }

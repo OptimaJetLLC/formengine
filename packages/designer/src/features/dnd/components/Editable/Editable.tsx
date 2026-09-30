@@ -19,7 +19,6 @@ import {useDragLayer} from 'react-dnd'
 import type {BuilderStore} from '../../../../stores/BuilderStore'
 import {Draggable} from './components/Draggable'
 import {DropZone} from './components/DropZone'
-import {Toolbar} from './components/Toolbar'
 import {ErrorBoundary} from './ErrorBoundary'
 import {useSelection} from './hooks/useSelection'
 
@@ -94,14 +93,18 @@ const RawEditable = ({children, className, ...props}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
   const {key} = useComponentData()
-  const toolbars = selected && !isDragging && <Toolbar />
   const testId = `${key}-editable-wrapper`
 
   return (
     <ErrorBoundary>
-      <Draggable data-testid={testId} {...props} {...selectionHandlers} className={cx(selectionClassName, className)}>
+      <Draggable
+        data-testid={testId}
+        {...props}
+        {...selectionHandlers}
+        showToolbar={selected && !isDragging}
+        className={cx(selectionClassName, className)}
+      >
         {children}
-        {toolbars}
       </Draggable>
     </ErrorBoundary>
   )

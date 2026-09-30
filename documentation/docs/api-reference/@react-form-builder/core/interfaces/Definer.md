@@ -170,6 +170,28 @@ the modified Definer class instance.
 
 ***
 
+### disableToolbarAdd()
+
+> **disableToolbarAdd**(`value?`): `Definer`\<`T`\>
+
+Hides the add button on the designer component toolbar.
+
+#### Parameters
+
+##### value?
+
+`boolean` = `true`
+
+true to hide the add button, false otherwise.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### eventListeners()
 
 > **eventListeners**(`eventListeners?`): `Definer`\<`T`\>
@@ -571,6 +593,30 @@ Sets the type name of the component.
 `string`
 
 the component type name.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
+### uncoverOverflowScrollbar()
+
+> **uncoverOverflowScrollbar**(`value?`): `Definer`\<`T`\>
+
+Keeps the designer drag overlay off the component overflow scrollbar.
+Sets `--fe-uncover-inset` (default 16px) on the editable host for the overlay gap; matching view
+padding should use the same CSS variable.
+
+#### Parameters
+
+##### value?
+
+`boolean` = `true`
+
+true to leave the scrollbar uncovered, false otherwise.
 
 #### Returns
 

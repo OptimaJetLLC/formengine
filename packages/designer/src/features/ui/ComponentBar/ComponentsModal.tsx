@@ -23,14 +23,11 @@ const RawComponentsModal = () => {
 
   const onAdd = useCallback(
     (source: ComponentData) => {
-      if (componentsModalState.opened) {
-        closeModal()
-        componentsModalState.onSelect(source)
-      }
+      closeModal()
+      componentsModalState.onSelect(source)
     },
     [closeModal, componentsModalState]
   )
-
   return (
     <Modal className={styles.modal} open={componentsModalState.opened} onClose={closeModal} size={'lg'}>
       <Modal.Header>

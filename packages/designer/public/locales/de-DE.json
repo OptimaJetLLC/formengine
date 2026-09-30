@@ -1089,10 +1089,13 @@
   },
   "toolbar": {
     "cloneComponent": "Komponente klonen",
+    "openActions": "Aktionen öffnen",
+    "nearbyTree": "Benachbarte Komponenten anzeigen",
     "elements": "Elemente",
     "notFound": "Nicht gefunden",
     "removeComponent": "Komponente entfernen",
-    "reset": "Zurücksetzen"
+    "reset": "Zurücksetzen",
+    "revealInTree": "Im Baum anzeigen"
   },
   "tree": {
     "collapse": "Alles zusammenklappen",

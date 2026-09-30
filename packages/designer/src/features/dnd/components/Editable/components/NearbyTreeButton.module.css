@@ -1,0 +1,62 @@
+.popover {
+  padding: 6px !important;
+  border-radius: 8px !important;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--rs-primary-500);
+  outline-offset: 2px;
+}
+
+.tree {
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  max-width: 240px;
+  max-height: 240px;
+  overflow: auto;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding-block: 4px;
+  padding-inline-end: 8px;
+  padding-inline-start: calc(8px + (var(--nearby-tree-depth, 0) * 12px));
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--rs-text-primary);
+  text-align: start;
+}
+
+.item:hover {
+  background-color: var(--rs-listbox-option-hover-bg);
+}
+
+.item.current {
+  background-color: var(--rs-listbox-option-selected-bg);
+  color: var(--rs-listbox-option-selected-text);
+}
+
+.item .type {
+  opacity: 0.4;
+  margin-inline-start: 6px;
+  pointer-events: none;
+}

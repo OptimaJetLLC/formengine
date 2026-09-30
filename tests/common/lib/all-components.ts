@@ -4,6 +4,7 @@ import {googleMapComponent} from '@react-form-builder/components-google-map'
 import {printComponents} from '@react-form-builder/components-print'
 import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
+import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent} from '@react-form-builder/components-signature'
 import {ComponentStore, definePreset} from '@react-form-builder/core'
 import initialPresets from './designer/components/preset-components.json'
@@ -19,6 +20,7 @@ const presets = initialPresets.map(preset => {
 
 let allComponents = [
   ...rSuiteComponents,
+  ...rSuiteTableComponents,
   ...antdComponents,
   ...presets,
   throwErrorComponent,

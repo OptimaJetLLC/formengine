@@ -21,6 +21,7 @@ import {createElement, useMemo} from 'react'
 import {Table} from 'rsuite'
 import {createComponentStore} from './createComponentStore'
 import {getRsColumnComponentStore} from './getRsColumnComponentStore'
+import style from './Table.module.css'
 import {tableComponentsCategory} from './tableComponentsCategory'
 import {rsCellTypeName, rsColumnGroupTypeName, rsColumnTypeName, rsHeaderCellTypeName, rsTableTypeName} from './typeNames'
 
@@ -117,12 +118,12 @@ class TableColumns {
   }
 }
 
-const rsBuilderTableStyle = {
-  display: 'flex',
-}
-
 const RsBuilderTable = (props: RsTableProps) => {
-  return <div style={rsBuilderTableStyle}>{props.children as ReactNode}</div>
+  return (
+    <div className={style.table}>
+      <div className={style.row}>{props.children as ReactNode}</div>
+    </div>
+  )
 }
 
 const RsViewerTable = (props: RsTableProps) => {
@@ -187,4 +188,5 @@ export const rsTable = define(RsTable, rsTableTypeName)
     wordWrap: oneOf('break-all', 'break-word', 'keep-all').withEditorProps({creatable: false}),
   })
   .skipChildrenDuringFieldCollection()
+  .uncoverOverflowScrollbar()
   .overrideEventHandlers({})

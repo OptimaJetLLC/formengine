@@ -1089,10 +1089,13 @@
   },
   "toolbar": {
     "cloneComponent": "مكون استنساخ",
+    "openActions": "فتح الإجراءات",
+    "nearbyTree": "عرض المكونات المجاورة",
     "elements": "العناصر",
     "notFound": "لم يتم العثور عليها",
     "removeComponent": "إزالة المكون",
-    "reset": "إعادة الضبط"
+    "reset": "إعادة الضبط",
+    "revealInTree": "عرض في الشجرة"
   },
   "tree": {
     "collapse": "طي الكل",

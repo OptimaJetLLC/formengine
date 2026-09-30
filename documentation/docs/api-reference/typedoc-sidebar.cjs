@@ -2276,6 +2276,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfDisableToolbarAdd",
+              label: "cfDisableToolbarAdd"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/cfDisableTooltipProperties",
               label: "cfDisableTooltipProperties"
             },
@@ -2303,6 +2308,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/variables/cfSingleton",
               label: "cfSingleton"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfUncoverOverflowScrollbar",
+              label: "cfUncoverOverflowScrollbar"
             },
             {
               type: "doc",

@@ -27,6 +27,6 @@ test(
       .hover()
     await page.mouse.up()
 
-    await expect(page.locator('.FE_Component_Toolbar').filter({hasText: /^rsCalendar1 \(RsCalendar\)$/})).toBeVisible()
+    await expect(page.locator('.FE_Component_Toolbar').filter({hasText: /^rsCalendar1$/})).toBeVisible()
   }
 )

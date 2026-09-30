@@ -1,8 +1,10 @@
 import {CellInfoContextProvider, define, node, string, useBuilderComponent} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {ReactNode} from 'react'
-import {useMemo} from 'react'
+import {Children, useMemo} from 'react'
 import type {CellProps} from 'rsuite'
-import {Table} from 'rsuite'
+import {Popover, Table, Whisper} from 'rsuite'
+import style from './Table.module.css'
 import {tableComponentsCategory} from './tableComponentsCategory'
 import {rsCellTypeName} from './typeNames'
 
@@ -16,11 +18,19 @@ const CellIcon = () => (
 const {Cell} = Table
 
 const RsBuilderCell = (props: CellProps<Record<string, unknown>>) => {
+  const speaker = useMemo(
+    () => <Popover className={style.cellPopover}>{`Cell dataKey: ${props.dataKey ?? 'not defined'}`}</Popover>,
+    [props.dataKey]
+  )
+
   return (
-    <div className={props.className}>
-      <span>{`Cell dataKey: '${props.dataKey ?? 'not defined'}'`}</span>
-      <div>{props.children}</div>
-    </div>
+    <Whisper placement="top" trigger="hover" speaker={speaker}>
+      <div className={cx(props.className, style.cell)}>
+        {Children.map(props.children, child => (
+          <div className={style.nested}>{child}</div>
+        ))}
+      </div>
+    </Whisper>
   )
 }
 

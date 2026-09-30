@@ -43,6 +43,7 @@ import type {FormBuilderI18nData} from '../features/localization/FormBuilderLang
 import {builtInLanguages, loadTranslation, resolveBuilderUiLanguage} from '../features/localization/languageUtils'
 import {BuilderPresetComponentOptions} from '../features/preset-component/BuilderPresetComponentOptions'
 import {removePresetLocalization} from '../features/preset-component/removePresetLocalization'
+import {LeftPanelChrome} from '../features/ui/LeftPanel/LeftPanelChrome'
 import type {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
 import {determineTheme} from '../utils/determineTheme'
@@ -369,6 +370,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   readonly formStorageEnabled: boolean
   readonly selected = new Set<ComponentData>()
   readonly expanded = new Set<ComponentData>()
+  readonly leftPanel = new LeftPanelChrome(this)
   private readonly formStorage: CachedFormStorage
   readonly #props: Readonly<FormBuilderProps>
   readonly undoer: BuilderUndoer
@@ -397,6 +399,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
         builderMode: true,
         viewMode: true,
         openedPanels: true,
+        leftPanel: false,
         changeBuilderMode: action,
       },
       {name: nameObservable('BuilderStore')}
@@ -1073,17 +1076,13 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
 
   /**
    * Expands all the parents of a component in the form builder's component tree.
-   * @param target the expanded component.
-   * @param componentTree the initial node of the component tree.
-   * @returns true if at least one component has been marked as expanded,
-   * or if the beginning of the tree matches the component's key, undefined otherwise.
+   * @param target the component whose ancestors should be expanded.
    */
-  expandParents(target: ComponentData, componentTree: ComponentData = this.viewer.form.componentTree) {
-    if (!componentTree.children?.length) return componentTree.key === target.key
-
-    if (componentTree.children.some(child => this.expandParents(target, child))) {
-      this.expanded.add(componentTree)
-      return true
+  expandParents(target: ComponentData) {
+    let current = target.parent
+    while (current) {
+      this.expanded.add(current)
+      current = current.parent
     }
   }
 

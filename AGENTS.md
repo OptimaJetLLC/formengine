@@ -56,10 +56,13 @@ npm run build
 npm run pack
 ```
 
-## Pre-Push Checklist
+## Task Completion
 
-**Always run `npm run check-all` before committing and pushing changes.** Fix all errors related to your changes before pushing. This
-includes:
+**Always run `npm run check-all` from the repository root before reporting a task as done.** Focused tests, a single ESLint file, or
+`check:tsc` alone are not a substitute. Do not claim the work is complete, fixed, or ready for review until `check-all` has finished and
+every error caused by the change is fixed.
+
+This includes:
 
 - Circular dependencies (`check:circular-deps`)
 - TypeScript errors (`check:tsc`)
@@ -67,8 +70,12 @@ includes:
 - ESLint errors (`check:eslint`)
 - Formatting issues (`check:format`)
 - Biome lint (`check:format`)
+- docs MDX, distribution `package.json`, and license expiry checks that `check-all` runs
 
-If errors are pre-existing and unrelated to your changes, document this in your commit message.
+If errors are pre-existing and unrelated to the change, say so in the completion report. Run `check-all` again after any follow-up fix
+before reporting done.
+
+The same command is required before committing or pushing.
 
 ## Code Quality Commands
 
@@ -289,13 +296,7 @@ npm run lint:fix
 
 #### Before Commit
 
-Always run formatting and linting before committing:
-
-```bash
-npm run format
-npm run check:tsc
-npm run eslint
-```
+Always run `npm run check-all` from the repository root. Do not report the formatting or linting work as done until it passes.
 
 ### JSDoc/TSDoc Comments
 
@@ -418,16 +419,14 @@ npm run check:eslint
 - Regularly run quality checks
 - Monitor bundle sizes
 
-### 3. Before Commit
+### 3. Before Reporting Done, Committing, or Pushing
 
 ```bash
-# Run full check cycle
-npm run format
-npm run check:tsc
-npm run check:eslint
-npm run test
-npm run check:circular-deps
+# Full quality gate; required before saying the task is done
+npm run check-all
 ```
+
+Run the relevant tests as well (`npm run test`, or the focused suite that covers the change). Tests do not replace `check-all`.
 
 ## Known Issues and Solutions
 

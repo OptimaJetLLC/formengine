@@ -80,6 +80,15 @@ const selectEditableComponent = async ({findByTestId}: ActivateHelpers) => {
   fireEvent.click(await findByTestId(editableWrapperTestId))
 }
 
+const selectEditableAndOpenToolbarActions = async (helpers: ActivateHelpers) => {
+  await selectEditableComponent(helpers)
+  fireEvent.click(await helpers.findByTestId('toolbar-actions-button'))
+}
+
+const queryInDocument = (container: HTMLElement, selector: string) => {
+  return container.querySelector(selector) ?? container.ownerDocument.querySelector(selector)
+}
+
 const openLeftTab =
   (tabTestId: string) =>
   async ({findByTestId}: ActivateHelpers) => {
@@ -121,10 +130,6 @@ const zoneAccessConfig: Partial<Record<CustomizableKey, ZoneAccess>> = {
       'Component_Toolbar',
       'Component_Toolbar_Items',
       'Component_Toolbar_Title',
-      'Component_Toolbar_AddButton',
-      'Component_Toolbar_CloneButton',
-      'Component_Toolbar_PresetComponentButton',
-      'Component_Toolbar_RemoveButton',
       'RightPanel_Content',
       'LabeledProperty',
       'PropertyInput',
@@ -132,6 +137,18 @@ const zoneAccessConfig: Partial<Record<CustomizableKey, ZoneAccess>> = {
       'PropertyCodeButton',
     ],
     selectEditableAccess
+  ),
+
+  ...assignZoneAccess(
+    [
+      'Component_Toolbar_AddButton',
+      'Component_Toolbar_NearbyTreeButton',
+      'Component_Toolbar_CloneButton',
+      'Component_Toolbar_PresetComponentButton',
+      'Component_Toolbar_RemoveButton',
+      'Component_Toolbar_RevealInTreeButton',
+    ],
+    {activate: selectEditableAndOpenToolbarActions}
   ),
 
   Tree_Tab_Content: {activate: openLeftTab('Tree_Tab')},
@@ -223,7 +240,7 @@ describe.each(
     const {container, findByTestId, unmount} = renderZone(customization)
     try {
       await readyAndActivate(container, findByTestId, {awaitVisible: true})
-      const el = container.querySelector(zoneClassName)
+      const el = queryInDocument(container, zoneClassName)
       expect(el).toBeInTheDocument()
       expect(el).toHaveClass(zoneCustomClass)
       expect(el).toHaveStyle(targetStyle)
@@ -245,7 +262,7 @@ describe.each(
     expect(await findByTestId('test-app')).toBeInTheDocument()
     await readyAndActivate(container, findByTestId, {awaitForm})
 
-    expect(container.querySelector(zoneClassName)).not.toBeInTheDocument()
+    expect(queryInDocument(container, zoneClassName)).not.toBeInTheDocument()
   })
 
   it(`should apply custom renderer customization for ${zone}`, async () => {
@@ -256,7 +273,7 @@ describe.each(
 
     // Some zones (e.g. property editors) mount many instances of the same customizable key.
     expect(await findAllByTestId('custom-renderer')).not.toHaveLength(0)
-    const rendered = container.querySelector(`div.${zoneRenderedClass}`)
+    const rendered = queryInDocument(container, `div.${zoneRenderedClass}`)
     expect(rendered).toBeInTheDocument()
     expect(rendered).toHaveTextContent(zoneRenderContent)
   })

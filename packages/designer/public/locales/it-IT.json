@@ -1089,10 +1089,13 @@
   },
   "toolbar": {
     "cloneComponent": "Componente clone",
+    "openActions": "Apri azioni",
+    "nearbyTree": "Mostra i componenti vicini",
     "elements": "Elementi",
     "notFound": "Non trovato",
     "removeComponent": "Rimuovi componente",
-    "reset": "Reimposta"
+    "reset": "Reimposta",
+    "revealInTree": "Mostra nell'albero"
   },
   "tree": {
     "collapse": "Comprimi tutto",

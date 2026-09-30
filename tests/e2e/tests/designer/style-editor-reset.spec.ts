@@ -46,8 +46,14 @@ const typeCssInMonaco = async (editor: Locator, page: Page, css: string) => {
   await expect(monacoLines(editor)).toContainText(css)
 }
 
+const selectInTree = async (page: Page, key: string) => {
+  await page.getByTestId('Tree_Tab').click({force: true})
+  await page.getByTestId(key).click({force: true})
+  await page.getByTestId('Components_Tab').click({force: true})
+}
+
 const selectTitleInput = async (page: Page) => {
-  await page.getByTestId('title-input').click({force: true})
+  await selectInTree(page, 'title')
 }
 
 const selectStyledBox = async (page: Page) => {
@@ -65,7 +71,9 @@ const selectStyledBox = async (page: Page) => {
     .first()
     .hover()
   await page.mouse.up()
-  await page.getByText(/ \(StyledBox\)$/).click({force: true})
+  await expect(page.getByTestId('styled-box')).toBeVisible()
+  // Canvas clicks hit the screen toolbar after drop; the tree is outside that overlay.
+  await selectInTree(page, 'styledBox1')
 }
 
 const expectResetClearsCurrentTab = async (page: Page, editor: Locator, kind: StyleCodeEditorKind, css: string, contextLine: string) => {

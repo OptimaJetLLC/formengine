@@ -4,6 +4,7 @@ import {Table} from 'rsuite'
 import {nonNegNumber} from './commonProperties'
 import {createComponentStore} from './createComponentStore'
 import {getRsColumnComponentStore} from './getRsColumnComponentStore'
+import style from './Table.module.css'
 import {tableComponentsCategory} from './tableComponentsCategory'
 import {rsColumnGroupTypeName} from './typeNames'
 
@@ -19,10 +20,8 @@ const ColumnGroupIcon = () => (
 
 const {ColumnGroup} = Table
 
-const rsBuilderColumnGroupStyle = {display: 'flex'} as const
-
 const RsBuilderColumnGroup = (props: ColumnGroupProps) => {
-  return <div style={rsBuilderColumnGroupStyle}>{props.children}</div>
+  return <div className={`${style.row} ${style.nestedRow}`}>{props.children}</div>
 }
 
 const RsColumnGroup = (props: ColumnGroupProps) => {
