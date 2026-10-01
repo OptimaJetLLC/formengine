@@ -23,6 +23,6 @@
     "rsuite": "5.83.4"
   },
   "devDependencies": {
-    "@playwright/test": "1.57.0"
+    "@playwright/test": "1.63.0"
   }
 }
