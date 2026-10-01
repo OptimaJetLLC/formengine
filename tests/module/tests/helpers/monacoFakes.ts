@@ -124,21 +124,49 @@ export function createFakeModel(initialText: string) {
   }
 }
 
+type FakeCommandRegistration = {
+  keybinding: number
+  handler: () => void
+  context?: string
+}
+
+type FakeActionDescriptor = {
+  keybindings?: number[]
+  run: (editor: unknown) => void
+}
+
 export function createFakeEditor(model: any) {
   const commandMap = new Map<number, () => void>()
   const cursorListeners: Array<(e: CursorChange) => void> = []
   const keyDownListeners: Array<(e: any) => void> = []
+  const addCommandCalls: FakeCommandRegistration[] = []
   let selection:
     | null
     | {isEmpty: () => boolean}
     | {startLineNumber: number; startColumn: number; endLineNumber: number; endColumn: number; isEmpty: () => boolean} = null
   let position: Position | null = null
 
-  return {
+  const editor = {
+    getId: () => 'fake-editor-1',
     getModel: () => model,
-    addCommand: (keybinding: number, handler: () => void) => {
+    getUnscopedCommands: () => addCommandCalls.filter(call => !call.context),
+    addCommand: (keybinding: number, handler: () => void, context?: string) => {
+      addCommandCalls.push({keybinding, handler, context})
       commandMap.set(keybinding, handler)
       return 'cmd'
+    },
+    addAction: (descriptor: FakeActionDescriptor) => {
+      const keybindings = descriptor.keybindings ?? []
+      for (const keybinding of keybindings) {
+        commandMap.set(keybinding, () => descriptor.run(editor))
+      }
+      return {
+        dispose: () => {
+          for (const keybinding of keybindings) {
+            commandMap.delete(keybinding)
+          }
+        },
+      }
     },
     triggerCommand: (keybinding: number) => {
       commandMap.get(keybinding)?.()
@@ -175,4 +203,6 @@ export function createFakeEditor(model: any) {
     },
     focus: vi.fn(),
   }
+
+  return editor
 }

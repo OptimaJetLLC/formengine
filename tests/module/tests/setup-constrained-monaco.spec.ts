@@ -216,6 +216,20 @@ describe('setupConstrainedMonaco (minimal restriction engine)', () => {
     expect(editor.focus).toHaveBeenCalled()
   })
 
+  it('does not register an unscoped global Ctrl/Cmd+A command', () => {
+    const monaco = createFakeMonaco()
+    const beginContextLine = 'function f() {'
+    const endContextLine = '}'
+    const doc = buildConstrainedDocument('return 1', beginContextLine, false, endContextLine)
+    const model = createFakeModel(doc)
+    const editor = createFakeEditor(model)
+
+    setupConstrainedMonaco(editor as any, monaco, {beginContextLine, canEditBeginContextLine: false, endContextLine}, () => {})
+
+    const keybinding = (monaco.KeyMod.CtrlCmd as number) | (monaco.KeyCode.KeyA as number)
+    expect(editor.getUnscopedCommands().filter(command => command.keybinding === keybinding)).toEqual([])
+  })
+
   it('updateConstrainedRestrictions recomputes bounds when context changes', () => {
     const monaco = createFakeMonaco()
     const doc = buildConstrainedDocument('x', undefined, undefined, undefined)

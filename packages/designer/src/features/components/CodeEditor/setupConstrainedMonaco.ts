@@ -92,16 +92,23 @@ function selectEditableBody(editor: editor.IStandaloneCodeEditor, model: editor.
   editor.focus()
 }
 
-function registerSelectEditableBodyCommand(editor: editor.IStandaloneCodeEditor, monaco: Monaco, model: editor.ITextModel): void {
-  editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyA, () => {
-    if (editor.getModel() !== model) {
-      return
-    }
-    try {
-      selectEditableBody(editor, model, getContext(model))
-    } catch {
-      // Monaco can throw "Model is disposed!" if the command fires during teardown.
-    }
+function registerSelectEditableBodyCommand(editor: editor.IStandaloneCodeEditor, monaco: Monaco, model: editor.ITextModel): IDisposable {
+  return editor.addAction({
+    // addAction scopes the chord to this editorId. addCommand writes to the shared
+    // StandaloneKeybindingService and, without a when-clause, steals Ctrl/Cmd+A from every Monaco instance.
+    id: 'constrained-editor.selectEditableBody',
+    label: 'Select editable body',
+    keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyA],
+    run: () => {
+      if (editor.getModel() !== model) {
+        return
+      }
+      try {
+        selectEditableBody(editor, model, getContext(model))
+      } catch {
+        // Monaco can throw "Model is disposed!" if the command fires during teardown.
+      }
+    },
   })
 }
 
@@ -293,7 +300,7 @@ export function setupConstrainedMonaco(
     suppressContentValidation: false,
   })
 
-  registerSelectEditableBodyCommand(editor, monaco, model)
+  const selectEditableBodyDisposable = registerSelectEditableBodyCommand(editor, monaco, model)
 
   const isApplyingCursorRef = {current: false}
   const cursorClampDisposable = clampCursorToEditableRange(editor, model, isApplyingCursorRef)
@@ -303,6 +310,7 @@ export function setupConstrainedMonaco(
   // Clean up editor-scoped listeners when the model is disposed/swapped.
   // This prevents callbacks from firing against a disposed model.
   model.onWillDispose?.(() => {
+    selectEditableBodyDisposable.dispose()
     cursorClampDisposable.dispose()
     deleteGuardDisposable.dispose()
 
