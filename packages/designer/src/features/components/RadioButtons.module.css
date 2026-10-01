@@ -15,6 +15,11 @@
   padding: 0;
 }
 
+.container :global(.rs-radio-group-picker .rs-radio-inline:first-child),
+.container :global(.rs-radio-group-picker .rs-radio-inline:last-child) {
+  padding: 0;
+}
+
 .container :global(.rs-radio-checker) {
   min-height: 27px;
   max-height: 27px;

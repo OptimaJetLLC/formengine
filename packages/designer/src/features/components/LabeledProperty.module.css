@@ -15,3 +15,8 @@
 .customizedInput {
   width: 100%;
 }
+
+.customizedInput :global(.rs-radio-group) {
+  flex-wrap: wrap;
+  row-gap: 2px;
+}
