@@ -17,10 +17,6 @@
           "description": "Oznaka",
           "name": "Oznaka"
         },
-        "modules": {
-          "description": "Omogućava prilagođavanje ponašanja i funkcionalnosti uređivača. Pročitajte dokumente za više informacija",
-          "name": "Moduli"
-        },
         "placeholder": {
           "description": "Rezervirano mesto",
           "name": "Rezervoar mesta"
@@ -29,9 +25,17 @@
           "description": "Zastava samo za čitanje",
           "name": "Samo za čitanje"
         },
-        "toolbarOptions": {
-          "description": "Grupe tastera koje će se prikazati na traci sa alatkama",
-          "name": "Opcije trake sa alatkama"
+        "features": {
+          "name": "Funkcije",
+          "description": "Omogućene funkcije uređivača. Neizabrane funkcije su potpuno isključene (traka sa alatkama, format i modul)"
+        },
+        "modules": {
+          "name": "Moduli",
+          "description": "Quill moduli. Uređivač ih čita u vreme izvršavanja. Grupe funkcija ovde upisuju traku, istoriju i tastaturu"
+        },
+        "useSemanticHTML": {
+          "description": "Ako je tačno, čuva semantički HTML programa Quill umesto HTML-a DOM-a uređivača",
+          "name": "Koristi semantički HTML"
         }
       }
     }

@@ -3053,15 +3053,15 @@
                   "$ref": "#/definitions/booleanPropertyCalculable",
                   "description": "Read-only flag"
                 },
-                "toolbarOptions": {
-                  "type": "object",
-                  "$ref": "#/definitions/enumPropertyCalculable",
-                  "description": "Groups of buttons to be displayed on the toolbar"
-                },
                 "modules": {
                   "type": "object",
                   "$ref": "#/definitions/objectPropertyCalculable",
-                  "description": "Allows to customize the behavior and functionality of the editor. Read docs for more info"
+                  "description": "Designer JSON. Checkbox changes merge into this blob"
+                },
+                "useSemanticHTML": {
+                  "type": "object",
+                  "$ref": "#/definitions/booleanPropertyCalculable",
+                  "description": "If true, stores Quill semantic HTML instead of the editor DOM HTML"
                 },
                 "additionalProperties": false
               }

@@ -25,6 +25,7 @@ import {Picker} from './Picker'
 import {RadioInput} from './RadioInput'
 import {RenderWhenEditor} from './RenderWhenEditor'
 import {RequiredPropertyInput} from './RequiredPropertyInput'
+import {RichTextModulesInput} from './RichTextModulesInput'
 import {SizeInput} from './SizeInput'
 import {StringInput} from './StringInput'
 import {TemplateTypePicker} from './TemplateTypePicker'
@@ -47,6 +48,7 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   size: SizeInput,
   array: ArrayInput,
   object: ObjectInput,
+  richTextModules: RichTextModulesInput,
   required: RequiredPropertyInput,
   arrayOfString: ArrayOfStringInput,
   arrayOfObject: ArrayOfObjectInput,

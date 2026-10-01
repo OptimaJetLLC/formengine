@@ -650,13 +650,17 @@
     }
   },
   "RichTextEditor": {
-    "toolbarOptions": {
-      "name": "Toolbar options",
-      "hint": "Groups of buttons to be displayed on the toolbar"
+    "features": {
+      "name": "Features",
+      "hint": "One checkbox per group. Merges a complete on/off into Modules. Disabled when the JSON is a partial match"
     },
     "modules": {
       "name": "Modules",
-      "hint": "Allows to customize the behavior and functionality of the editor. Read docs for more info."
+      "hint": "Designer JSON. Checkbox changes merge into this blob"
+    },
+    "useSemanticHTML": {
+      "name": "Use semantic HTML",
+      "hint": "If true, stores Quill semantic HTML instead of the editor DOM HTML"
     }
   },
   "RsMenu": {

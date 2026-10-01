@@ -1,34 +1,14 @@
-import {isObject, namedObserver} from '@react-form-builder/core'
+import {namedObserver} from '@react-form-builder/core'
 import {Close, Code} from '@rsuite/icons'
-import {useCallback, useMemo} from 'react'
 import {Input, InputGroup} from 'rsuite'
-import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
-
-const stringify = (value: any, space?: number) => {
-  try {
-    return JSON.stringify(value, null, space)
-  } catch (e) {
-    return
-  }
-}
+import {useOpenJsonEditor} from './useOpenJsonEditor'
 
 const RawObjectInput = (props: AnnotationEditorProps) => {
   const {value, onChange, onClean, annotation} = props
-  const builderStore = useBuilderStore()
-  const strVal = useMemo(() => {
-    return (isObject(value) ? stringify(value, 2) : value) ?? ''
-  }, [value])
-
-  const valuePreview = useMemo(() => {
-    return value ? (stringify(value)?.substring(0, 50) ?? 'Error') : ''
-  }, [value])
-
-  const editJson = useCallback(() => {
-    const title = `${props.componentData.key}.${annotation.name}`
-    builderStore.editJsonCode(annotation.key, title, strVal, onChange)
-  }, [annotation.key, annotation.name, builderStore, onChange, props.componentData.key, strVal])
+  const title = `${props.componentData.key}.${annotation.name}`
+  const {valuePreview, editJson} = useOpenJsonEditor(annotation.key, title, value, onChange)
 
   return (
     <LabeledProperty {...props}>

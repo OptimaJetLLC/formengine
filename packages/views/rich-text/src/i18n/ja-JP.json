@@ -17,10 +17,6 @@
           "description": "ザ・ラベル",
           "name": "[ラベル]"
         },
-        "modules": {
-          "description": "エディターの動作と機能をカスタマイズできます。詳細についてはドキュメントをお読みください。",
-          "name": "モジュール"
-        },
         "placeholder": {
           "description": "プレースホルダー",
           "name": "プレースホルダー"
@@ -29,9 +25,17 @@
           "description": "読み取り専用フラグ",
           "name": "読み取り専用"
         },
-        "toolbarOptions": {
-          "description": "ツールバーに表示するボタングループ",
-          "name": "ツールバーのオプション"
+        "features": {
+          "name": "機能",
+          "description": "有効なエディター機能。未選択の機能は完全にオフになります（ツールバー、書式、モジュール）"
+        },
+        "modules": {
+          "name": "モジュール",
+          "description": "Quill モジュール。実行時にエディターがこれを読みます。機能グループはツールバー、履歴、キーボードをここに書き込みます"
+        },
+        "useSemanticHTML": {
+          "description": "true の場合、エディターの DOM HTML ではなく Quill のセマンティック HTML を保存します",
+          "name": "セマンティック HTML を使用"
         }
       }
     }

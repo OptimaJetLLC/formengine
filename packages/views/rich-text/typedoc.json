@@ -6,5 +6,8 @@
   "disableSources": true,
   "excludePrivate": true,
   "excludeProtected": false,
-  "readme": "none"
+  "readme": "none",
+  "intentionallyNotExported": [
+    "RichTextFormatFeature"
+  ]
 }

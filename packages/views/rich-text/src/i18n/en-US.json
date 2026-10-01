@@ -25,13 +25,17 @@
           "name": "Read only",
           "description": "Read-only flag"
         },
-        "toolbarOptions": {
-          "name": "Toolbar options",
-          "description": "Groups of buttons to be displayed on the toolbar"
+        "features": {
+          "name": "Features",
+          "description": "One checkbox per group. Merges a complete on/off into Modules. Disabled when the JSON is a partial match"
         },
         "modules": {
           "name": "Modules",
-          "description": "Allows to customize the behavior and functionality of the editor. Read docs for more info"
+          "description": "Designer JSON. Checkbox changes merge into this blob"
+        },
+        "useSemanticHTML": {
+          "name": "Use semantic HTML",
+          "description": "If true, stores Quill semantic HTML instead of the editor DOM HTML"
         }
       }
     }

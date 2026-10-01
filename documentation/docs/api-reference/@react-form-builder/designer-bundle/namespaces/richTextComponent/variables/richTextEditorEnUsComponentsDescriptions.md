@@ -36,6 +36,18 @@
 
 > **props**: `object`
 
+#### components.RichTextEditor.props.features
+
+> **features**: `object`
+
+#### components.RichTextEditor.props.features.description
+
+> **description**: `string` = `"One checkbox per group. Merges a complete on/off into Modules. Disabled when the JSON is a partial match"`
+
+#### components.RichTextEditor.props.features.name
+
+> **name**: `string` = `"Features"`
+
 #### components.RichTextEditor.props.initialValue
 
 > **initialValue**: `object`
@@ -66,7 +78,7 @@
 
 #### components.RichTextEditor.props.modules.description
 
-> **description**: `string` = `"Allows to customize the behavior and functionality of the editor. Read docs for more info"`
+> **description**: `string` = `"Designer JSON. Checkbox changes merge into this blob"`
 
 #### components.RichTextEditor.props.modules.name
 
@@ -96,14 +108,14 @@
 
 > **name**: `string` = `"Read only"`
 
-#### components.RichTextEditor.props.toolbarOptions
+#### components.RichTextEditor.props.useSemanticHTML
 
-> **toolbarOptions**: `object`
+> **useSemanticHTML**: `object`
 
-#### components.RichTextEditor.props.toolbarOptions.description
+#### components.RichTextEditor.props.useSemanticHTML.description
 
-> **description**: `string` = `"Groups of buttons to be displayed on the toolbar"`
+> **description**: `string` = `"If true, stores Quill semantic HTML instead of the editor DOM HTML"`
 
-#### components.RichTextEditor.props.toolbarOptions.name
+#### components.RichTextEditor.props.useSemanticHTML.name
 
-> **name**: `string` = `"Toolbar options"`
+> **name**: `string` = `"Use semantic HTML"`

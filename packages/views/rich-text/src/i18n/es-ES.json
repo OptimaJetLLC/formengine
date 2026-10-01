@@ -17,10 +17,6 @@
           "description": "La etiqueta",
           "name": "Etiqueta"
         },
-        "modules": {
-          "description": "Permite personalizar el comportamiento y la funcionalidad del editor. Lea los documentos para obtener más información",
-          "name": "Módulos"
-        },
         "placeholder": {
           "description": "El marcador de posición",
           "name": "Marcador de posición"
@@ -29,9 +25,17 @@
           "description": "Indicador de solo lectura",
           "name": "Solo lectura"
         },
-        "toolbarOptions": {
-          "description": "Grupos de botones que se mostrarán en la barra de herramientas",
-          "name": "Opciones de barra de herramientas"
+        "features": {
+          "name": "Funciones",
+          "description": "Funciones del editor habilitadas. Las funciones no seleccionadas están completamente desactivadas (barra de herramientas, formato y módulo)"
+        },
+        "modules": {
+          "name": "Módulos",
+          "description": "Módulos de Quill. El editor los lee en tiempo de ejecución. Los grupos de funciones escriben aquí la barra, el historial y el teclado"
+        },
+        "useSemanticHTML": {
+          "description": "Si es verdadero, almacena el HTML semántico de Quill en lugar del HTML del DOM del editor",
+          "name": "Usar HTML semántico"
         }
       }
     }

@@ -1,16 +1,6 @@
-import {isObject} from '@react-form-builder/core'
 import {Close, Code} from '@rsuite/icons'
-import {useCallback, useMemo} from 'react'
 import {Input, InputGroup} from 'rsuite'
-import {useBuilderStore} from '../../utils/BuilderStoreContext'
-
-const stringify = (value: any, space?: number) => {
-  try {
-    return JSON.stringify(value, null, space)
-  } catch (e) {
-    return
-  }
-}
+import {useOpenJsonEditor} from './useOpenJsonEditor'
 
 /**
  * The JSON editor properties.
@@ -50,19 +40,7 @@ interface JsonInputProps {
  */
 export const JsonInput = (props: JsonInputProps) => {
   const {value, onChange, onClean, onValidate, editorKey, editorTitle} = props
-  const builderStore = useBuilderStore()
-
-  const strVal = useMemo(() => {
-    return (isObject(value) ? stringify(value, 2) : value) ?? ''
-  }, [value])
-
-  const valuePreview = useMemo(() => {
-    return value ? (stringify(value)?.substring(0, 50) ?? 'Error') : ''
-  }, [value])
-
-  const editJson = useCallback(() => {
-    builderStore.editJsonCode(editorKey, editorTitle, strVal, onChange, onValidate)
-  }, [builderStore, editorKey, editorTitle, onChange, strVal, onValidate])
+  const {valuePreview, editJson} = useOpenJsonEditor(editorKey, editorTitle, value, onChange, onValidate)
 
   return (
     <InputGroup inside size="xs">

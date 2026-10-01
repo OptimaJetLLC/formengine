@@ -74,13 +74,17 @@
     }
   },
   "RichTextEditor": {
-    "modules": {
-      "hint": "Omogućava prilagođavanje ponašanja i funkcionalnosti uređivača. Pročitajte dokumente za više informacija.",
-      "name": "Moduli"
+    "features": {
+      "name": "Funkcije",
+      "hint": "Omogućene funkcije uređivača. Neizabrane funkcije su potpuno isključene (traka sa alatkama, format i modul)"
     },
-    "toolbarOptions": {
-      "hint": "Grupe tastera koje će se prikazati na traci sa alatkama",
-      "name": "Opcije trake sa alatkama"
+    "modules": {
+      "name": "Moduli",
+      "hint": "Quill moduli. Uređivač ih čita u vreme izvršavanja. Grupe funkcija ovde upisuju traku, istoriju i tastaturu"
+    },
+    "useSemanticHTML": {
+      "hint": "Ako je tačno, čuva semantički HTML programa Quill umesto HTML-a DOM-a uređivača",
+      "name": "Koristi semantički HTML"
     }
   },
   "RsAutoComplete": {

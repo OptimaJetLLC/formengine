@@ -74,13 +74,17 @@
     }
   },
   "RichTextEditor": {
-    "modules": {
-      "hint": "Permet de personnaliser le comportement et les fonctionnalités de l'éditeur. Lisez la documentation pour plus d'informations.",
-      "name": "Modules"
+    "features": {
+      "name": "Fonctionnalités",
+      "hint": "Fonctionnalités de l'éditeur activées. Les fonctionnalités non sélectionnées sont entièrement désactivées (barre d'outils, format et module)"
     },
-    "toolbarOptions": {
-      "hint": "Groupes de boutons à afficher dans la barre d'outils",
-      "name": "Options de barre d'outils"
+    "modules": {
+      "name": "Modules",
+      "hint": "Modules Quill. L’éditeur les lit au moment de l’exécution. Les groupes de fonctionnalités y écrivent la barre, l’historique et le clavier"
+    },
+    "useSemanticHTML": {
+      "hint": "Si vrai, enregistre le HTML sémantique de Quill au lieu du HTML du DOM de l'éditeur",
+      "name": "Utiliser le HTML sémantique"
     }
   },
   "RsAutoComplete": {

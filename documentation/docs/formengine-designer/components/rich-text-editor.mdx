@@ -25,35 +25,48 @@ package [@react-form-builder/components-rich-text](https://www.npmjs.com/package
 
 The following general properties are available within the _Main_ tab:
 
-| Name            | Type     | Description                                                                                                                    |
-|:----------------|:---------|:-------------------------------------------------------------------------------------------------------------------------------|
-| Initial Value   | `string` | Initial value for the editor                                                                                                   |
-| Label           | `string` | Provide a title for your component                                                                                             |
-| Placeholder     | `string` | Placeholder string                                                                                                             |
-| Read only       | `string` | If set to _true_, makes your component unavailable for users to interact with                                                  |
-| Toolbar options | `choice` | Groups of buttons to display on the toolbar. The order in which the values are selected determines the order of the buttons    |
-| Modules         | `json`   | Allows to customize the behavior and functionality of the editor. [Read docs](https://quilljs.com/docs/modules) for more info. |
+| Name              | Type       | Default              | Description                                                                                            |
+|:------------------|:-----------|:---------------------|:-------------------------------------------------------------------------------------------------------|
+| Initial Value     | `string`   | -                    | Initial value for the editor                                                                           |
+| Label             | `string`   | `'Rich text editor'` | Provide a title for your component                                                                     |
+| Placeholder       | `string`   | -                    | Placeholder string                                                                                     |
+| Read only         | `boolean`  | `false`              | If set to _true_, makes your component unavailable for users to interact with                          |
+| Features          | -          | see below            | One checkbox per group. Writes a complete on/off into Modules. Disabled if the JSON is a partial match |
+| Modules           | `json`     | see below            | Designer JSON. Checkbox changes merge into this blob. Not a public wrapper prop                        |
+| Use semantic HTML | `boolean`  | `true`               | If true, stores Quill semantic HTML instead of the editor DOM HTML                                     |
 
-Example of a value for Modules property:
+The public wrapper API is `features`. Each flag fully enables or disables format, toolbar, and module for that group. `formats` and
+`modules` are not public props. Omitted keys keep their defaults.
 
-```json
-{
-  "toolbar": [
-    [{ "header": [1, 2, 3, 4, 5, 6, false] }],
-    ["bold", "italic", "underline", "strike"],
-    [{ "list": "ordered" }, { "list": "bullet" }],
-    [{ "script": "sub" }, { "script": "super" }],
-    [{ "indent": "-1" }, { "indent": "+1" }],
-    [{ "direction": "rtl" }],
-    [{ "size": ["small", false, "large", "huge"] }],
-    [{ "color": [] }, { "background": [] }],
-    [{ "font": [] }],
-    [{ "align": [] }],
-    ["link", "image", "video"],
-    ["clean"]
-  ]
-}
+```tsx
+<RichTextEditor
+  features={{
+    image: true,
+    video: false,
+    formula: false,
+    link: false,
+    undoRedo: true,
+    keyboardShortcuts: false,
+  }}
+  onChange={value => console.log(value)}
+/>
 ```
+
+In the designer, toggling a checkbox merges that one group into the Modules JSON and leaves other keys and toolbar items unchanged. If the
+JSON only partially matches a group, that checkbox is disabled.
+
+`video: false` means no video format, no video toolbar button, and no video embed.
+
+| Group               | Default | Controls                                                                   |
+|:--------------------|:--------|:---------------------------------------------------------------------------|
+| `inlineFormatting`  | on      | Bold, italic, underline, strike, color, background, superscript, subscript |
+| `blocks`            | on      | Headings, blockquote, code block, lists, indent, align                     |
+| `image`             | on      | Image embed                                                                |
+| `video`             | off     | Video embed                                                                |
+| `formula`           | off     | Formula. Requires [KaTeX](https://katex.org/) on the page                  |
+| `link`              | off     | Hyperlink                                                                  |
+| `undoRedo`          | on      | Undo and redo                                                              |
+| `keyboardShortcuts` | off     | Keyboard shortcuts for bold, italic, and underline                         |
 
 <AdditionalOptions/>
 

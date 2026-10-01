@@ -74,13 +74,17 @@
     }
   },
   "RichTextEditor": {
-    "modules": {
-      "hint": "允许自定义编辑器的行为和功能。阅读文档以获取更多信息。",
-      "name": "模块"
+    "features": {
+      "name": "功能",
+      "hint": "已启用的编辑器功能。未选中的功能将完全关闭（工具栏、格式和模块）"
     },
-    "toolbarOptions": {
-      "hint": "要在工具栏上显示的按钮组",
-      "name": "工具栏选项"
+    "modules": {
+      "name": "模块",
+      "hint": "Quill 模块。编辑器在运行时读取此项。功能组会将工具栏、历史记录和键盘写入此处"
+    },
+    "useSemanticHTML": {
+      "hint": "如果为 true，则存储 Quill 语义 HTML，而不是编辑器 DOM HTML",
+      "name": "使用语义 HTML"
     }
   },
   "RsAutoComplete": {

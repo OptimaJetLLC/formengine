@@ -1,35 +1,25 @@
-import {define, event, object, readOnly, someOf, string, uniqueId} from '@react-form-builder/core'
+import {boolean, define, event, object, readOnly, string} from '@react-form-builder/core'
 import type {CSSProperties} from 'react'
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import ReactQuill from 'react-quill-new'
 import 'react-quill-new/dist/quill.snow.css'
 import './styles.css'
 import {Labeled} from './Labeled'
-
-const options = {
-  font: [{font: []}],
-  header: [{header: []}],
-  align: [{align: []}],
-  direction: [{direction: 'rtl'}],
-  decoration: ['bold', 'italic', 'underline', 'strike'],
-  color: [{color: []}, {background: []}],
-  script: [{script: 'super'}, {script: 'sub'}],
-  block: ['blockquote', 'code-block'],
-  list: [{list: 'ordered'}, {list: 'bullet'}],
-  indent: [{indent: '-1'}, {indent: '+1'}],
-  insert: ['link', 'image', 'video'],
-  size: [{size: ['small', false, 'large', 'huge']}],
-  clean: ['clean'],
-}
-
-type ToolbarOption = keyof typeof options
-
-const defaultOptions: ToolbarOption[] = ['header', 'decoration', 'align', 'insert']
+import type {RichTextFeature, RichTextFeatureFlags} from './richTextFeatures'
+import {
+  applyFeatureToModules,
+  defaultRichTextModules,
+  featureStateFromModules,
+  formatsFromModules,
+  isModulesRecord,
+  modulesFromFeatureFlags,
+  richTextFeatureNames,
+} from './richTextFeatures'
 
 /**
  * The Rich text editor component properties.
  */
-export interface RichTextEditorProps extends ReactQuill.ReactQuillProps {
+export interface RichTextEditorProps extends Omit<ReactQuill.ReactQuillProps, 'modules' | 'formats'> {
   /**
    * The initial value for the editor.
    */
@@ -43,17 +33,28 @@ export interface RichTextEditorProps extends ReactQuill.ReactQuillProps {
    */
   onChange: (value?: string) => void
   /**
-   * Groups of buttons to be displayed on the toolbar.
+   * Feature flags. Each key fully enables or disables format, toolbar, and module for that group.
    */
-  toolbarOptions?: ToolbarOption[]
+  features?: RichTextFeatureFlags
   /**
-   * Allows to customize the behavior and functionality of the editor.
+   * If true, stores Quill semantic HTML instead of the editor DOM HTML.
    */
-  modules?: Record<string, unknown>
+  useSemanticHTML?: boolean
   /**
    * The label for the component.
    */
   label?: string
+  /**
+   * Test id applied to the labeled wrapper. ReactQuill does not forward this attribute.
+   */
+  'data-testid'?: string
+}
+
+interface RichTextEditorRuntimeProps extends RichTextEditorProps {
+  /**
+   * Stored Quill modules. Designer JSON; not part of the public wrapper API.
+   */
+  modules?: Record<string, unknown>
 }
 
 const editorStyle: CSSProperties = {
@@ -62,79 +63,73 @@ const editorStyle: CSSProperties = {
   flex: 1,
 }
 
-const QUILL_EMPTY_VALUE = '<p><br></p>'
+const QUILL_EMPTY_DOM_HTML = '<p><br></p>'
+const QUILL_EMPTY_SEMANTIC_HTML = '<p></p>'
+
+function isQuillEmptyHtml(html: string): boolean {
+  return html === QUILL_EMPTY_DOM_HTML || html === QUILL_EMPTY_SEMANTIC_HTML
+}
+
+function emptyQuillHtml(useSemanticHTML: boolean): string {
+  return useSemanticHTML ? QUILL_EMPTY_SEMANTIC_HTML : QUILL_EMPTY_DOM_HTML
+}
 
 const RichTextEditor = ({
   value,
   initialValue,
   label,
   style,
-  toolbarOptions,
+  features,
+  modules,
+  useSemanticHTML = true,
   placeholder,
   className,
-  modules: customModules,
   onChange,
+  'data-testid': dataTestId,
   ...props
-}: RichTextEditorProps) => {
-  const [key, setKey] = useState(uniqueId())
-  const valueRef = useRef(value)
-  const quillRef = useRef<ReactQuill>(null)
+}: RichTextEditorRuntimeProps) => {
+  const [hadBoundValue, setHadBoundValue] = useState(() => value !== undefined)
+  const emptyHtml = emptyQuillHtml(useSemanticHTML)
+  const quillValue = value !== undefined ? value : hadBoundValue ? emptyHtml : (initialValue ?? emptyHtml)
 
-  /* eslint-disable react-hooks/refs -- valueRef must match value before useMemo; useMemo reads ref only when initialValue changes (defaultValue semantics) */
-  valueRef.current = value
-
-  const plainInitialValue = useMemo(() => {
-    // we want to trigger the useEffect only when the initialValue changes
-    return valueRef.current ?? initialValue
-  }, [initialValue])
-  /* eslint-enable react-hooks/refs */
-
-  useEffect(() => {
-    setKey(uniqueId())
-  }, [placeholder, toolbarOptions, customModules, initialValue])
-
-  const modules = useMemo(
-    () => ({
-      toolbar: toolbarOptions?.map(option => options[option]),
-      ...customModules,
-    }),
-    [customModules, toolbarOptions]
+  const resolvedModules = useMemo(() => {
+    if (isModulesRecord(modules)) return modules
+    if (features) return modulesFromFeatureFlags(features)
+    return defaultRichTextModules
+  }, [features, modules])
+  const formats = useMemo(() => formatsFromModules(resolvedModules), [resolvedModules])
+  const modulesKey = useMemo(() => JSON.stringify(resolvedModules), [resolvedModules])
+  const quillMountKey = useMemo(
+    () => [modulesKey, initialValue, placeholder, useSemanticHTML].join('\0'),
+    [modulesKey, initialValue, placeholder, useSemanticHTML]
   )
 
   const mergedStyle = useMemo(() => ({...editorStyle, ...style}), [style])
 
-  // ReactQuill does not display the data-testid attribute
-  const dataTestId = (props as any)?.['data-testid']
-
   const handleChange = useCallback(
-    (value: string, _delta: any, _source: string, _editor: any) => {
-      const adjustedValue = value === QUILL_EMPTY_VALUE ? undefined : value
-
-      valueRef.current = adjustedValue
+    (nextValue: string) => {
+      const adjustedValue = isQuillEmptyHtml(nextValue) ? undefined : nextValue
+      if (adjustedValue !== undefined) setHadBoundValue(true)
+      if (adjustedValue === value) return
       onChange?.(adjustedValue)
     },
-    [onChange]
+    [onChange, value]
   )
-
-  useEffect(() => {
-    if (!value) {
-      quillRef.current?.getEditor()?.setContents([{insert: '\n'}]) // force value to be exactly QUILL_EMPTY_VALUE
-    }
-  }, [value])
 
   // div wrapper is needed because the Labeled wrapper applies attributes to the child, but the ReactQuill component does not accept this props.
   return (
     <Labeled label={label} style={style} className={className} data-testid={dataTestId}>
       <div>
         <ReactQuill
-          key={key}
-          ref={quillRef}
-          defaultValue={plainInitialValue}
-          modules={modules}
+          key={quillMountKey}
+          {...props}
+          value={quillValue}
           placeholder={placeholder}
           style={mergedStyle}
           onChange={handleChange}
-          {...props}
+          modules={resolvedModules}
+          formats={formats}
+          useSemanticHTML={useSemanticHTML}
         />
       </div>
     </Labeled>
@@ -150,11 +145,16 @@ export const richTextEditor = define(RichTextEditor, 'RichTextEditor')
     label: string.default('Rich text editor'),
     placeholder: string,
     readOnly: readOnly.default(false),
-    toolbarOptions: someOf(...Object.keys(options))
-      .withEditorProps({
-        creatable: false,
-      })
-      .default(defaultOptions),
-    modules: object,
+    modules: object.default(defaultRichTextModules).setup({
+      editor: 'richTextModules',
+      editorProps: {
+        featureNames: richTextFeatureNames,
+        applyFeatureToModules,
+        featureStateFromModules,
+      },
+    }),
+    useSemanticHTML: boolean.default(true),
     onChange: event,
   })
+
+export type {RichTextFeature, RichTextFeatureFlags}

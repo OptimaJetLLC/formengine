@@ -74,13 +74,17 @@
     }
   },
   "RichTextEditor": {
-    "modules": {
-      "hint": "Ermöglicht die Anpassung des Verhaltens und der Funktionen des Editors. Lesen Sie die Dokumentation für weitere Informationen.",
-      "name": "Module"
+    "features": {
+      "name": "Funktionen",
+      "hint": "Aktivierte Editor-Funktionen. Nicht ausgewählte Funktionen sind vollständig ausgeschaltet (Symbolleiste, Format und Modul)"
     },
-    "toolbarOptions": {
-      "hint": "Gruppen von Schaltflächen, die auf der Werkzeugleiste angezeigt werden sollen",
-      "name": "Optionen der Werkzeugleiste"
+    "modules": {
+      "name": "Module",
+      "hint": "Quill-Module. Der Editor liest diesen Wert zur Laufzeit. Funktionsgruppen schreiben Symbolleiste, Verlauf und Tastatur hierhin"
+    },
+    "useSemanticHTML": {
+      "hint": "Wenn wahr, wird semantisches HTML von Quill statt des DOM-HTML des Editors gespeichert",
+      "name": "Semantisches HTML verwenden"
     }
   },
   "RsAutoComplete": {

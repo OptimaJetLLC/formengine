@@ -17,10 +17,6 @@
           "description": "L'étiquette",
           "name": "étiquette"
         },
-        "modules": {
-          "description": "Permet de personnaliser le comportement et les fonctionnalités de l'éditeur. Lisez la documentation pour plus d'informations",
-          "name": "Modules"
-        },
         "placeholder": {
           "description": "L'espace réservé",
           "name": "Espace réservé"
@@ -29,9 +25,17 @@
           "description": "Drapeau en lecture seule",
           "name": "Lecture seule"
         },
-        "toolbarOptions": {
-          "description": "Groupes de boutons à afficher dans la barre d'outils",
-          "name": "Options de barre d'outils"
+        "features": {
+          "name": "Fonctionnalités",
+          "description": "Fonctionnalités de l'éditeur activées. Les fonctionnalités non sélectionnées sont entièrement désactivées (barre d'outils, format et module)"
+        },
+        "modules": {
+          "name": "Modules",
+          "description": "Modules Quill. L’éditeur les lit au moment de l’exécution. Les groupes de fonctionnalités y écrivent la barre, l’historique et le clavier"
+        },
+        "useSemanticHTML": {
+          "description": "Si vrai, enregistre le HTML sémantique de Quill au lieu du HTML du DOM de l'éditeur",
+          "name": "Utiliser le HTML sémantique"
         }
       }
     }

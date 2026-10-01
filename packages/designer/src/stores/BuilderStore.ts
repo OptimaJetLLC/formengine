@@ -51,6 +51,7 @@ import {getAddComponentResult} from '../utils/getAddComponentResult'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {getPlacementParent, resolveComponentPlacement} from '../utils/resolveComponentPlacement'
 import {sortByPositionInTree} from '../utils/sortByPositionInTree'
+import {toPrettyJsonString} from '../utils/toPrettyJsonString'
 import type {IFormBuilder, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
 import {AvailableComponents} from './AvailableComponents'
@@ -61,10 +62,6 @@ import type {EditableFunction} from './EditableFunction'
 import {uploadStringFile} from './fileUpload'
 import type {IComponentMetadataProvider} from './IComponentMetadataProvider'
 import {trackUndo} from './undo'
-
-function toPrettyJsonString(value: any) {
-  return JSON.stringify(value, null, 2)
-}
 
 function removeEmpty<T>(value: T): T {
   if (!value || typeof value !== 'object') return value
@@ -954,7 +951,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       languages: this.formAvailableLanguages,
       defaultLanguage: this.viewer.form.defaultLanguage.fullCode,
     })
-    return toPrettyJsonString(serializedObject)
+    return toPrettyJsonString(serializedObject) ?? ''
   }
 
   /**
@@ -1017,7 +1014,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       modalType: this.viewer.getFirstComponentTypeWithRole('modal'),
       tooltipType: this.viewer.getFirstComponentTypeWithRole('tooltip'),
     }
-    await this.saveForm(formName, toPrettyJsonString(persistedForm))
+    await this.saveForm(formName, toPrettyJsonString(persistedForm) ?? '')
     this.activeFormName = formName
   }
 

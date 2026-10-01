@@ -17,10 +17,6 @@
           "description": "L'etichetta",
           "name": "Etichetta"
         },
-        "modules": {
-          "description": "Permette di personalizzare il comportamento e la funzionalità dell'editor. Leggi i documenti per maggiori informazioni",
-          "name": "Moduli"
-        },
         "placeholder": {
           "description": "Il segnaposto",
           "name": "Segnaposto"
@@ -29,9 +25,17 @@
           "description": "Bandiera di sola lettura",
           "name": "Sola lettura"
         },
-        "toolbarOptions": {
-          "description": "Gruppi di pulsanti da visualizzare sulla barra degli strumenti",
-          "name": "Opzioni della barra degli strumenti"
+        "features": {
+          "name": "Funzionalità",
+          "description": "Funzionalità dell'editor abilitate. Le funzionalità non selezionate sono completamente disattivate (barra degli strumenti, formato e modulo)"
+        },
+        "modules": {
+          "name": "Moduli",
+          "description": "Moduli Quill. L’editor li legge in fase di esecuzione. I gruppi di funzionalità scrivono qui barra, cronologia e tastiera"
+        },
+        "useSemanticHTML": {
+          "description": "Se vero, memorizza l'HTML semantico di Quill invece dell'HTML del DOM dell'editor",
+          "name": "Usa HTML semantico"
         }
       }
     }

@@ -602,8 +602,34 @@ const typedocSidebar = {
         },
         {
           type: "category",
+          label: "Type Aliases",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rich-text/type-aliases/RichTextFeature",
+              label: "RichTextFeature"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rich-text/type-aliases/RichTextFeatureFlags",
+              label: "RichTextFeatureFlags"
+            }
+          ]
+        },
+        {
+          type: "category",
           label: "Variables",
           items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rich-text/variables/defaultRichTextFeatureFlags",
+              label: "defaultRichTextFeatureFlags"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rich-text/variables/defaultRichTextFeatures",
+              label: "defaultRichTextFeatures"
+            },
             {
               type: "doc",
               id: "api-reference/@react-form-builder/components-rich-text/variables/richTextComponent",
@@ -3458,8 +3484,34 @@ const typedocSidebar = {
                 },
                 {
                   type: "category",
+                  label: "Type Aliases",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/type-aliases/RichTextFeature",
+                      label: "RichTextFeature"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/type-aliases/RichTextFeatureFlags",
+                      label: "RichTextFeatureFlags"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
                   label: "Variables",
                   items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/variables/defaultRichTextFeatureFlags",
+                      label: "defaultRichTextFeatureFlags"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/variables/defaultRichTextFeatures",
+                      label: "defaultRichTextFeatures"
+                    },
                     {
                       type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/variables/richTextComponent",
@@ -4869,8 +4921,34 @@ const typedocSidebar = {
                 },
                 {
                   type: "category",
+                  label: "Type Aliases",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/type-aliases/RichTextFeature",
+                      label: "RichTextFeature"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/type-aliases/RichTextFeatureFlags",
+                      label: "RichTextFeatureFlags"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
                   label: "Variables",
                   items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/variables/defaultRichTextFeatureFlags",
+                      label: "defaultRichTextFeatureFlags"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/variables/defaultRichTextFeatures",
+                      label: "defaultRichTextFeatures"
+                    },
                     {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/variables/richTextComponent",

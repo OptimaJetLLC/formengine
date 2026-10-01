@@ -74,13 +74,17 @@
     }
   },
   "RichTextEditor": {
-    "modules": {
-      "hint": "편집기의 동작 및 기능을 사용자 지정할 수 있습니다.자세한 내용은 문서를 참조하세요.",
-      "name": "모듈"
+    "features": {
+      "name": "기능",
+      "hint": "사용하도록 설정된 편집기 기능입니다. 선택하지 않은 기능은 완전히 꺼집니다(도구 모음, 서식 및 모듈)"
     },
-    "toolbarOptions": {
-      "hint": "도구 모음에 표시할 버튼 그룹",
-      "name": "툴바 옵션"
+    "modules": {
+      "name": "모듈",
+      "hint": "Quill 모듈입니다. 편집기는 런타임에 이 값을 읽습니다. 기능 그룹은 도구 모음, 기록, 키보드를 여기에 씁니다"
+    },
+    "useSemanticHTML": {
+      "hint": "true이면 편집기 DOM HTML 대신 Quill 시맨틱 HTML을 저장합니다",
+      "name": "시맨틱 HTML 사용"
     }
   },
   "RsAutoComplete": {
