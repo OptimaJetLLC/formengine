@@ -11,6 +11,7 @@ import {createGuideCapturePage} from './capture-env.mjs';
 import {
   annotateArrow,
   measureComponentToolbarArrow,
+  revealComponentToolbarActions,
   visibleArrowToBox,
 } from './measure-workspace-layout.mjs';
 
@@ -260,7 +261,8 @@ async function reannotatePresetToolbarArrow(page, theme) {
 
   const streetBox = await measureLocator(page.getByTestId('Street-editable-wrapper'));
   const cityBox = await measureLocator(page.getByTestId('City-editable-wrapper'));
-  const presetButton = page.locator('.FE_Component_Toolbar_PresetComponentButton .create-preset-button, .create-preset-button').first();
+  await revealComponentToolbarActions(page);
+  const presetButton = page.getByTestId('toolbar-create-preset-button').locator('visible=true').first();
   const presetBox = await measureLocator(presetButton);
   const selectionCenterX = Math.round((streetBox.x + cityBox.x + cityBox.width) / 2);
   const selectionCenterY = Math.round((streetBox.y + streetBox.y + streetBox.height) / 2);

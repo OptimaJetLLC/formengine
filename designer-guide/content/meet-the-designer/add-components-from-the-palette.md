@@ -39,18 +39,25 @@ onto the canvas, or double-click it. Then set **Label** and **Key** on the right
 
 ## Components modal
 
-<img src="/assets/guide/workspace/components-add-button-hover-plain.png" alt="Add button on the component toolbar with Before and After options." />
-
 1. Select a component on the canvas to show the floating toolbar.
-2. Hover the **+** button to open **Before** and **After**.
-3. Choose **Before** or **After** to pick where the new control goes.
+2. If you only see the key and :toolbar-icon[open-actions]: **Open actions**, hover that control to expand the strip.
+
+<img
+  src="/assets/guide/workspace/highlight-toolbar-add.png"
+  alt="Floating toolbar with an arrow pointing at the Add (+) button."
+/>
+
+3. Click :toolbar-icon[add]: plus button.
+4. Choose **Before** or **After**.
+
+<img src="/assets/guide/workspace/components-add-button-hover-plain.png" alt="Add button on the floating toolbar with Before and After options open after a click." />
 
 <img src="/assets/guide/workspace/components-add-modal-plain.png" alt="Click to add control modal with the full component picker." />
 
-4. The **Click to add control** modal opens with search and categories.
-5. Click a component to insert it in the chosen position.
+5. The **Click to add control** modal opens. Search and categories match the left palette.
+6. Click a component to insert it.
 
-Some layouts use this modal instead of dragging from the left palette. Search and categories work the same way.
+Use this modal when the left palette feels crowded, or when you want to place a control next to the current selection.
 
 ## Summary
 

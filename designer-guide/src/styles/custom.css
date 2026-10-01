@@ -253,6 +253,77 @@ main img:not(.fe-theme-image__variant) {
     rgb(80, 80, 80, 0.3) -6px -2px 16px 0;
 }
 
+.fe-prose .fe-toolbar-icon,
+main .fe-toolbar-icon {
+  background-color: currentcolor;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 1em;
+  mask: var(--fe-toolbar-icon) center / contain no-repeat;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+
+/* Lists whose items start with a toolbar icon (via :toolbar-icon[…]:) */
+.fe-prose ul:has(> li .fe-toolbar-icon),
+main ul:has(> li .fe-toolbar-icon) {
+  list-style: none;
+  margin: 1rem 0;
+  padding-left: 0;
+}
+
+.fe-prose ul:has(> li .fe-toolbar-icon) > li,
+main ul:has(> li .fe-toolbar-icon) > li {
+  align-items: center;
+  display: flex;
+  gap: 0.5em;
+  line-height: 1.5;
+  margin: 0.5em 0;
+  padding-left: 0;
+}
+
+.fe-prose ul:has(> li .fe-toolbar-icon) > li .fe-toolbar-icon,
+main ul:has(> li .fe-toolbar-icon) > li .fe-toolbar-icon {
+  height: 1.1em;
+  margin: 0;
+  width: 1.1em;
+}
+
+.fe-prose .fe-toolbar-icon--reveal,
+main .fe-toolbar-icon--reveal {
+  --fe-toolbar-icon: url("/assets/guide/workspace/toolbar-icons/reveal-in-tree.svg");
+}
+
+.fe-prose .fe-toolbar-icon--nearby,
+main .fe-toolbar-icon--nearby {
+  --fe-toolbar-icon: url("/assets/guide/workspace/toolbar-icons/show-nearby.svg");
+}
+
+.fe-prose .fe-toolbar-icon--add,
+main .fe-toolbar-icon--add {
+  --fe-toolbar-icon: url("/assets/guide/workspace/toolbar-icons/add.svg");
+}
+
+.fe-prose .fe-toolbar-icon--clone,
+main .fe-toolbar-icon--clone {
+  --fe-toolbar-icon: url("/assets/guide/workspace/toolbar-icons/clone.svg");
+}
+
+.fe-prose .fe-toolbar-icon--preset,
+main .fe-toolbar-icon--preset {
+  --fe-toolbar-icon: url("/assets/guide/workspace/toolbar-icons/preset.svg");
+}
+
+.fe-prose .fe-toolbar-icon--remove,
+main .fe-toolbar-icon--remove {
+  --fe-toolbar-icon: url("/assets/guide/workspace/toolbar-icons/remove.svg");
+}
+
+.fe-prose .fe-toolbar-icon--open-actions,
+main .fe-toolbar-icon--open-actions {
+  --fe-toolbar-icon: url("/assets/guide/workspace/toolbar-icons/open-actions.svg");
+}
+
 /* Guide screenshots: swap .light / .dark captures with site theme */
 .fe-theme-image {
   cursor: zoom-in;

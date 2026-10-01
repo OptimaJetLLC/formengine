@@ -14,7 +14,7 @@ import {mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createGuideCapturePage} from './capture-env.mjs';
-import {annotateHighlight, measureWorkspaceHighlights} from './measure-workspace-layout.mjs';
+import {annotateHighlight, measureWorkspaceHighlights, ensureToolbarActionsVisible} from './measure-workspace-layout.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '../../..');
@@ -134,9 +134,7 @@ async function captureTheme(page, theme) {
   await page.waitForTimeout(300);
   await page.getByTestId('email-editable-wrapper').click({force: true});
   await page.waitForTimeout(400);
-  await page.locator('.FE_Component_Toolbar').first().waitFor({state: 'visible', timeout: 5_000});
-  await page.mouse.move(40, 120);
-  await page.waitForTimeout(200);
+  await ensureToolbarActionsVisible(page);
   await shot(page, 'workspace', 'floating-toolbar-plain', theme);
   console.log(`floating-toolbar ${theme}`);
 

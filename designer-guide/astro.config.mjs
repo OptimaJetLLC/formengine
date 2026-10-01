@@ -12,6 +12,7 @@ import { rehypeGuideLinks } from './src/guide-links.mjs';
 import { rehypeGuideImages, rehypeThemeImages } from './src/theme-images.mjs';
 import remarkGuideAdmonitions from './src/remark/guideAdmonitions.mjs';
 import remarkRewriteDemoLinks from './src/remark/rewriteDemoLinks.mjs';
+import remarkToolbarIcons from './src/remark/toolbarIcons.mjs';
 
 const rootDir = fileURLToPath(new URL('.', import.meta.url));
 const mode = process.env.MODE ?? process.env.NODE_ENV ?? 'development';
@@ -49,7 +50,7 @@ const shikiAddLanguageClass = {
 };
 
 const markdownProcessor = unified({
-  remarkPlugins: [remarkGuideAdmonitions, [remarkRewriteDemoLinks, { isDev }]],
+  remarkPlugins: [remarkGuideAdmonitions, remarkToolbarIcons, [remarkRewriteDemoLinks, { isDev }]],
   rehypePlugins: [
     rehypeRaw,
     [rehypeGuideImages, { base: siteBase }],

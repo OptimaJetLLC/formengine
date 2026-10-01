@@ -82,8 +82,9 @@ A unique name that identifies a component in the form. For fields, it is also us
 
 ## Preset
 
-A reusable group of components created from a canvas selection with the **preset** button on the floating toolbar. Add the saved group
-from **Components**; its copied components can then be edited in the form.
+A reusable group of components saved from a canvas selection. On the floating toolbar, open the actions if needed,
+then click the :toolbar-icon[preset]: **preset** (bookmark) button. Add the saved group from **Components**; you can
+edit the copied components afterward.
 
 **Related:** [Preset components](/manage-forms/preset-components)
 

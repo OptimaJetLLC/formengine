@@ -11,7 +11,7 @@ import {mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createGuideCapturePage} from './capture-env.mjs';
-import {annotateHighlight} from './measure-workspace-layout.mjs';
+import {annotateHighlight, waitForToolbarHub} from './measure-workspace-layout.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '../../..');
@@ -90,6 +90,7 @@ async function selectTreeItem(page, testId) {
   await page.waitForTimeout(300);
   await page.getByTestId(testId).first().click({force: true});
   await page.waitForTimeout(400);
+  await waitForToolbarHub(page);
 }
 
 /** @param {import('playwright').Page} page @param {string} name */

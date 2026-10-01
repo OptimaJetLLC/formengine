@@ -28,6 +28,26 @@ const SCRIPTS = [
   'capture-preview-your-first-form-screenshots.mjs',
   'capture-add-validation-on-your-first-form-screenshots.mjs',
   'capture-audit-screenshots.mjs',
+  'capture-canvas-drag-and-drop-screenshots.mjs',
+  'capture-select-and-edit-screenshots.mjs',
+  'capture-component-tree-screenshots.mjs',
+  'capture-right-panel-screenshots.mjs',
+  'capture-labels-and-help-screenshots.mjs',
+  'capture-calculated-fields-screenshots.mjs',
+  'capture-custom-error-messages-screenshots.mjs',
+  'capture-button-actions-screenshots.mjs',
+  'capture-events-and-actions-concept-screenshots.mjs',
+  'capture-action-order-on-buttons-screenshots.mjs',
+  'capture-form-level-actions-screenshots.mjs',
+  'capture-static-vs-dynamic-screenshots.mjs',
+  'capture-modals-for-authors-screenshots.mjs',
+  'capture-preview-mode-tools-screenshots.mjs',
+  'capture-device-preview-screenshots.mjs',
+  'capture-json-form-view-screenshots.mjs',
+  'capture-language-settings-screenshots.mjs',
+  'capture-theme-light-and-dark-screenshots.mjs',
+  'capture-undo-and-redo-screenshots.mjs',
+  'capture-faq-for-form-authors-screenshots.mjs',
 ];
 
 /**
@@ -37,9 +57,12 @@ function runScript(scriptName) {
   return new Promise((resolve, reject) => {
     const scriptPath = path.join(__dirname, scriptName);
     console.log(`\n=== ${scriptName} ===`);
-    const child = spawn('node', [scriptPath], {stdio: 'inherit'});
+    const child = spawn('node', [scriptPath], {
+      stdio: 'inherit',
+      env: process.env,
+    });
     child.on('error', reject);
-    child.on('close', (code) => {
+    child.on('close', code => {
       if (code === 0) {
         resolve(undefined);
       } else {
@@ -56,7 +79,7 @@ async function main() {
   console.log('\nAll guide screenshots captured.');
 }
 
-main().catch((error) => {
+main().catch(error => {
   console.error(error);
   process.exit(1);
 });

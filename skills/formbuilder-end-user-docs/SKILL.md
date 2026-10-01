@@ -353,7 +353,8 @@ Prefer a **focused script** per page or page group under `skills/formbuilder-end
 | `capture-events-and-actions-concept-screenshots.mjs` | `behavior/events-and-actions-concept.md` |
 | `capture-form-level-actions-screenshots.mjs` | `behavior/form-level-actions.md` |
 | `capture-action-order-on-buttons-screenshots.mjs` | `behavior/action-order-on-buttons.md` |
-| `capture-canvas-drag-and-drop-screenshots.mjs` | `workspace/canvas-drag-and-drop.md` - palette, multi-select, toolbar, Phone above Email |
+| `capture-canvas-drag-and-drop-screenshots.mjs` | `workspace/canvas-drag-and-drop.md` - palette, multi-select, Phone above Email |
+| `capture-floating-toolbar-screenshots.mjs` | Floating toolbar: expanded strip, clone/delete arrows, **+** Before/After, add modal |
 | `capture-guide-structure-batch.mjs` | Broader structure/fields/manage-forms batch (legacy; split new work into focused scripts) |
 
 Template for a new script: copy `capture-save-export-import-screenshots.mjs` or `capture-modals-for-authors-screenshots.mjs` (builder bootstrap, theme loop, `shot()`, plain → annotate).

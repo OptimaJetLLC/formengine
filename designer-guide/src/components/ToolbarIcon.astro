@@ -1,0 +1,15 @@
+---
+import { isToolbarIconName } from '../guide-toolbar-icons.mjs';
+
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+
+if (!isToolbarIconName(name)) {
+  throw new Error(`Unknown toolbar icon "${name}".`);
+}
+---
+
+<span class={`fe-toolbar-icon fe-toolbar-icon--${name}`} aria-hidden="true"></span>

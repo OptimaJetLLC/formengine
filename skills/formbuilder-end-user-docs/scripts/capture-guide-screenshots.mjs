@@ -16,6 +16,7 @@ import {
   annotateHighlight,
   annotateArrow,
   annotateZones,
+  ensureToolbarActionsVisible,
   measureComponentToolbarArrow,
   measureWorkspaceHighlights,
   measureWorkspaceZones,
@@ -249,20 +250,23 @@ async function annotatePanelCollapse(page, theme) {
  * @param {'light' | 'dark'} theme
  */
 async function annotateToolbarActionArrows(page, theme, plainPath) {
+  const addArrow = await measureComponentToolbarArrow(page, 'First name', 'add');
   const cloneArrow = await measureComponentToolbarArrow(page, 'First name', 'clone');
   const deleteArrow = await measureComponentToolbarArrow(page, 'First name', 'delete');
 
   if (theme === 'light') {
     writeMeasurementPreset(path.join(__dirname, 'arrows-toolbar-actions-1440x900.json'), {
       viewport: '1440x900',
-      description: 'Arrow coordinates from selected First name field to toolbar clone/delete buttons.',
+      description: 'Arrow coordinates from selected First name field to toolbar add/clone/delete buttons.',
       arrows: {
+        add: addArrow,
         clone: cloneArrow,
         delete: deleteArrow,
       },
     });
   }
 
+  annotateArrow(plainPath, path.join(assetsRoot, 'workspace', `highlight-toolbar-add.${theme}.png`), addArrow);
   annotateArrow(plainPath, path.join(assetsRoot, 'workspace', `highlight-toolbar-clone.${theme}.png`), cloneArrow);
   annotateArrow(plainPath, path.join(assetsRoot, 'workspace', `highlight-toolbar-delete.${theme}.png`), deleteArrow);
 }
@@ -384,9 +388,10 @@ async function captureGuideScreenshots(page, theme) {
   const toolbarActionsPlainPath = await shot(page, 'workspace', 'toolbar-actions-plain', theme);
   await annotateToolbarActionArrows(page, theme, toolbarActionsPlainPath);
 
-  const addButton = page.locator('.FE_Component_Toolbar_AddButton .add-button').first();
+  await ensureToolbarActionsVisible(page);
+  const addButton = page.locator('.FE_Component_Toolbar_AddButton button, .FE_Component_Toolbar_AddButton .add-button').locator('visible=true').first();
   await addButton.scrollIntoViewIfNeeded();
-  await addButton.hover();
+  await addButton.click({force: true});
   await page.waitForTimeout(500);
   await page.getByRole('button', { name: 'Before' }).waitFor({ state: 'visible', timeout: 5000 });
   await shot(page, 'workspace', 'components-add-button-hover-plain', theme);

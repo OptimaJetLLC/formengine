@@ -1,7 +1,7 @@
 {
   "version": 1,
   "description": "Canonical map of Form Author Guide screenshots, guide-forms fixtures, articles, and capture scripts. Use each screenshot.regenerationPrompt with the formbuilder-end-user-docs skill to retake or create a similar image.",
-  "updatedAt": "2026-09-24",
+  "updatedAt": "2026-10-01",
   "paths": {
     "assetsDir": "designer-guide/public/assets/guide",
     "contentDir": "designer-guide/content",
@@ -17,7 +17,7 @@
     "rebuildCatalog": "node skills/formbuilder-end-user-docs/scripts/build-guide-screenshot-catalog.mjs"
   },
   "stats": {
-    "screenshots": 318,
+    "screenshots": 321,
     "forms": 33,
     "articles": 71
   },
@@ -101,7 +101,8 @@
         "first-form/validation-add-rule-plain",
         "first-form/validation-preview-errors-plain",
         "workspace/components-add-button-hover-plain",
-        "workspace/components-add-modal-plain"
+        "workspace/components-add-modal-plain",
+        "workspace/highlight-toolbar-add"
       ]
     },
     "add-fields-validated": {
@@ -360,6 +361,7 @@
         "workspace/highlight-theme-toggle",
         "workspace/highlight-tree-expand-all",
         "workspace/highlight-tree-select",
+        "workspace/highlight-tree-toolbar",
         "workspace/highlight-undo-redo",
         "workspace/json-view-close-plain",
         "workspace/json-view-open-plain",
@@ -368,6 +370,7 @@
         "workspace/tree-expanded-nested-plain",
         "workspace/tree-panel-plain",
         "workspace/tree-select-plain",
+        "workspace/tree-toolbar-plain",
         "workspace/undo-redo-plain"
       ]
     },
@@ -1118,7 +1121,8 @@
         "workspace/components-add-button-hover-plain",
         "workspace/components-add-modal-plain",
         "workspace/components-search-plain",
-        "workspace/highlight-palette"
+        "workspace/highlight-palette",
+        "workspace/highlight-toolbar-add"
       ],
       "forms": [
         "add-fields-two-fields"
@@ -1954,10 +1958,12 @@
       "screenshots": [
         "workspace/highlight-tree-expand-all",
         "workspace/highlight-tree-select",
+        "workspace/highlight-tree-toolbar",
         "workspace/tree-expand-all-plain",
         "workspace/tree-expanded-nested-plain",
         "workspace/tree-panel-plain",
-        "workspace/tree-select-plain"
+        "workspace/tree-select-plain",
+        "workspace/tree-toolbar-plain"
       ],
       "forms": [
         "event-registration"
@@ -10234,15 +10240,15 @@
         "meet-the-designer/add-components-from-the-palette"
       ],
       "altTexts": [
-        "Add button on the component toolbar with Before and After options."
+        "Add button on the floating toolbar with Before and After options open after a click."
       ],
       "forms": [
         "add-fields-two-fields"
       ],
       "view": "mui",
       "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-guide-screenshots.mjs",
-      "description": "Add button on the component toolbar with Before and After options.",
-      "regenerationPrompt": "Regenerate Form Author Guide screenshot `workspace/components-add-button-hover-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Add button on the component toolbar with Before and After options.\n\nArticle(s): designer-guide/content/meet-the-designer/add-components-from-the-palette.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/add-fields-two-fields.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-guide-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/workspace/components-add-button-hover-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+      "description": "Add button on the floating toolbar with Before and After options open after a click.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `workspace/components-add-button-hover-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Add button on the floating toolbar with Before and After options open after a click.\n\nArticle(s): designer-guide/content/meet-the-designer/add-components-from-the-palette.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/add-fields-two-fields.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-guide-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/workspace/components-add-button-hover-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
     },
     "workspace/components-add-modal-plain": {
       "id": "workspace/components-add-modal-plain",
@@ -10368,15 +10374,15 @@
         "meet-the-designer/canvas-drag-and-drop"
       ],
       "altTexts": [
-        "Floating toolbar on the selected Email field on Event registration."
+        "Floating toolbar on Email with the action strip open: Reveal in tree, Show nearby, Add, Clone, Preset, and Remove."
       ],
       "forms": [
         "event-registration"
       ],
       "view": "mui",
       "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-canvas-drag-and-drop-screenshots.mjs",
-      "description": "Floating toolbar on the selected Email field on Event registration.",
-      "regenerationPrompt": "Regenerate Form Author Guide screenshot `workspace/floating-toolbar-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Floating toolbar on the selected Email field on Event registration.\n\nArticle(s): designer-guide/content/meet-the-designer/canvas-drag-and-drop.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/event-registration.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-canvas-drag-and-drop-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/workspace/floating-toolbar-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+      "description": "Floating toolbar on Email with the action strip open: Reveal in tree, Show nearby, Add, Clone, Preset, and Remove.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `workspace/floating-toolbar-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Floating toolbar on Email with the action strip open: Reveal in tree, Show nearby, Add, Clone, Preset, and Remove.\n\nArticle(s): designer-guide/content/meet-the-designer/canvas-drag-and-drop.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/event-registration.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-canvas-drag-and-drop-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/workspace/floating-toolbar-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
     },
     "workspace/header-toolbar": {
       "id": "workspace/header-toolbar",
@@ -11031,6 +11037,38 @@
       "description": "Red arrow pointing to the Toggle theme button in the header.",
       "regenerationPrompt": "Regenerate Form Author Guide screenshot `workspace/highlight-theme-toggle` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Red arrow pointing to the Toggle theme button in the header.\n\nArticle(s): designer-guide/content/meet-the-designer/light-and-dark-theme.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/event-registration.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-theme-light-and-dark-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/workspace/highlight-theme-toggle.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: workspace/theme-toggle-plain\nAnnotation labels: Toggle theme.\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
     },
+    "workspace/highlight-toolbar-add": {
+      "id": "workspace/highlight-toolbar-add",
+      "section": "workspace",
+      "basename": "highlight-toolbar-add",
+      "kind": "highlight",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/workspace/highlight-toolbar-add.light.png",
+        "dark": "designer-guide/public/assets/guide/workspace/highlight-toolbar-add.dark.png"
+      },
+      "plainSource": "workspace/toolbar-add-plain",
+      "articles": [
+        "meet-the-designer/add-components-from-the-palette"
+      ],
+      "altTexts": [
+        "Floating toolbar with an arrow pointing at the Add (+) button."
+      ],
+      "forms": [
+        "add-fields-two-fields"
+      ],
+      "view": "mui",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-guide-screenshots.mjs",
+      "annotation": {
+        "labels": [],
+        "noZoneLabels": false
+      },
+      "description": "Floating toolbar with an arrow pointing at the Add (+) button.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `workspace/highlight-toolbar-add` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Floating toolbar with an arrow pointing at the Add (+) button.\n\nArticle(s): designer-guide/content/meet-the-designer/add-components-from-the-palette.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/add-fields-two-fields.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-guide-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/workspace/highlight-toolbar-add.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: workspace/toolbar-add-plain\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
     "workspace/highlight-toolbar-clone": {
       "id": "workspace/highlight-toolbar-clone",
       "section": "workspace",
@@ -11161,6 +11199,38 @@
       },
       "description": "email selected in Tree with the matching Email field highlighted on the canvas.",
       "regenerationPrompt": "Regenerate Form Author Guide screenshot `workspace/highlight-tree-select` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: email selected in Tree with the matching Email field highlighted on the canvas.\n\nArticle(s): designer-guide/content/meet-the-designer/select-and-edit-components.md, designer-guide/content/meet-the-designer/use-the-component-tree.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/event-registration.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-component-tree-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/workspace/highlight-tree-select.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: workspace/tree-select-plain\nAnnotation labels: Tree; Canvas.\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "workspace/highlight-tree-toolbar": {
+      "id": "workspace/highlight-tree-toolbar",
+      "section": "workspace",
+      "basename": "highlight-tree-toolbar",
+      "kind": "highlight",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/workspace/highlight-tree-toolbar.light.png",
+        "dark": "designer-guide/public/assets/guide/workspace/highlight-tree-toolbar.dark.png"
+      },
+      "plainSource": "workspace/tree-toolbar-plain",
+      "articles": [
+        "meet-the-designer/use-the-component-tree"
+      ],
+      "altTexts": [
+        "Tree row for email with the compact toolbar open on hover: Add, Clone, Preset, and Remove."
+      ],
+      "forms": [
+        "event-registration"
+      ],
+      "view": "mui",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-component-tree-screenshots.mjs",
+      "annotation": {
+        "labels": [],
+        "noZoneLabels": true
+      },
+      "description": "Tree row for email with the compact toolbar open on hover: Add, Clone, Preset, and Remove.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `workspace/highlight-tree-toolbar` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Tree row for email with the compact toolbar open on hover: Add, Clone, Preset, and Remove.\n\nArticle(s): designer-guide/content/meet-the-designer/use-the-component-tree.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/event-registration.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-component-tree-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/workspace/highlight-tree-toolbar.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: workspace/tree-toolbar-plain\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
     },
     "workspace/highlight-undo-redo": {
       "id": "workspace/highlight-undo-redo",
@@ -11776,6 +11846,36 @@
       "regenerationPrompt": "Regenerate Form Author Guide screenshot `workspace/tree-select-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain source for: email selected in Tree with the matching Email field highlighted on the canvas.\n\nArticle(s): designer-guide/content/meet-the-designer/select-and-edit-components.md, designer-guide/content/meet-the-designer/use-the-component-tree.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/event-registration.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-component-tree-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/workspace/tree-select-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change.",
       "annotatedBy": [
         "workspace/highlight-tree-select"
+      ]
+    },
+    "workspace/tree-toolbar-plain": {
+      "id": "workspace/tree-toolbar-plain",
+      "section": "workspace",
+      "basename": "tree-toolbar-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/workspace/tree-toolbar-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/workspace/tree-toolbar-plain.dark.png"
+      },
+      "articles": [
+        "meet-the-designer/use-the-component-tree"
+      ],
+      "altTexts": [
+        "Plain source for: Tree row for email with the compact toolbar open on hover: Add, Clone, Preset, and Remove."
+      ],
+      "forms": [
+        "event-registration"
+      ],
+      "view": "mui",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-component-tree-screenshots.mjs",
+      "description": "Plain source for: Tree row for email with the compact toolbar open on hover: Add, Clone, Preset, and Remove.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `workspace/tree-toolbar-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain source for: Tree row for email with the compact toolbar open on hover: Add, Clone, Preset, and Remove.\n\nArticle(s): designer-guide/content/meet-the-designer/use-the-component-tree.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/event-registration.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-component-tree-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/workspace/tree-toolbar-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change.",
+      "annotatedBy": [
+        "workspace/highlight-tree-toolbar"
       ]
     },
     "workspace/undo-redo-plain": {

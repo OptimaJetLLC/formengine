@@ -9,7 +9,7 @@ import {mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createGuideCapturePage} from './capture-env.mjs';
-import {annotateZones} from './measure-workspace-layout.mjs';
+import {annotateZones, waitForToolbarHub} from './measure-workspace-layout.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '../../..');
@@ -230,6 +230,7 @@ async function captureProfilePaneTree(page, theme) {
   await page.waitForTimeout(300);
   await page.getByTestId('profilePane').first().click({force: true});
   await page.waitForTimeout(500);
+  await waitForToolbarHub(page);
 
   const plainPath = await shot(page, 'structure', 'tabs-sections-personal-tree-plain', theme);
   const treeTab = await measureLocator(page.getByTestId('Tree_Tab'));

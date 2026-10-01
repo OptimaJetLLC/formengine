@@ -9,7 +9,7 @@ import {mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createGuideCapturePage} from './capture-env.mjs';
-import {annotateZones} from './measure-workspace-layout.mjs';
+import {annotateZones, waitForToolbarHub} from './measure-workspace-layout.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '../../..');
@@ -241,6 +241,7 @@ async function captureRepeaterRowTree(page, theme) {
   await page.waitForTimeout(300);
   await page.getByTestId('lineItemRow').first().click({force: true});
   await page.waitForTimeout(500);
+  await waitForToolbarHub(page);
   const plainPath = await shot(page, 'fields-and-data', 'tables-repeaters-repeater-row-tree-plain', theme);
   const treeTab = await measureLocator(page.getByTestId('Tree_Tab'));
   const rowTestIds = ['lineItemsRepeater', 'lineItemRow', 'itemName', 'quantity', 'unitPrice', 'removeLineItem'];
@@ -308,6 +309,7 @@ async function captureRepeaterRemoveButton(page, theme) {
   await clickLeftTab(page, 'Tree');
   await page.getByRole('button', {name: 'Expand all'}).click({force: true});
   await page.getByTestId('removeLineItem').first().click({force: true});
+  await waitForToolbarHub(page);
   await page.getByTestId('Actions_Tab').click({force: true});
   const removeAction = page.getByTestId('bound-action-onClick-common-removeRow');
   await removeAction.waitFor({state: 'visible', timeout: 10_000});
@@ -360,6 +362,7 @@ async function captureRepeaterCanvas(page, theme) {
   await clickLeftTab(page, 'Tree');
   await page.getByRole('button', {name: 'Expand all'}).click({force: true});
   await page.getByTestId('addLineItem').first().click({force: true});
+  await waitForToolbarHub(page);
   await page.getByTestId('Actions_Tab').click({force: true});
   const addAction = page.getByTestId('bound-action-onClick-common-addRow');
   await addAction.waitFor({state: 'visible', timeout: 10_000});

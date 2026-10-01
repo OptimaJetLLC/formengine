@@ -9,7 +9,7 @@ import {mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createGuideCapturePage} from './capture-env.mjs';
-import {annotateZones} from './measure-workspace-layout.mjs';
+import {annotateZones, waitForToolbarHub} from './measure-workspace-layout.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '../../..');
@@ -236,6 +236,7 @@ async function captureProfileStepTree(page, theme) {
   await page.waitForTimeout(300);
   await page.getByTestId('profileStep').first().click({force: true});
   await page.waitForTimeout(500);
+  await waitForToolbarHub(page);
 
   const plainPath = await shot(page, 'structure', 'wizard-sections-profile-tree-plain', theme);
   const treeTab = await measureLocator(page.getByTestId('Tree_Tab'));
@@ -346,6 +347,7 @@ async function captureValidationSettings(page, theme) {
   await page.getByRole('button', {name: 'Expand all'}).click({force: true});
   await page.waitForTimeout(300);
   await page.getByTestId('onboardingWizard').first().click({force: true});
+  await waitForToolbarHub(page);
   await clickRightTab(page, 'Main');
 
   const validateOnNext = page.getByTestId('validateOnNext-labeled-wrapper');

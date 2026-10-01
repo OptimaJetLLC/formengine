@@ -1,15 +1,25 @@
 {
   "viewport": "1440x900",
-  "description": "Arrow coordinates from selected First name field to toolbar clone/delete buttons.",
+  "description": "Arrow coordinates from selected First name field to toolbar add/clone/delete buttons.",
   "arrows": {
+    "add": {
+      "start": [
+        607,
+        179
+      ],
+      "end": [
+        628,
+        162
+      ]
+    },
     "clone": {
       "start": [
         607,
         179
       ],
       "end": [
-        660,
-        161
+        650,
+        162
       ]
     },
     "delete": {
@@ -18,8 +28,8 @@
         179
       ],
       "end": [
-        698,
-        161
+        694,
+        162
       ]
     }
   }

@@ -36,7 +36,8 @@ This walkthrough saves **Street**, **City**, and **ZIP / Postal** fields as an *
 
 <img src="/assets/guide/manage-forms/highlight-preset-toolbar-button.png" alt="Floating toolbar on multi-selected fields with an arrow pointing at the preset bookmark button." />
 
-1. On the floating toolbar, click the **preset** (bookmark) button.
+1. If the toolbar only shows :toolbar-icon[open-actions]: **Open actions**, hover that control to expand the strip.
+2. Click the :toolbar-icon[preset]: **preset** (bookmark) button.
 
 ### Step 3: Set options in the popup
 

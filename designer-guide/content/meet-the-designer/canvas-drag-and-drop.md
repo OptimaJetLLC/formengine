@@ -41,20 +41,23 @@ If drag is blocked, the target may not accept that component. Try a different co
 
 ## Floating toolbar
 
-<img src="/assets/guide/workspace/floating-toolbar-plain.png" alt="Floating toolbar on the selected Email field on Event registration." />
+<img src="/assets/guide/workspace/floating-toolbar-plain.png" alt="Floating toolbar on Email with the action strip open: Reveal in tree, Show nearby, Add, Clone, Preset, and Remove." />
 
-With one component selected:
+Select one component to show the floating toolbar. Wide selections keep the action icons visible. Narrow ones collapse them behind
+:toolbar-icon[open-actions]: **Open actions**; hover that control (or move into the strip) to expand it.
 
-- Component name
-- **+** insert before/after
-- **Clone** (or use <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>D</kbd></span> or
+- :toolbar-icon[reveal]: **Reveal in tree** - opens **Tree** and scrolls to the component
+- :toolbar-icon[nearby]: **Show nearby components** - pick a parent or direct child
+- :toolbar-icon[add]: Insert before or after (click, then choose **Before** / **After**)
+- :toolbar-icon[clone]: **Clone** (or <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>D</kbd></span> /
   <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>D</kbd></span>)
-- **Preset** bookmark (when licensed)
-- **Remove** (or press <kbd>Delete</kbd>)
+- :toolbar-icon[preset]: **Preset** bookmark (when licensed)
+- :toolbar-icon[remove]: **Remove** (or <kbd>Delete</kbd>)
 
 ## Summary
 
-Palette drag adds components. Canvas or **Tree** drag reorders them. Multi-select and toolbar speed repetitive edits.
+Drag from the palette to add. Drag on the canvas or in **Tree** to reorder. Multi-select and the floating toolbar help when you repeat the
+same edit.
 
 ## See also
 

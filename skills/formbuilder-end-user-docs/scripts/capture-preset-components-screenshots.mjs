@@ -9,7 +9,7 @@ import {mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createGuideCapturePage} from './capture-env.mjs';
-import {annotateArrow, annotateZones} from './measure-workspace-layout.mjs';
+import {annotateArrow, annotateZones, ensureToolbarActionsVisible} from './measure-workspace-layout.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '../../..');
@@ -166,7 +166,11 @@ async function multiSelectStreetAndCity(page) {
 async function measurePresetButtonArrow(page) {
   const streetBox = await measureLocator(page.getByTestId('street-editable-wrapper'));
   const cityBox = await measureLocator(page.getByTestId('city-editable-wrapper'));
-  const presetButton = page.locator('.FE_Component_Toolbar_PresetComponentButton .create-preset-button, .create-preset-button').first();
+  await ensureToolbarActionsVisible(page);
+  const presetButton = page
+    .locator('.FE_Component_Toolbar_PresetComponentButton .create-preset-button, .create-preset-button, [data-testid="toolbar-create-preset-button"]')
+    .locator('visible=true')
+    .first();
   const presetBox = await measureLocator(presetButton);
   const selectionCenterX = Math.round((streetBox.x + cityBox.x + cityBox.width) / 2);
   const selectionCenterY = Math.round((streetBox.y + streetBox.y + streetBox.height) / 2);
@@ -221,6 +225,7 @@ async function captureSelectComponents(page, theme) {
  * @param {'light' | 'dark'} theme
  */
 async function capturePresetToolbarButton(page, theme) {
+  await ensureToolbarActionsVisible(page);
   const plainPath = await shot(page, 'manage-forms', 'preset-toolbar-button-plain', theme);
   const arrow = await measurePresetButtonArrow(page);
   annotateArrow(
@@ -236,7 +241,12 @@ async function capturePresetToolbarButton(page, theme) {
  * @param {'light' | 'dark'} theme
  */
 async function capturePresetDialog(page, theme) {
-  await page.locator('.create-preset-button').first().click({force: true});
+  await ensureToolbarActionsVisible(page);
+  await page
+    .locator('.FE_Component_Toolbar_PresetComponentButton .create-preset-button, .create-preset-button, [data-testid="toolbar-create-preset-button"]')
+    .locator('visible=true')
+    .first()
+    .click({force: true});
   await page.waitForSelector('[data-testid="preset-category-picker"]', {timeout: 10_000});
   await page.waitForTimeout(300);
   await page.getByTestId('modal-name-input').fill(PRESET_NAME);

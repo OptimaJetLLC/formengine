@@ -182,6 +182,25 @@ async function captureTheme(page, theme) {
   );
   console.log(`tree-select ${theme}`);
 
+  await page.getByTestId(FIELD_KEY).first().hover({force: true});
+  await page.waitForTimeout(400);
+  const treeToolbar = page.locator('.FE_Component_Toolbar.compact, .FE_Component_Toolbar').locator('visible=true').first();
+  await treeToolbar.waitFor({state: 'visible', timeout: 5_000});
+  const toolbarPlain = await shot(page, 'workspace', 'tree-toolbar-plain', theme);
+  const toolbarBox = await measureLocator(treeToolbar);
+  annotateHighlight(toolbarPlain, path.join(assetsRoot, 'workspace', `highlight-tree-toolbar.${theme}.png`), {
+    label: 'Tree toolbar',
+    rect: [
+      Math.round(toolbarBox.x - 4),
+      Math.round(toolbarBox.y - 4),
+      Math.round(toolbarBox.width + 8),
+      Math.round(toolbarBox.height + 8),
+    ],
+    color: '#8B5CF6',
+    showLabel: false,
+  });
+  console.log(`tree-toolbar ${theme}`);
+
   await page.getByTestId('phone').first().dragTo(page.getByTestId('email').first(), {
     force: true,
     targetPosition: {x: 8, y: 8},

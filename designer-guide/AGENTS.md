@@ -21,6 +21,7 @@ Designer Guide is the FormEngine author documentation site built with Astro + St
 - **All code fences must have a language tag** (`text`, `json`, `javascript`, etc.).
 - **All content, comments, and code in English only.**
 - **Prefer TypeScript for new scripts.** Add Node scripts under `scripts/` as `.ts` first (run with `node scripts/name.ts`). Use `.mjs` only when TypeScript cannot run in that context.
+- **Toolbar icons in markdown:** use `:toolbar-icon[name]:` where `name` is one of `reveal`, `nearby`, `add`, `clone`, `preset`, `remove`, `open-actions`. In MDX, use `<ToolbarIcon name="clone" />` from `src/components/ToolbarIcon.astro`.
 - **Do not commit** unless explicitly asked.
 
 ## Commands

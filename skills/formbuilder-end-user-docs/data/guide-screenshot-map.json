@@ -82,7 +82,7 @@
     },
     "floating toolbar": {
       "src": "/assets/guide/workspace/floating-toolbar-plain.png",
-      "alt": "Floating toolbar on the selected Email field on Event registration."
+      "alt": "Floating toolbar on Email with the action strip open: Reveal in tree, Show nearby, Add, Clone, Preset, and Remove."
     }
   },
   "advanced-topics/view-and-edit-form-json.md": {
@@ -120,9 +120,17 @@
       "src": "/assets/guide/first-form/canvas-plain.png",
       "alt": "Canvas after inserting a component."
     },
-    "components modal": {
+    "toolbar add": {
+      "src": "/assets/guide/workspace/highlight-toolbar-add.png",
+      "alt": "Floating toolbar with an arrow pointing at the Add (+) button."
+    },
+    "components modal before after": {
       "src": "/assets/guide/workspace/components-add-button-hover-plain.png",
-      "alt": "Add button on the component toolbar with Before and After options."
+      "alt": "Add button on the floating toolbar with Before and After options open after a click."
+    },
+    "components modal picker": {
+      "src": "/assets/guide/workspace/components-add-modal-plain.png",
+      "alt": "Click to add control modal with the full component picker."
     }
   },
   "meet-the-designer/select-and-edit-components.md": {
@@ -159,6 +167,10 @@
     "select a component": {
       "src": "/assets/guide/workspace/highlight-tree-select.png",
       "alt": "Email selected in Tree with the matching field highlighted on the canvas."
+    },
+    "row toolbar": {
+      "src": "/assets/guide/workspace/highlight-tree-toolbar.png",
+      "alt": "Tree row for email with the compact toolbar open on hover: Add, Clone, Preset, and Remove."
     },
     "reorder": {
       "src": "/assets/guide/workspace/tree-expanded-nested-plain.png",

@@ -214,6 +214,10 @@
     "labels": [],
     "noZoneLabels": true
   },
+  "highlight-toolbar-add": {
+    "labels": [],
+    "noZoneLabels": false
+  },
   "highlight-toolbar-clone": {
     "labels": [],
     "noZoneLabels": false
@@ -221,6 +225,10 @@
   "highlight-toolbar-delete": {
     "labels": [],
     "noZoneLabels": false
+  },
+  "highlight-tree-toolbar": {
+    "labels": [],
+    "noZoneLabels": true
   },
   "highlight-central-header": {
     "labels": [

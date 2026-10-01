@@ -49,19 +49,21 @@ See [Canvas drag and drop](/meet-the-designer/canvas-drag-and-drop) for reorderi
 <img src="/assets/guide/workspace/highlight-toolbar-clone.png" alt="Selected component with an arrow pointing to the clone button on the floating toolbar." />
 
 1. Select exactly one component.
-2. Click the **clone** icon on the floating toolbar, or press <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>D</kbd></span>
+2. If the toolbar only shows :toolbar-icon[open-actions]: **Open actions**, hover it to expand the strip.
+3. Click :toolbar-icon[clone]: **clone**, or press <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>D</kbd></span>
    (Windows/Linux) or <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>D</kbd></span> (macOS).
-3. A copy appears. Adjust **Key** on **Main** so data keys stay unique.
+4. A copy appears. Change **Key** on **Main** so each field keeps a unique data key.
 
-Click the page background first if the shortcut does nothing; the shortcut may not work while focus is inside a text field.
+If the shortcut does nothing, click the page background first. Shortcuts often fail while focus is inside a text field.
 
 ## Delete a component
 
 <img src="/assets/guide/workspace/highlight-toolbar-delete.png" alt="Selected component with an arrow pointing to the delete button on the floating toolbar." />
 
 1. Select one or more components.
-2. Click the **delete** icon on the floating toolbar, or press <kbd>Delete</kbd>.
-3. Confirm the field is gone from **Tree**.
+2. If the toolbar only shows :toolbar-icon[open-actions]: **Open actions**, hover it to expand the strip.
+3. Click :toolbar-icon[remove]: **delete**, or press <kbd>Delete</kbd>.
+4. Check **Tree** to confirm the field is gone.
 
 ## Summary
 

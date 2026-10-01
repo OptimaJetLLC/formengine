@@ -12,28 +12,28 @@ Shortcuts apply when focus is on the **page background** (not while typing insid
 
 <img src="/assets/guide/workspace/header-toolbar.png" alt="Header toolbar with save, undo, and redo shortcuts." />
 
-| Action                       | Shortcut                                                                        |
-| ---------------------------- | ------------------------------------------------------------------------------- |
-| Delete selected component    | <kbd>Delete</kbd>                                                               |
-| Duplicate selected component | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>D</kbd></span>                 |
-| Save form                    | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span>                 |
-| Print form                   | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>P</kbd></span>                 |
-| Undo                         | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Z</kbd></span>                 |
-| Redo                         | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Y</kbd></span>                 |
-| Redo (alternative)           | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></span> |
+| Action                                             | Shortcut                                                                       |
+| -------------------------------------------------- | ------------------------------------------------------------------------------ |
+| :toolbar-icon[remove]: Delete selected component   | <kbd>Delete</kbd>                                                              |
+| :toolbar-icon[clone]: Duplicate selected component | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>D</kbd></span>                 |
+| Save form                                          | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span>                 |
+| Print form                                         | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>P</kbd></span>                 |
+| Undo                                               | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Z</kbd></span>                 |
+| Redo                                               | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Y</kbd></span>                 |
+| Redo (alternative)                                 | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></span> |
 
 ## macOS
 
 <img src="/assets/guide/workspace/header-toolbar.png" alt="Header toolbar with save, undo, and redo shortcuts." />
 
-| Action                       | Shortcut                                                                     |
-| ---------------------------- | ---------------------------------------------------------------------------- |
-| Delete selected component    | <kbd>Delete</kbd>                                                            |
-| Duplicate selected component | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>D</kbd></span>                 |
-| Save form                    | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span>                 |
-| Print form                   | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>P</kbd></span>                 |
-| Undo                         | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>Z</kbd></span>                 |
-| Redo                         | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></span> |
+| Action                                             | Shortcut                                                                     |
+| -------------------------------------------------- | ---------------------------------------------------------------------------- |
+| :toolbar-icon[remove]: Delete selected component   | <kbd>Delete</kbd>                                                            |
+| :toolbar-icon[clone]: Duplicate selected component | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>D</kbd></span>                 |
+| Save form                                          | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span>                 |
+| Print form                                         | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>P</kbd></span>                 |
+| Undo                                               | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>Z</kbd></span>                 |
+| Redo                                               | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></span> |
 
 ## Tips
 

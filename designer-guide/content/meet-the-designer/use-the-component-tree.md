@@ -25,14 +25,28 @@ component. The root key is usually `screen1`.
 
 ## Select a component
 
-<img
-  src="/assets/guide/workspace/highlight-tree-select.png"
-  alt="email selected in Tree with the matching Email field highlighted on the canvas."
+<img src="/assets/guide/workspace/highlight-tree-select.png"
+alt="email selected in Tree with the matching Email field highlighted on the canvas."
 />
 
 1. Click a row (for example `email`).
 2. The canvas highlights that component.
 3. The right panel shows **Main**, **Style**, **Actions**, and **Rules** for that selection.
+
+## Row toolbar
+
+<img src="/assets/guide/workspace/highlight-tree-toolbar.png"
+alt="Tree row for email with the compact toolbar open on hover: Add, Clone, Preset, and Remove."
+/>
+
+1. Hover a Tree row.
+2. A compact toolbar appears: :toolbar-icon[add]: **+**, :toolbar-icon[clone]: **Clone**,
+   :toolbar-icon[preset]: **Preset**, and :toolbar-icon[remove]: **Remove**.
+3. Those icons match the canvas toolbar. :toolbar-icon[reveal]: **Reveal in tree** and
+   :toolbar-icon[nearby]: **Show nearby** stay on the canvas toolbar only.
+
+Selecting on the canvas does not scroll **Tree**. Click :toolbar-icon[reveal]: **Reveal in tree** on the canvas
+toolbar when you need that row in view.
 
 ## Reorder
 
@@ -60,8 +74,8 @@ If drag is blocked, the target may not accept that component type. Try a differe
 
 ## Summary
 
-The Tree tab is a hierarchical list. Use Expand all and Collapse all to navigate. Selecting a row drives the properties panel. Drag rows
-when you need to reorder and the layout allows it.
+**Tree** mirrors the canvas hierarchy. Use **Expand all** and **Collapse all** to move around. Click a row to edit it on the right. Hover a
+row for the compact toolbar. Drag rows to reorder when the layout allows it.
 
 ## See also
 

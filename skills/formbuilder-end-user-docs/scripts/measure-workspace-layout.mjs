@@ -503,17 +503,62 @@ export async function annotateSingleHeaderMenuItem(page, theme, menuPlainPath, i
 }
 
 /**
+ * Ensures canvas toolbar actions are visible (expanded strip, or hamburger hovered open).
+ * @param {import('playwright').Page} page
+ */
+export async function ensureToolbarActionsVisible(page) {
+  const toolbar = page.locator('.FE_Component_Toolbar').locator('visible=true').first();
+  await toolbar.waitFor({state: 'visible', timeout: 5_000});
+  await page.waitForTimeout(200);
+
+  const action = page
+    .locator(
+      '.FE_Component_Toolbar_AddButton, [data-testid="tree-clone-button"], [data-testid="toolbar-remove-button"], [data-testid="reveal-in-tree-button"]',
+    )
+    .locator('visible=true')
+    .first();
+  if (await action.count()) {
+    return;
+  }
+
+  const hub = page.getByTestId('toolbar-actions-button').locator('visible=true').first();
+  await hub.waitFor({state: 'visible', timeout: 5_000});
+  await hub.hover();
+  await page.waitForTimeout(400);
+  await action.waitFor({state: 'visible', timeout: 5_000});
+}
+
+/**
  * @param {import('playwright').Page} page
  * @param {string} componentKey
- * @param {'clone' | 'delete'} target
+ * @param {'clone' | 'delete' | 'add'} target
  */
 export async function measureComponentToolbarArrow(page, componentKey, target) {
   const component = page.getByTestId(`${componentKey}-editable-wrapper`);
   const componentBox = await measureLocator(component);
-  const targetLocator =
-    target === 'clone'
-      ? page.locator('.FE_Component_Toolbar_CloneButton [data-testid="tree-clone-button"], .clone-button').first()
-      : page.locator('.FE_Component_Toolbar_RemoveButton .remove-button, .FE_Component_Toolbar_RemoveButton svg').first();
+  await ensureToolbarActionsVisible(page);
+  /** @type {import('playwright').Locator} */
+  let targetLocator;
+  if (target === 'clone') {
+    targetLocator = page
+      .locator('.FE_Component_Toolbar_CloneButton [data-testid="tree-clone-button"], [data-testid="tree-clone-button"]')
+      .locator('visible=true')
+      .first();
+  } else if (target === 'delete') {
+    targetLocator = page
+      .locator('.FE_Component_Toolbar_RemoveButton [data-testid="toolbar-remove-button"], [data-testid="toolbar-remove-button"], .FE_Component_Toolbar_RemoveButton .remove-button')
+      .locator('visible=true')
+      .first();
+  } else if (target === 'add') {
+    targetLocator = page
+      .locator('.FE_Component_Toolbar_AddButton button, .FE_Component_Toolbar_AddButton .add-button')
+      .locator('visible=true')
+      .first();
+  } else {
+    const _exhaustive = target;
+    void _exhaustive;
+    throw new Error(`Unknown toolbar arrow target: ${String(target)}`);
+  }
   const targetBox = await measureLocator(targetLocator);
 
   const start = [
