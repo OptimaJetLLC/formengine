@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type {Page} from '@playwright/test'
 import {expect, test} from '@playwright/test'
+import {dragAndDrop} from './dragAndDrop'
 
 declare global {
   interface Window {
@@ -58,19 +59,18 @@ test.describe(
     test('onFormElementAdd is called when adding a component via drag and drop', async ({page}) => {
       await clearRecordedCalls(page)
 
-      await page
+      const calendar = page
         .locator('div')
         .filter({hasText: /^Calendar$/})
         .nth(1)
-        .hover()
-      await page.mouse.down()
-      await page
+
+      const breadcrumb = page
         .locator('div')
         .filter({hasText: /^one\/two\/three$/})
         .locator('div')
         .first()
-        .hover()
-      await page.mouse.up()
+
+      await dragAndDrop(page, calendar, breadcrumb)
 
       const addCalls = await page.evaluate(() => window.__formBuilderAddCalls ?? [])
       expect(addCalls.length).toBeGreaterThanOrEqual(1)
@@ -80,19 +80,18 @@ test.describe(
     test('onFormElementRemove is called when removing a component', async ({page}) => {
       await clearRecordedCalls(page)
 
-      await page
+      const calendar = page
         .locator('div')
         .filter({hasText: /^Calendar$/})
         .nth(1)
-        .hover()
-      await page.mouse.down()
-      await page
+
+      const breadcrumb = page
         .locator('div')
         .filter({hasText: /^one\/two\/three$/})
         .locator('div')
         .first()
-        .hover()
-      await page.mouse.up()
+
+      await dragAndDrop(page, calendar, breadcrumb)
 
       await expect(page.getByTestId('rsCalendar1-editable-wrapper')).toBeVisible()
 

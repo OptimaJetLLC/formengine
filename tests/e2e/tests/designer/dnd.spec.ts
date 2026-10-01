@@ -1,9 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {expect, test} from '@playwright/test'
-
-// https://github.com/microsoft/playwright/issues/19892
-// https://stackoverflow.com/questions/64718915/playwright-drag-and-drop
-// https://playwright.dev/docs/input#drag-and-drop
+import {dragAndDrop} from './dragAndDrop'
 
 test(
   'can drop component',
@@ -13,19 +10,18 @@ test(
   async ({page}) => {
     await page.goto('/')
 
-    await page
+    const calendar = page
       .locator('div')
       .filter({hasText: /^Calendar$/})
       .nth(1)
-      .hover()
-    await page.mouse.down()
-    await page
+
+    const breadcrumb = page
       .locator('div')
       .filter({hasText: /^one\/two\/three$/})
       .locator('div')
       .first()
-      .hover()
-    await page.mouse.up()
+
+    await dragAndDrop(page, calendar, breadcrumb)
 
     await expect(page.locator('.FE_Component_Toolbar').filter({hasText: /^rsCalendar1$/})).toBeVisible()
   }

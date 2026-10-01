@@ -23,11 +23,8 @@ TEST_TESTS_PATH=viewer npx playwright test --ui
 
 ### Drag and drop
 
-### Screenshots
-
-To emulate drag and drop, you need to do the following:
-
-- come up with a locator for the element
+Use the `dragAndDrop` helper from `tests/e2e/tests/designer/dragAndDrop.ts` to emulate dragging a component to the form.
+It places the pointer on the source element, moves the mouse to the target in several steps and releases it.
 
 https://github.com/microsoft/playwright/issues/19892
 https://stackoverflow.com/questions/64718915/playwright-drag-and-drop

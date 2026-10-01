@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type {Page} from '@playwright/test'
 import {expect, test} from '@playwright/test'
+import {dragAndDrop} from './dragAndDrop'
 
 const clearForm = async (page: Page) => {
   await page.locator('.FE_MainMenu_Button').first().hover()
@@ -73,10 +74,10 @@ test.describe(
     test('can be dragged to the form from components tab', async () => {
       await clearForm(page)
 
-      await page.locator('.FE_TestPreset').first().hover({force: true})
-      await page.mouse.down()
-      await page.locator('.isRoot.isInner button').first().hover({force: true})
-      await page.mouse.up()
+      const preset = page.locator('.FE_TestPreset').first()
+      const addButton = page.locator('.isRoot.isInner button').first()
+
+      await dragAndDrop(page, preset, addButton)
 
       await expect(page.getByTestId('title-input')).toHaveCount(1)
       await expect(page.getByTestId('title-input')).toBeVisible()

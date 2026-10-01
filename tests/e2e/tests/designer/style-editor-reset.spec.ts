@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type {Locator, Page} from '@playwright/test'
 import {expect, test} from '@playwright/test'
+import {dragAndDrop} from './dragAndDrop'
 
 const componentCss = 'outline: 3px solid magenta;'
 const wrapperCss = 'outline: 3px dashed lime;'
@@ -58,19 +59,19 @@ const selectTitleInput = async (page: Page) => {
 
 const selectStyledBox = async (page: Page) => {
   await page.getByPlaceholder('Search...').fill('StyledBox')
-  await page
+
+  const styledBox = page
     .locator('div')
     .filter({hasText: /^StyledBox$/})
     .last()
-    .hover()
-  await page.mouse.down()
-  await page
+
+  const breadcrumb = page
     .locator('div')
     .filter({hasText: /^one\/two\/three$/})
     .locator('div')
     .first()
-    .hover()
-  await page.mouse.up()
+
+  await dragAndDrop(page, styledBox, breadcrumb)
   await expect(page.getByTestId('styled-box')).toBeVisible()
   // Canvas clicks hit the screen toolbar after drop; the tree is outside that overlay.
   await selectInTree(page, 'styledBox1')
