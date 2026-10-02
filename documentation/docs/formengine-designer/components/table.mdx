@@ -102,7 +102,7 @@ const form = `{
               {
                 "key": "nameHeader",
                 "type": "RsHeaderCell",
-                "props": {"content": {"value": "Name"}}
+                "props": {"children": {"value": "Name"}}
               },
               {
                 "key": "nameCell",
@@ -124,9 +124,10 @@ function App() {
 
 ## Using Table component
 
-The table component differs from many other components in that it has an array of objects as a value. By default, the column headings and
-cell values are displayed in text. But you can use components to change the display of a cell. Let's turn to the examples of tables to
-visually show how the table works.
+The table value is an array of objects. In the viewer, a header cell shows its text, and a cell shows its child components or the value at
+its data key. In the designer, the table is a column grid, so you can select the table, a column, or a cell on the canvas. Row data stays
+off that grid until Show data in designer is on. You can place components in a cell to change what it displays. The examples below show
+the viewer.
 
 ### Basic
 
@@ -198,18 +199,19 @@ visually show how the table works.
 | Height                     | `number`  | Table height                                                                                                                        |
 | Hover                      | `boolean` | The row of the table has a mouseover effect                                                                                         |
 | Loading                    | `boolean` | Show loading                                                                                                                        |
-| Max height                 | `number`  | Maximum heigh                                                                                                                       |
+| Max height                 | `number`  | Maximum height                                                                                                                      |
 | Min height                 | `number`  | Minimum height                                                                                                                      |
 | Row class name             | `string`  | Add an optional extra class name to row                                                                                             |
 | Row height                 | `number`  | Row height                                                                                                                          |
 | Row key                    | `string`  | Each row corresponds to the unique key in data                                                                                      |
 | Should update scroll       | `boolean` | Whether to update the scroll after the table size is updated                                                                        |
+| Show data in designer      | `boolean` | Display table data on the canvas in design mode                                                                                     |
 | Show header                | `boolean` | Display header                                                                                                                      |
 | Sort column                | `string`  | Sort column name                                                                                                                    |
 | Sort type                  | `choice`  | Sort type, _Asc_, _Desc_                                                                                                            |
 | Virtualized                | `boolean` | Effectively render large tabular data                                                                                               |
 | Width                      | `number`  | Table width                                                                                                                         |
-| Word wrap                  | `choice`  | Whether to appear line breaks where text overflows its content box, _Break All_, _Break Word or _Keep All_                          |
+| Word wrap                  | `choice`  | Whether to appear line breaks where text overflows its content box: _break-all_, _break-word_, or _keep-all_                        |
 
 ### Column main properties
 
@@ -224,7 +226,7 @@ visually show how the table works.
 | Resizable      | `boolean`  | Customizable resize column width                                                                             |
 | Row span       | `function` | Merges rows on the specified column                                                                          |
 | Sortable       | `boolean`  | Sortable                                                                                                     |
-| Vertical align | `boolean`  | Vertical alignment, _top_, _middle_ or _bottom_                                                              |
+| Vertical align | `choice`   | Vertical alignment, _top_, _middle_ or _bottom_                                                              |
 | Width          | `number`   | Column width                                                                                                 |
 
 ### Column group main properties
@@ -235,7 +237,7 @@ visually show how the table works.
 | Fixed               | `boolean` | Fixed column group                                |
 | Group header height | `number`  | The height of the header of the merged cell group |
 | Header              | `string`  | Group header                                      |
-| Vertical align      | `string`  | Vertical alignment, _top_, _middle_ or _bottom_   |
+| Vertical align      | `choice`  | Vertical alignment, _top_, _middle_ or _bottom_   |
 
 ### Header cell main properties
 
@@ -248,3 +250,4 @@ visually show how the table works.
 | Name     | Type     | Description                              |
 |:---------|:---------|:-----------------------------------------|
 | Data key | `string` | Data binding key, but also a sort of key |
+| Children | `node`   | Components rendered in the cell          |

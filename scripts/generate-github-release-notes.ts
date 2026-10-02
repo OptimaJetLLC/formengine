@@ -24,8 +24,25 @@ function parseFrontmatterAndBody(content: string): {body: string} {
   return {body}
 }
 
+const DOCS_ORIGIN = 'https://formengine.io/documentation'
+const GUIDE_ORIGIN = 'https://learn.formengine.io'
+
+/**
+ * Rewrites docs-site links to absolute URLs for GitHub release notes.
+ * `/...` becomes a developer-docs URL. `designer-guide:...` becomes a Form Author Guide URL.
+ * @param markdown release note body
+ * @returns markdown with absolute http(s) links
+ */
 function toAbsoluteLinks(markdown: string): string {
-  return markdown.replace(/\]\((\/[^\s)]+)\)/g, (_match, path: string) => `](${`https://formengine.io/documentation${path}`})`)
+  const withGuideLinks = markdown.replace(/\]\(designer-guide:([^)\s]*)\)/g, (_match, guidePath: string) => {
+    const hashIndex = guidePath.indexOf('#')
+    const pathPart = hashIndex === -1 ? guidePath : guidePath.slice(0, hashIndex)
+    const hash = hashIndex === -1 ? '' : guidePath.slice(hashIndex)
+    const clean = pathPart.replace(/^\/+|\/+$/g, '')
+    const url = clean ? `${GUIDE_ORIGIN}/${clean}/${hash}` : `${GUIDE_ORIGIN}/${hash}`
+    return `](${url})`
+  })
+  return withGuideLinks.replace(/\]\((\/[^\s)]+)\)/g, (_match, path: string) => `](${DOCS_ORIGIN}${path})`)
 }
 
 /**

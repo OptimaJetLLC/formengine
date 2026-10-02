@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/designer",
-  "version": "10.3.0",
+  "version": "11.0.0",
   "private": false,
   "main": "index.ts",
   "type": "module",
@@ -63,7 +63,7 @@
     "vite-inline-css-plugin": "^0.0.1"
   },
   "peerDependencies": {
-    "@react-form-builder/core": "10.3.0",
+    "@react-form-builder/core": "11.0.0",
     "clsx": "^2.1.1",
     "mobx": "^6.13.5",
     "mobx-react": "^9.2.0",

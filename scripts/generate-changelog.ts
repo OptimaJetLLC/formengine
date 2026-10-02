@@ -20,9 +20,18 @@ const DOCS_ROOT = join(REPO_ROOT, 'documentation', 'docs', 'release-notes')
 const OUTPUT_CHANGELOG = join(REPO_ROOT, 'CHANGELOG.md')
 const DOCS_ORIGIN = 'https://formengine.io'
 const DOCS_PREFIX = '/documentation'
+const GUIDE_ORIGIN = 'https://learn.formengine.io'
 
 function normalizeDocumentationLinks(value: string): string {
-  return value.replace(/\]\((\/[^)\s]+)\)/g, (_match, path: string) => {
+  const withGuideLinks = value.replace(/\]\(designer-guide:([^)\s]*)\)/g, (_match, guidePath: string) => {
+    const hashIndex = guidePath.indexOf('#')
+    const pathPart = hashIndex === -1 ? guidePath : guidePath.slice(0, hashIndex)
+    const hash = hashIndex === -1 ? '' : guidePath.slice(hashIndex)
+    const clean = pathPart.replace(/^\/+|\/+$/g, '')
+    const url = clean ? `${GUIDE_ORIGIN}/${clean}/${hash}` : `${GUIDE_ORIGIN}/${hash}`
+    return `](${url})`
+  })
+  return withGuideLinks.replace(/\]\((\/[^)\s]+)\)/g, (_match, path: string) => {
     const normalizedPath = path.startsWith(DOCS_PREFIX) ? path : `${DOCS_PREFIX}${path}`
     return `](${DOCS_ORIGIN}${normalizedPath})`
   })
