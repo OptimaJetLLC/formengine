@@ -31,7 +31,7 @@ const RawJsonViewButton = ({className, ...props}: JsonViewButtonProps) => {
   return (
     <>
       <Whisper {...props} speaker={speaker} placement="bottom">
-        <IconButton className={className} onClick={handleOpen} icon={icon} size={'sm'} />
+        <IconButton className={className} onClick={handleOpen} icon={icon} size={'sm'} aria-label={t('editJson')} />
       </Whisper>
       <Modal open={open} size={'full'} backdrop={true}>
         <Modal.Header closeButton onClose={handleClose}>

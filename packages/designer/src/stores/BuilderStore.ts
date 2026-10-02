@@ -951,7 +951,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       languages: this.formAvailableLanguages,
       defaultLanguage: this.viewer.form.defaultLanguage.fullCode,
     })
-    return toPrettyJsonString(serializedObject) ?? ''
+    return toPrettyJsonString(serializedObject, 2) ?? ''
   }
 
   /**
@@ -1014,7 +1014,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       modalType: this.viewer.getFirstComponentTypeWithRole('modal'),
       tooltipType: this.viewer.getFirstComponentTypeWithRole('tooltip'),
     }
-    await this.saveForm(formName, toPrettyJsonString(persistedForm) ?? '')
+    await this.saveForm(formName, toPrettyJsonString(persistedForm, 2) ?? '')
     this.activeFormName = formName
   }
 
