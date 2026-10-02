@@ -1,14 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {expect, test} from '@playwright/test'
 
-test(
-  'has weather button',
-  {
-    tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
-  },
-  async ({page}) => {
-    await page.goto('/')
+test('has weather button', {
+  tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
+}, async ({page}) => {
+  await page.goto('/')
 
-    await expect(page.getByRole('button', {name: /Current weather/})).toBeVisible()
-  }
-)
+  await expect(page.getByRole('button', {name: /Current weather/})).toBeVisible()
+})

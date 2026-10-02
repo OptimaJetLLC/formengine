@@ -27,4 +27,4 @@ const [
   CanAddComponentProvider,
 ] = createNonNullableContext<CanAddComponentFunction>('CanAddComponentContext', () => true)
 
-export {useCanAddComponent, CanAddComponentProvider}
+export {CanAddComponentProvider, useCanAddComponent}

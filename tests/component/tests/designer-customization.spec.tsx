@@ -210,74 +210,75 @@ function createZoneStaticCustomization(): Array<[CustomizableKey, CustomizationM
   ])
 }
 
-describe.each(
-  createZoneStaticCustomization()
-)(`should apply all possible customization settings for every zone`, function (zone, customization, access) {
-  const zoneClassName = `.FE_${zone}:not(.FE_Palette_Component):not(.FE_Palette_ComponentGroup)`
-  const builderProps = access?.builderProps
-  // Form-host zones remove/replace the canvas, so reactVersion is unavailable under hide/replace.
-  const awaitForm = !formHostZones.has(zone)
+describe.each(createZoneStaticCustomization())(
+  `should apply all possible customization settings for every zone`,
+  function (zone, customization, access) {
+    const zoneClassName = `.FE_${zone}:not(.FE_Palette_Component):not(.FE_Palette_ComponentGroup)`
+    const builderProps = access?.builderProps
+    // Form-host zones remove/replace the canvas, so reactVersion is unavailable under hide/replace.
+    const awaitForm = !formHostZones.has(zone)
 
-  const renderZone = (zoneCustomization: CustomizationMap) => {
-    return render(<App customization={zoneCustomization} {...builderProps} />)
+    const renderZone = (zoneCustomization: CustomizationMap) => {
+      return render(<App customization={zoneCustomization} {...builderProps} />)
+    }
+
+    const readyAndActivate = async (
+      container: HTMLElement,
+      findByTestId: (id: string) => Promise<HTMLElement>,
+      options?: {awaitForm?: boolean; awaitVisible?: boolean}
+    ) => {
+      if (options?.awaitForm ?? true) {
+        expect(await findByTestId('reactVersion')).toBeInTheDocument()
+      }
+      await access?.activate?.({container, findByTestId})
+      if (options?.awaitVisible) {
+        await access?.awaitVisible?.({container, findByTestId})
+      }
+    }
+
+    it(`should apply class and style customization for ${zone}`, async () => {
+      const {container, findByTestId, unmount} = renderZone(customization)
+      try {
+        await readyAndActivate(container, findByTestId, {awaitVisible: true})
+        const el = queryInDocument(container, zoneClassName)
+        expect(el).toBeInTheDocument()
+        expect(el).toHaveClass(zoneCustomClass)
+        expect(el).toHaveStyle(targetStyle)
+      } finally {
+        unmount()
+      }
+    })
+
+    it(`should apply respect hidden customization for ${zone}`, async () => {
+      const config = klona(customization)
+      config[zone]!.hidden = true
+
+      const {container, findByTestId} = render(
+        <div data-testid="test-app">
+          <App customization={config} {...builderProps} />
+        </div>
+      )
+
+      expect(await findByTestId('test-app')).toBeInTheDocument()
+      await readyAndActivate(container, findByTestId, {awaitForm})
+
+      expect(queryInDocument(container, zoneClassName)).not.toBeInTheDocument()
+    })
+
+    it(`should apply custom renderer customization for ${zone}`, async () => {
+      const config = klona(customization)
+      config[zone]!.customRenderer = customRenderer
+      const {container, findByTestId, findAllByTestId} = renderZone(config)
+      await readyAndActivate(container, findByTestId, {awaitForm})
+
+      // Some zones (e.g. property editors) mount many instances of the same customizable key.
+      expect(await findAllByTestId('custom-renderer')).not.toHaveLength(0)
+      const rendered = queryInDocument(container, `div.${zoneRenderedClass}`)
+      expect(rendered).toBeInTheDocument()
+      expect(rendered).toHaveTextContent(zoneRenderContent)
+    })
   }
-
-  const readyAndActivate = async (
-    container: HTMLElement,
-    findByTestId: (id: string) => Promise<HTMLElement>,
-    options?: {awaitForm?: boolean; awaitVisible?: boolean}
-  ) => {
-    if (options?.awaitForm ?? true) {
-      expect(await findByTestId('reactVersion')).toBeInTheDocument()
-    }
-    await access?.activate?.({container, findByTestId})
-    if (options?.awaitVisible) {
-      await access?.awaitVisible?.({container, findByTestId})
-    }
-  }
-
-  it(`should apply class and style customization for ${zone}`, async () => {
-    const {container, findByTestId, unmount} = renderZone(customization)
-    try {
-      await readyAndActivate(container, findByTestId, {awaitVisible: true})
-      const el = queryInDocument(container, zoneClassName)
-      expect(el).toBeInTheDocument()
-      expect(el).toHaveClass(zoneCustomClass)
-      expect(el).toHaveStyle(targetStyle)
-    } finally {
-      unmount()
-    }
-  })
-
-  it(`should apply respect hidden customization for ${zone}`, async () => {
-    const config = klona(customization)
-    config[zone]!.hidden = true
-
-    const {container, findByTestId} = render(
-      <div data-testid="test-app">
-        <App customization={config} {...builderProps} />
-      </div>
-    )
-
-    expect(await findByTestId('test-app')).toBeInTheDocument()
-    await readyAndActivate(container, findByTestId, {awaitForm})
-
-    expect(queryInDocument(container, zoneClassName)).not.toBeInTheDocument()
-  })
-
-  it(`should apply custom renderer customization for ${zone}`, async () => {
-    const config = klona(customization)
-    config[zone]!.customRenderer = customRenderer
-    const {container, findByTestId, findAllByTestId} = renderZone(config)
-    await readyAndActivate(container, findByTestId, {awaitForm})
-
-    // Some zones (e.g. property editors) mount many instances of the same customizable key.
-    expect(await findAllByTestId('custom-renderer')).not.toHaveLength(0)
-    const rendered = queryInDocument(container, `div.${zoneRenderedClass}`)
-    expect(rendered).toBeInTheDocument()
-    expect(rendered).toHaveTextContent(zoneRenderContent)
-  })
-})
+)
 
 const toggleTestId = 'test-toggle-button'
 const toggleLabels = {

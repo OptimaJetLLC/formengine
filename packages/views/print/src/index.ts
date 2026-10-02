@@ -13,9 +13,7 @@ export const printComponents: Definer<any>[] = [pageBreak, printSettings]
  */
 export const printModels = printComponents.map(def => def.build().model)
 
-export {pageBreak, printSettings}
+export {printComponentsDescriptions} from './i18n/printComponentsDescriptions'
 export type {PageBreakProps, PageBreakRule} from './PageBreak'
 export type {PrintSettingsProps} from './PrintSettings'
-
-export {printEnUsComponentsDescriptions}
-export {printComponentsDescriptions} from './i18n/printComponentsDescriptions'
+export {pageBreak, printEnUsComponentsDescriptions, printSettings}

@@ -1024,31 +1024,27 @@ const generateTestData = () => {
 }
 
 describe('Embedded Zod validators test', () => {
-  it.each(generateTestData())("Validator '%s\:\%s' (%s) should show correct validation message", async (_, _1, _2, {
-    validation,
-    initialData,
-    componentType,
-    expected,
-    skipInputValueCheck,
-    skipDataCheck,
-  }) => {
-    const testForm = generateTestForm(validation, componentType)
-    const props = {initialData, view: zodValidationView}
-    const {formData, findByTestId} = renderForm(testForm, props)
+  it.each(generateTestData())(
+    "Validator '%s\:\%s' (%s) should show correct validation message",
+    async (_, _1, _2, {validation, initialData, componentType, expected, skipInputValueCheck, skipDataCheck}) => {
+      const testForm = generateTestForm(validation, componentType)
+      const props = {initialData, view: zodValidationView}
+      const {formData, findByTestId} = renderForm(testForm, props)
 
-    const zodInput = await findByTestId('zodInput')
-    if (!skipInputValueCheck) {
-      const expectedValue = `${initialData?.zodInput ?? ''}`
-      expect(zodInput).toHaveValue(expectedValue)
+      const zodInput = await findByTestId('zodInput')
+      if (!skipInputValueCheck) {
+        const expectedValue = `${initialData?.zodInput ?? ''}`
+        expect(zodInput).toHaveValue(expectedValue)
+      }
+
+      if (!skipDataCheck) {
+        expect(formData.data).toEqual(initialData ?? {})
+      }
+
+      const validationResult = await asyncAct(async () => await formData.validate())
+      expect(validationResult).toStrictEqual(expected)
     }
-
-    if (!skipDataCheck) {
-      expect(formData.data).toEqual(initialData ?? {})
-    }
-
-    const validationResult = await asyncAct(async () => await formData.validate())
-    expect(validationResult).toStrictEqual(expected)
-  })
+  )
 })
 
 describe('Zod validation edge cases', () => {

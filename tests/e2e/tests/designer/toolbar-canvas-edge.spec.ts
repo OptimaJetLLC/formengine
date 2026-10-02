@@ -187,89 +187,81 @@ test.describe('canvas toolbar', () => {
     await uploadForm(page)
   })
 
-  test(
-    'keeps the toolbar on the canvas border when a selected component scrolls out of the canvas',
-    {tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`]},
-    async ({page}) => {
-      const anchor = 'anchorButton-editable-wrapper'
-      await select(page, anchor)
-      for (const edge of edges) {
-        await center(page, anchor)
-        await scrollOutsideCanvas(page, anchor, edge)
-        await expectToolbarOnBorder(page, anchor, edge)
-      }
+  test('keeps the toolbar on the canvas border when a selected component scrolls out of the canvas', {
+    tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
+  }, async ({page}) => {
+    const anchor = 'anchorButton-editable-wrapper'
+    await select(page, anchor)
+    for (const edge of edges) {
+      await center(page, anchor)
+      await scrollOutsideCanvas(page, anchor, edge)
+      await expectToolbarOnBorder(page, anchor, edge)
     }
-  )
+  })
 
-  test(
-    'keeps the toolbar on the canvas border when a selected table cell scrolls out of the canvas',
-    {tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`]},
-    async ({page}) => {
-      const header = `header${middleColumn}-editable-wrapper`
-      await select(page, header)
-      for (const edge of edges) {
-        await center(page, header)
-        await scrollOutsideCanvas(page, header, edge)
-        await expectToolbarOnBorder(page, header, edge)
-      }
+  test('keeps the toolbar on the canvas border when a selected table cell scrolls out of the canvas', {
+    tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
+  }, async ({page}) => {
+    const header = `header${middleColumn}-editable-wrapper`
+    await select(page, header)
+    for (const edge of edges) {
+      await center(page, header)
+      await scrollOutsideCanvas(page, header, edge)
+      await expectToolbarOnBorder(page, header, edge)
     }
-  )
+  })
 
-  test(
-    'opens the toolbar when the selection border is wide enough and uses the hamburger when it is not',
-    {tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`]},
-    async ({page}) => {
-      await page.getByTestId('wideButton-editable-wrapper').click()
-      await expect(page.getByTestId('toolbar-actions-button')).toHaveCount(0)
-      await expect(page.getByTestId('toolbar-remove-button')).toBeVisible()
+  test('opens the toolbar when the selection border is wide enough and uses the hamburger when it is not', {
+    tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
+  }, async ({page}) => {
+    await page.getByTestId('wideButton-editable-wrapper').click()
+    await expect(page.getByTestId('toolbar-actions-button')).toHaveCount(0)
+    await expect(page.getByTestId('toolbar-remove-button')).toBeVisible()
 
-      await page.getByTestId('narrowButton-editable-wrapper').click()
-      await expect(page.getByTestId('toolbar-actions-button')).toBeVisible()
-      await expect(page.getByTestId('toolbar-remove-button')).toBeHidden()
+    await page.getByTestId('narrowButton-editable-wrapper').click()
+    await expect(page.getByTestId('toolbar-actions-button')).toBeVisible()
+    await expect(page.getByTestId('toolbar-remove-button')).toBeHidden()
 
-      const wide = 'wideButton-editable-wrapper'
-      await page.getByTestId(wide).click()
-      await page.evaluate(testId => {
-        const target = document.querySelector(`[data-testid="${testId}"]`) as HTMLElement
-        const canvas = document.querySelector('[data-fe-canvas]') as HTMLElement
-        const rect = canvas.getBoundingClientRect()
-        const canvasLeft = rect.left + canvas.clientLeft
-        const box = target.getBoundingClientRect()
-        canvas.scrollLeft += box.right - canvasLeft - 24
-      }, wide)
-      await expect(page.getByTestId('toolbar-actions-button')).toBeVisible()
-      await expect(page.getByTestId('toolbar-remove-button')).toBeHidden()
-      await expect
-        .poll(async () => {
-          const box = await layout(page, wide)
-          if (!box?.ready) return false
-          return (
-            box.toolbar.left >= box.canvas.left - 2 &&
-            box.toolbar.right <= box.canvas.right + 2 &&
-            box.target.right > box.canvas.left &&
-            box.target.left < box.canvas.left
-          )
-        })
-        .toBe(true)
-    }
-  )
+    const wide = 'wideButton-editable-wrapper'
+    await page.getByTestId(wide).click()
+    await page.evaluate(testId => {
+      const target = document.querySelector(`[data-testid="${testId}"]`) as HTMLElement
+      const canvas = document.querySelector('[data-fe-canvas]') as HTMLElement
+      const rect = canvas.getBoundingClientRect()
+      const canvasLeft = rect.left + canvas.clientLeft
+      const box = target.getBoundingClientRect()
+      canvas.scrollLeft += box.right - canvasLeft - 24
+    }, wide)
+    await expect(page.getByTestId('toolbar-actions-button')).toBeVisible()
+    await expect(page.getByTestId('toolbar-remove-button')).toBeHidden()
+    await expect
+      .poll(async () => {
+        const box = await layout(page, wide)
+        if (!box?.ready) return false
+        return (
+          box.toolbar.left >= box.canvas.left - 2 &&
+          box.toolbar.right <= box.canvas.right + 2 &&
+          box.target.right > box.canvas.left &&
+          box.target.left < box.canvas.left
+        )
+      })
+      .toBe(true)
+  })
 
-  test(
-    'keeps the toolbar end fixed when the action strip opens',
-    {tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`]},
-    async ({page}) => {
-      await page.getByTestId('narrowButton-editable-wrapper').click()
-      const toolbar = page.locator('[data-fe-toolbar]')
-      await expect(toolbar).toHaveAttribute('data-fe-toolbar-ready', '')
-      const before = await toolbar.boundingBox()
-      await page.getByTestId('toolbar-actions-button').hover()
-      await expect
-        .poll(async () => {
-          const after = await toolbar.boundingBox()
-          if (!before || !after) return 999
-          return Math.abs(after.x + after.width - (before.x + before.width))
-        })
-        .toBeLessThanOrEqual(1)
-    }
-  )
+  test('keeps the toolbar end fixed when the action strip opens', {tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`]}, async ({
+    page,
+  }) => {
+    await page.getByTestId('narrowButton-editable-wrapper').click()
+    const toolbar = page.locator('[data-fe-toolbar]')
+    await expect(toolbar).toHaveAttribute('data-fe-toolbar-ready', '')
+    const before = await toolbar.boundingBox()
+    await page.getByTestId('toolbar-actions-button').hover()
+    await expect
+      .poll(async () => {
+        const after = await toolbar.boundingBox()
+        if (!before || !after) return 999
+        return Math.abs(after.x + after.width - (before.x + before.width))
+      })
+      .toBeLessThanOrEqual(1)
+  })
 })

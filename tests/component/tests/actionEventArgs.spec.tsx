@@ -358,59 +358,60 @@ describe('ActionEventArgs data tests', function () {
   // The test input is three forms: a main form, a parent template, and a child template with slots.
   // The main form contains a repeater with two elements, which has a child repeater with three elements.
   // Each repeater contains a template. Each layer of the form has input fields whose values change during the test.
-  it.each(
-    createActionArgsData()
-  )('ActionEventArgs of "%s[%i]" should have correct index, data, parentData, rootData', async (dataTestId, index, expected) => {
-    let actualActionEventArgs: ActionEventArgs | undefined
+  it.each(createActionArgsData())(
+    'ActionEventArgs of "%s[%i]" should have correct index, data, parentData, rootData',
+    async (dataTestId, index, expected) => {
+      let actualActionEventArgs: ActionEventArgs | undefined
 
-    const actions: FormViewerProps['actions'] = {
-      checkDataProps: (e: ActionEventArgs) => {
-        actualActionEventArgs = e
-      },
+      const actions: FormViewerProps['actions'] = {
+        checkDataProps: (e: ActionEventArgs) => {
+          actualActionEventArgs = e
+        },
+      }
+
+      const {findAllByTestId, findAllByDisplayValue} = render(<FormViewer getForm={getForm} actions={actions} view={view} />)
+
+      // check that the form is rendered
+      expect(await findAllByDisplayValue(expected.valueBeforeChange)).not.toHaveLength(0)
+
+      const formInputs = await findAllByTestId(dataTestId)
+      const formInput = formInputs[index]
+      expect(formInput).not.toBeUndefined()
+      expect(formInput).toHaveValue(expected.valueBeforeChange)
+
+      fireEvent.change(formInput, {target: {value: expected.value}})
+
+      await waitFor(() => expect(actualActionEventArgs).not.toBeUndefined())
+      if (!actualActionEventArgs) {
+        throw new Error('actualActionEventArgs is undefined')
+      }
+
+      expect(typeof actualActionEventArgs.index).toBe(typeof expected.index)
+      if (typeof expected.index === 'number') {
+        expect(actualActionEventArgs.index).toEqual(expected.index)
+      }
+
+      expect(actualActionEventArgs.value).toEqual(expected.value)
+      expect(JSON.stringify(actualActionEventArgs.data)).toEqual(JSON.stringify(expected.data))
+
+      if (typeof expected.parentData === 'undefined') {
+        expect(typeof actualActionEventArgs.parentData).toBe('undefined')
+      } else {
+        expect(JSON.stringify(actualActionEventArgs.parentData)).toEqual(JSON.stringify(expected.parentData))
+      }
+
+      expect(JSON.stringify(actualActionEventArgs.rootData)).toEqual(JSON.stringify(expected.rootData))
+
+      const {sender} = actualActionEventArgs
+      // check that the sender index is the same as the expected index
+      expect(sender.nearestIndex).toBe(actualActionEventArgs.index)
+      // if the parentData is not defined, check that the sender parentData is undefined
+      if (typeof expected.parentData === 'undefined') {
+        expect(sender.parentData).toBeUndefined()
+      }
+      expect(JSON.stringify(sender.rootData)).toBe(JSON.stringify(actualActionEventArgs.rootData))
     }
-
-    const {findAllByTestId, findAllByDisplayValue} = render(<FormViewer getForm={getForm} actions={actions} view={view} />)
-
-    // check that the form is rendered
-    expect(await findAllByDisplayValue(expected.valueBeforeChange)).not.toHaveLength(0)
-
-    const formInputs = await findAllByTestId(dataTestId)
-    const formInput = formInputs[index]
-    expect(formInput).not.toBeUndefined()
-    expect(formInput).toHaveValue(expected.valueBeforeChange)
-
-    fireEvent.change(formInput, {target: {value: expected.value}})
-
-    await waitFor(() => expect(actualActionEventArgs).not.toBeUndefined())
-    if (!actualActionEventArgs) {
-      throw new Error('actualActionEventArgs is undefined')
-    }
-
-    expect(typeof actualActionEventArgs.index).toBe(typeof expected.index)
-    if (typeof expected.index === 'number') {
-      expect(actualActionEventArgs.index).toEqual(expected.index)
-    }
-
-    expect(actualActionEventArgs.value).toEqual(expected.value)
-    expect(JSON.stringify(actualActionEventArgs.data)).toEqual(JSON.stringify(expected.data))
-
-    if (typeof expected.parentData === 'undefined') {
-      expect(typeof actualActionEventArgs.parentData).toBe('undefined')
-    } else {
-      expect(JSON.stringify(actualActionEventArgs.parentData)).toEqual(JSON.stringify(expected.parentData))
-    }
-
-    expect(JSON.stringify(actualActionEventArgs.rootData)).toEqual(JSON.stringify(expected.rootData))
-
-    const {sender} = actualActionEventArgs
-    // check that the sender index is the same as the expected index
-    expect(sender.nearestIndex).toBe(actualActionEventArgs.index)
-    // if the parentData is not defined, check that the sender parentData is undefined
-    if (typeof expected.parentData === 'undefined') {
-      expect(sender.parentData).toBeUndefined()
-    }
-    expect(JSON.stringify(sender.rootData)).toBe(JSON.stringify(actualActionEventArgs.rootData))
-  })
+  )
 
   it('The Set data method should change the data in the corresponding fields', async function () {
     const getForm = () => JSON.stringify(changeDataForm)

@@ -477,38 +477,38 @@ describe('Modal tests', () => {
     expect(eventHandlersData.onClose.length).toEqual(3)
   })
 
-  it.each(modalTestViews)('onClose event handlers should be called when closeModal action is fired ($name)', async ({
-    name,
-    builderView,
-  }) => {
-    const eventHandlersData: Record<string, any> = {}
-    const customActions = {
-      onCloseEventHandler: () => {
-        eventHandlersData.onClose ??= []
-        eventHandlersData.onClose.push(new Date())
-      },
+  it.each(modalTestViews)(
+    'onClose event handlers should be called when closeModal action is fired ($name)',
+    async ({name, builderView}) => {
+      const eventHandlersData: Record<string, any> = {}
+      const customActions = {
+        onCloseEventHandler: () => {
+          eventHandlersData.onClose ??= []
+          eventHandlersData.onClose.push(new Date())
+        },
+      }
+
+      const getForm = makeGetForm(name, buildSimpleShowModalForm)
+
+      const renderResult = render(<FormBuilder view={builderView} getForm={getForm} actions={customActions} />)
+      const {findByTestId} = renderResult
+
+      fireEvent.click(await findByTestId('Tree_Tab'))
+      fireEvent.click(await findByTestId('modal1'))
+
+      await addCustomEventHandler(renderResult, 'onClose', 'onCloseEventHandler')
+
+      await togglePreview(renderResult)
+
+      const showModalButton = await findByTestId('showModalButton')
+      fireEvent.click(showModalButton)
+
+      const okButton = await findByTestId('okButton')
+      fireEvent.click(okButton)
+      await waitFor(() => expect(Array.isArray(eventHandlersData.onClose)).toBe(true))
+      await waitFor(() => expect(eventHandlersData.onClose.length).toEqual(1))
     }
-
-    const getForm = makeGetForm(name, buildSimpleShowModalForm)
-
-    const renderResult = render(<FormBuilder view={builderView} getForm={getForm} actions={customActions} />)
-    const {findByTestId} = renderResult
-
-    fireEvent.click(await findByTestId('Tree_Tab'))
-    fireEvent.click(await findByTestId('modal1'))
-
-    await addCustomEventHandler(renderResult, 'onClose', 'onCloseEventHandler')
-
-    await togglePreview(renderResult)
-
-    const showModalButton = await findByTestId('showModalButton')
-    fireEvent.click(showModalButton)
-
-    const okButton = await findByTestId('okButton')
-    fireEvent.click(okButton)
-    await waitFor(() => expect(Array.isArray(eventHandlersData.onClose)).toBe(true))
-    await waitFor(() => expect(eventHandlersData.onClose.length).toEqual(1))
-  })
+  )
 
   it.each(modalTestViews)('openModal.useFormData should pass form data ($name)', async ({name, viewerView}) => {
     const getForm = makeGetForm(name, buildUseFormDataShowModalForm)
@@ -527,27 +527,27 @@ describe('Modal tests', () => {
     expect(modalInput).toHaveValue(randomString)
   })
 
-  it.each(modalTestViews)('openModal.beforeShow returning false should prevent opening the modal window ($name)', async ({
-    name,
-    viewerView,
-  }) => {
-    const getForm = makeGetForm(name, buildUseFormDataShowModalForm)
+  it.each(modalTestViews)(
+    'openModal.beforeShow returning false should prevent opening the modal window ($name)',
+    async ({name, viewerView}) => {
+      const getForm = makeGetForm(name, buildUseFormDataShowModalForm)
 
-    const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewerView} />)
+      const {findByTestId, queryByTestId} = render(<FormViewer getForm={getForm} view={viewerView} />)
 
-    const formInput = getInputElement(await findByTestId('formModalInput'))
-    fireEvent.change(formInput, {target: {value: 'no'}})
+      const formInput = getInputElement(await findByTestId('formModalInput'))
+      fireEvent.change(formInput, {target: {value: 'no'}})
 
-    const showModalButton = await findByTestId('showModalButton')
-    fireEvent.click(showModalButton)
+      const showModalButton = await findByTestId('showModalButton')
+      fireEvent.click(showModalButton)
 
-    expect(queryByTestId('modalInput')).not.toBeInTheDocument()
+      expect(queryByTestId('modalInput')).not.toBeInTheDocument()
 
-    fireEvent.change(formInput, {target: {value: 'yes'}})
-    fireEvent.click(showModalButton)
-    const modalInput = getInputElement(await findByTestId('modalInput'))
-    expect(modalInput).toHaveValue('yes')
-  })
+      fireEvent.change(formInput, {target: {value: 'yes'}})
+      fireEvent.click(showModalButton)
+      const modalInput = getInputElement(await findByTestId('modalInput'))
+      expect(modalInput).toHaveValue('yes')
+    }
+  )
 
   it.each(modalTestViews)('openModal.beforeShow should pass form data ($name)', async ({name, viewerView}) => {
     const getForm = makeGetForm(name, buildBeforeShowShowModalForm)

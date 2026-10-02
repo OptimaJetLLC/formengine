@@ -180,4 +180,4 @@ export function loadBootstrapFormJson(bootstrap: DemoUrlFormBootstrap): string {
   throw new Error('Bootstrap form JSON is only available for empty and formBody modes')
 }
 
-export {EMPTY_FORM_JSON, EMPTY_FORM_NAME, DEFAULT_BODY_FORM_NAME}
+export {DEFAULT_BODY_FORM_NAME, EMPTY_FORM_JSON, EMPTY_FORM_NAME}

@@ -26,87 +26,83 @@ const clearForm = async (page: Page) => {
   await page.getByText('Clear').first().click({force: true})
 }
 
-test.describe(
-  'onFormElementAdd and onFormElementRemove callbacks',
-  {
-    tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
-  },
-  () => {
-    test.beforeEach(async ({page}) => {
-      await page.goto('/')
-    })
+test.describe('onFormElementAdd and onFormElementRemove callbacks', {
+  tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
+}, () => {
+  test.beforeEach(async ({page}) => {
+    await page.goto('/')
+  })
 
-    test('onFormElementAdd is called when adding a component via ComponentsModal', async ({page}) => {
-      await clearForm(page)
-      await clearRecordedCalls(page)
+  test('onFormElementAdd is called when adding a component via ComponentsModal', async ({page}) => {
+    await clearForm(page)
+    await clearRecordedCalls(page)
 
-      await page.locator('.isRoot.isInner button').first().click({force: true})
-      await page
-        .locator('.rs-modal-wrapper')
-        .locator('div')
-        .filter({hasText: /^Calendar$/})
-        .first()
-        .click({force: true})
+    await page.locator('.isRoot.isInner button').first().click({force: true})
+    await page
+      .locator('.rs-modal-wrapper')
+      .locator('div')
+      .filter({hasText: /^Calendar$/})
+      .first()
+      .click({force: true})
 
-      await expect(page.getByTestId('rsCalendar1-editable-wrapper')).toBeVisible()
-      await expect(page.locator('[data-fe-toolbar-ready]').getByText('rsCalendar1')).toBeVisible()
+    await expect(page.getByTestId('rsCalendar1-editable-wrapper')).toBeVisible()
+    await expect(page.locator('[data-fe-toolbar-ready]').getByText('rsCalendar1')).toBeVisible()
 
-      const addCalls = await page.evaluate(() => window.__formBuilderAddCalls ?? [])
-      expect(addCalls.length).toBeGreaterThanOrEqual(1)
-      expect(addCalls.some(c => c.sourceType === 'RsCalendar')).toBe(true)
-    })
+    const addCalls = await page.evaluate(() => window.__formBuilderAddCalls ?? [])
+    expect(addCalls.length).toBeGreaterThanOrEqual(1)
+    expect(addCalls.some(c => c.sourceType === 'RsCalendar')).toBe(true)
+  })
 
-    test('onFormElementAdd is called when adding a component via drag and drop', async ({page}) => {
-      await clearRecordedCalls(page)
+  test('onFormElementAdd is called when adding a component via drag and drop', async ({page}) => {
+    await clearRecordedCalls(page)
 
-      const calendar = page
-        .locator('div')
-        .filter({hasText: /^Calendar$/})
-        .nth(1)
+    const calendar = page
+      .locator('div')
+      .filter({hasText: /^Calendar$/})
+      .nth(1)
 
-      const breadcrumb = page
-        .locator('div')
-        .filter({hasText: /^one\/two\/three$/})
-        .locator('div')
-        .first()
+    const breadcrumb = page
+      .locator('div')
+      .filter({hasText: /^one\/two\/three$/})
+      .locator('div')
+      .first()
 
-      await dragAndDrop(page, calendar, breadcrumb)
+    await dragAndDrop(page, calendar, breadcrumb)
 
-      const addCalls = await page.evaluate(() => window.__formBuilderAddCalls ?? [])
-      expect(addCalls.length).toBeGreaterThanOrEqual(1)
-      expect(addCalls.some(c => c.sourceType === 'RsCalendar')).toBe(true)
-    })
+    const addCalls = await page.evaluate(() => window.__formBuilderAddCalls ?? [])
+    expect(addCalls.length).toBeGreaterThanOrEqual(1)
+    expect(addCalls.some(c => c.sourceType === 'RsCalendar')).toBe(true)
+  })
 
-    test('onFormElementRemove is called when removing a component', async ({page}) => {
-      await clearRecordedCalls(page)
+  test('onFormElementRemove is called when removing a component', async ({page}) => {
+    await clearRecordedCalls(page)
 
-      const calendar = page
-        .locator('div')
-        .filter({hasText: /^Calendar$/})
-        .nth(1)
+    const calendar = page
+      .locator('div')
+      .filter({hasText: /^Calendar$/})
+      .nth(1)
 
-      const breadcrumb = page
-        .locator('div')
-        .filter({hasText: /^one\/two\/three$/})
-        .locator('div')
-        .first()
+    const breadcrumb = page
+      .locator('div')
+      .filter({hasText: /^one\/two\/three$/})
+      .locator('div')
+      .first()
 
-      await dragAndDrop(page, calendar, breadcrumb)
+    await dragAndDrop(page, calendar, breadcrumb)
 
-      await expect(page.getByTestId('rsCalendar1-editable-wrapper')).toBeVisible()
+    await expect(page.getByTestId('rsCalendar1-editable-wrapper')).toBeVisible()
 
-      await page.getByTestId('rsCalendar1-editable-wrapper').click({force: true})
-      const toolbar = page.locator('[data-fe-toolbar]')
-      await expect(toolbar).toHaveAttribute('data-fe-toolbar-ready', '')
-      const actionsButton = toolbar.getByTestId('toolbar-actions-button')
-      if ((await actionsButton.count()) > 0) await actionsButton.hover()
-      const removeButton = toolbar.getByTestId('toolbar-remove-button')
-      await expect(removeButton).toBeVisible()
-      await removeButton.dispatchEvent('click')
+    await page.getByTestId('rsCalendar1-editable-wrapper').click({force: true})
+    const toolbar = page.locator('[data-fe-toolbar]')
+    await expect(toolbar).toHaveAttribute('data-fe-toolbar-ready', '')
+    const actionsButton = toolbar.getByTestId('toolbar-actions-button')
+    if ((await actionsButton.count()) > 0) await actionsButton.hover()
+    const removeButton = toolbar.getByTestId('toolbar-remove-button')
+    await expect(removeButton).toBeVisible()
+    await removeButton.dispatchEvent('click')
 
-      const removeCalls = await page.evaluate(() => window.__formBuilderRemoveCalls ?? [])
-      expect(removeCalls.length).toBeGreaterThanOrEqual(1)
-      expect(removeCalls.some(c => c.sourceKey === 'rsCalendar1')).toBe(true)
-    })
-  }
-)
+    const removeCalls = await page.evaluate(() => window.__formBuilderRemoveCalls ?? [])
+    expect(removeCalls.length).toBeGreaterThanOrEqual(1)
+    expect(removeCalls.some(c => c.sourceKey === 'rsCalendar1')).toBe(true)
+  })
+})

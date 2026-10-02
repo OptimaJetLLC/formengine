@@ -5,7 +5,6 @@ import type {SignatureProps} from './SignatureProps'
 
 export const signatureComponent: Definer<SignatureProps> = signature
 export const signatureModel: Model = signature.build().model
-export type {SignatureProps} from './SignatureProps'
-
-export {signatureEnUsComponentsDescriptions}
 export {signatureComponentsDescriptions} from './i18n/signatureComponentsDescriptions'
+export type {SignatureProps} from './SignatureProps'
+export {signatureEnUsComponentsDescriptions}

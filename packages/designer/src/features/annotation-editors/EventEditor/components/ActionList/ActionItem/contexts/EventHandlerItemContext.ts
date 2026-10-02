@@ -25,4 +25,4 @@ const [
   EventHandlerItemProvider,
 ] = createNonNullableContext<EventHandlerItem>('EventHandlerItemContext')
 
-export {useEventHandlerItem, EventHandlerItemProvider}
+export {EventHandlerItemProvider, useEventHandlerItem}

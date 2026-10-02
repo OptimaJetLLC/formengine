@@ -93,6 +93,15 @@ export function renderFormBuilder(elementId: string, props: Partial<FormBuilderP
   return renderFormBuilderTo(container, props)
 }
 
-export {rSuiteComponents, richTextComponent, signatureComponent, fastQrComponent, googleMapComponent, printComponent, rSuiteTableComponents}
 export {ActionDefinition, buildForm, Language} from '@react-form-builder/core'
-export {noCssView, defaultView}
+export {
+  defaultView,
+  fastQrComponent,
+  googleMapComponent,
+  noCssView,
+  printComponent,
+  richTextComponent,
+  rSuiteComponents,
+  rSuiteTableComponents,
+  signatureComponent,
+}

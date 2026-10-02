@@ -8,6 +8,5 @@ export {antModal} from './components/AntModal'
 export {antRow} from './components/AntRow'
 export {antTable} from './components/AntTable'
 export {antTooltip} from './components/AntTooltip'
-
-export {antEnUsComponentsDescriptions}
 export {antI18nComponentsDescriptions} from './i18n/antI18nComponentsDescriptions'
+export {antEnUsComponentsDescriptions}

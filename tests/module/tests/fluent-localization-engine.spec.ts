@@ -259,26 +259,21 @@ describe('FluentLocalizationEngine', () => {
       },
     ]
 
-    it.each(cases)('$name', ({
-      requestedLanguage,
-      defaultLanguage = enUS,
-      propValue,
-      defaultProps,
-      componentType,
-      localization,
-      expected,
-    }) => {
-      const ctx = createFluentEngineTestContext(FluentLocalizationEngine, {
-        localization,
-        defaultLanguage,
-        requestedLanguage,
-        propValue,
-        defaultProps,
-        componentType,
-      })
-      const result = localizeDefaultProperty(ctx)
-      expect(result.children).toBe(expected)
-    })
+    it.each(cases)(
+      '$name',
+      ({requestedLanguage, defaultLanguage = enUS, propValue, defaultProps, componentType, localization, expected}) => {
+        const ctx = createFluentEngineTestContext(FluentLocalizationEngine, {
+          localization,
+          defaultLanguage,
+          requestedLanguage,
+          propValue,
+          defaultProps,
+          componentType,
+        })
+        const result = localizeDefaultProperty(ctx)
+        expect(result.children).toBe(expected)
+      }
+    )
 
     it('skips properties that are not localized', () => {
       const ctx = createFluentEngineTestContext(FluentLocalizationEngine, {

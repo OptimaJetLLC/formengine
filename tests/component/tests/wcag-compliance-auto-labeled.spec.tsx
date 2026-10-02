@@ -65,21 +65,22 @@ function getTestCases(): [string, object, string][] {
 }
 
 describe('WCAG compliance for valued auto labeled components', () => {
-  it.each(
-    getTestCases()
-  )('%s should be WCAG compliant when using auto labels', async (name: string, form: object, componentType: string) => {
-    const {container} = renderForm(form)
-    await waitFor(() => container.querySelector(`[id^=${componentType}]`))
-    const aceResult = await axe.run()
-    const wcagViolations = aceResult.violations.filter(
-      violation =>
-        violation.tags.some(tag => tag.toLowerCase().includes('wcag')) &&
-        violation.id !== 'document-title' &&
-        violation.id !== 'html-has-lang'
-    )
-    if (wcagViolations.length > 0) {
-      console.error(wcagViolations)
-      throw new Error(`${name} is not WCAG compliant. Violations: \n${wcagViolations.map(v => v.description).join('\n')}`)
+  it.each(getTestCases())(
+    '%s should be WCAG compliant when using auto labels',
+    async (name: string, form: object, componentType: string) => {
+      const {container} = renderForm(form)
+      await waitFor(() => container.querySelector(`[id^=${componentType}]`))
+      const aceResult = await axe.run()
+      const wcagViolations = aceResult.violations.filter(
+        violation =>
+          violation.tags.some(tag => tag.toLowerCase().includes('wcag')) &&
+          violation.id !== 'document-title' &&
+          violation.id !== 'html-has-lang'
+      )
+      if (wcagViolations.length > 0) {
+        console.error(wcagViolations)
+        throw new Error(`${name} is not WCAG compliant. Violations: \n${wcagViolations.map(v => v.description).join('\n')}`)
+      }
     }
-  })
+  )
 })

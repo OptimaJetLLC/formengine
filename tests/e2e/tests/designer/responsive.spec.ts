@@ -8,12 +8,8 @@ const __dirname = dirname(__filename)
 
 const localFolder = resolve(__dirname, '../../reports/screenshots/designer')
 
-test(
-  'check responsive layout',
-  {
-    tag: ['@designer', '@responsive', `@${process.env['TEST_TEMPLATE']}`],
-  },
-  async ({page}) => {
-    await testResponsive(localFolder, page)
-  }
-)
+test('check responsive layout', {
+  tag: ['@designer', '@responsive', `@${process.env['TEST_TEMPLATE']}`],
+}, async ({page}) => {
+  await testResponsive(localFolder, page)
+})

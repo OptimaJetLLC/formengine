@@ -93,27 +93,28 @@ describe('One-way data binding', () => {
   })
 
   if (isBrowserMode()) {
-    it.each(
-      generateVisibleTestData()
-    )('The component "%s" without data should be visible in the desinger', async (type: string, initialData: FormViewerProps['initialData']) => {
-      const persistedForm: PersistedForm = JSON.parse(buildForm().json())
-      const store = new ComponentStore(type, type)
-      store.dataKey = 'none'
-      store.htmlAttributes = [{name: 'data-testid', value: type}]
-      persistedForm.form.children = [store]
+    it.each(generateVisibleTestData())(
+      'The component "%s" without data should be visible in the desinger',
+      async (type: string, initialData: FormViewerProps['initialData']) => {
+        const persistedForm: PersistedForm = JSON.parse(buildForm().json())
+        const store = new ComponentStore(type, type)
+        store.dataKey = 'none'
+        store.htmlAttributes = [{name: 'data-testid', value: type}]
+        persistedForm.form.children = [store]
 
-      const props: FormBuilderProps = {view: new BuilderView(allComponentsBuilder), initialData}
-      const {findByTestId, container} = await renderBuilder(persistedForm, props)
+        const props: FormBuilderProps = {view: new BuilderView(allComponentsBuilder), initialData}
+        const {findByTestId, container} = await renderBuilder(persistedForm, props)
 
-      expect(await findByTestId(type)).toBeInTheDocument()
+        expect(await findByTestId(type)).toBeInTheDocument()
 
-      const dndWrapper = container.querySelector(`.type-${type}`)
-      if (!(dndWrapper instanceof HTMLElement)) {
-        throw new Error(`Unable to find HTMLElement for a component with type: "${type}"`)
+        const dndWrapper = container.querySelector(`.type-${type}`)
+        if (!(dndWrapper instanceof HTMLElement)) {
+          throw new Error(`Unable to find HTMLElement for a component with type: "${type}"`)
+        }
+
+        await waitFor(() => expect(typeof dndWrapper.offsetHeight).toEqual('number'))
+        await waitFor(() => expect(dndWrapper.offsetHeight).toBeGreaterThan(16))
       }
-
-      await waitFor(() => expect(typeof dndWrapper.offsetHeight).toEqual('number'))
-      await waitFor(() => expect(dndWrapper.offsetHeight).toBeGreaterThan(16))
-    })
+    )
   }
 })

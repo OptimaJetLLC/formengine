@@ -7,8 +7,7 @@ export const googleMapComponent: Definer<GoogleMapProps> = googleMap
 export const googleMapModel: Model = googleMap.build().model
 export type {Address} from './Address'
 export type {GoogleMapProps} from './GoogleMapProps'
+export {googleMapComponentsDescriptions} from './i18n/googleMapComponentsDescriptions'
 export type {MapMarker} from './MapMarker'
 export {toAddress} from './toAddress'
-
 export {googleMapEnUsComponentsDescriptions}
-export {googleMapComponentsDescriptions} from './i18n/googleMapComponentsDescriptions'

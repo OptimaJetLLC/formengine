@@ -6,4 +6,4 @@ import type {AnnotationEditorProps} from '../annotation-editors/AnnotationEditor
 const [useBuiltinPropertyEditors, BuiltinPropertyEditorsProvider] =
   createNonNullableContext<Record<EditorType, ComponentType<AnnotationEditorProps>>>('BuiltinPropertyEditorsContext')
 
-export {useBuiltinPropertyEditors, BuiltinPropertyEditorsProvider}
+export {BuiltinPropertyEditorsProvider, useBuiltinPropertyEditors}

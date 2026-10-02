@@ -12,4 +12,4 @@ const [
   TooltipPlacementProvider,
 ] = createNonNullableContext<TypeAttributes.Placement>('TooltipPlacementContext')
 
-export {useTooltipPlacement, TooltipPlacementProvider}
+export {TooltipPlacementProvider, useTooltipPlacement}

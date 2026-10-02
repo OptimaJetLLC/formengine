@@ -9,4 +9,4 @@ const [
   FormBuilderProvider,
 ] = createNonNullableContext<IFormBuilder>('BuildManagerContext')
 
-export {useFormBuilder, FormBuilderProvider}
+export {FormBuilderProvider, useFormBuilder}

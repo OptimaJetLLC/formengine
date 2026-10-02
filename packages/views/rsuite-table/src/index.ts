@@ -21,5 +21,5 @@ const tableBuilderComponents = rSuiteTableComponents.map(def => def.build())
  */
 export const tableModels = tableBuilderComponents.map(({model}) => model)
 
-export {rSuiteTableEnUsComponentsDescriptions}
 export {rSuiteTableComponentsDescriptions} from './i18n/rSuiteTableComponentsDescriptions'
+export {rSuiteTableEnUsComponentsDescriptions}

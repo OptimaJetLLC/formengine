@@ -43,29 +43,25 @@ const uploadForm = async (page: Page) => {
   await expect(page.getByTestId('filledCell-editable-wrapper')).toBeVisible()
 }
 
-test(
-  'selects a component inside a table cell and the cell around it',
-  {
-    tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
-  },
-  async ({page}) => {
-    await page.goto('/')
-    await uploadForm(page)
+test('selects a component inside a table cell and the cell around it', {
+  tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
+}, async ({page}) => {
+  await page.goto('/')
+  await uploadForm(page)
 
-    const cell = page.getByTestId('filledCell-editable-wrapper')
-    const input = page.getByTestId('cellInput-editable-wrapper')
-    const header = page.getByTestId('filledHeader-editable-wrapper')
+  const cell = page.getByTestId('filledCell-editable-wrapper')
+  const input = page.getByTestId('cellInput-editable-wrapper')
+  const header = page.getByTestId('filledHeader-editable-wrapper')
 
-    await input.click()
-    await expect(input).toHaveClass(selectedClass)
-    await expect(cell).not.toHaveClass(selectedClass)
+  await input.click()
+  await expect(input).toHaveClass(selectedClass)
+  await expect(cell).not.toHaveClass(selectedClass)
 
-    await cell.click({position: {x: 4, y: 4}})
-    await expect(cell).toHaveClass(selectedClass)
-    await expect(input).not.toHaveClass(selectedClass)
+  await cell.click({position: {x: 4, y: 4}})
+  await expect(cell).toHaveClass(selectedClass)
+  await expect(input).not.toHaveClass(selectedClass)
 
-    await header.click()
-    await expect(header).toHaveClass(selectedClass)
-    await expect(cell).not.toHaveClass(selectedClass)
-  }
-)
+  await header.click()
+  await expect(header).toHaveClass(selectedClass)
+  await expect(cell).not.toHaveClass(selectedClass)
+})

@@ -5,8 +5,7 @@ import {richTextEditor} from './RichTextEditor'
 
 export const richTextComponent: Definer<RichTextEditorProps> = richTextEditor
 export const richTextModel: Model = richTextEditor.build().model
+export {richTextEditorComponentsDescriptions} from './i18n/richTextEditorComponentsDescriptions'
 export type {RichTextEditorProps, RichTextFeature, RichTextFeatureFlags} from './RichTextEditor'
 export {defaultRichTextFeatureFlags, defaultRichTextFeatures} from './richTextFeatures'
-
 export {richTextEditorEnUsComponentsDescriptions}
-export {richTextEditorComponentsDescriptions} from './i18n/richTextEditorComponentsDescriptions'

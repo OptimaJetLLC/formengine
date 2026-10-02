@@ -28,7 +28,7 @@ export {
   googleMapComponentsDescriptions,
   printComponentsDescriptions,
   richTextEditorComponentsDescriptions,
-  signatureComponentsDescriptions,
-  rSuiteTableComponentsDescriptions,
   rSuiteComponentsDescriptions,
+  rSuiteTableComponentsDescriptions,
+  signatureComponentsDescriptions,
 }

@@ -12,4 +12,4 @@ const [
   ActionDataProvider,
 ] = createNonNullableContext<ActionData>('ActionDataContext')
 
-export {useActionData, ActionDataProvider}
+export {ActionDataProvider, useActionData}
