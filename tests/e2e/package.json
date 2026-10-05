@@ -17,7 +17,7 @@
   "devDependencies": {
     "@playwright/test": "1.63.0",
     "cross-spawn": "^7.0.6",
-    "ctrf": "^0.0.17",
+    "ctrf": "^0.4.0",
     "monocart-reporter": "^2.12.3",
     "playwright-ctrf-json-reporter": "^0.0.29"
   }
