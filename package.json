@@ -103,7 +103,7 @@
     "eslint-plugin-unused-imports": "^4.4.1",
     "jsdom": "^27.2.0",
     "klona": "^2.0.6",
-    "knip": "^6.35.1",
+    "knip": "^6.39.0",
     "leasot": "^14.4.0",
     "lefthook": "^2.1.9",
     "lerna": "^9.0.1",
