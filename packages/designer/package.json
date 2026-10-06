@@ -46,7 +46,7 @@
     "file-saver": "^2.0.5",
     "i18next": "^21.6.7",
     "i18next-browser-languagedetector": "^6.1.2",
-    "i18next-resources-to-backend": "^1.0.0",
+    "i18next-resources-to-backend": "^1.2.3",
     "jszip": "^3.10.2",
     "monaco-editor": "^0.57.0",
     "re-resizable": "^6.9.11",
