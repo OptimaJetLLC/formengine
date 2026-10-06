@@ -66,7 +66,7 @@ export default defineConfig({
     [
       'playwright-ctrf-json-reporter',
       {
-        outputFile: `ctrf-report-${env['TEST_TEMPLATE']}.json`,
+        outputFile: `ctrf-report-${testName}.json`,
         outputDir: ctrfReportsDir,
       },
     ],

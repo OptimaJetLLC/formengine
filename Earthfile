@@ -191,7 +191,11 @@ npm-e2e:
   ENV PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1
   COPY +sources/repo+ /repo
   WORKDIR /repo
-  RUN npm run test:e2e
+  RUN --no-cache npm run test:e2e; echo $? > /tmp/npm-e2e-exit-code
+  WAIT
+    SAVE ARTIFACT --if-exists tests/e2e/reports/ctrf/ctrf-report.json AS LOCAL tests/e2e/reports/ctrf/ctrf-report.json
+  END
+  RUN exit "$(cat /tmp/npm-e2e-exit-code)"
   RUN npx lerna run --stream test:browser:headless --concurrency=1
 
 # --- Prepare (release archives) ---

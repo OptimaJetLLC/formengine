@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import {existsSync, rmSync} from 'node:fs'
 import {dirname, join, resolve} from 'node:path'
 import {cwd} from 'node:process'
 import {fileURLToPath} from 'node:url'
@@ -32,6 +33,10 @@ const reactVersions = {
 
 const ENV = JSON.parse(JSON.stringify(process.env))
 const isCI = !!ENV.CI
+const ctrfReportsPath = join(__dirname, 'reports', 'ctrf')
+const ctrfReportPath = join(ctrfReportsPath, 'ctrf-report.json')
+
+rmSync(ctrfReportsPath, {recursive: true, force: true})
 
 if (!isCI) {
   console.info('Starting projects test...')
@@ -100,27 +105,21 @@ for (const tpl of config.templates) {
       console.error(mergeResult)
       withError = true
     }
-
-    // merge CTRF reports
-    const ctrfMergeResult = spawn.sync('npx', `npx ctrf merge reports/ctrf`.split(' '), {
-      cwd: __dirname,
-      env: {
-        ...ENV,
-        TEST_PROJECT: path,
-        TEST_TESTS_PATH: name,
-        TEST_PORT: port,
-        TEST_START_CMD: command,
-        CI: true,
-      },
-      stdio: 'inherit',
-    })
-
-    if (ctrfMergeResult.status !== 0) {
-      console.error('Error merging CTFR reports', __dirname, tpl)
-      console.error(ctrfMergeResult)
-      withError = true
-    }
   }
+}
+
+const ctrfMergeResult = spawn.sync('npx', ['ctrf', 'merge', ctrfReportsPath, '--output', ctrfReportPath], {
+  cwd: __dirname,
+  env: ENV,
+  stdio: 'inherit',
+})
+const hasCtrfReport = existsSync(ctrfReportPath)
+
+if (ctrfMergeResult.status !== 0 || !hasCtrfReport) {
+  console.error('Error merging CTRF reports', __dirname)
+  if (!hasCtrfReport) console.error('Merged CTRF report was not created', ctrfReportPath)
+  console.error(ctrfMergeResult)
+  withError = true
 }
 
 if (withError) {

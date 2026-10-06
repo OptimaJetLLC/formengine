@@ -12,10 +12,13 @@ jobs:
       - uses: actions/checkout@v7
         with:
           clean: false
+      - name: Clean stale test reports directory
+        run: rm -rf tests/e2e/reports
       - name: Run e2e in Docker
-        run: earthly --ci +npm-e2e
+        run: earthly --ci --output +npm-e2e
       - uses: ctrf-io/github-test-reporter@v1
         if: always()
         with:
           report-path: tests/e2e/reports/ctrf/ctrf-report.json
           github-report: true
+          exit-on-no-files: true
