@@ -56,6 +56,7 @@ const RawAttributesInput = (props: AnnotationEditorProps) => {
   }, [store, value])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the editor state is reset when the stored attributes change
     setValue(initialState)
     setChanged(false)
   }, [initialState, store])

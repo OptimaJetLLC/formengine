@@ -124,6 +124,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
   }, [onSave, resolveSourceForSave, sourceCode, validateBeforeSave])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the editor tracks the external source code prop
     setInitialValue(propsSourceCode)
     setSourceCode(propsSourceCode)
   }, [propsSourceCode])

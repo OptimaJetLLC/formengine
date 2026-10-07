@@ -186,10 +186,12 @@ const RawPropertyEditorWrapper = ({
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the editor state is reset when the edited component changes
     setContextInitialized(false)
   }, [componentData, initContext])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the error is cleared when the edited property changes
     setError(undefined)
   }, [context])
 

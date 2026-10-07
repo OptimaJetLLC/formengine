@@ -157,7 +157,7 @@ export const EditableTable = (props: EditableTableProps) => {
     return scrollPos
   }, [shouldScroll])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/set-state-in-effect -- the table height is measured after mount
   useEffect(updateHeight, [])
 
   return (

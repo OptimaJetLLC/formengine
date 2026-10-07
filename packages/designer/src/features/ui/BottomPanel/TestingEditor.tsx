@@ -131,6 +131,7 @@ const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerPr
     return calculated
   }, [data, testingFunction])
 
+  /* eslint-disable react-hooks/refs -- the last run marker is intentionally read during render: the result is shown only when it belongs to the current data and testing function */
   const displayResult = useMemo(() => {
     if (builderStore.testingAutorun) return result
     const last = lastRunRef.current
@@ -138,6 +139,7 @@ const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerPr
     if (last && last.data === dataKey && last.fn === testingFunction) return result
     return undefined
   }, [builderStore.testingAutorun, result, data, testingFunction])
+  /* eslint-enable react-hooks/refs */
 
   const handleAutorunChecked: CheckboxProps['onChange'] = useCallback(
     (_: ValueType | undefined, checked: boolean) => {
@@ -174,6 +176,7 @@ const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerPr
     }
 
     if (builderStore.testingAutorun) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- autorun intentionally (re)runs the test when the data or the flag changes
       test()
     }
   }, [test, builderStore.testingAutorun, ref])
