@@ -1,5 +1,5 @@
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import {forwardRef} from '@react-form-builder/core'
+import {forwardRef, isUndefined} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'
 import type {Ref} from 'react'
 
@@ -47,6 +47,7 @@ interface FaIconProps {
  * @param props.props the other properties of the component.
  * @returns the React element.
  */
-export const FaIcon = forwardRef(({icon, size, ...props}: FaIconProps, ref: Ref<SVGElement>) => (
-  <Icon as={FaSvgIcon} ref={ref} {...{faIcon: icon, size, ...props}} />
-))
+export const FaIcon = forwardRef(({icon, size, ...props}: FaIconProps, ref: Ref<SVGElement>) => {
+  const iconSize = isUndefined(size) ? undefined : `${size}em`
+  return <Icon as={FaSvgIcon} ref={ref} size={iconSize} {...{faIcon: icon, ...props}} />
+})
