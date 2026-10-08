@@ -62,7 +62,7 @@
           "name": "Position der Kartenkontrolle"
         },
         "mapId": {
-          "description": "Die Karten-ID ist eine Kennung, die mit einem bestimmten Kartenstil oder Feature verknüpft ist.",
+          "description": "Cloud Map ID für Kartenstil und Advanced Markers. Wenn das Feld leer ist, wird DEMO_MAP_ID von Google verwendet und es wird ein Entwicklungswasserzeichen angezeigt.",
           "name": "Karten-ID"
         },
         "mapTypeId": {

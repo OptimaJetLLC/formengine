@@ -2,6 +2,7 @@ import type {BuilderMode} from '@react-form-builder/core'
 import {array, boolean, cssSize, define, event, number, oneOf, string, useBuilderMode} from '@react-form-builder/core'
 import {APIProvider} from '@vis.gl/react-google-maps'
 import type {ComponentProps} from 'react'
+import {DEMO_MAP_ID} from './constants'
 import type {GoogleMapProps} from './GoogleMapProps'
 import {GoogleMapRenderer} from './GoogleMapRenderer'
 import {MapIcon} from './icon'
@@ -79,7 +80,7 @@ export const googleMap = define(GoogleMapLoader, 'GoogleMap')
     longitude: number.default(151.208138),
     zoom: number.default(13),
     apiKey: string.required,
-    mapId: string.withEditorProps({placeholder: 'DEMO_MAP_ID'}),
+    mapId: string.withEditorProps({placeholder: DEMO_MAP_ID}),
     language: string,
     region: string,
     colorScheme: oneOf('DARK', 'LIGHT', 'FOLLOW_SYSTEM').withEditorProps({creatable: false}),
@@ -105,6 +106,7 @@ export const googleMap = define(GoogleMapLoader, 'GoogleMap')
     onMarkerDelete: event,
     onMapClick: event,
     onPlaceSelect: event,
+    onPlaceSelectError: event,
   })
   .css({
     width: cssSize.setup({default: '100%'}),

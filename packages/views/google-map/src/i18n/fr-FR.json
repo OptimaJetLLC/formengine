@@ -62,7 +62,7 @@
           "name": "Position de contrôle de la carte"
         },
         "mapId": {
-          "description": "L'ID de carte est un identifiant associé à un style de carte ou à une caractéristique spécifique.",
+          "description": "Cloud Map ID pour le style de carte et les marqueurs avancés. S'il est vide, le DEMO_MAP_ID de Google est utilisé et affiche un filigrane de développement.",
           "name": "Identifiant de la carte"
         },
         "mapTypeId": {

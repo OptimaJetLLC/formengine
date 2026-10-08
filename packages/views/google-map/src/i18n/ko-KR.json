@@ -62,7 +62,7 @@
           "name": "맵 제어 위치"
         },
         "mapId": {
-          "description": "맵 ID는 특정 맵 스타일 또는 기능과 관련된 식별자입니다.",
+          "description": "맵 스타일 및 고급 마커용 클라우드 맵 ID비어 있는 경우 구글의 DEMO_MAP_ID가 사용되며 개발 워터마크가 표시됩니다.",
           "name": "맵 ID"
         },
         "mapTypeId": {

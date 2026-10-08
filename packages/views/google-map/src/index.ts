@@ -1,3 +1,7 @@
+// The public API exposes google.maps types, and the root tsconfig allowlists global type packages,
+// so the package references them explicitly.
+/// <reference types="google.maps" />
+
 import type {Definer, Model} from '@react-form-builder/core'
 import {googleMap} from './GoogleMap'
 import type {GoogleMapProps} from './GoogleMapProps'

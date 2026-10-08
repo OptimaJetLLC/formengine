@@ -115,7 +115,8 @@ The position of the map control.
 
 > `optional` **mapId?**: `string`
 
-The map ID is an identifier that's associated with a specific map style or feature.
+Cloud Map ID for map style and Advanced Markers.
+When omitted or empty, Google's DEMO_MAP_ID is used and Google shows a development watermark.
 
 ***
 
@@ -245,6 +246,26 @@ the address of the selected place.
 
 ***
 
+### onPlaceSelectError?
+
+> `optional` **onPlaceSelectError?**: (`error`) => `void`
+
+The callback function called when place details cannot be loaded after a search selection.
+
+#### Parameters
+
+##### error
+
+`unknown`
+
+the error from the Places widget or fetchFields.
+
+#### Returns
+
+`void`
+
+***
+
 ### region?
 
 > `optional` **region?**: `string`
@@ -273,7 +294,7 @@ The search input placeholder.
 
 ### showMapControl
 
-> **showMapControl**: `ControlPosition`
+> **showMapControl**: `boolean`
 
 Whether to show the map control.
 

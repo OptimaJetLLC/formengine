@@ -62,7 +62,7 @@
           "name": "地图控制位置"
         },
         "mapId": {
-          "description": "地图 ID 是与特定地图样式或功能相关的标识符",
+          "description": "地图样式和高级标记的云地图 ID。如果为空，则使用谷歌的 DEMO_MAP_ID 并显示开发水印。",
           "name": "地图 ID"
         },
         "mapTypeId": {

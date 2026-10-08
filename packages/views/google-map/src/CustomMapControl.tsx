@@ -1,7 +1,7 @@
 import type {ControlPosition} from '@vis.gl/react-google-maps'
 import {MapControl, useMap} from '@vis.gl/react-google-maps'
-import {useCallback, useEffect, useState} from 'react'
-import {PlaceAutocompleteClassic} from './AutoComplete'
+import {useCallback} from 'react'
+import {PlaceAutocomplete} from './AutoComplete'
 
 /**
  * The properties of the CustomAutocompleteControl component.
@@ -13,9 +13,14 @@ interface CustomAutocompleteControlProps {
   controlPosition: ControlPosition
   /**
    * Callback function to handle place selection.
-   * @param place the selected place.
+   * @param place the selected Place.
    */
-  onPlaceSelect?: (place: google.maps.places.PlaceResult) => void
+  onPlaceSelect?: (place: google.maps.places.Place) => void
+  /**
+   * Callback invoked when place details cannot be loaded.
+   * @param error the error from the Places widget or fetchFields.
+   */
+  onError?: (error: unknown) => void
   /**
    * The placeholder text for the map search input.
    */
@@ -28,28 +33,23 @@ interface CustomAutocompleteControlProps {
  * @returns the React element.
  */
 export const CustomMapControl = (props: CustomAutocompleteControlProps) => {
-  const {controlPosition, onPlaceSelect, placeholder} = props
-  const [selectedPlace, setSelectedPlace] = useState<google.maps.places.PlaceResult | null>(null)
+  const {controlPosition, onPlaceSelect, onError, placeholder} = props
   const map = useMap()
 
   const handlePlaceSelect = useCallback(
-    (place: google.maps.places.PlaceResult | null) => {
-      setSelectedPlace(place)
-      if (place) onPlaceSelect?.(place)
+    (place: google.maps.places.Place) => {
+      if (map && place.viewport) {
+        map.fitBounds(place.viewport)
+      }
+      onPlaceSelect?.(place)
     },
-    [onPlaceSelect]
+    [map, onPlaceSelect]
   )
-
-  useEffect(() => {
-    if (map && selectedPlace?.geometry?.viewport) {
-      map.fitBounds(selectedPlace.geometry.viewport)
-    }
-  }, [map, selectedPlace])
 
   return (
     <MapControl position={controlPosition}>
       <div className="autocomplete-control">
-        <PlaceAutocompleteClassic onPlaceSelect={handlePlaceSelect} placeholder={placeholder} />
+        <PlaceAutocomplete onPlaceSelect={handlePlaceSelect} onError={onError} placeholder={placeholder} />
       </div>
     </MapControl>
   )

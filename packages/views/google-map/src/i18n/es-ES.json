@@ -62,7 +62,7 @@
           "name": "Posición de control del mapa"
         },
         "mapId": {
-          "description": "El ID del mapa es un identificador que está asociado a una característica o estilo de mapa específico.",
+          "description": "Cloud Map ID para el estilo del mapa y los marcadores avanzados. Si está vacío, se usa el DEMO_MAP_ID de Google y muestra una marca de agua de desarrollo.",
           "name": "ID de mapa"
         },
         "mapTypeId": {

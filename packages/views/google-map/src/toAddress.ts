@@ -1,46 +1,76 @@
 import type {Address} from './Address'
 
+type AddressComponentLike = {
+  longName: string
+  shortName: string
+  types: string[]
+}
+
+type AddressComponentInput = AddressComponentLike | google.maps.GeocoderAddressComponent | google.maps.places.AddressComponent
+
+const toAddressComponentLike = (component: AddressComponentInput): AddressComponentLike => {
+  if ('longName' in component) {
+    return component
+  }
+
+  if ('longText' in component) {
+    return {
+      longName: component.longText ?? '',
+      shortName: component.shortText ?? '',
+      types: component.types,
+    }
+  }
+
+  return {
+    longName: component.long_name,
+    shortName: component.short_name,
+    types: component.types,
+  }
+}
+
 /**
  * Converts the address components to an address object.
  * Original source code from https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform.
+ * Accepts Geocoder components, Places (New) components, or the shared AddressComponentLike shape.
  * @param components the address components.
  * @returns the address object.
  */
-export function toAddress(components: google.maps.GeocoderAddressComponent[]): Address {
+export function toAddress(components: AddressComponentInput[]): Address {
   const result = <Address>{
     address: '',
     postalCode: '',
   }
 
-  for (const component of components) {
+  for (const rawComponent of components) {
+    const component = toAddressComponentLike(rawComponent)
     const componentType = component.types[0]
 
     switch (componentType) {
       case 'street_number': {
-        result.address = `${component.long_name} ${result.address}`
+        result.address = `${component.longName} ${result.address}`
         break
       }
       case 'route': {
-        result.address += component.short_name
+        result.address += component.shortName
         break
       }
       case 'postal_code': {
-        result.postalCode = `${component.long_name}${result.postalCode}`
+        result.postalCode = `${component.longName}${result.postalCode}`
         break
       }
       case 'postal_code_suffix': {
-        result.postalCode = `${result.postalCode}-${component.long_name}`
+        result.postalCode = `${result.postalCode}-${component.longName}`
         break
       }
       case 'locality':
-        result.city = component.long_name
+        result.city = component.longName
         break
       case 'administrative_area_level_1': {
-        result.state = component.short_name
+        result.state = component.shortName
         break
       }
       case 'country':
-        result.country = component.long_name
+        result.country = component.longName
         break
       default:
         break

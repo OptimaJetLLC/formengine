@@ -198,7 +198,7 @@
 
 #### components.GoogleMap.props.mapId.description
 
-> **description**: `string` = `"The map ID is an identifier that's associated with a specific map style or feature"`
+> **description**: `string` = `"Cloud Map ID for map style and Advanced Markers. If empty, Google's DEMO_MAP_ID is used and shows a development watermark."`
 
 #### components.GoogleMap.props.mapId.name
 

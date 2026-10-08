@@ -4,12 +4,14 @@ import {Map} from '@vis.gl/react-google-maps'
 import {useCallback, useMemo, useState} from 'react'
 import type {Address} from './Address'
 import {CustomMapControl} from './CustomMapControl'
+import {DEMO_MAP_ID} from './constants'
 import type {GoogleMapProps} from './GoogleMapProps'
 import styles from './GoogleMapRenderer.module.css'
 import type {MapMarker} from './MapMarker'
 import {MarkerInfo} from './MarkerInfo'
 import {Markers} from './Markers'
 import {toAddress} from './toAddress'
+import {toPlaceResult} from './toPlaceResult'
 import {useGeocoding} from './useGeocoding'
 import {uniqueId, useUniqueId} from './useUniqueId'
 
@@ -59,6 +61,7 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
     onMarkerClick,
     onMapClick,
     onPlaceSelect,
+    onPlaceSelectError,
     markerWindowTitle,
     removeMarkerCaption,
   } = props
@@ -164,13 +167,13 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
   }, [])
 
   const handlePlaceSelect = useCallback(
-    (place: google.maps.places.PlaceResult) => {
-      const address = place.address_components ? toAddress(place.address_components) : undefined
+    (place: google.maps.places.Place) => {
+      const address = place.addressComponents ? toAddress(place.addressComponents) : undefined
       if (onPlaceSelect) {
-        onPlaceSelect(place, address)
+        onPlaceSelect(toPlaceResult(place), address)
       }
       if (addMarkerOnSearch) {
-        const position = place.geometry?.location?.toJSON()
+        const position = place.location?.toJSON()
         if (position) addMarker(position, address)
       }
     },
@@ -188,7 +191,7 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
   return (
     <Map
       id={id}
-      mapId={mapId}
+      mapId={mapId || DEMO_MAP_ID}
       zoom={zoom}
       center={center}
       onClick={handleMapClick}
@@ -212,7 +215,12 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
         />
       )}
       {showMapControl && (
-        <CustomMapControl controlPosition={mapControlPosition} onPlaceSelect={handlePlaceSelect} placeholder={searchPlaceholder} />
+        <CustomMapControl
+          controlPosition={mapControlPosition}
+          onPlaceSelect={handlePlaceSelect}
+          onError={onPlaceSelectError}
+          placeholder={searchPlaceholder}
+        />
       )}
     </Map>
   )

@@ -62,7 +62,7 @@
           "name": "Kontrolni položaj mape"
         },
         "mapId": {
-          "description": "ID mape je identifikator koji je povezan sa određenim stilom ili funkcijom mape",
+          "description": "ID mape u oblaku za stil mape i napredne markere. Ako je prazan, koristi se Google-ov DEMO_MAP_ID i prikazuje razvojni vodeni žig.",
           "name": "ID karte"
         },
         "mapTypeId": {

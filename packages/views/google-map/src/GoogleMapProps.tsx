@@ -53,7 +53,8 @@ export interface GoogleMapProps {
   searchPlaceholder?: string
 
   /**
-   * The map ID is an identifier that's associated with a specific map style or feature.
+   * Cloud Map ID for map style and Advanced Markers.
+   * When omitted or empty, Google's DEMO_MAP_ID is used and Google shows a development watermark.
    */
   mapId?: string
 
@@ -83,6 +84,12 @@ export interface GoogleMapProps {
    * @param address the address of the selected place.
    */
   onPlaceSelect?: (place: google.maps.places.PlaceResult, address?: Address) => void
+
+  /**
+   * The callback function called when place details cannot be loaded after a search selection.
+   * @param error the error from the Places widget or fetchFields.
+   */
+  onPlaceSelectError?: (error: unknown) => void
 
   /**
    * The CSS class name.
@@ -121,7 +128,7 @@ export interface GoogleMapProps {
   /**
    * Whether to show the map control.
    */
-  showMapControl: ControlPosition
+  showMapControl: boolean
 
   /**
    * The position of the map control.
