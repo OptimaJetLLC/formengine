@@ -67,5 +67,10 @@
     "dist/viewer-bundle-premium-ltr.css",
     "dist/viewer-bundle-premium-rtl.css",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optimajet/formengine.git",
+    "directory": "packages/viewer-bundle-premium"
+  }
 }

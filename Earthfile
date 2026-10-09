@@ -126,10 +126,12 @@ npm-publish-rc-release:
   WORKDIR /repo
   COPY scripts/release scripts/release
   COPY .archives .archives
+  # Draft host is optimajet/formengine (not the product CI repo). REPO_SLUG/GITHUB_SHA are the
+  # formengine slug and target_commitish (usually master), not the fb commit.
   ARG --required REPO_SLUG
   ARG --required GITHUB_SHA
-  ENV GITHUB_REPOSITORY=$REPO_SLUG
-  ENV GITHUB_SHA=$GITHUB_SHA
+  ENV DRAFT_RELEASE_GITHUB_REPOSITORY=$REPO_SLUG
+  ENV DRAFT_RELEASE_TARGET_COMMITISH=$GITHUB_SHA
   DO +VALIDATE_ARCHIVES --archivesDir=.archives
   RUN --secret GH_TOKEN \
     node scripts/release/upload-release-artifacts.ts

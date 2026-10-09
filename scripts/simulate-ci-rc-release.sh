@@ -287,11 +287,15 @@ validate_archives() {
 }
 
 publish_release() {
-  log "Publish draft GitHub release to ${GITHUB_REPOSITORY} @ ${GITHUB_SHA}"
+  local draft_repo="${DRAFT_RELEASE_GITHUB_REPOSITORY:-optimajet/formengine}"
+  local draft_commitish="${DRAFT_RELEASE_TARGET_COMMITISH:-master}"
+  log "Publish draft GitHub release to ${draft_repo} (target_commitish=${draft_commitish})"
   # shellcheck disable=SC2086
+  DRAFT_RELEASE_GITHUB_REPOSITORY="${draft_repo}" \
+  DRAFT_RELEASE_TARGET_COMMITISH="${draft_commitish}" \
   "${EARTHLY_BIN}" --ci ${EARTHLY_EXTRA_ARGS} --secret GH_TOKEN +npm-publish-rc-release \
-    --REPO_SLUG="${GITHUB_REPOSITORY}" \
-    --GITHUB_SHA="${GITHUB_SHA}"
+    --REPO_SLUG="${draft_repo}" \
+    --GITHUB_SHA="${draft_commitish}"
 }
 
 while [[ $# -gt 0 ]]; do

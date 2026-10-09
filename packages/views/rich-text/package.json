@@ -43,5 +43,10 @@
   ],
   "devDependencies": {
     "@react-form-builder/cli-lib": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optimajet/formengine.git",
+    "directory": "packages/views/rich-text"
   }
 }

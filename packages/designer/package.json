@@ -101,5 +101,10 @@
     "./locales/ko-KR.json": "./public/locales/ko-KR.json",
     "./locales/sr-RS.json": "./public/locales/sr-RS.json",
     "./locales/zh-CN.json": "./public/locales/zh-CN.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optimajet/formengine.git",
+    "directory": "packages/designer"
   }
 }

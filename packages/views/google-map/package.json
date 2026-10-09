@@ -51,5 +51,10 @@
   "files": [
     "dist/*",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optimajet/formengine.git",
+    "directory": "packages/views/google-map"
+  }
 }

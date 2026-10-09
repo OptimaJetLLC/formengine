@@ -66,5 +66,10 @@
     "dist/index.iife.js",
     "dist/index.umd.js",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optimajet/formengine.git",
+    "directory": "packages/designer-bundle"
+  }
 }

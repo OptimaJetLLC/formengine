@@ -1,6 +1,14 @@
 import {execFileSync} from 'node:child_process'
 
+import {NPM_PACKAGE_PATHS, PUBLISHED_PACKAGE_REPOSITORY_URL} from './constants.ts'
+
 const CLI_LIB_PACKAGE_NAME = '@react-form-builder/cli-lib'
+
+type PackageRepository = {
+  type?: string
+  url?: string
+  directory?: string
+}
 
 /**
  * Reads package.json from an npm tarball without extracting the full archive.
@@ -32,6 +40,23 @@ function assertPublicationTarball(tarballPath: string): void {
   const main = packageJson.main
   if (typeof main === 'string' && main.includes('/src/')) {
     throw new Error(`${tarballPath} publishes a src entry point (${main}); expected dist output`)
+  }
+
+  const repository = packageJson.repository as PackageRepository | undefined
+  if (!repository || typeof repository !== 'object') {
+    throw new Error(`${tarballPath} is missing repository metadata`)
+  }
+  if (repository.type !== 'git') {
+    throw new Error(`${tarballPath} repository.type must be "git"`)
+  }
+  if (repository.url !== PUBLISHED_PACKAGE_REPOSITORY_URL) {
+    throw new Error(`${tarballPath} repository.url must be ${PUBLISHED_PACKAGE_REPOSITORY_URL} (got ${String(repository.url)})`)
+  }
+  if (typeof repository.directory !== 'string' || !repository.directory.startsWith('packages/')) {
+    throw new Error(`${tarballPath} repository.directory must be a packages/* path`)
+  }
+  if (!(NPM_PACKAGE_PATHS as readonly string[]).includes(repository.directory)) {
+    throw new Error(`${tarballPath} repository.directory ${repository.directory} is not in NPM_PACKAGE_PATHS`)
   }
 }
 
