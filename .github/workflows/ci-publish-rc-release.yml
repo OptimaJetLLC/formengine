@@ -2,6 +2,9 @@ name: CI publish RC release
 
 on:
   workflow_call:
+    secrets:
+      FORMENGINE_GH_TOKEN:
+        required: true
 
 jobs:
   publish-rc-release:

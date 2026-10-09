@@ -49,3 +49,5 @@ jobs:
       - build-documentation
     if: ${{ github.event_name == 'workflow_dispatch' && startsWith(github.ref, 'refs/heads/rc/') }}
     uses: ./.github/workflows/ci-publish-rc-release.yml
+    secrets:
+      FORMENGINE_GH_TOKEN: ${{ secrets.FORMENGINE_GH_TOKEN }}
