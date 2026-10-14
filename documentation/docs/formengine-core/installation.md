@@ -1,6 +1,6 @@
 ---
 description: Install FormEngine Core in under 5 minutes. Works with npm, yarn, and
-  pnpm. Compatible with React 17.2+, Next.js, Remix, and Create React App.
+  pnpm. Compatible with React 18+, Next.js, Remix, and Create React App.
 sidebar_class_name: formengine-core-essential
 sidebar_label: Installation
 sidebar_position: 0

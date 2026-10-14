@@ -1,5 +1,4 @@
 import {cleanup, configure} from '@testing-library/react'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import '@testing-library/jest-dom/vitest'
 import {Canvas} from 'skia-canvas'
 import {afterEach, beforeAll} from 'vitest'

@@ -5,6 +5,6 @@ test('Check React version', {
 }, async ({page}) => {
   await page.goto('/')
 
-  const expectedText = `React version: ${process.env['TEST_REACT_VERSION'] ?? '17.0.2'}`
+  const expectedText = `React version: ${process.env['TEST_REACT_VERSION'] ?? '18.3.1'}`
   await expect(page.getByTestId('reactVersion')).toContainText(expectedText)
 })

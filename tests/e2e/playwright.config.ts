@@ -18,7 +18,7 @@ if (!env.CI) {
 const port = env['TEST_PORT'] ?? '15002'
 const baseURL = env['TEST_BASE_URL'] ?? `http://localhost:${port}`
 const testSuite = env['TEST_TESTS_PATH'] ?? 'designer'
-const projectRoot = env['TEST_PROJECT'] ?? resolve(`${workspaceRoot}/tests/react-17`)
+const projectRoot = env['TEST_PROJECT'] ?? resolve(`${workspaceRoot}/tests/react-18`)
 const command = env['TEST_START_CMD'] ?? 'npm run start:designer'
 const cwd = env['TEST_PROJECT'] ?? projectRoot
 

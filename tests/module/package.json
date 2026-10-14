@@ -17,6 +17,7 @@
     "@react-form-builder/components-rsuite": "^11.1.0",
     "@react-form-builder/core": "^11.1.0",
     "@react-form-builder/designer": "^11.1.0",
-    "@react-form-builder/indexed-db-form-storage": "^11.1.0"
+    "@react-form-builder/indexed-db-form-storage": "^11.1.0",
+    "vitest-fail-on-console": "^0.10.1"
   }
 }

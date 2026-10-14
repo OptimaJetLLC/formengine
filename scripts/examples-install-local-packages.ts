@@ -423,6 +423,24 @@ function registryTarballUrl(packageName: string, version: string): string {
 }
 
 /**
+ * Gets the package name when a package-lock key points directly to a Form Builder package.
+ * @param lockKey the package-lock packages key.
+ * @returns the package name, or undefined for unrelated and nested dependency entries.
+ */
+function getFormBuilderPackageNameFromLockKey(lockKey: string): string | undefined {
+  const nodeModulesPrefix = 'node_modules/'
+  const nodeModulesIndex = lockKey.lastIndexOf(nodeModulesPrefix)
+  if (nodeModulesIndex === -1) {
+    return undefined
+  }
+  const packageName = lockKey.slice(nodeModulesIndex + nodeModulesPrefix.length)
+  if (!packageName.startsWith(PACKAGE_PREFIX)) {
+    return undefined
+  }
+  return packageName.slice(PACKAGE_PREFIX.length).includes('/') ? undefined : packageName
+}
+
+/**
  * Rewrites example package-lock.json so @react-form-builder/* uses registry-style resolved URLs and the
  * root package entry matches package.json semver specs.
  * @param exampleDir absolute path to the example directory
@@ -481,13 +499,8 @@ function normalizeExamplePackageLock(exampleDir: string, dryRun: boolean, releas
   }
 
   for (const lockKey of Object.keys(packages)) {
-    if (lockKey === '' || !lockKey.includes('@react-form-builder/')) {
-      continue
-    }
-    const idx = lockKey.indexOf('@react-form-builder/')
-    const rest = lockKey.slice(idx + '@react-form-builder/'.length)
-    const pkgName = `@react-form-builder/${rest.split('/')[0]}`
-    if (PACKAGES_EXCLUDED_FROM_REGISTRY_LOCK.has(pkgName)) {
+    const pkgName = getFormBuilderPackageNameFromLockKey(lockKey)
+    if (!pkgName || PACKAGES_EXCLUDED_FROM_REGISTRY_LOCK.has(pkgName)) {
       continue
     }
     const entry = packages[lockKey] as

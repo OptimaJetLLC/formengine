@@ -42,6 +42,6 @@
     "vite-bundle-visualizer": "^1.2.1"
   },
   "overrides": {
-    "react-is": ">=17.0.2"
+    "react-is": "^18 || ^19"
   }
 }

@@ -1,7 +1,7 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
-import {ComponentType, Fragment, StrictMode, version} from 'react'
+import {ComponentType, Fragment, StrictMode} from 'react'
 import lifecycleEventsForm from './forms/lifecycle-events-form.json'
 
 type ExpectedMessages = {
@@ -11,17 +11,13 @@ type ExpectedMessages = {
 
 type TestItem = [string, ComponentType<any>, ExpectedMessages]
 
-const normalOnDidMount = ['onDidMount checkbox', 'onDidMount rsButton1']
-
-const normalOnWillUnmount = ['onDidMount checkbox', 'onDidMount rsButton1', 'onWillUnmount checkbox', 'onWillUnmount rsButton1']
-
 const data: TestItem[] = [
   [
     'normal',
     Fragment,
     {
-      onDidMount: normalOnDidMount,
-      onWillUnmount: normalOnWillUnmount,
+      onDidMount: ['onDidMount checkbox', 'onDidMount rsButton1'],
+      onWillUnmount: ['onDidMount checkbox', 'onDidMount rsButton1', 'onWillUnmount checkbox', 'onWillUnmount rsButton1'],
     },
   ],
   [
@@ -69,11 +65,9 @@ describe('Lifecycle events', () => {
     )
 
     expect(await findByTestId('rsButton1')).toBeInTheDocument()
-    const expectedOnDidMount = version === '17.0.2' ? normalOnDidMount : expectedMessages.onDidMount
-    expect(eventLog).toEqual(expectedOnDidMount)
+    expect(eventLog).toEqual(expectedMessages.onDidMount)
 
     unmount()
-    const expectedOnWillUnmount = version === '17.0.2' ? normalOnWillUnmount : expectedMessages.onWillUnmount
-    expect(eventLog).toEqual(expectedOnWillUnmount)
+    expect(eventLog).toEqual(expectedMessages.onWillUnmount)
   })
 })

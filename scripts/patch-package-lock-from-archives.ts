@@ -62,6 +62,24 @@ function registryTarballUrl(packageName: string, version: string): string {
 }
 
 /**
+ * Gets the package name when a package-lock key points directly to a Form Builder package.
+ * @param lockKey the package-lock packages key.
+ * @returns the package name, or undefined for unrelated and nested dependency entries.
+ */
+function getFormBuilderPackageNameFromLockKey(lockKey: string): string | undefined {
+  const nodeModulesPrefix = 'node_modules/'
+  const nodeModulesIndex = lockKey.lastIndexOf(nodeModulesPrefix)
+  if (nodeModulesIndex === -1) {
+    return undefined
+  }
+  const packageName = lockKey.slice(nodeModulesIndex + nodeModulesPrefix.length)
+  if (!packageName.startsWith(PACKAGE_PREFIX)) {
+    return undefined
+  }
+  return packageName.slice(PACKAGE_PREFIX.length).includes('/') ? undefined : packageName
+}
+
+/**
  * Maps react-form-builder-*.tgz filenames in an archives directory to package metadata.
  * @param archivesDir absolute path to `.archives/` (or similar)
  */
@@ -165,12 +183,10 @@ function patchPackageLockFromArchives(
   }
 
   for (const lockKey of Object.keys(packages)) {
-    if (!lockKey.includes('@react-form-builder/')) {
+    const pkgName = getFormBuilderPackageNameFromLockKey(lockKey)
+    if (!pkgName) {
       continue
     }
-    const idx = lockKey.indexOf('@react-form-builder/')
-    const rest = lockKey.slice(idx + '@react-form-builder/'.length)
-    const pkgName = `@react-form-builder/${rest.split('/')[0]}`
     const archive = archives.get(pkgName)
     if (!archive) {
       continue

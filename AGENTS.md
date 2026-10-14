@@ -359,8 +359,8 @@ All automated tests live under `tests/`, and each suite is an isolated package w
   storage, etc.) through their real entry points.
 - `tests/e2e` hosts the Playwright harness. It spins up a sample designer/viewer app and drives cross-browser scenarios, producing reports
   under `tests/e2e/reports`.
-- `tests/react-17`, `tests/react-18`, and `tests/react-19` are lightweight host apps used by the test suite to verify backwards
-  compatibility with multiple React majors.
+- `tests/react-18` and `tests/react-19` are lightweight host apps used by the test suite to verify backwards compatibility with
+  multiple React majors.
 
 ### Writing Tests
 

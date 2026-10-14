@@ -51,6 +51,7 @@
     "@docusaurus/types": "^3.10.2",
     "cross-env": "^10.1.0",
     "docusaurus-plugin-typedoc": "^1.4.3",
+    "dotenv-cli": "^8.0.0",
     "sharp": "^0.35.5",
     "typedoc": "^0.28.20",
     "typedoc-plugin-markdown": "^4.7.1",

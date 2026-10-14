@@ -508,9 +508,9 @@ const actions: FormViewerProps['actions'] = {
 `refValue` is only available when the rendered component actually supports `ref` (a DOM element or a component created with
 `forwardRef`/`useImperativeHandle`), and **FormEngine Core only attaches component refs when it is running with React 19 or newer**.
 
-In React 17 and 18, even if your component uses `forwardRef`, FormEngine does not pass a `ref` into the component, so `e.refValue` will
-always be `undefined`/`null`. You can still use refs inside your own application code, but you cannot rely on `refValue` in action
-handlers on those React versions.
+In React 18, even if your component uses `forwardRef`, FormEngine does not pass a `ref` into the component, so `e.refValue` will always
+be `undefined`/`null`. You can still use refs inside your own application code, but you cannot rely on `refValue` in action handlers on
+React 18.
 
 If you override `componentWrapper` with React 19+, make sure the wrapper supports refs and forwards the ref to a real element (do not use
 `React.Fragment` and do not use a non-`forwardRef` function component), otherwise `refValue` can be `null` and React may log warnings

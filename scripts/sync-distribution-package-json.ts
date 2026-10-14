@@ -91,15 +91,8 @@ const DISTRIBUTION_BASE_DEV_DEPENDENCIES = [
  */
 export const DEV_MONOREPO_ONLY_DEPENDENCIES = [
   '@biomejs/biome',
-  '@testing-library/dom',
-  '@testing-library/jest-dom',
-  '@testing-library/react',
   '@vitest/browser',
   '@vitest/ui',
-  'axe-core',
-  'dotenv-cli',
-  'jsdom',
-  'klona',
   'lefthook',
   'knip',
   'leasot',
@@ -109,7 +102,6 @@ export const DEV_MONOREPO_ONLY_DEPENDENCIES = [
   'remark-directive',
   'remark-frontmatter',
   'remark-gfm',
-  'vitest-fail-on-console',
 ] as const
 
 const DISTRIBUTION_SCRIPT_TEMPLATES = {

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import {existsSync, rmSync} from 'node:fs'
+import {createRequire} from 'node:module'
 import {dirname, join, resolve} from 'node:path'
 import {cwd} from 'node:process'
 import {fileURLToPath} from 'node:url'
@@ -10,7 +11,10 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 const config = {
-  templates: ['react-17', 'react-18', 'react-19'],
+  templates: [
+    {name: 'react-18', expectedReactMajor: 18},
+    {name: 'react-19', expectedReactMajor: 19},
+  ],
   projects: [
     {
       name: 'viewer',
@@ -25,10 +29,20 @@ const config = {
   ],
 }
 
-const reactVersions = {
-  'react-17': '17.0.2',
-  'react-18': '18.3.1',
-  'react-19': '19.0.0',
+/**
+ * Resolves and validates the React version installed for a test host package.
+ * @param hostDir the absolute path to tests/react-18 or tests/react-19.
+ * @param expectedMajor the expected React major version.
+ * @returns the installed React package version.
+ */
+function resolveReactVersion(hostDir, expectedMajor) {
+  const requireFromHost = createRequire(join(hostDir, 'package.json'))
+  const reactVersion = requireFromHost('react/package.json').version
+  const installedMajor = Number.parseInt(reactVersion.split('.')[0], 10)
+  if (installedMajor !== expectedMajor) {
+    throw new Error(`Expected React ${expectedMajor}.x in ${hostDir}, but found ${reactVersion}`)
+  }
+  return reactVersion
 }
 
 const ENV = JSON.parse(JSON.stringify(process.env))
@@ -46,7 +60,7 @@ let withError = false
 
 const debug = ENV['DEBUG_TPL']
 
-for (const tpl of config.templates) {
+for (const {name: tpl, expectedReactMajor} of config.templates) {
   if (debug && tpl !== debug) continue
 
   if (!isCI) {
@@ -56,13 +70,14 @@ for (const tpl of config.templates) {
 
   for (const {name, port, command} of config.projects) {
     const path = resolve(join(__dirname, '..', tpl))
+    const reactVersion = resolveReactVersion(path, expectedReactMajor)
     const args = isCI ? ['playwright', 'test'] : ['--verbose', 'playwright', 'test']
 
     if (debug) {
       args.push('--ui')
     }
 
-    console.info(isCI ? `Running e2e: ${tpl} / ${name}` : {path, name, command})
+    console.info(isCI ? `Running e2e: ${tpl} / ${name}` : {path, name, command, reactVersion})
 
     const result = spawn.sync('npx', args, {
       cwd: __dirname,
@@ -73,7 +88,7 @@ for (const tpl of config.templates) {
         TEST_TESTS_PATH: name,
         TEST_PORT: port,
         TEST_START_CMD: command,
-        TEST_REACT_VERSION: reactVersions[tpl],
+        TEST_REACT_VERSION: reactVersion,
       },
       stdio: 'inherit',
     })

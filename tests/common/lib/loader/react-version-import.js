@@ -13,7 +13,7 @@ export function load(url, context, defaultLoad) {
 
 /**
  * Creates resolve hook that redirects react-family packages to a suite-local node_modules.
- * @param suiteDir absolute path to the react test host package (e.g. tests/react-17)
+ * @param suiteDir absolute path to the react test host package (e.g. tests/react-18)
  * @returns resolve hook for Node register()
  */
 export function createResolve(suiteDir) {

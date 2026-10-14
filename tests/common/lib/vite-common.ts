@@ -22,7 +22,7 @@ export const indexPlugin = (replacement: string): Plugin => ({
 
 /**
  * Pin react, react-dom, and scheduler to a test package's local node_modules.
- * Used by react-17/18 hosts so Vitest does not resolve a different React version.
+ * Used by react-18/19 test hosts so Vitest does not resolve a different React version.
  * @param dirname absolute path of the test package directory
  * @returns resolve config with react aliases
  * @see https://github.com/facebook/react/issues/13991

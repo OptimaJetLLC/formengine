@@ -30,7 +30,7 @@
   },
   "peerDependencies": {
     "@react-form-builder/core": "11.1.0",
-    "react": ">=17.0.2 || ^18 || ^19"
+    "react": "^18 || ^19"
   },
   "peerDependenciesMeta": {
     "@react-form-builder/core": {

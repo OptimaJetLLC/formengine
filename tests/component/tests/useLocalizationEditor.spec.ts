@@ -1,9 +1,8 @@
 import {CalculableResult, Language} from '@react-form-builder/core'
-import {act} from '@testing-library/react'
+import {act, renderHook} from '@testing-library/react'
 import {beforeEach, describe, expect, it, vi} from 'vitest'
 import {useLocalizationEditor} from '../../../packages/designer/src/features/localization/useLocalizationEditor'
 import {EditableProperty} from '../../../packages/designer/src/stores/BuilderStore'
-import {renderHook} from '../config/renderHook'
 
 const enUS = new Language('en', 'US', 'English', 'American English')
 const deDE = new Language('de', 'DE', 'German', 'German')

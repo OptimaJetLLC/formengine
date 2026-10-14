@@ -27,7 +27,7 @@
   "peerDependencies": {
     "@react-form-builder/core": "11.1.0",
     "mobx": "^6.13.5",
-    "react": ">=17.0.2 || ^18 || ^19",
+    "react": "^18 || ^19",
     "rsuite": "5.83.4"
   },
   "peerDependenciesMeta": {
