@@ -7,9 +7,9 @@
   "homepage": "https://formengine.io/",
   "dependencies": {
     "@react-form-builder/tests-common": "file:./../common",
-    "@testing-library/dom": "^10.4.1",
+    "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/react": "^16.3.3",
     "axe-core": "^4.13.0",
     "jsdom": "^27.2.0",
     "klona": "^2.0.6",
