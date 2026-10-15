@@ -979,6 +979,11 @@
                   "$ref": "#/definitions/booleanPropertyCalculable",
                   "description": "Whether to preload data"
                 },
+                "searchable": {
+                  "type": "object",
+                  "$ref": "#/definitions/booleanPropertyCalculable",
+                  "description": "Whether typing filters the options list"
+                },
                 "additionalProperties": false
               }
             }

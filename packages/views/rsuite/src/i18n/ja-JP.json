@@ -525,6 +525,10 @@
         "preload": {
           "description": "データをプリロードするかどうか",
           "name": "プリロード"
+        },
+        "searchable": {
+          "description": "入力時にオプション一覧を絞り込むかどうか",
+          "name": "検索可能"
         }
       }
     },

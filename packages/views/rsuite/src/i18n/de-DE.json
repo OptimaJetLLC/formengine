@@ -525,6 +525,10 @@
         "preload": {
           "description": "Ob Daten vorab geladen werden sollen",
           "name": "Vorladen"
+        },
+        "searchable": {
+          "description": "Ob die Eingabe die Optionsliste filtert",
+          "name": "Durchsuchbar"
         }
       }
     },

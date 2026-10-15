@@ -525,6 +525,10 @@
         "preload": {
           "description": "是否预加载数据",
           "name": "预载"
+        },
+        "searchable": {
+          "description": "输入时是否筛选选项列表",
+          "name": "可搜索"
         }
       }
     },

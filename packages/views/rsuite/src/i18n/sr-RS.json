@@ -525,6 +525,10 @@
         "preload": {
           "description": "Da li treba unapred učitati podatke",
           "name": "Predučitaj"
+        },
+        "searchable": {
+          "description": "Da li kucanje filtrira listu opcija",
+          "name": "Pretraživanje"
         }
       }
     },

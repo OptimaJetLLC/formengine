@@ -525,6 +525,10 @@
         "preload": {
           "description": "Si se deben precargar los datos",
           "name": "Precarga"
+        },
+        "searchable": {
+          "description": "Si la escritura filtra la lista de opciones",
+          "name": "Se puede buscar"
         }
       }
     },

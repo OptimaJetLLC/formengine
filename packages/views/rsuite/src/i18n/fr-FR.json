@@ -525,6 +525,10 @@
         "preload": {
           "description": "S'il faut précharger les données",
           "name": "Précharger"
+        },
+        "searchable": {
+          "description": "Indique si la saisie filtre la liste des options",
+          "name": "Recherchable"
         }
       }
     },

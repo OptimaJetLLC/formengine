@@ -525,6 +525,10 @@
         "preload": {
           "name": "Preload",
           "description": "Whether to preload data"
+        },
+        "searchable": {
+          "name": "Searchable",
+          "description": "Whether typing filters the options list"
         }
       }
     },

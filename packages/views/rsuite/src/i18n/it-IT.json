@@ -525,6 +525,10 @@
         "preload": {
           "description": "Se precaricare i dati",
           "name": "Precarico"
+        },
+        "searchable": {
+          "description": "Indica se la digitazione filtra l'elenco delle opzioni",
+          "name": "Ricercabile"
         }
       }
     },

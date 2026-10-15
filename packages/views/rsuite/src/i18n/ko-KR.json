@@ -525,6 +525,10 @@
         "preload": {
           "description": "데이터를 미리 로드할지 여부",
           "name": "사전에 설치하다"
+        },
+        "searchable": {
+          "description": "입력할 때 옵션 목록을 필터링할지 여부",
+          "name": "검색 가능"
         }
       }
     },
