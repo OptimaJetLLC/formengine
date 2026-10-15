@@ -1481,6 +1481,11 @@
                   "$ref": "#/definitions/stringPropertyCalculableLocalizable",
                   "description": "Set grouping criteria 'key' in 'data'"
                 },
+                "searchable": {
+                  "type": "object",
+                  "$ref": "#/definitions/booleanPropertyCalculable",
+                  "description": "Whether typing filters the options list"
+                },
                 "additionalProperties": false
               }
             }

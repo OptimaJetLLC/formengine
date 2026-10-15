@@ -1163,6 +1163,10 @@
         "onSelect": {
           "description": "La devolución de llamada para seleccionar",
           "name": "OnSelect"
+        },
+        "searchable": {
+          "description": "Si la escritura filtra la lista de opciones",
+          "name": "Se puede buscar"
         }
       }
     },

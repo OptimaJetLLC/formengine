@@ -1163,6 +1163,10 @@
         "onSelect": {
           "description": "Povratni poziv za odabir",
           "name": "OnSelect"
+        },
+        "searchable": {
+          "description": "Da li kucanje filtrira listu opcija",
+          "name": "Pretraživanje"
         }
       }
     },

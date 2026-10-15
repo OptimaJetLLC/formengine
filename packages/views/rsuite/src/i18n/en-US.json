@@ -1163,6 +1163,10 @@
         "onSearch": {
           "name": "onSearch",
           "description": "The callback for search"
+        },
+        "searchable": {
+          "name": "Searchable",
+          "description": "Whether typing filters the options list"
         }
       }
     },

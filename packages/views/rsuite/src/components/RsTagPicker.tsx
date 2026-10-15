@@ -1,5 +1,5 @@
 import type {LabeledValue} from '@react-form-builder/core'
-import {array, define, toLabeledValues} from '@react-form-builder/core'
+import {array, boolean, define, toLabeledValues} from '@react-form-builder/core'
 import {useEffect, useMemo, useRef} from 'react'
 import type {PickerHandle, TagPickerProps} from 'rsuite'
 import {TagPicker} from 'rsuite'
@@ -38,10 +38,11 @@ const EMPTY_LIST = [] as const
  * @param props.label the label for the tag picker.
  * @param props.value the value of the tag picker.
  * @param props.className the CSS class name.
+ * @param props.searchable whether typing filters the options list.
  * @param props.props the additional tag picker props.
  * @returns the React element.
  */
-const RsTagPicker = ({data, label, value, className, ...props}: RsTagPickerProps) => {
+const RsTagPicker = ({data, label, value, className, searchable = true, ...props}: RsTagPickerProps) => {
   const inputRef = useRef<PickerHandle>(null)
   const onClean = useTouchOnEvent(props, 'onClean')
 
@@ -56,7 +57,7 @@ const RsTagPicker = ({data, label, value, className, ...props}: RsTagPickerProps
 
   return (
     <Labeled label={label} className={className} passAriaToChildren={true}>
-      <TagPicker value={value ?? EMPTY_LIST} data={transformedData} onClean={onClean} {...props} ref={inputRef} />
+      <TagPicker {...props} value={value ?? EMPTY_LIST} data={transformedData} searchable={searchable} onClean={onClean} ref={inputRef} />
     </Labeled>
   )
 }
@@ -69,6 +70,7 @@ export const rsTagPicker = define(RsTagPicker, 'RsTagPicker')
   .props({
     ...tagPickerProps,
     value: array.valued.ofString,
+    searchable: boolean.default(true),
     label: pickerProps.label.default('Select'),
     data: array.localize.default(toLabeledValues(['a', 'b', 'c'])),
   })

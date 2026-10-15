@@ -1163,6 +1163,10 @@
         "onSelect": {
           "description": "Il callback per select",
           "name": "su Seleziona"
+        },
+        "searchable": {
+          "description": "Indica se la digitazione filtra l'elenco delle opzioni",
+          "name": "Ricercabile"
         }
       }
     },

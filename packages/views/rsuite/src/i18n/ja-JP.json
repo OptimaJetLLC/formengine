@@ -1163,6 +1163,10 @@
         "onSelect": {
           "description": "選択のコールバック",
           "name": "オンセレクト"
+        },
+        "searchable": {
+          "description": "入力時にオプション一覧を絞り込むかどうか",
+          "name": "検索可能"
         }
       }
     },

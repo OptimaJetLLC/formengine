@@ -1163,6 +1163,10 @@
         "onSelect": {
           "description": "选择的回调",
           "name": "onSelect"
+        },
+        "searchable": {
+          "description": "输入时是否筛选选项列表",
+          "name": "可搜索"
         }
       }
     },

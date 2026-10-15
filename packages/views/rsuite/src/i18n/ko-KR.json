@@ -1163,6 +1163,10 @@
         "onSelect": {
           "description": "선택을 위한 콜백",
           "name": "온셀렉트"
+        },
+        "searchable": {
+          "description": "입력할 때 옵션 목록을 필터링할지 여부",
+          "name": "검색 가능"
         }
       }
     },
