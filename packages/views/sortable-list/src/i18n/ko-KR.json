@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "structure": {
+      "name": "구조"
+    }
+  },
+  "components": {
+    "SortableList": {
+      "name": "순서 변경 가능 목록",
+      "description": "드래그하여 행 순서를 변경할 수 있는 반복 목록",
+      "props": {
+        "value": {
+          "name": "값",
+          "description": "행 데이터 배열"
+        },
+        "itemRenderWhen": {
+          "name": "다음 조건에서 항목 렌더링",
+          "description": "행의 렌더링 여부를 제어하는 표현식 또는 함수"
+        },
+        "disabled": {
+          "name": "비활성화",
+          "description": "행 순서 변경을 비활성화합니다"
+        },
+        "readOnly": {
+          "name": "읽기 전용",
+          "description": "행 순서 변경을 비활성화합니다"
+        },
+        "reorderHandleAriaLabel": {
+          "name": "재정렬 핸들 ARIA 레이블",
+          "description": "행을 재정렬하는 데 사용하는 드래그 핸들의 접근 가능한 이름"
+        }
+      }
+    }
+  }
+}

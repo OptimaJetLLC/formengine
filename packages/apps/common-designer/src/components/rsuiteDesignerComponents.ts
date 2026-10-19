@@ -6,6 +6,7 @@ import {richTextComponent, richTextEditorComponentsDescriptions} from '@react-fo
 import {rSuiteComponents, rSuiteComponentsDescriptions} from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
+import {sortableListComponent, sortableListComponentsDescriptions} from '@react-form-builder/components-sortable-list'
 
 /**
  * Component stores used by the shared RSuite designer (FormBuilderApp).
@@ -16,6 +17,7 @@ export const designerComponents = [
   richTextComponent,
   googleMapComponent,
   signatureComponent,
+  sortableListComponent,
   ...printComponents,
   ...rSuiteTableComponents,
 ].map(definer => definer.build())
@@ -31,4 +33,5 @@ export {
   rSuiteComponentsDescriptions,
   rSuiteTableComponentsDescriptions,
   signatureComponentsDescriptions,
+  sortableListComponentsDescriptions,
 }

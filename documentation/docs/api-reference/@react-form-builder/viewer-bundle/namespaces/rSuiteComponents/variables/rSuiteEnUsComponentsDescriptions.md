@@ -1564,6 +1564,18 @@
 
 > **name**: `string` = `"Preload"`
 
+#### components.RsDropdown.props.searchable
+
+> **searchable**: `object`
+
+#### components.RsDropdown.props.searchable.description
+
+> **description**: `string` = `"Whether typing filters the options list"`
+
+#### components.RsDropdown.props.searchable.name
+
+> **name**: `string` = `"Searchable"`
+
 #### components.RsErrorMessage
 
 > **RsErrorMessage**: `object`
@@ -3423,6 +3435,18 @@
 #### components.RsTagPicker.props.onSelect.name
 
 > **name**: `string` = `"onSelect"`
+
+#### components.RsTagPicker.props.searchable
+
+> **searchable**: `object`
+
+#### components.RsTagPicker.props.searchable.description
+
+> **description**: `string` = `"Whether typing filters the options list"`
+
+#### components.RsTagPicker.props.searchable.name
+
+> **name**: `string` = `"Searchable"`
 
 #### components.RsTextArea
 

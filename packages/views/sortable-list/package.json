@@ -1,0 +1,60 @@
+{
+  "name": "@react-form-builder/components-sortable-list",
+  "version": "11.1.0",
+  "private": false,
+  "main": "src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./schemas/sortable-list-components.schema.json": "./public/schemas/sortable-list-components.schema.json"
+  },
+  "description": "OptimaJet Form Builder Components - Sortable list",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optimajet/formengine.git",
+    "directory": "packages/views/sortable-list"
+  },
+  "bugs": {
+    "email": "support@optimajet.com"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "vite build",
+    "clean": "rimraf dist temp",
+    "create-json-schema": "vite-node ./config/json-schema-generator.ts",
+    "pack": "npm-run-all -l clean build create-json-schema create-archive",
+    "create-archive": "node ./config/pack.ts"
+  },
+  "dependencies": {
+    "@dnd-kit/abstract": "^0.5.0",
+    "@dnd-kit/dom": "^0.5.0",
+    "@dnd-kit/react": "^0.5.0"
+  },
+  "peerDependencies": {
+    "@react-form-builder/core": "11.1.0",
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  },
+  "peerDependenciesMeta": {
+    "@react-form-builder/core": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@react-form-builder/cli-lib": "*",
+    "@react-form-builder/json-schema-generator": "^11.1.0",
+    "vite-node": "^5.2.0"
+  },
+  "files": [
+    "dist/*",
+    "README.md"
+  ]
+}

@@ -6,6 +6,7 @@ import {richTextComponent, richTextEditorComponentsDescriptions} from '@react-fo
 import {RsViewWrapper, rSuiteComponents, rSuiteComponentsDescriptions} from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
+import {sortableListComponent, sortableListComponentsDescriptions} from '@react-form-builder/components-sortable-list'
 import {BuilderView, loadResource, unloadResource} from '@react-form-builder/core'
 import type {GenerateJsonFormSchemaOptions, StylesProviderProps} from '@react-form-builder/designer'
 import {FormBuilder} from '@react-form-builder/designer'
@@ -20,6 +21,7 @@ const components = [
   richTextComponent,
   googleMapComponent,
   signatureComponent,
+  sortableListComponent,
   ...printComponents,
   ...rSuiteTableComponents,
 ].map(definer => definer.build())
@@ -31,6 +33,7 @@ const view = new BuilderView(components)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
+  .withComponentLibraryDescription(sortableListComponentsDescriptions)
   .withComponentLibraryDescription(printComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)

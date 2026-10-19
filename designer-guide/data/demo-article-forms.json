@@ -141,6 +141,17 @@
         "label": "Open Team directory table in demo"
       }
     },
+    "fields-and-data/sortable-list": {
+      "start": {
+        "form": "empty",
+        "view": "rsuite-inject-css"
+      },
+      "end": {
+        "formFile": "priority-tasks-sortable.json",
+        "view": "rsuite-inject-css",
+        "label": "Open Priority tasks form in demo"
+      }
+    },
     "components-by-task/special-components": {
       "start": {
         "form": "empty",

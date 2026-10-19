@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "structure": {
+      "name": "الهيكل"
+    }
+  },
+  "components": {
+    "SortableList": {
+      "name": "قائمة قابلة لإعادة الترتيب",
+      "description": "قائمة متكررة يمكن إعادة ترتيب صفوفها عن طريق السحب",
+      "props": {
+        "value": {
+          "name": "القيمة",
+          "description": "مصفوفة بيانات الصفوف"
+        },
+        "itemRenderWhen": {
+          "name": "عرض العنصر عندما",
+          "description": "التعبير أو الدالة التي تتحكم في عرض الصف"
+        },
+        "disabled": {
+          "name": "معطّل",
+          "description": "يعطّل إعادة ترتيب الصفوف"
+        },
+        "readOnly": {
+          "name": "للقراءة فقط",
+          "description": "يعطّل إعادة ترتيب الصفوف"
+        },
+        "reorderHandleAriaLabel": {
+          "name": "تسمية ARIA لمقبض إعادة الترتيب",
+          "description": "الاسم الذي يمكن الوصول إليه لمقبض السحب المستخدم لإعادة ترتيب صف"
+        }
+      }
+    }
+  }
+}

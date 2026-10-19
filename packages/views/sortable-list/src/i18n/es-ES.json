@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Estructura"
+    }
+  },
+  "components": {
+    "SortableList": {
+      "name": "Lista ordenable",
+      "description": "Lista repetible cuyas filas se pueden reordenar arrastrándolas",
+      "props": {
+        "value": {
+          "name": "Valor",
+          "description": "El array de datos de las filas"
+        },
+        "itemRenderWhen": {
+          "name": "Renderizar elemento cuando",
+          "description": "La expresión o función que controla si se renderiza una fila"
+        },
+        "disabled": {
+          "name": "Deshabilitado",
+          "description": "Deshabilita la reordenación de filas"
+        },
+        "readOnly": {
+          "name": "Solo lectura",
+          "description": "Deshabilita la reordenación de filas"
+        },
+        "reorderHandleAriaLabel": {
+          "name": "Etiqueta ARIA del controlador de reordenación",
+          "description": "Nombre accesible del controlador de arrastre usado para reordenar una fila"
+        }
+      }
+    }
+  }
+}

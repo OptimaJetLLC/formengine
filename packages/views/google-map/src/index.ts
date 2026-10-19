@@ -13,5 +13,6 @@ export type {Address} from './Address'
 export type {GoogleMapProps} from './GoogleMapProps'
 export {googleMapComponentsDescriptions} from './i18n/googleMapComponentsDescriptions'
 export type {MapMarker} from './MapMarker'
+export type {AddressComponentInput, AddressComponentLike} from './toAddress'
 export {toAddress} from './toAddress'
 export {googleMapEnUsComponentsDescriptions}

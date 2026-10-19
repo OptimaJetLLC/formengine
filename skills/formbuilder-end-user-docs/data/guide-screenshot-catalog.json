@@ -1,7 +1,7 @@
 {
   "version": 1,
   "description": "Canonical map of Form Author Guide screenshots, guide-forms fixtures, articles, and capture scripts. Use each screenshot.regenerationPrompt with the formbuilder-end-user-docs skill to retake or create a similar image.",
-  "updatedAt": "2026-10-01",
+  "updatedAt": "2026-10-13",
   "paths": {
     "assetsDir": "designer-guide/public/assets/guide",
     "contentDir": "designer-guide/content",
@@ -17,9 +17,9 @@
     "rebuildCatalog": "node skills/formbuilder-end-user-docs/scripts/build-guide-screenshot-catalog.mjs"
   },
   "stats": {
-    "screenshots": 321,
-    "forms": 33,
-    "articles": 71
+    "screenshots": 330,
+    "forms": 34,
+    "articles": 72
   },
   "forms": {
     "account-registration": {
@@ -510,6 +510,24 @@
         "manage-forms/highlight-header-menu-print",
         "preview-and-handoff/print-page-break-and-settings",
         "preview-and-handoff/print-page-break-and-settings-plain"
+      ]
+    },
+    "priority-tasks-sortable": {
+      "file": "skills/formbuilder-end-user-docs/data/guide-forms/priority-tasks-sortable.json",
+      "description": "Guide form fixture `priority-tasks-sortable` used by Form Author Guide screenshots and Try it demo links.",
+      "usedByArticles": [
+        "fields-and-data/sortable-list"
+      ],
+      "usedByScreenshots": [
+        "fields-and-data/highlight-sortable-list-library",
+        "fields-and-data/highlight-sortable-list-palette",
+        "fields-and-data/highlight-sortable-list-properties",
+        "fields-and-data/highlight-sortable-list-tree",
+        "fields-and-data/sortable-list-library-plain",
+        "fields-and-data/sortable-list-palette-plain",
+        "fields-and-data/sortable-list-preview-plain",
+        "fields-and-data/sortable-list-properties-plain",
+        "fields-and-data/sortable-list-tree-plain"
       ]
     },
     "shipping-columns": {
@@ -1004,6 +1022,35 @@
           "formFile": "labels-demo.json",
           "view": "mui",
           "label": "Open Business email field in demo"
+        }
+      }
+    },
+    "fields-and-data/sortable-list": {
+      "content": "designer-guide/content/fields-and-data/sortable-list.md",
+      "screenshots": [
+        "fields-and-data/highlight-sortable-list-palette",
+        "fields-and-data/highlight-sortable-list-properties",
+        "fields-and-data/highlight-sortable-list-tree",
+        "fields-and-data/sortable-list-palette-plain",
+        "fields-and-data/sortable-list-preview-plain",
+        "fields-and-data/sortable-list-properties-plain",
+        "fields-and-data/sortable-list-tree-plain"
+      ],
+      "forms": [
+        "priority-tasks-sortable"
+      ],
+      "captureScripts": [
+        "skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs"
+      ],
+      "demo": {
+        "start": {
+          "form": "empty",
+          "view": "rsuite-inject-css"
+        },
+        "end": {
+          "formFile": "priority-tasks-sortable.json",
+          "view": "rsuite-inject-css",
+          "label": "Open Priority tasks form in demo"
         }
       }
     },
@@ -4638,6 +4685,114 @@
       "description": "workEmail selected in Tree and the Business email field selected on the canvas.",
       "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/highlight-labels-select` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: workEmail selected in Tree and the Business email field selected on the canvas.\n\nArticle(s): designer-guide/content/fields-and-data/labels-and-help-text.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/labels-demo.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-labels-and-help-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/highlight-labels-select.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: fields-and-data/labels-select-plain\nAnnotation labels: Tree; Canvas.\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
     },
+    "fields-and-data/highlight-sortable-list-library": {
+      "id": "fields-and-data/highlight-sortable-list-library",
+      "section": "fields-and-data",
+      "basename": "highlight-sortable-list-library",
+      "kind": "highlight",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-library.light.png",
+        "dark": "designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-library.dark.png"
+      },
+      "plainSource": "fields-and-data/sortable-list-library-plain",
+      "articles": [],
+      "altTexts": [],
+      "forms": [
+        "priority-tasks-sortable"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs",
+      "description": "Annotated highlight of sortable list library in the Form Builder UI.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/highlight-sortable-list-library` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Annotated highlight of sortable list library in the Form Builder UI.\n\nArticle(s): (plain/source asset - not embedded directly; used by annotated sibling)\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/priority-tasks-sortable.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-library.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: fields-and-data/sortable-list-library-plain\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "fields-and-data/highlight-sortable-list-palette": {
+      "id": "fields-and-data/highlight-sortable-list-palette",
+      "section": "fields-and-data",
+      "basename": "highlight-sortable-list-palette",
+      "kind": "highlight",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-palette.light.png",
+        "dark": "designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-palette.dark.png"
+      },
+      "plainSource": "fields-and-data/sortable-list-palette-plain",
+      "articles": [
+        "fields-and-data/sortable-list"
+      ],
+      "altTexts": [
+        "Components tab with Sortable list highlighted in the palette search."
+      ],
+      "forms": [
+        "priority-tasks-sortable"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs",
+      "description": "Components tab with Sortable list highlighted in the palette search.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/highlight-sortable-list-palette` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Components tab with Sortable list highlighted in the palette search.\n\nArticle(s): designer-guide/content/fields-and-data/sortable-list.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/priority-tasks-sortable.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-palette.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: fields-and-data/sortable-list-palette-plain\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "fields-and-data/highlight-sortable-list-properties": {
+      "id": "fields-and-data/highlight-sortable-list-properties",
+      "section": "fields-and-data",
+      "basename": "highlight-sortable-list-properties",
+      "kind": "highlight",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-properties.light.png",
+        "dark": "designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-properties.dark.png"
+      },
+      "plainSource": "fields-and-data/sortable-list-properties-plain",
+      "articles": [
+        "fields-and-data/sortable-list"
+      ],
+      "altTexts": [
+        "Main properties for Sortable list showing Disabled, Read only, and ARIA label for reorder handle."
+      ],
+      "forms": [
+        "priority-tasks-sortable"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs",
+      "description": "Main properties for Sortable list showing Disabled, Read only, and ARIA label for reorder handle.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/highlight-sortable-list-properties` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Main properties for Sortable list showing Disabled, Read only, and ARIA label for reorder handle.\n\nArticle(s): designer-guide/content/fields-and-data/sortable-list.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/priority-tasks-sortable.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-properties.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: fields-and-data/sortable-list-properties-plain\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "fields-and-data/highlight-sortable-list-tree": {
+      "id": "fields-and-data/highlight-sortable-list-tree",
+      "section": "fields-and-data",
+      "basename": "highlight-sortable-list-tree",
+      "kind": "highlight",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-tree.light.png",
+        "dark": "designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-tree.dark.png"
+      },
+      "plainSource": "fields-and-data/sortable-list-tree-plain",
+      "articles": [
+        "fields-and-data/sortable-list"
+      ],
+      "altTexts": [
+        "Tree tab showing taskList with Task field and Remove button nested under it."
+      ],
+      "forms": [
+        "priority-tasks-sortable"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs",
+      "description": "Tree tab showing taskList with Task field and Remove button nested under it.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/highlight-sortable-list-tree` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Tree tab showing taskList with Task field and Remove button nested under it.\n\nArticle(s): designer-guide/content/fields-and-data/sortable-list.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/priority-tasks-sortable.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/highlight-sortable-list-tree.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\nPlain source id: fields-and-data/sortable-list-tree-plain\n\nProduce a highlight annotation (colored stroke + fill inside the target only; no grey dim outside). Keep a matching *-plain.png source.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
     "fields-and-data/highlight-tables-repeaters-pattern": {
       "id": "fields-and-data/highlight-tables-repeaters-pattern",
       "section": "fields-and-data",
@@ -5080,6 +5235,149 @@
       "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/labels-select-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain source for: workEmail selected in Tree and the Business email field selected on the canvas.\n\nArticle(s): designer-guide/content/fields-and-data/labels-and-help-text.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/labels-demo.json\nUI kit / view: mui\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-labels-and-help-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/labels-select-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change.",
       "annotatedBy": [
         "fields-and-data/highlight-labels-select"
+      ]
+    },
+    "fields-and-data/sortable-list-library-plain": {
+      "id": "fields-and-data/sortable-list-library-plain",
+      "section": "fields-and-data",
+      "basename": "sortable-list-library-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/fields-and-data/sortable-list-library-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/fields-and-data/sortable-list-library-plain.dark.png"
+      },
+      "articles": [],
+      "altTexts": [],
+      "forms": [
+        "priority-tasks-sortable"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs",
+      "description": "Plain (unannotated) capture of sortable list library for annotation source and reuse.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/sortable-list-library-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain (unannotated) capture of sortable list library for annotation source and reuse.\n\nArticle(s): (plain/source asset - not embedded directly; used by annotated sibling)\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/priority-tasks-sortable.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/sortable-list-library-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change.",
+      "annotatedBy": [
+        "fields-and-data/highlight-sortable-list-library"
+      ]
+    },
+    "fields-and-data/sortable-list-palette-plain": {
+      "id": "fields-and-data/sortable-list-palette-plain",
+      "section": "fields-and-data",
+      "basename": "sortable-list-palette-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/fields-and-data/sortable-list-palette-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/fields-and-data/sortable-list-palette-plain.dark.png"
+      },
+      "articles": [
+        "fields-and-data/sortable-list"
+      ],
+      "altTexts": [
+        "Plain source for: Components tab with Sortable list highlighted in the palette search."
+      ],
+      "forms": [
+        "priority-tasks-sortable"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs",
+      "description": "Plain source for: Components tab with Sortable list highlighted in the palette search.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/sortable-list-palette-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain source for: Components tab with Sortable list highlighted in the palette search.\n\nArticle(s): designer-guide/content/fields-and-data/sortable-list.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/priority-tasks-sortable.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/sortable-list-palette-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change.",
+      "annotatedBy": [
+        "fields-and-data/highlight-sortable-list-palette"
+      ]
+    },
+    "fields-and-data/sortable-list-preview-plain": {
+      "id": "fields-and-data/sortable-list-preview-plain",
+      "section": "fields-and-data",
+      "basename": "sortable-list-preview-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/fields-and-data/sortable-list-preview-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/fields-and-data/sortable-list-preview-plain.dark.png"
+      },
+      "articles": [
+        "fields-and-data/sortable-list"
+      ],
+      "altTexts": [
+        "Preview mode showing three priority tasks with drag handles on the left of each row."
+      ],
+      "forms": [
+        "priority-tasks-sortable"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs",
+      "description": "Preview mode showing three priority tasks with drag handles on the left of each row.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/sortable-list-preview-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Preview mode showing three priority tasks with drag handles on the left of each row.\n\nArticle(s): designer-guide/content/fields-and-data/sortable-list.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/priority-tasks-sortable.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/sortable-list-preview-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change."
+    },
+    "fields-and-data/sortable-list-properties-plain": {
+      "id": "fields-and-data/sortable-list-properties-plain",
+      "section": "fields-and-data",
+      "basename": "sortable-list-properties-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/fields-and-data/sortable-list-properties-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/fields-and-data/sortable-list-properties-plain.dark.png"
+      },
+      "articles": [
+        "fields-and-data/sortable-list"
+      ],
+      "altTexts": [
+        "Plain source for: Main properties for Sortable list showing Disabled, Read only, and ARIA label for reorder handle."
+      ],
+      "forms": [
+        "priority-tasks-sortable"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs",
+      "description": "Plain source for: Main properties for Sortable list showing Disabled, Read only, and ARIA label for reorder handle.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/sortable-list-properties-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain source for: Main properties for Sortable list showing Disabled, Read only, and ARIA label for reorder handle.\n\nArticle(s): designer-guide/content/fields-and-data/sortable-list.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/priority-tasks-sortable.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/sortable-list-properties-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change.",
+      "annotatedBy": [
+        "fields-and-data/highlight-sortable-list-properties"
+      ]
+    },
+    "fields-and-data/sortable-list-tree-plain": {
+      "id": "fields-and-data/sortable-list-tree-plain",
+      "section": "fields-and-data",
+      "basename": "sortable-list-tree-plain",
+      "kind": "plain",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "assets": {
+        "light": "designer-guide/public/assets/guide/fields-and-data/sortable-list-tree-plain.light.png",
+        "dark": "designer-guide/public/assets/guide/fields-and-data/sortable-list-tree-plain.dark.png"
+      },
+      "articles": [
+        "fields-and-data/sortable-list"
+      ],
+      "altTexts": [
+        "Plain source for: Tree tab showing taskList with Task field and Remove button nested under it."
+      ],
+      "forms": [
+        "priority-tasks-sortable"
+      ],
+      "view": "rsuite-inject-css",
+      "captureScript": "skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs",
+      "description": "Plain source for: Tree tab showing taskList with Task field and Remove button nested under it.",
+      "regenerationPrompt": "Regenerate Form Author Guide screenshot `fields-and-data/sortable-list-tree-plain` using the formbuilder-end-user-docs skill.\n\nGoal / what the reader should see: Plain source for: Tree tab showing taskList with Task field and Remove button nested under it.\n\nArticle(s): designer-guide/content/fields-and-data/sortable-list.md\nForm fixture(s): skills/formbuilder-end-user-docs/data/guide-forms/priority-tasks-sortable.json\nUI kit / view: rsuite-inject-css\nCapture script: skills/formbuilder-end-user-docs/scripts/capture-sortable-list-screenshots.mjs\nOutput assets: designer-guide/public/assets/guide/fields-and-data/sortable-list-tree-plain.light.png and .dark.png (plus WebP via npm run optimize:images --prefix designer-guide)\n\nCapture a plain (unannotated) PNG at 1440×900 CSS / deviceScaleFactor 2.\nFollow SKILL.md screenshot rules: createGuideCapturePage(), real UI labels, no PII, update guide-screenshot-map.json and rebuild guide-screenshot-catalog.json if paths change.",
+      "annotatedBy": [
+        "fields-and-data/highlight-sortable-list-tree"
       ]
     },
     "fields-and-data/tables-repeaters-pattern-plain": {

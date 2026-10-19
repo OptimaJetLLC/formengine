@@ -6,6 +6,7 @@ import * as rSuiteComponents from '@react-form-builder/components-rsuite'
 import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import * as rSuiteTableComponents from '@react-form-builder/components-rsuite-table'
 import * as signatureComponent from '@react-form-builder/components-signature'
+import * as sortableListComponent from '@react-form-builder/components-sortable-list'
 import type {FormViewerProps} from '@react-form-builder/core'
 import {BiDi, createView, FormViewer} from '@react-form-builder/core'
 import {createElement} from 'react'
@@ -16,6 +17,7 @@ const models = [
   ...rSuiteComponents.models,
   richTextComponent.richTextModel,
   signatureComponent.signatureModel,
+  sortableListComponent.sortableListModel,
   fastQrComponent.fastQrModel,
   googleMapComponent.googleMapModel,
   ...printComponent.printModels,
@@ -58,4 +60,13 @@ export function renderFormViewer(elementId: string, props: Partial<FormViewerPro
 }
 
 export {ActionDefinition, buildForm, createView, Language} from '@react-form-builder/core'
-export {fastQrComponent, googleMapComponent, printComponent, richTextComponent, rSuiteComponents, rSuiteTableComponents, signatureComponent}
+export {
+  fastQrComponent,
+  googleMapComponent,
+  printComponent,
+  richTextComponent,
+  rSuiteComponents,
+  rSuiteTableComponents,
+  signatureComponent,
+  sortableListComponent,
+}

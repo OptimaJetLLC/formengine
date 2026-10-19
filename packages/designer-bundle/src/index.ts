@@ -12,6 +12,8 @@ import * as rSuiteTableComponents from '@react-form-builder/components-rsuite-ta
 import {rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import * as signatureComponent from '@react-form-builder/components-signature'
 import {signatureComponentsDescriptions} from '@react-form-builder/components-signature'
+import * as sortableListComponent from '@react-form-builder/components-sortable-list'
+import {sortableListComponentsDescriptions} from '@react-form-builder/components-sortable-list'
 import type {BuilderComponent} from '@react-form-builder/core'
 import {BiDi, BuilderView} from '@react-form-builder/core'
 import type {FormBuilderProps} from '@react-form-builder/designer'
@@ -24,6 +26,7 @@ const components = [
   ...rSuiteComponents.rSuiteComponents,
   richTextComponent.richTextComponent,
   signatureComponent.signatureComponent,
+  sortableListComponent.sortableListComponent,
   fastQrComponent.fastQrComponent,
   googleMapComponent.googleMapComponent,
   ...printComponent.printComponents,
@@ -39,6 +42,7 @@ const defaultView = new BuilderView(components)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
   .withComponentLibraryDescription(printComponentsDescriptions)
+  .withComponentLibraryDescription(sortableListComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
@@ -48,6 +52,7 @@ const noCssView = new BuilderView(components)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
+  .withComponentLibraryDescription(sortableListComponentsDescriptions)
   .withComponentLibraryDescription(printComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
@@ -104,4 +109,5 @@ export {
   rSuiteComponents,
   rSuiteTableComponents,
   signatureComponent,
+  sortableListComponent,
 }

@@ -10,6 +10,33 @@ import {addMatchMediaFunctionToWindow} from './matchMedia'
 if (!isBrowserMode()) {
   addMatchMediaFunctionToWindow()
 
+  // Polyfill before suite imports — @dnd-kit/dom reads these at module load / drag start.
+  if (typeof globalThis.ResizeObserver === 'undefined') {
+    globalThis.ResizeObserver = class ResizeObserver {
+      observe = vi.fn()
+      unobserve = vi.fn()
+      disconnect = vi.fn()
+
+      // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+      constructor(_callback: ResizeObserverCallback) {}
+    } as unknown as typeof ResizeObserver
+  }
+
+  if (typeof globalThis.IntersectionObserver === 'undefined') {
+    globalThis.IntersectionObserver = class IntersectionObserver {
+      root = null
+      rootMargin = ''
+      thresholds: number[] = []
+      observe = vi.fn()
+      unobserve = vi.fn()
+      disconnect = vi.fn()
+      takeRecords = () => []
+
+      // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+      constructor(_callback: IntersectionObserverCallback, _options?: IntersectionObserverInit) {}
+    } as unknown as typeof IntersectionObserver
+  }
+
   const originalGetComputedStyle = globalThis.getComputedStyle
   vi.spyOn(global, 'getComputedStyle').mockImplementation(elem => {
     return originalGetComputedStyle(elem)
@@ -49,19 +76,6 @@ beforeAll(() => {
       const canvas = new Canvas()
       return canvas.getContext('2d')
     })
-
-    // Mock ResizeObserver for jsdom environment
-    if (typeof global.ResizeObserver === 'undefined') {
-      global.ResizeObserver = class ResizeObserver {
-        observe = vi.fn()
-        unobserve = vi.fn()
-        disconnect = vi.fn()
-
-        constructor(callback: ResizeObserverCallback) {
-          // Store callback if needed
-        }
-      } as any
-    }
   } else {
     // disable local storage for the designer
     globalThis.FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE = 'true'

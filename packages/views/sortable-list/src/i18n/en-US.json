@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Structure"
+    }
+  },
+  "components": {
+    "SortableList": {
+      "name": "Sortable list",
+      "description": "Repeating list whose rows can be reordered by dragging",
+      "props": {
+        "value": {
+          "name": "Value",
+          "description": "The array of row data"
+        },
+        "itemRenderWhen": {
+          "name": "Render item when",
+          "description": "The expression or function that controls whether a row is rendered"
+        },
+        "disabled": {
+          "name": "Disabled",
+          "description": "Disables row reordering"
+        },
+        "readOnly": {
+          "name": "Read only",
+          "description": "Disables row reordering"
+        },
+        "reorderHandleAriaLabel": {
+          "name": "ARIA label for reorder handle",
+          "description": "Accessible name of the drag handle used to reorder a row"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Structure"
+    }
+  },
+  "components": {
+    "SortableList": {
+      "name": "Liste réorganisable",
+      "description": "Liste répétitive dont les lignes peuvent être réorganisées par glisser-déposer",
+      "props": {
+        "value": {
+          "name": "Valeur",
+          "description": "Le tableau des données de ligne"
+        },
+        "itemRenderWhen": {
+          "name": "Afficher l'élément lorsque",
+          "description": "L'expression ou la fonction qui détermine si une ligne est affichée"
+        },
+        "disabled": {
+          "name": "Désactivé",
+          "description": "Désactive la réorganisation des lignes"
+        },
+        "readOnly": {
+          "name": "Lecture seule",
+          "description": "Désactive la réorganisation des lignes"
+        },
+        "reorderHandleAriaLabel": {
+          "name": "Libellé ARIA de la poignée de réorganisation",
+          "description": "Nom accessible de la poignée de glisser-déposer utilisée pour réorganiser une ligne"
+        }
+      }
+    }
+  }
+}

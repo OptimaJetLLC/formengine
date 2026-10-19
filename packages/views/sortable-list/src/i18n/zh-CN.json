@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "structure": {
+      "name": "结构"
+    }
+  },
+  "components": {
+    "SortableList": {
+      "name": "可排序列表",
+      "description": "可通过拖动重新排列行顺序的重复列表",
+      "props": {
+        "value": {
+          "name": "值",
+          "description": "行数据数组"
+        },
+        "itemRenderWhen": {
+          "name": "在以下条件下呈现项目",
+          "description": "用于控制是否呈现某一行的表达式或函数"
+        },
+        "disabled": {
+          "name": "已禁用",
+          "description": "禁用行重新排序"
+        },
+        "readOnly": {
+          "name": "只读",
+          "description": "禁用行重新排序"
+        },
+        "reorderHandleAriaLabel": {
+          "name": "重新排序手柄的 ARIA 标签",
+          "description": "用于重新排序行的拖动手柄的无障碍名称"
+        }
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@ Accepts Geocoder components, Places (New) components, or the shared AddressCompo
 
 ### components
 
-`AddressComponentInput`[]
+[`AddressComponentInput`](../type-aliases/AddressComponentInput.md)[]
 
 the address components.
 

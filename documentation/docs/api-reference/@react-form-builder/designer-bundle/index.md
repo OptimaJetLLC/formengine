@@ -9,6 +9,7 @@
 - [rSuiteComponents](namespaces/rSuiteComponents/index.md)
 - [rSuiteTableComponents](namespaces/rSuiteTableComponents/index.md)
 - [signatureComponent](namespaces/signatureComponent/index.md)
+- [sortableListComponent](namespaces/sortableListComponent/index.md)
 
 ## Classes
 

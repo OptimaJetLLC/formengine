@@ -12,6 +12,7 @@ import {
   rSuiteComponentsDescriptions,
   rSuiteTableComponentsDescriptions,
   signatureComponentsDescriptions,
+  sortableListComponentsDescriptions,
 } from './rsuiteDesignerComponents'
 
 const view = new BuilderView(designerComponents)
@@ -23,6 +24,7 @@ const view = new BuilderView(designerComponents)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
   .withComponentLibraryDescription(printComponentsDescriptions)
+  .withComponentLibraryDescription(sortableListComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 

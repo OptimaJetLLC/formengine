@@ -1,0 +1,147 @@
+---
+sidebar_position: 41
+title: Sortable list
+description: Repeater whose rows can be reordered by dragging, shipped as a separate views package.
+slug: /components-library/structure-components/sortable-list
+tags:
+  - sortable list
+  - repeater
+---
+
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+# Sortable list
+
+<ComponentInfo
+  packageName="@react-form-builder/components-sortable-list"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-sortable-list"
+/>
+
+## Introduction
+
+`SortableList` is a Repeater that lets form users reorder rows. It uses the same row template, `value` array, and `addRow` /
+`removeRow` actions as Repeater.
+
+In the designer you edit one row template. In the viewer each row shows a handle on the left.
+
+The package is
+[@react-form-builder/components-sortable-list](https://www.npmjs.com/package/@react-form-builder/components-sortable-list)
+and is distributed under the MIT license.
+
+## Installation
+
+```bash
+npm install @react-form-builder/components-sortable-list
+```
+
+## Connection to FormBuilder component
+
+```typescript jsx {2,7,11}
+import {rSuiteComponents, rSuiteComponentsDescriptions} from '@react-form-builder/components-rsuite'
+import {sortableListComponent, sortableListComponentsDescriptions} from '@react-form-builder/components-sortable-list'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+
+const components = [
+  ...rSuiteComponents.map((c) => c.build()),
+  sortableListComponent.build(),
+]
+const builderView = new BuilderView(components)
+  .withComponentLibraryDescription(rSuiteComponentsDescriptions)
+  .withComponentLibraryDescription(sortableListComponentsDescriptions)
+
+function App() {
+  return <FormBuilder view={builderView}/>
+}
+```
+
+## Connect to FormViewer component
+
+```typescript jsx
+import {sortableListModel} from '@react-form-builder/components-sortable-list'
+import {models} from '@react-form-builder/components-rsuite'
+import {createView, FormViewer} from '@react-form-builder/core'
+
+const view = createView([...models, sortableListModel])
+```
+
+## Main properties
+
+In addition to Repeater's `Value` and `Item Render When`, SortableList exposes:
+
+| Name                       | Type      | Description                                                                                                         |
+|:---------------------------|:----------|:--------------------------------------------------------------------------------------------------------------------|
+| Disabled                   | `boolean` | When true, row reordering is disabled.                                                                              |
+| Read Only                  | `boolean` | When true, row reordering is disabled.                                                                              |
+| Reorder Handle Aria Label  | `string`  | Accessible name for the drag handle (localizable; default `Reorder row`).                                           |
+| Item Render When           | `string`  | Controls row content rendering like Repeater. Every row still gets a sortable shell; a hidden row can show an empty handle. |
+| Value                      | `array`   | Same as Repeater: array of row objects.                                                                             |
+
+`Disabled` and `Read Only` turn off reordering on Sortable list. Plain Repeater does not offer those as reorder controls.
+
+## How reorder works
+
+When the user finishes a pointer or keyboard reorder, SortableList updates the field with the new array order, the same path as `addRow`,
+`removeRow`, and `e.data[key] = [...]` on a Repeater. That updates the field's length and order storage and the live `form.data` view. It
+does not write back into the viewer props `initialData` store.
+
+You can also reorder in an action (with or without SortableList) by assigning a new array:
+
+```javascript
+/**
+ * @param {ActionEventArgs} e - the action arguments.
+ * @param {{name: string, from: number, to: number}} args - the action parameters arguments.
+ */
+async function Action(e, args) {
+  const list = [...(e.data[args.name] ?? [])]
+  const [row] = list.splice(args.from, 1)
+  list.splice(args.to, 0, row)
+  e.data[args.name] = list
+}
+```
+
+After either approach, read order from `form.data` (or `e.data`). If you keep controlled app state in `initialData`, apply the full form
+snapshot from
+[onFormDataChange](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#onformdatachange)
+(including the reordered array). A later stale `initialData` push can reset order. See
+[Working with form data](/form-data#form-data-vs-initialdata) and [Using Repeater](/using-repeater).
+
+## Keyboard reorder
+
+You can reorder with the keyboard in the viewer when the list is not `disabled` or `readOnly`. Focus the row's reorder handle first;
+keys pressed elsewhere in the row do not start a move.
+
+### Keys
+
+| Key                              | Action                                                   |
+|:---------------------------------|:---------------------------------------------------------|
+| **Space** or **Enter**           | Start moving the focused row.                            |
+| **ArrowUp** / **ArrowDown**      | Move the row up or down while a keyboard move is active. |
+| **Shift** + arrow                | Same move with a larger step.                            |
+| **Space**, **Enter**, or **Tab** | Commit the new order (same as finishing a pointer drag). |
+| **Escape**                       | Cancel; the value array stays unchanged.                 |
+
+Only up and down change the order. Left and right arrows do not.
+
+### Sort sequence (keyboard)
+
+1. Focus the handle, then press **Space** or **Enter**.
+2. Press **ArrowUp** or **ArrowDown** until the row sits where you want it (**Shift** + arrow moves farther each press).
+3. Press **Space**, **Enter**, or **Tab** to apply the new order through the same `setValue` path as a pointer drop.
+4. Press **Escape** instead to cancel.
+
+Order in `value` / `form.data` changes only after a completed reorder.
+
+## Item Render When and empty shells
+
+Item Render When hides row content but keeps the row in the list. The handle shell still appears, so a hidden row can show an empty
+handle. If you need those rows out of the UI, filter them in a custom component and map moves by each row's index in the field value,
+not only by visible position.
+
+## Summary
+
+- Use `SortableList` when users must reorder repeating rows; use Repeater when order is fixed or changed only with `addRow` /
+  `removeRow`.
+- Pointer and keyboard reorder both update the field value the same way. Sync controlled `initialData` from `onFormDataChange`.
+- Requires React 18 or 19.
+- See [Using Repeater](/using-repeater) for row data, actions, and nested data.
+- Form authors: [Sortable list](designer-guide:fields-and-data/sortable-list/) in the Form Author Guide.

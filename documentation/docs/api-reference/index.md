@@ -10,6 +10,7 @@
 - [@react-form-builder/components-rsuite](@react-form-builder/components-rsuite/index.md)
 - [@react-form-builder/components-rsuite-table](@react-form-builder/components-rsuite-table/index.md)
 - [@react-form-builder/components-signature](@react-form-builder/components-signature/index.md)
+- [@react-form-builder/components-sortable-list](@react-form-builder/components-sortable-list/index.md)
 - [@react-form-builder/components-uploader](@react-form-builder/components-uploader/index.md)
 - [@react-form-builder/core](@react-form-builder/core/index.md)
 - [@react-form-builder/designer](@react-form-builder/designer/index.md)

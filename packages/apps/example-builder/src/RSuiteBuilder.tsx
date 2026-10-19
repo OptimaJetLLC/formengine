@@ -13,6 +13,7 @@ import {
 } from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
+import {sortableListComponent, sortableListComponentsDescriptions} from '@react-form-builder/components-sortable-list'
 import {uploaderComponent, uploaderComponentsDescriptions} from '@react-form-builder/components-uploader'
 import type {Arguments, ComponentStore, FormValidators, FormViewerProps, IFormData, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, definePreset, isUndefined, Language} from '@react-form-builder/core'
@@ -46,6 +47,7 @@ const components = [
   richTextComponent,
   googleMapComponent,
   signatureComponent,
+  sortableListComponent,
   debugData,
   ...rSuiteTableComponents,
   notRemovable,
@@ -64,6 +66,7 @@ const view = new BuilderView(components)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
   .withComponentLibraryDescription(printComponentsDescriptions)
+  .withComponentLibraryDescription(sortableListComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
   .withComponentLibraryDescription(uploaderComponentsDescriptions)

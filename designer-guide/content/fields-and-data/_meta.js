@@ -6,4 +6,5 @@ export default {
   'choice-fields': 'Choice fields',
   'read-only-and-disabled-fields': 'Read-only and disabled fields',
   'tables-and-repeating-rows': 'Tables and repeating rows',
+  'sortable-list': 'Sortable list',
 }

@@ -1,0 +1,108 @@
+{
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "screen1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "formTitle",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "value": "Priority tasks"
+          },
+          "headerSize": {
+            "value": "h4"
+          }
+        }
+      },
+      {
+        "key": "taskList",
+        "type": "SortableList",
+        "props": {
+          "value": {
+            "value": [
+              {
+                "title": "Confirm venue"
+              },
+              {
+                "title": "Send invitations"
+              },
+              {
+                "title": "Print name badges"
+              }
+            ]
+          },
+          "reorderHandleAriaLabel": {
+            "value": "Reorder task"
+          }
+        },
+        "children": [
+          {
+            "key": "title",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Task"
+              }
+            }
+          },
+          {
+            "key": "removeTask",
+            "type": "RsButton",
+            "props": {
+              "children": {
+                "value": "Remove"
+              },
+              "appearance": {
+                "value": "ghost"
+              }
+            },
+            "events": {
+              "onClick": [
+                {
+                  "name": "removeRow",
+                  "type": "common"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "addTask",
+        "type": "RsButton",
+        "props": {
+          "children": {
+            "value": "Add task"
+          },
+          "appearance": {
+            "value": "primary"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "addRow",
+              "type": "common",
+              "args": {
+                "dataKey": "taskList"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

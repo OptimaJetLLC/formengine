@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Struktura"
+    }
+  },
+  "components": {
+    "SortableList": {
+      "name": "Lista sa promenljivim redosledom",
+      "description": "Ponavljajuća lista čiji redovi mogu da se preurede prevlačenjem",
+      "props": {
+        "value": {
+          "name": "Vrednost",
+          "description": "Niz podataka redova"
+        },
+        "itemRenderWhen": {
+          "name": "Prikaži stavku kada",
+          "description": "Izraz ili funkcija koja određuje da li će red biti prikazan"
+        },
+        "disabled": {
+          "name": "Onemogućeno",
+          "description": "Onemogućava promenu redosleda redova"
+        },
+        "readOnly": {
+          "name": "Samo za čitanje",
+          "description": "Onemogućava promenu redosleda redova"
+        },
+        "reorderHandleAriaLabel": {
+          "name": "ARIA oznaka za ručicu za promenu redosleda",
+          "description": "Pristupačno ime ručice za prevlačenje koja se koristi za promenu redosleda reda"
+        }
+      }
+    }
+  }
+}

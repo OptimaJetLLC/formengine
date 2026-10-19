@@ -411,6 +411,24 @@
       "alt": "Main tab where static options are configured."
     }
   },
+  "fields-and-data/sortable-list.md": {
+    "step 1: add sortable list": {
+      "src": "/assets/guide/fields-and-data/highlight-sortable-list-palette.png",
+      "alt": "Components tab with Sortable list highlighted in the palette search."
+    },
+    "step 2: build the row template": {
+      "src": "/assets/guide/fields-and-data/highlight-sortable-list-tree.png",
+      "alt": "Tree tab showing taskList with Task field and Remove button nested under it."
+    },
+    "step 4: review main properties": {
+      "src": "/assets/guide/fields-and-data/highlight-sortable-list-properties.png",
+      "alt": "Main properties for Sortable list showing Disabled, Read only, and ARIA label for reorder handle."
+    },
+    "step 5: test reorder in preview": {
+      "src": "/assets/guide/fields-and-data/sortable-list-preview-plain.png",
+      "alt": "Preview mode showing three priority tasks with drag handles on the left of each row."
+    }
+  },
   "fields-and-data/tables-and-repeating-rows.md": {
     "choose a pattern": {
       "src": "/assets/guide/fields-and-data/highlight-tables-repeaters-pattern.png",

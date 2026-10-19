@@ -53,7 +53,29 @@ const handleGetData = useCallback(async () => {
 
 You can interpret [IFormData.data](/api-reference/@react-form-builder/core/interfaces/IFormData#data) as internal state,
 while [initialData](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#initialdata) is external state.
-Both these objects are reactive which means changes to them will reflect on the form.
+Both are reactive for ordinary fields: changes to either side update the form.
+
+For Repeater and SortableList, keep the split in mind:
+
+| Concern                         | Behavior                                                                                         |
+|---------------------------------|--------------------------------------------------------------------------------------------------|
+| What you read in `form.data`    | Live row data (including nested / template / computed fields)                                    |
+| Length and order after mutation | Updated by `setValue` (reorder, `addRow`, `e.data[key] = [...]`) in the field’s internal storage |
+| Viewer props `initialData`      | Used to hydrate and for controlled re-applies; not rewritten on every `setValue`                 |
+
+After a drag reorder or `addRow`, `form.data` reflects the new array, but the React/`FormViewer` `initialData` prop may still hold the
+previous array until your host updates it. A sibling field edit that re-applies a stale props snapshot can snap the repeater back.
+
+:::warning[Controlled hosts]
+
+If you pass controlled `initialData={state}`, apply the full form snapshot from
+[onFormDataChange](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#onformdatachange)
+(including every repeater array), or treat `initialData` as a one-shot prefill.
+Re-passing a stale `initialData` object can reset repeater order or length through the data-change reaction.
+See [Using Repeater](/using-repeater) and
+[Sortable list](/components-library/structure-components/sortable-list#how-reorder-works).
+
+:::
 
 ## Getting the form data
 
@@ -327,12 +349,24 @@ the updated data back to the server.
 
 As initial data is reactive you can store and modify your app or component state locally and pass it to the
 [FormViewer](/api-reference/@react-form-builder/core/variables/FormViewer).
-Then data changed [FormViewer](/api-reference/@react-form-builder/core/variables/FormViewer) will react to it as at the first time.
+When that state changes, [FormViewer](/api-reference/@react-form-builder/core/variables/FormViewer) hydrates fields again from the new
+object.
+
+When the form includes a Repeater or SortableList, keep host state aligned with live form data. Replace `appLevelState` from
+[onFormDataChange](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#onformdatachange) with the full `data` payload
+(including repeater arrays). A partial merge that omits a reordered list can later push a stale array back into the viewer and undo the
+reorder.
 
 ```tsx
 export const FormViewerExample = () => {
   const [appLevelState, setAppLevelState] = useState<AppState>(generateData())
   // ...
+
+  // Full snapshot keeps repeater order/length in sync with form.data
+  const onFormDataChanged = useCallback((formData: IFormData): void => {
+    const {data} = formData
+    setAppLevelState((prev) => (isEqual(data, prev) ? prev : {...prev, ...data}))
+  }, [])
 
   const renewAppData = useCallback(() => {
     setAppLevelState(generateData())
@@ -366,7 +400,8 @@ export const FormViewerExample = () => {
 
 Clicking Recreate or Generate message updates the `appLevelState`, which is passed
 into [initialData](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#initialdata).
-The form re-renders with the new values in `appLevelState`.
+The form re-renders with the new values in `appLevelState`. Write user edits back through
+`onFormDataChange` so the next `initialData` push does not overwrite live list order.
 
 ## Example: use backend as datasource
 

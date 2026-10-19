@@ -21,11 +21,12 @@ This page starts with **lists and repeaters** (Material UI example), then extend
 
 ## Lists and repeaters
 
-| Pattern                  | Typical use                                                          |
-| ------------------------ | -------------------------------------------------------------------- |
-| **Repeater**             | Dynamic rows users add or remove (invoice lines, guests)             |
-| **List** / **List item** | Structured repeated blocks with a fixed layout                       |
-| **Table**                | Column grid when your library provides a table component (see below) |
+| Pattern                  | Typical use                                                                                         |
+| ------------------------ | --------------------------------------------------------------------------------------------------- |
+| **Repeater**             | Dynamic rows users add or remove (invoice lines, guests)                                            |
+| **Sortable list**        | Like Repeater, plus users reorder rows by drag or keyboard ([guide](/fields-and-data/sortable-list)) |
+| **List** / **List item** | Structured repeated blocks with a fixed layout                                                      |
+| **Table**                | Column grid when your library provides a table component (see below)                                |
 
 Search **Components** for **Repeater** or **List**.
 
@@ -182,9 +183,10 @@ Developers: See [RSuite table](docs:formengine-designer/components/table) and [L
 
 ## Summary
 
-Use **Repeater** for dynamic "add another row" forms. Use **List** for fixed repeated blocks. Use **RSuite Table** for column grids. Build
-the repeater row template in **Tree**, wire `removeRow` to a button inside the row, and wire `addRow` to a button outside the repeater. For
-tables, switch to **RSuite UI** and nest **Column** → **Header cell** + **Cell** under **Table**.
+Use **Repeater** for dynamic "add another row" forms. Use **Sortable list** when users must also reorder rows. Use **List** for fixed
+repeated blocks. Use **RSuite Table** for column grids. Build the repeater row template in **Tree**, wire `removeRow` to a button inside
+the row, and wire `addRow` to a button outside the repeater. For tables, switch to **RSuite UI** and nest **Column** → **Header cell** +
+**Cell** under **Table**.
 
 :::tip Try it
 
@@ -194,5 +196,6 @@ tables, switch to **RSuite UI** and nest **Column** → **Header cell** + **Cell
 
 ## See also
 
+- [Sortable list](/fields-and-data/sortable-list)
 - [List and detail pattern](/simple-data-driven-screens/list-and-detail-pattern)
 - [Browse components and guides](/components-by-task/browse-components-and-guides)

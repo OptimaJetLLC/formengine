@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "structure": {
+      "name": "構造"
+    }
+  },
+  "components": {
+    "SortableList": {
+      "name": "並べ替え可能なリスト",
+      "description": "行をドラッグして並べ替えられる繰り返しリスト",
+      "props": {
+        "value": {
+          "name": "値",
+          "description": "行データの配列"
+        },
+        "itemRenderWhen": {
+          "name": "次の場合に項目を表示",
+          "description": "行を表示するかどうかを制御する式または関数"
+        },
+        "disabled": {
+          "name": "無効",
+          "description": "行の並べ替えを無効にします"
+        },
+        "readOnly": {
+          "name": "読み取り専用",
+          "description": "行の並べ替えを無効にします"
+        },
+        "reorderHandleAriaLabel": {
+          "name": "並べ替えハンドルの ARIA ラベル",
+          "description": "行の並べ替えに使用するドラッグハンドルのアクセシブルネーム"
+        }
+      }
+    }
+  }
+}

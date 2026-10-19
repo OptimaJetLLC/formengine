@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Struktur"
+    }
+  },
+  "components": {
+    "SortableList": {
+      "name": "Sortierbare Liste",
+      "description": "Liste mit wiederholbaren Zeilen, die durch Ziehen neu angeordnet werden können",
+      "props": {
+        "value": {
+          "name": "Wert",
+          "description": "Das Array mit den Zeilendaten"
+        },
+        "itemRenderWhen": {
+          "name": "Element anzeigen, wenn",
+          "description": "Ausdruck oder Funktion zur Steuerung, ob eine Zeile angezeigt wird"
+        },
+        "disabled": {
+          "name": "Deaktiviert",
+          "description": "Deaktiviert das Neuordnen von Zeilen"
+        },
+        "readOnly": {
+          "name": "Schreibgeschützt",
+          "description": "Deaktiviert das Neuordnen von Zeilen"
+        },
+        "reorderHandleAriaLabel": {
+          "name": "ARIA-Beschriftung für den Neuordnungsgriff",
+          "description": "Barrierefreier Name des Ziehgriffs zum Neuordnen einer Zeile"
+        }
+      }
+    }
+  }
+}

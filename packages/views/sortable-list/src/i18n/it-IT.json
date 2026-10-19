@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Struttura"
+    }
+  },
+  "components": {
+    "SortableList": {
+      "name": "Elenco ordinabile",
+      "description": "Elenco con righe ripetute che possono essere riordinate trascinandole",
+      "props": {
+        "value": {
+          "name": "Valore",
+          "description": "L'array dei dati delle righe"
+        },
+        "itemRenderWhen": {
+          "name": "Renderizza elemento quando",
+          "description": "L'espressione o la funzione che determina se una riga viene renderizzata"
+        },
+        "disabled": {
+          "name": "Disabilitato",
+          "description": "Disabilita il riordinamento delle righe"
+        },
+        "readOnly": {
+          "name": "Sola lettura",
+          "description": "Disabilita il riordinamento delle righe"
+        },
+        "reorderHandleAriaLabel": {
+          "name": "Etichetta ARIA per la maniglia di riordinamento",
+          "description": "Nome accessibile della maniglia di trascinamento usata per riordinare una riga"
+        }
+      }
+    }
+  }
+}

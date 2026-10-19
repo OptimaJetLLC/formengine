@@ -38,16 +38,33 @@ For a level two repeater:
 
 ![Repeater data](/assets/components-library/structure/repeater/repeater-02.png "Repeater level 2")
 
-See [this guide](/using-repeater) for more information on using the Repeater.
+See [this guide](/using-repeater) for more information on using the Repeater. To let users drag rows to a new order, use
+[Sortable list](/components-library/structure-components/sortable-list).
+
+### How Value relates to form data
+
+- `form.data` / field `value`: live array of row objects built from each row’s generated data (nested fields, templates, computed
+  properties).
+- Length and order: driven by the field’s internal storage, updated when you call `setValue` (including `addRow`, `removeRow`,
+  `e.data[key] = [...]`, and SortableList drag).
+- Viewer `initialData`: hydrates the list and supports controlled hosts. Mutations do not write the array back into the props store on
+  their own. If you pass controlled `initialData`, sync full snapshots from
+  [onFormDataChange](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#onformdatachange). See
+  [Working with form data](/form-data#form-data-vs-initialdata).
+
+Computed `value` expressions still follow the expression / data-change reaction. Non-computed lists use the storage updated by `setValue`.
 
 ## Main properties
 
 The following general properties are available within the _Main_ tab:
 
-| Name             | Type     | Description                                                                                                                                        |
-|:-----------------|:---------|:---------------------------------------------------------------------------------------------------------------------------------------------------|
-| Item Render When | `string` | Works like the [_Render When_](/formengine-designer/features/conditional-rendering) property, but hides or shows a specific element from the array |
-| Value            | `array`  | Data for the component, is an array of objects                                                                                                     |
+| Name             | Type     | Description                                                                                                                                                                                                 |
+|:-----------------|:---------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Item Render When | `string` | Like [_Render When_](/formengine-designer/features/conditional-rendering), but for one array index (via nested `RepeaterItem`): it controls whether that row’s content renders. The row context usually remains, the entry stays in the repeater’s row list. |
+| Value            | `array`  | Data for the component, an array of objects. See [How Value relates to form data](#how-value-relates-to-form-data).                                                                                         |
+
+For drag reorder, `Disabled`, `Read Only`, and Item Render When behavior with empty handles, see
+[Sortable list](/components-library/structure-components/sortable-list).
 
 <AdditionalOptions/>
 
@@ -60,3 +77,11 @@ These are properties that allow you to customize the placement of components wit
 - **Wrapper > Direction**: Defines how the elements of the Repeater are arranged (e.g., _column_, _row_, etc.).
 - **Wrapper > Item gap**: Defines the gap between the Repeater elements.
 - **Wrapper > Class Name**: Add a class name for your component for the subsequent styling if necessary.
+
+---
+
+For more information:
+
+- [Using Repeater](/using-repeater)
+- [Sortable list](/components-library/structure-components/sortable-list)
+- [Working with form data](/form-data)

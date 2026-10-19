@@ -68,6 +68,8 @@ const CAPTURE_SCRIPT_BY_PREFIX = {
   'fields-and-data/highlight-labels-select': 'capture-labels-and-help-screenshots.mjs',
   'fields-and-data/tables-repeaters': 'capture-tables-and-repeaters-screenshots.mjs',
   'fields-and-data/highlight-tables-repeaters': 'capture-tables-and-repeaters-screenshots.mjs',
+  'fields-and-data/sortable-list': 'capture-sortable-list-screenshots.mjs',
+  'fields-and-data/highlight-sortable-list': 'capture-sortable-list-screenshots.mjs',
   'data-driven/value-edit-icon': 'capture-calculated-fields-screenshots.mjs',
   'data-driven/highlight-value-edit-icon': 'capture-calculated-fields-screenshots.mjs',
   'data-driven/computed-property-example': 'capture-calculated-fields-screenshots.mjs',
@@ -198,6 +200,7 @@ const FORM_HINTS = [
   {match: /labels-/, forms: ['labels-demo']},
   {match: /tables-repeaters-table|team-directory/, forms: ['team-directory-table']},
   {match: /tables-repeaters-repeater|invoice/, forms: ['invoice-line-items']},
+  {match: /sortable-list|priority-tasks/, forms: ['priority-tasks-sortable']},
   {match: /preset/, forms: ['preset-address']},
   {match: /containers|checkout/, forms: ['checkout-sections']},
   {match: /parent-child|event-registration/, forms: ['event-registration']},
@@ -504,7 +507,7 @@ function viewForArticles(id, articles, usageArticles) {
       return view
     }
   }
-  if (/rsuite|wizard|tabs-sections|tables-repeaters|special-|print-page-break|header-menu-print/.test(id)) {
+  if (/rsuite|wizard|tabs-sections|tables-repeaters|sortable-list|special-|print-page-break|header-menu-print/.test(id)) {
     return 'rsuite-inject-css'
   }
   return 'mui'

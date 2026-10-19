@@ -1,0 +1,14 @@
+{
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    },
+    "./schemas/sortable-list-components.schema.json": "./dist/schemas/sortable-list-components.schema.json",
+    "./assets/styles.css": "./dist/assets/styles.css"
+  }
+}

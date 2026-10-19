@@ -15,8 +15,27 @@ Repeater displays child components like a normal container, but in view mode Rep
 from the `Value` property. If the `Value` property does not contain data (or contains an empty array), the component will not display child
 components. The data in the `Value` property is an array of objects. Each object in the array is the data of one Repeater row/column.
 
+Assigning `e.data[repeaterKey] = [...]` (or using built-in `addRow` / `removeRow`) goes through the field `setValue` path and updates live
+`form.data`. That path does not update the host
+[initialData](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#initialdata) prop. If you keep controlled app state in
+`initialData`, sync the full form snapshot from
+[onFormDataChange](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#onformdatachange). See
+[Working with form data](/form-data#form-data-vs-initialdata).
+
 Let's move on to a Repeater use case where we show how data is handled inside Repeater and how actions, validation, localization and
 calculated fields are handled.
+
+## Reordering rows
+
+To let users drag or keyboard-reorder rows, use [Sortable list](/components-library/structure-components/sortable-list) instead of a plain
+Repeater.
+
+## Item Render When
+
+The Item Render When property controls whether row content renders for one array index (like
+[_Render When_](/formengine-designer/features/conditional-rendering) for a single item). It does not remove that entry from the repeater’s
+row list. See [Repeater](/components-library/structure-components/repeater). For empty drag handles when content is hidden, see
+[Sortable list](/components-library/structure-components/sortable-list).
 
 ## Repeater actions
 
@@ -835,7 +854,8 @@ button. This action has a fairly general code that can be used in other forms to
 the Repeater property in the form data and the maximum number of elements that can be added to the repeater, respectively.
 
 The action code is pretty straightforward, it gets the current repeater data from the form data and then adds a new element to the data
-array if the number of elements is lower than the maximum.
+array if the number of elements is lower than the maximum. Assigning `e.data[args.name] = [...data]` uses the same `setValue` path as
+built-in `addRow`. Sync host `initialData` from `onFormDataChange` if you keep controlled app state.
 
 After changing the data, the Repeater component will automatically display the set of components on the form. In our case, a set of
 components for booking a room will be added.

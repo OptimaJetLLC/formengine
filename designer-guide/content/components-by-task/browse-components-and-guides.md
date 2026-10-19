@@ -30,6 +30,7 @@ the [Components library](docs:components-library).
 ## Tables and repeating rows
 
 - [Tables and repeating rows](/fields-and-data/tables-and-repeating-rows)
+- [Sortable list](/fields-and-data/sortable-list)
 
 ## Structure and layout
 

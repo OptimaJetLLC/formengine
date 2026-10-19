@@ -59,6 +59,11 @@ const typedocSidebar = {
           items: [
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-google-map/interfaces/AddressComponentLike",
+              label: "AddressComponentLike"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-google-map/interfaces/GoogleMapProps",
               label: "GoogleMapProps"
             }
@@ -72,6 +77,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-google-map/type-aliases/Address",
               label: "Address"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-google-map/type-aliases/AddressComponentInput",
+              label: "AddressComponentInput"
             },
             {
               type: "doc",
@@ -1207,6 +1217,53 @@ const typedocSidebar = {
     },
     {
       type: "category",
+      label: "@react-form-builder/components-sortable-list",
+      items: [
+        {
+          type: "category",
+          label: "Interfaces",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-sortable-list/interfaces/SortableListProps",
+              label: "SortableListProps"
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Variables",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-sortable-list/variables/sortableListComponent",
+              label: "sortableListComponent"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-sortable-list/variables/sortableListComponentsDescriptions",
+              label: "sortableListComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-sortable-list/variables/sortableListEnUsComponentsDescriptions",
+              label: "sortableListEnUsComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-sortable-list/variables/sortableListModel",
+              label: "sortableListModel"
+            }
+          ]
+        }
+      ],
+      link: {
+        type: "doc",
+        id: "api-reference/@react-form-builder/components-sortable-list/index"
+      }
+    },
+    {
+      type: "category",
       label: "@react-form-builder/components-uploader",
       items: [
         {
@@ -1637,6 +1694,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/interfaces/PersistedForm",
               label: "PersistedForm"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/interfaces/RepeaterProps",
+              label: "RepeaterProps"
             },
             {
               type: "doc",
@@ -2532,6 +2594,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/RepeaterPropsProvider",
+              label: "RepeaterPropsProvider"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/required",
               label: "required"
             },
@@ -3330,6 +3397,11 @@ const typedocSidebar = {
                   items: [
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/interfaces/AddressComponentLike",
+                      label: "AddressComponentLike"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/interfaces/GoogleMapProps",
                       label: "GoogleMapProps"
                     }
@@ -3343,6 +3415,11 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/type-aliases/Address",
                       label: "Address"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/type-aliases/AddressComponentInput",
+                      label: "AddressComponentInput"
                     },
                     {
                       type: "doc",
@@ -4086,6 +4163,53 @@ const typedocSidebar = {
                 type: "doc",
                 id: "api-reference/@react-form-builder/designer-bundle/namespaces/signatureComponent/index"
               }
+            },
+            {
+              type: "category",
+              label: "sortableListComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/sortableListComponent/interfaces/SortableListProps",
+                      label: "SortableListProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/sortableListComponent/variables/sortableListComponent",
+                      label: "sortableListComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/sortableListComponent/variables/sortableListComponentsDescriptions",
+                      label: "sortableListComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/sortableListComponent/variables/sortableListEnUsComponentsDescriptions",
+                      label: "sortableListEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/sortableListComponent/variables/sortableListModel",
+                      label: "sortableListModel"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/designer-bundle/namespaces/sortableListComponent/index"
+              }
             }
           ]
         },
@@ -4767,6 +4891,11 @@ const typedocSidebar = {
                   items: [
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/interfaces/AddressComponentLike",
+                      label: "AddressComponentLike"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/interfaces/GoogleMapProps",
                       label: "GoogleMapProps"
                     }
@@ -4780,6 +4909,11 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/type-aliases/Address",
                       label: "Address"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/type-aliases/AddressComponentInput",
+                      label: "AddressComponentInput"
                     },
                     {
                       type: "doc",
@@ -5522,6 +5656,53 @@ const typedocSidebar = {
               link: {
                 type: "doc",
                 id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/signatureComponent/index"
+              }
+            },
+            {
+              type: "category",
+              label: "sortableListComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/sortableListComponent/interfaces/SortableListProps",
+                      label: "SortableListProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/sortableListComponent/variables/sortableListComponent",
+                      label: "sortableListComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/sortableListComponent/variables/sortableListComponentsDescriptions",
+                      label: "sortableListComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/sortableListComponent/variables/sortableListEnUsComponentsDescriptions",
+                      label: "sortableListEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/sortableListComponent/variables/sortableListModel",
+                      label: "sortableListModel"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/sortableListComponent/index"
               }
             }
           ]

@@ -12,6 +12,7 @@ import {
   rSuiteComponentsDescriptions,
   rSuiteTableComponentsDescriptions,
   signatureComponentsDescriptions,
+  sortableListComponentsDescriptions,
 } from './rsuiteDesignerComponents'
 
 import '@react-form-builder/core/assets/styles.css'
@@ -24,6 +25,7 @@ const view = new BuilderView(designerComponents)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
   .withComponentLibraryDescription(printComponentsDescriptions)
+  .withComponentLibraryDescription(sortableListComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 

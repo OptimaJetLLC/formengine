@@ -1,12 +1,27 @@
 import type {Address} from './Address'
 
-type AddressComponentLike = {
+/**
+ * The common address component data accepted by {@link toAddress}.
+ */
+export interface AddressComponentLike {
+  /**
+   * The full address component name.
+   */
   longName: string
+  /**
+   * The abbreviated address component name.
+   */
   shortName: string
+  /**
+   * The address component types.
+   */
   types: string[]
 }
 
-type AddressComponentInput = AddressComponentLike | google.maps.GeocoderAddressComponent | google.maps.places.AddressComponent
+/**
+ * An address component accepted by {@link toAddress}.
+ */
+export type AddressComponentInput = AddressComponentLike | google.maps.GeocoderAddressComponent | google.maps.places.AddressComponent
 
 const toAddressComponentLike = (component: AddressComponentInput): AddressComponentLike => {
   if ('longName' in component) {

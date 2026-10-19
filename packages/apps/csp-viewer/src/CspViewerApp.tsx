@@ -6,6 +6,7 @@ import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {RsLocalizationWrapper, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent} from '@react-form-builder/components-signature'
+import {sortableListComponent} from '@react-form-builder/components-sortable-list'
 import {createView, FormViewer} from '@react-form-builder/core'
 import form from './form.json'
 
@@ -16,6 +17,7 @@ const components = [
   richTextComponent,
   googleMapComponent,
   signatureComponent,
+  sortableListComponent,
   ...printComponents,
   ...rSuiteTableComponents,
 ].map(definer => definer.build().model)

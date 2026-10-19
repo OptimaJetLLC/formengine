@@ -1,0 +1,39 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "list",
+        "type": "SortableList",
+        "props": {
+          "value": {
+            "value": [
+              {
+                "title": "Alpha"
+              },
+              {
+                "title": "Beta"
+              },
+              {
+                "title": "Gamma"
+              }
+            ]
+          }
+        },
+        "children": [
+          {
+            "key": "title",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Title"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

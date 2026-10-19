@@ -12,8 +12,9 @@ export const indexPlugin = (replacement: string): Plugin => ({
   name: 'indexReplacementPlugin',
   configureServer: server => {
     server.middlewares.use((req, _res, next) => {
-      if (req.url === '/') {
-        req.url = replacement
+      const url = req.url ?? ''
+      if (url === '/' || url.startsWith('/?')) {
+        req.url = `${replacement}${url.slice(1)}`
       }
       next()
     })

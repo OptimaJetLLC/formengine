@@ -1,21 +1,21 @@
 import {ltrCssLoader, RsViewWrapper, rSuiteComponents, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {sortableListComponent} from '@react-form-builder/components-sortable-list'
 import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, createView, FormViewer} from '@react-form-builder/core'
-import {useCallback, useRef} from 'react'
+import {useCallback, useMemo, useRef} from 'react'
+import sortableListFormObj from './sortable-list.form.json'
 import formObj from './user.form.json'
 
-const form = JSON.stringify(formObj)
+const defaultForm = JSON.stringify(formObj)
+const sortableListForm = JSON.stringify(sortableListFormObj)
 
-// Here you can pass the metadata of your components
-const componentsMetadata = rSuiteComponents.map(definer => definer.build().model)
+const componentsMetadata = [...rSuiteComponents.map(definer => definer.build().model), sortableListComponent.build().model]
 
 const view = createView(componentsMetadata)
-  // The following parameters are required for correct CSS loading in LTR and RTL modes
   .withViewerWrapper(RsViewWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 
-// You can define custom validators for form fields
 const customValidators: Validators = {
   string: {
     isHex: {
@@ -46,11 +46,20 @@ const customValidators: Validators = {
   },
 }
 
-const formName = 'Example'
+const forms: Record<string, string> = {
+  Example: defaultForm,
+  'sortable-list': sortableListForm,
+}
 
 function getFormFn(name?: string) {
-  if (name === formName) return form
+  const form = name ? forms[name] : undefined
+  if (form) return form
   throw new Error(`Form '${name}' is not found.`)
+}
+
+function resolveFormName() {
+  if (typeof window === 'undefined') return 'Example'
+  return new URLSearchParams(window.location.search).get('form') ?? 'Example'
 }
 
 /**
@@ -58,24 +67,18 @@ function getFormFn(name?: string) {
  */
 export const Viewer = () => {
   const ref = useRef<IFormViewer>(null)
+  const formName = useMemo(() => resolveFormName(), [])
 
   const setRef = useCallback((viewer: IFormViewer | null) => {
     if (viewer) {
-      // if you want to work with the internal FormViewer component in an imperative style
       ref.current = viewer
       console.log(ref.current)
     }
   }, [])
 
-  // custom function for localizing component properties
   const localizeFn = useCallback<ComponentLocalizer>((componentStore, language) => {
-    // localizes only the component whose key has the value "password"
     return componentStore.key === 'submit' && language.code === 'en' ? {children: `Submit`} : {}
   }, [])
-
-  // useLayoutEffect(() => {
-  //   document.title = 'Form Viewer'
-  // }, [])
 
   return (
     <FormViewer

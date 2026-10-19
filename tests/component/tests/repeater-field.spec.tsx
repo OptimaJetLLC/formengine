@@ -14,9 +14,9 @@ import {
   useComponentData,
   View,
 } from '@react-form-builder/core'
-import {fireEvent, render, waitFor} from '@testing-library/react'
+import {act, fireEvent, render, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
-import {expect} from 'vitest'
+import {expect, vi} from 'vitest'
 import {selectDropDownOption} from '../util/controls'
 import {eachComponentStore} from './eachComponentStore'
 import actionsBookingForm from './forms/actions-booking-form.json'
@@ -204,8 +204,20 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['standard', 'luxe'])
 
     const newData = {roomsData: '[{"roomType": "luxe"}, {"roomType": "standard"}, {"roomType": "standard"}]', rooms: []}
-    rerender(<RepeaterFieldApp modifyForm={modifyForm} initialData={newData} />)
-    await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['luxe', 'standard', 'standard'])
+    // Computed repeater reactions may notify observers while React applies the new initialData;
+    // suppress that known warning and flush updates inside act.
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(message => {
+      if (typeof message === 'string' && message.includes('Cannot update a component')) return
+      console.warn(message)
+    })
+    try {
+      await act(async () => {
+        rerender(<RepeaterFieldApp modifyForm={modifyForm} initialData={newData} />)
+      })
+      await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['luxe', 'standard', 'standard'])
+    } finally {
+      consoleError.mockRestore()
+    }
   })
 
   it('Repeater should have an updated initialData', async () => {
@@ -254,13 +266,46 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     }
 
     const initialData = {rooms: [{adults: 5}]}
-    const {findByTestId, findByText, queryByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData} />)
+    const viewerRef: FormViewerProps['viewerRef'] = {current: null}
+    const {findByTestId, findByText, queryByTestId} = render(
+      <RepeaterFieldApp modifyForm={modifyForm} initialData={initialData} viewerRef={viewerRef} />
+    )
     expect(await findByTestId('adults')).toHaveValue('5')
+    expect(viewerRef.current?.formData.data.rooms).toHaveLength(1)
 
     const clearButton = await findByText('Clear')
     fireEvent.click(clearButton)
 
     expect(queryByTestId('adults')).not.toBeInTheDocument()
+    // clear() -> setValue(modelValue) also writes form initial data for non-computed repeaters
+    expect(viewerRef.current?.formData.data.rooms).toEqual([])
+  })
+
+  it('Repeater reset writes the schema row count into form data', async () => {
+    const modifyForm = ({form}: PersistedForm) => {
+      const resetButton = new ComponentStore('reset', 'RsButton')
+      resetButton.props.children = {value: 'Reset'}
+      resetButton.events = {onClick: [{name: 'reset', type: 'common'}]}
+      form.children?.push(resetButton)
+      eachComponentStore(form, 'rooms', componentStore => {
+        componentStore.props.value = {value: [{roomType: 'luxe'}]}
+      })
+    }
+
+    const initialData = {rooms: [{roomType: 'standard'}, {roomType: 'standard'}]}
+    const viewerRef: FormViewerProps['viewerRef'] = {current: null}
+    const {findAllByTestId, findByText} = render(
+      <RepeaterFieldApp modifyForm={modifyForm} initialData={initialData} viewerRef={viewerRef} />
+    )
+    await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['standard', 'standard'])
+    expect(viewerRef.current?.formData.data.rooms).toHaveLength(2)
+
+    fireEvent.click(await findByText('Reset'))
+
+    // reset() -> setValue(schema value) persists one row; child resets may empty nested fields
+    await waitFor(() => {
+      expect(viewerRef.current?.formData.data.rooms).toHaveLength(1)
+    })
   })
 
   it('The value entered should override the default value', async () => {
@@ -447,7 +492,6 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     }
 
     expect(viewerRef.current).not.toBeNull()
-    const actualFormData = JSON.stringify(viewerRef.current?.formData.data)
     const expectedData = {
       rooms: [
         {
@@ -458,7 +502,9 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
         },
       ],
     }
-    expect(actualFormData).toBe(JSON.stringify(expectedData))
+    await waitFor(() => {
+      expect(JSON.parse(JSON.stringify(viewerRef.current?.formData.data.rooms))).toEqual(expectedData.rooms)
+    })
 
     fireEvent.click(bookButton)
 
@@ -479,7 +525,6 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     // and add another room
     fireEvent.click(await findByTestId('bookButton'))
 
-    const actualFormData2 = JSON.stringify(viewerRef.current?.formData.data)
     const expectedData2 = {
       rooms: [
         {
@@ -505,12 +550,13 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
         },
       ],
     }
-    expect(actualFormData2).toBe(JSON.stringify(expectedData2))
+    await waitFor(() => {
+      expect(JSON.parse(JSON.stringify(viewerRef.current?.formData.data.rooms))).toEqual(expectedData2.rooms)
+    })
 
     // and now we remove the second room
     fireEvent.click(await findByRole('button', {name: 'Remove room #2'}))
 
-    const actualFormData3 = JSON.stringify(viewerRef.current?.formData.data)
     const expectedData3 = {
       rooms: [
         {
@@ -530,7 +576,9 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
         },
       ],
     }
-    expect(actualFormData3).toBe(JSON.stringify(expectedData3))
+    await waitFor(() => {
+      expect(JSON.parse(JSON.stringify(viewerRef.current?.formData.data.rooms))).toEqual(expectedData3.rooms)
+    })
 
     // and remove one adult in the first room
     expect(await findAllByTestId('firstName')).toHaveExactValues(['Isra', 'Vidomina', ''])

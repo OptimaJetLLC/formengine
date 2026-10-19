@@ -13,6 +13,12 @@ sidebar_label: "Special components"
 Most palette items drop onto the canvas like fields. A few do not. They may allow only one copy on the form, or they never sit on the canvas
 at all and show up in a bottom bar instead.
 
+:::tip Try it
+
+<a href="#" onclick="openMinimalWindow('https://demo.formengine.io/?form=empty&view=rsuite-inject-css'); return false;">Open starting form in demo</a> - opens the FormEngine demo in a popup window with the form this article starts from.
+
+:::
+
 ## Singleton components
 
 A **singleton** can appear only once. After you add it, the palette item greys out. Hover it to read the reason.
@@ -55,6 +61,13 @@ In **Preview** and for end users, these components stay off screen. They still d
 ## Summary
 
 Singletons stop a second copy in the palette. Non-visual components live in the bottom bar and Tree group instead of on the canvas.
+
+
+:::tip Try it
+
+<a href="#" onclick="openMinimalWindow('https://demo.formengine.io/?formBody=eyJlcnJvclR5cGUiOiJSc0Vycm9yTWVzc2FnZSIsImZvcm0iOnsia2V5Ijoic2NyZWVuMSIsInR5cGUiOiJTY3JlZW4iLCJwcm9wcyI6e30sImNoaWxkcmVuIjpbeyJrZXkiOiJwcmludFNldHRpbmdzIiwidHlwZSI6IlByaW50U2V0dGluZ3MiLCJwcm9wcyI6eyJoZWFkZXIiOnsidmFsdWUiOiJJbnNwZWN0aW9uIHJlcG9ydCJ9LCJmb290ZXIiOnsidmFsdWUiOiJQYWdlIHtwYWdlfSBvZiB7cGFnZXN9In0sImhlYWRlckFsaWduIjp7InZhbHVlIjoiY2VudGVyIn0sImZvb3RlckFsaWduIjp7InZhbHVlIjoiZW5kIn19fSx7ImtleSI6ImZvcm1UaXRsZSIsInR5cGUiOiJSc0hlYWRlciIsInByb3BzIjp7ImNvbnRlbnQiOnsidmFsdWUiOiJTaXRlIGluc3BlY3Rpb24ifSwiaGVhZGVyU2l6ZSI6eyJ2YWx1ZSI6Img0In19fSx7ImtleSI6InNpdGVOYW1lIiwidHlwZSI6IlJzSW5wdXQiLCJwcm9wcyI6eyJsYWJlbCI6eyJ2YWx1ZSI6IlNpdGUgbmFtZSJ9fX0seyJrZXkiOiJpbnNwZWN0b3JOb3RlcyIsInR5cGUiOiJSc1RleHRBcmVhIiwicHJvcHMiOnsibGFiZWwiOnsidmFsdWUiOiJJbnNwZWN0b3Igbm90ZXMifSwicm93cyI6eyJ2YWx1ZSI6NH19fSx7ImtleSI6InBhZ2VCcmVhayIsInR5cGUiOiJQYWdlQnJlYWsiLCJwcm9wcyI6eyJicmVha0JlZm9yZSI6eyJ2YWx1ZSI6InBhZ2UifX19LHsia2V5IjoiZm9sbG93VXAiLCJ0eXBlIjoiUnNJbnB1dCIsInByb3BzIjp7ImxhYmVsIjp7InZhbHVlIjoiRm9sbG93LXVwIGFjdGlvbnMifX19XX19&formName=print-settings-demo&view=rsuite-inject-css'); return false;">Open print settings demo in demo</a> - opens the FormEngine demo in a popup window with the completed form from this article.
+
+:::
 
 ## See also
 

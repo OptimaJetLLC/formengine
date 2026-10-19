@@ -27,6 +27,7 @@ const docusaurusPluginTypedocConfig = [
       '../../packages/views/rsuite',
       '../../packages/views/rsuite-table',
       '../../packages/views/signature',
+      '../../packages/views/sortable-list',
       '../../packages/views/uploader'
     ],
     entryPointStrategy: 'packages',

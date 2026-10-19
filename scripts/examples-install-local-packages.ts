@@ -57,6 +57,7 @@ const PACKAGE_SOURCE: Record<string, string> = {
   '@react-form-builder/components-rich-text': 'packages/views/rich-text',
   '@react-form-builder/components-rsuite-table': 'packages/views/rsuite-table',
   '@react-form-builder/components-signature': 'packages/views/signature',
+  '@react-form-builder/components-sortable-list': 'packages/views/sortable-list',
   '@react-form-builder/components-uploader': 'packages/views/uploader',
   '@react-form-builder/bundle-size-shared': 'examples/community/bundle-size/shared',
 }

@@ -164,6 +164,8 @@ export type {
 export {useModalComponentData} from './features/modal/useModalComponentData'
 export {useModalType} from './features/modal/useModalType'
 export type {ComponentPropertiesContext, ReactProperty} from './features/properties-context/ComponentPropertiesContext'
+export type {RepeaterProps} from './features/repeater/RepeaterProps'
+export {RepeaterPropsProvider} from './features/repeater/RepeaterPropsContext'
 export type {Css, CssPart, DeviceStyle} from './features/style/types'
 export type {CellInfo, DataKeyType} from './features/table/CellInfo'
 export {CellInfoContextProvider} from './features/table/CellInfoContext'

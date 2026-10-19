@@ -6,6 +6,7 @@ import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent} from '@react-form-builder/components-signature'
+import {sortableListComponent} from '@react-form-builder/components-sortable-list'
 import {ComponentStore, definePreset} from '@react-form-builder/core'
 import initialPresets from './designer/components/preset-components.json'
 import {styledBoxComponent} from './designer/components/StyledBox'
@@ -30,6 +31,7 @@ let allComponents = [
   googleMapComponent,
   signatureComponent,
   ...printComponents,
+  sortableListComponent,
 ]
 
 export const allComponentsBuilder = allComponents.map(definer => definer.build())
