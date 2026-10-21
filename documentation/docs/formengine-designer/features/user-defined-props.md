@@ -5,7 +5,7 @@ slug: /formengine-designer/features/user-defined-properties
 description: How to override the properties of a component in runtime.
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 Dynamic extra fields on a form are an advanced integration topic.
 

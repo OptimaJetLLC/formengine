@@ -681,7 +681,7 @@ FormEngine Core injects `disabled` and `readOnly` alongside calculated values an
 UI component must apply the flags, for example by mapping to native props when supported or guarding event handlers like `onChange` and
 `onClick`.
 
-:::info note
+:::info[note]
 Form actions and calculations can still read and update form data even when components are disabled or read-only. The flags only influence
 how the UI behaves.
 :::

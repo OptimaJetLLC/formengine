@@ -66,7 +66,7 @@ changes to API documentation should be made in the corresponding source code fil
   - Pad cells with spaces so every row has pipes in the same columns.
   - Trailing spaces on data rows are optional; align pipes consistently.
 - Use Docusaurus admonitions where helpful:
-  - `:::info note`, `:::info Important`, `:::warning`, `:::tip info`
+  - Use bracket labels for custom titles: `:::info[Note]`, `:::info[Important]`, `:::warning`, `:::tip[Info]`.
   - Close with `:::` on its own line.
 - Do not use bold, italic, or code formatting in headings.
 

@@ -5,7 +5,7 @@ slug: /formengine-designer/features/computed-properties
 description: When designing a form in the designer, you can set the values of the component properties in the right pane
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 Calculated field values usually need developer setup-start with
 [Calculated fields overview](designer-guide:simple-data-driven-screens/calculated-fields-overview/).

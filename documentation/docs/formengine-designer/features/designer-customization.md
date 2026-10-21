@@ -5,7 +5,7 @@ slug: /formengine-designer/features/designer-customization
 description: Using the customization FormBuilder prop, you can hide, style, or replace any parts of the FormBuilder interface
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 Changing the designer UI or adding custom tools requires developers.
 
@@ -186,7 +186,7 @@ const FormBuilderApp = () => {
 | 16 | PropertyLabel                                                                              | FE_PropertyLabel                                                                                       |               |
 | 17 | PropertyInput                                                                              | FE_PropertyInput                                                                                       |               |
 
-:::info note
+:::info[note]
 
 The right-panel content keys (`Main_Tab_Content`, `Style_Tab_Content`, `Actions_Tab_Content`, and `Rules_Tab_Content`) wrap the active
 properties tab body. They mount only when a component is selected on the canvas and that tab is open.

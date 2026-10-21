@@ -34,7 +34,7 @@ Computed properties are useful for:
 - **Derived values** that you want to display but not store as
   form data
 
-:::warning Advanced feature
+:::warning[Advanced feature]
 
 Computed properties are a powerful but advanced mechanism. Because they run on every form change, careless use can create **infinite update
 loops** or **performance bottlenecks**. Use them sparingly and always test the interaction chain between computed properties and the data
@@ -141,7 +141,7 @@ Change a label based on a checkbox selection.
 
 Provide immediate feedback beyond schema validation.
 
-:::tip info
+:::tip[info]
 
 This example is made for illustrative purposes. If you need to show validation data, use [the form validation mechanisms][validation].
 

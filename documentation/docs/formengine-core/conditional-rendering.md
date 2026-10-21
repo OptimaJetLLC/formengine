@@ -432,7 +432,7 @@ function App() {
 - Apply [renderWhen][cs-renderwhen] to container components to hide or show entire sections at once.
 - Prefer expression-based conditions for clarity and use functions only when needed.
 
-:::info Important
+:::info[Important]
 Keep [renderWhen][cs-renderwhen] conditions simple and readable. If your workflow requires clearing dependent values when a component is
 hidden, reset those values explicitly when you hide the field.
 :::

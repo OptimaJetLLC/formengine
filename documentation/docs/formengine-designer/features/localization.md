@@ -5,7 +5,7 @@ slug: /formengine-designer/features/localization
 description: In this guide, we will look at how to localize the string properties of a component
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 Switch form language in the header and use **Settings** → **Language settings** for locale setup.
 
@@ -237,7 +237,7 @@ Switch the language under the code editor to German and paste the text "Vielen D
 click the "Run" button to get the localization result. Or select the "Autorun" checkbox to have the localization result recalculated
 automatically when the data changes. To save the data - click the "Save" button.
 
-:::info note
+:::info[note]
 
 Save behavior in the localization editor:
 
@@ -311,7 +311,7 @@ This makes the globe icon appear next to the `items` property in the designer, j
 5. Switch languages using the language picker below the editor to provide translations for each language.
 6. Click **Save** to persist the localization.
 
-:::info note
+:::info[note]
 
 The localization editor pre-fills the array value as formatted JSON when you first open it for a property that has no stored localization
 yet. This gives you a convenient starting point for translation.

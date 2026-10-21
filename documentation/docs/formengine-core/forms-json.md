@@ -29,7 +29,7 @@ root component tree in the [form][pf-form] field. The top-level fields can inclu
 
 Think of it like this: the top level is the form settings, and `form` is the tree of components to render.
 
-:::info note
+:::info[note]
 Each component set ships component descriptions you can use to generate a JSON schema. The generated schema restricts which [type][cs-type]
 values and [props][cs-props] are allowed, while the rest of the structure stays shared.
 :::

@@ -5,7 +5,7 @@ slug: /formengine-designer/features/designer-localization
 description: Using custom languages in Designer can greatly enhance your project by allowing you to target a specific audience or customize the user experience
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 This page is for **designer menu** language (integrators). For **form field** languages, see
 [Localization for form authors](designer-guide:appearance-and-readability/localization-for-form-authors/).

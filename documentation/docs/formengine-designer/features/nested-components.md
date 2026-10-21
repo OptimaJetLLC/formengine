@@ -5,7 +5,7 @@ sidebar_position: 2
 slug: /formengine-designer/features/nested-components
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 Group fields with containers and view nesting in **Tree**.
 

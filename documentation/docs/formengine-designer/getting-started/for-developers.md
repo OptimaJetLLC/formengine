@@ -14,7 +14,7 @@ pagination_next: formengine-designer/getting-started/installation
 
 ## FormEngine Designer for developers - Packages and architecture
 
-:::info For form authors
+:::info[For form authors]
 
 If you design forms in the UI without writing code, use the [Form Author Guide](designer-guide:) instead of this page.
 

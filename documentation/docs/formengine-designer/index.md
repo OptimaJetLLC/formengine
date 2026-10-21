@@ -9,7 +9,7 @@ title: FormEngine Designer - Visual Drag & Drop Form Builder
 
 # FormEngine Designer - Visual Drag & Drop Form Builder
 
-:::info For form authors
+:::info[For form authors]
 
 If you design forms in the visual UI **without writing code**, use the **[Form Author Guide](designer-guide:)** for step-by-step help: workspace tour, fields, validation, preview, and export.
 

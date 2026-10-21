@@ -5,7 +5,7 @@ description: Create a preset component in Designer
 slug: /formengine-designer/features/presets-components
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 Save reusable blocks from the canvas toolbar and insert them from the **Components** tab.
 

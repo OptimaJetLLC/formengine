@@ -327,7 +327,7 @@ function App() {
 
 ## Precautions and warnings
 
-:::warning Advanced feature
+:::warning[Advanced feature]
 
 User-defined properties bypass FormEngine Core's normal property resolution. This can lead to:
 

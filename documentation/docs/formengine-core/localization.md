@@ -125,13 +125,13 @@ dollar sign prefix: `{$variableName}`.
 At runtime, `{$userName}` and `{$messageCount}` will be replaced with actual values provided to the component. This allows for dynamic
 content within localized strings.
 
-:::info note
+:::info[note]
 
 Variable names are case-sensitive and should match the property names available in the component's data context.
 
 :::
 
-:::tip note
+:::tip[note]
 
 Fluent values and spaces:
 
@@ -162,7 +162,7 @@ per language.
 `initialData` become Fluent variables with the same name.
 
 **Nested fields in form data:** Use a normal dot path in the placeholder (for example `{$user.name}` or `{$profile.displayName}`).
-FormEngine resolves nested `initialData` against those paths automatically-for example, form data `{ "user": { "name": "Alex" } }` is
+FormEngine resolves nested `initialData` against those paths automatically. For example, form data `{ "user": { "name": "Alex" } }` is
 referenced as `{$user.name}` in patterns.
 
 **Missing variables:** If a referenced key is not present in the form data, the placeholder resolves to an empty string (same behavior as
@@ -242,10 +242,10 @@ has no placeholders and stays `Standard`.
 }
 ```
 
-All string leaves (`title`, `subtitle`, each array element that is a string) are interpolated; a key that were a string with placeholders
-would be interpolated as well.
+All string leaves (`title`, `subtitle`, and each string array element) are interpolated. String keys that contain placeholders are
+interpolated as well.
 
-:::info note
+:::info[note]
 
 If the same property is stored as a **JSON string** inside the Fluent bundle (for example, a single message whose value is a stringified
 array starting with `[` or `{`), that value is parsed and interpolated the same way after parsing.
@@ -643,7 +643,7 @@ function App() {
       },
       "langSelect": {
         "component": {
-          "label": "Idioma"
+          "label": "Langue"
         }
       }
     }
@@ -793,7 +793,7 @@ function App() {
         },
         "langSelect": {
           "component": {
-            "label": "Idioma"
+            "label": "Langue"
           }
         }
       }
@@ -971,7 +971,7 @@ same across languages, but the labels change.
 }
 ```
 
-:::info note
+:::info[note]
 
 Array localization values are stored as JSON arrays directly in the localization object, not as Fluent message strings. FormEngine
 automatically detects whether a localization value is a JSON array or object and parses it accordingly.
@@ -1156,7 +1156,7 @@ Validation error messages can also be localized. Each validator can have its err
 }
 ```
 
-:::info note
+:::info[note]
 
 The validator type in the localization object uses the format `validator-{validatorKey}` (e.g., `validator-email`, `validator-required`).
 
@@ -1358,7 +1358,7 @@ function App() {
 }
 ```
 
-:::info note
+:::info[note]
 
 Validation error messages are not automatically translated when the language is changed, but they change after calling the validate
 `action`.
@@ -1499,7 +1499,7 @@ Tooltips can be localized using the `tooltip` type in the localization object. C
 }
 ```
 
-:::info note
+:::info[note]
 
 The tooltip type in the localization object uses the format `tooltip` (e.g., `tooltip.title`).
 
@@ -2193,7 +2193,7 @@ this order:
 For localized validation messages, the engine uses the same **message-level** lookup (requested then default). It does not apply the
 component property/model/type fallback chain for validation errors.
 
-:::info note
+:::info[note]
 
 This fallback mechanism applies to component properties, validation errors, tooltips, and modal content that use the Fluent localization
 pipeline.
@@ -2317,19 +2317,19 @@ function App() {
         "email": {
           "component": {
             "label": "Email Address",
-            "helperText": "Enter your full name"
+            "helperText": "Enter your email address"
           }
         }
       },
       "fr-FR": {
         "email": {
           "component": {
-            "label": "Adresse Email",
+            "label": "Adresse Email"
           }
         },
         "langSelect": {
           "component": {
-            "label": "Idioma"
+            "label": "Langue"
           }
         }
       }
@@ -2693,7 +2693,7 @@ function App() {
 }
 ```
 
-:::tip info
+:::tip[info]
 
 In this example, you can also observe hybrid mode. The language selection component is translated into JSON, and the name input component is
 translated using an external function.

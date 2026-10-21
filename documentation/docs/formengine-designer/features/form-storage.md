@@ -5,7 +5,7 @@ slug: /formengine-designer/features/form-storage
 description: In this guide, we will look at how to connect external storage for forms
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 When the **Forms** tab is visible, your app uses storage-see [Work with multiple forms](designer-guide:manage-forms/work-with-multiple-forms/).
 :::

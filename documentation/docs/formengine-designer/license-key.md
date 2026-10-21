@@ -20,7 +20,7 @@ Examples:
 />
 ```
 
-:::info Important!
+:::info[Important!]
 
 The licence check will work correctly either on `localhost` or under HTTPS. These are limitations of browser cryptography!
 

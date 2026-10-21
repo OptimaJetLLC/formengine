@@ -31,7 +31,7 @@ HTML attributes are useful for:
 - **Accessibility:** Provide `aria‑*` attributes for screen readers and assistive technologies.
 - **Integration:** Attach custom attributes for third‑party scripts or CSS hooks.
 
-:::info Important
+:::info[Important]
 
 HTML attributes work only for components that support them. A component supports HTML attributes when its React implementation spreads the
 received props onto the underlying HTML element. Most built‑in input, button, and container components support HTML attributes; custom

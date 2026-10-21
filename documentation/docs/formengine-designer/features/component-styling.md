@@ -5,7 +5,7 @@ slug: /formengine-designer/features/component-styling
 description: Styling of components in Form Builder is quite simple, you can customize styles for a component on the "Style" tab
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 Change fonts, colors, and spacing on the **Style** tab for each selected component.
 

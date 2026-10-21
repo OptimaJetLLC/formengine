@@ -5,7 +5,7 @@ slug: /formengine-designer/features/using-tabs
 description: In this guide, you will learn how to connect components with tabs
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 Split long forms with tab layout components from the palette.
 

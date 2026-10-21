@@ -493,7 +493,7 @@ These components are used for data entry and user input:
 | **[MtColorInput](/components-library/mantine/color-input)**             | Color picker input                               | <MantineComponentsDocItem link="/core/color-input/" caption="ColorInput" />             |
 | **[MtColorPicker](/components-library/mantine/color-picker)**           | Color picker with swatches                       | <MantineComponentsDocItem link="/core/color-picker/" caption="ColorPicker" />           |
 | **[MtFileInput](/components-library/mantine/file-input)**               | File input with drag-and-drop                    | <MantineComponentsDocItem link="/core/file-input/" caption="FileInput" />               |
-| **[MtDropzone](/components-library/mantine/dropzone)**                  | File upload dropzone                             | [Mantine Dropzone](https://mantine.dev/dropzone/) (optional package)                    |
+| **[MtDropzone](/components-library/mantine/dropzone)**                  | File upload dropzone                             | [Mantine Dropzone](https://mantine.dev/x/dropzone/) (optional package)                  |
 | **[MtJsonInput](/components-library/mantine/json-input)**               | JSON editor input                                | <MantineComponentsDocItem link="/core/json-input/" caption="JsonInput" />               |
 | **[MtLabel](/components-library/mantine/label)**                        | Label component for form controls                | <MantineComponentsDocItem link="/core/input/" caption="Input (label)" />                |
 | **[MtNumberInput](/components-library/mantine/number-input)**           | Numeric input with optional stepper              | <MantineComponentsDocItem link="/core/number-input/" caption="NumberInput" />           |
@@ -580,10 +580,10 @@ Miscellaneous utility components:
 
 Additional Mantine-based extensions:
 
-| Component                                              | Description          | Mantine Documentation                                                |
-|:-------------------------------------------------------|:---------------------|:---------------------------------------------------------------------|
-| **[MtTiptap](/components-library/mantine/tiptap)**     | Rich text editor     | [Mantine Tiptap](https://mantine.dev/x/tiptap/) (optional package)   |
-| **[MtDropzone](/components-library/mantine/dropzone)** | File upload dropzone | [Mantine Dropzone](https://mantine.dev/dropzone/) (optional package) |
+| Component                                              | Description          | Mantine Documentation                                                  |
+|:-------------------------------------------------------|:---------------------|:-----------------------------------------------------------------------|
+| **[MtTiptap](/components-library/mantine/tiptap)**     | Rich text editor     | [Mantine Tiptap](https://mantine.dev/x/tiptap/) (optional package)     |
+| **[MtDropzone](/components-library/mantine/dropzone)** | File upload dropzone | [Mantine Dropzone](https://mantine.dev/x/dropzone/) (optional package) |
 
 ### Overlays
 

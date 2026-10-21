@@ -112,7 +112,7 @@ function Calculation(form) {
 }
 ```
 
-:::info Important
+:::info[Important]
 `initialState` is **reactive**. When you rerender the React host with a different `initialState` object, FormEngine replaces the contents of
 `form.state` with the new values while keeping the observable object instance. This means changes to the `initialState` prop will update
 `form.state` for all actions and calculations.

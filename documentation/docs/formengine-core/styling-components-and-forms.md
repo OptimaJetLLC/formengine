@@ -230,7 +230,7 @@ function App() {
 The `wrapperCss` property applies styles to the wrapper element that surrounds components (not containers). This is useful when you
 need to style the layout around a component without affecting the component itself.
 
-:::info note
+:::info[note]
 
 The `wrapperCss` property uses the same JSON structure as the `css` property, supporting both `object` and `string` formats for
 device-specific styling (`any`, `desktop`, `tablet`, `mobile`).
@@ -364,7 +364,7 @@ The `style` and `wrapperStyle` properties follow the same JSON structure as `css
 }
 ```
 
-:::info Important
+:::info[Important]
 
 The `style` property applies directly to the component element, similar to React's inline styles, while `css` property uses
 [adoptedStyleSheets](https://developer.mozilla.org/en-US/docs/Web/API/Document/adoptedStyleSheets) and generates class names.

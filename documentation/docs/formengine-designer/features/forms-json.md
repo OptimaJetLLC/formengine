@@ -5,7 +5,7 @@ slug: /formengine-designer/features/forms-json
 description: Each form created in the form designer is JSON, with the designer, you can export a form to JSON, and you can import a form from JSON
 ---
 
-:::info For form authors
+:::info[For form authors]
 
 Use **Menu** → **Download** or **Export forms** to share your design-no need to edit JSON by hand.
 

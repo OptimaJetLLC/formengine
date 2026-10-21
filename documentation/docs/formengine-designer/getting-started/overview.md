@@ -12,7 +12,7 @@ pagination_next: formengine-designer/getting-started/for-developers
 
 ## FormEngine Designer Overview - Features & Capabilities
 
-:::info For form authors
+:::info[For form authors]
 
 New to the Designer UI? Start with the [Form Author Guide](designer-guide:)-workspace tour, first form tutorial, validation, preview, and export. No npm or React required.
 
