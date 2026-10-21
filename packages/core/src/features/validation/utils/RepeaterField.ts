@@ -1,4 +1,4 @@
-import {autorun, makeAutoObservable, observable, reaction, runInAction} from 'mobx'
+import {autorun, makeAutoObservable, observableRef, reaction, runInAction} from 'mobx'
 import {ComponentStore, dataKey, isComputedProperty} from '../../../stores/ComponentStore'
 import type {ComponentData, IComponentDataProvider} from '../../../utils/contexts/ComponentDataContext'
 import {mergeData} from '../../../utils/data-utils'
@@ -85,7 +85,7 @@ export class RepeaterField implements Field, IDataReaction, IComponentDataProvid
       this,
       {
         model: false,
-        dataValidator: observable.ref,
+        dataValidator: observableRef,
       },
       {name: nameObservable(className, {key: componentStore.key}), autoBind: true}
     )

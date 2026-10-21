@@ -1,4 +1,4 @@
-import {autorun, makeAutoObservable, observable, reaction} from 'mobx'
+import {autorun, makeAutoObservable, observableRef, reaction} from 'mobx'
 import type {ComponentStore} from '../../../stores/ComponentStore'
 import {dataKey, isComputedProperty} from '../../../stores/ComponentStore'
 import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
@@ -81,7 +81,7 @@ export class SimpleField implements Field, IDataReaction {
       this,
       {
         model: false,
-        dataValidator: observable.ref,
+        dataValidator: observableRef,
       },
       {name: nameObservable(className, {key: componentStore.key}), autoBind: true}
     )

@@ -1,6 +1,6 @@
 import type {ComponentData} from '@react-form-builder/core'
 import {nameObservable} from '@react-form-builder/core'
-import {makeAutoObservable, observable} from 'mobx'
+import {makeAutoObservable, observableRef} from 'mobx'
 import type {PanelPlacement} from '../PanelPlacement'
 import type {LeftPanelSection} from './leftPanelTab'
 import {persistLeftPanelActiveTab, readLeftPanelActiveTab} from './leftPanelTab'
@@ -48,7 +48,7 @@ export class LeftPanelChrome {
     makeAutoObservable(
       this,
       {
-        treeReveal: observable.ref,
+        treeReveal: observableRef,
       },
       {name: nameObservable('LeftPanelChrome')}
     )

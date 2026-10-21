@@ -1,4 +1,4 @@
-import {makeObservable, observable} from 'mobx'
+import {makeObservable, observableDeep, observableRef} from 'mobx'
 import type {ComponentType} from 'react'
 import type {IView} from '../features/define/utils/IView'
 import type {ActionValues} from '../features/event/ActionValues'
@@ -93,21 +93,21 @@ export class FormViewerPropsStore {
     makeObservable(
       this,
       {
-        view: observable.ref,
-        initialData: observable.deep,
-        initialState: observable.deep,
-        userContext: observable.deep,
-        validators: observable.ref,
-        formValidators: observable.ref,
-        localizer: observable.ref,
-        actions: observable.ref,
-        propsLanguage: observable.ref,
-        errorWrapper: observable.ref,
-        disabled: observable.ref,
-        readOnly: observable.ref,
-        showAllValidationErrors: observable.ref,
-        context: observable.ref,
-        localizationEngine: observable.ref,
+        view: observableRef,
+        initialData: observableDeep,
+        initialState: observableDeep,
+        userContext: observableDeep,
+        validators: observableRef,
+        formValidators: observableRef,
+        localizer: observableRef,
+        actions: observableRef,
+        propsLanguage: observableRef,
+        errorWrapper: observableRef,
+        disabled: observableRef,
+        readOnly: observableRef,
+        showAllValidationErrors: observableRef,
+        context: observableRef,
+        localizationEngine: observableRef,
       },
       {name: nameObservable(`FormViewerPropsStore`)}
     )

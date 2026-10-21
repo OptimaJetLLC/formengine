@@ -30,7 +30,7 @@ import {
   treeForEach,
 } from '@react-form-builder/core'
 import type {IReactionDisposer} from 'mobx'
-import {action, makeAutoObservable, observable, reaction, runInAction} from 'mobx'
+import {action, makeAutoObservable, observable, observableRef, reaction, runInAction} from 'mobx'
 import type {FormBuilderProps} from '../FormBuilderProps'
 import type {CalculableEditorProps} from '../features/annotation-editors/AnnotationEditorProps'
 import type {
@@ -389,9 +389,9 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       this,
       {
         selected: observable,
-        formBuilderLanguage: observable.ref,
-        localizationLanguage: observable.ref,
-        view: observable.ref,
+        formBuilderLanguage: observableRef,
+        localizationLanguage: observableRef,
+        view: observableRef,
         dispose: false,
         builderMode: true,
         viewMode: true,

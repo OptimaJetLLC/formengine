@@ -1,4 +1,4 @@
-import {makeObservable, observable, runInAction} from 'mobx'
+import {makeObservable, observable, observableRef, runInAction} from 'mobx'
 import type {ComponentRole} from '../features/define/utils/ComponentRole'
 import type {ActionDefinition} from '../features/event/ActionDefinition'
 import {commonActions} from '../features/event/consts/actions'
@@ -156,7 +156,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
         viewMode: true,
         selectedLanguage: true,
         clear: true,
-        parentStore: observable.ref,
+        parentStore: observableRef,
         initialDataSlice: true,
         formLoadError: true,
       },

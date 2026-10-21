@@ -11,7 +11,7 @@ import {
   useDisposable,
   ViewerPropsProvider,
 } from '@react-form-builder/core'
-import {makeObservable, observable} from 'mobx'
+import {makeObservable, observableRef} from 'mobx'
 import type {ReactNode} from 'react'
 import {useCallback, useEffect} from 'react'
 import {DndProvider} from 'react-dnd'
@@ -66,7 +66,7 @@ class BuilderComponentStateFactory {
     makeObservable(
       this,
       {
-        builderStore: observable.ref,
+        builderStore: observableRef,
       },
       {name: nameObservable(`BuilderComponentStateFactory`)}
     )

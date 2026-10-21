@@ -1,4 +1,4 @@
-import {autorun, makeAutoObservable, observable} from 'mobx'
+import {autorun, makeAutoObservable, observableRef} from 'mobx'
 import type {ComponentStore} from '../../../stores/ComponentStore'
 import type {Setter} from '../../../types'
 import {isString} from '../../../utils/isString'
@@ -65,7 +65,7 @@ export class ProxyField implements Field {
       this,
       {
         model: false,
-        dataValidator: observable.ref,
+        dataValidator: observableRef,
       },
       {name: nameObservable(className, {key: componentStore.key}), autoBind: true}
     )

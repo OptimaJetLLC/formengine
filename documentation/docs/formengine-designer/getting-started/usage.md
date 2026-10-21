@@ -262,7 +262,7 @@ If your package manager does not support automatic installation of peer dependen
 npm, then you need to install peer dependencies manually.
 
 ```bash
-npm install clsx@2.1.1 mobx@6.13.5 mobx-react@9.2.0 --save-exact
+npm install clsx@2.1.1 mobx@7.1.0 mobx-react@10.0.2 --save-exact
 ```
 
 If you are using the React Suite component pack, install its peer dependencies as well:
