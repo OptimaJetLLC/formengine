@@ -417,12 +417,6 @@ Indicates keyboard shortcuts that an author has implemented to activate or give 
 
 > `optional` **aria-label?**: `string`
 
-Defines a string value that labels the current element.
-
-#### See
-
-aria-labelledby.
-
 #### Inherited from
 
 `Omit.aria-label`
@@ -929,67 +923,6 @@ The prop defaults to the value (`'primary'`) inherited from the parent FormContr
 #### Inherited from
 
 `Omit.color`
-
-***
-
-### ~~components?~~
-
-> `optional` **components?**: `object`
-
-The components used for each slot inside.
-
-#### ~~Input?~~
-
-> `optional` **Input?**: `ElementType`\<`any`, keyof IntrinsicElements\>
-
-#### ~~Root?~~
-
-> `optional` **Root?**: `ElementType`\<`any`, keyof IntrinsicElements\>
-
-#### Deprecated
-
-use the `slots` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
-
-#### Default
-
-```ts
-{}
-```
-
-#### Inherited from
-
-`Omit.components`
-
-***
-
-### ~~componentsProps?~~
-
-> `optional` **componentsProps?**: `object`
-
-The extra props for the slot components.
-You can override the existing props or add new ones.
-
-#### ~~input?~~
-
-> `optional` **input?**: `InputHTMLAttributes`\<`HTMLInputElement`\> & `InputBaseComponentsPropsOverrides`
-
-#### ~~root?~~
-
-> `optional` **root?**: `HTMLAttributes`\<`HTMLDivElement`\> & `InputBaseComponentsPropsOverrides`
-
-#### Deprecated
-
-use the `slotProps` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
-
-#### Default
-
-```ts
-{}
-```
-
-#### Inherited from
-
-`Omit.componentsProps`
 
 ***
 
@@ -1617,6 +1550,18 @@ false
 #### Inherited from
 
 `Omit.nonce`
+
+***
+
+### notched?
+
+> `optional` **notched?**: `boolean`
+
+**`Internal`**
+
+#### Inherited from
+
+`Omit.notched`
 
 ***
 
@@ -3661,8 +3606,6 @@ The size of the component.
 The extra props for the slot components.
 You can override the existing props or add new ones.
 
-This prop is an alias for the `componentsProps` prop, which will be deprecated in the future.
-
 #### Default
 
 ```ts
@@ -3680,8 +3623,6 @@ This prop is an alias for the `componentsProps` prop, which will be deprecated i
 > `optional` **slots?**: \{ `input?`: `ElementType`\<`any`, keyof IntrinsicElements\>; `root?`: `ElementType`\<`any`, keyof IntrinsicElements\>; \} \| `Partial`\<`OutlinedInputSlots`\> & `object`
 
 The components used for each slot inside.
-
-This prop is an alias for the `components` prop, which will be deprecated in the future.
 
 #### Default
 

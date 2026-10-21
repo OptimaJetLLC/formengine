@@ -883,41 +883,6 @@ Override or extend the styles applied to the component.
 
 ***
 
-### ~~componentsProps?~~
-
-> `optional` **componentsProps?**: `object`
-
-The props used for each slot inside.
-
-#### ~~typography?~~
-
-> `optional` **typography?**: `TypographyProps`
-
-Props applied to the Typography wrapper of the passed label.
-This is unused if disableTypography is true.
-
-##### Default
-
-```ts
-{}
-```
-
-#### Default
-
-```ts
-{}
-```
-
-#### Deprecated
-
-use the `slotProps` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
-
-#### Inherited from
-
-`Omit.componentsProps`
-
-***
-
 ### content?
 
 > `optional` **content?**: `string`
@@ -1145,18 +1110,6 @@ Hints at the type of data that might be entered by the user while editing the el
 #### Inherited from
 
 `Omit.inputMode`
-
-***
-
-### inputRef?
-
-> `optional` **inputRef?**: `Ref`\<`any`\>
-
-Pass a ref to the `input` element.
-
-#### Inherited from
-
-`Omit.inputRef`
 
 ***
 
@@ -3156,7 +3109,7 @@ The props used for each slot inside.
 
 #### typography?
 
-> `optional` **typography?**: `SlotProps`\<`OverridableComponent`\<`TypographyTypeMap`\<\{ \}, `"span"`\>\>, \{ \}, `FormControlLabelProps`\>
+> `optional` **typography?**: `SlotProps`\<`OverridableComponent`\<`TypographyTypeMap`\<\{ \}, `"span"`\>\>, `FormControlLabelTypographySlotPropsOverrides`, `FormControlLabelProps`\>
 
 #### Default
 

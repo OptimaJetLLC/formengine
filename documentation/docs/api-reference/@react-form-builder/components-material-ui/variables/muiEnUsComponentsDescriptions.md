@@ -68,6 +68,18 @@
 
 > **commonProperties**: `object`
 
+#### commonProperties.align
+
+> **align**: `object`
+
+#### commonProperties.align.description
+
+> **description**: `string` = `"Text alignment"`
+
+#### commonProperties.align.name
+
+> **name**: `string` = `"Align"`
+
 #### commonProperties.checked
 
 > **checked**: `object`
@@ -295,18 +307,6 @@
 #### commonProperties.sx.name
 
 > **name**: `string` = `"Sx"`
-
-#### commonProperties.textAlign
-
-> **textAlign**: `object`
-
-#### commonProperties.textAlign.description
-
-> **description**: `string` = `"Text alignment"`
-
-#### commonProperties.textAlign.name
-
-> **name**: `string` = `"Alignment"`
 
 #### commonProperties.value
 
@@ -1224,18 +1224,6 @@
 
 > **props**: `object`
 
-#### components.MuiDialog.props.disableEscapeKeyDown
-
-> **disableEscapeKeyDown**: `object`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.description
-
-> **description**: `string` = `"If true, pressing the escape key will not close the dialog"`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.name
-
-> **name**: `string` = `"Disable escape key down"`
-
 #### components.MuiDialog.props.fullScreen
 
 > **fullScreen**: `object`
@@ -1740,18 +1728,6 @@
 
 > **props**: `object`
 
-#### components.MuiStack.props.alignItems
-
-> **alignItems**: `object`
-
-#### components.MuiStack.props.alignItems.description
-
-> **description**: `string` = `"Controls cross-axis alignment"`
-
-#### components.MuiStack.props.alignItems.name
-
-> **name**: `string` = `"Align items"`
-
 #### components.MuiStack.props.direction
 
 > **direction**: `object`
@@ -1763,30 +1739,6 @@
 #### components.MuiStack.props.direction.name
 
 > **name**: `string` = `"Direction"`
-
-#### components.MuiStack.props.flexWrap
-
-> **flexWrap**: `object`
-
-#### components.MuiStack.props.flexWrap.description
-
-> **description**: `string` = `"Controls whether items wrap onto multiple lines"`
-
-#### components.MuiStack.props.flexWrap.name
-
-> **name**: `string` = `"Flex wrap"`
-
-#### components.MuiStack.props.justifyContent
-
-> **justifyContent**: `object`
-
-#### components.MuiStack.props.justifyContent.description
-
-> **description**: `string` = `"Controls main-axis alignment"`
-
-#### components.MuiStack.props.justifyContent.name
-
-> **name**: `string` = `"Justify content"`
 
 #### components.MuiStack.props.spacing
 

@@ -1187,7 +1187,7 @@
                   "$ref": "#/definitions/enumPropertyCalculable",
                   "description": "The color of the component"
                 },
-                "textAlign": {
+                "align": {
                   "type": "object",
                   "$ref": "#/definitions/enumPropertyCalculable",
                   "description": "Text alignment"
@@ -1557,10 +1557,6 @@
                   "$ref": "#/definitions/booleanPropertyCalculable",
                   "description": "If true, the component is disabled"
                 },
-                "maxWidth": {
-                  "type": "object",
-                  "$ref": "#/definitions/enumPropertyCalculable"
-                },
                 "sx": {
                   "type": "object",
                   "$ref": "#/definitions/stringProperty",
@@ -1717,21 +1713,6 @@
                   "type": "object",
                   "$ref": "#/definitions/stringPropertyCalculableLocalizable",
                   "description": "Spacing between stacked items"
-                },
-                "justifyContent": {
-                  "type": "object",
-                  "$ref": "#/definitions/enumPropertyCalculable",
-                  "description": "Controls main-axis alignment"
-                },
-                "alignItems": {
-                  "type": "object",
-                  "$ref": "#/definitions/enumPropertyCalculable",
-                  "description": "Controls cross-axis alignment"
-                },
-                "flexWrap": {
-                  "type": "object",
-                  "$ref": "#/definitions/enumPropertyCalculable",
-                  "description": "Controls whether items wrap onto multiple lines"
                 },
                 "useFlexGap": {
                   "type": "object",
@@ -1960,7 +1941,7 @@
                   "$ref": "#/definitions/enumPropertyCalculable",
                   "description": "The color of the component"
                 },
-                "textAlign": {
+                "align": {
                   "type": "object",
                   "$ref": "#/definitions/enumPropertyCalculable",
                   "description": "Text alignment"

@@ -121,7 +121,7 @@ npm install @react-form-builder/components-material-ui
 Material UI components require the following peer dependencies. If they're not installed automatically:
 
 ```bash
-npm install @mui/material@^7.3.2 @emotion/react@^11.11.0 @emotion/styled@^11.11.0 --save-exact
+npm install @mui/material@^9.5.0 @mui/x-date-pickers@^9.16.0 @emotion/react@^11.14.0 @emotion/styled@^11.14.1 dayjs@^1.11.23 --save-exact
 ```
 
 :::

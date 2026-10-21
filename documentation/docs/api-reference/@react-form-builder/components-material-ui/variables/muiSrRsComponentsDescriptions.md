@@ -68,6 +68,18 @@
 
 > **commonProperties**: `object`
 
+#### commonProperties.align
+
+> **align**: `object`
+
+#### commonProperties.align.description
+
+> **description**: `string` = `"Poravnanje teksta"`
+
+#### commonProperties.align.name
+
+> **name**: `string` = `"Poravnanje"`
+
 #### commonProperties.checked
 
 > **checked**: `object`
@@ -295,18 +307,6 @@
 #### commonProperties.sx.name
 
 > **name**: `string` = `"Sks"`
-
-#### commonProperties.textAlign
-
-> **textAlign**: `object`
-
-#### commonProperties.textAlign.description
-
-> **description**: `string` = `"Poravnanje teksta"`
-
-#### commonProperties.textAlign.name
-
-> **name**: `string` = `"Poravnanje"`
 
 #### commonProperties.value
 
@@ -1224,18 +1224,6 @@
 
 > **props**: `object`
 
-#### components.MuiDialog.props.disableEscapeKeyDown
-
-> **disableEscapeKeyDown**: `object`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.description
-
-> **description**: `string` = `"Ako je tačno, pritiskom na taster za bekstvo neće se zatvoriti dijalog"`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.name
-
-> **name**: `string` = `"Onemogućite taster za bekstvo"`
-
 #### components.MuiDialog.props.fullScreen
 
 > **fullScreen**: `object`
@@ -1740,18 +1728,6 @@
 
 > **props**: `object`
 
-#### components.MuiStack.props.alignItems
-
-> **alignItems**: `object`
-
-#### components.MuiStack.props.alignItems.description
-
-> **description**: `string` = `"Kontroliše poravnanje poprečne ose"`
-
-#### components.MuiStack.props.alignItems.name
-
-> **name**: `string` = `"Poravnajte stavke"`
-
 #### components.MuiStack.props.direction
 
 > **direction**: `object`
@@ -1763,30 +1739,6 @@
 #### components.MuiStack.props.direction.name
 
 > **name**: `string` = `"Pravac"`
-
-#### components.MuiStack.props.flexWrap
-
-> **flexWrap**: `object`
-
-#### components.MuiStack.props.flexWrap.description
-
-> **description**: `string` = `"Kontroliše da li se stavke umotavaju na više linija"`
-
-#### components.MuiStack.props.flexWrap.name
-
-> **name**: `string` = `"Flek omotač"`
-
-#### components.MuiStack.props.justifyContent
-
-> **justifyContent**: `object`
-
-#### components.MuiStack.props.justifyContent.description
-
-> **description**: `string` = `"Kontrolira poravnanje glavne ose"`
-
-#### components.MuiStack.props.justifyContent.name
-
-> **name**: `string` = `"Opravdajte sadržaj"`
 
 #### components.MuiStack.props.spacing
 

@@ -4,7 +4,7 @@ Props for the MuiDialog component.
 
 ## Extends
 
-- `Omit`\<`DialogProps`, `"aria-dropeffect"` \| `"aria-grabbed"` \| `"Backdrop"` \| `"BackdropComponent"` \| `"BackdropProps"` \| `"components"` \| `"componentsProps"` \| `"onKeyPress"` \| `"onKeyPressCapture"` \| `"PaperProps"` \| `"Root"` \| `"TransitionComponent"` \| `"TransitionProps"`\>
+- `DialogProps`
 
 ## Properties
 
@@ -14,7 +14,7 @@ Props for the MuiDialog component.
 
 #### Inherited from
 
-`Omit.about`
+`DialogProps.about`
 
 ***
 
@@ -24,7 +24,7 @@ Props for the MuiDialog component.
 
 #### Inherited from
 
-`Omit.accessKey`
+`DialogProps.accessKey`
 
 ***
 
@@ -36,7 +36,7 @@ Identifies the currently active element when DOM focus is on a composite widget,
 
 #### Inherited from
 
-`Omit.aria-activedescendant`
+`DialogProps.aria-activedescendant`
 
 ***
 
@@ -48,7 +48,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 #### Inherited from
 
-`Omit.aria-atomic`
+`DialogProps.aria-atomic`
 
 ***
 
@@ -61,7 +61,7 @@ presented if they are made.
 
 #### Inherited from
 
-`Omit.aria-autocomplete`
+`DialogProps.aria-autocomplete`
 
 ***
 
@@ -77,7 +77,7 @@ aria-label.
 
 #### Inherited from
 
-`Omit.aria-braillelabel`
+`DialogProps.aria-braillelabel`
 
 ***
 
@@ -93,7 +93,7 @@ aria-roledescription.
 
 #### Inherited from
 
-`Omit.aria-brailleroledescription`
+`DialogProps.aria-brailleroledescription`
 
 ***
 
@@ -103,7 +103,7 @@ aria-roledescription.
 
 #### Inherited from
 
-`Omit.aria-busy`
+`DialogProps.aria-busy`
 
 ***
 
@@ -120,7 +120,7 @@ Indicates the current "checked" state of checkboxes, radio buttons, and other wi
 
 #### Inherited from
 
-`Omit.aria-checked`
+`DialogProps.aria-checked`
 
 ***
 
@@ -136,7 +136,7 @@ aria-colindex.
 
 #### Inherited from
 
-`Omit.aria-colcount`
+`DialogProps.aria-colcount`
 
 ***
 
@@ -153,7 +153,7 @@ Defines an element's column index or position with respect to the total number o
 
 #### Inherited from
 
-`Omit.aria-colindex`
+`DialogProps.aria-colindex`
 
 ***
 
@@ -169,7 +169,7 @@ aria-rowindextext.
 
 #### Inherited from
 
-`Omit.aria-colindextext`
+`DialogProps.aria-colindextext`
 
 ***
 
@@ -186,7 +186,7 @@ Defines the number of columns spanned by a cell or gridcell within a table, grid
 
 #### Inherited from
 
-`Omit.aria-colspan`
+`DialogProps.aria-colspan`
 
 ***
 
@@ -202,7 +202,7 @@ aria-owns.
 
 #### Inherited from
 
-`Omit.aria-controls`
+`DialogProps.aria-controls`
 
 ***
 
@@ -214,7 +214,7 @@ Indicates the element that represents the current item within a container or set
 
 #### Inherited from
 
-`Omit.aria-current`
+`DialogProps.aria-current`
 
 ***
 
@@ -226,7 +226,7 @@ The id(s) of the element(s) that describe the dialog.
 
 #### Inherited from
 
-`Omit.aria-describedby`
+`DialogProps.aria-describedby`
 
 ***
 
@@ -242,7 +242,7 @@ related aria-describedby.
 
 #### Inherited from
 
-`Omit.aria-description`
+`DialogProps.aria-description`
 
 ***
 
@@ -258,7 +258,7 @@ aria-describedby.
 
 #### Inherited from
 
-`Omit.aria-details`
+`DialogProps.aria-details`
 
 ***
 
@@ -275,7 +275,23 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 #### Inherited from
 
-`Omit.aria-disabled`
+`DialogProps.aria-disabled`
+
+***
+
+### ~~aria-dropeffect?~~
+
+> `optional` **aria-dropeffect?**: `"copy"` \| `"execute"` \| `"link"` \| `"move"` \| `"none"` \| `"popup"`
+
+Indicates what functions can be performed when a dragged object is released on the drop target.
+
+#### Deprecated
+
+in ARIA 1.1
+
+#### Inherited from
+
+`DialogProps.aria-dropeffect`
 
 ***
 
@@ -292,7 +308,7 @@ Identifies the element that provides an error message for the object.
 
 #### Inherited from
 
-`Omit.aria-errormessage`
+`DialogProps.aria-errormessage`
 
 ***
 
@@ -304,7 +320,7 @@ Indicates whether the element, or another grouping element it controls, is curre
 
 #### Inherited from
 
-`Omit.aria-expanded`
+`DialogProps.aria-expanded`
 
 ***
 
@@ -317,7 +333,23 @@ allows assistive technology to override the general default of reading in docume
 
 #### Inherited from
 
-`Omit.aria-flowto`
+`DialogProps.aria-flowto`
+
+***
+
+### ~~aria-grabbed?~~
+
+> `optional` **aria-grabbed?**: `Booleanish`
+
+Indicates an element's "grabbed" state in a drag-and-drop operation.
+
+#### Deprecated
+
+in ARIA 1.1
+
+#### Inherited from
+
+`DialogProps.aria-grabbed`
 
 ***
 
@@ -329,7 +361,7 @@ Indicates the availability and type of interactive popup element, such as menu o
 
 #### Inherited from
 
-`Omit.aria-haspopup`
+`DialogProps.aria-haspopup`
 
 ***
 
@@ -345,7 +377,7 @@ aria-disabled.
 
 #### Inherited from
 
-`Omit.aria-hidden`
+`DialogProps.aria-hidden`
 
 ***
 
@@ -361,7 +393,7 @@ aria-errormessage.
 
 #### Inherited from
 
-`Omit.aria-invalid`
+`DialogProps.aria-invalid`
 
 ***
 
@@ -373,7 +405,7 @@ Indicates keyboard shortcuts that an author has implemented to activate or give 
 
 #### Inherited from
 
-`Omit.aria-keyshortcuts`
+`DialogProps.aria-keyshortcuts`
 
 ***
 
@@ -389,7 +421,7 @@ aria-labelledby.
 
 #### Inherited from
 
-`Omit.aria-label`
+`DialogProps.aria-label`
 
 ***
 
@@ -401,7 +433,7 @@ The id(s) of the element(s) that label the dialog.
 
 #### Inherited from
 
-`Omit.aria-labelledby`
+`DialogProps.aria-labelledby`
 
 ***
 
@@ -413,7 +445,7 @@ Defines the hierarchical level of an element within a structure.
 
 #### Inherited from
 
-`Omit.aria-level`
+`DialogProps.aria-level`
 
 ***
 
@@ -425,7 +457,7 @@ Indicates that an element will be updated, and describes the types of updates th
 
 #### Inherited from
 
-`Omit.aria-live`
+`DialogProps.aria-live`
 
 ***
 
@@ -444,7 +476,7 @@ true
 
 #### Inherited from
 
-`Omit.aria-modal`
+`DialogProps.aria-modal`
 
 ***
 
@@ -456,7 +488,7 @@ Indicates whether a text box accepts multiple lines of input or only a single li
 
 #### Inherited from
 
-`Omit.aria-multiline`
+`DialogProps.aria-multiline`
 
 ***
 
@@ -468,7 +500,7 @@ Indicates that the user may select more than one item from the current selectabl
 
 #### Inherited from
 
-`Omit.aria-multiselectable`
+`DialogProps.aria-multiselectable`
 
 ***
 
@@ -480,7 +512,7 @@ Indicates whether the element's orientation is horizontal, vertical, or unknown/
 
 #### Inherited from
 
-`Omit.aria-orientation`
+`DialogProps.aria-orientation`
 
 ***
 
@@ -497,7 +529,7 @@ aria-controls.
 
 #### Inherited from
 
-`Omit.aria-owns`
+`DialogProps.aria-owns`
 
 ***
 
@@ -510,7 +542,7 @@ A hint could be a sample value or a brief description of the expected format.
 
 #### Inherited from
 
-`Omit.aria-placeholder`
+`DialogProps.aria-placeholder`
 
 ***
 
@@ -526,7 +558,7 @@ aria-setsize.
 
 #### Inherited from
 
-`Omit.aria-posinset`
+`DialogProps.aria-posinset`
 
 ***
 
@@ -543,7 +575,7 @@ Indicates the current "pressed" state of toggle buttons.
 
 #### Inherited from
 
-`Omit.aria-pressed`
+`DialogProps.aria-pressed`
 
 ***
 
@@ -559,7 +591,7 @@ aria-disabled.
 
 #### Inherited from
 
-`Omit.aria-readonly`
+`DialogProps.aria-readonly`
 
 ***
 
@@ -575,7 +607,7 @@ aria-atomic.
 
 #### Inherited from
 
-`Omit.aria-relevant`
+`DialogProps.aria-relevant`
 
 ***
 
@@ -587,7 +619,7 @@ Indicates that user input is required on the element before a form may be submit
 
 #### Inherited from
 
-`Omit.aria-required`
+`DialogProps.aria-required`
 
 ***
 
@@ -599,7 +631,7 @@ Defines a human-readable, author-localized description for the role of an elemen
 
 #### Inherited from
 
-`Omit.aria-roledescription`
+`DialogProps.aria-roledescription`
 
 ***
 
@@ -615,7 +647,7 @@ aria-rowindex.
 
 #### Inherited from
 
-`Omit.aria-rowcount`
+`DialogProps.aria-rowcount`
 
 ***
 
@@ -632,7 +664,7 @@ Defines an element's row index or position with respect to the total number of r
 
 #### Inherited from
 
-`Omit.aria-rowindex`
+`DialogProps.aria-rowindex`
 
 ***
 
@@ -648,7 +680,7 @@ aria-colindextext.
 
 #### Inherited from
 
-`Omit.aria-rowindextext`
+`DialogProps.aria-rowindextext`
 
 ***
 
@@ -665,7 +697,7 @@ Defines the number of rows spanned by a cell or gridcell within a table, grid, o
 
 #### Inherited from
 
-`Omit.aria-rowspan`
+`DialogProps.aria-rowspan`
 
 ***
 
@@ -682,7 +714,7 @@ Indicates the current "selected" state of various widgets.
 
 #### Inherited from
 
-`Omit.aria-selected`
+`DialogProps.aria-selected`
 
 ***
 
@@ -698,7 +730,7 @@ aria-posinset.
 
 #### Inherited from
 
-`Omit.aria-setsize`
+`DialogProps.aria-setsize`
 
 ***
 
@@ -710,7 +742,7 @@ Indicates if items in a table or grid are sorted in ascending or descending orde
 
 #### Inherited from
 
-`Omit.aria-sort`
+`DialogProps.aria-sort`
 
 ***
 
@@ -722,7 +754,7 @@ Defines the maximum allowed value for a range widget.
 
 #### Inherited from
 
-`Omit.aria-valuemax`
+`DialogProps.aria-valuemax`
 
 ***
 
@@ -734,7 +766,7 @@ Defines the minimum allowed value for a range widget.
 
 #### Inherited from
 
-`Omit.aria-valuemin`
+`DialogProps.aria-valuemin`
 
 ***
 
@@ -750,7 +782,7 @@ aria-valuetext.
 
 #### Inherited from
 
-`Omit.aria-valuenow`
+`DialogProps.aria-valuenow`
 
 ***
 
@@ -762,7 +794,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 #### Inherited from
 
-`Omit.aria-valuetext`
+`DialogProps.aria-valuetext`
 
 ***
 
@@ -772,7 +804,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 #### Inherited from
 
-`Omit.autoCapitalize`
+`DialogProps.autoCapitalize`
 
 ***
 
@@ -782,7 +814,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 #### Inherited from
 
-`Omit.autoCorrect`
+`DialogProps.autoCorrect`
 
 ***
 
@@ -792,7 +824,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 #### Inherited from
 
-`Omit.autoFocus`
+`DialogProps.autoFocus`
 
 ***
 
@@ -802,7 +834,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 #### Inherited from
 
-`Omit.autoSave`
+`DialogProps.autoSave`
 
 ***
 
@@ -814,7 +846,7 @@ Dialog children, usually the included sub-components.
 
 #### Inherited from
 
-`Omit.children`
+`DialogProps.children`
 
 ***
 
@@ -826,7 +858,7 @@ Override or extend the styles applied to the component.
 
 #### Inherited from
 
-`Omit.classes`
+`DialogProps.classes`
 
 ***
 
@@ -844,7 +876,7 @@ false
 
 #### Inherited from
 
-`Omit.closeAfterTransition`
+`DialogProps.closeAfterTransition`
 
 ***
 
@@ -854,7 +886,7 @@ false
 
 #### Inherited from
 
-`Omit.color`
+`DialogProps.color`
 
 ***
 
@@ -864,7 +896,7 @@ false
 
 #### Inherited from
 
-`Omit.component`
+`DialogProps.component`
 
 ***
 
@@ -883,7 +915,7 @@ so it's simply `document.body` most of the time.
 
 #### Inherited from
 
-`Omit.container`
+`DialogProps.container`
 
 ***
 
@@ -893,7 +925,7 @@ so it's simply `document.body` most of the time.
 
 #### Inherited from
 
-`Omit.content`
+`DialogProps.content`
 
 ***
 
@@ -903,7 +935,7 @@ so it's simply `document.body` most of the time.
 
 #### Inherited from
 
-`Omit.contentEditable`
+`DialogProps.contentEditable`
 
 ***
 
@@ -913,7 +945,7 @@ so it's simply `document.body` most of the time.
 
 #### Inherited from
 
-`Omit.contextMenu`
+`DialogProps.contextMenu`
 
 ***
 
@@ -927,7 +959,7 @@ so it's simply `document.body` most of the time.
 
 #### Inherited from
 
-`Omit.dangerouslySetInnerHTML`
+`DialogProps.dangerouslySetInnerHTML`
 
 ***
 
@@ -937,7 +969,7 @@ so it's simply `document.body` most of the time.
 
 #### Inherited from
 
-`Omit.datatype`
+`DialogProps.datatype`
 
 ***
 
@@ -947,7 +979,7 @@ so it's simply `document.body` most of the time.
 
 #### Inherited from
 
-`Omit.defaultChecked`
+`DialogProps.defaultChecked`
 
 ***
 
@@ -957,7 +989,7 @@ so it's simply `document.body` most of the time.
 
 #### Inherited from
 
-`Omit.defaultValue`
+`DialogProps.defaultValue`
 
 ***
 
@@ -967,7 +999,7 @@ so it's simply `document.body` most of the time.
 
 #### Inherited from
 
-`Omit.dir`
+`DialogProps.dir`
 
 ***
 
@@ -990,7 +1022,7 @@ false
 
 #### Inherited from
 
-`Omit.disableAutoFocus`
+`DialogProps.disableAutoFocus`
 
 ***
 
@@ -1011,25 +1043,7 @@ false
 
 #### Inherited from
 
-`Omit.disableEnforceFocus`
-
-***
-
-### disableEscapeKeyDown?
-
-> `optional` **disableEscapeKeyDown?**: `boolean`
-
-If `true`, hitting escape will not fire the `onClose` callback.
-
-#### Default
-
-```ts
-false
-```
-
-#### Inherited from
-
-`Omit.disableEscapeKeyDown`
+`DialogProps.disableEnforceFocus`
 
 ***
 
@@ -1047,7 +1061,7 @@ false
 
 #### Inherited from
 
-`Omit.disablePortal`
+`DialogProps.disablePortal`
 
 ***
 
@@ -1066,7 +1080,7 @@ false
 
 #### Inherited from
 
-`Omit.disableRestoreFocus`
+`DialogProps.disableRestoreFocus`
 
 ***
 
@@ -1084,7 +1098,7 @@ false
 
 #### Inherited from
 
-`Omit.disableScrollLock`
+`DialogProps.disableScrollLock`
 
 ***
 
@@ -1094,7 +1108,7 @@ false
 
 #### Inherited from
 
-`Omit.draggable`
+`DialogProps.draggable`
 
 ***
 
@@ -1104,7 +1118,7 @@ false
 
 #### Inherited from
 
-`Omit.enterKeyHint`
+`DialogProps.enterKeyHint`
 
 ***
 
@@ -1118,7 +1132,7 @@ false
 
 #### Inherited from
 
-`Omit.exportparts`
+`DialogProps.exportparts`
 
 ***
 
@@ -1136,7 +1150,7 @@ false
 
 #### Inherited from
 
-`Omit.fullScreen`
+`DialogProps.fullScreen`
 
 ***
 
@@ -1156,7 +1170,7 @@ false
 
 #### Inherited from
 
-`Omit.fullWidth`
+`DialogProps.fullWidth`
 
 ***
 
@@ -1178,7 +1192,7 @@ Custom close handler function.
 
 #### Inherited from
 
-`Omit.hidden`
+`DialogProps.hidden`
 
 ***
 
@@ -1196,7 +1210,7 @@ false
 
 #### Inherited from
 
-`Omit.hideBackdrop`
+`DialogProps.hideBackdrop`
 
 ***
 
@@ -1206,7 +1220,7 @@ false
 
 #### Inherited from
 
-`Omit.id`
+`DialogProps.id`
 
 ***
 
@@ -1220,7 +1234,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 #### Inherited from
 
-`Omit.inert`
+`DialogProps.inert`
 
 ***
 
@@ -1230,7 +1244,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 #### Inherited from
 
-`Omit.inlist`
+`DialogProps.inlist`
 
 ***
 
@@ -1246,7 +1260,7 @@ Hints at the type of data that might be entered by the user while editing the el
 
 #### Inherited from
 
-`Omit.inputMode`
+`DialogProps.inputMode`
 
 ***
 
@@ -1262,7 +1276,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### Inherited from
 
-`Omit.is`
+`DialogProps.is`
 
 ***
 
@@ -1272,7 +1286,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### Inherited from
 
-`Omit.itemID`
+`DialogProps.itemID`
 
 ***
 
@@ -1282,7 +1296,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### Inherited from
 
-`Omit.itemProp`
+`DialogProps.itemProp`
 
 ***
 
@@ -1292,7 +1306,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### Inherited from
 
-`Omit.itemRef`
+`DialogProps.itemRef`
 
 ***
 
@@ -1302,7 +1316,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### Inherited from
 
-`Omit.itemScope`
+`DialogProps.itemScope`
 
 ***
 
@@ -1312,7 +1326,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### Inherited from
 
-`Omit.itemType`
+`DialogProps.itemType`
 
 ***
 
@@ -1332,7 +1346,7 @@ false
 
 #### Inherited from
 
-`Omit.keepMounted`
+`DialogProps.keepMounted`
 
 ***
 
@@ -1342,7 +1356,7 @@ false
 
 #### Inherited from
 
-`Omit.key`
+`DialogProps.key`
 
 ***
 
@@ -1352,7 +1366,7 @@ false
 
 #### Inherited from
 
-`Omit.lang`
+`DialogProps.lang`
 
 ***
 
@@ -1372,7 +1386,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.maxWidth`
+`DialogProps.maxWidth`
 
 ***
 
@@ -1382,7 +1396,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.nonce`
+`DialogProps.nonce`
 
 ***
 
@@ -1392,7 +1406,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onAbort`
+`DialogProps.onAbort`
 
 ***
 
@@ -1402,7 +1416,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onAbortCapture`
+`DialogProps.onAbortCapture`
 
 ***
 
@@ -1412,7 +1426,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onAnimationEnd`
+`DialogProps.onAnimationEnd`
 
 ***
 
@@ -1422,7 +1436,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onAnimationEndCapture`
+`DialogProps.onAnimationEndCapture`
 
 ***
 
@@ -1432,7 +1446,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onAnimationIteration`
+`DialogProps.onAnimationIteration`
 
 ***
 
@@ -1442,7 +1456,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onAnimationIterationCapture`
+`DialogProps.onAnimationIterationCapture`
 
 ***
 
@@ -1452,7 +1466,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onAnimationStart`
+`DialogProps.onAnimationStart`
 
 ***
 
@@ -1462,7 +1476,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onAnimationStartCapture`
+`DialogProps.onAnimationStartCapture`
 
 ***
 
@@ -1472,7 +1486,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onAuxClick`
+`DialogProps.onAuxClick`
 
 ***
 
@@ -1482,7 +1496,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onAuxClickCapture`
+`DialogProps.onAuxClickCapture`
 
 ***
 
@@ -1492,7 +1506,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onBeforeInput`
+`DialogProps.onBeforeInput`
 
 ***
 
@@ -1502,7 +1516,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onBeforeInputCapture`
+`DialogProps.onBeforeInputCapture`
 
 ***
 
@@ -1512,7 +1526,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onBeforeToggle`
+`DialogProps.onBeforeToggle`
 
 ***
 
@@ -1522,7 +1536,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onBlur`
+`DialogProps.onBlur`
 
 ***
 
@@ -1532,7 +1546,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onBlurCapture`
+`DialogProps.onBlurCapture`
 
 ***
 
@@ -1542,7 +1556,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onCanPlay`
+`DialogProps.onCanPlay`
 
 ***
 
@@ -1552,7 +1566,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onCanPlayCapture`
+`DialogProps.onCanPlayCapture`
 
 ***
 
@@ -1562,7 +1576,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onCanPlayThrough`
+`DialogProps.onCanPlayThrough`
 
 ***
 
@@ -1572,7 +1586,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onCanPlayThroughCapture`
+`DialogProps.onCanPlayThroughCapture`
 
 ***
 
@@ -1582,7 +1596,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onChange`
+`DialogProps.onChange`
 
 ***
 
@@ -1592,7 +1606,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onChangeCapture`
+`DialogProps.onChangeCapture`
 
 ***
 
@@ -1602,7 +1616,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onClick`
+`DialogProps.onClick`
 
 ***
 
@@ -1612,7 +1626,7 @@ Set to `false` to disable `maxWidth`.
 
 #### Inherited from
 
-`Omit.onClickCapture`
+`DialogProps.onClickCapture`
 
 ***
 
@@ -1640,7 +1654,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onClose`
+`DialogProps.onClose`
 
 ***
 
@@ -1650,7 +1664,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onCompositionEnd`
+`DialogProps.onCompositionEnd`
 
 ***
 
@@ -1660,7 +1674,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onCompositionEndCapture`
+`DialogProps.onCompositionEndCapture`
 
 ***
 
@@ -1670,7 +1684,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onCompositionStart`
+`DialogProps.onCompositionStart`
 
 ***
 
@@ -1680,7 +1694,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onCompositionStartCapture`
+`DialogProps.onCompositionStartCapture`
 
 ***
 
@@ -1690,7 +1704,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onCompositionUpdate`
+`DialogProps.onCompositionUpdate`
 
 ***
 
@@ -1700,7 +1714,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onCompositionUpdateCapture`
+`DialogProps.onCompositionUpdateCapture`
 
 ***
 
@@ -1710,7 +1724,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onContextMenu`
+`DialogProps.onContextMenu`
 
 ***
 
@@ -1720,7 +1734,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onContextMenuCapture`
+`DialogProps.onContextMenuCapture`
 
 ***
 
@@ -1730,7 +1744,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onCopy`
+`DialogProps.onCopy`
 
 ***
 
@@ -1740,7 +1754,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onCopyCapture`
+`DialogProps.onCopyCapture`
 
 ***
 
@@ -1750,7 +1764,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onCut`
+`DialogProps.onCut`
 
 ***
 
@@ -1760,7 +1774,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onCutCapture`
+`DialogProps.onCutCapture`
 
 ***
 
@@ -1770,7 +1784,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDoubleClick`
+`DialogProps.onDoubleClick`
 
 ***
 
@@ -1780,7 +1794,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDoubleClickCapture`
+`DialogProps.onDoubleClickCapture`
 
 ***
 
@@ -1790,7 +1804,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDrag`
+`DialogProps.onDrag`
 
 ***
 
@@ -1800,7 +1814,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragCapture`
+`DialogProps.onDragCapture`
 
 ***
 
@@ -1810,7 +1824,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragEnd`
+`DialogProps.onDragEnd`
 
 ***
 
@@ -1820,7 +1834,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragEndCapture`
+`DialogProps.onDragEndCapture`
 
 ***
 
@@ -1830,7 +1844,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragEnter`
+`DialogProps.onDragEnter`
 
 ***
 
@@ -1840,7 +1854,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragEnterCapture`
+`DialogProps.onDragEnterCapture`
 
 ***
 
@@ -1850,7 +1864,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragExit`
+`DialogProps.onDragExit`
 
 ***
 
@@ -1860,7 +1874,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragExitCapture`
+`DialogProps.onDragExitCapture`
 
 ***
 
@@ -1870,7 +1884,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragLeave`
+`DialogProps.onDragLeave`
 
 ***
 
@@ -1880,7 +1894,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragLeaveCapture`
+`DialogProps.onDragLeaveCapture`
 
 ***
 
@@ -1890,7 +1904,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragOver`
+`DialogProps.onDragOver`
 
 ***
 
@@ -1900,7 +1914,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragOverCapture`
+`DialogProps.onDragOverCapture`
 
 ***
 
@@ -1910,7 +1924,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragStart`
+`DialogProps.onDragStart`
 
 ***
 
@@ -1920,7 +1934,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDragStartCapture`
+`DialogProps.onDragStartCapture`
 
 ***
 
@@ -1930,7 +1944,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDrop`
+`DialogProps.onDrop`
 
 ***
 
@@ -1940,7 +1954,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDropCapture`
+`DialogProps.onDropCapture`
 
 ***
 
@@ -1950,7 +1964,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDurationChange`
+`DialogProps.onDurationChange`
 
 ***
 
@@ -1960,7 +1974,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onDurationChangeCapture`
+`DialogProps.onDurationChangeCapture`
 
 ***
 
@@ -1970,7 +1984,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onEmptied`
+`DialogProps.onEmptied`
 
 ***
 
@@ -1980,7 +1994,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onEmptiedCapture`
+`DialogProps.onEmptiedCapture`
 
 ***
 
@@ -1990,7 +2004,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onEncrypted`
+`DialogProps.onEncrypted`
 
 ***
 
@@ -2000,7 +2014,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onEncryptedCapture`
+`DialogProps.onEncryptedCapture`
 
 ***
 
@@ -2010,7 +2024,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onEnded`
+`DialogProps.onEnded`
 
 ***
 
@@ -2020,7 +2034,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onEndedCapture`
+`DialogProps.onEndedCapture`
 
 ***
 
@@ -2030,7 +2044,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onError`
+`DialogProps.onError`
 
 ***
 
@@ -2040,7 +2054,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onErrorCapture`
+`DialogProps.onErrorCapture`
 
 ***
 
@@ -2050,7 +2064,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onFocus`
+`DialogProps.onFocus`
 
 ***
 
@@ -2060,7 +2074,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onFocusCapture`
+`DialogProps.onFocusCapture`
 
 ***
 
@@ -2070,7 +2084,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onGotPointerCapture`
+`DialogProps.onGotPointerCapture`
 
 ***
 
@@ -2080,7 +2094,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onGotPointerCaptureCapture`
+`DialogProps.onGotPointerCaptureCapture`
 
 ***
 
@@ -2090,7 +2104,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onInput`
+`DialogProps.onInput`
 
 ***
 
@@ -2100,7 +2114,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onInputCapture`
+`DialogProps.onInputCapture`
 
 ***
 
@@ -2110,7 +2124,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onInvalid`
+`DialogProps.onInvalid`
 
 ***
 
@@ -2120,7 +2134,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onInvalidCapture`
+`DialogProps.onInvalidCapture`
 
 ***
 
@@ -2130,7 +2144,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onKeyDown`
+`DialogProps.onKeyDown`
 
 ***
 
@@ -2140,7 +2154,35 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onKeyDownCapture`
+`DialogProps.onKeyDownCapture`
+
+***
+
+### ~~onKeyPress?~~
+
+> `optional` **onKeyPress?**: `KeyboardEventHandler`\<`HTMLDivElement`\>
+
+#### Deprecated
+
+Use `onKeyUp` or `onKeyDown` instead
+
+#### Inherited from
+
+`DialogProps.onKeyPress`
+
+***
+
+### ~~onKeyPressCapture?~~
+
+> `optional` **onKeyPressCapture?**: `KeyboardEventHandler`\<`HTMLDivElement`\>
+
+#### Deprecated
+
+Use `onKeyUpCapture` or `onKeyDownCapture` instead
+
+#### Inherited from
+
+`DialogProps.onKeyPressCapture`
 
 ***
 
@@ -2150,7 +2192,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onKeyUp`
+`DialogProps.onKeyUp`
 
 ***
 
@@ -2160,7 +2202,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onKeyUpCapture`
+`DialogProps.onKeyUpCapture`
 
 ***
 
@@ -2170,7 +2212,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onLoad`
+`DialogProps.onLoad`
 
 ***
 
@@ -2180,7 +2222,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onLoadCapture`
+`DialogProps.onLoadCapture`
 
 ***
 
@@ -2190,7 +2232,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onLoadedData`
+`DialogProps.onLoadedData`
 
 ***
 
@@ -2200,7 +2242,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onLoadedDataCapture`
+`DialogProps.onLoadedDataCapture`
 
 ***
 
@@ -2210,7 +2252,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onLoadedMetadata`
+`DialogProps.onLoadedMetadata`
 
 ***
 
@@ -2220,7 +2262,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onLoadedMetadataCapture`
+`DialogProps.onLoadedMetadataCapture`
 
 ***
 
@@ -2230,7 +2272,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onLoadStart`
+`DialogProps.onLoadStart`
 
 ***
 
@@ -2240,7 +2282,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onLoadStartCapture`
+`DialogProps.onLoadStartCapture`
 
 ***
 
@@ -2250,7 +2292,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onLostPointerCapture`
+`DialogProps.onLostPointerCapture`
 
 ***
 
@@ -2260,7 +2302,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onLostPointerCaptureCapture`
+`DialogProps.onLostPointerCaptureCapture`
 
 ***
 
@@ -2270,7 +2312,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseDown`
+`DialogProps.onMouseDown`
 
 ***
 
@@ -2280,7 +2322,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseDownCapture`
+`DialogProps.onMouseDownCapture`
 
 ***
 
@@ -2290,7 +2332,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseEnter`
+`DialogProps.onMouseEnter`
 
 ***
 
@@ -2300,7 +2342,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseLeave`
+`DialogProps.onMouseLeave`
 
 ***
 
@@ -2310,7 +2352,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseMove`
+`DialogProps.onMouseMove`
 
 ***
 
@@ -2320,7 +2362,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseMoveCapture`
+`DialogProps.onMouseMoveCapture`
 
 ***
 
@@ -2330,7 +2372,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseOut`
+`DialogProps.onMouseOut`
 
 ***
 
@@ -2340,7 +2382,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseOutCapture`
+`DialogProps.onMouseOutCapture`
 
 ***
 
@@ -2350,7 +2392,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseOver`
+`DialogProps.onMouseOver`
 
 ***
 
@@ -2360,7 +2402,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseOverCapture`
+`DialogProps.onMouseOverCapture`
 
 ***
 
@@ -2370,7 +2412,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseUp`
+`DialogProps.onMouseUp`
 
 ***
 
@@ -2380,7 +2422,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 #### Inherited from
 
-`Omit.onMouseUpCapture`
+`DialogProps.onMouseUpCapture`
 
 ***
 
@@ -2402,7 +2444,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPaste`
+`DialogProps.onPaste`
 
 ***
 
@@ -2412,7 +2454,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPasteCapture`
+`DialogProps.onPasteCapture`
 
 ***
 
@@ -2422,7 +2464,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPause`
+`DialogProps.onPause`
 
 ***
 
@@ -2432,7 +2474,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPauseCapture`
+`DialogProps.onPauseCapture`
 
 ***
 
@@ -2442,7 +2484,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPlay`
+`DialogProps.onPlay`
 
 ***
 
@@ -2452,7 +2494,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPlayCapture`
+`DialogProps.onPlayCapture`
 
 ***
 
@@ -2462,7 +2504,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPlaying`
+`DialogProps.onPlaying`
 
 ***
 
@@ -2472,7 +2514,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPlayingCapture`
+`DialogProps.onPlayingCapture`
 
 ***
 
@@ -2482,7 +2524,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerCancel`
+`DialogProps.onPointerCancel`
 
 ***
 
@@ -2492,7 +2534,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerCancelCapture`
+`DialogProps.onPointerCancelCapture`
 
 ***
 
@@ -2502,7 +2544,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerDown`
+`DialogProps.onPointerDown`
 
 ***
 
@@ -2512,7 +2554,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerDownCapture`
+`DialogProps.onPointerDownCapture`
 
 ***
 
@@ -2522,7 +2564,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerEnter`
+`DialogProps.onPointerEnter`
 
 ***
 
@@ -2532,7 +2574,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerLeave`
+`DialogProps.onPointerLeave`
 
 ***
 
@@ -2542,7 +2584,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerMove`
+`DialogProps.onPointerMove`
 
 ***
 
@@ -2552,7 +2594,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerMoveCapture`
+`DialogProps.onPointerMoveCapture`
 
 ***
 
@@ -2562,7 +2604,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerOut`
+`DialogProps.onPointerOut`
 
 ***
 
@@ -2572,7 +2614,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerOutCapture`
+`DialogProps.onPointerOutCapture`
 
 ***
 
@@ -2582,7 +2624,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerOver`
+`DialogProps.onPointerOver`
 
 ***
 
@@ -2592,7 +2634,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerOverCapture`
+`DialogProps.onPointerOverCapture`
 
 ***
 
@@ -2602,7 +2644,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerUp`
+`DialogProps.onPointerUp`
 
 ***
 
@@ -2612,7 +2654,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onPointerUpCapture`
+`DialogProps.onPointerUpCapture`
 
 ***
 
@@ -2622,7 +2664,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onProgress`
+`DialogProps.onProgress`
 
 ***
 
@@ -2632,7 +2674,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onProgressCapture`
+`DialogProps.onProgressCapture`
 
 ***
 
@@ -2642,7 +2684,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onRateChange`
+`DialogProps.onRateChange`
 
 ***
 
@@ -2652,7 +2694,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onRateChangeCapture`
+`DialogProps.onRateChangeCapture`
 
 ***
 
@@ -2662,7 +2704,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onReset`
+`DialogProps.onReset`
 
 ***
 
@@ -2672,7 +2714,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onResetCapture`
+`DialogProps.onResetCapture`
 
 ***
 
@@ -2682,7 +2724,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onScroll`
+`DialogProps.onScroll`
 
 ***
 
@@ -2692,7 +2734,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onScrollCapture`
+`DialogProps.onScrollCapture`
 
 ***
 
@@ -2702,7 +2744,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onScrollEnd`
+`DialogProps.onScrollEnd`
 
 ***
 
@@ -2712,7 +2754,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onScrollEndCapture`
+`DialogProps.onScrollEndCapture`
 
 ***
 
@@ -2722,7 +2764,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onSeeked`
+`DialogProps.onSeeked`
 
 ***
 
@@ -2732,7 +2774,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onSeekedCapture`
+`DialogProps.onSeekedCapture`
 
 ***
 
@@ -2742,7 +2784,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onSeeking`
+`DialogProps.onSeeking`
 
 ***
 
@@ -2752,7 +2794,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onSeekingCapture`
+`DialogProps.onSeekingCapture`
 
 ***
 
@@ -2762,7 +2804,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onSelect`
+`DialogProps.onSelect`
 
 ***
 
@@ -2772,7 +2814,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onSelectCapture`
+`DialogProps.onSelectCapture`
 
 ***
 
@@ -2782,7 +2824,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onStalled`
+`DialogProps.onStalled`
 
 ***
 
@@ -2792,7 +2834,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onStalledCapture`
+`DialogProps.onStalledCapture`
 
 ***
 
@@ -2802,7 +2844,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onSubmit`
+`DialogProps.onSubmit`
 
 ***
 
@@ -2812,7 +2854,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onSubmitCapture`
+`DialogProps.onSubmitCapture`
 
 ***
 
@@ -2822,7 +2864,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onSuspend`
+`DialogProps.onSuspend`
 
 ***
 
@@ -2832,7 +2874,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onSuspendCapture`
+`DialogProps.onSuspendCapture`
 
 ***
 
@@ -2842,7 +2884,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTimeUpdate`
+`DialogProps.onTimeUpdate`
 
 ***
 
@@ -2852,7 +2894,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTimeUpdateCapture`
+`DialogProps.onTimeUpdateCapture`
 
 ***
 
@@ -2862,7 +2904,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onToggle`
+`DialogProps.onToggle`
 
 ***
 
@@ -2872,7 +2914,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTouchCancel`
+`DialogProps.onTouchCancel`
 
 ***
 
@@ -2882,7 +2924,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTouchCancelCapture`
+`DialogProps.onTouchCancelCapture`
 
 ***
 
@@ -2892,7 +2934,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTouchEnd`
+`DialogProps.onTouchEnd`
 
 ***
 
@@ -2902,7 +2944,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTouchEndCapture`
+`DialogProps.onTouchEndCapture`
 
 ***
 
@@ -2912,7 +2954,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTouchMove`
+`DialogProps.onTouchMove`
 
 ***
 
@@ -2922,7 +2964,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTouchMoveCapture`
+`DialogProps.onTouchMoveCapture`
 
 ***
 
@@ -2932,7 +2974,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTouchStart`
+`DialogProps.onTouchStart`
 
 ***
 
@@ -2942,7 +2984,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTouchStartCapture`
+`DialogProps.onTouchStartCapture`
 
 ***
 
@@ -2952,7 +2994,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTransitionCancel`
+`DialogProps.onTransitionCancel`
 
 ***
 
@@ -2962,7 +3004,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTransitionCancelCapture`
+`DialogProps.onTransitionCancelCapture`
 
 ***
 
@@ -2972,7 +3014,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTransitionEnd`
+`DialogProps.onTransitionEnd`
 
 ***
 
@@ -2982,7 +3024,7 @@ Callback fired when the dialog opens.
 
 #### Inherited from
 
-`Omit.onTransitionEndCapture`
+`DialogProps.onTransitionEndCapture`
 
 ***
 
@@ -2998,7 +3040,7 @@ A function called when a transition enters.
 
 #### Inherited from
 
-`Omit.onTransitionEnter`
+`DialogProps.onTransitionEnter`
 
 ***
 
@@ -3014,7 +3056,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onTransitionExited`
+`DialogProps.onTransitionExited`
 
 ***
 
@@ -3024,7 +3066,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onTransitionRun`
+`DialogProps.onTransitionRun`
 
 ***
 
@@ -3034,7 +3076,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onTransitionRunCapture`
+`DialogProps.onTransitionRunCapture`
 
 ***
 
@@ -3044,7 +3086,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onTransitionStart`
+`DialogProps.onTransitionStart`
 
 ***
 
@@ -3054,7 +3096,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onTransitionStartCapture`
+`DialogProps.onTransitionStartCapture`
 
 ***
 
@@ -3064,7 +3106,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onVolumeChange`
+`DialogProps.onVolumeChange`
 
 ***
 
@@ -3074,7 +3116,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onVolumeChangeCapture`
+`DialogProps.onVolumeChangeCapture`
 
 ***
 
@@ -3084,7 +3126,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onWaiting`
+`DialogProps.onWaiting`
 
 ***
 
@@ -3094,7 +3136,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onWaitingCapture`
+`DialogProps.onWaitingCapture`
 
 ***
 
@@ -3104,7 +3146,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onWheel`
+`DialogProps.onWheel`
 
 ***
 
@@ -3114,7 +3156,7 @@ A function called when a transition has exited.
 
 #### Inherited from
 
-`Omit.onWheelCapture`
+`DialogProps.onWheelCapture`
 
 ***
 
@@ -3126,7 +3168,7 @@ If `true`, the component is shown.
 
 #### Inherited from
 
-`Omit.open`
+`DialogProps.open`
 
 ***
 
@@ -3144,7 +3186,7 @@ Paper
 
 #### Inherited from
 
-`Omit.PaperComponent`
+`DialogProps.PaperComponent`
 
 ***
 
@@ -3158,7 +3200,7 @@ Paper
 
 #### Inherited from
 
-`Omit.part`
+`DialogProps.part`
 
 ***
 
@@ -3168,7 +3210,7 @@ Paper
 
 #### Inherited from
 
-`Omit.popover`
+`DialogProps.popover`
 
 ***
 
@@ -3178,7 +3220,7 @@ Paper
 
 #### Inherited from
 
-`Omit.popoverTarget`
+`DialogProps.popoverTarget`
 
 ***
 
@@ -3188,7 +3230,7 @@ Paper
 
 #### Inherited from
 
-`Omit.popoverTargetAction`
+`DialogProps.popoverTargetAction`
 
 ***
 
@@ -3198,7 +3240,7 @@ Paper
 
 #### Inherited from
 
-`Omit.prefix`
+`DialogProps.prefix`
 
 ***
 
@@ -3208,7 +3250,7 @@ Paper
 
 #### Inherited from
 
-`Omit.property`
+`DialogProps.property`
 
 ***
 
@@ -3218,7 +3260,7 @@ Paper
 
 #### Inherited from
 
-`Omit.radioGroup`
+`DialogProps.radioGroup`
 
 ***
 
@@ -3236,7 +3278,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 #### Inherited from
 
-`Omit.ref`
+`DialogProps.ref`
 
 ***
 
@@ -3246,7 +3288,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 #### Inherited from
 
-`Omit.rel`
+`DialogProps.rel`
 
 ***
 
@@ -3256,7 +3298,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 #### Inherited from
 
-`Omit.resource`
+`DialogProps.resource`
 
 ***
 
@@ -3266,7 +3308,7 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 #### Inherited from
 
-`Omit.results`
+`DialogProps.results`
 
 ***
 
@@ -3276,17 +3318,27 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 #### Inherited from
 
-`Omit.rev`
+`DialogProps.rev`
 
 ***
 
 ### role?
 
-> `optional` **role?**: `AriaRole`
+> `optional` **role?**: `"alertdialog"` \| `"dialog"`
+
+The ARIA role for the dialog element.
+The main dialog role is `dialog`, but `alertdialog` can be used if the content of the dialog requires immediate attention.
+See https://www.w3.org/TR/wai-aria-1.2/#dialog and https://www.w3.org/TR/wai-aria-1.2/#alertdialog for more details.
+
+#### Default
+
+```ts
+'dialog'
+```
 
 #### Inherited from
 
-`Omit.role`
+`DialogProps.role`
 
 ***
 
@@ -3304,7 +3356,7 @@ Determine the container for scrolling the dialog.
 
 #### Inherited from
 
-`Omit.scroll`
+`DialogProps.scroll`
 
 ***
 
@@ -3314,7 +3366,7 @@ Determine the container for scrolling the dialog.
 
 #### Inherited from
 
-`Omit.security`
+`DialogProps.security`
 
 ***
 
@@ -3324,7 +3376,7 @@ Determine the container for scrolling the dialog.
 
 #### Inherited from
 
-`Omit.slot`
+`DialogProps.slot`
 
 ***
 
@@ -3364,7 +3416,7 @@ By default, the available props are based on the [Modal](https://mui.com/materia
 
 #### transition?
 
-> `optional` **transition?**: `SlotComponentProps`\<`ElementType`\<`any`, keyof IntrinsicElements\>, `TransitionProps` & `DialogTransitionSlotPropsOverrides`, `DialogOwnerState`\>
+> `optional` **transition?**: `SlotComponentProps`\<`ElementType`\<`TransitionProps`, keyof IntrinsicElements\>, `TransitionProps` & `DialogTransitionSlotPropsOverrides`, `DialogOwnerState`\>
 
 Props forwarded to the transition slot.
 By default, the available props are based on the [Fade](https://mui.com/material-ui/api/fade/#props) component.
@@ -3377,7 +3429,7 @@ By default, the available props are based on the [Fade](https://mui.com/material
 
 #### Inherited from
 
-`Omit.slotProps`
+`DialogProps.slotProps`
 
 ***
 
@@ -3395,7 +3447,7 @@ The components used for each slot inside.
 
 #### Inherited from
 
-`Omit.slots`
+`DialogProps.slots`
 
 ***
 
@@ -3405,7 +3457,7 @@ The components used for each slot inside.
 
 #### Inherited from
 
-`Omit.spellCheck`
+`DialogProps.spellCheck`
 
 ***
 
@@ -3415,7 +3467,7 @@ The components used for each slot inside.
 
 #### Inherited from
 
-`Omit.style`
+`DialogProps.style`
 
 ***
 
@@ -3425,7 +3477,7 @@ The components used for each slot inside.
 
 #### Inherited from
 
-`Omit.suppressContentEditableWarning`
+`DialogProps.suppressContentEditableWarning`
 
 ***
 
@@ -3435,7 +3487,7 @@ The components used for each slot inside.
 
 #### Inherited from
 
-`Omit.suppressHydrationWarning`
+`DialogProps.suppressHydrationWarning`
 
 ***
 
@@ -3447,7 +3499,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 #### Inherited from
 
-`Omit.sx`
+`DialogProps.sx`
 
 ***
 
@@ -3457,7 +3509,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 #### Inherited from
 
-`Omit.tabIndex`
+`DialogProps.tabIndex`
 
 ***
 
@@ -3467,13 +3519,13 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 #### Inherited from
 
-`Omit.title`
+`DialogProps.title`
 
 ***
 
 ### transitionDuration?
 
-> `optional` **transitionDuration?**: \{ `appear?`: `number`; `enter?`: `number`; `exit?`: `number`; \} \| \{ `appear?`: `number`; `enter?`: `number`; `exit?`: `number`; \} \| `number`
+> `optional` **transitionDuration?**: \{ `appear?`: `number`; `enter?`: `number`; `exit?`: `number`; \} \| `number`
 
 The duration for the transition, in milliseconds.
 You may specify a single timeout for all transitions, or individually with an object.
@@ -3489,7 +3541,7 @@ You may specify a single timeout for all transitions, or individually with an ob
 
 #### Inherited from
 
-`Omit.transitionDuration`
+`DialogProps.transitionDuration`
 
 ***
 
@@ -3499,7 +3551,7 @@ You may specify a single timeout for all transitions, or individually with an ob
 
 #### Inherited from
 
-`Omit.translate`
+`DialogProps.translate`
 
 ***
 
@@ -3509,7 +3561,7 @@ You may specify a single timeout for all transitions, or individually with an ob
 
 #### Inherited from
 
-`Omit.typeof`
+`DialogProps.typeof`
 
 ***
 
@@ -3519,7 +3571,7 @@ You may specify a single timeout for all transitions, or individually with an ob
 
 #### Inherited from
 
-`Omit.unselectable`
+`DialogProps.unselectable`
 
 ***
 
@@ -3529,4 +3581,4 @@ You may specify a single timeout for all transitions, or individually with an ob
 
 #### Inherited from
 
-`Omit.vocab`
+`DialogProps.vocab`

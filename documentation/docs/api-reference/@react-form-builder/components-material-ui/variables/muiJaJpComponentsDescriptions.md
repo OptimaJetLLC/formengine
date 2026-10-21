@@ -68,6 +68,18 @@
 
 > **commonProperties**: `object`
 
+#### commonProperties.align
+
+> **align**: `object`
+
+#### commonProperties.align.description
+
+> **description**: `string` = `"テキスト配置"`
+
+#### commonProperties.align.name
+
+> **name**: `string` = `"アラインメント"`
+
 #### commonProperties.checked
 
 > **checked**: `object`
@@ -295,18 +307,6 @@
 #### commonProperties.sx.name
 
 > **name**: `string` = `"セックス"`
-
-#### commonProperties.textAlign
-
-> **textAlign**: `object`
-
-#### commonProperties.textAlign.description
-
-> **description**: `string` = `"テキスト配置"`
-
-#### commonProperties.textAlign.name
-
-> **name**: `string` = `"アラインメント"`
 
 #### commonProperties.value
 
@@ -1224,18 +1224,6 @@
 
 > **props**: `object`
 
-#### components.MuiDialog.props.disableEscapeKeyDown
-
-> **disableEscapeKeyDown**: `object`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.description
-
-> **description**: `string` = `"true の場合、Esc キーを押してもダイアログは閉じません"`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.name
-
-> **name**: `string` = `"エスケープキーダウンを無効にする"`
-
 #### components.MuiDialog.props.fullScreen
 
 > **fullScreen**: `object`
@@ -1740,18 +1728,6 @@
 
 > **props**: `object`
 
-#### components.MuiStack.props.alignItems
-
-> **alignItems**: `object`
-
-#### components.MuiStack.props.alignItems.description
-
-> **description**: `string` = `"軸間の位置合わせを制御します"`
-
-#### components.MuiStack.props.alignItems.name
-
-> **name**: `string` = `"項目を揃える"`
-
 #### components.MuiStack.props.direction
 
 > **direction**: `object`
@@ -1763,30 +1739,6 @@
 #### components.MuiStack.props.direction.name
 
 > **name**: `string` = `"方向"`
-
-#### components.MuiStack.props.flexWrap
-
-> **flexWrap**: `object`
-
-#### components.MuiStack.props.flexWrap.description
-
-> **description**: `string` = `"項目を複数行に折り返すかどうかを制御します"`
-
-#### components.MuiStack.props.flexWrap.name
-
-> **name**: `string` = `"フレックスラップ"`
-
-#### components.MuiStack.props.justifyContent
-
-> **justifyContent**: `object`
-
-#### components.MuiStack.props.justifyContent.description
-
-> **description**: `string` = `"主軸の位置合わせを制御します"`
-
-#### components.MuiStack.props.justifyContent.name
-
-> **name**: `string` = `"コンテンツを正当化する"`
 
 #### components.MuiStack.props.spacing
 

@@ -23,6 +23,10 @@
     }
   },
   "commonProperties": {
+    "align": {
+      "description": "Alignement du texte",
+      "name": "Alignement"
+    },
     "checked": {
       "description": "Si c'est vrai, le composant est vérifié",
       "name": "Vérifié"
@@ -98,10 +102,6 @@
     "sx": {
       "description": "L'accessoire système qui permet de définir les remplacements du système ainsi que des styles CSS supplémentaires",
       "name": "Sexe"
-    },
-    "textAlign": {
-      "description": "Alignement du texte",
-      "name": "Alignement"
     },
     "value": {
       "description": "La valeur du composant",
@@ -413,10 +413,6 @@
       "description": "Composant de dialogue modal qui affiche le contenu dans une superposition",
       "name": "Dialogue",
       "props": {
-        "disableEscapeKeyDown": {
-          "description": "Si c'est vrai, appuyer sur la touche d'échappement ne fermera pas la boîte de dialogue",
-          "name": "Désactiver la touche d'échappement"
-        },
         "fullScreen": {
           "description": "Si c'est vrai, la boîte de dialogue sera en plein écran",
           "name": "Plein écran"
@@ -593,21 +589,9 @@
       "description": "Dispose les enfants dans une pile unidimensionnelle",
       "name": "Pile",
       "props": {
-        "alignItems": {
-          "description": "Contrôle l'alignement transversal",
-          "name": "Aligner les éléments"
-        },
         "direction": {
           "description": "Définit si les éléments sont empilés dans une ligne ou une colonne",
           "name": "Direction"
-        },
-        "flexWrap": {
-          "description": "Détermine si les éléments s'enroulent sur plusieurs lignes",
-          "name": "Enveloppe Flex"
-        },
-        "justifyContent": {
-          "description": "Contrôle l'alignement de l'axe principal",
-          "name": "Justifier le contenu"
         },
         "spacing": {
           "description": "Espacement entre les articles empilés",

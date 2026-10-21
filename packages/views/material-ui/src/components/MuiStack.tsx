@@ -1,6 +1,6 @@
 import type {StackProps} from '@mui/material'
 import {Stack} from '@mui/material'
-import {boolean, define, disabled, forwardRef, node, oneOf, oneOfStrict, readOnly, string} from '@react-form-builder/core'
+import {boolean, define, disabled, forwardRef, node, oneOf, readOnly, string} from '@react-form-builder/core'
 import type {ForwardedRef} from 'react'
 import {sx} from '../commonProperties'
 import {layoutCategory} from './categories'
@@ -25,11 +25,9 @@ export const muiStack = define(MuiStack, 'MuiStack')
     children: node,
     disabled: disabled,
     readOnly: readOnly,
+    // Main/cross-axis alignment and wrap belong in `sx` (Material UI v9 removed Stack system props).
     sx,
     direction: oneOf('row', 'row-reverse', 'column', 'column-reverse'),
     spacing: string,
-    justifyContent: oneOfStrict('flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly'),
-    alignItems: oneOfStrict('flex-start', 'center', 'flex-end', 'stretch', 'baseline'),
-    flexWrap: oneOfStrict('nowrap', 'wrap', 'wrap-reverse'),
     useFlexGap: boolean.default(true),
   })

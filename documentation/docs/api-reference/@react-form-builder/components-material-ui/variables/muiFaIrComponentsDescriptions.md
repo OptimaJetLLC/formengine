@@ -68,6 +68,18 @@
 
 > **commonProperties**: `object`
 
+#### commonProperties.align
+
+> **align**: `object`
+
+#### commonProperties.align.description
+
+> **description**: `string` = `"تراز متن"`
+
+#### commonProperties.align.name
+
+> **name**: `string` = `"تراز کردن"`
+
 #### commonProperties.checked
 
 > **checked**: `object`
@@ -295,18 +307,6 @@
 #### commonProperties.sx.name
 
 > **name**: `string` = `"Sx"`
-
-#### commonProperties.textAlign
-
-> **textAlign**: `object`
-
-#### commonProperties.textAlign.description
-
-> **description**: `string` = `"تراز متن"`
-
-#### commonProperties.textAlign.name
-
-> **name**: `string` = `"تراز کردن"`
 
 #### commonProperties.value
 
@@ -1224,18 +1224,6 @@
 
 > **props**: `object`
 
-#### components.MuiDialog.props.disableEscapeKeyDown
-
-> **disableEscapeKeyDown**: `object`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.description
-
-> **description**: `string` = `"اگر درست باشد، فشار دادن کلید escape محاوره را بسته نمی کند"`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.name
-
-> **name**: `string` = `"کلید فرار را پایین غیرفعال کنید"`
-
 #### components.MuiDialog.props.fullScreen
 
 > **fullScreen**: `object`
@@ -1740,18 +1728,6 @@
 
 > **props**: `object`
 
-#### components.MuiStack.props.alignItems
-
-> **alignItems**: `object`
-
-#### components.MuiStack.props.alignItems.description
-
-> **description**: `string` = `"تراز محور متقابل را کنترل می کند"`
-
-#### components.MuiStack.props.alignItems.name
-
-> **name**: `string` = `"موارد را تراز کنید"`
-
 #### components.MuiStack.props.direction
 
 > **direction**: `object`
@@ -1763,30 +1739,6 @@
 #### components.MuiStack.props.direction.name
 
 > **name**: `string` = `"جهت"`
-
-#### components.MuiStack.props.flexWrap
-
-> **flexWrap**: `object`
-
-#### components.MuiStack.props.flexWrap.description
-
-> **description**: `string` = `"کنترل می کند که آیا موارد روی چندین خط قرار می گیرند یا خیر"`
-
-#### components.MuiStack.props.flexWrap.name
-
-> **name**: `string` = `"بسته بندی فلکس"`
-
-#### components.MuiStack.props.justifyContent
-
-> **justifyContent**: `object`
-
-#### components.MuiStack.props.justifyContent.description
-
-> **description**: `string` = `"تراز محور اصلی را کنترل می کند"`
-
-#### components.MuiStack.props.justifyContent.name
-
-> **name**: `string` = `"محتوا را توجیه کنید"`
 
 #### components.MuiStack.props.spacing
 

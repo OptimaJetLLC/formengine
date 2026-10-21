@@ -28,36 +28,6 @@ The MuiStack component properties.
 
 ***
 
-### alignContent?
-
-> `optional` **alignContent?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| AlignContent \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| AlignContent \| undefined\>
-
-#### Inherited from
-
-`StackProps.alignContent`
-
-***
-
-### alignItems?
-
-> `optional` **alignItems?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| AlignItems \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| AlignItems \| undefined\>
-
-#### Inherited from
-
-`StackProps.alignItems`
-
-***
-
-### alignSelf?
-
-> `optional` **alignSelf?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| AlignSelf \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| AlignSelf \| undefined\>
-
-#### Inherited from
-
-`StackProps.alignSelf`
-
-***
-
 ### aria-activedescendant?
 
 > `optional` **aria-activedescendant?**: `string`
@@ -869,116 +839,6 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ***
 
-### bgcolor?
-
-> `optional` **bgcolor?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| BackgroundColor \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| BackgroundColor \| undefined\>
-
-#### Inherited from
-
-`StackProps.bgcolor`
-
-***
-
-### border?
-
-> `optional` **border?**: ((`theme`) => `ResponsiveStyleValue`\<`string` & `object` \| `"-moz-initial"` \| `"AccentColor"` \| `"AccentColorText"` \| `"ActiveBorder"` \| `"ActiveCaption"` \| `"ActiveText"` \| `"aliceblue"` \| `"antiquewhite"` \| `"AppWorkspace"` \| `"aqua"` \| `"aquamarine"` \| `"azure"` \| `"Background"` \| `"beige"` \| `"bisque"` \| `"black"` \| `"blanchedalmond"` \| `"blue"` \| `"blueviolet"` \| `"brown"` \| `"burlywood"` \| `"ButtonBorder"` \| `"ButtonFace"` \| `"ButtonHighlight"` \| `"ButtonShadow"` \| `"ButtonText"` \| `"cadetblue"` \| `"Canvas"` \| `"CanvasText"` \| `"CaptionText"` \| `"chartreuse"` \| `"chocolate"` \| `"coral"` \| `"cornflowerblue"` \| `"cornsilk"` \| `"crimson"` \| `"currentColor"` \| `"cyan"` \| `"darkblue"` \| `"darkcyan"` \| `"darkgoldenrod"` \| `"darkgray"` \| `"darkgreen"` \| `"darkgrey"` \| `"darkkhaki"` \| `"darkmagenta"` \| `"darkolivegreen"` \| `"darkorange"` \| `"darkorchid"` \| `"darkred"` \| `"darksalmon"` \| `"darkseagreen"` \| `"darkslateblue"` \| `"darkslategray"` \| `"darkslategrey"` \| `"darkturquoise"` \| `"darkviolet"` \| `"dashed"` \| `"deeppink"` \| `"deepskyblue"` \| `"dimgray"` \| `"dimgrey"` \| `"dodgerblue"` \| `"dotted"` \| `"double"` \| `"Field"` \| `"FieldText"` \| `"firebrick"` \| `"floralwhite"` \| `"forestgreen"` \| `"fuchsia"` \| `"gainsboro"` \| `"ghostwhite"` \| `"gold"` \| `"goldenrod"` \| `"gray"` \| `"GrayText"` \| `"green"` \| `"greenyellow"` \| `"grey"` \| `"groove"` \| `"hidden"` \| `"Highlight"` \| `"HighlightText"` \| `"honeydew"` \| `"hotpink"` \| `"InactiveBorder"` \| `"InactiveCaption"` \| `"InactiveCaptionText"` \| `"indianred"` \| `"indigo"` \| `"InfoBackground"` \| `"InfoText"` \| `"inherit"` \| `"initial"` \| `"inset"` \| `"ivory"` \| `"khaki"` \| `"lavender"` \| `"lavenderblush"` \| `"lawngreen"` \| `"lemonchiffon"` \| `"lightblue"` \| `"lightcoral"` \| `"lightcyan"` \| `"lightgoldenrodyellow"` \| `"lightgray"` \| `"lightgreen"` \| `"lightgrey"` \| `"lightpink"` \| `"lightsalmon"` \| `"lightseagreen"` \| `"lightskyblue"` \| `"lightslategray"` \| `"lightslategrey"` \| `"lightsteelblue"` \| `"lightyellow"` \| `"lime"` \| `"limegreen"` \| `"linen"` \| `"LinkText"` \| `"magenta"` \| `"Mark"` \| `"MarkText"` \| `"maroon"` \| `"medium"` \| `"mediumaquamarine"` \| `"mediumblue"` \| `"mediumorchid"` \| `"mediumpurple"` \| `"mediumseagreen"` \| `"mediumslateblue"` \| `"mediumspringgreen"` \| `"mediumturquoise"` \| `"mediumvioletred"` \| `"Menu"` \| `"MenuText"` \| `"midnightblue"` \| `"mintcream"` \| `"mistyrose"` \| `"moccasin"` \| `"navajowhite"` \| `"navy"` \| `"none"` \| `number` \| `"oldlace"` \| `"olive"` \| `"olivedrab"` \| `"orange"` \| `"orangered"` \| `"orchid"` \| `"outset"` \| `"palegoldenrod"` \| `"palegreen"` \| `"paleturquoise"` \| `"palevioletred"` \| `"papayawhip"` \| `"peachpuff"` \| `"peru"` \| `"pink"` \| `"plum"` \| `"powderblue"` \| `"purple"` \| `"rebeccapurple"` \| `"red"` \| `"revert"` \| `"revert-layer"` \| `"ridge"` \| `"rosybrown"` \| `"royalblue"` \| `"saddlebrown"` \| `"salmon"` \| `"sandybrown"` \| `"Scrollbar"` \| `"seagreen"` \| `"seashell"` \| `"SelectedItem"` \| `"SelectedItemText"` \| `"sienna"` \| `"silver"` \| `"skyblue"` \| `"slateblue"` \| `"slategray"` \| `"slategrey"` \| `"snow"` \| `"solid"` \| `"springgreen"` \| `"steelblue"` \| `"tan"` \| `"teal"` \| `"thick"` \| `"thin"` \| `"thistle"` \| `"ThreeDDarkShadow"` \| `"ThreeDFace"` \| `"ThreeDHighlight"` \| `"ThreeDLightShadow"` \| `"ThreeDShadow"` \| `"tomato"` \| `"transparent"` \| `"turquoise"` \| `undefined` \| `"unset"` \| `"violet"` \| `"VisitedText"` \| `"wheat"` \| `"white"` \| `"whitesmoke"` \| `"Window"` \| `"WindowFrame"` \| `"WindowText"` \| `"yellow"` \| `"yellowgreen"`\>) \| `ResponsiveStyleValue`\<`string` & `object` \| `"-moz-initial"` \| `"AccentColor"` \| `"AccentColorText"` \| `"ActiveBorder"` \| `"ActiveCaption"` \| `"ActiveText"` \| `"aliceblue"` \| `"antiquewhite"` \| `"AppWorkspace"` \| `"aqua"` \| `"aquamarine"` \| `"azure"` \| `"Background"` \| `"beige"` \| `"bisque"` \| `"black"` \| `"blanchedalmond"` \| `"blue"` \| `"blueviolet"` \| `"brown"` \| `"burlywood"` \| `"ButtonBorder"` \| `"ButtonFace"` \| `"ButtonHighlight"` \| `"ButtonShadow"` \| `"ButtonText"` \| `"cadetblue"` \| `"Canvas"` \| `"CanvasText"` \| `"CaptionText"` \| `"chartreuse"` \| `"chocolate"` \| `"coral"` \| `"cornflowerblue"` \| `"cornsilk"` \| `"crimson"` \| `"currentColor"` \| `"cyan"` \| `"darkblue"` \| `"darkcyan"` \| `"darkgoldenrod"` \| `"darkgray"` \| `"darkgreen"` \| `"darkgrey"` \| `"darkkhaki"` \| `"darkmagenta"` \| `"darkolivegreen"` \| `"darkorange"` \| `"darkorchid"` \| `"darkred"` \| `"darksalmon"` \| `"darkseagreen"` \| `"darkslateblue"` \| `"darkslategray"` \| `"darkslategrey"` \| `"darkturquoise"` \| `"darkviolet"` \| `"dashed"` \| `"deeppink"` \| `"deepskyblue"` \| `"dimgray"` \| `"dimgrey"` \| `"dodgerblue"` \| `"dotted"` \| `"double"` \| `"Field"` \| `"FieldText"` \| `"firebrick"` \| `"floralwhite"` \| `"forestgreen"` \| `"fuchsia"` \| `"gainsboro"` \| `"ghostwhite"` \| `"gold"` \| `"goldenrod"` \| `"gray"` \| `"GrayText"` \| `"green"` \| `"greenyellow"` \| `"grey"` \| `"groove"` \| `"hidden"` \| `"Highlight"` \| `"HighlightText"` \| `"honeydew"` \| `"hotpink"` \| `"InactiveBorder"` \| `"InactiveCaption"` \| `"InactiveCaptionText"` \| `"indianred"` \| `"indigo"` \| `"InfoBackground"` \| `"InfoText"` \| `"inherit"` \| `"initial"` \| `"inset"` \| `"ivory"` \| `"khaki"` \| `"lavender"` \| `"lavenderblush"` \| `"lawngreen"` \| `"lemonchiffon"` \| `"lightblue"` \| `"lightcoral"` \| `"lightcyan"` \| `"lightgoldenrodyellow"` \| `"lightgray"` \| `"lightgreen"` \| `"lightgrey"` \| `"lightpink"` \| `"lightsalmon"` \| `"lightseagreen"` \| `"lightskyblue"` \| `"lightslategray"` \| `"lightslategrey"` \| `"lightsteelblue"` \| `"lightyellow"` \| `"lime"` \| `"limegreen"` \| `"linen"` \| `"LinkText"` \| `"magenta"` \| `"Mark"` \| `"MarkText"` \| `"maroon"` \| `"medium"` \| `"mediumaquamarine"` \| `"mediumblue"` \| `"mediumorchid"` \| `"mediumpurple"` \| `"mediumseagreen"` \| `"mediumslateblue"` \| `"mediumspringgreen"` \| `"mediumturquoise"` \| `"mediumvioletred"` \| `"Menu"` \| `"MenuText"` \| `"midnightblue"` \| `"mintcream"` \| `"mistyrose"` \| `"moccasin"` \| `"navajowhite"` \| `"navy"` \| `"none"` \| `number` \| `"oldlace"` \| `"olive"` \| `"olivedrab"` \| `"orange"` \| `"orangered"` \| `"orchid"` \| `"outset"` \| `"palegoldenrod"` \| `"palegreen"` \| `"paleturquoise"` \| `"palevioletred"` \| `"papayawhip"` \| `"peachpuff"` \| `"peru"` \| `"pink"` \| `"plum"` \| `"powderblue"` \| `"purple"` \| `"rebeccapurple"` \| `"red"` \| `"revert"` \| `"revert-layer"` \| `"ridge"` \| `"rosybrown"` \| `"royalblue"` \| `"saddlebrown"` \| `"salmon"` \| `"sandybrown"` \| `"Scrollbar"` \| `"seagreen"` \| `"seashell"` \| `"SelectedItem"` \| `"SelectedItemText"` \| `"sienna"` \| `"silver"` \| `"skyblue"` \| `"slateblue"` \| `"slategray"` \| `"slategrey"` \| `"snow"` \| `"solid"` \| `"springgreen"` \| `"steelblue"` \| `"tan"` \| `"teal"` \| `"thick"` \| `"thin"` \| `"thistle"` \| `"ThreeDDarkShadow"` \| `"ThreeDFace"` \| `"ThreeDHighlight"` \| `"ThreeDLightShadow"` \| `"ThreeDShadow"` \| `"tomato"` \| `"transparent"` \| `"turquoise"` \| `undefined` \| `"unset"` \| `"violet"` \| `"VisitedText"` \| `"wheat"` \| `"white"` \| `"whitesmoke"` \| `"Window"` \| `"WindowFrame"` \| `"WindowText"` \| `"yellow"` \| `"yellowgreen"`\>
-
-#### Inherited from
-
-`StackProps.border`
-
-***
-
-### borderBottom?
-
-> `optional` **borderBottom?**: ((`theme`) => `ResponsiveStyleValue`\<BorderBottom\<string \| number\> \| readonly NonNullable\<BorderBottom\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<BorderBottom\<string \| number\> \| readonly NonNullable\<BorderBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.borderBottom`
-
-***
-
-### borderColor?
-
-> `optional` **borderColor?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| BorderColor \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| BorderColor \| undefined\>
-
-#### Inherited from
-
-`StackProps.borderColor`
-
-***
-
-### borderLeft?
-
-> `optional` **borderLeft?**: ((`theme`) => `ResponsiveStyleValue`\<BorderLeft\<string \| number\> \| readonly NonNullable\<BorderLeft\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<BorderLeft\<string \| number\> \| readonly NonNullable\<BorderLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.borderLeft`
-
-***
-
-### borderRadius?
-
-> `optional` **borderRadius?**: ((`theme`) => `ResponsiveStyleValue`\<BorderRadius\<string \| number\> \| readonly NonNullable\<BorderRadius\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<BorderRadius\<string \| number\> \| readonly NonNullable\<BorderRadius\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.borderRadius`
-
-***
-
-### borderRight?
-
-> `optional` **borderRight?**: ((`theme`) => `ResponsiveStyleValue`\<BorderRight\<string \| number\> \| readonly NonNullable\<BorderRight\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<BorderRight\<string \| number\> \| readonly NonNullable\<BorderRight\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.borderRight`
-
-***
-
-### borderTop?
-
-> `optional` **borderTop?**: ((`theme`) => `ResponsiveStyleValue`\<BorderTop\<string \| number\> \| readonly NonNullable\<BorderTop\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<BorderTop\<string \| number\> \| readonly NonNullable\<BorderTop\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.borderTop`
-
-***
-
-### bottom?
-
-> `optional` **bottom?**: ((`theme`) => `ResponsiveStyleValue`\<Bottom\<string \| number\> \| readonly NonNullable\<Bottom\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Bottom\<string \| number\> \| readonly NonNullable\<Bottom\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.bottom`
-
-***
-
-### boxShadow?
-
-> `optional` **boxShadow?**: ((`theme`) => `ResponsiveStyleValue`\<number \| BoxShadow \| undefined\>) \| `ResponsiveStyleValue`\<number \| BoxShadow \| undefined\>
-
-#### Inherited from
-
-`StackProps.boxShadow`
-
-***
-
-### boxSizing?
-
-> `optional` **boxSizing?**: ((`theme`) => `ResponsiveStyleValue`\<BoxSizing \| readonly NonNullable\<BoxSizing \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<BoxSizing \| readonly NonNullable\<BoxSizing \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.boxSizing`
-
-***
-
 ### children?
 
 > `optional` **children?**: `ReactNode`
@@ -1015,21 +875,11 @@ Override or extend the styles applied to the component.
 
 ### color?
 
-> `optional` **color?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Color \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| Color \| undefined\>
+> `optional` **color?**: `string`
 
 #### Inherited from
 
 `StackProps.color`
-
-***
-
-### columnGap?
-
-> `optional` **columnGap?**: ((`theme`) => `ResponsiveStyleValue`\<ColumnGap\<string \| number\> \| readonly NonNullable\<ColumnGap\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<ColumnGap\<string \| number\> \| readonly NonNullable\<ColumnGap\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.columnGap`
 
 ***
 
@@ -1158,26 +1008,6 @@ If true, the component will be disabled.
 
 ***
 
-### display?
-
-> `optional` **display?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\>
-
-#### Inherited from
-
-`StackProps.display`
-
-***
-
-### displayPrint?
-
-> `optional` **displayPrint?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\>
-
-#### Inherited from
-
-`StackProps.displayPrint`
-
-***
-
 ### divider?
 
 > `optional` **divider?**: `ReactNode`
@@ -1221,216 +1051,6 @@ Add an element between each child.
 #### Inherited from
 
 `StackProps.exportparts`
-
-***
-
-### flex?
-
-> `optional` **flex?**: ((`theme`) => `ResponsiveStyleValue`\<Flex\<string \| number\> \| readonly NonNullable\<Flex\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Flex\<string \| number\> \| readonly NonNullable\<Flex\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.flex`
-
-***
-
-### flexBasis?
-
-> `optional` **flexBasis?**: ((`theme`) => `ResponsiveStyleValue`\<FlexBasis\<string \| number\> \| readonly NonNullable\<FlexBasis\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<FlexBasis\<string \| number\> \| readonly NonNullable\<FlexBasis\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.flexBasis`
-
-***
-
-### flexDirection?
-
-> `optional` **flexDirection?**: ((`theme`) => `ResponsiveStyleValue`\<FlexDirection \| readonly NonNullable\<FlexDirection \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<FlexDirection \| readonly NonNullable\<FlexDirection \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.flexDirection`
-
-***
-
-### flexGrow?
-
-> `optional` **flexGrow?**: ((`theme`) => `ResponsiveStyleValue`\<FlexGrow \| readonly NonNullable\<FlexGrow \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<FlexGrow \| readonly NonNullable\<FlexGrow \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.flexGrow`
-
-***
-
-### flexShrink?
-
-> `optional` **flexShrink?**: ((`theme`) => `ResponsiveStyleValue`\<FlexShrink \| readonly NonNullable\<FlexShrink \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<FlexShrink \| readonly NonNullable\<FlexShrink \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.flexShrink`
-
-***
-
-### flexWrap?
-
-> `optional` **flexWrap?**: ((`theme`) => `ResponsiveStyleValue`\<FlexWrap \| readonly NonNullable\<FlexWrap \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<FlexWrap \| readonly NonNullable\<FlexWrap \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.flexWrap`
-
-***
-
-### fontFamily?
-
-> `optional` **fontFamily?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| FontFamily \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| FontFamily \| undefined\>
-
-#### Inherited from
-
-`StackProps.fontFamily`
-
-***
-
-### fontSize?
-
-> `optional` **fontSize?**: ((`theme`) => `ResponsiveStyleValue`\<FontSize\<string \| number\> \| readonly NonNullable\<FontSize\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<FontSize\<string \| number\> \| readonly NonNullable\<FontSize\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.fontSize`
-
-***
-
-### fontStyle?
-
-> `optional` **fontStyle?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| FontStyle \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| FontStyle \| undefined\>
-
-#### Inherited from
-
-`StackProps.fontStyle`
-
-***
-
-### fontWeight?
-
-> `optional` **fontWeight?**: ((`theme`) => `ResponsiveStyleValue`\<`string` & `object` \| `number` & `object` \| `string` \| `undefined`\>) \| `ResponsiveStyleValue`\<`string` & `object` \| `number` & `object` \| `string` \| `undefined`\>
-
-#### Inherited from
-
-`StackProps.fontWeight`
-
-***
-
-### gap?
-
-> `optional` **gap?**: ((`theme`) => `ResponsiveStyleValue`\<Gap\<string \| number\> \| readonly NonNullable\<Gap\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Gap\<string \| number\> \| readonly NonNullable\<Gap\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.gap`
-
-***
-
-### gridArea?
-
-> `optional` **gridArea?**: ((`theme`) => `ResponsiveStyleValue`\<GridArea \| readonly NonNullable\<GridArea \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<GridArea \| readonly NonNullable\<GridArea \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.gridArea`
-
-***
-
-### gridAutoColumns?
-
-> `optional` **gridAutoColumns?**: ((`theme`) => `ResponsiveStyleValue`\<GridAutoColumns\<string \| number\> \| readonly NonNullable\<GridAutoColumns\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<GridAutoColumns\<string \| number\> \| readonly NonNullable\<GridAutoColumns\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.gridAutoColumns`
-
-***
-
-### gridAutoFlow?
-
-> `optional` **gridAutoFlow?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| GridAutoFlow \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| GridAutoFlow \| undefined\>
-
-#### Inherited from
-
-`StackProps.gridAutoFlow`
-
-***
-
-### gridAutoRows?
-
-> `optional` **gridAutoRows?**: ((`theme`) => `ResponsiveStyleValue`\<GridAutoRows\<string \| number\> \| readonly NonNullable\<GridAutoRows\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<GridAutoRows\<string \| number\> \| readonly NonNullable\<GridAutoRows\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.gridAutoRows`
-
-***
-
-### gridColumn?
-
-> `optional` **gridColumn?**: ((`theme`) => `ResponsiveStyleValue`\<GridColumn \| readonly NonNullable\<GridColumn \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<GridColumn \| readonly NonNullable\<GridColumn \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.gridColumn`
-
-***
-
-### gridRow?
-
-> `optional` **gridRow?**: ((`theme`) => `ResponsiveStyleValue`\<GridRow \| readonly NonNullable\<GridRow \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<GridRow \| readonly NonNullable\<GridRow \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.gridRow`
-
-***
-
-### gridTemplateAreas?
-
-> `optional` **gridTemplateAreas?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| GridTemplateAreas \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| GridTemplateAreas \| undefined\>
-
-#### Inherited from
-
-`StackProps.gridTemplateAreas`
-
-***
-
-### gridTemplateColumns?
-
-> `optional` **gridTemplateColumns?**: ((`theme`) => `ResponsiveStyleValue`\<GridTemplateColumns\<string \| number\> \| readonly NonNullable\<GridTemplateColumns\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<GridTemplateColumns\<string \| number\> \| readonly NonNullable\<GridTemplateColumns\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.gridTemplateColumns`
-
-***
-
-### gridTemplateRows?
-
-> `optional` **gridTemplateRows?**: ((`theme`) => `ResponsiveStyleValue`\<GridTemplateRows\<string \| number\> \| readonly NonNullable\<GridTemplateRows\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<GridTemplateRows\<string \| number\> \| readonly NonNullable\<GridTemplateRows\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.gridTemplateRows`
-
-***
-
-### height?
-
-> `optional` **height?**: ((`theme`) => `ResponsiveStyleValue`\<Height\<string \| number\> \| readonly NonNullable\<Height\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Height\<string \| number\> \| readonly NonNullable\<Height\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.height`
 
 ***
 
@@ -1560,36 +1180,6 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ***
 
-### justifyContent?
-
-> `optional` **justifyContent?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| JustifyContent \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| JustifyContent \| undefined\>
-
-#### Inherited from
-
-`StackProps.justifyContent`
-
-***
-
-### justifyItems?
-
-> `optional` **justifyItems?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| JustifyItems \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| JustifyItems \| undefined\>
-
-#### Inherited from
-
-`StackProps.justifyItems`
-
-***
-
-### justifySelf?
-
-> `optional` **justifySelf?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| JustifySelf \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| JustifySelf \| undefined\>
-
-#### Inherited from
-
-`StackProps.justifySelf`
-
-***
-
 ### key?
 
 > `optional` **key?**: `Key` \| `null`
@@ -1607,276 +1197,6 @@ Specify that a standard HTML element should behave like a defined custom built-i
 #### Inherited from
 
 `StackProps.lang`
-
-***
-
-### left?
-
-> `optional` **left?**: ((`theme`) => `ResponsiveStyleValue`\<Left\<string \| number\> \| readonly NonNullable\<Left\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Left\<string \| number\> \| readonly NonNullable\<Left\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.left`
-
-***
-
-### letterSpacing?
-
-> `optional` **letterSpacing?**: ((`theme`) => `ResponsiveStyleValue`\<LetterSpacing\<string \| number\> \| readonly NonNullable\<LetterSpacing\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<LetterSpacing\<string \| number\> \| readonly NonNullable\<LetterSpacing\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.letterSpacing`
-
-***
-
-### lineHeight?
-
-> `optional` **lineHeight?**: ((`theme`) => `ResponsiveStyleValue`\<LineHeight\<string \| number\> \| readonly NonNullable\<LineHeight\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<LineHeight\<string \| number\> \| readonly NonNullable\<LineHeight\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.lineHeight`
-
-***
-
-### m?
-
-> `optional` **m?**: ((`theme`) => `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.m`
-
-***
-
-### margin?
-
-> `optional` **margin?**: ((`theme`) => `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.margin`
-
-***
-
-### marginBlock?
-
-> `optional` **marginBlock?**: ((`theme`) => `ResponsiveStyleValue`\<MarginBlock\<string \| number\> \| readonly NonNullable\<MarginBlock\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginBlock\<string \| number\> \| readonly NonNullable\<MarginBlock\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginBlock`
-
-***
-
-### marginBlockEnd?
-
-> `optional` **marginBlockEnd?**: ((`theme`) => `ResponsiveStyleValue`\<MarginBlockEnd\<string \| number\> \| readonly NonNullable\<MarginBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginBlockEnd\<string \| number\> \| readonly NonNullable\<MarginBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginBlockEnd`
-
-***
-
-### marginBlockStart?
-
-> `optional` **marginBlockStart?**: ((`theme`) => `ResponsiveStyleValue`\<MarginBlockStart\<string \| number\> \| readonly NonNullable\<MarginBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginBlockStart\<string \| number\> \| readonly NonNullable\<MarginBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginBlockStart`
-
-***
-
-### marginBottom?
-
-> `optional` **marginBottom?**: ((`theme`) => `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginBottom`
-
-***
-
-### marginInline?
-
-> `optional` **marginInline?**: ((`theme`) => `ResponsiveStyleValue`\<MarginInline\<string \| number\> \| readonly NonNullable\<MarginInline\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginInline\<string \| number\> \| readonly NonNullable\<MarginInline\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginInline`
-
-***
-
-### marginInlineEnd?
-
-> `optional` **marginInlineEnd?**: ((`theme`) => `ResponsiveStyleValue`\<MarginInlineEnd\<string \| number\> \| readonly NonNullable\<MarginInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginInlineEnd\<string \| number\> \| readonly NonNullable\<MarginInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginInlineEnd`
-
-***
-
-### marginInlineStart?
-
-> `optional` **marginInlineStart?**: ((`theme`) => `ResponsiveStyleValue`\<MarginInlineStart\<string \| number\> \| readonly NonNullable\<MarginInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginInlineStart\<string \| number\> \| readonly NonNullable\<MarginInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginInlineStart`
-
-***
-
-### marginLeft?
-
-> `optional` **marginLeft?**: ((`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginLeft`
-
-***
-
-### marginRight?
-
-> `optional` **marginRight?**: ((`theme`) => `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginRight`
-
-***
-
-### marginTop?
-
-> `optional` **marginTop?**: ((`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginTop`
-
-***
-
-### marginX?
-
-> `optional` **marginX?**: ((`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginX`
-
-***
-
-### marginY?
-
-> `optional` **marginY?**: ((`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.marginY`
-
-***
-
-### maxHeight?
-
-> `optional` **maxHeight?**: ((`theme`) => `ResponsiveStyleValue`\<MaxHeight\<string \| number\> \| readonly NonNullable\<MaxHeight\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MaxHeight\<string \| number\> \| readonly NonNullable\<MaxHeight\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.maxHeight`
-
-***
-
-### maxWidth?
-
-> `optional` **maxWidth?**: ((`theme`) => `ResponsiveStyleValue`\<MaxWidth\<string \| number\> \| readonly NonNullable\<MaxWidth\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MaxWidth\<string \| number\> \| readonly NonNullable\<MaxWidth\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.maxWidth`
-
-***
-
-### mb?
-
-> `optional` **mb?**: ((`theme`) => `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.mb`
-
-***
-
-### minHeight?
-
-> `optional` **minHeight?**: ((`theme`) => `ResponsiveStyleValue`\<MinHeight\<string \| number\> \| readonly NonNullable\<MinHeight\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MinHeight\<string \| number\> \| readonly NonNullable\<MinHeight\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.minHeight`
-
-***
-
-### minWidth?
-
-> `optional` **minWidth?**: ((`theme`) => `ResponsiveStyleValue`\<MinWidth\<string \| number\> \| readonly NonNullable\<MinWidth\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MinWidth\<string \| number\> \| readonly NonNullable\<MinWidth\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.minWidth`
-
-***
-
-### ml?
-
-> `optional` **ml?**: ((`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.ml`
-
-***
-
-### mr?
-
-> `optional` **mr?**: ((`theme`) => `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.mr`
-
-***
-
-### mt?
-
-> `optional` **mt?**: ((`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.mt`
-
-***
-
-### mx?
-
-> `optional` **mx?**: ((`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.mx`
-
-***
-
-### my?
-
-> `optional` **my?**: ((`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.my`
 
 ***
 
@@ -3578,166 +2898,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### order?
-
-> `optional` **order?**: ((`theme`) => `ResponsiveStyleValue`\<Order \| readonly NonNullable\<Order \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Order \| readonly NonNullable\<Order \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.order`
-
-***
-
-### overflow?
-
-> `optional` **overflow?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Overflow \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| Overflow \| undefined\>
-
-#### Inherited from
-
-`StackProps.overflow`
-
-***
-
-### p?
-
-> `optional` **p?**: ((`theme`) => `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.p`
-
-***
-
-### padding?
-
-> `optional` **padding?**: ((`theme`) => `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.padding`
-
-***
-
-### paddingBlock?
-
-> `optional` **paddingBlock?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingBlock\<string \| number\> \| readonly NonNullable\<PaddingBlock\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingBlock\<string \| number\> \| readonly NonNullable\<PaddingBlock\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingBlock`
-
-***
-
-### paddingBlockEnd?
-
-> `optional` **paddingBlockEnd?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingBlockEnd\<string \| number\> \| readonly NonNullable\<PaddingBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingBlockEnd\<string \| number\> \| readonly NonNullable\<PaddingBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingBlockEnd`
-
-***
-
-### paddingBlockStart?
-
-> `optional` **paddingBlockStart?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingBlockStart\<string \| number\> \| readonly NonNullable\<PaddingBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingBlockStart\<string \| number\> \| readonly NonNullable\<PaddingBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingBlockStart`
-
-***
-
-### paddingBottom?
-
-> `optional` **paddingBottom?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingBottom`
-
-***
-
-### paddingInline?
-
-> `optional` **paddingInline?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingInline\<string \| number\> \| readonly NonNullable\<PaddingInline\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingInline\<string \| number\> \| readonly NonNullable\<PaddingInline\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingInline`
-
-***
-
-### paddingInlineEnd?
-
-> `optional` **paddingInlineEnd?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingInlineEnd\<string \| number\> \| readonly NonNullable\<PaddingInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingInlineEnd\<string \| number\> \| readonly NonNullable\<PaddingInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingInlineEnd`
-
-***
-
-### paddingInlineStart?
-
-> `optional` **paddingInlineStart?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingInlineStart\<string \| number\> \| readonly NonNullable\<PaddingInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingInlineStart\<string \| number\> \| readonly NonNullable\<PaddingInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingInlineStart`
-
-***
-
-### paddingLeft?
-
-> `optional` **paddingLeft?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingLeft`
-
-***
-
-### paddingRight?
-
-> `optional` **paddingRight?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingRight`
-
-***
-
-### paddingTop?
-
-> `optional` **paddingTop?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingTop`
-
-***
-
-### paddingX?
-
-> `optional` **paddingX?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingX`
-
-***
-
-### paddingY?
-
-> `optional` **paddingY?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.paddingY`
-
-***
-
 ### part?
 
 > `optional` **part?**: `string`
@@ -3749,26 +2909,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `StackProps.part`
-
-***
-
-### pb?
-
-> `optional` **pb?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.pb`
-
-***
-
-### pl?
-
-> `optional` **pl?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.pl`
 
 ***
 
@@ -3802,26 +2942,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### position?
-
-> `optional` **position?**: ((`theme`) => `ResponsiveStyleValue`\<Position \| readonly NonNullable\<Position \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Position \| readonly NonNullable\<Position \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.position`
-
-***
-
-### pr?
-
-> `optional` **pr?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.pr`
-
-***
-
 ### prefix?
 
 > `optional` **prefix?**: `string`
@@ -3839,36 +2959,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `StackProps.property`
-
-***
-
-### pt?
-
-> `optional` **pt?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.pt`
-
-***
-
-### px?
-
-> `optional` **px?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.px`
-
-***
-
-### py?
-
-> `optional` **py?**: ((`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.py`
 
 ***
 
@@ -3952,16 +3042,6 @@ Once the component unmounts, React will set `ref.current` to `null`
 
 ***
 
-### right?
-
-> `optional` **right?**: ((`theme`) => `ResponsiveStyleValue`\<Right\<string \| number\> \| readonly NonNullable\<Right\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Right\<string \| number\> \| readonly NonNullable\<Right\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.right`
-
-***
-
 ### role?
 
 > `optional` **role?**: `AriaRole`
@@ -3969,16 +3049,6 @@ Once the component unmounts, React will set `ref.current` to `null`
 #### Inherited from
 
 `StackProps.role`
-
-***
-
-### rowGap?
-
-> `optional` **rowGap?**: ((`theme`) => `ResponsiveStyleValue`\<RowGap\<string \| number\> \| readonly NonNullable\<RowGap\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<RowGap\<string \| number\> \| readonly NonNullable\<RowGap\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.rowGap`
 
 ***
 
@@ -4082,36 +3152,6 @@ The system prop, which allows defining system overrides as well as additional CS
 
 ***
 
-### textAlign?
-
-> `optional` **textAlign?**: ((`theme`) => `ResponsiveStyleValue`\<TextAlign \| readonly NonNullable\<TextAlign \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<TextAlign \| readonly NonNullable\<TextAlign \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.textAlign`
-
-***
-
-### textOverflow?
-
-> `optional` **textOverflow?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| TextOverflow \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| TextOverflow \| undefined\>
-
-#### Inherited from
-
-`StackProps.textOverflow`
-
-***
-
-### textTransform?
-
-> `optional` **textTransform?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| TextTransform \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| TextTransform \| undefined\>
-
-#### Inherited from
-
-`StackProps.textTransform`
-
-***
-
 ### title?
 
 > `optional` **title?**: `string`
@@ -4119,16 +3159,6 @@ The system prop, which allows defining system overrides as well as additional CS
 #### Inherited from
 
 `StackProps.title`
-
-***
-
-### top?
-
-> `optional` **top?**: ((`theme`) => `ResponsiveStyleValue`\<Top\<string \| number\> \| readonly NonNullable\<Top\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Top\<string \| number\> \| readonly NonNullable\<Top\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.top`
 
 ***
 
@@ -4152,16 +3182,6 @@ The system prop, which allows defining system overrides as well as additional CS
 
 ***
 
-### typography?
-
-> `optional` **typography?**: ((`theme`) => `ResponsiveStyleValue`\<`string` \| `undefined`\>) \| `ResponsiveStyleValue`\<`string` \| `undefined`\>
-
-#### Inherited from
-
-`StackProps.typography`
-
-***
-
 ### unselectable?
 
 > `optional` **unselectable?**: `"off"` \| `"on"`
@@ -4178,7 +3198,7 @@ The system prop, which allows defining system overrides as well as additional CS
 
 If `true`, the CSS flexbox `gap` is used instead of applying `margin` to children.
 
-While CSS `gap` removes the [known limitations](https://mui.com/joy-ui/react-stack/#limitations),
+While CSS `gap` removes the known limitations,
 it is not fully supported in some browsers. We recommend checking https://caniuse.com/?search=flex%20gap before using this flag.
 
 To enable this flag globally, follow the [theme's default props](https://mui.com/material-ui/customization/theme-components/#default-props) configuration.
@@ -4195,16 +3215,6 @@ false
 
 ***
 
-### visibility?
-
-> `optional` **visibility?**: ((`theme`) => `ResponsiveStyleValue`\<Visibility \| readonly NonNullable\<Visibility \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Visibility \| readonly NonNullable\<Visibility \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.visibility`
-
-***
-
 ### vocab?
 
 > `optional` **vocab?**: `string`
@@ -4212,33 +3222,3 @@ false
 #### Inherited from
 
 `StackProps.vocab`
-
-***
-
-### whiteSpace?
-
-> `optional` **whiteSpace?**: ((`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| WhiteSpace \| undefined\>) \| `ResponsiveStyleValue`\<readonly string\[\] \| WhiteSpace \| undefined\>
-
-#### Inherited from
-
-`StackProps.whiteSpace`
-
-***
-
-### width?
-
-> `optional` **width?**: ((`theme`) => `ResponsiveStyleValue`\<Width\<string \| number\> \| readonly NonNullable\<Width\<string \| number\> \| undefined\>\[\] \| undefined\>) \| `ResponsiveStyleValue`\<Width\<string \| number\> \| readonly NonNullable\<Width\<string \| number\> \| undefined\>\[\] \| undefined\>
-
-#### Inherited from
-
-`StackProps.width`
-
-***
-
-### zIndex?
-
-> `optional` **zIndex?**: ((`theme`) => `ResponsiveStyleValue`\<`string` & `object` \| `number` & `object` \| `string` \| `undefined`\>) \| `ResponsiveStyleValue`\<`string` & `object` \| `number` & `object` \| `string` \| `undefined`\>
-
-#### Inherited from
-
-`StackProps.zIndex`

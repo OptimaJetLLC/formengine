@@ -23,6 +23,10 @@
     }
   },
   "commonProperties": {
+    "align": {
+      "description": "Textausrichtung",
+      "name": "Ausrichtung"
+    },
     "checked": {
       "description": "Falls wahr, wird die Komponente überprüft",
       "name": "Überprüft"
@@ -98,10 +102,6 @@
     "sx": {
       "description": "Die System-Requisite, mit der Systemüberschreibungen sowie zusätzliche CSS-Stile definiert werden können",
       "name": "Sx"
-    },
-    "textAlign": {
-      "description": "Textausrichtung",
-      "name": "Ausrichtung"
     },
     "value": {
       "description": "Der Wert der Komponente",
@@ -413,10 +413,6 @@
       "description": "Eine modale Dialogkomponente, die Inhalte in einem Overlay anzeigt",
       "name": "Dialog",
       "props": {
-        "disableEscapeKeyDown": {
-          "description": "Falls wahr, wird das Dialogfeld durch Drücken der Escape-Taste nicht geschlossen",
-          "name": "Deaktivieren Sie die Escape-Taste gedrückt"
-        },
         "fullScreen": {
           "description": "Wenn dies zutrifft, wird der Dialog im Vollbildmodus angezeigt",
           "name": "Vollbild"
@@ -593,21 +589,9 @@
       "description": "Layoutet Kinder in einem eindimensionalen Stapel",
       "name": "Stapel",
       "props": {
-        "alignItems": {
-          "description": "Steuert die achsenübergreifende Ausrichtung",
-          "name": "Elemente ausrichten"
-        },
         "direction": {
           "description": "Definiert, ob Elemente in einer Zeile oder Spalte gestapelt werden",
           "name": "Richtung"
-        },
-        "flexWrap": {
-          "description": "Steuert, ob Elemente in mehrere Zeilen umgebrochen werden",
-          "name": "Flex-Wrap"
-        },
-        "justifyContent": {
-          "description": "Steuert die Ausrichtung der Hauptachse",
-          "name": "Inhalt begründen"
         },
         "spacing": {
           "description": "Abstand zwischen gestapelten Objekten",

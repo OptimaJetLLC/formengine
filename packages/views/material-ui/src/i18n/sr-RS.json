@@ -23,6 +23,10 @@
     }
   },
   "commonProperties": {
+    "align": {
+      "description": "Poravnanje teksta",
+      "name": "Poravnanje"
+    },
     "checked": {
       "description": "Ako je tačno, komponenta se proverava",
       "name": "Provereno"
@@ -98,10 +102,6 @@
     "sx": {
       "description": "Sistemski rekvizit koji omogućava definisanje zamenjivanja sistema kao i dodatnih CSS stilova",
       "name": "Sks"
-    },
-    "textAlign": {
-      "description": "Poravnanje teksta",
-      "name": "Poravnanje"
     },
     "value": {
       "description": "Vrednost komponente",
@@ -413,10 +413,6 @@
       "description": "Komponenta modalnog dijaloga koja prikazuje sadržaj u sloju",
       "name": "Dijalog",
       "props": {
-        "disableEscapeKeyDown": {
-          "description": "Ako je tačno, pritiskom na taster za bekstvo neće se zatvoriti dijalog",
-          "name": "Onemogućite taster za bekstvo"
-        },
         "fullScreen": {
           "description": "Ako je tačno, dijalog će biti preko celog ekrana",
           "name": "Ceo ekran"
@@ -593,21 +589,9 @@
       "description": "Raspored dece u jednodimenzionalnom hrpu",
       "name": "Skup",
       "props": {
-        "alignItems": {
-          "description": "Kontroliše poravnanje poprečne ose",
-          "name": "Poravnajte stavke"
-        },
         "direction": {
           "description": "Definiše da li su stavke složene u red ili kolonu",
           "name": "Pravac"
-        },
-        "flexWrap": {
-          "description": "Kontroliše da li se stavke umotavaju na više linija",
-          "name": "Flek omotač"
-        },
-        "justifyContent": {
-          "description": "Kontrolira poravnanje glavne ose",
-          "name": "Opravdajte sadržaj"
         },
         "spacing": {
           "description": "Razmak između naslaganih predmeta",

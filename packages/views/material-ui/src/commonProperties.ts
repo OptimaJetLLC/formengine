@@ -1,4 +1,4 @@
-import type {PopperProps, TypographyProps} from '@mui/material'
+import type {PopperProps} from '@mui/material'
 import {boolean, fn, oneOfStrict} from '@react-form-builder/core'
 
 type Placement = NonNullable<PopperProps['placement']>
@@ -41,10 +41,10 @@ export const color = oneOfStrict(
   'textDisabled'
 )
 
-export const typography: Partial<Record<keyof TypographyProps, any>> = {
+export const typography = {
   variant: oneOfStrict('h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'subtitle1', 'subtitle2', 'body1', 'body2', 'caption', 'button', 'overline'),
   color: color,
-  textAlign: oneOfStrict('left', 'center', 'right', 'justify'),
+  align: oneOfStrict('inherit', 'left', 'center', 'right', 'justify'),
   noWrap: boolean,
   gutterBottom: boolean,
 }

@@ -4,7 +4,7 @@ Props for the MuiDatePicker component.
 
 ## Extends
 
-- `Omit`\<`DatePickerProps`\<`any`, `any`\>, `"reduceAnimations"`\>.`Pick`\<[`MuiControlProps`](MuiControlProps.md), `"error"` \| `"helperText"` \| `"readOnly"` \| `"required"`\>
+- `Omit`\<`DatePickerProps`, `"defaultValue"` \| `"onChange"` \| `"reduceAnimations"` \| `"value"`\>.`Pick`\<[`MuiControlProps`](MuiControlProps.md), `"error"` \| `"helperText"` \| `"readOnly"` \| `"required"`\>
 
 ## Properties
 
@@ -37,7 +37,7 @@ This main element is:
 
 > `optional` **closeOnSelect?**: `boolean`
 
-If `true`, the popover or modal will close after submitting the full date.
+If `true`, the Picker will close after submitting the full date.
 
 #### Default
 
@@ -59,7 +59,7 @@ Formats the day of week displayed in the calendar header.
 
 ##### date
 
-`any`
+`Dayjs`
 
 The date of the day of week provided by the adapter.
 
@@ -72,7 +72,7 @@ The name to display.
 #### Default
 
 ```ts
-(date: TDate) => adapter.format(date, 'weekdayShort').charAt(0).toUpperCase()
+(date: PickerValidDate) => adapter.format(date, 'weekdayShort').charAt(0).toUpperCase()
 ```
 
 #### Inherited from
@@ -83,14 +83,9 @@ The name to display.
 
 ### defaultValue?
 
-> `optional` **defaultValue?**: `any`
+> `optional` **defaultValue?**: `Date` \| `null`
 
-The default value.
-Used when the component is not controlled.
-
-#### Inherited from
-
-`Omit.defaultValue`
+The default selected date value.
 
 ***
 
@@ -122,7 +117,8 @@ CSS media query when `Mobile` mode will be changed to `Desktop`.
 
 > `optional` **disabled?**: `boolean`
 
-If `true`, the picker and text field are disabled.
+If `true`, the component is disabled.
+When disabled, the value cannot be changed and no interaction is possible.
 
 #### Default
 
@@ -158,7 +154,7 @@ false
 
 > `optional` **disableHighlightToday?**: `boolean`
 
-If `true`, today's date is rendering without highlighting with circle.
+If `true`, today's day is not highlighted.
 
 #### Default
 
@@ -172,11 +168,15 @@ false
 
 ***
 
-### disableOpenPicker?
+### ~~disableOpenPicker?~~
 
 > `optional` **disableOpenPicker?**: `boolean`
 
-If `true`, the open picker button will not be rendered (renders only the field).
+If `true`, the button to open the Picker will not be rendered (it will only render the field).
+
+#### Deprecated
+
+Use the [field component](https://mui.com/x/react-date-pickers/fields/) instead.
 
 #### Default
 
@@ -217,22 +217,6 @@ If `true`, the week number will be display in the calendar.
 #### Inherited from
 
 `Omit.displayWeekNumber`
-
-***
-
-### enableAccessibleFieldDOMStructure?
-
-> `optional` **enableAccessibleFieldDOMStructure?**: `any`
-
-#### Default
-
-```ts
-false
-```
-
-#### Inherited from
-
-`Omit.enableAccessibleFieldDOMStructure`
 
 ***
 
@@ -323,6 +307,26 @@ Pass a ref to the `input` element.
 
 ***
 
+### keepOpenDuringFieldFocus?
+
+> `optional` **keepOpenDuringFieldFocus?**: `boolean`
+
+If `true`, keep the picker open when the value is edited from the field.
+Useful to prevent the popper/dialog from closing while typing in the input.
+This only affects changes with `source = "field"` and does not alter view interactions.
+
+#### Default
+
+```ts
+false
+```
+
+#### Inherited from
+
+`Omit.keepOpenDuringFieldFocus`
+
+***
+
 ### label?
 
 > `optional` **label?**: `ReactNode`
@@ -356,7 +360,7 @@ false
 
 ### localeText?
 
-> `optional` **localeText?**: `PickersInputComponentLocaleText`\<`any`\>
+> `optional` **localeText?**: `PickersInputComponentLocaleText`
 
 Locale for components texts.
 Allows overriding texts coming from `LocalizationProvider` and `theme`.
@@ -369,7 +373,7 @@ Allows overriding texts coming from `LocalizationProvider` and `theme`.
 
 ### maxDate?
 
-> `optional` **maxDate?**: `any`
+> `optional` **maxDate?**: `Dayjs`
 
 Maximal selectable date.
 
@@ -387,7 +391,7 @@ Maximal selectable date.
 
 ### minDate?
 
-> `optional` **minDate?**: `any`
+> `optional` **minDate?**: `Dayjs`
 
 Minimal selectable date.
 
@@ -443,7 +447,7 @@ Callback fired when the value is accepted.
 
 ##### value
 
-`any`
+`PickerValue`
 
 The value that was just accepted.
 
@@ -451,7 +455,10 @@ The value that was just accepted.
 
 `PickerChangeHandlerContext`\<`DateValidationError`\>
 
-The context containing the validation result of the current value.
+Context about this acceptance:
+- `validationError`: validation result of the current value
+- `source`: source of the acceptance. One of 'field' | 'view' | 'unknown'
+- `shortcut` (optional): the shortcut metadata if the value was accepted via a shortcut selection
 
 #### Returns
 
@@ -460,6 +467,22 @@ The context containing the validation result of the current value.
 #### Inherited from
 
 `Omit.onAccept`
+
+***
+
+### onCancel?
+
+> `optional` **onCancel?**: () => `void`
+
+Callback fired when the Cancel action is triggered.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+`Omit.onCancel`
 
 ***
 
@@ -473,23 +496,19 @@ Callback fired when the value changes.
 
 ##### value
 
-`any`
+`Date` \| `null`
 
-The new value.
+the new date value.
 
 ##### context
 
 `PickerChangeHandlerContext`\<`DateValidationError`\>
 
-The context containing the validation result of the current value.
+the change context from the DatePicker.
 
 #### Returns
 
 `void`
-
-#### Inherited from
-
-`Omit.onChange`
 
 ***
 
@@ -528,7 +547,7 @@ The reason why the current value is not valid.
 
 ##### value
 
-`any`
+`PickerValue`
 
 The value associated with the error.
 
@@ -552,7 +571,7 @@ Callback fired on month change.
 
 ##### month
 
-`any`
+`Dayjs`
 
 The new month.
 
@@ -641,7 +660,7 @@ Callback fired on year change.
 
 ##### year
 
-`any`
+`Dayjs`
 
 The new year.
 
@@ -689,7 +708,7 @@ Must be a valid option from `views` list.
 
 ### orientation?
 
-> `optional` **orientation?**: `"landscape"` \| `"portrait"`
+> `optional` **orientation?**: `PickerOrientation`
 
 Force rendering in particular orientation.
 
@@ -703,6 +722,15 @@ Force rendering in particular orientation.
 
 > `optional` **readOnly?**: `boolean`
 
+If `true`, the component is read-only.
+When read-only, the value cannot be changed but the user can interact with the interface.
+
+#### Default
+
+```ts
+false
+```
+
 #### Inherited from
 
 `Omit.readOnly`
@@ -711,7 +739,7 @@ Force rendering in particular orientation.
 
 ### referenceDate?
 
-> `optional` **referenceDate?**: `any`
+> `optional` **referenceDate?**: `Dayjs`
 
 The date used to generate the new value when both `value` and `defaultValue` are empty.
 
@@ -740,7 +768,7 @@ The node to render when loading.
 #### Default
 
 ```ts
-() => <span>...</span>
+() => <span>…</span>
 ```
 
 #### Inherited from
@@ -797,7 +825,7 @@ Warning: This function can be called multiple times (for example when rendering 
 
 ##### day
 
-`any`
+`Dayjs`
 
 The date to test.
 
@@ -823,7 +851,7 @@ Disable specific month.
 
 ##### month
 
-`any`
+`Dayjs`
 
 The month to test.
 
@@ -849,7 +877,7 @@ Disable specific year.
 
 ##### year
 
-`any`
+`Dayjs`
 
 The year to test.
 
@@ -891,7 +919,7 @@ false
 
 ### slotProps?
 
-> `optional` **slotProps?**: `DatePickerSlotProps`\<`any`, `any`\>
+> `optional` **slotProps?**: `DatePickerSlotProps`
 
 The props used for each component slot.
 
@@ -909,7 +937,7 @@ The props used for each component slot.
 
 ### slots?
 
-> `optional` **slots?**: `DatePickerSlots`\<`any`\>
+> `optional` **slots?**: `DatePickerSlots`
 
 Overridable component slots.
 
@@ -961,14 +989,9 @@ The timezone of the `value` or `defaultValue` prop is defined, 'default' otherwi
 
 ### value?
 
-> `optional` **value?**: `any`
+> `optional` **value?**: `Date` \| `null`
 
-The selected value.
-Used when the component is controlled.
-
-#### Inherited from
-
-`Omit.value`
+The selected date value.
 
 ***
 
@@ -988,7 +1011,7 @@ Must be a valid option from `views` list.
 
 ### viewRenderers?
 
-> `optional` **viewRenderers?**: `Partial`\<`DatePickerViewRenderers`\<`any`, `DateView`, \{ \}\>\>
+> `optional` **viewRenderers?**: `Partial`\<`DatePickerViewRenderers`\<`DateView`\>\>
 
 Define custom view renderers for each section.
 If `null`, the section will only have field editing.

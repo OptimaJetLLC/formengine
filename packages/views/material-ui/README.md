@@ -15,7 +15,7 @@ If you are using React 18 or below, you need to set up a resolution of `react-is
 ### Install
 
 ```bash
-npm install @react-form-builder/core @mui/material @emotion/react @emotion/styled @react-form-builder/components-material-ui
+npm install @react-form-builder/core @mui/material @mui/x-date-pickers @emotion/react @emotion/styled dayjs @react-form-builder/components-material-ui
 ```
 
 ### Quickstart
@@ -63,7 +63,7 @@ export const ViewerApp = () => {
 ### Install
 
 ```bash
-npm install @react-form-builder/core @react-form-builder/designer @mui/material @emotion/react @emotion/styled @react-form-builder/components-material-ui
+npm install @react-form-builder/core @react-form-builder/designer @mui/material @mui/x-date-pickers @emotion/react @emotion/styled dayjs @react-form-builder/components-material-ui
 ```
 
 ### Quickstart

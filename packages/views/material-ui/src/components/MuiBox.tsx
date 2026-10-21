@@ -1,6 +1,6 @@
 import type {BoxProps} from '@mui/material'
 import {Box} from '@mui/material'
-import {define, disabled, forwardRef, node, oneOf, readOnly, size} from '@react-form-builder/core'
+import {define, disabled, forwardRef, node, readOnly, size} from '@react-form-builder/core'
 import type {ForwardedRef} from 'react'
 import {sx} from '../commonProperties'
 import {layoutCategory} from './categories'
@@ -30,7 +30,14 @@ export const muiBox = define(MuiBox, 'MuiBox')
     children: node,
     readOnly: readOnly,
     disabled: disabled,
-    maxWidth: oneOf('xs', 'sm', 'md', 'lg', 'xl'),
+    // Layout constraints such as max-width belong in `sx` (Material UI v9 removed Box system props).
+    /*
+    function sx(theme) {
+      return {
+          "maxWidth": theme.breakpoints.values.md
+      }
+    }
+    */
     sx,
   })
   .css({

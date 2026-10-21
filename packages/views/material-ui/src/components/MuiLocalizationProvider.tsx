@@ -1,5 +1,5 @@
 import {LocalizationProvider} from '@mui/x-date-pickers'
-import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs/index.js'
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
 import type {FormViewerWrapper} from '@react-form-builder/core'
 
 /**

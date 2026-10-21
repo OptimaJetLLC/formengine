@@ -107,8 +107,8 @@
       "name": "Gutter bottom",
       "description": "If true, the text will have a bottom margin"
     },
-    "textAlign": {
-      "name": "Alignment",
+    "align": {
+      "name": "Align",
       "description": "Text alignment"
     }
   },
@@ -343,18 +343,6 @@
           "name": "Spacing",
           "description": "Spacing between stacked items"
         },
-        "justifyContent": {
-          "name": "Justify content",
-          "description": "Controls main-axis alignment"
-        },
-        "alignItems": {
-          "name": "Align items",
-          "description": "Controls cross-axis alignment"
-        },
-        "flexWrap": {
-          "name": "Flex wrap",
-          "description": "Controls whether items wrap onto multiple lines"
-        },
         "useFlexGap": {
           "name": "Use flex gap",
           "description": "Uses CSS gap instead of margins for spacing"
@@ -520,10 +508,6 @@
         "scroll": {
           "name": "Scroll",
           "description": "Determines the container for scrolling the dialog (paper or body)"
-        },
-        "disableEscapeKeyDown": {
-          "name": "Disable escape key down",
-          "description": "If true, pressing the escape key will not close the dialog"
         },
         "onClose": {
           "name": "onClose",

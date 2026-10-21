@@ -23,6 +23,10 @@
     }
   },
   "commonProperties": {
+    "align": {
+      "description": "Alineación de texto",
+      "name": "Alineación"
+    },
     "checked": {
       "description": "Si es verdadero, se comprueba el componente",
       "name": "Comprobado"
@@ -98,10 +102,6 @@
     "sx": {
       "description": "El accesorio del sistema que permite definir anulaciones del sistema, así como estilos CSS adicionales",
       "name": "sx"
-    },
-    "textAlign": {
-      "description": "Alineación de texto",
-      "name": "Alineación"
     },
     "value": {
       "description": "El valor del componente",
@@ -413,10 +413,6 @@
       "description": "Un componente de diálogo modal que muestra el contenido en una superposición",
       "name": "Diálogo",
       "props": {
-        "disableEscapeKeyDown": {
-          "description": "Si es verdadero, al presionar la tecla Escape no se cerrará el cuadro de diálogo",
-          "name": "Desactivar la tecla de escape hacia abajo"
-        },
         "fullScreen": {
           "description": "Si es verdadero, el cuadro de diálogo aparecerá en pantalla completa",
           "name": "Pantalla completa"
@@ -593,21 +589,9 @@
       "description": "Diseña los niños en una pila unidimensional",
       "name": "Pila",
       "props": {
-        "alignItems": {
-          "description": "Controla la alineación entre ejes",
-          "name": "Alinee los elementos"
-        },
         "direction": {
           "description": "Define si los elementos se apilan en una fila o columna",
           "name": "Dirección"
-        },
-        "flexWrap": {
-          "description": "Controla si los artículos se envuelven en varias líneas",
-          "name": "Envoltura flexible"
-        },
-        "justifyContent": {
-          "description": "Controla la alineación del eje principal",
-          "name": "Justifica el contenido"
         },
         "spacing": {
           "description": "Espaciado entre los artículos apilados",

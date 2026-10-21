@@ -861,8 +861,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 > `optional` **children?**: `ReactNode`
 
-The content of the component if a `ListItemSecondaryAction` is used it must
-be the last child.
+The content of the component.
 
 #### Inherited from
 
@@ -909,103 +908,6 @@ Override or extend the styles applied to the component.
 #### Inherited from
 
 `ListItemProps.component`
-
-***
-
-### ~~components?~~
-
-> `optional` **components?**: `object`
-
-The components used for each slot inside.
-
-#### ~~Root?~~
-
-> `optional` **Root?**: `ElementType`\<`any`, keyof IntrinsicElements\>
-
-#### Deprecated
-
-Use the `slots` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
-
-#### Default
-
-```ts
-{}
-```
-
-#### Inherited from
-
-`ListItemProps.components`
-
-***
-
-### ~~componentsProps?~~
-
-> `optional` **componentsProps?**: `object`
-
-The extra props for the slot components.
-You can override the existing props or add new ones.
-
-#### ~~root?~~
-
-> `optional` **root?**: `HTMLAttributes`\<`HTMLDivElement`\> & `ListItemComponentsPropsOverrides`
-
-#### Deprecated
-
-Use the `slotProps` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
-
-#### Default
-
-```ts
-{}
-```
-
-#### Inherited from
-
-`ListItemProps.componentsProps`
-
-***
-
-### ~~ContainerComponent?~~
-
-> `optional` **ContainerComponent?**: `ElementType`\<`HTMLAttributes`\<`HTMLDivElement`\>, keyof IntrinsicElements\>
-
-The container component used when a `ListItemSecondaryAction` is the last child.
-
-#### Default
-
-```ts
-'li'
-```
-
-#### Deprecated
-
-Use the `component` or `slots.root` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
-
-#### Inherited from
-
-`ListItemProps.ContainerComponent`
-
-***
-
-### ~~ContainerProps?~~
-
-> `optional` **ContainerProps?**: `HTMLAttributes`\<`HTMLDivElement`\>
-
-Props applied to the container component if used.
-
-#### Default
-
-```ts
-{}
-```
-
-#### Deprecated
-
-Use the `slotProps.root` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
-
-#### Inherited from
-
-`ListItemProps.ContainerProps`
 
 ***
 
@@ -3251,7 +3153,7 @@ You can override the existing props or add new ones.
 
 #### root?
 
-> `optional` **root?**: `HTMLAttributes`\<`HTMLDivElement`\> & `ListItemComponentsPropsOverrides`
+> `optional` **root?**: `SlotProps`\<`ElementType`\<`HTMLAttributes`\<`HTMLDivElement`\>, keyof IntrinsicElements\>, `ListItemRootSlotPropsOverrides`, `ListItemOwnerState`\>
 
 #### secondaryAction?
 

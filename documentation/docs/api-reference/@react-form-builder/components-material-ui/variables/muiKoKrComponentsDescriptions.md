@@ -68,6 +68,18 @@
 
 > **commonProperties**: `object`
 
+#### commonProperties.align
+
+> **align**: `object`
+
+#### commonProperties.align.description
+
+> **description**: `string` = `"텍스트 정렬"`
+
+#### commonProperties.align.name
+
+> **name**: `string` = `"얼라인먼트"`
+
 #### commonProperties.checked
 
 > **checked**: `object`
@@ -295,18 +307,6 @@
 #### commonProperties.sx.name
 
 > **name**: `string` = `"섹스"`
-
-#### commonProperties.textAlign
-
-> **textAlign**: `object`
-
-#### commonProperties.textAlign.description
-
-> **description**: `string` = `"텍스트 정렬"`
-
-#### commonProperties.textAlign.name
-
-> **name**: `string` = `"얼라인먼트"`
 
 #### commonProperties.value
 
@@ -1224,18 +1224,6 @@
 
 > **props**: `object`
 
-#### components.MuiDialog.props.disableEscapeKeyDown
-
-> **disableEscapeKeyDown**: `object`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.description
-
-> **description**: `string` = `"true인 경우 Esc 키를 눌러도 대화 상자가 닫히지 않습니다."`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.name
-
-> **name**: `string` = `"이스케이프 키 다운 비활성화"`
-
 #### components.MuiDialog.props.fullScreen
 
 > **fullScreen**: `object`
@@ -1740,18 +1728,6 @@
 
 > **props**: `object`
 
-#### components.MuiStack.props.alignItems
-
-> **alignItems**: `object`
-
-#### components.MuiStack.props.alignItems.description
-
-> **description**: `string` = `"축 간 정렬을 제어합니다"`
-
-#### components.MuiStack.props.alignItems.name
-
-> **name**: `string` = `"항목 정렬"`
-
 #### components.MuiStack.props.direction
 
 > **direction**: `object`
@@ -1763,30 +1739,6 @@
 #### components.MuiStack.props.direction.name
 
 > **name**: `string` = `"방향"`
-
-#### components.MuiStack.props.flexWrap
-
-> **flexWrap**: `object`
-
-#### components.MuiStack.props.flexWrap.description
-
-> **description**: `string` = `"항목을 여러 줄로 줄바꿈할지 여부를 제어합니다."`
-
-#### components.MuiStack.props.flexWrap.name
-
-> **name**: `string` = `"플렉스 랩"`
-
-#### components.MuiStack.props.justifyContent
-
-> **justifyContent**: `object`
-
-#### components.MuiStack.props.justifyContent.description
-
-> **description**: `string` = `"주축 정렬을 제어합니다."`
-
-#### components.MuiStack.props.justifyContent.name
-
-> **name**: `string` = `"콘텐츠 정당화"`
 
 #### components.MuiStack.props.spacing
 

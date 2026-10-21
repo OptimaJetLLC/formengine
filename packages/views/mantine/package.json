@@ -220,6 +220,7 @@
     "@mantine/core": "^8.3.9",
     "@mantine/dates": "^8.3.9",
     "@mantine/dropzone": "^8.3.9",
+    "@mantine/hooks": "^8.3.9",
     "@mantine/tiptap": "^8.3.9",
     "@react-form-builder/core": "11.1.0",
     "@tiptap/extension-highlight": "^3.13.0",

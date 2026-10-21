@@ -68,6 +68,18 @@
 
 > **commonProperties**: `object`
 
+#### commonProperties.align
+
+> **align**: `object`
+
+#### commonProperties.align.description
+
+> **description**: `string` = `"टेक्स्ट अलाइनमेंट"`
+
+#### commonProperties.align.name
+
+> **name**: `string` = `"संरेखण"`
+
 #### commonProperties.checked
 
 > **checked**: `object`
@@ -295,18 +307,6 @@
 #### commonProperties.sx.name
 
 > **name**: `string` = `"Sx"`
-
-#### commonProperties.textAlign
-
-> **textAlign**: `object`
-
-#### commonProperties.textAlign.description
-
-> **description**: `string` = `"टेक्स्ट अलाइनमेंट"`
-
-#### commonProperties.textAlign.name
-
-> **name**: `string` = `"संरेखण"`
 
 #### commonProperties.value
 
@@ -1224,18 +1224,6 @@
 
 > **props**: `object`
 
-#### components.MuiDialog.props.disableEscapeKeyDown
-
-> **disableEscapeKeyDown**: `object`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.description
-
-> **description**: `string` = `"यदि सही है, तो एस्केप कुंजी दबाने से डायलॉग बंद नहीं होगा"`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.name
-
-> **name**: `string` = `"एस्केप कुंजी को अक्षम करें"`
-
 #### components.MuiDialog.props.fullScreen
 
 > **fullScreen**: `object`
@@ -1740,18 +1728,6 @@
 
 > **props**: `object`
 
-#### components.MuiStack.props.alignItems
-
-> **alignItems**: `object`
-
-#### components.MuiStack.props.alignItems.description
-
-> **description**: `string` = `"क्रॉस-एक्सिस संरेखण को नियंत्रित करता है"`
-
-#### components.MuiStack.props.alignItems.name
-
-> **name**: `string` = `"आइटम संरेखित करें"`
-
 #### components.MuiStack.props.direction
 
 > **direction**: `object`
@@ -1763,30 +1739,6 @@
 #### components.MuiStack.props.direction.name
 
 > **name**: `string` = `"डायरेक्शन"`
-
-#### components.MuiStack.props.flexWrap
-
-> **flexWrap**: `object`
-
-#### components.MuiStack.props.flexWrap.description
-
-> **description**: `string` = `"नियंत्रित करता है कि आइटम कई लाइनों पर रैप करते हैं या नहीं"`
-
-#### components.MuiStack.props.flexWrap.name
-
-> **name**: `string` = `"फ्लेक्स रैप"`
-
-#### components.MuiStack.props.justifyContent
-
-> **justifyContent**: `object`
-
-#### components.MuiStack.props.justifyContent.description
-
-> **description**: `string` = `"मुख्य-अक्ष संरेखण को नियंत्रित करता है"`
-
-#### components.MuiStack.props.justifyContent.name
-
-> **name**: `string` = `"सामग्री का औचित्य सिद्ध करें"`
 
 #### components.MuiStack.props.spacing
 

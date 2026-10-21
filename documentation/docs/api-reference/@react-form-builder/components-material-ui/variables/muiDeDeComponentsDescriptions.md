@@ -68,6 +68,18 @@
 
 > **commonProperties**: `object`
 
+#### commonProperties.align
+
+> **align**: `object`
+
+#### commonProperties.align.description
+
+> **description**: `string` = `"Textausrichtung"`
+
+#### commonProperties.align.name
+
+> **name**: `string` = `"Ausrichtung"`
+
 #### commonProperties.checked
 
 > **checked**: `object`
@@ -295,18 +307,6 @@
 #### commonProperties.sx.name
 
 > **name**: `string` = `"Sx"`
-
-#### commonProperties.textAlign
-
-> **textAlign**: `object`
-
-#### commonProperties.textAlign.description
-
-> **description**: `string` = `"Textausrichtung"`
-
-#### commonProperties.textAlign.name
-
-> **name**: `string` = `"Ausrichtung"`
 
 #### commonProperties.value
 
@@ -1224,18 +1224,6 @@
 
 > **props**: `object`
 
-#### components.MuiDialog.props.disableEscapeKeyDown
-
-> **disableEscapeKeyDown**: `object`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.description
-
-> **description**: `string` = `"Falls wahr, wird das Dialogfeld durch Drücken der Escape-Taste nicht geschlossen"`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.name
-
-> **name**: `string` = `"Deaktivieren Sie die Escape-Taste gedrückt"`
-
 #### components.MuiDialog.props.fullScreen
 
 > **fullScreen**: `object`
@@ -1740,18 +1728,6 @@
 
 > **props**: `object`
 
-#### components.MuiStack.props.alignItems
-
-> **alignItems**: `object`
-
-#### components.MuiStack.props.alignItems.description
-
-> **description**: `string` = `"Steuert die achsenübergreifende Ausrichtung"`
-
-#### components.MuiStack.props.alignItems.name
-
-> **name**: `string` = `"Elemente ausrichten"`
-
 #### components.MuiStack.props.direction
 
 > **direction**: `object`
@@ -1763,30 +1739,6 @@
 #### components.MuiStack.props.direction.name
 
 > **name**: `string` = `"Richtung"`
-
-#### components.MuiStack.props.flexWrap
-
-> **flexWrap**: `object`
-
-#### components.MuiStack.props.flexWrap.description
-
-> **description**: `string` = `"Steuert, ob Elemente in mehrere Zeilen umgebrochen werden"`
-
-#### components.MuiStack.props.flexWrap.name
-
-> **name**: `string` = `"Flex-Wrap"`
-
-#### components.MuiStack.props.justifyContent
-
-> **justifyContent**: `object`
-
-#### components.MuiStack.props.justifyContent.description
-
-> **description**: `string` = `"Steuert die Ausrichtung der Hauptachse"`
-
-#### components.MuiStack.props.justifyContent.name
-
-> **name**: `string` = `"Inhalt begründen"`
 
 #### components.MuiStack.props.spacing
 

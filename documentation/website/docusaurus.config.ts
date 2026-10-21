@@ -11,7 +11,7 @@ const docusaurusPluginTypedocConfig = [
   'docusaurus-plugin-typedoc',
   // Options
   {
-    plugin: [resolve(__dirname, './scripts/typedoc-union-sorter.js')],
+    plugin: [resolve(__dirname, './scripts/typedoc-union-sorter.mjs')],
     entryPoints: [
       '../../packages/core',
       '../../packages/designer',
@@ -318,6 +318,7 @@ const config: Config = {
         }
       }
     ],
+    require.resolve('./plugins/custom-webpack-plugin/index.cjs'),
     require.resolve('docusaurus-plugin-image-zoom'),
     '@docsearch/docusaurus-adapter',
   ],

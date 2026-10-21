@@ -23,6 +23,10 @@
     }
   },
   "commonProperties": {
+    "align": {
+      "description": "テキスト配置",
+      "name": "アラインメント"
+    },
     "checked": {
       "description": "true の場合、コンポーネントがチェックされます",
       "name": "チェック済み"
@@ -98,10 +102,6 @@
     "sx": {
       "description": "システムオーバーライドや追加の CSS スタイルを定義できるシステムプロップ",
       "name": "セックス"
-    },
-    "textAlign": {
-      "description": "テキスト配置",
-      "name": "アラインメント"
     },
     "value": {
       "description": "コンポーネントの値",
@@ -413,10 +413,6 @@
       "description": "コンテンツをオーバーレイで表示するモーダルダイアログコンポーネント",
       "name": "ダイアログ",
       "props": {
-        "disableEscapeKeyDown": {
-          "description": "true の場合、Esc キーを押してもダイアログは閉じません",
-          "name": "エスケープキーダウンを無効にする"
-        },
         "fullScreen": {
           "description": "true の場合、ダイアログは全画面表示になります。",
           "name": "[フルスクリーン]"
@@ -593,21 +589,9 @@
       "description": "子を 1 次元のスタックにレイアウトします",
       "name": "スタック",
       "props": {
-        "alignItems": {
-          "description": "軸間の位置合わせを制御します",
-          "name": "項目を揃える"
-        },
         "direction": {
           "description": "項目を行に積み重ねるか列に積み重ねるかを定義します",
           "name": "方向"
-        },
-        "flexWrap": {
-          "description": "項目を複数行に折り返すかどうかを制御します",
-          "name": "フレックスラップ"
-        },
-        "justifyContent": {
-          "description": "主軸の位置合わせを制御します",
-          "name": "コンテンツを正当化する"
         },
         "spacing": {
           "description": "積み重ねられたアイテム間の間隔",

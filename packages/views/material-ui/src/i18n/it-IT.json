@@ -23,6 +23,10 @@
     }
   },
   "commonProperties": {
+    "align": {
+      "description": "Allineamento del testo",
+      "name": "Allineamento"
+    },
     "checked": {
       "description": "Se vero, il componente viene controllato",
       "name": "Controllato"
@@ -98,10 +102,6 @@
     "sx": {
       "description": "Il prop di sistema che consente di definire le sostituzioni di sistema e stili CSS aggiuntivi",
       "name": "Sx"
-    },
-    "textAlign": {
-      "description": "Allineamento del testo",
-      "name": "Allineamento"
     },
     "value": {
       "description": "Il valore del componente",
@@ -413,10 +413,6 @@
       "description": "Un componente di dialogo modale che visualizza il contenuto in una sovrapposizione",
       "name": "Dialogo",
       "props": {
-        "disableEscapeKeyDown": {
-          "description": "Se è vero, premendo il tasto Esc non si chiude la finestra di dialogo",
-          "name": "Disattiva il tasto Esc verso il basso"
-        },
         "fullScreen": {
           "description": "Se vero, la finestra di dialogo sarà a schermo intero",
           "name": "Schermo intero"
@@ -593,21 +589,9 @@
       "description": "Dispone i bambini in una pila unidimensionale",
       "name": "pila",
       "props": {
-        "alignItems": {
-          "description": "Controlla l'allineamento tra gli assi",
-          "name": "Allinea gli elementi"
-        },
         "direction": {
           "description": "Definisce se gli elementi sono impilati in una riga o in una colonna",
           "name": "Direzione"
-        },
-        "flexWrap": {
-          "description": "Controlla se gli elementi sono disposti su più righe",
-          "name": "Involucro flessibile"
-        },
-        "justifyContent": {
-          "description": "Controlla l'allineamento dell'asse principale",
-          "name": "Giustifica i contenuti"
         },
         "spacing": {
           "description": "Spaziatura tra gli elementi impilati",

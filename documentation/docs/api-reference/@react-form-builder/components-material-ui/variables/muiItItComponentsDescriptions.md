@@ -68,6 +68,18 @@
 
 > **commonProperties**: `object`
 
+#### commonProperties.align
+
+> **align**: `object`
+
+#### commonProperties.align.description
+
+> **description**: `string` = `"Allineamento del testo"`
+
+#### commonProperties.align.name
+
+> **name**: `string` = `"Allineamento"`
+
 #### commonProperties.checked
 
 > **checked**: `object`
@@ -295,18 +307,6 @@
 #### commonProperties.sx.name
 
 > **name**: `string` = `"Sx"`
-
-#### commonProperties.textAlign
-
-> **textAlign**: `object`
-
-#### commonProperties.textAlign.description
-
-> **description**: `string` = `"Allineamento del testo"`
-
-#### commonProperties.textAlign.name
-
-> **name**: `string` = `"Allineamento"`
 
 #### commonProperties.value
 
@@ -1224,18 +1224,6 @@
 
 > **props**: `object`
 
-#### components.MuiDialog.props.disableEscapeKeyDown
-
-> **disableEscapeKeyDown**: `object`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.description
-
-> **description**: `string` = `"Se è vero, premendo il tasto Esc non si chiude la finestra di dialogo"`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.name
-
-> **name**: `string` = `"Disattiva il tasto Esc verso il basso"`
-
 #### components.MuiDialog.props.fullScreen
 
 > **fullScreen**: `object`
@@ -1740,18 +1728,6 @@
 
 > **props**: `object`
 
-#### components.MuiStack.props.alignItems
-
-> **alignItems**: `object`
-
-#### components.MuiStack.props.alignItems.description
-
-> **description**: `string` = `"Controlla l'allineamento tra gli assi"`
-
-#### components.MuiStack.props.alignItems.name
-
-> **name**: `string` = `"Allinea gli elementi"`
-
 #### components.MuiStack.props.direction
 
 > **direction**: `object`
@@ -1763,30 +1739,6 @@
 #### components.MuiStack.props.direction.name
 
 > **name**: `string` = `"Direzione"`
-
-#### components.MuiStack.props.flexWrap
-
-> **flexWrap**: `object`
-
-#### components.MuiStack.props.flexWrap.description
-
-> **description**: `string` = `"Controlla se gli elementi sono disposti su più righe"`
-
-#### components.MuiStack.props.flexWrap.name
-
-> **name**: `string` = `"Involucro flessibile"`
-
-#### components.MuiStack.props.justifyContent
-
-> **justifyContent**: `object`
-
-#### components.MuiStack.props.justifyContent.description
-
-> **description**: `string` = `"Controlla l'allineamento dell'asse principale"`
-
-#### components.MuiStack.props.justifyContent.name
-
-> **name**: `string` = `"Giustifica i contenuti"`
 
 #### components.MuiStack.props.spacing
 

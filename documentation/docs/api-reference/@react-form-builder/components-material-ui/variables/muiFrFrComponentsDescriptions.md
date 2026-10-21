@@ -68,6 +68,18 @@
 
 > **commonProperties**: `object`
 
+#### commonProperties.align
+
+> **align**: `object`
+
+#### commonProperties.align.description
+
+> **description**: `string` = `"Alignement du texte"`
+
+#### commonProperties.align.name
+
+> **name**: `string` = `"Alignement"`
+
 #### commonProperties.checked
 
 > **checked**: `object`
@@ -295,18 +307,6 @@
 #### commonProperties.sx.name
 
 > **name**: `string` = `"Sexe"`
-
-#### commonProperties.textAlign
-
-> **textAlign**: `object`
-
-#### commonProperties.textAlign.description
-
-> **description**: `string` = `"Alignement du texte"`
-
-#### commonProperties.textAlign.name
-
-> **name**: `string` = `"Alignement"`
 
 #### commonProperties.value
 
@@ -1224,18 +1224,6 @@
 
 > **props**: `object`
 
-#### components.MuiDialog.props.disableEscapeKeyDown
-
-> **disableEscapeKeyDown**: `object`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.description
-
-> **description**: `string` = `"Si c'est vrai, appuyer sur la touche d'échappement ne fermera pas la boîte de dialogue"`
-
-#### components.MuiDialog.props.disableEscapeKeyDown.name
-
-> **name**: `string` = `"Désactiver la touche d'échappement"`
-
 #### components.MuiDialog.props.fullScreen
 
 > **fullScreen**: `object`
@@ -1740,18 +1728,6 @@
 
 > **props**: `object`
 
-#### components.MuiStack.props.alignItems
-
-> **alignItems**: `object`
-
-#### components.MuiStack.props.alignItems.description
-
-> **description**: `string` = `"Contrôle l'alignement transversal"`
-
-#### components.MuiStack.props.alignItems.name
-
-> **name**: `string` = `"Aligner les éléments"`
-
 #### components.MuiStack.props.direction
 
 > **direction**: `object`
@@ -1763,30 +1739,6 @@
 #### components.MuiStack.props.direction.name
 
 > **name**: `string` = `"Direction"`
-
-#### components.MuiStack.props.flexWrap
-
-> **flexWrap**: `object`
-
-#### components.MuiStack.props.flexWrap.description
-
-> **description**: `string` = `"Détermine si les éléments s'enroulent sur plusieurs lignes"`
-
-#### components.MuiStack.props.flexWrap.name
-
-> **name**: `string` = `"Enveloppe Flex"`
-
-#### components.MuiStack.props.justifyContent
-
-> **justifyContent**: `object`
-
-#### components.MuiStack.props.justifyContent.description
-
-> **description**: `string` = `"Contrôle l'alignement de l'axe principal"`
-
-#### components.MuiStack.props.justifyContent.name
-
-> **name**: `string` = `"Justifier le contenu"`
 
 #### components.MuiStack.props.spacing
 

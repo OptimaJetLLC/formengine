@@ -9,23 +9,7 @@ import {feedbackCategory} from './categories'
 /**
  * Props for the MuiDialog component.
  */
-export interface MuiDialogProps
-  extends Omit<
-    DialogProps,
-    | 'aria-dropeffect'
-    | 'aria-grabbed'
-    | 'components'
-    | 'componentsProps'
-    | 'onKeyPress'
-    | 'onKeyPressCapture'
-    | 'Backdrop'
-    | 'BackdropComponent'
-    | 'BackdropProps'
-    | 'PaperProps'
-    | 'Root'
-    | 'TransitionComponent'
-    | 'TransitionProps'
-  > {
+export interface MuiDialogProps extends DialogProps {
   /**
    * Custom close handler function.
    */
@@ -74,7 +58,6 @@ export const muiDialog = define(MuiDialog, 'MuiDialog')
     fullWidth: boolean.default(false),
     maxWidth: dialogSize,
     scroll: oneOf('paper', 'body').default('paper'),
-    disableEscapeKeyDown: boolean,
     onOpen: event,
     onClose: event,
     sx,

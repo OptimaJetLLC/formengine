@@ -27,8 +27,8 @@
   "peerDependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@mui/material": "^7.3.2",
-    "@mui/x-date-pickers": "^7.29.4",
+    "@mui/material": "^9.5.0",
+    "@mui/x-date-pickers": "^9.16.0",
     "@react-form-builder/components-uploader": "^11.1.0",
     "@react-form-builder/core": "11.1.0",
     "dayjs": "^1.11.23",

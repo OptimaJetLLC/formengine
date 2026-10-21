@@ -45,14 +45,29 @@ function convertFormat(userFormat = 'yyyy-MM-dd'): string {
  * Props for the MuiDatePicker component.
  */
 export interface MuiDatePickerProps
-  extends Omit<DatePickerProps<any, any>, 'reduceAnimations'>,
-    Pick<MuiControlProps, 'error' | 'helperText' | 'readOnly' | 'required'> {}
+  extends Omit<DatePickerProps, 'reduceAnimations' | 'onChange' | 'value' | 'defaultValue'>,
+    Pick<MuiControlProps, 'error' | 'helperText' | 'readOnly' | 'required'> {
+  /**
+   * The selected date value.
+   */
+  value?: Date | null
+  /**
+   * The default selected date value.
+   */
+  defaultValue?: Date | null
+  /**
+   * Callback fired when the value changes.
+   * @param value the new date value.
+   * @param context the change context from the DatePicker.
+   */
+  onChange?: (value: Date | null, context: Parameters<NonNullable<DatePickerProps['onChange']>>[1]) => void
+}
 
-type ChangeHandler = NonNullable<MuiDatePickerProps['onChange']>
+type ChangeHandler = NonNullable<DatePickerProps['onChange']>
 
 const renderLoading = () => <CircularProgress />
 
-const useDayJsDate = (value: any) => {
+const useDayJsDate = (value: Date | null | undefined) => {
   return useMemo(() => (value ? dayjs(value) : value), [value])
 }
 
@@ -68,8 +83,8 @@ const RawDatePicker = ({onChange, value, defaultValue, ...props}: MuiDatePickerP
   const convertedMaxDate = useDayJsDate(maxDate)
   const convertedFormat = useMemo(() => convertFormat(format), [format])
   const handleChange = useCallback<ChangeHandler>(
-    (newValue, ...args) => {
-      onChange?.(newValue?.toDate(), ...args)
+    (newValue, context) => {
+      onChange?.(newValue ? newValue.toDate() : null, context)
     },
     [onChange]
   )
