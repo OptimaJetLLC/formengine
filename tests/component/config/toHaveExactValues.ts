@@ -20,7 +20,7 @@ expect.extend({
 })
 
 declare module 'vitest' {
-  interface Assertion<T = any> {
-    toHaveExactValues(expected: any[]): void
+  interface Matchers<R extends void | Promise<void> = void | Promise<void>, T = unknown> {
+    toHaveExactValues(expected: any[]): R
   }
 }

@@ -20,7 +20,7 @@ expect.extend({
 })
 
 declare module 'vitest' {
-  interface Assertion {
-    toAllHaveInnerHtml(expected: string[]): void
+  interface Matchers<R extends void | Promise<void> = void | Promise<void>, T = unknown> {
+    toAllHaveInnerHtml(expected: string[]): R
   }
 }

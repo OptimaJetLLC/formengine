@@ -24,7 +24,7 @@ expect.extend({
 })
 
 declare module 'vitest' {
-  interface Assertion<T = any> {
-    toAllHaveExactAttributes(attributeName: string, expected: any[]): void
+  interface Matchers<R extends void | Promise<void> = void | Promise<void>, T = unknown> {
+    toAllHaveExactAttributes(attributeName: string, expected: any[]): R
   }
 }
