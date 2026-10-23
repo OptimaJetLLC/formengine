@@ -128,6 +128,38 @@ describe('The required property tests', () => {
     expect(requiredPropertyInput.checked).toBeFalsy()
   })
 
+  it('should show the required state of the selected component', async () => {
+    const requiredFieldKey = 'required-input'
+    const optionalFieldKey = 'optional-input'
+    const formWithRequiredAndOptionalFields = {
+      form: {
+        key: 'Screen',
+        type: 'Screen',
+        children: [
+          {
+            key: requiredFieldKey,
+            type: 'MyInput',
+            schema: {validations: [{key: 'required'}]},
+            htmlAttributes: [{name: 'data-testid', value: requiredFieldKey}],
+          },
+          {
+            key: optionalFieldKey,
+            type: 'MyInput',
+            htmlAttributes: [{name: 'data-testid', value: optionalFieldKey}],
+          },
+        ],
+      },
+    }
+    const view = new BuilderView([myInput])
+    const {findByTestId} = await renderBuilder(formWithRequiredAndOptionalFields, {view})
+
+    const requiredPropertyInput = await getPropertyInput(findByTestId, requiredFieldKey, 'required', 'Main')
+    expect(requiredPropertyInput.checked).toBeTruthy()
+
+    const optionalPropertyInput = await getPropertyInput(findByTestId, optionalFieldKey, 'required', 'Main')
+    expect(optionalPropertyInput.checked).toBeFalsy()
+  })
+
   it('The required property should be set for both attributes', async () => {
     const requiredForm = {
       form: {
