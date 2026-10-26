@@ -32,6 +32,7 @@ let waitingForWindowLoad = false;
 let prefetchActive = 0;
 let nearViewportObserver: IntersectionObserver | null = null;
 let lightboxBound = false;
+let lightboxScrollY = 0;
 let loupeBound = false;
 let suppressLightboxClick = false;
 
@@ -123,10 +124,26 @@ function getLightboxElements(): LightboxElements | null {
   return { closeButton, dialog, image };
 }
 
+function lockLightboxScroll(): void {
+  lightboxScrollY = window.scrollY;
+  document.documentElement.classList.add('fe-guide-lightbox-open');
+  document.body.style.top = `-${lightboxScrollY}px`;
+}
+
+function unlockLightboxScroll(): void {
+  if (!document.documentElement.classList.contains('fe-guide-lightbox-open')) {
+    return;
+  }
+  document.documentElement.classList.remove('fe-guide-lightbox-open');
+  document.body.style.top = '';
+  window.scrollTo(0, lightboxScrollY);
+}
+
 function closeLightbox({ dialog, image }: LightboxElements): void {
   if (dialog.open) {
     dialog.close();
   }
+  unlockLightboxScroll();
   image.removeAttribute('src');
   image.alt = '';
 }
@@ -140,6 +157,7 @@ function openLightbox(image: HTMLImageElement, themedWrapper: Element | null): v
   lightbox.image.src = resolveFullScreenshotSrc(image, themedWrapper);
   lightbox.image.alt = image.alt;
   if (!lightbox.dialog.open) {
+    lockLightboxScroll();
     lightbox.dialog.showModal();
   }
 }

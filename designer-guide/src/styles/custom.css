@@ -375,6 +375,18 @@ main .fe-toolbar-icon--open-actions {
     rgb(80, 80, 80, 0.3) -6px -2px 16px 0;
 }
 
+html.fe-guide-lightbox-open,
+html.fe-guide-lightbox-open body {
+  overflow: hidden;
+}
+
+html.fe-guide-lightbox-open body {
+  left: 0;
+  position: fixed;
+  right: 0;
+  width: 100%;
+}
+
 .fe-guide-image-lightbox {
   background: rgb(0 0 0 / 72%);
   border: none;
@@ -382,12 +394,15 @@ main .fe-toolbar-icon--open-actions {
   max-height: none;
   max-width: none;
   overflow: hidden;
+  overscroll-behavior: contain;
   padding: 0;
   width: 100vw;
 }
 
 .fe-guide-image-lightbox::backdrop {
   background: rgb(0 0 0 / 72%);
+  overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 .fe-guide-image-lightbox__frame {
