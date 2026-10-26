@@ -1,4 +1,5 @@
 import {fireEvent, waitFor, within} from '@testing-library/react'
+import {addSiblingLabelFromToolbar} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 
 const form = {
@@ -94,14 +95,7 @@ describe('Nearby component tree button', () => {
     const {findByRole, findByTestId} = await renderBuilder(form)
 
     fireEvent.click(await findByTestId('current-editable-wrapper'))
-    fireEvent.click(await findByTestId('toolbar-actions-button'))
-    fireEvent.click(document.querySelector('[data-fe-toolbar] .add-button')!)
-    fireEvent.click(await findByRole('button', {name: 'After'}))
-
-    const dialog = await findByRole('dialog')
-    fireEvent.click(await within(dialog).findByText('Label'))
-
-    await waitFor(async () => expect(await findByTestId('rsLabel1-editable-wrapper')).toBeInTheDocument())
+    await addSiblingLabelFromToolbar({findByRole, findByTestId})
   })
 
   it('clones from the tree toolbar without nearby navigation', async () => {

@@ -1,5 +1,6 @@
 import type {CustomizationMap} from '@react-form-builder/designer'
-import {fireEvent, waitFor, within} from '@testing-library/react'
+import {fireEvent, waitFor} from '@testing-library/react'
+import {addSiblingLabelFromToolbar, openToolbarActions} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 
 const form = {
@@ -45,7 +46,7 @@ describe('Toolbar action strip', () => {
     const {findByTestId, queryByTestId} = await renderBuilder(form)
     await selectNestedButton(findByTestId)
 
-    fireEvent.click(await findByTestId('toolbar-actions-button'))
+    await openToolbarActions()
     fireEvent.click(await findByTestId('toolbar-remove-button'))
 
     await waitFor(() => expect(queryByTestId('nestedButton-editable-wrapper')).not.toBeInTheDocument())
@@ -57,7 +58,7 @@ describe('Toolbar action strip', () => {
     })
     await selectNestedButton(findByTestId)
 
-    fireEvent.click(await findByTestId('toolbar-actions-button'))
+    await openToolbarActions()
     fireEvent.click(await findByTestId('tree-clone-button'))
 
     await waitFor(async () => expect(await findByTestId('rsButton1-editable-wrapper')).toBeInTheDocument())
@@ -69,14 +70,7 @@ describe('Toolbar action strip', () => {
     })
     await selectNestedButton(findByTestId)
 
-    fireEvent.click(await findByTestId('toolbar-actions-button'))
-    fireEvent.click(document.querySelector('[data-fe-toolbar] .add-button')!)
-    fireEvent.click(await findByRole('button', {name: 'After'}))
-
-    const dialog = await findByRole('dialog')
-    fireEvent.click(await within(dialog).findByText('Label'))
-
-    await waitFor(async () => expect(await findByTestId('rsLabel1-editable-wrapper')).toBeInTheDocument())
+    await addSiblingLabelFromToolbar({findByRole, findByTestId})
     expect(await findByText('Nested')).toBeInTheDocument()
   })
 

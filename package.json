@@ -104,6 +104,7 @@
     "madge": "^8.0.0",
     "mdxlint": "^1.0.0",
     "npm-run-all2": "^9.0.2",
+    "playwright": "1.64.1",
     "remark-custom-heading-id": "^2.0.0",
     "remark-directive": "^4.0.0",
     "remark-frontmatter": "^5.0.0",

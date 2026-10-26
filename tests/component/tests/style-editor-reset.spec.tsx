@@ -93,7 +93,7 @@ describe('Style and CSS editor reset buttons', () => {
     expect(componentStore.css?.any?.object).toEqual({width: '100%'})
     expect(componentStore.wrapperCss?.any?.string).toBe('background: blue;')
 
-    fireEvent.click(within(cssEditor).getByRole('radio', {name: 'Wrapper'}))
+    fireEvent.click(within(cssEditor).getByLabelText('Wrapper'))
     fireEvent.click(await findByTestId('css-editor-clean-button'))
 
     componentStore = getComponentStore(builder)
@@ -117,7 +117,7 @@ describe('Style and CSS editor reset buttons', () => {
     expect(componentStore.style).toBeUndefined()
     expect(componentStore.wrapperStyle?.any?.string).toBe('padding: 8px;')
 
-    fireEvent.click(within(styleEditor).getByRole('radio', {name: 'Wrapper'}))
+    fireEvent.click(within(styleEditor).getByLabelText('Wrapper'))
     fireEvent.click(await findByTestId('style-editor-clean-button'))
 
     componentStore = getComponentStore(builder)

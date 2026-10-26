@@ -1,4 +1,5 @@
 import {fireEvent, waitFor} from '@testing-library/react'
+import {openToolbarActions} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 
 const form = {
@@ -63,7 +64,7 @@ describe('Reveal in tree', () => {
     await waitFor(() => expect(queryByTestId('containerB')).not.toBeInTheDocument())
 
     fireEvent.click(await findByTestId('Components_Tab'))
-    fireEvent.click(await findByTestId('toolbar-actions-button'))
+    await openToolbarActions()
     await waitFor(() => expect(queryByTestId('reveal-in-tree-button')).toBeInTheDocument())
     fireEvent.click(await findByTestId('reveal-in-tree-button'))
 
@@ -75,7 +76,7 @@ describe('Reveal in tree', () => {
     const {findByTestId, queryByTestId, findByText} = await renderBuilder(form)
 
     fireEvent.click(await findByTestId('nestedButton-editable-wrapper'))
-    fireEvent.click(await findByTestId('toolbar-actions-button'))
+    await openToolbarActions()
     fireEvent.click(await findByTestId('reveal-in-tree-button'))
 
     expect(await findByTestId('Tree_Tab')).toHaveAttribute('aria-selected', 'true')
@@ -84,7 +85,7 @@ describe('Reveal in tree', () => {
     fireEvent.click(await findByText('Collapse all'))
     await waitFor(() => expect(queryByTestId('nestedButton')).not.toBeInTheDocument())
 
-    fireEvent.click(await findByTestId('toolbar-actions-button'))
+    await openToolbarActions()
     fireEvent.click(await findByTestId('reveal-in-tree-button'))
     expect(await findByTestId('nestedButton')).toBeInTheDocument()
   })

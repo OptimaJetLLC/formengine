@@ -15,6 +15,7 @@ import {klona} from 'klona/full'
 import {useCallback} from 'react'
 import {Button} from 'rsuite'
 import {describe, expect, vi} from 'vitest'
+import {openToolbarActions} from '../util/openToolbarActions'
 import form from './forms/designer-customization.json'
 
 /**
@@ -82,7 +83,7 @@ const selectEditableComponent = async ({findByTestId}: ActivateHelpers) => {
 
 const selectEditableAndOpenToolbarActions = async (helpers: ActivateHelpers) => {
   await selectEditableComponent(helpers)
-  fireEvent.click(await helpers.findByTestId('toolbar-actions-button'))
+  await openToolbarActions()
 }
 
 const queryInDocument = (container: HTMLElement, selector: string) => {

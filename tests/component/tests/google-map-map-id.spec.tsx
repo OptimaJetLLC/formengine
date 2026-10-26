@@ -14,6 +14,7 @@ vi.mock('@react-form-builder/core', async importOriginal => {
 })
 
 vi.mock('@vis.gl/react-google-maps', () => ({
+  InfoWindow: ({children}: {children?: ReactNode}) => <>{children}</>,
   Map: ({mapId, children}: {mapId?: string; children?: ReactNode}) => (
     <div data-testid="google-map" data-map-id={mapId ?? ''}>
       {children}

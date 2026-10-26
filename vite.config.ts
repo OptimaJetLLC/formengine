@@ -25,6 +25,12 @@ export const componentTestSetupFiles = [
 export const componentTestGlob = '../component/tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'
 
 const isCI = !!(process.env.CI || process.env.GITHUB_ACTIONS || process.env.EARTHLY_CI)
+const isVitestBrowserRun = process.argv.some(arg => arg === '--browser' || arg.startsWith('--browser.'))
+
+if (isVitestBrowserRun) {
+  process.env.VITEST_CHROMIUM_GC_FORCE ??= '1'
+  process.env.VITEST_CHROMIUM_GC_DISK_THRESHOLD_GB ??= '500'
+}
 
 const plugins: PluginOption = [
   react(),
@@ -70,7 +76,17 @@ export default defineConfig(() => ({
         replacement:
           __dirname + '/node_modules/monaco-editor/esm/vs/editor/editor.api',
       },
+      ...(!isVitestBrowserRun
+        ? [
+          {
+            find: /^vitest\/browser$/,
+            replacement: path.resolve(__dirname, 'tests/component/util/vitestBrowserStub.ts'),
+          },
+        ]
+        : []),
     ],
+    clearMocks: true,
+    ...(isVitestBrowserRun ? {maxWorkers: 1} : {}),
     exclude: [
       ...configDefaults.exclude,
       'examples/**',
@@ -89,7 +105,15 @@ export default defineConfig(() => ({
     },
     testTimeout: 60_000,
     browser: {
-      provider: playwright(),
+      provider: playwright({
+        launchOptions: {
+          args: [
+            '--disable-dev-shm-usage',
+            '--no-sandbox',
+            ...(process.env.BROWSER_DEVTOOL ? ['--auto-open-devtools-for-tabs'] : []),
+          ],
+        },
+      }),
       enabled: false,
       name: 'chromium',
       instances: [{browser: 'chromium'}],
@@ -99,11 +123,6 @@ export default defineConfig(() => ({
         width: 1440,
         height: 900,
       },
-      providerOptions: {
-        launch: {
-          devtools: !!process.env.BROWSER_DEVTOOL
-        }
-      }
     }
     // reporters: ['verbose']
   }

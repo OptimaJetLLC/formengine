@@ -75,6 +75,7 @@ const DISTRIBUTION_BASE_DEV_DEPENDENCIES = [
   'lerna',
   'lightningcss',
   'npm-run-all2',
+  'playwright',
   'rimraf',
   'rollup-plugin-exclude-dependencies-from-bundle',
   'typescript',

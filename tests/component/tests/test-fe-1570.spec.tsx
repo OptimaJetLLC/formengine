@@ -1,4 +1,5 @@
 import {fireEvent} from '@testing-library/react'
+import {openToolbarActions} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 import form from './forms/fe-1570-form.json'
 
@@ -16,7 +17,7 @@ describe('FE-1570 Check the render method of `RawActionList`', () => {
     }
 
     fireEvent.click(componentWrapper)
-    fireEvent.click(await findByTestId('toolbar-actions-button'))
+    await openToolbarActions()
     fireEvent.click(await findByTestId('tree-clone-button'))
 
     const components = await findAllByTestId('testInput')

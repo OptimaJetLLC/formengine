@@ -3,6 +3,7 @@ scripts/.examples-local-packs/
 build/
 dist/
 coverage/
+.vitest/
 .swc/
 node_modules/
 .idea/

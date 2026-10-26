@@ -2,6 +2,7 @@ import {rsWizardStep} from '@react-form-builder/components-rsuite'
 import {cfDisableToolbarAdd} from '@react-form-builder/core'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {createRef} from 'react'
+import {openToolbarActions} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 
 const form = {
@@ -48,7 +49,7 @@ describe('RsWizardStep', () => {
     const {findByRole, findByTestId, queryByRole, queryByTestId} = await renderBuilder(form)
 
     fireEvent.click(await findByTestId('rsWizardStep1-editable-wrapper'))
-    fireEvent.click(await findByTestId('toolbar-actions-button'))
+    await openToolbarActions()
 
     expect(queryByRole('button', {name: 'Add'})).toBeNull()
 

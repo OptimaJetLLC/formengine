@@ -12,8 +12,8 @@
     "test": "vitest run",
     "test:debug": "vitest run --test-timeout=0 --no-file-parallelism --inspect-brk",
     "test:browser": "npm run test -- --browser",
-    "test:browser:debug": "dotenv -v BROWSER_DEVTOOL=1 npm run test:browser -- -- --inspectBrk --no-file-parallelism",
-    "test:browser:headless": "npm run test -- --browser.headless",
+    "test:browser:debug": "dotenv -v BROWSER_DEVTOOL=1 -- npm run test:browser -- --inspectBrk --no-file-parallelism",
+    "test:browser:headless": "npm run test:browser -- --browser.headless",
     "test:component": "npm run test",
     "test:ui": "vitest --ui",
     "test:browser:ui": "vitest --ui --browser"

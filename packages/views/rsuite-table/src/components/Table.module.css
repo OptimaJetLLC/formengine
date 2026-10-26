@@ -69,6 +69,7 @@
 .nested,
 .header {
   min-inline-size: 0;
+  min-block-size: 1.25rem;
   white-space: normal;
 }
 

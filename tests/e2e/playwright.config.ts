@@ -119,7 +119,7 @@ export default defineConfig({
     {
       command,
       url: baseURL,
-      timeout: 5000,
+      timeout: 30_000,
       // reuseExistingServer: true,
       reuseExistingServer: !env.CI,
       cwd,

@@ -27,8 +27,12 @@ const HeaderCellIcon = () => (
 
 const {HeaderCell} = Table
 
-const RsBuilderHeaderCell = (props: HeaderCellProps<RowDataType, RowKeyType>) => {
-  return <div className={cx(props.className, style.header)}>{props.children}</div>
+const RsBuilderHeaderCell = (props: HeaderCellProps<RowDataType, RowKeyType> & {'data-testid'?: string}) => {
+  return (
+    <div className={cx(props.className, style.header)} data-testid={props['data-testid']}>
+      {props.children}
+    </div>
+  )
 }
 
 const RsViewerHeaderCell = (props: HeaderCellProps<RowDataType, RowKeyType>) => {

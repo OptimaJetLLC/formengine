@@ -2,8 +2,10 @@ import {printSettings} from '@react-form-builder/components-print'
 import {cfNonVisual, cfSingleton} from '@react-form-builder/core'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
-import {fireEvent, render, within} from '@testing-library/react'
+import {act, fireEvent, render, within} from '@testing-library/react'
 import {expect} from 'vitest'
+import {userEvent} from 'vitest/browser'
+import {isBrowserMode} from '../config/isBrowserMode'
 
 const view = new BuilderView([printSettings.build()])
 
@@ -25,6 +27,17 @@ const formWithSettings = {
 
 const App = ({form}: {form: object}) => <FormBuilder licenseKey={generatedLicenseKey} getForm={() => JSON.stringify(form)} view={view} />
 
+const hover = async (element: HTMLElement): Promise<void> => {
+  if (isBrowserMode()) {
+    await act(async () => {
+      await userEvent.unhover(element)
+      await userEvent.hover(element)
+    })
+    return
+  }
+  fireEvent.mouseOver(element)
+}
+
 describe('Singleton palette component', () => {
   it('marks PrintSettings with the singleton feature', () => {
     expect(printSettings.build().model.isFeatureEnabled(cfSingleton)).toBe(true)
@@ -45,7 +58,7 @@ describe('Singleton palette component', () => {
 
     const disabled = await next.findByTestId('PrintSettings-palette-component')
     expect(disabled).toHaveClass('disabled')
-    fireEvent.mouseOver(disabled)
+    await hover(disabled)
     expect(await next.findByRole('tooltip')).toHaveTextContent('Only one instance of this component is allowed on the form.')
   })
 
@@ -57,7 +70,7 @@ describe('Singleton palette component', () => {
     const modal = modalTitle.closest('.rs-modal') as HTMLElement
     const disabled = await within(modal).findByTestId('PrintSettings-palette-component')
     expect(disabled).toHaveClass('disabled')
-    fireEvent.mouseOver(disabled)
+    await hover(disabled)
     expect(await findByRole('tooltip')).toHaveTextContent('Only one instance of this component is allowed on the form.')
   })
 })

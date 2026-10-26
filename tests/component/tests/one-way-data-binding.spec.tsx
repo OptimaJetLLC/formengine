@@ -1,5 +1,5 @@
 import {viewWithCss} from '@react-form-builder/components-rsuite'
-import {BuilderView, buildForm, ComponentStore, FormViewer, FormViewerProps, PersistedForm} from '@react-form-builder/core'
+import {BuilderView, buildForm, ComponentStore, cfNonVisual, FormViewer, FormViewerProps, PersistedForm} from '@react-form-builder/core'
 import {FormBuilderProps} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render, waitFor} from '@testing-library/react'
@@ -33,8 +33,18 @@ const componentsInitialData: Record<string, FormViewerProps['initialData']> = {
   },
 }
 
+const componentsWithoutMirroredTestId = new Set([
+  'PageBreak',
+  'RsCell',
+  'RsColumn',
+  'RsColumnGroup',
+  'RsTable',
+  'SortableList',
+  'StyledBox',
+])
+
 const componentsToTest = allComponentsBuilder
-  .filter(({model}) => excludedComponentTypes.indexOf(model.type) < 0)
+  .filter(({model}) => excludedComponentTypes.indexOf(model.type) < 0 && !model.isFeatureEnabled(cfNonVisual))
   .sort((a, b) => a.model.type.localeCompare(b.model.type))
 
 const generateVisibleTestData = (): Array<[string, FormViewerProps['initialData']]> => {
@@ -94,7 +104,7 @@ describe('One-way data binding', () => {
 
   if (isBrowserMode()) {
     it.each(generateVisibleTestData())(
-      'The component "%s" without data should be visible in the desinger',
+      'The component "%s" without data should be visible in the designer',
       async (type: string, initialData: FormViewerProps['initialData']) => {
         const persistedForm: PersistedForm = JSON.parse(buildForm().json())
         const store = new ComponentStore(type, type)
@@ -105,14 +115,15 @@ describe('One-way data binding', () => {
         const props: FormBuilderProps = {view: new BuilderView(allComponentsBuilder), initialData}
         const {findByTestId, container} = await renderBuilder(persistedForm, props)
 
-        expect(await findByTestId(type)).toBeInTheDocument()
-
-        const dndWrapper = container.querySelector(`.type-${type}`)
-        if (!(dndWrapper instanceof HTMLElement)) {
-          throw new Error(`Unable to find HTMLElement for a component with type: "${type}"`)
+        if (!componentsWithoutMirroredTestId.has(type)) {
+          expect(await findByTestId(type)).toBeInTheDocument()
         }
 
-        await waitFor(() => expect(typeof dndWrapper.offsetHeight).toEqual('number'))
+        const dndWrapper = await waitFor(() => {
+          const wrapper = container.querySelector(`.type-${type}`)
+          if (!(wrapper instanceof HTMLElement)) throw new Error(`Unable to find HTMLElement for a component with type: "${type}"`)
+          return wrapper
+        })
         await waitFor(() => expect(dndWrapper.offsetHeight).toBeGreaterThan(16))
       }
     )

@@ -1,4 +1,5 @@
 import {fireEvent, waitFor} from '@testing-library/react'
+import {openToolbarActions} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 
 const form = {
@@ -21,7 +22,7 @@ const form = {
 
 const removeSelectedViaToolbar = async (findByTestId: (id: string) => Promise<HTMLElement>) => {
   fireEvent.click(await findByTestId('nestedButton-editable-wrapper'))
-  fireEvent.click(await findByTestId('toolbar-actions-button'))
+  await openToolbarActions()
   fireEvent.click(await findByTestId('toolbar-remove-button'))
 }
 

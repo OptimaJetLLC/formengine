@@ -1,4 +1,5 @@
 import {act, fireEvent, waitFor} from '@testing-library/react'
+import {openToolbarActions} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 
 const firstForm = {
@@ -44,7 +45,7 @@ const selectAndScrollAnchor = async (findByTestId: (id: string) => Promise<HTMLE
 }
 
 const removeViaToolbar = async (findByTestId: (id: string) => Promise<HTMLElement>) => {
-  fireEvent.click(await findByTestId('toolbar-actions-button'))
+  await openToolbarActions()
   fireEvent.click(await findByTestId('toolbar-remove-button'))
 }
 
