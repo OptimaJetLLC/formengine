@@ -16,7 +16,7 @@
     "test:browser:headless": "npm run test:browser -- --browser.headless",
     "test:component": "npm run test",
     "test:ui": "vitest --ui",
-    "test:browser:ui": "vitest --ui --browser"
+    "test:browser:ui": "dotenv -v VITEST_CHROMIUM_GC_FORCE=1 -v VITEST_CHROMIUM_GC_DISK_THRESHOLD_GB=500 -- vitest --ui --browser"
   },
   "dependencies": {
     "@react-form-builder/tests-common": "file:./../common",
