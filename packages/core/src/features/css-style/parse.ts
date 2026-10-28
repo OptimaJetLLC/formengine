@@ -148,7 +148,7 @@ export function parse(css: string, options?: any) {
     const rules: any[] = []
     whitespace()
     comments(rules)
-    while (css.length && css.charAt(0) != '}' && (node = atrule() || rule())) {
+    while (css.length && css.charAt(0) !== '}' && (node = atrule() || rule())) {
       if (node !== false) {
         rules.push(node)
         comments(rules)
@@ -199,10 +199,10 @@ export function parse(css: string, options?: any) {
 
   function comment() {
     const pos = position()
-    if ('/' != css.charAt(0) || '*' != css.charAt(1)) return
+    if ('/' !== css.charAt(0) || '*' !== css.charAt(1)) return
 
     let i = 2
-    while ('' != css.charAt(i) && ('*' != css.charAt(i) || '/' != css.charAt(i + 1))) ++i
+    while ('' !== css.charAt(i) && ('*' !== css.charAt(i) || '/' !== css.charAt(i + 1))) ++i
     i += 2
 
     if ('' === css.charAt(i - 1)) {
@@ -557,7 +557,7 @@ export function parse(css: string, options?: any) {
    */
 
   function atrule() {
-    if (css[0] != '@') return
+    if (css[0] !== '@') return
 
     return (
       atkeyframes() ||

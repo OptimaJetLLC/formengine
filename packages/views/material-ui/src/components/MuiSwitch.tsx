@@ -4,11 +4,13 @@ import {boolean, define, disabled, event, oneOf, string} from '@react-form-build
 import type {SyntheticEvent} from 'react'
 import {useCallback, useMemo} from 'react'
 import {inputsCategory} from './categories'
+import type {ControlAriaProps} from './internal/controlAria'
+import {useInvalidInputSlotProps} from './internal/controlAria'
 
 /**
  * Props for the MuiSwitch component.
  */
-export interface MuiSwitchProps extends Pick<SwitchProps, 'checked' | 'color' | 'disabled' | 'size'> {
+export interface MuiSwitchProps extends Pick<SwitchProps, 'checked' | 'color' | 'disabled' | 'size'>, ControlAriaProps {
   /**
    * Callback fired when the checkbox state changes.
    */
@@ -26,9 +28,10 @@ const MuiSwitch = ({checked, onChange, label, size, ...props}: MuiSwitchProps) =
     },
     [onChange]
   )
-  const control = useMemo(() => <Switch size={size} />, [size])
+  const [inputSlotProps, controlProps] = useInvalidInputSlotProps(props)
+  const control = useMemo(() => <Switch size={size} slotProps={inputSlotProps} />, [inputSlotProps, size])
 
-  return <FormControlLabel checked={checked} onChange={handleChange} control={control} label={label} {...props} />
+  return <FormControlLabel checked={checked} onChange={handleChange} control={control} label={label} {...controlProps} />
 }
 
 export const muiSwitch = define(MuiSwitch, 'MuiSwitch')

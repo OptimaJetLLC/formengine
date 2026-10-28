@@ -120,7 +120,7 @@ function loadManifest() {
   }
 
   const files = parsed.files;
-  if (files != null && (typeof files !== 'object' || Array.isArray(files))) {
+  if (files !== null && files !== undefined && (typeof files !== 'object' || Array.isArray(files))) {
     throw new Error(`Invalid WebP manifest files map: ${manifestPath}`);
   }
 

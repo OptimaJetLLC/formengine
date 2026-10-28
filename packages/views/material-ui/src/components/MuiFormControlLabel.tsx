@@ -4,11 +4,15 @@ import {boolean, define, disabled, event, oneOf, oneOfStrict, string} from '@rea
 import type {ComponentType, SyntheticEvent} from 'react'
 import {useCallback, useMemo} from 'react'
 import {formCategory} from './categories'
+import type {ControlAriaProps, InvalidInputSlotProps} from './internal/controlAria'
+import {useInvalidInputSlotProps} from './internal/controlAria'
 
 /**
  * Props for the MuiFormControlLabel component.
  */
-export interface MuiFormControlLabelProps extends Omit<FormControlLabelProps, 'control' | 'onChange'> {
+export interface MuiFormControlLabelProps
+  extends Omit<FormControlLabelProps, 'control' | 'onChange' | 'aria-invalid' | 'aria-errormessage' | 'aria-describedby'>,
+    ControlAriaProps {
   /**
    * Type of control to use (Checkbox, Radio, or Switch).
    */
@@ -22,7 +26,7 @@ export interface MuiFormControlLabelProps extends Omit<FormControlLabelProps, 'c
 /**
  * Mapping of control types to their corresponding components.
  */
-const controlMap: Record<string, ComponentType> = {
+const controlMap: Record<string, ComponentType<{slotProps?: InvalidInputSlotProps}>> = {
   Checkbox,
   Switch,
 }
@@ -33,11 +37,12 @@ const controlMap: Record<string, ComponentType> = {
  * @returns form control label component.
  */
 const MuiFormControlLabel = (props: MuiFormControlLabelProps) => {
-  const {control, value, checked, onChange, ...otherProps} = props
+  const {control, value, checked, onChange, ...rest} = props
+  const [inputSlotProps, otherProps] = useInvalidInputSlotProps(rest)
   const controlElement = useMemo(() => {
     const Component = controlMap[control] ?? Checkbox
-    return <Component />
-  }, [control])
+    return <Component slotProps={inputSlotProps} />
+  }, [control, inputSlotProps])
 
   const handleChange = useCallback(
     (_: SyntheticEvent, checked: boolean) => {

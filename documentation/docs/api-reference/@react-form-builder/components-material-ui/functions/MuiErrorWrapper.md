@@ -16,4 +16,4 @@ the properties for the ErrorWrapper component.
 
 `Element`
 
-the child with native error props or a fallback error message.
+the fragment with the child, native error props when supported, and a fallback message when not.

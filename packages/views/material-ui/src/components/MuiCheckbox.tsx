@@ -5,11 +5,13 @@ import type {SyntheticEvent} from 'react'
 import {useCallback, useMemo} from 'react'
 import {size} from '../commonProperties'
 import {inputsCategory} from './categories'
+import type {ControlAriaProps} from './internal/controlAria'
+import {useInvalidInputSlotProps} from './internal/controlAria'
 
 /**
  * Props for the MuiCheckbox component.
  */
-export interface MuiCheckboxProps extends Pick<CheckboxProps, 'checked' | 'color' | 'disabled' | 'size'> {
+export interface MuiCheckboxProps extends Pick<CheckboxProps, 'checked' | 'color' | 'disabled' | 'size'>, ControlAriaProps {
   /**
    * Callback fired when the checkbox state changes.
    */
@@ -27,10 +29,10 @@ const MuiCheckbox = ({checked, onChange, label, size, ...props}: MuiCheckboxProp
     },
     [onChange]
   )
+  const [inputSlotProps, controlProps] = useInvalidInputSlotProps(props)
+  const control = useMemo(() => <Checkbox size={size} slotProps={inputSlotProps} />, [inputSlotProps, size])
 
-  const control = useMemo(() => <Checkbox size={size} />, [size])
-
-  return <FormControlLabel checked={checked} onChange={handleChange} control={control} label={label} {...props} />
+  return <FormControlLabel checked={checked} onChange={handleChange} control={control} label={label} {...controlProps} />
 }
 
 /**

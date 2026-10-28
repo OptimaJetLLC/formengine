@@ -30,9 +30,9 @@ export const MtErrorWrapper = ({error, children, className}: ErrorWrapperProps) 
   const showMessage = !declaresError
   const cls = clsx(styles.errorWrapper, className)
 
-  const child = children != null ? Children.only(children) : null
+  const child = children === null || children === undefined ? null : Children.only(children)
   const childWithError =
-    child != null && error && isValidElement(child) && declaresError
+    child !== null && error && isValidElement(child) && declaresError
       ? cloneElement(child as ReactElement<{error?: string}>, {error})
       : child
 

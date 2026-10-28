@@ -24,6 +24,20 @@ const validationCases: ValidationCase[] = [
   {componentType: 'MuiFormControlLabel', validationKey: 'truthy'},
 ]
 
+const findField = (formData: ComponentData) => formData.allComponentFields?.find(item => item.dataKey === 'field')?.field
+
+interface FallbackCase {
+  componentType: 'MuiCheckbox' | 'MuiSwitch' | 'MuiFormControlLabel'
+  role: 'checkbox' | 'switch'
+  name: string
+}
+
+const fallbackCases: FallbackCase[] = [
+  {componentType: 'MuiCheckbox', role: 'checkbox', name: 'Checkbox label'},
+  {componentType: 'MuiSwitch', role: 'switch', name: 'Label'},
+  {componentType: 'MuiFormControlLabel', role: 'checkbox', name: 'Label'},
+]
+
 const createForm = ({componentType, validationKey}: ValidationCase) => {
   const message = `${componentType} validation error`
   return {
@@ -62,6 +76,29 @@ describe('Material UI validation error display', () => {
     expect(dateInput).toHaveAccessibleDescription(message)
   })
 
+  it('shows a checkbox error after the first validation in the designer preview', async () => {
+    const {form, message} = createForm({componentType: 'MuiCheckbox', validationKey: 'truthy'})
+    const {findByRole, findByTestId, findByText} = await renderBuilder(form, {view: builderView})
+    await switchToViewerMode(findByText)
+    const checkbox = await findByRole('checkbox', {name: 'Checkbox label'})
+
+    fireEvent.click(await findByTestId('viewer-validate-button'))
+
+    await waitFor(() => expect(checkbox).toHaveAttribute('aria-invalid', 'true'))
+    expect(checkbox).toHaveAccessibleDescription(message)
+  })
+
+  it.each(fallbackCases)('marks $componentType invalid after validating an empty form', async ({componentType, role, name}) => {
+    const {form, message} = createForm({componentType, validationKey: 'truthy'})
+    const {formData, getByRole} = renderForm(form, {view})
+
+    await asyncAct(async () => await formData.validate())
+
+    const control = getByRole(role, {name})
+    expect(control).toHaveAttribute('aria-invalid', 'true')
+    expect(control).toHaveAccessibleDescription(message)
+  })
+
   it.each(validationCases)('shows an error for $componentType after validating an empty form', async validationCase => {
     const {form, message} = createForm(validationCase)
     const {formData, getByText} = renderForm(form, {view})
@@ -79,12 +116,30 @@ describe('Material UI validation error display', () => {
     await asyncAct(async () => await formData.validate())
     expect(queryByText(message)).toBeInTheDocument()
 
-    const field = (formData as ComponentData).allComponentFields?.find(item => item.dataKey === 'field')?.field
+    const field = findField(formData as ComponentData)
     await asyncAct(async () => field?.setValue(new Date('2026-10-21T00:00:00.000Z')))
 
     const errors = await asyncAct(async () => await formData.validate())
 
     expect(errors).toStrictEqual({})
     expect(queryByText(message)).not.toBeInTheDocument()
+  })
+
+  it('clears the checkbox error after it is checked', async () => {
+    const {form, message} = createForm({componentType: 'MuiCheckbox', validationKey: 'truthy'})
+    const {formData, queryByText, getByRole} = renderForm(form, {view})
+
+    await asyncAct(async () => await formData.validate())
+    expect(queryByText(message)).toBeInTheDocument()
+    expect(getByRole('checkbox', {name: 'Checkbox label'})).toHaveAttribute('aria-invalid', 'true')
+
+    const field = findField(formData as ComponentData)
+    await asyncAct(async () => field?.setValue(true))
+
+    const errors = await asyncAct(async () => await formData.validate())
+
+    expect(errors).toStrictEqual({})
+    expect(queryByText(message)).not.toBeInTheDocument()
+    expect(getByRole('checkbox', {name: 'Checkbox label'})).not.toHaveAttribute('aria-invalid')
   })
 })

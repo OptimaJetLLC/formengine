@@ -48,7 +48,7 @@ export const prepareForJson = (
 
   const filtered: any = {}
   Object.entries(data).forEach(([key, value]) => {
-    const typeIs = (valueType: string) => typeof value == valueType
+    const typeIs = (valueType: string) => typeof value === valueType
 
     if (Array.isArray(value)) {
       filtered[key] = value.map(item => prepareForJson(item, options))

@@ -16,6 +16,7 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'import', 'unused-imports', 'react-hooks', 'no-secrets', 'unicorn'],
   rules: {
+    'eqeqeq': ['error', 'always'],
     'no-restricted-syntax': ['error', {
       "selector": "CallExpression[callee.name='customizableObserver'] > ArrowFunctionExpression.arguments",
       "message": "never pass anonymous react components"

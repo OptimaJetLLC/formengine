@@ -1,9 +1,10 @@
 import {FormHelperText} from '@mui/material'
 import type {ErrorWrapperProps} from '@react-form-builder/core'
-import {define, useAriaErrorMessage, useComponentData} from '@react-form-builder/core'
+import {define, isUndefined, useAriaErrorMessage, useComponentData} from '@react-form-builder/core'
 import type {ReactElement} from 'react'
 import {Children, cloneElement, isValidElement} from 'react'
 import {feedbackCategory} from './categories'
+import type {ControlAriaProps} from './internal/controlAria'
 
 const useWrappedComponentSupportsNativeError = () => {
   const data = useComponentData()
@@ -18,22 +19,32 @@ const useWrappedComponentSupportsNativeError = () => {
  * @param props.error the error text to display.
  * @param props.children the child elements to be rendered inside the error wrapper.
  * @param props.className the CSS class name for a fallback error message.
- * @returns the child with native error props or a fallback error message.
+ * @returns the fragment with the child, native error props when supported, and a fallback message when not.
  */
 export const MuiErrorWrapper = ({error, children, className}: ErrorWrapperProps) => {
   const aria = useAriaErrorMessage()
   const supportsNativeError = useWrappedComponentSupportsNativeError()
-  const child = children != null ? Children.only(children) : null
+  const errorMessageId = aria['aria-errormessage']
+  const child = children === null || isUndefined(children) ? null : Children.only(children)
   const childWithError =
-    child != null && error && isValidElement(child) && supportsNativeError
-      ? cloneElement(child as ReactElement<{error?: boolean; helperText?: string}>, {error: true, helperText: error})
+    child !== null && error && isValidElement(child)
+      ? cloneElement(
+          child as ReactElement<{error?: boolean; helperText?: string} & ControlAriaProps>,
+          supportsNativeError
+            ? {error: true, helperText: error}
+            : {
+                'aria-invalid': true,
+                'aria-errormessage': errorMessageId,
+                'aria-describedby': errorMessageId,
+              }
+        )
       : child
 
   return (
     <>
       {childWithError}
       {error && !supportsNativeError && (
-        <FormHelperText id={aria['aria-errormessage']} error className={className} role="alert">
+        <FormHelperText id={errorMessageId} error className={className} role="alert">
           {error}
         </FormHelperText>
       )}

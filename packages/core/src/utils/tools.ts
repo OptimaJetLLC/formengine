@@ -220,7 +220,7 @@ export function debounce<T extends (...args: any[]) => any>(fn: T, wait = 0) {
 export function isEqual<T>(a: T, b: T): boolean {
   if (a === b) return true
 
-  if (a == null || b == null) return false
+  if (a === null || a === undefined || b === null || b === undefined) return false
 
   if (a instanceof Date && b instanceof Date) {
     return a.getTime() === b.getTime()
