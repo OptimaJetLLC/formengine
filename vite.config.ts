@@ -27,11 +27,6 @@ export const componentTestGlob = '../component/tests/**/*.{test,spec}.?(c|m)[jt]
 const isCI = !!(process.env.CI || process.env.GITHUB_ACTIONS || process.env.EARTHLY_CI)
 const isVitestBrowserRun = process.argv.some(arg => arg === '--browser' || arg.startsWith('--browser.'))
 
-if (isVitestBrowserRun) {
-  process.env.VITEST_CHROMIUM_GC_FORCE ??= '1'
-  process.env.VITEST_CHROMIUM_GC_DISK_THRESHOLD_GB ??= '500'
-}
-
 const plugins: PluginOption = [
   react(),
   svgr({

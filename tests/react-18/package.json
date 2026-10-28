@@ -11,7 +11,7 @@
     "clean": "rimraf dist",
     "test": "dotenv -e ./test.env -o -- vitest run",
     "test:debug": "dotenv -e ./test.env -o -- vitest run --test-timeout=0 --no-file-parallelism --inspect-brk",
-    "test:browser": "npm run test -- --browser",
+    "test:browser": "dotenv -v VITEST_CHROMIUM_GC_FORCE=1 -v VITEST_CHROMIUM_GC_DISK_THRESHOLD_GB=500 -- npm run test -- --browser",
     "test:browser:debug": "dotenv -v BROWSER_DEVTOOL=1 -- npm run test:browser -- --inspectBrk --no-file-parallelism",
     "test:browser:headless": "npm run test:browser -- --browser.headless",
     "test:component": "npm run test"
