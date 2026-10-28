@@ -12,7 +12,35 @@ const REPO_ROOT = join(__dirname, '..')
 
 const EXPIRY_THRESHOLD_DAYS = 30
 
-const LICENSE_FILES = ['packages/apps/common-designer/src/utils/licenseKey.ts', 'packages/apps/example-builder/src/utils/license.ts']
+/**
+ * License keys that must stay valid (apps + test hosts + positive-path fixtures).
+ *
+ * Under tests/common/license/, keep *2030* and vaild.ts. Skip *2024*, legacy/trial-2024*,
+ * and invalid.ts — those are intentional expiry / invalid fixtures for license.spec.tsx.
+ * Note: business-strict-2030-any-domain is also in licenseExpiredStrict (StrictCheck feature
+ * gating), but its calendar end date must still stay in the future for licenseBusiness tests.
+ */
+const LICENSE_FILES = [
+  'packages/apps/common-designer/src/utils/licenseKey.ts',
+  'packages/apps/example-builder/src/utils/license.ts',
+  'tests/common/lib/designer/utils/license.ts',
+  'tests/component/components/forms-with-versions/utils/license.ts',
+  'tests/common/license/vaild.ts',
+  'tests/common/license/business-2030-any-domain.ts',
+  'tests/common/license/business-2030-multiple-domains.ts',
+  'tests/common/license/business-2030-no-domain.ts',
+  'tests/common/license/business-strict-2030-any-domain.ts',
+  'tests/common/license/business-strict-2030-multiple-domains.ts',
+  'tests/common/license/business-strict-2030-no-domain.ts',
+  'tests/common/license/enterprise-2030-any-domain.ts',
+  'tests/common/license/enterprise-2030-multiple-domains.ts',
+  'tests/common/license/enterprise-2030-no-domain.ts',
+  'tests/common/license/enterprise-strict-2030-any-domain.ts',
+  'tests/common/license/enterprise-strict-2030-multiple-domains.ts',
+  'tests/common/license/enterprise-strict-2030-no-domain.ts',
+  'tests/common/license/legacy/company-2030.ts',
+  'tests/common/license/legacy/company-strict-2030.ts',
+]
 
 /**
  * Extracts the JSON payload from a license key string.
@@ -56,6 +84,11 @@ function extractLicenseKeyFromFile(filePath: string): string {
   return match[1]
 }
 
+function printFailedLicense(licenseKey: string, payload: Record<string, unknown>): void {
+  console.error(`  key: ${licenseKey}`)
+  console.error(`  contents: ${JSON.stringify(payload, null, 2).replaceAll('\n', '\n  ')}`)
+}
+
 function checkFile(file: string): boolean {
   const filePath = join(REPO_ROOT, file)
   const licenseKey = extractLicenseKeyFromFile(filePath)
@@ -66,11 +99,13 @@ function checkFile(file: string): boolean {
 
   if (daysUntilExpiry <= 0) {
     console.error(`  EXPIRED: ${file} - expired on ${licenseEndDate}`)
+    printFailedLicense(licenseKey, payload)
     return false
   }
 
   if (daysUntilExpiry <= EXPIRY_THRESHOLD_DAYS) {
     console.warn(`  EXPIRING SOON: ${file} - expires ${licenseEndDate} (${daysUntilExpiry} days remaining)`)
+    printFailedLicense(licenseKey, payload)
     return false
   }
 
@@ -93,10 +128,10 @@ function main(): void {
   }
 
   if (!allOk) {
-    console.error('\nSome license keys are expired or expiring soon. Update them before deploying.')
+    console.error('\nSome app or test license keys are expired or expiring soon. Update them before deploying.')
     process.exitCode = 1
   } else {
-    console.log('\nAll license keys are valid for more than 30 days.')
+    console.log('\nAll app and test license keys are valid for more than 30 days.')
   }
 }
 
