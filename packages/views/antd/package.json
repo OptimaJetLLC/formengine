@@ -16,7 +16,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "antd": "^5.23.2"
+    "antd": "^6.6.8"
   },
   "peerDependencies": {
     "@react-form-builder/core": "11.1.0",
