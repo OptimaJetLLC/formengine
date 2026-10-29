@@ -1806,7 +1806,7 @@
 
 #### components.RsLink.props.downloadFilename.description
 
-> **description**: `string` = "Defining a value suggests it as the filename. / and \\ characters are converted to underscores (\_)"
+> **description**: `string` = "Defining a value suggests it as the filename. / and \\\\ characters are converted to underscores (\_)"
 
 #### components.RsLink.props.downloadFilename.name
 
@@ -2070,7 +2070,7 @@
 
 #### components.RsModal.props.backdropClassName.description
 
-> **description**: `string` = "Add an optional extra class name to .modal-backdrop It could end up looking like class=\"modal-backdrop foo-modal-backdrop in\""
+> **description**: `string` = "Add an optional extra class name to .modal-backdrop It could end up looking like class=\\"modal-backdrop foo-modal-backdrop in\\""
 
 #### components.RsModal.props.backdropClassName.name
 

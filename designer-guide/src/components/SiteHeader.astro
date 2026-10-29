@@ -53,6 +53,7 @@ const demoUrl = getDemoBase({ isDev: import.meta.env.DEV });
 
   function applyTheme(theme) {
     root.classList.toggle('dark', theme === 'dark');
+    root.dataset.theme = theme;
     localStorage.setItem(storageKey, theme);
   }
 

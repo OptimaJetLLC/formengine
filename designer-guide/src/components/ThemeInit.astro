@@ -12,7 +12,9 @@ export const themeInitScript = `(function () {
   }
 
   function applyStoredTheme() {
-    document.documentElement.classList.toggle('dark', resolveTheme() === 'dark');
+    var theme = resolveTheme();
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.dataset.theme = theme;
   }
 
   applyStoredTheme();

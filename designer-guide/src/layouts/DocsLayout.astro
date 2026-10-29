@@ -9,8 +9,6 @@ import GuideImageMagnifier from '../components/GuideImageMagnifier.astro';
 import DemoWindow from '../components/DemoWindow.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import { themeInitScript } from '../components/ThemeInit.astro';
-import { docsearchEnabled } from '../constants/docsearch-config.mjs';
-import { DOCSEARCH_JS } from '../constants/docsearch.mjs';
 import '../styles/custom.css';
 import '@docsearch/css/dist/style.css';
 import { siteUrl } from '../utils/site-url';
@@ -63,7 +61,6 @@ const ogImageUrl = new URL(siteUrl('img/og-image.png'), Astro.site).href;
     <link rel="canonical" href={Astro.url.href} />
     <link rel="icon" href={siteUrl('img/favicon.svg')} />
     <link rel="stylesheet" href={siteUrl('fonts/inter.css')} />
-    {docsearchEnabled && <link rel="preload" href={DOCSEARCH_JS} as="script" />}
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:type" content="website" />

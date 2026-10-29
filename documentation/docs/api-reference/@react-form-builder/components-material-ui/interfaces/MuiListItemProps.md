@@ -4,7 +4,9 @@ The MuiListItem component properties.
 
 ## Extends
 
-- `ListItemProps`.`DisabledProps`.`ReadOnlyProps`
+- `ListItemProps`
+- `DisabledProps`
+- `ReadOnlyProps`
 
 ## Properties
 

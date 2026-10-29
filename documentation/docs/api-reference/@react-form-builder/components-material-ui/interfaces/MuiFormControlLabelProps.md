@@ -4,7 +4,8 @@ Props for the MuiFormControlLabel component.
 
 ## Extends
 
-- `Omit`\<`FormControlLabelProps`, `"control"` \| `"onChange"`\>
+- `Omit`\<`FormControlLabelProps`, `"aria-describedby"` \| `"aria-errormessage"` \| `"aria-invalid"` \| `"control"` \| `"onChange"`\>
+- `ControlAriaProps`
 
 ## Properties
 
@@ -222,15 +223,11 @@ Indicates the element that represents the current item within a container or set
 
 > `optional` **aria-describedby?**: `string`
 
-Identifies the element (or elements) that describes the object.
-
-#### See
-
-aria-labelledby
+The id of the element that describes the control.
 
 #### Inherited from
 
-`Omit.aria-describedby`
+`ControlAriaProps.aria-describedby`
 
 ***
 
@@ -303,16 +300,11 @@ in ARIA 1.1
 
 > `optional` **aria-errormessage?**: `string`
 
-Identifies the element that provides an error message for the object.
-
-#### See
-
- - aria-invalid
- - aria-describedby.
+The id of the element that describes the validation error.
 
 #### Inherited from
 
-`Omit.aria-errormessage`
+`ControlAriaProps.aria-errormessage`
 
 ***
 
@@ -387,17 +379,13 @@ aria-disabled.
 
 ### aria-invalid?
 
-> `optional` **aria-invalid?**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
+> `optional` **aria-invalid?**: `boolean`
 
-Indicates the entered value does not conform to the format expected by the application.
-
-#### See
-
-aria-errormessage.
+Whether the control value is invalid.
 
 #### Inherited from
 
-`Omit.aria-invalid`
+`ControlAriaProps.aria-invalid`
 
 ***
 

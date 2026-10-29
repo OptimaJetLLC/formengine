@@ -1640,6 +1640,8 @@ Callback fired when the component requests to be closed.
 
 ##### event
 
+\{ \}
+
 The event source of the callback.
 
 ##### reason

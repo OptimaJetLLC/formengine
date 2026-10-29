@@ -4,98 +4,64 @@ import {
   docsearchEnabled,
   docsearchPathPrefix,
 } from '../constants/docsearch-config.mjs';
-import { DOCSEARCH_JS } from '../constants/docsearch.mjs';
 ---
 
-{docsearchEnabled && <div id="docsearch" class="fe-docsearch"></div>}
-
 {docsearchEnabled && (
-  <script
-    is:inline
-    define:vars={{
-      appId: docsearchConfig.appId,
-      apiKey: docsearchConfig.apiKey,
-      indexName: docsearchConfig.indexName,
-      docsearchJs: DOCSEARCH_JS,
-      pathPrefix: docsearchPathPrefix,
-    }}
-  >
-    function portalDocSearchModal() {
-      const modal = document.querySelector('.DocSearch-Container');
-      if (modal && modal.parentElement !== document.body) {
-        document.body.appendChild(modal);
-      }
-    }
-
-    function watchDocSearchModal() {
-      if (window.__feDocSearchModalWatcher) {
-        portalDocSearchModal();
-        return;
-      }
-
-      const observer = new MutationObserver(portalDocSearchModal);
-      observer.observe(document.documentElement, { childList: true, subtree: true });
-      window.__feDocSearchModalWatcher = observer;
-      portalDocSearchModal();
-    }
-
-    function initDocSearch() {
-      const container = document.getElementById('docsearch');
-      if (!container || container.dataset.docsearchReady === 'true') {
-        watchDocSearchModal();
-        return;
-      }
-      if (typeof window.docsearch !== 'function') {
-        return;
-      }
-
-      const options = {
-        container: '#docsearch',
-        appId,
-        apiKey,
-        indexName,
-        placeholder: 'Search docs…',
-      };
-
-      if (pathPrefix) {
-        const normalized = pathPrefix.endsWith('/') ? pathPrefix : `${pathPrefix}/`;
-        options.transformItems = (items) =>
-          items.filter(({ url }) => {
-            try {
-              const pathname = new URL(url, window.location.origin).pathname;
-              return pathname === pathPrefix || pathname.startsWith(normalized);
-            } catch {
-              return url.includes(pathPrefix);
-            }
-          });
-      }
-
-      window.docsearch(options);
-      container.dataset.docsearchReady = 'true';
-      watchDocSearchModal();
-    }
-
-    function loadDocSearch() {
-      if (typeof window.docsearch === 'function') {
-        initDocSearch();
-        return;
-      }
-
-      const existing = document.querySelector('script[data-docsearch-loader="true"]');
-      if (existing) {
-        existing.addEventListener('load', initDocSearch);
-        return;
-      }
-
-      const script = document.createElement('script');
-      script.src = docsearchJs;
-      script.async = true;
-      script.dataset.docsearchLoader = 'true';
-      script.addEventListener('load', initDocSearch);
-      document.head.appendChild(script);
-    }
-
-    loadDocSearch();
-    document.addEventListener('astro:page-load', initDocSearch);
-  </script>
+  <div
+    id="docsearch"
+    class="fe-docsearch"
+    data-app-id={docsearchConfig.appId}
+    data-api-key={docsearchConfig.apiKey}
+    data-index-name={docsearchConfig.indexName}
+    data-path-prefix={docsearchPathPrefix}
+  />
 )}
+
+    <script>
+      import docsearch from '@docsearch/js/docsearch'
+      import type {DocSearchInstance, DocSearchProps} from '@docsearch/js/docsearch'
+
+      type DocSearchItems = Parameters<NonNullable<DocSearchProps['transformItems']>>[0]
+
+      let instance: DocSearchInstance | null = null
+      let activeContainer: HTMLElement | null = null
+
+      function initDocSearch(): void {
+        const container = document.querySelector<HTMLElement>('#docsearch')
+        if (!container || container === activeContainer) {
+          return
+        }
+        const {appId, apiKey, indexName, pathPrefix} = container.dataset
+        if (!appId || !apiKey || !indexName) {
+          return
+        }
+
+        const options: DocSearchProps = {
+          container,
+          appId,
+          apiKey,
+          indices: [indexName],
+          placeholder: 'Search docs…',
+        }
+
+        if (pathPrefix) {
+          const pathPrefixWithSlash = pathPrefix.endsWith('/') ? pathPrefix : `${pathPrefix}/`
+          options.transformItems = (items: DocSearchItems): DocSearchItems =>
+            items.filter(({url}) => {
+              try {
+                const pathname = new URL(url, window.location.origin).pathname
+                return pathname === pathPrefix || pathname.startsWith(pathPrefixWithSlash)
+              } catch {
+                return url.includes(pathPrefix)
+              }
+            })
+        }
+
+        instance?.destroy()
+        instance = docsearch(options)
+        activeContainer = container
+      }
+
+      initDocSearch()
+      document.addEventListener('astro:page-load', initDocSearch)
+    </script>

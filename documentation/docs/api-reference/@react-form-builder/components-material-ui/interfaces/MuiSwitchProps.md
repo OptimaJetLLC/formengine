@@ -5,8 +5,45 @@ Props for the MuiSwitch component.
 ## Extends
 
 - `Pick`\<`SwitchProps`, `"checked"` \| `"color"` \| `"disabled"` \| `"size"`\>
+- `ControlAriaProps`
 
 ## Properties
+
+### aria-describedby?
+
+> `optional` **aria-describedby?**: `string`
+
+The id of the element that describes the control.
+
+#### Inherited from
+
+`ControlAriaProps.aria-describedby`
+
+***
+
+### aria-errormessage?
+
+> `optional` **aria-errormessage?**: `string`
+
+The id of the element that describes the validation error.
+
+#### Inherited from
+
+`ControlAriaProps.aria-errormessage`
+
+***
+
+### aria-invalid?
+
+> `optional` **aria-invalid?**: `boolean`
+
+Whether the control value is invalid.
+
+#### Inherited from
+
+`ControlAriaProps.aria-invalid`
+
+***
 
 ### checked?
 

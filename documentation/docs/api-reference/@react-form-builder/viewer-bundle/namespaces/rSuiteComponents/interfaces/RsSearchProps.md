@@ -4,7 +4,8 @@ Props for the RsSearch component.
 
 ## Extends
 
-- `InputPickerProps`.`LoadDataProps`
+- `InputPickerProps`
+- `LoadDataProps`
 
 ## Properties
 

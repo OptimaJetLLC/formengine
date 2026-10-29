@@ -296,7 +296,7 @@ const config: Config = {
     docsearch: {
       appId: 'BSTQ9Y9FKD',
       apiKey: '57c17069324f3e887215dc916098a63f',
-      indexName: 'FormEngine documentation crawler',
+      indices: [{name: 'FormEngine documentation crawler'}],
       contextualSearch: false,
     },
   } satisfies Preset.ThemeConfig,

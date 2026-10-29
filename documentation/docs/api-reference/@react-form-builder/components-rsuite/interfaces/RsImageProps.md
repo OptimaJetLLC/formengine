@@ -4,7 +4,8 @@ Props for the RsImage component.
 
 ## Extends
 
-- `ComponentProps`\<`"img"`\>.`AreaProps`
+- `ComponentProps`\<`"img"`\>
+- `AreaProps`
 
 ## Properties
 

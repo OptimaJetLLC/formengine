@@ -2030,7 +2030,7 @@
 
 #### components.MuiUploader.props.accept.description
 
-> **description**: `string` = "Allowed file types (e.g. \".jpg,.png\")"
+> **description**: `string` = "Allowed file types (e.g. \\".jpg,.png\\")"
 
 #### components.MuiUploader.props.accept.name
 

@@ -4,7 +4,8 @@ Props for the RsLink component.
 
 ## Extends
 
-- `ComponentProps`\<`"a"`\>.`TextProps`
+- `ComponentProps`\<`"a"`\>
+- `TextProps`
 
 ## Properties
 

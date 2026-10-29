@@ -4,7 +4,9 @@ The MuiStack component properties.
 
 ## Extends
 
-- `StackProps`.`DisabledProps`.`ReadOnlyProps`
+- `StackProps`
+- `DisabledProps`
+- `ReadOnlyProps`
 
 ## Properties
 

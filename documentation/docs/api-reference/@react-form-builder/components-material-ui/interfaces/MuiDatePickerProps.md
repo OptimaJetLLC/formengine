@@ -4,7 +4,8 @@ Props for the MuiDatePicker component.
 
 ## Extends
 
-- `Omit`\<`DatePickerProps`, `"defaultValue"` \| `"onChange"` \| `"reduceAnimations"` \| `"value"`\>.`Pick`\<[`MuiControlProps`](MuiControlProps.md), `"error"` \| `"helperText"` \| `"readOnly"` \| `"required"`\>
+- `Omit`\<`DatePickerProps`, `"defaultValue"` \| `"onChange"` \| `"reduceAnimations"` \| `"value"`\>
+- `Pick`\<[`MuiControlProps`](MuiControlProps.md), `"error"` \| `"helperText"` \| `"readOnly"` \| `"required"`\>
 
 ## Properties
 

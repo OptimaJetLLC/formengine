@@ -20,7 +20,7 @@ the context name.
 
 ### defaultValue?
 
-`null` \| `T`
+`null` \| `T` = `null`
 
 the optional default value.
 

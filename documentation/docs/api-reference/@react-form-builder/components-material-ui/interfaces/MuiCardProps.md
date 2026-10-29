@@ -4,7 +4,9 @@ Props for the MuiCard component.
 
 ## Extends
 
-- `CardProps`.`DisabledProps`.`ReadOnlyProps`
+- `CardProps`
+- `DisabledProps`
+- `ReadOnlyProps`
 
 ## Properties
 

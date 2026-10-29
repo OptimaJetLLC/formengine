@@ -1,20 +1,17 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {VegaLite as VegaLiteComponent} from 'react-vega';
+import {useEffect, useRef, useState, type FC} from 'react'
+import {VegaEmbed} from 'react-vega'
 import type {VisualizationSpec} from 'vega-embed'
-import type {TopLevelSpec} from 'vega-lite';
+import type {TopLevelSpec} from 'vega-lite'
 
 /**
- * Vega-Lite chart component for use in Docusaurus markdown.
- * @param spec Vega-Lite specification object (can be JSON string or object)
- * @param data Optional data to override the spec's data
- * @param width Optional width override. If not provided, chart will use container width
- * @param height Optional height override
+ * Fixed pixel width, or `'auto'` to omit width until the container is measured.
  */
+type VegaLiteWidth = number | 'auto'
+
 interface VegaLiteProps {
-  spec: TopLevelSpec | string;
-  data?: Record<string, unknown>;
-  width?: number | 'auto' | undefined;
-  height?: number;
+  spec: TopLevelSpec | string
+  width?: VegaLiteWidth
+  height?: number
 }
 
 const style = {margin: '1rem 0', display: 'flex', justifyContent: 'center', overflow: 'visible', width: '100%'}
@@ -22,67 +19,73 @@ const RESIZE_DELAY = 250
 const CHART_MARGIN = 150
 const DEFAULT_WIDTH = 600
 
-export const VegaLite: React.FC<VegaLiteProps> = ({spec, data, width, height}) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const throttleTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [containerWidth, setContainerWidth] = useState<number | undefined>(width || DEFAULT_WIDTH);
-  const parsedSpec: TopLevelSpec = typeof spec === 'string' ? JSON.parse(spec) : spec;
+/**
+ * Renders a Vega-Lite chart in Docusaurus markdown.
+ * @param spec the Vega-Lite specification (JSON string or object).
+ * @param width the optional width override. When omitted, the chart uses the container width.
+ * @param height the optional height override.
+ */
+export const VegaLite: FC<VegaLiteProps> = ({spec, width, height}) => {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const throttleTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const [containerWidth, setContainerWidth] = useState<number | undefined>(typeof width === 'number' ? width : DEFAULT_WIDTH)
+  const parsedSpec: TopLevelSpec = typeof spec === 'string' ? JSON.parse(spec) : spec
 
   const finalSpec: VisualizationSpec = {
     ...parsedSpec,
     ...(containerWidth && {width: containerWidth}),
     ...(height && {height}),
-  };
+  }
 
   useEffect(() => {
     if (typeof width !== 'undefined') {
       if (width === 'auto') {
-        setContainerWidth(undefined);
+        setContainerWidth(undefined)
         return
       }
-      setContainerWidth(width);
-      return;
+      setContainerWidth(width)
+      return
     }
 
-    const container = containerRef.current;
+    const container = containerRef.current
     if (!container) {
-      return;
+      return
     }
 
     const updateWidth = () => {
-      setContainerWidth(container.clientWidth - CHART_MARGIN);
-    };
+      setContainerWidth(container.clientWidth - CHART_MARGIN)
+    }
 
     const throttledUpdateWidth = () => {
       if (throttleTimeoutRef.current) {
-        return;
+        return
       }
 
       throttleTimeoutRef.current = setTimeout(() => {
-        updateWidth();
-        throttleTimeoutRef.current = null;
-      }, RESIZE_DELAY);
-    };
+        updateWidth()
+        throttleTimeoutRef.current = null
+      }, RESIZE_DELAY)
+    }
 
-    updateWidth();
+    updateWidth()
 
-    const resizeObserver = new ResizeObserver(throttledUpdateWidth);
-    resizeObserver.observe(container);
+    const resizeObserver = new ResizeObserver(throttledUpdateWidth)
+    resizeObserver.observe(container)
 
     return () => {
-      resizeObserver.disconnect();
+      resizeObserver.disconnect()
       if (throttleTimeoutRef.current) {
-        clearTimeout(throttleTimeoutRef.current);
-        throttleTimeoutRef.current = null;
+        clearTimeout(throttleTimeoutRef.current)
+        throttleTimeoutRef.current = null
       }
-    };
-  }, [width]);
+    }
+  }, [width])
 
   return (
     <div ref={containerRef} style={style}>
-      <VegaLiteComponent spec={finalSpec} data={data} actions={false} renderer="svg" />
+      <VegaEmbed spec={finalSpec} options={{actions: false, renderer: 'svg'}} />
     </div>
-  );
-};
+  )
+}
 
-export default VegaLite;
+export type {VegaLiteProps, VegaLiteWidth}

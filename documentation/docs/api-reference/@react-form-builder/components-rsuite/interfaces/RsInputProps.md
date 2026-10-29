@@ -1587,7 +1587,7 @@ The label for the input.
 
 ### onChange?
 
-> `optional` **onChange?**: `PrependParameters`\<`ChangeEventHandler`\<`HTMLInputElement`\>, \[`string`\]\>
+> `optional` **onChange?**: `PrependParameters`\<`ChangeEventHandler`\<`HTMLInputElement`\>, \[`value`: `string`\]\>
 
 The callback function in which value is changed.
 

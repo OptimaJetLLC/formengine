@@ -4,7 +4,9 @@ The MuiContainer component properties.
 
 ## Extends
 
-- `ContainerProps`.`DisabledProps`.`ReadOnlyProps`
+- `ContainerProps`
+- `DisabledProps`
+- `ReadOnlyProps`
 
 ## Properties
 

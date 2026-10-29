@@ -124,6 +124,9 @@
     "react-dom": "^19.0.0"
   },
   "overrides": {
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "@docsearch/core": "5.1.2",
+    "@docsearch/css": "5.1.2",
+    "@docsearch/react": "5.1.2"
   }
 }

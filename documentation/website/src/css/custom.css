@@ -4,6 +4,24 @@
 @import "@mantine/dates/styles.css" layer(mantine);
 @import "@react-form-builder/core/assets/styles.css" layer(doc);
 
+/* Keep DocSearch surfaces opaque and its secondary text readable in both themes. */
+:root:root {
+  --docsearch-background-color: var(--ifm-color-emphasis-200);
+  --docsearch-modal-background: var(--ifm-background-surface-color);
+  --docsearch-search-button-background: var(--ifm-background-surface-color);
+  --docsearch-searchbox-background: var(--ifm-background-surface-color);
+  --docsearch-searchbox-focus-background: var(--ifm-background-surface-color);
+  --docsearch-hit-background: var(--ifm-background-surface-color);
+  --docsearch-hit-focus-background: var(--ifm-color-emphasis-200);
+  --docsearch-footer-background: var(--ifm-background-surface-color);
+  --docsearch-secondary-text-color: var(--ifm-color-content-secondary);
+  --docsearch-icon-color: var(--ifm-color-content-secondary);
+  --docsearch-muted-color: var(--ifm-color-content-secondary);
+  --docsearch-search-button-text-color: var(--ifm-color-content-secondary);
+  --docsearch-key-color: var(--ifm-color-content-secondary);
+  --docsearch-key-background: var(--ifm-color-emphasis-200);
+}
+
 @layer mantine {
   :root,
   body {

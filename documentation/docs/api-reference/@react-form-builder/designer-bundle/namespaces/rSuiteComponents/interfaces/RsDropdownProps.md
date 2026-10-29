@@ -4,7 +4,8 @@ Props for the RsDropdown component.
 
 ## Extends
 
-- `InputPickerProps`.`LoadDataProps`
+- `InputPickerProps`
+- `LoadDataProps`
 
 ## Properties
 

@@ -4,7 +4,9 @@ The MuiBox component properties.
 
 ## Extends
 
-- `BoxProps`.`DisabledProps`.`ReadOnlyProps`
+- `BoxProps`
+- `DisabledProps`
+- `ReadOnlyProps`
 
 ## Properties
 

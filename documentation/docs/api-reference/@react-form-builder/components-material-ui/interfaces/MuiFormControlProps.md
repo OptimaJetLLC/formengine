@@ -4,7 +4,9 @@ Props for the Material-UI FormControl component.
 
 ## Extends
 
-- `FormControlProps`.`DisabledProps`.`ReadOnlyProps`
+- `FormControlProps`
+- `DisabledProps`
+- `ReadOnlyProps`
 
 ## Properties
 

@@ -4,7 +4,8 @@ The properties of the Uploader component.
 
 ## Extends
 
-- `DropzoneOptions`.`ComponentProps`\<`any`\>
+- `DropzoneOptions`
+- `ComponentProps`\<`any`\>
 
 ## Indexable
 

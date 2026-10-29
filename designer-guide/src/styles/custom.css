@@ -1399,9 +1399,9 @@ html.dark .DocSearch-Button {
 }
 
 /* DocSearch dark theme - keyboard buttons with deep selectors */
+html.dark .DocSearch-Button-Key,
 html.dark .DocSearch-Button-Keys kbd,
 html.dark .DocSearch-Button-Keys > *,
-html.dark [class*="DocSearch-Key"],
 html.dark footer.DocSearch-Footer > ul.DocSearch-Commands li kbd.DocSearch-Commands-Key,
 html.dark .DocSearch-Modal .DocSearch-Footer .DocSearch-Commands kbd,
 html.dark .DocSearch-Modal footer.DocSearch-Footer ul.DocSearch-Commands li kbd {

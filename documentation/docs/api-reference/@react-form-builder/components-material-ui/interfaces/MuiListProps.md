@@ -4,7 +4,9 @@ The MuiList component properties.
 
 ## Extends
 
-- `ListProps`.`DisabledProps`.`ReadOnlyProps`
+- `ListProps`
+- `DisabledProps`
+- `ReadOnlyProps`
 
 ## Properties
 

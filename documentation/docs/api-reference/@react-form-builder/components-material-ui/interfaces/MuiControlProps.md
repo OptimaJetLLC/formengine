@@ -4,7 +4,9 @@ The props for the MuiControl component.
 
 ## Extends
 
-- `FormControlProps`.`DisabledProps`.`ReadOnlyProps`
+- `FormControlProps`
+- `DisabledProps`
+- `ReadOnlyProps`
 
 ## Properties
 
