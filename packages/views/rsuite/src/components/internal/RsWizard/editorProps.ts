@@ -17,6 +17,12 @@ export const createStep = (index: number) => {
 }
 
 export const editorProps = {
+  /**
+   * Adds a step to the Wizard component.
+   * @param index the insertion index.
+   * @param wizardComponentData the Wizard component data.
+   * @param viewerStore the form viewer store.
+   */
   onAdd: (index: number, wizardComponentData: ComponentData, viewerStore: Store) => {
     const componentStore = createStep(index + 1)
     const componentData = viewerStore.createComponentData(componentStore)
@@ -28,6 +34,11 @@ export const editorProps = {
     }
     componentData.setParent(wizardComponentData)
   },
+  /**
+   * Removes a step from the Wizard component.
+   * @param index the removal index.
+   * @param wizardComponentData the Wizard component data.
+   */
   onRemove: (index: number, wizardComponentData: ComponentData) => {
     const {activeIndex} = wizardComponentData.store.props
     if (activeIndex?.value === index && index > 0) {
@@ -36,7 +47,13 @@ export const editorProps = {
     wizardComponentData.children[index].delete()
   },
   columns: [{name: 'label', input: InputCell}],
-  calculateEditorProps: ({store}: ComponentData) => {
+  /**
+   * Creates the Wizard editor data and change handler.
+   * @param componentData the Wizard component data.
+   * @returns the editor data and change handler.
+   */
+  calculateEditorProps: (componentData: ComponentData) => {
+    const {store} = componentData
     const data =
       store.children?.map(({props}) => ({
         label: props.label?.value,

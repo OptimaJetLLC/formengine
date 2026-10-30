@@ -69,7 +69,7 @@ export interface GenericCodeEditorProps {
   initialTestData?: Record<string, unknown>
   /**
    * The callback function called when the source code is saved.
-   * @param the source code.
+   * @param value the source code.
    */
   onSave: (value: string) => void
   /**

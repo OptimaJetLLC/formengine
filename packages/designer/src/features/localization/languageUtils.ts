@@ -71,6 +71,11 @@ export const builtInLanguages: FormBuilderI18n = {
     new Language('zh', 'CN', '中文', 'Chinese'),
   ],
 
+  /**
+   * Loads the locale data for a built-in language.
+   * @param languageFullCode the full language code.
+   * @returns the locale data and component locale.
+   */
   getData: async languageFullCode => {
     const data = await import(`../../../public/locales/${languageFullCode}.json`)
     return {

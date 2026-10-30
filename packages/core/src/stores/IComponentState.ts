@@ -123,7 +123,7 @@ export const defaultComponentState: IComponentState = {
    * @inheritDoc
    */
   onWillUnmount(): void {},
-  /*
+  /**
    * @inheritDoc
    */
   applyStyles(_cssPart: CssPart, _flatCss: string): void {},

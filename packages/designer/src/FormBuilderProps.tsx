@@ -96,6 +96,12 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view' | 'langua
   /**
    * Callback invoked when a component is added to the form.
    * @param payload the payload with information about the added component.
+   * @param payload.source the source component.
+   * @param payload.target the target component.
+   * @param payload.insertPosition the position at which to insert the component.
+   * @param payload.slot the target slot name.
+   * @param payload.slotCondition the target slot condition.
+   * @param payload.presetName the applied preset name.
    */
   onFormElementAdd?: (payload: {
     source: ComponentData
@@ -109,6 +115,7 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view' | 'langua
   /**
    * Callback invoked when a component is removed from the form.
    * @param payload the payload with information about the removed component.
+   * @param payload.source the removed component.
    */
   onFormElementRemove?: (payload: {source: ComponentData}) => void
 

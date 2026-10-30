@@ -354,25 +354,37 @@ the payload with information about the added component.
 
 [`InsertPosition`](../type-aliases/InsertPosition.md)
 
+the position at which to insert the component.
+
 ###### presetName?
 
 `string`
+
+the applied preset name.
 
 ###### slot?
 
 `string`
 
+the target slot name.
+
 ###### slotCondition?
 
 `string`
+
+the target slot condition.
 
 ###### source
 
 [`ComponentData`](../../core/classes/ComponentData.md)
 
+the source component.
+
 ###### target
 
 [`ComponentData`](../../core/classes/ComponentData.md)
+
+the target component.
 
 #### Returns
 
@@ -395,6 +407,8 @@ the payload with information about the removed component.
 ###### source
 
 [`ComponentData`](../../core/classes/ComponentData.md)
+
+the removed component.
 
 #### Returns
 

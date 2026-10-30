@@ -17,6 +17,11 @@ const findParentWithParams = (componentData: ComponentData, checkFunction: Check
 }
 
 export const eventListeners: ComponentMetadataEventListeners = {
+  /**
+   * Selects the Wizard step that contains the selected node.
+   * @param data the selected component data.
+   * @param self the Wizard component data.
+   */
   onSelectNode: (data: ComponentData, self: ComponentData) => {
     const parentWithParams = findParentWithParams(data, parent => parent?.parent === self)
     if (parentWithParams) {
