@@ -48,9 +48,13 @@ If `designer-guide/content/` scaffolding is missing:
 3. Add one `.mdx` file per workflow (kebab-case filenames) per `documentation-writing-plan.md`.
 4. Add `public/assets/guide/README.md` for screenshot conventions.
 
-## Conventions from `documentation/` (align with existing docs)
+## Shared repository conventions
 
-**`documentation/AGENTS.md`** still applies for English-only text, table alignment, and developer-doc linking. For Form Author Guide pages, prefer the **author-guide voice and structure rules below** (and sibling pages under `designer-guide/content/`) over Docusaurus page templates.
+Follow the repository-wide rules in [`AGENTS.md`](../../AGENTS.md) and the scoped Form Author Guide rules in
+[`designer-guide/AGENTS.md`](../../designer-guide/AGENTS.md). Use the
+[cross-site link conventions](../../documentation/authoring/cross-site-links.md) for developer-documentation links. For Form Author Guide
+pages, prefer the **author-guide voice and structure rules below** and sibling pages under `designer-guide/content/` over Docusaurus page
+templates.
 
 ### Voice, structure, and headings
 

@@ -162,6 +162,7 @@ npm-test:
 npm-check-all:
   FROM +sources
   WORKDIR /repo
+  COPY .nvmrc AGENTS.md CONTRIBUTING.md ./
   RUN npm rebuild
   RUN npm run check-all
 

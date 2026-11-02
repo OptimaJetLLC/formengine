@@ -107,6 +107,7 @@ const config: Config = {
           path: '../docs',
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
+          exclude: ['**/AGENTS.md', '**/_*.{js,jsx,ts,tsx,md,mdx}', '**/_*/**'],
           remarkPlugins: [[remarkDesignerGuideLinks, {baseUrl: getDesignerGuideBase()}]],
         },
         blog: false,

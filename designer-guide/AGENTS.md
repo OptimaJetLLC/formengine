@@ -1,34 +1,28 @@
-# Designer Guide Agent Guidelines
+# Form Author Guide Guidance
 
-## Project Overview
+The Form Author Guide is the Astro and Starlight site for people who create forms in the visual Designer. Content lives in `content/`.
 
-Designer Guide is the FormEngine author documentation site built with Astro + Starlight. Content lives in `content/` as markdown files.
+## Content rules
 
-## Pre-Push Checklist
+- The filename without `.md` is the URL slug. Keep it in kebab-case and aligned with the page H1.
+- Keep demo `<a>...</a>` links on one line. MDX requires the opening tag, label, and closing tag together; these URLs may exceed 140
+  characters.
+- Add a language tag to every code fence.
+- Use `:toolbar-icon[name]:` in Markdown, where `name` is `reveal`, `nearby`, `add`, `clone`, `preset`, `remove`, or `open-actions`.
+- In MDX, use `<ToolbarIcon name="clone" />` from `src/components/ToolbarIcon.astro`.
+- Prefer TypeScript for new scripts under `scripts/` and execute them with `node scripts/name.ts`. Use `.mjs` only when the toolchain cannot
+  load TypeScript.
+- Follow [the cross-site link conventions](../documentation/authoring/cross-site-links.md) for links to developer documentation.
+- Use the `formbuilder-end-user-docs` skill under `skills/formbuilder-end-user-docs/` for screenshot capture, annotation, and visual guide
+  workflows.
 
-**Always run `npm run check:all` before committing and pushing changes.** Fix all errors related to your changes before pushing:
+## Focused validation
 
-- `check:links` - internal link integrity
-- `check:tsc` - TypeScript errors
-- `check:eslint` - ESLint errors
-- `check:stylelint` - CSS lint errors
-
-## Key Rules
-
-- **Slug must match H1 in kebab-case.** The filename (without `.md`) is the URL slug. When renaming a file, run `npm run check:links` and fix all broken references.
-- **Do not wrap demo `<a>...</a>` Try it links.** MDX requires the opening tag, label, and `</a>` on
-  one line. Those URLs may exceed 140 characters; Biome does not format markdown.
-- **All code fences must have a language tag** (`text`, `json`, `javascript`, etc.).
-- **All content, comments, and code in English only.**
-- **Prefer TypeScript for new scripts.** Add Node scripts under `scripts/` as `.ts` first (run with `node scripts/name.ts`). Use `.mjs` only when TypeScript cannot run in that context.
-- **Toolbar icons in markdown:** use `:toolbar-icon[name]:` where `name` is one of `reveal`, `nearby`, `add`, `clone`, `preset`, `remove`, `open-actions`. In MDX, use `<ToolbarIcon name="clone" />` from `src/components/ToolbarIcon.astro`.
-- **Do not commit** unless explicitly asked.
-
-## Commands
+Run the local checks while working on this site:
 
 ```bash
-npm run dev            # Start dev server
-npm run build          # Production build
-npm run check:all      # Run all checks (links, tsc, eslint, stylelint)
-npm run check:links    # Check internal link integrity only
+npm run check:all --prefix designer-guide
 ```
+
+Run `npm run check:links --prefix designer-guide` after renaming or moving content. The repository-wide `npm run check-all` remains the
+final completion gate.
