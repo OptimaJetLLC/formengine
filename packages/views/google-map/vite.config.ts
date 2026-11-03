@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 // The public API exposes google.maps types, so the reference must survive into the rolled-up declarations.
-// vite-plugin-dts drops triple-slash directives while rewriting imports, therefore it is re-added here.
+// unplugin-dts drops triple-slash directives while rewriting imports, therefore it is re-added here.
 const googleMapsTypesReference = '/// <reference types="google.maps" />'
 
 export default defineConfig(env =>

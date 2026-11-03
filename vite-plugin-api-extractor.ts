@@ -3,12 +3,12 @@ import type {ExtractorConfig, ExtractorResult, IExtractorInvokeOptions} from '@m
 import {CompilerState, Extractor} from '@microsoft/api-extractor'
 import {existsSync} from 'node:fs'
 import {createRequire} from 'node:module'
-import {normalize, resolve} from 'node:path'
+import {dirname, normalize, resolve} from 'node:path'
 import type {Plugin, PluginOption, ResolvedConfig} from 'vite'
-import type {PluginOptions as DtsPluginOptions} from 'vite-plugin-dts'
-import dts from 'vite-plugin-dts'
+import type {PluginInstance, PluginOptions as DtsPluginOptions} from 'unplugin-dts'
 
 const PLUGIN_NAME = 'api-extractor-compiler-state'
+const SYSTEM_EXCLUDE_GLOB = ['**/node_modules/**', '**/*.test.*', '**/*.spec.*', 'dist/**']
 const TYPESCRIPT_EXTENSION_PATTERN = /[.][mc]?tsx?$/
 
 interface BuildRegistration {
@@ -19,33 +19,36 @@ interface BuildRegistration {
 
 const registrationsByEntryPoint = new Map<string, BuildRegistration>()
 const require = createRequire(import.meta.url)
+const unpluginDts = (require('unplugin-dts') as {default: PluginInstance}).default
+
 const originalExtractorInvoke = Extractor.invoke.bind(Extractor)
 let isExtractorPatched = false
 
 /**
- * Resolves the Extractor class vite-plugin-dts imported, so the monkey-patch cannot silently miss a nested copy.
- * @returns the Extractor export as seen from vite-plugin-dts, plus the resolved package paths.
+ * Resolves the Extractor class unplugin-dts imported, so the monkey-patch cannot silently miss a nested copy.
+ * @returns the Extractor export as seen from unplugin-dts, plus the resolved package paths.
  */
-const getVitePluginDtsExtractor = (): {
+const getUnpluginDtsExtractor = (): {
   extractor: typeof Extractor
   ourPath: string
   dtsPath: string
 } => {
   const ourPath = require.resolve('@microsoft/api-extractor')
-  const dtsPath = require.resolve('@microsoft/api-extractor', {paths: [require.resolve('vite-plugin-dts')]})
+  const unpluginDtsRoot = dirname(require.resolve('unplugin-dts/package.json'))
+  const dtsPath = require.resolve('@microsoft/api-extractor', {paths: [unpluginDtsRoot]})
   const extractor = (require(dtsPath) as {Extractor: typeof Extractor}).Extractor
   return {extractor, ourPath, dtsPath}
 }
 
-const assertSameExtractorInstanceAsVitePluginDts = (): void => {
-  const {extractor: dtsExtractor, ourPath, dtsPath} = getVitePluginDtsExtractor()
+const assertSameExtractorInstanceAsUnpluginDts = (): void => {
+  const {extractor: dtsExtractor, ourPath, dtsPath} = getUnpluginDtsExtractor()
   if (dtsExtractor === Extractor && dtsExtractor.invoke === Extractor.invoke && ourPath === dtsPath) {
     return
   }
 
   throw new Error(
-    `[${PLUGIN_NAME}] Patched @microsoft/api-extractor is not the instance vite-plugin-dts uses ` +
-      `(ours: ${ourPath}, vite-plugin-dts: ${dtsPath}). Shared CompilerState will not apply.`
+    `[${PLUGIN_NAME}] Patched @microsoft/api-extractor is not the instance unplugin-dts uses ` +
+      `(ours: ${ourPath}, unplugin-dts: ${dtsPath}). Shared CompilerState will not apply.`
   )
 }
 
@@ -61,7 +64,7 @@ const invokeWithSharedCompilerState = (extractorConfig: ExtractorConfig, options
   }
 
   if (!registration.compilerState) {
-    const missingEntryPoints = registration.declarationEntryPoints.filter((entryPoint) => !existsSync(entryPoint))
+    const missingEntryPoints = registration.declarationEntryPoints.filter(entryPoint => !existsSync(entryPoint))
     if (missingEntryPoints.length > 0) {
       if (!registration.missingEntryPointsLogged) {
         registration.missingEntryPointsLogged = true
@@ -86,7 +89,7 @@ const installExtractorPatch = (): void => {
     return
   }
 
-  assertSameExtractorInstanceAsVitePluginDts()
+  assertSameExtractorInstanceAsUnpluginDts()
   Extractor.invoke = invokeWithSharedCompilerState
   isExtractorPatched = true
 }
@@ -122,7 +125,7 @@ const getDeclarationEntryPoints = (config: ResolvedConfig): string[] => {
   }
 
   const outputDirectory = resolve(config.root, config.build.outDir)
-  return Object.keys(entry).map((entryName) =>
+  return Object.keys(entry).map(entryName =>
     normalize(resolve(outputDirectory, `${entryName.replace(TYPESCRIPT_EXTENSION_PATTERN, '')}.d.ts`))
   )
 }
@@ -171,12 +174,20 @@ const apiExtractorCompilerStatePlugin = (): Plugin => {
 /**
  * Returns the Vite plugins for a library build that rolls up `.d.ts` files.
  * Includes a temporary workaround that reuses one API Extractor CompilerState across multi-entry rollups.
- * @param options additional vite-plugin-dts options merged over the default rollup configuration.
- * @returns the compiler-state plugin followed by vite-plugin-dts.
+ * @param options additional unplugin-dts options merged over the default bundle configuration.
+ * @returns the compiler-state plugin followed by unplugin-dts.
  */
 export function libDts(options?: DtsPluginOptions): PluginOption {
+  const additionalExcludes = typeof options?.exclude === 'string' ? [options.exclude] : (options?.exclude ?? [])
+
   return [
     apiExtractorCompilerStatePlugin(),
-    dts({rollupTypes: true, tsconfigPath: './bundle.tsconfig.json', ...options}),
+    unpluginDts.vite({
+      bundleTypes: true,
+      tsconfigPath: './bundle.tsconfig.json',
+      ...options,
+      // include: ['src/**/*', 'index.ts'],
+      exclude: [...SYSTEM_EXCLUDE_GLOB, ...additionalExcludes],
+    }),
   ]
 }

@@ -1,6 +1,7 @@
 import {copyFileSync, cpSync, existsSync, mkdirSync, renameSync, writeFileSync} from 'node:fs'
 import {dirname, join} from 'node:path'
 
+import {checkBundledDtsPollution} from './check-bundled-dts-pollution.ts'
 import {checkMonorepoSourceImports, checkWebpackFullySpecifiedImports} from './check-webpack-imports.ts'
 import {removePath} from './fs-utils.ts'
 import {readJson, writeJson} from './json-fs.ts'
@@ -28,11 +29,16 @@ export type ManifestCopyMode = 'cp-if-exists' | 'copy-file' | 'cp'
  * @param configDir directory containing part.package.json (usually config/)
  * @param mode how each listed file is copied into the staging folder
  */
+function checkDistDeclarations(sourceDir: string): void {
+  checkWebpackFullySpecifiedImports(sourceDir)
+  checkMonorepoSourceImports(sourceDir)
+  checkBundledDtsPollution(sourceDir)
+}
+
 export function runPackManifestFiles(configDir: string, mode: ManifestCopyMode): void {
   const sourceDir = join(configDir, '..')
   const tempDir = join(configDir, 'package')
-  checkWebpackFullySpecifiedImports(sourceDir)
-  checkMonorepoSourceImports(sourceDir)
+  checkDistDeclarations(sourceDir)
 
   try {
     removePath(tempDir)
@@ -80,8 +86,7 @@ export function runPackReadmeDist(configDir: string, options?: ReadmeDistOptions
   const sourceDir = join(configDir, '..')
   const tempDir = join(configDir, 'package')
   const rootFiles = ['README.md', ...(options?.extraRootFiles ?? [])]
-  checkWebpackFullySpecifiedImports(sourceDir)
-  checkMonorepoSourceImports(sourceDir)
+  checkDistDeclarations(sourceDir)
 
   try {
     removePath(tempDir)
@@ -112,8 +117,7 @@ export function runPackReadmeDist(configDir: string, options?: ReadmeDistOptions
 export function runPackViewExportsPatch(configDir: string): void {
   const sourceDir = join(configDir, '..')
   const tempDir = join(configDir, 'package')
-  checkWebpackFullySpecifiedImports(sourceDir)
-  checkMonorepoSourceImports(sourceDir)
+  checkDistDeclarations(sourceDir)
 
   try {
     removePath(tempDir)
