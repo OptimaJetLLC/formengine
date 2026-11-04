@@ -210,16 +210,6 @@ export class ComponentData implements IFormData {
   }
 
   /**
-   * Sets a user-defined property without replacing the other user-defined properties.
-   * @param key the property name.
-   * @param value the property value.
-   */
-  setUserDefinedProp(key: string, value: unknown) {
-    this.userDefinedProps ??= {}
-    this.userDefinedProps[key] = value
-  }
-
-  /**
    * Sets the new parent for this node.
    * @param newParent the new parent.
    */

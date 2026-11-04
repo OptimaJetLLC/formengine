@@ -31,11 +31,12 @@ export const openModal = ActionDefinition.functionalAction(
 
     const initialData = isRecord(initialDataRecord) ? JSON.parse(JSON.stringify(initialDataRecord)) : undefined
 
-    component.setUserDefinedProp(modalStateKey, {
+    component.userDefinedProps ??= {}
+    component.userDefinedProps[modalStateKey] = {
       open: true,
       initialData,
       [modalBeforeHideFnName]: args[modalBeforeHideFnName],
-    })
+    }
   },
   {
     modalKey: 'string',
