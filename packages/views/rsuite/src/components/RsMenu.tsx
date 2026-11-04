@@ -77,8 +77,7 @@ const RsMenu = ({onSelect, items, itemsAs, ...props}: RsMenuProps) => {
 
   const onNavSelect: NavProps['onSelect'] = useCallback(
     (eventKey: any, event: SyntheticEvent) => {
-      componentData.userDefinedProps ??= {}
-      componentData.userDefinedProps.activeKey = eventKey
+      componentData.setUserDefinedProp('activeKey', eventKey)
       onSelect?.(eventKey, event)
     },
     [componentData, onSelect]
