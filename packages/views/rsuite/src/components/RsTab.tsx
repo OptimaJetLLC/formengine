@@ -56,8 +56,7 @@ const RsTab = ({pane, onSelect, showNavigation, items, className, ...props}: RsT
 
   const onNavSelect = useCallback(
     (eventKey: string, event: SyntheticEvent) => {
-      componentData.userDefinedProps ??= {}
-      componentData.userDefinedProps.activeKey = eventKey
+      componentData.setUserDefinedProp('activeKey', eventKey)
       onSelect?.(eventKey, event)
     },
     [componentData, onSelect]

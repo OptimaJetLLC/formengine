@@ -673,6 +673,32 @@ the new parent.
 
 ***
 
+### setUserDefinedProp()
+
+> **setUserDefinedProp**(`key`, `value`): `void`
+
+Sets a user-defined property without replacing the other user-defined properties.
+
+#### Parameters
+
+##### key
+
+`string`
+
+the property name.
+
+##### value
+
+`unknown`
+
+the property value.
+
+#### Returns
+
+`void`
+
+***
+
 ### unifyKeys()
 
 > **unifyKeys**(`root`): `Map`\<`string`, `string`\>
