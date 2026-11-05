@@ -194,7 +194,7 @@
     "@react-form-builder/cli-lib": "*",
     "@react-form-builder/json-schema-generator": "^11.1.0",
     "postcss": "^8.5.29",
-    "vite-inline-css-plugin": "^0.0.1",
-    "vite-node": "^5.2.0"
+    "vite-inline-css-plugin": "^0.0.2",
+    "vite-node": "^6.0.0"
   }
 }

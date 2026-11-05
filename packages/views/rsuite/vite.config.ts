@@ -1,12 +1,12 @@
-import {copyFile, mkdir, readdir, readFile, writeFile} from 'node:fs/promises'
+import {copyFile, mkdir, writeFile} from 'node:fs/promises'
 import {join, normalize, resolve} from 'node:path'
 import {exportsToEntries, getDirname, getFilesByMask, readPackageJson} from '@react-form-builder/cli-lib/view-pack-tools'
 import postcss from 'postcss'
-import type {ModuleFormat} from 'rollup'
+import type {ModuleFormat} from 'rolldown'
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
 import {defineConfig, mergeConfig, Plugin, ResolvedConfig} from 'vite'
 import {inlineCssPlugin} from 'vite-inline-css-plugin'
-import base from '../../../vite.config'
+import base, {readCss, replaceGeneratedCssUrlModule, toDataCssUrl} from '../../../vite.config.ts'
 import {libDts} from '../../../vite-plugin-api-extractor.ts'
 
 const __dirname = getDirname(import.meta.url)
@@ -37,13 +37,6 @@ if (missingInEntry.length > 0) {
   process.exit(1)
 }
 
-const sourceMapCommentPattern = /\/\*# sourceMappingURL=.*?\*\/\s*$/gm
-
-const readCss = async (cssPath: string) => {
-  const css = await readFile(cssPath, 'utf8')
-  return css.replace(sourceMapCommentPattern, '').trimEnd()
-}
-
 const composeCss = async (outputPath: string, parts: string[]) => {
   const composedCss = `${parts.join('\n')}\n`
   const result = await postcss([]).process(composedCss, {
@@ -58,33 +51,10 @@ const composeCss = async (outputPath: string, parts: string[]) => {
   }
 }
 
-const cssModuleFilePatterns = {
-  ltr: /^rsuite-ltr\.css-.*\.js$/,
-  rtl: /^rsuite-rtl\.css-.*\.js$/,
-}
-
-const toDataCssUrl = (css: string) => {
-  const encoded = Buffer.from(css, 'utf8').toString('base64')
-  return `data:text/css;base64,${encoded}`
-}
-
-const toCssUrlModuleContent = (href: string) => `const t = ${JSON.stringify(href)};
-export {
-  t as default
-};
-`
-
-const replaceGeneratedCssUrlModule = async (outDir: string, direction: 'ltr' | 'rtl', href: string) => {
-  const fileNames = await readdir(outDir)
-  const pattern = cssModuleFilePatterns[direction]
-  const moduleFileName = fileNames.find(fileName => pattern.test(fileName))
-
-  if (!moduleFileName) {
-    throw new Error(`Could not find generated ${direction.toUpperCase()} CSS URL module in ${outDir}`)
-  }
-
-  await writeFile(join(outDir, moduleFileName), toCssUrlModuleContent(href), 'utf8')
-}
+const cssUrlModuleIds = {
+  ltr: 'rsuite-ltr.css',
+  rtl: 'rsuite-rtl.css',
+} as const
 
 const composeRsuiteCssPlugin = (): Plugin => {
   let outDir = ''
@@ -132,8 +102,8 @@ const composeRsuiteCssPlugin = (): Plugin => {
 
         const ltrComposedCss = await readCss(ltrOutputPath)
         const rtlComposedCss = await readCss(rtlOutputPath)
-        await replaceGeneratedCssUrlModule(outDir, 'ltr', toDataCssUrl(ltrComposedCss))
-        await replaceGeneratedCssUrlModule(outDir, 'rtl', toDataCssUrl(rtlComposedCss))
+        await replaceGeneratedCssUrlModule(outDir, cssUrlModuleIds.ltr, toDataCssUrl(ltrComposedCss))
+        await replaceGeneratedCssUrlModule(outDir, cssUrlModuleIds.rtl, toDataCssUrl(rtlComposedCss))
       } catch (error) {
         console.error('Failed to compose RSuite CSS files:', error)
         throw error
@@ -159,7 +129,7 @@ export default defineConfig(env =>
         },
         cssFileName: 'assets/styles',
       },
-      rollupOptions: {
+      rolldownOptions: {
         plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],
         output: {
           exports: 'named',

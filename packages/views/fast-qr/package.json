@@ -40,7 +40,7 @@
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",
     "@react-form-builder/json-schema-generator": "^11.1.0",
-    "vite-node": "^5.2.0"
+    "vite-node": "^6.0.0"
   },
   "files": [
     "dist/*",

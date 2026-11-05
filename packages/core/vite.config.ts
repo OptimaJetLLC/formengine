@@ -2,7 +2,7 @@ import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
 import {defineConfig, mergeConfig} from 'vite'
-import base from '../../vite.config'
+import base from '../../vite.config.ts'
 import {libDts} from '../../vite-plugin-api-extractor.ts'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -21,7 +21,7 @@ export default defineConfig(env =>
         formats: ['es'],
         cssFileName: 'styles',
       },
-      rollupOptions: {
+      rolldownOptions: {
         output: {
           preserveModules: true,
           preserveModulesRoot: 'src',
@@ -40,7 +40,7 @@ export default defineConfig(env =>
             }
             return 'assets/[name]-[hash][extname]'
           },
-          manualChunks: undefined, // Let Rollup decide chunks
+          manualChunks: undefined, // Let Rolldown decide chunks
         },
         plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],
       },

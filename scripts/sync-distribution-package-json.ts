@@ -81,7 +81,6 @@ const DISTRIBUTION_BASE_DEV_DEPENDENCIES = [
   'typescript',
   'vite',
   'vite-bundle-analyzer',
-  'vite-plugin-cp',
   'unplugin-dts',
   '@microsoft/api-extractor',
   'vite-plugin-svgr',

@@ -12,8 +12,9 @@ interface PackageIdentity {
 /**
  * Reads name and version from a package directory.
  * @param packagePath path to the workspace package root
+ * @returns the package name and version.
  */
-function readPackageIdentity(packagePath: string): PackageIdentity {
+export function readPackageIdentity(packagePath: string): PackageIdentity {
   const packageJsonPath = join(packagePath, 'package.json')
   if (!existsSync(packageJsonPath)) {
     throw new Error(`File '${packageJsonPath}' not found`)
@@ -27,7 +28,7 @@ function readPackageIdentity(packagePath: string): PackageIdentity {
  * Removes a path if it exists.
  * @param path path to remove
  */
-function removeIfExists(path: string): void {
+export function removeIfExists(path: string): void {
   if (existsSync(path)) {
     rmSync(path, {recursive: true, force: true})
   }
@@ -97,7 +98,7 @@ function ensureWorkspaceDependenciesInstalled(workspaceRoot: string): void {
  * Installs npm dependencies for an app directory when node_modules is missing.
  * @param appDir directory containing package.json
  */
-function ensureAppDependenciesInstalled(appDir: string): void {
+export function ensureAppDependenciesInstalled(appDir: string): void {
   if (existsSync(join(appDir, 'node_modules'))) {
     return
   }

@@ -1,7 +1,7 @@
 import type {Annotation, BuilderComponent, ComponentLibraryDescription, I18nItem} from '@react-form-builder/core'
 import {ContainerAnnotation, cfHideFromComponentPalette, EventAnnotation, isBoolean} from '@react-form-builder/core'
 import baseSchema from '@react-form-builder/core/schemas/persisted-form.schema.json'
-import type {JSONSchema} from 'json-schema-typed/draft_07'
+import type {JSONSchema} from 'json-schema-typed/draft-07'
 
 const functionIf = {
   if: {

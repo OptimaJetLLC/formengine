@@ -38,8 +38,7 @@
   },
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",
-    "vite-inline-css-plugin": "^0.0.1",
-    "vite-plugin-css-injected-by-js": "^3.5.2"
+    "vite-inline-css-plugin": "^0.0.2"
   },
   "peerDependencies": {
     "@react-form-builder/core": "11.1.0"

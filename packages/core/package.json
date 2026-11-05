@@ -71,7 +71,7 @@
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",
     "ts-json-schema-generator": "^2.9.0",
-    "vite-node": "^5.2.0"
+    "vite-node": "^6.0.0"
   },
   "browserslist": {
     "production": [

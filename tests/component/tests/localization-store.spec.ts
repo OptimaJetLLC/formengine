@@ -1,5 +1,6 @@
 import type {ILocalizationEngine, LocalizationError} from '@react-form-builder/core'
 import {LocalizationStore} from '@react-form-builder/core'
+import {computed} from 'mobx'
 import {afterEach, describe, expect, it, vi} from 'vitest'
 
 function createIdentityEngine(overrides: Partial<ILocalizationEngine> = {}): ILocalizationEngine {
@@ -688,6 +689,21 @@ describe('localization store behavior', () => {
       expect(first).toStrictEqual({c1_component_p1: 'a'})
       expect(second).toStrictEqual(first)
       expect(addMessages).toHaveBeenCalledTimes(2)
+    })
+
+    it('does not warn when getItems populates the cache from a MobX computed', () => {
+      const warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined)
+      const store = new LocalizationStore(
+        {
+          'en-US': {c1: {component: {p1: 'a'}}},
+        },
+        createIdentityEngine()
+      )
+
+      const items = computed(() => store.getItems('en-US')).get()
+
+      expect(items).toStrictEqual({c1_component_p1: 'a'})
+      expect(warn.mock.calls.flat().join('\n')).not.toMatch(/Side effects like changing state are not allowed/)
     })
   })
 })

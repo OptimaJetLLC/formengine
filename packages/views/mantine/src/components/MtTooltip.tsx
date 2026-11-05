@@ -1,5 +1,5 @@
+import type {TooltipProps} from '@mantine/core'
 import {Tooltip} from '@mantine/core'
-import type {TooltipProps} from '@mantine/core/lib/components/Tooltip/Tooltip'
 import {boolean, define, node, number, oneOfStrict, string} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
 import {overlaysCategory} from './internal/categories'

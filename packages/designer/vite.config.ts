@@ -1,4 +1,4 @@
-import {readdir, readFile, unlink, writeFile} from 'node:fs/promises'
+import {unlink, writeFile} from 'node:fs/promises'
 import {dirname, join, resolve} from 'node:path'
 import {fileURLToPath} from 'node:url'
 import postcss from 'postcss'
@@ -7,18 +7,11 @@ import type {Plugin, ResolvedConfig} from 'vite'
 import {defineConfig, mergeConfig} from 'vite'
 import {inlineCssPlugin} from 'vite-inline-css-plugin'
 import svgr from 'vite-plugin-svgr'
-import base from '../../vite.config'
+import base, {readCss, replaceGeneratedCssUrlModule, toDataCssUrl} from '../../vite.config.ts'
 import {libDts} from '../../vite-plugin-api-extractor.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-
-const sourceMapCommentPattern = /\/\*# sourceMappingURL=.*?\*\/\s*$/gm
-
-const readCss = async (cssPath: string) => {
-  const css = await readFile(cssPath, 'utf8')
-  return css.replace(sourceMapCommentPattern, '').trimEnd()
-}
 
 const composeCss = async (outputPath: string, parts: string[]) => {
   const composedCss = `${parts.join('\n')}\n`
@@ -31,33 +24,10 @@ const composeCss = async (outputPath: string, parts: string[]) => {
   await writeFile(outputPath, result.css, 'utf8')
 }
 
-const cssModuleFilePatterns = {
-  ltr: /^designer\.ltr\.css-.*\.js$/,
-  rtl: /^designer\.rtl\.css-.*\.js$/,
-}
-
-const toDataCssUrl = (css: string) => {
-  const encoded = Buffer.from(css, 'utf8').toString('base64')
-  return `data:text/css;base64,${encoded}`
-}
-
-const toCssUrlModuleContent = (href: string) => `const t = ${JSON.stringify(href)};
-export {
-  t as default
-};
-`
-
-const replaceGeneratedCssUrlModule = async (outDir: string, direction: 'ltr' | 'rtl', href: string) => {
-  const fileNames = await readdir(outDir)
-  const pattern = cssModuleFilePatterns[direction]
-  const moduleFileName = fileNames.find(fileName => pattern.test(fileName))
-
-  if (!moduleFileName) {
-    throw new Error(`Could not find generated ${direction.toUpperCase()} CSS URL module in ${outDir}`)
-  }
-
-  await writeFile(join(outDir, moduleFileName), toCssUrlModuleContent(href), 'utf8')
-}
+const cssUrlModuleIds = {
+  ltr: 'designer.ltr.css',
+  rtl: 'designer.rtl.css',
+} as const
 
 const composeDesignerDistCssPlugin = (): Plugin => {
   let outDir = ''
@@ -91,8 +61,8 @@ const composeDesignerDistCssPlugin = (): Plugin => {
       // with data URLs produced from the final composed CSS outputs.
       const ltrComposedCss = await readCss(ltrOutputPath)
       const rtlComposedCss = await readCss(rtlOutputPath)
-      await replaceGeneratedCssUrlModule(outDir, 'ltr', toDataCssUrl(ltrComposedCss))
-      await replaceGeneratedCssUrlModule(outDir, 'rtl', toDataCssUrl(rtlComposedCss))
+      await replaceGeneratedCssUrlModule(outDir, cssUrlModuleIds.ltr, toDataCssUrl(ltrComposedCss))
+      await replaceGeneratedCssUrlModule(outDir, cssUrlModuleIds.rtl, toDataCssUrl(rtlComposedCss))
 
       // Remove the intermediate styles.css file after successful composition
       await unlink(generatedCssPath)
@@ -121,7 +91,7 @@ export default defineConfig(env =>
         fileName: 'index',
         cssFileName: 'assets/styles',
       },
-      rollupOptions: {
+      rolldownOptions: {
         plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],
       },
     },

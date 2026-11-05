@@ -2,9 +2,15 @@
   "compilerOptions": {
     "module": "ES2022",
     "target": "ES2022",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
+      "@react-form-builder/core/src/*": [
+        "./packages/core/src/*"
+      ],
+      "@react-form-builder/designer/src/*": [
+        "./packages/designer/src/*"
+      ],
       "@react-form-builder/cli-lib/*": [
         "./scripts/cli-lib/*"
       ],

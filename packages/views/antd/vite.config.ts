@@ -3,7 +3,7 @@ import {fileURLToPath} from 'node:url'
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
 import {defineConfig, mergeConfig} from 'vite'
 
-import base from '../../../vite.config'
+import base from '../../../vite.config.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -17,7 +17,7 @@ export default defineConfig(env =>
         formats: ['es'],
         fileName: 'index',
       },
-      rollupOptions: {
+      rolldownOptions: {
         plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],
       },
     },

@@ -76,7 +76,7 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     sourcemap: true, // required for stat to work
-    rollupOptions: {
+    rolldownOptions: {
       input: `/src/${input}.html`,
 
       // bundleStats

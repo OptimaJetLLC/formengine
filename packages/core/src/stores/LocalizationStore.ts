@@ -285,7 +285,7 @@ class LocalizationObservable {
  * Observable storage of localization. **Internal use only.**
  */
 export class LocalizationStore implements ILocalizationStore {
-  private localizationCache = new Map<string, LocalizationObservable>()
+  #localizationCache = new Map<string, LocalizationObservable>()
   private configuredLanguageCodes = new Set<LanguageFullCode>()
   private repository: LocalizationRepository
   private resolver: LocalizationLanguageResolver
@@ -314,7 +314,7 @@ export class LocalizationStore implements ILocalizationStore {
   }
 
   #clearLocalizationCache() {
-    this.localizationCache.clear()
+    this.#localizationCache.clear()
   }
 
   /**
@@ -413,9 +413,9 @@ export class LocalizationStore implements ILocalizationStore {
    * @inheritDoc
    */
   getItems(languageFullCode: LanguageFullCode) {
-    const holder = this.localizationCache.get(languageFullCode) ?? new LocalizationObservable(languageFullCode, this)
+    const holder = this.#localizationCache.get(languageFullCode) ?? new LocalizationObservable(languageFullCode, this)
 
-    if (!this.localizationCache.has(languageFullCode)) this.localizationCache.set(languageFullCode, holder)
+    if (!this.#localizationCache.has(languageFullCode)) this.#localizationCache.set(languageFullCode, holder)
 
     return holder.items
   }

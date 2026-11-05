@@ -66,6 +66,6 @@
   ],
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",
-    "vite-inline-css-plugin": "^0.0.1"
+    "vite-inline-css-plugin": "^0.0.2"
   }
 }

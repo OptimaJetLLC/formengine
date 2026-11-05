@@ -12,7 +12,7 @@ export default defineConfig(env =>
     resolve: {
       alias: {
         '@react-form-builder/core/src/features/form-viewer/components/ViewerStoreProvider': resolve(
-          __dirname,
+          import.meta.dirname,
           '../../packages/core/src/features/form-viewer/components/ViewerStoreProvider.tsx'
         ),
       },

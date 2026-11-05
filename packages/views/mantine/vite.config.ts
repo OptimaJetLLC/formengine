@@ -1,9 +1,9 @@
 import {normalize, resolve} from 'node:path'
 import {exportsToEntries, getDirname, getFilesByMask, readPackageJson} from '@react-form-builder/cli-lib/view-pack-tools'
-import type {ModuleFormat} from 'rollup'
+import type {ModuleFormat} from 'rolldown'
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
 import {defineConfig, mergeConfig} from 'vite'
-import base from '../../../vite.config'
+import base from '../../../vite.config.ts'
 import {libDts} from '../../../vite-plugin-api-extractor.ts'
 
 const __dirname = getDirname(import.meta.url)
@@ -49,7 +49,7 @@ export default defineConfig(env =>
           return `${entryName}.js`
         },
       },
-      rollupOptions: {
+      rolldownOptions: {
         plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],
         output: {
           exports: 'named',

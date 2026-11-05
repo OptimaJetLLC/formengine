@@ -1,33 +1,23 @@
 import {readdirSync} from 'node:fs'
-import {copyFile, readFile, unlink, writeFile} from 'node:fs/promises'
+import {copyFile, unlink} from 'node:fs/promises'
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
-import type {ModuleFormat} from 'rollup'
+import type {ModuleFormat} from 'rolldown'
 import type {Plugin, ResolvedConfig} from 'vite'
 import {defineConfig, mergeConfig} from 'vite'
 import {inlineCssPlugin} from 'vite-inline-css-plugin'
 
-import base from '../../vite.config'
+import base, {
+  assertNonEsmImportMetaUrlPolyfill,
+  createNonEsmImportMetaUrlConfig,
+  readCss,
+  replaceEmbeddedLtrRtlCssFromStubs,
+  rsuiteLtrRtlCssStubs,
+  writeComposedCss,
+} from '../../vite.config.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-
-const sourceMapCommentPattern = /\/\*# sourceMappingURL=.*?\*\/\s*$/gm
-
-const readCss = async (cssPath: string): Promise<string> => {
-  const css = await readFile(cssPath, 'utf8')
-  return css.replace(sourceMapCommentPattern, '').trimEnd()
-}
-
-const composeCss = async (outputPath: string, parts: string[]): Promise<void> => {
-  const composedCss = `${parts.join('\n')}\n`
-  await writeFile(outputPath, composedCss, 'utf8')
-}
-
-const toDataCssUrl = (css: string) => {
-  const encoded = Buffer.from(css, 'utf8').toString('base64')
-  return `data:text/css;base64,${encoded}`
-}
 
 const composeViewerDistCssPlugin = (): Plugin => {
   let outDir = ''
@@ -62,32 +52,11 @@ const composeViewerDistCssPlugin = (): Plugin => {
       const rsuiteLtr = await readCss(rsuiteLtrPath)
       const rsuiteRtl = await readCss(rsuiteRtlPath)
 
-      await composeCss(ltrOutputPath, [bundleCss, formengineRsuite, rsuiteLtr])
-      await composeCss(rtlOutputPath, [bundleCss, formengineRsuite, rsuiteRtl])
+      await writeComposedCss(ltrOutputPath, [bundleCss, formengineRsuite, rsuiteLtr])
+      await writeComposedCss(rtlOutputPath, [bundleCss, formengineRsuite, rsuiteRtl])
 
-      // Replace CSS data URLs in JS bundles with composed CSS data URLs
-      const ltrDataUrl = toDataCssUrl(await readCss(ltrOutputPath))
-      const rtlDataUrl = toDataCssUrl(await readCss(rtlOutputPath))
-
-      const dataUrlPattern = /data:text\/css;base64,[A-Za-z0-9+/=]*/g
-
-      // Find all JS files in dist and update their embedded CSS data URLs
-      const jsFiles = readdirSync(outDir).filter(f => f.endsWith('.js'))
-      for (const jsFile of jsFiles) {
-        const filePath = path.join(outDir, jsFile)
-        let content = await readFile(filePath, 'utf8')
-
-        const matches = content.match(dataUrlPattern)
-        if (matches && matches.length >= 2) {
-          // Replace first match with LTR, second with RTL
-          let ltrReplaced = false
-          content = content.replace(dataUrlPattern, () => {
-            ltrReplaced = !ltrReplaced
-            return ltrReplaced ? ltrDataUrl : rtlDataUrl
-          })
-          await writeFile(filePath, content, 'utf8')
-        }
-      }
+      await replaceEmbeddedLtrRtlCssFromStubs(outDir, ltrOutputPath, rtlOutputPath, [rsuiteLtrRtlCssStubs])
+      await assertNonEsmImportMetaUrlPolyfill(outDir)
 
       await unlink(path.join(outDir, 'rsuite-ltr.css'))
       await unlink(path.join(outDir, 'rsuite-rtl.css'))
@@ -97,7 +66,7 @@ const composeViewerDistCssPlugin = (): Plugin => {
 }
 
 export default defineConfig(env =>
-  mergeConfig(base(env), {
+  mergeConfig(mergeConfig(base(env), createNonEsmImportMetaUrlConfig()), {
     plugins: [inlineCssPlugin(), composeViewerDistCssPlugin()],
     // with this setting only the production version of React will be included in the bundle
     define: {'process.env.NODE_ENV': '"production"'},
