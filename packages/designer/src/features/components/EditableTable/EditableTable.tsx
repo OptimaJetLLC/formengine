@@ -133,8 +133,7 @@ export const EditableTable = (props: EditableTableProps) => {
 
   const onRemoveColumn = useCallback(
     (index: any) => {
-      data.splice(index, 1)
-      handleChange?.(data)
+      handleChange?.(data.filter((_, i) => i !== index))
       updateHeight()
       onRemove?.(index)
     },
