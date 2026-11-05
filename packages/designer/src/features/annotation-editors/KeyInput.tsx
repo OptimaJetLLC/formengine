@@ -1,5 +1,4 @@
-import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faCheck from '@fortawesome/free-solid-svg-icons/faCheck.js'
+import {faCheck} from '@fortawesome/free-solid-svg-icons'
 import {namedObserver, useStore} from '@react-form-builder/core'
 import type {KeyboardEvent} from 'react'
 import {useCallback, useMemo, useState} from 'react'
@@ -73,7 +72,7 @@ const KeyInputGroup = (props: KeyInputProps) => {
       <Input id={id} value={valueToApply} onChange={inputOnChange} onKeyDown={handleKeyDown} />
       <Hinted hint={applyKeyLabel}>
         <InputGroup.Button disabled={!canApply} onClick={buttonOnClick}>
-          <FaIcon icon={faCheck as unknown as IconDefinition} color={canApply ? 'green' : undefined} />
+          <FaIcon icon={faCheck} color={canApply ? 'green' : undefined} />
         </InputGroup.Button>
       </Hinted>
     </InputGroup>

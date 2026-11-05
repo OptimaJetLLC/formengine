@@ -1,5 +1,4 @@
-import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
+import {faSave} from '@fortawesome/free-solid-svg-icons'
 import {useCallback} from 'react'
 import {Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -9,7 +8,7 @@ import {useTranslationPart} from '../../../../localization/hooks'
 import {useSaveForm} from '../useSaveForm'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const saveIcon = <FaIcon icon={faSave as unknown as IconDefinition} />
+const saveIcon = <FaIcon icon={faSave} />
 
 const RawSaveButton = ({className}: CustomizableMenuItemProps) => {
   const builderStore = useBuilderStore()

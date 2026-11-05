@@ -1,5 +1,4 @@
-import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faSpellCheck from '@fortawesome/free-solid-svg-icons/faSpellCheck.js'
+import {faSpellCheck} from '@fortawesome/free-solid-svg-icons'
 import {namedObserver, useStore} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {Button} from 'rsuite'
@@ -29,7 +28,7 @@ const RawFormViewerState = () => {
         <h6>{t('data')}</h6>
         <div className={styles.toolbar}>
           <Button onClick={validate} size="sm" appearance="ghost" className={styles.button} data-testid="viewer-validate-button">
-            <FaIcon icon={faSpellCheck as unknown as IconDefinition} />
+            <FaIcon icon={faSpellCheck} />
             {t('validate')}
           </Button>
           <Button onClick={reset} size={'sm'} appearance={'ghost'} data-testid={'viewer-reset-button'}>

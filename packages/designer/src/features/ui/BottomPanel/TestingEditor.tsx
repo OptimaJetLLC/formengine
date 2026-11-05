@@ -1,5 +1,4 @@
-import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay.js'
+import {faPlay} from '@fortawesome/free-solid-svg-icons'
 import type {IFormData} from '@react-form-builder/core'
 import {CalculableResult, forwardRef, isUndefined, namedObserver} from '@react-form-builder/core'
 import cx from 'clsx'
@@ -162,7 +161,7 @@ const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerPr
     <Columns className={columnsClassName}>
       {compact && displayResult && <TestingResult compact result={displayResult} onClose={handleCloseResult} />}
       <Button onClick={test} size={'sm'} appearance={'ghost'} className={styles.buttons}>
-        <FaIcon icon={faPlay as unknown as IconDefinition} /> {t('run')}
+        <FaIcon icon={faPlay} /> {t('run')}
       </Button>
       <Checkbox checked={builderStore.testingAutorun} onChange={handleAutorunChecked} className={styles.checkbox}>
         {t('autorun')}

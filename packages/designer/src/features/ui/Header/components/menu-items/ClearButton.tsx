@@ -1,5 +1,4 @@
-import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash.js'
+import {faTrash} from '@fortawesome/free-solid-svg-icons'
 import {useCallback} from 'react'
 import {Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -8,7 +7,7 @@ import {customizable} from '../../../../customization/customizable'
 import {useTranslationPart} from '../../../../localization/hooks'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const trashIcon = <FaIcon icon={faTrash as unknown as IconDefinition} />
+const trashIcon = <FaIcon icon={faTrash} />
 
 const RawClearButton = ({className}: CustomizableMenuItemProps) => {
   const builderStore = useBuilderStore()

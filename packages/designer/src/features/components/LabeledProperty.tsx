@@ -1,7 +1,5 @@
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
-import * as faGlobe from '@fortawesome/free-solid-svg-icons/faGlobe.js'
-import * as faEdit from '@fortawesome/free-solid-svg-icons/faMarker.js'
+import {faCode, faMarker as faEdit, faGlobe} from '@fortawesome/free-solid-svg-icons'
 import type {Annotation, ComponentData} from '@react-form-builder/core'
 import {isEqual} from '@react-form-builder/core'
 import cx from 'clsx'
@@ -81,30 +79,30 @@ type ButtonAppearance = {
 const ButtonAppearance: Record<ButtonType, ButtonAppearance> = {
   disabled: {
     hint: 'neitherCalculableNorLocalizable',
-    icon: faEdit as unknown as IconDefinition,
+    icon: faEdit,
     color: 'var(--rs-btn-default-disabled-bg)',
   },
   calculation: {
     hint: 'editCalculable',
     color: 'var(--rs-btn-primary-bg)',
-    icon: faCode as unknown as IconDefinition,
+    icon: faCode,
   },
   localization: {
     hint: 'editLocalizable',
     color: 'var(--rs-btn-primary-bg)',
-    icon: faGlobe as unknown as IconDefinition,
+    icon: faGlobe,
   },
   calculable: {
     hint: 'hintCalculable',
-    icon: faEdit as unknown as IconDefinition,
+    icon: faEdit,
   },
   localizable: {
     hint: 'hintLocalizable',
-    icon: faEdit as unknown as IconDefinition,
+    icon: faEdit,
   },
   calculableAndLocalizable: {
     hint: 'hintCalculableAndLocalizable',
-    icon: faEdit as unknown as IconDefinition,
+    icon: faEdit,
   },
 }
 

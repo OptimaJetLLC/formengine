@@ -1,5 +1,4 @@
-import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon.js'
-import * as faSun from '@fortawesome/free-solid-svg-icons/faSun.js'
+import {faMoon, faSun} from '@fortawesome/free-solid-svg-icons'
 import type {BuilderTheme} from '@react-form-builder/core'
 import cx from 'clsx'
 import type {ComponentProps} from 'react'

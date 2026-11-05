@@ -1,6 +1,4 @@
-import * as faDesktop from '@fortawesome/free-solid-svg-icons/faDesktop.js'
-import * as faMobile from '@fortawesome/free-solid-svg-icons/faMobile.js'
-import * as faTablet from '@fortawesome/free-solid-svg-icons/faTablet.js'
+import {faDesktop, faMobile, faTablet} from '@fortawesome/free-solid-svg-icons'
 import type {ViewMode} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'

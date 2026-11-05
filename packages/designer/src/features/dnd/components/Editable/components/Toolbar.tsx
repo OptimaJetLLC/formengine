@@ -1,8 +1,6 @@
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faClone from '@fortawesome/free-regular-svg-icons/faClone.js'
-import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
-import * as faBars from '@fortawesome/free-solid-svg-icons/faBars.js'
-import * as faCrosshairs from '@fortawesome/free-solid-svg-icons/faCrosshairs.js'
+import {faClone, faTrashAlt as faTrash} from '@fortawesome/free-regular-svg-icons'
+import {faBars, faCrosshairs} from '@fortawesome/free-solid-svg-icons'
 import {cfDisableComponentRemove, cfDisableToolbarAdd, cfSingleton, useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
 import type {MouseEventHandler, ReactElement, ReactNode} from 'react'
@@ -54,7 +52,7 @@ interface ToolbarItemProps extends ToolbarProps {
   className?: string
 }
 
-const menuIcon = faBars as unknown as IconDefinition
+const menuIcon = faBars
 
 const RawToolbarTitle = ({compact, storeKey, className}: ToolbarItemProps) => {
   return compact ? null : <label className={cx(styles.title, className)}>{storeKey}</label>
@@ -101,7 +99,7 @@ const RawToolbarRevealButton = ({onReveal, revealHint, className}: ToolbarItemPr
       <ActionButton
         testId="reveal-in-tree-button"
         iconClassName="reveal-in-tree-button"
-        icon={faCrosshairs as unknown as IconDefinition}
+        icon={faCrosshairs}
         label={revealHint}
         onClick={onReveal}
       />
@@ -124,13 +122,7 @@ const ToolbarNearbyTreeButton = customizableObserver('Component_Toolbar_NearbyTr
 const RawToolbarCloneButton = ({onClone, closeHint, className}: ToolbarItemProps) => {
   return (
     <span className={className}>
-      <ActionButton
-        testId="tree-clone-button"
-        iconClassName="clone-button"
-        icon={faClone as unknown as IconDefinition}
-        label={closeHint}
-        onClick={onClone}
-      />
+      <ActionButton testId="tree-clone-button" iconClassName="clone-button" icon={faClone} label={closeHint} onClick={onClone} />
     </span>
   )
 }
@@ -150,13 +142,7 @@ const ToolbarPresetButton = customizableObserver('Component_Toolbar_PresetCompon
 const RawToolbarRemoveButton = ({onRemove, removeHint, className}: ToolbarItemProps) => {
   return (
     <span className={className}>
-      <ActionButton
-        testId="toolbar-remove-button"
-        iconClassName="remove-button"
-        icon={faTrash as unknown as IconDefinition}
-        label={removeHint}
-        onClick={onRemove}
-      />
+      <ActionButton testId="toolbar-remove-button" iconClassName="remove-button" icon={faTrash} label={removeHint} onClick={onRemove} />
     </span>
   )
 }

@@ -1,7 +1,4 @@
-import * as faBolt from '@fortawesome/free-solid-svg-icons/faBolt.js'
-import * as faCircle from '@fortawesome/free-solid-svg-icons/faCircle.js'
-import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush.js'
-import * as faSpellCheck from '@fortawesome/free-solid-svg-icons/faSpellCheck.js'
+import {faBolt, faCircle, faPaintBrush, faSpellCheck} from '@fortawesome/free-solid-svg-icons'
 import {cfDisableStyleProperties, cfDisableStyles, cfDisableWrapperStyles} from '@react-form-builder/core'
 import {useMemo} from 'react'
 import {useTranslation} from 'react-i18next'

@@ -1,4 +1,4 @@
-import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
+import {faCode} from '@fortawesome/free-solid-svg-icons'
 import type {ComponentProps} from 'react'
 import {useCallback, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -8,7 +8,7 @@ import {customizableObserver} from '../../../customization/customizableObserver'
 import {JsonView} from '../../JsonView'
 import styles from './JsonViewButton.module.css'
 
-const icon = <FaIcon icon={faCode as any} />
+const icon = <FaIcon icon={faCode} />
 
 type JsonViewButtonProps = Omit<ComponentProps<typeof Whisper>, 'placement' | 'speaker' | 'children'> & {
   className?: string

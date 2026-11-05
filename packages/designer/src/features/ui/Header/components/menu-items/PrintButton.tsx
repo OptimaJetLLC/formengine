@@ -1,5 +1,4 @@
-import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faPrint from '@fortawesome/free-solid-svg-icons/faPrint.js'
+import {faPrint} from '@fortawesome/free-solid-svg-icons'
 import {useCallback} from 'react'
 import {Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -9,7 +8,7 @@ import {useTranslationPart} from '../../../../localization/hooks'
 import {printForm} from '../printForm'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
-const printIcon = <FaIcon icon={faPrint as unknown as IconDefinition} />
+const printIcon = <FaIcon icon={faPrint} />
 
 const printShortcut = typeof navigator !== 'undefined' && navigator.userAgent.includes('Mac') ? '⌘P' : 'Ctrl+P'
 

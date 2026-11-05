@@ -1,7 +1,4 @@
-import * as faList from '@fortawesome/free-solid-svg-icons/faList.js'
-import * as faPlusCircle from '@fortawesome/free-solid-svg-icons/faPlusCircle.js'
-import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap.js'
-import * as faSliders from '@fortawesome/free-solid-svg-icons/faSlidersH.js'
+import {faList, faPlusCircle, faSitemap, faSlidersH as faSliders} from '@fortawesome/free-solid-svg-icons'
 import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import type {ReactNode} from 'react'

@@ -1,5 +1,4 @@
-import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush.js'
-import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay.js'
+import {faPaintBrush, faPlay} from '@fortawesome/free-solid-svg-icons'
 import type {BuilderMode} from '@react-form-builder/core'
 import cx from 'clsx'
 import {useCallback} from 'react'

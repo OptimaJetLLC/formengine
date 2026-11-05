@@ -1,5 +1,4 @@
-import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faBookmark from '@fortawesome/free-regular-svg-icons/faBookmark.js'
+import {faBookmark} from '@fortawesome/free-regular-svg-icons'
 import cx from 'clsx'
 import type {MouseEventHandler} from 'react'
 import {useCallback} from 'react'
@@ -55,7 +54,7 @@ export const PresetComponentButton = () => {
         aria-label={t('createPreset')}
         onClick={onPreset}
       >
-        <FaIcon icon={faBookmark as unknown as IconDefinition} className={'create-preset-button'} />
+        <FaIcon icon={faBookmark} className={'create-preset-button'} />
       </button>
     </Hinted>
   )

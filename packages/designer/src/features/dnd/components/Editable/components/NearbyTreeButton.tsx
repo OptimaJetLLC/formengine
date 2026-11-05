@@ -1,5 +1,4 @@
-import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap.js'
+import {faSitemap} from '@fortawesome/free-solid-svg-icons'
 import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
@@ -112,7 +111,7 @@ const RawNearbyTreeButton = () => {
         aria-label={hint}
       >
         <Hinted hint={hint} placement={'autoVertical'}>
-          <FaIcon icon={faSitemap as unknown as IconDefinition} />
+          <FaIcon icon={faSitemap} />
         </Hinted>
       </button>
     </Whisper>

@@ -1,7 +1,4 @@
-import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo.js'
-import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
-import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'
+import {faRedo, faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
 import cx from 'clsx'
 import type {ComponentProps} from 'react'
 import {useCallback, useMemo} from 'react'
@@ -28,9 +25,9 @@ const RawHeader = (props: ComponentProps<'div'>) => {
   const handleUndo = useCallback(() => undoer.undo(), [undoer])
   const handleRedo = useCallback(() => undoer.redo(), [undoer])
 
-  const saveIcon = useMemo(() => <FaIcon icon={faSave as unknown as IconDefinition} />, [])
-  const undoIcon = useMemo(() => <FaIcon icon={faUndo as unknown as IconDefinition} />, [])
-  const redoIcon = useMemo(() => <FaIcon icon={faRedo as unknown as IconDefinition} />, [])
+  const saveIcon = useMemo(() => <FaIcon icon={faSave} />, [])
+  const undoIcon = useMemo(() => <FaIcon icon={faUndo} />, [])
+  const redoIcon = useMemo(() => <FaIcon icon={faRedo} />, [])
 
   return (
     <div {...props} className={cx(styles.container, props.className)}>
