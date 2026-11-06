@@ -1,7 +1,7 @@
 import {resolve} from 'node:path'
 import {defineConfig, mergeConfig} from 'vite'
-import base from '../../vite.config'
-import {rewriteDeepImports} from './vite-plugin-rewrite-deep-imports'
+import base from '../../vite.config.ts'
+import {rewriteDeepImports} from './vite-plugin-rewrite-deep-imports.ts'
 
 export default defineConfig(env =>
   mergeConfig(base(env), {

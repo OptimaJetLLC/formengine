@@ -70,7 +70,7 @@ const DISTRIBUTION_BASE_DEV_DEPENDENCIES = [
   '@types/node',
   '@types/react',
   '@types/react-dom',
-  '@vitejs/plugin-react-swc',
+  '@vitejs/plugin-react',
   '@vitest/browser-playwright',
   'lerna',
   'lightningcss',

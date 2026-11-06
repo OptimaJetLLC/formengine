@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 import {playwright} from '@vitest/browser-playwright'
 import {existsSync, readdirSync} from 'node:fs'
 import {readdir, readFile, writeFile} from 'node:fs/promises'

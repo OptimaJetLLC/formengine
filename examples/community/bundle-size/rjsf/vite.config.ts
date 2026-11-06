@@ -1,6 +1,6 @@
 import {mergeConfig} from 'vite'
 
-import bundleSizeBase from '../vite.config'
+import bundleSizeBase from '../vite.config.ts'
 
 export default () =>
   mergeConfig(bundleSizeBase, {

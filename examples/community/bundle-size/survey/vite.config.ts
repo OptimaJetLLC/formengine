@@ -1,6 +1,6 @@
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 import {mergeConfig} from 'vite'
-import base from '../vite.config'
+import base from '../vite.config.ts'
 
 export default mergeConfig(base, {
   plugins: [react()],

@@ -20,9 +20,10 @@
     "@faker-js/faker": "^10.0.0",
     "@react-form-builder/components-rsuite": "^11.1.0",
     "@react-form-builder/core": "^11.1.0",
-    "@vitejs/plugin-react-swc": "^4.3.3",
+    "@vitejs/plugin-react": "^6.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "vite": "^8.3.6",
     "vite-plugin-svgr": "^4.3.0"
   },
   "devDependencies": {
