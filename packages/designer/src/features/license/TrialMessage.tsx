@@ -10,7 +10,7 @@ const RawTrialMessage = () => {
   const {displayedLanguage} = useStore()
   const messages = useMemo(() => {
     return Object.entries(missing)
-      .map(([k, v]) => t(`license.${k}`, v as any))
+      .map(([k, v]) => t(`license.${k}`, v as any) as string)
       .sort()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [t, missing, displayedLanguage])
