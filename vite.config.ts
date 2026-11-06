@@ -13,12 +13,14 @@ import {appVersionMetaPlugin} from './vite-plugin-app-version.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+const isVitestBrowserRun = process.argv.some(arg => arg === '--browser' || arg.startsWith('--browser.'))
 
 /**
  * Absolute paths to the shared component test setup files.
  */
 export const componentTestSetupFiles = [
   path.resolve(__dirname, 'tests/component/config/setup-act-environment.ts'),
+  ...(!isVitestBrowserRun ? [path.resolve(__dirname, 'tests/component/config/setup-jsdom.ts')] : []),
   path.resolve(__dirname, 'tests/component/config/setup.ts'),
 ]
 
@@ -358,7 +360,6 @@ export const replaceEmbeddedLtrRtlCssFromStubs = async (
 }
 
 const isCI = !!(process.env.CI || process.env.GITHUB_ACTIONS || process.env.EARTHLY_CI)
-const isVitestBrowserRun = process.argv.some(arg => arg === '--browser' || arg.startsWith('--browser.'))
 
 const plugins: PluginOption = [
   react(),
@@ -401,6 +402,7 @@ export default defineConfig(() => ({
   },
   test: {
     globals: true,
+    isolate: true,
     environment: 'jsdom',
     setupFiles: componentTestSetupFiles,
     coverage: {
@@ -422,7 +424,8 @@ export default defineConfig(() => ({
         : []),
     ],
     clearMocks: true,
-    ...(isVitestBrowserRun ? {maxWorkers: 1} : {}),
+    // VM pools retain per-file isolation; recycling bounds retained module state.
+    ...(isVitestBrowserRun ? {maxWorkers: 1} : {pool: 'vmForks', vmMemoryLimit: '512MiB'}),
     exclude: [
       ...configDefaults.exclude,
       'examples/**',

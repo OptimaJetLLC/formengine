@@ -37,23 +37,9 @@ Module._extensions['.cjs'] = replaceReact;
 Module._extensions['.mjs'] = replaceReact;
 
 const oldResolve = Module._resolveFilename;
+const reactFamilyPattern = /^(react|react-dom|scheduler)(\/|$)/;
 
-Module._resolveFilename = (path, context) => {
-  if (path === 'react') {
-    return localReact + '/index.js';
-  }
-
-  if (path === 'react-dom') {
-    return localReactDom + '/index.js';
-  }
-
-  if (path === 'react-dom/test-utils') {
-    return localReactDom + '/test-utils.js';
-  }
-
-  if (path === 'react-dom/client') {
-    return localReactDom + '/client.js'
-  }
-
-  return oldResolve(path, context);
+Module._resolveFilename = (request, parent, ...options) => {
+  // Resolve all React subpaths from this host, including CommonJS imports evaluated in a VM.
+  return oldResolve(request, reactFamilyPattern.test(request) ? module : parent, ...options);
 }

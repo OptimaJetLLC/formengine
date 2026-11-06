@@ -1,6 +1,7 @@
 export const addMatchMediaFunctionToWindow = () => {
   //Source: https://github.com/vitest-dev/vitest/issues/821
   Object.defineProperty(window, 'matchMedia', {
+    configurable: true,
     writable: true,
     value: vi.fn().mockImplementation(query => ({
       matches: false,
