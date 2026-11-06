@@ -44,6 +44,74 @@ export function buildConstrainedDocument(
 }
 
 /**
+ * Extracts the raw body between context wrappers without normalizing newlines.
+ * Use this when rewrapping an in-editor draft so blank lines are preserved.
+ * @param documentValue full Monaco document text.
+ * @param beginContextLine optional prefix block before editable body.
+ * @param canEditBeginContextLine when true, the prefix is part of the editable range.
+ * @param endContextLine optional suffix block after editable body.
+ * @returns body text between the context wrappers, or the full value when wrappers are absent.
+ */
+function extractConstrainedBody(
+  documentValue: string,
+  beginContextLine: string | undefined,
+  canEditBeginContextLine: boolean | undefined,
+  endContextLine: string | undefined
+): string {
+  const prefix = getPrefixBeforeBody(beginContextLine, canEditBeginContextLine)
+  const postfix = getPostfix(endContextLine)
+  let start = 0
+  let end = documentValue.length
+
+  if (prefix) {
+    if (documentValue.startsWith(prefix)) {
+      start = prefix.length
+    } else if (beginContextLine) {
+      const prefixAt = documentValue.indexOf(beginContextLine)
+      if (prefixAt !== -1) {
+        start = prefixAt + beginContextLine.length
+        if (!canEditBeginContextLine && documentValue.startsWith('\n', start)) {
+          start += 1
+        }
+      }
+    }
+  }
+
+  if (postfix && documentValue.endsWith(postfix, end)) {
+    end -= postfix.length
+  }
+
+  return end < start ? '' : documentValue.slice(start, end)
+}
+
+type ConstrainedDocumentSource = {
+  initialValue: string | undefined
+  beginContextLine?: string
+  canEditBeginContextLine?: boolean
+  endContextLine?: string
+}
+
+/**
+ * Resolves the next full Monaco document when the source or context changes.
+ * Keeps the current draft body when only the context changes; replaces the body when the source changes.
+ * @param currentDocument the live Monaco document text.
+ * @param previous the last applied source and context.
+ * @param next the incoming source and context.
+ * @returns the next full document value for the Monaco model.
+ */
+export function resolveNextConstrainedDocument(
+  currentDocument: string,
+  previous: ConstrainedDocumentSource,
+  next: ConstrainedDocumentSource
+): string {
+  const body =
+    previous.initialValue === next.initialValue
+      ? extractConstrainedBody(currentDocument, previous.beginContextLine, previous.canEditBeginContextLine, previous.endContextLine)
+      : (next.initialValue ?? '')
+  return buildConstrainedDocument(body, next.beginContextLine, next.canEditBeginContextLine, next.endContextLine)
+}
+
+/**
  * Extracts the editable body from a full document value.
  * @param documentValue full Monaco document text.
  * @param beginContextLine optional prefix block before editable body.
@@ -57,23 +125,7 @@ export function extractEditableBody(
   canEditBeginContextLine: boolean | undefined,
   endContextLine: string | undefined
 ): string {
-  const prefix = getPrefixBeforeBody(beginContextLine, canEditBeginContextLine)
-  let body = documentValue
-  if (prefix && body.startsWith(prefix)) {
-    body = body.slice(prefix.length)
-  } else if (beginContextLine) {
-    const prefixAt = body.indexOf(beginContextLine)
-    if (prefixAt !== -1) {
-      body = body.slice(prefixAt + beginContextLine.length)
-      if (!canEditBeginContextLine && body.startsWith('\n')) {
-        body = body.slice(1)
-      }
-    }
-  }
-  const postfix = getPostfix(endContextLine)
-  if (postfix && body.endsWith(postfix)) {
-    body = body.slice(0, body.length - postfix.length)
-  }
+  let body = extractConstrainedBody(documentValue, beginContextLine, canEditBeginContextLine, endContextLine)
   if (beginContextLine && !canEditBeginContextLine && body.startsWith('\n')) {
     body = body.slice(1)
   }
