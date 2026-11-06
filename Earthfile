@@ -45,10 +45,31 @@ VALIDATE_ARCHIVES:
 
 dependencies:
   WORKDIR /repo
-  COPY package.json package-lock.json package.public.json package.private.json lerna.json biome.json .npmrc LICENSE.md README.private.md CHANGELOG.md ./
-  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts .mdxlintrc.mjs vite-plugin-api-extractor.ts ./
-  COPY .madgerc ./
-  COPY --dir packages documentation designer-guide tests scripts examples ./
+  COPY package.json package-lock.json .npmrc ./
+  # Workspace package.json + file: archives from package-lock.json. Examples and build config are not install inputs.
+  RUN node -e "
+    const {readFileSync} = require('fs')
+    const {posix} = require('path')
+    const {packages} = JSON.parse(readFileSync('package-lock.json', 'utf8'))
+    const inputs = new Set()
+    for (const [packagePath, meta] of Object.entries(packages)) {
+      if (packagePath && !packagePath.split('/').includes('node_modules')) {
+        inputs.add(posix.join(packagePath, 'package.json'))
+      }
+      if (meta.resolved?.startsWith('file:')) {
+        inputs.add(meta.resolved.slice('file:'.length))
+      }
+    }
+    for (const input of inputs) {
+      if (!input.endsWith('package.json') && !input.endsWith('.tgz')) {
+        throw new Error('Unsupported npm install input (add COPY --dir support): ' + input)
+      }
+    }
+    process.stdout.write([...inputs].sort().join('\n') + '\n')
+  " > /tmp/npm-install-inputs
+  FOR dependency_input IN $(cat /tmp/npm-install-inputs)
+    COPY "$dependency_input" "./$dependency_input"
+  END
   ENV npm_config_audit=false
   ENV npm_config_fund=false
   ENV npm_config_progress=true
@@ -57,6 +78,10 @@ dependencies:
 
 sources:
   FROM +dependencies
+  COPY package.public.json package.private.json lerna.json biome.json LICENSE.md README.private.md CHANGELOG.md ./
+  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts .mdxlintrc.mjs vite-plugin-api-extractor.ts ./
+  COPY .madgerc ./
+  COPY --dir packages documentation designer-guide tests scripts examples ./
   SAVE ARTIFACT /repo /repo
 
 # Source tree for formengine-src.tgz only (no npm ci - avoids node_modules in the archive).

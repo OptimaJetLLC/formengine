@@ -14,6 +14,8 @@
 **/.bundle-stats
 **/coverage
 **/playwright-report
+**/reports
+**/test-results
 scripts/.examples-local-packs
 **/.archives
 !/.archives
