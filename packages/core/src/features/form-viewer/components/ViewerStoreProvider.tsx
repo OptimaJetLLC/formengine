@@ -87,7 +87,6 @@ const ExistingStoreProvider = namedObserver('ExistingStoreProvider', RawExisting
  * @param store the form viewer settings.
  * @param context the context for working with component properties.
  * @returns the component property calculator.
- * @knipignore
  */
 export const defaultComponentStateFactory: ComponentStateFactory = (
   data: ComponentData,

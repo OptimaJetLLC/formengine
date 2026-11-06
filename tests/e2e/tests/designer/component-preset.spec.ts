@@ -17,6 +17,16 @@ const shiftClick = async (locator: ReturnType<Page['getByTestId']>) => {
   })
 }
 
+const assertPresetInsertedOntoClearedForm = async (page: Page) => {
+  await expect(page.getByTestId('title-input')).toBeVisible()
+  await expect(page.locator('span').filter({hasText: 'Ant Button'})).toBeVisible()
+  await expect
+    .poll(async () =>
+      page.locator('[data-testid$="-editable-wrapper"]').evaluateAll(els => els.map(el => el.getAttribute('data-testid')).sort())
+    )
+    .toEqual(['Screen-editable-wrapper', 'antButton1-editable-wrapper', 'rsInput1-editable-wrapper'])
+}
+
 test.describe('Preset component', {
   tag: ['@designer', `@${process.env['TEST_TEMPLATE']}`],
 }, async () => {
@@ -44,6 +54,9 @@ test.describe('Preset component', {
     const actionsButton = toolbar.getByTestId('toolbar-actions-button')
     if ((await actionsButton.count()) > 0) await actionsButton.hover()
     await toolbar.getByTestId('toolbar-create-preset-button').dispatchEvent('click')
+    await expect(page.getByTestId('AntButton 1-editable-wrapper')).toHaveClass(/\bselected\b/)
+    await expect(page.getByTestId('title-editable-wrapper')).toHaveClass(/\bselected\b/)
+    await expect(page.locator('[data-testid$="-editable-wrapper"].selected')).toHaveCount(2)
     await page.getByPlaceholder('Enter a preset name').fill('TestPreset')
     await page.locator('.rs-picker-search-input').first().fill('fields')
     await page.locator('button').filter({hasText: /^OK$/}).click({force: true})
@@ -63,9 +76,7 @@ test.describe('Preset component', {
     await page.locator('.rs-modal-wrapper .FE_TestPreset').first().click({force: true})
     await expect(page.locator('.rs-modal-wrapper')).toHaveCount(0)
 
-    await expect(page.getByTestId('title-input')).toHaveCount(1)
-    await expect(page.getByTestId('title-input')).toBeVisible()
-    await expect(page.locator('span').filter({hasText: 'Ant Button'})).toBeVisible()
+    await assertPresetInsertedOntoClearedForm(page)
   })
 
   test('can be dragged to the form from components tab', async () => {
@@ -76,9 +87,7 @@ test.describe('Preset component', {
 
     await dragAndDrop(page, preset, addButton)
 
-    await expect(page.getByTestId('title-input')).toHaveCount(1)
-    await expect(page.getByTestId('title-input')).toBeVisible()
-    await expect(page.locator('span').filter({hasText: 'Ant Button'})).toBeVisible()
+    await assertPresetInsertedOntoClearedForm(page)
   })
 
   test('can be removed', async () => {

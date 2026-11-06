@@ -4,6 +4,7 @@ import type {MouseEventHandler} from 'react'
 import {useCallback} from 'react'
 import {InputPicker} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
+import {stopEvent} from '../../../../../utils/stopEvent'
 import {Hinted} from '../../../../annotation-editors/Hinted'
 import {FaIcon} from '../../../../components/Icons'
 import {useTranslationPart} from '../../../../localization/hooks'
@@ -18,32 +19,37 @@ export const PresetComponentButton = () => {
   const builderStore = useBuilderStore()
   const t = useTranslationPart('presetComponent')
 
-  const onPreset: MouseEventHandler = useCallback(() => {
-    // eslint-disable-next-line @typescript-eslint/require-await
-    const validate: PromptDialogProps['validate'] = async ({name}) => {
-      if (!name) return {name: t('enterPresetName')}
-      if (builderStore.view.findMeta(name)) return {name: t('nameExists')}
-    }
+  const onPreset: MouseEventHandler = useCallback(
+    e => {
+      stopEvent(e)
 
-    const categoriesArray = builderStore.builderComponents.map(({category}) => category ?? '').filter(value => !!value)
-    const categories = new Set(categoriesArray)
-    const props = {
-      data: [...categories.values()].map(value => ({label: value, value})),
-      block: true,
-      creatable: true,
-      'data-testid': 'preset-category-picker',
-    }
+      // eslint-disable-next-line @typescript-eslint/require-await
+      const validate: PromptDialogProps['validate'] = async ({name}) => {
+        if (!name) return {name: t('enterPresetName')}
+        if (builderStore.view.findMeta(name)) return {name: t('nameExists')}
+      }
 
-    builderStore.showPromptModal({
-      fields: [
-        {name: 'name', label: t('name'), placeholder: t('namePlaceholder')},
-        {name: 'category', label: t('category'), component: InputPicker, props},
-      ],
-      onOk: ({name, category}) => builderStore.createPresetComponentFromSelected(name, category),
-      title: t('enterPresetName'),
-      validate,
-    })
-  }, [builderStore, t])
+      const categoriesArray = builderStore.builderComponents.map(({category}) => category ?? '').filter(value => !!value)
+      const categories = new Set(categoriesArray)
+      const props = {
+        data: [...categories.values()].map(value => ({label: value, value})),
+        block: true,
+        creatable: true,
+        'data-testid': 'preset-category-picker',
+      }
+
+      builderStore.showPromptModal({
+        fields: [
+          {name: 'name', label: t('name'), placeholder: t('namePlaceholder')},
+          {name: 'category', label: t('category'), component: InputPicker, props},
+        ],
+        onOk: ({name, category}) => builderStore.createPresetComponentFromSelected(name, category),
+        title: t('enterPresetName'),
+        validate,
+      })
+    },
+    [builderStore, t]
+  )
 
   return (
     <Hinted hint={t('createPreset')} placement={'autoVertical'}>

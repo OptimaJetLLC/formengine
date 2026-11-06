@@ -34,7 +34,58 @@ https://playwright.dev/docs/input#drag-and-drop
 
 ### CLI
 
-`npm run test:e2e`
+From the repository root, run the full matrix (viewer and designer on React 18 and 19):
+
+```shell
+npm run test:e2e
+```
+
+`npm run test:e2e` always goes through `runner.js` and does not accept a file filter.
+
+### Run one test file
+
+Call Playwright with this package's config and the host env. Playwright starts the matching Vite app via `webServer`.
+
+The repo root has no `playwright.config.ts`. If you run `npx playwright test` from the root without `-c`, Playwright uses
+defaults: no `baseURL`, no `webServer`. Then `page.goto('/')` fails with `Cannot navigate to invalid URL`, and tags show
+`@undefined` because `TEST_TEMPLATE` is missing.
+
+Pass a path under `testDir` (`./tests/designer` or `./tests/viewer` after the config `chdir`s to the repo root). Do **not**
+prefix with `tests/e2e/`.
+
+From `tests/e2e` (loads `./playwright.config.ts`):
+
+```shell
+cd tests/e2e
+TEST_PROJECT=../react-18 \
+TEST_TEMPLATE=react-18 \
+TEST_TESTS_PATH=designer \
+TEST_PORT=15002 \
+TEST_START_CMD='npm run start:designer' \
+TEST_REACT_VERSION=18.3.1 \
+npx playwright test tests/designer/component-preset.spec.ts
+```
+
+From the repository root, pass the config explicitly (same `TEST_*` env vars):
+
+```shell
+TEST_PROJECT=tests/react-18 \
+TEST_TEMPLATE=react-18 \
+TEST_TESTS_PATH=designer \
+TEST_PORT=15002 \
+TEST_START_CMD='npm run start:designer' \
+TEST_REACT_VERSION=18.3.1 \
+npx playwright test -c tests/e2e/playwright.config.ts tests/designer/component-preset.spec.ts
+```
+
+Viewer uses `TEST_TESTS_PATH=viewer`, `TEST_PORT=15001`, and `TEST_START_CMD='npm run start:viewer'`. For React 19, point
+`TEST_PROJECT` / `TEST_TEMPLATE` at `react-19` and set `TEST_REACT_VERSION` to the version installed in that host package.
+
+Filter by title within a file:
+
+```shell
+npx playwright test tests/designer/component-preset.spec.ts -g "can be created"
+```
 
 ### Debugging the test code
 
@@ -51,7 +102,7 @@ npx playwright install msedge
 npx playwright install chrome
 ```
 
-Run one test
+### Focus a single test in source
 
 ```typescript
 test.only('focus this test', async ({page}) => {

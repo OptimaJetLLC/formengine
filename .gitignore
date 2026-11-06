@@ -19,6 +19,7 @@ Desktop.ini
 # Test reports
 tests/e2e/playwright-report
 **/reports/
+**/test-results/
 
 !documentation/website/packages/*.tgz
 .env
