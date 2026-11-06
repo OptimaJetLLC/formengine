@@ -1,6 +1,6 @@
 import {namedObserver, toLabeledValues} from '@react-form-builder/core'
 import {Check} from '@rsuite/icons'
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import {IconButton} from 'rsuite'
 import {SelectCell} from '../../components/EditableTable/CustomCells'
 import {EditableTable} from '../../components/EditableTable/EditableTable'
@@ -41,7 +41,14 @@ const RawAttributesInput = (props: AnnotationEditorProps) => {
   const initialState = useMemo(() => store.htmlAttributes?.map(attribute => ({...attribute})), [store.htmlAttributes])
   const [value, setValue] = useState(initialState)
   const [changed, setChanged] = useState(false)
-  const storeRef = useRef(store)
+  const [valueSource, setValueSource] = useState({initialState, store})
+  if (valueSource.initialState !== initialState || valueSource.store !== store) {
+    setValueSource({initialState, store})
+    if (valueSource.store !== store || !changed) {
+      setValue(initialState)
+      setChanged(false)
+    }
+  }
 
   const tableData = value ?? []
 
@@ -55,14 +62,6 @@ const RawAttributesInput = (props: AnnotationEditorProps) => {
     store.htmlAttributes = value?.map(attribute => ({...attribute}))
     setChanged(false)
   }, [store, value])
-
-  useEffect(() => {
-    const storeChanged = storeRef.current !== store
-    storeRef.current = store
-    if (!storeChanged && changed) return
-    setValue(initialState)
-    setChanged(false)
-  }, [initialState, store, changed])
 
   return (
     <>

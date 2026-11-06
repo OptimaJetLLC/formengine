@@ -14,6 +14,12 @@ if (!globalThis.crypto?.subtle) {
 
 addMatchMediaFunctionToWindow()
 
+Object.defineProperty(Element.prototype, 'scrollIntoView', {
+  configurable: true,
+  writable: true,
+  value: vi.fn(),
+})
+
 // @dnd-kit/dom reads these at module load and drag start.
 if (typeof globalThis.ResizeObserver === 'undefined') {
   globalThis.ResizeObserver = class ResizeObserver {

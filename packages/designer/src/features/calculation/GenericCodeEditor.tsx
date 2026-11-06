@@ -3,7 +3,7 @@ import type {BaseCompilationResult, IFormData} from '@react-form-builder/core'
 import {useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
 import type {ReactNode} from 'react'
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
+import {useCallback, useMemo, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {CodeEditor} from '../components/CodeEditor/CodeEditor'
@@ -101,6 +101,12 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
   const propsSourceCode = useMemo(() => props.source ?? codePlaceHolder, [props.source, codePlaceHolder])
   const [sourceCode, setSourceCode] = useState(propsSourceCode)
   const [initialValue, setInitialValue] = useState(propsSourceCode)
+  const [previousPropsSourceCode, setPreviousPropsSourceCode] = useState(propsSourceCode)
+  if (previousPropsSourceCode !== propsSourceCode) {
+    setPreviousPropsSourceCode(propsSourceCode)
+    setInitialValue(propsSourceCode)
+    setSourceCode(propsSourceCode)
+  }
   const testingEditor = useRef<TestingEditorRef>({})
   const {formData} = useStore()
   const showTestingEditor = !props.compact
@@ -122,12 +128,6 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
     setInitialValue(valueToSave)
     setSourceCode(valueToSave)
   }, [onSave, resolveSourceForSave, sourceCode, validateBeforeSave])
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- the editor tracks the external source code prop
-    setInitialValue(propsSourceCode)
-    setSourceCode(propsSourceCode)
-  }, [propsSourceCode])
 
   const testingFunction = useCallback(
     (formData: IFormData) => onCompile(resolveSourceForSave(sourceCode), formData),

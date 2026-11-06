@@ -3163,11 +3163,6 @@ const typedocSidebar = {
             },
             {
               type: "doc",
-              id: "api-reference/@react-form-builder/designer/interfaces/EditableTableState",
-              label: "EditableTableState"
-            },
-            {
-              type: "doc",
               id: "api-reference/@react-form-builder/designer/interfaces/FormBuilderProps",
               label: "FormBuilderProps"
             },

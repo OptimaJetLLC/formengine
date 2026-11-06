@@ -93,13 +93,16 @@ export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) =>
   )
   const [formState, setFormState] = useState<FormModel>(initialFormModel)
   const [initialBody, setInitialBody] = useState(codeAction.body)
+  const [formSource, setFormSource] = useState({codeAction, initialFormModel})
+  if (formSource.codeAction !== codeAction || formSource.initialFormModel !== initialFormModel) {
+    setFormSource({codeAction, initialFormModel})
+    setFormState(initialFormModel)
+    setInitialBody(initialFormModel.body)
+  }
   const formRef = useRef<FormInstance>(null)
   const functionHeader = useMemo(() => makeFunctionHeader(formState.actionParameters), [formState.actionParameters])
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- the form is reset when another code action is selected
-    setFormState(initialFormModel)
-    setInitialBody(initialFormModel.body)
     formRef.current?.cleanErrors()
   }, [codeAction, initialFormModel])
 

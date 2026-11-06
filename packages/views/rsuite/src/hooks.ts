@@ -41,6 +41,11 @@ export interface LoadDataProps {
  */
 interface UseLoadDataProps extends Pick<InputPickerProps, 'data' | 'value' | 'onSearch' | 'onOpen' | 'onCreate'>, LoadDataProps {}
 
+const valueItems = (items: ItemDataType[] | undefined, currentValue: UseLoadDataProps['value']) => {
+  const valueItem = currentValue && !items?.some(item => item.value === currentValue) ? [{value: currentValue, label: currentValue}] : []
+  return [...valueItem, ...(items ?? [])]
+}
+
 /**
  * Implements data loading and infinite loader logic for RSuite picker components.
  * @param props the React component properties.
@@ -55,8 +60,18 @@ interface UseLoadDataProps extends Pick<InputPickerProps, 'data' | 'value' | 'on
  */
 export const useLoadData = ({data: initialData, onLoadData, value, preload, disableVirtualized, ...props}: UseLoadDataProps) => {
   const [searchValue, setSearchValue] = useState('')
-  const [data, setData] = useState<ItemDataType[]>(initialData ?? [])
+  const [data, setData] = useState<ItemDataType[]>(() => valueItems(initialData, value))
   const [loading, setLoading] = useState(false)
+  const [previousInitialData, setPreviousInitialData] = useState(initialData)
+  if (previousInitialData !== initialData) {
+    setPreviousInitialData(initialData)
+    setData(valueItems(initialData, value))
+  }
+  const [previousSearchValue, setPreviousSearchValue] = useState(searchValue)
+  if (previousSearchValue !== searchValue) {
+    setPreviousSearchValue(searchValue)
+    if (searchValue && onLoadData) setLoading(true)
+  }
   const hasValue = useCallback((item: ItemDataType) => item.value === value, [value])
 
   const loadCallback: LoadCallback = useCallback(
@@ -79,16 +94,7 @@ export const useLoadData = ({data: initialData, onLoadData, value, preload, disa
   }, [preload, onLoadData])
 
   useEffect(() => {
-    const valueItem = value && !initialData?.some(hasValue) ? [{value, label: value}] : []
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- the list is reset when the initial data changes
-    setData([...valueItem, ...(initialData ?? [])])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialData])
-
-  useEffect(() => {
     if (!searchValue) return
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- the loading indicator is shown while the data is being loaded
-    if (onLoadData) setLoading(true)
     onLoadData?.(searchValue, loadCallback, 0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue])

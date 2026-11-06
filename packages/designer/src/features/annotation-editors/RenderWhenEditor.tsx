@@ -4,6 +4,7 @@ import {Input} from 'rsuite'
 import type {LabeledPropertyProps} from '../components/LabeledProperty'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps, CalculableEditorProps} from './AnnotationEditorProps'
+import {clearRenderWhenCompute, setRenderWhenFunction, setRenderWhenValue} from './componentStoreEdits'
 
 /**
  * React form builder component to edit the 'Render when' component property.
@@ -15,11 +16,7 @@ const RawRenderWhenEditor = (props: AnnotationEditorProps) => {
 
   const onChange = useCallback(
     (value: string) => {
-      if (!componentStore.renderWhen) {
-        componentStore.renderWhen = {value}
-        return
-      }
-      componentStore.renderWhen.value = value
+      setRenderWhenValue(componentStore, value)
     },
     [componentStore]
   )
@@ -36,15 +33,13 @@ const RawRenderWhenEditor = (props: AnnotationEditorProps) => {
 
   const setComputeCode = useCallback(
     (code: string) => {
-      componentStore.renderWhen ??= {}
-      componentStore.renderWhen.fnSource = code
-      componentStore.renderWhen.computeType = 'function'
+      setRenderWhenFunction(componentStore, code)
     },
     [componentStore]
   )
 
   const disableCompute = useCallback(() => {
-    if (componentStore.renderWhen) componentStore.renderWhen.computeType = undefined
+    clearRenderWhenCompute(componentStore)
   }, [componentStore])
 
   const renderWhenProperties: LabeledPropertyProps = {

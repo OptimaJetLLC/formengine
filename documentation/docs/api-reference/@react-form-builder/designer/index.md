@@ -16,7 +16,6 @@
 - [CalculableEditorProps](interfaces/CalculableEditorProps.md)
 - [ColumnDescription](interfaces/ColumnDescription.md)
 - [EditableTableProps](interfaces/EditableTableProps.md)
-- [EditableTableState](interfaces/EditableTableState.md)
 - [FormBuilderProps](interfaces/FormBuilderProps.md)
 - [IFormBuilder](interfaces/IFormBuilder.md)
 - [IFormStorage](interfaces/IFormStorage.md)

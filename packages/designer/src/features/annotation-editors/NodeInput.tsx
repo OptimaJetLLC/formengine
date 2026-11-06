@@ -8,6 +8,7 @@ import {useTranslatedComponentProperty} from '../components/useTranslatedCompone
 import {useTranslationPart} from '../localization/hooks'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {SCheckbox} from './BooleanInput'
+import {ensureProp, setPropValue} from './componentStoreEdits'
 import styles from './NodeInput.module.css'
 import {ResizableStringInput} from './StringInput'
 
@@ -85,17 +86,15 @@ const RawStringNodeEditor = (props: AnnotationEditorProps) => {
 
   const handleChange = useCallback(
     (value: any) => {
-      componentStore.props[annotation.key] ??= {}
-      componentStore.props[annotation.key].value = value
-      componentStore.props[annotation.key].editorType = editorType
+      setPropValue(componentStore, annotation.key, value, editorType)
     },
-    [annotation.key, componentStore.props, editorType]
+    [annotation.key, componentStore, editorType]
   )
 
   const handleClean = useCallback(() => {
     onClean()
-    componentStore.props[annotation.key] ??= {editorType}
-  }, [annotation.key, componentStore.props, editorType, onClean])
+    ensureProp(componentStore, annotation.key, editorType)
+  }, [annotation.key, componentStore, editorType, onClean])
 
   const value = componentStore.props[annotation.key]?.value
   const editorProps = {...props, onChange: handleChange, onClean: handleClean, value}

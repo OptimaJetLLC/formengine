@@ -11,6 +11,7 @@ import {useActionData} from '../../../../contexts/ActionDataContext'
 import {useEventHandlerItem} from '../../../../contexts/EventHandlerItemContext'
 import type {InputProps} from '../InputProps'
 import styles from './InputFunction.module.css'
+import {setFunctionArgumentBody} from './setFunctionArgumentBody'
 
 const beginContextLine = `/**
  * @param {ActionEventArgs} e the action arguments.
@@ -28,8 +29,7 @@ const useFnArgument = (name: string): [string | undefined, (src?: string) => voi
 
   const setFnBody = useCallback(
     (src?: string) => {
-      data.args ??= {}
-      data.args[name] = {type: 'fn', body: src}
+      setFunctionArgumentBody(data, name, src)
     },
     [data, name]
   )

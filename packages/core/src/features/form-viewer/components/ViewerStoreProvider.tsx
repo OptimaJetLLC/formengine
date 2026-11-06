@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react'
 import {useCallback, useContext, useEffect, useImperativeHandle} from 'react'
+import {applyViewerProps} from '../../../stores/applyViewerProps'
 import {ComponentState} from '../../../stores/ComponentState'
 import type {ComponentStore} from '../../../stores/ComponentStore'
 import {FormViewerPropsStore} from '../../../stores/FormViewerPropsStore'
@@ -44,8 +45,7 @@ const RawNotifier = (props: Omit<ExistingStoreProviderProps, 'children'>) => {
   }, [store.formData.data, store.formData.errors])
 
   useEffect(() => {
-    store.formViewerPropsStore.applyProps(viewerProps)
-    store.form.componentTree.state = store.formViewerPropsStore.initialState
+    applyViewerProps(store, viewerProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     viewerProps.initialData,

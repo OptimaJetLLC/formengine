@@ -1,10 +1,11 @@
 import type {Annotation, ComponentProperty, LanguageFullCode, PropertyBlockType} from '@react-form-builder/core'
 import {isProperty, isUndefined, isValidatorPropertyBlockType, namedObserver, useComponentData} from '@react-form-builder/core'
-import {createElement, useCallback, useEffect, useMemo, useState} from 'react'
+import {createElement, useCallback, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps, CalculableEditorProps} from '../../annotation-editors/AnnotationEditorProps'
 import {useBuiltinPropertyEditors} from '../../ui/BuiltinPropertyEditorsProvider'
 import type {Section} from '../../ui/RightPanel/PropertiesEditor/Section'
+import {deleteAnnotationKey, patchAnnotationProperty, writeAnnotationValue} from './annotationContext'
 import {Erroneous} from './Erroneous'
 
 interface PropertyEditorWrapperProps {
@@ -51,6 +52,16 @@ const RawPropertyEditorWrapper = ({
 
   const [contextInitialized, setContextInitialized] = useState(false)
   const [error, setError] = useState<string>()
+  const [contextSource, setContextSource] = useState({componentData, initContext})
+  if (contextSource.componentData !== componentData || contextSource.initContext !== initContext) {
+    setContextSource({componentData, initContext})
+    setContextInitialized(false)
+  }
+  const [errorSource, setErrorSource] = useState(context)
+  if (errorSource !== context) {
+    setErrorSource(context)
+    setError(undefined)
+  }
 
   const value = (isProperty(annotation) ? context[annotation.key]?.value : context[annotation.key]) ?? annotation.default
 
@@ -61,21 +72,16 @@ const RawPropertyEditorWrapper = ({
         setContextInitialized(true)
         propertyContext = initContext?.() ?? context
       }
-      if (isProperty(annotation)) {
-        propertyContext[annotation.key] ??= {}
-        propertyContext[annotation.key].value = value
-        return
-      }
-      propertyContext[annotation.key] = value
+      writeAnnotationValue(propertyContext, annotation.key, value, isProperty(annotation))
     },
     [context, initContext, annotation, contextInitialized]
   )
 
-  const onClean = useCallback(() => delete context[annotation.key], [context, annotation])
+  const onClean = useCallback(() => deleteAnnotationKey(context, annotation.key), [context, annotation])
 
   const patchProperty = useCallback(
     (patch: ComponentProperty) => {
-      context[annotation.key] = Object.assign(context[annotation.key] ?? {}, patch)
+      patchAnnotationProperty(context, annotation.key, patch)
     },
     [context, annotation.key]
   )
@@ -184,16 +190,6 @@ const RawPropertyEditorWrapper = ({
     hasComputeCode,
     displayedSection,
   }
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- the editor state is reset when the edited component changes
-    setContextInitialized(false)
-  }, [componentData, initContext])
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- the error is cleared when the edited property changes
-    setError(undefined)
-  }, [context])
 
   return (
     !!annotationEditor && (

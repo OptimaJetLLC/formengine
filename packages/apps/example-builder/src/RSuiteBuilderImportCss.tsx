@@ -239,15 +239,11 @@ const FormBuilderApp = () => {
   })
 
   const [initialData, setInitialData] = useState(data)
-  const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
+  const [indexedDbInitialized, setIndexedDbInitialized] = useState(!formStorage)
   const [theme, setTheme] = useState<FormBuilderTheme>('light')
 
   useEffect(() => {
-    if (!formStorage) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- there is no IndexedDB storage to initialize, so the app is ready right away
-      setIndexedDbInitialized(true)
-      return
-    }
+    if (!formStorage) return
     formStorage
       .init({RSuiteForm, template, agreement})
       .then(() => setIndexedDbInitialized(true))

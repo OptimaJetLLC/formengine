@@ -1,7 +1,7 @@
 import {Close, Plus} from '@rsuite/icons'
 import cx from 'clsx'
 import type {FormEventHandler, JSX} from 'react'
-import {cloneElement, useCallback, useEffect, useState} from 'react'
+import {cloneElement, useCallback, useEffect, useRef, useState} from 'react'
 import type {TableProps} from 'rsuite'
 import {Button, Form, Table} from 'rsuite'
 import type {RowDataType} from 'rsuite-table/lib'
@@ -58,20 +58,6 @@ export interface EditableTableProps extends TableProps<any, any> {
   onAdd?: (index: number) => void
 }
 
-/**
- * The state of the {@link EditableTable} component.
- */
-export interface EditableTableState {
-  /**
-   * Flag, if true, the table height will be calculated automatically, false otherwise.
-   */
-  autoHeight?: boolean
-  /**
-   * The maximum height of the table.
-   */
-  maxHeight?: number
-}
-
 const removeCellIcon = <Close />
 
 /**
@@ -80,7 +66,8 @@ const removeCellIcon = <Close />
  * @returns the React element.
  */
 export const EditableTable = (props: EditableTableProps) => {
-  const [state, setState] = useState<EditableTableState>({})
+  const rootRef = useRef<HTMLDivElement>(null)
+  const [scrollIntoViewNonce, setScrollIntoViewNonce] = useState(0)
   const [shouldScroll, setShouldScroll] = useState(false)
 
   const {
@@ -96,8 +83,6 @@ export const EditableTable = (props: EditableTableProps) => {
     onRemove,
     ...tableProps
   } = props
-  const {autoHeight, maxHeight} = state
-
   const headerHeight = hideHeader ? 0 : (props.headerHeight ?? 40)
   const rowHeight = (props.rowHeight as number) ?? 46
   const maxRows = props.maxRows ?? 5
@@ -105,6 +90,8 @@ export const EditableTable = (props: EditableTableProps) => {
   const emptyHeight = props.renderEmpty ? headerHeight + rowHeight : 0
   const totalMaxHeight = headerHeight + rowHeight * maxRows
   const adjustedHeight = data.length > maxRows ? totalMaxHeight : emptyHeight
+  const autoHeight = shorterMax
+  const maxHeight = adjustedHeight
 
   const handleChange = useCallback(
     (data: any) => {
@@ -117,27 +104,19 @@ export const EditableTable = (props: EditableTableProps) => {
     [autoAdd, onChange]
   )
 
-  const updateHeight = useCallback(() => {
-    setState({
-      autoHeight: shorterMax,
-      maxHeight: adjustedHeight,
-    })
-  }, [adjustedHeight, shorterMax])
-
   const onAddColumn = useCallback(() => {
     handleChange?.([...data, {}])
+    setScrollIntoViewNonce(nonce => nonce + 1)
     setShouldScroll(true)
-    updateHeight()
     onAdd?.(data.length)
-  }, [data, handleChange, updateHeight, onAdd])
+  }, [data, handleChange, onAdd])
 
   const onRemoveColumn = useCallback(
     (index: any) => {
       handleChange?.(data.filter((_, i) => i !== index))
-      updateHeight()
       onRemove?.(index)
     },
-    [data, handleChange, updateHeight, onRemove]
+    [data, handleChange, onRemove]
   )
 
   const columnChangeHandler = useCallback(() => handleChange?.([...data] as any), [handleChange, data])
@@ -156,11 +135,39 @@ export const EditableTable = (props: EditableTableProps) => {
     return scrollPos
   }, [shouldScroll])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/set-state-in-effect -- the table height is measured after mount
-  useEffect(updateHeight, [])
+  useEffect(() => {
+    if (scrollIntoViewNonce === 0) return
+    const root = rootRef.current
+    if (!root) return
+
+    const scrollRow = () => {
+      const rows = root.querySelectorAll('.rs-table-body-row-wrapper .rs-table-row')
+      const row = rows.item(rows.length - 1)
+      if (!(row instanceof HTMLElement)) return
+      row.scrollIntoView({block: 'nearest', inline: 'nearest'})
+    }
+
+    scrollRow()
+    const rafId = requestAnimationFrame(scrollRow)
+    const mutationObserver = new MutationObserver(scrollRow)
+    mutationObserver.observe(root, {childList: true, subtree: true})
+    const resizeObserver = new ResizeObserver(scrollRow)
+    resizeObserver.observe(root)
+    const timer = window.setTimeout(() => {
+      mutationObserver.disconnect()
+      resizeObserver.disconnect()
+    }, 100)
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      mutationObserver.disconnect()
+      resizeObserver.disconnect()
+      window.clearTimeout(timer)
+    }
+  }, [scrollIntoViewNonce])
 
   return (
-    <div>
+    <div ref={rootRef}>
       {!!label && <label>{label}</label>}
       <Table
         data={data}

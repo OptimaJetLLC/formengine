@@ -19,6 +19,7 @@ import {HTML5Backend} from 'react-dnd-html5-backend'
 import type {FormBuilderProps} from '../../FormBuilderProps'
 import {BuilderStore} from '../../stores/BuilderStore'
 import {LocalStorageSynchronizer, subscribeViewerLanguageWhenFormReady} from '../../stores/LocalStorageSynchronizer'
+import {applyViewerProps} from '../../utils/applyViewerProps'
 import {BuilderStoreProvider} from '../../utils/BuilderStoreContext'
 import {determineTheme} from '../../utils/determineTheme'
 import {isDesignerLocalStorageEnabled} from '../../utils/isDesignerLocalStorageEnabled'
@@ -130,16 +131,15 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
 
   useEffect(() => {
     // If activeFormName is already set from LocalStorageSynchronizer, do not change it
-    if (!builderStore.activeFormName || props.persistFormName === false) builderStore.activeFormName = props.formName
+    if (!builderStore.activeFormName || props.persistFormName === false) builderStore.setActiveFormName(props.formName)
   }, [builderStore, props.formName, props.persistFormName])
 
   useEffect(() => {
-    builderStore.view = props.view
+    builderStore.setView(props.view)
   }, [builderStore, props.view])
 
   useEffect(() => {
-    store.formViewerPropsStore.applyProps(viewerProps)
-    store.form.componentTree.state = store.formViewerPropsStore.initialState
+    applyViewerProps(store, viewerProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     props.initialData,
@@ -162,7 +162,7 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
 
   useEffect(() => {
     if (!props.theme) return
-    builderStore.theme = determineTheme(props.theme)
+    builderStore.setTheme(determineTheme(props.theme))
   }, [builderStore, props.theme])
 
   useEffect(() => {

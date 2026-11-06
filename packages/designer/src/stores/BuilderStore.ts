@@ -609,6 +609,38 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   }
 
   /**
+   * Sets the active form name.
+   * @param formName the form name.
+   */
+  setActiveFormName(formName: string | undefined) {
+    this.activeFormName = formName
+  }
+
+  /**
+   * Sets the builder view.
+   * @param view the builder view.
+   */
+  setView(view: BuilderView) {
+    this.view = view
+  }
+
+  /**
+   * Sets the builder theme.
+   * @param theme the builder theme.
+   */
+  setTheme(theme: BuilderTheme) {
+    this.theme = theme
+  }
+
+  /**
+   * Sets whether the testing editor reruns automatically.
+   * @param testingAutorun true when tests rerun on change.
+   */
+  setTestingAutorun(testingAutorun: boolean) {
+    this.testingAutorun = testingAutorun
+  }
+
+  /**
    * Changes the form builder mode.
    * @param value the new form builder mode.
    */
