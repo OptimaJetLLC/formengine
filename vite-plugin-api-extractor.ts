@@ -1,4 +1,4 @@
-/* eslint-disable import/no-nodejs-modules, import/no-extraneous-dependencies */
+/* eslint-disable import-x/no-nodejs-modules, import-x/no-extraneous-dependencies */
 import type {ExtractorConfig, ExtractorResult, IExtractorInvokeOptions} from '@microsoft/api-extractor'
 import {CompilerState, Extractor} from '@microsoft/api-extractor'
 import {existsSync} from 'node:fs'

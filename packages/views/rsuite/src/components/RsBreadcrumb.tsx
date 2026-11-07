@@ -85,7 +85,7 @@ const RsBreadcrumb = ({items, onItemClick, ...props}: RsBreadcrumbProps) => {
       {items?.map((item, idx) => {
         const {title = '', ...itemProps} = item
         return (
-          <Breadcrumb.Item {...itemProps} onClick={clickHandlers[idx]} key={title}>
+          <Breadcrumb.Item key={title} {...itemProps} onClick={clickHandlers[idx]}>
             {title}
           </Breadcrumb.Item>
         )

@@ -1,8 +1,8 @@
 import js from '@eslint/js'
-import importPlugin from 'eslint-plugin-import'
+import eslintReact from '@eslint-react/eslint-plugin'
+import importX from 'eslint-plugin-import-x'
 import jsdoc from 'eslint-plugin-jsdoc'
 import noSecrets from 'eslint-plugin-no-secrets'
-import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactPerf from 'eslint-plugin-react-perf'
 import unicorn from 'eslint-plugin-unicorn'
@@ -19,7 +19,7 @@ export function createFormEngineEslintConfig({tsconfigRootDir, project}) {
   return tseslint.config(
     js.configs.recommended,
     ...tseslint.configs.recommendedTypeChecked,
-    react.configs.flat.recommended,
+    eslintReact.configs.recommended,
     reactHooks.configs.flat.recommended,
     jsdoc.configs['flat/recommended-typescript-error'],
     reactPerf.configs.flat.all,
@@ -31,22 +31,39 @@ export function createFormEngineEslintConfig({tsconfigRootDir, project}) {
         },
       },
       settings: {
-        react: {
-          version: 'detect',
-        },
-        'import/resolver': {
+        'import-x/resolver': {
           typescript: {
             project,
           },
         },
       },
       plugins: {
-        import: importPlugin,
+        'import-x': importX,
         'unused-imports': unusedImports,
         'no-secrets': noSecrets,
         unicorn,
       },
       rules: {
+        // Keep Hook diagnostics in eslint-plugin-react-hooks so its configured severities
+        // and existing react-hooks/* suppressions apply without duplicate reports.
+        '@eslint-react/error-boundaries': 'off',
+        '@eslint-react/exhaustive-deps': 'off',
+        '@eslint-react/purity': 'off',
+        '@eslint-react/rules-of-hooks': 'off',
+        '@eslint-react/set-state-in-effect': 'off',
+        '@eslint-react/set-state-in-render': 'off',
+        '@eslint-react/unsupported-syntax': 'off',
+        '@eslint-react/use-memo': 'off',
+        // FormEngine resolves view components from the form model at render time.
+        // react-hooks/static-components still covers real create-during-render bugs.
+        '@eslint-react/static-components': 'off',
+        // Packages peer React ^18 || ^19; skip React 19-only migrations.
+        '@eslint-react/no-context-provider': 'off',
+        '@eslint-react/no-forward-ref': 'off',
+        '@eslint-react/no-use-context': 'off',
+        '@eslint-react/rsc-function-definition': 'off',
+        '@eslint-react/dom-no-use-form-state': 'off',
+        '@eslint-react/dom-no-unsafe-target-blank': 'error',
         'eqeqeq': ['error', 'always'],
         'no-restricted-syntax': ['error', {
           selector: "CallExpression[callee.name='customizableObserver'] > ArrowFunctionExpression.arguments",
@@ -72,8 +89,6 @@ export function createFormEngineEslintConfig({tsconfigRootDir, project}) {
         'unicorn/no-useless-fallback-in-spread': 'error',
         'unicorn/no-useless-spread': 'error',
         'unicorn/prefer-spread': 'error',
-        'react/react-in-jsx-scope': 'off',
-        'react/prop-types': 'off',
         '@typescript-eslint/ban-ts-comment': ['error', {'ts-ignore': 'allow-with-description'}],
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-implied-eval': 'off',
@@ -89,20 +104,20 @@ export function createFormEngineEslintConfig({tsconfigRootDir, project}) {
         '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/unbound-method': 'off',
         '@typescript-eslint/consistent-type-imports': 'error',
-        'import/no-extraneous-dependencies': ['error', {
+        'import-x/no-extraneous-dependencies': ['error', {
           devDependencies: false,
           optionalDependencies: false,
           bundledDependencies: false,
         }],
-        'import/no-deprecated': 'error',
-        'import/no-mutable-exports': 'error',
-        'import/no-absolute-path': 'error',
-        'import/no-nodejs-modules': 'error',
-        'import/no-relative-packages': 'error',
-        'import/no-useless-path-segments': 'error',
-        'import/consistent-type-specifier-style': 'error',
-        'import/first': 'error',
-        'import/newline-after-import': 'error',
+        'import-x/no-deprecated': 'error',
+        'import-x/no-mutable-exports': 'error',
+        'import-x/no-absolute-path': 'error',
+        'import-x/no-nodejs-modules': 'error',
+        'import-x/no-relative-packages': 'error',
+        'import-x/no-useless-path-segments': 'error',
+        'import-x/consistent-type-specifier-style': 'error',
+        'import-x/first': 'error',
+        'import-x/newline-after-import': 'error',
         'no-restricted-imports': [
           'error',
           {
@@ -120,7 +135,7 @@ export function createFormEngineEslintConfig({tsconfigRootDir, project}) {
         '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
         'init-declarations': 'off',
         '@typescript-eslint/init-declarations': ['error', 'always'],
-        'import/extensions': ['error', {
+        'import-x/extensions': ['error', {
           ignorePackages: true,
           pattern: {
             'ts': 'never',
@@ -161,10 +176,10 @@ export function createFormEngineEslintConfig({tsconfigRootDir, project}) {
     {
       files: ['**/config/*.ts'],
       rules: {
-        'import/no-nodejs-modules': 'off',
+        'import-x/no-nodejs-modules': 'off',
         'no-console': 'off',
         'jsdoc/require-jsdoc': 'off',
-        'import/no-extraneous-dependencies': 'off',
+        'import-x/no-extraneous-dependencies': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/require-await': 'off',
         'no-inner-declarations': 'off',
@@ -180,7 +195,7 @@ export function createFormEngineEslintConfig({tsconfigRootDir, project}) {
       rules: {
         '@typescript-eslint/require-await': 'off',
         'no-console': 'off',
-        'import/no-nodejs-modules': 'off',
+        'import-x/no-nodejs-modules': 'off',
       },
     },
   )

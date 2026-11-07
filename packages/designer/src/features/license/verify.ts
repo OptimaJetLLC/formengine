@@ -18,26 +18,22 @@ async function verify(data: string, signature: Uint8Array<ArrayBuffer>, publicKe
     return false
   }
 
-  let publicKey = null
-  let encoded = null
-
   try {
-    publicKey = await importPublicKey(publicKeyString)
-    encoded = new TextEncoder().encode(data)
+    const publicKey = await importPublicKey(publicKeyString)
+    const encoded = new TextEncoder().encode(data)
+    return await globalThis.crypto.subtle.verify(
+      {
+        name: 'ECDSA',
+        hash: {name: 'SHA-384'},
+      },
+      publicKey,
+      signature,
+      encoded
+    )
   } catch (e) {
     log(e)
     return
   }
-
-  return await globalThis.crypto.subtle.verify(
-    {
-      name: 'ECDSA',
-      hash: {name: 'SHA-384'},
-    },
-    publicKey,
-    signature,
-    encoded
-  )
 }
 
 /**

@@ -8,6 +8,7 @@ function cssContentFromTemplate(template: string): string {
   const tokens: string[] = []
   const placeholder = /\{pages\}|\{page\}/g
   let lastIndex = 0
+  // eslint-disable-next-line no-useless-assignment -- init-declarations requires an initializer; exec overwrites it
   let match: RegExpExecArray | null = null
   while ((match = placeholder.exec(template))) {
     if (match.index > lastIndex) {

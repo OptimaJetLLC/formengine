@@ -154,6 +154,6 @@ export const autoConvertField = (from: any, toType: SchemaType): unknown => {
   try {
     return converter(from)
   } catch (e) {
-    throw new Error(`Cannot convert ${from} from '${fromType}' to '${toType}'. ${e}.`)
+    throw new Error(`Cannot convert ${from} from '${fromType}' to '${toType}'. ${e}.`, {cause: e})
   }
 }

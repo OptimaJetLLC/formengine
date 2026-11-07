@@ -89,7 +89,7 @@ const MuiBreadcrumbs = ({items = [], onItemClick, ...props}: MuiBreadcrumbsProps
             </Typography>
           )
         }
-        return <BreadcrumbsItem onClick={onItemClick} {...item} key={i} />
+        return <BreadcrumbsItem key={i} onClick={onItemClick} {...item} />
       }),
     [items, onItemClick]
   )

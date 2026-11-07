@@ -32,9 +32,9 @@ export default tseslint.config(
       'no-console': 'off',
       'no-undef': 'off',
       'no-secrets/no-secrets': 'off',
-      'import/no-nodejs-modules': 'off',
-      'import/no-extraneous-dependencies': 'off',
-      'import/extensions': [
+      'import-x/no-nodejs-modules': 'off',
+      'import-x/no-extraneous-dependencies': 'off',
+      'import-x/extensions': [
         'error',
         {
           ts: 'never',
@@ -63,8 +63,8 @@ export default tseslint.config(
   {
     files: ['src/**/*.{ts,tsx}'],
     rules: {
-      'import/no-nodejs-modules': 'off',
-      'import/extensions': [
+      'import-x/no-nodejs-modules': 'off',
+      'import-x/extensions': [
         'error',
         {
           ts: 'never',

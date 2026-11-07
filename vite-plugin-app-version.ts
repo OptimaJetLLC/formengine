@@ -1,4 +1,4 @@
-/* eslint-disable import/no-nodejs-modules */
+/* eslint-disable import-x/no-nodejs-modules */
 import {readFileSync} from 'node:fs'
 import {join} from 'node:path'
 import type {Plugin} from 'vite'

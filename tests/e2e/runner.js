@@ -123,7 +123,9 @@ for (const {name: tpl, expectedReactMajor} of config.templates) {
   }
 }
 
-const ctrfMergeResult = spawn.sync('npx', ['ctrf', 'merge', ctrfReportsPath, '--output', ctrfReportPath], {
+// Use ctrf-cli explicitly so npx does not pick up the deprecated playwright-ctrf-json-reporter
+// nested `ctrf` package, which mishandles absolute --output paths.
+const ctrfMergeResult = spawn.sync('npx', ['ctrf-cli', 'merge', ctrfReportsPath, '--output', ctrfReportPath], {
   cwd: __dirname,
   env: ENV,
   stdio: 'inherit',
