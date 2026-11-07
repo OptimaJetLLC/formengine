@@ -38,7 +38,7 @@ const RawTooltipPropertiesEditor = () => {
   return (
     <>
       <LabeledInput>
-        <HintedLabel hint={<>{t('hint')}</>} htmlFor={id}>
+        <HintedLabel hint={t('hint')} htmlFor={id}>
           <h6>{t('tooltip')}</h6>
         </HintedLabel>
         <SCheckbox checked={hasTooltipProps} onChange={handleToggle} id={id} data-testid="enable-tooltip-checkbox"></SCheckbox>

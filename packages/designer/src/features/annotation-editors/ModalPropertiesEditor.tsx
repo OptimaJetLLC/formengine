@@ -45,7 +45,7 @@ const RawSelectedModalPropertiesEditor = (props: InnerModalPropertiesEditor) => 
   return (
     <>
       {!inActions && (
-        <HintedLabel hint={<>{t('modalComponentPropertiesHint')}</>}>
+        <HintedLabel hint={t('modalComponentPropertiesHint')}>
           <h6>{t('modalComponentProperties')}</h6>
         </HintedLabel>
       )}
@@ -80,7 +80,7 @@ const RawModalPropertiesEditor = (props: AnnotationEditorProps) => {
 
   if (!builderComponent) {
     return (
-      <HintedLabel hint={<>{t('noModalComponentHint')}</>}>
+      <HintedLabel hint={t('noModalComponentHint')}>
         <h6>{t('noModalComponent')}</h6>
       </HintedLabel>
     )

@@ -10,7 +10,6 @@ import * as sortableListComponent from '@react-form-builder/components-sortable-
 import type {FormViewerProps} from '@react-form-builder/core'
 import {BiDi, createView, FormViewer} from '@react-form-builder/core'
 import {createElement} from 'react'
-// eslint-disable-next-line import/extensions
 import {createRoot} from 'react-dom/client'
 
 const models = [

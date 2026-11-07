@@ -26,7 +26,7 @@ function checkDistributionPackageJsons(): void {
       console.error(`  - ${dependencyName}`)
     }
     console.error(
-      'Add each dependency to DISTRIBUTION_BASE_DEV_DEPENDENCIES, DEV_MONOREPO_ONLY_DEPENDENCIES, or .eslintrc.cjs plugins/extends.'
+      'Add each dependency to DISTRIBUTION_BASE_DEV_DEPENDENCIES, DEV_MONOREPO_ONLY_DEPENDENCIES, or scripts/distribution-eslint-dev-dependencies.ts.'
     )
     process.exitCode = 1
     return

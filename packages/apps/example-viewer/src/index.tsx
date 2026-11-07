@@ -1,7 +1,6 @@
 import './wdyr'
 
 import React from 'react'
-// eslint-disable-next-line import/extensions
 import {createRoot} from 'react-dom/client'
 import {ExampleViewerApp} from './ExampleViewerApp'
 

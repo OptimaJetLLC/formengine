@@ -79,7 +79,7 @@ dependencies:
 sources:
   FROM +dependencies
   COPY package.public.json package.private.json lerna.json biome.json LICENSE.md README.private.md CHANGELOG.md ./
-  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts .mdxlintrc.mjs vite-plugin-api-extractor.ts ./
+  COPY .editorconfig .gitignore eslint.config.mjs eslint.base.mjs tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts .mdxlintrc.mjs vite-plugin-api-extractor.ts ./
   COPY .madgerc ./
   COPY --dir packages documentation designer-guide tests scripts examples ./
   SAVE ARTIFACT /repo /repo
@@ -88,7 +88,7 @@ sources:
 formengine-src-sources:
   WORKDIR /repo
   COPY package.json package-lock.json package.public.json package.private.json lerna.json biome.json .npmrc LICENSE.md README.private.md CHANGELOG.md ./
-  COPY .editorconfig .gitignore .eslintrc.cjs .eslintignore tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
+  COPY .editorconfig .gitignore eslint.config.mjs eslint.base.mjs tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
   COPY .madgerc ./
   COPY --dir packages documentation designer-guide tests scripts examples ./
 

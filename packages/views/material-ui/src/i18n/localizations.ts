@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/extensions
 import {arEG, deDE, enUS, esES, faIR, frFR, hiIN, itIT, jaJP, koKR, srRS, zhCN} from '@mui/material/locale'
 import type {Language} from '@react-form-builder/core'
 import {globalDefaultLanguage} from '@react-form-builder/core'

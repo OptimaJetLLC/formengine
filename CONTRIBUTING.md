@@ -69,7 +69,7 @@ Relevant tests are still required when the change affects behavior. They complem
 ## Source conventions
 
 - `tsconfig.json` defines TypeScript behavior.
-- `.eslintrc.cjs` defines semantic, import, React, and JSDoc rules.
+- `eslint.config.mjs` / `eslint.base.mjs` define semantic, import, React, and JSDoc rules.
 - `biome.json` defines formatting and Biome lint rules.
 - The nearest `AGENTS.md` contains conventions that cannot be expressed reliably in those tools.
 

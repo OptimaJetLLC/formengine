@@ -3,7 +3,6 @@ import {viewWithCss} from '@react-form-builder/components-rsuite'
 import type {FormViewerProps} from '@react-form-builder/core'
 import {FormViewer} from '@react-form-builder/core'
 import {createElement} from 'react'
-// eslint-disable-next-line import/extensions
 import {createRoot} from 'react-dom/client'
 
 /**
