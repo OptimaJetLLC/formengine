@@ -12,6 +12,6 @@
     "@react-form-builder/core": "^11.1.0"
   },
   "peerDependencies": {
-    "react": "^19.0.0"
+    "react": "^19.3.1"
   }
 }
