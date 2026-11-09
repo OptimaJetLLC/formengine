@@ -20,10 +20,10 @@
     "postbuild": "node scripts/fix-llms-links.ts"
   },
   "dependencies": {
-    "@docsearch/core": "^5.1.2",
-    "@docsearch/css": "^5.1.2",
-    "@docsearch/docusaurus-adapter": "^5.1.2",
-    "@docsearch/react": "^5.1.2",
+    "@docsearch/core": "^5.2.0",
+    "@docsearch/css": "^5.2.0",
+    "@docsearch/docusaurus-adapter": "^5.2.0",
+    "@docsearch/react": "^5.2.0",
     "@docusaurus/core": "^3.10.2",
     "@docusaurus/faster": "^3.10.2",
     "@docusaurus/preset-classic": "^3.10.2",
