@@ -29,6 +29,10 @@
           "description": "true인 경우 드롭존이 표시됩니다.",
           "name": "드롭존"
         },
+        "paste": {
+          "name": "붙여넣기",
+          "description": "업로더에 파일(예: 스크린샷) 붙여넣기 허용"
+        },
         "multiple": {
           "description": "여러 파일 선택 허용",
           "name": "여러 파일"

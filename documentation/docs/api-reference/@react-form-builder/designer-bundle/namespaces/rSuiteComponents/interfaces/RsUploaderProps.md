@@ -1246,7 +1246,7 @@ Providing a `href` will render an `<a>` element, _styled_ as a button
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1570,7 +1570,7 @@ Upload the parameter name of the corresponding file
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1662,7 +1662,7 @@ callback function that the upload queue has changed
 
 ##### event
 
-`ChangeEvent`\<`Element`\> \| `MouseEvent`\<`Element`, `MouseEvent`\>
+`ChangeEvent`\<`Element`, `Element`\> \| `MouseEvent`\<`Element`, `MouseEvent`\>
 
 #### Returns
 
@@ -1676,7 +1676,7 @@ callback function that the upload queue has changed
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLElement`, `Element`\>
 
 #### Inherited from
 
@@ -2170,7 +2170,7 @@ Upload callback function with error
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2180,7 +2180,7 @@ Upload callback function with error
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2190,7 +2190,7 @@ Upload callback function with error
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2200,7 +2200,7 @@ Upload callback function with error
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2830,7 +2830,7 @@ In the file list, click the callback function to delete a file
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2840,7 +2840,7 @@ In the file list, click the callback function to delete a file
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2992,7 +2992,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3002,7 +3002,7 @@ In the file list, for uploading failed files, click the callback function to upl
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 

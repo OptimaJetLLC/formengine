@@ -849,7 +849,7 @@ The background color.
 
 ### children?
 
-> `optional` **children?**: `Iterable`\<`ReactI18NextChild`, `any`, `any`\> \| `ReactI18NextChild`
+> `optional` **children?**: `ReactNode`
 
 #### Inherited from
 
@@ -1043,7 +1043,7 @@ The canvas height.
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1307,7 +1307,7 @@ The line width.
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1405,7 +1405,7 @@ Triggered after stroke update.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLCanvasElement`, `Element`\>
 
 #### Inherited from
 
@@ -1875,7 +1875,7 @@ Triggered after stroke update.
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1885,7 +1885,7 @@ Triggered after stroke update.
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1895,7 +1895,7 @@ Triggered after stroke update.
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -1905,7 +1905,7 @@ Triggered after stroke update.
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2463,7 +2463,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2473,7 +2473,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2603,7 +2603,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2613,7 +2613,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 

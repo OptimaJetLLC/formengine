@@ -58,6 +58,10 @@ export interface UploaderProps extends DropzoneOptions, ComponentProps<any> {
    */
   dropzone?: boolean
   /**
+   * If true, pasting files (for example screenshots) into the uploader uploads them.
+   */
+  paste?: boolean
+  /**
    * If true, the children are in disabled state.
    */
   disabled?: boolean

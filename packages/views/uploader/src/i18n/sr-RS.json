@@ -29,6 +29,10 @@
           "description": "Ako je tačno, prikazaće se dropzone",
           "name": "Dropzone"
         },
+        "paste": {
+          "name": "Nalepi",
+          "description": "Dozvoli lepljenje datoteka (npr. snimaka ekrana) u uploader"
+        },
         "multiple": {
           "description": "Dozvolite višestruki izbor datoteka",
           "name": "Više datoteka"

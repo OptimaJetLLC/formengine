@@ -17,6 +17,10 @@
           "name": "Dropzone",
           "description": "If true, the dropzone will show"
         },
+        "paste": {
+          "name": "Paste",
+          "description": "Allow pasting files (for example screenshots) into the uploader"
+        },
         "accept": {
           "name": "Accept",
           "description": "Accepted file types (e.g., image/*, .pdf, .docx)"

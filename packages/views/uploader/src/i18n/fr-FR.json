@@ -29,6 +29,10 @@
           "description": "Si c'est vrai, la zone de dépôt s'affichera",
           "name": "Zone de dépôt"
         },
+        "paste": {
+          "name": "Coller",
+          "description": "Autoriser le collage de fichiers (par exemple des captures d’écran) dans l’uploader"
+        },
         "multiple": {
           "description": "Autoriser la sélection de plusieurs fichiers",
           "name": "Fichiers multiples"

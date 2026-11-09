@@ -1270,7 +1270,7 @@ The row of the table has a mouseover effect
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1609,7 +1609,7 @@ The callback function called when data in the table is added.
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1701,7 +1701,7 @@ The callback function called when data in the table is changed.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLElement`, `Element`\>
 
 #### Inherited from
 
@@ -2227,7 +2227,7 @@ Tree table, the callback function in the expanded node
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2237,7 +2237,7 @@ Tree table, the callback function in the expanded node
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2247,7 +2247,7 @@ Tree table, the callback function in the expanded node
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2257,7 +2257,7 @@ Tree table, the callback function in the expanded node
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2833,7 +2833,7 @@ The callback function called when data in the table is removed.
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2843,7 +2843,7 @@ The callback function called when data in the table is removed.
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3067,7 +3067,7 @@ Click the callback function of the sort sequence to return the value sortColumn,
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -3077,7 +3077,7 @@ Click the callback function of the sort sequence to return the value sortColumn,
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 

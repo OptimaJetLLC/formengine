@@ -1230,7 +1230,7 @@ false
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1512,7 +1512,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1592,7 +1592,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onChange?
 
-> `optional` **onChange?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onChange?**: `ChangeEventHandler`\<`HTMLDivElement`, `Element`\>
 
 #### Inherited from
 
@@ -1602,7 +1602,7 @@ Set to `false` to disable `maxWidth`.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLDivElement`, `Element`\>
 
 #### Inherited from
 
@@ -2102,7 +2102,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2112,7 +2112,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2122,7 +2122,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2132,7 +2132,7 @@ Can be: `"escapeKeyDown"`, `"backdropClick"`.
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2702,7 +2702,7 @@ Callback fired when the dialog opens.
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2712,7 +2712,7 @@ Callback fired when the dialog opens.
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2842,7 +2842,7 @@ Callback fired when the dialog opens.
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2852,7 +2852,7 @@ Callback fired when the dialog opens.
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 

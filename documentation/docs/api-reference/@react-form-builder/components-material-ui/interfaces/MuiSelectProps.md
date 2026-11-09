@@ -1228,7 +1228,7 @@ The `id` of the wrapper element or the `select` element when `native`.
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1677,7 +1677,7 @@ false
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1761,7 +1761,7 @@ Notice that the first argument (event) might be undefined.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLDivElement`, `Element`\>
 
 #### Inherited from
 
@@ -2256,7 +2256,7 @@ The event source of the callback.
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2266,7 +2266,7 @@ The event source of the callback.
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2288,7 +2288,7 @@ Callback fired when the `input` doesn't satisfy its constraints.
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2871,7 +2871,7 @@ The event source of the callback.
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2881,7 +2881,7 @@ The event source of the callback.
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3011,7 +3011,7 @@ The event source of the callback.
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -3021,7 +3021,7 @@ The event source of the callback.
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 

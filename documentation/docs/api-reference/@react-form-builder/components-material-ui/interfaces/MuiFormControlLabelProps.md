@@ -1067,7 +1067,7 @@ If `true`, the label is rendered as it is passed without an additional typograph
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1339,7 +1339,7 @@ The position of the label.
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLLabelElement`\>
 
 #### Inherited from
 
@@ -1437,7 +1437,7 @@ Callback fired when the control state changes.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLLabelElement`, `Element`\>
 
 #### Inherited from
 
@@ -1907,7 +1907,7 @@ Callback fired when the control state changes.
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLLabelElement`\>
 
 #### Inherited from
 
@@ -1917,7 +1917,7 @@ Callback fired when the control state changes.
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLLabelElement`\>
 
 #### Inherited from
 
@@ -1927,7 +1927,7 @@ Callback fired when the control state changes.
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLLabelElement`\>
 
 #### Inherited from
 
@@ -1937,7 +1937,7 @@ Callback fired when the control state changes.
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLLabelElement`\>
 
 #### Inherited from
 
@@ -2495,7 +2495,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLLabelElement`\>
 
 #### Inherited from
 
@@ -2505,7 +2505,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLLabelElement`\>
 
 #### Inherited from
 
@@ -2635,7 +2635,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLLabelElement`\>
 
 #### Inherited from
 
@@ -2645,7 +2645,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLLabelElement`\>
 
 #### Inherited from
 

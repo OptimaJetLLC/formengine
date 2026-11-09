@@ -6,8 +6,8 @@ type UploadResult = {
   error?: string
 }
 
-const isFailed = ({filePath, error, status}: UploadResult): boolean => {
-  return status === 'error' || !!error || !filePath
+const isFailed = ({error, status, filePath, url}: UploadResult & Pick<FileType, 'url'>): boolean => {
+  return status === 'error' || !!error || !(filePath ?? url)
 }
 
 const createItem = (file: File, result: UploadResult): FileType => {
@@ -37,6 +37,14 @@ const uploadFile = async (file: File, action: string): Promise<FileType> => {
       method: 'POST',
       body: formData,
     })
+
+    if (!response.ok) {
+      return createItem(file, {
+        status: 'error',
+        error: `Upload failed with status ${response.status}`,
+      })
+    }
+
     const result = await response.json()
 
     return createItem(file, result)

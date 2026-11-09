@@ -29,6 +29,10 @@
           "description": "Wenn das stimmt, wird die Dropzone angezeigt",
           "name": "Dropzone"
         },
+        "paste": {
+          "name": "Einfügen",
+          "description": "Erlaubt das Einfügen von Dateien (z. B. Screenshots) in den Uploader"
+        },
         "multiple": {
           "description": "Auswahl mehrerer Dateien zulassen",
           "name": "Mehrere Dateien"

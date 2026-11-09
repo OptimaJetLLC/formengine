@@ -1087,7 +1087,7 @@ The default active key of the Nav component.
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1347,7 +1347,7 @@ Whether the Nav component is justified.
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1427,7 +1427,7 @@ Whether the Nav component is justified.
 
 ### onChange?
 
-> `optional` **onChange?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onChange?**: `ChangeEventHandler`\<`HTMLElement`, `Element`\>
 
 #### Inherited from
 
@@ -1437,7 +1437,7 @@ Whether the Nav component is justified.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLElement`, `Element`\>
 
 #### Inherited from
 
@@ -1907,7 +1907,7 @@ Whether the Nav component is justified.
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1917,7 +1917,7 @@ Whether the Nav component is justified.
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1927,7 +1927,7 @@ Whether the Nav component is justified.
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1937,7 +1937,7 @@ Whether the Nav component is justified.
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2495,7 +2495,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2505,7 +2505,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2651,7 +2651,7 @@ Event handler for selecting a Nav item.
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2661,7 +2661,7 @@ Event handler for selecting a Nav item.
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 

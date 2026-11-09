@@ -866,7 +866,7 @@ The background color.
 
 ### children?
 
-> `optional` **children?**: `Iterable`\<`ReactI18NextChild`, `any`, `any`\> \| `ReactI18NextChild`
+> `optional` **children?**: `ReactNode`
 
 #### Inherited from
 
@@ -1102,7 +1102,7 @@ The font weight.
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1354,7 +1354,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1434,7 +1434,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onChange?
 
-> `optional` **onChange?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onChange?**: `ChangeEventHandler`\<`HTMLAnchorElement`, `Element`\>
 
 #### Inherited from
 
@@ -1444,7 +1444,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLAnchorElement`, `Element`\>
 
 #### Inherited from
 
@@ -1914,7 +1914,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1924,7 +1924,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1934,7 +1934,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -1944,7 +1944,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2502,7 +2502,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2512,7 +2512,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2642,7 +2642,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2652,7 +2652,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 

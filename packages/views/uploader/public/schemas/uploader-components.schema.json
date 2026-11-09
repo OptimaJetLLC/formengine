@@ -499,6 +499,11 @@
                   "$ref": "#/definitions/booleanPropertyCalculable",
                   "description": "If true, the dropzone will show"
                 },
+                "paste": {
+                  "type": "object",
+                  "$ref": "#/definitions/booleanPropertyCalculable",
+                  "description": "Allow pasting files (for example screenshots) into the uploader"
+                },
                 "multiple": {
                   "type": "object",
                   "$ref": "#/definitions/booleanPropertyCalculable",

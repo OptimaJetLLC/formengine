@@ -4,7 +4,6 @@ import type {DropzoneProps} from '@mantine/dropzone'
 import {Dropzone} from '@mantine/dropzone'
 import {array, boolean, define, node, number, required, string} from '@react-form-builder/core'
 import {useCallback} from 'react'
-import type {FileWithPath} from 'react-dropzone'
 import {otherExtensionsCategory} from './internal/categories'
 import {description, label, onChange, size} from './internal/sharedProps'
 
@@ -38,7 +37,7 @@ export function MtDropzone(props: MtDropzoneProps) {
   const {label, description, error, id, required, withAsterisk, value, onChange, children, ...others} = props
 
   const handleDrop = useCallback(
-    (files: FileWithPath[]) => {
+    (files: File[]) => {
       onChange?.(files)
     },
     [onChange]

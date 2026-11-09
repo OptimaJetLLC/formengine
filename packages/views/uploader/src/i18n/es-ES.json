@@ -29,6 +29,10 @@
           "description": "Si es verdadero, se mostrará la zona de acceso",
           "name": "Dropzone"
         },
+        "paste": {
+          "name": "Pegar",
+          "description": "Permitir pegar archivos (por ejemplo capturas de pantalla) en el cargador"
+        },
         "multiple": {
           "description": "Permitir la selección de varios archivos",
           "name": "Múltiples archivos"

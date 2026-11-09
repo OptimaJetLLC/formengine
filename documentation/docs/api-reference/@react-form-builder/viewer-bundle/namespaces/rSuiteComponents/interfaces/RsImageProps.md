@@ -1076,7 +1076,7 @@ The background color.
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1328,7 +1328,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLImageElement`\>
 
 #### Inherited from
 
@@ -1408,7 +1408,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onChange?
 
-> `optional` **onChange?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onChange?**: `ChangeEventHandler`\<`HTMLImageElement`, `Element`\>
 
 #### Inherited from
 
@@ -1418,7 +1418,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLImageElement`, `Element`\>
 
 #### Inherited from
 
@@ -1888,7 +1888,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLImageElement`\>
 
 #### Inherited from
 
@@ -1898,7 +1898,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLImageElement`\>
 
 #### Inherited from
 
@@ -1908,7 +1908,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLImageElement`\>
 
 #### Inherited from
 
@@ -1918,7 +1918,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLImageElement`\>
 
 #### Inherited from
 
@@ -2476,7 +2476,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLImageElement`\>
 
 #### Inherited from
 
@@ -2486,7 +2486,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLImageElement`\>
 
 #### Inherited from
 
@@ -2616,7 +2616,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLImageElement`\>
 
 #### Inherited from
 
@@ -2626,7 +2626,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLImageElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLImageElement`\>
 
 #### Inherited from
 

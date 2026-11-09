@@ -132,6 +132,18 @@
 
 > **name**: `string` = `"On Error"`
 
+#### components.Uploader.props.paste
+
+> **paste**: `object`
+
+#### components.Uploader.props.paste.description
+
+> **description**: `string` = `"Allow pasting files (for example screenshots) into the uploader"`
+
+#### components.Uploader.props.paste.name
+
+> **name**: `string` = `"Paste"`
+
 #### components.Uploader.props.readOnly
 
 > **readOnly**: `object`

@@ -1089,7 +1089,7 @@ false
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1331,7 +1331,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLUListElement`\>
 
 #### Inherited from
 
@@ -1411,7 +1411,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onChange?
 
-> `optional` **onChange?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onChange?**: `ChangeEventHandler`\<`HTMLUListElement`, `Element`\>
 
 #### Inherited from
 
@@ -1421,7 +1421,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLUListElement`, `Element`\>
 
 #### Inherited from
 
@@ -1891,7 +1891,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLUListElement`\>
 
 #### Inherited from
 
@@ -1901,7 +1901,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLUListElement`\>
 
 #### Inherited from
 
@@ -1911,7 +1911,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLUListElement`\>
 
 #### Inherited from
 
@@ -1921,7 +1921,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLUListElement`\>
 
 #### Inherited from
 
@@ -2479,7 +2479,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLUListElement`\>
 
 #### Inherited from
 
@@ -2489,7 +2489,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLUListElement`\>
 
 #### Inherited from
 
@@ -2619,7 +2619,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLUListElement`\>
 
 #### Inherited from
 
@@ -2629,7 +2629,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLUListElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLUListElement`\>
 
 #### Inherited from
 

@@ -1102,7 +1102,7 @@ Header avatar content.
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1352,7 +1352,7 @@ Media content.
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1432,7 +1432,7 @@ Media content.
 
 ### onChange?
 
-> `optional` **onChange?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onChange?**: `ChangeEventHandler`\<`HTMLDivElement`, `Element`\>
 
 #### Inherited from
 
@@ -1442,7 +1442,7 @@ Media content.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLDivElement`, `Element`\>
 
 #### Inherited from
 
@@ -1912,7 +1912,7 @@ Media content.
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1922,7 +1922,7 @@ Media content.
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1932,7 +1932,7 @@ Media content.
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -1942,7 +1942,7 @@ Media content.
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2500,7 +2500,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2510,7 +2510,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2640,7 +2640,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2650,7 +2650,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 

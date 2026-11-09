@@ -1125,7 +1125,7 @@ The cell icon.
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1407,7 +1407,7 @@ the row index.
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1487,7 +1487,7 @@ the row index.
 
 ### onChange?
 
-> `optional` **onChange?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onChange?**: `ChangeEventHandler`\<`HTMLElement`, `Element`\>
 
 #### Inherited from
 
@@ -1497,7 +1497,7 @@ the row index.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLElement`, `Element`\>
 
 #### Inherited from
 
@@ -1967,7 +1967,7 @@ the row index.
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1977,7 +1977,7 @@ the row index.
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1987,7 +1987,7 @@ the row index.
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1997,7 +1997,7 @@ the row index.
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2555,7 +2555,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2565,7 +2565,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2695,7 +2695,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2705,7 +2705,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 

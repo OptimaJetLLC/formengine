@@ -22,7 +22,21 @@ const getClassName = (state: Partial<DropzoneState>, dropzone?: boolean, classNa
   )
 }
 
-const Uploader = ({children, dropzone, value, className, action, onChange, onError, onDrop, onDropRejected, ...props}: UploaderProps) => {
+const Uploader = ({
+  children,
+  dropzone,
+  paste,
+  value,
+  className,
+  action,
+  onChange,
+  onError,
+  onDrop,
+  onDropRejected,
+  disabled,
+  readOnly,
+  ...props
+}: UploaderProps) => {
   const handleFileUpload = useCallback(
     (acceptedFiles: File[]) => {
       if (!action) return
@@ -46,10 +60,12 @@ const Uploader = ({children, dropzone, value, className, action, onChange, onErr
   const dropzoneOptions = useMemo<DropzoneOptions>(
     () => ({
       ...props,
+      disabled: Boolean(disabled || readOnly),
       noDrag: !dropzone,
+      noPaste: !paste,
       onDrop: handleFileUpload,
     }),
-    [dropzone, handleFileUpload, props]
+    [disabled, dropzone, handleFileUpload, paste, props, readOnly]
   )
 
   const {getInputProps, getRootProps, ...state} = useDropzone(dropzoneOptions)
@@ -80,6 +96,7 @@ export const uploader = define(Uploader, 'Uploader')
     children: stringNode.setup({default: defaultContent}),
     accept: object,
     dropzone: boolean.default(true),
+    paste: boolean.default(false),
     multiple: boolean,
     disabled: disabled,
     readOnly: readOnly,

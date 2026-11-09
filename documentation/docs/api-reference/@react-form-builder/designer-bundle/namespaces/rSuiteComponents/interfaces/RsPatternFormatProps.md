@@ -1235,7 +1235,7 @@ The HTML input id
 
 #### See
 
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+[https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
 
 #### Inherited from
 
@@ -1581,7 +1581,7 @@ The label for the pattern format input.
 
 ### onBeforeInputCapture?
 
-> `optional` **onBeforeInputCapture?**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onBeforeInputCapture?**: `InputEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -1683,7 +1683,7 @@ The callback when value changes.
 
 ### onChangeCapture?
 
-> `optional` **onChangeCapture?**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onChangeCapture?**: `ChangeEventHandler`\<`HTMLInputElement`, `Element`\>
 
 #### Inherited from
 
@@ -2153,7 +2153,7 @@ The callback when value changes.
 
 ### onInput?
 
-> `optional` **onInput?**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onInput?**: `InputEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -2163,7 +2163,7 @@ The callback when value changes.
 
 ### onInputCapture?
 
-> `optional` **onInputCapture?**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onInputCapture?**: `InputEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -2173,7 +2173,7 @@ The callback when value changes.
 
 ### onInvalid?
 
-> `optional` **onInvalid?**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onInvalid?**: `ReactEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -2183,7 +2183,7 @@ The callback when value changes.
 
 ### onInvalidCapture?
 
-> `optional` **onInvalidCapture?**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onInvalidCapture?**: `ReactEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -2753,7 +2753,7 @@ Called on press enter
 
 ### onReset?
 
-> `optional` **onReset?**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onReset?**: `ReactEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -2763,7 +2763,7 @@ Called on press enter
 
 ### onResetCapture?
 
-> `optional` **onResetCapture?**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onResetCapture?**: `ReactEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -2893,7 +2893,7 @@ Called on press enter
 
 ### onSubmit?
 
-> `optional` **onSubmit?**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onSubmit?**: `SubmitEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -2903,7 +2903,7 @@ Called on press enter
 
 ### onSubmitCapture?
 
-> `optional` **onSubmitCapture?**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onSubmitCapture?**: `SubmitEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 

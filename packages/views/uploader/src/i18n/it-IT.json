@@ -29,6 +29,10 @@
           "description": "Se vero, la dropzone mostrerà",
           "name": "Dropzone"
         },
+        "paste": {
+          "name": "Incolla",
+          "description": "Consenti di incollare file (ad esempio screenshot) nell’uploader"
+        },
         "multiple": {
           "description": "Consenti la selezione di più file",
           "name": "File multipli"

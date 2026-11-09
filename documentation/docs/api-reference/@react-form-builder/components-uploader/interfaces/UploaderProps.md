@@ -15,7 +15,7 @@ The properties of the Uploader component.
 
 ### accept?
 
-> `optional` **accept?**: `Accept`
+> `optional` **accept?**: `AcceptGroup`[] \| `Accept`
 
 #### Inherited from
 
@@ -61,6 +61,34 @@ If true, the dropzone will show.
 
 ***
 
+### getErrorMessage?
+
+> `optional` **getErrorMessage?**: (`error`, `file`) => `string`
+
+Override the message of any rejection error (built-in or custom). Called once per error;
+receives the error and the file it belongs to and returns the message to use. Return
+`error.message` for codes you don't want to change. Useful for localizing error messages.
+
+#### Parameters
+
+##### error
+
+`FileError`
+
+##### file
+
+`File`
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+`DropzoneOptions.getErrorMessage`
+
+***
+
 ### getFilesFromEvent?
 
 > `optional` **getFilesFromEvent?**: (`event`) => `Promise`\<(`DataTransferItem` \| `File`)[]\>
@@ -69,7 +97,7 @@ If true, the dropzone will show.
 
 ##### event
 
-`DropEvent`
+`FileSystemFileHandle`[] \| `DropEvent`
 
 #### Returns
 
@@ -158,6 +186,22 @@ If true, the dropzone will show.
 #### Inherited from
 
 `DropzoneOptions.noKeyboard`
+
+***
+
+### noPaste?
+
+> `optional` **noPaste?**: `boolean`
+
+If true, disables paste-to-upload. By default, when the dropzone (or a focused child) receives a
+paste that carries files - e.g. a screenshot pasted with Ctrl/Cmd+V - those files go through the
+same `accept`/size/`validator` checks and `onDrop` callbacks as a drop. Pastes with no files
+(plain text, etc.) are ignored and left untouched. See
+https://github.com/react-dropzone/react-dropzone/issues/1210
+
+#### Inherited from
+
+`DropzoneOptions.noPaste`
 
 ***
 
@@ -327,6 +371,14 @@ Callback function called when an error occurs during upload.
 
 ***
 
+### paste?
+
+> `optional` **paste?**: `boolean`
+
+If true, pasting files (for example screenshots) into the uploader uploads them.
+
+***
+
 ### preventDropOnDocument?
 
 > `optional` **preventDropOnDocument?**: `boolean`
@@ -357,7 +409,17 @@ If true, the children are in read-only state.
 
 ### validator?
 
-> `optional` **validator?**: \<`T`\>(`file`) => readonly `FileError`[] \| `FileError` \| `null`
+> `optional` **validator?**: \<`T`\>(`file`) => `Promise`\<`ValidatorResult`\> \| `ValidatorResult`
+
+Custom validation, run once per file on drop/selection. Return `null` to accept the file, or a
+FileError (or array of them) to reject it. May be `async` (return a `Promise`) to support
+checks that can't run synchronously - e.g. reading image dimensions, inspecting file contents,
+or calling an external service. While an async validator is pending, DropzoneState.isProcessing
+is `true`, and `onDrop`/`onDropAccepted`/`onDropRejected` fire only once it settles. If the
+validator throws or rejects, `onError` is called and the drop is discarded.
+
+Note: the validator never runs during a drag (a `DataTransferItem` has no name/size), so a
+validator-configured dropzone is `isDragUnknown` until drop.
 
 #### Type Parameters
 
@@ -373,7 +435,7 @@ If true, the children are in read-only state.
 
 #### Returns
 
-readonly `FileError`[] \| `FileError` \| `null`
+`Promise`\<`ValidatorResult`\> \| `ValidatorResult`
 
 #### Inherited from
 
