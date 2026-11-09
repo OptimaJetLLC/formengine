@@ -1,5 +1,5 @@
-import {defaultRichTextFeatureFlags} from '@react-form-builder/components-rich-text'
-import type {ComponentData} from '@react-form-builder/core'
+import {defaultRichTextFeatureFlags, richTextModel} from '@react-form-builder/components-rich-text'
+import {type ComponentData, createView} from '@react-form-builder/core'
 import {waitFor} from '@testing-library/react'
 import {Quill} from 'react-quill-new'
 import {
@@ -11,7 +11,9 @@ import {
   type RichTextFeature,
 } from '../../../packages/views/rich-text/src/richTextFeatures'
 import {asyncAct} from '../../common/lib/asyncAct'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
+
+const richTextView = createView([richTextModel])
 
 const videoHtml = '<iframe class="ql-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>'
 
@@ -58,7 +60,7 @@ async function renderEditor(
   props?: Record<string, {value: unknown}>,
   schema?: {validations: Array<{key: string; args?: Record<string, unknown>}>}
 ) {
-  const result = renderForm(richTextForm(props, schema))
+  const result = renderViewerForm(richTextView, richTextForm(props, schema))
   await waitFor(() => {
     expect(result.container.querySelector('.ql-container')).not.toBeNull()
   })

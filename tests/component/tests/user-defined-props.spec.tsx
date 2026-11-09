@@ -1,5 +1,5 @@
 import {fireEvent} from '@testing-library/react'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import form from './forms/user-defined-props-change-form.json'
 
 describe('User defined properties test', () => {

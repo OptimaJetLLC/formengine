@@ -1,9 +1,13 @@
+import {signatureModel} from '@react-form-builder/components-signature'
+import {createView} from '@react-form-builder/core'
 import {fireEvent, waitFor, within} from '@testing-library/react'
 import {Canvas, Image as SkiaImage} from 'skia-canvas'
 import {afterAll, beforeAll, describe, expect, it, vi} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {isBrowserMode} from '../config/isBrowserMode'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
+
+const signatureView = createView([signatureModel])
 
 const signatureKey = 'signature1'
 const testId = 'signature'
@@ -196,7 +200,7 @@ afterAll(() => {
 
 describe('Signature component', () => {
   it('renders the label, the canvas with the configured size and a disabled clear button', async () => {
-    const {container, findByTestId, getByText} = renderForm(buildForm({width: {value: 260}, height: {value: 130}}))
+    const {container, findByTestId, getByText} = renderViewerForm(signatureView, buildForm({width: {value: 260}, height: {value: 130}}))
     const root = await findByTestId(testId)
     const canvas = getCanvas(container)
 
@@ -207,7 +211,7 @@ describe('Signature component', () => {
   })
 
   it('stores the drawn stroke as a PNG data URL in the form data and enables the clear button', async () => {
-    const {container, findByTestId, formData} = renderForm(buildForm())
+    const {container, findByTestId, formData} = renderViewerForm(signatureView, buildForm())
     const root = await findByTestId(testId)
     const canvas = getCanvas(container)
 
@@ -219,7 +223,7 @@ describe('Signature component', () => {
   })
 
   it('accumulates strokes and refreshes the stored value on every stroke', async () => {
-    const {container, findByTestId, formData} = renderForm(buildForm())
+    const {container, findByTestId, formData} = renderViewerForm(signatureView, buildForm())
     await findByTestId(testId)
     const canvas = getCanvas(container)
 
@@ -233,7 +237,7 @@ describe('Signature component', () => {
   })
 
   it('clears the form data and the canvas when the clear button is clicked', async () => {
-    const {container, findByTestId, formData} = renderForm(buildForm())
+    const {container, findByTestId, formData} = renderViewerForm(signatureView, buildForm())
     const root = await findByTestId(testId)
     const canvas = getCanvas(container)
 
@@ -248,7 +252,7 @@ describe('Signature component', () => {
   })
 
   it('ignores pointer input in the read-only mode and does not render the clear button', async () => {
-    const {container, findByTestId, formData} = renderForm(buildForm({readOnly: {value: true}}))
+    const {container, findByTestId, formData} = renderViewerForm(signatureView, buildForm({readOnly: {value: true}}))
     const root = await findByTestId(testId)
     const canvas = getCanvas(container)
 
@@ -262,7 +266,7 @@ describe('Signature component', () => {
 
   it('restores the signature from the initial form data', async () => {
     const initialValue = createSignatureDataUrl()
-    const {container, findByTestId, formData} = renderForm(buildForm(), {initialData: {[signatureKey]: initialValue}})
+    const {container, findByTestId, formData} = renderViewerForm(signatureView, buildForm(), {initialData: {[signatureKey]: initialValue}})
     const root = await findByTestId(testId)
     const canvas = getCanvas(container)
 
@@ -274,7 +278,7 @@ describe('Signature component', () => {
 
   it('clears the canvas when the form data is cleared externally', async () => {
     const initialValue = createSignatureDataUrl()
-    const {container, findByTestId, formData} = renderForm(buildForm(), {initialData: {[signatureKey]: initialValue}})
+    const {container, findByTestId, formData} = renderViewerForm(signatureView, buildForm(), {initialData: {[signatureKey]: initialValue}})
     await findByTestId(testId)
     const canvas = getCanvas(container)
 
@@ -288,7 +292,7 @@ describe('Signature component', () => {
 
   it('passes the required validation after the signature is drawn', async () => {
     const schema = {validations: [{key: 'required', args: {message: 'Signature is required'}}]}
-    const {container, findByTestId, formData} = renderForm(buildForm({}, schema))
+    const {container, findByTestId, formData} = renderViewerForm(signatureView, buildForm({}, schema))
     await findByTestId(testId)
     const canvas = getCanvas(container)
 

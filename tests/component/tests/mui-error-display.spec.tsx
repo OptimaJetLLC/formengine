@@ -3,7 +3,7 @@ import {BuilderView, type ComponentData, createView} from '@react-form-builder/c
 import {fireEvent, waitFor} from '@testing-library/react'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {renderBuilder} from '../util/renderBuilder'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 import {switchToViewerMode} from './designerUtils'
 
 const view = createView(models).withViewerWrapper(MuiViewerWrapper).withViewerWrapper(MuiLocalizationProvider)
@@ -90,7 +90,7 @@ describe('Material UI validation error display', () => {
 
   it.each(fallbackCases)('marks $componentType invalid after validating an empty form', async ({componentType, role, name}) => {
     const {form, message} = createForm({componentType, validationKey: 'truthy'})
-    const {formData, getByRole} = renderForm(form, {view})
+    const {formData, getByRole} = renderViewerForm(view, form)
 
     await asyncAct(async () => await formData.validate())
 
@@ -101,7 +101,7 @@ describe('Material UI validation error display', () => {
 
   it.each(validationCases)('shows an error for $componentType after validating an empty form', async validationCase => {
     const {form, message} = createForm(validationCase)
-    const {formData, getByText} = renderForm(form, {view})
+    const {formData, getByText} = renderViewerForm(view, form)
 
     const errors = await asyncAct(async () => await formData.validate())
 
@@ -111,7 +111,7 @@ describe('Material UI validation error display', () => {
 
   it('clears the date picker error after a valid date is set', async () => {
     const {form, message} = createForm({componentType: 'MuiDatePicker', validationKey: 'required'})
-    const {formData, queryByText} = renderForm(form, {view})
+    const {formData, queryByText} = renderViewerForm(view, form)
 
     await asyncAct(async () => await formData.validate())
     expect(queryByText(message)).toBeInTheDocument()
@@ -127,7 +127,7 @@ describe('Material UI validation error display', () => {
 
   it('clears the checkbox error after it is checked', async () => {
     const {form, message} = createForm({componentType: 'MuiCheckbox', validationKey: 'truthy'})
-    const {formData, queryByText, getByRole} = renderForm(form, {view})
+    const {formData, queryByText, getByRole} = renderViewerForm(view, form)
 
     await asyncAct(async () => await formData.validate())
     expect(queryByText(message)).toBeInTheDocument()

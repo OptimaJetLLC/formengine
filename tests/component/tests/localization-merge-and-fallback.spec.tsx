@@ -5,7 +5,7 @@ import {fireEvent, render, waitFor} from '@testing-library/react'
 import {frFR, trTR} from 'rsuite/locales'
 import {expect} from 'vitest'
 import {default as builtinFR} from '../../../packages/designer/public/locales/fr-FR.json'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 import {switchLanguageAndWaitForText} from './designerUtils'
 import localizationWithoutLanguageFrom from './forms/localization-without-language.json'
 
@@ -172,10 +172,7 @@ describe('designer i18n merge and fallback behavior', function () {
   })
 
   it('uses fallback localization even when language metadata is missing in JSON', async () => {
-    const {findByTestId} = renderForm(localizationWithoutLanguageFrom, {
-      language: 'fr-CA',
-      view: muiView,
-    })
+    const {findByTestId} = renderViewerForm(muiView, localizationWithoutLanguageFrom, {language: 'fr-CA'})
 
     const emailElement = await findByTestId('email')
     const targetLocale = localizationWithoutLanguageFrom.localization['fr-FR']

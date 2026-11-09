@@ -1,4 +1,5 @@
-import {builderViewWithCss} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsViewWrapper, rSuiteComponentsDescriptions, rsTextArea, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {BiDi, BuilderView} from '@react-form-builder/core'
 import {
   type CustomizableKey,
   CustomizableZone,
@@ -27,8 +28,14 @@ vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCod
 
 const getFormFn = () => JSON.stringify(form)
 
+const view = new BuilderView([rsTextArea.build()])
+  .withViewerWrapper(RsViewWrapper)
+  .withCssLoader(BiDi.LTR, ltrCssLoader)
+  .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withComponentLibraryDescription(rSuiteComponentsDescriptions)
+
 const App = (props: Partial<FormBuilderProps>) => {
-  return <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} {...props} />
+  return <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={view} {...props} />
 }
 
 const targetStyle = {

@@ -1,4 +1,4 @@
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import form from './forms/fe-1131-form.json'
 
 describe('FE-1131 Invalid prop `className` supplied to `React.Fragment`.', () => {

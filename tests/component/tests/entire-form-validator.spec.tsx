@@ -1,7 +1,7 @@
 import {FormValidator} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
 import {asyncAct} from '../../common/lib/asyncAct'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import form from './forms/entire-form-validator.json'
 
 const expectedValues = {

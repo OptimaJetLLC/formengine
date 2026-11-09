@@ -3,7 +3,7 @@ import type {ComponentProps} from 'react'
 import {describe, expect, it} from 'vitest'
 import {toggleTheme} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 import form from './forms/builder-theme.json'
 
 const testId = 'test-theme-component'
@@ -37,7 +37,7 @@ describe('useBuilderTheme hook', () => {
   })
 
   it('should return default value in FormViewer', async () => {
-    const {findByTestId} = renderForm(form, {view})
+    const {findByTestId} = renderViewerForm(view, form)
     const themeComponent = await findByTestId(testId)
 
     expect(themeComponent).toHaveTextContent('light')

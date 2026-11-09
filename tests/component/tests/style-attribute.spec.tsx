@@ -1,5 +1,5 @@
 import {expect} from 'vitest'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import form from './forms/style-attribute-form.json'
 
 describe('Style property test', () => {

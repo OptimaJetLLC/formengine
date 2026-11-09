@@ -2,7 +2,7 @@ import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {buildForm} from '@react-form-builder/core'
 import {fireEvent} from '@testing-library/react'
 import {renderBuilder} from '../util/renderBuilder'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 
 const message = 'The name of the form and options are not specified, set at least one value to display the form'
 

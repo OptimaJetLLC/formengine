@@ -1,9 +1,8 @@
-import {view} from '@react-form-builder/components-rsuite'
+import {models as rsuiteModels, view} from '@react-form-builder/components-rsuite'
 import {ActionEventArgs, createView, FormViewer, FormViewerProps} from '@react-form-builder/core'
-import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {expect} from 'vitest'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 import changeDataForm from './forms/action-event-args-change-data.form.json'
 import form from './forms/action-event-args-main-form.json'
 import parentTemplate from './forms/action-event-args-parent-template.json'
@@ -429,7 +428,7 @@ describe('ActionEventArgs data tests', function () {
   })
 
   it('The information about the row is passed to the action event args', async () => {
-    const models = [...allComponentsBuilder, testTable.build(), simpleCell.build()].map(c => c.model)
+    const models = [...rsuiteModels, testTable.build().model, simpleCell.build().model]
     const view = createView(models)
 
     const tableData = [
@@ -448,7 +447,7 @@ describe('ActionEventArgs data tests', function () {
       },
     }
 
-    const {findByTestId} = renderForm(rowInActionEventArgsForm, {view, initialData, actions})
+    const {findByTestId} = renderViewerForm(view, rowInActionEventArgsForm, {initialData, actions})
 
     for (let i = 0; i < tableData.length; i++) {
       const cell = await findByTestId(`cell-${i}-value`)

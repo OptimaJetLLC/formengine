@@ -1,5 +1,5 @@
 import {fireEvent} from '@testing-library/react'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import clearActionArgumentForm from './forms/common-actions/clear-action-argument-form.json'
 import clearActionForm from './forms/common-actions/clear-action-form.json'
 import resetActionArgumentForm from './forms/common-actions/reset-action-argument-form.json'

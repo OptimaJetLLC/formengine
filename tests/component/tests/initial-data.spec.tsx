@@ -1,7 +1,7 @@
 import {viewWithCss} from '@react-form-builder/components-rsuite'
 import {buildForm, FormViewer} from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import formManagerEmployeeFieldsForm from './forms/initial-data/form-manager-t-employee-fields-form.json'
 import formManagerHeaderForm from './forms/initial-data/form-manager-t-header-form.json'
 import formManagerManagerFieldsForm from './forms/initial-data/form-manager-t-manager-fields-form.json'

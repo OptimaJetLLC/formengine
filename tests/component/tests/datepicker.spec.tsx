@@ -1,5 +1,5 @@
 import {fireEvent} from '@testing-library/react'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import form from './forms/datepicker-form.json'
 import visualForm from './forms/datepicker-visual-form.json'
 

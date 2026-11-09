@@ -2,7 +2,8 @@ import {builderViewWithCss, view} from '@react-form-builder/components-rsuite'
 import {FormViewer, type FormViewerProps} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor} from '@testing-library/react'
-import {renderForm} from '../util/renderForm'
+import {onTestFinished, vi} from 'vitest'
+import {renderForm} from '../util/renderRsuiteForm'
 
 const emptyForm = {
   version: '1',
@@ -123,11 +124,7 @@ describe('initialState in builder viewer', () => {
       },
       actions: {
         checkState: {
-          body:
-            'debugger \n' +
-            'if (e.store.formData.state && e.store.formData.state.rootFlag) {\n' +
-            "  console.error('initialState present in nested form')\n" +
-            '}',
+          body: 'console.info("nested-state", JSON.stringify(e.store.formData.state))',
         },
       },
     }
@@ -181,15 +178,16 @@ describe('initialState in builder viewer', () => {
     }
 
     const initialState = {rootFlag: true}
+    const log = vi.spyOn(console, 'info').mockImplementation(() => {})
+    onTestFinished(() => log.mockRestore())
 
-    const {findByTestId} = renderForm(rootForm, {
+    const {findByTestId, formData} = renderForm(rootForm, {
       getForm: getFormByName,
       initialState,
     })
 
-    await new Promise(resolve => setTimeout(resolve, 2000))
-
-    const button = await findByTestId('test-button')
-    fireEvent.click(button)
+    expect(formData.state).toEqual(initialState)
+    fireEvent.click(await findByTestId('test-button'))
+    await waitFor(() => expect(log).toHaveBeenCalledWith('nested-state', '{}'))
   })
 })

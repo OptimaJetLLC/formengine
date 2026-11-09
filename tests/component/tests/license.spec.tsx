@@ -1,9 +1,9 @@
-import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
-import {BiDi, BuilderView, createView, FormViewer, LanguageFullCode} from '@react-form-builder/core'
+import {ltrCssLoader, RsLocalizationWrapper, rsCheckbox, rsInput, rsTooltip, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {signatureComponent} from '@react-form-builder/components-signature'
+import {BiDi, BuilderView, ComponentStore, createView, definePreset, FormViewer, LanguageFullCode} from '@react-form-builder/core'
 import {CustomizationMap, FormBuilder, verifyDomain} from '@react-form-builder/designer'
 import deDE from '@react-form-builder/designer/locales/de-DE.json'
 import enEN from '@react-form-builder/designer/locales/en-US.json'
-import {allComponentsBuilder, allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {
   license2030Enterprise,
   licenseBusiness,
@@ -42,7 +42,17 @@ const ready = async (app: RenderResult, component: TestComponent) => {
   return component === 'Designer' ? designerReady(app) : viewerReady(app)
 }
 
-const viewerView = createView(allComponentsViewer)
+const licenseComponents = [
+  rsInput.build(),
+  rsCheckbox.build(),
+  rsTooltip.build(),
+  signatureComponent.build(),
+  definePreset('Login and password', [new ComponentStore('login', 'RsInput'), new ComponentStore('password', 'RsInput')])
+    .category('Presets')
+    .build(),
+]
+
+const viewerView = createView(licenseComponents.map(({model}) => model))
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
@@ -54,7 +64,7 @@ const Viewer = ({language, formName}: {language?: string; formName?: string}) =>
 }
 Viewer.displayName = 'Viewer'
 
-const viewAllComponents = new BuilderView(allComponentsBuilder)
+const licenseBuilderView = new BuilderView(licenseComponents)
   .withTemplates(['agreement'])
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
@@ -79,7 +89,7 @@ export const simpleCustomization: CustomizationMap = {
 }
 
 type DesignerProps = {license: string; customization?: CustomizationMap; view?: BuilderView; formName?: string}
-const Designer = ({license, customization, view = viewAllComponents, formName}: DesignerProps) => {
+const Designer = ({license, customization, view = licenseBuilderView, formName}: DesignerProps) => {
   const formGet = useCallback((name?: string) => getForm(name ?? formName), [formName])
   return <FormBuilder view={view} getForm={formGet} licenseKey={license} customization={customization} />
 }

@@ -1,6 +1,6 @@
 import {fireEvent} from '@testing-library/dom'
 import {renderBuilder} from '../util/renderBuilder'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import {switchToViewerMode} from './designerUtils'
 import form from './forms/number-format-infinity-form.json'
 

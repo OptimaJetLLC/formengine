@@ -1,5 +1,5 @@
 import {buildForm, type ErrorWrapperProps} from '@react-form-builder/core'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 
 const form = buildForm().component('testComponent', 'NoSuchComponent').json()
 

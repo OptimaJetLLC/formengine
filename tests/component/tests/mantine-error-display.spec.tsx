@@ -1,7 +1,7 @@
 import {view} from '@react-form-builder/components-mantine'
 import {ComponentData} from '@react-form-builder/core'
 import {asyncAct} from '../../common/lib/asyncAct'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 import form from './forms/mantine-error-display-form.json'
 
 const findFieldByDataKey = (formData: ComponentData, dataKey: string) => formData.allComponentFields?.find(f => f.dataKey === dataKey)
@@ -12,7 +12,7 @@ const findFieldByDataKey = (formData: ComponentData, dataKey: string) => formDat
  */
 describe('Mantine error display', () => {
   it('should show validation errors for MtDatePickerInput (wrapper) and MtNumberInput (native) after validate', async () => {
-    const {formData, getByText} = renderForm(form, {view})
+    const {formData, getByText} = renderViewerForm(view, form)
 
     await asyncAct(async () => await formData.validate())
 
@@ -26,7 +26,7 @@ describe('Mantine error display', () => {
   })
 
   it('should clear errors when required fields are filled and form is validated again', async () => {
-    const {formData, queryByText} = renderForm(form, {view})
+    const {formData, queryByText} = renderViewerForm(view, form)
 
     await asyncAct(async () => await formData.validate())
     expect(formData.errors).toHaveProperty('dateField')

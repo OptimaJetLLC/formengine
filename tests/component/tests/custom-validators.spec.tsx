@@ -1,7 +1,7 @@
 import {RuleValidator, type Validators} from '@react-form-builder/core'
 import {fireEvent} from '@testing-library/react'
 import {asyncAct} from '../../common/lib/asyncAct'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import formWithRepeater from './forms/custom-validation-with-form-data/repeater.json'
 import formWithSimpleField from './forms/custom-validation-with-form-data/simple-field.json'
 

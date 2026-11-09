@@ -1,6 +1,5 @@
 import {BuilderView, buildForm, ComponentKind, define} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
-import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render} from '@testing-library/react'
 
 interface FeatureCombination {
@@ -78,7 +77,7 @@ const form = buildForm()
   })
   .json()
 
-const view = new BuilderView([...allComponentsBuilder, ...builtComponents.map(({component}) => component)])
+const view = new BuilderView(builtComponents.map(({component}) => component))
 
 describe('Inline styles editor visibility', () => {
   it('should show or hide Inline styles section according to model.kind and features', async () => {

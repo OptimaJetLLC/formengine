@@ -1,6 +1,6 @@
 import type {ComponentData} from '@react-form-builder/core'
 import {act, fireEvent} from '@testing-library/react'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 
 describe('RSuite navigation selection', () => {
   it.each(['RsMenu', 'RsTab'])('%s updates the active item and invokes onSelect', async type => {

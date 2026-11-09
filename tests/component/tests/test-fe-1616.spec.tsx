@@ -1,6 +1,6 @@
 import {fireEvent} from '@testing-library/dom'
 import {asyncAct} from '../../common/lib/asyncAct'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import form from './forms/fe-1616-form.json'
 
 describe('FE-1616 The internal validation type is not recognised in JSON test', () => {

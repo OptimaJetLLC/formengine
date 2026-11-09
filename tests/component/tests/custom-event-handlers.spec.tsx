@@ -1,8 +1,7 @@
 import {ActionEventArgs, createView, define, string} from '@react-form-builder/core'
-import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent} from '@testing-library/react'
 import {useCallback} from 'react'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 import form from './forms/custom-event-handlers-form.json'
 
 const createHtmlInputComponent = () => {
@@ -47,12 +46,7 @@ const inputWithCustomEventHandlers = define(InputWithCustomEventHandlers, 'Input
   })
   .build()
 
-const view = createView([
-  ...allComponentsViewer,
-  inputWithDefaultEventHandlers.model,
-  inputWithoutDefaultEventHandlers.model,
-  inputWithCustomEventHandlers.model,
-])
+const view = createView([inputWithDefaultEventHandlers.model, inputWithoutDefaultEventHandlers.model, inputWithCustomEventHandlers.model])
 
 describe('Custom event handlers test', () => {
   it('A component without event handlers should remain unchanged.', async () => {
@@ -61,7 +55,7 @@ describe('Custom event handlers test', () => {
       inputWithoutEventHandlers: '2',
       inputWithCustomEventHandlers: '3',
     }
-    const {findByTestId, formData} = renderForm(form, {view, initialData})
+    const {findByTestId, formData} = renderViewerForm(view, form, {initialData})
 
     const inputWithDefaultEventHandlers = await findByTestId('inputWithDefaultEventHandlers')
     expect(inputWithDefaultEventHandlers).toHaveValue('1')

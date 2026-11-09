@@ -1,7 +1,7 @@
 import {createView, define, event, FormViewerProps} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
 import {Fragment, forwardRef, useImperativeHandle} from 'react'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 
 describe('Component ref tests', () => {
   it('refValue must never be a RefObject, it is always the direct value (element, imperative handle or null)', async () => {
@@ -37,7 +37,7 @@ describe('Component ref tests', () => {
       },
     }
 
-    const {findByText} = renderForm(form, {view, actions})
+    const {findByText} = renderViewerForm(view, form, {actions})
     fireEvent.click(await findByText('RefShape'))
 
     await waitFor(() => {
@@ -93,7 +93,7 @@ describe('Component ref tests', () => {
       },
     }
 
-    const {findByText} = renderForm(form, {view, actions})
+    const {findByText} = renderViewerForm(view, form, {actions})
 
     fireEvent.click(await findByText('WithRef'))
 
@@ -158,7 +158,7 @@ describe('Component ref tests', () => {
       },
     }
 
-    const {findByText} = renderForm(form, {view, actions})
+    const {findByText} = renderViewerForm(view, form, {actions})
 
     fireEvent.click(await findByText('Imperative'))
 
@@ -219,7 +219,7 @@ describe('Component ref tests', () => {
       },
     }
 
-    const {findByText} = renderForm(form, {view, actions})
+    const {findByText} = renderViewerForm(view, form, {actions})
 
     fireEvent.click(await findByText('Fragment'))
 
@@ -278,7 +278,7 @@ describe('Component ref tests', () => {
       },
     }
 
-    const {findByText} = renderForm(form, {view, actions, componentWrapper: Fragment})
+    const {findByText} = renderViewerForm(view, form, {actions, componentWrapper: Fragment})
 
     fireEvent.click(await findByText('Simple'))
 
@@ -340,7 +340,7 @@ describe('Component ref tests', () => {
 
     const componentWrapper = ({children}: {children: any}) => <>{children}</>
 
-    const {findByText} = renderForm(form, {view, actions, componentWrapper})
+    const {findByText} = renderViewerForm(view, form, {actions, componentWrapper})
 
     fireEvent.click(await findByText('SimpleWithCustomWrapper'))
 

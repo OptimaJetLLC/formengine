@@ -17,7 +17,7 @@ import {fireEvent, render} from '@testing-library/react'
 import {useEffect, useState} from 'react'
 import {expect} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 
 function randomString(prefix?: string) {
   return `${prefix ?? ''}${new Date().toISOString()}`
@@ -380,7 +380,7 @@ describe(`SimpleField test`, function () {
 
     const view = createView([testComponent.model])
 
-    const {findByTestId, formData} = renderForm(form, {view, initialData: {testComponent: '123'}})
+    const {findByTestId, formData} = renderViewerForm(view, form, {initialData: {testComponent: '123'}})
 
     expect(await findByTestId('test-component')).toHaveTextContent('123')
 

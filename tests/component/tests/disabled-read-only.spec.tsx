@@ -3,7 +3,7 @@ import {viewWithCss} from '@react-form-builder/components-rsuite'
 import {FormViewer, FormViewerProps, PersistedForm} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 import {expect} from 'vitest'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 import form from './forms/disabled-read-only-form.json'
 import template from './forms/disabled-read-only-template-form.json'
 import '../config/toAllHaveExactAttributes'
@@ -197,7 +197,7 @@ describe('Tests for read-only and disabled properties', () => {
   })
 
   it('Disabled and read-only should work across the entire component hierarchy', async () => {
-    const {findByTestId} = renderForm(disabledScreen, {view: muiView})
+    const {findByTestId} = renderViewerForm(muiView, disabledScreen)
 
     const button = await findByTestId('muiButton1')
     expect(button).toBeInTheDocument()

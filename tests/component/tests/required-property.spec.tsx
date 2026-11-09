@@ -13,7 +13,7 @@ import {fireEvent, RenderResult} from '@testing-library/react'
 import type {HTMLAttributes} from 'react'
 import {getPropertyInput} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 import form from './forms/required-property.json'
 
 interface MyCustomRequiredComponentProps extends HTMLAttributes<HTMLDivElement> {
@@ -178,7 +178,7 @@ describe('The required property tests', () => {
     }
 
     const view = createView([myCustomRequiredComponent.model])
-    const {findByTestId} = renderForm(requiredForm, {view})
+    const {findByTestId} = renderViewerForm(view, requiredForm)
 
     expect(await findByTestId('required-one')).toHaveTextContent('requiredOne: true')
     expect(await findByTestId('required-two')).toHaveTextContent('requiredTwo: true')
@@ -199,7 +199,7 @@ describe('The required property tests', () => {
     }
 
     const view = createView([myCustomRequiredComponent.model])
-    const {findByTestId} = renderForm(requiredForm, {view})
+    const {findByTestId} = renderViewerForm(view, requiredForm)
 
     expect(await findByTestId('required-one')).toHaveTextContent('requiredOne: undefined')
     expect(await findByTestId('required-two')).toHaveTextContent('requiredTwo: undefined')

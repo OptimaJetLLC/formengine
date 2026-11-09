@@ -7,10 +7,11 @@ const checkIsElementFound = (name: string, element: Element | null) => {
 
 export const selectDropDownOption = async <T extends HTMLElement>(rendered: RenderResult, dropdown: T, byValue: string): Promise<void> => {
   fireEvent.click(dropdown)
-  const option = await rendered.findByRole('option', {name: byValue})
+  const popup = await rendered.findByRole('listbox')
+  const option = await within(popup).findByRole('option', {name: byValue})
   fireEvent.click(option)
   fireEvent.mouseDown(document)
-  await waitFor(() => expect(rendered.queryAllByRole('option', {name: byValue})).toHaveLength(0))
+  await waitFor(() => expect(popup).not.toBeVisible())
 }
 
 export const expectDropDownToHaveTextContent = async <T extends HTMLElement>(dropdown: T, value: string) => {

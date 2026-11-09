@@ -1,5 +1,6 @@
 import {type ComponentData} from '@react-form-builder/core'
 import {act, fireEvent, within} from '@testing-library/react'
+import {onTestFinished, vi} from 'vitest'
 import {selectDropDownOption} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'
 
@@ -53,9 +54,9 @@ const switchTo = async (app: BuilderApp, key: 'first' | 'second' | 'third') => {
 }
 
 /** BuilderUndoer debounces form snapshots by 1s before they enter the undo stack. */
-const waitForUndoDebounce = async () => {
+const flushUndoDebounce = async () => {
   await act(async () => {
-    await new Promise(resolve => setTimeout(resolve, 1100))
+    await vi.advanceTimersByTimeAsync(1000)
   })
 }
 
@@ -213,8 +214,17 @@ describe('HTML attribute drafts', () => {
   it('undo during a draft restores the previously applied form', async () => {
     const app = await renderBuilder(form)
     const editor = await openFirstEditor(app)
-    // Let the initial form land on the undo stack so the next undo targets Apply, not load.
-    await waitForUndoDebounce()
+
+    // Load debounce was scheduled with real timers during mount; wait it out before faking.
+    await act(async () => {
+      await new Promise(resolve => setTimeout(resolve, 1000))
+    })
+
+    // Testing Library drains promises with setTimeout(0), so keep those callbacks advancing.
+    vi.useFakeTimers({toFake: ['setTimeout', 'clearTimeout'], shouldAdvanceTime: true})
+    onTestFinished(() => {
+      vi.useRealTimers()
+    })
 
     await act(async () => {
       fireEvent.change(within(editor).getByDisplayValue('Saved title'), {target: {value: 'Applied title'}})
@@ -223,7 +233,7 @@ describe('HTML attribute drafts', () => {
     expect(firstAttributes(app)).toEqual([{name: 'title', value: 'Applied title'}])
     expect(firstCanvasInput(app)).toHaveAttribute('title', 'Applied title')
 
-    await waitForUndoDebounce()
+    await flushUndoDebounce()
     expect(getUndoer(app).hasUndo).toBe(true)
 
     await act(async () => {

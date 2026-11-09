@@ -1,7 +1,7 @@
 import {SchemaType, ValidationRuleSettings} from '@react-form-builder/core'
 import {expect} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
-import {renderForm} from '../util/renderForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 import {generateTestForm, zodValidationView} from '../util/zodValidationHarness'
 
 type ValidatorTestParameters = {
@@ -1028,8 +1028,7 @@ describe('Embedded Zod validators test', () => {
     "Validator '%s\:\%s' (%s) should show correct validation message",
     async (_, _1, _2, {validation, initialData, componentType, expected, skipInputValueCheck, skipDataCheck}) => {
       const testForm = generateTestForm(validation, componentType)
-      const props = {initialData, view: zodValidationView}
-      const {formData, findByTestId} = renderForm(testForm, props)
+      const {formData, findByTestId} = renderViewerForm(zodValidationView, testForm, {initialData})
 
       const zodInput = await findByTestId('zodInput')
       if (!skipInputValueCheck) {
@@ -1055,9 +1054,8 @@ describe('Zod validation edge cases', () => {
         args: {limit: 5, message: 'Need at least five characters'},
       },
     ])
-    const {formData} = renderForm(testForm, {
+    const {formData} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: 'abc'},
-      view: zodValidationView,
     })
 
     const validationResult = await asyncAct(async () => await formData.validate())
@@ -1071,9 +1069,8 @@ describe('Zod validation edge cases', () => {
         args: {message: 'Please enter a valid email address'},
       },
     ])
-    const {formData} = renderForm(testForm, {
+    const {formData} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: 'not-an-email'},
-      view: zodValidationView,
     })
 
     const validationResult = await asyncAct(async () => await formData.validate())
@@ -1088,16 +1085,14 @@ describe('Zod validation edge cases', () => {
       },
     ])
 
-    const {formData: failingForm} = renderForm(testForm, {
+    const {formData: failingForm} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: 'Cat'},
-      view: zodValidationView,
     })
     const failingResult = await asyncAct(async () => await failingForm.validate())
     expect(failingResult).toStrictEqual({zodInput: 'Invalid string: must include \"at\"'})
 
-    const {formData: passingForm} = renderForm(testForm, {
+    const {formData: passingForm} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: 'xxat'},
-      view: zodValidationView,
     })
     const passingResult = await asyncAct(async () => await passingForm.validate())
     expect(passingResult).toStrictEqual({})
@@ -1111,16 +1106,14 @@ describe('Zod validation edge cases', () => {
       },
     ])
 
-    const {formData: invalidForm} = renderForm(testForm, {
+    const {formData: invalidForm} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: '2023-01-10T00:00:00.1234Z'},
-      view: zodValidationView,
     })
     const invalidResult = await asyncAct(async () => await invalidForm.validate())
     expect(invalidResult).toStrictEqual({zodInput: 'Invalid ISO datetime'})
 
-    const {formData: validForm} = renderForm(testForm, {
+    const {formData: validForm} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: '2023-01-10T00:00:00.123Z'},
-      view: zodValidationView,
     })
     const validResult = await asyncAct(async () => await validForm.validate())
     expect(validResult).toStrictEqual({})
@@ -1138,9 +1131,8 @@ describe('Zod validation edge cases', () => {
       'RsDatePicker'
     )
 
-    const {formData} = renderForm(testForm, {
+    const {formData} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: new Date(Date.parse('2063-08-29T14:53:27.294Z'))},
-      view: zodValidationView,
     })
 
     const validationResult = await asyncAct(async () => await formData.validate())
@@ -1149,15 +1141,13 @@ describe('Zod validation edge cases', () => {
 
   it('should treat object nonEmpty as truthiness rather than key count', async () => {
     const testForm = generateTestForm([{key: 'nonEmpty'}], 'FakeObjectComponent')
-    const {formData: emptyObjectForm} = renderForm(testForm, {
+    const {formData: emptyObjectForm} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: {}},
-      view: zodValidationView,
     })
     expect(await asyncAct(async () => await emptyObjectForm.validate())).toStrictEqual({})
 
-    const {formData: stringForm} = renderForm(testForm, {
+    const {formData: stringForm} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: 'value'},
-      view: zodValidationView,
     })
     expect(await asyncAct(async () => await stringForm.validate())).toStrictEqual({})
   })
@@ -1165,7 +1155,7 @@ describe('Zod validation edge cases', () => {
   it('should report required before min when both rules fail on empty input', async () => {
     const testForm = generateTestForm([{key: 'required'}, {key: 'min', args: {limit: 3}}])
 
-    const {formData} = renderForm(testForm, {view: zodValidationView})
+    const {formData} = renderViewerForm(zodValidationView, testForm)
     const validationResult = await asyncAct(async () => await formData.validate())
     expect(validationResult).toStrictEqual({zodInput: 'Required'})
   })
@@ -1173,9 +1163,8 @@ describe('Zod validation edge cases', () => {
   it('should report min after required passes', async () => {
     const testForm = generateTestForm([{key: 'required'}, {key: 'min', args: {limit: 3}}])
 
-    const {formData} = renderForm(testForm, {
+    const {formData} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: 'ab'},
-      view: zodValidationView,
     })
     const validationResult = await asyncAct(async () => await formData.validate())
     expect(validationResult).toStrictEqual({zodInput: 'Too small: expected string to have >=3 characters'})
@@ -1183,9 +1172,8 @@ describe('Zod validation edge cases', () => {
 
   it('should treat null as required for string fields', async () => {
     const testForm = generateTestForm([{key: 'required'}], 'FakeInputComponent')
-    const {formData} = renderForm(testForm, {
+    const {formData} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: null},
-      view: zodValidationView,
     })
 
     const validationResult = await asyncAct(async () => await formData.validate())
@@ -1194,9 +1182,8 @@ describe('Zod validation edge cases', () => {
 
   it('should treat boolean required as must be true', async () => {
     const testForm = generateTestForm([{key: 'required'}], 'FakeBooleanComponent')
-    const {formData} = renderForm(testForm, {
+    const {formData} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: false},
-      view: zodValidationView,
     })
 
     const validationResult = await asyncAct(async () => await formData.validate())
@@ -1205,9 +1192,8 @@ describe('Zod validation edge cases', () => {
 
   it('should reject empty arrays for array required via minLength check', async () => {
     const testForm = generateTestForm([{key: 'required'}], 'FakeArrayComponent')
-    const {formData} = renderForm(testForm, {
+    const {formData} = renderViewerForm(zodValidationView, testForm, {
       initialData: {zodInput: []},
-      view: zodValidationView,
     })
 
     const validationResult = await asyncAct(async () => await formData.validate())

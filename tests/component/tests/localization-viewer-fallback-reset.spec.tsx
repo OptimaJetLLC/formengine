@@ -1,10 +1,9 @@
-import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, models, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, createView, FormViewer} from '@react-form-builder/core'
-import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {render} from '@testing-library/react'
 import {expect} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 import {switchFormLanguage, switchToViewerMode} from './designerUtils'
 import defaultLocalizationForm from './forms/default-localization-form.json'
 import {createButtonLocalizationForm} from './localizationTestUtils'
@@ -56,7 +55,7 @@ const getFormWithFormSwitchLocalization = (name?: string) => {
   return name === 'second-form' ? JSON.stringify(secondForm) : JSON.stringify(firstForm)
 }
 
-const viewerView = createView(allComponentsViewer)
+const viewerView = createView(models)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)

@@ -3,7 +3,7 @@ import {ViewerLite} from '@react-form-builder/tests-common/lib/viewer/ViewerLite
 import {render} from '@testing-library/react'
 import {expect} from 'vitest'
 import {isBrowserMode} from '../config/isBrowserMode'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
 
 const nestedForm = buildForm().component('header', 'RsHeader').prop('content', 'Nested header').json()
 

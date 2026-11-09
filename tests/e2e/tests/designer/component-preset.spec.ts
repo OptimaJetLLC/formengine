@@ -18,6 +18,7 @@ const shiftClick = async (locator: ReturnType<Page['getByTestId']>) => {
 }
 
 const assertPresetInsertedOntoClearedForm = async (page: Page) => {
+  await expect(page.getByTestId('title-input')).toHaveCount(1)
   await expect(page.getByTestId('title-input')).toBeVisible()
   await expect(page.locator('span').filter({hasText: 'Ant Button'})).toBeVisible()
   await expect

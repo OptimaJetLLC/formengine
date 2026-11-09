@@ -1,5 +1,6 @@
 import {BuilderView, define, type RuleValidator, string} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
+import {vi} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {getPropertyInput} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'
@@ -7,17 +8,6 @@ import {renderBuilder} from '../util/renderBuilder'
 const TestComponent = define(() => <div data-testid="test-component" />, 'TestComponent')
   .props({
     myText: string.valued.uncontrolledValue('').required,
-  })
-  .build()
-
-const slowValidator: RuleValidator = async (value: string) => {
-  await new Promise<void>(resolve => setTimeout(resolve, 300))
-  return value !== 'bad'
-}
-
-const DelayValidated = define(() => <div data-testid="delayed-validation" />, 'DelayValidated')
-  .props({
-    flagged: string.valued.uncontrolledValue('').validated(slowValidator, {message: 'must not be bad'}),
   })
   .build()
 
@@ -118,8 +108,23 @@ describe('Property editor Erroneous (designer)', () => {
   })
 
   it('completes when switching away while async property validation is pending', async () => {
+    let finishValidation: ((result: boolean) => void) | undefined = undefined
+    const validation = new Promise<boolean>(resolve => {
+      finishValidation = resolve
+    })
+    const validationStarted = vi.fn()
+    const slowValidator: RuleValidator = (value: string) => {
+      if (value !== 'bad') return true
+      validationStarted()
+      return validation
+    }
+    const DelayValidated = define(() => <div data-testid="delayed-validation" />, 'DelayValidated')
+      .props({
+        flagged: string.valued.uncontrolledValue('').validated(slowValidator, {message: 'must not be bad'}),
+      })
+      .build()
     const view = new BuilderView([DelayValidated, myInput])
-    const {findByTestId} = await renderBuilder(formSlowAndPlain, {view})
+    const {findByTestId, queryByTestId} = await renderBuilder(formSlowAndPlain, {view})
 
     fireEvent.click(await findByTestId('delayed-validation'))
     fireEvent.click(await findByTestId('Main_Tab'))
@@ -128,13 +133,15 @@ describe('Property editor Erroneous (designer)', () => {
     const flaggedInput = flaggedWrapper.querySelector('textarea')
     expect(flaggedInput).not.toBeNull()
     fireEvent.change(flaggedInput!, {target: {value: 'bad'}})
+    await waitFor(() => expect(validationStarted).toHaveBeenCalled())
 
     fireEvent.click(await findByTestId('plain-test-input'))
 
     await asyncAct(async () => {
-      await new Promise<void>(resolve => setTimeout(resolve, 500))
+      finishValidation?.(false)
     })
 
     expect(await findByTestId('plain-test-input')).toBeInTheDocument()
+    expect(queryByTestId('flagged-labeled-wrapper')).not.toBeInTheDocument()
   })
 })

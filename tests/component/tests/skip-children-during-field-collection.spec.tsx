@@ -1,7 +1,8 @@
+import {models} from '@react-form-builder/components-rsuite'
 import {buildForm, createView, define} from '@react-form-builder/core'
-import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {ReactNode} from 'react'
-import {renderForm} from '../util/renderForm'
+import {renderForm} from '../util/renderRsuiteForm'
+import {renderViewerForm} from '../util/renderViewerForm'
 
 const TestContainer = ({children}: {children: ReactNode}) => {
   return <div>{children}</div>
@@ -17,9 +18,9 @@ describe('FE-1576 Add a universal way to exclude child fields from the form test
       .json()
 
     const form = JSON.parse(testForm)
-    const view = createView([...allComponentsViewer, testContainer.model])
+    const view = createView([...models, testContainer.model])
 
-    const {formData} = renderForm(form, {view})
+    const {formData} = renderViewerForm(view, form)
     expect(formData.data).toStrictEqual({})
   })
 
