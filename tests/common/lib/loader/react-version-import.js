@@ -5,16 +5,9 @@ import {createLogger} from './util.cjs'
 const log = createLogger('import-loader')
 
 /**
- * Default load implementation – passes through to Node's default loader.
- */
-export function load(url, context, defaultLoad) {
-  return defaultLoad(url, context)
-}
-
-/**
  * Creates resolve hook that redirects react-family packages to a suite-local node_modules.
  * @param suiteDir absolute path to the react test host package (e.g. tests/react-18)
- * @returns resolve hook for Node register()
+ * @returns resolve hook for Node registerHooks()
  */
 export function createResolve(suiteDir) {
   const localNodeModules = pathResolve(suiteDir, 'node_modules')
@@ -24,26 +17,31 @@ export function createResolve(suiteDir) {
   const localTestingLibrary = join(localNodeModules, '@testing-library')
 
   return function resolve(url, context, nextResolve) {
+    // CommonJS resolution is handled by the suite's require.cjs preload.
+    if (context.conditions.includes('require')) {
+      return nextResolve(url, context)
+    }
+
     const lowerUrl = url.toLowerCase()
 
     if ((lowerUrl === 'react' || lowerUrl.startsWith('react/')) && !lowerUrl.startsWith('react-dom/')) {
       const redirected = tryRedirect('react', url, localReact)
       if (redirected) {
-        return nextResolve(redirected)
+        return nextResolve(redirected, context)
       }
     }
 
     if (lowerUrl === 'react-dom' || lowerUrl.startsWith('react-dom/')) {
       const redirected = tryRedirect('react-dom', url, localReactDom)
       if (redirected) {
-        return nextResolve(redirected)
+        return nextResolve(redirected, context)
       }
     }
 
     if (lowerUrl === 'scheduler' || lowerUrl.startsWith('scheduler/')) {
       const redirected = tryRedirect('scheduler', url, localScheduler)
       if (redirected) {
-        return nextResolve(redirected)
+        return nextResolve(redirected, context)
       }
     }
 
@@ -66,7 +64,7 @@ export function createResolve(suiteDir) {
         if (found) {
           const fileUrl = new URL(`file://${found}`).toString()
           log(`@testing-library: ${url} => ${fileUrl}`)
-          return nextResolve(fileUrl)
+          return nextResolve(fileUrl, context)
         }
       }
     }
@@ -76,7 +74,7 @@ export function createResolve(suiteDir) {
       if (existsSync(jsxRuntimePath)) {
         const fileUrl = new URL(`file://${jsxRuntimePath}`).toString()
         log(`jsx-runtime: ${url} => ${fileUrl}`)
-        return nextResolve(fileUrl)
+        return nextResolve(fileUrl, context)
       }
 
       const pkgPath = join(localReact, 'package.json')
@@ -89,7 +87,7 @@ export function createResolve(suiteDir) {
           if (existsSync(mainPath)) {
             const fileUrl = new URL(`file://${mainPath}`).toString()
             log(`jsx-runtime (fallback to main): ${url} => ${fileUrl}`)
-            return nextResolve(fileUrl)
+            return nextResolve(fileUrl, context)
           }
         }
       } catch {
@@ -117,7 +115,7 @@ export function createResolve(suiteDir) {
           if (found) {
             const fileUrl = new URL(`file://${found}`).toString()
             log(`generic redirect: ${url} => ${fileUrl}`)
-            return nextResolve(fileUrl)
+            return nextResolve(fileUrl, context)
           }
         }
       } catch {
@@ -125,7 +123,7 @@ export function createResolve(suiteDir) {
       }
     }
 
-    return nextResolve(url)
+    return nextResolve(url, context)
   }
 }
 
