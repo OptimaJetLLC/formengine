@@ -1,6 +1,6 @@
 import type {ComponentData} from '../../../../utils/contexts/ComponentDataContext'
 import type {Annotation} from '../../types/annotations/Annotation'
-import type {ContainerAnnotation} from '../../types/annotations/ContainerAnnotation'
+import type {ChildWrapperOptions, ContainerAnnotation} from '../../types/annotations/ContainerAnnotation'
 import type {EditorType} from '../../types/annotations/EditorType'
 import {AnnotationBuilder} from './AnnotationBuilder'
 import type {NodeEditorType} from './NodeEditorType'
@@ -14,6 +14,11 @@ export class NodeAnnotationBuilder<T> extends AnnotationBuilder<T> {
    * The function that checks whether a child component can be inserted into a parent component.
    */
   insertPredicate?: (self: ComponentData, child: ComponentData) => boolean
+
+  /**
+   * The component that automatically wraps direct children of another component type on insert or move.
+   */
+  childWrapper?: ChildWrapperOptions
 
   /**
    * The default editor.
@@ -44,6 +49,7 @@ export class NodeAnnotationBuilder<T> extends AnnotationBuilder<T> {
   build(key: string): Annotation {
     const result = super.build(key) as ContainerAnnotation
     result.insertPredicate = this.insertPredicate
+    result.childWrapper = this.childWrapper
     result.defaultEditor = this.defaultEditor
     return result
   }
@@ -56,6 +62,17 @@ export class NodeAnnotationBuilder<T> extends AnnotationBuilder<T> {
   withInsertRestriction(predicate?: (self: ComponentData, child: ComponentData) => boolean) {
     const clone = this.clone()
     clone.insertPredicate = predicate
+    return clone
+  }
+
+  /**
+   * Auto-wraps inserted or moved children that are not already of the configured component type.
+   * @param options the wrapper component and the slot that receives the original child.
+   * @returns the modified instance of the builder.
+   */
+  withChildWrapper(options: ChildWrapperOptions): this {
+    const clone = this.clone()
+    clone.childWrapper = options
     return clone
   }
 

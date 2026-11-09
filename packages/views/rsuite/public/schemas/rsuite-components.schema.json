@@ -2576,6 +2576,123 @@
         }
       ]
     },
+    "RsAccordionComponentStore": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AbstractComponentStore"
+        },
+        {
+          "description": "Accordion group of collapsible panels. Only one panel is expanded at a time when accordion is enabled.",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "RsAccordion",
+              "description": "The component type"
+            },
+            "props": {
+              "type": "object",
+              "description": "The RsAccordion component properties.",
+              "properties": {
+                "accordion": {
+                  "type": "object",
+                  "$ref": "#/definitions/booleanPropertyCalculable",
+                  "description": "Whether only one panel can be expanded at a time"
+                },
+                "activeKey": {
+                  "type": "object",
+                  "$ref": "#/definitions/stringPropertyCalculableLocalizable",
+                  "description": "The event key of the expanded panel"
+                },
+                "defaultActiveKey": {
+                  "type": "object",
+                  "$ref": "#/definitions/stringPropertyCalculableLocalizable",
+                  "description": "The event key of the panel expanded by default"
+                },
+                "bordered": {
+                  "type": "object",
+                  "$ref": "#/definitions/booleanPropertyCalculable",
+                  "description": "Show a border around the accordion group"
+                },
+                "children": {
+                  "type": "object",
+                  "$ref": "#/definitions/undefinedPropertyCalculable",
+                  "description": "Accordion panel children"
+                },
+                "additionalProperties": false
+              }
+            },
+            "children": {
+              "$ref": "#/definitions/childrenProperty",
+              "description": "The array of child components."
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      ]
+    },
+    "RsAccordionPanelComponentStore": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AbstractComponentStore"
+        },
+        {
+          "description": "A collapsible panel inside an Accordion",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "RsAccordionPanel",
+              "description": "The component type"
+            },
+            "props": {
+              "type": "object",
+              "description": "The RsAccordionPanel component properties.",
+              "properties": {
+                "header": {
+                  "type": "object",
+                  "$ref": "#/definitions/stringPropertyCalculableLocalizable",
+                  "description": "The panel header"
+                },
+                "eventKey": {
+                  "type": "object",
+                  "$ref": "#/definitions/stringPropertyCalculableLocalizable",
+                  "description": "The event key corresponding to the panel"
+                },
+                "bodyFill": {
+                  "type": "object",
+                  "$ref": "#/definitions/booleanPropertyCalculable",
+                  "description": "Content area filled with containers"
+                },
+                "bordered": {
+                  "type": "object",
+                  "$ref": "#/definitions/booleanPropertyCalculable",
+                  "description": "Show border"
+                },
+                "shaded": {
+                  "type": "object",
+                  "$ref": "#/definitions/booleanPropertyCalculable",
+                  "description": "Whether there is a shadow"
+                },
+                "children": {
+                  "type": "object",
+                  "$ref": "#/definitions/undefinedPropertyCalculable",
+                  "description": "Primary content"
+                },
+                "additionalProperties": false
+              }
+            },
+            "children": {
+              "$ref": "#/definitions/childrenProperty",
+              "description": "The array of child components."
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      ]
+    },
     "RsBreadcrumbComponentStore": {
       "allOf": [
         {
@@ -3952,6 +4069,12 @@
           },
           {
             "$ref": "#/definitions/RsModalLayoutComponentStore"
+          },
+          {
+            "$ref": "#/definitions/RsAccordionComponentStore"
+          },
+          {
+            "$ref": "#/definitions/RsAccordionPanelComponentStore"
           },
           {
             "$ref": "#/definitions/RsBreadcrumbComponentStore"

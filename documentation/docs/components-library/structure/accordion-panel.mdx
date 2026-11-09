@@ -1,0 +1,67 @@
+---
+sidebar_position: 6
+title: Accordion panel
+description: Add collapsible sections to a FormEngine RSuite Accordion and configure each panel's heading, appearance, and expanded state.
+slug: /components-library/structure-components/accordion-panel
+tags:
+  - components
+  - RSuite
+  - accordion
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+# Accordion panel
+
+The Accordion panel is a collapsible content section inside an [Accordion](/components-library/structure-components/accordion). Add form
+components to its content area and use the header to describe the section.
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsAccordionPanel.tsx"
+/>
+
+## Panel behavior
+
+The Form Builder keeps every panel expanded so its nested components remain editable. In the Form Viewer, the parent Accordion controls
+which panels are expanded.
+
+The Form Builder assigns contiguous event keys when you add, move, reorder, or remove panels. The keys preserve the selected panel as the
+order changes.
+
+## Main properties
+
+The following properties are available within the _Main_ tab:
+
+| Name      | Type      | Description                                                        |
+|-----------|-----------|--------------------------------------------------------------------|
+| Header    | `string`  | Sets the text displayed in the panel header                        |
+| Event key | `string`  | Identifies the panel to its parent Accordion                       |
+| Body fill | `boolean` | Makes the content area fill the available panel body               |
+| Bordered  | `boolean` | Displays a border around the panel                                 |
+| Shaded    | `boolean` | Displays a shadow around the panel                                 |
+| Content   | `node`    | Contains the form components displayed inside the panel            |
+
+See the [RsAccordionPanelProps API reference](/api-reference/@react-form-builder/components-rsuite/interfaces/RsAccordionPanelProps) for
+the full React component API.
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
+
+## Summary
+
+Use one Accordion panel for each collapsible section. Let the Form Builder manage event keys when you change the panel order.
+
+---
+
+For more information:
+
+- [Accordion](/components-library/structure-components/accordion)
+- [RSuite Accordion documentation](https://v5.rsuitejs.com/components/accordion/)
+- [RsAccordionPanel API reference](/api-reference/@react-form-builder/components-rsuite/functions/RsAccordionPanel)

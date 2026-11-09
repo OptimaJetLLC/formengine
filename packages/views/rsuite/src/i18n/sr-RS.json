@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "description": "Harmonika grupa sklopivih ploča. Samo jedan panel se proširuje u vreme kada je harmonika omogućena.",
+      "name": "Accordion",
+      "props": {
+        "accordion": {
+          "description": "Da li se samo jedan panel može proširiti u isto vreme",
+          "name": "Accordion"
+        },
+        "activeKey": {
+          "description": "Event ključ proširenog panela",
+          "name": "Aktivni ključ"
+        },
+        "bordered": {
+          "description": "Prikaži ivicu oko accordion grupe",
+          "name": "Sa ivicom"
+        },
+        "children": {
+          "description": "Deca sa harmonikama",
+          "name": "Paneli"
+        },
+        "defaultActiveKey": {
+          "description": "Event ključ panela koji je proširen podrazumevano",
+          "name": "Podrazumevani aktivni ključ"
+        },
+        "onSelect": {
+          "description": "Poziva se kada se panel proširi ili sklopi",
+          "name": "onSelect"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "description": "Sklopivi panel unutar harmonike",
+      "name": "Accordion panel",
+      "props": {
+        "bodyFill": {
+          "description": "Oblast sadržaja popunjena kontejnerima",
+          "name": "Popuna tela"
+        },
+        "bordered": {
+          "description": "Prikaži ivicu",
+          "name": "Sa ivicom"
+        },
+        "children": {
+          "description": "Primarni sadržaj",
+          "name": "Sadržaj"
+        },
+        "eventKey": {
+          "description": "Event ključ koji odgovara panelu",
+          "name": "Event ključ"
+        },
+        "header": {
+          "description": "Zaglavlje panela",
+          "name": "Zaglavlje"
+        },
+        "shaded": {
+          "description": "Da li postoji senka",
+          "name": "Sa senkom"
+        }
+      }
+    },
     "RsAutoComplete": {
       "description": "Obezbedite funkciju automatskog dovršavanja kutije za unos",
       "name": "Automatsko dovršavanje",

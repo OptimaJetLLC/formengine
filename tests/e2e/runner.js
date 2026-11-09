@@ -3,12 +3,14 @@
 import {existsSync, rmSync} from 'node:fs'
 import {createRequire} from 'node:module'
 import {dirname, join, resolve} from 'node:path'
-import {cwd} from 'node:process'
+import {cwd, execPath} from 'node:process'
 import {fileURLToPath} from 'node:url'
 import spawn from 'cross-spawn'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+const requireFromRunner = createRequire(import.meta.url)
+const playwrightCli = requireFromRunner.resolve('@playwright/test/cli')
 
 const config = {
   templates: [
@@ -71,7 +73,7 @@ for (const {name: tpl, expectedReactMajor} of config.templates) {
   for (const {name, port, command} of config.projects) {
     const path = resolve(join(__dirname, '..', tpl))
     const reactVersion = resolveReactVersion(path, expectedReactMajor)
-    const args = isCI ? ['playwright', 'test'] : ['--verbose', 'playwright', 'test']
+    const args = ['test']
 
     if (debug) {
       args.push('--ui')
@@ -79,7 +81,7 @@ for (const {name: tpl, expectedReactMajor} of config.templates) {
 
     console.info(isCI ? `Running e2e: ${tpl} / ${name}` : {path, name, command, reactVersion})
 
-    const result = spawn.sync('npx', args, {
+    const result = spawn.sync(execPath, [playwrightCli, ...args], {
       cwd: __dirname,
       env: {
         ...ENV,
@@ -102,18 +104,22 @@ for (const {name: tpl, expectedReactMajor} of config.templates) {
     // https://github.com/allure-framework/allure2/issues/2336
     // https://timdeschryver.dev/blog/merging-your-playwright-sharded-reports-into-a-single-html-report#updating-the-ci-pipeline-github-actions
     const reportPath = join(cwd(), 'reports', 'blob')
-    const mergeResult = spawn.sync('npx', `playwright merge-reports -c playwright.config.ts --reporter html ${reportPath}`.split(' '), {
-      cwd: __dirname,
-      env: {
-        ...ENV,
-        TEST_PROJECT: path,
-        TEST_TESTS_PATH: name,
-        TEST_PORT: port,
-        TEST_START_CMD: command,
-        CI: true,
-      },
-      stdio: 'inherit',
-    })
+    const mergeResult = spawn.sync(
+      execPath,
+      [playwrightCli, 'merge-reports', '-c', 'playwright.config.ts', '--reporter', 'html', reportPath],
+      {
+        cwd: __dirname,
+        env: {
+          ...ENV,
+          TEST_PROJECT: path,
+          TEST_TESTS_PATH: name,
+          TEST_PORT: port,
+          TEST_START_CMD: command,
+          CI: true,
+        },
+        stdio: 'inherit',
+      }
+    )
 
     if (mergeResult.status !== 0) {
       console.error('Error merging reports', __dirname, tpl)

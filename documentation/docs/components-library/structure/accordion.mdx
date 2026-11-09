@@ -1,0 +1,70 @@
+---
+sidebar_position: 5
+title: Accordion
+description: Organize form content in collapsible panels and let users focus on one section at a time with the FormEngine RSuite Accordion.
+slug: /components-library/structure-components/accordion
+tags:
+  - components
+  - RSuite
+  - accordion
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+# Accordion
+
+The Accordion organizes related form content into collapsible sections. It can keep one panel open at a time or allow panels to expand
+independently.
+
+<ComponentInfo
+  packageName="@react-form-builder/components-rsuite"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-rsuite"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/packages/views/rsuite/src/components/RsAccordion.tsx"
+/>
+
+## Add content
+
+Add [Accordion panels](/components-library/structure-components/accordion-panel) to define the collapsible sections. When you drop another
+component directly into an Accordion, the Form Builder creates a panel automatically and places the component inside it.
+
+All panels remain expanded in the Form Builder so you can edit their contents. The configured expand and collapse behavior applies in the
+Form Viewer.
+
+## Main properties
+
+The following properties are available within the _Main_ tab:
+
+| Name               | Type      | Description                                                                                         |
+|--------------------|-----------|-----------------------------------------------------------------------------------------------------|
+| Accordion          | `boolean` | Allows only one panel to remain expanded when enabled                                               |
+| Active key         | `string`  | Selects the currently expanded panel by its event key                                               |
+| Default active key | `string`  | Selects the panel that is expanded initially when the active key is not controlled                  |
+| Bordered           | `boolean` | Displays a border around the Accordion                                                              |
+| Panels             | `node`    | Contains the Accordion panel components; other components are wrapped in a panel when inserted here |
+
+When Accordion is disabled, the React `activeKey` and `defaultActiveKey` props also accept an array of event keys so several panels can stay
+expanded in controlled or initial state. The Form Builder property editors still use a single string key.
+
+See the [RsAccordionProps API reference](/api-reference/@react-form-builder/components-rsuite/interfaces/RsAccordionProps) for the full
+React component API.
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
+
+## Summary
+
+Use the Accordion to divide a long form into collapsible sections. Add an Accordion panel for each section and use unique event keys to
+control which panel is expanded.
+
+---
+
+For more information:
+
+- [Accordion panel](/components-library/structure-components/accordion-panel)
+- [RSuite Accordion documentation](https://v5.rsuitejs.com/components/accordion/)
+- [RsAccordion API reference](/api-reference/@react-form-builder/components-rsuite/variables/RsAccordion-1)

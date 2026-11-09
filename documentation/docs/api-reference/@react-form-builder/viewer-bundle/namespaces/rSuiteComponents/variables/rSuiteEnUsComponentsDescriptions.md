@@ -204,6 +204,182 @@
 
 > **components**: `object`
 
+#### components.RsAccordion
+
+> **RsAccordion**: `object`
+
+#### components.RsAccordion.description
+
+> **description**: `string` = `"Accordion group of collapsible panels. Only one panel is expanded at a time when accordion is enabled."`
+
+#### components.RsAccordion.name
+
+> **name**: `string` = `"Accordion"`
+
+#### components.RsAccordion.props
+
+> **props**: `object`
+
+#### components.RsAccordion.props.accordion
+
+> **accordion**: `object`
+
+#### components.RsAccordion.props.accordion.description
+
+> **description**: `string` = `"Whether only one panel can be expanded at a time"`
+
+#### components.RsAccordion.props.accordion.name
+
+> **name**: `string` = `"Accordion"`
+
+#### components.RsAccordion.props.activeKey
+
+> **activeKey**: `object`
+
+#### components.RsAccordion.props.activeKey.description
+
+> **description**: `string` = `"The event key of the expanded panel"`
+
+#### components.RsAccordion.props.activeKey.name
+
+> **name**: `string` = `"Active key"`
+
+#### components.RsAccordion.props.bordered
+
+> **bordered**: `object`
+
+#### components.RsAccordion.props.bordered.description
+
+> **description**: `string` = `"Show a border around the accordion group"`
+
+#### components.RsAccordion.props.bordered.name
+
+> **name**: `string` = `"Bordered"`
+
+#### components.RsAccordion.props.children
+
+> **children**: `object`
+
+#### components.RsAccordion.props.children.description
+
+> **description**: `string` = `"Accordion panel children"`
+
+#### components.RsAccordion.props.children.name
+
+> **name**: `string` = `"Panels"`
+
+#### components.RsAccordion.props.defaultActiveKey
+
+> **defaultActiveKey**: `object`
+
+#### components.RsAccordion.props.defaultActiveKey.description
+
+> **description**: `string` = `"The event key of the panel expanded by default"`
+
+#### components.RsAccordion.props.defaultActiveKey.name
+
+> **name**: `string` = `"Default active key"`
+
+#### components.RsAccordion.props.onSelect
+
+> **onSelect**: `object`
+
+#### components.RsAccordion.props.onSelect.description
+
+> **description**: `string` = `"Called when a panel is expanded or collapsed"`
+
+#### components.RsAccordion.props.onSelect.name
+
+> **name**: `string` = `"onSelect"`
+
+#### components.RsAccordionPanel
+
+> **RsAccordionPanel**: `object`
+
+#### components.RsAccordionPanel.description
+
+> **description**: `string` = `"A collapsible panel inside an Accordion"`
+
+#### components.RsAccordionPanel.name
+
+> **name**: `string` = `"Accordion panel"`
+
+#### components.RsAccordionPanel.props
+
+> **props**: `object`
+
+#### components.RsAccordionPanel.props.bodyFill
+
+> **bodyFill**: `object`
+
+#### components.RsAccordionPanel.props.bodyFill.description
+
+> **description**: `string` = `"Content area filled with containers"`
+
+#### components.RsAccordionPanel.props.bodyFill.name
+
+> **name**: `string` = `"Body fill"`
+
+#### components.RsAccordionPanel.props.bordered
+
+> **bordered**: `object`
+
+#### components.RsAccordionPanel.props.bordered.description
+
+> **description**: `string` = `"Show border"`
+
+#### components.RsAccordionPanel.props.bordered.name
+
+> **name**: `string` = `"Bordered"`
+
+#### components.RsAccordionPanel.props.children
+
+> **children**: `object`
+
+#### components.RsAccordionPanel.props.children.description
+
+> **description**: `string` = `"Primary content"`
+
+#### components.RsAccordionPanel.props.children.name
+
+> **name**: `string` = `"Content"`
+
+#### components.RsAccordionPanel.props.eventKey
+
+> **eventKey**: `object`
+
+#### components.RsAccordionPanel.props.eventKey.description
+
+> **description**: `string` = `"The event key corresponding to the panel"`
+
+#### components.RsAccordionPanel.props.eventKey.name
+
+> **name**: `string` = `"Event key"`
+
+#### components.RsAccordionPanel.props.header
+
+> **header**: `object`
+
+#### components.RsAccordionPanel.props.header.description
+
+> **description**: `string` = `"The panel header"`
+
+#### components.RsAccordionPanel.props.header.name
+
+> **name**: `string` = `"Header"`
+
+#### components.RsAccordionPanel.props.shaded
+
+> **shaded**: `object`
+
+#### components.RsAccordionPanel.props.shaded.description
+
+> **description**: `string` = `"Whether there is a shadow"`
+
+#### components.RsAccordionPanel.props.shaded.name
+
+> **name**: `string` = `"Shaded"`
+
 #### components.RsAutoComplete
 
 > **RsAutoComplete**: `object`

@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "description": "گروه آکاردئون از پانل های تاشو. تنها یک پانل در زمانی که آکاردئون فعال است گسترش می یابد.",
+      "name": "آکاردئون",
+      "props": {
+        "accordion": {
+          "description": "آیا فقط یک پنل می‌تواند در هر زمان باز باشد",
+          "name": "آکاردئون"
+        },
+        "activeKey": {
+          "description": "کلید رویداد پنل باز",
+          "name": "کلید فعال"
+        },
+        "bordered": {
+          "description": "نمایش حاشیه اطراف گروه آکاردئون",
+          "name": "حاشیه"
+        },
+        "children": {
+          "description": "پانل آکاردئون کودکان",
+          "name": "پنل‌ها"
+        },
+        "defaultActiveKey": {
+          "description": "کلید رویداد پنلی که به‌طور پیش‌فرض باز است",
+          "name": "کلید فعال پیش‌فرض"
+        },
+        "onSelect": {
+          "description": "هنگام باز یا بسته شدن پنل فراخوانی می‌شود",
+          "name": "onSelect"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "description": "یک پانل تاشو در داخل آکاردئون",
+      "name": "پنل آکاردئون",
+      "props": {
+        "bodyFill": {
+          "description": "ناحیه محتوا پرشده با کانتینرها",
+          "name": "پر کردن بدنه"
+        },
+        "bordered": {
+          "description": "نمایش حاشیه",
+          "name": "حاشیه"
+        },
+        "children": {
+          "description": "محتوای اصلی",
+          "name": "محتوا"
+        },
+        "eventKey": {
+          "description": "کلید رویداد متناظر با پنل",
+          "name": "کلید رویداد"
+        },
+        "header": {
+          "description": "سربرگ پنل",
+          "name": "سربرگ"
+        },
+        "shaded": {
+          "description": "آیا سایه وجود دارد",
+          "name": "سایه‌دار"
+        }
+      }
+    },
     "RsAutoComplete": {
       "description": "قابلیت تکمیل خودکار برای جعبه ورودی را ارائه دهید",
       "name": "تکمیل خودکار",

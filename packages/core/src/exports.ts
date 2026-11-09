@@ -40,7 +40,7 @@ export {tooltipProps} from './features/annotation/tooltipPropsAnnotation'
 export {tooltipType} from './features/annotation/tooltipTypeAnnotation'
 export type {AnnotationType} from './features/annotation/types/AnnotationType'
 export {Annotation} from './features/annotation/types/annotations/Annotation'
-export {ContainerAnnotation} from './features/annotation/types/annotations/ContainerAnnotation'
+export {type ChildWrapperOptions, ContainerAnnotation} from './features/annotation/types/annotations/ContainerAnnotation'
 export type {EditorType} from './features/annotation/types/annotations/EditorType'
 export {EventAnnotation} from './features/annotation/types/annotations/EventAnnotation'
 export {ModuleAnnotation} from './features/annotation/types/annotations/ModuleAnnotation'
@@ -72,7 +72,11 @@ export type {ActionsInitializer, ComponentKind, FormBuilderComponentIconName, ic
 export type {BuilderComponent} from './features/define/utils/BuilderComponent'
 export {BuilderView} from './features/define/utils/BuilderView'
 export type {ComponentFeature, ComponentFeatures} from './features/define/utils/ComponentFeature'
-export type {ComponentMetadataEventListeners} from './features/define/utils/ComponentMetadataEventListeners'
+export type {
+  ComponentMetadataEventListeners,
+  ComponentNodeLocation,
+  ComponentPlacementChange,
+} from './features/define/utils/ComponentMetadataEventListeners'
 export type {ComponentPropertyBindType} from './features/define/utils/ComponentPropertyBindType'
 export type {ComponentRole} from './features/define/utils/ComponentRole'
 export type {DataBindingType} from './features/define/utils/DataBindingType'

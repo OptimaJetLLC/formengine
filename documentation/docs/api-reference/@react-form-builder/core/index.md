@@ -49,8 +49,10 @@
 
 - [BaseCompilationResult](interfaces/BaseCompilationResult.md)
 - [BuilderComponent](interfaces/BuilderComponent.md)
+- [ChildWrapperOptions](interfaces/ChildWrapperOptions.md)
 - [ComponentField](interfaces/ComponentField.md)
 - [ComponentMetadataEventListeners](interfaces/ComponentMetadataEventListeners.md)
+- [ComponentNodeLocation](interfaces/ComponentNodeLocation.md)
 - [ComponentProperty](interfaces/ComponentProperty.md)
 - [ComponentTreeProps](interfaces/ComponentTreeProps.md)
 - [Definer](interfaces/Definer.md)
@@ -111,6 +113,7 @@
 - [ComponentKind](type-aliases/ComponentKind.md)
 - [ComponentLibraryDescription](type-aliases/ComponentLibraryDescription.md)
 - [ComponentLocalizer](type-aliases/ComponentLocalizer.md)
+- [ComponentPlacementChange](type-aliases/ComponentPlacementChange.md)
 - [ComponentPropertiesContext](type-aliases/ComponentPropertiesContext.md)
 - [ComponentPropertyBindType](type-aliases/ComponentPropertyBindType.md)
 - [ComponentPropertyComputeType](type-aliases/ComponentPropertyComputeType.md)

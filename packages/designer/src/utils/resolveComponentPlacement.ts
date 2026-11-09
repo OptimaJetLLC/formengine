@@ -5,7 +5,7 @@ import type {InsertPosition} from './types'
 /**
  * Resolved insert placement for a component move or add.
  */
-interface ComponentPlacement {
+export interface ComponentPlacement {
   /**
    * The insertion target after policy rules are applied.
    */

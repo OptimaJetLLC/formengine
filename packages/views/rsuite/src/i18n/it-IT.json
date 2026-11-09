@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "description": "Gruppo a fisarmonica di pannelli pieghevoli. Quando la fisarmonica è abilitata, viene espanso un solo pannello alla volta.",
+      "name": "Accordion",
+      "props": {
+        "accordion": {
+          "description": "Se può essere espanso un solo pannello alla volta",
+          "name": "Accordion"
+        },
+        "activeKey": {
+          "description": "La chiave evento del pannello espanso",
+          "name": "Chiave attiva"
+        },
+        "bordered": {
+          "description": "Mostra un bordo intorno al gruppo accordion",
+          "name": "Con bordo"
+        },
+        "children": {
+          "description": "Pannello a fisarmonica per bambini",
+          "name": "Pannelli"
+        },
+        "defaultActiveKey": {
+          "description": "La chiave evento del pannello espanso per impostazione predefinita",
+          "name": "Chiave attiva predefinita"
+        },
+        "onSelect": {
+          "description": "Chiamato quando un pannello viene espanso o compresso",
+          "name": "onSelect"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "description": "Un pannello pieghevole all'interno di una fisarmonica",
+      "name": "Pannello accordion",
+      "props": {
+        "bodyFill": {
+          "description": "Area contenuto riempita con contenitori",
+          "name": "Riempimento corpo"
+        },
+        "bordered": {
+          "description": "Mostra bordo",
+          "name": "Con bordo"
+        },
+        "children": {
+          "description": "Contenuto principale",
+          "name": "Contenuto"
+        },
+        "eventKey": {
+          "description": "La chiave evento corrispondente al pannello",
+          "name": "Chiave evento"
+        },
+        "header": {
+          "description": "L’intestazione del pannello",
+          "name": "Intestazione"
+        },
+        "shaded": {
+          "description": "Se è presente un’ombra",
+          "name": "Ombreggiato"
+        }
+      }
+    },
     "RsAutoComplete": {
       "description": "Fornire funzionalità di completamento automatico per la casella di input",
       "name": "Completamento automatico",

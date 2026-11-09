@@ -3,8 +3,10 @@ import type {
   BuilderMode,
   BuilderTheme,
   ComponentData,
+  ComponentPlacementChange,
   EditorType,
   Language,
+  Meta,
   NamedActionDefinition,
   PersistedForm,
   Store,
@@ -21,13 +23,13 @@ import {
   debounce,
   embeddedFormModel,
   getTemplateName,
-  isContainer,
   isTemplateType,
   namedObserver,
   nameObservable,
   PersistedFormVersion,
   screenModel,
   treeForEach,
+  uniqueId,
 } from '@react-form-builder/core'
 import type {IReactionDisposer} from 'mobx'
 import {action, makeAutoObservable, observable, observableRef, reaction, runInAction} from 'mobx'
@@ -46,15 +48,17 @@ import {removePresetLocalization} from '../features/preset-component/removePrese
 import {LeftPanelChrome} from '../features/ui/LeftPanel/LeftPanelChrome'
 import type {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
+import {canContainDirect, deleteComponentAndNotifyRemoval, getChildWrapper, placeSourceWithOptionalWrapper} from '../utils/childWrapper'
 import {determineTheme} from '../utils/determineTheme'
 import {getAddComponentResult} from '../utils/getAddComponentResult'
 import {getSystemTheme} from '../utils/getSystemTheme'
+import type {ComponentPlacement} from '../utils/resolveComponentPlacement'
 import {getPlacementParent, resolveComponentPlacement} from '../utils/resolveComponentPlacement'
 import {sortByPositionInTree} from '../utils/sortByPositionInTree'
 import {toPrettyJsonString} from '../utils/toPrettyJsonString'
 import type {IFormBuilder, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
-import {AvailableComponents} from './AvailableComponents'
+import {AvailableComponents, createAddedComponentStore} from './AvailableComponents'
 import {CachedFormStorage} from './CachedFormStorage'
 import {defaultBottomPanelHeight, defaultOpenedPanels, defaultViewMode} from './constants'
 import {EditableFormValidator} from './EditableFormValidator'
@@ -374,6 +378,8 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   readonly presetComponentOptions: BuilderPresetComponentOptions
   activeFormName?: string
   #availableComponents?: AvailableComponents
+  readonly #childWrapperCandidates = new Map<ComponentData, Map<string, {meta: Meta; componentData: ComponentData}>>()
+  readonly #childWrapperCandidatesDisposer: IReactionDisposer
   readonly #presetViewDisposer: IReactionDisposer
 
   /**
@@ -430,6 +436,11 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
         this.presetComponentOptions.registerPresetsOnView(view)
       },
       {fireImmediately: true}
+    )
+
+    this.#childWrapperCandidatesDisposer = reaction(
+      () => this.viewer.form.componentTree,
+      () => this.clearChildWrapperCandidates()
     )
 
     const translationResolver: TranslationResolver = async language => {
@@ -604,8 +615,23 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   dispose() {
     this.#presetViewDisposer()
+    this.#childWrapperCandidatesDisposer()
     this.undoer.dispose()
     this.#availableComponents?.dispose()
+    this.clearChildWrapperCandidates()
+  }
+
+  private clearChildWrapperCandidates(parent?: ComponentData) {
+    if (parent) {
+      treeForEach(parent, node => {
+        const candidates = this.#childWrapperCandidates.get(node)
+        candidates?.forEach(({componentData}) => componentData.dispose())
+        this.#childWrapperCandidates.delete(node)
+      })
+      return
+    }
+    this.#childWrapperCandidates.forEach(candidates => candidates.forEach(({componentData}) => componentData.dispose()))
+    this.#childWrapperCandidates.clear()
   }
 
   /**
@@ -621,6 +647,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @param view the builder view.
    */
   setView(view: BuilderView) {
+    if (this.view !== view) this.clearChildWrapperCandidates()
     this.view = view
   }
 
@@ -704,12 +731,45 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     if (source === target || source === this.viewer.form.componentTree) return
 
     const placement = resolveComponentPlacement(source, target, insertPosition, slot, slotCondition)
-    source.store.slot = placement.slot
-    source.store.slotCondition = placement.slotCondition
 
     if (!this.canAddComponent(source, placement.target, placement.insertPosition, placement.slot)) {
       throw new Error("Can't add component")
     }
+
+    const parent = getPlacementParent(placement)
+    placeSourceWithOptionalWrapper(source, placement, this.getComponentMetadata(parent.model.type), {
+      placeAt: (node, at) => this.placeAt(node, at),
+      createWrapper: componentType => this.createWrapperComponentData(componentType),
+      notifyPlacementChanged: (node, change) => this.notifyNodePlacementChanged(node, change),
+      notifyCreated: node => this.notifyNodeCreated(node),
+    })
+  }
+
+  /**
+   * Notifies metadata after a node's tree position changes.
+   * @param node the node whose position changed
+   * @param change the completed placement change
+   */
+  private notifyNodePlacementChanged(node: ComponentData, change: ComponentPlacementChange): void {
+    this.view.findMeta(node.model.type)?.eventListeners?.onNodePlacementChanged?.(node, this.viewer, change)
+  }
+
+  /**
+   * Notifies metadata after a node has been created and added to the form.
+   * @param node the created node
+   */
+  private notifyNodeCreated(node: ComponentData): void {
+    this.view.findMeta(node.model.type)?.eventListeners?.onCreateNode?.(node, this.viewer)
+  }
+
+  /**
+   * Places a component at the resolved placement without applying child-wrapper auto-wrap.
+   * @param source the component to place
+   * @param placement the resolved placement
+   */
+  private placeAt(source: ComponentData, placement: ComponentPlacement): void {
+    source.store.slot = placement.slot
+    source.store.slotCondition = placement.slotCondition
 
     if (placement.insertPosition === 'inner' || placement.target.isRoot) {
       source.setParent(placement.target)
@@ -725,6 +785,49 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     }
 
     throw new Error(`Unknown insert position ${placement.insertPosition}`)
+  }
+
+  /**
+   * Creates a new wrapper component data instance (e.g. an accordion panel).
+   * @param componentType the wrapper component type name
+   * @returns the created component data
+   */
+  private createWrapperComponentData(componentType: string): ComponentData {
+    const model = this.viewer.getModel(componentType)
+    const componentData = this.viewer.createComponentData(createAddedComponentStore(model, this))
+    componentData.unifyKeys(this.viewer.form.componentTree)
+    return componentData
+  }
+
+  /**
+   * Reuses a prospective wrapper with a stable parent context without attaching it to the form.
+   * @param parent the prospective parent.
+   * @param componentType the wrapper component type.
+   * @param meta the wrapper metadata.
+   * @param slot the prospective parent slot.
+   * @returns the wrapper candidate.
+   */
+  private getChildWrapperCandidate(parent: ComponentData, componentType: string, meta: Meta, slot: string): ComponentData {
+    const model = this.viewer.getModel(componentType)
+    let candidates = this.#childWrapperCandidates.get(parent)
+    if (!candidates) {
+      candidates = new Map()
+      this.#childWrapperCandidates.set(parent, candidates)
+    }
+    const cacheKey = JSON.stringify([componentType, slot])
+    const cached = candidates.get(cacheKey)
+    if (cached && cached.meta === meta && cached.componentData.model === model) return cached.componentData
+
+    cached?.componentData.dispose()
+    const componentStore = createAddedComponentStore(model, this)
+    // Detached candidates use runtime IDs; real wrappers receive form keys on insertion.
+    componentStore.key = uniqueId(`${componentType} candidate `)
+    const componentData = this.viewer.createComponentData(componentStore)
+    // Assign the context once; setParent would attach the candidate to the actual form.
+    componentData.parent = parent
+    componentData.store.slot = slot === 'children' ? undefined : slot
+    candidates.set(cacheKey, {meta, componentData})
+    return componentData
   }
 
   /**
@@ -854,8 +957,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
 
     if (selectAfterInsert) this.selectNode(componentData)
 
-    const meta = this.view.findMeta(componentData.model.type)
-    meta?.eventListeners?.onCreateNode?.(componentData, this.viewer)
+    this.notifyNodeCreated(componentData)
 
     return clone
   }
@@ -929,14 +1031,19 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     const parentMeta = this.getComponentMetadata(parent.model.type)
     const childMeta = this.getComponentMetadata(child.model.type)
     const slotName = slot ?? 'children'
+    const annotation = parentMeta.properties.find(property => property.key === slotName)
+    const childWrapper = getChildWrapper(annotation, child)
 
-    if (childMeta.insertRestriction?.(child, parent, slotName) === false) return false
-
-    const annotation = parentMeta.properties.find(p => p.key === slotName)
-    if (annotation && isContainer(annotation) && annotation.insertPredicate) {
-      return annotation.insertPredicate(parent, child)
+    if (childWrapper) {
+      const wrapperMeta = this.getComponentMetadata(childWrapper.componentType)
+      const wrapper = this.getChildWrapperCandidate(parent, childWrapper.componentType, wrapperMeta, slotName)
+      if (!canContainDirect(parent, wrapper, wrapperMeta, annotation, slotName)) return false
+      const wrapperSlot = childWrapper.childSlot ?? 'children'
+      const wrapperAnnotation = wrapperMeta.properties.find(property => property.key === wrapperSlot)
+      return canContainDirect(wrapper, child, childMeta, wrapperAnnotation, wrapperSlot)
     }
-    return true
+
+    return canContainDirect(parent, child, childMeta, annotation, slotName)
   }
 
   /**
@@ -947,10 +1054,12 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   remove(source: ComponentData) {
     if (source.model.isFeatureEnabled(cfDisableComponentRemove)) return false
 
+    this.clearChildWrapperCandidates(source)
     this.selected.delete(source)
     this.viewer.form.localization.removeLocalization(source.key)
-    source.delete()
-
+    deleteComponentAndNotifyRemoval(source, previous => {
+      this.notifyNodePlacementChanged(source, {type: 'remove', previous})
+    })
     this.props.onFormElementRemove?.({source})
 
     return true

@@ -28,7 +28,7 @@ Content area filled with containers
 
 #### Inherited from
 
-`PanelProps.bodyFill`
+`RsCardProps`.[`bodyFill`](#bodyfill)
 
 ***
 
@@ -40,7 +40,7 @@ Custom body style
 
 #### Inherited from
 
-`PanelProps.bodyProps`
+`RsCardProps`.[`bodyProps`](#bodyprops)
 
 ***
 
@@ -52,7 +52,7 @@ Show border
 
 #### Inherited from
 
-`PanelProps.bordered`
+`RsCardProps`.[`bordered`](#bordered)
 
 ***
 
@@ -64,7 +64,7 @@ The icon on the right side of the title
 
 #### Inherited from
 
-`PanelProps.caretAs`
+`RsCardProps`.[`caretAs`](#caretas)
 
 ***
 
@@ -112,7 +112,7 @@ Whether it is a collapsible panel
 
 #### Inherited from
 
-`PanelProps.collapsible`
+`RsCardProps`.[`collapsible`](#collapsible)
 
 ***
 
@@ -124,7 +124,7 @@ Expand then panel by default
 
 #### Inherited from
 
-`PanelProps.defaultExpanded`
+`RsCardProps`.[`defaultExpanded`](#defaultexpanded)
 
 ***
 
@@ -136,7 +136,7 @@ Whether the panel is disabled
 
 #### Inherited from
 
-`PanelProps.disabled`
+`RsCardProps`.[`disabled`](#disabled)
 
 ***
 
@@ -160,7 +160,7 @@ Expand then panel
 
 #### Inherited from
 
-`PanelProps.expanded`
+`RsCardProps`.[`expanded`](#expanded)
 
 ***
 
@@ -184,7 +184,7 @@ The role attribute of the header
 
 #### Inherited from
 
-`PanelProps.headerRole`
+`RsCardProps`.[`headerRole`](#headerrole)
 
 ***
 
@@ -204,7 +204,7 @@ The id attribute of the panel
 
 #### Inherited from
 
-`PanelProps.id`
+`RsCardProps`.[`id`](#id)
 
 ***
 
@@ -374,7 +374,7 @@ The role attribute of the panel
 
 #### Inherited from
 
-`PanelProps.panelRole`
+`RsCardProps`.[`panelRole`](#panelrole)
 
 ***
 
@@ -386,7 +386,7 @@ The shadow of the content when scrolling
 
 #### Inherited from
 
-`PanelProps.scrollShadow`
+`RsCardProps`.[`scrollShadow`](#scrollshadow)
 
 ***
 
@@ -398,7 +398,7 @@ Whether there is a shadow
 
 #### Inherited from
 
-`PanelProps.shaded`
+`RsCardProps`.[`shaded`](#shaded)
 
 ***
 

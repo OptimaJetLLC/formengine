@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "description": "手风琴组的可折叠面板。启用手风琴时，一次只能展开一个面板。",
+      "name": "手风琴",
+      "props": {
+        "accordion": {
+          "description": "是否一次只能展开一个面板",
+          "name": "手风琴"
+        },
+        "activeKey": {
+          "description": "已展开面板的事件键",
+          "name": "活动键"
+        },
+        "bordered": {
+          "description": "在手风琴组周围显示边框",
+          "name": "带边框"
+        },
+        "children": {
+          "description": "儿童手风琴面板",
+          "name": "面板"
+        },
+        "defaultActiveKey": {
+          "description": "默认展开面板的事件键",
+          "name": "默认活动键"
+        },
+        "onSelect": {
+          "description": "面板展开或折叠时调用",
+          "name": "onSelect"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "description": "手风琴内的可折叠面板",
+      "name": "手风琴面板",
+      "props": {
+        "bodyFill": {
+          "description": "用容器填充的内容区域",
+          "name": "内容填充"
+        },
+        "bordered": {
+          "description": "显示边框",
+          "name": "带边框"
+        },
+        "children": {
+          "description": "主要内容",
+          "name": "内容"
+        },
+        "eventKey": {
+          "description": "与面板对应的事件键",
+          "name": "事件键"
+        },
+        "header": {
+          "description": "面板标题",
+          "name": "标题"
+        },
+        "shaded": {
+          "description": "是否显示阴影",
+          "name": "阴影"
+        }
+      }
+    },
     "RsAutoComplete": {
       "description": "为输入框提供自动完成功能",
       "name": "自动完成",

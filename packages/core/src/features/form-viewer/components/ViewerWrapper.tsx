@@ -13,9 +13,10 @@ export const ViewerWrapper = (props: DetailedHTMLProps<HTMLAttributes<HTMLDivEle
   const store = useStore()
   const root = !store.parentStore
   const cls = cx(styles.viewerWrapper, className, root && styles.rootPadding)
+  const canvasAttrs = root ? {'data-fe-canvas': ''} : undefined
 
   return (
-    <div className={cls} data-testid={'viewer-wrapper'} {...otherProps} {...(root ? {'data-fe-canvas': ''} : {})}>
+    <div className={cls} data-testid={'viewer-wrapper'} {...otherProps} {...canvasAttrs}>
       {children}
     </div>
   )

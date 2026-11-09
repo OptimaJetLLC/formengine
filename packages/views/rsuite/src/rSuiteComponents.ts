@@ -1,6 +1,8 @@
 import type {Definer} from '@react-form-builder/core'
 import {fieldsCategory, modalCategory, staticCategory, structureCategory} from './components/categories'
 import {rsWizardStep} from './components/internal/RsWizard/RsWizardStep'
+import {rsAccordion} from './components/RsAccordion'
+import {rsAccordionPanel} from './components/RsAccordionPanel'
 import {rsAutoComplete} from './components/RsAutocomplete'
 import {rsBreadcrumb} from './components/RsBreadcrumb'
 import {rsButton} from './components/RsButton'
@@ -74,7 +76,7 @@ const categories = {
     rsLink,
   ],
   [modalCategory]: [rsModal, rsModalLayout],
-  [structureCategory]: [rsBreadcrumb, rsCard, rsContainer, rsTab, rsWizard, rsWizardStep],
+  [structureCategory]: [rsAccordion, rsAccordionPanel, rsBreadcrumb, rsCard, rsContainer, rsTab, rsWizard, rsWizardStep],
 }
 
 /**

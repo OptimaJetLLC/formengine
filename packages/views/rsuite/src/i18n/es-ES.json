@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "description": "Grupo acordeón de paneles plegables. Cuando el acordeón está activado, solo se expande un panel a la vez.",
+      "name": "Acordeón",
+      "props": {
+        "accordion": {
+          "description": "Si solo se puede expandir un panel a la vez",
+          "name": "Acordeón"
+        },
+        "activeKey": {
+          "description": "La clave de evento del panel expandido",
+          "name": "Clave activa"
+        },
+        "bordered": {
+          "description": "Mostrar un borde alrededor del grupo de acordeón",
+          "name": "Con borde"
+        },
+        "children": {
+          "description": "Panel de acordeón para niños",
+          "name": "Paneles"
+        },
+        "defaultActiveKey": {
+          "description": "La clave de evento del panel expandido por defecto",
+          "name": "Clave activa predeterminada"
+        },
+        "onSelect": {
+          "description": "Se llama cuando se expande o contrae un panel",
+          "name": "onSelect"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "description": "Un panel plegable dentro de un acordeón",
+      "name": "Panel de acordeón",
+      "props": {
+        "bodyFill": {
+          "description": "Área de contenido rellena con contenedores",
+          "name": "Relleno del cuerpo"
+        },
+        "bordered": {
+          "description": "Mostrar borde",
+          "name": "Con borde"
+        },
+        "children": {
+          "description": "Contenido principal",
+          "name": "Contenido"
+        },
+        "eventKey": {
+          "description": "La clave de evento correspondiente al panel",
+          "name": "Clave de evento"
+        },
+        "header": {
+          "description": "El encabezado del panel",
+          "name": "Encabezado"
+        },
+        "shaded": {
+          "description": "Si hay sombra",
+          "name": "Sombreado"
+        }
+      }
+    },
     "RsAutoComplete": {
       "description": "Proporcione la funcionalidad de autocompletar para el cuadro de entrada",
       "name": "Autocompletar",

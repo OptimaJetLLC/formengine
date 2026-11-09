@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "description": "折りたたみ可能なパネルのアコーディオングループ。アコーディオンを有効にすると、一度に 1 つのパネルしか展開されません。",
+      "name": "アコーディオン",
+      "props": {
+        "accordion": {
+          "description": "一度に展開できるパネルを 1 つに制限するかどうか",
+          "name": "アコーディオン"
+        },
+        "activeKey": {
+          "description": "展開中のパネルのイベントキー",
+          "name": "アクティブキー"
+        },
+        "bordered": {
+          "description": "アコーディオングループの周囲にボーダーを表示する",
+          "name": "ボーダー付き"
+        },
+        "children": {
+          "description": "アコーディオンパネルチルドレン",
+          "name": "パネル"
+        },
+        "defaultActiveKey": {
+          "description": "デフォルトで展開されるパネルのイベントキー",
+          "name": "デフォルトアクティブキー"
+        },
+        "onSelect": {
+          "description": "パネルの展開または折りたたみ時に呼び出されます",
+          "name": "onSelect"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "description": "アコーディオン内の折りたたみ可能なパネル",
+      "name": "アコーディオンパネル",
+      "props": {
+        "bodyFill": {
+          "description": "コンテナで埋められたコンテンツ領域",
+          "name": "ボディフィル"
+        },
+        "bordered": {
+          "description": "ボーダーを表示する",
+          "name": "ボーダー付き"
+        },
+        "children": {
+          "description": "メインコンテンツ",
+          "name": "コンテンツ"
+        },
+        "eventKey": {
+          "description": "パネルに対応するイベントキー",
+          "name": "イベントキー"
+        },
+        "header": {
+          "description": "パネルヘッダー",
+          "name": "ヘッダー"
+        },
+        "shaded": {
+          "description": "影があるかどうか",
+          "name": "シャドウ"
+        }
+      }
+    },
     "RsAutoComplete": {
       "description": "入力ボックスにオートコンプリート機能を提供",
       "name": "オートコンプリート",

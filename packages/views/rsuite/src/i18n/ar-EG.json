@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "description": "مجموعة أكورديون من الألواح القابلة للطي. يتم توسيع لوحة واحدة فقط في وقت تمكين الأكورديون.",
+      "name": "أكورديون",
+      "props": {
+        "accordion": {
+          "description": "ما إذا كان يمكن توسيع لوحة واحدة فقط في كل مرة",
+          "name": "أكورديون"
+        },
+        "activeKey": {
+          "description": "مفتاح الحدث للوحة الموسَّعة",
+          "name": "المفتاح النشط"
+        },
+        "bordered": {
+          "description": "إظهار حد حول مجموعة الأكورديون",
+          "name": "بحد"
+        },
+        "children": {
+          "description": "أطفال لوحة الأكورديون",
+          "name": "لوحات"
+        },
+        "defaultActiveKey": {
+          "description": "مفتاح الحدث للوحة الموسَّعة افتراضيًا",
+          "name": "المفتاح النشط الافتراضي"
+        },
+        "onSelect": {
+          "description": "يُستدعى عند توسيع لوحة أو طيها",
+          "name": "onSelect"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "description": "لوحة قابلة للطي داخل أكورديون",
+      "name": "لوحة أكورديون",
+      "props": {
+        "bodyFill": {
+          "description": "منطقة محتوى مملوءة بالحاويات",
+          "name": "ملء المحتوى"
+        },
+        "bordered": {
+          "description": "إظهار الحد",
+          "name": "بحد"
+        },
+        "children": {
+          "description": "المحتوى الأساسي",
+          "name": "المحتوى"
+        },
+        "eventKey": {
+          "description": "مفتاح الحدث المقابل للوحة",
+          "name": "مفتاح الحدث"
+        },
+        "header": {
+          "description": "عنوان اللوحة",
+          "name": "العنوان"
+        },
+        "shaded": {
+          "description": "ما إذا كان هناك ظل",
+          "name": "مظلّل"
+        }
+      }
+    },
     "RsAutoComplete": {
       "description": "توفير وظيفة الإكمال التلقائي لمربع الإدخال",
       "name": "الإكمال التلقائي",

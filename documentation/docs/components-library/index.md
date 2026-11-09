@@ -48,7 +48,7 @@ FormEngine supports multiple UI component libraries. The primary libraries avail
   format, Radio group, Search, Text area, Uploader.
 - **Static components**: Button, Divider, Error message, Header, Image, Label, Menu, Message, Placeholder components, Progress components,
   Static content, Tooltip.
-- **Structure components**: Breadcrumb, Card, Container, Modal, Modal layout, Tab.
+- **Structure components**: Accordion, Accordion panel, Breadcrumb, Card, Container, Modal, Modal layout, Tab.
 
 ## Custom Components
 

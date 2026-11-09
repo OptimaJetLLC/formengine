@@ -1,0 +1,17 @@
+.panel {
+  width: 100%;
+  height: auto;
+  min-height: 36px;
+  align-self: stretch;
+  flex: 0 0 auto;
+}
+
+.panel :global(.rs-panel-body) {
+  min-height: 36px;
+  height: auto;
+}
+
+.panel :global(.rs-anim-collapse.rs-anim-in) {
+  height: auto !important;
+  overflow: visible !important;
+}

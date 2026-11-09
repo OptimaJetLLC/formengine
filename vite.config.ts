@@ -4,6 +4,7 @@ import {existsSync, readdirSync} from 'node:fs'
 import {readdir, readFile, writeFile} from 'node:fs/promises'
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
+import {Script} from 'node:vm'
 import type {PluginOption, UserConfig} from 'vite'
 import {defineConfig} from 'vite'
 import {analyzer} from 'vite-bundle-analyzer'
@@ -62,22 +63,11 @@ export const createNonEsmImportMetaUrlConfig = (): UserConfig => ({
  */
 const importMetaUrlPolyfillMarkers = ['document.currentScript', 'document.baseURI', 'pathToFileURL'] as const
 
-/**
- * Strips JS string and template literal bodies so documentation text cannot false-positive.
- * @param js the JavaScript source.
- * @returns the source with string bodies removed.
- */
-const stripJsStringLiterals = (js: string): string =>
-  js
-    .replace(/'(?:\\.|[^'\\])*'/g, "''")
-    .replace(/"(?:\\.|[^"\\])*"/g, '""')
-    .replace(/`(?:\\.|[^`\\])*`/g, '``')
-
 const cdnBundleJsFiles = ['index.umd.js', 'index.iife.js'] as const
 
 /**
  * Fails the build when UMD/IIFE outputs are missing the `import.meta.url` polyfill intro,
- * or still contain raw `import.meta.url` expressions (define not applied).
+ * or contain invalid classic-script syntax, including unresolved `import.meta` expressions.
  * @param outDir the Vite build output directory.
  */
 export const assertNonEsmImportMetaUrlPolyfill = async (outDir: string): Promise<void> => {
@@ -93,8 +83,12 @@ export const assertNonEsmImportMetaUrlPolyfill = async (outDir: string): Promise
     if (missingMarker) {
       throw new Error(`${file} missing import.meta.url polyfill marker (${missingMarker})`)
     }
-    if (stripJsStringLiterals(js).includes('import.meta.url')) {
-      throw new Error(`${file} still contains raw import.meta.url (polyfill define not applied)`)
+    try {
+      // Compile without execution so diagnostic text is allowed and actual import.meta expressions are rejected.
+      new Script(js, {filename: file})
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error)
+      throw new Error(`${file} is not valid UMD/IIFE JavaScript: ${message}`)
     }
   }
   if (checked === 0) {

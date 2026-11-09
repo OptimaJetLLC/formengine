@@ -63,6 +63,14 @@ True if the property value can be a calculated property, false otherwise.
 
 ***
 
+### childWrapper?
+
+> `optional` **childWrapper?**: [`ChildWrapperOptions`](../interfaces/ChildWrapperOptions.md)
+
+The component that automatically wraps direct children of another component type on insert or move.
+
+***
+
 ### controlsRequiredProp
 
 > `readonly` **controlsRequiredProp**: `boolean` = `false`

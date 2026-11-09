@@ -2,6 +2,10 @@ import rSuiteEnUsComponentsDescriptions from './i18n/en-US.json'
 
 export {builderViewWithCss} from './builderViewWithCss'
 export type {RsWizardStepProps} from './components/internal/RsWizard/RsWizardStep'
+export type {AccordionActiveKey, RsAccordionProps} from './components/RsAccordion'
+export {RsAccordion, rsAccordion} from './components/RsAccordion'
+export type {RsAccordionPanelProps} from './components/RsAccordionPanel'
+export {RsAccordionPanel, rsAccordionPanel} from './components/RsAccordionPanel'
 export type {RsAutoCompleteProps} from './components/RsAutocomplete'
 //single components export
 export {rsAutoComplete} from './components/RsAutocomplete'

@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "description": "접을 수 있는 패널의 아코디언 그룹.아코디언이 활성화된 경우 한 번에 패널 하나만 확장됩니다.",
+      "name": "아코디언",
+      "props": {
+        "accordion": {
+          "description": "한 번에 하나의 패널만 펼칠 수 있는지 여부",
+          "name": "아코디언"
+        },
+        "activeKey": {
+          "description": "펼쳐진 패널의 이벤트 키",
+          "name": "활성 키"
+        },
+        "bordered": {
+          "description": "아코디언 그룹 주변에 테두리를 표시합니다",
+          "name": "테두리"
+        },
+        "children": {
+          "description": "아코디언 패널 어린이",
+          "name": "패널"
+        },
+        "defaultActiveKey": {
+          "description": "기본적으로 펼쳐진 패널의 이벤트 키",
+          "name": "기본 활성 키"
+        },
+        "onSelect": {
+          "description": "패널이 펼쳐지거나 접힐 때 호출됩니다",
+          "name": "onSelect"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "description": "아코디언 내부의 접이식 패널",
+      "name": "아코디언 패널",
+      "props": {
+        "bodyFill": {
+          "description": "컨테이너로 채워진 콘텐츠 영역",
+          "name": "본문 채우기"
+        },
+        "bordered": {
+          "description": "테두리 표시",
+          "name": "테두리"
+        },
+        "children": {
+          "description": "기본 콘텐츠",
+          "name": "콘텐츠"
+        },
+        "eventKey": {
+          "description": "패널에 해당하는 이벤트 키",
+          "name": "이벤트 키"
+        },
+        "header": {
+          "description": "패널 헤더",
+          "name": "헤더"
+        },
+        "shaded": {
+          "description": "그림자가 있는지 여부",
+          "name": "그림자"
+        }
+      }
+    },
     "RsAutoComplete": {
       "description": "입력 상자에 자동 완성 기능 제공",
       "name": "자동 완성",

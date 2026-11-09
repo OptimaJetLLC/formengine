@@ -1,10 +1,11 @@
 import {BuilderModeProvider, BuilderThemeProvider, FormViewer, useStore, useViewerProps} from '@react-form-builder/core'
 import cx from 'clsx'
 import type {ComponentProps} from 'react'
-import {useMemo} from 'react'
+import {useMemo, useRef} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {customizable} from '../customization/customizable'
 import {customizableObserver} from '../customization/customizableObserver'
+import {CanvasAutoScrollOnDrag} from '../dnd/components/CanvasAutoScrollOnDrag'
 import {EditableWrapper} from '../dnd/components/Editable/Editable'
 import {TrialMessage} from '../license/TrialMessage'
 import styles from './CentralPanel.module.css'
@@ -26,6 +27,7 @@ const RawCentralPanel = (props: ComponentProps<'div'>) => {
   const {viewMode, landscapeMode, builderMode, theme, formStorageEnabled} = builderStore
   const viewerProps = useViewerProps()
   const componentWrapper = builderMode === 'builder' ? EditableWrapper : undefined
+  const containerRef = useRef<HTMLDivElement>(null)
   usePrintWhenViewerReady(builderMode)
 
   const getForm = useMemo(() => {
@@ -36,7 +38,8 @@ const RawCentralPanel = (props: ComponentProps<'div'>) => {
   }, [builderStore, formStorageEnabled, viewerProps.getForm])
 
   return (
-    <div {...props} className={cx(styles.container, props.className)}>
+    <div {...props} ref={containerRef} className={cx(styles.container, props.className)}>
+      {builderMode === 'builder' && <CanvasAutoScrollOnDrag containerRef={containerRef} />}
       <Header />
       <BuilderModeProvider value={builderMode}>
         <BuilderThemeProvider value={theme}>

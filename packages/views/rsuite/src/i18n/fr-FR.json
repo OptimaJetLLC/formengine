@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "description": "Groupe accordéon de panneaux pliables. Un seul panneau est étendu à la fois lorsque l'accordéon est activé.",
+      "name": "Accordéon",
+      "props": {
+        "accordion": {
+          "description": "Indique si un seul panneau peut être développé à la fois",
+          "name": "Accordéon"
+        },
+        "activeKey": {
+          "description": "La clé d’événement du panneau développé",
+          "name": "Clé active"
+        },
+        "bordered": {
+          "description": "Afficher une bordure autour du groupe d’accordéon",
+          "name": "Avec bordure"
+        },
+        "children": {
+          "description": "Panneau d'accordéon pour enfants",
+          "name": "Panneaux"
+        },
+        "defaultActiveKey": {
+          "description": "La clé d’événement du panneau développé par défaut",
+          "name": "Clé active par défaut"
+        },
+        "onSelect": {
+          "description": "Appelé lorsqu’un panneau est développé ou réduit",
+          "name": "onSelect"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "description": "Un panneau pliable à l'intérieur d'un accordéon",
+      "name": "Panneau d’accordéon",
+      "props": {
+        "bodyFill": {
+          "description": "Zone de contenu remplie de conteneurs",
+          "name": "Remplissage du corps"
+        },
+        "bordered": {
+          "description": "Afficher la bordure",
+          "name": "Avec bordure"
+        },
+        "children": {
+          "description": "Contenu principal",
+          "name": "Contenu"
+        },
+        "eventKey": {
+          "description": "La clé d’événement correspondant au panneau",
+          "name": "Clé d’événement"
+        },
+        "header": {
+          "description": "L’en-tête du panneau",
+          "name": "En-tête"
+        },
+        "shaded": {
+          "description": "Indique s’il y a une ombre",
+          "name": "Ombré"
+        }
+      }
+    },
     "RsAutoComplete": {
       "description": "Fournir une fonctionnalité de saisie automatique pour la zone de saisie",
       "name": "Complétion automatique",

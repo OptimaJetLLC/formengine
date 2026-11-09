@@ -678,6 +678,16 @@ const typedocSidebar = {
           items: [
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/interfaces/RsAccordionPanelProps",
+              label: "RsAccordionPanelProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/interfaces/RsAccordionProps",
+              label: "RsAccordionProps"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/interfaces/RsAutoCompleteProps",
               label: "RsAutoCompleteProps"
             },
@@ -834,6 +844,11 @@ const typedocSidebar = {
           items: [
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/type-aliases/AccordionActiveKey",
+              label: "AccordionActiveKey"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/type-aliases/LoadCallback",
               label: "LoadCallback"
             },
@@ -872,6 +887,21 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/variables/models",
               label: "models"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/variables/rsAccordion",
+              label: "rsAccordion"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/variables/RsAccordion-1",
+              label: "RsAccordion"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/variables/rsAccordionPanel",
+              label: "rsAccordionPanel"
             },
             {
               type: "doc",
@@ -1118,6 +1148,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/functions/ltrCssLoader",
               label: "ltrCssLoader"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/functions/RsAccordionPanel",
+              label: "RsAccordionPanel"
             },
             {
               type: "doc",
@@ -1557,6 +1592,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/interfaces/ChildWrapperOptions",
+              label: "ChildWrapperOptions"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/interfaces/ComponentField",
               label: "ComponentField"
             },
@@ -1564,6 +1604,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/interfaces/ComponentMetadataEventListeners",
               label: "ComponentMetadataEventListeners"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/interfaces/ComponentNodeLocation",
+              label: "ComponentNodeLocation"
             },
             {
               type: "doc",
@@ -1855,6 +1900,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/ComponentLocalizer",
               label: "ComponentLocalizer"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ComponentPlacementChange",
+              label: "ComponentPlacementChange"
             },
             {
               type: "doc",
@@ -3622,6 +3672,16 @@ const typedocSidebar = {
                   items: [
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/interfaces/RsAccordionPanelProps",
+                      label: "RsAccordionPanelProps"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/interfaces/RsAccordionProps",
+                      label: "RsAccordionProps"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/interfaces/RsAutoCompleteProps",
                       label: "RsAutoCompleteProps"
                     },
@@ -3778,6 +3838,11 @@ const typedocSidebar = {
                   items: [
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/type-aliases/AccordionActiveKey",
+                      label: "AccordionActiveKey"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/type-aliases/LoadCallback",
                       label: "LoadCallback"
                     },
@@ -3816,6 +3881,21 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/models",
                       label: "models"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rsAccordion",
+                      label: "rsAccordion"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/RsAccordion-1",
+                      label: "RsAccordion"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rsAccordionPanel",
+                      label: "rsAccordionPanel"
                     },
                     {
                       type: "doc",
@@ -4065,6 +4145,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/functions/RsAccordionPanel",
+                      label: "RsAccordionPanel"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/functions/rtlCssLoader",
                       label: "rtlCssLoader"
                     }
@@ -4311,6 +4396,16 @@ const typedocSidebar = {
                   items: [
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/interfaces/RsAccordionPanelProps",
+                      label: "RsAccordionPanelProps"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/interfaces/RsAccordionProps",
+                      label: "RsAccordionProps"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/interfaces/RsAutoCompleteProps",
                       label: "RsAutoCompleteProps"
                     },
@@ -4467,6 +4562,11 @@ const typedocSidebar = {
                   items: [
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/type-aliases/AccordionActiveKey",
+                      label: "AccordionActiveKey"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/type-aliases/LoadCallback",
                       label: "LoadCallback"
                     },
@@ -4505,6 +4605,21 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/models",
                       label: "models"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/rsAccordion",
+                      label: "rsAccordion"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/RsAccordion-1",
+                      label: "RsAccordion"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/rsAccordionPanel",
+                      label: "rsAccordionPanel"
                     },
                     {
                       type: "doc",
@@ -4751,6 +4866,11 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/functions/ltrCssLoader",
                       label: "ltrCssLoader"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/functions/RsAccordionPanel",
+                      label: "RsAccordionPanel"
                     },
                     {
                       type: "doc",
@@ -5116,6 +5236,16 @@ const typedocSidebar = {
                   items: [
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/interfaces/RsAccordionPanelProps",
+                      label: "RsAccordionPanelProps"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/interfaces/RsAccordionProps",
+                      label: "RsAccordionProps"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/interfaces/RsAutoCompleteProps",
                       label: "RsAutoCompleteProps"
                     },
@@ -5272,6 +5402,11 @@ const typedocSidebar = {
                   items: [
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/type-aliases/AccordionActiveKey",
+                      label: "AccordionActiveKey"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/type-aliases/LoadCallback",
                       label: "LoadCallback"
                     },
@@ -5310,6 +5445,21 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/models",
                       label: "models"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rsAccordion",
+                      label: "rsAccordion"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/RsAccordion-1",
+                      label: "RsAccordion"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rsAccordionPanel",
+                      label: "rsAccordionPanel"
                     },
                     {
                       type: "doc",
@@ -5556,6 +5706,11 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/functions/ltrCssLoader",
                       label: "ltrCssLoader"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/functions/RsAccordionPanel",
+                      label: "RsAccordionPanel"
                     },
                     {
                       type: "doc",

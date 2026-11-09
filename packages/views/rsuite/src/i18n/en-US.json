@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "name": "Accordion",
+      "description": "Accordion group of collapsible panels. Only one panel is expanded at a time when accordion is enabled.",
+      "props": {
+        "accordion": {
+          "name": "Accordion",
+          "description": "Whether only one panel can be expanded at a time"
+        },
+        "activeKey": {
+          "name": "Active key",
+          "description": "The event key of the expanded panel"
+        },
+        "defaultActiveKey": {
+          "name": "Default active key",
+          "description": "The event key of the panel expanded by default"
+        },
+        "bordered": {
+          "name": "Bordered",
+          "description": "Show a border around the accordion group"
+        },
+        "onSelect": {
+          "name": "onSelect",
+          "description": "Called when a panel is expanded or collapsed"
+        },
+        "children": {
+          "name": "Panels",
+          "description": "Accordion panel children"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "name": "Accordion panel",
+      "description": "A collapsible panel inside an Accordion",
+      "props": {
+        "header": {
+          "name": "Header",
+          "description": "The panel header"
+        },
+        "eventKey": {
+          "name": "Event key",
+          "description": "The event key corresponding to the panel"
+        },
+        "bodyFill": {
+          "name": "Body fill",
+          "description": "Content area filled with containers"
+        },
+        "bordered": {
+          "name": "Bordered",
+          "description": "Show border"
+        },
+        "shaded": {
+          "name": "Shaded",
+          "description": "Whether there is a shadow"
+        },
+        "children": {
+          "name": "Content",
+          "description": "Primary content"
+        }
+      }
+    },
     "RsAutoComplete": {
       "name": "AutoComplete",
       "description": "Provide auto-complete functionality for input box",

@@ -5,6 +5,8 @@ import {rewriteDeepImports} from './vite-plugin-rewrite-deep-imports.ts'
 
 // These suites read browser globals in BuilderStore or import browser-only Monaco code.
 const jsdomTests = [
+  './tests/accordion-child-wrapper.spec.tsx',
+  './tests/accordion-mode.spec.tsx',
   './tests/added-component.spec.tsx',
   './tests/builder-ui-language.spec.tsx',
   './tests/builderstore-form-as-string-pruning.spec.tsx',

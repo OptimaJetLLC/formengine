@@ -68,6 +68,66 @@
     }
   },
   "components": {
+    "RsAccordion": {
+      "description": "Akkordeongruppe zusammenklappbarer Paneele. Wenn das Akkordeon aktiviert ist, wird immer nur ein Panel erweitert.",
+      "name": "Akkordeon",
+      "props": {
+        "accordion": {
+          "description": "Ob jeweils nur ein Panel geöffnet sein kann",
+          "name": "Akkordeon"
+        },
+        "activeKey": {
+          "description": "Der Event-Schlüssel des geöffneten Panels",
+          "name": "Aktiver Schlüssel"
+        },
+        "bordered": {
+          "description": "Rahmen um die Akkordeon-Gruppe anzeigen",
+          "name": "Umrandet"
+        },
+        "children": {
+          "description": "Akkordeonplatte Kinder",
+          "name": "Panels"
+        },
+        "defaultActiveKey": {
+          "description": "Der Event-Schlüssel des standardmäßig geöffneten Panels",
+          "name": "Standardmäßiger aktiver Schlüssel"
+        },
+        "onSelect": {
+          "description": "Wird aufgerufen, wenn ein Panel geöffnet oder geschlossen wird",
+          "name": "onSelect"
+        }
+      }
+    },
+    "RsAccordionPanel": {
+      "description": "Eine zusammenklappbare Platte in einem Akkordeon",
+      "name": "Akkordeonpanel",
+      "props": {
+        "bodyFill": {
+          "description": "Inhaltsbereich gefüllt mit Containern",
+          "name": "Körperfüllung"
+        },
+        "bordered": {
+          "description": "Rahmen anzeigen",
+          "name": "Umrandet"
+        },
+        "children": {
+          "description": "Hauptinhalt",
+          "name": "Inhalt"
+        },
+        "eventKey": {
+          "description": "Der Event-Schlüssel des Panels",
+          "name": "Event-Schlüssel"
+        },
+        "header": {
+          "description": "Die Panel-Kopfzeile",
+          "name": "Kopfzeile"
+        },
+        "shaded": {
+          "description": "Ob ein Schatten angezeigt wird",
+          "name": "Beschattet"
+        }
+      }
+    },
     "RsAutoComplete": {
       "description": "Stellen Sie Funktionen zur automatischen Vervollständigung für das Eingabefeld bereit",
       "name": "Automatische Vervollständigung",

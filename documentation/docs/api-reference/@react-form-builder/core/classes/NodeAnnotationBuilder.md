@@ -52,6 +52,14 @@ Partial metadata for a component property.
 
 ***
 
+### childWrapper?
+
+> `optional` **childWrapper?**: [`ChildWrapperOptions`](../interfaces/ChildWrapperOptions.md)
+
+The component that automatically wraps direct children of another component type on insert or move.
+
+***
+
 ### defaultEditor?
 
 > `optional` **defaultEditor?**: [`NodeEditorType`](../type-aliases/NodeEditorType.md)
@@ -497,6 +505,28 @@ the modified instance of the builder.
 #### Inherited from
 
 [`AnnotationBuilder`](AnnotationBuilder.md).[`uncontrolledValue`](AnnotationBuilder.md#uncontrolledvalue)
+
+***
+
+### withChildWrapper()
+
+> **withChildWrapper**(`options`): `this`
+
+Auto-wraps inserted or moved children that are not already of the configured component type.
+
+#### Parameters
+
+##### options
+
+[`ChildWrapperOptions`](../interfaces/ChildWrapperOptions.md)
+
+the wrapper component and the slot that receives the original child.
+
+#### Returns
+
+`this`
+
+the modified instance of the builder.
 
 ***
 

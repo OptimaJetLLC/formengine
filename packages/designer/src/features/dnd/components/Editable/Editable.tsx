@@ -81,9 +81,9 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
 
   openSlots.forEach(container => {
     const componentState = componentData.componentState
-    const slotCondition = container?.slotConditionBuilder?.(componentState.propsWithoutChildren)
+    const slotCondition = container.slotConditionBuilder?.(componentState.propsWithoutChildren)
     const slot = container.key === childrenSlot ? undefined : container.key
-    currentProps[container.key] = <DropZone isInner={true} slot={slot} slotCondition={slotCondition} />
+    currentProps[container.key] = <DropZone key={`${container.key}-dropzone`} isInner={true} slot={slot} slotCondition={slotCondition} />
   })
 
   return currentProps

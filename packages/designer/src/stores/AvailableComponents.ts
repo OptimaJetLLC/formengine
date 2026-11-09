@@ -17,18 +17,12 @@ const createComponentData = (store: Store, componentStore: ComponentStore): Comp
 }
 
 /**
- * Creates component data for components palette.
+ * Creates the component store for a component being added, applying its initial JSON.
  * @param model the component model.
  * @param componentMetadataProvider the component metadata provider.
- * @param store the viewer store.
- * @returns component data.
- * @ignore
+ * @returns the component store.
  */
-export const createAddedComponentData = (
-  model: Model,
-  componentMetadataProvider: IComponentMetadataProvider,
-  store: Store
-): ComponentData => {
+export const createAddedComponentStore = (model: Model, componentMetadataProvider: IComponentMetadataProvider): ComponentStore => {
   const componentStore = new ComponentStore(`${model.type} ${getKey()}`, model.type)
   const componentMetadata = componentMetadataProvider.getComponentMetadata(model.type)
 
@@ -41,8 +35,22 @@ export const createAddedComponentData = (
     }
   }
 
-  return createComponentData(store, componentStore)
+  return componentStore
 }
+
+/**
+ * Creates component data for components palette.
+ * @param model the component model.
+ * @param componentMetadataProvider the component metadata provider.
+ * @param store the viewer store.
+ * @returns component data.
+ * @ignore
+ */
+export const createAddedComponentData = (
+  model: Model,
+  componentMetadataProvider: IComponentMetadataProvider,
+  store: Store
+): ComponentData => createComponentData(store, createAddedComponentStore(model, componentMetadataProvider))
 
 /**
  * Creates component data for component palette.
