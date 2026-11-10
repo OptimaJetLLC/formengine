@@ -84,11 +84,13 @@ const MuiBreadcrumbs = ({items = [], onItemClick, ...props}: MuiBreadcrumbsProps
       items.map((item, i) => {
         if (item.active) {
           return (
+            // eslint-disable-next-line @eslint-react/no-array-index-key -- Breadcrumb titles and URLs are optional and may repeat; no item ID exists.
             <Typography sx={activeItemSx} key={i}>
               {item.title}
             </Typography>
           )
         }
+        // eslint-disable-next-line @eslint-react/no-array-index-key -- Breadcrumb titles and URLs are optional and may repeat; no item ID exists.
         return <BreadcrumbsItem key={i} onClick={onItemClick} {...item} />
       }),
     [items, onItemClick]

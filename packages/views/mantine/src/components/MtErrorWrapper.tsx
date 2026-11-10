@@ -30,10 +30,12 @@ export const MtErrorWrapper = ({error, children, className}: ErrorWrapperProps) 
   const showMessage = !declaresError
   const cls = clsx(styles.errorWrapper, className)
 
+  // eslint-disable-next-line @eslint-react/no-children-only -- Preserve the wrapper's single-control contract and validation of children.
   const child = children === null || children === undefined ? null : Children.only(children)
   const childWithError =
     child !== null && error && isValidElement(child) && declaresError
-      ? cloneElement(child as ReactElement<{error?: string}>, {error})
+      ? // eslint-disable-next-line @eslint-react/no-clone-element -- Pass validation errors to controls that declare native error support.
+        cloneElement(child as ReactElement<{error?: string}>, {error})
       : child
 
   return (

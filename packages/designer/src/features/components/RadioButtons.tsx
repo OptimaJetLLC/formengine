@@ -53,6 +53,7 @@ export const RadioButtons = ({label, items, className, ...props}: RadioButtonsPr
       {!!label && <label>{label}</label>}
       <RRadioGroup {...(props as any)} size={'xs'} inline appearance={'picker'}>
         {items?.map(({value, label, hint}, i) => (
+          // eslint-disable-next-line @eslint-react/no-array-index-key -- Annotation values are editable and may repeat; no stable item ID exists.
           <Radio value={value} key={i}>
             <Hinted hint={hint} placement={'autoHorizontal'}>
               {label ?? value}

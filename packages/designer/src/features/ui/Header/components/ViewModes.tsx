@@ -59,8 +59,8 @@ const RawViewModes = (props: ComponentProps<'div'>) => {
 
   const resolutionButtons = useMemo(
     () =>
-      resolutions.map(([value, icon], index) => {
-        return <ResolutionButton key={index} value={value} icon={icon} />
+      resolutions.map(([value, icon]) => {
+        return <ResolutionButton key={value} value={value} icon={icon} />
       }),
     []
   )

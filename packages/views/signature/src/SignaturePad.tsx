@@ -38,8 +38,8 @@ const withDefaultProps = ({lineWidth = 1.5, ...props}: SignatureProps) => {
 export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((props, ref) => {
   const {value, width = 300, height = 150, className, onChange, backgroundColor, readOnly, ariaAttributes, ...padProps} = props
 
-  const initialValue = useRef(value)
-  const initialPadProps = useRef(padProps)
+  const initialValueRef = useRef(value)
+  const initialPadPropsRef = useRef(padProps)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const signPadRef = useRef<VanillaSignaturePad>(null)
   const clear = useCallback(() => signPadRef.current?.clear(), [])
@@ -50,20 +50,24 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
   useEffect(() => {
     if (!canvasRef.current) return
 
-    const pad = new VanillaSignaturePad(canvasRef.current, withDefaultProps(initialPadProps.current))
-    if (initialValue.current) {
+    const pad = new VanillaSignaturePad(canvasRef.current, withDefaultProps(initialPadPropsRef.current))
+    if (initialValueRef.current) {
       const ratio = Math.max(globalThis.devicePixelRatio ?? 1, 1)
       const options = {ratio, width, height}
-      pad.fromDataURL(initialValue.current, options).catch(console.error)
+      pad.fromDataURL(initialValueRef.current, options).catch(console.error)
     }
-    pad.addEventListener('endStroke', () => onChange?.(pad.toDataURL()))
+    const handleEndStroke = () => onChange?.(pad.toDataURL())
+    pad.addEventListener('endStroke', handleEndStroke)
     pad.on()
 
     setVanillaSignaturePad(pad)
 
     signPadRef.current = pad
 
-    return () => pad.off()
+    return () => {
+      pad.removeEventListener('endStroke', handleEndStroke)
+      pad.off()
+    }
   }, [onChange, width, height])
 
   useEffect(() => {

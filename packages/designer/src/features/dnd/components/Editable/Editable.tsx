@@ -72,7 +72,9 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
     if (filteredChildren.length) {
       currentProps[key] =
         componentData.model.propsBindingTypes[key] === 'array' ? (
-          filteredChildren.map((item, index) => [item]).map((data, index) => <ComponentTree key={index} data={data} />)
+          filteredChildren
+            .map<[string, ComponentData[]]>(item => [item.id, [item]])
+            .map(([id, data]) => <ComponentTree key={id} data={data} />)
         ) : (
           <ComponentTree data={filteredChildren} />
         )

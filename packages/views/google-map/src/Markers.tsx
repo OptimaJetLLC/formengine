@@ -73,6 +73,7 @@ export const Markers = (props: MarkersProps) => {
 
         return (
           <AdvancedMarkerWithRef
+            // eslint-disable-next-line @eslint-react/no-array-index-key -- Input IDs can repeat or be regenerated when omitted; preserve marker instances.
             key={index}
             onMarkerClick={clickHandlers[index]}
             onMouseEnter={mouseEnterHandlers[index]}

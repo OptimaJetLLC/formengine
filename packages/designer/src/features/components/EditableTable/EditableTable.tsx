@@ -122,6 +122,7 @@ export const EditableTable = (props: EditableTableProps) => {
   const columnChangeHandler = useCallback(() => handleChange?.([...data] as any), [handleChange, data])
 
   const prepareColumns = useCallback(
+    // eslint-disable-next-line @eslint-react/no-clone-element -- Existing column elements receive the table's shared change handler.
     () => columns?.map(col => cloneElement(col, {onChange: columnChangeHandler})),
     [columns, columnChangeHandler]
   )

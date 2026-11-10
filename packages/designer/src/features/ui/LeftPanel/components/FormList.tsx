@@ -96,6 +96,7 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
       <List {...listProps}>
         {filteredFormList.length ? (
           filteredFormList.map((name, index) => (
+            // eslint-disable-next-line @eslint-react/no-array-index-key -- External storage adapters may return repeated names; no separate item ID exists.
             <FormListItem key={index} active={name === builderStore.formName} name={name} onLoadForm={loadForm} onRemoveForm={removeForm} />
           ))
         ) : (

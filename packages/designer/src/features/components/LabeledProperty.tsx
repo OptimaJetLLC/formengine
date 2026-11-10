@@ -201,6 +201,7 @@ export const LabeledWrapper = (props: LabeledWrapperProps) => {
           <>{label}</>
         </CustomizedLabel>
       </Columns>
+      {/* eslint-disable-next-line @eslint-react/no-clone-element -- Preserve the label association and test ID on the supplied input. */}
       {!!children && <CustomizedInput>{cloneElement(children, {id, 'data-testid': inputTestId})}</CustomizedInput>}
     </LabeledInput>
   )

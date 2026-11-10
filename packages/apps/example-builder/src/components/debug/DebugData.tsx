@@ -79,6 +79,7 @@ const DebugData = () => {
     return {__html: html}
   }, [componentData.dataRoot.data])
 
+  // eslint-disable-next-line @eslint-react/dom-no-dangerously-set-innerhtml -- Preserve the existing escaped JSON syntax highlighter.
   return <div className="json-container" dangerouslySetInnerHTML={innerHtml} />
 }
 

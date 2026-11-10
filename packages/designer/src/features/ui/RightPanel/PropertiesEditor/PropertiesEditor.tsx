@@ -30,7 +30,7 @@ const getActiveTab = () => {
 }
 
 const RawPropertiesEditor = () => {
-  const [activeTab, setActiveTab] = useState(getActiveTab())
+  const [activeTab, setActiveTab] = useState(getActiveTab)
 
   const handleTabChange = useCallback((tab: Section) => {
     setActiveTab(tab)

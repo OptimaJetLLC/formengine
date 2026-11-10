@@ -41,8 +41,8 @@ const RawArgumentList = () => {
     <div onMouseDown={preventClick}>
       <Animation.Collapse in={show} unmountOnExit>
         <Rows className={styles.rows}>
-          {Object.entries(action.params).map((arg, index) => (
-            <ArgumentItem key={index} data={arg} />
+          {Object.entries(action.params).map(arg => (
+            <ArgumentItem key={arg[0]} data={arg} />
           ))}
         </Rows>
       </Animation.Collapse>

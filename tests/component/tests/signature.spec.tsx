@@ -1,8 +1,9 @@
 import {signatureModel} from '@react-form-builder/components-signature'
 import {createView} from '@react-form-builder/core'
-import {fireEvent, waitFor, within} from '@testing-library/react'
+import {fireEvent, render, waitFor, within} from '@testing-library/react'
 import {Canvas, Image as SkiaImage} from 'skia-canvas'
 import {afterAll, beforeAll, describe, expect, it, vi} from 'vitest'
+import {SignaturePad} from '../../../packages/views/signature/src/SignaturePad'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {isBrowserMode} from '../config/isBrowserMode'
 import {renderViewerForm} from '../util/renderViewerForm'
@@ -304,5 +305,24 @@ describe('Signature component', () => {
 
     const errors = await asyncAct(async () => formData.validate())
     expect(errors).toStrictEqual({})
+  })
+
+  it('removes the endStroke listener when onChange identity changes', async () => {
+    const removeEventListener = vi.spyOn(EventTarget.prototype, 'removeEventListener')
+    const ariaAttributes = {'aria-labelledby': 'signature-label', 'aria-errormessage': 'signature-error'}
+
+    try {
+      const {rerender, container, unmount} = render(
+        <SignaturePad ariaAttributes={ariaAttributes} onChange={vi.fn()} width={300} height={150} />
+      )
+      expect(getCanvas(container)).toBeInTheDocument()
+
+      rerender(<SignaturePad ariaAttributes={ariaAttributes} onChange={vi.fn()} width={300} height={150} />)
+
+      await waitFor(() => expect(removeEventListener.mock.calls.some(([type]) => type === 'endStroke')).toBe(true))
+      unmount()
+    } finally {
+      removeEventListener.mockRestore()
+    }
   })
 })

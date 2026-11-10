@@ -96,6 +96,10 @@ const EmptyContent = () => <div className={styles.centered}>Missing content</div
  */
 interface WizardStepItemProps {
   /**
+   * The immutable component instance ID of the step.
+   */
+  id: string
+  /**
    * Label for the step.
    */
   label?: string
@@ -163,7 +167,7 @@ const RsWizard = forwardRef(function Wizard(wProps: RsWizardProps, ref: Forwarde
 
   const componentData = useComponentData()
 
-  const labels = useArrayMapMemo(componentData.store.children, ({props}) => ({label: props.label?.value}))
+  const labels = useArrayMapMemo(componentData.children, ({id, store}) => ({id, label: store.props.label?.value}))
 
   const openStep = useCallback(
     (index: number) => {
@@ -262,13 +266,14 @@ const RsWizard = forwardRef(function Wizard(wProps: RsWizardProps, ref: Forwarde
   )
 
   const wizardItems: WizardStepItemProps[] = useMemo(() => {
-    return labels.map(({label}, index) => {
+    return labels.map(({id, label}, index) => {
       const itemClassName = cx(isStepAvailable(index) && 'available', index === activeIndex && 'active')
 
       const onClick = () => handleStepClick(index)
       const status = getStepStatus(index)
 
       return {
+        id,
         label,
         className: itemClassName,
         status,
@@ -282,8 +287,8 @@ const RsWizard = forwardRef(function Wizard(wProps: RsWizardProps, ref: Forwarde
       <div className={cx(styles.stepsContainer, verticalSteps && styles.verticalSteps)}>
         {showSteps && !!content && (
           <Steps current={activeIndex} vertical={verticalSteps} className={'steps'}>
-            {wizardItems.map(({label, onClick, status, className}, index) => (
-              <SItem key={index} title={showStepsLabels && label} onClick={onClick} status={status} className={className} />
+            {wizardItems.map(({id, label, onClick, status, className}) => (
+              <SItem key={id} title={showStepsLabels && label} onClick={onClick} status={status} className={className} />
             ))}
           </Steps>
         )}

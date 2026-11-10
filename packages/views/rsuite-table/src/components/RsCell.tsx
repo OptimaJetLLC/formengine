@@ -26,6 +26,7 @@ const RsBuilderCell = (props: CellProps<Record<string, unknown>>) => {
   return (
     <Whisper placement="top" trigger="hover" speaker={speaker}>
       <div className={cx(props.className, style.cell)}>
+        {/* eslint-disable-next-line @eslint-react/no-children-map -- Preserve React child traversal and composed keys for cell overlays. */}
         {Children.map(props.children, child => (
           <div className={style.nested}>{child}</div>
         ))}

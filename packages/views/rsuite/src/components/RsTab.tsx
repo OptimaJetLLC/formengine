@@ -71,6 +71,7 @@ const RsTab = ({pane, onSelect, showNavigation, items, className, ...props}: RsT
       {showNavigation === true && (
         <Nav onSelect={onNavSelect} activeKey={activeKey} {...props} className={cx(styles.tabs, className)}>
           {items.map((item, index) => (
+            // eslint-disable-next-line @eslint-react/no-array-index-key -- Tab values are editable and may repeat; no stable item ID exists.
             <Nav.Item key={index} eventKey={item.value} role="tab" as="button" type="button">
               {item.label}
             </Nav.Item>

@@ -29,6 +29,7 @@ const RsStaticContent = (props: RsStaticContentProps) => {
   const html = useMemo(() => ({__html: data}), [data])
 
   if (allowHtml) {
+    // eslint-disable-next-line @eslint-react/dom-no-dangerously-set-innerhtml -- allowHtml explicitly opts into rendering form-provided HTML.
     return <span {...otherProps} dangerouslySetInnerHTML={html} />
   }
 

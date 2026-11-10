@@ -41,7 +41,7 @@ export const getViewStorageKey = (appName = 'form-builder', options?: UsePersist
 export const usePersistentView = (appName = 'form-builder', options?: UsePersistentViewOptions): [ViewType, (view: ViewType) => void] => {
   const storageKey = getViewStorageKey(appName, options)
 
-  const [view, setViewState] = useState<ViewType>(() => {
+  const [view, setView] = useState<ViewType>(() => {
     const fromUrl = options?.initialView?.trim()
     if (fromUrl && allViews.indexOf(fromUrl) !== -1) {
       return fromUrl as ViewType
@@ -56,5 +56,5 @@ export const usePersistentView = (appName = 'form-builder', options?: UsePersist
 
   useEffect(() => localStorage.setItem(storageKey, view), [storageKey, view])
 
-  return [view, setViewState]
+  return [view, setView]
 }

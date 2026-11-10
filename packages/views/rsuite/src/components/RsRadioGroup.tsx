@@ -40,6 +40,7 @@ const RsRadioGroup = ({items, label, value, className, ...props}: RsRadioGroupPr
     <Labeled label={label} className={className} passAriaToChildren={true}>
       <RadioGroup {...(props as any)} value={value ?? ''}>
         {items?.map(({value, label}, i) => (
+          // eslint-disable-next-line @eslint-react/no-array-index-key -- Option values are editable and may repeat; no stable item ID exists.
           <Radio value={value} key={i}>
             {label ?? value}
           </Radio>

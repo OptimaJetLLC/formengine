@@ -53,6 +53,7 @@ export function MtDropzone(props: MtDropzoneProps) {
   )
 
   const pickedFiles = (value || []).map((file, index) => (
+    // eslint-disable-next-line @eslint-react/no-array-index-key -- The File[] API has no item ID and permits repeated files and names.
     <List.Item key={`${file.name}-${index}`}>
       <Group>
         <span>{file.name}</span>

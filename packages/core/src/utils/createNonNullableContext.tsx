@@ -23,11 +23,11 @@ function createProvider<T>(context: Context<T | null>) {
  * @returns the tuple [hook, provider, and common context] for interactions with a non-nullable context.
  */
 export function createNonNullableContext<T>(name: string, defaultValue: T | null = null): [() => T, Provider<T>, Context<T | null>] {
-  const context = createContext<T | null>(defaultValue)
-  context.displayName = name
+  const NonNullableContext = createContext<T | null>(defaultValue)
+  NonNullableContext.displayName = name
 
-  const hook = createContextHook(context)
-  const provider = createProvider(context)
+  const hook = createContextHook(NonNullableContext)
+  const provider = createProvider(NonNullableContext)
 
-  return [hook, provider, context]
+  return [hook, provider, NonNullableContext]
 }

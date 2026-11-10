@@ -9,6 +9,26 @@ import {renderBuilder} from '../util/renderBuilder'
 const builderView = new BuilderView(allComponentsBuilder)
 
 describe('Form settings test', () => {
+  it('renders repeated form names from an external storage without duplicate-key errors', async () => {
+    const form = {form: {key: 'Screen', type: 'Screen'}}
+    const formStorage: IFormStorage = {
+      getForm: vi.fn().mockResolvedValue(JSON.stringify(form)),
+      getFormNames: vi.fn().mockResolvedValue(['Shared', 'Shared']),
+      removeForm: vi.fn().mockResolvedValue(undefined),
+      saveForm: vi.fn().mockResolvedValue(undefined),
+    }
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {})
+    try {
+      const {findByTestId, findAllByTestId} = await renderBuilder(form, {formStorage, formName: 'Shared'})
+      fireEvent.click(await findByTestId('Forms_Tab'))
+
+      expect(await findAllByTestId('form-list-item-Shared')).toHaveLength(2)
+      expect(consoleError).not.toHaveBeenCalled()
+    } finally {
+      consoleError.mockRestore()
+    }
+  })
+
   it('The tooltip dropdown should contain the tooltip components', async () => {
     const renderResult = render(<FormBuilder view={builderView} />)
     const {findByTestId} = renderResult

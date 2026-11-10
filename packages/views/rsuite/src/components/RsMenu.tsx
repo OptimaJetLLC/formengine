@@ -88,6 +88,7 @@ const RsMenu = ({onSelect, items, itemsAs, ...props}: RsMenuProps) => {
   return (
     <Nav onSelect={onNavSelect} {...props}>
       {items.map(({title, href}, index) => (
+        // eslint-disable-next-line @eslint-react/no-array-index-key -- Menu titles and URLs are optional and may repeat; no item ID exists.
         <Nav.Item key={index} href={href} as={itemsAs} eventKey={title} active={title === props.activeKey}>
           {title}
         </Nav.Item>

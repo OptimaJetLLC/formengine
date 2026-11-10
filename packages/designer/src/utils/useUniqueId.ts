@@ -13,5 +13,6 @@ function uniqueId(prefix?: string) {
  * @returns the unique ID.
  */
 export function useUniqueId(prefix?: string) {
-  return useState(() => uniqueId(prefix))[0]
+  const [id] = useState(() => uniqueId(prefix))
+  return id
 }

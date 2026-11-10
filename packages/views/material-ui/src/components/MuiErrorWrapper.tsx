@@ -25,10 +25,12 @@ export const MuiErrorWrapper = ({error, children, className}: ErrorWrapperProps)
   const aria = useAriaErrorMessage()
   const supportsNativeError = useWrappedComponentSupportsNativeError()
   const errorMessageId = aria['aria-errormessage']
+  // eslint-disable-next-line @eslint-react/no-children-only -- Preserve the wrapper's single-control contract and validation of children.
   const child = children === null || isUndefined(children) ? null : Children.only(children)
   const childWithError =
     child !== null && error && isValidElement(child)
-      ? cloneElement(
+      ? // eslint-disable-next-line @eslint-react/no-clone-element -- Preserve native error display and ARIA injection into the supplied control.
+        cloneElement(
           child as ReactElement<{error?: boolean; helperText?: string} & ControlAriaProps>,
           supportsNativeError
             ? {error: true, helperText: error}

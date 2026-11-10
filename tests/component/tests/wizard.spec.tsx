@@ -1,5 +1,5 @@
 import {ComponentData, FormViewerProps} from '@react-form-builder/core'
-import {fireEvent, waitFor} from '@testing-library/react'
+import {act, fireEvent, waitFor} from '@testing-library/react'
 import {renderForm} from '../util/renderRsuiteForm'
 
 const wizardForm = {
@@ -57,6 +57,21 @@ const wizardForm = {
 }
 
 describe('RsWizard tests', () => {
+  it('keeps step navigation mounted when a component key is renamed', async () => {
+    const {findByText, getByText, formData} = renderForm(wizardForm)
+    const label = await findByText('Step 1')
+    const navigationItem = label.closest('.rs-steps-item')
+    expect(navigationItem).toBeInTheDocument()
+    const wizard = (formData as ComponentData).findByKey('wizard')!
+
+    act(() => {
+      wizard.children[0].store.key = 'renamedStep'
+    })
+
+    expect(getByText('Step 1')).toBe(label)
+    expect(getByText('Step 1').closest('.rs-steps-item')).toBe(navigationItem)
+  })
+
   it('Wizard buttons should provide an event and a container in button events', async () => {
     const elements: HTMLButtonElement[] = []
 

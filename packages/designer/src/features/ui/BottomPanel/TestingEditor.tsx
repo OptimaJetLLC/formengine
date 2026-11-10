@@ -186,7 +186,7 @@ export const TestRunner = namedObserver('TestRunner', RawTestRunner)
 const RawTestingEditor = forwardRef(({testingFunction, initialData}: TestingEditorProps, ref) => {
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
-  const [data, setData] = useState(builderStore.testingData ?? init(initialData))
+  const [data, setData] = useState(() => builderStore.testingData ?? init(initialData))
   const [editorInitialData] = useState(data)
 
   useEffect(

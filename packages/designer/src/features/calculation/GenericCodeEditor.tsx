@@ -107,7 +107,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
     setInitialValue(propsSourceCode)
     setSourceCode(propsSourceCode)
   }
-  const testingEditor = useRef<TestingEditorRef>({})
+  const testingEditorRef = useRef<TestingEditorRef>({})
   const {formData} = useStore()
   const showTestingEditor = !props.compact
   const testFormData = props.initialTestData ?? formData.data
@@ -121,7 +121,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
 
   const handleSave = useCallback(() => {
     const valueToSave = resolveSourceForSave(sourceCode)
-    const testResult = validateBeforeSave?.(valueToSave) === 'skip-test' ? undefined : testingEditor.current.test?.()
+    const testResult = validateBeforeSave?.(valueToSave) === 'skip-test' ? undefined : testingEditorRef.current.test?.()
     if (resolveGenericCodeEditorSave(valueToSave, {validateBeforeSave, testResult}) === 'abort') return
 
     action(() => onSave(valueToSave))()
@@ -159,10 +159,10 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
             </Button>
           </ButtonGroup>
           <div className={styles.extra}>{props.toolbarExtra}</div>
-          {props.compact && <TestRunner testingFunction={testingFunction} ref={testingEditor} compact />}
+          {props.compact && <TestRunner testingFunction={testingFunction} ref={testingEditorRef} compact />}
         </div>
       </Rows>
-      {showTestingEditor && <TestingEditor initialData={testFormData} testingFunction={testingFunction} ref={testingEditor} />}
+      {showTestingEditor && <TestingEditor initialData={testFormData} testingFunction={testingFunction} ref={testingEditorRef} />}
     </Columns>
   )
 }

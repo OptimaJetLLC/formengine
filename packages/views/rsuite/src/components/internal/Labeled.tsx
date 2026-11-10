@@ -32,6 +32,7 @@ const RawLabeled = ({label, children, passAriaToChildren, className, ...props}: 
           {label}
         </label>
       )}
+      {/* eslint-disable-next-line @eslint-react/no-clone-element -- Preserve optional form ID and label ARIA injection into the supplied control. */}
       {passAriaToChildren ? cloneElement(children, {id, ...aria}) : children}
     </div>
   )

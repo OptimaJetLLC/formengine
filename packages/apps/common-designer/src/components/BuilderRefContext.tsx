@@ -35,13 +35,13 @@ export const useSetBuilderRef = () => {
  * @returns the React element.
  */
 export const BuilderRefProvider = (props: PropsWithChildren<any>) => {
-  const [builderRef, setBuilderRefState] = useState<BuilderRef | undefined>(undefined)
+  const [builderRefState, setBuilderRefState] = useState<BuilderRef | undefined>(undefined)
 
   const setBuilderRef = useCallback((ref: BuilderRef) => {
     setBuilderRefState(ref)
   }, [])
 
-  const value = useMemo(() => ({builderRef, setBuilderRef}), [builderRef, setBuilderRef])
+  const value = useMemo(() => ({builderRef: builderRefState, setBuilderRef}), [builderRefState, setBuilderRef])
 
   return <BuilderRefContext.Provider value={value}>{props.children}</BuilderRefContext.Provider>
 }
