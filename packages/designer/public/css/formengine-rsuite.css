@@ -6,6 +6,7 @@
 :where(
   .optimajet-formbuilder,
   .optimajet-formviewer,
+  [data-fe-toolbar],
   .rs-toast-provider,
   .rs-modal,
   .rs-tooltip,

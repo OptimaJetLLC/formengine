@@ -13,6 +13,7 @@ const jsdomTests = [
   './tests/fe-1995-localization-languages-seeding.spec.tsx',
   './tests/insert-order.spec.tsx',
   './tests/preset-insert-order.spec.tsx',
+  './tests/toolbar-typography-css.spec.ts',
 ]
 
 export default defineConfig(env => {
