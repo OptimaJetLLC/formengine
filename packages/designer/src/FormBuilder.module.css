@@ -19,6 +19,20 @@
 }
 
 @media print {
+  :global(.rs-toast-provider),
+  :global(.rs-modal-wrapper),
+  :global(.rs-modal-backdrop),
+  :global(.rs-drawer-wrapper),
+  :global(.rs-drawer-backdrop),
+  :global(.rs-tooltip),
+  :global(.rs-popover),
+  :global(.rs-picker-popup),
+  :global(.rs-picker-menu),
+  :global(.rs-picker-popup-date),
+  :global(.rs-picker-select-menu) {
+    display: none !important;
+  }
+
   .container,
   .content {
     display: block;
