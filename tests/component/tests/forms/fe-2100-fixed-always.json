@@ -1,0 +1,48 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "visibleLabel",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "value": "Main content always"
+          }
+        }
+      },
+      {
+        "key": "alwaysOverlay",
+        "type": "RsContainer",
+        "props": {},
+        "css": {
+          "any": {
+            "object": {
+              "position": "fixed",
+              "top": "0",
+              "left": "0",
+              "right": "0",
+              "bottom": "0",
+              "backgroundColor": "rgba(15, 23, 42, 0.45)",
+              "zIndex": "1000"
+            }
+          }
+        },
+        "children": [
+          {
+            "key": "alwaysOverlayTitle",
+            "type": "RsHeader",
+            "props": {
+              "content": {
+                "value": "Unconditional fixed overlay"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "visibleLabel",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "value": "Main content absolute"
+          }
+        }
+      },
+      {
+        "key": "absoluteOverlay",
+        "type": "RsContainer",
+        "props": {},
+        "renderWhen": {
+          "computeType": "function",
+          "fnSource": "  return !!form.state.showCreateModal"
+        },
+        "css": {
+          "any": {
+            "object": {
+              "position": "absolute",
+              "top": "0",
+              "left": "0",
+              "right": "0",
+              "bottom": "0",
+              "backgroundColor": "rgba(15, 23, 42, 0.45)",
+              "zIndex": "1000"
+            }
+          }
+        },
+        "children": [
+          {
+            "key": "absoluteOverlayTitle",
+            "type": "RsHeader",
+            "props": {
+              "content": {
+                "value": "Absolute overlay"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

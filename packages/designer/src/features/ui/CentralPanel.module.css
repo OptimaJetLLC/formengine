@@ -15,6 +15,7 @@
   width: initial;
   margin-inline: 15px;
   overflow: hidden;
+  transform: translateZ(0);
   transition:
     max-width 0.2s ease,
     max-height 0.2s ease,
