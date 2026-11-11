@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/components-fast-qr",
-  "version": "11.1.0",
+  "version": "12.0.0",
   "private": false,
   "main": "src/index.ts",
   "type": "module",
@@ -29,7 +29,7 @@
     "fast_qr": "^0.13.0"
   },
   "peerDependencies": {
-    "@react-form-builder/core": "11.1.0",
+    "@react-form-builder/core": "12.0.0",
     "react": "^18 || ^19"
   },
   "peerDependenciesMeta": {
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",
-    "@react-form-builder/json-schema-generator": "^11.1.0",
+    "@react-form-builder/json-schema-generator": "^12.0.0",
     "vite-node": "^6.0.0"
   },
   "files": [

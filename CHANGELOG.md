@@ -4,6 +4,23 @@ All notable changes to FormEngine are documented here. For full, detailed releas
 
 - Latest release notes: https://formengine.io/documentation/release-notes
 
+## 12.0.0 - November 11, 2026
+
+Drops React 17, upgrades MobX 7 and Material UI 9, adds RSuite Accordion and Sortable list, and ships designer and uploader fixes.
+
+### Highlights
+
+- React peers are `^18 || ^19`.
+- MobX peers are [mobx](https://mobx.js.org/) `^7.1.0` and [mobx-react](https://github.com/mobxjs/mobx) `^10.0.2`.
+- Material UI peers are `@mui/material` `^9.5.0` and `@mui/x-date-pickers` `^9.16.0`. [Material UI components](https://formengine.io/documentation/components-library/material-ui).
+- [Accordion](https://formengine.io/documentation/components-library/structure-components/accordion) and [Accordion panel](https://formengine.io/documentation/components-library/structure-components/accordion-panel).
+- [Sortable list](https://formengine.io/documentation/components-library/structure-components/sortable-list) lets users
+  reorder rows by dragging. See the [usage guide](https://learn.formengine.io/fields-and-data/sortable-list/).
+- Uploader [paste](https://formengine.io/documentation/api-reference/@react-form-builder/components-uploader/interfaces/UploaderProps#paste) (default `false`) and fixed success / `onError` handling.
+- [ComponentData.setUserDefinedProp](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/ComponentData#setuserdefinedprop).
+
+[Full release notes for 12.0.0](https://formengine.io/documentation/release-notes/12.0.0)
+
 ## 11.1.0 - October 9, 2026
 
 Maintenance release with dependency updates.

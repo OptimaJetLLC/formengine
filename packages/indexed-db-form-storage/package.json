@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/indexed-db-form-storage",
-  "version": "11.1.0",
+  "version": "12.0.0",
   "private": false,
   "main": "index.ts",
   "type": "module",
@@ -27,12 +27,12 @@
     "README.md"
   ],
   "dependencies": {
-    "@react-form-builder/designer": "^11.1.0",
+    "@react-form-builder/designer": "^12.0.0",
     "idb-keyval": "^6.3.0",
     "mobx": "^7.1.0"
   },
   "peerDependencies": {
-    "@react-form-builder/core": "11.1.0"
+    "@react-form-builder/core": "12.0.0"
   },
   "peerDependenciesMeta": {
     "@react-form-builder/core": {
