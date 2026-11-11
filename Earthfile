@@ -1,6 +1,6 @@
 VERSION --try 0.8
 
-FROM node:24.18.0
+FROM node:26.13.0
 
 # --- Shared helpers ---
 
@@ -147,7 +147,7 @@ npm-documentation-sites-build:
   RUN npm run docs:build && npm run designer-guide:build
 
 npm-publish-rc-release:
-  FROM node:24.18.0
+  FROM node:26.13.0
   WORKDIR /repo
   COPY scripts/release scripts/release
   COPY .archives .archives
@@ -162,7 +162,7 @@ npm-publish-rc-release:
     node scripts/release/upload-release-artifacts.ts
 
 validate-rc-archives:
-  FROM node:24.18.0
+  FROM node:26.13.0
   WORKDIR /repo
   COPY scripts/release scripts/release
   COPY .archives .archives

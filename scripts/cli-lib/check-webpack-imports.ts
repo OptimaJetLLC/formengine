@@ -12,7 +12,8 @@ const monorepoSourceSpecifierPattern = /^packages\//
 const skippedSpecifierPattern = /^(?:node:|data:|blob:|https?:|virtual:)/
 
 const webpackResolver = ResolverFactory.createResolver({
-  fileSystem: new CachedInputFileSystem(fs, 4000),
+  // Node 26 @types/node widened readFileSync; enhanced-resolve BaseFileSystem has not caught up.
+  fileSystem: new CachedInputFileSystem(fs as ConstructorParameters<typeof CachedInputFileSystem>[0], 4000),
   useSyncFileSystemCalls: true,
   extensions: ['.js', '.mjs', '.json'],
   fullySpecified: true,
