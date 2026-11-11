@@ -71,8 +71,8 @@ export class FormViewerPropsStore {
   initialState: Record<string, unknown> = {}
 
   /**
-   * The arbitrary user context passed via props.
-   * This value is not observable and is intended to be non-reactive.
+   * User context from FormViewer props.
+   * Stored by reference (`observableRef`); nested fields are not made observable by FormEngine.
    */
   userContext?: unknown
 
@@ -96,7 +96,7 @@ export class FormViewerPropsStore {
         view: observableRef,
         initialData: observableDeep,
         initialState: observableDeep,
-        userContext: observableDeep,
+        userContext: observableRef,
         validators: observableRef,
         formValidators: observableRef,
         localizer: observableRef,

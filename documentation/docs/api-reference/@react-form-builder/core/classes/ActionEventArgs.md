@@ -116,14 +116,6 @@ the form viewer settings.
 
 the event type.
 
-***
-
-### userContext?
-
-> `readonly` `optional` **userContext?**: `unknown`
-
-The user-defined context passed from the form viewer props.
-
 ## Accessors
 
 ### data
@@ -179,6 +171,20 @@ the object to read and modify parent data (available for array elements).
 `Record`\<`string`, `unknown`\>
 
 the object to read and modify root form data.
+
+***
+
+### userContext
+
+#### Get Signature
+
+> **get** **userContext**(): `unknown`
+
+##### Returns
+
+`unknown`
+
+the user-defined context from the form viewer props.
 
 ***
 

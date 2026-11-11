@@ -19,11 +19,6 @@ export class ActionEventArgs {
   readonly index?: number
 
   /**
-   * The user-defined context passed from the form viewer props.
-   */
-  readonly userContext?: unknown
-
-  /**
    * The ref value, if available.
    */
   readonly refValue?: any
@@ -54,8 +49,14 @@ export class ActionEventArgs {
       this.#parentComponentDataProxy = createDataProxy(parentComponentData)
     }
     this.#rootComponentDataProxy = createDataProxy(this.store.formData)
-    this.userContext = store.formViewerPropsStore.userContext
     this.refValue = sender.componentState.getRefValue?.()
+  }
+
+  /**
+   * @returns the user-defined context from the form viewer props.
+   */
+  get userContext(): unknown {
+    return this.store.formViewerPropsStore.userContext
   }
 
   /**
@@ -192,9 +193,9 @@ declare class ActionEventArgs {
   readonly cellInfo?: CellInfo
 
   /**
-   * The user-defined context passed from the form viewer props.
+   * @returns the user-defined context from the form viewer props.
    */
-  readonly userContext?: unknown
+  get userContext(): unknown
 
   /**
    * The ref value, if available.

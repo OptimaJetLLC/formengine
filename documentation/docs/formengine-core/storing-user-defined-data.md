@@ -19,6 +19,7 @@ In this guide, you'll learn:
 - How to store arbitrary data in `form.state`
 - How to prefill `form.state` with the `initialState` prop on `FormViewer`
 - How to expose HTTP clients and loggers through `userContext` and use them in actions
+- How `userContext` is shared between parent and modal forms, and how to make it reactive when you need that
 
 ## Overview
 
@@ -219,6 +220,9 @@ object that represents your environment.
 - **`userContext` is available in actions** as `e.userContext`.
 - You choose its shape: it can hold an HTTP client, a logger, config, feature flags, or any other environment-specific APIs.
 - The form stays independent from persistence and infrastructure concerns.
+- FormEngine keeps the same object reference. If a modal action mutates `e.userContext`, the parent form and your host variable see those
+  changes too.
+- Nested fields are not deep-observed. Changing `e.userContext.flags.dirty` does not make FormEngine re-render on its own.
 
 ### Example: environment object with HTTP client and logger
 
@@ -256,6 +260,132 @@ function HostApp() {
   )
 }
 ```
+
+### Sharing mutations across parent and modal forms
+
+Pass one object as [userContext](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#usercontext). A modal action can
+write to it; a parent action or your host code can read the same values afterward.
+
+```tsx title='SharedUserContext.tsx'
+const userContext = {
+  draftId: null,
+  flags: {dirty: false},
+}
+
+const actions = {
+  saveDraftFromModal: (e) => {
+    e.userContext.draftId = 'draft-42'
+    e.userContext.flags.dirty = true
+  },
+  readDraftFromParent: (e) => {
+    // Same object the modal mutated
+    console.log(e.userContext.draftId) // 'draft-42'
+    console.log(userContext.flags.dirty) // true
+  },
+}
+
+function HostApp() {
+  return (
+    <FormViewer
+      view={muiView}
+      getForm={getForm}
+      actions={actions}
+      userContext={userContext}
+    />
+  )
+}
+```
+
+### When you need reactivity
+
+`userContext` works well as a shared bag of services and mutable host data. FormEngine will not subscribe to nested field changes for you.
+If something outside the action must update when the context changes, use one of these approaches.
+
+| Goal                                                              | What to do                                               |
+|-------------------------------------------------------------------|----------------------------------------------------------|
+| Swap the whole environment (new client, session, or flags object) | Pass a new `userContext` object and rerender             |
+| Run MobX `reaction` / `observer` on nested fields                 | Pass a MobX observable you create in the host            |
+| Update React UI after an action                                   | Keep that state in React, or replace the prop afterward  |
+
+#### Replace the prop
+
+When the environment itself changes, put a new object into state and pass it as `userContext`. Later reads of `e.userContext` (including
+after an `await` in an async action) see the new object.
+
+```tsx title='ReplaceUserContext.tsx'
+function HostApp() {
+  const [userContext, setUserContext] = useState({
+    sessionId: 'anon',
+    apiBase: '/api',
+  })
+
+  const actions = {
+    login: async (e) => {
+      const session = await createSession()
+      // Host replaces the prop; later reads of e.userContext see the new object
+      setUserContext({
+        sessionId: session.id,
+        apiBase: '/api',
+      })
+    },
+    loadProfile: async (e) => {
+      await delay(100)
+      // After the prop replace, this is the new object
+      return e.userContext.sessionId
+    },
+  }
+
+  return (
+    <FormViewer
+      view={muiView}
+      getForm={getForm}
+      actions={actions}
+      userContext={userContext}
+    />
+  )
+}
+```
+
+#### Pass a host-owned MobX observable
+
+FormEngine does not wrap `userContext` in a deep observable. If you already use MobX outside the form and need reactions on nested fields,
+create the observable in the host and pass that instance.
+
+```tsx title='ObservableUserContext.tsx'
+import {observable, reaction, runInAction} from 'mobx'
+
+const userContext = observable({
+  flags: {dirty: false},
+})
+
+reaction(
+  () => userContext.flags.dirty,
+  (dirty) => {
+    console.log('dirty changed', dirty)
+  },
+)
+
+const actions = {
+  markDirty: (e) => {
+    runInAction(() => {
+      e.userContext.flags.dirty = true
+    })
+  },
+}
+
+function HostApp() {
+  return (
+    <FormViewer
+      view={muiView}
+      getForm={getForm}
+      actions={actions}
+      userContext={userContext}
+    />
+  )
+}
+```
+
+A plain object is enough for most hosts. Use a host-owned observable only when you need MobX tracking outside FormEngine.
 
 The next sections provide live examples that combine `initialState`, `userContext`, HTTP requests, and logging.
 
@@ -488,6 +618,8 @@ function App() {
   [initialState](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#initialstate) prop on `FormViewer`.
 - Pass environment-specific dependencies (HTTP client, logger, feature flags) through
   [userContext](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#usercontext) and consume them in actions.
+- Share one `userContext` object between parent and modal actions when you need common host data. Replace the prop, or pass a host-owned
+  MobX observable, if something must react to changes.
 - Combine these features to keep your forms clean, reusable, and independent of infrastructure details.
 
 ---

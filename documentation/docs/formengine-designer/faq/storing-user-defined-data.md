@@ -129,3 +129,44 @@ The same prop works with the builder:
 
 By centralizing your environment in one object, you keep the form independent of persistence and make it easy to add or change
 dependencies (analytics, feature flags, etc.) without touching the form definition.
+
+Parent forms and modal forms share the same `userContext` object. Nested fields are not deep-observed, so mutations show up on the host
+object, but FormEngine does not re-render because of them.
+
+```tsx
+const userContext = {draftId: null}
+
+const actions = {
+  saveDraftFromModal: (e) => {
+    e.userContext.draftId = 'draft-42'
+  },
+  readDraftFromParent: (e) => {
+    console.log(e.userContext.draftId) // 'draft-42'
+  },
+}
+
+<FormViewer view={view} getForm={getForm} actions={actions} userContext={userContext} />
+```
+
+If something outside the action must react:
+
+- Pass a new `userContext` object and rerender when the whole environment changes.
+- Pass a MobX observable from the host when you need nested MobX reactions.
+
+```tsx
+import {observable, runInAction} from 'mobx'
+
+const userContext = observable({flags: {dirty: false}})
+
+const actions = {
+  markDirty: (e) => {
+    runInAction(() => {
+      e.userContext.flags.dirty = true
+    })
+  },
+}
+
+<FormViewer view={view} getForm={getForm} actions={actions} userContext={userContext} />
+```
+
+See [Store custom data in forms](/formengine-core/storing-user-defined-data#when-you-need-reactivity) for more detail.

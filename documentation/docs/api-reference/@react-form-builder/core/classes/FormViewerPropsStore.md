@@ -126,8 +126,8 @@ If true, all validation errors will be displayed.
 
 > `optional` **userContext?**: `unknown`
 
-The arbitrary user context passed via props.
-This value is not observable and is intended to be non-reactive.
+User context from FormViewer props.
+Stored by reference (`observableRef`); nested fields are not made observable by FormEngine.
 
 ***
 

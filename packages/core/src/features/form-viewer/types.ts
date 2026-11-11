@@ -122,8 +122,9 @@ export interface FormViewerProps {
   showAllValidationErrors?: boolean
 
   /**
-   * The arbitrary context object passed to the form viewer.
-   * It is forwarded to custom actions as the third argument of the handler.
+   * Arbitrary host context for the form viewer, available in actions as `e.userContext`.
+   * The same object reference is shared with parent and child forms; nested fields are not deep-observed.
+   * Pass a new object to replace the context, or a host-owned MobX observable if you need nested reactions.
    */
   userContext?: unknown
 
