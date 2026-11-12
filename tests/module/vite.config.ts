@@ -1,6 +1,6 @@
 import {resolve} from 'node:path'
 import {defineConfig, mergeConfig} from 'vite'
-import base, {componentTestSetupFiles} from '../../vite.config.ts'
+import base, {componentTestSetupFiles} from '../vitest.config.ts'
 import {rewriteDeepImports} from './vite-plugin-rewrite-deep-imports.ts'
 
 // These suites read browser globals in BuilderStore or import browser-only Monaco code.

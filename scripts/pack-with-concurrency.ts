@@ -13,7 +13,10 @@ function main(): void {
   const {cpus, concurrency} = getCpuScaledConcurrency()
 
   console.log(`pack:ci concurrency=${concurrency} (cpus=${cpus})`)
-  execSync(`npx lerna run --stream pack --ignore @react-form-builder/docs --concurrency=${concurrency}`, {stdio: 'inherit'})
+  execSync(
+    `npx lerna run --stream pack --ignore @react-form-builder/docs --ignore @react-form-builder/designer-guide --concurrency=${concurrency}`,
+    {stdio: 'inherit'}
+  )
 }
 
 try {

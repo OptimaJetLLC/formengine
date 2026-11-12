@@ -41,6 +41,13 @@ VALIDATE_ARCHIVES:
     find "$archivesDir" -maxdepth 1 -type f -name 'react-form-builder-*.tgz' | grep -q . || { echo "No react-form-builder-*.tgz in $archivesDir" >&2; exit 1; } && \
     echo "Archives OK: $archivesDir"
 
+COPY_PRODUCTION_SOURCES:
+  FUNCTION
+  COPY lerna.json tsconfig.json vite.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
+  COPY --dir packages ./
+  COPY --dir scripts/cli-lib scripts/release ./scripts/
+  COPY scripts/build-with-concurrency.ts scripts/build-apps-and-views-with-concurrency.ts scripts/pack-with-concurrency.ts ./scripts/
+
 # --- Dependencies (repo-root build context) ---
 
 dependencies:
@@ -73,8 +80,31 @@ dependencies:
   ENV npm_config_audit=false
   ENV npm_config_fund=false
   ENV npm_config_progress=true
-  RUN npm ci --no-audit --no-fund
+  RUN --mount=type=cache,target=/root/.npm npm ci --no-audit --no-fund --prefer-offline
   SAVE ARTIFACT /repo /repo
+
+production-sources:
+  FROM +dependencies
+  DO +COPY_PRODUCTION_SOURCES
+
+test-sources:
+  FROM +production-sources
+  COPY --dir tests ./
+  SAVE ARTIFACT /repo /repo
+
+documentation-sources:
+  ARG ENABLE_TYPEDOC=false
+  FROM +dependencies
+  COPY lerna.json tsconfig.json ./
+  COPY --dir documentation ./
+  IF [ "$ENABLE_TYPEDOC" = "true" ]
+    DO +COPY_PRODUCTION_SOURCES
+  END
+  ENV ENABLE_TYPEDOC=$ENABLE_TYPEDOC
+
+designer-guide-sources:
+  FROM +dependencies
+  COPY --dir designer-guide ./
 
 sources:
   FROM +dependencies
@@ -95,7 +125,7 @@ formengine-src-sources:
 # --- CI ---
 
 npm-build:
-  FROM +sources
+  FROM +production-sources
   WORKDIR /repo
   RUN npm run build:ci
 
@@ -104,14 +134,14 @@ npm-bundle:
   IF [ "$prepareRcArchives" = "1" ]
     BUILD +prepare-rc-archives-from-pack
   ELSE
-    FROM +sources
+    FROM +production-sources
     WORKDIR /repo
     ENV NODE_OPTIONS="--max-old-space-size=8192"
     RUN npm run pack:ci
   END
 
 npm-update-release-date:
-  FROM +sources
+  FROM +production-sources
   WORKDIR /repo
   RUN cd ./packages/apps/common-designer && npm run update-release-date
 
@@ -131,20 +161,21 @@ npm-build-apps-and-views:
   RUN npm run build:check-build:ci
 
 npm-documentation-build:
-  FROM +sources
+  ARG ENABLE_TYPEDOC=false
+  FROM +documentation-sources --ENABLE_TYPEDOC=$ENABLE_TYPEDOC
   ENV NODE_OPTIONS="--max-old-space-size=8192"
   WORKDIR /repo
   RUN npm run docs:build
 
 npm-designer-guide-build:
-  FROM +sources
+  FROM +designer-guide-sources
   WORKDIR /repo
   RUN npm run designer-guide:build
 
 npm-documentation-sites-build:
-  FROM +sources
-  WORKDIR /repo
-  RUN npm run docs:build && npm run designer-guide:build
+  ARG ENABLE_TYPEDOC=false
+  BUILD +npm-documentation-build --ENABLE_TYPEDOC=$ENABLE_TYPEDOC
+  BUILD +npm-designer-guide-build
 
 npm-publish-rc-release:
   FROM node:26.13.1
@@ -169,7 +200,7 @@ validate-rc-archives:
   DO +VALIDATE_ARCHIVES --archivesDir=.archives
 
 npm-test:
-  FROM +sources
+  FROM +test-sources
   WORKDIR /repo
   ENV CI=true
   TRY
@@ -216,7 +247,7 @@ npm-e2e:
   ENV CI=true
   ENV PLAYWRIGHT_DOCKER=1
   ENV PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1
-  COPY +sources/repo+ /repo
+  COPY +test-sources/repo+ /repo
   WORKDIR /repo
   RUN --no-cache npm run test:e2e; echo $? > /tmp/npm-e2e-exit-code
   WAIT
@@ -248,7 +279,8 @@ prepare-formbuilder-archive:
   SAVE ARTIFACT --force formbuilder.tgz AS LOCAL .archives/formbuilder.tgz
 
 prepare-documentation-archive:
-  FROM +npm-documentation-build
+  ARG ENABLE_TYPEDOC=false
+  FROM +npm-documentation-build --ENABLE_TYPEDOC=$ENABLE_TYPEDOC
   WORKDIR /repo
   RUN tar -czvf documentation.tgz -C documentation/website/build .
   SAVE ARTIFACT --force documentation.tgz AS LOCAL .archives/documentation.tgz
@@ -260,13 +292,9 @@ prepare-designer-guide-archive:
   SAVE ARTIFACT --force designer-guide.tgz AS LOCAL .archives/designer-guide.tgz
 
 prepare-documentation-sites-archives:
-  FROM +npm-documentation-sites-build
-  WORKDIR /repo
-  RUN mkdir -p .archives
-  RUN tar -czvf .archives/documentation.tgz -C documentation/website/build .
-  RUN tar -czvf .archives/designer-guide.tgz -C designer-guide/dist .
-  SAVE ARTIFACT --force .archives/documentation.tgz AS LOCAL .archives/documentation.tgz
-  SAVE ARTIFACT --force .archives/designer-guide.tgz AS LOCAL .archives/designer-guide.tgz
+  ARG ENABLE_TYPEDOC=false
+  BUILD +prepare-documentation-archive --ENABLE_TYPEDOC=$ENABLE_TYPEDOC
+  BUILD +prepare-designer-guide-archive
 
 prepare-formengine-src-archive:
   FROM +formengine-src-sources
@@ -306,7 +334,7 @@ prepare-rc-archives-from-pack:
   BUILD +prepare-formbuilder-archive
   BUILD +prepare-version-archive
   BUILD +prepare-github-release-notes-archive
-  FROM +sources
+  FROM +production-sources
   WORKDIR /repo
   ENV NODE_OPTIONS="--max-old-space-size=8192"
   RUN find packages -name 'react-form-builder-*.tgz' -delete

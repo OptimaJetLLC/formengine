@@ -24,3 +24,5 @@ scripts/.examples-local-packs
 **/*.tgz
 !documentation/website/packages/*.tgz
 !/.archives/**
+**/.env
+**/.env.*

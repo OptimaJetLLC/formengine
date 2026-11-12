@@ -1,5 +1,4 @@
 import react from '@vitejs/plugin-react'
-import {playwright} from '@vitest/browser-playwright'
 import {existsSync, readdirSync} from 'node:fs'
 import {readdir, readFile, writeFile} from 'node:fs/promises'
 import path from 'node:path'
@@ -9,27 +8,10 @@ import type {PluginOption, UserConfig} from 'vite'
 import {defineConfig} from 'vite'
 import {analyzer} from 'vite-bundle-analyzer'
 import svgr from 'vite-plugin-svgr'
-import {configDefaults} from 'vitest/config'
 import {appVersionMetaPlugin} from './vite-plugin-app-version.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const isVitestBrowserRun = process.argv.some(arg => arg === '--browser' || arg.startsWith('--browser.'))
-
-/**
- * Absolute paths to the shared component test setup files.
- */
-export const componentTestSetupFiles = [
-  path.resolve(__dirname, 'tests/component/config/setup-act-environment.ts'),
-  ...(!isVitestBrowserRun ? [path.resolve(__dirname, 'tests/component/config/setup-jsdom.ts')] : []),
-  path.resolve(__dirname, 'tests/component/config/setup.ts'),
-]
-
-/**
- * Glob for component tests, relative to a tests/react-* package.
- */
-export const componentTestGlob = '../component/tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'
-
 const importMetaUrlPolyfillVariableName = '__import_meta_url__'
 const importMetaUrlPolyfillIntro =
   "var _documentCurrentScript = typeof document !== 'undefined' ? document.currentScript : null;" +
@@ -353,8 +335,6 @@ export const replaceEmbeddedLtrRtlCssFromStubs = async (
   await assertEmbeddedComposedCssDataUrls(outDir, composedLtrCssPath, composedRtlCssPath)
 }
 
-const isCI = !!(process.env.CI || process.env.GITHUB_ACTIONS || process.env.EARTHLY_CI)
-
 const plugins: PluginOption = [
   react(),
   svgr({
@@ -372,17 +352,10 @@ if (process.env.VITE_BUNDLE_ANALYZER === 'true') {
   )
 }
 
-export default defineConfig(() => ({
+export default defineConfig((): UserConfig => ({
   build: {
     cssMinify: 'lightningcss',
   },
-  ...(isVitestBrowserRun
-    ? {
-      optimizeDeps: {
-        include: ['react/jsx-runtime'],
-      },
-    }
-    : {}),
   plugins,
   define: {
     'process.env.WDYR': `"${process.env.WDYR ? '1' : ''}"`
@@ -394,69 +367,4 @@ export default defineConfig(() => ({
     allowedHosts: ['formengine.local'],
     forwardConsole: true,
   },
-  test: {
-    globals: true,
-    isolate: true,
-    environment: 'jsdom',
-    setupFiles: componentTestSetupFiles,
-    coverage: {
-      reporter: ['text', 'html'],
-    },
-    alias: [
-      {
-        find: /^monaco-editor$/,
-        replacement:
-          __dirname + '/node_modules/monaco-editor/esm/vs/editor/editor.api',
-      },
-      ...(!isVitestBrowserRun
-        ? [
-          {
-            find: /^vitest\/browser$/,
-            replacement: path.resolve(__dirname, 'tests/component/util/vitestBrowserStub.ts'),
-          },
-        ]
-        : []),
-    ],
-    clearMocks: true,
-    // VM pools retain per-file isolation; recycling bounds retained module state.
-    ...(isVitestBrowserRun ? {maxWorkers: 1} : {pool: 'vmForks', vmMemoryLimit: '512MiB'}),
-    exclude: [
-      ...configDefaults.exclude,
-      'examples/**',
-    ],
-    silent: isCI ? 'passed-only' : false,
-    reporters: isCI ? ['dot', 'junit'] : ['default', 'junit'],
-    outputFile: {
-      junit: './reports/junit-report.xml',
-    },
-    onConsoleLog(log: string, type: 'stdout' | 'stderr'): boolean | void {
-      if (!isCI && type === 'stderr') {
-        // additionally, write to console.error to make the tests crash
-        console.error(log)
-      }
-      return true
-    },
-    testTimeout: 60_000,
-    browser: {
-      provider: playwright({
-        launchOptions: {
-          args: [
-            '--disable-dev-shm-usage',
-            '--no-sandbox',
-            ...(process.env.BROWSER_DEVTOOL ? ['--auto-open-devtools-for-tabs'] : []),
-          ],
-        },
-      }),
-      enabled: false,
-      name: 'chromium',
-      instances: [{browser: 'chromium'}],
-      screenshotFailures: true,
-      screenshotDirectory: 'reports/screenshots',
-      viewport: {
-        width: 1440,
-        height: 900,
-      },
-    }
-    // reporters: ['verbose']
-  }
 }))

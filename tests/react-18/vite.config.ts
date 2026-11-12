@@ -1,8 +1,8 @@
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import {defineConfig, mergeConfig} from 'vite'
-import base, {componentTestGlob} from '../../vite.config.ts'
 import {monorepoServerConfig, reactVersionAliases} from '../common/lib/vite-common.ts'
+import base, {componentTestGlob} from '../vitest.config.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 

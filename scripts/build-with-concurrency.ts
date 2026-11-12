@@ -11,7 +11,10 @@ import {getCpuScaledConcurrency} from '@react-form-builder/cli-lib/concurrency'
 function main(): void {
   const {concurrency} = getCpuScaledConcurrency()
 
-  execSync(`npx lerna run --stream build --ignore @react-form-builder/docs --concurrency=${concurrency}`, {stdio: 'inherit'})
+  execSync(
+    `npx lerna run --stream build --ignore @react-form-builder/docs --ignore @react-form-builder/designer-guide --concurrency=${concurrency}`,
+    {stdio: 'inherit'}
+  )
 }
 
 try {
