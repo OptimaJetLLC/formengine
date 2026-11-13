@@ -1,73 +1,8 @@
 version: 2
 updates:
   - package-ecosystem: npm
-    directory: /
-    schedule:
-      interval: daily
-    cooldown:
-      default-days: 5
-      semver-major-days: 30
-      semver-minor-days: 7
-      semver-patch-days: 3
-    ignore:
-      - dependency-name: "react"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "react-dom"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "@types/react"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "@types/react-dom"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "react-is"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "typescript"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "date-fns"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "@mantine/*"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "rsuite"
-        update-types: ["version-update:semver-major"]
-    groups:
-      patch:
-        applies-to: version-updates
-        patterns:
-          - "*"
-        update-types:
-          - patch
-      minor:
-        applies-to: version-updates
-        patterns:
-          - "*"
-        update-types:
-          - minor
-      major:
-        applies-to: version-updates
-        patterns:
-          - "*"
-        update-types:
-          - major
-      security-patch:
-        applies-to: security-updates
-        patterns:
-          - "*"
-        update-types:
-          - patch
-      security-minor:
-        applies-to: security-updates
-        patterns:
-          - "*"
-        update-types:
-          - minor
-      security-major:
-        applies-to: security-updates
-        patterns:
-          - "*"
-        update-types:
-          - major
-
-  - package-ecosystem: npm
     directories:
+      - /
       - /examples/**
     schedule:
       interval: daily
@@ -80,37 +15,37 @@ updates:
       patch:
         applies-to: version-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - patch
       minor:
         applies-to: version-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - minor
       major:
         applies-to: version-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - major
       security-patch:
         applies-to: security-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - patch
       security-minor:
         applies-to: security-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - minor
       security-major:
         applies-to: security-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - major
 
@@ -124,36 +59,36 @@ updates:
       patch:
         applies-to: version-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - patch
       minor:
         applies-to: version-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - minor
       major:
         applies-to: version-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - major
       security-patch:
         applies-to: security-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - patch
       security-minor:
         applies-to: security-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - minor
       security-major:
         applies-to: security-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - major
