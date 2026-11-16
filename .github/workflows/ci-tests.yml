@@ -2,6 +2,13 @@ name: CI tests
 
 on:
   workflow_call:
+    secrets:
+      FORMENGINE_TEST_LICENSE_KEY:
+        required: true
+      FORMENGINE_TEST_LICENSE_KEYS_JSON:
+        required: true
+      FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY:
+        required: false
 
 jobs:
   tests:
@@ -13,4 +20,13 @@ jobs:
         with:
           clean: false
       - name: Run tests in Docker
-        run: earthly --ci +npm-test
+        env:
+          FORMENGINE_TEST_LICENSE_KEY: ${{ secrets.FORMENGINE_TEST_LICENSE_KEY }}
+          FORMENGINE_TEST_LICENSE_KEYS_JSON: ${{ secrets.FORMENGINE_TEST_LICENSE_KEYS_JSON }}
+          FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY: ${{ secrets.FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY }}
+        run: |
+          earthly --ci \
+            --secret FORMENGINE_TEST_LICENSE_KEY \
+            --secret FORMENGINE_TEST_LICENSE_KEYS_JSON \
+            --secret FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY \
+            +npm-test

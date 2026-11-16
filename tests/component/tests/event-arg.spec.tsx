@@ -1,7 +1,7 @@
 import {ActionDefinition, Arguments, BuilderView, type IFormViewer, ParameterType, Store} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
-import {testLicense} from '@react-form-builder/tests-common/license/vaild'
+import {testLicense} from '@react-form-builder/tests-common/test-licenses'
 import {cleanup, fireEvent, RenderResult, render, waitFor, within} from '@testing-library/react'
 import {useCallback, useEffect, useState} from 'react'
 import {MockInstance} from 'vitest'

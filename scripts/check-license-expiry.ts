@@ -1,50 +1,38 @@
 #!/usr/bin/env node
 
-/* eslint-disable import/no-nodejs-modules,no-console */
+/* eslint-disable import-x/no-nodejs-modules, no-console */
 
-import {readFileSync} from 'node:fs'
+/**
+ * Checks deploy runtime license keys in the product root `.env` for expiry.
+ * Logs labels and dates only — never raw keys.
+ *
+ * Canonical key storage lives in formengine-tools `tools/license/.secrets/`.
+ * Copy that `.env` to this repo root for local demo/formbuilder builds.
+ */
+
+import {existsSync} from 'node:fs'
 import {dirname, join} from 'node:path'
 import {fileURLToPath} from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const REPO_ROOT = join(__dirname, '..')
+const ROOT_ENV_PATH = join(REPO_ROOT, '.env')
 
 const EXPIRY_THRESHOLD_DAYS = 30
 
-/**
- * License keys that must stay valid (apps + test hosts + positive-path fixtures).
- *
- * Under tests/common/license/, keep *2030* and vaild.ts. Skip *2024*, legacy/trial-2024*,
- * and invalid.ts — those are intentional expiry / invalid fixtures for license.spec.tsx.
- * Note: business-strict-2030-any-domain is also in licenseExpiredStrict (StrictCheck feature
- * gating), but its calendar end date must still stay in the future for licenseBusiness tests.
- */
-const LICENSE_FILES = [
-  'packages/apps/common-designer/src/utils/licenseKey.ts',
-  'packages/apps/example-builder/src/utils/license.ts',
-  'tests/common/lib/designer/utils/license.ts',
-  'tests/component/components/forms-with-versions/utils/license.ts',
-  'tests/common/license/vaild.ts',
-  'tests/common/license/business-2030-any-domain.ts',
-  'tests/common/license/business-2030-multiple-domains.ts',
-  'tests/common/license/business-2030-no-domain.ts',
-  'tests/common/license/business-strict-2030-any-domain.ts',
-  'tests/common/license/business-strict-2030-multiple-domains.ts',
-  'tests/common/license/business-strict-2030-no-domain.ts',
-  'tests/common/license/enterprise-2030-any-domain.ts',
-  'tests/common/license/enterprise-2030-multiple-domains.ts',
-  'tests/common/license/enterprise-2030-no-domain.ts',
-  'tests/common/license/enterprise-strict-2030-any-domain.ts',
-  'tests/common/license/enterprise-strict-2030-multiple-domains.ts',
-  'tests/common/license/enterprise-strict-2030-no-domain.ts',
-  'tests/common/license/legacy/company-2030.ts',
-  'tests/common/license/legacy/company-strict-2030.ts',
-]
+const DEPLOY_ENV_NAMES = ['FORMENGINE_DEMO_LICENSE_KEY', 'FORMENGINE_EXAMPLE_BUILDER_LICENSE_KEY'] as const
+
+type LicenseSource = {
+  label: string
+  key: string
+}
 
 /**
  * Extracts the JSON payload from a license key string.
  * Format: PREFIX-BASE64_PAYLOAD:SIGNATURE
+ * @param licenseKey license key
+ * @returns decoded payload object
  */
 function decodeLicensePayload(licenseKey: string): Record<string, unknown> {
   const prefixEnd = licenseKey.indexOf('-')
@@ -59,12 +47,14 @@ function decodeLicensePayload(licenseKey: string): Record<string, unknown> {
   }
 
   const base64Data = rest.slice(0, signatureStart)
-  const json = Buffer.from(base64Data, 'base64').toString('utf-8')
-  return JSON.parse(json) as Record<string, unknown>
+  const decoded = Buffer.from(base64Data, 'base64').toString('utf-8')
+  return JSON.parse(decoded) as Record<string, unknown>
 }
 
 /**
  * Parses the MM.DD.YYYY date string used in license keys.
+ * @param dateStr license date string
+ * @returns Date
  */
 function parseLicenseDate(dateStr: string): Date {
   const parts = dateStr.split('.')
@@ -75,64 +65,92 @@ function parseLicenseDate(dateStr: string): Date {
   return new Date(`${year}-${month}-${day}`)
 }
 
-function extractLicenseKeyFromFile(filePath: string): string {
-  const content = readFileSync(filePath, 'utf-8')
-  const match = content.match(/['"`]([A-Za-z0-9_]+-[A-Za-z0-9+/=]+:[A-Za-z0-9+/=]+)['"`]/)
-  if (!match) {
-    throw new Error(`Could not extract license key from ${filePath}`)
+/**
+ * Loads product root `.env` without overriding existing process.env values.
+ */
+function loadRootEnv(): void {
+  if (!existsSync(ROOT_ENV_PATH)) {
+    return
   }
-  return match[1]
+  process.loadEnvFile(ROOT_ENV_PATH)
 }
 
-function printFailedLicense(licenseKey: string, payload: Record<string, unknown>): void {
-  console.error(`  key: ${licenseKey}`)
-  console.error(`  contents: ${JSON.stringify(payload, null, 2).replaceAll('\n', '\n  ')}`)
+/**
+ * Resolves a deploy key from process.env / root `.env`.
+ * @param envName secret name
+ * @returns source label + key
+ */
+function resolveDeployKey(envName: string): LicenseSource {
+  const value = process.env[envName]?.trim()
+  if (!value) {
+    throw new Error(
+      `Missing ${envName} in ${ROOT_ENV_PATH} (or process.env). ` + `Copy formengine-tools/tools/license/.secrets/.env to the product root.`
+    )
+  }
+  return {label: `.env:${envName}`, key: value}
 }
 
-function checkFile(file: string): boolean {
-  const filePath = join(REPO_ROOT, file)
-  const licenseKey = extractLicenseKeyFromFile(filePath)
-  const payload = decodeLicensePayload(licenseKey)
+/**
+ * Checks one license source for expiry.
+ * @param source license source
+ * @returns whether the key is valid for more than the threshold
+ */
+function checkSource(source: LicenseSource): boolean {
+  const payload = decodeLicensePayload(source.key)
   const licenseEndDate = payload.licenseEndDate as string
-  const expiresAt = parseLicenseDate(licenseEndDate)
-  const daysUntilExpiry = Math.ceil((expiresAt.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+  if (!licenseEndDate) {
+    throw new Error(`${source.label}: missing licenseEndDate`)
+  }
 
-  if (daysUntilExpiry <= 0) {
-    console.error(`  EXPIRED: ${file} - expired on ${licenseEndDate}`)
-    printFailedLicense(licenseKey, payload)
+  const end = parseLicenseDate(licenseEndDate)
+  const daysRemaining = Math.ceil((end.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+  const formatted = licenseEndDate
+
+  if (daysRemaining < 0) {
+    console.error(`  EXPIRED: ${source.label} — expired ${formatted} (${Math.abs(daysRemaining)} days ago)`)
+    return false
+  }
+  if (daysRemaining <= EXPIRY_THRESHOLD_DAYS) {
+    console.error(`  EXPIRING: ${source.label} — expires ${formatted} (${daysRemaining} days remaining)`)
     return false
   }
 
-  if (daysUntilExpiry <= EXPIRY_THRESHOLD_DAYS) {
-    console.warn(`  EXPIRING SOON: ${file} - expires ${licenseEndDate} (${daysUntilExpiry} days remaining)`)
-    printFailedLicense(licenseKey, payload)
-    return false
-  }
-
-  console.log(`  OK: ${file} - expires ${licenseEndDate} (${daysUntilExpiry} days remaining)`)
+  console.log(`  OK: ${source.label} — expires ${formatted} (${daysRemaining} days remaining)`)
   return true
 }
 
-function main(): void {
-  let allOk = true
+/**
+ * Entry point for CLI and programmatic deploy checks.
+ */
+export function checkLicenseExpiry(): void {
+  loadRootEnv()
 
-  for (const file of LICENSE_FILES) {
+  let ok = true
+  for (const envName of DEPLOY_ENV_NAMES) {
     try {
-      if (!checkFile(file)) {
-        allOk = false
+      if (!checkSource(resolveDeployKey(envName))) {
+        ok = false
       }
-    } catch (e) {
-      console.error(`  ERROR: ${file} - ${(e as Error).message}`)
-      allOk = false
+    } catch (error) {
+      ok = false
+      console.error(`  ERROR: ${error instanceof Error ? error.message : String(error)}`)
     }
   }
 
-  if (!allOk) {
-    console.error('\nSome app or test license keys are expired or expiring soon. Update them before deploying.')
+  if (!ok) {
+    console.error(
+      '\nSome license keys are expired, expiring soon, or missing. ' +
+        'Update formengine-tools/tools/license/.secrets and copy `.env` here before deploying.'
+    )
     process.exitCode = 1
-  } else {
-    console.log('\nAll app and test license keys are valid for more than 30 days.')
+    return
   }
+
+  console.log(`\nAll deploy license keys are valid for more than ${EXPIRY_THRESHOLD_DAYS} days.`)
 }
 
-main()
+const isMain = process.argv[1] !== undefined && fileURLToPath(import.meta.url) === process.argv[1]
+
+if (isMain) {
+  checkLicenseExpiry()
+}

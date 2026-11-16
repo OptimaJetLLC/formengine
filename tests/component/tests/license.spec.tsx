@@ -4,6 +4,7 @@ import {BiDi, BuilderView, ComponentStore, createView, definePreset, FormViewer,
 import {CustomizationMap, FormBuilder, verifyDomain} from '@react-form-builder/designer'
 import deDE from '@react-form-builder/designer/locales/de-DE.json'
 import enEN from '@react-form-builder/designer/locales/en-US.json'
+import {isLicenseDefined} from '@react-form-builder/tests-common/lib/is-license-defined'
 import {
   license2030Enterprise,
   licenseBusiness,
@@ -12,7 +13,7 @@ import {
   licenseInvalid,
   licenseLegacyNotExpired,
   licenseNoDomain,
-} from '@react-form-builder/tests-common/license'
+} from '@react-form-builder/tests-common/test-licenses'
 import {RenderResult, render} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
@@ -136,7 +137,7 @@ describe(`License test`, function () {
   }
 
   for (const l of licenseExpired) {
-    it(`Designer expired license should produce trial message`, async () => {
+    it.skipIf(!isLicenseDefined(l))(`Designer expired license should produce trial message`, async () => {
       const app = render(<Designer license={l} />)
 
       await designerReady(app)
@@ -151,7 +152,7 @@ describe(`License test`, function () {
   }
 
   for (const l of licenseBusiness) {
-    it(`Designer should show locale count`, async () => {
+    it.skipIf(!isLicenseDefined(l))(`Designer should show locale count`, async () => {
       const app = render(<Designer license={l} />)
 
       await designerReady(app)
@@ -166,7 +167,7 @@ describe(`License test`, function () {
   }
 
   for (const l of licenseExpiredStrict) {
-    it(`Designer expired strict license should produce trial message`, async () => {
+    it.skipIf(!isLicenseDefined(l))(`Designer expired strict license should produce trial message`, async () => {
       const app = render(<Designer license={l} />)
 
       await designerReady(app)
@@ -181,7 +182,7 @@ describe(`License test`, function () {
   }
 
   for (const l of licenseLegacyNotExpired) {
-    it(`Designer not expired legacy license should not produce trial message`, async () => {
+    it.skipIf(!isLicenseDefined(l))(`Designer not expired legacy license should not produce trial message`, async () => {
       const app = render(<Designer license={l} />)
 
       await designerReady(app)
@@ -196,7 +197,7 @@ describe(`License test`, function () {
   }
 
   for (const l of licenseNoDomain) {
-    it(`Designer license with no domain should not produce domain violation message`, async () => {
+    it.skipIf(!isLicenseDefined(l))(`Designer license with no domain should not produce domain violation message`, async () => {
       const app = render(<Designer license={l} />)
 
       await designerReady(app)
@@ -211,7 +212,7 @@ describe(`License test`, function () {
   }
 
   for (const l of license2030Enterprise) {
-    it(`Designer license with ftLocaleCount=-1 should not produce locale message`, async () => {
+    it.skipIf(!isLicenseDefined(l))(`Designer license with ftLocaleCount=-1 should not produce locale message`, async () => {
       const app = render(<Designer license={l} />)
 
       await designerReady(app)
@@ -220,7 +221,7 @@ describe(`License test`, function () {
     })
   }
 
-  it(`Designer invalid license should produce trial message`, async () => {
+  it.skipIf(!isLicenseDefined(licenseInvalid[0]))(`Designer invalid license should produce trial message`, async () => {
     const app = render(<Designer license={licenseInvalid[0]} customization={simpleCustomization} />)
 
     await designerReady(app)

@@ -9,6 +9,7 @@ import {defineConfig} from 'vite'
 import {analyzer} from 'vite-bundle-analyzer'
 import svgr from 'vite-plugin-svgr'
 import {appVersionMetaPlugin} from './vite-plugin-app-version.ts'
+import {buildLicenseDefines} from './vite-license-defines.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -352,12 +353,13 @@ if (process.env.VITE_BUNDLE_ANALYZER === 'true') {
   )
 }
 
-export default defineConfig((): UserConfig => ({
+export default defineConfig(({mode}): UserConfig => ({
   build: {
     cssMinify: 'lightningcss',
   },
   plugins,
   define: {
+    ...buildLicenseDefines(mode, __dirname),
     'process.env.WDYR': `"${process.env.WDYR ? '1' : ''}"`
   },
   resolve: {

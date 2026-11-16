@@ -2,7 +2,7 @@ import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponentsDescriptions, rtlCs
 import {BiDi, BuilderView} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
-import {testLicense} from '@react-form-builder/tests-common/license/vaild'
+import {testLicense} from '@react-form-builder/tests-common/test-licenses'
 import {fireEvent, RenderResult, render, waitFor, within} from '@testing-library/react'
 import {expect} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'

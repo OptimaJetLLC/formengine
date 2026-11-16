@@ -43,7 +43,7 @@ VALIDATE_ARCHIVES:
 
 COPY_PRODUCTION_SOURCES:
   FUNCTION
-  COPY lerna.json tsconfig.json vite.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
+  COPY lerna.json tsconfig.json vite.config.ts vite-license-defines.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
   COPY --dir packages ./
   COPY --dir scripts/cli-lib scripts/release ./scripts/
   COPY scripts/build-with-concurrency.ts scripts/build-apps-and-views-with-concurrency.ts scripts/pack-with-concurrency.ts ./scripts/
@@ -89,6 +89,7 @@ production-sources:
 
 test-sources:
   FROM +production-sources
+  COPY scripts/write-test-license-env.ts scripts/write-test-license-env.ts
   COPY --dir tests ./
   SAVE ARTIFACT /repo /repo
 
@@ -109,7 +110,8 @@ designer-guide-sources:
 sources:
   FROM +dependencies
   COPY package.public.json package.private.json lerna.json biome.json LICENSE.md README.private.md CHANGELOG.md ./
-  COPY .editorconfig .gitignore eslint.config.mjs eslint.base.mjs tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts .mdxlintrc.mjs vite-plugin-api-extractor.ts ./
+  COPY .editorconfig .gitignore eslint.config.mjs eslint.base.mjs tsconfig.json vite.config.ts vite-license-defines.ts knip.config.ts vite-plugin-app-version.ts .mdxlintrc.mjs vite-plugin-api-extractor.ts ./
+  COPY scripts/write-test-license-env.ts scripts/write-test-license-env.ts
   COPY .madgerc ./
   COPY --dir packages documentation designer-guide tests scripts examples ./
   SAVE ARTIFACT /repo /repo
@@ -118,7 +120,8 @@ sources:
 formengine-src-sources:
   WORKDIR /repo
   COPY package.json package-lock.json package.public.json package.private.json lerna.json biome.json .npmrc LICENSE.md README.private.md CHANGELOG.md ./
-  COPY .editorconfig .gitignore eslint.config.mjs eslint.base.mjs tsconfig.json vite.config.ts knip.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
+  COPY .editorconfig .gitignore eslint.config.mjs eslint.base.mjs tsconfig.json vite.config.ts vite-license-defines.ts knip.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
+  COPY scripts/write-test-license-env.ts scripts/write-test-license-env.ts
   COPY .madgerc ./
   COPY --dir packages documentation designer-guide tests scripts examples ./
 
@@ -203,6 +206,8 @@ npm-test:
   FROM +test-sources
   WORKDIR /repo
   ENV CI=true
+  RUN --secret FORMENGINE_TEST_LICENSE_KEY --secret FORMENGINE_TEST_LICENSE_KEYS_JSON --secret FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY \
+    node scripts/write-test-license-env.ts
   TRY
     RUN npm run test:module
   FINALLY
@@ -249,6 +254,8 @@ npm-e2e:
   ENV PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1
   COPY +test-sources/repo+ /repo
   WORKDIR /repo
+  RUN --secret FORMENGINE_TEST_LICENSE_KEY --secret FORMENGINE_TEST_LICENSE_KEYS_JSON --secret FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY \
+    node scripts/write-test-license-env.ts
   RUN --no-cache npm run test:e2e; echo $? > /tmp/npm-e2e-exit-code
   WAIT
     SAVE ARTIFACT --if-exists tests/e2e/reports/ctrf/ctrf-report.json AS LOCAL tests/e2e/reports/ctrf/ctrf-report.json

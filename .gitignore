@@ -24,3 +24,6 @@ tests/e2e/playwright-report
 !documentation/website/packages/*.tgz
 .env
 .env.*
+# Runtime license keys — keep example tracked.
+!.env.example
+!**/.env.example

@@ -2,6 +2,13 @@ name: CI e2e
 
 on:
   workflow_call:
+    secrets:
+      FORMENGINE_TEST_LICENSE_KEY:
+        required: true
+      FORMENGINE_TEST_LICENSE_KEYS_JSON:
+        required: true
+      FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY:
+        required: false
 
 jobs:
   e2e:
@@ -15,7 +22,16 @@ jobs:
       - name: Clean stale test reports directory
         run: rm -rf tests/e2e/reports
       - name: Run e2e in Docker
-        run: earthly --ci --output +npm-e2e
+        env:
+          FORMENGINE_TEST_LICENSE_KEY: ${{ secrets.FORMENGINE_TEST_LICENSE_KEY }}
+          FORMENGINE_TEST_LICENSE_KEYS_JSON: ${{ secrets.FORMENGINE_TEST_LICENSE_KEYS_JSON }}
+          FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY: ${{ secrets.FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY }}
+        run: |
+          earthly --ci --output \
+            --secret FORMENGINE_TEST_LICENSE_KEY \
+            --secret FORMENGINE_TEST_LICENSE_KEYS_JSON \
+            --secret FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY \
+            +npm-e2e
       - uses: ctrf-io/github-test-reporter@v1
         if: always()
         with:

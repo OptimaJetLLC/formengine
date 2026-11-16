@@ -4,7 +4,8 @@ import {BiDi, BuilderView} from '@react-form-builder/core'
 import {CustomizationMap, FormBuilder, isElectron} from '@react-form-builder/designer'
 import enEN from '@react-form-builder/designer/locales/en-US.json'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
-import {license2030Enterprise, licenseBusiness} from '@react-form-builder/tests-common/license'
+import {isLicenseDefined} from '@react-form-builder/tests-common/lib/is-license-defined'
+import {license2030Enterprise, licenseBusiness} from '@react-form-builder/tests-common/test-licenses'
 import {RenderResult, render, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
@@ -139,7 +140,7 @@ async function runInElectronRenderer<T>(fn: () => Promise<T> | T): Promise<T> {
 
 describe(`License test`, function () {
   for (const l of licenseBusiness) {
-    it('Should show message in Electron for business license', async () => {
+    it.skipIf(!isLicenseDefined(l))('Should show message in Electron for business license', async () => {
       try {
         await runInElectronRenderer(async () => {
           const app = render(<Designer license={l} />)
@@ -157,7 +158,7 @@ describe(`License test`, function () {
   }
 
   for (const l of license2030Enterprise) {
-    it('Should not show message in Electron for enterprise license', async () => {
+    it.skipIf(!isLicenseDefined(l))('Should not show message in Electron for enterprise license', async () => {
       try {
         await runInElectronRenderer(async () => {
           const app = render(<Designer license={l} />)

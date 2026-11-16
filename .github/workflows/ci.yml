@@ -22,10 +22,18 @@ jobs:
   tests:
     needs: checks
     uses: ./.github/workflows/ci-tests.yml
+    secrets:
+      FORMENGINE_TEST_LICENSE_KEY: ${{ secrets.FORMENGINE_TEST_LICENSE_KEY }}
+      FORMENGINE_TEST_LICENSE_KEYS_JSON: ${{ secrets.FORMENGINE_TEST_LICENSE_KEYS_JSON }}
+      FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY: ${{ secrets.FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY }}
 
   e2e:
     needs: checks
     uses: ./.github/workflows/ci-e2e.yml
+    secrets:
+      FORMENGINE_TEST_LICENSE_KEY: ${{ secrets.FORMENGINE_TEST_LICENSE_KEY }}
+      FORMENGINE_TEST_LICENSE_KEYS_JSON: ${{ secrets.FORMENGINE_TEST_LICENSE_KEYS_JSON }}
+      FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY: ${{ secrets.FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY }}
 
   bundle:
     needs:
