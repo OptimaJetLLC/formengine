@@ -25,7 +25,7 @@
     "designer-guide:build": "npm run build --prefix designer-guide",
     "designer-guide:preview": "npm run preview --prefix designer-guide",
     "designer-guide:clean": "npm run clean --prefix designer-guide",
-    "designer-guide:screenshots": "node skills/formbuilder-end-user-docs/scripts/capture-all-guide-screenshots.mjs && npm run optimize:images --prefix designer-guide",
+    "designer-guide:screenshots": "node ./designer-guide/scripts/run-formbuilder-end-user-docs.mjs capture-all-guide-screenshots.mjs && npm run optimize:images --prefix designer-guide",
     "docs:generate-bundles": "node ./scripts/generate-doc-bundles.ts",
     "archives:build": "earthly --ci --output +prepare-all-archives && earthly --ci --output +prepare-documentation-sites-archives",
     "archives:build:from-pack": "earthly --ci --output +prepare-rc-archives-from-pack && earthly --ci --output +prepare-documentation-sites-archives",

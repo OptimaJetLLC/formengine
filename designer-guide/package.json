@@ -6,8 +6,8 @@
   "scripts": {
     "build:navigation": "node scripts/build-navigation.mjs",
     "optimize:images": "node scripts/optimize-guide-images.mjs",
-    "catalog:screenshots": "node ../skills/formbuilder-end-user-docs/scripts/build-guide-screenshot-catalog.mjs",
-    "catalog:screenshots:check": "node ../skills/formbuilder-end-user-docs/scripts/build-guide-screenshot-catalog.mjs --check",
+    "catalog:screenshots": "node ./scripts/run-formbuilder-end-user-docs.mjs build-guide-screenshot-catalog.mjs",
+    "catalog:screenshots:check": "node ./scripts/run-formbuilder-end-user-docs.mjs build-guide-screenshot-catalog.mjs --check",
     "clean": "node scripts/clean.mjs",
     "inject:demo-links": "node scripts/inject-demo-links.mjs",
     "check:all": "npm run check:links && npm run check:tsc && npm run check:eslint && npm run check:stylelint",

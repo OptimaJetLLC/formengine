@@ -25,10 +25,9 @@ Read the nearest applicable file before changing that area:
 - [Developer documentation](documentation/AGENTS.md)
 - [Form Author Guide](designer-guide/AGENTS.md)
 
-For Form Author Guide screenshot workflows, use the `formbuilder-end-user-docs` skill under
-`skills/formbuilder-end-user-docs/` only when the task involves that guide.
-
-When reviewing or refactoring `AGENTS.md` files, the `review-agents-md` skill from formengine-tools is recommended but optional.
+For Form Author Guide screenshot workflows, use the `formbuilder-end-user-docs` skill only when the task involves that
+guide. When reviewing or refactoring `AGENTS.md` files, the `review-agents-md` skill is recommended but optional. If a
+named skill is not available in this session, ask the user to install it before continuing.
 
 ## Validation
 

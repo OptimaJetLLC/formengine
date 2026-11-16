@@ -65,7 +65,7 @@ builds keep `https://demo.formengine.io/` unless `DEMO_URL` is set.
 Example (production): `https://demo.formengine.io/?form=empty&view=mui`
 
 Article mapping stays in `data/demo-article-forms.json` (`formFile` points at fixtures under
-`skills/formbuilder-end-user-docs/data/guide-forms/`). Inject embeds the encoded body into each tip:
+`data/guide-forms/`). Inject embeds the encoded body into each tip:
 
 ```bash
 npm run inject:demo-links

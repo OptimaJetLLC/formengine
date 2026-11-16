@@ -13,7 +13,6 @@ export default [
       '**/scripts/',
       'examples/',
       'tests/',
-      'skills/',
       '**/*.d.ts',
       '**/*.mjs',
     ],

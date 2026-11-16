@@ -19,7 +19,8 @@ import {PRODUCTION_DEMO_BASE_URL} from './demo-base.mjs'
 const DEMO_BASE_URL = PRODUCTION_DEMO_BASE_URL
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const GUIDE_FORMS_DIR = join(__dirname, '../../../skills/formbuilder-end-user-docs/data/guide-forms')
+/** Product-owned fixtures used by inject:demo-links and capture scripts via MAIN_REPO_PATH. */
+const GUIDE_FORMS_DIR = join(__dirname, '../../data/guide-forms')
 
 
 function encodeFormBody(jsonText) {

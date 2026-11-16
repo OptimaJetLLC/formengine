@@ -13,8 +13,8 @@ The Form Author Guide is the Astro and Starlight site for people who create form
 - Prefer TypeScript for new scripts under `scripts/` and execute them with `node scripts/name.ts`. Use `.mjs` only when the toolchain cannot
   load TypeScript.
 - Follow [the cross-site link conventions](../documentation/authoring/cross-site-links.md) for links to developer documentation.
-- Use the `formbuilder-end-user-docs` skill under `skills/formbuilder-end-user-docs/` for screenshot capture, annotation, and visual guide
-  workflows.
+- Use the `formbuilder-end-user-docs` skill for screenshot capture, annotation, and visual guide workflows. If that skill
+  is not available in this session, ask the user to install it before continuing.
 
 ## Focused validation
 
