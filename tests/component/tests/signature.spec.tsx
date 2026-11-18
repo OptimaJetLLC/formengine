@@ -1,7 +1,7 @@
 import {signatureModel} from '@react-form-builder/components-signature'
 import {createView} from '@react-form-builder/core'
 import {fireEvent, render, waitFor, within} from '@testing-library/react'
-import {Canvas, Image as SkiaImage} from 'skia-canvas'
+import {Canvas, Image as SkiaImage, ImageData as SkiaImageData} from 'skia-canvas'
 import {afterAll, beforeAll, describe, expect, it, vi} from 'vitest'
 import {SignaturePad} from '../../../packages/views/signature/src/SignaturePad'
 import {asyncAct} from '../../common/lib/asyncAct'
@@ -118,10 +118,7 @@ const getImagePixels = async (dataUrl: string) => {
 
   const image = new SkiaImage()
   image.src = Buffer.from(dataUrl.slice(dataUrl.indexOf(',') + 1), 'base64')
-  const canvas = new Canvas(image.width, image.height)
-  const context = canvas.getContext('2d')
-  context.drawImage(image, 0, 0)
-  return context.getImageData(0, 0, image.width, image.height).data
+  return new SkiaImageData(image).data
 }
 
 const countPenPixels = async (dataUrl: string) => {
