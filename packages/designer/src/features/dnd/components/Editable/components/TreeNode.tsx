@@ -51,6 +51,12 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
   }, [componentData, expandedNodes])
 
   useEffect(() => {
+    if (selected && row) {
+      scrollIntoView(row, {scrollMode: 'if-needed'})
+    }
+  }, [row, selected])
+
+  useEffect(() => {
     if (treeReveal?.key !== componentData.key || !row) {
       return
     }
@@ -74,6 +80,7 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
     <>
       <div
         ref={setRow}
+        data-testid={componentData.key}
         className={cx(styles.nodeItem, className, selected && styles.selected)}
         onMouseEnter={showToolbar}
         onMouseMove={showToolbar}
@@ -82,7 +89,7 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
         <div className={styles.indent} style={indentStyle}>
           {withChildren && <Icon onClick={toggleExpand} as={iconAs} className={styles.icon} />}
         </div>
-        <div data-testid={componentData.key}>{componentData.key}</div>
+        <div>{componentData.key}</div>
         <label>{componentData.model.name}</label>
         {hovered && !isDragging && row && <Toolbar compact anchor={row} />}
       </div>

@@ -23,8 +23,11 @@ type TreeRevealRequest = {key: string; id: number}
 /**
  * Left panel tab persistence and tree reveal/scroll.
  *
- * Scroll policy: selecting a component does not scroll the tree. Only {@link LeftPanelChrome.revealInTree}
- * and {@link LeftPanelChrome.ensureNodeVisible} request a scroll; the matching tree row clears the request after scrolling.
+ * When the Tree tab is active, selecting a component scrolls its tree row into view (including on Tree mount
+ * while a selection is already active). Clicking an already selected component does not re-scroll; use
+ * {@link LeftPanelChrome.revealInTree} or {@link LeftPanelChrome.ensureNodeVisible} for that (they also work
+ * when the row is already selected). The matching tree row clears the reveal request after scrolling.
+ * Selection while another left-panel tab is active does not switch tabs.
  */
 export class LeftPanelChrome {
   /**

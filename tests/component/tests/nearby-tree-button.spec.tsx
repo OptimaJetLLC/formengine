@@ -61,8 +61,7 @@ const hoverTreeRow = async (
 ) => {
   fireEvent.click(await findByTestId('Tree_Tab'))
   fireEvent.click(await findByText('Expand all'))
-  const row = (await findByTestId(nodeKey)).parentElement
-  if (!(row instanceof HTMLElement)) throw new Error(`Expected a tree row for ${nodeKey}`)
+  const row = await findByTestId(nodeKey)
   fireEvent.mouseEnter(row)
   await waitFor(() => expect(document.querySelector('[data-fe-toolbar].compact [data-testid="tree-clone-button"]')).toBeTruthy())
   return row

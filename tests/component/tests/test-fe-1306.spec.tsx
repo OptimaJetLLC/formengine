@@ -97,15 +97,14 @@ const TestApp = ({getForm}: {getForm: () => string}) => (
 
 const expandTreeNode = async (rendered: RenderResult, testId: string) => {
   const target = await rendered.findByTestId(testId)
-  await waitFor(() => target.previousElementSibling !== null)
+  const expandIcon = await waitFor(() => {
+    const icon = target.querySelector('svg')
+    if (!(icon instanceof Element)) throw new Error(`Not Found: expand icon for ${testId}`)
+    return icon
+  })
 
   await asyncAct(async () => {
-    if (!target.previousElementSibling) throw new Error('Not Found: target.previousElementSibling')
-    try {
-      ;(target.previousElementSibling.children[0] as HTMLElement).click()
-    } catch (e) {
-      console.error(e)
-    }
+    fireEvent.click(expandIcon)
   })
 
   return target
