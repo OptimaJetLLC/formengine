@@ -54,7 +54,7 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-i18next": "^17.1.12",
-    "scroll-into-view-if-needed": "^3.0.10"
+    "scroll-into-view-if-needed": "^3.2.0"
   },
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",

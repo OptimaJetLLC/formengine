@@ -120,7 +120,7 @@ function mountClientNav(): void {
 /**
  * Persists the sidebar scroll offset across client navigations.
  */
-export function saveSidebarScroll(): void {
+function saveSidebarScroll(): void {
   const island = getIsland();
   if (!island) {
     return;
@@ -131,7 +131,7 @@ export function saveSidebarScroll(): void {
 /**
  * Restores the sidebar scroll offset after a client navigation.
  */
-export function restoreSidebarScroll(): void {
+function restoreSidebarScroll(): void {
   const island = getIsland();
   if (!island) {
     return;
@@ -148,7 +148,7 @@ export function restoreSidebarScroll(): void {
 /**
  * Updates active link styling to match the current guide pathname.
  */
-export function syncSidebarActiveState(): void {
+function syncSidebarActiveState(): void {
   const basePath = getBasePath();
   const currentPath = normalizeGuidePath(window.location.pathname, basePath);
 
