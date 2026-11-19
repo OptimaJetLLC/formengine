@@ -2,6 +2,7 @@ import {BuilderView, buildForm, ComponentData, define, string} from '@react-form
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render, within} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {selectDropDownOption} from '../util/controls'
 
 interface TestComponentProps {

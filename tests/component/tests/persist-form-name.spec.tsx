@@ -2,7 +2,7 @@ import {BuilderView} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render, waitFor} from '@testing-library/react'
-import {expect} from 'vitest'
+import {beforeAll, describe, expect, it, vi} from 'vitest'
 import {MockFormStorage} from '../util/mockFormStorage'
 
 const defaultFormName = 'default-form'

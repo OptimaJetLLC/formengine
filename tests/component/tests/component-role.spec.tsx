@@ -1,4 +1,5 @@
 import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
+import {describe, expect, it} from 'vitest'
 
 const expectedRoles: Record<string, string[]> = {
   RsErrorMessage: ['error-message'],

@@ -2,7 +2,7 @@ import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-bui
 import {BiDi, createView, FormViewer, LanguageFullCode} from '@react-form-builder/core'
 import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {RenderResult, render} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {default as formJson} from './forms/localization-viewer.json'
 
 const enUS = 'en-US'

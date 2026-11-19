@@ -13,7 +13,7 @@ import {
 } from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 import {createElement, ForwardedRef, useCallback, useMemo} from 'react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 
 const SimpleHtmlInput = (props: any) => {
   return <input {...props} />

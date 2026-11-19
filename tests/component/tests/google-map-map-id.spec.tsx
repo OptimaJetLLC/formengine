@@ -1,5 +1,6 @@
 import {render, screen} from '@testing-library/react'
 import type {ComponentProps, ReactNode} from 'react'
+import {describe, expect, it, vi} from 'vitest'
 import {DEMO_MAP_ID} from '../../../packages/views/google-map/src/constants'
 import {GoogleMapRenderer} from '../../../packages/views/google-map/src/GoogleMapRenderer'
 

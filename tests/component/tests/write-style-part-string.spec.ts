@@ -1,4 +1,5 @@
 import {ComponentStore} from '@react-form-builder/core'
+import {describe, expect, it} from 'vitest'
 import {writeStylePartString} from '../../../packages/designer/src/features/annotation-editors/utils/writeStylePartString'
 
 describe('writeStylePartString', () => {

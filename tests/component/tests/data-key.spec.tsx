@@ -1,7 +1,7 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import dataKeyChildForm from './forms/data-key-child-form.json'
 import dataKeyParentForm from './forms/data-key-parent-form.json'

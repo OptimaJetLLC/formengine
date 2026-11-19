@@ -1,4 +1,5 @@
 import {fireEvent} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 import {switchToViewerMode} from './designerUtils'
 

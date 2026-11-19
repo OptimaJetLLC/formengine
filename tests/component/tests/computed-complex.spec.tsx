@@ -1,6 +1,7 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {act, render} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import computedValueMain from './forms/computed-value-main-form.json'
 import computedValueParentTemplate from './forms/computed-value-parent-template.json'
 import computedValueTemplate from './forms/computed-value-template.json'

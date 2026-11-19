@@ -1,4 +1,5 @@
 import {act, render, waitFor} from '@testing-library/react'
+import {beforeEach, describe, expect, it, vi} from 'vitest'
 import {PlaceAutocomplete} from '../../../packages/views/google-map/src/AutoComplete'
 
 const mocks = vi.hoisted(() => ({

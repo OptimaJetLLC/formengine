@@ -4,7 +4,7 @@ import type {ComponentData, FormViewerProps, IFormViewer} from '@react-form-buil
 import {createView, FormViewer} from '@react-form-builder/core'
 import {act, fireEvent, render, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {moveArrayItem} from '../../../packages/views/sortable-list/src/moveArrayItem.ts'
 import {resolveValueReorderIndices} from '../../../packages/views/sortable-list/src/resolveValueReorderIndices.ts'
 

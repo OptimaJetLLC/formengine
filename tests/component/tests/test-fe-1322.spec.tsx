@@ -1,6 +1,7 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import form from './forms/fe-1322-form.json'
 
 describe('FE-1322 Not all keys are unique after form load', () => {

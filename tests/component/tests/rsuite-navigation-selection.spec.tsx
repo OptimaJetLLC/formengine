@@ -1,5 +1,6 @@
 import type {ComponentData} from '@react-form-builder/core'
 import {act, fireEvent} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {renderForm} from '../util/renderRsuiteForm'
 
 describe('RSuite navigation selection', () => {

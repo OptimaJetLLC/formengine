@@ -1,5 +1,6 @@
 import {BuilderView, define, Language} from '@react-form-builder/core'
 import {FormBuilderI18n, FormBuilderI18nData} from '@react-form-builder/designer'
+import {describe, expect, it, vi} from 'vitest'
 import {flushPendingLinkLoads} from '../util/flushStylesheetLoadQueue'
 import {renderBuilder} from '../util/renderBuilder'
 

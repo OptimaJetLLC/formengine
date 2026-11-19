@@ -2,6 +2,7 @@ import {BuilderView} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 
 const view = new BuilderView([...allComponentsBuilder]).withPaletteFilter(({category, model}) => {
   return !(category === 'structure' || model.type === 'RsAutoComplete')

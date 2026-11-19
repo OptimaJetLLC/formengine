@@ -1,5 +1,5 @@
 import {BuilderStore} from '@react-form-builder/designer/src/stores/BuilderStore'
-import {beforeAll} from 'vitest'
+import {beforeAll, describe, expect, it} from 'vitest'
 import {createMockBuilderStore, createMockStore} from '../common/createMockBuilderStore'
 import orderedFields from '../data/ordered-fields.json'
 

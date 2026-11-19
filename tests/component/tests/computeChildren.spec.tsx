@@ -2,7 +2,7 @@ import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render} from '@testing-library/react'
 import {useState} from 'react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import '../config/toHaveExactValues'
 
 const form = {

@@ -3,6 +3,7 @@ import type {Theme} from '@mui/material/styles'
 import {muiBox, muiStack, muiTypography} from '@react-form-builder/components-material-ui'
 import {render, screen} from '@testing-library/react'
 import type {ReactNode} from 'react'
+import {describe, expect, it} from 'vitest'
 
 const Box = muiBox.build().model.component
 const Stack = muiStack.build().model.component

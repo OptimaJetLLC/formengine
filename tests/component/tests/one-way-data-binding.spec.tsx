@@ -3,7 +3,7 @@ import {BuilderView, buildForm, ComponentStore, cfNonVisual, FormViewer, FormVie
 import {FormBuilderProps} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render, waitFor} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {isBrowserMode} from '../config/isBrowserMode'
 import {renderBuilder} from '../util/renderBuilder'
 import {renderForm} from '../util/renderRsuiteForm'

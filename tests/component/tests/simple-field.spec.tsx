@@ -15,7 +15,7 @@ import {
 } from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
 import {useEffect, useState} from 'react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {renderViewerForm} from '../util/renderViewerForm'
 

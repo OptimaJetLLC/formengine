@@ -4,6 +4,7 @@ import {builderViewWithCss, viewWithCss} from '@react-form-builder/components-rs
 import {FormViewer} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor, within} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import enUS from '../../../packages/designer/public/locales/en-US.json'
 import {clickRun} from '../../common/lib/designer/clickRun'
 import {addCustomEventHandler, getInputElement, togglePreview} from '../util/controls'

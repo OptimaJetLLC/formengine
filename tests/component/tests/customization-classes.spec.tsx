@@ -3,7 +3,7 @@ import {buildForm} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {render} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 
 const form = buildForm().json()
 

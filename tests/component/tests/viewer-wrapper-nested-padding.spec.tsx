@@ -1,7 +1,7 @@
 import {buildForm} from '@react-form-builder/core'
 import {ViewerLite} from '@react-form-builder/tests-common/lib/viewer/ViewerLite'
 import {render} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {isBrowserMode} from '../config/isBrowserMode'
 import {renderForm} from '../util/renderRsuiteForm'
 

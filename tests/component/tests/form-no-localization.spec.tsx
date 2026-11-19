@@ -1,7 +1,7 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 
 // No localization, languages, or defaultLanguage
 const form = {

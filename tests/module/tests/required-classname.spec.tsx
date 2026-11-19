@@ -1,6 +1,7 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {createView, FormViewerPropsStore, Store} from '@react-form-builder/core'
 import {defaultComponentStateFactory} from '@react-form-builder/core/src/features/form-viewer/components/ViewerStoreProvider'
+import {describe, expect, it} from 'vitest'
 import form from '../data/required-classname.json'
 
 describe(`The required className`, function () {

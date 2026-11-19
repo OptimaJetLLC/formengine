@@ -2,7 +2,7 @@ import {BuilderView, define, type PersistedForm} from '@react-form-builder/core'
 import type {IFormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, within} from '@testing-library/react'
-import {vi} from 'vitest'
+import {describe, expect, it, vi} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 
 /**

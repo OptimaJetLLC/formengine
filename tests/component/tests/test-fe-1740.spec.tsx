@@ -1,6 +1,7 @@
 import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {FormBuilder} from '@react-form-builder/designer'
 import {render} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 
 describe('FE-1740 AlwaysRejectFormStorage.ts:8 Uncaught (in promise) Error: Not implemented', () => {
   it('Should render a form without errors', async () => {

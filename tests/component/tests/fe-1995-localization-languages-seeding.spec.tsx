@@ -2,7 +2,7 @@ import {view} from '@react-form-builder/components-rsuite'
 import type {IFormViewer} from '@react-form-builder/core'
 import {FormViewer} from '@react-form-builder/core'
 import {render, waitFor} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 import {createLocalizedScreenForm, getBuilderStore} from './localizationTestUtils'
 

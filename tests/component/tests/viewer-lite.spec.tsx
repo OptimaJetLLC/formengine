@@ -1,5 +1,5 @@
 import {render} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {ViewerLite} from '../../common/lib/viewer/ViewerLite'
 
 describe('Component ViewerLite', function () {

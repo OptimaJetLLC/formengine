@@ -1,6 +1,7 @@
 import {buildForm} from '@react-form-builder/core'
 import {IFormStorage} from '@react-form-builder/designer'
 import {fireEvent, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 
 const createFakeFormStorage = (forms: Record<string, string>): IFormStorage => {

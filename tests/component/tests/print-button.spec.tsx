@@ -2,7 +2,7 @@ import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {fireEvent, render, waitFor} from '@testing-library/react'
-import {afterEach, expect, vi} from 'vitest'
+import {afterEach, describe, expect, it, vi} from 'vitest'
 import {clickItemInMainMenu} from '../util/controls'
 import form from './forms/designer-form.json'
 

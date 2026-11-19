@@ -1,6 +1,7 @@
 import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {buildForm} from '@react-form-builder/core'
 import {fireEvent} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 import {renderForm} from '../util/renderRsuiteForm'
 

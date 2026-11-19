@@ -1,6 +1,6 @@
 import {PersistedForm} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
-import {describe} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {parseForm} from '../util/parseForm'
 import {renderBuilder} from '../util/renderBuilder'
 import form from './forms/validation-rule-editor.json'

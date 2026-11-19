@@ -2,6 +2,7 @@ import {EditableTable, type EditableTableProps} from '@react-form-builder/design
 import {fireEvent, render, screen, waitFor, within} from '@testing-library/react'
 import {useCallback, useState} from 'react'
 import {Table} from 'rsuite'
+import {describe, expect, it, vi} from 'vitest'
 
 const columns = [
   <Table.Column key="name" width={120}>

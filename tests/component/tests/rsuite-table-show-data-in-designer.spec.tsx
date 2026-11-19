@@ -4,7 +4,7 @@ import {createView, FormViewer} from '@react-form-builder/core'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {render, within} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 
 const builderComponents = [...rSuiteComponents, ...rSuiteTableComponents].map(definer => definer.build())
 const builderView = new BuilderView(builderComponents)

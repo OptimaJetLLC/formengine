@@ -1,5 +1,6 @@
 import {FormValidator} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderRsuiteForm'
 import form from './forms/entire-form-validator.json'

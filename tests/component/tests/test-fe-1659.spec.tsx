@@ -1,6 +1,7 @@
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
 import {BuilderView} from '@react-form-builder/core'
 import {waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {isBrowserMode} from '../config/isBrowserMode'
 import {renderBuilder} from '../util/renderBuilder'
 import {switchToViewerMode} from './designerUtils'

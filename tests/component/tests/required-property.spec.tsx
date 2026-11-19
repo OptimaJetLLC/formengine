@@ -11,6 +11,7 @@ import {
 import {IFormBuilder} from '@react-form-builder/designer'
 import {fireEvent, RenderResult} from '@testing-library/react'
 import type {HTMLAttributes} from 'react'
+import {describe, expect, it} from 'vitest'
 import {getPropertyInput} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'
 import {renderViewerForm} from '../util/renderViewerForm'

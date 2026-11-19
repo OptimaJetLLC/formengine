@@ -3,7 +3,7 @@ import {cfNonVisual, cfSingleton} from '@react-form-builder/core'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {act, fireEvent, render, within} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {userEvent} from 'vitest/browser'
 import {isBrowserMode} from '../config/isBrowserMode'
 

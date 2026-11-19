@@ -1,4 +1,4 @@
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {renderForm} from '../util/renderRsuiteForm'
 import form from './forms/style-attribute-form.json'
 

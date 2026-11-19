@@ -1,5 +1,6 @@
 import {BiDi, createView} from '@react-form-builder/core'
 import {act, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {renderViewerForm} from '../util/renderViewerForm'
 
 const form = {

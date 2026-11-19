@@ -16,7 +16,7 @@ import {
 } from '@react-form-builder/core'
 import {act, fireEvent, render, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
-import {expect, vi} from 'vitest'
+import {describe, expect, it, vi} from 'vitest'
 import {selectDropDownOption} from '../util/controls'
 import {eachComponentStore} from './eachComponentStore'
 import actionsBookingForm from './forms/actions-booking-form.json'

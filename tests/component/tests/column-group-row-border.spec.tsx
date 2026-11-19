@@ -2,6 +2,7 @@ import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table'
 import {BuilderView} from '@react-form-builder/core'
 import {fireEvent} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 
 const view = new BuilderView([...rSuiteComponents, ...rSuiteTableComponents].map(definer => definer.build()))

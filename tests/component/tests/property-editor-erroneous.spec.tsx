@@ -1,6 +1,6 @@
 import {BuilderView, define, type RuleValidator, string} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
-import {vi} from 'vitest'
+import {describe, expect, it, vi} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {getPropertyInput} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'

@@ -1,3 +1,4 @@
+import {describe, expect, it} from 'vitest'
 import {toPlaceResult} from '../../../packages/views/google-map/src/toPlaceResult'
 
 describe('toPlaceResult', () => {

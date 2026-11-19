@@ -4,7 +4,7 @@ import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {testLicense} from '@react-form-builder/tests-common/test-licenses'
 import {fireEvent, RenderResult, render, waitFor, within} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 
 const testForm = {

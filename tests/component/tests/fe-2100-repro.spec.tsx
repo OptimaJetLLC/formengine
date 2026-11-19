@@ -1,6 +1,7 @@
 import {viewWithCss} from '@react-form-builder/components-rsuite'
 import {FormViewer} from '@react-form-builder/core'
 import {render, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {togglePreview} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'
 import absoluteOverlayForm from './forms/fe-2100-absolute-overlay.json'

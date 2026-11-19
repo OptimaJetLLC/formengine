@@ -14,7 +14,7 @@ import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import type {ReactNode} from 'react'
-import {afterEach, expect, vi} from 'vitest'
+import {afterEach, describe, expect, it, vi} from 'vitest'
 
 const visualField = define(() => <div data-testid="visual-field" />, 'VisualField')
   .name('Visual field')

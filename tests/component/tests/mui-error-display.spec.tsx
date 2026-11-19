@@ -1,6 +1,7 @@
 import {MuiLocalizationProvider, MuiViewerWrapper, models, components as muiComponents} from '@react-form-builder/components-material-ui'
 import {BuilderView, type ComponentData, createView} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {renderBuilder} from '../util/renderBuilder'
 import {renderViewerForm} from '../util/renderViewerForm'

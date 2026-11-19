@@ -1,5 +1,6 @@
 import {view} from '@react-form-builder/components-mantine'
 import {ComponentData} from '@react-form-builder/core'
+import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {renderViewerForm} from '../util/renderViewerForm'
 import form from './forms/mantine-error-display-form.json'

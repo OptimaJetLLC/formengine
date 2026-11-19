@@ -13,6 +13,7 @@ import {
   toLabeledValues,
 } from '@react-form-builder/core'
 import {render} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 
 interface ItemListProps {
   items?: LabeledValue[]

@@ -1,6 +1,7 @@
 import {ActionEventArgs, createView, define, string} from '@react-form-builder/core'
 import {fireEvent} from '@testing-library/react'
 import {useCallback} from 'react'
+import {describe, expect, it} from 'vitest'
 import {renderViewerForm} from '../util/renderViewerForm'
 import form from './forms/custom-event-handlers-form.json'
 

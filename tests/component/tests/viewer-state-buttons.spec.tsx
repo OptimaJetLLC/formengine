@@ -1,4 +1,5 @@
 import {fireEvent, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 import {switchToViewerMode} from './designerUtils'
 import form from './forms/viewer-state-buttons-form.json'

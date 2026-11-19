@@ -1,6 +1,7 @@
 import {array, createView, define, FormViewer, fn, string} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 import {ComponentProps, useEffect} from 'react'
+import {describe, expect, it} from 'vitest'
 import fnPropsForm from './forms/fn-props-form.json'
 
 interface TestComponentProps extends ComponentProps<any> {

@@ -3,6 +3,7 @@ import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render} from '@testing-library/react'
 import {ChangeEvent, useCallback, useMemo, useState} from 'react'
+import {describe, expect, it} from 'vitest'
 
 const App = () => {
   const [filter, setFilter] = useState('RsButton')

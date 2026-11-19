@@ -1,5 +1,6 @@
 import {createView, FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {isBrowserMode} from '../config/isBrowserMode'
 
 const form = {

@@ -4,7 +4,7 @@ import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {fireEvent, render, screen} from '@testing-library/react'
 import type {ReactNode} from 'react'
-import {afterEach} from 'vitest'
+import {afterEach, describe, expect, it} from 'vitest'
 
 const view = createView([pageBreak.build().model, printSettings.build().model])
 const designerView = new BuilderView([pageBreak.build(), printSettings.build()])

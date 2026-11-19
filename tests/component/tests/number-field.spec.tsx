@@ -1,4 +1,5 @@
 import {fireEvent} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {renderForm} from '../util/renderRsuiteForm'
 import form from './forms/number-field.json'
 

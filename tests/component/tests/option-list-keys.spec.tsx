@@ -2,6 +2,7 @@ import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import type {ComponentData} from '@react-form-builder/core'
 import {BuilderView, define, oneOf} from '@react-form-builder/core'
 import {act, fireEvent} from '@testing-library/react'
+import {describe, expect, it, vi} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 import {renderForm} from '../util/renderForm'
 

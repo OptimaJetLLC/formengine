@@ -3,6 +3,7 @@ import {createView, define, nodeArray, string} from '@react-form-builder/core'
 import {act, fireEvent} from '@testing-library/react'
 import type {ReactNode} from 'react'
 import {useState} from 'react'
+import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderForm'
 

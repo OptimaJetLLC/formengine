@@ -1,5 +1,6 @@
 import {ComponentData, FormViewerProps} from '@react-form-builder/core'
 import {act, fireEvent, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {renderForm} from '../util/renderRsuiteForm'
 
 const wizardForm = {

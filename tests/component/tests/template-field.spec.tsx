@@ -2,7 +2,7 @@ import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BiDi, ComponentStore, createView, FormViewer, Language, PersistedForm, View} from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
 import {useCallback} from 'react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {eachComponentStore} from './eachComponentStore'
 
 function randomString(prefix?: string) {

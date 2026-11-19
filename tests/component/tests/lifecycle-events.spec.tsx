@@ -2,6 +2,7 @@ import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 import {ComponentType, Fragment, StrictMode} from 'react'
+import {describe, expect, it} from 'vitest'
 import lifecycleEventsForm from './forms/lifecycle-events-form.json'
 
 type ExpectedMessages = {

@@ -1,6 +1,6 @@
 import {ComponentData} from '@react-form-builder/core'
 import {createAddedComponentData} from '@react-form-builder/designer'
-import {beforeAll} from 'vitest'
+import {beforeAll, describe, expect, it} from 'vitest'
 import {createMockBuilderStore, createMockStore, mockComponent} from '../common/createMockBuilderStore'
 
 describe(`Should init component palette components in a right way`, function () {

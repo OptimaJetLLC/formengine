@@ -1,6 +1,7 @@
 import {muiDialog} from '@react-form-builder/components-material-ui'
 import {fireEvent, render, screen, waitFor} from '@testing-library/react'
 import {useState} from 'react'
+import {describe, expect, it} from 'vitest'
 
 const Dialog = muiDialog.build().model.component
 

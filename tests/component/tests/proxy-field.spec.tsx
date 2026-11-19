@@ -1,7 +1,7 @@
 import {models as rsuiteModels} from '@react-form-builder/components-rsuite'
 import {createView} from '@react-form-builder/core'
 import {fireEvent} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {renderViewerForm} from '../util/renderViewerForm'
 import proxyFieldForm from './forms/proxy-field-form.json'
 import {testTable} from './TestTable'

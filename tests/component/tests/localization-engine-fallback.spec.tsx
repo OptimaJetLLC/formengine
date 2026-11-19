@@ -1,5 +1,6 @@
 import {createView, define, FormViewer, string} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {createLocalizedForm} from './localizationTestUtils'
 
 const CustomWithDefault = ({children}: {children?: string}) => {

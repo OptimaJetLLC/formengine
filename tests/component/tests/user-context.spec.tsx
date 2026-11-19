@@ -3,6 +3,7 @@ import {buildForm, FormViewer, type FormViewerProps} from '@react-form-builder/c
 import {FormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {observable, reaction, runInAction} from 'mobx'
+import {describe, expect, it} from 'vitest'
 import {switchToViewerMode} from './designerUtils'
 import lifecycleEventsForm from './forms/lifecycle-events-form.json'
 

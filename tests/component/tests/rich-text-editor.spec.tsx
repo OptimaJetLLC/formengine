@@ -2,6 +2,7 @@ import {defaultRichTextFeatureFlags, richTextModel} from '@react-form-builder/co
 import {type ComponentData, createView} from '@react-form-builder/core'
 import {waitFor} from '@testing-library/react'
 import {Quill} from 'react-quill-new'
+import {describe, expect, it} from 'vitest'
 import {
   applyFeaturesToModules,
   applyFeatureToModules,

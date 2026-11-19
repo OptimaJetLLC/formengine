@@ -2,6 +2,7 @@ import {BuilderView, Language} from '@react-form-builder/core'
 import type {FormBuilderI18n, IFormStorage} from '@react-form-builder/designer'
 import type {BuilderStore} from '@react-form-builder/designer/src/stores/BuilderStore'
 import {BuilderStore as BuilderStoreImpl} from '@react-form-builder/designer/src/stores/BuilderStore'
+import {describe, expect, it} from 'vitest'
 import {createMockBuilderStore, createMockStore} from '../common/createMockBuilderStore'
 
 const providedFormDefinition = {

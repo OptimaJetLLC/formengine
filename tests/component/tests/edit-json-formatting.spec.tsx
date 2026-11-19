@@ -2,7 +2,7 @@ import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {fireEvent, render, within} from '@testing-library/react'
-import {vi} from 'vitest'
+import {describe, expect, it, vi} from 'vitest'
 
 /**
  * Surface Monaco's initial buffer so the Edit JSON modal content is assertable without async workers.

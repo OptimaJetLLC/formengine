@@ -2,6 +2,7 @@ import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {CustomActions, createView, FormViewer} from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
 import {useMemo, useState} from 'react'
+import {describe, expect, it} from 'vitest'
 
 const formJson = JSON.stringify({
   form: {

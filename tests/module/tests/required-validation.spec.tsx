@@ -1,4 +1,5 @@
 import {SchemaTypeMap} from '@react-form-builder/core'
+import {describe, expect, it} from 'vitest'
 import {createMockStore} from '../common/createMockBuilderStore'
 
 type TypesWithoutEnum = keyof Omit<SchemaTypeMap, 'enum'>

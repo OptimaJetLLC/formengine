@@ -1,3 +1,4 @@
+import {vi} from 'vitest'
 export const addMatchMediaFunctionToWindow = () => {
   //Source: https://github.com/vitest-dev/vitest/issues/821
   Object.defineProperty(window, 'matchMedia', {

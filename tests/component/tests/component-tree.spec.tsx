@@ -2,6 +2,7 @@ import {models, rSuiteComponents, view} from '@react-form-builder/components-rsu
 import {BuilderView, createView, define, ErrorWrapperProps, FormViewer, FormViewerProps, PersistedForm} from '@react-form-builder/core'
 import {FormBuilder, FormBuilderProps} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import childForm from './forms/component-data-methods-child-form.json'
 import parentForm from './forms/component-data-methods-form.json'
 

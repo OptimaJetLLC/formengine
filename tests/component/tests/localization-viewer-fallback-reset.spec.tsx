@@ -1,7 +1,7 @@
 import {ltrCssLoader, models, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, createView, FormViewer} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 import {renderForm} from '../util/renderRsuiteForm'
 import {switchFormLanguage, switchToViewerMode} from './designerUtils'

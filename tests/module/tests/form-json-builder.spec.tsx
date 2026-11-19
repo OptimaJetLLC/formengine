@@ -1,4 +1,5 @@
 import {buildForm} from '@react-form-builder/core'
+import {describe, expect, it} from 'vitest'
 import actionWithArgs from '../data/form-json-builder/action-with-args.json'
 import chain from '../data/form-json-builder/chain.json'
 import chainChildren from '../data/form-json-builder/chain-children.json'

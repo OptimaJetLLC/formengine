@@ -1,5 +1,6 @@
 import type {CustomizationMap} from '@react-form-builder/designer'
 import {fireEvent, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {addSiblingLabelFromToolbar, openToolbarActions} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 

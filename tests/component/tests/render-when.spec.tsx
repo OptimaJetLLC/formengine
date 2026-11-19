@@ -1,6 +1,7 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer} from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import renderWhenForm from './forms/render-when-form.json'
 
 describe('RenderWhen test', () => {

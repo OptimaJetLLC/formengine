@@ -1,6 +1,7 @@
 import {rsAccordionPanel} from '@react-form-builder/components-rsuite'
 import {cfDisableToolbarAdd} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {openToolbarActions} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 

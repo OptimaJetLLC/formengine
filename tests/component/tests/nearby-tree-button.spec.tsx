@@ -1,4 +1,5 @@
 import {fireEvent, waitFor, within} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {addSiblingLabelFromToolbar} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 

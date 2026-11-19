@@ -1,6 +1,7 @@
 import {BuilderView, define} from '@react-form-builder/core'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {act, fireEvent} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 import form from './forms/hide-tooltip-editor-form.json'
 

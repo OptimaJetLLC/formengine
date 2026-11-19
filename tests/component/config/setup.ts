@@ -1,6 +1,6 @@
 import {cleanup, configure} from '@testing-library/react'
 import '@testing-library/jest-dom/vitest'
-import {afterEach, beforeAll} from 'vitest'
+import {afterEach, beforeAll, vi} from 'vitest'
 import failOnConsole from 'vitest-fail-on-console'
 import {isBrowserMode} from './isBrowserMode'
 

@@ -12,7 +12,7 @@ import {builtInLanguages, resolveBuilderUiLanguage} from '@react-form-builder/de
 import type {BuilderStore} from '@react-form-builder/designer/src/stores/BuilderStore'
 import {BuilderStore as BuilderStoreImpl} from '@react-form-builder/designer/src/stores/BuilderStore'
 import {LocalStorageSynchronizer} from '@react-form-builder/designer/src/stores/LocalStorageSynchronizer'
-import {expect} from 'vitest'
+import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest'
 import {createMockStore} from '../common/createMockBuilderStore'
 
 const mockComponent = define(() => <div />, 'MockField')

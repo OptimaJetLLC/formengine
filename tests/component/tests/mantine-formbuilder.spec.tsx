@@ -5,6 +5,7 @@ import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer
 import {generateMantineFormJson} from '@react-form-builder/tests-common/lib/mantine-form'
 import {render, waitFor} from '@testing-library/react'
 import {ForwardedRef} from 'react'
+import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {togglePreview} from '../util/controls'
 

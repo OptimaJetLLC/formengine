@@ -1,6 +1,6 @@
 import {type ComponentData} from '@react-form-builder/core'
 import {act, fireEvent, within} from '@testing-library/react'
-import {onTestFinished, vi} from 'vitest'
+import {describe, expect, it, onTestFinished, vi} from 'vitest'
 import {selectDropDownOption} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'
 

@@ -3,7 +3,7 @@ import {FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {RenderResult, render} from '@testing-library/react'
 import React from 'react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import form from './forms/designer-form.json'
 
 const getFormFn = () => JSON.stringify(form)

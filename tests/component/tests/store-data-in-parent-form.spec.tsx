@@ -1,7 +1,7 @@
 import {builderViewWithCss, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BuilderView, FormBuilder, FormBuilderProps} from '@react-form-builder/designer'
 import {fireEvent, render} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {switchToDesignerMode, switchToViewerMode} from './designerUtils'
 import appForm from './forms/store-data-in-parent-form.json'
 import appTemplateForm from './forms/store-data-in-parent-form-template.json'

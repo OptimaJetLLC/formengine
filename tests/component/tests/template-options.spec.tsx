@@ -1,6 +1,7 @@
 import {viewWithCss} from '@react-form-builder/components-rsuite'
 import {FormViewer} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import childFormVersion1 from './forms/template-options/child-form-version-1.json'
 import childFormVersion2 from './forms/template-options/child-form-version-2.json'
 import rootForm from './forms/template-options/root-form.json'

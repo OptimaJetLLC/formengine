@@ -1,6 +1,7 @@
 import {createView, define, event, FormViewerProps} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
 import {Fragment, forwardRef, useImperativeHandle} from 'react'
+import {describe, expect, it, vi} from 'vitest'
 import {renderViewerForm} from '../util/renderViewerForm'
 
 describe('Component ref tests', () => {

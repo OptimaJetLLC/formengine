@@ -1,5 +1,6 @@
 import {waitFor} from '@testing-library/react'
 import axe from 'axe-core'
+import {describe, it} from 'vitest'
 import {renderForm} from '../util/renderForm'
 
 function getForm(componentType: string, disabled: boolean, readOnly: boolean, additionalProps?: string): object {

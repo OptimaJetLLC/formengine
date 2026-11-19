@@ -2,7 +2,7 @@ import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {FormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {useState} from 'react'
-import {expect} from 'vitest'
+import {afterAll, beforeAll, describe, expect, it} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 
 const form = {

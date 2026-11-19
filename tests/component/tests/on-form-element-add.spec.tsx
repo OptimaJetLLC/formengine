@@ -4,7 +4,7 @@ import type {IPresetComponentOptions} from '@react-form-builder/designer'
 import {FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {fireEvent, render, waitFor, within} from '@testing-library/react'
-import {expect, vi} from 'vitest'
+import {describe, expect, it, vi} from 'vitest'
 import emptyForm from './forms/empty-form.json'
 
 const PRESET_NAME = 'TestPresetForCallback'

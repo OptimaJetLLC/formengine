@@ -1,7 +1,7 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BuilderView, FormBuilder, isDesignerLocalStorageEnabled} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor} from '@testing-library/react'
-import {expect} from 'vitest'
+import {describe, expect, it, vi} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'
 
 const view = new BuilderView(rSuiteComponents.map(c => c.build()))

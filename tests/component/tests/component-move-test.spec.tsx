@@ -2,6 +2,7 @@ import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {createView, define, FormViewer, FormViewerProps, Store, useStore} from '@react-form-builder/core'
 import {act, render} from '@testing-library/react'
 import {type ForwardedRef, useEffect} from 'react'
+import {describe, expect, it} from 'vitest'
 import form from './forms/moving-component-form.json'
 
 describe('Component move test', () => {

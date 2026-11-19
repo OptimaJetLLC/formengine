@@ -1,6 +1,7 @@
 import {models} from '@react-form-builder/components-rsuite'
 import {buildForm, createView, define} from '@react-form-builder/core'
 import {ReactNode} from 'react'
+import {describe, expect, it} from 'vitest'
 import {renderForm} from '../util/renderRsuiteForm'
 import {renderViewerForm} from '../util/renderViewerForm'
 

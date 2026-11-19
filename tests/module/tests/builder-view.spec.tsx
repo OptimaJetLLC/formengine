@@ -1,4 +1,5 @@
 import {type BuilderComponent, BuilderView} from '@react-form-builder/core'
+import {describe, expect, it} from 'vitest'
 
 describe('BuilderView tests', function () {
   it('BuilderView uses a defensive copy of the components', () => {

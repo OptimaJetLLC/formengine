@@ -16,7 +16,7 @@ import {
 } from '@react-form-builder/tests-common/test-licenses'
 import {RenderResult, render} from '@testing-library/react'
 import {useCallback} from 'react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 import {clickItemInMainMenu} from '../util/controls'
 import agreementForm from './forms/agreement-form.json'
 import {default as formEmpty} from './forms/empty-form.json'

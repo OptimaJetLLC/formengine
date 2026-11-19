@@ -1,6 +1,7 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {fireEvent, render, waitFor} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderRsuiteForm'
 import formDataInValidation from './forms/form-data-in-validation.json'

@@ -2,7 +2,7 @@ import {builderViewWithCss, view} from '@react-form-builder/components-rsuite'
 import {FormViewer, type FormViewerProps} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor} from '@testing-library/react'
-import {onTestFinished, vi} from 'vitest'
+import {describe, expect, it, onTestFinished, vi} from 'vitest'
 import {renderForm} from '../util/renderRsuiteForm'
 
 const emptyForm = {

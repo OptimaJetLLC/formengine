@@ -1,7 +1,7 @@
 import {createView, define, event, FormViewer} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
 import {useEffect, useState} from 'react'
-import {expect} from 'vitest'
+import {describe, expect, it} from 'vitest'
 
 function CustomComponent(props: {onLoad: (callback: (data: any) => void) => void}) {
   const [data, setData] = useState<any>()

@@ -1,6 +1,7 @@
 import {createView, define, event, FormViewer, string} from '@react-form-builder/core'
 import {act, render} from '@testing-library/react'
 import type {InputHTMLAttributes} from 'react'
+import {describe, expect, it, vi} from 'vitest'
 import {isBrowserMode} from '../config/isBrowserMode'
 import form from './forms/fe-1763-custom-styling.json'
 

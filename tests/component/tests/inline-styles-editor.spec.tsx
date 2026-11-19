@@ -1,6 +1,7 @@
 import {BuilderView, buildForm, ComponentKind, define} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render} from '@testing-library/react'
+import {describe, it} from 'vitest'
 
 interface FeatureCombination {
   kind: ComponentKind

@@ -3,6 +3,7 @@ import type {ComponentData} from '@react-form-builder/core'
 import {createView} from '@react-form-builder/core'
 import {act} from '@testing-library/react'
 import type {ReactNode} from 'react'
+import {describe, expect, it, vi} from 'vitest'
 import {renderForm} from '../util/renderForm'
 
 vi.mock('@vis.gl/react-google-maps', async () => {

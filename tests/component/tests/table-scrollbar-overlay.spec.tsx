@@ -3,6 +3,7 @@ import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table
 import {BuilderView, cfUncoverOverflowScrollbar, define} from '@react-form-builder/core'
 import {fireEvent} from '@testing-library/react'
 import type {ReactNode} from 'react'
+import {describe, expect, it} from 'vitest'
 import {isBrowserMode} from '../config/isBrowserMode'
 import {renderBuilder} from '../util/renderBuilder'
 

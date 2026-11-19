@@ -1,6 +1,7 @@
 import {BuilderView, buildForm, define, oneOf} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render, within} from '@testing-library/react'
+import {describe, expect, it} from 'vitest'
 
 const FirstVariantComponent = (props: {variant?: string}) => {
   const {variant} = props

@@ -15,7 +15,7 @@ import {fireEvent, render} from '@testing-library/react'
 import {klona} from 'klona/full'
 import {useCallback} from 'react'
 import {Button} from 'rsuite'
-import {describe, expect, vi} from 'vitest'
+import {describe, expect, it, vi} from 'vitest'
 import {openToolbarActions} from '../util/openToolbarActions'
 import form from './forms/designer-customization.json'
 

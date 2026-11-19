@@ -1,4 +1,5 @@
 import {autorun} from 'mobx'
+import {describe, expect, it} from 'vitest'
 import {createMockStore} from '../common/createMockBuilderStore'
 
 describe('ComponentData user-defined properties', () => {

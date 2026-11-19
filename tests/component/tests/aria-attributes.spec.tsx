@@ -1,3 +1,4 @@
+import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
 import {renderForm} from '../util/renderForm'
 import form from './forms/aria-attributes.json'

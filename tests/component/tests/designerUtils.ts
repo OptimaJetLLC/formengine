@@ -1,6 +1,7 @@
 import type {LanguageFullCode} from '@react-form-builder/core'
 import type {RenderResult} from '@testing-library/react'
 import {fireEvent, waitFor} from '@testing-library/react'
+import {expect} from 'vitest'
 
 const previewButtonText = 'Preview'
 const editButtonText = 'Edit'

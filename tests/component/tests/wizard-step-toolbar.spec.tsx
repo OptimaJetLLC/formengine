@@ -2,6 +2,7 @@ import {rsWizardStep} from '@react-form-builder/components-rsuite'
 import {cfDisableToolbarAdd} from '@react-form-builder/core'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {createRef} from 'react'
+import {describe, expect, it, vi} from 'vitest'
 import {openToolbarActions} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 

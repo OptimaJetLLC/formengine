@@ -8,7 +8,7 @@ import {isLicenseDefined} from '@react-form-builder/tests-common/lib/is-license-
 import {license2030Enterprise, licenseBusiness} from '@react-form-builder/tests-common/test-licenses'
 import {RenderResult, render, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
-import {expect} from 'vitest'
+import {afterEach, describe, expect, it} from 'vitest'
 import agreementForm from './forms/agreement-form.json'
 import {default as formEmpty} from './forms/empty-form.json'
 import {default as formJson} from './forms/license-form.json'

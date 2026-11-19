@@ -1,6 +1,6 @@
 import {webcrypto} from 'node:crypto'
 import {Canvas} from 'skia-canvas'
-import {beforeAll} from 'vitest'
+import {beforeAll, vi} from 'vitest'
 import {mockAdoptedStyles} from './adoptedStylesheets'
 import {addMatchMediaFunctionToWindow} from './matchMedia'
 

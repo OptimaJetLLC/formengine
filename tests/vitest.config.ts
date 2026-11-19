@@ -34,7 +34,6 @@ export default defineConfig(env =>
         }
       : {}),
     test: {
-      globals: true,
       isolate: true,
       environment: 'jsdom',
       setupFiles: componentTestSetupFiles,

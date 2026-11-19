@@ -3,7 +3,7 @@ import {BuilderView, ComponentData, FormViewerPropsStore, Store} from '@react-fo
 import {defaultComponentStateFactory} from '@react-form-builder/core/src/features/form-viewer/components/ViewerStoreProvider'
 import {createAddedComponentData} from '@react-form-builder/designer/src/stores/AvailableComponents'
 import {BuilderStore} from '@react-form-builder/designer/src/stores/BuilderStore'
-import {beforeAll} from 'vitest'
+import {beforeAll, beforeEach, describe, expect, it} from 'vitest'
 import dropField from '../data/drop-field.json'
 import fieldsForPreset from '../data/fields-for-preset.json'
 
