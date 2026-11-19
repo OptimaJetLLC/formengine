@@ -55,7 +55,7 @@ const RsUploader = ({customElement, children, disabled, multiple, fileList, clas
   const disabledButton = useMemo(() => disabled || !canUpload, [disabled, canUpload])
 
   return (
-    <Labeled label={label} className={className} passAriaToChildren={true}>
+    <Labeled label={label} className={className} passAriaToChildren={false} passAriaToGroup>
       <Uploader {...props} disabled={disabledButton} multiple={multiple} fileList={fileList} onRemove={onRemove} ref={uploaderRef}>
         {customElement ? <div>{children}</div> : undefined}
       </Uploader>

@@ -1,8 +1,10 @@
 import {boolean, date, define, event, string} from '@react-form-builder/core'
+import {useRef} from 'react'
 import {Calendar} from 'rsuite'
 import type {CalendarProps} from 'rsuite/esm/Calendar/Calendar'
 import {readOnly} from '../commonProperties'
 import {fieldsCategory} from './categories'
+import {useRsuiteCalendarLabelInName} from './hooks/useRsuiteCalendarLabelInName'
 import {Labeled} from './internal/Labeled'
 
 /**
@@ -29,8 +31,11 @@ export interface RsCalendarProps extends CalendarProps {
  * @returns the React element.
  */
 const RsCalendar = ({label, style, className, ...props}: RsCalendarProps) => {
+  const rootRef = useRef<HTMLDivElement>(null)
+  useRsuiteCalendarLabelInName(rootRef)
+
   return (
-    <Labeled label={label} style={style} className={className} passAriaToChildren={true}>
+    <Labeled ref={rootRef} label={label} style={style} className={className} passAriaToChildren={false} passAriaToGroup>
       {props.readOnly ? <Calendar {...props} onChange={undefined} /> : <Calendar {...props} />}
     </Labeled>
   )

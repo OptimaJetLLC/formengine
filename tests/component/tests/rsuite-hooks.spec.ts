@@ -1,7 +1,9 @@
-import {renderHook} from '@testing-library/react'
+import {renderHook, waitFor} from '@testing-library/react'
+import type {RefObject} from 'react'
 import {useImperativeHandle} from 'react'
 import type {PickerHandle} from 'rsuite'
 import {describe, expect, it, vi} from 'vitest'
+import {useRsuiteCalendarLabelInName} from '../../../packages/views/rsuite/src/components/hooks/useRsuiteCalendarLabelInName'
 import {setAriaHiddenIfNotExists, useArrayMapMemo, useFixAriaAttributesForInputPicker} from '../../../packages/views/rsuite/src/hooks'
 
 describe('RSuite setAriaHiddenIfNotExists', () => {
@@ -71,6 +73,57 @@ describe('RSuite useFixAriaAttributesForInputPicker', () => {
     const {result} = renderHook(useFixAriaAttributesForInputPicker)
 
     expect(result.current.current).toBeNull()
+  })
+})
+
+describe('RSuite useRsuiteCalendarLabelInName', () => {
+  it('prefixes header and day aria-labels with visible text tokens axe requires', async () => {
+    const root = document.createElement('div')
+    const title = document.createElement('button')
+    title.className = 'rs-calendar-header-title'
+    title.setAttribute('aria-label', 'Select month')
+    title.append('Nov 2026')
+
+    const cell = document.createElement('div')
+    cell.className = 'rs-calendar-table-cell'
+    cell.setAttribute('aria-label', '01 Nov 2026')
+    const day = document.createElement('span')
+    day.className = 'rs-calendar-table-cell-day'
+    day.textContent = '1'
+    cell.append(day)
+    root.append(title, cell)
+    document.body.append(root)
+
+    const rootRef: RefObject<HTMLElement | null> = {current: root}
+    renderHook(() => useRsuiteCalendarLabelInName(rootRef))
+
+    await waitFor(() => {
+      expect(title).toHaveAttribute('aria-label', 'Nov 2026, Select month')
+      expect(cell).toHaveAttribute('aria-label', '1, 01 Nov 2026')
+    })
+
+    root.remove()
+  })
+
+  it('re-syncs when RSuite rewrites an aria-label', async () => {
+    const root = document.createElement('div')
+    const title = document.createElement('button')
+    title.className = 'rs-calendar-header-title'
+    title.setAttribute('aria-label', 'Select month')
+    title.append('Nov 2026')
+    root.append(title)
+    document.body.append(root)
+
+    const rootRef: RefObject<HTMLElement | null> = {current: root}
+    renderHook(() => useRsuiteCalendarLabelInName(rootRef))
+
+    await waitFor(() => expect(title).toHaveAttribute('aria-label', 'Nov 2026, Select month'))
+
+    title.setAttribute('aria-label', 'Select month')
+
+    await waitFor(() => expect(title).toHaveAttribute('aria-label', 'Nov 2026, Select month'))
+
+    root.remove()
   })
 })
 
