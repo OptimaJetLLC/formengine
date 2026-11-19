@@ -33,7 +33,7 @@ describe('MuiBox / MuiStack / MuiTypography native MUI v9 props', () => {
     const el = screen.getByTestId('mui-stack')
     expect(el).toHaveStyle({
       justifyContent: 'center',
-      alignItems: 'flex-end',
+      alignItems: 'flow-end',
       flexWrap: 'wrap',
     })
   })

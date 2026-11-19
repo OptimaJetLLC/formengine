@@ -248,7 +248,7 @@ npm-check-tsc:
   RUN npm run check:tsc
 
 npm-e2e:
-  FROM mcr.microsoft.com/playwright:v1.64.1-noble
+  FROM mcr.microsoft.com/playwright:v1.65.0-noble
   ENV CI=true
   ENV PLAYWRIGHT_DOCKER=1
   ENV PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1
