@@ -22,8 +22,8 @@
     "bundle-size": "npx vite-bundle-visualizer"
   },
   "dependencies": {
-    "@mantine/core": "^8.3.14",
-    "@mantine/dates": "^8.3.14",
+    "@mantine/core": "^8.3.18",
+    "@mantine/dates": "^8.3.18",
     "@mantine/hooks": "^8.3.14",
     "@react-form-builder/apps-common": "^12.0.0",
     "@react-form-builder/components-mantine": "^12.0.0",
