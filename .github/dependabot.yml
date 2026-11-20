@@ -53,29 +53,16 @@ updates:
           - '*'
         update-types:
           - major
-      security-patch:
+      security:
         applies-to: security-updates
         patterns:
           - '*'
-        update-types:
-          - patch
-      security-minor:
-        applies-to: security-updates
-        patterns:
-          - '*'
-        update-types:
-          - minor
-      security-major:
-        applies-to: security-updates
-        patterns:
-          - '*'
-        update-types:
-          - major
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: daily
+      interval: weekly
+      day: monday
     cooldown:
       default-days: 5
     groups:
@@ -97,21 +84,7 @@ updates:
           - '*'
         update-types:
           - major
-      security-patch:
+      security:
         applies-to: security-updates
         patterns:
           - '*'
-        update-types:
-          - patch
-      security-minor:
-        applies-to: security-updates
-        patterns:
-          - '*'
-        update-types:
-          - minor
-      security-major:
-        applies-to: security-updates
-        patterns:
-          - '*'
-        update-types:
-          - major
