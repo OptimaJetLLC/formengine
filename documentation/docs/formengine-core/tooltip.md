@@ -36,7 +36,7 @@ Use the top-level [tooltipType](/api-reference/@react-form-builder/core/classes/
 which tooltip component should wrap the fields.
 
 | Setting                     | Location         | Type     | Description                                                              |
-|-----------------------------|------------------|----------|--------------------------------------------------------------------------|
+| --------------------------- | ---------------- | -------- | ------------------------------------------------------------------------ |
 | [tooltipType][tooltip-type] | Form JSON (root) | `string` | Tooltip component type with the `tooltip` role; defaults to first match. |
 
 :::warning

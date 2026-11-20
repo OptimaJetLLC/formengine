@@ -42,7 +42,7 @@ Conditions run against the current form state. In both expressions and functions
 [IFormData reference](/api-reference/@react-form-builder/core/interfaces/IFormData)) to access data, validation, and context.
 
 | Available path    | Type                                   | What it provides                            |
-|-------------------|----------------------------------------|---------------------------------------------|
+| ----------------- | -------------------------------------- | ------------------------------------------- |
 | `form.data`       | `Record<string, unknown>`              | Current form values keyed by data key.      |
 | `form.errors`     | `Record<string, unknown>`              | Validation errors keyed by data key.        |
 | `form.hasErrors`  | `boolean`                              | True when the form has validation errors.   |

@@ -19,11 +19,11 @@ to developers.
 
 ## Remaining parenthetical hedges
 
-| Phrase                              | File / line                                                  | Status       |
-|-------------------------------------|--------------------------------------------------------------|--------------|
-| `(when enabled)`                    | `your-first-form/create-your-first-form.md:37`                    | Intentional  |
-| `(when licensed)`                   | `meet-the-designer/canvas-drag-and-drop.md:45`               | Intentional  |
-| `(if used)`                         | `preview-and-handoff/testing-checklist-before-handoff.md:38` | Out of scope |
+| Phrase            | File / line                                                  | Status       |
+| ----------------- | ------------------------------------------------------------ | ------------ |
+| `(when enabled)`  | `your-first-form/create-your-first-form.md:37`               | Intentional  |
+| `(when licensed)` | `meet-the-designer/canvas-drag-and-drop.md:45`               | Intentional  |
+| `(if used)`       | `preview-and-handoff/testing-checklist-before-handoff.md:38` | Out of scope |
 
 ### Intentional
 
@@ -80,7 +80,7 @@ vary.
 ## Counts (current)
 
 | Bucket                                                        | Occurrences |
-|---------------------------------------------------------------|-------------|
+| ------------------------------------------------------------- | ----------- |
 | Canonical intro note                                          | 1           |
 | Parenthetical, intentional (`when enabled` / `when licensed`) | 2           |
 | Leftover per-step hedges                                      | 5           |

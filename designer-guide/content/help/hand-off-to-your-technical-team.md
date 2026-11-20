@@ -3,7 +3,6 @@ title: "Hand off to your technical team"
 description: "What to export, document, and ask developers when your form is ready for embedding or production."
 ---
 
-
 # Hand off to your technical team
 
 Before production, give developers what they need to embed the form and connect data.

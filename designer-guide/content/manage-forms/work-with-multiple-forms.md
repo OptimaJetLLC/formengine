@@ -21,7 +21,7 @@ configuration. Use [Save, export, and import](/manage-forms/save-export-and-impo
 
 <img src="/assets/guide/manage-forms/highlight-forms-list-multiple.png" alt="Forms tab listing EventRegistration, ShippingColumns, FeedbackSurvey, and LabelsDemo." />
 
-2. If the list is empty, save the current form first. The message reads: *Save the form so that it appears in the list of forms.*
+2. If the list is empty, save the current form first. The message reads: _Save the form so that it appears in the list of forms._
 
 ## Search
 

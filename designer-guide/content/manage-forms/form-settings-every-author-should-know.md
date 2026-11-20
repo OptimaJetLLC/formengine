@@ -3,7 +3,6 @@ title: "Form settings every author should know"
 description: "Review Settings tab blocks before you publish: Actions, Form validator, errors, tooltips, modal, and language."
 ---
 
-
 # Form settings every author should know
 
 The **Settings** tab holds options for the **whole form**, not a single field. Review it before handoff.

@@ -11,9 +11,9 @@ This project is a simple Node.js server built with `express`, `multer`, and `cor
 ## Installation
 
 1. Navigate to the project directory:
-   ```file-upload-server```
+   `file-upload-server`
 2. Install dependencies:
-   ```npm install```
+   `npm install`
 
 ## Development
 

@@ -548,7 +548,7 @@ const ariaAttributes = useAriaErrorMessage()
 ### When to Use useErrorMessage vs Error Wrappers
 
 | Approach                 | Best For                                               | Example Use Case                                  |
-|--------------------------|--------------------------------------------------------|---------------------------------------------------|
+| ------------------------ | ------------------------------------------------------ | ------------------------------------------------- |
 | `useErrorMessage`        | Custom components that handle their own error display  | Custom form fields with integrated error messages |
 | Error Wrapper Components | Reusable error display across multiple component types | Consistent error styling for all form fields      |
 

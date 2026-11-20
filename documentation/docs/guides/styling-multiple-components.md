@@ -27,7 +27,7 @@ checkbox green. To ensure consistent styling across all components, follow the e
 
 Create your first component and enter its class name within the _Style_ properties menu.
 
-In this example a new checkbox component is created and its class name is assigned to __green-checkbox__.
+In this example a new checkbox component is created and its class name is assigned to **green-checkbox**.
 
 ![New_class](/assets/guides/styling-multiple-components/multicss1.png)
 
@@ -48,7 +48,7 @@ The selectors in this example are listed within the `::before` element.
 
 ### Provide CSS code to Screen component
 
-After identifying the associated CSS selectors for your component, navigate to the __Screen's Style properties__ within the user interface.
+After identifying the associated CSS selectors for your component, navigate to the **Screen's Style properties** within the user interface.
 Use the code editor at the bottom of the _Style_ menu to provide the desired styling for your component. Make sure to use the copied
 selectors to target the component for customization.
 
@@ -72,7 +72,7 @@ Therefore, the color of the checkbox component will be switched to green as show
 Once you have successfully defined the styling for your form's screen, you can easily apply the same styling to new components by assigning
 them the defined class name.
 
-In this example, two additional checkboxes are created. By assigning them the __green-checkbox__ class, they will automatically change their
+In this example, two additional checkboxes are created. By assigning them the **green-checkbox** class, they will automatically change their
 color to green.
 
 ![Apply_class](/assets/guides/styling-multiple-components/multicss4.png)

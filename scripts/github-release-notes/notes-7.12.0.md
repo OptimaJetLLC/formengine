@@ -26,7 +26,7 @@ Update all packages to version **7.12.0**. No additional actions are required.
 
 - Added **[Mantine components](https://formengine.io/documentation/components-library/mantine)** to the [component library](https://formengine.io/documentation/components-library/) as an alternative to Material UI and RSuite.
 - Added **JSON schemas for component libraries** to improve tooling and validation.
-- Added support for passing **[user-defined context](https://formengine.io/documentation/formengine-core/storing-user-defined-data#accessing-your-environment-via-usercontext)** and **[initialState](https://formengine.io/documentation/formengine-core/storing-user-defined-data#initializing-form-state-from-formviewer)**  so that advanced scenarios can inject additional data into forms at runtime.
+- Added support for passing **[user-defined context](https://formengine.io/documentation/formengine-core/storing-user-defined-data#accessing-your-environment-via-usercontext)** and **[initialState](https://formengine.io/documentation/formengine-core/storing-user-defined-data#initializing-form-state-from-formviewer)** so that advanced scenarios can inject additional data into forms at runtime.
 
 ### Bug fixes
 
@@ -38,11 +38,11 @@ Update all packages to version **7.12.0**. No additional actions are required.
 
 ### Resources
 
-* Core documentation: [Storing user-defined data](https://formengine.io/documentation/formengine-core/storing-user-defined-data).
-* Designer documentation: [Storing user-defined data](https://formengine.io/documentation/formengine-designer/faq/storing-user-defined-data) updated with the new features.
+- Core documentation: [Storing user-defined data](https://formengine.io/documentation/formengine-core/storing-user-defined-data).
+- Designer documentation: [Storing user-defined data](https://formengine.io/documentation/formengine-designer/faq/storing-user-defined-data) updated with the new features.
 
 ### Security
 
-* Bumped `qs` from `6.14.1` to `6.14.2` Remix example.
-* Bumped `axios` from `1.13.2` to `1.13.5`.
-* Bumped `@isaacs/brace-expansion` from `5.0.0` to `5.0.1`.
+- Bumped `qs` from `6.14.1` to `6.14.2` Remix example.
+- Bumped `axios` from `1.13.2` to `1.13.5`.
+- Bumped `@isaacs/brace-expansion` from `5.0.0` to `5.0.1`.

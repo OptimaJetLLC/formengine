@@ -31,7 +31,7 @@ Set the flags at the highest level that matches your intent. Because the flags a
 component beneath it.
 
 | Source                     | How to set                                                                 | Scope                 |
-|----------------------------|----------------------------------------------------------------------------|-----------------------|
+| -------------------------- | -------------------------------------------------------------------------- | --------------------- |
 | FormViewer props           | [readOnly][formviewer-readonly]<br/>[disabled][formviewer-disabled]        | Entire component tree |
 | Screen props               | [readOnly][screen-readonly]<br/>[disabled][screen-disabled]                | Screen subtree        |
 | Templates / embedded forms | [readOnly][embedded-readonly]<br/>[disabled][embedded-disabled]            | Template subtree      |

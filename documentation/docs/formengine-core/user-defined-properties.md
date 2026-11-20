@@ -318,7 +318,7 @@ function App() {
      ...componentData.userDefinedProps,
      newProp: value
    }
-   
+
    // Bad (loses other overrides)
    componentData.userDefinedProps = { newProp: value }
 

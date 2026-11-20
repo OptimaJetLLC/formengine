@@ -32,14 +32,14 @@ One-way data binding allows components to:
 ## One-Way vs Two-Way Binding
 
 | Feature             | One-Way Binding | Two-Way Binding (Valued) |
-|---------------------|-----------------|--------------------------|
-| Reads from store    | ✅ Yes           | ✅ Yes                    |
-| Writes to store     | ❌ No            | ✅ Yes                    |
-| User can modify     | ❌ No            | ✅ Yes                    |
-| Triggers validation | ❌ No            | ✅ Yes                    |
-| Tracks dirty state  | ❌ No            | ✅ Yes                    |
-| Uses `dataBound`    | ✅ Yes           | ❌ No                     |
-| Uses `valued`       | ❌ No            | ✅ Yes                    |
+| ------------------- | --------------- | ------------------------ |
+| Reads from store    | ✅ Yes          | ✅ Yes                   |
+| Writes to store     | ❌ No           | ✅ Yes                   |
+| User can modify     | ❌ No           | ✅ Yes                   |
+| Triggers validation | ❌ No           | ✅ Yes                   |
+| Tracks dirty state  | ❌ No           | ✅ Yes                   |
+| Uses `dataBound`    | ✅ Yes          | ❌ No                    |
+| Uses `valued`       | ❌ No           | ✅ Yes                   |
 
 ## Creating One-Way Bound Components
 

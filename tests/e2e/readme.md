@@ -188,7 +188,7 @@ Start interactive UI using:
 - https://playwright.dev/docs/test-fixtures
 - https://vitest.dev/guide/test-context
 - https://vitest.dev/guide/workspace.html
-- https://stackblitz.com/edit/vitest-dev-vitest-dbyv73?file=package.json&initialPath=__vitest__/
+- https://stackblitz.com/edit/vitest-dev-vitest-dbyv73?file=package.json&initialPath=**vitest**/
 - https://dev.to/samuel_kinuthia/end-to-end-testing-react-components-with-playwright-part-1-3c15
 
 ## Useful extensions

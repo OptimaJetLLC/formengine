@@ -3,7 +3,6 @@ title: "Choose the right field type"
 description: "Match user tasks to components (text, choice, date, file, display-only) with links to the components library."
 ---
 
-
 # Choose the right field type
 
 Pick the component that matches what you collect. A poor match can confuse users and complicate validation.

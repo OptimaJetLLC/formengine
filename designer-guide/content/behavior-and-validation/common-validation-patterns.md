@@ -9,15 +9,15 @@ The **Rules** tab offers built-in validators for everyday cases. Pick a rule, se
 
 ## Pattern reference
 
-| Goal                            | Rule (typical name)                    |
-| ------------------------------- | -------------------------------------- |
-| Cannot be blank                 | **Non empty** / **Required**           |
-| Valid email                     | **Email**                              |
-| Minimum length                  | **Min** or **Length**                  |
-| Maximum length                  | **Max** or **Length**                  |
-| Number range                    | **Min** / **Max** (numeric)            |
-| Patterned text format           | **Regex** (often developer-assisted)   |
-| String logic beyond these rules | **Code** (usually developer-reviewed)  |
+| Goal                            | Rule (typical name)                   |
+| ------------------------------- | ------------------------------------- |
+| Cannot be blank                 | **Non empty** / **Required**          |
+| Valid email                     | **Email**                             |
+| Minimum length                  | **Min** or **Length**                 |
+| Maximum length                  | **Max** or **Length**                 |
+| Number range                    | **Min** / **Max** (numeric)           |
+| Patterned text format           | **Regex** (often developer-assisted)  |
+| String logic beyond these rules | **Code** (usually developer-reviewed) |
 
 ## Add a rule
 

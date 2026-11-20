@@ -9,7 +9,7 @@ slug: /formengine-designer/faq/theme-manipulation
 
 You can control the theme (light, dark, or system default) in your application by passing
 the [theme](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#theme) prop to the `FormBuilder` component or
-by directly modifying  `theme` value in `localStorage`.
+by directly modifying `theme` value in `localStorage`.
 
 ## Setting the theme
 

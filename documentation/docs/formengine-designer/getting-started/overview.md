@@ -23,15 +23,15 @@ FormEngine Designer is a **visual, drag-and-drop form builder** for React applic
 ## What you can do
 
 | Role             | Capabilities                                                                          |
-|------------------|---------------------------------------------------------------------------------------|
+| ---------------- | ------------------------------------------------------------------------------------- |
 | **Form authors** | Add fields, layout, validation, and actions; preview and export form JSON             |
 | **Developers**   | Install packages, embed designer/viewer, connect storage, APIs, and custom components |
 
 ## Documentation tracks
 
 | Track                  | Start here                                                                                                                                                                                      |
-|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Form authors (no code) | [Form Author Guide](designer-guide:)                                                                                                                                        |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Form authors (no code) | [Form Author Guide](designer-guide:)                                                                                                                                                            |
 | Developers (npm/React) | [For developers](/formengine-designer/getting-started/for-developers) → [Installation](/formengine-designer/getting-started/installation) → [Usage](/formengine-designer/getting-started/usage) |
 | Live practice          | [https://demo.formengine.io/](https://demo.formengine.io/)                                                                                                                                      |
 

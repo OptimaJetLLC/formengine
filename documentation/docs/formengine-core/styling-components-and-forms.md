@@ -47,7 +47,7 @@ same way components do.
 
 ### Key Differences in Rendering
 
-####  How a component is rendered
+#### How a component is rendered
 
 ```tsx
 // Renders with wrapper element around the component
@@ -63,7 +63,7 @@ same way components do.
 - `Erroneous`: the internal component that displays the validation error
 - `component`: the component itself
 
-####  How a container is rendered
+#### How a container is rendered
 
 ```tsx
 // Renders the component directly without wrapper

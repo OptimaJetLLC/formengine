@@ -37,4 +37,3 @@ Use header theme toggle to sanity-check contrast. Production theming is configur
 
 - [Style tab basics](/appearance-and-readability/style-tab-basics)
 - [The Designer workspace](/meet-the-designer/the-designer-workspace)
-

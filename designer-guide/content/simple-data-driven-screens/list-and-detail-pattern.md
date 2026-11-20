@@ -3,7 +3,6 @@ title: "List and detail pattern"
 description: "Build a lightweight list-and-detail layout in which selecting a row opens fields for editing."
 ---
 
-
 # List and detail pattern
 
 A **list + detail** screen shows a list of items on one side (or top) and a form for the selected item on the other. Authors often use a **List**, **Repeater**, or table-style component plus a detail stack.

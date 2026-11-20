@@ -151,12 +151,12 @@ and [the article in FAQ](/formengine-designer/faq/storing-user-defined-data).
 ### Previewing form
 
 Once your form is configured and the logic for `onFormDataChange` is defined, you can preview the form and the workflow by using the
-corresponding __Preview__ button.
+corresponding **Preview** button.
 
-The example form includes the _Save_ button component with the functional __Disabled__ property that switches on and off depending on the
+The example form includes the _Save_ button component with the functional **Disabled** property that switches on and off depending on the
 user data state:
 
 ![Functional_disable](/assets/guides/tracking-form-changes/disable-button.png)
 
-Therefore, in case the current provided data equals to the initial stored data, the __Save__ button will be disabled. Consequently, users
-will be able to track changes and save the input only if changes and updates are provided.  
+Therefore, in case the current provided data equals to the initial stored data, the **Save** button will be disabled. Consequently, users
+will be able to track changes and save the input only if changes and updates are provided.

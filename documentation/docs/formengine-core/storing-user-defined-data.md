@@ -301,11 +301,11 @@ function HostApp() {
 `userContext` works well as a shared bag of services and mutable host data. FormEngine will not subscribe to nested field changes for you.
 If something outside the action must update when the context changes, use one of these approaches.
 
-| Goal                                                              | What to do                                               |
-|-------------------------------------------------------------------|----------------------------------------------------------|
-| Swap the whole environment (new client, session, or flags object) | Pass a new `userContext` object and rerender             |
-| Run MobX `reaction` / `observer` on nested fields                 | Pass a MobX observable you create in the host            |
-| Update React UI after an action                                   | Keep that state in React, or replace the prop afterward  |
+| Goal                                                              | What to do                                              |
+| ----------------------------------------------------------------- | ------------------------------------------------------- |
+| Swap the whole environment (new client, session, or flags object) | Pass a new `userContext` object and rerender            |
+| Run MobX `reaction` / `observer` on nested fields                 | Pass a MobX observable you create in the host           |
+| Update React UI after an action                                   | Keep that state in React, or replace the prop afterward |
 
 #### Replace the prop
 
@@ -630,4 +630,3 @@ For more information:
 - [Actions and events](/formengine-core/actions-and-events)
 - [User defined properties](/formengine-core/user-defined-properties)
 - [FormEngine Core API reference](/api-reference/@react-form-builder/core)
-

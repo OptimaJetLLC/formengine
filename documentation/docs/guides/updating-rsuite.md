@@ -11,4 +11,3 @@ To update the RSuite library in Optimajet’s Designer or Components RSuite, you
 
 After updating, copy `rsuite-no-reset.min.css` and `rsuite-no-reset-rtl.min.css` from `node_modules/rsuite/dist`
 to `packages/designer/public/css`and `packages/views/rsuite/public/css`
-  

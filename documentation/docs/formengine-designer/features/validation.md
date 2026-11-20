@@ -74,8 +74,8 @@ with conditional validation has not changed, then automatic conditional validati
 
 It is located in the list of parameters of each validation rule and allows you to set the condition in two ways:
 
-* Simplified, through the input field, where you can specify a one-line expression, for example `form.data.check1 === true`.
-* Through the code editor, which can be opened by clicking on the pen icon to the left of the _Validate when_ label.
+- Simplified, through the input field, where you can specify a one-line expression, for example `form.data.check1 === true`.
+- Through the code editor, which can be opened by clicking on the pen icon to the left of the _Validate when_ label.
 
 ![Validation 09](/assets/validation/validation-09.png)
 

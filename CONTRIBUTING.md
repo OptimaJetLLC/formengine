@@ -16,7 +16,7 @@ The root `package.json` defines the npm version and workspaces. Lerna runs scrip
 ## Repository areas
 
 | Area              | Purpose                                                           |
-|-------------------|-------------------------------------------------------------------|
+| ----------------- | ----------------------------------------------------------------- |
 | `packages/`       | Runtime, designer, bundles, applications, and component libraries |
 | `tests/`          | Module, component, browser, and end-to-end test packages          |
 | `documentation/`  | Docusaurus developer documentation and its website implementation |
@@ -29,7 +29,7 @@ The root `package.json` defines the npm version and workspaces. Lerna runs scrip
 Run these commands from the repository root.
 
 | Command                        | Purpose                                            |
-|--------------------------------|----------------------------------------------------|
+| ------------------------------ | -------------------------------------------------- |
 | `npm run start:builder`        | Start the example Form Builder application         |
 | `npm run start:viewer`         | Start the example Form Viewer application          |
 | `npm run build`                | Build package workspaces                           |
@@ -50,13 +50,13 @@ Use `package.json` as the complete command catalogue.
 
 Use a focused command during development when it gives faster feedback:
 
-| Command                        | Purpose                                             |
-|--------------------------------|-----------------------------------------------------|
-| `npm run check:tsc`            | Type-check the repository and Form Author Guide     |
-| `npm run check:eslint`         | Run repository and Form Author Guide ESLint checks  |
-| `npm run check:format`         | Check Biome formatting and lint rules               |
-| `npm run check:circular-deps`  | Detect circular TypeScript dependencies             |
-| `npm run check:unused-exports` | Detect unused public exports                        |
+| Command                        | Purpose                                            |
+| ------------------------------ | -------------------------------------------------- |
+| `npm run check:tsc`            | Type-check the repository and Form Author Guide    |
+| `npm run check:eslint`         | Run repository and Form Author Guide ESLint checks |
+| `npm run check:format`         | Check Biome formatting and lint rules              |
+| `npm run check:circular-deps`  | Detect circular TypeScript dependencies            |
+| `npm run check:unused-exports` | Detect unused public exports                       |
 
 Before a change is considered complete, run the full gate:
 

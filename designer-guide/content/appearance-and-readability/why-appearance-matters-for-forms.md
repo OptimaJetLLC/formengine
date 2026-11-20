@@ -3,7 +3,6 @@ title: "Why appearance matters for forms"
 description: "Clear labels, spacing, and error display help users complete forms. Appearance supports usability, not decoration alone."
 ---
 
-
 # Why appearance matters for forms
 
 Confusing layouts and hidden errors can make forms harder to complete. Appearance in Designer includes **readable labels**, **consistent

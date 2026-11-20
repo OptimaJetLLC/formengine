@@ -58,7 +58,7 @@ Both are reactive for ordinary fields: changes to either side update the form.
 For Repeater and SortableList, keep the split in mind:
 
 | Concern                         | Behavior                                                                                         |
-|---------------------------------|--------------------------------------------------------------------------------------------------|
+| ------------------------------- | ------------------------------------------------------------------------------------------------ |
 | What you read in `form.data`    | Live row data (including nested / template / computed fields)                                    |
 | Length and order after mutation | Updated by `setValue` (reorder, `addRow`, `e.data[key] = [...]`) in the field’s internal storage |
 | Viewer props `initialData`      | Used to hydrate and for controlled re-applies; not rewritten on every `setValue`                 |

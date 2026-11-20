@@ -21,7 +21,7 @@ a value from one component to another.
 
 ## Creating dynamic values
 
-The example below consists of a form with two input fields for the __First Name__ and __Last Name__. This form also provides another input
+The example below consists of a form with two input fields for the **First Name** and **Last Name**. This form also provides another input
 field with computed properties that combines first and last name values dynamically. In addition, the form includes a text area that also
 reflects the value in the first name input using an [action](/formengine-designer/features/actions).
 

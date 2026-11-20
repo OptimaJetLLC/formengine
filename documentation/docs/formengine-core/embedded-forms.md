@@ -70,7 +70,7 @@ Embedded forms can store their data in two ways, controlled by the `storeDataInP
 The `EmbeddedForm` component accepts the following props:
 
 | Prop                    | Type      | Default | Description                                                                                                                                                                                  |
-|-------------------------|-----------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ----------------------- | --------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `storeDataInParentForm` | `boolean` | `true`  | If `false`, the nested form's data is stored as a nested object under the embedded form's `dataKey`. If `true`, the nested form's fields appear as top‑level keys in the parent form's data. |
 | `formName`              | `string`  | -       | The name passed to `getForm` to identify which form to load. You have to provide at least one of `formName` or `options`.                                                                    |
 | `options`               | `any`     | -       | An arbitrary object passed to `getForm`. Useful when you need to parameterize the nested form (for example, load different fields based on user type).                                       |

@@ -225,7 +225,7 @@ function App() {
 FormEngine Core provides several type helpers for defining CSS properties:
 
 | Type                                                                 | Description                                    | Example                                     |
-|----------------------------------------------------------------------|------------------------------------------------|---------------------------------------------|
+| -------------------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------- |
 | [color](/api-reference/@react-form-builder/core/variables/color)     | Color values (hex, rgb, rgba, hsl, hsla)       | `color.default('#ff0000')`                  |
 | [size](/api-reference/@react-form-builder/core/variables/size)       | CSS size values (px, em, rem, %, vw, vh, etc.) | `size.default('16px')`                      |
 | [number](/api-reference/@react-form-builder/core/variables/number)   | Numeric values                                 | `number.default(1)`                         |

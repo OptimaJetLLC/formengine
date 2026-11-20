@@ -37,7 +37,7 @@ values and [props][cs-props] are allowed, while the rest of the structure stays 
 Field reference (types and short descriptions):
 
 | Field                                 | Type                                           | Description                                                                               |
-|---------------------------------------|------------------------------------------------|-------------------------------------------------------------------------------------------|
+| ------------------------------------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | [version][pf-version]                 | [PersistedFormVersion][t-persistedformversion] | Optional schema version; when present, it must be `"1"`.                                  |
 | [form][pf-form]                       | [ComponentStore][t-componentstore]             | Root component node for the form tree.                                                    |
 | [actions][pf-actions]                 | [ActionValues][t-actionvalues]                 | Named code actions referenced by component events.                                        |
@@ -191,7 +191,7 @@ If you are new to this format, focus on three fields first:
 Field reference (types and short descriptions):
 
 | Field                           | Type                                                           | Description                                                  |
-|---------------------------------|----------------------------------------------------------------|--------------------------------------------------------------|
+| ------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------ |
 | [key][cs-key]                   | `string`                                                       | Unique component key in the form tree.                       |
 | [dataKey][cs-datakey]           | `string`                                                       | Data key used for form data binding.                         |
 | [type][cs-type]                 | `string`                                                       | Component type name that must exist in the selected view.    |

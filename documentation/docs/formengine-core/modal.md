@@ -158,7 +158,7 @@ Use the `openModal` action to display a modal window. This action accepts severa
 #### openModal parameters
 
 | Parameter     | Type       | Description                                                                                                                      |
-|---------------|------------|----------------------------------------------------------------------------------------------------------------------------------|
+| ------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | `modalKey`    | `string`   | **Required.** The key of the `Modal` component to open                                                                           |
 | `useFormData` | `boolean`  | If `true`, passes the current form data to the modal as initial data                                                             |
 | `beforeShow`  | `function` | Optional function executed before the modal opens. Return `false` to cancel opening, or return an object to pass as initial data |

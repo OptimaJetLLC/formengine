@@ -9,4 +9,3 @@ A form is easier to fill when related fields sit together. These pages cover con
 multi-step wizards.
 
 ## In this section
-

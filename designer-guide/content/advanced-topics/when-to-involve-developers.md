@@ -3,7 +3,6 @@ title: "When to involve developers"
 description: "Know when authors can create Code actions and when developers must provide Custom actions, embedding, APIs, and licenses."
 ---
 
-
 # When to involve developers
 
 You can build and test most forms in Designer. Some tasks need your technical team.
@@ -18,10 +17,10 @@ You can build and test most forms in Designer. Some tasks need your technical te
 
 ## Code versus Custom actions
 
-| Type       | Where it is defined                          | Author's role                                  |
-| ---------- | -------------------------------------------- | ---------------------------------------------- |
-| **Code**   | In Designer and stored with the form         | Create, name, edit, and attach approved logic  |
-| **Custom** | In the host application's `actions` property | Attach available actions; request new ones     |
+| Type       | Where it is defined                          | Author's role                                 |
+| ---------- | -------------------------------------------- | --------------------------------------------- |
+| **Code**   | In Designer and stored with the form         | Create, name, edit, and attach approved logic |
+| **Custom** | In the host application's `actions` property | Attach available actions; request new ones    |
 
 ## Developers usually own
 

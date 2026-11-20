@@ -19,14 +19,13 @@ Configure what a **Button** does on its **Actions** tab; use **Settings** for fo
 Actions are reusable, asynchronous JavaScript functions that enable you to handle events and interact with your form in a flexible and
 efficient way. There are three types of actions:
 
-- __Common__: These are pre-defined actions that provide a convenient way to perform common tasks with a form, such as:
-
+- **Common**: These are pre-defined actions that provide a convenient way to perform common tasks with a form, such as:
   - _validate_: Validates the form.
   - _clear_: Clears the form fields.
   - _reset_: Sets the value of form fields to their default value.
 
-- __Code__: These actions allow you to write custom JavaScript code directly in the designer's code editor.
-- __Custom__: These are custom actions that can be passed as properties to the FormBuilder or FormViewer component.
+- **Code**: These actions allow you to write custom JavaScript code directly in the designer's code editor.
+- **Custom**: These are custom actions that can be passed as properties to the FormBuilder or FormViewer component.
 
 ## Events
 
@@ -155,7 +154,7 @@ These common functions can be used via both _FormBuilder_ and _FormViewer_.
 
 Common functions are defined via
 the [actions](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#actions) parameter. The
-following provides an example that showcases how to define a new common function for __FormBuilder__ via this property:
+following provides an example that showcases how to define a new common function for **FormBuilder** via this property:
 
 ```tsx {13-27}
 <FormBuilder
@@ -282,7 +281,7 @@ The code snippet below showcases how to define a form that works with this funct
 }
 ```
 
-The following snippet showcases how to implement the `weatherRequest` function for __FormViewer__:
+The following snippet showcases how to implement the `weatherRequest` function for **FormViewer**:
 
 ```tsx
 <FormViewer

@@ -44,10 +44,10 @@ values and validation results without leaving Designer.
 
 <img src="/assets/guide/preview-and-handoff/highlight-preview-clear.png" alt="Clear button highlighted in the Preview Data toolbar." />
 
-| Button               | Effect                                                 |
-| -------------------- | ------------------------------------------------------ |
-| **Reset to default** | Restores default values you configured in Designer     |
-| **Clear**            | Empties current field values in Preview                |
+| Button               | Effect                                             |
+| -------------------- | -------------------------------------------------- |
+| **Reset to default** | Restores default values you configured in Designer |
+| **Clear**            | Empties current field values in Preview            |
 
 Use **Clear** before a fresh test pass. Use **Reset to default** when you want to see starting values again.
 

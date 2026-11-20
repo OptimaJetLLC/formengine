@@ -29,7 +29,7 @@ Here is a list of the Material UI components available in the FormEngine library
 These components are used for data entry and user input:
 
 | Component                                                        | Description                                        | Material UI Documentation                                                         |
-|:-----------------------------------------------------------------|:---------------------------------------------------|:----------------------------------------------------------------------------------|
+| :--------------------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------------------------------------------- |
 | **[MuiDatePicker](/components-library/material-ui/date-picker)** | The Date Picker component lets users select a date | [DatePicker](https://mui.com/x/react-date-pickers/date-picker/)                   |
 | **[MuiTextField](/components-library/material-ui/text-field)**   | Text input field for single or multi-line text     | <MaterialUIComponentsDocItem link="/react-text-field/" caption="TextField" />     |
 | **[MuiSelect](/components-library/material-ui/select)**          | Dropdown selection component                       | <MaterialUIComponentsDocItem link="/react-select/" caption="Select" />            |
@@ -44,7 +44,7 @@ These components are used for data entry and user input:
 Components for form layout and structure:
 
 | Component                                                                     | Description                           | Material UI Documentation                                                                  |
-|:------------------------------------------------------------------------------|:--------------------------------------|:-------------------------------------------------------------------------------------------|
+| :---------------------------------------------------------------------------- | :------------------------------------ | :----------------------------------------------------------------------------------------- |
 | **[MuiFormControlLabel](/components-library/material-ui/form-control-label)** | Wrapper for form controls with labels | <MaterialUIComponentsDocItem link="/api/form-control-label/" caption="FormControlLabel" /> |
 | **[MuiFormLabel](/components-library/material-ui/form-label)**                | Label component for form controls     | <MaterialUIComponentsDocItem link="/api/form-label/" caption="FormLabel" />                |
 
@@ -53,7 +53,7 @@ Components for form layout and structure:
 Components for page and content layout:
 
 | Component                                                     | Description                                      | Material UI Documentation                                                    |
-|:--------------------------------------------------------------|:-------------------------------------------------|:-----------------------------------------------------------------------------|
+| :------------------------------------------------------------ | :----------------------------------------------- | :--------------------------------------------------------------------------- |
 | **[MuiBox](/components-library/material-ui/box)**             | Generic box component for layout                 | <MaterialUIComponentsDocItem link="/react-box/" caption="Box" />             |
 | **[MuiContainer](/components-library/material-ui/container)** | Container for centering and constraining content | <MaterialUIComponentsDocItem link="/react-container/" caption="Container" /> |
 | **[MuiStack](/components-library/material-ui/stack)**         | Layout component for stacking items              | <MaterialUIComponentsDocItem link="/react-stack/" caption="Stack" />         |
@@ -63,7 +63,7 @@ Components for page and content layout:
 Components for navigation and wayfinding:
 
 | Component                                                         | Description                     | Material UI Documentation                                                        |
-|:------------------------------------------------------------------|:--------------------------------|:---------------------------------------------------------------------------------|
+| :---------------------------------------------------------------- | :------------------------------ | :------------------------------------------------------------------------------- |
 | **[MuiBreadcrumbs](/components-library/material-ui/breadcrumbs)** | Breadcrumb navigation component | <MaterialUIComponentsDocItem link="/react-breadcrumbs/" caption="Breadcrumbs" /> |
 | **[MuiLink](/components-library/material-ui/link)**               | Hyperlink component             | <MaterialUIComponentsDocItem link="/react-link/" caption="Link" />               |
 
@@ -72,7 +72,7 @@ Components for navigation and wayfinding:
 Components for displaying data and content:
 
 | Component                                                       | Description                           | Material UI Documentation                                                      |
-|:----------------------------------------------------------------|:--------------------------------------|:-------------------------------------------------------------------------------|
+| :-------------------------------------------------------------- | :------------------------------------ | :----------------------------------------------------------------------------- |
 | **[MuiCard](/components-library/material-ui/card)**             | Card component for content containers | <MaterialUIComponentsDocItem link="/react-card/" caption="Card" />             |
 | **[MuiList](/components-library/material-ui/list)**             | List component for displaying items   | <MaterialUIComponentsDocItem link="/react-list/" caption="List" />             |
 | **[MuiListItem](/components-library/material-ui/list-item)**    | Item component for lists              | <MaterialUIComponentsDocItem link="/api/list-item/" caption="ListItem" />      |
@@ -84,7 +84,7 @@ Components for displaying data and content:
 Components for providing user feedback:
 
 | Component                                                                    | Description                 | Material UI Documentation                                                          |
-|:-----------------------------------------------------------------------------|:----------------------------|:-----------------------------------------------------------------------------------|
+| :--------------------------------------------------------------------------- | :-------------------------- | :--------------------------------------------------------------------------------- |
 | **[MuiCircularProgress](/components-library/material-ui/circular-progress)** | Circular progress indicator | <MaterialUIComponentsDocItem link="/react-progress/" caption="CircularProgress" /> |
 | **[MuiLinearProgress](/components-library/material-ui/linear-progress)**     | Linear progress indicator   | <MaterialUIComponentsDocItem link="/react-progress/" caption="LinearProgress" />   |
 | **[MuiErrorWrapper](/components-library/material-ui/error-wrapper)**         | Error display wrapper       | Custom component for error handling                                                |
@@ -94,7 +94,7 @@ Components for providing user feedback:
 Components for modal dialogs and overlays:
 
 | Component                                                                       | Description                   | Material UI Documentation                                                                    |
-|:--------------------------------------------------------------------------------|:------------------------------|:---------------------------------------------------------------------------------------------|
+| :------------------------------------------------------------------------------ | :---------------------------- | :------------------------------------------------------------------------------------------- |
 | **[MuiDialog](/components-library/material-ui/dialog)**                         | Main dialog container         | <MaterialUIComponentsDocItem link="/react-dialog/" caption="Dialog" />                       |
 | **[MuiDialogTitle](/components-library/material-ui/dialog-title/)**             | Dialog title component        | <MaterialUIComponentsDocItem link="/api/dialog-title/" caption="DialogTitle" />              |
 | **[MuiDialogContent](/components-library/material-ui/dialog-content)**          | Dialog content container      | <MaterialUIComponentsDocItem link="/api/dialog-content/" caption="DialogContent" />          |
@@ -107,7 +107,7 @@ Components for modal dialogs and overlays:
 Components for user actions:
 
 | Component                                                          | Description                       | Material UI Documentation                                                         |
-|:-------------------------------------------------------------------|:----------------------------------|:----------------------------------------------------------------------------------|
+| :----------------------------------------------------------------- | :-------------------------------- | :-------------------------------------------------------------------------------- |
 | **[MuiButton](/components-library/material-ui/button)**            | Button component for user actions | <MaterialUIComponentsDocItem link="/react-button/" caption="Button" />            |
 | **[MuiButtonGroup](/components-library/material-ui/button-group)** | Group of buttons                  | <MaterialUIComponentsDocItem link="/react-button-group/" caption="ButtonGroup" /> |
 
@@ -115,9 +115,9 @@ Components for user actions:
 
 Specialized utility components:
 
-| Component                                                   | Description                   | Material UI Documentation               |
-|:------------------------------------------------------------|:------------------------------|:----------------------------------------|
-| **MuiViewerWrapper**                                        | Wrapper component for viewers | Custom component for viewer integration |
+| Component            | Description                   | Material UI Documentation               |
+| :------------------- | :---------------------------- | :-------------------------------------- |
+| **MuiViewerWrapper** | Wrapper component for viewers | Custom component for viewer integration |
 
 ## Getting Started with Material UI Components
 

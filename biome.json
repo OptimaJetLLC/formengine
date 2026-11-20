@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.6.6/schema.json",
   "vcs": {
     "enabled": true,
     "defaultBranch": "master",
@@ -16,7 +16,11 @@
       "!**/rsuite-no-reset*.css",
       "!**/formengine-rsuite.css",
       "scripts/**/*.{ts,mjs,json,md}",
-      "!documentation/website/static"
+      "!documentation/website/static",
+      "!documentation/docs/api-reference/**",
+      "!documentation/docs/components-library/material-ui/index.md",
+      "!documentation/docs/components-library/mantine/index.md",
+      "!documentation/docs/formengine-core/installation.md"
     ]
   },
   "formatter": {
@@ -82,5 +86,13 @@
         }
       }
     }
-  ]
+  ],
+  "markdown": {
+    "parser": {
+      "frontmatter": true
+    },
+    "formatter": {
+      "formatEmbeds": false
+    }
+  }
 }

@@ -484,7 +484,7 @@ export const MantineBuilder = () => <FormBuilder view={builderView} getForm={get
 These components are used for data entry and user input:
 
 | Component                                                               | Description                                      | Mantine Documentation                                                                   |
-|:------------------------------------------------------------------------|:-------------------------------------------------|:----------------------------------------------------------------------------------------|
+| :---------------------------------------------------------------------- | :----------------------------------------------- | :-------------------------------------------------------------------------------------- |
 | **[MtCheckbox](/components-library/mantine/checkbox)**                  | Checkbox for binary choices                      | <MantineComponentsDocItem link="/core/checkbox/" caption="Checkbox" />                  |
 | **[MtCheckboxGroup](/components-library/mantine/checkbox-group)**       | Group of checkboxes for multiple selection       | <MantineComponentsDocItem link="/core/checkbox/" caption="Checkbox" />                  |
 | **[MtChip](/components-library/mantine/chip)**                          | Chip for tags or filters                         | <MantineComponentsDocItem link="/core/chip/" caption="Chip" />                          |
@@ -514,7 +514,7 @@ These components are used for data entry and user input:
 Dropdown and selection components:
 
 | Component                                                       | Description                            | Mantine Documentation                                                          |
-|:----------------------------------------------------------------|:---------------------------------------|:-------------------------------------------------------------------------------|
+| :-------------------------------------------------------------- | :------------------------------------- | :----------------------------------------------------------------------------- |
 | **[MtAutocomplete](/components-library/mantine/autocomplete)**  | Autocomplete with suggestions          | <MantineComponentsDocItem link="/core/autocomplete/" caption="Autocomplete" /> |
 | **[MtMultiSelect](/components-library/mantine/multi-select)**   | Dropdown for multiple selection        | <MantineComponentsDocItem link="/core/multi-select/" caption="MultiSelect" />  |
 | **[MtNativeSelect](/components-library/mantine/native-select)** | Native HTML select styled with Mantine | <MantineComponentsDocItem link="/core/select/" caption="NativeSelect" />       |
@@ -525,41 +525,41 @@ Dropdown and selection components:
 
 Components for date and time selection (require `@mantine/dates`):
 
-| Component                                                                                                                                   | Description                                    | Mantine Documentation                                          |
-|:--------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|:---------------------------------------------------------------|
-| **[MtDateMultiplePicker](/components-library/mantine/date-multiple-picker)**                                                                | Date picker for selecting multiple dates       | [Mantine Dates](https://mantine.dev/dates/date-picker/)        |
-| **[MtDateMultiplePickerInput](/components-library/mantine/date-multiple-picker-input)**                                                     | Date picker input for multiple dates           | [Mantine Dates](https://mantine.dev/dates/date-picker/)        |
-| **[MtDatePicker](/components-library/mantine/date-picker)**                                                                                 | Date picker for a single date                  | [Mantine Dates](https://mantine.dev/dates/date-picker/)        |
-| **[MtDatePickerInput](/components-library/mantine/date-picker-input)**                                                                      | Date picker with input field for a single date | [Mantine Dates](https://mantine.dev/dates/date-picker/)        |
-| **[MtDateRangePicker](/components-library/mantine/date-range-picker)**                                                                      | Date picker for selecting a date range         | [Mantine Dates](https://mantine.dev/dates/date-picker/)        |
-| **[MtDateRangePickerInput](/components-library/mantine/date-range-picker-input)**                                                           | Date picker input for a date range             | [Mantine Dates](https://mantine.dev/dates/date-picker/)        |
-| **[MtDateTimePicker](/components-library/mantine/date-time-picker)**                                                                        | Date and time picker                           | [Mantine Dates](https://mantine.dev/dates/date-picker/)        |
-| **[MtMonthMultiplePicker](/components-library/mantine/month-multiple-picker)**                                                              | Month picker for selecting multiple months     | [Mantine Dates](https://mantine.dev/dates/month-picker/)       |
-| **[MtMonthMultiplePickerInput](/components-library/mantine/month-multiple-picker-input)**                                                   | Month picker input for multiple months         | [Mantine Dates](https://mantine.dev/dates/month-picker/)       |
-| **[MtMonthPicker](/components-library/mantine/month-picker)**                                                                               | Month picker for a single month                | [Mantine Dates](https://mantine.dev/dates/month-picker/)       |
-| **[MtMonthPickerInput](/components-library/mantine/month-picker-input)**                                                                    | Month picker with input field                  | [Mantine Dates](https://mantine.dev/dates/month-picker/)       |
-| **[MtMonthRangePicker](/components-library/mantine/month-range-picker)**                                                                    | Month picker for selecting a range of months   | [Mantine Dates](https://mantine.dev/dates/month-picker/)       |
-| **[MtMonthRangePickerInput](/components-library/mantine/month-range-picker-input)**                                                         | Month picker input for a range of months       | [Mantine Dates](https://mantine.dev/dates/month-picker/)       |
-| **[MtTimeGrid](/components-library/mantine/time-grid)**                                                                                     | Time slot grid for scheduling                  | [Mantine Dates](https://mantine.dev/dates/time-grid/)          |
-| **[MtTimeInput](/components-library/mantine/time-input)**                                                                                   | Time input field                               | [Mantine Dates](https://mantine.dev/dates/time-input/)         |
-| **[MtTimePicker](/components-library/mantine/time-picker)**                                                                                 | Time picker                                    | [Mantine Dates](https://mantine.dev/dates/time-input/)         |
-| **[MtYearMultiplePicker](/components-library/mantine/year-multiple-picker)**                                                                | Year picker for selecting multiple years       | [Mantine Dates](https://mantine.dev/dates/year-picker/)        |
-| **[MtYearMultiplePickerInput](/components-library/mantine/year-multiple-picker-input)**                                                     | Year picker input for multiple years           | [Mantine Dates](https://mantine.dev/dates/year-picker/)        |
-| **[MtYearPicker](/components-library/mantine/year-picker)**                                                                                 | Year picker for a single year                  | [Mantine Dates](https://mantine.dev/dates/year-picker/)        |
-| **[MtYearPickerInput](/components-library/mantine/year-picker-input)**                                                                      | Year picker with input field                   | [Mantine Dates](https://mantine.dev/dates/year-picker/)        |
-| **[MtYearRangePicker](/components-library/mantine/year-range-picker)**                                                                      | Year picker for selecting a range of years     | [Mantine Dates](https://mantine.dev/dates/year-picker/)        |
-| **[MtYearRangePickerInput](/components-library/mantine/year-range-picker-input)**                                                           | Year picker input for a range of years         | [Mantine Dates](https://mantine.dev/dates/year-picker/)        |
+| Component                                                                                 | Description                                    | Mantine Documentation                                    |
+| :---------------------------------------------------------------------------------------- | :--------------------------------------------- | :------------------------------------------------------- |
+| **[MtDateMultiplePicker](/components-library/mantine/date-multiple-picker)**              | Date picker for selecting multiple dates       | [Mantine Dates](https://mantine.dev/dates/date-picker/)  |
+| **[MtDateMultiplePickerInput](/components-library/mantine/date-multiple-picker-input)**   | Date picker input for multiple dates           | [Mantine Dates](https://mantine.dev/dates/date-picker/)  |
+| **[MtDatePicker](/components-library/mantine/date-picker)**                               | Date picker for a single date                  | [Mantine Dates](https://mantine.dev/dates/date-picker/)  |
+| **[MtDatePickerInput](/components-library/mantine/date-picker-input)**                    | Date picker with input field for a single date | [Mantine Dates](https://mantine.dev/dates/date-picker/)  |
+| **[MtDateRangePicker](/components-library/mantine/date-range-picker)**                    | Date picker for selecting a date range         | [Mantine Dates](https://mantine.dev/dates/date-picker/)  |
+| **[MtDateRangePickerInput](/components-library/mantine/date-range-picker-input)**         | Date picker input for a date range             | [Mantine Dates](https://mantine.dev/dates/date-picker/)  |
+| **[MtDateTimePicker](/components-library/mantine/date-time-picker)**                      | Date and time picker                           | [Mantine Dates](https://mantine.dev/dates/date-picker/)  |
+| **[MtMonthMultiplePicker](/components-library/mantine/month-multiple-picker)**            | Month picker for selecting multiple months     | [Mantine Dates](https://mantine.dev/dates/month-picker/) |
+| **[MtMonthMultiplePickerInput](/components-library/mantine/month-multiple-picker-input)** | Month picker input for multiple months         | [Mantine Dates](https://mantine.dev/dates/month-picker/) |
+| **[MtMonthPicker](/components-library/mantine/month-picker)**                             | Month picker for a single month                | [Mantine Dates](https://mantine.dev/dates/month-picker/) |
+| **[MtMonthPickerInput](/components-library/mantine/month-picker-input)**                  | Month picker with input field                  | [Mantine Dates](https://mantine.dev/dates/month-picker/) |
+| **[MtMonthRangePicker](/components-library/mantine/month-range-picker)**                  | Month picker for selecting a range of months   | [Mantine Dates](https://mantine.dev/dates/month-picker/) |
+| **[MtMonthRangePickerInput](/components-library/mantine/month-range-picker-input)**       | Month picker input for a range of months       | [Mantine Dates](https://mantine.dev/dates/month-picker/) |
+| **[MtTimeGrid](/components-library/mantine/time-grid)**                                   | Time slot grid for scheduling                  | [Mantine Dates](https://mantine.dev/dates/time-grid/)    |
+| **[MtTimeInput](/components-library/mantine/time-input)**                                 | Time input field                               | [Mantine Dates](https://mantine.dev/dates/time-input/)   |
+| **[MtTimePicker](/components-library/mantine/time-picker)**                               | Time picker                                    | [Mantine Dates](https://mantine.dev/dates/time-input/)   |
+| **[MtYearMultiplePicker](/components-library/mantine/year-multiple-picker)**              | Year picker for selecting multiple years       | [Mantine Dates](https://mantine.dev/dates/year-picker/)  |
+| **[MtYearMultiplePickerInput](/components-library/mantine/year-multiple-picker-input)**   | Year picker input for multiple years           | [Mantine Dates](https://mantine.dev/dates/year-picker/)  |
+| **[MtYearPicker](/components-library/mantine/year-picker)**                               | Year picker for a single year                  | [Mantine Dates](https://mantine.dev/dates/year-picker/)  |
+| **[MtYearPickerInput](/components-library/mantine/year-picker-input)**                    | Year picker with input field                   | [Mantine Dates](https://mantine.dev/dates/year-picker/)  |
+| **[MtYearRangePicker](/components-library/mantine/year-range-picker)**                    | Year picker for selecting a range of years     | [Mantine Dates](https://mantine.dev/dates/year-picker/)  |
+| **[MtYearRangePickerInput](/components-library/mantine/year-range-picker-input)**         | Year picker input for a range of years         | [Mantine Dates](https://mantine.dev/dates/year-picker/)  |
 
 ### Layout
 
 | Component                                                | Description                                      | Mantine Documentation                                                    |
-|:---------------------------------------------------------|:-------------------------------------------------|:-------------------------------------------------------------------------|
+| :------------------------------------------------------- | :----------------------------------------------- | :----------------------------------------------------------------------- |
 | **[MtContainer](/components-library/mantine/container)** | Container for centering and constraining content | <MantineComponentsDocItem link="/core/container/" caption="Container" /> |
 
 ### Typography
 
 | Component                                                  | Description                        | Mantine Documentation                                                      |
-|:-----------------------------------------------------------|:-----------------------------------|:---------------------------------------------------------------------------|
+| :--------------------------------------------------------- | :--------------------------------- | :------------------------------------------------------------------------- |
 | **[MtText](/components-library/mantine/text)**             | Text component for body content    | <MantineComponentsDocItem link="/core/text/" caption="Text" />             |
 | **[MtTitle](/components-library/mantine/title)**           | Heading component                  | <MantineComponentsDocItem link="/core/title/" caption="Title" />           |
 | **[MtTypography](/components-library/mantine/typography)** | Typography with preset text styles | <MantineComponentsDocItem link="/core/typography/" caption="Typography" /> |
@@ -571,7 +571,7 @@ Miscellaneous utility components:
 ---
 
 | Component                                                       | Description                   | Mantine Documentation                                                |
-|:----------------------------------------------------------------|:------------------------------|:---------------------------------------------------------------------|
+| :-------------------------------------------------------------- | :---------------------------- | :------------------------------------------------------------------- |
 | **[MtDivider](/components-library/mantine/divider)**            | Visual divider                | <MantineComponentsDocItem link="/core/divider/" caption="Divider" /> |
 | **[MtErrorWrapper](/components-library/mantine/error-wrapper)** | Error display wrapper         | Custom component for error handling                                  |
 | **MtViewerWrapper**                                             | Wrapper component for viewers | Custom component for viewer integration                              |
@@ -581,27 +581,27 @@ Miscellaneous utility components:
 Additional Mantine-based extensions:
 
 | Component                                              | Description          | Mantine Documentation                                                  |
-|:-------------------------------------------------------|:---------------------|:-----------------------------------------------------------------------|
+| :----------------------------------------------------- | :------------------- | :--------------------------------------------------------------------- |
 | **[MtTiptap](/components-library/mantine/tiptap)**     | Rich text editor     | [Mantine Tiptap](https://mantine.dev/x/tiptap/) (optional package)     |
 | **[MtDropzone](/components-library/mantine/dropzone)** | File upload dropzone | [Mantine Dropzone](https://mantine.dev/x/dropzone/) (optional package) |
 
 ### Overlays
 
 | Component                                            | Description                 | Mantine Documentation                                                |
-|:-----------------------------------------------------|:----------------------------|:---------------------------------------------------------------------|
+| :--------------------------------------------------- | :-------------------------- | :------------------------------------------------------------------- |
 | **[MtTooltip](/components-library/mantine/tooltip)** | Tooltip for additional info | <MantineComponentsDocItem link="/core/tooltip/" caption="Tooltip" /> |
 
 ### Modal
 
-| Component                                            | Description                 | Mantine Documentation                                                |
-|:-----------------------------------------------------|:----------------------------|:---------------------------------------------------------------------|
-| **[MtDialog](/components-library/mantine/dialog)**   | Modal dialog container      | <MantineComponentsDocItem link="/core/modal/" caption="Modal" />     |
+| Component                                          | Description            | Mantine Documentation                                            |
+| :------------------------------------------------- | :--------------------- | :--------------------------------------------------------------- |
+| **[MtDialog](/components-library/mantine/dialog)** | Modal dialog container | <MantineComponentsDocItem link="/core/modal/" caption="Modal" /> |
 
 ### Buttons
 
-| Component                                              | Description                       | Mantine Documentation                                                    |
-|:-------------------------------------------------------|:----------------------------------|:-------------------------------------------------------------------------|
-| **[MtButton](/components-library/mantine/button)**     | Button for user actions           | <MantineComponentsDocItem link="/core/button/" caption="Button" />       |
+| Component                                          | Description             | Mantine Documentation                                              |
+| :------------------------------------------------- | :---------------------- | :----------------------------------------------------------------- |
+| **[MtButton](/components-library/mantine/button)** | Button for user actions | <MantineComponentsDocItem link="/core/button/" caption="Button" /> |
 
 ## Additional Resources
 

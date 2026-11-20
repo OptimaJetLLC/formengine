@@ -134,57 +134,57 @@ const FormBuilderApp = () => {
 
 ![Customization 01](/assets/customization/customization-01.png)
 
-| #  | Name                                    | className                                  |
-|:--:|:----------------------------------------|--------------------------------------------|
-| 1  | MainContainer                           | FE_MainContainer                           |
-| 2  | LeftPanel                               | FE_LeftPanel                               |
-| 3  | CentralPanel                            | FE_CentralPanel                            |
-| 4  | RightPanel                              | FE_RightPanel                              |
-| 5  | LeftPanel_Nav                           | FE_LeftPanel_Nav                           |
-| 6  | LeftPanel_Content                       | FE_LeftPanel_Content                       |
-| 7  | Header                                  | FE_Header                                  |
-| 8  | FormContainer                           | FE_FormContainer                           |
-| 9  | RightPanel_Nav                          | FE_RightPanel_Nav                          |
-| 10 | RightPanel_Content                      | FE_RightPanel_Content                      |
-| 11 | MainMenu_Dropdown                       | FE_MainMenu_Dropdown                       |
-| 12 | MainMenu_Button                         | FE_MainMenu_Button                         |
-| 13 | Header_Toolbar                          | FE_Header_Toolbar                          |
-| 14 | Component_Toolbar                       | FE_Component_Toolbar                       |
-| 15 | Component_Toolbar_Items                 | FE_Component_Toolbar_Items                 |
-| 16 | Component_Toolbar_Title                 | FE_Component_Toolbar_Title                 |
-| 17 | Component_Toolbar_AddButton             | FE_Component_Toolbar_AddButton             |
-| 18 | Component_Toolbar_NearbyTreeButton      | FE_Component_Toolbar_NearbyTreeButton      |
-| 19 | Component_Toolbar_CloneButton           | FE_Component_Toolbar_CloneButton           |
-| 20 | Component_Toolbar_PresetComponentButton | FE_Component_Toolbar_PresetComponentButton |
-| 21 | Component_Toolbar_RemoveButton          | FE_Component_Toolbar_RemoveButton          |
-| 22 | Component_Toolbar_RevealInTreeButton    | FE_Component_Toolbar_RevealInTreeButton    |
-| 23 | ToggleModeButton                        | FE_ToggleModeButton                        |
-| 24 | ResolutionSelect                        | FE_ResolutionSelect                        |
-| 25 | LocalizationSelect                      | FE_LocalizationSelect                      |
-| 26 | JsonViewButton                          | FE_JsonViewButton                          |
-| 27 | ToggleThemeButton                       | FE_ToggleThemeButton                       |
+|  #  | Name                                    | className                                  |
+| :-: | :-------------------------------------- | ------------------------------------------ |
+|  1  | MainContainer                           | FE_MainContainer                           |
+|  2  | LeftPanel                               | FE_LeftPanel                               |
+|  3  | CentralPanel                            | FE_CentralPanel                            |
+|  4  | RightPanel                              | FE_RightPanel                              |
+|  5  | LeftPanel_Nav                           | FE_LeftPanel_Nav                           |
+|  6  | LeftPanel_Content                       | FE_LeftPanel_Content                       |
+|  7  | Header                                  | FE_Header                                  |
+|  8  | FormContainer                           | FE_FormContainer                           |
+|  9  | RightPanel_Nav                          | FE_RightPanel_Nav                          |
+| 10  | RightPanel_Content                      | FE_RightPanel_Content                      |
+| 11  | MainMenu_Dropdown                       | FE_MainMenu_Dropdown                       |
+| 12  | MainMenu_Button                         | FE_MainMenu_Button                         |
+| 13  | Header_Toolbar                          | FE_Header_Toolbar                          |
+| 14  | Component_Toolbar                       | FE_Component_Toolbar                       |
+| 15  | Component_Toolbar_Items                 | FE_Component_Toolbar_Items                 |
+| 16  | Component_Toolbar_Title                 | FE_Component_Toolbar_Title                 |
+| 17  | Component_Toolbar_AddButton             | FE_Component_Toolbar_AddButton             |
+| 18  | Component_Toolbar_NearbyTreeButton      | FE_Component_Toolbar_NearbyTreeButton      |
+| 19  | Component_Toolbar_CloneButton           | FE_Component_Toolbar_CloneButton           |
+| 20  | Component_Toolbar_PresetComponentButton | FE_Component_Toolbar_PresetComponentButton |
+| 21  | Component_Toolbar_RemoveButton          | FE_Component_Toolbar_RemoveButton          |
+| 22  | Component_Toolbar_RevealInTreeButton    | FE_Component_Toolbar_RevealInTreeButton    |
+| 23  | ToggleModeButton                        | FE_ToggleModeButton                        |
+| 24  | ResolutionSelect                        | FE_ResolutionSelect                        |
+| 25  | LocalizationSelect                      | FE_LocalizationSelect                      |
+| 26  | JsonViewButton                          | FE_JsonViewButton                          |
+| 27  | ToggleThemeButton                       | FE_ToggleThemeButton                       |
 
 ![Customization 02](/assets/customization/customization-02.png)
 
-| #  | Name                                                                                       | className                                                                                              | aux classes   |
-|:--:|:-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|---------------|
-| 1  | Components_Tab                                                                             | FE_Components_Tab                                                                                      |               |
-| 2  | Components_Tab_Content                                                                     | FE_Components_Tab_Content                                                                              |               |
-| 3  | Tree_Tab                                                                                   | FE_Tree_Tab                                                                                            |               |
-| 4  | Tree_Tab_Content                                                                           | FE_Tree_Tab_Content                                                                                    |               |
-| 5  | Settings_Tab                                                                               | FE_Settings_Tab                                                                                        |               |
-| 6  | Settings_Tab_Content                                                                       | FE_Settings_Tab_Content                                                                                |               |
-| 7  | Forms_Tab                                                                                  | FE_Forms_Tab                                                                                           |               |
-| 8  | Forms_Tab_Content                                                                          | FE_Forms_Tab_Content                                                                                   |               |
-| 9  | Main_Tab                                                                                   | FE_Main_Tab                                                                                            |               |
-| 10 | Style_Tab                                                                                  | FE_Style_Tab                                                                                           |               |
-| 11 | Actions_Tab                                                                                | FE_Actions_Tab                                                                                         |               |
-| 12 | Rules_Tab                                                                                  | FE_Rules_Tab                                                                                           |               |
-| 13 | Main_Tab_Content,<br/> Style_Tab_Content,<br/> Actions_Tab_Content,<br/> Rules_Tab_Content | FE_Main_Tab_Content,<br/> FE_Style_Tab_Content,<br/> FE_Actions_Tab_Content,<br/> FE_Rules_Tab_Content |               |
-| 14 | LabeledProperty                                                                            | FE_LabeledProperty                                                                                     | valueModified |
-| 15 | PropertyCodeButton                                                                         | FE_PropertyCodeButton                                                                                  |               |
-| 16 | PropertyLabel                                                                              | FE_PropertyLabel                                                                                       |               |
-| 17 | PropertyInput                                                                              | FE_PropertyInput                                                                                       |               |
+|  #  | Name                                                                                       | className                                                                                              | aux classes   |
+| :-: | :----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------- |
+|  1  | Components_Tab                                                                             | FE_Components_Tab                                                                                      |               |
+|  2  | Components_Tab_Content                                                                     | FE_Components_Tab_Content                                                                              |               |
+|  3  | Tree_Tab                                                                                   | FE_Tree_Tab                                                                                            |               |
+|  4  | Tree_Tab_Content                                                                           | FE_Tree_Tab_Content                                                                                    |               |
+|  5  | Settings_Tab                                                                               | FE_Settings_Tab                                                                                        |               |
+|  6  | Settings_Tab_Content                                                                       | FE_Settings_Tab_Content                                                                                |               |
+|  7  | Forms_Tab                                                                                  | FE_Forms_Tab                                                                                           |               |
+|  8  | Forms_Tab_Content                                                                          | FE_Forms_Tab_Content                                                                                   |               |
+|  9  | Main_Tab                                                                                   | FE_Main_Tab                                                                                            |               |
+| 10  | Style_Tab                                                                                  | FE_Style_Tab                                                                                           |               |
+| 11  | Actions_Tab                                                                                | FE_Actions_Tab                                                                                         |               |
+| 12  | Rules_Tab                                                                                  | FE_Rules_Tab                                                                                           |               |
+| 13  | Main_Tab_Content,<br/> Style_Tab_Content,<br/> Actions_Tab_Content,<br/> Rules_Tab_Content | FE_Main_Tab_Content,<br/> FE_Style_Tab_Content,<br/> FE_Actions_Tab_Content,<br/> FE_Rules_Tab_Content |               |
+| 14  | LabeledProperty                                                                            | FE_LabeledProperty                                                                                     | valueModified |
+| 15  | PropertyCodeButton                                                                         | FE_PropertyCodeButton                                                                                  |               |
+| 16  | PropertyLabel                                                                              | FE_PropertyLabel                                                                                       |               |
+| 17  | PropertyInput                                                                              | FE_PropertyInput                                                                                       |               |
 
 :::info[note]
 
@@ -197,18 +197,18 @@ properties tab body. They mount only when a component is selected on the canvas 
 
 Each item in the main menu can be customized individually. The following keys are available:
 
-| #  | Name                               | className                               | Description                                                                                      |
-|:---|:-----------------------------------|:----------------------------------------|:-------------------------------------------------------------------------------------------------|
-| 1  | MainMenu_Item_AddNewForm           | `FE_MainMenu_Item_AddNewForm`           | "Add new form" button (only visible when [formStorage][formStorage] is enabled)                  |
-| 2  | MainMenu_Item_Download             | `FE_MainMenu_Item_Download`             | "Download" button                                                                                |
-| 3  | MainMenu_Item_Upload               | `FE_MainMenu_Item_Upload`               | "Upload" button                                                                                  |
-| 4  | MainMenu_Item_Save                 | `FE_MainMenu_Item_Save`                 | "Save" button (only visible when [formStorage][formStorage] is enabled)                          |
-| 5  | MainMenu_Item_SaveAs               | `FE_MainMenu_Item_SaveAs`               | "Save as" button (only visible when [formStorage][formStorage] is enabled)                       |
-| 6  | MainMenu_Item_ExportForms          | `FE_MainMenu_Item_ExportForms`          | "Export forms" button (only visible when [formStorage][formStorage] is enabled)                  |
-| 7  | MainMenu_Item_ImportForms          | `FE_MainMenu_Item_ImportForms`          | "Import forms" button (only visible when [formStorage][formStorage] is enabled)                  |
-| 8  | MainMenu_Item_Clear                | `FE_MainMenu_Item_Clear`                | "Clear" button                                                                                   |
-| 9  | MainMenu_Item_ExportJsonFormSchema | `FE_MainMenu_Item_ExportJsonFormSchema` | "Export JSON Form Schema" button (only visible when [generateJsonFormSchema][jsonSchema] is set) |
-| 10 | MainMenu_Item_LanguageSwitch       | `FE_MainMenu_Item_LanguageSwitch`       | Language switch dropdown                                                                         |
+| #   | Name                               | className                               | Description                                                                                      |
+| :-- | :--------------------------------- | :-------------------------------------- | :----------------------------------------------------------------------------------------------- |
+| 1   | MainMenu_Item_AddNewForm           | `FE_MainMenu_Item_AddNewForm`           | "Add new form" button (only visible when [formStorage][formStorage] is enabled)                  |
+| 2   | MainMenu_Item_Download             | `FE_MainMenu_Item_Download`             | "Download" button                                                                                |
+| 3   | MainMenu_Item_Upload               | `FE_MainMenu_Item_Upload`               | "Upload" button                                                                                  |
+| 4   | MainMenu_Item_Save                 | `FE_MainMenu_Item_Save`                 | "Save" button (only visible when [formStorage][formStorage] is enabled)                          |
+| 5   | MainMenu_Item_SaveAs               | `FE_MainMenu_Item_SaveAs`               | "Save as" button (only visible when [formStorage][formStorage] is enabled)                       |
+| 6   | MainMenu_Item_ExportForms          | `FE_MainMenu_Item_ExportForms`          | "Export forms" button (only visible when [formStorage][formStorage] is enabled)                  |
+| 7   | MainMenu_Item_ImportForms          | `FE_MainMenu_Item_ImportForms`          | "Import forms" button (only visible when [formStorage][formStorage] is enabled)                  |
+| 8   | MainMenu_Item_Clear                | `FE_MainMenu_Item_Clear`                | "Clear" button                                                                                   |
+| 9   | MainMenu_Item_ExportJsonFormSchema | `FE_MainMenu_Item_ExportJsonFormSchema` | "Export JSON Form Schema" button (only visible when [generateJsonFormSchema][jsonSchema] is set) |
+| 10  | MainMenu_Item_LanguageSwitch       | `FE_MainMenu_Item_LanguageSwitch`       | Language switch dropdown                                                                         |
 
 **Example usage:**
 

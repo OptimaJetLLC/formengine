@@ -134,7 +134,6 @@ className addition in your custom components
 1. **Always Use the Required Annotation**: Use the `required` annotation instead of the regular `boolean` annotation for required properties
    to ensure proper integration with FormEngine's validation system.
 2. **Provide Visual Feedback**: Always provide clear visual indicators when a field is required. Common patterns include:
-
    - Asterisk (*) next to the label
    - Different border colors for required fields
    - Optional text indicating the field is required
@@ -146,6 +145,7 @@ className addition in your custom components
 
    ```
 4. **Leverage Automatic ClassName**: Use the automatically added `required` className for styling instead of relying only on the prop value:
+
    ```css
    &.required {
      /* Your styles for required fields */

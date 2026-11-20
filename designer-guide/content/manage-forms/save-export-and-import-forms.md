@@ -16,10 +16,10 @@ For a short overview, see also [Export and share your form](/preview-and-handoff
 
 ## Save and Save as
 
-| Item           | Use when                                      |
-| -------------- | --------------------------------------------- |
-| **Save**       | You want to keep the current form in storage  |
-| **Save as...** | You need a copy under a new name              |
+| Item           | Use when                                     |
+| -------------- | -------------------------------------------- |
+| **Save**       | You want to keep the current form in storage |
+| **Save as...** | You need a copy under a new name             |
 
 The save shortcut is <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> on Windows/Linux or
 <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span> on macOS when focus is on the page background.

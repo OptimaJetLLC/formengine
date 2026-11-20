@@ -28,4 +28,3 @@ Defaults live on **Main** for values configured in Designer. Match keys with dev
 
 - [What is form data?](/fields-and-data/what-is-form-data)
 - [Prefill a form](/simple-data-driven-screens/prefill-a-form)
-

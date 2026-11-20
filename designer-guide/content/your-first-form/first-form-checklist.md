@@ -3,7 +3,6 @@ title: "First form checklist"
 description: "One-page recap after your first form tutorial: create, fields, keys, validation, button, preview, export."
 ---
 
-
 # First form checklist
 
 Use this list after you walk through the [Your first form](/your-first-form/create-your-first-form) tutorials.

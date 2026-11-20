@@ -82,7 +82,7 @@ property value. Do not wrap the body in `function(form) { ... }`, write the code
 Inside `fnSource` you have access to:
 
 | Variable      | Type                      | Purpose                                                 |
-|---------------|---------------------------|---------------------------------------------------------|
+| ------------- | ------------------------- | ------------------------------------------------------- |
 | `form`        | [IFormData][t-iformdata]  | The current form state, errors, and metadata.           |
 | `form.data`   | `Record<string, unknown>` | Values of all fields keyed by their `dataKey` / `key`.  |
 | `form.errors` | `Record<string, unknown>` | Validation errors keyed by `dataKey` / `key`.           |

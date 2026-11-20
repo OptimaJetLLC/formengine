@@ -11,7 +11,7 @@ Use `designer-guide:section/page` in files under `documentation/docs/`. The Docu
 The default target is `https://learn.formengine.io/`. For local development, use one of these values:
 
 | Environment         | Value                             |
-|---------------------|-----------------------------------|
+| ------------------- | --------------------------------- |
 | Local Caddy         | `https://learn.formengine.local/` |
 | Direct Astro server | `http://localhost:4321/`          |
 

@@ -22,7 +22,7 @@ our [GitHub repository](https://github.com/optimajet/formengine/issues).
 :::
 
 | Task                                                                            | Status   |
-|---------------------------------------------------------------------------------|----------|
+| ------------------------------------------------------------------------------- | -------- |
 | Integration with Camunda                                                        | Done     |
 | Hand-drawn signature component                                                  | Done     |
 | QR-code component                                                               | Done     |

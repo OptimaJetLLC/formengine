@@ -34,11 +34,11 @@ application data such as a user profile or API-driven dropdown options.
 
 <img src="/assets/guide/data-driven/highlight-dynamic-dropdown-onload.png" alt="Dropdown Actions tab with onLoadData bound to a loadData action." />
 
-| Example               | How it is provided                                         |
-| --------------------- | ---------------------------------------------------------- |
-| Pre-filled user name  | Developers pass initial data                               |
-| Name list from an API | **Actions** → **onLoadData** (or data binding)             |
-| Calculated totals     | **Main** → **Value** → **Calculable value**, or an action  |
+| Example               | How it is provided                                        |
+| --------------------- | --------------------------------------------------------- |
+| Pre-filled user name  | Developers pass initial data                              |
+| Name list from an API | **Actions** → **onLoadData** (or data binding)            |
+| Calculated totals     | **Main** → **Value** → **Calculable value**, or an action |
 
 Use **Calculable value** for a live calculation that updates when its source data changes. Use an action when the calculation should run
 only after an event. **Rules** validate field values; they do not calculate them.

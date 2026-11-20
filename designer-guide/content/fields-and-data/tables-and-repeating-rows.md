@@ -21,12 +21,12 @@ This page starts with **lists and repeaters** (Material UI example), then extend
 
 ## Lists and repeaters
 
-| Pattern                  | Typical use                                                                                         |
-| ------------------------ | --------------------------------------------------------------------------------------------------- |
-| **Repeater**             | Dynamic rows users add or remove (invoice lines, guests)                                            |
+| Pattern                  | Typical use                                                                                          |
+| ------------------------ | ---------------------------------------------------------------------------------------------------- |
+| **Repeater**             | Dynamic rows users add or remove (invoice lines, guests)                                             |
 | **Sortable list**        | Like Repeater, plus users reorder rows by drag or keyboard ([guide](/fields-and-data/sortable-list)) |
-| **List** / **List item** | Structured repeated blocks with a fixed layout                                                      |
-| **Table**                | Column grid when your library provides a table component (see below)                                |
+| **List** / **List item** | Structured repeated blocks with a fixed layout                                                       |
+| **Table**                | Column grid when your library provides a table component (see below)                                 |
 
 Search **Components** for **Repeater** or **List**.
 

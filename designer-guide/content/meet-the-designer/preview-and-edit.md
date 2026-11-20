@@ -27,14 +27,14 @@ components in Preview. The **canvas** is the center of the screen. The **header*
 
 <img src="/assets/guide/workspace/highlight-central-header.png" alt="Central header toolbar with numbered controls: menu, undo/redo, component library, preview, device icons, and language." />
 
-| #   | Control                       | Purpose                                                                                                                    |
-| --- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| #   | Control                       | Purpose                                                                                                                               |
+| --- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | Menu (hamburger)              | **Add a new form**, **Download**, **Upload**, **Translation**, **Save**, **Save as...**, export/import, **Clear**, **Print**, version |
-| 2   | Undo / Redo                   | Reverse recent layout edits                                                                                                |
-| 3   | **Component library**         | Switch UI kit (for example Material UI, RSuite UI). **Demo only.**                                                                         |
-| 4   | **Preview**                   | Test the form. Becomes **Edit** in Preview mode                                                                            |
-| 5   | Device icons                  | Approximate phone/tablet/desktop width                                                                                     |
-| 6   | Language (for example **EN**) | Switch localized form content in Edit and Preview                                                                          |
+| 2   | Undo / Redo                   | Reverse recent layout edits                                                                                                           |
+| 3   | **Component library**         | Switch UI kit (for example Material UI, RSuite UI). **Demo only.**                                                                    |
+| 4   | **Preview**                   | Test the form. Becomes **Edit** in Preview mode                                                                                       |
+| 5   | Device icons                  | Approximate phone/tablet/desktop width                                                                                                |
+| 6   | Language (for example **EN**) | Switch localized form content in Edit and Preview                                                                                     |
 
 The two language controls are separate. The header picker switches the form's localized labels and other content in **Edit** and
 **Preview**. **Menu** → **Translation** changes the language of Designer's menus, panels, and other interface text.

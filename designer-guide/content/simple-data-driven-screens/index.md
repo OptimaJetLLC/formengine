@@ -9,4 +9,3 @@ Some forms mix labels you type in Designer with values from your application. Th
 rules, list-and-detail layouts, and calculated fields.
 
 ## In this section
-

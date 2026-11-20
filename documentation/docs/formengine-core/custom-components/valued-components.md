@@ -359,7 +359,7 @@ uncontrolledProp: string.valued.uncontrolledValue('default')
 ### How .valued Changes Behavior
 
 | Feature                | Regular Prop | Valued Prop      |
-|------------------------|--------------|------------------|
+| ---------------------- | ------------ | ---------------- |
 | Gets value from        | Props        | Form data store  |
 | Updates trigger        | Nothing      | Form data update |
 | Validates              | No           | Yes              |

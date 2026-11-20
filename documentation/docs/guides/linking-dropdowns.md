@@ -16,8 +16,8 @@ configured, the value of the second dropdown list will be updated automatically.
 
 ## Linking dropdown lists example
 
-This example incorporates two dropdown components: _country_ and _city_. The __city__ dropdown component's options depend on the selected
-value of the __country__ dropdown component. When the user selects a country, the options in the city dropdown should update accordingly:
+This example incorporates two dropdown components: _country_ and _city_. The **city** dropdown component's options depend on the selected
+value of the **country** dropdown component. When the user selects a country, the options in the city dropdown should update accordingly:
 
 ```json
 {

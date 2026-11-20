@@ -39,21 +39,21 @@ Update all packages to version **7.11.0**. No additional actions are required.
 
 ### Bug fixes
 
-* Fixed Vitest globals causing Jest types to be used in tests.
-* Fixed localization fallback behavior.
-* Fixed designer issue where RSuite CSS overrode MUI styles.
-* Fixed IndexedDB error: `'demo-presets' is not a known object store name`.
-* Fixed read-only and disabled flags not always being passed through the component hierarchy.
-* Fixed CI build failure.
-* Addressed test environment limitation: `Window's getComputedStyle()` with pseudo-elements (not implemented in test runner).
+- Fixed Vitest globals causing Jest types to be used in tests.
+- Fixed localization fallback behavior.
+- Fixed designer issue where RSuite CSS overrode MUI styles.
+- Fixed IndexedDB error: `'demo-presets' is not a known object store name`.
+- Fixed read-only and disabled flags not always being passed through the component hierarchy.
+- Fixed CI build failure.
+- Addressed test environment limitation: `Window's getComputedStyle()` with pseudo-elements (not implemented in test runner).
 
 ### Resources
 
-* Split documentation for [FormEngine Core](https://formengine.io/documentation/formengine-core) and [FormEngine Designer](https://formengine.io/documentation/formengine-designer).
-* Added [size bundle comparison](https://formengine.io/documentation/bundle-size-comparison) article.
+- Split documentation for [FormEngine Core](https://formengine.io/documentation/formengine-core) and [FormEngine Designer](https://formengine.io/documentation/formengine-designer).
+- Added [size bundle comparison](https://formengine.io/documentation/bundle-size-comparison) article.
 
 ### Security
 
-* Bumped `lodash` from 4.17.21 to 4.17.23 in `/src` and in premium examples (formengine, with-nextjs-v15, with-remix-v2).
-* Bumped `lodash-es` from 4.17.21 to 4.17.23 in `/examples/premium/with-formik`.
-* Bumped `diff` from 5.2.0 to 5.2.2 in `/examples/premium/with-remix/with-remix-v2`.
+- Bumped `lodash` from 4.17.21 to 4.17.23 in `/src` and in premium examples (formengine, with-nextjs-v15, with-remix-v2).
+- Bumped `lodash-es` from 4.17.21 to 4.17.23 in `/examples/premium/with-formik`.
+- Bumped `diff` from 5.2.0 to 5.2.2 in `/examples/premium/with-remix/with-remix-v2`.

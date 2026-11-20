@@ -44,19 +44,19 @@ Update all packages to version **7.10.0**. No additional actions are required.
 
 ### Bug fixes
 
-* Fixed an error when no form storage was provided: `AlwaysRejectFormStorage.ts:8 Uncaught (in promise) Error: Not implemented`.
-* Fixed an issue where the Next.js example was broken with [@react-form-builder/core@7.9.0](https://www.npmjs.com/package/@react-form-builder/core/v/7.9.0).
-* Fixed the `Module not found: Package path . is not exported from package` error in `premium/examples/with-nextjs/with-nextjs-v15` in FormViewer.
+- Fixed an error when no form storage was provided: `AlwaysRejectFormStorage.ts:8 Uncaught (in promise) Error: Not implemented`.
+- Fixed an issue where the Next.js example was broken with [@react-form-builder/core@7.9.0](https://www.npmjs.com/package/@react-form-builder/core/v/7.9.0).
+- Fixed the `Module not found: Package path . is not exported from package` error in `premium/examples/with-nextjs/with-nextjs-v15` in FormViewer.
 
 ### Resources
 
-* Split the release notes in the documentation into separate pages so that each release can be read in detail.
-* Updated and extended the article with instructions on [how to generate a JSON schema](https://formengine.io/documentation/formengine-designer/features/forms-json#json-schema).
+- Split the release notes in the documentation into separate pages so that each release can be read in detail.
+- Updated and extended the article with instructions on [how to generate a JSON schema](https://formengine.io/documentation/formengine-designer/features/forms-json#json-schema).
 
 ### Security
 
-* Bumped `diff` from 8.0.2 to 8.0.3 in `/src`.
-* Bumped `qs` and `express` in `/examples/community/file-upload-server`.
-* Bumped `qs` and `express` in `/examples/premium/with-remix/with-remix-v2`.
-* Bumped `@remix-run/server-runtime`, `@remix-run/node`, `@remix-run/react`, `@remix-run/serve`, and `@remix-run/dev` in `/examples/premium/with-remix/with-remix-v2`.
-* Bumped `next` from 15.4.8 to 15.4.10 in `/examples/premium/with-nextjs/with-nextjs-v15`.
+- Bumped `diff` from 8.0.2 to 8.0.3 in `/src`.
+- Bumped `qs` and `express` in `/examples/community/file-upload-server`.
+- Bumped `qs` and `express` in `/examples/premium/with-remix/with-remix-v2`.
+- Bumped `@remix-run/server-runtime`, `@remix-run/node`, `@remix-run/react`, `@remix-run/serve`, and `@remix-run/dev` in `/examples/premium/with-remix/with-remix-v2`.
+- Bumped `next` from 15.4.8 to 15.4.10 in `/examples/premium/with-nextjs/with-nextjs-v15`.

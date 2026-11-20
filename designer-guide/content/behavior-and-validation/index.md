@@ -9,4 +9,3 @@ These pages cover how the form checks input and what happens when someone clicks
 messages, and modals.
 
 ## In this section
-

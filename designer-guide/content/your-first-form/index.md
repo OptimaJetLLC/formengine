@@ -9,4 +9,3 @@ Build one small form end to end. You will create a blank form, add fields, name 
 preview and check your work.
 
 ## In this section
-

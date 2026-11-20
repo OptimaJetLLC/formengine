@@ -162,7 +162,7 @@ Validators can accept arguments. A special argument for built-in validators is `
 The `message` argument is optional.
 
 | Validator    | Description                                  | Example JSON                                                                                        |
-|--------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| ------------ | -------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `required`   | Field must not be empty                      | `{"key": "required", "args": {"message": "This field is required"}}`                                |
 | `nonEmpty`   | Field must not be empty (alias for required) | `{"key": "nonEmpty", "args": {"message": "Cannot be empty"}}`                                       |
 | `min`        | Minimum length                               | `{"key": "min", "args": {"limit": 3, "message": "Must be at least 3 characters"}}`                  |
@@ -183,7 +183,7 @@ The `message` argument is optional.
 Number validators work with numeric inputs and selectors.
 
 | Validator    | Description                 | Example JSON                                                                        |
-|--------------|-----------------------------|-------------------------------------------------------------------------------------|
+| ------------ | --------------------------- | ----------------------------------------------------------------------------------- |
 | `required`   | Field must contain a number | `{"key": "required", "args": {"message": "This field is required"}}`                |
 | `min`        | Minimum value               | `{"key": "min", "args": {"limit": 18, "message": "Must be at least 18"}}`           |
 | `max`        | Maximum value               | `{"key": "max", "args": {"limit": 120, "message": "Cannot exceed 120"}}`            |
@@ -197,7 +197,7 @@ Number validators work with numeric inputs and selectors.
 Date validators work with date pickers and date inputs.
 
 | Validator  | Description               | Example JSON                                                                          |
-|------------|---------------------------|---------------------------------------------------------------------------------------|
+| ---------- | ------------------------- | ------------------------------------------------------------------------------------- |
 | `required` | Field must contain a date | `{"key": "required", "args": {"message": "Date is required"}}`                        |
 | `min`      | Minimum date              | `{"key": "min", "args": {"value": "2024-01-01", "message": "Cannot be before 2024"}}` |
 | `max`      | Maximum date              | `{"key": "max", "args": {"value": "2024-12-31", "message": "Cannot be after 2024"}}`  |
@@ -207,7 +207,7 @@ Date validators work with date pickers and date inputs.
 Array validators work with multi-selects, checkboxes, and repeaters.
 
 | Validator  | Description             | Example JSON                                                                         |
-|------------|-------------------------|--------------------------------------------------------------------------------------|
+| ---------- | ----------------------- | ------------------------------------------------------------------------------------ |
 | `required` | Array must not be empty | `{"key": "required", "args": {"message": "At least one item is required"}}`          |
 | `nonEmpty` | Array must not be empty | `{"key": "nonEmpty", "args": {"message": "Cannot be empty"}}`                        |
 | `min`      | Minimum array length    | `{"key": "min", "args": {"limit": 1, "message": "Select at least one item"}}`        |
@@ -219,7 +219,7 @@ Array validators work with multi-selects, checkboxes, and repeaters.
 Boolean validators work with checkboxes and switches.
 
 | Validator  | Description              | Example JSON                                             |
-|------------|--------------------------|----------------------------------------------------------|
+| ---------- | ------------------------ | -------------------------------------------------------- |
 | `required` | Must be true (checked)   | `{"key": "required", "message": "This must be checked"}` |
 | `truthy`   | Must be true (checked)   | `{"key": "truthy", "message": "This must be checked"}`   |
 | `falsy`    | Must be true (unchecked) | `{"key": "falsy", "message": "This must be unchecked"}`  |
@@ -229,7 +229,7 @@ Boolean validators work with checkboxes and switches.
 Time validators work with components whose data is time.
 
 | Validator  | Description               | Example JSON                                         |
-|------------|---------------------------|------------------------------------------------------|
+| ---------- | ------------------------- | ---------------------------------------------------- |
 | `required` | Field must contain a time | `{"key": "required", "message": "Time is required"}` |
 
 ## Form Validation
@@ -1646,8 +1646,9 @@ The `formValidator` code should be a JavaScript function body that:
 1. Receives a `formData` parameter containing all form field values
 
 2. Returns an object where:
-  - Keys are field names
-  - Values are error messages for those fields
+   - Keys are field names
+   - Values are error messages for those fields
+
 3. Returns an empty object `{}` or `undefined` if validation passes
 
 ```javascript

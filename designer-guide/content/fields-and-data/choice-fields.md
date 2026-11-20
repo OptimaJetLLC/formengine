@@ -11,13 +11,13 @@ description: "Choose components for single, multiple, and yes/no answers, and co
 
 <img src="/assets/guide/workspace/components-search-plain.png" alt="Components palette filtered for choice fields." />
 
-| Need                              | Typical component                 |
-| --------------------------------- | --------------------------------- |
-| One choice from many              | **Select** / dropdown             |
-| One choice from a few             | **Radio group**                   |
-| Several visible choices           | **Checkbox group**                |
-| Several choices in a compact list | **MultiSelect** / **TagPicker**   |
-| Yes/no                            | **Checkbox** / **Switch**         |
+| Need                              | Typical component               |
+| --------------------------------- | ------------------------------- |
+| One choice from many              | **Select** / dropdown           |
+| One choice from a few             | **Radio group**                 |
+| Several visible choices           | **Checkbox group**              |
+| Several choices in a compact list | **MultiSelect** / **TagPicker** |
+| Yes/no                            | **Checkbox** / **Switch**       |
 
 The available components depend on how your Designer is set up. Mantine provides **MultiSelect** and **Checkbox group**, while React
 Suite provides **TagPicker**. The current Material UI set does not include a ready-made field for selecting several options.

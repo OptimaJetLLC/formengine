@@ -22,18 +22,18 @@ Buttons may be disabled when there is nothing to undo or redo.
 
 ### Windows and Linux
 
-| Action             | Shortcut                                                                                      |
-| ------------------ | --------------------------------------------------------------------------------------------- |
-| Undo               | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Z</kbd></span>                               |
-| Redo               | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Y</kbd></span>                               |
-| Redo (alternative) | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></span>               |
+| Action             | Shortcut                                                                        |
+| ------------------ | ------------------------------------------------------------------------------- |
+| Undo               | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Z</kbd></span>                  |
+| Redo               | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Y</kbd></span>                  |
+| Redo (alternative) | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></span> |
 
 ### macOS
 
-| Action | Shortcut                                                                                   |
-| ------ | ------------------------------------------------------------------------------------------ |
-| Undo   | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>Z</kbd></span>                               |
-| Redo   | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></span>               |
+| Action | Shortcut                                                                     |
+| ------ | ---------------------------------------------------------------------------- |
+| Undo   | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>Z</kbd></span>                  |
+| Redo   | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></span> |
 
 Click the canvas background first so focus is not inside a property field.
 

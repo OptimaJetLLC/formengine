@@ -9,4 +9,3 @@ Appearance is about readable labels, consistent spacing, and visible errors. The
 localization.
 
 ## In this section
-

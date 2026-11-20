@@ -32,7 +32,7 @@ Form Builder consists of the following NPM packages:
 4. [@react-form-builder/components-fast-qr](https://www.npmjs.com/package/@react-form-builder/components-fast-qr).
 5. [@react-form-builder/components-rich-text](https://www.npmjs.com/package/@react-form-builder/components-rich-text).
 6. [@react-form-builder/components-print](https://www.npmjs.com/package/@react-form-builder/components-print).
-6. [@react-form-builder/components-sortable-list](https://www.npmjs.com/package/@react-form-builder/components-sortable-list).
+7. [@react-form-builder/components-sortable-list](https://www.npmjs.com/package/@react-form-builder/components-sortable-list).
 
 :::tip
 

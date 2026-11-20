@@ -5,7 +5,7 @@ The test workspaces exercise packaged FormEngine entry points and supported Reac
 ## Suite ownership
 
 | Directory    | Purpose                                                               |
-|--------------|-----------------------------------------------------------------------|
+| ------------ | --------------------------------------------------------------------- |
 | `common/`    | Shared helpers, fixtures, test applications, and license validation   |
 | `module/`    | Vitest integration tests against package public entry points          |
 | `component/` | Component scenarios shared by the React host workspaces               |

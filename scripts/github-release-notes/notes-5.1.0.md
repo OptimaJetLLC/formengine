@@ -14,7 +14,7 @@ _July_ 17, 2025
 ### Fixed bugs
 
 - Fixed dropdown positioning in code action arguments editor (previously appearing off-screen).
-- Fixed  `aria-label` attribute added on components without labels.
+- Fixed `aria-label` attribute added on components without labels.
 
 ### Updated internal dependencies
 

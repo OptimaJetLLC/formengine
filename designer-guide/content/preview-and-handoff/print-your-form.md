@@ -28,9 +28,9 @@ not.
 
 In **Components**, under **Structure**:
 
-| Component          | What it does                                                           |
-| ------------------ | ---------------------------------------------------------------------- |
-| **Page break**     | Starts a new printed page at that place on the canvas                  |
+| Component          | What it does                                                            |
+| ------------------ | ----------------------------------------------------------------------- |
+| **Page break**     | Starts a new printed page at that place on the canvas                   |
 | **Print settings** | Sets the printed header and footer (one per form; lives off the canvas) |
 
 <img
@@ -44,9 +44,9 @@ In **Components**, under **Structure**:
 3. Select **Print settings** (bar chip or Tree). On **Main**, set **Header**, **Footer**, and alignment.
 4. In **Header** or **Footer**, type the text you want on every printed page. Use these placeholders for page numbers:
 
-   | Placeholder | Meaning              |
-   | ----------- | -------------------- |
-   | `{page}`    | Current page number  |
+   | Placeholder | Meaning               |
+   | ----------- | --------------------- |
+   | `{page}`    | Current page number   |
    | `{pages}`   | Total number of pages |
 
    Example: `Page {page} of {pages}` prints as "Page 1 of 3" on the first sheet.

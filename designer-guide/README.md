@@ -1,7 +1,6 @@
 # Form Author Guide (Astro)
 
-End-user documentation for **FormEngine Designer**, built with [Astro](https://astro.build/) 7 and [
-`@astrojs/mdx`](https://docs.astro.build/en/guides/integrations-guide/mdx/).
+End-user documentation for **FormEngine Designer**, built with [Astro](https://astro.build/) 7 and [`@astrojs/mdx`](https://docs.astro.build/en/guides/integrations-guide/mdx/).
 
 ## Commands
 
@@ -52,7 +51,7 @@ npm run optimize:images
 Walkthrough articles open the demo in a minimal popup window via query params (implemented in `packages/apps/common-designer`):
 
 | Param                                                     | Meaning                                     |
-|-----------------------------------------------------------|---------------------------------------------|
+| --------------------------------------------------------- | ------------------------------------------- |
 | `form=empty`                                              | Blank Screen form                           |
 | `formBody=<base64url>`                                    | Minified form JSON encoded as base64url     |
 | `formName=<name>`                                         | Optional display name when using `formBody` |

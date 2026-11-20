@@ -19,7 +19,7 @@ Describe your form in JSON and render it across your apps. No hooks. No context.
 
 ### Simple Form JSON Example
 
-```json  
+```json
 {
   "version": "1",
   "errorType": "RsErrorMessage",
@@ -94,7 +94,7 @@ Describe your form in JSON and render it across your apps. No hooks. No context.
   ],
   "defaultLanguage": "en-US"
 }
-```  
+```
 
 <details> 
 <summary> Click to see how you can define your entire form in JSON and render it with Formengine Core. </summary>
@@ -199,9 +199,9 @@ export const App = () => (
 
 **It’s time to use something better. Install the core package and RSuite free form components:**
 
- ```bash  
- npm install @react-form-builder/core @react-form-builder/components-rsuite  
- ```  
+```bash
+npm install @react-form-builder/core @react-form-builder/components-rsuite  
+```
 
 ## 💙 Why developers love Formengine Core?
 
@@ -247,9 +247,9 @@ export const App = () => (
 
 ## Ready to use Pre-Built RSuite Form UI Components
 
- ```bash  
- npm install @react-form-builder/components-rsuite  
- ```  
+```bash
+npm install @react-form-builder/components-rsuite  
+```
 
 [![Formengine Drag and n Drop](https://formengine.io/repository-images/components-ui.png?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme)](https://formengine.io/react-form-components-library?utm_source=npmjs&utm_medium=article_banne-dndr&utm_campaign=readme)
 
@@ -262,7 +262,7 @@ Well, let's describe some existing component from the popular MUI library. As an
 
 #### Example of a custom component definition
 
- ```tsx 
+```tsx
 import {Button} from '@mui/material'
 import {define, disabled, event, oneOf, string} from '@react-form-builder/core'
 
@@ -272,20 +272,20 @@ import {define, disabled, event, oneOf, string} from '@react-form-builder/core'
 // Here we call the define function and pass it two parameters - the Button component
 // and the unique name of the component type.
 export const matButton = define(Button, 'MatButton')
-  // component name displayed in the component panel in the designer
-  .name('Button')
-  // define the component properties that we want to edit in the designer
-  .props({
-    // button text
-    children: string.named('Caption').default('Button'),
-    // button color
-    color: oneOf('inherit', 'primary', 'secondary', 'success', 'error', 'info', 'warning'),
-    // button disable flag
-    disabled: disabled,
-    // callback fired when the button is clicked.
-    onClick: event,
-  })
- ```
+ // component name displayed in the component panel in the designer
+ .name('Button')
+ // define the component properties that we want to edit in the designer
+ .props({
+   // button text
+   children: string.named('Caption').default('Button'),
+   // button color
+   color: oneOf('inherit', 'primary', 'secondary', 'success', 'error', 'info', 'warning'),
+   // button disable flag
+   disabled: disabled,
+   // callback fired when the button is clicked.
+   onClick: event,
+ })
+```
 
 ## 🌍 Free Online Drag & Drop Form Builder
 
@@ -308,9 +308,9 @@ export const matButton = define(Button, 'MatButton')
 A powerful commercial drag-and-drop form builder for React, built on top of the free, MIT-licensed FormEngine Core. Advanced form logic, UI
 controls, export, and integrations.
 
-```bash  
+```bash
  npm install @react-form-builder/designer
- ```
+```
 
 [![Contributions welcome](https://img.shields.io/badge/Contribute-💡_Ideas-FF69B4?style=for-the-badge&logo=github)](https://github.com/optimajet/formengine/issues?utm_source=nmpjs&utm_medium=article-badge&utm_campaign=readme)
 [![Try Demo](https://img.shields.io/badge/🚀_Try_Live_Demo-4286F4?style=for-the-badge)](https://demo.formengine.io/?utm_source=nmpjs&utm_medium=article-badge&utm_campaign=readme)
@@ -322,9 +322,9 @@ controls, export, and integrations.
 
 **It’s time to use something better. Install the core package and RSuite free form components:**
 
- ```bash  
- npm install @react-form-builder/core @react-form-builder/components-rsuite  
- ``` 
+```bash
+npm install @react-form-builder/core @react-form-builder/components-rsuite  
+```
 
 ## 🫶 We hope this project has saved you hours - ⭐ star this repo to support development. Your support keeps Formengine Core open and free.
 

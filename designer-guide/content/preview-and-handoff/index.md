@@ -8,4 +8,3 @@ description: "Test on desktop and mobile, use Preview tools, then export and sha
 Check the form before you share it: testing checklist, Preview tools, mobile sizes, print, and export.
 
 ## In this section
-

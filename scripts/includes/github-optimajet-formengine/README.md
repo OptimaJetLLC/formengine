@@ -26,7 +26,7 @@
 ## Bundle size FormEngine Core (for comparison with popular libraries)
 
 | Package                | Total size JS + CSS (raw/gzip) | Framework / Library      | Description                   |
-|------------------------|--------------------------------|--------------------------|-------------------------------|
+| ---------------------- | ------------------------------ | ------------------------ | ----------------------------- |
 | **FormEngine Core**    | 612.74 KB / 188.90KB           | React                    | FormEngine Core + MUI         |
 | survey                 | 1.47 MB / 391.72KB             | Plain JavaScript + React | survey-react + MUI            |
 | vueform                | 467.35 KB / 141.09K            | Vue3                     | Tree-shaked vueform + MUI CSS |
@@ -54,7 +54,7 @@ npm install @react-form-builder/core @mui/material @emotion/react @emotion/style
 
 ## Simple Form JSON Example
 
-```json  
+```json
 {
   "form": {
     "key": "Screen",
@@ -101,7 +101,7 @@ npm install @react-form-builder/core @mui/material @emotion/react @emotion/style
     ]
   }
 }
-```  
+```
 
 <details> 
 <summary> Click to see how you can define your entire form in JSON and render it with FormEngine Core. </summary>
@@ -232,8 +232,8 @@ export const App = () => (
 
 ## 🧩 Compatibility 
 
-- **Works out of the box with** - [Next.js](https://formengine.io/documentation/usage-with-nextjs?utm_source=github&utm_medium=article&utm_campaign=readme). 
-- **Fully supports** - [Remix](https://formengine.io/documentation/usage-with-remix?utm_source=github&utm_medium=article&utm_campaign=readme). 
+- **Works out of the box with** - [Next.js](https://formengine.io/documentation/usage-with-nextjs?utm_source=github&utm_medium=article&utm_campaign=readme).
+- **Fully supports** - [Remix](https://formengine.io/documentation/usage-with-remix?utm_source=github&utm_medium=article&utm_campaign=readme).
 
 ## ✅ Validation
 
@@ -242,9 +242,9 @@ export const App = () => (
 
 ## Ready to use Pre-Built RSuite Form UI Components
 
-```bash  
+```bash
 npm install @react-form-builder/components-rsuite  
-```  
+```
 
 [![FormEngine Drag and n Drop](https://formengine.io/repository-images/components-ui.png)](https://formengine.io/react-form-components-library?utm_source=github&utm_medium=article_banne-dndr&utm_campaign=readme)
 
@@ -257,7 +257,7 @@ Well, let's describe some existing component from the popular MUI library. As an
 
 #### Example of a custom component definition
 
-```tsx 
+```tsx
 import {Button} from '@mui/material'
 import {define, disabled, event, oneOf, string} from '@react-form-builder/core'
 
@@ -301,7 +301,7 @@ export const matButton = define(Button, 'MatButton')
 
 A powerful commercial drag-and-drop form builder for React, built on top of the free, MIT-licensed FormEngine Core. Advanced form logic, UI controls, export, and integrations.
 
-```bash  
+```bash
  npm install @react-form-builder/designer
 ```
 
@@ -313,9 +313,9 @@ A powerful commercial drag-and-drop form builder for React, built on top of the 
 
 ## 📦 FormEngine Core Installation
 
-**It’s time to use something better. Install the core package and RSuite free form components:**  
+**It’s time to use something better. Install the core package and RSuite free form components:**
 
-```bash  
+```bash
 npm install @react-form-builder/core @react-form-builder/components-rsuite  
 ```
 

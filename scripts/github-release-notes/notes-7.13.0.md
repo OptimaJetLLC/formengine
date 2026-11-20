@@ -40,16 +40,16 @@ Update all packages to version **7.13.0**. No additional actions are required.
 
 ### Bug fixes
 
-* Fixed an issue where changing an action name could crash the application.
-* Fixed `closeModal` behavior when `onClose` is used.
-* Fixed palette rendering with multiple system components.
+- Fixed an issue where changing an action name could crash the application.
+- Fixed `closeModal` behavior when `onClose` is used.
+- Fixed palette rendering with multiple system components.
 
 ### Security
 
-* Bumped `rollup` to `4.59.0`.
-* Bumped `multer` to `2.1.0` in the examples.
-* Bumped `immutable` to `5.1.5` in the examples.
-* Bumped `locutus` to `3.0.0` in the examples.
-* Bumped `minimatch` to `3.1.4` in the examples.
-* Bumped `ajv` to `6.14.0` in the `/examples/premium/with-remix/with-remix-v2`.
-* Bumped `ajv` to `8.18.0` in the `/examples/community/bundle-size`.
+- Bumped `rollup` to `4.59.0`.
+- Bumped `multer` to `2.1.0` in the examples.
+- Bumped `immutable` to `5.1.5` in the examples.
+- Bumped `locutus` to `3.0.0` in the examples.
+- Bumped `minimatch` to `3.1.4` in the examples.
+- Bumped `ajv` to `6.14.0` in the `/examples/premium/with-remix/with-remix-v2`.
+- Bumped `ajv` to `8.18.0` in the `/examples/community/bundle-size`.

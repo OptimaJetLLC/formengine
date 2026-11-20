@@ -53,7 +53,7 @@ const App = () => (
 ### Main Properties
 
 | Property      | Type            | Description                               | Required |
-|---------------|-----------------|-------------------------------------------|----------|
+| ------------- | --------------- | ----------------------------------------- | -------- |
 | `view`        | `View`          | UI component configuration                | Yes      |
 | `getForm`     | `() => string`  | Function returning form JSON, stringified | Yes      |
 | `actions`     | `CustomActions` | Custom action handlers                    | No       |

@@ -3,7 +3,6 @@ title: "Add fields to your form"
 description: "Drag Text field and other inputs from Components onto the canvas, then set Label and Key on the Main tab: your first form fields."
 ---
 
-
 # Add fields to your form
 
 Add inputs from the **Components** tab, then name them on the **Main** tab of the right panel.
