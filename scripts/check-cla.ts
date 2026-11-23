@@ -12,6 +12,9 @@ const DEFAULT_CLA_SIGNATURES_PATH = join(REPO_ROOT, 'cla.json')
 /** Associations that do not need to sign the CLA (maintainers / org members). */
 const CLA_EXEMPT_ASSOCIATIONS = new Set(['OWNER', 'MEMBER', 'COLLABORATOR'])
 
+/** GitHub App bots that open PRs but cannot sign the CLA (e.g. dependabot[bot]). */
+const isClaExemptBot = (login: string): boolean => login.toLowerCase().endsWith('[bot]')
+
 type ClaSignatures = {
   signedContributors?: Array<{
     name?: string
@@ -48,6 +51,11 @@ function main(): void {
   const authorId = readRequiredEnv('PR_AUTHOR_ID')
   const authorAssociation = process.env.PR_AUTHOR_ASSOCIATION ?? 'NONE'
   const signaturesPath = resolveClaSignaturesPath()
+
+  if (isClaExemptBot(authorLogin)) {
+    console.log(`CLA check skipped for bot ${authorLogin}.`)
+    return
+  }
 
   if (CLA_EXEMPT_ASSOCIATIONS.has(authorAssociation)) {
     console.log(`CLA check skipped for ${authorLogin} (${authorAssociation}).`)
