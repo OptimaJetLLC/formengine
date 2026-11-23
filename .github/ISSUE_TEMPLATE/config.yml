@@ -10,8 +10,8 @@ contact_links:
     url: https://demo.formengine.io/
     about: Explore sample forms and viewer behavior.
   - name: Contribution guide
-    url: https://github.com/optimajet/formengine/blob/master/CONTRIBUTION.md
+    url: https://github.com/OptimaJetLLC/formengine/blob/master/CONTRIBUTION.md
     about: How to contribute, licenses, and CLA requirements.
   - name: GitHub Discussions
-    url: https://github.com/optimajet/formengine/discussions
-    about: Ask for help or discuss ideas (if Discussions are enabled).
+    url: https://github.com/OptimaJetLLC/formengine/discussions
+    about: Ask for help or discuss ideas.
