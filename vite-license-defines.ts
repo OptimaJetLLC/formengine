@@ -26,7 +26,7 @@ type TestLicenseMatrixJson = {
  * @param envDir product repository root
  * @returns export names referenced by Vite define placeholders
  */
-function discoverTestLicenseExportNames(envDir: string): string[] {
+export function discoverTestLicenseExportNames(envDir: string): string[] {
   const modulePath = join(envDir, TEST_LICENSE_KEYS_MODULE)
   if (!existsSync(modulePath)) {
     return []
@@ -63,21 +63,51 @@ function defineStringLiteral(value: string): string {
 
 /**
  * Parses the combined test-license matrix from `.env`.
+ * Empty / unset → `{}` (local runs without secrets). Non-empty must be valid `{"keys":{...}}`.
  * @param raw JSON string from FORMENGINE_TEST_LICENSE_KEYS_JSON
  * @returns export name to license key map
  */
-function parseTestLicenseMatrix(raw: string | undefined): Record<string, string> {
-  if (!raw) {
+export function parseTestLicenseMatrix(raw: string | undefined): Record<string, string> {
+  if (!raw?.trim()) {
     return {}
   }
+  // eslint-disable-next-line @typescript-eslint/init-declarations -- assigned in try; catch always throws
+  let parsed: unknown
   try {
-    const parsed = JSON.parse(raw) as TestLicenseMatrixJson
-    if (!parsed.keys || typeof parsed.keys !== 'object') {
-      return {}
+    parsed = JSON.parse(raw) as TestLicenseMatrixJson
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error)
+    throw new Error(`${ENV_TEST_LICENSE_MATRIX} is not valid JSON (${detail})`, {cause: error})
+  }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    throw new Error(`${ENV_TEST_LICENSE_MATRIX} must be a JSON object with a "keys" map`)
+  }
+  const keys = (parsed as TestLicenseMatrixJson).keys
+  if (!keys || typeof keys !== 'object' || Array.isArray(keys)) {
+    throw new Error(`${ENV_TEST_LICENSE_MATRIX} must be {"keys":{ "<exportName>": "<licenseKey>", ... }}`)
+  }
+  const out: Record<string, string> = {}
+  for (const [exportName, value] of Object.entries(keys)) {
+    if (typeof value !== 'string') {
+      throw new Error(`${ENV_TEST_LICENSE_MATRIX}.keys.${exportName} must be a string`)
     }
-    return parsed.keys
-  } catch {
-    return {}
+    out[exportName] = value
+  }
+  return out
+}
+
+/**
+ * Ensures every Vite placeholder export name has a non-empty matrix value.
+ * @param keys parsed matrix keys
+ * @param exportNames names from {@link discoverTestLicenseExportNames}
+ */
+export function assertTestLicenseMatrixComplete(keys: Record<string, string>, exportNames: string[]): void {
+  if (exportNames.length === 0) {
+    return
+  }
+  const missing = exportNames.filter(name => normalizeLicenseValue(keys[name]).length === 0)
+  if (missing.length > 0) {
+    throw new Error(`${ENV_TEST_LICENSE_MATRIX} missing non-empty keys for: ${missing.join(', ')}`)
   }
 }
 
@@ -103,11 +133,18 @@ export function buildLicenseDefines(mode: string, envDir: string): Record<string
     defines[`__${envName}__`] = defineStringLiteral(normalizeLicenseValue(env[envName]))
   }
 
-  for (const exportName of discoverTestLicenseExportNames(envDir)) {
+  const exportNames = discoverTestLicenseExportNames(envDir)
+  for (const exportName of exportNames) {
     defines[`__FORMENGINE_TEST_LICENSE_${exportName}__`] = defineStringLiteral('')
   }
 
-  for (const [exportName, key] of Object.entries(parseTestLicenseMatrix(env[ENV_TEST_LICENSE_MATRIX]))) {
+  const matrixRaw = env[ENV_TEST_LICENSE_MATRIX]
+  const matrix = parseTestLicenseMatrix(matrixRaw)
+  if (matrixRaw?.trim() && exportNames.length > 0) {
+    assertTestLicenseMatrixComplete(matrix, exportNames)
+  }
+
+  for (const [exportName, key] of Object.entries(matrix)) {
     defines[`__FORMENGINE_TEST_LICENSE_${exportName}__`] = defineStringLiteral(normalizeLicenseValue(key))
   }
 

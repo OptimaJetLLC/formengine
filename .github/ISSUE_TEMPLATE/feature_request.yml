@@ -1,0 +1,71 @@
+name: Feature request
+description: Suggest an improvement for FormEngine
+title: '[Feature] '
+labels: [feature, needs triage]
+body:
+  - type: checkboxes
+    attributes:
+      label: Prerequisites
+      options:
+        - label: I have searched the existing issues and discussions
+          required: true
+        - label: I have read the [FormEngine documentation](https://formengine.io/documentation/)
+          required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area would this feature affect?
+      options:
+        - FormEngine Core (`@react-form-builder/core`)
+        - FormEngine Designer (`@react-form-builder/designer`)
+        - Viewer bundle
+        - Component library / theme
+        - Commercial add-on component
+        - Documentation
+        - Tooling / DX
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Component library / theme (if applicable)
+      options:
+        - mantine (`@react-form-builder/components-mantine`)
+        - material-ui (`@react-form-builder/components-material-ui`)
+        - rsuite (`@react-form-builder/components-rsuite`)
+        - rsuite-table (`@react-form-builder/components-rsuite-table`)
+        - fast-qr (`@react-form-builder/components-fast-qr`)
+        - google-map (`@react-form-builder/components-google-map`)
+        - rich-text (`@react-form-builder/components-rich-text`)
+        - signature (`@react-form-builder/components-signature`)
+        - uploader (`@react-form-builder/components-uploader`)
+        - none / not applicable
+        - other
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Problem
+      description: What problem are you trying to solve?
+      placeholder: Ex. It is hard to … when …
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposed solution
+      description: What would you like FormEngine to do?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Alternatives considered
+      description: Other approaches you tried or considered.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Mockups, API sketches, links to docs or competitor behavior (optional).
+    validations:
+      required: false

@@ -109,7 +109,7 @@ designer-guide-sources:
 
 sources:
   FROM +dependencies
-  COPY package.public.json package.private.json lerna.json biome.json LICENSE.md README.private.md CHANGELOG.md ./
+  COPY lerna.json biome.json LICENSE.md EULA.md README.md CHANGELOG.md cla.json ./
   COPY .editorconfig .gitignore eslint.config.mjs eslint.base.mjs tsconfig.json vite.config.ts vite-license-defines.ts knip.config.ts vite-plugin-app-version.ts .mdxlintrc.mjs vite-plugin-api-extractor.ts ./
   COPY scripts/write-test-license-env.ts scripts/write-test-license-env.ts
   COPY .madgerc ./
@@ -119,7 +119,7 @@ sources:
 # Source tree for formengine-src.tgz only (no npm ci - avoids node_modules in the archive).
 formengine-src-sources:
   WORKDIR /repo
-  COPY package.json package-lock.json package.public.json package.private.json lerna.json biome.json .npmrc LICENSE.md README.private.md CHANGELOG.md ./
+  COPY package.json package-lock.json lerna.json biome.json .npmrc LICENSE.md EULA.md README.md CHANGELOG.md cla.json ./
   COPY .editorconfig .gitignore eslint.config.mjs eslint.base.mjs tsconfig.json vite.config.ts vite-license-defines.ts knip.config.ts vite-plugin-app-version.ts vite-plugin-api-extractor.ts ./
   COPY scripts/write-test-license-env.ts scripts/write-test-license-env.ts
   COPY .madgerc ./
@@ -226,6 +226,18 @@ npm-check-all:
   COPY .nvmrc AGENTS.md CONTRIBUTING.md ./
   RUN npm rebuild
   RUN npm run check-all
+
+
+npm-check-cla:
+  FROM +sources
+  WORKDIR /repo
+  ARG PR_AUTHOR
+  ARG PR_AUTHOR_ID
+  ARG PR_AUTHOR_ASSOCIATION=NONE
+  ENV PR_AUTHOR=$PR_AUTHOR
+  ENV PR_AUTHOR_ID=$PR_AUTHOR_ID
+  ENV PR_AUTHOR_ASSOCIATION=$PR_AUTHOR_ASSOCIATION
+  RUN node ./scripts/check-cla.ts
 
 npm-check-circular-deps:
   FROM +sources

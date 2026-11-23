@@ -5,7 +5,6 @@ import {readFileSync, writeFileSync} from 'node:fs'
 import {dirname, join} from 'node:path'
 import {fileURLToPath, pathToFileURL} from 'node:url'
 import {allVersionTargetPaths} from '@react-form-builder/cli-lib/workspace-package-paths'
-import {syncDistributionPackageJsons} from './sync-distribution-package-json.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -151,7 +150,6 @@ async function main(): Promise<void> {
   updateAssemblyDate()
 
   // 6) Keep GitHub distribution root manifests in sync with the dev monorepo root package.json.
-  syncDistributionPackageJsons(REPO_ROOT)
 }
 
 try {

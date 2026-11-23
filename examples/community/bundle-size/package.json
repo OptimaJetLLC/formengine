@@ -51,5 +51,6 @@
     "@eslint/eslintrc": {
       "ajv": "6.12.6"
     }
-  }
+  },
+  "license": "MIT"
 }

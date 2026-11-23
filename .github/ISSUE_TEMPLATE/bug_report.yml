@@ -1,0 +1,85 @@
+name: Bug report
+description: Report a bug in FormEngine Core, Designer, or components
+title: '[Bug] '
+labels: [bug, needs triage]
+body:
+  - type: checkboxes
+    attributes:
+      label: Prerequisites
+      options:
+        - label: I have searched the existing issues
+          required: true
+        - label: I have read the [FormEngine documentation](https://formengine.io/documentation/)
+          required: true
+        - label: I can provide a minimal reproduction (CodeSandbox, StackBlitz, or a public repo)
+          required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area is affected?
+      options:
+        - FormEngine Core (`@react-form-builder/core`)
+        - FormEngine Designer (`@react-form-builder/designer`)
+        - Viewer bundle
+        - Component library / theme
+        - Commercial add-on component
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Component library / theme (if applicable)
+      options:
+        - mantine (`@react-form-builder/components-mantine`)
+        - material-ui (`@react-form-builder/components-material-ui`)
+        - rsuite (`@react-form-builder/components-rsuite`)
+        - rsuite-table (`@react-form-builder/components-rsuite-table`)
+        - fast-qr (`@react-form-builder/components-fast-qr`)
+        - google-map (`@react-form-builder/components-google-map`)
+        - rich-text (`@react-form-builder/components-rich-text`)
+        - signature (`@react-form-builder/components-signature`)
+        - uploader (`@react-form-builder/components-uploader`)
+        - none / not applicable
+        - other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package version(s)
+      description: Versions from package.json (for example @react-form-builder/core@10.x).
+      placeholder: '@react-form-builder/core@10.x'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Current behavior
+      description: What happens today?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: |
+        Prefer a link to [Form Builder](https://formbuilder.formengine.io/), [Demo](https://demo.formengine.io/), CodeSandbox, StackBlitz, or a minimal public repository.
+      placeholder: |
+        1. Environment / packages...
+        2. Form JSON or setup...
+        3. Steps...
+        4. See error...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Screenshots, stack traces, browser/OS, or related PRs. You can drag files into this field.
+    validations:
+      required: false

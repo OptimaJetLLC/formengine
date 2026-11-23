@@ -1,0 +1,54 @@
+name: Question
+description: Ask a question about using FormEngine
+title: '[Question] '
+labels: [question, needs triage]
+body:
+  - type: checkboxes
+    attributes:
+      label: Prerequisites
+      options:
+        - label: I have searched the existing issues and discussions
+          required: true
+        - label: I have read the [FormEngine documentation](https://formengine.io/documentation/)
+          required: true
+        - label: This is not a bug report or feature request (use those templates instead)
+          required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area is your question about?
+      options:
+        - FormEngine Core (`@react-form-builder/core`)
+        - FormEngine Designer (`@react-form-builder/designer`)
+        - Licensing (MIT / EULA / commercial license)
+        - Component library / theme
+        - Commercial add-on component
+        - Documentation
+        - Integration (Next.js, Remix, etc.)
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Component library / theme (if applicable)
+      options:
+        - mantine (`@react-form-builder/components-mantine`)
+        - material-ui (`@react-form-builder/components-material-ui`)
+        - rsuite (`@react-form-builder/components-rsuite`)
+        - rsuite-table (`@react-form-builder/components-rsuite-table`)
+        - fast-qr (`@react-form-builder/components-fast-qr`)
+        - google-map (`@react-form-builder/components-google-map`)
+        - rich-text (`@react-form-builder/components-rich-text`)
+        - signature (`@react-form-builder/components-signature`)
+        - uploader (`@react-form-builder/components-uploader`)
+        - none / not applicable
+        - other
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Question
+      description: What do you want to know? Include relevant package versions and a short code snippet if helpful.
+    validations:
+      required: true

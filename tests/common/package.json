@@ -31,5 +31,6 @@
   },
   "devDependencies": {
     "@playwright/test": "1.65.0"
-  }
+  },
+  "license": "https://formengine.io/eula/"
 }

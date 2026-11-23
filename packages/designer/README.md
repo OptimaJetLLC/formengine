@@ -2,7 +2,7 @@
 [![Documentation](https://img.shields.io/badge/Doc-Install-4286F4?style=for-the-badge&logo=read-the-docs&logoColor=white)](https://formengine.io/documentation/installation?utm_source=npmjs&utm_medium=article-badge&utm_campaign=readme)
 [![Stars](https://img.shields.io/github/stars/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/optimajet/formengine/stargazers)
 [![Total Downloads](https://img.shields.io/npm/dt/@react-form-builder/designer?style=for-the-badge&logo=npm&color=4286F4&logoColor=white)](https://www.npmjs.com/package/@react-form-builder/designer?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme)
-[![License](https://img.shields.io/badge/License-EULA-4286F4?style=for-the-badge&logoColor=white)](https://optimajet.com/products/formengine/eula/?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme)
+[![License EULA](https://img.shields.io/badge/License-EULA-4286F4?style=for-the-badge&logoColor=white)](https://formengine.io/eula/)
 [![Closed Issues](https://img.shields.io/github/issues-closed/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/optimajet/formengine/issues?q=is%3Aissue+is%3Aclosed)
 [![Release date](https://img.shields.io/github/release-date/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/optimajet/formengine/releases?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme)
 
@@ -14,7 +14,7 @@
 - [FAQ](https://formengine.io/documentation/category/faq?utm_source=npmjs&utm_medium=article&utm_campaign=readme)
 - [Guides](https://formengine.io/documentation/category/guides?utm_source=npmjs&utm_medium=article&utm_campaign=readme)
 
-### 📦 Formengine Core Installation - MIT Licensed.
+### 📦 FormEngine Core Installation — MIT.
 
 **Install the core package and RSuite free form components:**
 
@@ -22,9 +22,9 @@
 npm install @react-form-builder/core @react-form-builder/components-rsuite
 ```
 
-### 📦 Formengine Drag-and-Drop Form Builder Installation - Commercial License.
+### 📦 Formengine Drag-and-Drop Form Builder Installation — EULA.
 
-**Install drag-and-drop Form Builder, built on top of the free, MIT-licensed FormEngine Core.**
+**Install drag-and-drop Form Builder, built on top of FormEngine Core.**
 
 ```bash
  npm install @react-form-builder/designer
@@ -49,8 +49,8 @@ npm install @react-form-builder/core @react-form-builder/components-rsuite
 
 ## 🗄️ Repository structure
 
-- **Community:** Formengine Core source code and examples for FormEngine Community (MIT license).
-- **Premium:** Examples for Premium On-Premise Drag-and-Drop React Form Builder (Commercial license). Premium On-Premise Drag-and-Drop React
+- **Community:** FormEngine Core source code and examples (MIT).
+- **Premium:** Examples for Premium On-Premise Drag-and-Drop React Form Builder ([EULA](https://formengine.io/eula/)). Premium On-Premise Drag-and-Drop React
   Form Builder
 - [Formengine Core Source Code](https://github.com/optimajet/formengine/tree/master/community)
 

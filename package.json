@@ -41,7 +41,7 @@
     "test:e2e": "npx lerna run --stream test:e2e --scope=@react-form-builder/tests-e2e",
     "clean": "lerna exec -- npx rimraf node_modules dist build && rimraf node_modules",
     "check:dist": "lerna run --stream check:dist",
-    "check-all": "npm-run-all -l check:circular-deps check:tsc check:unused-exports check:eslint check:format check:stylelint check:docs-mdx check:distribution-package-json",
+    "check-all": "npm-run-all -l check:circular-deps check:tsc check:unused-exports check:eslint check:format check:stylelint check:docs-mdx check:licenses check:package-privacy",
     "check:stylelint": "npm run check:stylelint --prefix designer-guide",
     "check:circular-deps": "npx madge@8.0.0 --extensions ts,tsx --circular .",
     "check:tsc": "tsc --noEmit --emitDeclarationOnly false && npm run check:tsc --prefix designer-guide",
@@ -57,13 +57,14 @@
     "check:package": "npx lerna exec -- npx @e18e/cli analyze",
     "check:licenses": "node ./scripts/check-licenses.ts",
     "check:license-expiry": "node ./scripts/check-license-expiry.ts",
-    "check:distribution-package-json": "node ./scripts/check-distribution-package-json.ts",
+    "write-test-license-env": "node ./scripts/write-test-license-env.ts",
     "check:bundled-dts": "node ./scripts/check-bundled-dts-pollution.ts",
-    "sync:distribution-package-json": "node ./scripts/sync-distribution-package-json.ts",
     "version-update": "node ./scripts/version-update.ts",
     "examples:install-local-packages": "node ./scripts/examples-install-local-packages.ts",
     "todo": "npx leasot '(packages|tests|types|examples|documentation)/**/*.(ts|tsx|js)' -S --ignore '**/node_modules,**/dist'",
-    "postinstall": "git rev-parse --git-dir >/dev/null 2>&1 && npx lefthook install || true"
+    "postinstall": "git rev-parse --git-dir >/dev/null 2>&1 && npx lefthook install || true",
+    "check:package-privacy": "node ./scripts/check-package-privacy.ts",
+    "sync:license-files": "node ./scripts/sync-license-files.ts"
   },
   "workspaces": [
     "packages/*",

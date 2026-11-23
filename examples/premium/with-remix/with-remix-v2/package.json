@@ -2,7 +2,7 @@
   "name": "formengine-with-remix-v2",
   "description": "FormEngine with Remix v2 example",
   "version": "0.1.0",
-  "license": "MIT",
+  "license": "https://formengine.io/eula/",
   "private": false,
   "author": "Optimajet",
   "homepage": "https://formengine.io/",

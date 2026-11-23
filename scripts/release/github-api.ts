@@ -135,7 +135,8 @@ function draftArtifactReleasePayload(version: string, targetCommitish: string): 
   return {
     tag_name: version,
     target_commitish: targetCommitish,
-    name: `${version} (RC artifacts)`,
+    name: `${version}`,
+    // TODO populate with release description
     body: 'Draft release with deployment archives.',
     draft: true,
     prerelease: true,

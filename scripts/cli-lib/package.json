@@ -20,5 +20,6 @@
     "./view-pack-tools": "./view-pack-tools.ts",
     "./workspace-package-paths": "./workspace-package-paths.ts",
     "./workspace-packages": "./workspace-packages.ts"
-  }
+  },
+  "license": "https://formengine.io/eula/"
 }

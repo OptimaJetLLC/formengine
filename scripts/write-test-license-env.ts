@@ -9,6 +9,7 @@
 
 import {writeFileSync} from 'node:fs'
 import {join} from 'node:path'
+import {assertTestLicenseMatrixComplete, discoverTestLicenseExportNames, parseTestLicenseMatrix} from '../vite-license-defines.ts'
 
 const ENV_TEST = 'FORMENGINE_TEST_LICENSE_KEY'
 const ENV_MATRIX = 'FORMENGINE_TEST_LICENSE_KEYS_JSON'
@@ -30,6 +31,22 @@ function quoteDotenvValue(value: string): string {
 }
 
 const repoRoot = process.cwd()
+const testKey = process.env[ENV_TEST]?.trim()
+const matrixRaw = process.env[ENV_MATRIX]?.trim()
+
+if (!testKey || !matrixRaw) {
+  console.error(`❌ ${ENV_TEST} and ${ENV_MATRIX} must be set for CI tests`)
+  process.exit(1)
+}
+
+try {
+  const keys = parseTestLicenseMatrix(matrixRaw)
+  assertTestLicenseMatrixComplete(keys, discoverTestLicenseExportNames(repoRoot))
+} catch (error) {
+  console.error(`❌ ${error instanceof Error ? error.message : String(error)}`)
+  process.exit(1)
+}
+
 const lines: string[] = ['# Written by scripts/write-test-license-env.ts for CI tests.', '']
 
 for (const envName of GHA_TEST_LICENSE_ENV_NAMES) {
@@ -39,10 +56,5 @@ for (const envName of GHA_TEST_LICENSE_ENV_NAMES) {
   }
 }
 
-if (!process.env[ENV_TEST]?.trim() || !process.env[ENV_MATRIX]?.trim()) {
-  console.error(`❌ ${ENV_TEST} and ${ENV_MATRIX} must be set for CI tests`)
-  process.exitCode = 1
-} else {
-  writeFileSync(join(repoRoot, '.env'), `${lines.join('\n')}\n`, 'utf8')
-  console.log(`Wrote ${join(repoRoot, '.env')} (test license keys only)`)
-}
+writeFileSync(join(repoRoot, '.env'), `${lines.join('\n')}\n`, 'utf8')
+console.log(`Wrote ${join(repoRoot, '.env')} (test license keys only)`)

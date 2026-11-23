@@ -2,7 +2,7 @@
   "name": "formengine",
   "version": "5.0.0",
   "description": "FormEngine example application",
-  "license": "MIT",
+  "license": "https://formengine.io/eula/",
   "private": false,
   "author": "Optimajet",
   "homepage": "https://formengine.io/",

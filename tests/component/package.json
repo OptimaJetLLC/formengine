@@ -15,5 +15,6 @@
     "klona": "^2.0.6",
     "skia-canvas": "^4.0.0",
     "vitest-fail-on-console": "^0.10.1"
-  }
+  },
+  "license": "https://formengine.io/eula/"
 }

@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: FormEngine documentation
+    url: https://formengine.io/documentation/
+    about: Guides, API reference, and getting started.
+  - name: Online Form Builder
+    url: https://formbuilder.formengine.io/
+    about: Try FormEngine Designer in the browser.
+  - name: Live demo
+    url: https://demo.formengine.io/
+    about: Explore sample forms and viewer behavior.
+  - name: Contribution guide
+    url: https://github.com/optimajet/formengine/blob/master/CONTRIBUTION.md
+    about: How to contribute, licenses, and CLA requirements.
+  - name: GitHub Discussions
+    url: https://github.com/optimajet/formengine/discussions
+    about: Ask for help or discuss ideas (if Discussions are enabled).

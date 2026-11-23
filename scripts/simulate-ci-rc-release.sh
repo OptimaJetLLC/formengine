@@ -2,6 +2,8 @@
 #
 # Simulate the GitHub Actions **fb producer** CI build and RC draft-release upload.
 #
+# Does NOT run formengine-tools deploy (npm publish, compose-mirrors, GitHub mirrors).
+#
 # Mirrors GHA RC release flow (orchestrated by `.github/workflows/ci.yml`):
 #   ci-bundle.yml              → earthly +prepare-rc-archives-from-pack (RC) or +npm-bundle (PR)
 #   ci-build-documentation.yml → earthly +prepare-documentation-sites-archives
@@ -60,7 +62,6 @@
 #   node - required when archive validation runs (default RC flow)
 #   gh - optional; used to infer GITHUB_REPOSITORY
 #
-# See also: scripts/release/README.md
 
 set -euo pipefail
 

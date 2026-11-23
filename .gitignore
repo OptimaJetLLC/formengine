@@ -22,6 +22,7 @@ tests/e2e/playwright-report
 **/test-results/
 
 !documentation/website/packages/*.tgz
+# Runtime license keys — gitignored `.env` / `.env.*` (Earthly also ignores via .earthlyignore).
 .env
 .env.*
 # Runtime license keys — keep example tracked.

@@ -1,6 +1,6 @@
 [![FormEngine](https://formengine.io/repository-images/hero-1.jpg)](https://formengine.io/documentation/?utm_source=github&utm_medium=banner-top&utm_campaign=readme#quick-start)
 <!-- ==================== FORMENGINE CORE BADGES ==================== -->
-[![License MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/optimajet/formengine/blob/master/LICENSE)
+[![License MIT / EULA](https://img.shields.io/badge/License-MIT%20%2F%20EULA-green?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](LICENSE.md)
 [![Closed Issues](https://img.shields.io/github/issues-closed/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/optimajet/formengine/issues?q=is%3Aissue+is%3Aclosed)
 [![Release date](https://img.shields.io/github/release-date/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/optimajet/formengine/releases)
 [![Total Downloads](https://img.shields.io/npm/dt/@react-form-builder/core?style=for-the-badge&logo=npm&color=4286F4)](https://www.npmjs.com/package/@react-form-builder/core)
@@ -225,8 +225,8 @@ export const App = () => (
 
 ## 🗄️ Repository structure
 
-- **Community:** FormEngine Core source code and examples for FormEngine Community (MIT license).
-- **Premium:** Examples for Premium On-Premise Drag-and-Drop React Form Builder (Commercial license). Premium On-Premise Drag-and-Drop React
+- **Community:** FormEngine Core source code and examples (MIT).
+- **Premium:** Examples for Premium On-Premise Drag-and-Drop React Form Builder ([EULA](https://formengine.io/eula/)). Premium On-Premise Drag-and-Drop React
   Form Builder
 - [Source Code](https://github.com/optimajet/formengine/tree/master/community)
 
@@ -299,7 +299,7 @@ export const matButton = define(Button, 'MatButton')
 
 ### React Form Builder - That Developers Can Customize and Teams Can Use
 
-A powerful commercial drag-and-drop form builder for React, built on top of the free, MIT-licensed FormEngine Core. Advanced form logic, UI controls, export, and integrations.
+A powerful commercial drag-and-drop form builder for React, built on top of FormEngine Core. Advanced form logic, UI controls, export, and integrations.
 
 ```bash
  npm install @react-form-builder/designer

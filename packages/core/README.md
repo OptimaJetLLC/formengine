@@ -3,7 +3,7 @@
 [![Formengine](https://formengine.io/repository-images/Formengine_bigpicture_2.png?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme)](https://formengine.io/documentation/?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme#quick-start)
 <!-- ==================== FORMENGINE CORE BADGES ==================== -->
 [![Stars](https://img.shields.io/github/stars/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white)](https://github.com/optimajet/formengine/stargazers)
-[![License MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](https://github.com/optimajet/formengine/blob/master/LICENSE)
+[![License MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE.md)
 [![Last commit](https://img.shields.io/github/last-commit/optimajet/formengine?style=for-the-badge&logo=git&logoColor=white&branch=master)](https://github.com/optimajet/formengine/commits/master)
 [![Closed Issues](https://img.shields.io/github/issues-closed/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white&color=green)](https://github.com/optimajet/formengine/issues?q=is%3Aissue+is%3Aclosed)
 [![Release date](https://img.shields.io/github/release-date/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white)](https://github.com/optimajet/formengine/releases)
@@ -205,7 +205,7 @@ npm install @react-form-builder/core @react-form-builder/components-rsuite
 
 ## 💙 Why developers love Formengine Core?
 
-- **Open Source & Free Forever** – No vendor lock-in, no nonsense.
+- **Open Source (MIT)** – Free for any use, including commercial.
 - **Less Code, Fewer Bugs** – Logic and UI stay separate.
 - **JSON-First Architecture** – Define, render, and validate without touching React internals.
 - **UI-Agnostic Components** - Works seamlessly with any UI library (MUI, Ant Design, shadcn/ui, and others).
@@ -230,8 +230,8 @@ npm install @react-form-builder/core @react-form-builder/components-rsuite
 
 ## 🗄️ Repository structure
 
-- **Community:** Formengine Core source code and examples for FormEngine Community (MIT license).
-- **Premium:** Examples for Premium On-Premise Drag-and-Drop React Form Builder (Commercial license). Premium On-Premise Drag-and-Drop React
+- **Community:** FormEngine Core source code and examples (MIT).
+- **Premium:** Examples for Premium On-Premise Drag-and-Drop React Form Builder ([EULA](https://formengine.io/eula/)). Premium On-Premise Drag-and-Drop React
   Form Builder
 - [Source Code](https://github.com/optimajet/formengine/tree/master/community)
 
@@ -305,7 +305,7 @@ export const matButton = define(Button, 'MatButton')
 
 #### React Form Builder - That Developers Can Customize and Teams Can Use
 
-A powerful commercial drag-and-drop form builder for React, built on top of the free, MIT-licensed FormEngine Core. Advanced form logic, UI
+A powerful commercial drag-and-drop form builder for React, built on top of FormEngine Core. Advanced form logic, UI
 controls, export, and integrations.
 
 ```bash

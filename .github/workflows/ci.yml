@@ -11,13 +11,21 @@ concurrency:
 jobs:
   checks:
     name: Static checks
-    runs-on: [self-hosted]
+    runs-on: [self-hosted, earthly]
     steps:
       - uses: actions/checkout@v7
         with:
-          clean: false
+          clean: true
+      - name: Verify CLA
+        if: github.event_name == 'pull_request'
+        run: |
+          earthly --ci --no-cache \
+            --build-arg PR_AUTHOR="${{ github.event.pull_request.user.login }}" \
+            --build-arg PR_AUTHOR_ID="${{ github.event.pull_request.user.id }}" \
+            --build-arg PR_AUTHOR_ASSOCIATION="${{ github.event.pull_request.author_association }}" \
+            +npm-check-cla
       - name: Run static checks in Docker
-        run: earthly --ci +npm-check-all
+        run: earthly --ci --no-cache +npm-check-all
 
   tests:
     needs: checks

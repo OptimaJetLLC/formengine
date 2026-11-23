@@ -41,5 +41,6 @@
   },
   "devDependencies": {
     "@react-form-builder/cli-lib": "*"
-  }
+  },
+  "license": "https://formengine.io/eula/"
 }

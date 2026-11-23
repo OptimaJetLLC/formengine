@@ -3,11 +3,13 @@
 /* eslint-disable import-x/no-nodejs-modules, no-console */
 
 /**
- * Checks deploy runtime license keys in the product root `.env` for expiry.
+ * Checks runtime license keys in the product root `.env` for expiry.
  * Logs labels and dates only — never raw keys.
  *
  * Canonical key storage lives in formengine-tools `tools/license/.secrets/`.
- * Copy that `.env` to this repo root for local demo/formbuilder builds.
+ * Copy that `.env` to this repo root for local checks and demo/formbuilder builds.
+ * Keep the checked matrix export list aligned with
+ * formengine-tools `tools/license/runtime-license-targets.ts`.
  */
 
 import {existsSync} from 'node:fs'
@@ -21,11 +23,44 @@ const ROOT_ENV_PATH = join(REPO_ROOT, '.env')
 
 const EXPIRY_THRESHOLD_DAYS = 30
 
-const DEPLOY_ENV_NAMES = ['FORMENGINE_DEMO_LICENSE_KEY', 'FORMENGINE_EXAMPLE_BUILDER_LICENSE_KEY'] as const
+const EXPIRY_CHECKED_ENV_NAMES = [
+  'FORMENGINE_DEMO_LICENSE_KEY',
+  'FORMENGINE_EXAMPLE_BUILDER_LICENSE_KEY',
+  'FORMENGINE_TEST_LICENSE_KEY',
+  'FORMENGINE_FORMS_WITH_VERSIONS_LICENSE_KEY',
+] as const
+
+const ENV_MATRIX = 'FORMENGINE_TEST_LICENSE_KEYS_JSON'
+
+/**
+ * Matrix export names that must stay calendar-valid (WFE-2140).
+ * Skip *2024*, invalidLicenseKey, and legacy trial 2024 — intentional fixtures.
+ */
+const EXPIRY_CHECKED_MATRIX_EXPORT_NAMES = [
+  'testLicense',
+  'licenseBusiness2030AnyDomain',
+  'licenseBusiness2030MultipleDomains',
+  'licenseBusiness2030NoDomain',
+  'licenseBusinessStrict2030AnyDomain',
+  'licenseBusinessStrict2030MultipleDomains',
+  'licenseBusinessStrict2030NoDomain',
+  'licenseEnterprise2030AnyDomain',
+  'licenseEnterprise2030MultipleDomains',
+  'licenseEnterprise2030NoDomain',
+  'licenseEnterpriseStrict2030AnyDomain',
+  'licenseEnterpriseStrict2030MultipleDomains',
+  'licenseEnterpriseStrict2030NoDomain',
+  'licenseLegacyCompany2030',
+  'licenseLegacyCompanyStrict2030',
+] as const
 
 type LicenseSource = {
   label: string
   key: string
+}
+
+type CombinedLicensesJson = {
+  keys?: Record<string, string>
 }
 
 /**
@@ -62,7 +97,11 @@ function parseLicenseDate(dateStr: string): Date {
     throw new Error(`Invalid license date format: ${dateStr}`)
   }
   const [month, day, year] = parts
-  return new Date(`${year}-${month}-${day}`)
+  const expiresAt = new Date(`${year}-${month}-${day}`)
+  if (Number.isNaN(expiresAt.getTime())) {
+    throw new Error(`Invalid license date value: ${dateStr}`)
+  }
+  return expiresAt
 }
 
 /**
@@ -76,11 +115,11 @@ function loadRootEnv(): void {
 }
 
 /**
- * Resolves a deploy key from process.env / root `.env`.
+ * Resolves a runtime key from process.env / root `.env`.
  * @param envName secret name
  * @returns source label + key
  */
-function resolveDeployKey(envName: string): LicenseSource {
+function resolveRuntimeKey(envName: string): LicenseSource {
   const value = process.env[envName]?.trim()
   if (!value) {
     throw new Error(
@@ -88,6 +127,25 @@ function resolveDeployKey(envName: string): LicenseSource {
     )
   }
   return {label: `.env:${envName}`, key: value}
+}
+
+/**
+ * Parses the test-license matrix from env.
+ * @returns label + keys map
+ */
+function resolveMatrixKeys(): {label: string; keys: Record<string, string>} {
+  const raw = process.env[ENV_MATRIX]?.trim()
+  if (!raw) {
+    throw new Error(
+      `Missing ${ENV_MATRIX} in ${ROOT_ENV_PATH} (or process.env). ` +
+        `Copy formengine-tools/tools/license/.secrets/.env to the product root.`
+    )
+  }
+  const parsed = JSON.parse(raw) as CombinedLicensesJson
+  if (!parsed.keys || typeof parsed.keys !== 'object') {
+    throw new Error(`${ENV_MATRIX}: missing keys object`)
+  }
+  return {label: `.env:${ENV_MATRIX}`, keys: parsed.keys}
 }
 
 /**
@@ -106,7 +164,7 @@ function checkSource(source: LicenseSource): boolean {
   const daysRemaining = Math.ceil((end.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
   const formatted = licenseEndDate
 
-  if (daysRemaining < 0) {
+  if (daysRemaining <= 0) {
     console.error(`  EXPIRED: ${source.label} — expired ${formatted} (${Math.abs(daysRemaining)} days ago)`)
     return false
   }
@@ -126,9 +184,9 @@ export function checkLicenseExpiry(): void {
   loadRootEnv()
 
   let ok = true
-  for (const envName of DEPLOY_ENV_NAMES) {
+  for (const envName of EXPIRY_CHECKED_ENV_NAMES) {
     try {
-      if (!checkSource(resolveDeployKey(envName))) {
+      if (!checkSource(resolveRuntimeKey(envName))) {
         ok = false
       }
     } catch (error) {
@@ -137,16 +195,34 @@ export function checkLicenseExpiry(): void {
     }
   }
 
+  try {
+    const matrix = resolveMatrixKeys()
+    for (const exportName of EXPIRY_CHECKED_MATRIX_EXPORT_NAMES) {
+      const key = matrix.keys[exportName]
+      if (typeof key !== 'string' || key.trim().length === 0) {
+        ok = false
+        console.error(`  ERROR: ${matrix.label}.keys.${exportName} — missing`)
+        continue
+      }
+      if (!checkSource({label: `${matrix.label}.keys.${exportName}`, key})) {
+        ok = false
+      }
+    }
+  } catch (error) {
+    ok = false
+    console.error(`  ERROR: ${error instanceof Error ? error.message : String(error)}`)
+  }
+
   if (!ok) {
     console.error(
-      '\nSome license keys are expired, expiring soon, or missing. ' +
+      '\nSome app or test license keys are expired, expiring soon, or missing. ' +
         'Update formengine-tools/tools/license/.secrets and copy `.env` here before deploying.'
     )
     process.exitCode = 1
     return
   }
 
-  console.log(`\nAll deploy license keys are valid for more than ${EXPIRY_THRESHOLD_DAYS} days.`)
+  console.log(`\nAll app and test license keys are valid for more than ${EXPIRY_THRESHOLD_DAYS} days.`)
 }
 
 const isMain = process.argv[1] !== undefined && fileURLToPath(import.meta.url) === process.argv[1]

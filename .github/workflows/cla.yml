@@ -1,0 +1,91 @@
+name: CLA
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  record-signature:
+    # Cheap prefilter; exact phrase + PR-author checks run in "Resolve pull request".
+    if: |
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, 'I have read the CLA Document and I hereby sign the CLA')
+    runs-on: [self-hosted]
+    steps:
+      - name: Resolve pull request
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const signPhrase = 'I have read the CLA Document and I hereby sign the CLA';
+            const commentBody = (context.payload.comment.body || '').trim();
+            if (commentBody !== signPhrase) {
+              core.setFailed(
+                'CLA sign comment must be exactly the sign phrase (no extra text). See CLA.md.',
+              );
+              return;
+            }
+
+            const pullRequest = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            const commenterLogin = context.payload.comment.user.login;
+            const commenterId = String(context.payload.comment.user.id);
+            const authorLogin = pullRequest.data.user.login;
+            const authorId = String(pullRequest.data.user.id);
+
+            if (commenterLogin !== authorLogin || commenterId !== authorId) {
+              core.setFailed(
+                `Only the pull request author (${authorLogin}) can sign the CLA on this pull request.`,
+              );
+              return;
+            }
+
+            core.setOutput('head_ref', pullRequest.data.head.ref);
+            core.setOutput('head_repo', pullRequest.data.head.repo.full_name);
+            core.setOutput('author_login', authorLogin);
+            core.setOutput('author_id', authorId);
+
+      - name: Check out workflow scripts
+        uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            scripts/append-cla-signature.ts
+          sparse-checkout-cone-mode: false
+          path: tooling
+
+      - name: Check out pull request branch
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ steps.pr.outputs.head_repo }}
+          ref: ${{ steps.pr.outputs.head_ref }}
+          token: ${{ secrets.CLA_TOKEN }}
+          path: pr
+
+      - name: Record CLA signature
+        env:
+          CLA_AUTHOR_LOGIN: ${{ steps.pr.outputs.author_login }}
+          CLA_AUTHOR_ID: ${{ steps.pr.outputs.author_id }}
+          CLA_COMMENT_ID: ${{ github.event.comment.id }}
+          CLA_SIGNATURES_PATH: pr/cla.json
+        run: node tooling/scripts/append-cla-signature.ts
+
+      - name: Commit and push to pull request branch
+        working-directory: pr
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cla.json
+          if git diff --staged --quiet; then
+            echo "CLA signature already recorded for this contributor."
+            exit 0
+          fi
+          git commit -m "chore(cla): record signature for ${{ steps.pr.outputs.author_login }}"
+          git push
