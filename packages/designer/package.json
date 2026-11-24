@@ -59,14 +59,14 @@
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",
     "@types/file-saver": "^2.0.7",
-    "postcss": "^8.5.29",
+    "postcss": "^8.5.33",
     "vite-inline-css-plugin": "^0.0.2"
   },
   "peerDependencies": {
     "@react-form-builder/core": "12.1.0",
     "clsx": "^2.1.1",
-    "mobx": "^7.1.6",
-    "mobx-react": "^10.0.3",
+    "mobx": "^7.1.7",
+    "mobx-react": "^10.0.4",
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19",
     "rsuite": "5.83.4"
