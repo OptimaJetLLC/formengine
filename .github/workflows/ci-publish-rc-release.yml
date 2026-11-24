@@ -35,15 +35,15 @@ jobs:
           path: .archives
       - name: Validate downloaded archives
         run: earthly --ci +validate-rc-archives
-      - name: Publish draft GitHub release on optimajet/formengine
+      - name: Publish draft GitHub release on OptimaJetLLC/formengine
         env:
-          # Cross-repo upload: GITHUB_TOKEN for this repo cannot write releases on formengine.
+          # Prefer a PAT with contents:write when the caller workflow lacks release write on this repo.
           GH_TOKEN: ${{ secrets.FORMENGINE_GH_TOKEN }}
         run: |
           test -n "${GH_TOKEN}" || {
-            echo "Missing secret FORMENGINE_GH_TOKEN (PAT with contents:write on optimajet/formengine)" >&2
+            echo "Missing secret FORMENGINE_GH_TOKEN (PAT with contents:write on OptimaJetLLC/formengine)" >&2
             exit 1
           }
           earthly --ci --secret GH_TOKEN +npm-publish-rc-release \
-            --REPO_SLUG=optimajet/formengine \
+            --REPO_SLUG=OptimaJetLLC/formengine \
             --GITHUB_SHA=master

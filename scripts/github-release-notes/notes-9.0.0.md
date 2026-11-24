@@ -6,8 +6,7 @@ FormEngine 9.0.0 extends localization to array-type component data (dropdown ite
 
 ### Why update
 
-- **Localize structured component data** (arrays) in the Designer and runtime with the same Fluent patterns as string properties; see
-  [Localizing array data](https://formengine.io/documentation/formengine-core/localization#localizing-array-data).
+- **Localize structured component data** (arrays) in the Designer and runtime with the same Fluent patterns as string properties; see [Localizing array data](https://formengine.io/documentation/formengine-core/localization#localizing-array-data).
 - **Use form data inside localized arrays** - Fluent placeholders such as `{$userName}` work in localized array and object JSON.
 - **Control Builder UI and preview languages independently** - set [defaultBuilderLanguage](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#defaultbuilderlanguage) and [defaultViewerLanguage](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#defaultviewerlanguage) on [FormBuilder](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps).
 - **Get updated German localization** - refreshed `de-DE` strings across Core, Designer, and component packages.

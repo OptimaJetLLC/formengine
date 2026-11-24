@@ -1,7 +1,7 @@
 # Publish react-form-builder-*.tgz from the draft GitHub Release on this repo to npm via OIDC.
-# Lives on optimajet/formengine (seed via mirror compose). TeamCity dispatches it.
+# Lives on OptimaJetLLC/formengine. TeamCity dispatches it.
 #
-# Trusted publisher: org=optimajet repo=formengine workflow=publish-npm-from-draft.yml
+# Trusted publisher: org=OptimaJetLLC repo=formengine workflow=publish-npm-from-draft.yml
 
 name: Publish npm from draft
 
@@ -46,7 +46,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ inputs.version }}
           NPM_PUBLISH_TAG: ${{ inputs.npm_tag }}
-          # Draft release and OIDC identity are both optimajet/formengine.
+          # Draft release and OIDC identity are both OptimaJetLLC/formengine.
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           if [ -f scripts/release/publish-npm-from-draft.sh ]; then
