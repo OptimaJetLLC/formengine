@@ -22,7 +22,7 @@ function targetCommitish(): string {
   if (explicit) {
     return explicit
   }
-  // Drafts live on optimajet/formengine; product CI SHAs from fb/open-formengine are not on that repo.
+  // Default to master when CI does not pass a commit that exists on the draft host.
   return DRAFT_RELEASE_TARGET_COMMITISH
 }
 

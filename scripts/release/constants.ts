@@ -1,10 +1,10 @@
 /** Release archive contract (published to GitHub Releases). */
 
 /** Public GitHub repo that hosts RC draft releases and is declared in packed `repository.url`. */
-export const DRAFT_RELEASE_GITHUB_REPOSITORY = 'optimajet/formengine' as const
+export const DRAFT_RELEASE_GITHUB_REPOSITORY = 'OptimaJetLLC/formengine' as const
 
 /** Canonical git URL embedded in published package.json `repository.url`. */
-export const PUBLISHED_PACKAGE_REPOSITORY_URL = 'git+https://github.com/optimajet/formengine.git' as const
+export const PUBLISHED_PACKAGE_REPOSITORY_URL = 'git+https://github.com/OptimaJetLLC/formengine.git' as const
 
 /** Default `target_commitish` when creating draft releases on {@link DRAFT_RELEASE_GITHUB_REPOSITORY}. */
 export const DRAFT_RELEASE_TARGET_COMMITISH = 'master' as const

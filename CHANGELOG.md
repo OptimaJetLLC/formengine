@@ -4,6 +4,18 @@ All notable changes to FormEngine are documented here. For full, detailed releas
 
 - Latest release notes: https://formengine.io/documentation/release-notes
 
+## 12.1.0 - November 24, 2026
+
+Publishes the full monorepo on GitHub with mixed MIT and FormEngine EULA licensing, and ships designer, a11y, and toolchain fixes.
+
+### Highlights
+
+- Repository: [OptimaJetLLC/formengine](https://github.com/OptimaJetLLC/formengine).
+- MIT for community packages (including Core); FormEngine EULA for Designer and commercial add-ons. [LICENSE.md](https://github.com/OptimaJetLLC/formengine/blob/master/LICENSE.md), [EULA](https://formengine.io/eula/), [Designer license key](https://formengine.io/documentation/formengine-designer/license-key).
+- [CLA](https://github.com/OptimaJetLLC/formengine/blob/master/CLA.md) and [contribution guide](https://github.com/OptimaJetLLC/formengine/blob/master/CONTRIBUTION.md).
+
+[Full release notes for 12.1.0](https://formengine.io/documentation/release-notes/12.1.0)
+
 ## 12.0.0 - November 11, 2026
 
 Drops React 17, upgrades MobX 7 and Material UI 9, adds RSuite Accordion and Sortable list, and ships designer and uploader fixes.
@@ -14,8 +26,7 @@ Drops React 17, upgrades MobX 7 and Material UI 9, adds RSuite Accordion and Sor
 - MobX peers are [mobx](https://mobx.js.org/) `^7.1.0` and [mobx-react](https://github.com/mobxjs/mobx) `^10.0.2`.
 - Material UI peers are `@mui/material` `^9.5.0` and `@mui/x-date-pickers` `^9.16.0`. [Material UI components](https://formengine.io/documentation/components-library/material-ui).
 - [Accordion](https://formengine.io/documentation/components-library/structure-components/accordion) and [Accordion panel](https://formengine.io/documentation/components-library/structure-components/accordion-panel).
-- [Sortable list](https://formengine.io/documentation/components-library/structure-components/sortable-list) lets users
-  reorder rows by dragging. See the [usage guide](https://learn.formengine.io/fields-and-data/sortable-list/).
+- [Sortable list](https://formengine.io/documentation/components-library/structure-components/sortable-list) lets users reorder rows by dragging. See the [usage guide](https://learn.formengine.io/fields-and-data/sortable-list/).
 - Uploader [paste](https://formengine.io/documentation/api-reference/@react-form-builder/components-uploader/interfaces/UploaderProps#paste) (default `false`) and fixed success / `onError` handling.
 - [ComponentData.setUserDefinedProp](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/ComponentData#setuserdefinedprop).
 
