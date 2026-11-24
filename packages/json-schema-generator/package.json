@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@react-form-builder/core": "^12.1.0",
-    "json-schema-typed": "^8.0.2"
+    "json-schema-typed": "^9.0.0"
   },
   "files": [
     "dist",
