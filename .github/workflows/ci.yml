@@ -3,6 +3,9 @@ name: Check, build, draft
 on:
   workflow_dispatch:
   pull_request:
+  push:
+    branches:
+      - 'rc/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
@@ -63,7 +66,7 @@ jobs:
     needs:
       - bundle
       - build-documentation
-    if: ${{ github.event_name == 'workflow_dispatch' && startsWith(github.ref, 'refs/heads/rc/') }}
+    if: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'push') && startsWith(github.ref, 'refs/heads/rc/') }}
     uses: ./.github/workflows/ci-publish-rc-release.yml
     secrets:
       FORMENGINE_GH_TOKEN: ${{ secrets.FORMENGINE_GH_TOKEN }}
