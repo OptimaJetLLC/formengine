@@ -1,10 +1,10 @@
 [![Formengine](https://formengine.io/repository-images/Formengine_FB_Hero.png?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme)](https://formengine.io/documentation/?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme)
 [![Documentation](https://img.shields.io/badge/Doc-Install-4286F4?style=for-the-badge&logo=read-the-docs&logoColor=white)](https://formengine.io/documentation/installation?utm_source=npmjs&utm_medium=article-badge&utm_campaign=readme)
-[![Stars](https://img.shields.io/github/stars/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/optimajet/formengine/stargazers)
+[![Stars](https://img.shields.io/github/stars/OptimaJetLLC/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/OptimaJetLLC/formengine/stargazers)
 [![Total Downloads](https://img.shields.io/npm/dt/@react-form-builder/designer?style=for-the-badge&logo=npm&color=4286F4&logoColor=white)](https://www.npmjs.com/package/@react-form-builder/designer?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme)
 [![License EULA](https://img.shields.io/badge/License-EULA-4286F4?style=for-the-badge&logoColor=white)](https://formengine.io/eula/)
-[![Closed Issues](https://img.shields.io/github/issues-closed/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/optimajet/formengine/issues?q=is%3Aissue+is%3Aclosed)
-[![Release date](https://img.shields.io/github/release-date/optimajet/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/optimajet/formengine/releases?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme)
+[![Closed Issues](https://img.shields.io/github/issues-closed/OptimaJetLLC/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/OptimaJetLLC/formengine/issues?q=is%3Aissue+is%3Aclosed)
+[![Release date](https://img.shields.io/github/release-date/OptimaJetLLC/formengine?style=for-the-badge&logo=github&logoColor=white&color=4286F4)](https://github.com/OptimaJetLLC/formengine/releases?utm_source=npmjs&utm_medium=banner-top&utm_campaign=readme)
 
 # An Enterprise-Grade React Form Builder with Drag-and-Drop for Complex Forms and No Performance Compromises
 
@@ -42,9 +42,9 @@ npm install @react-form-builder/core @react-form-builder/components-rsuite
 ## 🤝 Powered by Optimajet Premium Support, designed for SaaS and enterprise teams.
 
 - [Email Support](mailto:support@optimajet.com) – Best for: issues with Formengine libraries or environment.
-- [Community Forum](https://github.com/optimajet/formengine/discussions?utm_source=npmjs&utm_medium=article&utm_campaign=readme) – Best for:
+- [Community Forum](https://github.com/OptimaJetLLC/formengine/discussions?utm_source=npmjs&utm_medium=article&utm_campaign=readme) – Best for:
   help with building, discussion about React form best practices.
-- [GitHub Issues](https://github.com/optimajet/formengine/issues?utm_source=npmjs&utm_medium=article&utm_campaign=readme) – Best for: bugs
+- [GitHub Issues](https://github.com/OptimaJetLLC/formengine/issues?utm_source=npmjs&utm_medium=article&utm_campaign=readme) – Best for: bugs
   and errors you encounter using Formengine.
 
 ## 🗄️ Repository structure
@@ -52,7 +52,7 @@ npm install @react-form-builder/core @react-form-builder/components-rsuite
 - **Community:** FormEngine Core source code and examples (MIT).
 - **Premium:** Examples for Premium On-Premise Drag-and-Drop React Form Builder ([EULA](https://formengine.io/eula/)). Premium On-Premise Drag-and-Drop React
   Form Builder
-- [Formengine Core Source Code](https://github.com/optimajet/formengine/tree/master/community)
+- [Formengine Core Source Code](https://github.com/OptimaJetLLC/formengine/tree/master/community)
 
 ## 🧩 Compatibility
 
@@ -106,7 +106,7 @@ export const matButton = define(Button, 'MatButton')
  })
 ```
 
-## 🫶 We hope this project has saved you hours - [⭐ star this repo to support development](https://github.com/optimajet/formengine). Your support keeps Formengine Core open and free.
+## 🫶 We hope this project has saved you hours - [⭐ star this repo to support development](https://github.com/OptimaJetLLC/formengine). Your support keeps Formengine Core open and free.
 
 #### Formengine - You’re not alone. Forms shouldn’t be this hard!
 
@@ -114,5 +114,5 @@ export const matButton = define(Button, 'MatButton')
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://hk.linkedin.com/company/optimajet?utm_source=npmjs&utm_medium=article-badge&utm_campaign=readme)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@optimajet?utm_source=npmjs&utm_medium=article-badge&utm_campaign=readme)
 [![dev.to](https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=dev.to&logoColor=white)](https://dev.to/optimajet?utm_source=npmjs&utm_medium=article-badge&utm_campaign=readme)
-[![Join Community](https://img.shields.io/badge/💬_Join-Community-4286F4?style=for-the-badge&logo=github)](https://github.com/optimajet/formengine/discussions?utm_source=npmjs&utm_medium=article-badge&utm_campaign=readme)
-[![Contributions welcome](https://img.shields.io/badge/Contribute-💡_Ideas-FF69B4?style=for-the-badge&logo=github)](https://github.com/optimajet/formengine/issues?utm_source=npmjs&utm_medium=article-badge&utm_campaign=readme)
+[![Join Community](https://img.shields.io/badge/💬_Join-Community-4286F4?style=for-the-badge&logo=github)](https://github.com/OptimaJetLLC/formengine/discussions?utm_source=npmjs&utm_medium=article-badge&utm_campaign=readme)
+[![Contributions welcome](https://img.shields.io/badge/Contribute-💡_Ideas-FF69B4?style=for-the-badge&logo=github)](https://github.com/OptimaJetLLC/formengine/issues?utm_source=npmjs&utm_medium=article-badge&utm_campaign=readme)

@@ -5,7 +5,7 @@ This code corresponds to Remix [integration example](https://formengine.io/docum
 ## How to run
 
 ```shell
-git clone git@github.com:optimajet/formengine.git
+git clone git@github.com:OptimaJetLLC/formengine.git
 cd formengine/premium/examples/with-remix/with-remix-v2
 npm install
 npm run dev

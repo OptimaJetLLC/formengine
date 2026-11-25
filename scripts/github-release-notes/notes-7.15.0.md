@@ -15,7 +15,7 @@ FormEngine 7.15.0 adds optional callbacks when the designer or preview language 
 
 - Added [onBuilderLanguageChange](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#onbuilderlanguagechange) and [onViewerLanguageChange](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#onviewerlanguagechange) on [FormBuilderProps](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps).
 - Added optional [presetName](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#onformelementadd) to the [onFormElementAdd](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#onformelementadd) payload (see [Tracking component add and remove events](https://formengine.io/documentation/formengine-designer/faq/tracking-component-add-and-remove-events)).
-- Updated the [public FormEngine example](https://github.com/optimajet/formengine) to use form storage (IndexedDB) alongside the designer.
+- Updated the [public FormEngine example](https://github.com/OptimaJetLLC/formengine) to use form storage (IndexedDB) alongside the designer.
 
 ## Changelog
 

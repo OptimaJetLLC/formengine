@@ -528,4 +528,4 @@ back form changes to the top level.
 ## Source code
 
 Full source code for the examples in this article is available on our open-source
-GitHub [repository](https://github.com/optimajet/formengine/tree/master/community/examples/formdata).
+GitHub [repository](https://github.com/OptimaJetLLC/formengine/tree/master/community/examples/formdata).

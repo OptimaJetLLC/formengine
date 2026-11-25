@@ -308,7 +308,7 @@ FormEngine Core supports Remix seamlessly (Remix v2 is now part of the React Rou
 
 If you're stuck, we're here to help:
 
-- 🐛 **Open an issue on [GitHub](https://github.com/optimajet/formengine/issues)** for bugs
+- 🐛 **Open an issue on [GitHub](https://github.com/OptimaJetLLC/formengine/issues)** for bugs
 - 📧 **Email us at support@formengine.com** for personalized support
 
 ---

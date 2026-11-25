@@ -13,8 +13,8 @@ The FormEngine is fully compatible with the latest versions of the [Next.js](htt
 
 :::tip
 
-A fully functional example is available in our [GitHub repository](https://github.com/optimajet/formengine), located in
-the [examples](https://github.com/optimajet/formengine/tree/master/premium/examples/with-nextjs/) folder. We encourage you to explore the code and see how the
+A fully functional example is available in our [GitHub repository](https://github.com/OptimaJetLLC/formengine), located in
+the [examples](https://github.com/OptimaJetLLC/formengine/tree/master/premium/examples/with-nextjs/) folder. We encourage you to explore the code and see how the
 various components work together. If you have any questions or need further assistance, feel free to reach out!
 
 :::
