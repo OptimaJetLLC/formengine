@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/designer-bundle",
-  "version": "12.0.0",
+  "version": "12.1.0",
   "private": false,
   "main": "src/index.ts",
   "type": "module",
@@ -23,15 +23,15 @@
     "create-archive": "node ./config/pack.ts"
   },
   "dependencies": {
-    "@react-form-builder/components-fast-qr": "^12.0.0",
-    "@react-form-builder/components-google-map": "^12.0.0",
-    "@react-form-builder/components-print": "^12.0.0",
-    "@react-form-builder/components-rich-text": "^12.0.0",
-    "@react-form-builder/components-rsuite": "^12.0.0",
-    "@react-form-builder/components-rsuite-table": "^12.0.0",
-    "@react-form-builder/components-signature": "^12.0.0",
-    "@react-form-builder/components-sortable-list": "^12.0.0",
-    "@react-form-builder/designer": "^12.0.0",
+    "@react-form-builder/components-fast-qr": "^12.1.0",
+    "@react-form-builder/components-google-map": "^12.1.0",
+    "@react-form-builder/components-print": "^12.1.0",
+    "@react-form-builder/components-rich-text": "^12.1.0",
+    "@react-form-builder/components-rsuite": "^12.1.0",
+    "@react-form-builder/components-rsuite-table": "^12.1.0",
+    "@react-form-builder/components-signature": "^12.1.0",
+    "@react-form-builder/components-sortable-list": "^12.1.0",
+    "@react-form-builder/designer": "^12.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0"
@@ -41,7 +41,7 @@
     "vite-inline-css-plugin": "^0.0.2"
   },
   "peerDependencies": {
-    "@react-form-builder/core": "12.0.0"
+    "@react-form-builder/core": "12.1.0"
   },
   "peerDependenciesMeta": {
     "@react-form-builder/core": {
@@ -69,7 +69,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/optimajet/formengine.git",
+    "url": "git+https://github.com/OptimaJetLLC/formengine.git",
     "directory": "packages/designer-bundle"
   }
 }

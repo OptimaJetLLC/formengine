@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/test-module",
-  "version": "12.0.0",
+  "version": "12.1.0",
   "private": true,
   "type": "module",
   "author": "Optimajet",
@@ -10,14 +10,14 @@
     "test:module": "npm run test"
   },
   "dependencies": {
-    "@react-form-builder/components-antd": "^12.0.0",
-    "@react-form-builder/components-fast-qr": "^12.0.0",
-    "@react-form-builder/components-google-map": "^12.0.0",
-    "@react-form-builder/components-rich-text": "^12.0.0",
-    "@react-form-builder/components-rsuite": "^12.0.0",
-    "@react-form-builder/core": "^12.0.0",
-    "@react-form-builder/designer": "^12.0.0",
-    "@react-form-builder/indexed-db-form-storage": "^12.0.0",
+    "@react-form-builder/components-antd": "^12.1.0",
+    "@react-form-builder/components-fast-qr": "^12.1.0",
+    "@react-form-builder/components-google-map": "^12.1.0",
+    "@react-form-builder/components-rich-text": "^12.1.0",
+    "@react-form-builder/components-rsuite": "^12.1.0",
+    "@react-form-builder/core": "^12.1.0",
+    "@react-form-builder/designer": "^12.1.0",
+    "@react-form-builder/indexed-db-form-storage": "^12.1.0",
     "vitest-fail-on-console": "^0.10.1"
   },
   "license": "https://formengine.io/eula/"

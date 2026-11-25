@@ -1,14 +1,14 @@
 {
   "name": "@react-form-builder/components-uploader",
   "description": "OptimaJet Form Builder Components - Uploader",
-  "version": "12.0.0",
+  "version": "12.1.0",
   "license": "MIT",
   "private": false,
   "author": "Optimajet",
   "homepage": "https://formengine.io/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/optimajet/formengine.git",
+    "url": "git+https://github.com/OptimaJetLLC/formengine.git",
     "directory": "packages/views/uploader"
   },
   "main": "src/index.ts",
@@ -35,7 +35,7 @@
     "react-dropzone": "^20.2.0"
   },
   "peerDependencies": {
-    "@react-form-builder/core": "12.0.0",
+    "@react-form-builder/core": "12.1.0",
     "react": "^18 || ^19"
   },
   "peerDependenciesMeta": {
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",
-    "@react-form-builder/json-schema-generator": "^12.0.0",
+    "@react-form-builder/json-schema-generator": "^12.1.0",
     "vite-node": "^6.0.0"
   },
   "files": [
