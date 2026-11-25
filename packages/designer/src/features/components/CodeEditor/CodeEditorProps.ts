@@ -25,6 +25,10 @@ export interface UnconstrainedCodeEditorProps {
    */
   language?: CodeEditorLanguage
   /**
+   * Formats the document on open and when the model value is replaced, and enables format on paste/type.
+   */
+  autoformat?: boolean
+  /**
    * The code editor height.
    */
   height?: string | number
