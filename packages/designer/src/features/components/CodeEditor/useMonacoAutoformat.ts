@@ -40,9 +40,8 @@ export const useMonacoAutoformat = (
       editorRef.current = monacoEditor
 
       if (autoformat) {
-        // Monaco formats after language config / layout settle; flush covers setValue replacements.
-        monacoEditor.onDidChangeModelLanguageConfiguration(formatDocument)
-        monacoEditor.onDidLayoutChange(formatDocument)
+        // Format once after mount. Avoid onDidLayoutChange: formatDocument can change layout and loop.
+        queueMicrotask(formatDocument)
         monacoEditor.onDidChangeModelContent(({isFlush}) => {
           if (isFlush) formatDocument()
         })

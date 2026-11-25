@@ -27,8 +27,6 @@ vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCod
     lastMonacoOptions = options
 
     useEffect(() => {
-      const layoutListeners: Array<() => void> = []
-      const languageConfigListeners: Array<() => void> = []
       const contentListeners: Array<(event: {isFlush: boolean}) => void> = []
 
       const formatDocument = () => {
@@ -44,14 +42,6 @@ vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCod
 
       const editor = {
         getAction: (id: string) => (id === 'editor.action.formatDocument' ? {run: async () => formatDocument()} : null),
-        onDidChangeModelLanguageConfiguration: (listener: () => void) => {
-          languageConfigListeners.push(listener)
-          return {dispose: () => {}}
-        },
-        onDidLayoutChange: (listener: () => void) => {
-          layoutListeners.push(listener)
-          return {dispose: () => {}}
-        },
         onDidChangeModelContent: (listener: (event: {isFlush: boolean}) => void) => {
           contentListeners.push(listener)
           return {dispose: () => {}}
@@ -65,8 +55,6 @@ vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCod
       }
 
       onMount?.(editor as never, {} as never)
-      layoutListeners.forEach(listener => listener())
-      languageConfigListeners.forEach(listener => listener())
     }, [onMount])
 
     return (
