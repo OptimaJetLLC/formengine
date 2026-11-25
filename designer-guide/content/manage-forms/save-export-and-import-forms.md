@@ -22,7 +22,8 @@ For a short overview, see also [Export and share your form](/preview-and-handoff
 | **Save as...** | You need a copy under a new name             |
 
 The save shortcut is <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> on Windows/Linux or
-<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span> on macOS when focus is on the page background.
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span> on macOS when focus is on the page background. The same chord
+in the bottom **code editor** saves the script, not the form. See [Keyboard shortcuts](/help/keyboard-shortcuts).
 
 <img src="/assets/guide/manage-forms/highlight-header-menu-save.png" alt="Header menu open with Save highlighted." />
 

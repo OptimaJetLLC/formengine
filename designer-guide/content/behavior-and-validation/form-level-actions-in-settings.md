@@ -36,7 +36,9 @@ Field-level validation still lives on each field's **Rules** tab.
 
 <img src="/assets/guide/behavior/highlight-form-action-code-editor.png" alt="Bottom panel code editor open for a new form-level code action." />
 
-3. Enter a **Name**, write or paste the script, and click **Save**.
+3. Enter a **Name**, write or paste the script, then click **Save** (or press
+   <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> /
+   <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span> while the cursor is in the editor).
 4. Select the button or other component that should run the action.
 5. Open its **Actions** tab and click **Add an action** under the event you want to use, such as **onClick**.
 6. Open **Code** and select the saved action by name.
@@ -52,7 +54,7 @@ Field-level validation still lives on each field's **Rules** tab.
 <img src="/assets/guide/behavior/highlight-form-validator-code-editor.png" alt="Bottom panel code editor open for Edit form validation code." />
 
 3. Edit validator code only when your team assigns you that task. Many teams restrict this to developers.
-4. Click **Save** when finished.
+4. Click **Save** when finished (or use the code editor save shortcut).
 
 ## Test
 
@@ -69,5 +71,6 @@ trigger that event in **Preview**.
 
 ## See also
 
+- [Keyboard shortcuts](/help/keyboard-shortcuts)
 - [Actions basics](/behavior-and-validation/actions-basics)
 - [Actions (developer depth)](docs:formengine-designer/features/actions)

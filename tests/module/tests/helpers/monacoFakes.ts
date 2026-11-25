@@ -59,7 +59,7 @@ export function createFakeMonaco(): Monaco {
   return {
     Range: FakeRange as unknown as Monaco['Range'],
     KeyMod: {CtrlCmd: 1 << 11},
-    KeyCode: {KeyA: 31},
+    KeyCode: {KeyA: 31, KeyS: 49},
   } as unknown as Monaco
 }
 
@@ -149,6 +149,7 @@ export function createFakeEditor(model: any) {
   const editor = {
     getId: () => 'fake-editor-1',
     getModel: () => model,
+    getValue: () => model.getValue() as string,
     getUnscopedCommands: () => addCommandCalls.filter(call => !call.context),
     addCommand: (keybinding: number, handler: () => void, context?: string) => {
       addCommandCalls.push({keybinding, handler, context})

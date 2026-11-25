@@ -4,6 +4,7 @@ import {useCallback, useEffect, useMemo, useRef} from 'react'
 import type {CodeEditorProps} from './CodeEditorProps'
 import {buildConstrainedDocument, extractEditableBody, resolveNextConstrainedDocument} from './constrainedDocument'
 import {MonacoCodeEditor} from './MonacoCodeEditor'
+import {registerCodeEditorSaveAction} from './registerCodeEditorSaveAction'
 import type {ConstrainedMonacoEditorModel} from './setupConstrainedMonaco'
 import {setupConstrainedMonaco, withSuppressedConstrainedValidation} from './setupConstrainedMonaco'
 
@@ -43,7 +44,8 @@ const applyConstrainedEditorValue = (
  * @returns the React element.
  */
 export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
-  const {initialValue, onChange, onMount} = props
+  const {initialValue, onChange, onMount, onSave} = props
+  const onSaveRef = useRef(onSave)
   const context = useMemo(
     () => ({
       beginContextLine: props.beginContextLine,
@@ -52,6 +54,15 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
     }),
     [props.beginContextLine, props.canEditBeginContextLine, props.endContextLine]
   )
+  const contextRef = useRef(context)
+
+  useEffect(() => {
+    onSaveRef.current = onSave
+  }, [onSave])
+
+  useEffect(() => {
+    contextRef.current = context
+  }, [context])
 
   const documentValue = useMemo(
     () => buildConstrainedDocument(initialValue, context.beginContextLine, context.canEditBeginContextLine, context.endContextLine),
@@ -93,6 +104,15 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
       onMount?.(editor, monaco)
       editorRef.current = editor
       constrainedModelRef.current = setupConstrainedMonaco(editor, monaco, context, onChange)
+      registerCodeEditorSaveAction(
+        editor,
+        monaco,
+        value => onSaveRef.current?.(value),
+        e => {
+          const {beginContextLine, canEditBeginContextLine, endContextLine} = contextRef.current
+          return extractEditableBody(e.getValue(), beginContextLine, canEditBeginContextLine, endContextLine)
+        }
+      )
       appliedSourceRef.current = {initialValue, context}
     },
     [context, initialValue, onChange, onMount]

@@ -58,12 +58,25 @@ vi.mock('../../../packages/designer/src/features/ui/BottomPanel/TestingEditor', 
 })
 
 vi.mock('../../../packages/designer/src/features/components/CodeEditor/CodeEditor', () => ({
-  CodeEditor: ({onChange, initialValue}: {onChange: (value: string) => void; initialValue: string}) => {
+  CodeEditor: ({
+    onChange,
+    onSave,
+    initialValue,
+  }: {
+    onChange: (value: string) => void
+    onSave?: (value: string) => void
+    initialValue: string
+  }) => {
     useEffect(() => {
       onChange(initialValue)
     }, [initialValue, onChange])
 
-    return <textarea data-testid="mock-code-editor" defaultValue={initialValue} />
+    return (
+      <>
+        <textarea data-testid="mock-code-editor" defaultValue={initialValue} />
+        <button type="button" data-testid="mock-code-editor-save" onClick={() => onSave?.('from-editor')} />
+      </>
+    )
   },
 }))
 
@@ -147,6 +160,45 @@ describe('GenericCodeEditor save behavior', () => {
 
     expect(testSpy).not.toHaveBeenCalled()
     expect(onSave).toHaveBeenCalledWith('Persisted')
+  })
+
+  it('persists the editor-supplied value when CodeEditor onSave is invoked', () => {
+    const onSave = vi.fn()
+    render(
+      <GenericCodeEditor
+        source="Hello"
+        onSave={onSave}
+        onClose={vi.fn()}
+        onCompile={() => CalculableResult.success('from-editor')}
+        compact={false}
+      />
+    )
+
+    fireEvent.click(screen.getByTestId('mock-code-editor-save'))
+
+    expect(testSpy).toHaveBeenCalledOnce()
+    expect(onSave).toHaveBeenCalledExactlyOnceWith('from-editor')
+  })
+
+  it('applies getSourceForSave to the editor-supplied value on CodeEditor onSave', () => {
+    const onSave = vi.fn()
+    const getSourceForSave = vi.fn((fallback: string) => `wrapped:${fallback}`)
+    render(
+      <GenericCodeEditor
+        source="Hello"
+        getSourceForSave={getSourceForSave}
+        validateBeforeSave={resolveValidateBeforeSave}
+        onSave={onSave}
+        onClose={vi.fn()}
+        onCompile={() => CalculableResult.success('wrapped:from-editor')}
+        compact
+      />
+    )
+
+    fireEvent.click(screen.getByTestId('mock-code-editor-save'))
+
+    expect(getSourceForSave).toHaveBeenCalledWith('from-editor')
+    expect(onSave).toHaveBeenCalledExactlyOnceWith('wrapped:from-editor')
   })
 
   it('renders toolbarExtra content', () => {
