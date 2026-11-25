@@ -1,8 +1,9 @@
 import {useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
 import cx from 'clsx'
-import type {HTMLAttributes, KeyboardEvent, PointerEvent} from 'react'
-import {forwardRef, useCallback} from 'react'
+import type {HTMLAttributes} from 'react'
+import {forwardRef, useCallback, useMemo} from 'react'
+import {IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import styles from './DropView.module.css'
 
@@ -12,20 +13,10 @@ interface DropViewProps {
   slotCondition?: string
 }
 
-function collectDraggableAncestors(from: HTMLElement): HTMLElement[] {
-  const roots: HTMLElement[] = []
-  let el: HTMLElement | null = from.parentElement
-  while (el) {
-    if (el.getAttribute('draggable') === 'true') roots.push(el)
-    el = el.parentElement
-  }
-  return roots
-}
-
 const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string}) => {
   const builderStore = useBuilderStore()
   const target = useComponentData()
-  const openModal = useCallback(() => {
+  const handleClick = useCallback(() => {
     builderStore.showComponentsModal(
       source => {
         builderStore.add(source, target, 'inner', slot, slotCondition)
@@ -34,54 +25,10 @@ const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string
     )
   }, [builderStore, target, slot, slotCondition])
 
-  // Open on pointerdown: parent wrappers are HTML5 drag sources, so a click is often canceled
-  // when the browser starts a drag. pointerdown runs before that.
-  const handlePointerDown = useCallback(
-    (event: PointerEvent<HTMLSpanElement>) => {
-      if (event.button !== 0) return
-      event.preventDefault()
-      event.stopPropagation()
-
-      const roots = collectDraggableAncestors(event.currentTarget)
-      for (const root of roots) root.setAttribute('draggable', 'false')
-      const restore = () => {
-        for (const root of roots) root.setAttribute('draggable', 'true')
-        window.removeEventListener('pointerup', restore)
-        window.removeEventListener('pointercancel', restore)
-        window.removeEventListener('dragend', restore)
-      }
-      window.addEventListener('pointerup', restore)
-      window.addEventListener('pointercancel', restore)
-      window.addEventListener('dragend', restore)
-
-      openModal()
-    },
-    [openModal]
-  )
-
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLSpanElement>) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault()
-        event.stopPropagation()
-        openModal()
-      }
-    },
-    [openModal]
-  )
+  const plusIcon = useMemo(() => <PlusIcon />, [])
 
   return (
-    <span
-      role="button"
-      tabIndex={0}
-      className={styles.addControl}
-      onPointerDown={handlePointerDown}
-      onKeyDown={handleKeyDown}
-      data-testid="add-button"
-      aria-label="Add component"
-    >
-      <PlusIcon className={styles.addIcon} />
-    </span>
+    <IconButton onClick={handleClick} icon={plusIcon} color="green" data-testid="add-button" appearance={'primary'} circle size={'xs'} />
   )
 }
 
