@@ -13,7 +13,7 @@ jobs:
   stale:
     runs-on: [self-hosted]
     steps:
-      - uses: actions/stale@v10
+      - uses: actions/stale@v11
         with:
           days-before-issue-stale: 456
           days-before-issue-close: 30

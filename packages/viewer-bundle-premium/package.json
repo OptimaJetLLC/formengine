@@ -71,7 +71,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/optimajet/formengine.git",
+    "url": "git+https://github.com/OptimaJetLLC/formengine.git",
     "directory": "packages/viewer-bundle-premium"
   }
 }
