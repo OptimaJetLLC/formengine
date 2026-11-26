@@ -43,7 +43,12 @@ export default defineConfig(env =>
       alias: [
         {
           find: /^monaco-editor$/,
-          replacement: repositoryRoot + '/node_modules/monaco-editor/esm/vs/editor/editor.api',
+          // Browser tests need language/format contributions (editor.main). jsdom stays on editor.api.
+          replacement:
+            repositoryRoot +
+            (isVitestBrowserRun
+              ? '/node_modules/monaco-editor/esm/vs/editor/editor.main'
+              : '/node_modules/monaco-editor/esm/vs/editor/editor.api'),
         },
         ...(!isVitestBrowserRun
           ? [

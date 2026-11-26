@@ -45,7 +45,7 @@ let formatRunCount = 0
 let formatSourceSnapshots: string[] = []
 
 type FakeMonacoEditor = {
-  getAction: (id: string) => {run: () => Promise<void>} | null
+  getAction: (id: string) => {run: () => Promise<void>; isSupported: () => boolean} | null
   onDidChangeModelContent: (listener: (event: {isFlush: boolean}) => void) => {dispose: () => void}
   onDidDispose: (listener: () => void) => {dispose: () => void}
   getValue: () => string
@@ -84,7 +84,13 @@ vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCod
       }
 
       const editor: FakeMonacoEditor = {
-        getAction: (id: string) => (id === 'editor.action.formatDocument' ? {run: async () => formatDocument()} : null),
+        getAction: (id: string) =>
+          id === 'editor.action.formatDocument'
+            ? {
+                run: async () => formatDocument(),
+                isSupported: () => true,
+              }
+            : null,
         onDidChangeModelContent: (listener: (event: {isFlush: boolean}) => void) => {
           contentListeners.push(listener)
           return {
