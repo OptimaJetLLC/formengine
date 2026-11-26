@@ -38,7 +38,7 @@ const rearmFormatOnPaste = (monacoEditor: editor.IStandaloneCodeEditor) => {
  */
 const scheduleFormatWhenReady = (monacoEditor: editor.IStandaloneCodeEditor, rearmPaste = false): IDisposable => {
   let cancelled = false
-  let intervalId: ReturnType<typeof setInterval> | undefined
+  let intervalId: ReturnType<typeof setInterval> | undefined = undefined
 
   const tryFormat = () => {
     if (cancelled) return true
@@ -130,10 +130,13 @@ export const useMonacoAutoformat = (
 ) => {
   const editorRef = useRef<editor.IStandaloneCodeEditor>(null)
   const onMountRef = useRef(onMount)
-  onMountRef.current = onMount
   const autoformatRef = useRef(autoformat)
-  autoformatRef.current = autoformat
   const detachRef = useRef<(() => void) | null>(null)
+
+  useEffect(() => {
+    onMountRef.current = onMount
+    autoformatRef.current = autoformat
+  })
 
   const monacoOptions = useMemo(
     () => ({
