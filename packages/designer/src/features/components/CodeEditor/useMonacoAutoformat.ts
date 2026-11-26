@@ -1,6 +1,6 @@
 import type {OnMount} from '@monaco-editor/react'
 import type {editor, IDisposable} from 'monaco-editor'
-import {useCallback, useMemo, useRef} from 'react'
+import {useCallback, useEffect, useMemo, useRef} from 'react'
 
 const FORMAT_DOCUMENT_ACTION = 'editor.action.formatDocument'
 const FORMATTER_POLL_MS = 25
@@ -9,6 +9,12 @@ const autoFormatOptions: editor.IStandaloneEditorConstructionOptions = {
   autoIndent: 'advanced',
   formatOnPaste: true,
   formatOnType: true,
+}
+
+/** Explicit clears so Monaco `updateOptions` merges do not leave stale true values. */
+const disabledAutoFormatOptions: editor.IStandaloneEditorConstructionOptions = {
+  formatOnPaste: false,
+  formatOnType: false,
 }
 
 /**
@@ -63,8 +69,54 @@ const scheduleFormatWhenReady = (monacoEditor: editor.IStandaloneCodeEditor, rea
 }
 
 /**
+ * Attaches flush/paste autoformat listeners for a mounted editor.
+ * @param monacoEditor the mounted editor.
+ * @returns disposables and a flag updated when a flush formats during the initial attach window.
+ */
+const attachAutoformatListeners = (monacoEditor: editor.IStandaloneCodeEditor) => {
+  const disposables: IDisposable[] = []
+  let disposed = false
+  let formattedFromFlushDuringAttach = false
+
+  const formatWhenReady = () => {
+    if (disposed) return
+    disposables.push(scheduleFormatWhenReady(monacoEditor, true))
+  }
+
+  disposables.push(
+    monacoEditor.onDidChangeModelContent(({isFlush}) => {
+      if (!isFlush) return
+      formattedFromFlushDuringAttach = true
+      formatWhenReady()
+    })
+  )
+  disposables.push(
+    monacoEditor.onDidPaste(() => {
+      formatWhenReady()
+    })
+  )
+
+  const disposeAll = () => {
+    disposed = true
+    for (const disposable of disposables) {
+      disposable.dispose()
+    }
+    disposables.length = 0
+  }
+
+  return {
+    formatWhenReady,
+    disposeAll,
+    get formattedFromFlushDuringAttach() {
+      return formattedFromFlushDuringAttach
+    },
+  }
+}
+
+/**
  * Merges optional autoformat Monaco options and an onMount handler that formats on open / value flush.
  * Does not own unrelated editor defaults (e.g. wordWrap); callers merge those into `options`.
+ * Keeps listeners and effective options in sync when `autoformat` changes on a mounted editor.
  * @param autoformat whether autoformat is enabled.
  * @param options the caller Monaco construction options.
  * @param onMount the optional mount callback from the caller.
@@ -76,68 +128,84 @@ export const useMonacoAutoformat = (
   onMount?: OnMount
 ) => {
   const editorRef = useRef<editor.IStandaloneCodeEditor>(null)
+  const onMountRef = useRef(onMount)
+  onMountRef.current = onMount
+  const autoformatRef = useRef(autoformat)
+  autoformatRef.current = autoformat
+  const detachRef = useRef<(() => void) | null>(null)
 
   const monacoOptions = useMemo(
     () => ({
       ...options,
-      ...(autoformat ? autoFormatOptions : {}),
+      ...(autoformat ? autoFormatOptions : disabledAutoFormatOptions),
     }),
     [autoformat, options]
   )
 
-  const handleMount: OnMount = useCallback(
-    (monacoEditor, monaco) => {
-      if (!autoformat) {
-        onMount?.(monacoEditor, monaco)
-        return
-      }
+  const detachAutoformat = useCallback(() => {
+    detachRef.current?.()
+    detachRef.current = null
+  }, [])
 
-      editorRef.current = monacoEditor
+  const enableAutoformat = useCallback(
+    (monacoEditor: editor.IStandaloneCodeEditor, formatAfterAttach: boolean) => {
+      detachAutoformat()
+      monacoEditor.updateOptions(autoFormatOptions)
+      const attachment = attachAutoformatListeners(monacoEditor)
+      detachRef.current = attachment.disposeAll
 
-      const disposables: IDisposable[] = []
-      let disposed = false
-      let formattedFromFlushDuringMount = false
-
-      const formatWhenReady = () => {
-        if (disposed) return
-        // Rearm paste whenever the formatter becomes ready: FormatOnPaste may have missed its listener.
-        disposables.push(scheduleFormatWhenReady(monacoEditor, true))
-      }
-
-      disposables.push(
-        monacoEditor.onDidChangeModelContent(({isFlush}) => {
-          if (!isFlush) return
-          formattedFromFlushDuringMount = true
-          formatWhenReady()
-        })
-      )
-      // Own paste path: Monaco's formatOnPaste contribution may miss its listener (see rearmFormatOnPaste).
-      disposables.push(
-        monacoEditor.onDidPaste(() => {
-          formatWhenReady()
-        })
-      )
-      // Editor-scoped: dispose listeners with the editor so remounts (e.g. Edit JSON modal) do not leak.
-      disposables.push(
-        monacoEditor.onDidDispose(() => {
-          disposed = true
-          for (const disposable of disposables) {
-            disposable.dispose()
-          }
-          disposables.length = 0
-        })
-      )
-
-      // Caller onMount may swap the model (JsonView) or setValue (flush). Format after that.
-      // Skip the microtask when a flush already formatted during onMount (one trigger).
-      // Avoid onDidLayoutChange: formatDocument can change layout and loop.
-      onMount?.(monacoEditor, monaco)
-      if (!formattedFromFlushDuringMount) {
-        queueMicrotask(formatWhenReady)
+      if (formatAfterAttach && !attachment.formattedFromFlushDuringAttach) {
+        queueMicrotask(attachment.formatWhenReady)
       }
     },
-    [autoformat, onMount]
+    [detachAutoformat]
   )
+
+  const handleMount: OnMount = useCallback(
+    (monacoEditor, monaco) => {
+      editorRef.current = monacoEditor
+
+      monacoEditor.onDidDispose(() => {
+        detachAutoformat()
+        editorRef.current = null
+      })
+
+      if (autoformatRef.current) {
+        // Attach before caller onMount so setValue flushes during mount are observed.
+        detachAutoformat()
+        monacoEditor.updateOptions(autoFormatOptions)
+        const attachment = attachAutoformatListeners(monacoEditor)
+        detachRef.current = attachment.disposeAll
+        onMountRef.current?.(monacoEditor, monaco)
+        if (!attachment.formattedFromFlushDuringAttach) {
+          queueMicrotask(attachment.formatWhenReady)
+        }
+      } else {
+        monacoEditor.updateOptions(disabledAutoFormatOptions)
+        onMountRef.current?.(monacoEditor, monaco)
+      }
+    },
+    [detachAutoformat]
+  )
+
+  useEffect(() => {
+    const monacoEditor = editorRef.current
+    if (!monacoEditor) return
+
+    if (autoformat) {
+      // handleMount may already have attached; avoid dispose/reattach churn on first paint.
+      if (!detachRef.current) {
+        enableAutoformat(monacoEditor, true)
+      } else {
+        monacoEditor.updateOptions(autoFormatOptions)
+      }
+      return detachAutoformat
+    }
+
+    detachAutoformat()
+    monacoEditor.updateOptions(disabledAutoFormatOptions)
+    return undefined
+  }, [autoformat, detachAutoformat, enableAutoformat])
 
   return {monacoOptions, onMount: handleMount}
 }

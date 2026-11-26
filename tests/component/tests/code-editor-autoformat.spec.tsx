@@ -185,7 +185,7 @@ describe('Code editor autoformat with real form definitions', () => {
 
     const editor = await findByTestId('autoformat-monaco')
     expect(editor.textContent).toBe(minified)
-    expect(lastMonacoOptions?.formatOnPaste).toBeUndefined()
+    expect(lastMonacoOptions?.formatOnPaste).toBe(false)
   })
 
   it('formats flushed form JSON replacements when autoformat is enabled', async () => {
@@ -253,5 +253,48 @@ describe('Code editor autoformat with real form definitions', () => {
 
     expect(formatRunCount).toBe(1)
     expect(formatSourceSnapshots).toEqual([minifiedDesigner])
+  })
+
+  it('enables formatting when autoformat flips from false to true on a mounted editor', async () => {
+    const minifiedLogin = JSON.stringify(loginForm)
+    const minifiedDesigner = JSON.stringify(designerForm)
+    const prettyDesigner = JSON.stringify(designerForm, null, 2)
+
+    const {findByTestId, rerender} = render(<UnconstrainedCodeEditor language="json" initialValue={minifiedLogin} onChange={vi.fn()} />)
+
+    const editor = await findByTestId('autoformat-monaco')
+    expect(editor.textContent).toBe(minifiedLogin)
+    expect(lastMonacoOptions?.formatOnPaste).toBe(false)
+
+    rerender(<UnconstrainedCodeEditor language="json" initialValue={minifiedDesigner} onChange={vi.fn()} autoformat />)
+
+    await waitFor(() => {
+      expect(editor.textContent).toBe(prettyDesigner)
+    })
+    expect(lastMonacoOptions).toMatchObject({
+      formatOnPaste: true,
+      formatOnType: true,
+    })
+  })
+
+  it('disables formatting replacements when autoformat flips from true to false', async () => {
+    const onChange = vi.fn()
+    const {findByTestId, rerender} = render(
+      <UnconstrainedCodeEditor language="json" initialValue={JSON.stringify(loginForm)} onChange={onChange} autoformat />
+    )
+
+    await findByTestId('autoformat-monaco')
+    onChange.mockClear()
+
+    rerender(<UnconstrainedCodeEditor language="json" initialValue={JSON.stringify(designerForm)} onChange={onChange} />)
+
+    await waitFor(() => {
+      expect(onChange).toHaveBeenCalledWith(JSON.stringify(designerForm))
+    })
+    expect(onChange).not.toHaveBeenCalledWith(JSON.stringify(designerForm, null, 2))
+    expect(lastMonacoOptions).toMatchObject({
+      formatOnPaste: false,
+      formatOnType: false,
+    })
   })
 })
