@@ -73,7 +73,7 @@ test.describe('Preset component', {
   test('can be added to the form from components modal', async () => {
     await clearForm(page)
 
-    await page.locator('.isRoot.isInner button').first().click({force: true})
+    await page.getByTestId('add-button').first().dispatchEvent('pointerdown')
     await page.locator('.rs-modal-wrapper .FE_TestPreset').first().click({force: true})
     await expect(page.locator('.rs-modal-wrapper')).toHaveCount(0)
 
@@ -84,7 +84,7 @@ test.describe('Preset component', {
     await clearForm(page)
 
     const preset = page.locator('.FE_TestPreset').first()
-    const addButton = page.locator('.isRoot.isInner button').first()
+    const addButton = page.getByTestId('add-button').first()
 
     await dragAndDrop(page, preset, addButton)
 
