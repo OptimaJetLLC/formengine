@@ -20,7 +20,7 @@ on the canvas and the **Main** / **Rules** tabs.
 <img src="/assets/guide/workspace/highlight-json-view-close.png" alt="Edit JSON modal open with a red arrow pointing to the close button." />
 
 The exact editor setup depends on configuration, including the Monaco editor and schema validation. JSON in the editor is pretty-printed on
-open and formats on paste and while typing. To reformat the whole document manually, use Monaco **Format Document**:
+open and formats on paste. Monaco does not format JSON while typing; to reformat the whole document manually, use **Format Document**:
 
 | OS      | Shortcut                                                                          |
 | ------- | --------------------------------------------------------------------------------- |

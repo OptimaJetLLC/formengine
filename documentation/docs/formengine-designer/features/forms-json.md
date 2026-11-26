@@ -65,8 +65,8 @@ screenshot below.
 
 ![img.png](/assets/forms-json/forms-json-03.png)
 
-This opens the built-in JSON form code editor (Monaco). The buffer is pretty-printed on open, and the editor formats JSON on paste and while
-typing. You can also format the whole document with the Monaco **Format Document** shortcut:
+This opens the built-in JSON form code editor (Monaco). The buffer is pretty-printed on open, and the editor formats JSON on paste. Monaco
+does not format JSON while typing. You can also format the whole document with the Monaco **Format Document** shortcut:
 
 | OS      | Shortcut                                        |
 | ------- | ----------------------------------------------- |

@@ -8,6 +8,7 @@ const FORMATTER_POLL_MS = 25
 const autoFormatOptions: editor.IStandaloneEditorConstructionOptions = {
   autoIndent: 'advanced',
   formatOnPaste: true,
+  // Effective only when the language registers an on-type formatting provider (JSON does not).
   formatOnType: true,
 }
 
