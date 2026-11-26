@@ -1,6 +1,6 @@
 _June_ 26, 2025
 
-In this release, we have reorganized the structure of our [public repository](https://github.com/optimajet/formengine/) and added license files for your convenience.
+In this release, we have reorganized the structure of our [public repository](https://github.com/OptimaJetLLC/formengine/) and added license files for your convenience.
 
 ### New
 

@@ -36,7 +36,7 @@ export const GitHubButton = () => {
       <div>Quickly Build Drag-and-Drop Forms</div>
     </div>
 
-    <a href="https://github.com/optimajet/formengine" target="_blank" style={buttonStyle}>
+    <a href="https://github.com/OptimaJetLLC/formengine" target="_blank" style={buttonStyle}>
       <GitHubLogo/>
       <span style={headerStyle}>Star us on GitHub</span>
     </a>

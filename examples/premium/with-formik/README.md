@@ -5,8 +5,8 @@ This code corresponds to Formik [integration example](https://formengine.io/docu
 ## How to run
 
 ```shell
-git clone git@github.com:optimajet/formengine.git
-cd formengine/premium/examples/with-formik
+git clone git@github.com:OptimaJetLLC/formengine.git
+cd formengine/examples/premium/with-formik
 npm install
 npm run dev
 ```

@@ -209,7 +209,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              to: 'https://github.com/optimajet/formengine',
+              to: 'https://github.com/OptimaJetLLC/formengine',
               target: '_blank',
             },
             {
