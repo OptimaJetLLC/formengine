@@ -4,7 +4,7 @@
 
 ```shell
 git clone git@github.com:OptimaJetLLC/formengine.git
-cd formengine/community/examples/formdata
+cd formengine/examples/community/formdata
 npm install
 npm run dev
 ```

@@ -14,7 +14,7 @@ _January_ 24, 2025
 ### New
 
 - Components can be deleted by pressing <kbd>Delete</kbd> button.
-- Added [upload server](https://github.com/OptimaJetLLC/formengine/tree/master/community/examples/file-upload-server/README.md) example.
+- Added [upload server](https://github.com/OptimaJetLLC/formengine/tree/master/examples/community/file-upload-server/README.md) example.
 
 ### Fixed bugs
 

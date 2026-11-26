@@ -233,7 +233,7 @@ npm install @react-form-builder/core @react-form-builder/components-rsuite
 - **Community:** FormEngine Core source code and examples (MIT).
 - **Premium:** Examples for Premium On-Premise Drag-and-Drop React Form Builder ([EULA](https://formengine.io/eula/)). Premium On-Premise Drag-and-Drop React
   Form Builder
-- [Source Code](https://github.com/OptimaJetLLC/formengine/tree/master/community)
+- [Source Code](https://github.com/OptimaJetLLC/formengine/tree/master/packages)
 
 ## 🧩 Compatibility
 

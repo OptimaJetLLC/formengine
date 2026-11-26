@@ -35,7 +35,7 @@ approaches, with live preview and validation capabilities.
 :::tip
 
 Full source code along with other examples available at our
-public [GitHub repository](https://github.com/OptimaJetLLC/formengine/tree/master/premium/examples/with-angular-forms).
+public [GitHub repository](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-angular-forms).
 
 :::
 
@@ -53,7 +53,7 @@ To get started, you can choose a pre-made application that serves as starting po
 
 ```shell
 git clone https://github.com/OptimaJetLLC/formengine
-cd formengine/premium/examples/with-angular-forms/step1-reactive-forms
+cd formengine/examples/premium/with-angular-forms/step1-reactive-forms
 npm install
 npm run start
 ```
@@ -154,7 +154,7 @@ For Designer integration (covered in the [Designer](#designer) section), you'll 
 :::
 
 The complete example is available in
-the [examples folder](https://github.com/OptimaJetLLC/formengine/tree/master/premium/examples/with-angular-forms/step2-formengine).
+the [examples folder](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-angular-forms/step2-formengine).
 
 ### Viewer setup in Angular
 
@@ -609,7 +609,7 @@ Consider using template-driven forms with FormEngine when:
 :::info
 
 The full source code for template-driven forms integration is available in
-the [examples folder](https://github.com/OptimaJetLLC/formengine/tree/master/premium/examples/with-angular-forms/step3-template-forms).
+the [examples folder](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-angular-forms/step3-template-forms).
 
 :::
 
@@ -617,7 +617,7 @@ the [examples folder](https://github.com/OptimaJetLLC/formengine/tree/master/pre
 
 Designer integration follows the same pattern: mount the React `FormBuilder` through `react-wrapper` from `@bubblydoo/angular-react`.
 For detailed instructions and examples, you can jump to the
-[source code](https://github.com/OptimaJetLLC/formengine/tree/master/premium/examples/with-angular-forms/step4-designer) to see how it works in
+[source code](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-angular-forms/step4-designer) to see how it works in
 practice.
 
 While the overall functionality of Designer is largely consistent with `FormViewer`, there are some important differences in the

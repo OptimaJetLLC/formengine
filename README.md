@@ -38,7 +38,7 @@ Bundle sizes are approximate and depend on build configuration, tree-shaking, an
 
 [Read the article comparing bundle sizes](https://formengine.io/documentation/bundle-size-comparison/).
 
-[The benchmark source code](https://github.com/OptimaJetLLC/formengine/tree/master/community/examples/bundle-size).
+[The benchmark source code](https://github.com/OptimaJetLLC/formengine/tree/master/examples/community/bundle-size).
 
 ## 📦 FormEngine Core MUI Installation
 
@@ -228,7 +228,7 @@ export const App = () => (
 - **Community:** FormEngine Core source code and examples (MIT).
 - **Premium:** Examples for Premium On-Premise Drag-and-Drop React Form Builder ([EULA](https://formengine.io/eula/)). Premium On-Premise Drag-and-Drop React
   Form Builder
-- [Source Code](https://github.com/OptimaJetLLC/formengine/tree/master/community)
+- [Source Code](https://github.com/OptimaJetLLC/formengine/tree/master/packages)
 
 ## 🧩 Compatibility 
 

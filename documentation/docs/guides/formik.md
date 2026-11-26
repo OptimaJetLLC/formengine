@@ -22,7 +22,7 @@ Let's omit some boilerplate code and highlight only important things.
 :::tip
 
 Full source code along with other examples available at our
-public [GitHub repository](https://github.com/OptimaJetLLC/formengine/tree/master/premium/examples/with-formik).
+public [GitHub repository](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-formik).
 
 :::
 
@@ -783,6 +783,6 @@ With the steps outlined in this guide, you can easily sync data and validation e
 enhancing your development experience.
 
 For the complete source code and additional examples, visit our
-public [GitHub repository](https://github.com/OptimaJetLLC/formengine/tree/master/premium/examples/with-formik).
+public [GitHub repository](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-formik).
 
 Start building better forms today with FormEngine and Formik!

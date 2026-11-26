@@ -14,7 +14,7 @@ The FormEngine is fully compatible with the latest versions of the [Remix](https
 :::tip
 
 A fully functional example is available in our [GitHub repository](https://github.com/OptimaJetLLC/formengine), specifically located in the
-[examples](https://github.com/OptimaJetLLC/formengine/tree/master/premium/examples/with-remix/with-remix-v2). We encourage you to explore the code to
+[examples](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-remix/with-remix-v2). We encourage you to explore the code to
 see how the various components interact and work together seamlessly. If you have any questions or require further assistance, please don't
 hesitate to reach out!
 
