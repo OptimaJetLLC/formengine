@@ -4,6 +4,30 @@ The form builder settings interface.
 
 ## Properties
 
+### cloneSelected
+
+> **cloneSelected**: () => `void`
+
+Clones the selected component when exactly one component is selected.
+
+#### Returns
+
+`void`
+
+***
+
+### deleteSelected
+
+> **deleteSelected**: () => `void`
+
+Deletes the currently selected components from the form.
+
+#### Returns
+
+`void`
+
+***
+
 ### parseForm
 
 > **parseForm**: (`text`) => `void`
@@ -24,11 +48,70 @@ the form serialized in JSON.
 
 ***
 
+### print
+
+> **print**: () => `void`
+
+Prints the form (switches to viewer mode for printing when needed).
+
+#### Returns
+
+`void`
+
+***
+
+### redo
+
+> **redo**: () => `void`
+
+Redoes the last undone form edit.
+
+#### Returns
+
+`void`
+
+***
+
 ### reloadFormList
 
 > **reloadFormList**: () => `void`
 
 Updates the form list on the Forms tab.
+
+#### Returns
+
+`void`
+
+***
+
+### save
+
+> **save**: (`formName?`) => `Promise`\<`void`\>
+
+Saves the current form to form storage without showing the designer toast.
+Built-in Ctrl/Cmd+S and the Save menu still show success/error toasts via the UI layer.
+
+#### Parameters
+
+##### formName?
+
+`string`
+
+the optional form name. When omitted, the active form name is used.
+
+#### Returns
+
+`Promise`\<`void`\>
+
+the promise that resolves when the form is saved.
+
+***
+
+### undo
+
+> **undo**: () => `void`
+
+Undoes the last form edit.
 
 #### Returns
 
