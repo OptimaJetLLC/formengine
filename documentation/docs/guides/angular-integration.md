@@ -35,7 +35,7 @@ approaches, with live preview and validation capabilities.
 :::tip
 
 Full source code along with other examples available at our
-public [GitHub repository](https://github.com/optimajet/formengine/tree/master/premium/examples/with-angular-forms).
+public [GitHub repository](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-angular-forms).
 
 :::
 
@@ -52,8 +52,8 @@ Assume we already have a simple booking form built using Angular's reactive form
 To get started, you can choose a pre-made application that serves as starting point.
 
 ```shell
-git clone https://github.com/optimajet/formengine
-cd formengine/premium/examples/with-angular-forms/step1-reactive-forms
+git clone https://github.com/OptimaJetLLC/formengine
+cd formengine/examples/premium/with-angular-forms/step1-reactive-forms
 npm install
 npm run start
 ```
@@ -154,7 +154,7 @@ For Designer integration (covered in the [Designer](#designer) section), you'll 
 :::
 
 The complete example is available in
-the [examples folder](https://github.com/optimajet/formengine/tree/master/premium/examples/with-angular-forms/step2-formengine).
+the [examples folder](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-angular-forms/step2-formengine).
 
 ### Viewer setup in Angular
 
@@ -609,7 +609,7 @@ Consider using template-driven forms with FormEngine when:
 :::info
 
 The full source code for template-driven forms integration is available in
-the [examples folder](https://github.com/optimajet/formengine/tree/master/premium/examples/with-angular-forms/step3-template-forms).
+the [examples folder](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-angular-forms/step3-template-forms).
 
 :::
 
@@ -617,7 +617,7 @@ the [examples folder](https://github.com/optimajet/formengine/tree/master/premiu
 
 Designer integration follows the same pattern: mount the React `FormBuilder` through `react-wrapper` from `@bubblydoo/angular-react`.
 For detailed instructions and examples, you can jump to the
-[source code](https://github.com/optimajet/formengine/tree/master/premium/examples/with-angular-forms/step4-designer) to see how it works in
+[source code](https://github.com/OptimaJetLLC/formengine/tree/master/examples/premium/with-angular-forms/step4-designer) to see how it works in
 practice.
 
 While the overall functionality of Designer is largely consistent with `FormViewer`, there are some important differences in the
@@ -841,4 +841,4 @@ In this guide, you've learned how to integrate FormEngine with Angular applicati
 - Explore the [FormEngine Core documentation](/formengine-core/) for detailed API reference
 - Check out the [Validation guide](/formengine-core/validation) for advanced validation techniques
 - Review the [Component library](/components-library) for available form components
-- Visit the [GitHub repository](https://github.com/optimajet/formengine) for more examples and source code
+- Visit the [GitHub repository](https://github.com/OptimaJetLLC/formengine) for more examples and source code

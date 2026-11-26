@@ -140,9 +140,9 @@ npm install @react-form-builder/components-material-ui
 
 For issues with Material UI components in FormEngine:
 
-- Check the [FormEngine GitHub issues](https://github.com/optimajet/formengine/issues)
+- Check the [FormEngine GitHub issues](https://github.com/OptimaJetLLC/formengine/issues)
 - Refer to [Material UI documentation](https://mui.com/material-ui/getting-started/installation/)
-- Join the [FormEngine community discussions](https://github.com/optimajet/formengine/discussions)
+- Join the [FormEngine community discussions](https://github.com/OptimaJetLLC/formengine/discussions)
 
 Material UI components provide a robust, accessible, and visually consistent way to build forms and interfaces in FormEngine applications.
 With full Material Design compliance and extensive customization options, they're an excellent choice for projects that require modern,

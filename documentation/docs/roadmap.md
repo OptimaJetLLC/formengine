@@ -17,7 +17,7 @@ vulnerable packages as quickly as possible if patches are available for those pa
 :::info[feature request]
 
 If you want to add a feature to our roadmap - please open an issue in
-our [GitHub repository](https://github.com/optimajet/formengine/issues).
+our [GitHub repository](https://github.com/OptimaJetLLC/formengine/issues).
 
 :::
 
