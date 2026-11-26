@@ -42,6 +42,21 @@ const getHotkeyOs = (): OS => {
  * @param os the OS key map to start from. Defaults to the current user agent.
  * @returns the binding list. Empty when all hotkeys are disabled (`hotkeys: false`).
  */
+/**
+ * @param left the first chord.
+ * @param right the second chord.
+ * @returns whether both chords require the same key and modifiers.
+ */
+const sameChord = (left: DesignerHotkey, right: DesignerHotkey) => {
+  return (
+    left.key.toLowerCase() === right.key.toLowerCase() &&
+    !!left.alt === !!right.alt &&
+    !!left.shift === !!right.shift &&
+    !!left.ctrl === !!right.ctrl &&
+    !!left.meta === !!right.meta
+  )
+}
+
 export const resolveHotkeyBindings = (hotkeys: DesignerHotkeysProp | undefined, os: OS = getHotkeyOs()): HotkeyBinding[] => {
   if (hotkeys === false) return []
 
@@ -54,16 +69,21 @@ export const resolveHotkeyBindings = (hotkeys: DesignerHotkeysProp | undefined, 
     if (overrides[action] !== undefined) overriddenActions.add(action)
   }
 
-  const result: HotkeyBinding[] = defaults.filter(([, action]) => !overriddenActions.has(action))
-
+  const overrideBindings: HotkeyBinding[] = []
   for (const action of overriddenActions) {
     const binding = overrides[action]
     if (binding === false || binding === undefined) continue
     const list = Array.isArray(binding) ? binding : [binding]
     for (const hotkey of list) {
-      result.push([hotkey, action])
+      overrideBindings.push([hotkey, action])
     }
   }
 
-  return result
+  // Overrides win chords: drop defaults that share a chord so find() cannot hit Delete before Print.
+  const result = defaults.filter(([hotkey, action]) => {
+    if (overriddenActions.has(action)) return false
+    return !overrideBindings.some(([overrideHotkey]) => sameChord(hotkey, overrideHotkey))
+  })
+
+  return [...overrideBindings, ...result]
 }

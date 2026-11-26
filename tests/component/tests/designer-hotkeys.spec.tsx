@@ -125,4 +125,22 @@ describe('Designer hotkeys', () => {
     fireEvent.keyDown(document, {key: 'F8'})
     await waitFor(() => expect(print).toHaveBeenCalledOnce())
   })
+
+  it('prints on Delete when print is remapped onto that chord', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const {findByText} = render(
+      <FormBuilder
+        licenseKey={generatedLicenseKey}
+        getForm={getFormFn}
+        view={builderViewWithCss}
+        hotkeys={{bindings: {print: {key: 'Delete'}}}}
+      />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+    fireEvent.keyDown(document, {key: 'Delete'})
+
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+    expect(await findByText('Edit')).toBeInTheDocument()
+  })
 })

@@ -70,4 +70,11 @@ describe('resolveHotkeyBindings', () => {
     expect(chordFor(bindings, 'deleteSelected')).toEqual([{key: 'Delete'}])
     expect(chordFor(bindings, 'print')).toEqual([{key: 'p', meta: true}])
   })
+
+  it('drops default chords that conflict with an override so the override wins', () => {
+    const bindings = resolveHotkeyBindings({bindings: {print: {key: 'Delete'}}}, 'default')
+
+    expect(chordFor(bindings, 'print')).toEqual([{key: 'Delete'}])
+    expect(chordFor(bindings, 'deleteSelected')).toEqual([])
+  })
 })
