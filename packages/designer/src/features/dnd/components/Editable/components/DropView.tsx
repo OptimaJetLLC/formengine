@@ -4,6 +4,7 @@ import cx from 'clsx'
 import type {HTMLAttributes, KeyboardEvent, PointerEvent} from 'react'
 import {forwardRef, useCallback} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
+import {stopEvent} from '../../../../../utils/stopEvent'
 import styles from './DropView.module.css'
 
 interface DropViewProps {
@@ -39,8 +40,7 @@ const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string
   const handlePointerDown = useCallback(
     (event: PointerEvent<HTMLSpanElement>) => {
       if (event.button !== 0) return
-      event.preventDefault()
-      event.stopPropagation()
+      stopEvent(event)
 
       const roots = collectDraggableAncestors(event.currentTarget)
       for (const root of roots) root.setAttribute('draggable', 'false')
@@ -62,8 +62,7 @@ const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLSpanElement>) => {
       if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault()
-        event.stopPropagation()
+        stopEvent(event)
         openModal()
       }
     },
