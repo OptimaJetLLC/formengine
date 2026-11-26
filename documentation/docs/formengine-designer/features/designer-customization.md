@@ -421,13 +421,17 @@ const EmbeddedDesigner = () => {
 
 ### Remap or disable individual shortcuts
 
+Only the actions you list under `bindings` change. Every other action keeps its built-in default chords.
+For a listed action, the value **replaces** that action’s defaults (it does not add to them). Use `false` to turn that
+action’s shortcuts off while leaving the rest unchanged.
+
 ```tsx
 <FormBuilder
   hotkeys={{
     bindings: {
-      // Replace the default Ctrl/Cmd+S chord
+      // Replace only Save’s default Ctrl/Cmd+S chord; Delete, duplicate, print, undo, redo stay default
       save: {key: 's', alt: true},
-      // Keep print available only through the menu / IFormBuilder.print()
+      // Disable Print’s shortcut only; menu Print and IFormBuilder.print() still work
       print: false
     }
   }}
