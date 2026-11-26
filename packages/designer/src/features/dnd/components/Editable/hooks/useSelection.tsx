@@ -1,6 +1,6 @@
 import {useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
-import type {MouseEvent} from 'react'
+import type {MouseEvent, PointerEvent} from 'react'
 import {useCallback, useMemo, useState} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -29,6 +29,11 @@ interface SelectionHandlers {
    * @param e the original mouse event.
    */
   onClick: (e: MouseEvent) => void
+  /**
+   * Selects on pointerdown so HTML5 drag sources cannot cancel the click.
+   * @param e the original pointer event.
+   */
+  onPointerDown: (e: PointerEvent) => void
   /**
    * The callback function called when the mouse hits the component area.
    * @param e the original mouse event.
@@ -67,6 +72,17 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
     [data, store]
   )
 
+  // Select on pointerdown: parent/self are HTML5 drag sources, so a click is often canceled
+  // when the browser starts a drag (especially for nested slot children inside button hosts).
+  const onPointerDown = useCallback(
+    (event: PointerEvent) => {
+      if (event.button !== 0) return
+      event.stopPropagation()
+      store.selectNode(data, event.ctrlKey || event.shiftKey)
+    },
+    [data, store]
+  )
+
   const onMouseOver = useCallback((event: MouseEvent) => {
     stopEvent(event)
     setHovered(true)
@@ -87,5 +103,5 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
     [finalHovered, selected, isDragging]
   )
 
-  return [{hovered: finalHovered, selected}, {onClick, onMouseOver, onMouseOut}, className]
+  return [{hovered: finalHovered, selected}, {onClick, onPointerDown, onMouseOver, onMouseOut}, className]
 }

@@ -6,6 +6,7 @@ import {fireEvent, render, within} from '@testing-library/react'
 import type {ReactNode} from 'react'
 import {describe, expect, it} from 'vitest'
 import '@mantine/core/styles.css'
+import checkboxInButtonForm from './forms/node-in-button/checkbox-in-button-form.json'
 import emptySectionForm from './forms/node-in-button/empty-section-form.json'
 import mtButtonSectionForm from './forms/node-in-button/mt-button-section-form.json'
 
@@ -70,5 +71,23 @@ describe('node picker inside button host', () => {
     // Parent editable wrappers are HTML5 drag sources; open on pointerdown before a drag can cancel click.
     fireEvent.pointerDown(leftAdd, {button: 0})
     expect(await findByRole('dialog')).toBeInTheDocument()
+  })
+
+  it('selects MtCheckbox nested in MtButton leftSection on pointerdown', async () => {
+    const getForm = () => JSON.stringify(checkboxInButtonForm)
+    const {findByTestId} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
+
+    const button = await findByTestId('mtButton1-editable-wrapper')
+    const checkbox = await findByTestId('mtCheckbox1-editable-wrapper')
+    const checkboxOverlay = checkbox.querySelector(':scope > [data-fe-drag-overlay]')
+    expect(checkboxOverlay).toBeTruthy()
+
+    fireEvent.click(button.querySelector(':scope > [data-fe-drag-overlay]')!)
+    expect(button.className).toMatch(/selected/)
+
+    // Nested slot children sit under HTML5 drag sources; selection must win on pointerdown.
+    fireEvent.pointerDown(checkboxOverlay!, {button: 0})
+    expect(checkbox.className).toMatch(/selected/)
+    expect(button.className).not.toMatch(/selected/)
   })
 })

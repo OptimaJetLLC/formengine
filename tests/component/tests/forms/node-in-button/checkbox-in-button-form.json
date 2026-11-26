@@ -1,0 +1,35 @@
+{
+  "version": "1",
+  "tooltipType": "MtTooltip",
+  "modalType": "MtDialog",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "mtButton1",
+        "type": "MtButton",
+        "props": {},
+        "children": [
+          {
+            "key": "mtCheckbox1",
+            "type": "MtCheckbox",
+            "props": {},
+            "slot": "leftSection"
+          }
+        ]
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
