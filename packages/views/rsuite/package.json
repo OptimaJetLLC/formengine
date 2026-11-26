@@ -182,7 +182,7 @@
     "@rsuite/icons": "1.4.1",
     "clsx": "^2.1.1",
     "date-fns": "^2.30.0",
-    "mobx": "^7.1.6",
+    "mobx": "^7.1.7",
     "react": "^18 || ^19",
     "react-number-format": "^5.1.4",
     "rsuite": "5.83.4"
@@ -200,7 +200,7 @@
   "devDependencies": {
     "@react-form-builder/cli-lib": "*",
     "@react-form-builder/json-schema-generator": "^12.1.0",
-    "postcss": "^8.5.29",
+    "postcss": "^8.5.33",
     "vite-inline-css-plugin": "^0.0.2",
     "vite-node": "^6.0.0"
   }
