@@ -6,7 +6,6 @@ import {buildConstrainedDocument, extractEditableBody, resolveNextConstrainedDoc
 import {MonacoCodeEditor} from './MonacoCodeEditor'
 import type {ConstrainedMonacoEditorModel} from './setupConstrainedMonaco'
 import {setupConstrainedMonaco, withSuppressedConstrainedValidation} from './setupConstrainedMonaco'
-import {useMonacoAutoformat} from './useMonacoAutoformat'
 
 type ConstrainedContext = {
   beginContextLine?: string
@@ -99,17 +98,25 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
     [context, initialValue, onChange, onMount]
   )
 
-  const {monacoOptions, onMount: autoformatOnMount} = useMonacoAutoformat(props.autoformat, props.options, handleMount)
+  // Autoformat is unconstrained-only: formatDocument can rewrite begin/end context lines.
+  const options = useMemo(
+    () =>
+      ({
+        wordWrap: 'on',
+        ...props.options,
+      }) satisfies editor.IStandaloneEditorConstructionOptions,
+    [props.options]
+  )
 
   return (
     <MonacoCodeEditor
-      onMount={autoformatOnMount}
+      onMount={handleMount}
       className={props.className}
       defaultValue={documentValue}
       height={props.height ?? '100%'}
       width={props.width ?? '100%'}
       language={props.language ?? 'javascript'}
-      options={monacoOptions}
+      options={options}
       theme={props.theme}
     />
   )

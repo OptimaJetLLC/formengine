@@ -1,6 +1,6 @@
 import type {OnMount} from '@monaco-editor/react'
 import type {editor} from 'monaco-editor'
-import {useCallback, useEffect, useRef} from 'react'
+import {useCallback, useEffect, useMemo, useRef} from 'react'
 import type {UnconstrainedCodeEditorProps} from './CodeEditorProps'
 import {MonacoCodeEditor} from './MonacoCodeEditor'
 import {useMonacoAutoformat} from './useMonacoAutoformat'
@@ -32,7 +32,16 @@ export const UnconstrainedCodeEditor = (props: UnconstrainedCodeEditorProps) => 
     [onChange, onMount]
   )
 
-  const {monacoOptions, onMount: autoformatOnMount} = useMonacoAutoformat(props.autoformat, props.options, handleMount)
+  const options = useMemo(
+    () =>
+      ({
+        wordWrap: 'on',
+        ...props.options,
+      }) satisfies editor.IStandaloneEditorConstructionOptions,
+    [props.options]
+  )
+
+  const {monacoOptions, onMount: autoformatOnMount} = useMonacoAutoformat(props.autoformat, options, handleMount)
 
   return (
     <MonacoCodeEditor

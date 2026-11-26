@@ -1,5 +1,5 @@
 import type {OnMount} from '@monaco-editor/react'
-import type {editor} from 'monaco-editor'
+import type {editor, IDisposable} from 'monaco-editor'
 import {useCallback, useMemo, useRef} from 'react'
 
 const autoFormatOptions: editor.IStandaloneEditorConstructionOptions = {
@@ -9,7 +9,8 @@ const autoFormatOptions: editor.IStandaloneEditorConstructionOptions = {
 }
 
 /**
- * Builds Monaco options and an onMount handler that apply optional document autoformat.
+ * Merges optional autoformat Monaco options and an onMount handler that formats on open / value flush.
+ * Does not own unrelated editor defaults (e.g. wordWrap); callers merge those into `options`.
  * @param autoformat whether autoformat is enabled.
  * @param options the caller Monaco construction options.
  * @param onMount the optional mount callback from the caller.
@@ -28,7 +29,6 @@ export const useMonacoAutoformat = (
 
   const monacoOptions = useMemo(
     () => ({
-      wordWrap: 'on' as const,
       ...options,
       ...(autoformat ? autoFormatOptions : {}),
     }),
@@ -37,17 +37,40 @@ export const useMonacoAutoformat = (
 
   const handleMount: OnMount = useCallback(
     (monacoEditor, monaco) => {
-      editorRef.current = monacoEditor
-
-      if (autoformat) {
-        // Format once after mount. Avoid onDidLayoutChange: formatDocument can change layout and loop.
-        queueMicrotask(formatDocument)
-        monacoEditor.onDidChangeModelContent(({isFlush}) => {
-          if (isFlush) formatDocument()
-        })
+      if (!autoformat) {
+        onMount?.(monacoEditor, monaco)
+        return
       }
 
+      editorRef.current = monacoEditor
+
+      const disposables: IDisposable[] = []
+      let formattedFromFlushDuringMount = false
+
+      disposables.push(
+        monacoEditor.onDidChangeModelContent(({isFlush}) => {
+          if (!isFlush) return
+          formattedFromFlushDuringMount = true
+          formatDocument()
+        })
+      )
+      // Editor-scoped: dispose listeners with the editor so remounts (e.g. Edit JSON modal) do not leak.
+      disposables.push(
+        monacoEditor.onDidDispose(() => {
+          for (const disposable of disposables) {
+            disposable.dispose()
+          }
+          disposables.length = 0
+        })
+      )
+
+      // Caller onMount may swap the model (JsonView) or setValue (flush). Format after that.
+      // Skip the microtask when a flush already formatted during onMount (one trigger).
+      // Avoid onDidLayoutChange: formatDocument can change layout and loop.
       onMount?.(monacoEditor, monaco)
+      if (!formattedFromFlushDuringMount) {
+        queueMicrotask(formatDocument)
+      }
     },
     [autoformat, formatDocument, onMount]
   )

@@ -7,6 +7,7 @@ import {CodeEditor} from '../components/CodeEditor/CodeEditor'
 
 const RawJsonView = () => {
   const builderStore = useBuilderStore()
+  // Captured once per mount; JsonViewButton remounts this view each time Edit JSON opens.
   const [initialValue] = useState(builderStore.formAsString)
   const sourceRef = useRef(initialValue)
   const onSetSource = useCallback((value: string) => (sourceRef.current = value), [])
