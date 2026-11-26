@@ -83,4 +83,46 @@ describe('Designer hotkeys', () => {
     await waitFor(() => expect(print).toHaveBeenCalledOnce())
     expect(await findByText('Edit')).toBeInTheDocument()
   })
+
+  it('stops intercepting Ctrl/Cmd+P after rerendering with hotkeys={false}', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const {findByText, rerender} = render(<FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} />)
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+
+    firePrintHotkey()
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+    print.mockClear()
+    fireEvent(window, new Event('afterprint'))
+    expect(await findByText('Preview')).toBeInTheDocument()
+
+    rerender(<FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} hotkeys={false} />)
+
+    firePrintHotkey()
+    await waitFor(() => expect(print).not.toHaveBeenCalled())
+  })
+
+  it('activates a remapped print chord after enabling hotkeys on a mounted designer', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const {findByText, rerender} = render(
+      <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} hotkeys={false} />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+
+    fireEvent.keyDown(document, {key: 'F8'})
+    await waitFor(() => expect(print).not.toHaveBeenCalled())
+
+    rerender(
+      <FormBuilder
+        licenseKey={generatedLicenseKey}
+        getForm={getFormFn}
+        view={builderViewWithCss}
+        hotkeys={{bindings: {print: {key: 'F8'}}}}
+      />
+    )
+
+    fireEvent.keyDown(document, {key: 'F8'})
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+  })
 })

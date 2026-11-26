@@ -1,6 +1,7 @@
 import {useCallback, useMemo} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useSaveForm} from '../ui/Header/components/useSaveForm'
+import {useHotkeysProp} from './HotkeysPropContext'
 import {alwaysActiveHotkeyActions, resolveHotkeyBindings} from './resolveHotkeyBindings'
 import type {DesignerHotkey, DesignerHotkeyAction} from './types'
 
@@ -65,9 +66,9 @@ const useHotkeyHandlers = (): Record<DesignerHotkeyAction, HotkeyHandler> => {
  * When `hotkeys: false`, FormBuilder does not attach this listener.
  */
 export const useHotkeys = () => {
-  const builderStore = useBuilderStore()
   const handlers = useHotkeyHandlers()
-  const bindings = useMemo(() => resolveHotkeyBindings(builderStore.props.hotkeys), [builderStore.props.hotkeys])
+  const hotkeys = useHotkeysProp()
+  const bindings = useMemo(() => resolveHotkeyBindings(hotkeys), [hotkeys])
 
   return useCallback(
     (event: KeyboardEvent) => {
