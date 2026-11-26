@@ -6,6 +6,7 @@ import {testLicense} from '@react-form-builder/tests-common/test-licenses'
 import {fireEvent, RenderResult, render, waitFor, within} from '@testing-library/react'
 import {describe, expect, it} from 'vitest'
 import {asyncAct} from '../../common/lib/asyncAct'
+import {clickAddButton} from '../util/clickAddButton'
 
 const testForm = {
   version: '1',
@@ -134,21 +135,21 @@ describe('FE-1306: After container clone inner components should have unique key
     fireEvent.click(treeBtn)
 
     let addBtn = await findByTestId('add-button')
-    fireEvent.click(addBtn)
+    clickAddButton(addBtn)
 
     let dialog = await findByRole('dialog')
     let contBtn = await within(dialog).findByText('Container')
     fireEvent.click(contBtn)
 
     addBtn = await findByTestId('add-button')
-    fireEvent.click(addBtn)
+    clickAddButton(addBtn)
 
     dialog = await findByRole('dialog')
     contBtn = await within(dialog).findByText('Container')
     fireEvent.click(contBtn)
 
     addBtn = await findByTestId('add-button')
-    fireEvent.click(addBtn)
+    clickAddButton(addBtn)
 
     dialog = await findByRole('dialog')
     contBtn = await within(dialog).findByText('Label')

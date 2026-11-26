@@ -1,5 +1,6 @@
 import {fireEvent, waitFor, within} from '@testing-library/react'
 import {describe, expect, it} from 'vitest'
+import {clickAddButton} from '../util/clickAddButton'
 import {openToolbarActions} from '../util/openToolbarActions'
 import {renderBuilder} from '../util/renderBuilder'
 import emptyForm from './forms/empty-form.json'
@@ -9,13 +10,13 @@ describe('Accordion builder interaction', () => {
     const {findByRole, findByTestId, queryByRole} = await renderBuilder(emptyForm)
     const screen = await findByTestId('mainScreen')
 
-    fireEvent.click(within(screen).getByTestId('add-button'))
+    clickAddButton(within(screen).getByTestId('add-button'))
     const accordionModal = await findByRole('dialog')
     fireEvent.click(within(accordionModal).getByTestId('RsAccordion-palette-component'))
     await waitFor(() => expect(queryByRole('dialog')).not.toBeInTheDocument())
 
     const accordion = await findByTestId('rsAccordion1-editable-wrapper')
-    fireEvent.click(within(accordion).getByTestId('add-button'))
+    clickAddButton(within(accordion).getByTestId('add-button'))
     const checkboxModal = await findByRole('dialog')
     fireEvent.click(within(checkboxModal).getByTestId('RsCheckbox-palette-component'))
     await waitFor(() => expect(queryByRole('dialog')).not.toBeInTheDocument())
@@ -32,7 +33,7 @@ describe('Accordion builder interaction', () => {
     fireEvent.doubleClick(await findByTestId('RsAccordion-palette-component'))
 
     const accordion = await findByTestId('rsAccordion1-editable-wrapper')
-    fireEvent.click(within(accordion).getByTestId('add-button'))
+    clickAddButton(within(accordion).getByTestId('add-button'))
     const panelModal = await findByRole('dialog')
     fireEvent.click(within(panelModal).getByTestId('RsAccordionPanel-palette-component'))
     await waitFor(() => expect(queryByRole('dialog')).not.toBeInTheDocument())

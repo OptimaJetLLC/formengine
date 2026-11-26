@@ -2,10 +2,11 @@ import {builderView as mantineBuilderView} from '@react-form-builder/components-
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BuilderView, define, node, string} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
-import {fireEvent, render, within} from '@testing-library/react'
+import {act, fireEvent, render, within} from '@testing-library/react'
 import type {ReactNode} from 'react'
 import {describe, expect, it} from 'vitest'
 import '@mantine/core/styles.css'
+import {clickAddButton} from '../util/clickAddButton'
 import checkboxInButtonForm from './forms/node-in-button/checkbox-in-button-form.json'
 import emptySectionForm from './forms/node-in-button/empty-section-form.json'
 import mtButtonSectionForm from './forms/node-in-button/mt-button-section-form.json'
@@ -50,7 +51,7 @@ describe('node picker inside button host', () => {
     expect(addControl.tagName).not.toBe('BUTTON')
     expect(host.querySelector('button')).toBeNull()
 
-    fireEvent.pointerDown(addControl, {button: 0})
+    clickAddButton(addControl)
     expect(await findByRole('dialog')).toBeInTheDocument()
   })
 
@@ -69,7 +70,7 @@ describe('node picker inside button host', () => {
     expect(leftAdd.tagName).not.toBe('BUTTON')
 
     // Parent editable wrappers are HTML5 drag sources; open on pointerdown before a drag can cancel click.
-    fireEvent.pointerDown(leftAdd, {button: 0})
+    clickAddButton(leftAdd)
     expect(await findByRole('dialog')).toBeInTheDocument()
   })
 
@@ -82,11 +83,15 @@ describe('node picker inside button host', () => {
     const checkboxOverlay = checkbox.querySelector(':scope > [data-fe-drag-overlay]')
     expect(checkboxOverlay).toBeTruthy()
 
-    fireEvent.click(button.querySelector(':scope > [data-fe-drag-overlay]')!)
+    await act(async () => {
+      fireEvent.click(button.querySelector(':scope > [data-fe-drag-overlay]')!)
+    })
     expect(button.className).toMatch(/selected/)
 
     // Nested slot children sit under HTML5 drag sources; selection must win on pointerdown.
-    fireEvent.pointerDown(checkboxOverlay!, {button: 0})
+    await act(async () => {
+      fireEvent.pointerDown(checkboxOverlay!, {button: 0})
+    })
     expect(checkbox.className).toMatch(/selected/)
     expect(button.className).not.toMatch(/selected/)
   })
