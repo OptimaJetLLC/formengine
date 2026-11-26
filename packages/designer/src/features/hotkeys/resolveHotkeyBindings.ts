@@ -37,12 +37,6 @@ const getHotkeyOs = (): OS => {
 }
 
 /**
- * Resolves the effective hotkey bindings for the designer.
- * @param hotkeys the FormBuilder `hotkeys` prop value.
- * @param os the OS key map to start from. Defaults to the current user agent.
- * @returns the binding list. Empty when all hotkeys are disabled (`hotkeys: false`).
- */
-/**
  * @param left the first chord.
  * @param right the second chord.
  * @returns whether both chords require the same key and modifiers.
@@ -57,6 +51,12 @@ const sameChord = (left: DesignerHotkey, right: DesignerHotkey) => {
   )
 }
 
+/**
+ * Resolves the effective hotkey bindings for the designer.
+ * @param hotkeys the FormBuilder `hotkeys` prop value.
+ * @param os the OS key map to start from. Defaults to the current user agent.
+ * @returns the binding list. Empty when all hotkeys are disabled (`hotkeys: false`).
+ */
 export const resolveHotkeyBindings = (hotkeys: DesignerHotkeysProp | undefined, os: OS = getHotkeyOs()): HotkeyBinding[] => {
   if (hotkeys === false) return []
 
