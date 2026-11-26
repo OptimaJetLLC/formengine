@@ -50,4 +50,46 @@ export class FormBuilderImpl implements IFormBuilder {
   reloadFormList() {
     this.builderStore.reloadFormList()
   }
+
+  /**
+   * @inheritDoc
+   */
+  deleteSelected() {
+    this.builderStore.deleteSelected()
+  }
+
+  /**
+   * @inheritDoc
+   */
+  cloneSelected() {
+    this.builderStore.cloneSelected()
+  }
+
+  /**
+   * @inheritDoc
+   */
+  save(formName?: string) {
+    return this.builderStore.save(formName)
+  }
+
+  /**
+   * @inheritDoc
+   */
+  print() {
+    this.builderStore.print()
+  }
+
+  /**
+   * @inheritDoc
+   */
+  undo() {
+    this.builderStore.undo()
+  }
+
+  /**
+   * @inheritDoc
+   */
+  redo() {
+    this.builderStore.redo()
+  }
 }

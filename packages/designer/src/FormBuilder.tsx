@@ -18,13 +18,16 @@ import {RightPanel} from './features/ui/RightPanel/RightPanel'
 import {useBuilderStore} from './utils/BuilderStoreContext'
 
 const GlobalHotkeys = ({children}: {children: ReactNode}) => {
+  const builderStore = useBuilderStore()
   const handleKeyDown = useHotkeys()
+  const hotkeysDisabled = builderStore.props.hotkeys === false
 
   // we need this effect to be inside Suspense
   useEffect(() => {
+    if (hotkeysDisabled) return
     globalThis.addEventListener('keydown', handleKeyDown)
     return () => globalThis.removeEventListener('keydown', handleKeyDown)
-  }, [handleKeyDown])
+  }, [handleKeyDown, hotkeysDisabled])
 
   return <div className={styles.container}>{children}</div>
 }

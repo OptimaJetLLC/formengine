@@ -5,7 +5,7 @@ import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../../components/Icons'
 import {customizable} from '../../../../customization/customizable'
 import {useTranslationPart} from '../../../../localization/hooks'
-import {printForm} from '../printForm'
+import {printForm} from '../../../../print/printForm'
 import type {CustomizableMenuItemProps} from './CustomizableMenuItemProps'
 
 const printIcon = <FaIcon icon={faPrint} />

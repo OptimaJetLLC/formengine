@@ -1,7 +1,8 @@
 import {useCallback, useMemo} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
-import {printForm} from '../ui/Header/components/printForm'
 import {useSaveForm} from '../ui/Header/components/useSaveForm'
+import {alwaysActiveHotkeyActions, resolveHotkeyBindings} from './resolveHotkeyBindings'
+import type {DesignerHotkey, DesignerHotkeyAction} from './types'
 
 /**
  * Stop the event from propagating and prevent its default action.
@@ -12,94 +13,47 @@ const stopEvent = (event: KeyboardEvent) => {
   event.stopPropagation()
 }
 
-type HotkeyAction = 'deleteSelectedAction' | 'cloneOneSelectedAction' | 'saveFormAction' | 'printFormAction' | 'undoAction' | 'redoAction'
-
-type OS = 'macos' | 'default'
-
-type Hotkey = {
-  alt?: boolean
-  shift?: boolean
-  ctrl?: boolean
-  meta?: boolean
-  key: string
-}
-
 type HotkeyHandler = () => void
 
-/**
- * Hotkeys that must run even when focus is inside an input or other control.
- */
-const alwaysActiveActions = new Set<HotkeyAction>(['printFormAction'])
-
-const hotKeys: Record<OS, Array<[Hotkey, HotkeyAction]>> = {
-  default: [
-    [{key: 'Delete'}, 'deleteSelectedAction'],
-    [{key: 'd', ctrl: true}, 'cloneOneSelectedAction'],
-    [{key: 's', ctrl: true}, 'saveFormAction'],
-    [{key: 'p', ctrl: true}, 'printFormAction'],
-    [{key: 'z', ctrl: true}, 'undoAction'],
-    [{key: 'z', ctrl: true, shift: true}, 'redoAction'],
-    [{key: 'y', ctrl: true}, 'redoAction'],
-  ],
-  macos: [
-    [{key: 'Delete'}, 'deleteSelectedAction'],
-    [{key: 'd', meta: true}, 'cloneOneSelectedAction'],
-    [{key: 's', meta: true}, 'saveFormAction'],
-    [{key: 'p', meta: true}, 'printFormAction'],
-    [{key: 'z', meta: true, shift: true}, 'redoAction'],
-    [{key: 'z', meta: true}, 'undoAction'],
-  ],
+const matchesHotkey = (hotkey: DesignerHotkey, event: KeyboardEvent) => {
+  return !(
+    hotkey.key.toLowerCase() !== event.key.toLowerCase() ||
+    !!hotkey.alt !== event.altKey ||
+    !!hotkey.shift !== event.shiftKey ||
+    !!hotkey.ctrl !== event.ctrlKey ||
+    !!hotkey.meta !== event.metaKey
+  )
 }
 
-const getOs = (): OS => {
-  const ua = navigator.userAgent
-  return ua.indexOf('Mac') === -1 ? 'default' : 'macos'
-}
-
-const findHotkeyAction = (event: KeyboardEvent) => {
+const findHotkeyAction = (event: KeyboardEvent, bindings: Array<[DesignerHotkey, DesignerHotkeyAction]>) => {
   if (!event.key) return
-
-  const os = getOs()
-
-  const keys = hotKeys[os]
-  const item = keys.find(([hotkey]) => {
-    return !(
-      hotkey.key.toLowerCase() !== event.key.toLowerCase() ||
-      !!hotkey.alt !== event.altKey ||
-      !!hotkey.shift !== event.shiftKey ||
-      !!hotkey.ctrl !== event.ctrlKey ||
-      !!hotkey.meta !== event.metaKey
-    )
-  })
+  const item = bindings.find(([hotkey]) => matchesHotkey(hotkey, event))
   return item?.[1]
 }
 
-const useHotkeyHandlers = (): Record<HotkeyAction, HotkeyHandler> => {
+const useHotkeyHandlers = (): Record<DesignerHotkeyAction, HotkeyHandler> => {
   const builderStore = useBuilderStore()
   const onSave = useSaveForm()
 
   return useMemo(
     () => ({
-      deleteSelectedAction: () => {
-        builderStore.deleteSelectedComponents()
+      deleteSelected: () => {
+        builderStore.deleteSelected()
       },
-      cloneOneSelectedAction: () => {
-        const oneSelected = builderStore.oneSelected
-        if (oneSelected) {
-          builderStore.clone(oneSelected)
-        }
+      cloneSelected: () => {
+        builderStore.cloneSelected()
       },
-      saveFormAction: () => {
+      save: () => {
         onSave()
       },
-      printFormAction: () => {
-        printForm(builderStore)
+      print: () => {
+        builderStore.print()
       },
-      undoAction: () => {
-        builderStore.undoer.undo()
+      undo: () => {
+        builderStore.undo()
       },
-      redoAction: () => {
-        builderStore.undoer.redo()
+      redo: () => {
+        builderStore.redo()
       },
     }),
     [builderStore, onSave]
@@ -108,15 +62,18 @@ const useHotkeyHandlers = (): Record<HotkeyAction, HotkeyHandler> => {
 
 /**
  * @returns the global hotkeys handler.
+ * When `hotkeys: false`, FormBuilder does not attach this listener.
  */
 export const useHotkeys = () => {
+  const builderStore = useBuilderStore()
   const handlers = useHotkeyHandlers()
+  const bindings = useMemo(() => resolveHotkeyBindings(builderStore.props.hotkeys), [builderStore.props.hotkeys])
 
   return useCallback(
     (event: KeyboardEvent) => {
-      const action = findHotkeyAction(event)
+      const action = findHotkeyAction(event, bindings)
       if (!action) return
-      if (!alwaysActiveActions.has(action) && document.activeElement !== document.body) return
+      if (!alwaysActiveHotkeyActions.has(action) && document.activeElement !== document.body) return
 
       const handler = handlers[action]
       if (handler) {
@@ -124,6 +81,6 @@ export const useHotkeys = () => {
         handler()
       }
     },
-    [handlers]
+    [bindings, handlers]
   )
 }

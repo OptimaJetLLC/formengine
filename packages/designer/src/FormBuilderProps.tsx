@@ -12,6 +12,7 @@ import type {ComponentType, ForwardedRef} from 'react'
 import type {FormBuilderTheme} from './FormBuilderTheme'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
 import type {CustomizationMap} from './features/customization/CustomizationMap'
+import type {DesignerHotkeysProp} from './features/hotkeys/types'
 import type {StylesProviderProps} from './features/localization/components/StylesProviderProps'
 import type {FormBuilderI18n} from './features/localization/FormBuilderLanguage'
 import type {IPresetComponentOptions} from './features/preset-component/IPresetComponentOptions'
@@ -86,6 +87,14 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view' | 'langua
    * The map of customizations for the FormBuilder components.
    */
   customization?: CustomizationMap
+
+  /**
+   * Controls the FormBuilder global keyboard shortcuts.
+   * Pass `false` to disable all built-in global hotkeys so the host can register its own
+   * and invoke actions through {@link IFormBuilder}. Pass an options object to remap or
+   * disable individual actions.
+   */
+  hotkeys?: DesignerHotkeysProp
 
   /**
    * The event is called whenever a form schema changes.

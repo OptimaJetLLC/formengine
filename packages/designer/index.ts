@@ -16,6 +16,12 @@ export type {CustomizationMap} from './src/features/customization/CustomizationM
 export type {Options} from './src/features/customization/Options'
 export type {CustomizableKey} from './src/features/customization/types'
 export {CustomizableZone} from './src/features/customization/types'
+export type {
+  DesignerHotkey,
+  DesignerHotkeyAction,
+  DesignerHotkeysOptions,
+  DesignerHotkeysProp,
+} from './src/features/hotkeys/types'
 export {verifyDomain} from './src/features/license/domain'
 export {isElectron} from './src/features/license/isElectron'
 export type {StylesProviderProps} from './src/features/localization/components/StylesProviderProps'
