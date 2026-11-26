@@ -429,8 +429,9 @@ action’s shortcuts off while leaving the rest unchanged.
 <FormBuilder
   hotkeys={{
     bindings: {
-      // Replace only Save’s default Ctrl/Cmd+S chord; Delete, duplicate, print, undo, redo stay default
-      save: {key: 's', alt: true},
+      // Replace only Save’s default Ctrl/Cmd+S chord; Delete, duplicate, print, undo, redo stay default.
+      // Prefer non-character keys such as F8: Option+S is layout-dependent on macOS (e.g. ß).
+      save: {key: 'F8'},
       // Disable Print’s shortcut only; menu Print and IFormBuilder.print() still work
       print: false
     }
@@ -441,7 +442,7 @@ action’s shortcuts off while leaving the rest unchanged.
 
 Action ids: `deleteSelected`, `cloneSelected`, `save`, `print`, `undo`, `redo`.
 Pass an array of chords when one action should accept multiple bindings.
-On macOS prefer `meta`; on Windows and Linux prefer `ctrl`.
+On macOS prefer `meta`; on Windows and Linux prefer `ctrl`. Use function keys when the chord must be layout-independent.
 
 ### Imperative actions
 
