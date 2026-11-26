@@ -78,6 +78,9 @@ export default defineConfig(env =>
       testTimeout: 60_000,
       browser: {
         provider: playwright({
+          contextOptions: {
+            permissions: ['clipboard-read', 'clipboard-write'],
+          },
           launchOptions: {
             args: ['--disable-dev-shm-usage', '--no-sandbox', ...(process.env.BROWSER_DEVTOOL ? ['--auto-open-devtools-for-tabs'] : [])],
           },

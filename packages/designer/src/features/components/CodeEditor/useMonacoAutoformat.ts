@@ -12,12 +12,24 @@ const autoFormatOptions: editor.IStandaloneEditorConstructionOptions = {
 }
 
 /**
+ * Forces Monaco's FormatOnPaste contribution to (re)attach its paste listener.
+ * That contribution can initialize after options, model, and formatter are already ready; in that
+ * case it registers change handlers without calling `_update`, so paste formatting never arms.
+ * @param monacoEditor the mounted editor.
+ */
+const rearmFormatOnPaste = (monacoEditor: editor.IStandaloneCodeEditor) => {
+  monacoEditor.updateOptions({formatOnPaste: false})
+  monacoEditor.updateOptions({formatOnPaste: true})
+}
+
+/**
  * Runs format-document once Monaco reports the action as supported for the active model.
  * JSON language support (and its formatter) loads asynchronously; an early run is a silent no-op.
  * @param monacoEditor the mounted editor.
+ * @param rearmPaste when true, re-arm Monaco formatOnPaste after the formatter is ready.
  * @returns a disposable that cancels a pending wait.
  */
-const scheduleFormatWhenReady = (monacoEditor: editor.IStandaloneCodeEditor): IDisposable => {
+const scheduleFormatWhenReady = (monacoEditor: editor.IStandaloneCodeEditor, rearmPaste = false): IDisposable => {
   let cancelled = false
   let intervalId: ReturnType<typeof setInterval> | undefined
 
@@ -25,6 +37,7 @@ const scheduleFormatWhenReady = (monacoEditor: editor.IStandaloneCodeEditor): ID
     if (cancelled) return true
     const action = monacoEditor.getAction(FORMAT_DOCUMENT_ACTION)
     if (!action?.isSupported()) return false
+    if (rearmPaste) rearmFormatOnPaste(monacoEditor)
     void action.run()
     return true
   }
@@ -87,13 +100,20 @@ export const useMonacoAutoformat = (
 
       const formatWhenReady = () => {
         if (disposed) return
-        disposables.push(scheduleFormatWhenReady(monacoEditor))
+        // Rearm paste whenever the formatter becomes ready: FormatOnPaste may have missed its listener.
+        disposables.push(scheduleFormatWhenReady(monacoEditor, true))
       }
 
       disposables.push(
         monacoEditor.onDidChangeModelContent(({isFlush}) => {
           if (!isFlush) return
           formattedFromFlushDuringMount = true
+          formatWhenReady()
+        })
+      )
+      // Own paste path: Monaco's formatOnPaste contribution may miss its listener (see rearmFormatOnPaste).
+      disposables.push(
+        monacoEditor.onDidPaste(() => {
           formatWhenReady()
         })
       )

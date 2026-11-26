@@ -47,7 +47,9 @@ let formatSourceSnapshots: string[] = []
 type FakeMonacoEditor = {
   getAction: (id: string) => {run: () => Promise<void>; isSupported: () => boolean} | null
   onDidChangeModelContent: (listener: (event: {isFlush: boolean}) => void) => {dispose: () => void}
+  onDidPaste: (listener: () => void) => {dispose: () => void}
   onDidDispose: (listener: () => void) => {dispose: () => void}
+  updateOptions: (options: Record<string, unknown>) => void
   getValue: () => string
   setValue: (next: string) => void
   /**
@@ -103,6 +105,8 @@ vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCod
             },
           }
         },
+        onDidPaste: () => ({dispose: () => undefined}),
+        updateOptions: () => undefined,
         onDidDispose: (listener: () => void) => {
           disposeListeners.push(listener)
           return {
