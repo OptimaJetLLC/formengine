@@ -592,9 +592,9 @@ FormEngine Core is trusted by:
 ## Support & Community
 
 - 📖 **[Documentation](/formengine-core)** - Get started with step-by-step guides
-- 💬 **[GitHub Discussions](https://github.com/optimajet/formengine/discussions)** - Ask questions, share ideas
-- 🐛 **[Issue Tracker](https://github.com/optimajet/formengine/issues)** - Report bugs, request features
-- ⭐ **[Star on GitHub](https://github.com/optimajet/formengine)** - Show your support
+- 💬 **[GitHub Discussions](https://github.com/OptimaJetLLC/formengine/discussions)** - Ask questions, share ideas
+- 🐛 **[Issue Tracker](https://github.com/OptimaJetLLC/formengine/issues)** - Report bugs, request features
+- ⭐ **[Star on GitHub](https://github.com/OptimaJetLLC/formengine)** - Show your support
 
 ## License
 

@@ -269,8 +269,8 @@ If you get stuck:
 
 - Check the [API Reference](/api-reference) for detailed API documentation
 - Review [Component Library](/components-library) for built-in component examples
-- Look at the [source code on GitHub](https://github.com/optimajet/formengine)
-- Ask questions in [GitHub Discussions](https://github.com/optimajet/formengine/discussions)
+- Look at the [source code on GitHub](https://github.com/OptimaJetLLC/formengine)
+- Ask questions in [GitHub Discussions](https://github.com/OptimaJetLLC/formengine/discussions)
 
 ## Next Steps
 

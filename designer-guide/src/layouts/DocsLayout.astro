@@ -31,7 +31,7 @@ const { title, description, currentPath, entryId, headings } = Astro.props;
 const pageTitle = title.includes('FormEngine') ? title : `${title} | FormEngine Designer Guide`;
 const ogDescription = description || 'Step-by-step help for form authors using FormEngine Designer. No programming required.';
 const ogImageUrl = new URL(siteUrl('img/og-image.png'), Astro.site).href;
-// const editUrl = `https://github.com/optimajet/formengine/edit/master/designer-guide/content/${entryId === 'index' ? 'index.md' : `${entryId}.md`}`;
+// const editUrl = `https://github.com/OptimaJetLLC/formengine/edit/master/designer-guide/content/${entryId === 'index' ? 'index.md' : `${entryId}.md`}`;
 ---
 
 <!doctype html>
