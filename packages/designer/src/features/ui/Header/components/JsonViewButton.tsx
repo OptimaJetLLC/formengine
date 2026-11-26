@@ -37,10 +37,7 @@ const RawJsonViewButton = ({className, ...props}: JsonViewButtonProps) => {
         <Modal.Header closeButton onClose={handleClose}>
           <Modal.Title>{t('editJson')}</Modal.Title>
         </Modal.Header>
-        <Modal.Body className={styles.modalBody}>
-          {/* Mount only while open: JsonView snapshots formAsString at mount; also tears down Monaco when closed. */}
-          {open ? <JsonView /> : null}
-        </Modal.Body>
+        <Modal.Body className={styles.modalBody}>{open ? <JsonView /> : null}</Modal.Body>
       </Modal>
     </>
   )

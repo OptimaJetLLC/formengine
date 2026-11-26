@@ -35,7 +35,6 @@ const RawCodeEditor = (props: CodeEditorProps) => {
   }
 
   const constrainedProps = {...codeEditorProps}
-  // Autoformat is unconstrained-only; formatDocument can rewrite begin/end context.
   delete constrainedProps.autoformat
 
   return (

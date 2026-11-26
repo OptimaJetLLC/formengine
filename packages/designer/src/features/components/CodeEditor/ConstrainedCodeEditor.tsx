@@ -98,7 +98,6 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
     [context, initialValue, onChange, onMount]
   )
 
-  // Autoformat is unconstrained-only: formatDocument can rewrite begin/end context lines.
   const options = useMemo(
     () =>
       ({
