@@ -1,7 +1,7 @@
 import type {OnMount} from '@monaco-editor/react'
+import {off, on} from '@react-form-builder/tests-common/lib/windowEvents'
 import {act, render, waitFor} from '@testing-library/react'
 import {useEffect, useRef, useState} from 'react'
-import {off, on} from '@react-form-builder/tests-common/lib/windowEvents'
 import {beforeEach, describe, expect, it, vi} from 'vitest'
 import {MonacoCodeEditor} from '../../../packages/designer/src/features/components/CodeEditor/MonacoCodeEditor'
 import {UnconstrainedCodeEditor} from '../../../packages/designer/src/features/components/CodeEditor/UnconstrainedCodeEditor'
