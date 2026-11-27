@@ -1,6 +1,7 @@
 import type {OnMount} from '@monaco-editor/react'
 import {act, render, waitFor} from '@testing-library/react'
 import {useEffect, useRef, useState} from 'react'
+import {off, on} from '@react-form-builder/tests-common/lib/windowEvents'
 import {beforeEach, describe, expect, it, vi} from 'vitest'
 import {MonacoCodeEditor} from '../../../packages/designer/src/features/components/CodeEditor/MonacoCodeEditor'
 import {UnconstrainedCodeEditor} from '../../../packages/designer/src/features/components/CodeEditor/UnconstrainedCodeEditor'
@@ -441,17 +442,19 @@ describe('Code editor autoformat with real form definitions', () => {
   it('does not leave an unhandled rejection when formatDocument rejects', async () => {
     formatRunShouldReject = true
     const unhandled: unknown[] = []
-    const onUnhandled = (reason: unknown) => {
-      unhandled.push(reason)
+    const onUnhandled = (event: PromiseRejectionEvent) => {
+      unhandled.push(event.reason)
     }
-    process.on('unhandledRejection', onUnhandled)
+    on('unhandledrejection', onUnhandled)
 
-    const {findByTestId} = render(<AutoformatHarness initialValue={JSON.stringify(loginForm)} autoformat />)
-    await findByTestId('autoformat-monaco')
-    await new Promise(resolve => setTimeout(resolve, 50))
-
-    process.off('unhandledRejection', onUnhandled)
-    expect(unhandled).toEqual([])
+    try {
+      const {findByTestId} = render(<AutoformatHarness initialValue={JSON.stringify(loginForm)} autoformat />)
+      await findByTestId('autoformat-monaco')
+      await new Promise(resolve => setTimeout(resolve, 50))
+      expect(unhandled).toEqual([])
+    } finally {
+      off('unhandledrejection', onUnhandled)
+    }
   })
 
   it('does not override Monaco autoIndent via autoformat option updates', async () => {
