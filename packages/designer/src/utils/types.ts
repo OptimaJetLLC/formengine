@@ -12,6 +12,8 @@ export type Device = 'any' | ViewMode
 
 /**
  * The form builder settings interface.
+ * Imperative action methods are optional for backward-compatible mocks and custom
+ * implementations; the designer `builderRef` / `useFormBuilder()` instance always provides them.
  */
 export interface IFormBuilder {
   /**
@@ -43,12 +45,12 @@ export interface IFormBuilder {
   /**
    * Deletes the currently selected components from the form.
    */
-  deleteSelected: () => void
+  deleteSelected?: () => void
 
   /**
    * Clones the selected component when exactly one component is selected.
    */
-  cloneSelected: () => void
+  cloneSelected?: () => void
 
   /**
    * Saves the current form to form storage without showing the designer toast.
@@ -56,20 +58,20 @@ export interface IFormBuilder {
    * @param formName the optional form name. When omitted, the active form name is used.
    * @returns the promise that resolves when the form is saved.
    */
-  save: (formName?: string) => Promise<void>
+  save?: (formName?: string) => Promise<void>
 
   /**
    * Prints the form (switches to viewer mode for printing when needed).
    */
-  print: () => void
+  print?: () => void
 
   /**
    * Undoes the last form edit.
    */
-  undo: () => void
+  undo?: () => void
 
   /**
    * Redoes the last undone form edit.
    */
-  redo: () => void
+  redo?: () => void
 }

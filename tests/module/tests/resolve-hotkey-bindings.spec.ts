@@ -1,6 +1,6 @@
 import {resolveHotkeyBindings} from '@react-form-builder/designer/src/features/hotkeys/resolveHotkeyBindings'
 import type {DesignerHotkeyAction} from '@react-form-builder/designer/src/features/hotkeys/types'
-import {describe, expect, it} from 'vitest'
+import {describe, expect, it, vi} from 'vitest'
 
 const actionsFor = (bindings: ReturnType<typeof resolveHotkeyBindings>) => bindings.map(([, action]) => action)
 
@@ -76,5 +76,26 @@ describe('resolveHotkeyBindings', () => {
 
     expect(chordFor(bindings, 'print')).toEqual([{key: 'Delete'}])
     expect(chordFor(bindings, 'deleteSelected')).toEqual([])
+  })
+
+  it('gives the later override the chord when two actions claim the same key', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined)
+
+    const bindings = resolveHotkeyBindings(
+      {
+        bindings: {
+          deleteSelected: {key: 'F8'},
+          print: {key: 'F8'},
+        },
+      },
+      'default'
+    )
+
+    expect(chordFor(bindings, 'print')).toEqual([{key: 'F8'}])
+    expect(chordFor(bindings, 'deleteSelected')).toEqual([])
+    expect(bindings.filter(([hotkey]) => hotkey.key.toLowerCase() === 'f8')).toHaveLength(1)
+    expect(warn).toHaveBeenCalledWith(
+      'FormBuilder hotkeys: chord "F8" is bound to both "deleteSelected" and "print". Using "print" (later binding wins).'
+    )
   })
 })

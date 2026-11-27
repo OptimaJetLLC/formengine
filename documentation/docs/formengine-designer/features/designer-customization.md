@@ -409,7 +409,7 @@ const EmbeddedDesigner = () => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (!(event.ctrlKey || event.metaKey) || event.key.toLowerCase() !== 's') return
       event.preventDefault()
-      void builderRef.current?.save()
+      void builderRef.current?.save?.()
     }
     globalThis.addEventListener('keydown', onKeyDown)
     return () => globalThis.removeEventListener('keydown', onKeyDown)
@@ -442,6 +442,7 @@ action’s shortcuts off while leaving the rest unchanged.
 
 Action ids: `deleteSelected`, `cloneSelected`, `save`, `print`, `undo`, `redo`.
 Pass an array of chords when one action should accept multiple bindings.
+If two actions claim the same chord, the later entry in `bindings` wins and the earlier action loses that chord.
 On macOS prefer `meta`; on Windows and Linux prefer `ctrl`. Use function keys when the chord must be layout-independent.
 
 ### Imperative actions

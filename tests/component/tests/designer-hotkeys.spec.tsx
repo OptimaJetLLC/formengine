@@ -105,7 +105,7 @@ describe('Designer hotkeys', () => {
     await waitFor(() => expect(builderRef.current).not.toBeNull())
 
     act(() => {
-      builderRef.current?.print()
+      builderRef.current?.print?.()
     })
 
     await waitFor(() => expect(print).toHaveBeenCalledOnce())
@@ -217,6 +217,44 @@ describe('Designer hotkeys', () => {
     expect(document.activeElement).toBe(document.body)
 
     fireEvent.keyDown(document, {key: 'Delete'})
+
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+    expect(await findByText('Edit')).toBeInTheDocument()
+
+    fireEvent(window, new Event('afterprint'))
+    expect(await findByTestId('nestedButton-editable-wrapper')).toBeInTheDocument()
+  })
+
+  it('runs print when F8 is claimed by deleteSelected then print', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    vi.spyOn(console, 'warn').mockImplementation(() => undefined)
+    const getConflictForm = () =>
+      JSON.stringify({
+        form: {
+          key: 'Screen',
+          type: 'Screen',
+          children: [{key: 'nestedButton', type: 'RsButton', props: {children: {value: 'Nested'}}}],
+        },
+      })
+    const {findByTestId, findByText} = render(
+      <FormBuilder
+        licenseKey={generatedLicenseKey}
+        getForm={getConflictForm}
+        view={builderViewWithCss}
+        hotkeys={{bindings: {deleteSelected: {key: 'F8'}, print: {key: 'F8'}}}}
+      />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+    expect(await findByText('F8')).toBeInTheDocument()
+    const nestedButton = await findByTestId('nestedButton-editable-wrapper')
+    fireEvent.click(nestedButton)
+    await act(async () => {
+      ;(document.activeElement as HTMLElement | null)?.blur()
+    })
+    expect(document.activeElement).toBe(document.body)
+
+    fireEvent.keyDown(document, {key: 'F8'})
 
     await waitFor(() => expect(print).toHaveBeenCalledOnce())
     expect(await findByText('Edit')).toBeInTheDocument()
