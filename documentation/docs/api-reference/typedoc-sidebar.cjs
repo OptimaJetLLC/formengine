@@ -3279,6 +3279,26 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/designer/type-aliases/DesignerHotkey",
+              label: "DesignerHotkey"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/designer/type-aliases/DesignerHotkeyAction",
+              label: "DesignerHotkeyAction"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/designer/type-aliases/DesignerHotkeysOptions",
+              label: "DesignerHotkeysOptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/designer/type-aliases/DesignerHotkeysProp",
+              label: "DesignerHotkeysProp"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/designer/type-aliases/FormBuilderI18n",
               label: "FormBuilderI18n"
             },

@@ -989,14 +989,14 @@ describe('Accordion BuilderStore integration', () => {
   })
 
   describe('multi-select remove and clone', () => {
-    it('reindexes and retargets activeKey when deleteSelectedComponents removes multiple panels including the active one', () => {
+    it('reindexes and retargets activeKey when deleteSelected removes multiple panels including the active one', () => {
       builderStore.parseForm(JSON.stringify(threePanelAccordionForm('2', '2')))
       const accordion = find('accordion')
 
       builderStore.selected.clear()
       builderStore.selectNode(find('panel1'), true)
       builderStore.selectNode(find('panel2'), true)
-      builderStore.deleteSelectedComponents()
+      builderStore.deleteSelected()
 
       expect(panelKeys()).toEqual(['panel3'])
       expect(panelEventKeys()).toEqual(['1'])

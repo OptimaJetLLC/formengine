@@ -6,6 +6,7 @@ import {Loader} from 'rsuite'
 import styles from './FormBuilder.module.css'
 import type {FormBuilderProps} from './FormBuilderProps'
 import {customizableObserver} from './features/customization/customizableObserver'
+import {useHotkeysProp} from './features/hotkeys/HotkeysPropContext'
 import {useHotkeys} from './features/hotkeys/useHotKeys'
 import {useLicense} from './features/license/LicenseContext'
 import {BottomPanel} from './features/ui/BottomPanel/BottomPanel'
@@ -19,12 +20,14 @@ import {useBuilderStore} from './utils/BuilderStoreContext'
 
 const GlobalHotkeys = ({children}: {children: ReactNode}) => {
   const handleKeyDown = useHotkeys()
+  const hotkeysDisabled = useHotkeysProp() === false
 
   // we need this effect to be inside Suspense
   useEffect(() => {
+    if (hotkeysDisabled) return
     globalThis.addEventListener('keydown', handleKeyDown)
     return () => globalThis.removeEventListener('keydown', handleKeyDown)
-  }, [handleKeyDown])
+  }, [handleKeyDown, hotkeysDisabled])
 
   return <div className={styles.container}>{children}</div>
 }

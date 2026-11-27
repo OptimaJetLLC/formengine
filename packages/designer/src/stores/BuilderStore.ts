@@ -45,6 +45,7 @@ import type {FormBuilderI18nData} from '../features/localization/FormBuilderLang
 import {builtInLanguages, loadTranslation, resolveBuilderUiLanguage} from '../features/localization/languageUtils'
 import {BuilderPresetComponentOptions} from '../features/preset-component/BuilderPresetComponentOptions'
 import {removePresetLocalization} from '../features/preset-component/removePresetLocalization'
+import {printForm} from '../features/print/printForm'
 import {LeftPanelChrome} from '../features/ui/LeftPanel/LeftPanelChrome'
 import type {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
@@ -703,6 +704,35 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   reloadFormList() {
     this.formListLastReloadTime = new Date()
+  }
+
+  /**
+   * @inheritDoc
+   */
+  cloneSelected() {
+    const oneSelected = this.oneSelected
+    if (oneSelected) this.clone(oneSelected)
+  }
+
+  /**
+   * @inheritDoc
+   */
+  print() {
+    printForm(this)
+  }
+
+  /**
+   * @inheritDoc
+   */
+  undo() {
+    this.undoer.undo()
+  }
+
+  /**
+   * @inheritDoc
+   */
+  redo() {
+    this.undoer.redo()
   }
 
   /**
@@ -1371,9 +1401,9 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   }
 
   /**
-   * Deletes the selected components from the component tree.
+   * @inheritDoc
    */
-  deleteSelectedComponents() {
+  deleteSelected() {
     const selectedComponents = [...this.selected]
 
     if (selectedComponents.length <= 0) return

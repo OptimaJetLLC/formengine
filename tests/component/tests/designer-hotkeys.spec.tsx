@@ -1,0 +1,265 @@
+import {builderViewWithCss} from '@react-form-builder/components-rsuite'
+import {FormBuilder, type IFormBuilder} from '@react-form-builder/designer'
+import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
+import {act, fireEvent, render, waitFor} from '@testing-library/react'
+import {createRef} from 'react'
+import {afterEach, describe, expect, it, vi} from 'vitest'
+import form from './forms/designer-form.json'
+
+const getFormFn = () => JSON.stringify(form)
+
+const isMac = () => navigator.userAgent.includes('Mac')
+
+const firePrintHotkey = () => {
+  fireEvent.keyDown(document, {
+    key: 'p',
+    ctrlKey: !isMac(),
+    metaKey: isMac(),
+  })
+}
+
+const fireSaveHotkey = () => {
+  const event = new KeyboardEvent('keydown', {
+    key: 's',
+    ctrlKey: !isMac(),
+    metaKey: isMac(),
+    bubbles: true,
+    cancelable: true,
+  })
+  window.dispatchEvent(event)
+  return event
+}
+
+/**
+ * Flush microtasks/layout so a deferred window.print from usePrintWhenViewerReady would have run.
+ */
+const flushDeferredPrint = async () => {
+  await act(async () => {
+    await Promise.resolve()
+  })
+}
+
+describe('Designer hotkeys', () => {
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
+  it('does not intercept Ctrl/Cmd+P when hotkeys are disabled', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const {findByText, queryByText} = render(
+      <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} hotkeys={false} />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+    firePrintHotkey()
+    await flushDeferredPrint()
+
+    expect(print).not.toHaveBeenCalled()
+    expect(queryByText('Edit')).not.toBeInTheDocument()
+  })
+
+  it('uses a remapped print binding and ignores the default chord', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const {findByText, queryByText} = render(
+      <FormBuilder
+        licenseKey={generatedLicenseKey}
+        getForm={getFormFn}
+        view={builderViewWithCss}
+        hotkeys={{bindings: {print: {key: 'p', alt: true}}}}
+      />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+
+    firePrintHotkey()
+    await flushDeferredPrint()
+    expect(print).not.toHaveBeenCalled()
+    expect(queryByText('Edit')).not.toBeInTheDocument()
+
+    fireEvent.keyDown(document, {key: 'p', altKey: true})
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+  })
+
+  it('disables a single action binding while keeping others', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const {findByText, queryByText} = render(
+      <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} hotkeys={{bindings: {print: false}}} />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+    firePrintHotkey()
+    await flushDeferredPrint()
+
+    expect(print).not.toHaveBeenCalled()
+    expect(queryByText('Edit')).not.toBeInTheDocument()
+  })
+
+  it('invokes print through IFormBuilder when hotkeys are disabled', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const builderRef = createRef<IFormBuilder>()
+    const {findByText} = render(
+      <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} hotkeys={false} builderRef={builderRef} />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+    await waitFor(() => expect(builderRef.current).not.toBeNull())
+
+    act(() => {
+      builderRef.current?.print?.()
+    })
+
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+    expect(await findByText('Edit')).toBeInTheDocument()
+  })
+
+  it('stops intercepting Ctrl/Cmd+P and Ctrl/Cmd+S after rerendering with hotkeys={false}', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const {findByText, queryByText, rerender} = render(
+      <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+
+    firePrintHotkey()
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+    print.mockClear()
+    fireEvent(window, new Event('afterprint'))
+    expect(await findByText('Preview')).toBeInTheDocument()
+
+    rerender(<FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} hotkeys={false} />)
+
+    firePrintHotkey()
+    await flushDeferredPrint()
+    expect(print).not.toHaveBeenCalled()
+    expect(queryByText('Edit')).not.toBeInTheDocument()
+
+    const saveEvent = fireSaveHotkey()
+    expect(saveEvent.defaultPrevented).toBe(false)
+  })
+
+  it('activates a remapped print chord after enabling hotkeys on a mounted designer', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const {findByText, queryByText, rerender} = render(
+      <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} hotkeys={false} />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+
+    fireEvent.keyDown(document, {key: 'F8'})
+    await flushDeferredPrint()
+    expect(print).not.toHaveBeenCalled()
+    expect(queryByText('Edit')).not.toBeInTheDocument()
+
+    rerender(
+      <FormBuilder
+        licenseKey={generatedLicenseKey}
+        getForm={getFormFn}
+        view={builderViewWithCss}
+        hotkeys={{bindings: {print: {key: 'F8'}}}}
+      />
+    )
+
+    fireEvent.keyDown(document, {key: 'F8'})
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+  })
+
+  it('remaps print on a mounted designer without disabling hotkeys first', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const {findByText, queryByText, rerender} = render(
+      <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+
+    rerender(
+      <FormBuilder
+        licenseKey={generatedLicenseKey}
+        getForm={getFormFn}
+        view={builderViewWithCss}
+        hotkeys={{bindings: {print: {key: 'F8'}}}}
+      />
+    )
+
+    firePrintHotkey()
+    await flushDeferredPrint()
+    expect(print).not.toHaveBeenCalled()
+    expect(queryByText('Edit')).not.toBeInTheDocument()
+
+    fireEvent.keyDown(document, {key: 'F8'})
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+  })
+
+  it('runs print when remapped to Delete instead of removing the selection', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    const getConflictForm = () =>
+      JSON.stringify({
+        form: {
+          key: 'Screen',
+          type: 'Screen',
+          children: [{key: 'nestedButton', type: 'RsButton', props: {children: {value: 'Nested'}}}],
+        },
+      })
+    const {findByTestId, findByText} = render(
+      <FormBuilder
+        licenseKey={generatedLicenseKey}
+        getForm={getConflictForm}
+        view={builderViewWithCss}
+        hotkeys={{bindings: {print: {key: 'Delete'}}}}
+      />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+    const nestedButton = await findByTestId('nestedButton-editable-wrapper')
+    fireEvent.click(nestedButton)
+    await act(async () => {
+      ;(document.activeElement as HTMLElement | null)?.blur()
+    })
+    expect(document.activeElement).toBe(document.body)
+
+    fireEvent.keyDown(document, {key: 'Delete'})
+
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+    expect(await findByText('Edit')).toBeInTheDocument()
+
+    fireEvent(window, new Event('afterprint'))
+    expect(await findByTestId('nestedButton-editable-wrapper')).toBeInTheDocument()
+  })
+
+  it('runs print when F8 is claimed by deleteSelected then print', async () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined)
+    vi.spyOn(console, 'warn').mockImplementation(() => undefined)
+    const getConflictForm = () =>
+      JSON.stringify({
+        form: {
+          key: 'Screen',
+          type: 'Screen',
+          children: [{key: 'nestedButton', type: 'RsButton', props: {children: {value: 'Nested'}}}],
+        },
+      })
+    const {findByTestId, findByText} = render(
+      <FormBuilder
+        licenseKey={generatedLicenseKey}
+        getForm={getConflictForm}
+        view={builderViewWithCss}
+        hotkeys={{bindings: {deleteSelected: {key: 'F8'}, print: {key: 'F8'}}}}
+      />
+    )
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+    expect(await findByText('F8')).toBeInTheDocument()
+    const nestedButton = await findByTestId('nestedButton-editable-wrapper')
+    fireEvent.click(nestedButton)
+    await act(async () => {
+      ;(document.activeElement as HTMLElement | null)?.blur()
+    })
+    expect(document.activeElement).toBe(document.body)
+
+    fireEvent.keyDown(document, {key: 'F8'})
+
+    await waitFor(() => expect(print).toHaveBeenCalledOnce())
+    expect(await findByText('Edit')).toBeInTheDocument()
+
+    fireEvent(window, new Event('afterprint'))
+    expect(await findByTestId('nestedButton-editable-wrapper')).toBeInTheDocument()
+  })
+})
