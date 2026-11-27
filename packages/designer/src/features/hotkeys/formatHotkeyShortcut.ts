@@ -1,12 +1,14 @@
 import type {DesignerHotkey} from './types'
 
+const isMacPlatform = () => typeof navigator !== 'undefined' && navigator.userAgent.includes('Mac')
+
 /**
  * Formats a designer hotkey chord for menu hints.
  * @param hotkey the chord to format.
  * @param isMac whether to use macOS modifier glyphs.
  * @returns a short shortcut label such as `Ctrl+P`, `⌘P`, or `F8`.
  */
-export const formatHotkeyShortcut = (hotkey: DesignerHotkey, isMac = navigator.userAgent.includes('Mac')): string => {
+export const formatHotkeyShortcut = (hotkey: DesignerHotkey, isMac = isMacPlatform()): string => {
   const parts: string[] = []
   if (hotkey.ctrl) parts.push(isMac ? '⌃' : 'Ctrl')
   if (hotkey.alt) parts.push(isMac ? '⌥' : 'Alt')
