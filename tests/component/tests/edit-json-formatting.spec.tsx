@@ -57,7 +57,7 @@ describe('Edit JSON formatting', () => {
     expect(lastMonacoOptions).toMatchObject({
       formatOnPaste: true,
       formatOnType: true,
-      autoIndent: 'advanced',
     })
+    expect(lastMonacoOptions).not.toHaveProperty('autoIndent')
   })
 })
