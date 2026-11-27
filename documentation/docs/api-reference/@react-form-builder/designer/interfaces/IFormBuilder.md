@@ -1,12 +1,14 @@
 # Interface: IFormBuilder
 
 The form builder settings interface.
+Imperative action methods are optional for backward-compatible mocks and custom
+implementations; the designer `builderRef` / `useFormBuilder()` instance always provides them.
 
 ## Properties
 
-### cloneSelected
+### cloneSelected?
 
-> **cloneSelected**: () => `void`
+> `optional` **cloneSelected?**: () => `void`
 
 Clones the selected component when exactly one component is selected.
 
@@ -16,9 +18,9 @@ Clones the selected component when exactly one component is selected.
 
 ***
 
-### deleteSelected
+### deleteSelected?
 
-> **deleteSelected**: () => `void`
+> `optional` **deleteSelected?**: () => `void`
 
 Deletes the currently selected components from the form.
 
@@ -48,9 +50,9 @@ the form serialized in JSON.
 
 ***
 
-### print
+### print?
 
-> **print**: () => `void`
+> `optional` **print?**: () => `void`
 
 Prints the form (switches to viewer mode for printing when needed).
 
@@ -60,9 +62,9 @@ Prints the form (switches to viewer mode for printing when needed).
 
 ***
 
-### redo
+### redo?
 
-> **redo**: () => `void`
+> `optional` **redo?**: () => `void`
 
 Redoes the last undone form edit.
 
@@ -84,9 +86,9 @@ Updates the form list on the Forms tab.
 
 ***
 
-### save
+### save?
 
-> **save**: (`formName?`) => `Promise`\<`void`\>
+> `optional` **save?**: (`formName?`) => `Promise`\<`void`\>
 
 Saves the current form to form storage without showing the designer toast.
 Built-in Ctrl/Cmd+S and the Save menu still show success/error toasts via the UI layer.
@@ -107,9 +109,9 @@ the promise that resolves when the form is saved.
 
 ***
 
-### undo
+### undo?
 
-> **undo**: () => `void`
+> `optional` **undo?**: () => `void`
 
 Undoes the last form edit.
 
