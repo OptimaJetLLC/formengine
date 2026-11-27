@@ -106,7 +106,7 @@ Repeating list whose rows can be reordered by dragging. See [Sortable list](/com
 
 ## GitHub example
 
-Clone the [FormEngine GitHub](https://github.com/optimajet/formengine) repository and follow the README. The example combines core, designer, and RSuite components.
+Clone the [FormEngine GitHub](https://github.com/OptimaJetLLC/formengine) repository and follow the README. The example combines core, designer, and RSuite components.
 
 ## Detailed demo tutorial (RSuite) {#detailed-demo-tutorial-rsuite}
 

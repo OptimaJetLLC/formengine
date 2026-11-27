@@ -1,6 +1,6 @@
 _June_ 23, 2025
 
-With this release, we have published the code for the following packages in our [open-source repository](https://github.com/optimajet/formengine):
+With this release, we have published the code for the following packages in our [open-source repository](https://github.com/OptimaJetLLC/formengine):
 
 - `@react-form-builder/core`
 - `@react-form-builder/components-rsuite`

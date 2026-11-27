@@ -995,4 +995,4 @@ In this article, we have successfully connected FormEngine as a form rendering e
 components to render forms by passing a set of your components through properties.
 
 If you encounter any issues or have questions, feel free to reach out to us
-on [GitHub](https://github.com/optimajet/formengine/discussions).
+on [GitHub](https://github.com/OptimaJetLLC/formengine/discussions).

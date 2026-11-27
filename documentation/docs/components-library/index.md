@@ -419,5 +419,5 @@ const RSuiteViewer = () => {
 - [Material UI Documentation](https://mui.com/material-ui/)
 - [Mantine Documentation](https://mantine.dev/)
 - [React Suite Documentation](https://rsuitejs.com/)
-- [GitHub Repository](https://github.com/optimajet/formengine)
-- [Community Discussions](https://github.com/optimajet/formengine/discussions)
+- [GitHub Repository](https://github.com/OptimaJetLLC/formengine)
+- [Community Discussions](https://github.com/OptimaJetLLC/formengine/discussions)

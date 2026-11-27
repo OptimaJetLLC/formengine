@@ -26,7 +26,7 @@
     "@react-form-builder/components-signature": "^12.1.0",
     "@react-form-builder/components-sortable-list": "^12.1.0",
     "@react-form-builder/core": "^12.1.0",
-    "monaco-editor": "^0.57.0",
+    "monaco-editor": "^0.58.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "rsuite": "5.83.4"

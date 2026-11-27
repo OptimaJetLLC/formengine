@@ -615,8 +615,8 @@ Additional Mantine-based extensions:
 
 For issues with Mantine components in FormEngine:
 
-- Check the [FormEngine GitHub issues](https://github.com/optimajet/formengine/issues)
+- Check the [FormEngine GitHub issues](https://github.com/OptimaJetLLC/formengine/issues)
 - Refer to the [Mantine documentation](https://mantine.dev/getting-started/)
-- Join the [FormEngine community discussions](https://github.com/optimajet/formengine/discussions)
+- Join the [FormEngine community discussions](https://github.com/OptimaJetLLC/formengine/discussions)
 
 Mantine components provide a modern, accessible, and themable way to build forms and interfaces in FormEngine applications, with strong TypeScript support and responsive design out of the box.

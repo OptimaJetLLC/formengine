@@ -288,7 +288,7 @@ validate_archives() {
 }
 
 publish_release() {
-  local draft_repo="${DRAFT_RELEASE_GITHUB_REPOSITORY:-optimajet/formengine}"
+  local draft_repo="${DRAFT_RELEASE_GITHUB_REPOSITORY:-OptimaJetLLC/formengine}"
   local draft_commitish="${DRAFT_RELEASE_TARGET_COMMITISH:-master}"
   log "Publish draft GitHub release to ${draft_repo} (target_commitish=${draft_commitish})"
   # shellcheck disable=SC2086
