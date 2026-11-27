@@ -79,7 +79,6 @@ export const resolveHotkeyBindings = (hotkeys: DesignerHotkeysProp | undefined, 
     }
   }
 
-  // Overrides win chords: drop defaults that share a chord so find() cannot hit Delete before Print.
   const result = defaults.filter(([hotkey, action]) => {
     if (overriddenActions.has(action)) return false
     return !overrideBindings.some(([overrideHotkey]) => sameChord(hotkey, overrideHotkey))
