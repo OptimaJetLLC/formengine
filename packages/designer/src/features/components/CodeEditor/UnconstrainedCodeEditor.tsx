@@ -3,6 +3,7 @@ import type {editor} from 'monaco-editor'
 import {useCallback, useEffect, useMemo, useRef} from 'react'
 import type {UnconstrainedCodeEditorProps} from './CodeEditorProps'
 import {MonacoCodeEditor} from './MonacoCodeEditor'
+import {registerCodeEditorSaveAction} from './registerCodeEditorSaveAction'
 
 /**
  * The React component that displays monaco code editor.
@@ -11,7 +12,12 @@ import {MonacoCodeEditor} from './MonacoCodeEditor'
  */
 export const UnconstrainedCodeEditor = (props: UnconstrainedCodeEditorProps) => {
   const editorRef = useRef<editor.IStandaloneCodeEditor>(null)
-  const {onChange, onMount} = props
+  const {onChange, onMount, onSave} = props
+  const onSaveRef = useRef(onSave)
+
+  useEffect(() => {
+    onSaveRef.current = onSave
+  }, [onSave])
 
   useEffect(() => {
     const editor = editorRef.current
@@ -25,6 +31,7 @@ export const UnconstrainedCodeEditor = (props: UnconstrainedCodeEditorProps) => 
     (editor, monaco) => {
       editor.onDidChangeModelContent(() => onChange(editor.getValue()))
       editorRef.current = editor
+      registerCodeEditorSaveAction(editor, monaco, value => onSaveRef.current?.(value))
 
       onMount?.(editor, monaco)
     },

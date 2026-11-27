@@ -35,6 +35,11 @@ The bottom panel opens when you edit items that use code or JSON, for example:
 5. Drag the **top edge** of the bottom panel up or down to change height.
 6. Close or finish editing to hide it when your workflow allows (use the panel **Close** control or finish the property dialog).
 
+While the cursor is in the editor,
+<span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> /
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span> saves the script (same as **Save** under the editor). See
+[Keyboard shortcuts](/help/keyboard-shortcuts).
+
 Height may be remembered during your session.
 
 ## Summary
@@ -44,5 +49,6 @@ Expand the side panels again before changing properties.
 
 ## See also
 
+- [Keyboard shortcuts](/help/keyboard-shortcuts)
 - [The Designer workspace](/meet-the-designer/the-designer-workspace)
 - [Right panel](/meet-the-designer/use-the-right-properties-panel)

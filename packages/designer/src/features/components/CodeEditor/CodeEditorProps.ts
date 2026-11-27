@@ -20,6 +20,11 @@ export interface UnconstrainedCodeEditorProps {
    */
   onChange: (value: string) => void
   /**
+   * The callback function that is called when save is requested (Ctrl/Cmd+S).
+   * @param value the source code to save.
+   */
+  onSave?: (value: string) => void
+  /**
    * The code editor language.
    * @default 'javascript'
    */

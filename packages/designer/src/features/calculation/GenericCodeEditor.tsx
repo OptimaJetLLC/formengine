@@ -119,15 +119,20 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
     [getSourceForSave]
   )
 
-  const handleSave = useCallback(() => {
-    const valueToSave = resolveSourceForSave(sourceCode)
-    const testResult = validateBeforeSave?.(valueToSave) === 'skip-test' ? undefined : testingEditorRef.current.test?.()
-    if (resolveGenericCodeEditorSave(valueToSave, {validateBeforeSave, testResult}) === 'abort') return
+  const handleSaveValue = useCallback(
+    (value: string) => {
+      const valueToSave = resolveSourceForSave(value)
+      const testResult = validateBeforeSave?.(valueToSave) === 'skip-test' ? undefined : testingEditorRef.current.test?.()
+      if (resolveGenericCodeEditorSave(valueToSave, {validateBeforeSave, testResult}) === 'abort') return
 
-    action(() => onSave(valueToSave))()
-    setInitialValue(valueToSave)
-    setSourceCode(valueToSave)
-  }, [onSave, resolveSourceForSave, sourceCode, validateBeforeSave])
+      action(() => onSave(valueToSave))()
+      setInitialValue(valueToSave)
+      setSourceCode(valueToSave)
+    },
+    [onSave, resolveSourceForSave, validateBeforeSave]
+  )
+
+  const handleSave = useCallback(() => handleSaveValue(sourceCode), [handleSaveValue, sourceCode])
 
   const testingFunction = useCallback(
     (formData: IFormData) => onCompile(resolveSourceForSave(sourceCode), formData),
@@ -148,6 +153,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
           language={props.language}
           onMount={props.onEditorMount}
           onChange={setSourceCode}
+          onSave={handleSaveValue}
         />
         <div className={styles.toolbar}>
           <ButtonGroup size={'sm'}>

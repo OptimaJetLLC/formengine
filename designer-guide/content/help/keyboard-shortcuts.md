@@ -1,12 +1,14 @@
 ---
 title: "Keyboard shortcuts"
-description: "Designer keyboard shortcuts for save, print, undo, redo, duplicate, and delete. Windows/Linux and macOS."
+description: "Designer keyboard shortcuts for save, print, undo, redo, duplicate, delete, and saving code in the bottom panel editor."
 ---
 
 # Keyboard shortcuts
 
-Shortcuts apply when focus is on the **page background** (not while typing inside a field). Click an empty area of the canvas first.
-**Print** is the exception: it still works with focus inside a field.
+Most shortcuts apply when focus is on the **page background** (not while typing inside a field). Click an empty area of the canvas first.
+**Print** still works with focus inside a field. In the bottom **code editor**,
+<span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> /
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span> saves the script instead of the whole form.
 
 ## Windows and Linux
 
@@ -35,6 +37,22 @@ Shortcuts apply when focus is on the **page background** (not while typing insid
 | Undo                                               | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>Z</kbd></span>                  |
 | Redo                                               | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></span> |
 
+## Code editor
+
+The bottom panel opens a code editor for calculable values, validation **Code**, form actions, and similar scripts. While the cursor is in
+that editor, the same chord as **Save form** saves the **script** (same as clicking **Save** under the editor). It does not save the form
+to storage.
+
+<img src="/assets/guide/behavior/highlight-form-action-code-editor.png" alt="Bottom panel code editor with Save and Close under the script." />
+
+| Action      | Windows / Linux                                                | macOS                                                       |
+| ----------- | -------------------------------------------------------------- | ----------------------------------------------------------- |
+| Save script | <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> | <span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span> |
+
+Close the code panel or click the canvas when you want
+<span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> /
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span> to save the form again.
+
 ## Tips
 
 - Select exactly one component to duplicate with <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>D</kbd></span> (Windows/Linux) or
@@ -44,6 +62,8 @@ Shortcuts apply when focus is on the **page background** (not while typing insid
 
 ## See also
 
-- [Select and edit components](/meet-the-designer/select-and-edit-components) - selection basics
+- [Collapse panels and resize the code panel](/meet-the-designer/collapse-panels-and-resize-the-code-panel)
+- [Form-level actions in Settings](/behavior-and-validation/form-level-actions-in-settings)
+- [Select and edit components](/meet-the-designer/select-and-edit-components)
 - [Print your form](/preview-and-handoff/print-your-form)
 - [Export and share your form](/preview-and-handoff/export-and-share-your-form)

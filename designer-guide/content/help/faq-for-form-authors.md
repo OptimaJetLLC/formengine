@@ -35,7 +35,9 @@ See [Preview and Edit](/meet-the-designer/preview-and-edit).
 
 Most shortcuts need focus on the page background, not inside a text box. Click the canvas margin first.
 **Print** (<span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>P</kbd></span> /
-<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>P</kbd></span>) still works inside a field.
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>P</kbd></span>) still works inside a field. In the bottom
+**code editor**, <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> /
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span> saves the script instead of the form.
 See [Keyboard shortcuts](/help/keyboard-shortcuts).
 
 ## Validation does not run on the canvas

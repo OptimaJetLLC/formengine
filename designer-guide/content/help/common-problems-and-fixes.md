@@ -11,9 +11,12 @@ Quick fixes for common issues that form authors encounter.
 
 :::warning
 
-**Symptom:** <kbd>Delete</kbd> or <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> has no effect.
+**Symptom:** <kbd>Delete</kbd> or <span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> has no effect on the form.
 
-**Fix:** Click the canvas background so focus is not inside a text field. See [Keyboard shortcuts](/help/keyboard-shortcuts).
+**Fix:** Click the canvas background so focus is not inside a text field. If the bottom **code editor** is open,
+<span class="fe-key-combo"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> /
+<span class="fe-key-combo"><kbd>⌘</kbd>+<kbd>S</kbd></span> saves the script, not the form. See
+[Keyboard shortcuts](/help/keyboard-shortcuts).
 
 :::
 
