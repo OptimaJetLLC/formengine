@@ -24,8 +24,8 @@ its [customizable key](/api-reference/@react-form-builder/designer/type-aliases/
 
 You can manage the FormBuilder and get its state in custom components
 using [useFormBuilder](/api-reference/@react-form-builder/designer/variables/useFormBuilder). It provides access
-to [IFormBuilder](/api-reference/@react-form-builder/designer/interfaces/IFormBuilder). The management options are limited at the moment,
-but they will be expanded in the future.
+to [IFormBuilder](/api-reference/@react-form-builder/designer/interfaces/IFormBuilder), including imperative shortcut
+actions such as save, print, undo, and redo. See [Designer hotkeys](#designer-hotkeys) for embedding details.
 
 Another option for customizing the component is to use pure CSS. Each component has a static CSS class named with the component's name
 prefixed by `FE_`. This class is applied to the same element as the style or className attributes, utilizing
@@ -385,6 +385,80 @@ const FormBuilderApp = () => {
   />
 }
 ```
+
+## Designer hotkeys
+
+By default the FormBuilder registers global keyboard shortcuts (delete, duplicate, save, print, undo, and redo).
+When you embed the designer inside a host application, those shortcuts can conflict with the browser or the host
+(especially Ctrl/Cmd+S and Ctrl/Cmd+P).
+
+Use the [hotkeys](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#hotkeys) prop to disable or
+remap them, and call the matching methods on [IFormBuilder](/api-reference/@react-form-builder/designer/interfaces/IFormBuilder)
+when the host owns the keyboard.
+
+### Disable all built-in hotkeys
+
+```tsx
+import {FormBuilder, type IFormBuilder} from '@react-form-builder/designer'
+import {useEffect, useRef} from 'react'
+
+const EmbeddedDesigner = () => {
+  const builderRef = useRef<IFormBuilder>(null)
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (!(event.ctrlKey || event.metaKey) || event.key.toLowerCase() !== 's') return
+      event.preventDefault()
+      void builderRef.current?.save?.()
+    }
+    globalThis.addEventListener('keydown', onKeyDown)
+    return () => globalThis.removeEventListener('keydown', onKeyDown)
+  }, [])
+
+  return <FormBuilder hotkeys={false} builderRef={builderRef} /* other props */ />
+}
+```
+
+### Remap or disable individual shortcuts
+
+Only the actions you list under `bindings` change. Every other action keeps its built-in default chords.
+For a listed action, the value **replaces** that action’s defaults (it does not add to them). Use `false` to turn that
+action’s shortcuts off while leaving the rest unchanged.
+
+```tsx
+<FormBuilder
+  hotkeys={{
+    bindings: {
+      // Replace only Save’s default Ctrl/Cmd+S chord; Delete, duplicate, print, undo, redo stay default.
+      // Prefer non-character keys such as F8: Option+S is layout-dependent on macOS (e.g. ß).
+      save: {key: 'F8'},
+      // Disable Print’s shortcut only; menu Print and IFormBuilder.print() still work
+      print: false
+    }
+  }}
+  /* other props */
+/>
+```
+
+Action ids: `deleteSelected`, `cloneSelected`, `save`, `print`, `undo`, `redo`.
+Pass an array of chords when one action should accept multiple bindings.
+If two actions claim the same chord, the later entry in `bindings` wins and the earlier action loses that chord.
+On macOS prefer `meta`; on Windows and Linux prefer `ctrl`. Use function keys when the chord must be layout-independent.
+
+### Imperative actions
+
+| Method              | Same core behavior as                                       | Notes                                         |
+| ------------------- | ----------------------------------------------------------- | --------------------------------------------- |
+| `deleteSelected()`  | Delete                                                      |                                               |
+| `cloneSelected()`   | Ctrl/Cmd+D (no-op unless exactly one component is selected) |                                               |
+| `save()`            | Ctrl/Cmd+S form persistence                                 | Silent: no designer toast (host can show one) |
+| `print()`           | Ctrl/Cmd+P                                                  |                                               |
+| `undo()` / `redo()` | Undo / redo                                                 |                                               |
+
+Built-in Ctrl/Cmd+S and the Save menu item still show the designer success/error toast.
+`IFormBuilder.save()` only persists the form so embedders can own feedback when they register external shortcuts.
+
+These methods are available on the object returned by `useFormBuilder()` and through the `builderRef` prop.
 
 [formStorage]: /formengine-designer/features/form-storage/
 [jsonSchema]: /formengine-designer/features/forms-json/#json-schema

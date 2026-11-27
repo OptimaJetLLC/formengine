@@ -65,8 +65,17 @@ screenshot below.
 
 ![img.png](/assets/forms-json/forms-json-03.png)
 
-This opens the built-in JSON form code editor. After you close the form by clicking the close button in the top right corner of the screen,
-the JSON with the form code will be applied in the form designer.
+This opens the built-in JSON form code editor (Monaco). The buffer is pretty-printed on open, and the editor formats JSON on paste. Monaco
+does not format JSON while typing. You can also format the whole document with the Monaco **Format Document** shortcut:
+
+| OS      | Shortcut                                        |
+| ------- | ----------------------------------------------- |
+| Windows | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>    |
+| macOS   | <kbd>Shift</kbd>+<kbd>Option</kbd>+<kbd>F</kbd> |
+| Linux   | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>   |
+
+After you close the form by clicking the close button in the top right corner of the screen, the JSON with the form code will be applied in
+the form designer.
 
 ![img_1.png](/assets/forms-json/forms-json-04.png)
 

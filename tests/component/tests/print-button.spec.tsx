@@ -29,17 +29,64 @@ describe('Designer print', () => {
     expect(await findByText('Preview')).toBeInTheDocument()
   })
 
+  const openMainMenu = async (container: HTMLElement) => {
+    const mainMenuDropdown = container.querySelector('.FE_MainMenu_Dropdown') as HTMLElement
+    const mainMenuButton = mainMenuDropdown.querySelector('.FE_MainMenu_Button > button') as HTMLElement
+    fireEvent.click(mainMenuButton)
+  }
+
   it('shows the print hotkey hint in the main menu', async () => {
     const {container, findByText} = render(<App />)
     const isMac = navigator.userAgent.includes('Mac')
 
     expect(await findByText('Preview')).toBeInTheDocument()
-
-    const mainMenuDropdown = container.querySelector('.FE_MainMenu_Dropdown') as HTMLElement
-    const mainMenuButton = mainMenuDropdown.querySelector('.FE_MainMenu_Button > button') as HTMLElement
-    fireEvent.click(mainMenuButton)
+    await openMainMenu(container)
 
     expect(await findByText(isMac ? '⌘P' : 'Ctrl+P')).toBeInTheDocument()
+  })
+
+  it('omits the print shortcut hint when hotkeys are disabled', async () => {
+    const {container, findByText, queryByText} = render(
+      <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} hotkeys={false} />
+    )
+    const isMac = navigator.userAgent.includes('Mac')
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+    await openMainMenu(container)
+
+    expect(await findByText('Print')).toBeInTheDocument()
+    expect(queryByText(isMac ? '⌘P' : 'Ctrl+P')).not.toBeInTheDocument()
+  })
+
+  it('omits the print shortcut hint when the print binding is disabled', async () => {
+    const {container, findByText, queryByText} = render(
+      <FormBuilder licenseKey={generatedLicenseKey} getForm={getFormFn} view={builderViewWithCss} hotkeys={{bindings: {print: false}}} />
+    )
+    const isMac = navigator.userAgent.includes('Mac')
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+    await openMainMenu(container)
+
+    expect(await findByText('Print')).toBeInTheDocument()
+    expect(queryByText(isMac ? '⌘P' : 'Ctrl+P')).not.toBeInTheDocument()
+  })
+
+  it('shows the remapped print shortcut hint', async () => {
+    const {container, findByText, queryByText} = render(
+      <FormBuilder
+        licenseKey={generatedLicenseKey}
+        getForm={getFormFn}
+        view={builderViewWithCss}
+        hotkeys={{bindings: {print: {key: 'F8'}}}}
+      />
+    )
+    const isMac = navigator.userAgent.includes('Mac')
+
+    expect(await findByText('Preview')).toBeInTheDocument()
+    await openMainMenu(container)
+
+    expect(await findByText('F8')).toBeInTheDocument()
+    expect(queryByText(isMac ? '⌘P' : 'Ctrl+P')).not.toBeInTheDocument()
   })
 
   it('intercepts Ctrl/Cmd+P and prints through viewer mode', async () => {

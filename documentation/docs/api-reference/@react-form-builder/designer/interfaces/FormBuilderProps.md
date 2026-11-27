@@ -213,6 +213,17 @@ the string or Promise with the form.
 
 ***
 
+### hotkeys?
+
+> `optional` **hotkeys?**: [`DesignerHotkeysProp`](../type-aliases/DesignerHotkeysProp.md)
+
+Controls the FormBuilder global keyboard shortcuts.
+Pass `false` to disable all built-in global hotkeys so the host can register its own
+and invoke actions through [IFormBuilder](IFormBuilder.md). Pass an options object to remap or
+disable individual actions.
+
+***
+
 ### i18n?
 
 > `optional` **i18n?**: [`FormBuilderI18n`](../type-aliases/FormBuilderI18n.md)

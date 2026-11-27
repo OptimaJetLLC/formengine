@@ -27,6 +27,7 @@ import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import {EditorMap} from '../annotation-editors/EditorMap'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {getBuilderChildren} from '../dnd/components/Editable/Editable'
+import {HotkeysPropProvider} from '../hotkeys/HotkeysPropContext'
 import {LicenseManager} from '../license/LicenseManager'
 import {LocalizationProvider} from '../localization/components/LocalizationProvider'
 import {resolveBuilderUiLanguage} from '../localization/languageUtils'
@@ -175,24 +176,26 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
   return (
     <ViewerPropsProvider value={viewerProps}>
       <BuilderStoreProvider value={builderStore}>
-        <BuiltinPropertyEditorsProvider value={EditorMap}>
-          <FormBuilderContextProvider builderRef={builderRef}>
-            <StoreProvider value={store}>
-              <LicenseManager licenseKey={licenseKey}>
-                <LocalizationProvider>
-                  <StylesProvider>
-                    <TooltipPlacementProvider value={'auto'}>
-                      <DndProvider backend={HTML5Backend}>
-                        {children}
-                        <CustomDragLayer />
-                      </DndProvider>
-                    </TooltipPlacementProvider>
-                  </StylesProvider>
-                </LocalizationProvider>
-              </LicenseManager>
-            </StoreProvider>
-          </FormBuilderContextProvider>
-        </BuiltinPropertyEditorsProvider>
+        <HotkeysPropProvider value={props.hotkeys}>
+          <BuiltinPropertyEditorsProvider value={EditorMap}>
+            <FormBuilderContextProvider builderRef={builderRef}>
+              <StoreProvider value={store}>
+                <LicenseManager licenseKey={licenseKey}>
+                  <LocalizationProvider>
+                    <StylesProvider>
+                      <TooltipPlacementProvider value={'auto'}>
+                        <DndProvider backend={HTML5Backend}>
+                          {children}
+                          <CustomDragLayer />
+                        </DndProvider>
+                      </TooltipPlacementProvider>
+                    </StylesProvider>
+                  </LocalizationProvider>
+                </LicenseManager>
+              </StoreProvider>
+            </FormBuilderContextProvider>
+          </BuiltinPropertyEditorsProvider>
+        </HotkeysPropProvider>
       </BuilderStoreProvider>
     </ViewerPropsProvider>
   )

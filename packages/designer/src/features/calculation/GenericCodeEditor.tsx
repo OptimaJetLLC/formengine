@@ -32,6 +32,10 @@ export interface GenericCodeEditorProps {
    */
   language?: CodeEditorLanguage
   /**
+   * Formats the document on open and when the model value is replaced, and enables format on paste/type.
+   */
+  autoformat?: boolean
+  /**
    * The source code.
    */
   source?: string
@@ -146,6 +150,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
           canEditBeginContextLine={props.canEditBeginContextLine}
           initialValue={initialValue}
           language={props.language}
+          autoformat={props.autoformat}
           onMount={props.onEditorMount}
           onChange={setSourceCode}
         />
