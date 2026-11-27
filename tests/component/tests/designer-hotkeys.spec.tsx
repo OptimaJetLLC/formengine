@@ -209,9 +209,8 @@ describe('Designer hotkeys', () => {
     )
 
     expect(await findByText('Preview')).toBeInTheDocument()
-    await act(async () => {
-      fireEvent.click(await findByTestId('nestedButton-editable-wrapper'))
-    })
+    const nestedButton = await findByTestId('nestedButton-editable-wrapper')
+    fireEvent.click(nestedButton)
     await act(async () => {
       ;(document.activeElement as HTMLElement | null)?.blur()
     })
