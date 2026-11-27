@@ -15,8 +15,12 @@ const excludedComponentTypes = [
   // excluded components
   'ThrowErrorComponent',
   'RsErrorMessage',
+  'MtErrorWrapper',
   'RsModal',
+  'MtDialog',
   'AntModal',
+  // TipTap needs editor chrome beyond a bare ComponentStore drop.
+  'MtTiptap',
   // excluded presets
   'Login and password',
   // excluded container components
@@ -31,6 +35,11 @@ const componentsInitialData: Record<string, FormViewerProps['initialData']> = {
   RsStaticContent: {
     none: '   ',
   },
+  // dataKey is "none"; data-bound children need a value or the host collapses to 0 height.
+  MtText: {none: 'Text'},
+  MtTitle: {none: 'Title'},
+  MtLabel: {none: 'Label'},
+  MtTooltip: {none: 'Hover me'},
 }
 
 const componentsWithoutMirroredTestId = new Set([
@@ -41,7 +50,12 @@ const componentsWithoutMirroredTestId = new Set([
   'RsTable',
   'SortableList',
   'StyledBox',
+  'MtDivider',
+  'MtTooltip',
 ])
+
+/** Thin / overlay hosts whose DnD wrapper stays under the shared min-height check. */
+const componentsWithoutMinHeight = new Set(['MtDivider', 'MtTooltip'])
 
 const componentsToTest = allComponentsBuilder
   .filter(({model}) => excludedComponentTypes.indexOf(model.type) < 0 && !model.isFeatureEnabled(cfNonVisual))
@@ -124,7 +138,9 @@ describe('One-way data binding', () => {
           if (!(wrapper instanceof HTMLElement)) throw new Error(`Unable to find HTMLElement for a component with type: "${type}"`)
           return wrapper
         })
-        await waitFor(() => expect(dndWrapper.offsetHeight).toBeGreaterThan(16))
+        if (!componentsWithoutMinHeight.has(type)) {
+          await waitFor(() => expect(dndWrapper.offsetHeight).toBeGreaterThan(16))
+        }
       }
     )
   }

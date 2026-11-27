@@ -14,6 +14,7 @@ const clearForm = async (page: Page) => {
 const mouseActivate = async (locator: ReturnType<Page['getByTestId']>, opts: {shiftKey?: boolean} = {}) => {
   await locator.evaluate((el, {shiftKey = false}) => {
     el.dispatchEvent(new MouseEvent('mousedown', {bubbles: true, cancelable: true, button: 0, shiftKey}))
+    el.dispatchEvent(new MouseEvent('mouseup', {bubbles: true, cancelable: true, button: 0, shiftKey}))
     el.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, shiftKey}))
   }, opts)
 }
