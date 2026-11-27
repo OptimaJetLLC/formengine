@@ -1,6 +1,7 @@
 import {antdComponents} from '@react-form-builder/components-antd'
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
 import {googleMapComponent} from '@react-form-builder/components-google-map'
+import {builderComponents as mantineBuilderComponents} from '@react-form-builder/components-mantine'
 import {printComponents} from '@react-form-builder/components-print'
 import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
@@ -34,6 +35,6 @@ let allComponents = [
   sortableListComponent,
 ]
 
-export const allComponentsBuilder = allComponents.map(definer => definer.build())
+export const allComponentsBuilder = [...allComponents.map(definer => definer.build()), ...mantineBuilderComponents]
 
 export const allComponentsViewer = allComponentsBuilder.map(c => c.model)

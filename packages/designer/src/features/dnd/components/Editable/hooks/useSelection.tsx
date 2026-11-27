@@ -6,6 +6,7 @@ import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {stopEvent} from '../../../../../utils/stopEvent'
 import {disarmOtherDraggables} from '../disarmDraggableAncestors'
+import {claimDragOwner, didDragStart} from '../dragOwner'
 
 /**
  * Represents the selection state of the component.
@@ -31,7 +32,7 @@ interface SelectionHandlers {
    */
   onClick: (e: MouseEvent) => void
   /**
-   * Selects on mousedown so HTML5 drag sources cannot cancel the click.
+   * Claims drag ownership / disarms ancestors on mousedown; selects when safe.
    * @param e the original mouse event.
    */
   onMouseDown: (e: MouseEvent) => void
@@ -51,8 +52,36 @@ interface SelectionHandlers {
  */
 type ClassName = string
 
-/** Skip click-select after a mousedown select in this gesture (parent must not steal on mouseup/click). */
+/** Skip click-select after a mousedown gesture (parent must not steal on mouseup/click). */
 let suppressClickSelect = false
+
+type PendingSelect = {
+  select: () => void
+}
+
+let pendingSelect: PendingSelect | null = null
+
+const gestureWindow = {
+  /** HTML5 drag skips mouseup; clear flags on dragend so the next click is not swallowed. */
+  afterDrag() {
+    suppressClickSelect = false
+    pendingSelect = null
+    gestureWindow.removeListeners()
+  },
+  flushIfIdle() {
+    const pending = pendingSelect
+    pendingSelect = null
+    gestureWindow.removeListeners()
+    if (!pending) return
+    // Selecting on mousedown re-renders and races HTML5 dragstart; apply after the gesture if no drag.
+    // Keep suppressClickSelect so the following click cannot retarget selection to a parent.
+    if (!didDragStart()) pending.select()
+  },
+  removeListeners() {
+    window.removeEventListener('mouseup', gestureWindow.flushIfIdle)
+    window.removeEventListener('dragend', gestureWindow.afterDrag)
+  },
+}
 
 /**
  * @returns the array [{@link SelectionState}, {@link SelectionHandlers}, {@link ClassName}] with component selection data.
@@ -71,9 +100,9 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
   const onClick = useCallback(
     (event: MouseEvent) => {
       stopEvent(event)
-      // Nested mousedown already selected; the follow-up click often retargets to a parent wrapper.
       if (suppressClickSelect) {
         suppressClickSelect = false
+        gestureWindow.flushIfIdle()
         return
       }
       if (event.ctrlKey || event.shiftKey) return
@@ -87,9 +116,8 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
     [data, store]
   )
 
-  // Select on mousedown: parent/self are HTML5 drag sources, so a click is often canceled
-  // when the browser starts a drag (especially for nested slot children inside button hosts).
-  // Keep only this wrapper draggable for the gesture so nothing else steals the drag.
+  // Disarm + claim ownership on mousedown; defer store selection until click/mouseup/dragstart
+  // so React re-render cannot re-arm parent drag sources before HTML5 dragstart.
   const onMouseDown = useCallback(
     (event: MouseEvent) => {
       if (event.button !== 0) return
@@ -98,7 +126,17 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
         disarmOtherDraggables(event.currentTarget)
       }
       suppressClickSelect = true
-      store.selectNode(data, event.ctrlKey || event.shiftKey)
+      const multi = event.ctrlKey || event.shiftKey
+      const select = () => store.selectNode(data, multi)
+      pendingSelect = {select}
+      claimDragOwner(data.key, () => {
+        // Drag already started — safe to select now.
+        pendingSelect = null
+        select()
+      })
+      gestureWindow.removeListeners()
+      window.addEventListener('mouseup', gestureWindow.flushIfIdle)
+      window.addEventListener('dragend', gestureWindow.afterDrag)
     },
     [data, store]
   )

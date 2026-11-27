@@ -106,8 +106,7 @@ describe('node picker inside button host', () => {
     })
     expect(button.className).toMatch(/selected/)
 
-    // Nested slot children sit under HTML5 drag sources; selection must win on mousedown
-    // and survive the follow-up click (often retargeted to the parent wrapper).
+    // Nested slot children: selection is deferred until mouseup so dragstart is not raced.
     await act(async () => {
       fireEvent.mouseDown(overlayOf(checkbox), {button: 0})
       fireEvent.mouseUp(window)
@@ -134,11 +133,18 @@ describe('node picker inside button host', () => {
     // Only the pressed wrapper stays draggable; others (incl. parent) cannot steal HTML5 drag.
     expect(button.getAttribute('draggable')).toBe('false')
     expect(checkbox.getAttribute('draggable')).toBe('true')
-    expect(checkbox.className).toMatch(/selected/)
+
+    await act(async () => {
+      button.setAttribute('draggable', 'true')
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
+    })
+    expect(button.getAttribute('draggable')).toBe('false')
+    expect(checkbox.getAttribute('draggable')).toBe('true')
 
     await act(async () => {
       fireEvent.mouseUp(window)
     })
+    expect(checkbox.className).toMatch(/selected/)
     unmount()
   })
 
@@ -151,6 +157,7 @@ describe('node picker inside button host', () => {
 
     await act(async () => {
       fireEvent.mouseDown(overlayOf(checkbox), {button: 0})
+      fireEvent.mouseUp(window)
     })
     expect(checkbox.className).toMatch(/selected/)
 
@@ -159,17 +166,16 @@ describe('node picker inside button host', () => {
     expect(toolbarEl).toBeTruthy()
     expect(toolbarEl!.style.pointerEvents).toBe('none')
 
-    // Second mousedown still reaches the child (disarm + stay selected) despite overlapping toolbar.
     await act(async () => {
       fireEvent.mouseDown(overlayOf(checkbox), {button: 0})
     })
     expect(button.getAttribute('draggable')).toBe('false')
     expect(checkbox.getAttribute('draggable')).toBe('true')
-    expect(checkbox.className).toMatch(/selected/)
 
     await act(async () => {
       fireEvent.mouseUp(window)
     })
+    expect(checkbox.className).toMatch(/selected/)
     unmount()
   })
 })
