@@ -94,27 +94,33 @@ describe('node picker inside button host', () => {
 
   it('selects MtCheckbox nested in MtButton leftSection on mousedown', async () => {
     const getForm = () => JSON.stringify(checkboxInButtonForm)
-    const {findByTestId} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
+    const {findByTestId, unmount} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
 
     const button = await findByTestId('mtButton1-editable-wrapper')
     const checkbox = await findByTestId('mtCheckbox1-editable-wrapper')
 
     await act(async () => {
       fireEvent.mouseDown(overlayOf(button), {button: 0})
+      fireEvent.mouseUp(window)
+      fireEvent.click(overlayOf(button))
     })
     expect(button.className).toMatch(/selected/)
 
-    // Nested slot children sit under HTML5 drag sources; selection must win on mousedown.
+    // Nested slot children sit under HTML5 drag sources; selection must win on mousedown
+    // and survive the follow-up click (often retargeted to the parent wrapper).
     await act(async () => {
       fireEvent.mouseDown(overlayOf(checkbox), {button: 0})
+      fireEvent.mouseUp(window)
+      fireEvent.click(overlayOf(button))
     })
     expect(checkbox.className).toMatch(/selected/)
     expect(button.className).not.toMatch(/selected/)
+    unmount()
   })
 
-  it('disarms parent drag source when a nested slot child receives mousedown', async () => {
+  it('disarms every other drag source when a nested slot child receives mousedown', async () => {
     const getForm = () => JSON.stringify(checkboxInButtonForm)
-    const {findByTestId} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
+    const {findByTestId, unmount} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
 
     const button = await findByTestId('mtButton1-editable-wrapper')
     const checkbox = await findByTestId('mtCheckbox1-editable-wrapper')
@@ -125,15 +131,20 @@ describe('node picker inside button host', () => {
       fireEvent.mouseDown(overlayOf(checkbox), {button: 0})
     })
 
-    // Parent must not steal the HTML5 drag; the nested child stays draggable.
+    // Only the pressed wrapper stays draggable; others (incl. parent) cannot steal HTML5 drag.
     expect(button.getAttribute('draggable')).toBe('false')
     expect(checkbox.getAttribute('draggable')).toBe('true')
     expect(checkbox.className).toMatch(/selected/)
+
+    await act(async () => {
+      fireEvent.mouseUp(window)
+    })
+    unmount()
   })
 
   it('keeps toolbar chrome from stealing gestures on a selected nested slot child', async () => {
     const getForm = () => JSON.stringify(checkboxInButtonForm)
-    const {findByTestId} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
+    const {findByTestId, unmount} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
 
     const button = await findByTestId('mtButton1-editable-wrapper')
     const checkbox = await findByTestId('mtCheckbox1-editable-wrapper')
@@ -155,5 +166,10 @@ describe('node picker inside button host', () => {
     expect(button.getAttribute('draggable')).toBe('false')
     expect(checkbox.getAttribute('draggable')).toBe('true')
     expect(checkbox.className).toMatch(/selected/)
+
+    await act(async () => {
+      fireEvent.mouseUp(window)
+    })
+    unmount()
   })
 })

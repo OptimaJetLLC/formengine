@@ -5,7 +5,7 @@ import type {HTMLAttributes, KeyboardEvent, MouseEvent} from 'react'
 import {forwardRef, useCallback} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {stopEvent} from '../../../../../utils/stopEvent'
-import {disarmDraggableAncestors} from '../disarmDraggableAncestors'
+import {disarmOtherDraggables} from '../disarmDraggableAncestors'
 import styles from './DropView.module.css'
 
 interface DropViewProps {
@@ -32,7 +32,7 @@ const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string
     (event: MouseEvent<HTMLSpanElement>) => {
       if (event.button !== 0) return
       stopEvent(event)
-      disarmDraggableAncestors(event.currentTarget)
+      disarmOtherDraggables(event.currentTarget)
       openModal()
     },
     [openModal]

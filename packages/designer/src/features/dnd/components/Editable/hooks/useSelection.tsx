@@ -5,7 +5,7 @@ import {useCallback, useMemo, useState} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {stopEvent} from '../../../../../utils/stopEvent'
-import {disarmDraggableAncestors} from '../disarmDraggableAncestors'
+import {disarmOtherDraggables} from '../disarmDraggableAncestors'
 
 /**
  * Represents the selection state of the component.
@@ -51,6 +51,9 @@ interface SelectionHandlers {
  */
 type ClassName = string
 
+/** Skip click-select after a mousedown select in this gesture (parent must not steal on mouseup/click). */
+let suppressClickSelect = false
+
 /**
  * @returns the array [{@link SelectionState}, {@link SelectionHandlers}, {@link ClassName}] with component selection data.
  */
@@ -68,7 +71,17 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
   const onClick = useCallback(
     (event: MouseEvent) => {
       stopEvent(event)
+      // Nested mousedown already selected; the follow-up click often retargets to a parent wrapper.
+      if (suppressClickSelect) {
+        suppressClickSelect = false
+        return
+      }
       if (event.ctrlKey || event.shiftKey) return
+      const target = event.target
+      if (target instanceof Element && event.currentTarget instanceof Element) {
+        const nested = target.closest('[data-testid$="-editable-wrapper"]')
+        if (nested && nested !== event.currentTarget) return
+      }
       store.selectNode(data, false)
     },
     [data, store]
@@ -76,14 +89,15 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
 
   // Select on mousedown: parent/self are HTML5 drag sources, so a click is often canceled
   // when the browser starts a drag (especially for nested slot children inside button hosts).
-  // Disarm parent drag sources so the nested child remains draggable.
+  // Keep only this wrapper draggable for the gesture so nothing else steals the drag.
   const onMouseDown = useCallback(
     (event: MouseEvent) => {
       if (event.button !== 0) return
       event.stopPropagation()
       if (event.currentTarget instanceof HTMLElement) {
-        disarmDraggableAncestors(event.currentTarget)
+        disarmOtherDraggables(event.currentTarget)
       }
+      suppressClickSelect = true
       store.selectNode(data, event.ctrlKey || event.shiftKey)
     },
     [data, store]
