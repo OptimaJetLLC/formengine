@@ -11,10 +11,11 @@ const clearForm = async (page: Page) => {
   await expect(page.getByTestId('add-button').first()).toBeVisible()
 }
 
-const shiftClick = async (locator: ReturnType<Page['getByTestId']>) => {
-  await locator.evaluate(el => {
-    el.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, shiftKey: true}))
-  })
+const mouseActivate = async (locator: ReturnType<Page['getByTestId']>, opts: {shiftKey?: boolean} = {}) => {
+  await locator.evaluate((el, {shiftKey = false}) => {
+    el.dispatchEvent(new MouseEvent('mousedown', {bubbles: true, cancelable: true, button: 0, shiftKey}))
+    el.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, shiftKey}))
+  }, opts)
 }
 
 const assertPresetInsertedOntoClearedForm = async (page: Page) => {
@@ -46,10 +47,8 @@ test.describe('Preset component', {
       await page.locator('.remove-preset-button.show').first().click({force: true})
       await expect(existingPreset).toHaveCount(0)
     }
-    await page.getByTestId('AntButton 1-editable-wrapper').evaluate(el => {
-      el.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true}))
-    })
-    await shiftClick(page.getByTestId('title-editable-wrapper'))
+    await mouseActivate(page.getByTestId('AntButton 1-editable-wrapper'))
+    await mouseActivate(page.getByTestId('title-editable-wrapper'), {shiftKey: true})
     const toolbar = page.locator('[data-fe-toolbar]').first()
     await expect(toolbar).toHaveAttribute('data-fe-toolbar-ready', '')
     const actionsButton = toolbar.getByTestId('toolbar-actions-button')
@@ -73,7 +72,7 @@ test.describe('Preset component', {
   test('can be added to the form from components modal', async () => {
     await clearForm(page)
 
-    await page.getByTestId('add-button').first().dispatchEvent('pointerdown')
+    await page.getByTestId('add-button').first().click({force: true})
     await page.locator('.rs-modal-wrapper .FE_TestPreset').first().click({force: true})
     await expect(page.locator('.rs-modal-wrapper')).toHaveCount(0)
 

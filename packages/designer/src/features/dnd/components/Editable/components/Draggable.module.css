@@ -69,6 +69,11 @@
   transition: padding 200ms ease-in-out;
 }
 
+/* Nested editables must sit above the parent's drag overlay (z-index 7), same idea as DropView. */
+.container .container {
+  z-index: 8;
+}
+
 .container:global(.isDraggingCurrent) {
   opacity: 0.4;
 }

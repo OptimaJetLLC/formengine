@@ -36,6 +36,12 @@ const buttonHost = define(ButtonHost, 'ButtonHost')
 const components = [...rSuiteComponents, buttonHost].map(d => d.build())
 const view = new BuilderView(components)
 
+const overlayOf = (wrapper: HTMLElement): HTMLElement => {
+  const overlay = wrapper.querySelector(':scope > [data-fe-drag-overlay]')
+  if (!(overlay instanceof HTMLElement)) throw new Error('Expected a drag overlay')
+  return overlay
+}
+
 describe('node picker inside button host', () => {
   it('renders a non-button add control so the host stays valid HTML', async () => {
     const getForm = () => JSON.stringify(emptySectionForm)
@@ -55,7 +61,7 @@ describe('node picker inside button host', () => {
     expect(await findByRole('dialog')).toBeInTheDocument()
   })
 
-  it('MtButton section dropzones open the picker on pointerdown', async () => {
+  it('MtButton section dropzones open the picker on mousedown', async () => {
     const getForm = () => JSON.stringify(mtButtonSectionForm)
     const {findByTestId, findByRole, findAllByTestId} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
 
@@ -69,30 +75,85 @@ describe('node picker inside button host', () => {
     const leftAdd = await within(dropzones[0]).findByTestId('add-button')
     expect(leftAdd.tagName).not.toBe('BUTTON')
 
-    // Parent editable wrappers are HTML5 drag sources; open on pointerdown before a drag can cancel click.
-    clickAddButton(leftAdd)
+    // Nested under HTML5 drag sources: open on mousedown before a drag can cancel click.
+    await act(async () => {
+      fireEvent.mouseDown(leftAdd, {button: 0})
+    })
     expect(await findByRole('dialog')).toBeInTheDocument()
   })
 
-  it('selects MtCheckbox nested in MtButton leftSection on pointerdown', async () => {
+  it('opens the empty-canvas add control via click-only activation', async () => {
+    const getForm = () => JSON.stringify({form: {key: 'Screen', type: 'Screen', children: []}})
+    const {findByTestId, findByRole} = render(<FormBuilder view={view} getForm={getForm} />)
+
+    const addControl = await findByTestId('add-button')
+    // Programmatic .click() / fireEvent.click must open without a prior mousedown.
+    fireEvent.click(addControl)
+    expect(await findByRole('dialog')).toBeInTheDocument()
+  })
+
+  it('selects MtCheckbox nested in MtButton leftSection on mousedown', async () => {
     const getForm = () => JSON.stringify(checkboxInButtonForm)
     const {findByTestId} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
 
     const button = await findByTestId('mtButton1-editable-wrapper')
     const checkbox = await findByTestId('mtCheckbox1-editable-wrapper')
-    const checkboxOverlay = checkbox.querySelector(':scope > [data-fe-drag-overlay]')
-    expect(checkboxOverlay).toBeTruthy()
 
     await act(async () => {
-      fireEvent.click(button.querySelector(':scope > [data-fe-drag-overlay]')!)
+      fireEvent.mouseDown(overlayOf(button), {button: 0})
     })
     expect(button.className).toMatch(/selected/)
 
-    // Nested slot children sit under HTML5 drag sources; selection must win on pointerdown.
+    // Nested slot children sit under HTML5 drag sources; selection must win on mousedown.
     await act(async () => {
-      fireEvent.pointerDown(checkboxOverlay!, {button: 0})
+      fireEvent.mouseDown(overlayOf(checkbox), {button: 0})
     })
     expect(checkbox.className).toMatch(/selected/)
     expect(button.className).not.toMatch(/selected/)
+  })
+
+  it('disarms parent drag source when a nested slot child receives mousedown', async () => {
+    const getForm = () => JSON.stringify(checkboxInButtonForm)
+    const {findByTestId} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
+
+    const button = await findByTestId('mtButton1-editable-wrapper')
+    const checkbox = await findByTestId('mtCheckbox1-editable-wrapper')
+    expect(button.getAttribute('draggable')).toBe('true')
+    expect(checkbox.getAttribute('draggable')).toBe('true')
+
+    await act(async () => {
+      fireEvent.mouseDown(overlayOf(checkbox), {button: 0})
+    })
+
+    // Parent must not steal the HTML5 drag; the nested child stays draggable.
+    expect(button.getAttribute('draggable')).toBe('false')
+    expect(checkbox.getAttribute('draggable')).toBe('true')
+    expect(checkbox.className).toMatch(/selected/)
+  })
+
+  it('keeps toolbar chrome from stealing gestures on a selected nested slot child', async () => {
+    const getForm = () => JSON.stringify(checkboxInButtonForm)
+    const {findByTestId} = render(<FormBuilder view={mantineBuilderView} getForm={getForm} />)
+
+    const button = await findByTestId('mtButton1-editable-wrapper')
+    const checkbox = await findByTestId('mtCheckbox1-editable-wrapper')
+
+    await act(async () => {
+      fireEvent.mouseDown(overlayOf(checkbox), {button: 0})
+    })
+    expect(checkbox.className).toMatch(/selected/)
+
+    // Selected nested nodes are tiny; toolbar host must pass events through to the child overlay.
+    const toolbarEl = document.querySelector<HTMLElement>('[data-fe-toolbar]')
+    expect(toolbarEl).toBeTruthy()
+    expect(toolbarEl!.style.pointerEvents).toBe('none')
+
+    // Second mousedown still reaches the child (disarm + stay selected) despite overlapping toolbar.
+    await act(async () => {
+      fireEvent.mouseDown(overlayOf(checkbox), {button: 0})
+    })
+    expect(button.getAttribute('draggable')).toBe('false')
+    expect(checkbox.getAttribute('draggable')).toBe('true')
+    expect(checkbox.className).toMatch(/selected/)
   })
 })

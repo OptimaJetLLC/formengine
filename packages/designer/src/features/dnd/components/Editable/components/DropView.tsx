@@ -1,26 +1,17 @@
 import {useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
 import cx from 'clsx'
-import type {HTMLAttributes, KeyboardEvent, PointerEvent} from 'react'
+import type {HTMLAttributes, KeyboardEvent, MouseEvent} from 'react'
 import {forwardRef, useCallback} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {stopEvent} from '../../../../../utils/stopEvent'
+import {disarmDraggableAncestors} from '../disarmDraggableAncestors'
 import styles from './DropView.module.css'
 
 interface DropViewProps {
   className?: string
   slot?: string
   slotCondition?: string
-}
-
-function collectDraggableAncestors(from: HTMLElement): HTMLElement[] {
-  const roots: HTMLElement[] = []
-  let el: HTMLElement | null = from.parentElement
-  while (el) {
-    if (el.getAttribute('draggable') === 'true') roots.push(el)
-    el = el.parentElement
-  }
-  return roots
 }
 
 const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string}) => {
@@ -35,25 +26,22 @@ const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string
     )
   }, [builderStore, target, slot, slotCondition])
 
-  // Open on pointerdown: parent wrappers are HTML5 drag sources, so a click is often canceled
-  // when the browser starts a drag. pointerdown runs before that.
-  const handlePointerDown = useCallback(
-    (event: PointerEvent<HTMLSpanElement>) => {
+  // Open on mousedown inside HTML5 drag hosts: the browser cancels click when a drag starts.
+  // preventDefault suppresses the follow-up click so we do not open twice.
+  const handleMouseDown = useCallback(
+    (event: MouseEvent<HTMLSpanElement>) => {
       if (event.button !== 0) return
       stopEvent(event)
+      disarmDraggableAncestors(event.currentTarget)
+      openModal()
+    },
+    [openModal]
+  )
 
-      const roots = collectDraggableAncestors(event.currentTarget)
-      for (const root of roots) root.setAttribute('draggable', 'false')
-      const restore = () => {
-        for (const root of roots) root.setAttribute('draggable', 'true')
-        window.removeEventListener('pointerup', restore)
-        window.removeEventListener('pointercancel', restore)
-        window.removeEventListener('dragend', restore)
-      }
-      window.addEventListener('pointerup', restore)
-      window.addEventListener('pointercancel', restore)
-      window.addEventListener('dragend', restore)
-
+  // Programmatic .click() / fireEvent.click does not fire mousedown.
+  const handleClick = useCallback(
+    (event: MouseEvent<HTMLSpanElement>) => {
+      stopEvent(event)
       openModal()
     },
     [openModal]
@@ -74,7 +62,8 @@ const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string
       role="button"
       tabIndex={0}
       className={styles.addControl}
-      onPointerDown={handlePointerDown}
+      onMouseDown={handleMouseDown}
+      onClick={handleClick}
       onKeyDown={handleKeyDown}
       data-testid="add-button"
       aria-label="Add component"
