@@ -41,9 +41,7 @@ const RealMonacoJsonHarness = ({initialValue, modelPath, autoformat, onEditor}: 
 }
 
 describe('Code editor autoformat with real Monaco', () => {
-  it('formats minified JSON on cold open once the formatter is ready', async () => {
-    if (!isBrowserMode()) return
-
+  it.skipIf(!isBrowserMode())('formats minified JSON on cold open once the formatter is ready', async () => {
     let monacoEditor: editor.IStandaloneCodeEditor | undefined
 
     render(
@@ -72,9 +70,7 @@ describe('Code editor autoformat with real Monaco', () => {
     )
   })
 
-  it('formats compact login-form JSON after a real clipboard paste', async () => {
-    if (!isBrowserMode()) return
-
+  it.skipIf(!isBrowserMode())('formats compact login-form JSON after a real clipboard paste', async () => {
     let monacoEditor: editor.IStandaloneCodeEditor | undefined
 
     render(

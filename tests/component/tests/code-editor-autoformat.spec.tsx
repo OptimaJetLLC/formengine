@@ -1,10 +1,13 @@
 import type {OnMount} from '@monaco-editor/react'
-import {render, waitFor} from '@testing-library/react'
+import {act, render, waitFor} from '@testing-library/react'
 import {useEffect, useRef, useState} from 'react'
 import {beforeEach, describe, expect, it, vi} from 'vitest'
 import {MonacoCodeEditor} from '../../../packages/designer/src/features/components/CodeEditor/MonacoCodeEditor'
 import {UnconstrainedCodeEditor} from '../../../packages/designer/src/features/components/CodeEditor/UnconstrainedCodeEditor'
-import {useMonacoAutoformat} from '../../../packages/designer/src/features/components/CodeEditor/useMonacoAutoformat'
+import {
+  FORMATTER_READY_TIMEOUT_MS,
+  useMonacoAutoformat,
+} from '../../../packages/designer/src/features/components/CodeEditor/useMonacoAutoformat'
 import bookingForm from './forms/booking-form.json'
 import designerForm from './forms/designer-form.json'
 import loginForm from './forms/login-form.json'
@@ -43,6 +46,13 @@ let lastMonacoOptions: Record<string, unknown> | undefined
 let contentListenerDisposeCount = 0
 let formatRunCount = 0
 let formatSourceSnapshots: string[] = []
+/** Remaining `isSupported()` calls that return false before the formatter becomes ready. */
+let unsupportedFormatChecksRemaining = 0
+let formatIsSupportedCallCount = 0
+/** When true, `formatDocument` rejects (simulates disposed model / invalid buffer). */
+let formatRunShouldReject = false
+let updateOptionsCalls: Record<string, unknown>[] = []
+let pasteListeners: Array<() => void> = []
 
 type FakeMonacoEditor = {
   getAction: (id: string) => {run: () => Promise<void>; isSupported: () => boolean} | null
@@ -56,6 +66,10 @@ type FakeMonacoEditor = {
    * Simulates JsonView `setModel` content swap without `isFlush`, so post-mount format must come from the microtask.
    */
   applyModelValue: (next: string) => void
+  /**
+   * Fires registered Monaco paste listeners (dual-path paste format contract).
+   */
+  firePaste: () => void
 }
 
 /**
@@ -71,6 +85,7 @@ vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCod
     useEffect(() => {
       const contentListeners: Array<(event: {isFlush: boolean}) => void> = []
       const disposeListeners: Array<() => void> = []
+      pasteListeners = []
 
       const formatDocument = () => {
         formatRunCount += 1
@@ -89,8 +104,20 @@ vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCod
         getAction: (id: string) =>
           id === 'editor.action.formatDocument'
             ? {
-                run: async () => formatDocument(),
-                isSupported: () => true,
+                run: async () => {
+                  if (formatRunShouldReject) {
+                    throw new Error('formatDocument rejected')
+                  }
+                  formatDocument()
+                },
+                isSupported: () => {
+                  formatIsSupportedCallCount += 1
+                  if (unsupportedFormatChecksRemaining > 0) {
+                    unsupportedFormatChecksRemaining -= 1
+                    return false
+                  }
+                  return true
+                },
               }
             : null,
         onDidChangeModelContent: (listener: (event: {isFlush: boolean}) => void) => {
@@ -105,8 +132,18 @@ vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCod
             },
           }
         },
-        onDidPaste: () => ({dispose: () => undefined}),
-        updateOptions: () => undefined,
+        onDidPaste: (listener: () => void) => {
+          pasteListeners.push(listener)
+          return {
+            dispose: () => {
+              const index = pasteListeners.indexOf(listener)
+              if (index >= 0) pasteListeners.splice(index, 1)
+            },
+          }
+        },
+        updateOptions: (next: Record<string, unknown>) => {
+          updateOptionsCalls.push(next)
+        },
         onDidDispose: (listener: () => void) => {
           disposeListeners.push(listener)
           return {
@@ -125,6 +162,11 @@ vi.mock('../../../packages/designer/src/features/components/CodeEditor/MonacoCod
         applyModelValue: (next: string) => {
           valueRef.current = next
           setValue(next)
+        },
+        firePaste: () => {
+          for (const listener of [...pasteListeners]) {
+            listener()
+          }
         },
       }
 
@@ -157,6 +199,11 @@ describe('Code editor autoformat with real form definitions', () => {
     contentListenerDisposeCount = 0
     formatRunCount = 0
     formatSourceSnapshots = []
+    unsupportedFormatChecksRemaining = 0
+    formatIsSupportedCallCount = 0
+    formatRunShouldReject = false
+    updateOptionsCalls = []
+    pasteListeners = []
   })
 
   it.each(formExamples)('formats minified $name JSON on mount when autoformat is enabled', async ({form}) => {
@@ -173,8 +220,8 @@ describe('Code editor autoformat with real form definitions', () => {
     expect(lastMonacoOptions).toMatchObject({
       formatOnPaste: true,
       formatOnType: true,
-      autoIndent: 'advanced',
     })
+    expect(lastMonacoOptions).not.toHaveProperty('autoIndent')
   })
 
   it('does not format minified form JSON when autoformat is disabled', async () => {
@@ -275,6 +322,7 @@ describe('Code editor autoformat with real form definitions', () => {
       formatOnPaste: true,
       formatOnType: true,
     })
+    expect(lastMonacoOptions).not.toHaveProperty('autoIndent')
   })
 
   it('disables formatting replacements when autoformat flips from true to false', async () => {
@@ -296,5 +344,132 @@ describe('Code editor autoformat with real form definitions', () => {
       formatOnPaste: false,
       formatOnType: false,
     })
+  })
+
+  it('formats once after the formatter becomes supported (cold-open readiness)', async () => {
+    unsupportedFormatChecksRemaining = 4
+    const minified = JSON.stringify(loginForm)
+    const pretty = JSON.stringify(loginForm, null, 2)
+
+    const {findByTestId} = render(<AutoformatHarness initialValue={minified} autoformat />)
+
+    const editor = await findByTestId('autoformat-monaco')
+    expect(editor.textContent).toBe(minified)
+
+    await waitFor(() => {
+      expect(editor.textContent).toBe(pretty)
+    })
+    expect(formatRunCount).toBe(1)
+  })
+
+  it('formats only once when paste fires while still waiting for the formatter', async () => {
+    unsupportedFormatChecksRemaining = 6
+    const minified = JSON.stringify(loginForm)
+    const pretty = JSON.stringify(loginForm, null, 2)
+    let editorApi: FakeMonacoEditor | undefined
+
+    const {findByTestId} = render(
+      <AutoformatHarness
+        initialValue={minified}
+        autoformat
+        onMount={ed => {
+          editorApi = ed as unknown as FakeMonacoEditor
+        }}
+      />
+    )
+
+    await findByTestId('autoformat-monaco')
+    expect(pasteListeners.length).toBeGreaterThan(0)
+    editorApi!.firePaste()
+
+    await waitFor(() => {
+      expect(formatRunCount).toBe(1)
+    })
+    await new Promise(resolve => setTimeout(resolve, 150))
+    expect(formatRunCount).toBe(1)
+    expect((await findByTestId('autoformat-monaco')).textContent).toBe(pretty)
+  })
+
+  it('stops polling when the formatter never becomes supported', async () => {
+    unsupportedFormatChecksRemaining = Number.POSITIVE_INFINITY
+
+    const {findByTestId} = render(<AutoformatHarness initialValue={JSON.stringify(loginForm)} autoformat />)
+    await findByTestId('autoformat-monaco')
+    await waitFor(() => {
+      expect(formatIsSupportedCallCount).toBeGreaterThan(1)
+    })
+
+    await new Promise(resolve => setTimeout(resolve, FORMATTER_READY_TIMEOUT_MS + 100))
+    const checksAfterTimeout = formatIsSupportedCallCount
+    await new Promise(resolve => setTimeout(resolve, 200))
+
+    expect(formatIsSupportedCallCount).toBe(checksAfterTimeout)
+    expect(formatRunCount).toBe(0)
+  })
+
+  it('formats when onDidPaste fires after the formatter is ready', async () => {
+    const minified = JSON.stringify(loginForm)
+    const pretty = JSON.stringify(loginForm, null, 2)
+    let editorApi: FakeMonacoEditor | undefined
+
+    const {findByTestId} = render(
+      <AutoformatHarness
+        initialValue='{"keep":true}'
+        autoformat
+        onMount={ed => {
+          editorApi = ed as unknown as FakeMonacoEditor
+        }}
+      />
+    )
+
+    await waitFor(() => {
+      expect(formatRunCount).toBe(1)
+    })
+    formatRunCount = 0
+
+    await act(async () => {
+      editorApi!.applyModelValue(minified)
+      editorApi!.firePaste()
+    })
+
+    await waitFor(() => {
+      expect(formatRunCount).toBe(1)
+    })
+    expect((await findByTestId('autoformat-monaco')).textContent).toBe(pretty)
+  })
+
+  it('does not leave an unhandled rejection when formatDocument rejects', async () => {
+    formatRunShouldReject = true
+    const unhandled: unknown[] = []
+    const onUnhandled = (reason: unknown) => {
+      unhandled.push(reason)
+    }
+    process.on('unhandledRejection', onUnhandled)
+
+    const {findByTestId} = render(<AutoformatHarness initialValue={JSON.stringify(loginForm)} autoformat />)
+    await findByTestId('autoformat-monaco')
+    await new Promise(resolve => setTimeout(resolve, 50))
+
+    process.off('unhandledRejection', onUnhandled)
+    expect(unhandled).toEqual([])
+  })
+
+  it('does not override Monaco autoIndent via autoformat option updates', async () => {
+    const {findByTestId, rerender} = render(
+      <UnconstrainedCodeEditor language="json" initialValue={JSON.stringify(loginForm)} onChange={vi.fn()} autoformat />
+    )
+
+    await findByTestId('autoformat-monaco')
+    expect(updateOptionsCalls.every(call => !('autoIndent' in call))).toBe(true)
+
+    rerender(<UnconstrainedCodeEditor language="json" initialValue={JSON.stringify(loginForm)} onChange={vi.fn()} />)
+
+    await waitFor(() => {
+      expect(lastMonacoOptions).toMatchObject({
+        formatOnPaste: false,
+        formatOnType: false,
+      })
+    })
+    expect(updateOptionsCalls.every(call => !('autoIndent' in call))).toBe(true)
   })
 })

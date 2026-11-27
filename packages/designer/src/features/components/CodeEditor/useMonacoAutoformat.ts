@@ -4,9 +4,10 @@ import {useCallback, useEffect, useMemo, useRef} from 'react'
 
 const FORMAT_DOCUMENT_ACTION = 'editor.action.formatDocument'
 const FORMATTER_POLL_MS = 25
+/** Stop waiting if Monaco never reports a document formatter (avoids a lifetime interval). */
+export const FORMATTER_READY_TIMEOUT_MS = 2_000
 
 const autoFormatOptions: editor.IStandaloneEditorConstructionOptions = {
-  autoIndent: 'advanced',
   formatOnPaste: true,
   // Effective only when the language registers an on-type formatting provider (JSON does not).
   formatOnType: true,
@@ -39,32 +40,43 @@ const rearmFormatOnPaste = (monacoEditor: editor.IStandaloneCodeEditor) => {
 const scheduleFormatWhenReady = (monacoEditor: editor.IStandaloneCodeEditor, rearmPaste = false): IDisposable => {
   let cancelled = false
   let intervalId: ReturnType<typeof setInterval> | undefined = undefined
+  let timeoutId: ReturnType<typeof setTimeout> | undefined = undefined
+
+  const clearTimers = () => {
+    if (intervalId !== undefined) {
+      clearInterval(intervalId)
+      intervalId = undefined
+    }
+    if (timeoutId !== undefined) {
+      clearTimeout(timeoutId)
+      timeoutId = undefined
+    }
+  }
 
   const tryFormat = () => {
     if (cancelled) return true
     const action = monacoEditor.getAction(FORMAT_DOCUMENT_ACTION)
     if (!action?.isSupported()) return false
     if (rearmPaste) rearmFormatOnPaste(monacoEditor)
-    void action.run()
+    // Monaco may reject when the model is disposed or the buffer is invalid mid-flight.
+    void action.run().then(undefined, () => undefined)
+    clearTimers()
     return true
   }
 
   if (!tryFormat()) {
     intervalId = setInterval(() => {
-      if (tryFormat() && intervalId !== undefined) {
-        clearInterval(intervalId)
-        intervalId = undefined
-      }
+      tryFormat()
     }, FORMATTER_POLL_MS)
+    timeoutId = setTimeout(() => {
+      clearTimers()
+    }, FORMATTER_READY_TIMEOUT_MS)
   }
 
   return {
     dispose: () => {
       cancelled = true
-      if (intervalId !== undefined) {
-        clearInterval(intervalId)
-        intervalId = undefined
-      }
+      clearTimers()
     },
   }
 }
@@ -78,10 +90,12 @@ const attachAutoformatListeners = (monacoEditor: editor.IStandaloneCodeEditor) =
   const disposables: IDisposable[] = []
   let disposed = false
   let formattedFromFlushDuringAttach = false
+  let pendingFormat: IDisposable | undefined = undefined
 
   const formatWhenReady = () => {
     if (disposed) return
-    disposables.push(scheduleFormatWhenReady(monacoEditor, true))
+    pendingFormat?.dispose()
+    pendingFormat = scheduleFormatWhenReady(monacoEditor, true)
   }
 
   disposables.push(
@@ -99,6 +113,8 @@ const attachAutoformatListeners = (monacoEditor: editor.IStandaloneCodeEditor) =
 
   const disposeAll = () => {
     disposed = true
+    pendingFormat?.dispose()
+    pendingFormat = undefined
     for (const disposable of disposables) {
       disposable.dispose()
     }
@@ -112,6 +128,11 @@ const attachAutoformatListeners = (monacoEditor: editor.IStandaloneCodeEditor) =
       return formattedFromFlushDuringAttach
     },
   }
+}
+
+type EnableAutoformatOptions = {
+  formatAfterAttach: boolean
+  afterAttach?: () => void
 }
 
 /**
@@ -152,11 +173,12 @@ export const useMonacoAutoformat = (
   }, [])
 
   const enableAutoformat = useCallback(
-    (monacoEditor: editor.IStandaloneCodeEditor, formatAfterAttach: boolean) => {
+    (monacoEditor: editor.IStandaloneCodeEditor, {formatAfterAttach, afterAttach}: EnableAutoformatOptions) => {
       detachAutoformat()
       monacoEditor.updateOptions(autoFormatOptions)
       const attachment = attachAutoformatListeners(monacoEditor)
       detachRef.current = attachment.disposeAll
+      afterAttach?.()
 
       if (formatAfterAttach && !attachment.formattedFromFlushDuringAttach) {
         queueMicrotask(attachment.formatWhenReady)
@@ -176,20 +198,16 @@ export const useMonacoAutoformat = (
 
       if (autoformatRef.current) {
         // Attach before caller onMount so setValue flushes during mount are observed.
-        detachAutoformat()
-        monacoEditor.updateOptions(autoFormatOptions)
-        const attachment = attachAutoformatListeners(monacoEditor)
-        detachRef.current = attachment.disposeAll
-        onMountRef.current?.(monacoEditor, monaco)
-        if (!attachment.formattedFromFlushDuringAttach) {
-          queueMicrotask(attachment.formatWhenReady)
-        }
+        enableAutoformat(monacoEditor, {
+          formatAfterAttach: true,
+          afterAttach: () => onMountRef.current?.(monacoEditor, monaco),
+        })
       } else {
         monacoEditor.updateOptions(disabledAutoFormatOptions)
         onMountRef.current?.(monacoEditor, monaco)
       }
     },
-    [detachAutoformat]
+    [detachAutoformat, enableAutoformat]
   )
 
   useEffect(() => {
@@ -199,7 +217,7 @@ export const useMonacoAutoformat = (
     if (autoformat) {
       // handleMount may already have attached; avoid dispose/reattach churn on first paint.
       if (!detachRef.current) {
-        enableAutoformat(monacoEditor, true)
+        enableAutoformat(monacoEditor, {formatAfterAttach: true})
       } else {
         monacoEditor.updateOptions(autoFormatOptions)
       }
