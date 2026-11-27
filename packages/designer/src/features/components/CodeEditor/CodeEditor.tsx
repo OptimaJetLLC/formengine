@@ -20,7 +20,6 @@ const RawCodeEditor = (props: CodeEditorProps) => {
   const theme = props.theme ?? themeFromBuilder
 
   const codeEditorProps = {...props, theme}
-  let editor = <ConstrainedCodeEditor {...codeEditorProps} />
 
   if (!props.beginContextLine && !props.endContextLine) {
     const unconstrainedProps = {...codeEditorProps}
@@ -28,10 +27,21 @@ const RawCodeEditor = (props: CodeEditorProps) => {
     delete unconstrainedProps.beginContextLine
     delete unconstrainedProps.endContextLine
     delete unconstrainedProps.canEditBeginContextLine
-    editor = <UnconstrainedCodeEditor {...unconstrainedProps} />
+    return (
+      <LtrDiv>
+        <UnconstrainedCodeEditor {...unconstrainedProps} />
+      </LtrDiv>
+    )
   }
 
-  return <LtrDiv>{editor}</LtrDiv>
+  const constrainedProps = {...codeEditorProps}
+  delete constrainedProps.autoformat
+
+  return (
+    <LtrDiv>
+      <ConstrainedCodeEditor {...constrainedProps} />
+    </LtrDiv>
+  )
 }
 
 export const CodeEditor = namedObserver('CodeEditor', RawCodeEditor)

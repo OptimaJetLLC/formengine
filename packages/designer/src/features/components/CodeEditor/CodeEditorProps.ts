@@ -25,6 +25,11 @@ export interface UnconstrainedCodeEditorProps {
    */
   language?: CodeEditorLanguage
   /**
+   * Formats the document on open and when the model value is replaced, and enables format on paste.
+   * Also enables Monaco format-on-type when the language registers an on-type formatter (JSON does not).
+   */
+  autoformat?: boolean
+  /**
    * The code editor height.
    */
   height?: string | number
