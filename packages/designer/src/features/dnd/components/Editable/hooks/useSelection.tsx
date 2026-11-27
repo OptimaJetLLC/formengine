@@ -5,6 +5,7 @@ import {useCallback, useMemo, useState} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {stopEvent} from '../../../../../utils/stopEvent'
+import {toolbarHostAttr} from '../components/overlayRoot'
 import {disarmOtherDraggables} from '../disarmDraggableAncestors'
 import {claimDragOwner, didDragStart} from '../dragOwner'
 
@@ -121,6 +122,8 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
   const onMouseDown = useCallback(
     (event: MouseEvent) => {
       if (event.button !== 0) return
+      const target = event.target
+      if (target instanceof Element && target.closest(`[${toolbarHostAttr}]`)) return
       event.stopPropagation()
       if (event.currentTarget instanceof HTMLElement) {
         disarmOtherDraggables(event.currentTarget)
