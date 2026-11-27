@@ -41,7 +41,7 @@ const RawJsonView = () => {
     return () => builderStore.parseForm(sourceRef.current)
   }, [builderStore])
 
-  return <CodeEditor language="json" initialValue={initialValue} onChange={onSetSource} onMount={handleMount} />
+  return <CodeEditor language="json" initialValue={initialValue} onChange={onSetSource} onMount={handleMount} autoformat />
 }
 
 export const JsonView = namedObserver('JsonView', RawJsonView)

@@ -53,6 +53,7 @@ const RawJsonCodeEditor = (props: JsonCode) => {
         onClose={handleClose}
         onCompile={handleCompile}
         language="json"
+        autoformat
         compact
       />
     </>
