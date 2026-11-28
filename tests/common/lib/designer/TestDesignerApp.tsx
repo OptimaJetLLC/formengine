@@ -1,4 +1,7 @@
+import {MantineProvider} from '@mantine/core'
 import {ltrCssLoader, RsViewWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import '@mantine/core/styles.css'
+import '@mantine/dates/styles.css'
 import {
   ActionDefinition,
   BiDi,
@@ -240,80 +243,82 @@ const TestDesignerApp = ({license, customization}: FormBuilderAppProps) => {
   if (!indexedDbInitialized) return null
 
   return (
-    <FormBuilder
-      propertyEditors={{
-        string: StringEditor,
-      }}
-      customization={customization}
-      licenseKey={license ?? generatedLicenseKey}
-      getForm={getFormFn}
-      formName={sampleFormName}
-      theme={cycleThroughThemes ? theme : undefined}
-      view={view}
-      initialData={initialData}
-      formStorage={formStorage}
-      localize={localizeFn}
-      onFormDataChange={async formData => {
-        const {data, errors} = formData
-        if (logEvents) console.log('onFormDataChange', {data, errors})
-        const silentValidationResult = await formData.getValidationResult()
-        formData.state.isValid = !silentValidationResult
-      }}
-      onFormSchemaChange={formSchema => {
-        if (logEvents) console.log('onFormSchemaChange', formSchema)
-      }}
-      onFormElementAdd={payload => {
-        const sourceType =
-          payload?.source && typeof payload.source === 'object' && 'model' in payload.source
-            ? (payload.source as {model?: {type?: string}}).model?.type
-            : undefined
-        const targetKey =
-          payload?.target && typeof payload.target === 'object' && 'key' in payload.target
-            ? (payload.target as {key?: string}).key
-            : undefined
-        if (typeof globalThis !== 'undefined') {
-          const w = globalThis as {__formBuilderAddCalls?: Array<{sourceType?: string; targetKey?: string}>}
-          w.__formBuilderAddCalls = w.__formBuilderAddCalls ?? []
-          w.__formBuilderAddCalls.push({sourceType, targetKey})
-        }
-      }}
-      onFormElementRemove={payload => {
-        const sourceKey =
-          payload?.source && typeof payload.source === 'object' && 'key' in payload.source
-            ? (payload.source as {key?: string}).key
-            : undefined
-        if (typeof globalThis !== 'undefined') {
-          const w = globalThis as {__formBuilderRemoveCalls?: Array<{sourceKey?: string}>}
-          w.__formBuilderRemoveCalls = w.__formBuilderRemoveCalls ?? []
-          w.__formBuilderRemoveCalls.push({sourceKey})
-        }
-      }}
-      viewerRef={viewerRef}
-      builderRef={builderRef}
-      validators={customValidators}
-      formValidators={formValidators}
-      i18n={enableCustomLanguages ? builderLanguages : undefined}
-      errorWrapper={useCustomErrorWrapper ? CustomErrorWrapper : undefined}
-      actions={{
-        logEventArgs: e => {
-          console.info(e.type, e.sender.key, e.sender.id, (+new Date() + '').substr(-4))
-        },
-        assertArgs: ActionDefinition.functionalAction(
-          (e, args) => {
-            if (!e) throw new Error(`'e' is undefined`)
-            if (!args) throw new Error(`'args' is args`)
-            if (args.p1 !== 'testValue') console.error(`args.p1 !== 'testValue'`, args.p1)
-            if (!args.p2) console.error(`args.p2 !== true`, args.p2)
-            if (args.p3 !== 6.62607015) console.error(`args.p3 !== 6.62607015`, args.p3)
-          },
-          {
-            p1: 'string',
-            p2: 'boolean',
-            p3: 'number',
+    <MantineProvider>
+      <FormBuilder
+        propertyEditors={{
+          string: StringEditor,
+        }}
+        customization={customization}
+        licenseKey={license ?? generatedLicenseKey}
+        getForm={getFormFn}
+        formName={sampleFormName}
+        theme={cycleThroughThemes ? theme : undefined}
+        view={view}
+        initialData={initialData}
+        formStorage={formStorage}
+        localize={localizeFn}
+        onFormDataChange={async formData => {
+          const {data, errors} = formData
+          if (logEvents) console.log('onFormDataChange', {data, errors})
+          const silentValidationResult = await formData.getValidationResult()
+          formData.state.isValid = !silentValidationResult
+        }}
+        onFormSchemaChange={formSchema => {
+          if (logEvents) console.log('onFormSchemaChange', formSchema)
+        }}
+        onFormElementAdd={payload => {
+          const sourceType =
+            payload?.source && typeof payload.source === 'object' && 'model' in payload.source
+              ? (payload.source as {model?: {type?: string}}).model?.type
+              : undefined
+          const targetKey =
+            payload?.target && typeof payload.target === 'object' && 'key' in payload.target
+              ? (payload.target as {key?: string}).key
+              : undefined
+          if (typeof globalThis !== 'undefined') {
+            const w = globalThis as {__formBuilderAddCalls?: Array<{sourceType?: string; targetKey?: string}>}
+            w.__formBuilderAddCalls = w.__formBuilderAddCalls ?? []
+            w.__formBuilderAddCalls.push({sourceType, targetKey})
           }
-        ),
-      }}
-    />
+        }}
+        onFormElementRemove={payload => {
+          const sourceKey =
+            payload?.source && typeof payload.source === 'object' && 'key' in payload.source
+              ? (payload.source as {key?: string}).key
+              : undefined
+          if (typeof globalThis !== 'undefined') {
+            const w = globalThis as {__formBuilderRemoveCalls?: Array<{sourceKey?: string}>}
+            w.__formBuilderRemoveCalls = w.__formBuilderRemoveCalls ?? []
+            w.__formBuilderRemoveCalls.push({sourceKey})
+          }
+        }}
+        viewerRef={viewerRef}
+        builderRef={builderRef}
+        validators={customValidators}
+        formValidators={formValidators}
+        i18n={enableCustomLanguages ? builderLanguages : undefined}
+        errorWrapper={useCustomErrorWrapper ? CustomErrorWrapper : undefined}
+        actions={{
+          logEventArgs: e => {
+            console.info(e.type, e.sender.key, e.sender.id, (+new Date() + '').substr(-4))
+          },
+          assertArgs: ActionDefinition.functionalAction(
+            (e, args) => {
+              if (!e) throw new Error(`'e' is undefined`)
+              if (!args) throw new Error(`'args' is args`)
+              if (args.p1 !== 'testValue') console.error(`args.p1 !== 'testValue'`, args.p1)
+              if (!args.p2) console.error(`args.p2 !== true`, args.p2)
+              if (args.p3 !== 6.62607015) console.error(`args.p3 !== 6.62607015`, args.p3)
+            },
+            {
+              p1: 'string',
+              p2: 'boolean',
+              p3: 'number',
+            }
+          ),
+        }}
+      />
+    </MantineProvider>
   )
 }
 

@@ -1,7 +1,11 @@
 .draggableBody {
   position: absolute;
   inset: 0;
-  z-index: 7;
+  z-index: 10;
+}
+
+.container:has(.container) > .draggableBody {
+  pointer-events: none;
 }
 
 .uncoverOverflow {
@@ -67,6 +71,11 @@
 .container {
   position: relative;
   transition: padding 200ms ease-in-out;
+}
+
+/* Nested editables must sit above the parent's drag overlay, same idea as DropView. */
+.container .container {
+  z-index: 11;
 }
 
 .container:global(.isDraggingCurrent) {

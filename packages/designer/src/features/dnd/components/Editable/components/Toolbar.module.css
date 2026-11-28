@@ -12,6 +12,8 @@
   font-size: 16px;
   display: flex;
   align-items: center;
+  /* Let select/drag reach nested slot children under the floating chrome. */
+  pointer-events: none;
 }
 
 .container:not([data-fe-toolbar-ready]) {
@@ -38,6 +40,13 @@
 .title {
   display: inline;
   padding-inline-start: 5px;
+  pointer-events: none;
+}
+
+.items,
+.actions,
+.strip {
+  pointer-events: none;
 }
 
 .items {
@@ -50,6 +59,13 @@
 .actions {
   display: flex;
   align-items: center;
+}
+
+.hub,
+.item,
+.actionButton,
+.toggle {
+  pointer-events: auto;
 }
 
 .hub {

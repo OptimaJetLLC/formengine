@@ -1,7 +1,10 @@
+import {MantineProvider} from '@mantine/core'
 import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {FormViewerProps} from '@react-form-builder/core'
 import {FormBuilder, FormBuilderProps} from '@react-form-builder/designer'
 import {render} from '@testing-library/react'
+import '@mantine/core/styles.css'
+import '@mantine/dates/styles.css'
 
 export const renderBuilder = async (form: object | string, props?: Partial<FormBuilderProps>) => {
   const getForm = () => {
@@ -12,7 +15,9 @@ export const renderBuilder = async (form: object | string, props?: Partial<FormB
   const builderRef: FormBuilderProps['builderRef'] = {current: null}
 
   const result = render(
-    <FormBuilder view={builderViewWithCss} getForm={getForm} viewerRef={viewerRef} builderRef={builderRef} {...props} />
+    <MantineProvider>
+      <FormBuilder view={builderViewWithCss} getForm={getForm} viewerRef={viewerRef} builderRef={builderRef} {...props} />
+    </MantineProvider>
   )
   const getFormData = () => viewerRef.current?.formData
   const getFormBuilder = () => builderRef.current

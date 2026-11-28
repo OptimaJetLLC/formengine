@@ -4,6 +4,7 @@ import {useEffect} from 'react'
 import {useDrag} from 'react-dnd'
 import {getEmptyImage} from 'react-dnd-html5-backend'
 import type {ItemType} from '../../../consts'
+import {canDragOwned} from '../dragOwner'
 import {useConnectAsRef} from './useConnectAsRef'
 
 interface DragState {
@@ -21,9 +22,10 @@ export const useDragWithPreview = (type: ItemType): [DragState, RefCallback<HTML
     () => ({
       type,
       item,
+      canDrag: () => canDragOwned(item.key),
       collect: monitor => ({isDragging: monitor.isDragging()}),
     }),
-    []
+    [item.key]
   )
 
   useEffect(() => {

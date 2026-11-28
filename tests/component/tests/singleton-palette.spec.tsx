@@ -6,6 +6,7 @@ import {act, fireEvent, render, within} from '@testing-library/react'
 import {describe, expect, it} from 'vitest'
 import {userEvent} from 'vitest/browser'
 import {isBrowserMode} from '../config/isBrowserMode'
+import {clickAddButton} from '../util/clickAddButton'
 
 const view = new BuilderView([printSettings.build()])
 
@@ -64,7 +65,7 @@ describe('Singleton palette component', () => {
 
   it('shows the singleton hint in the components modal', async () => {
     const {findByTestId, findByRole, findByText} = render(<App form={formWithSettings} />)
-    fireEvent.click(await findByTestId('add-button'))
+    clickAddButton(await findByTestId('add-button'))
 
     const modalTitle = await findByText('Click to add control')
     const modal = modalTitle.closest('.rs-modal') as HTMLElement

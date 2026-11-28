@@ -3,7 +3,7 @@ import {faClone, faTrashAlt as faTrash} from '@fortawesome/free-regular-svg-icon
 import {faBars, faCrosshairs} from '@fortawesome/free-solid-svg-icons'
 import {cfDisableComponentRemove, cfDisableToolbarAdd, cfSingleton, useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
-import type {MouseEventHandler, ReactElement, ReactNode} from 'react'
+import type {CSSProperties, MouseEventHandler, ReactElement, ReactNode} from 'react'
 import {useCallback, useMemo, useRef, useState} from 'react'
 import {createPortal} from 'react-dom'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -53,6 +53,17 @@ interface ToolbarItemProps extends ToolbarProps {
 }
 
 const menuIcon = faBars
+
+/** Pass events through chrome so nested slot children under the toolbar stay selectable/draggable. */
+const toolbarPassThroughStyle: CSSProperties = {pointerEvents: 'none'}
+
+/**
+ * Keeps toolbar mousedown from React-bubbling to ancestor editables (portaled, still in React tree).
+ * @param e the mouse event.
+ */
+const stopMouseDownPropagation: MouseEventHandler = e => {
+  e.stopPropagation()
+}
 
 const RawToolbarTitle = ({compact, storeKey, className}: ToolbarItemProps) => {
   return compact ? null : <label className={cx(styles.title, className)}>{storeKey}</label>
@@ -250,7 +261,13 @@ const RawToolbar = ({compact, className, anchor}: ToolbarProps) => {
   useToolbarPosition(ref, anchor, compact, isRTL, expanded, setExpanded)
 
   return createPortal(
-    <div ref={ref} className={cx(styles.container, toolbarClassname, className, {[styles.rtl]: isRTL})} {...{[toolbarHostAttr]: ''}}>
+    <div
+      ref={ref}
+      style={toolbarPassThroughStyle}
+      className={cx(styles.container, toolbarClassname, className, {[styles.rtl]: isRTL})}
+      onMouseDown={stopMouseDownPropagation}
+      {...{[toolbarHostAttr]: ''}}
+    >
       <ToolbarItems {...customizationProps}>
         <ToolbarTitle {...customizationProps} />
         {actions.length > 0 && (

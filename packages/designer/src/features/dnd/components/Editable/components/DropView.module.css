@@ -9,6 +9,39 @@
   align-items: center;
   justify-content: center;
   outline: 1px solid var(--rs-btn-default-disabled-text);
+  pointer-events: auto;
+}
+
+.addControl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--rs-green-500, #4caf50);
+  color: #fff;
+  cursor: pointer;
+  line-height: 0;
+  pointer-events: auto;
+}
+
+.addControl:hover {
+  background-color: var(--rs-green-700, #22a12a);
+}
+
+.addControl:focus-visible {
+  outline: 2px solid var(--rs-primary-500, #3498ff);
+  outline-offset: 2px;
+}
+
+.addControl :global(.rs-icon),
+.addIcon {
+  font-size: 12px;
+  pointer-events: none;
 }
 
 .innerContainer:global(.isActive) {

@@ -37,7 +37,7 @@ test.describe('onFormElementAdd and onFormElementRemove callbacks', {
     await clearForm(page)
     await clearRecordedCalls(page)
 
-    await page.locator('.isRoot.isInner button').first().click({force: true})
+    await page.getByTestId('add-button').first().click({force: true})
     await page
       .locator('.rs-modal-wrapper')
       .locator('div')

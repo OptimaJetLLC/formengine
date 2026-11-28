@@ -5,6 +5,7 @@ import {FormBuilder} from '@react-form-builder/designer'
 import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {fireEvent, render, waitFor, within} from '@testing-library/react'
 import {describe, expect, it, vi} from 'vitest'
+import {clickAddButton} from '../util/clickAddButton'
 import emptyForm from './forms/empty-form.json'
 
 const PRESET_NAME = 'TestPresetForCallback'
@@ -35,7 +36,7 @@ describe('FormBuilder onFormElementAdd', () => {
     )
 
     await findByTestId('mainScreen')
-    fireEvent.click(await findByTestId('add-button'))
+    clickAddButton(await findByTestId('add-button'))
     const presetModal = await findByRole('dialog')
     fireEvent.click(within(presetModal).getByTestId(`${PRESET_NAME}-palette-component`))
 
@@ -57,7 +58,7 @@ describe('FormBuilder onFormElementAdd', () => {
     )
 
     await findByTestId('mainScreen')
-    fireEvent.click(await findByTestId('add-button'))
+    clickAddButton(await findByTestId('add-button'))
     const calendarModal = await findByRole('dialog')
     fireEvent.click(within(calendarModal).getByTestId('RsCalendar-palette-component'))
 

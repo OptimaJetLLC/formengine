@@ -1,0 +1,42 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "mtButton1",
+        "type": "MtButton",
+        "props": {
+          "children": {
+            "value": "Button"
+          },
+          "leftSection": {
+            "editorType": "node"
+          },
+          "rightSection": {
+            "editorType": "node"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "mt-button"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

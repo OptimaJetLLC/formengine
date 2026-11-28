@@ -1,10 +1,11 @@
 import {useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
 import cx from 'clsx'
-import type {HTMLAttributes} from 'react'
-import {forwardRef, useCallback, useMemo} from 'react'
-import {IconButton} from 'rsuite'
+import type {HTMLAttributes, KeyboardEvent, MouseEvent} from 'react'
+import {forwardRef, useCallback} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
+import {stopEvent} from '../../../../../utils/stopEvent'
+import {disarmOtherDraggables} from '../disarmDraggableAncestors'
 import styles from './DropView.module.css'
 
 interface DropViewProps {
@@ -16,7 +17,7 @@ interface DropViewProps {
 const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string}) => {
   const builderStore = useBuilderStore()
   const target = useComponentData()
-  const handleClick = useCallback(() => {
+  const openModal = useCallback(() => {
     builderStore.showComponentsModal(
       source => {
         builderStore.add(source, target, 'inner', slot, slotCondition)
@@ -25,10 +26,50 @@ const AddButton = ({slot, slotCondition}: {slot?: string; slotCondition?: string
     )
   }, [builderStore, target, slot, slotCondition])
 
-  const plusIcon = useMemo(() => <PlusIcon />, [])
+  // Open on mousedown inside HTML5 drag hosts: the browser cancels click when a drag starts.
+  // preventDefault suppresses the follow-up click so we do not open twice.
+  const handleMouseDown = useCallback(
+    (event: MouseEvent<HTMLSpanElement>) => {
+      if (event.button !== 0) return
+      stopEvent(event)
+      disarmOtherDraggables(event.currentTarget)
+      openModal()
+    },
+    [openModal]
+  )
+
+  // Programmatic .click() / fireEvent.click does not fire mousedown.
+  const handleClick = useCallback(
+    (event: MouseEvent<HTMLSpanElement>) => {
+      stopEvent(event)
+      openModal()
+    },
+    [openModal]
+  )
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLSpanElement>) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        stopEvent(event)
+        openModal()
+      }
+    },
+    [openModal]
+  )
 
   return (
-    <IconButton onClick={handleClick} icon={plusIcon} color="green" data-testid="add-button" appearance={'primary'} circle size={'xs'} />
+    <span
+      role="button"
+      tabIndex={0}
+      className={styles.addControl}
+      onMouseDown={handleMouseDown}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      data-testid="add-button"
+      aria-label="Add component"
+    >
+      <PlusIcon className={styles.addIcon} />
+    </span>
   )
 }
 
