@@ -57,6 +57,14 @@ const menuIcon = faBars
 /** Pass events through chrome so nested slot children under the toolbar stay selectable/draggable. */
 const toolbarPassThroughStyle: CSSProperties = {pointerEvents: 'none'}
 
+/**
+ * Keeps toolbar mousedown from React-bubbling to ancestor editables (portaled, still in React tree).
+ * @param e the mouse event.
+ */
+const stopMouseDownPropagation: MouseEventHandler = e => {
+  e.stopPropagation()
+}
+
 const RawToolbarTitle = ({compact, storeKey, className}: ToolbarItemProps) => {
   return compact ? null : <label className={cx(styles.title, className)}>{storeKey}</label>
 }
@@ -257,6 +265,7 @@ const RawToolbar = ({compact, className, anchor}: ToolbarProps) => {
       ref={ref}
       style={toolbarPassThroughStyle}
       className={cx(styles.container, toolbarClassname, className, {[styles.rtl]: isRTL})}
+      onMouseDown={stopMouseDownPropagation}
       {...{[toolbarHostAttr]: ''}}
     >
       <ToolbarItems {...customizationProps}>
